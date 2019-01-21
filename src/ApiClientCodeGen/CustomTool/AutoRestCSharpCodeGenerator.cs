@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using ApiClientCodeGen.Core;
 using Microsoft.VisualStudio.Shell;
 
 namespace ApiClientCodeGen
@@ -12,8 +13,13 @@ namespace ApiClientCodeGen
                               Guids.AutoRestCSharpCodeGenerator,
                               GeneratesDesignTimeSource = true,
                               GeneratorRegKeyName = nameof(AutoRestCodeGenerator))]
-    public class AutoRestCSharpCodeGenerator : CodeGenerator
+    public class AutoRestCSharpCodeGenerator : AutoRestCodeGenerator
     {
+        public AutoRestCSharpCodeGenerator() 
+            : base(SupportedLanguage.CSharp)
+        {
+        }
+
         public override int DefaultExtension(out string pbstrDefaultExtension)
         {
             pbstrDefaultExtension = ".cs";

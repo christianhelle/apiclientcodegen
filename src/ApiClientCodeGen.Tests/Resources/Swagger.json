@@ -1,0 +1,1262 @@
+﻿{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0",
+		"title": "Fleet Logger Gateway API",
+		"x-ms-code-generation-settings": {
+			"internalConstructors": true,
+			"useDateTimeOffset": true
+		}
+	},
+	"host": "nilfisknemodevapiloggergateway.azurewebsites.net",
+	"paths": {
+		"/accounts/{accountId}/machines/{machineId}": {
+			"get": {
+				"tags": [
+					"Machines"
+				],
+				"operationId": "GetMachine",
+				"consumes": [],
+				"produces": [
+					"application/json",
+					"text/json"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "machineId",
+						"in": "path",
+						"description": "Machine ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"description": "The requested API version",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"1.0"
+						]
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/Machine"
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"schema": {
+							"$ref": "#/definitions/ProblemDetails"
+						}
+					},
+					"401": {
+						"description": "Request was valid but the calling user does not have the required role"
+					},
+					"default": {
+						"description": "Bad Request",
+						"schema": {
+							"$ref": "#/definitions/ValidationProblemDetails"
+						}
+					},
+					"403": {
+						"description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Machines"
+				],
+				"operationId": "UpdateMachine",
+				"consumes": [
+					"application/json-patch+json",
+					"application/json",
+					"text/json",
+					"application/*+json"
+				],
+				"produces": [
+					"application/json",
+					"text/json"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "machineId",
+						"in": "path",
+						"description": "Site ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "If-Match",
+						"in": "header",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "Request",
+						"in": "body",
+						"required": false,
+						"schema": {
+							"$ref": "#/definitions/UpdateMachineRequest"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"description": "The requested API version",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"1.0"
+						]
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/Machine"
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"schema": {
+							"$ref": "#/definitions/ProblemDetails"
+						}
+					},
+					"401": {
+						"description": "Request was valid but the calling user does not have the required role"
+					},
+					"default": {
+						"description": "Bad Request",
+						"schema": {
+							"$ref": "#/definitions/ValidationProblemDetails"
+						}
+					},
+					"403": {
+						"description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+					}
+				}
+			},
+			"delete": {
+				"tags": [
+					"Machines"
+				],
+				"operationId": "DeleteMachine",
+				"consumes": [],
+				"produces": [
+					"application/json",
+					"text/json"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "machineId",
+						"in": "path",
+						"description": "Site ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "If-Match",
+						"in": "header",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"description": "The requested API version",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"1.0"
+						]
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success"
+					},
+					"404": {
+						"description": "Not Found",
+						"schema": {
+							"$ref": "#/definitions/ProblemDetails"
+						}
+					},
+					"401": {
+						"description": "Request was valid but the calling user does not have the required role"
+					},
+					"default": {
+						"description": "Bad Request",
+						"schema": {
+							"$ref": "#/definitions/ValidationProblemDetails"
+						}
+					},
+					"403": {
+						"description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+					}
+				}
+			}
+		},
+		"/accounts/{accountId}/machines/qr": {
+			"get": {
+				"tags": [
+					"Machines"
+				],
+				"operationId": "GetMachineByQrCode",
+				"consumes": [],
+				"produces": [
+					"application/json",
+					"text/json"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "qrCode",
+						"in": "query",
+						"description": "Qr Code.",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"description": "The requested API version",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"1.0"
+						]
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/Machine"
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"schema": {
+							"$ref": "#/definitions/ProblemDetails"
+						}
+					},
+					"401": {
+						"description": "Request was valid but the calling user does not have the required role"
+					},
+					"default": {
+						"description": "Bad Request",
+						"schema": {
+							"$ref": "#/definitions/ValidationProblemDetails"
+						}
+					},
+					"403": {
+						"description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+					}
+				}
+			}
+		},
+		"/accounts/{accountId}/sites/{siteId}": {
+			"get": {
+				"tags": [
+					"Sites"
+				],
+				"operationId": "GetSite",
+				"consumes": [],
+				"produces": [
+					"application/json",
+					"text/json"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "siteId",
+						"in": "path",
+						"description": "Site ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"description": "The requested API version",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"1.0"
+						]
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/Site"
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"schema": {
+							"$ref": "#/definitions/ProblemDetails"
+						}
+					},
+					"401": {
+						"description": "Request was valid but the calling user does not have the required role"
+					},
+					"default": {
+						"description": "Bad Request",
+						"schema": {
+							"$ref": "#/definitions/ValidationProblemDetails"
+						}
+					},
+					"403": {
+						"description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+					}
+				}
+			}
+		},
+		"/accounts": {
+			"get": {
+				"tags": [
+					"Accounts"
+				],
+				"operationId": "ListAccounts",
+				"consumes": [],
+				"produces": [
+					"application/json",
+					"text/json"
+				],
+				"parameters": [
+					{
+						"name": "searchFilter",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "pageSize",
+						"in": "query",
+						"description": "The maximum number of items to return per page.\r\nPartial or empty result pages are possible even before the end of the list has been reached.\r\nAcceptable values are 1 to 1000, inclusive. (Default: 100).",
+						"required": false,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "pageToken",
+						"in": "query",
+						"description": "The token for continuing a previous list request on the next page.\r\nThis should be set to the value of 'nextPageToken' from the previous response.",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"description": "The requested API version",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"1.0"
+						]
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/PagedGatewayResult[AccountDescriptor]"
+						}
+					},
+					"401": {
+						"description": "Request was valid but the calling user does not have the required role"
+					},
+					"default": {
+						"description": "Bad Request",
+						"schema": {
+							"$ref": "#/definitions/ValidationProblemDetails"
+						}
+					},
+					"403": {
+						"description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+					}
+				}
+			}
+		},
+		"/accounts/{accountId}/brands": {
+			"get": {
+				"tags": [
+					"Brands"
+				],
+				"operationId": "ListBrands",
+				"consumes": [],
+				"produces": [
+					"application/json",
+					"text/json"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"description": "The requested API version",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"1.0"
+						]
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"uniqueItems": false,
+							"type": "array",
+							"items": {
+								"type": "string"
+							}
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"schema": {
+							"$ref": "#/definitions/ProblemDetails"
+						}
+					},
+					"401": {
+						"description": "Request was valid but the calling user does not have the required role"
+					},
+					"default": {
+						"description": "Bad Request",
+						"schema": {
+							"$ref": "#/definitions/ValidationProblemDetails"
+						}
+					},
+					"403": {
+						"description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+					}
+				}
+			}
+		},
+		"/accounts/{accountId}/machines": {
+			"get": {
+				"tags": [
+					"Machines"
+				],
+				"operationId": "ListMachines",
+				"consumes": [],
+				"produces": [
+					"application/json",
+					"text/json"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "machineFilter",
+						"in": "query",
+						"required": false,
+						"type": "string",
+						"enum": [
+							"All",
+							"WithoutSite",
+							"WithSite"
+						]
+					},
+					{
+						"name": "pageSize",
+						"in": "query",
+						"description": "The maximum number of items to return per page.\r\nPartial or empty result pages are possible even before the end of the list has been reached.\r\nAcceptable values are 1 to 1000, inclusive. (Default: 100).",
+						"required": false,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "pageToken",
+						"in": "query",
+						"description": "The token for continuing a previous list request on the next page.\r\nThis should be set to the value of 'nextPageToken' from the previous response.",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"description": "The requested API version",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"1.0"
+						]
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/PagedGatewayResult[Machine]"
+						}
+					},
+					"401": {
+						"description": "Request was valid but the calling user does not have the required role"
+					},
+					"default": {
+						"description": "Bad Request",
+						"schema": {
+							"$ref": "#/definitions/ValidationProblemDetails"
+						}
+					},
+					"403": {
+						"description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"Machines"
+				],
+				"operationId": "CreateMachine",
+				"consumes": [
+					"application/json-patch+json",
+					"application/json",
+					"text/json",
+					"application/*+json"
+				],
+				"produces": [
+					"application/json",
+					"text/json"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "Request",
+						"in": "body",
+						"required": false,
+						"schema": {
+							"$ref": "#/definitions/CreateMachineRequest"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"description": "The requested API version",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"1.0"
+						]
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/Machine"
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"schema": {
+							"$ref": "#/definitions/ProblemDetails"
+						}
+					},
+					"401": {
+						"description": "Request was valid but the calling user does not have the required role"
+					},
+					"default": {
+						"description": "Bad Request",
+						"schema": {
+							"$ref": "#/definitions/ValidationProblemDetails"
+						}
+					},
+					"403": {
+						"description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+					}
+				}
+			}
+		},
+		"/accounts/{accountId}/sites/{siteId}/machines": {
+			"get": {
+				"tags": [
+					"Sites.Machines"
+				],
+				"operationId": "ListMachinesBySiteId",
+				"consumes": [],
+				"produces": [
+					"application/json",
+					"text/json"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "siteId",
+						"in": "path",
+						"description": "Site ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"description": "The requested API version",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"1.0"
+						]
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"uniqueItems": false,
+							"type": "array",
+							"items": {
+								"$ref": "#/definitions/Machine"
+							}
+						}
+					},
+					"401": {
+						"description": "Request was valid but the calling user does not have the required role"
+					},
+					"default": {
+						"description": "Bad Request",
+						"schema": {
+							"$ref": "#/definitions/ValidationProblemDetails"
+						}
+					},
+					"403": {
+						"description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"Sites.Machines"
+				],
+				"operationId": "CreateSiteMachine",
+				"consumes": [
+					"application/json-patch+json",
+					"application/json",
+					"text/json",
+					"application/*+json"
+				],
+				"produces": [
+					"application/json",
+					"text/json"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "siteId",
+						"in": "path",
+						"description": "Site ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "Request",
+						"in": "body",
+						"required": false,
+						"schema": {
+							"$ref": "#/definitions/CreateMachineRequest"
+						}
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"description": "The requested API version",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"1.0"
+						]
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/Machine"
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"schema": {
+							"$ref": "#/definitions/ProblemDetails"
+						}
+					},
+					"401": {
+						"description": "Request was valid but the calling user does not have the required role"
+					},
+					"default": {
+						"description": "Bad Request",
+						"schema": {
+							"$ref": "#/definitions/ValidationProblemDetails"
+						}
+					},
+					"403": {
+						"description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+					}
+				}
+			}
+		},
+		"/accounts/{accountId}/sites": {
+			"get": {
+				"tags": [
+					"Sites"
+				],
+				"operationId": "ListSites",
+				"consumes": [],
+				"produces": [
+					"application/json",
+					"text/json"
+				],
+				"parameters": [
+					{
+						"name": "accountId",
+						"in": "path",
+						"description": "Account ID.",
+						"required": true,
+						"type": "string"
+					},
+					{
+						"name": "searchFilter",
+						"in": "query",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "pageSize",
+						"in": "query",
+						"description": "The maximum number of items to return per page.\r\nPartial or empty result pages are possible even before the end of the list has been reached.\r\nAcceptable values are 1 to 1000, inclusive. (Default: 100).",
+						"required": false,
+						"type": "integer",
+						"format": "int32"
+					},
+					{
+						"name": "pageToken",
+						"in": "query",
+						"description": "The token for continuing a previous list request on the next page.\r\nThis should be set to the value of 'nextPageToken' from the previous response.",
+						"required": false,
+						"type": "string"
+					},
+					{
+						"name": "api-version",
+						"in": "query",
+						"description": "The requested API version",
+						"required": true,
+						"type": "string",
+						"enum": [
+							"1.0"
+						]
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "Success",
+						"schema": {
+							"$ref": "#/definitions/PagedGatewayResult[Site]"
+						}
+					},
+					"404": {
+						"description": "Not Found",
+						"schema": {
+							"$ref": "#/definitions/ProblemDetails"
+						}
+					},
+					"401": {
+						"description": "Request was valid but the calling user does not have the required role"
+					},
+					"default": {
+						"description": "Bad Request",
+						"schema": {
+							"$ref": "#/definitions/ValidationProblemDetails"
+						}
+					},
+					"403": {
+						"description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"ProblemDetails": {
+			"type": "object",
+			"properties": {
+				"type": {
+					"type": "string"
+				},
+				"title": {
+					"type": "string"
+				},
+				"status": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"detail": {
+					"type": "string"
+				},
+				"instance": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": {
+				"type": "object"
+			}
+		},
+		"ValidationProblemDetails": {
+			"type": "object",
+			"properties": {
+				"errors": {
+					"type": "object",
+					"additionalProperties": {
+						"uniqueItems": false,
+						"type": "array",
+						"items": {
+							"type": "string"
+						}
+					},
+					"readOnly": true
+				},
+				"type": {
+					"type": "string"
+				},
+				"title": {
+					"type": "string"
+				},
+				"status": {
+					"format": "int32",
+					"type": "integer"
+				},
+				"detail": {
+					"type": "string"
+				},
+				"instance": {
+					"type": "string"
+				}
+			},
+			"additionalProperties": {
+				"type": "object"
+			}
+		},
+		"Machine": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"accountId": {
+					"type": "string"
+				},
+				"siteId": {
+					"type": "string"
+				},
+				"eTag": {
+					"type": "string"
+				},
+				"brand": {
+					"type": "string"
+				},
+				"type": {
+					"$ref": "#/definitions/MachineType"
+				},
+				"modelNumber": {
+					"type": "string"
+				},
+				"serialNumber": {
+					"type": "string"
+				},
+				"condition": {
+					"$ref": "#/definitions/Condition"
+				},
+				"verifiedBy": {
+					"$ref": "#/definitions/UserDescriptor"
+				},
+				"verificationDate": {
+					"format": "date-time",
+					"type": "string"
+				},
+				"registrationState": {
+					"$ref": "#/definitions/RegistrationState"
+				},
+				"comment": {
+					"type": "string"
+				},
+				"imageUri": {
+					"type": "string"
+				},
+				"qrCode": {
+					"type": "string"
+				},
+				"parts": {
+					"uniqueItems": false,
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MachinePart"
+					}
+				},
+				"friendlyName": {
+					"type": "string"
+				}
+			}
+		},
+		"MachineType": {
+			"enum": [
+				"ScrubberDryer",
+				"Sweeper",
+				"Combination",
+				"VacuumCleaner",
+				"HighPressureWasher",
+				"Other"
+			],
+			"type": "string"
+		},
+		"Condition": {
+			"enum": [
+				"Functioning",
+				"NotFunctioning",
+				"Unused",
+				"Missing",
+				"Scrapped",
+				"Moved"
+			],
+			"type": "string"
+		},
+		"UserDescriptor": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"displayName": {
+					"type": "string"
+				}
+			}
+		},
+		"RegistrationState": {
+			"enum": [
+				"Unknown",
+				"Expired",
+				"AlmostExpired",
+				"Ok"
+			],
+			"type": "string"
+		},
+		"MachinePart": {
+			"type": "object",
+			"properties": {
+				"identifier": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				}
+			}
+		},
+		"UpdateMachineRequest": {
+			"type": "object",
+			"properties": {
+				"siteId": {
+					"type": "string"
+				},
+				"brand": {
+					"type": "string"
+				},
+				"type": {
+					"$ref": "#/definitions/MachineType"
+				},
+				"modelNumber": {
+					"type": "string"
+				},
+				"serialNumber": {
+					"type": "string"
+				},
+				"condition": {
+					"$ref": "#/definitions/Condition"
+				},
+				"position": {
+					"$ref": "#/definitions/GeoLocation"
+				},
+				"imageData": {
+					"type": "string"
+				},
+				"comment": {
+					"type": "string"
+				},
+				"qrCode": {
+					"type": "string"
+				},
+				"imageUri": {
+					"type": "string"
+				},
+				"parts": {
+					"uniqueItems": false,
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MachinePart"
+					}
+				},
+				"friendlyName": {
+					"type": "string"
+				}
+			}
+		},
+		"GeoLocation": {
+			"type": "object",
+			"properties": {
+				"latitude": {
+					"format": "double",
+					"type": "number"
+				},
+				"longitude": {
+					"format": "double",
+					"type": "number"
+				}
+			}
+		},
+		"Site": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"accountId": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"location": {
+					"$ref": "#/definitions/Location"
+				},
+				"verificationFrequency": {
+					"format": "int32",
+					"type": "integer"
+				}
+			}
+		},
+		"Location": {
+			"type": "object",
+			"properties": {
+				"position": {
+					"$ref": "#/definitions/GeoLocation"
+				},
+				"address": {
+					"$ref": "#/definitions/Address"
+				}
+			}
+		},
+		"Address": {
+			"type": "object",
+			"properties": {
+				"streetName": {
+					"type": "string"
+				},
+				"streetNumber": {
+					"type": "string"
+				},
+				"postalCode": {
+					"type": "string"
+				},
+				"city": {
+					"type": "string"
+				},
+				"country": {
+					"type": "string"
+				}
+			}
+		},
+		"PagedGatewayResult[AccountDescriptor]": {
+			"type": "object",
+			"properties": {
+				"kind": {
+					"description": "Identifies what kind of resource this is.",
+					"type": "string"
+				},
+				"nextPageToken": {
+					"description": "The page token for the next page of items.\r\nThis will be absent if the end of the items list has been reached.\r\nIf the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
+					"type": "string"
+				},
+				"items": {
+					"description": "The list of items.\r\nIf nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
+					"uniqueItems": false,
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/AccountDescriptor"
+					}
+				}
+			}
+		},
+		"AccountDescriptor": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				}
+			}
+		},
+		"MachineFilter": {
+			"enum": [
+				"All",
+				"WithoutSite",
+				"WithSite"
+			],
+			"type": "string"
+		},
+		"PagedGatewayResult[Machine]": {
+			"type": "object",
+			"properties": {
+				"kind": {
+					"description": "Identifies what kind of resource this is.",
+					"type": "string"
+				},
+				"nextPageToken": {
+					"description": "The page token for the next page of items.\r\nThis will be absent if the end of the items list has been reached.\r\nIf the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
+					"type": "string"
+				},
+				"items": {
+					"description": "The list of items.\r\nIf nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
+					"uniqueItems": false,
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Machine"
+					}
+				}
+			}
+		},
+		"CreateMachineRequest": {
+			"type": "object",
+			"properties": {
+				"brand": {
+					"type": "string"
+				},
+				"type": {
+					"$ref": "#/definitions/MachineType"
+				},
+				"modelNumber": {
+					"type": "string"
+				},
+				"serialNumber": {
+					"type": "string"
+				},
+				"condition": {
+					"$ref": "#/definitions/Condition"
+				},
+				"position": {
+					"$ref": "#/definitions/GeoLocation"
+				},
+				"imageData": {
+					"type": "string"
+				},
+				"comment": {
+					"type": "string"
+				},
+				"qrCode": {
+					"type": "string"
+				},
+				"parts": {
+					"uniqueItems": false,
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/MachinePart"
+					}
+				},
+				"friendlyName": {
+					"type": "string"
+				}
+			}
+		},
+		"PagedGatewayResult[Site]": {
+			"type": "object",
+			"properties": {
+				"kind": {
+					"description": "Identifies what kind of resource this is.",
+					"type": "string"
+				},
+				"nextPageToken": {
+					"description": "The page token for the next page of items.\r\nThis will be absent if the end of the items list has been reached.\r\nIf the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
+					"type": "string"
+				},
+				"items": {
+					"description": "The list of items.\r\nIf nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
+					"uniqueItems": false,
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/Site"
+					}
+				}
+			}
+		}
+	}
+}

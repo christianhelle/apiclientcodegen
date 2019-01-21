@@ -9,10 +9,14 @@ namespace ApiClientCodeGen
 {
     public abstract class CodeGenerator : IVsSingleFileGenerator
     {
+        private readonly SupportedCodeGenerator supportedCodeGenerator;
         private readonly SupportedLanguage supportedLanguage;
 
-        protected CodeGenerator(SupportedLanguage supportedLanguage = SupportedLanguage.CSharp)
+        protected CodeGenerator(
+            SupportedCodeGenerator supportedCodeGenerator,
+            SupportedLanguage supportedLanguage = SupportedLanguage.CSharp)
         {
+            this.supportedCodeGenerator = supportedCodeGenerator;
             this.supportedLanguage = supportedLanguage;
         }
 
@@ -30,13 +34,14 @@ namespace ApiClientCodeGen
             {
                 var className = ClassNameExtractor.GetClassName(wszInputFilePath);
                 var factory = new CodeGeneratorFactory();
-                
+
                 var codeGenerator = factory.Create(
-                    className, 
-                    wszDefaultNamespace, 
+                    className,
+                    wszDefaultNamespace,
                     bstrInputFileContents,
                     wszInputFilePath,
-                    supportedLanguage);
+                    supportedLanguage,
+                    supportedCodeGenerator);
 
                 var code = codeGenerator.GenerateCode();
                 rgbOutputFileContents[0] = code.ConvertToIntPtr(out pcbOutput);
