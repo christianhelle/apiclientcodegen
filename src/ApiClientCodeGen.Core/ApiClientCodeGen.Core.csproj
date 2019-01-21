@@ -55,6 +55,7 @@
     <Compile Include="CodeGeneratorFactory.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="ICodeGenerator.cs" />
+    <Compile Include="NotInstalledException.cs" />
     <Compile Include="OpenApiCodeGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SupportedLanguage.cs" />
