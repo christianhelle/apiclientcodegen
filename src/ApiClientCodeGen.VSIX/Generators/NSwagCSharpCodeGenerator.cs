@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using System;
 using System.IO;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
@@ -18,8 +19,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 $"/namespace:{defaultNamespace}";
 
         protected override string GetCommand()
-            => Path.Combine(
+        {
+            var command = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
                 "Rico Suter\\NSwagStudio\\Win\\NSwag.exe");
+
+            if (!File.Exists(command))
+                throw new NotInstalledException("NSwag not installed. Please install NSwagStudio");
+            
+            return command;
+        }
     }
 }
