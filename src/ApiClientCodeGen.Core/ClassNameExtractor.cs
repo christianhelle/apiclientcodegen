@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace ApiClientCodeGen.Core
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     public static class ClassNameExtractor
     {

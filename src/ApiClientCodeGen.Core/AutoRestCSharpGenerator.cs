@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace ApiClientCodeGen
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     public class AutoRestCSharpGenerator : ICodeGenerator
     {

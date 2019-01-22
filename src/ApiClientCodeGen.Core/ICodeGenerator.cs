@@ -1,4 +1,4 @@
-﻿namespace ApiClientCodeGen
+﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     public interface ICodeGenerator
     {

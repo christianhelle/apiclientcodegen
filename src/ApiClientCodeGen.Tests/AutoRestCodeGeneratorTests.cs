@@ -1,8 +1,9 @@
-﻿using FluentAssertions;
+﻿using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
 
-namespace ApiClientCodeGen.Tests
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
 {
     [TestClass]
     [DeploymentItem("Resources/Swagger.json")]

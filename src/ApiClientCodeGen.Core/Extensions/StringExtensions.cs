@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace ApiClientCodeGen.Extensions
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
 {
     public static class StringExtension
     {

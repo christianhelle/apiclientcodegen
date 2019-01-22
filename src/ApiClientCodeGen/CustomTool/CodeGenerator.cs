@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Reflection;
 using System.Windows.Forms;
-using ApiClientCodeGen.Core;
-using ApiClientCodeGen.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using Microsoft.VisualStudio.Shell.Interop;
 
-namespace ApiClientCodeGen
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 {
     public abstract class CodeGenerator : IVsSingleFileGenerator
     {

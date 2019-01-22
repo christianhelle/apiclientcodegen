@@ -8,7 +8,7 @@
     <ProjectGuid>{E2BEFC46-1FB3-4266-8A26-32F3E268667C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ApiClientCodeGen.Tests</RootNamespace>
+    <RootNamespace>ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests</RootNamespace>
     <AssemblyName>ApiClientCodeGen.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

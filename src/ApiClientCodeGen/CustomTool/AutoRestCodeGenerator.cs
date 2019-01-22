@@ -1,6 +1,6 @@
-﻿using ApiClientCodeGen.Core;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 
-namespace ApiClientCodeGen
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 {
     public abstract class AutoRestCodeGenerator : CodeGenerator
     {

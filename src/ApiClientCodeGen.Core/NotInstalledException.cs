@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ApiClientCodeGen
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     [Serializable]
     public class NotInstalledException : Exception
