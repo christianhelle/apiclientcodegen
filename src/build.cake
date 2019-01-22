@@ -42,7 +42,7 @@ Task("Run-Unit-Tests")
 Task("Post-Build")
     .IsDependentOn("Build")
     .Does(() => {
-        CopyFileToDirectory("./ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix", "./artifacts/");
+        CopyFileToDirectory("./ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix", "./Artifacts/");
     });
 
 Task("Default")
