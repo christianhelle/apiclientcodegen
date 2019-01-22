@@ -54,6 +54,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomTool\NSwag\NSwagCodeGenerator.cs" />
+    <Compile Include="CustomTool\NSwag\NSwagCSharpCodeGenerator.cs" />
     <Compile Include="Generators\AutoRestCSharpGenerator.cs" />
     <Compile Include="Core\ClassNameExtractor.cs" />
     <Compile Include="Generators\CodeGeneratorFactory.cs" />
