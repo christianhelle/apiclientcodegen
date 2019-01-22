@@ -11,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
                               "C# AutoRest API Client Code Generator",
                               ContextGuids.CSharp,
                               GeneratesDesignTimeSource = true,
-                              GeneratorRegKeyName = nameof(AutoRestCodeGenerator))]
+                              GeneratorRegKeyName = "AutoRestCodeGenerator")]
     public class AutoRestCSharpCodeGenerator : AutoRestCodeGenerator
     {
         public AutoRestCSharpCodeGenerator() 
