@@ -19,6 +19,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                     if (language == SupportedLanguage.CSharp)
                         return new AutoRestCSharpGenerator(inputFilePath, defaultNamespace);
                     break;
+
+                case SupportedCodeGenerator.NSwag:
+                    if (language == SupportedLanguage.CSharp)
+                        return new NSwagCSharpCodeGenerator(inputFilePath, defaultNamespace);
+                    break;
             }
 
             throw new NotSupportedException();
