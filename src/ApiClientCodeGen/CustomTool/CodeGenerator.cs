@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
@@ -6,6 +7,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 {
+    [ComVisible(true)]
     public abstract class CodeGenerator : IVsSingleFileGenerator
     {
         private readonly SupportedCodeGenerator supportedCodeGenerator;
