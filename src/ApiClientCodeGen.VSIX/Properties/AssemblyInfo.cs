@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ApiClientCodeGen.VSIX")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("REST API Client Code Generator")]
+[assembly: AssemblyDescription("A collection of Visual Studio custom tool code generators for Swagger / OpenAPI specification files")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ApiClientCodeGen.VSIX")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyProduct("REST API Client Code Generator")]
+[assembly: AssemblyCopyright("© 2019 Christian Resma Helle All Rights Reserved")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
