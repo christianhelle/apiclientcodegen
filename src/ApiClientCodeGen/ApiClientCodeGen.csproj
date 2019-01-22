@@ -48,10 +48,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ContextGuids.cs" />
     <Compile Include="CustomTool\AutoRestCodeGenerator.cs" />
     <Compile Include="CustomTool\AutoRestCSharpCodeGenerator.cs" />
     <Compile Include="CustomTool\CodeGenerator.cs" />
-    <Compile Include="Guids.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
