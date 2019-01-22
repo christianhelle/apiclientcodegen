@@ -18,4 +18,10 @@ The resulting file is the equivalent of using the AutoRest CLI tool with
 The resulting file is the equivalent of using the NSwag CLI tool with
 `swagger2csclient /classname:ApiClient /input:[swaggerFile] /output:[outputFile] /namespace:[namespace];`
 
+
+**Important note:**
+
+The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest** and **NSwag** and require them to be installed on the developers machine
+
+
 ***More custom tools coming soon...***
