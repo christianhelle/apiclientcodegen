@@ -61,8 +61,8 @@
     <Compile Include="Core\NotInstalledException.cs" />
     <Compile Include="Core\OpenApiCodeGenerator.cs" />
     <Compile Include="Core\SupportedLanguage.cs" />
-    <Compile Include="CustomTool\AutoRestCodeGenerator.cs" />
-    <Compile Include="CustomTool\AutoRestCSharpCodeGenerator.cs" />
+    <Compile Include="CustomTool\AutoRest\AutoRestCodeGenerator.cs" />
+    <Compile Include="CustomTool\AutoRest\AutoRestCSharpCodeGenerator.cs" />
     <Compile Include="CustomTool\CodeGenerator.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

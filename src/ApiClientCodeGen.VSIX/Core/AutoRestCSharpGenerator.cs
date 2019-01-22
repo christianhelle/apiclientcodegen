@@ -61,6 +61,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
                 process.StartInfo.RedirectStandardError = true;
                 process.StartInfo.RedirectStandardInput = true;
                 process.StartInfo.UseShellExecute = false;
+                process.StartInfo.CreateNoWindow = true;
 
                 process.Start();
                 process.BeginOutputReadLine();
