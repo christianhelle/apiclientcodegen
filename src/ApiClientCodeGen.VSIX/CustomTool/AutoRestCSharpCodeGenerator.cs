@@ -1,6 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.TextTemplating.VSHost;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 {
@@ -8,12 +9,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
     [ComVisible(true)]
     [ProvideObject(typeof(AutoRestCSharpCodeGenerator))]
     [CodeGeneratorRegistration(typeof(AutoRestCSharpCodeGenerator),
-                              "C# AutoRest API Client Code Generator",
-                              ContextGuids.CSharp,
+                              Description,
+                              ProvideCodeGeneratorAttribute.CSharpProjectGuid,
                               GeneratesDesignTimeSource = true,
                               GeneratorRegKeyName = "AutoRestCodeGenerator")]
     public class AutoRestCSharpCodeGenerator : AutoRestCodeGenerator
     {
+        public const string Description = "C# AutoRest API Client Code Generator";
+
         public AutoRestCSharpCodeGenerator() 
             : base(SupportedLanguage.CSharp)
         {

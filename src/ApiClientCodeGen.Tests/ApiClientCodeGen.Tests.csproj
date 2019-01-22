@@ -69,9 +69,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj">
-      <Project>{b9ef81a2-484f-4122-8333-9c21d1ac0c25}</Project>
-      <Name>ApiClientCodeGen.Core</Name>
+    <ProjectReference Include="..\ApiClientCodeGen.VSIX\ApiClientCodeGen.VSIX.csproj">
+      <Project>{f68fef1b-c874-4ef7-8c5c-e3e32e613141}</Project>
+      <Name>ApiClientCodeGen.VSIX</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
