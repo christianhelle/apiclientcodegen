@@ -1,6 +1,7 @@
-﻿using System;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using System;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
     public class CodeGeneratorFactory
     {

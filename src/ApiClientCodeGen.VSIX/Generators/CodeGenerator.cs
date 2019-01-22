@@ -1,15 +1,20 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
+using System.Diagnostics;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
-    public class AutoRestCSharpGenerator : ICodeGenerator
+    public interface ICodeGenerator
     {
-        private readonly string swaggerFile;
-        private readonly string defaultNamespace;
+        string GenerateCode();
+    }
 
-        public AutoRestCSharpGenerator(string swaggerFile, string defaultNamespace)
+    public abstract class CodeGenerator : ICodeGenerator
+    {
+        protected readonly string swaggerFile;
+        protected readonly string defaultNamespace;
+
+        protected CodeGenerator(string swaggerFile, string defaultNamespace)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
@@ -20,23 +25,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
             var path = Path.GetDirectoryName(swaggerFile);
             var outputFile = Path.Combine(path, "TempApiClient.cs");
 
-            var autorestCmd = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                "npm\\autorest.cmd");
+            var command = GetCommand();
+            var arguments = GetArguments(outputFile);
 
-            if (!File.Exists(autorestCmd))
-                throw new NotInstalledException("AutoRest not installed. Please install this through NPM");
-
-            var arguments =
-                $"--csharp " +
-                $"--input-file=\"{swaggerFile}\" " +
-                $"--output-file=\"{outputFile}\" " +
-                $"--namespace=\"{defaultNamespace}\" " +
-                $"--add-credentials";
-
-            StartProcess(autorestCmd, arguments);
+            StartProcess(command, arguments);
             return ReadThenDelete(outputFile);
         }
+
+        protected abstract string GetArguments(string outputFile);
+        protected abstract string GetCommand();
 
         private static string ReadThenDelete(string outputFile)
         {

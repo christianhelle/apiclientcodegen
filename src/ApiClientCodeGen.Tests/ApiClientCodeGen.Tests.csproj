@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoRestCodeGeneratorTests.cs" />
+    <Compile Include="DeploymentItemTests.cs" />
+    <Compile Include="NSwagCodeGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -3,17 +3,18 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
 using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 {
     [ComVisible(true)]
-    public abstract class CodeGenerator : IVsSingleFileGenerator
+    public abstract class SingleFileCodeGenerator : IVsSingleFileGenerator
     {
         private readonly SupportedCodeGenerator supportedCodeGenerator;
         private readonly SupportedLanguage supportedLanguage;
 
-        protected CodeGenerator(
+        protected SingleFileCodeGenerator(
             SupportedCodeGenerator supportedCodeGenerator,
             SupportedLanguage supportedLanguage = SupportedLanguage.CSharp)
         {

@@ -54,10 +54,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Core\AutoRestCSharpGenerator.cs" />
+    <Compile Include="Generators\AutoRestCSharpGenerator.cs" />
     <Compile Include="Core\ClassNameExtractor.cs" />
-    <Compile Include="Core\CodeGeneratorFactory.cs" />
-    <Compile Include="Core\ICodeGenerator.cs" />
+    <Compile Include="Generators\CodeGeneratorFactory.cs" />
+    <Compile Include="Generators\CodeGenerator.cs" />
     <Compile Include="Core\NotInstalledException.cs" />
     <Compile Include="Core\OpenApiCodeGenerator.cs" />
     <Compile Include="Core\SupportedLanguage.cs" />
@@ -65,6 +65,7 @@
     <Compile Include="CustomTool\AutoRest\AutoRestCSharpCodeGenerator.cs" />
     <Compile Include="CustomTool\CodeGenerator.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Generators\NSwagCodeGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VSPackage.cs" />
   </ItemGroup>
