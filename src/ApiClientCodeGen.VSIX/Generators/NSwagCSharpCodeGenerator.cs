@@ -3,9 +3,9 @@ using System.IO;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
-    public class NSwagCodeGenerator : CodeGenerator
+    public class NSwagCSharpCodeGenerator : CodeGenerator
     {
-        public NSwagCodeGenerator(string swaggerFile, string defaultNamespace)
+        public NSwagCSharpCodeGenerator(string swaggerFile, string defaultNamespace)
             : base(swaggerFile, defaultNamespace)
         {
         }

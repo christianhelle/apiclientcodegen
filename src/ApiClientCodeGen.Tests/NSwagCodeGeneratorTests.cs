@@ -11,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
     {
         [TestMethod]
         public void Can_Generate_Code_Using_NSwag()
-            => new NSwagCodeGenerator(
+            => new NSwagCSharpCodeGenerator(
                     Path.GetFullPath("Swagger.json"), 
                     GetType().Namespace)
                 .GenerateCode()
