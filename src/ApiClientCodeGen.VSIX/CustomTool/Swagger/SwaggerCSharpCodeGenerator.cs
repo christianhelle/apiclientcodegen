@@ -6,15 +6,15 @@ using Microsoft.VisualStudio.TextTemplating.VSHost;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Swagger
 {
-    [Guid("0A31911A-4D1B-47CB-8F89-B93731A1FA31")]
+    [Guid("DBE9FF25-8BA0-412D-A87B-712AFF162451")]
     [ComVisible(true)]
     [ProvideObject(typeof(SwaggerCSharpCodeGenerator))]
     [CodeGeneratorRegistration(typeof(SwaggerCSharpCodeGenerator),
                               Description,
                               ProvideCodeGeneratorAttribute.CSharpProjectGuid,
                               GeneratesDesignTimeSource = true,
-                              GeneratorRegKeyName = "NSwagCodeGenerator")]
-    public class SwaggerCSharpCodeGenerator : NSwagCodeGenerator
+                              GeneratorRegKeyName = "SwaggerCodeGenerator")]
+    public class SwaggerCSharpCodeGenerator : SwaggerCodeGenerator
     {
         public const string Description = "C# Swagger API Client Code Generator";
 
