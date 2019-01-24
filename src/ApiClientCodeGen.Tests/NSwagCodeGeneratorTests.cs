@@ -2,6 +2,7 @@
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
 {

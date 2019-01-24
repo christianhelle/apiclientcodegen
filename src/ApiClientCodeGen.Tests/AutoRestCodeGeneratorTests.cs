@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
