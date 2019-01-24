@@ -6,7 +6,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
     public class CodeGeneratorFactory
     {
         public ICodeGenerator Create(
-            string className,
             string defaultNamespace,
             string inputFileContents,
             string inputFilePath,
@@ -23,6 +22,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 case SupportedCodeGenerator.NSwag:
                     if (language == SupportedLanguage.CSharp)
                         return new NSwagCSharpCodeGenerator(inputFilePath, defaultNamespace);
+                    break;
+
+                case SupportedCodeGenerator.Swagger:
+                    if (language == SupportedLanguage.CSharp)
+                        throw new NotImplementedException();
                     break;
             }
 
