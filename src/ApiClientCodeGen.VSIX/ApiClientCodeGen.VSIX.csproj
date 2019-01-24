@@ -60,7 +60,7 @@
     <Compile Include="CustomTool\NSwag\NSwagCSharpCodeGenerator.cs" />
     <Compile Include="CustomTool\Swagger\SwaggerCodeGenerator.cs" />
     <Compile Include="CustomTool\Swagger\SwaggerCSharpCodeGenerator.cs" />
-    <Compile Include="Generators\AutoRest\AutoRestCSharpGenerator.cs" />
+    <Compile Include="Generators\AutoRest\AutoRestCSharpCodeGenerator.cs" />
     <Compile Include="Core\ClassNameExtractor.cs" />
     <Compile Include="Generators\CodeGeneratorFactory.cs" />
     <Compile Include="Generators\CodeGenerator.cs" />

@@ -1,12 +1,12 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+﻿using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
 {
     [TestClass]
+    [Ignore("Integration Tests")]
     [DeploymentItem("Resources/Swagger.json")]
     public class NSwagCodeGeneratorTests
     {

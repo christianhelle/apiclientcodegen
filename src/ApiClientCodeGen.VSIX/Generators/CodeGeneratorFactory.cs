@@ -19,7 +19,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
             {
                 case SupportedCodeGenerator.AutoRest:
                     if (language == SupportedLanguage.CSharp)
-                        return new AutoRestCSharpGenerator(inputFilePath, defaultNamespace);
+                        return new AutoRestCSharpCodeGenerator(inputFilePath, defaultNamespace);
                     break;
 
                 case SupportedCodeGenerator.NSwag:
