@@ -71,6 +71,7 @@
     <Compile Include="CustomTool\CodeGenerator.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGenerator.cs" />
+    <Compile Include="Generators\Swagger\SwaggerCSharpCodeGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VSPackage.cs" />
   </ItemGroup>

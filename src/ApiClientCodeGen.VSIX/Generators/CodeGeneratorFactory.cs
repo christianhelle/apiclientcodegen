@@ -1,5 +1,8 @@
 ﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using System;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
@@ -26,7 +29,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 
                 case SupportedCodeGenerator.Swagger:
                     if (language == SupportedLanguage.CSharp)
-                        throw new NotImplementedException();
+                        return new SwaggerCSharpCodeGenerator(inputFileContents, defaultNamespace);
                     break;
             }
 
