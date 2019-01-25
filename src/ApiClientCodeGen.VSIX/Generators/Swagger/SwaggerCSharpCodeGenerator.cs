@@ -16,21 +16,36 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
 
         public string GenerateCode()
         {
-            var path = Path.GetDirectoryName(swaggerFile);
-            var output = Path.Combine(path, "TempApiClient");
+            var output = Path.Combine(
+                Path.GetDirectoryName(swaggerFile) ?? throw new InvalidOperationException(),
+                "TempApiClient");
+
+            Directory.CreateDirectory(output);
 
             var arguments =
-                "-jar swagger-codegen-cli.jar generate " +
-                $"-i {swaggerFile} " +
-                "-l csharp " +
-                "-o ApiClient " +
-                "-DapiTests=false " +
-                "-DmodelTests=false";
+                $"-jar swagger-codegen-cli.jar generate " +
+                $"-l csharp " +
+                $"--input-spec \"{swaggerFile}\" " +
+                $"--output \"{output}\" " +
+                $"--api-package={defaultNamespace} " +
+                $"--model-package={defaultNamespace} " +
+                $"-DapiTests=false -DmodelTests=false --skip-overwrite " +
+                $"-DpackageName={defaultNamespace}";
 
             ProcessHelper.StartProcess("java", arguments);
-            return FileHelper.ReadThenDelete(output);
+            return MergeFilesAndDeleteFolder(output);
+        }
 
-            throw new NotImplementedException();
+        private static string MergeFilesAndDeleteFolder(string output)
+        {
+            try
+            {
+                return CSharpFileMerger.MergeFiles(output);
+            }
+            finally
+            {
+                Directory.Delete(output, true);
+            }
         }
     }
 }

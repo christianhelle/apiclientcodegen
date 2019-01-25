@@ -6,9 +6,9 @@ using System.Text;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
-    public class CSharpFileMerger
+    public static class CSharpFileMerger
     {
-        public string MergeFiles(string folder)
+        public static string MergeFiles(string folder)
         {
             var filesToParse = GetSourceFileNames(folder).ToList();
             var namespaces = GetUniqueNamespaces(filesToParse);

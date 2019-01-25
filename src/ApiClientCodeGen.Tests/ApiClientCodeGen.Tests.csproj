@@ -61,6 +61,7 @@
     <Compile Include="CodeGeneratorFactoryTests.cs" />
     <Compile Include="CSharpFileMergerTests.cs" />
     <Compile Include="DeploymentItemTests.cs" />
+    <Compile Include="SwaggerCodeGeneratorTests.cs" />
     <Compile Include="NSwagCodeGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

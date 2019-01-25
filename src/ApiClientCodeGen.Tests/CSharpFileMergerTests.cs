@@ -10,8 +10,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
     {
         [TestMethod]
         public void Can_Merge_CSharp_Files()
-            => new CSharpFileMerger()
-                .MergeFiles(
+            => CSharpFileMerger.MergeFiles(
                     Path.Combine(
                         Directory.GetCurrentDirectory(),
                         "..\\..\\..\\"))
