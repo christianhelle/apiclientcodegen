@@ -26,4 +26,11 @@ The resulting file is the equivalent of using the NSwag CLI tool with
 The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest** and **NSwag** and require them to be installed on the developers machine
 
 
+**Screenshots**
+
+![AutoRestCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/autorestcodegenerator-custom-tool.jpg)
+
+![NSwagCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/nswagcodegenerator-custom-tool.jpg)
+
+
 ***More custom tools coming soon...***
