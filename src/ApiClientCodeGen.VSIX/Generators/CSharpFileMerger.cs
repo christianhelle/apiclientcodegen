@@ -35,7 +35,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 }
             }
 
-            return sb.ToString();
+            var sourceCode = sb.ToString();
+            return sourceCode;
         }
 
         private static IEnumerable<string> GetSourceFileNames(string path)
@@ -71,12 +72,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 if (files == null) 
                     continue;
 
-                foreach (var file in files.Where(f => !f.Contains("AssemblyInfo.cs")))
+                foreach (var file in files.Where(Predicate()))
                 {
                     yield return file;
                 }
             }
         }
+
+        private static Func<string, bool> Predicate() 
+            => file => file.EndsWith(".cs") && 
+                       !file.Contains("AssemblyInfo.cs");
 
 
         private static IEnumerable<string> GetUniqueNamespaces(IEnumerable<string> files)

@@ -1,4 +1,6 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+﻿using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
@@ -8,9 +10,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
     {
         [TestMethod]
         public void Can_Merge_CSharp_Files()
-        {
-            var sut = new CSharpFileMerger();
-            Assert.Fail("Not yet implemented");
-        }
+            => new CSharpFileMerger()
+                .MergeFiles(
+                    Path.Combine(
+                        Directory.GetCurrentDirectory(),
+                        "..\\..\\..\\"))
+                .Should()
+                .NotBeNullOrWhiteSpace();
     }
 }
