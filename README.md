@@ -13,12 +13,16 @@ A collection of Visual Studio custom tool code generators for Swagger / OpenAPI 
 **Custom Tools**
 
 - AutoRestCodeGenerator - Generates a single file C# REST API Client using AutoRest. 
-The resulting file is the equivalent of using the AutoRest CLI tool with 
-`--csharp " +--input-file=[swaggerFile] --output-file=[outputFile] --namespace=[namespace] --add-credentials`
+The resulting file is the equivalent of using the AutoRest CLI tool with:
+` --csharp " +--input-file=[swaggerFile] --output-file=[outputFile] --namespace=[namespace] --add-credentials`
 
 - NSwagCodeGenerator - Generates a single file C# REST API Client using NSwag.
-The resulting file is the equivalent of using the NSwag CLI tool with
-`swagger2csclient /classname:ApiClient /input:[swaggerFile] /output:[outputFile] /namespace:[namespace];`
+The resulting file is the equivalent of using the NSwag CLI tool with:
+` swagger2csclient /classname:ApiClient /input:[swaggerFile] /output:[outputFile] /namespace:[namespace];`
+
+- SwaggerCodeGenerator - Generates a single file C# REST API Client using Swagger Codegen CLI.
+The output file is the result of merging all the files generated using the Swagger Codegen CLI tool with:
+` generate -l csharp --input-spec [swaggerFile] --output [output] --api-package=[namespace] --model-package=[namespace] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite`
 
 
 **Important note:**
