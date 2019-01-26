@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Net;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger
 {
@@ -16,6 +18,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
 
         public string GenerateCode()
         {
+            VerifySwaggerCodegenCli();
+
             var output = Path.Combine(
                 Path.GetDirectoryName(swaggerFile) ?? throw new InvalidOperationException(),
                 "TempApiClient");
@@ -36,6 +40,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
             return MergeFilesAndDeleteFolder(output);
         }
 
+        private static void VerifySwaggerCodegenCli()
+        {
+            const string swaggerCli = "swagger-codegen-cli.jar";
+            if (File.Exists(swaggerCli)) 
+                return;
+
+            const string swaggerCliUrl =
+                "http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.3.1/swagger-codegen-cli-2.3.1.jar";
+
+            new WebClient()
+                .DownloadFile(
+                    swaggerCliUrl,
+                    swaggerCli);
+        }
+
         private static string MergeFilesAndDeleteFolder(string output)
         {
             try
@@ -44,7 +63,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
             }
             finally
             {
-                Directory.Delete(output, true);
+                try
+                {
+                    Directory.Delete(output, true);
+                }
+                catch (Exception e)
+                {
+                    Trace.WriteLine(e);
+                }
             }
         }
     }
