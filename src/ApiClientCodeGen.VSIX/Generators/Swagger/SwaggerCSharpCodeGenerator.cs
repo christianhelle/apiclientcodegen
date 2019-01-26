@@ -9,11 +9,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
     {
         private readonly string swaggerFile;
         private readonly string defaultNamespace;
+        private readonly string cliPath;
 
         public SwaggerCSharpCodeGenerator(string swaggerFile, string defaultNamespace)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
+            cliPath = Path.Combine(Path.GetTempPath(), "swagger-codegen-cli.jar");
         }
 
         public string GenerateCode()
@@ -27,7 +29,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
             Directory.CreateDirectory(output);
 
             var arguments =
-                $"-jar swagger-codegen-cli.jar generate " +
+                $"-jar \"{cliPath}\" generate " +
                 $"-l csharp " +
                 $"--input-spec \"{swaggerFile}\" " +
                 $"--output \"{output}\" " +
@@ -40,10 +42,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
             return MergeFilesAndDeleteFolder(output);
         }
 
-        private static void VerifySwaggerCodegenCli()
+        private void VerifySwaggerCodegenCli()
         {
-            const string swaggerCli = "swagger-codegen-cli.jar";
-            if (File.Exists(swaggerCli)) 
+            if (File.Exists(cliPath)) 
                 return;
 
             const string swaggerCliUrl =
@@ -52,7 +53,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
             new WebClient()
                 .DownloadFile(
                     swaggerCliUrl,
-                    swaggerCli);
+                    cliPath);
         }
 
         private static string MergeFilesAndDeleteFolder(string output)
