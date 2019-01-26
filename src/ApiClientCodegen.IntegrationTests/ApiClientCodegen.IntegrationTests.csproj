@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6C7BEBC6-6568-44A3-88EC-2DFC57F87A31}</ProjectGuid>
+    <ProjectGuid>{AB65E72E-8666-4213-86D6-AFB424D2C10B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests</RootNamespace>
-    <AssemblyName>ApiClientCodeGen.Tests</AssemblyName>
+    <RootNamespace>ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests</RootNamespace>
+    <AssemblyName>ApiClientCodegen.IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -57,10 +57,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeGeneratorFactoryTests.cs" />
-    <Compile Include="CSharpFileMergerTests.cs" />
-    <Compile Include="DeploymentItemTests.cs" />
+    <Compile Include="AutoRestCodeGeneratorTests.cs" />
+    <Compile Include="NSwagCodeGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SwaggerCodeGeneratorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

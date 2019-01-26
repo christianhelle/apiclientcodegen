@@ -1,17 +1,17 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+﻿using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests
 {
     [TestClass]
     [DeploymentItem("Resources/Swagger.json")]
-    public class NSwagCodeGeneratorTests
+    public class SwaggerCodeGeneratorTests
     {
         [TestMethod]
-        public void Can_Generate_Code_Using_NSwag()
-            => new NSwagCSharpCodeGenerator(
+        public void IntegrationTest_Generate_Code_Using_Swagger()
+            => new SwaggerCSharpCodeGenerator(
                     Path.GetFullPath("Swagger.json"), 
                     GetType().Namespace)
                 .GenerateCode()

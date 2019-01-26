@@ -38,7 +38,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
                 var factory = new CodeGeneratorFactory();
 
                 var codeGenerator = factory.Create(
-                    className,
                     wszDefaultNamespace,
                     bstrInputFileContents,
                     wszInputFilePath,

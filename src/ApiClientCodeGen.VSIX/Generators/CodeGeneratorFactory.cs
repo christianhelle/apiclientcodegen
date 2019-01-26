@@ -1,12 +1,14 @@
 ﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using System;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
     public class CodeGeneratorFactory
     {
         public ICodeGenerator Create(
-            string className,
             string defaultNamespace,
             string inputFileContents,
             string inputFilePath,
@@ -17,12 +19,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
             {
                 case SupportedCodeGenerator.AutoRest:
                     if (language == SupportedLanguage.CSharp)
-                        return new AutoRestCSharpGenerator(inputFilePath, defaultNamespace);
+                        return new AutoRestCSharpCodeGenerator(inputFilePath, defaultNamespace);
                     break;
 
                 case SupportedCodeGenerator.NSwag:
                     if (language == SupportedLanguage.CSharp)
                         return new NSwagCSharpCodeGenerator(inputFilePath, defaultNamespace);
+                    break;
+
+                case SupportedCodeGenerator.Swagger:
+                    if (language == SupportedLanguage.CSharp)
+                        return new SwaggerCSharpCodeGenerator(inputFilePath, defaultNamespace);
                     break;
             }
 

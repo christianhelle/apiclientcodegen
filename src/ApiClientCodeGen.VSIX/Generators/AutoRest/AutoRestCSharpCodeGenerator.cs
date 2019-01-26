@@ -1,12 +1,12 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using System;
+﻿using System;
 using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest
 {
-    public class AutoRestCSharpGenerator : CodeGenerator
+    public class AutoRestCSharpCodeGenerator : CodeGenerator
     {
-        public AutoRestCSharpGenerator(string swaggerFile, string defaultNamespace)
+        public AutoRestCSharpCodeGenerator(string swaggerFile, string defaultNamespace)
             : base(swaggerFile, defaultNamespace)
         {
         }

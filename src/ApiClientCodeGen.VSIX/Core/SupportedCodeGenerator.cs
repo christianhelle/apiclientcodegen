@@ -3,6 +3,7 @@
     public enum SupportedCodeGenerator
     {
         AutoRest,
-        NSwag
+        NSwag,
+        Swagger
     }
 }
