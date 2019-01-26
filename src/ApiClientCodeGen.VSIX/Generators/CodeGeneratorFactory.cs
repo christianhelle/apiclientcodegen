@@ -29,7 +29,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 
                 case SupportedCodeGenerator.Swagger:
                     if (language == SupportedLanguage.CSharp)
-                        return new SwaggerCSharpCodeGenerator(inputFileContents, defaultNamespace);
+                        return new SwaggerCSharpCodeGenerator(inputFilePath, defaultNamespace);
                     break;
             }
 

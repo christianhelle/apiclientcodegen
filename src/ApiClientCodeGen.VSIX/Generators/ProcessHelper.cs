@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
@@ -21,6 +22,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 process.BeginOutputReadLine();
                 process.BeginErrorReadLine();
                 process.WaitForExit();
+
+                if (process.ExitCode != 0)
+                    throw new InvalidOperationException($"{command} failed");
             }
         }
     }
