@@ -27,7 +27,7 @@ The output file is the result of merging all the files generated using the Swagg
 
 **Important note:**
 
-The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest** and **NSwag** and require them to be installed on the developers machine
+The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest** and **NSwag** and require them to be installed on the developers machine. The Swagger Codegen CLI is downloaded on demand but requires the Java SDK to be installed on the machine
 
 
 **Screenshots**
