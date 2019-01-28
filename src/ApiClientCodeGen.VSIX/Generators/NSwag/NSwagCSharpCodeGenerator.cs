@@ -1,33 +1,39 @@
 ﻿using System;
-using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using NSwag;
+using NSwag.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag
 {
-    public class NSwagCSharpCodeGenerator : CodeGenerator
+    public class NSwagCSharpCodeGenerator : ICodeGenerator
     {
+        private readonly string swaggerFile;
+        private readonly string defaultNamespace;
+
         public NSwagCSharpCodeGenerator(string swaggerFile, string defaultNamespace)
-            : base(swaggerFile, defaultNamespace)
         {
+            this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
+            this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
         }
 
-        protected override string GetArguments(string outputFile)
-            => $"swagger2csclient " +
-                $"/classname:ApiClient " +
-                $"/input:\"{swaggerFile}\" " +
-                $"/output:\"{outputFile}\" " +
-                $"/namespace:{defaultNamespace}";
-
-        protected override string GetCommand()
+        public string GenerateCode()
         {
-            var command = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
-                "Rico Suter\\NSwagStudio\\Win\\NSwag.exe");
+            var document = SwaggerDocument
+                .FromFileAsync(swaggerFile)
+                .GetAwaiter()
+                .GetResult();
 
-            if (!File.Exists(command))
-                throw new NotInstalledException("NSwag not installed. Please install NSwagStudio");
-            
-            return command;
+            var settings = new SwaggerToCSharpClientGeneratorSettings
+            {
+                ClassName = "ApiClient", 
+                CSharpGeneratorSettings = 
+                {
+                    Namespace = defaultNamespace
+                }
+            };
+
+            var generator = new SwaggerToCSharpClientGenerator(document, settings);	
+            var code = generator.GenerateFile();
+            return code;
         }
     }
 }
