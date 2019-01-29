@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Include href="KnownImageIds.vsct" />
+
+  <Commands package="guidPackage">
+    <Buttons>
+      <Button guid="guidPackageCmdSetAutoRest" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>AutoRest</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidPackageCmdSetNSwag" id="NSwagCodeGeneratorCustomToolSetter" priority="0x0200" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>NSwag</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidPackageCmdSetSwagger" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0300" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Swagger</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <VisibilityConstraints>
+    <VisibilityItem guid="guidPackageCmdSetAutoRest" id="AutoRestCodeGeneratorCustomToolSetter" context="guidUIContext"/>
+    <VisibilityItem guid="guidPackageCmdSetNSwag" id="NSwagCodeGeneratorCustomToolSetter" context="guidUIContext"/>
+    <VisibilityItem guid="guidPackageCmdSetSwagger" id="SwaggerCodeGeneratorCustomToolSetter" context="guidUIContext"/>
+  </VisibilityConstraints>
+
+  <Symbols>
+    <GuidSymbol name="guidPackage" value="{47AFE4E1-5A52-4FE1-8CA7-EDB8310BDA4A}" />
+    <GuidSymbol name="guidUIContext" value="{A3381E62-5D85-436F-824E-5F0097387C11}" />
+
+    <GuidSymbol name="guidPackageCmdSetAutoRest" value="{C292653B-5876-4B8C-B672-3375D8561881}">
+      <IDSymbol name="AutoRestCodeGeneratorCustomToolSetter" value="0x0100" />
+    </GuidSymbol>
+    <GuidSymbol name="guidPackageCmdSetNSwag" value="{765CF48A-ABD5-42C5-8D58-59D1872A90A9}">
+      <IDSymbol name="NSwagCodeGeneratorCustomToolSetter" value="0x0200" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidPackageCmdSetSwagger" value="{C14BC613-573D-4AAA-B922-B38B57CD8A47}">
+      <IDSymbol name="SwaggerCodeGeneratorCustomToolSetter" value="0x0300" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
