@@ -29,11 +29,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                 InjectHttpClient = true,
                 GenerateClientInterfaces = true,
                 GenerateDtoTypes = true,
+                UseBaseUrl = false,
                 CSharpGeneratorSettings =
                 {
                     Namespace = defaultNamespace,
                     ClassStyle = CSharpClassStyle.Inpc
-                }
+                },
             };
 
             var generator = new SwaggerToCSharpClientGenerator(document, settings);
