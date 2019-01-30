@@ -8,9 +8,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
     {
         public const string Name = nameof(SwaggerCodeGeneratorCustomToolSetter);
 
-        protected override int CommandId { get; } = 0x0300;
-
-        protected override Guid CommandSet { get; }
-            = new Guid("C14BC613-573D-4AAA-B922-B38B57CD8A47");
+        protected override int CommandId { get; } = 0x0400;
     }
 }

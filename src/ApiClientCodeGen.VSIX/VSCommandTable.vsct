@@ -6,24 +6,31 @@
   <Include href="KnownImageIds.vsct" />
 
   <Commands package="guidPackage">
-    <Buttons>
-      <Button guid="guidPackageCmdSetAutoRest" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0100" type="Button">
+    <Groups>
+      <Group guid="guidPackageCmdSet" id="SubmenuGroup" />
+      <Group guid="guidPackageCmdSet" id="CommandsGroup" />
+    </Groups>
+    <Menus>
+      <Menu guid="guidPackageCmdSet" id="Submenu" type="Menu">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
         <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>REST API Client Generator</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+    <Buttons>
+      <Button guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0100" type="Button">
         <Strings>
           <ButtonText>Generate with AutoRest</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidPackageCmdSetNSwag" id="NSwagCodeGeneratorCustomToolSetter" priority="0x0101" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
+      <Button guid="guidPackageCmdSet" id="NSwagCodeGeneratorCustomToolSetter" priority="0x0101" type="Button">
         <Strings>
           <ButtonText>Generate with NSwag</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidPackageCmdSetSwagger" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0102" type="Button">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
+      <Button guid="guidPackageCmdSet" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0102" type="Button">
         <Strings>
           <ButtonText>Generate with Swagger</ButtonText>
         </Strings>
@@ -31,25 +38,41 @@
     </Buttons>
   </Commands>
 
+  <CommandPlacements>
+    <CommandPlacement guid="guidPackageCmdSet" id="SubmenuGroup" priority="0xFFFF">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidPackageCmdSet" id="Submenu" priority="0x0001">
+      <Parent guid="guidPackageCmdSet" id="SubmenuGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidPackageCmdSet" id="CommandsGroup" priority="0x0001">
+      <Parent guid="guidPackageCmdSet" id="Submenu"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0001" >
+      <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidPackageCmdSet" id="NSwagCodeGeneratorCustomToolSetter" priority="0x0002" >
+      <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidPackageCmdSet" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0002" >
+      <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
+    </CommandPlacement>
+  </CommandPlacements>
+
   <VisibilityConstraints>
-    <VisibilityItem guid="guidPackageCmdSetAutoRest" id="AutoRestCodeGeneratorCustomToolSetter" context="guidUIContext"/>
-    <VisibilityItem guid="guidPackageCmdSetNSwag" id="NSwagCodeGeneratorCustomToolSetter" context="guidUIContext"/>
-    <VisibilityItem guid="guidPackageCmdSetSwagger" id="SwaggerCodeGeneratorCustomToolSetter" context="guidUIContext"/>
+    <VisibilityItem guid="guidPackageCmdSet" id="Submenu" context="guidUIContext"/>
   </VisibilityConstraints>
 
   <Symbols>
     <GuidSymbol name="guidPackage" value="{47AFE4E1-5A52-4FE1-8CA7-EDB8310BDA4A}" />
     <GuidSymbol name="guidUIContext" value="{A3381E62-5D85-436F-824E-5F0097387C11}" />
-
-    <GuidSymbol name="guidPackageCmdSetAutoRest" value="{C292653B-5876-4B8C-B672-3375D8561881}">
-      <IDSymbol name="AutoRestCodeGeneratorCustomToolSetter" value="0x0100" />
-    </GuidSymbol>
-    <GuidSymbol name="guidPackageCmdSetNSwag" value="{765CF48A-ABD5-42C5-8D58-59D1872A90A9}">
-      <IDSymbol name="NSwagCodeGeneratorCustomToolSetter" value="0x0200" />
-    </GuidSymbol>
-
-    <GuidSymbol name="guidPackageCmdSetSwagger" value="{C14BC613-573D-4AAA-B922-B38B57CD8A47}">
-      <IDSymbol name="SwaggerCodeGeneratorCustomToolSetter" value="0x0300" />
+    <GuidSymbol name="guidPackageCmdSet" value="{C292653B-5876-4B8C-B672-3375D8561881}">
+      <IDSymbol name="SubmenuGroup" value="0x1020" />
+      <IDSymbol name="CommandsGroup" value="0x1021" />
+      <IDSymbol name="Submenu" value="0x0100" />
+      <IDSymbol name="AutoRestCodeGeneratorCustomToolSetter" value="0x0200" />
+      <IDSymbol name="NSwagCodeGeneratorCustomToolSetter" value="0x0300" />
+      <IDSymbol name="SwaggerCodeGeneratorCustomToolSetter" value="0x0400" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

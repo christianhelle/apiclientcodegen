@@ -15,7 +15,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
         private DTE dte;
 
         protected abstract int CommandId { get; }
-        protected abstract Guid CommandSet { get; }
+        protected Guid CommandSet { get; } = new Guid("C292653B-5876-4B8C-B672-3375D8561881");
 
         public async Task InitializeAsync(
             AsyncPackage package,
