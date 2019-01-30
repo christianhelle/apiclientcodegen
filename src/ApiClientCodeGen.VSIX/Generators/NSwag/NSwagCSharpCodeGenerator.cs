@@ -1,4 +1,5 @@
 ﻿using System;
+using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;
 
@@ -21,17 +22,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                 .FromFileAsync(swaggerFile)
                 .GetAwaiter()
                 .GetResult();
-
+            
             var settings = new SwaggerToCSharpClientGeneratorSettings
             {
-                ClassName = "ApiClient", 
-                CSharpGeneratorSettings = 
+                ClassName = "ApiClient",
+                InjectHttpClient = true,
+                GenerateClientInterfaces = true,
+                GenerateDtoTypes = true,
+                CSharpGeneratorSettings =
                 {
-                    Namespace = defaultNamespace
+                    Namespace = defaultNamespace,
+                    ClassStyle = CSharpClassStyle.Inpc
                 }
             };
 
-            var generator = new SwaggerToCSharpClientGenerator(document, settings);	
+            var generator = new SwaggerToCSharpClientGenerator(document, settings);
             var code = generator.GenerateFile();
             return code;
         }
