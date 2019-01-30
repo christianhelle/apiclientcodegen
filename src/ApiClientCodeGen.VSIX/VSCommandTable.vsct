@@ -11,21 +11,21 @@
         <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>AutoRest</ButtonText>
+          <ButtonText>Generate with AutoRest</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidPackageCmdSetNSwag" id="NSwagCodeGeneratorCustomToolSetter" priority="0x0101" type="Button">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>NSwag</ButtonText>
+          <ButtonText>Generate with NSwag</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidPackageCmdSetSwagger" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0102" type="Button">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
-          <ButtonText>Swagger</ButtonText>
+          <ButtonText>Generate with Swagger</ButtonText>
         </Strings>
       </Button>
     </Buttons>
