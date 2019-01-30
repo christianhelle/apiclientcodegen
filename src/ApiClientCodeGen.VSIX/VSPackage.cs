@@ -12,11 +12,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
     [InstalledProductRegistration("REST API Client Code Generator", "", "1.0")]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideUIContextRule(
-        CustomToolSetter.ContextGuid,
-        CustomToolSetter.Name,
-        CustomToolSetter.Expression,
-        new[] { CustomToolSetter.Expression },
-        new[] { CustomToolSetter.TermValue })]
+        CustomToolSetterBase.ContextGuid,
+        CustomToolSetterBase.Name,
+        CustomToolSetterBase.Expression,
+        new[] { CustomToolSetterBase.Expression },
+        new[] { CustomToolSetterBase.TermValue })]
     public sealed class VsPackage : AsyncPackage
     {
         private readonly ICustomToolSetter[] commands = {
