@@ -29,11 +29,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
             CancellationToken cancellationToken,
             IProgress<ServiceProgressData> progress)
         {
-            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await base.InitializeAsync(cancellationToken, progress);
-            
             foreach (var command in commands)
-                await command.InitializeAsync(this);
+                await command.InitializeAsync(this, cancellationToken);
         }
     }
 }

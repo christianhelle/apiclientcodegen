@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.Shell;
+using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
@@ -10,6 +11,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
         public const string Expression = "json";
         public const string TermValue = "HierSingleSelectionName:.json$";
 
-        public abstract Task InitializeAsync(AsyncPackage package);
+        public abstract Task InitializeAsync(
+            AsyncPackage package,
+            CancellationToken cancellationToken);
     }
 }

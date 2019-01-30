@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.Design;
 using EnvDTE;
+using System.Threading;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
@@ -16,10 +17,28 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
         protected abstract int CommandId { get; }
         protected abstract Guid CommandSet { get; }
 
-        public async Task InitializeAsync(AsyncPackage package)
+        public async Task InitializeAsync(
+            AsyncPackage package,
+            CancellationToken token)
         {
-            dte = (DTE)await package.GetServiceAsync(typeof(DTE));
-            var commandService = (IMenuCommandService)await package.GetServiceAsync((typeof(IMenuCommandService)));
+            await package.JoinableTaskFactory.SwitchToMainThreadAsync(token);
+            
+            var dteTask = package.GetServiceAsync(typeof(DTE));
+            if (dteTask == null)
+                return;
+            
+            dte = await dteTask as DTE;
+            if (dte == null)
+                return;
+
+            var commandServiceTask = package.GetServiceAsync((typeof(IMenuCommandService)));
+            if (commandServiceTask == null)
+                return;
+
+            var commandService = await commandServiceTask as IMenuCommandService;
+            if (commandService == null)
+                return;
+
             var cmdId = new CommandID(CommandSet, CommandId);
             var cmd = new MenuCommand(OnExecute, cmdId);
             commandService.AddCommand(cmd);
@@ -27,6 +46,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
 
         private void OnExecute(object sender, EventArgs e)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             var item = dte.SelectedItems.Item(1).ProjectItem;
             item.Properties.Item("CustomTool").Value = typeof(T).Name;
         }
