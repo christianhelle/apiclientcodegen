@@ -3,6 +3,7 @@ using System;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.OpenApi;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
@@ -30,6 +31,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 case SupportedCodeGenerator.Swagger:
                     if (language == SupportedLanguage.CSharp)
                         return new SwaggerCSharpCodeGenerator(inputFilePath, defaultNamespace);
+                    break;
+
+                case SupportedCodeGenerator.OpenApi:
+                    if (language == SupportedLanguage.CSharp)
+                        return new OpenApiCSharpCodeGenerator(inputFilePath, defaultNamespace);
                     break;
             }
 

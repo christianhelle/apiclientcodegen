@@ -4,6 +4,7 @@
     {
         AutoRest,
         NSwag,
-        Swagger
+        Swagger,
+        OpenApi
     }
 }
