@@ -14,7 +14,7 @@ A collection of Visual Studio custom tool code generators for Swagger / OpenAPI 
 
 - AutoRestCodeGenerator - Generates a single file C# REST API Client using AutoRest. 
 The resulting file is the equivalent of using the AutoRest CLI tool with:
-` --csharp " +--input-file=[swaggerFile] --output-file=[outputFile] --namespace=[namespace] --add-credentials`
+` --csharp --input-file=[swaggerFile] --output-file=[outputFile] --namespace=[namespace] --add-credentials`
 
 - NSwagCodeGenerator - Generates a single file C# REST API Client using the [NSwag.CodeGeneration.CSharp](https://github.com/RSuter/NSwag/wiki/SwaggerToCSharpClientGenerator) [nuget package](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/)
 
@@ -22,10 +22,14 @@ The resulting file is the equivalent of using the AutoRest CLI tool with:
 The output file is the result of merging all the files generated using the Swagger Codegen CLI tool with:
 ` generate -l csharp --input-spec [swaggerFile] --output [output] --api-package=[namespace] --model-package=[namespace] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite`
 
+- OpenApiCodeGenerator - Generates a single file C# REST API Client using OpenAPI Generator.
+The output file is the result of merging all the files generated using the OpenAPI Generator tool with:
+` generate -l csharp --input-spec [swaggerFile] --output [output] --api-package=[namespace] --model-package=[namespace] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite`
+
 
 **Important note:**
 
-The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest**, **NSwag**, and **Swagger Codegen** and requires **NPM**, **AutoRest**, and **Java SDK** to be installed on the developers machine. The **Swagger Codegen CLI** is downloaded on demand but requires the Java SDK to be installed on the machine
+The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest**, **NSwag**, and **Swagger Codegen** and requires **NPM**, **AutoRest**, and **Java SDK** to be installed on the developers machine. The **Swagger Codegen CLI** and **OpenAPI Generator** is downloaded on demand but requires the Java SDK to be installed on the machine
 
 
 **Screenshots**
