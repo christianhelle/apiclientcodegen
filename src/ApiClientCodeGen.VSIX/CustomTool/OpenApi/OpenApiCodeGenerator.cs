@@ -7,7 +7,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Open
     public abstract class OpenApiCodeGenerator : SingleFileCodeGenerator
     {
         protected OpenApiCodeGenerator(SupportedLanguage language)
-            : base(SupportedCodeGenerator.Swagger, language)
+            : base(SupportedCodeGenerator.OpenApi, language)
         {
         }
     }
