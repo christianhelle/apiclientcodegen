@@ -60,10 +60,13 @@
     <Compile Include="Commands\CustomToolSetterBase.cs" />
     <Compile Include="Commands\ICustomToolSetter.cs" />
     <Compile Include="Commands\NSwagCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="Commands\OpenApiCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="Commands\SwaggerCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="Core\SupportedCodeGenerator.cs" />
     <Compile Include="CustomTool\NSwag\NSwagCodeGenerator.cs" />
     <Compile Include="CustomTool\NSwag\NSwagCSharpCodeGenerator.cs" />
+    <Compile Include="CustomTool\OpenApi\OpenApiCodeGenerator.cs" />
+    <Compile Include="CustomTool\OpenApi\OpenApiCSharpCodeGenerator.cs" />
     <Compile Include="CustomTool\Swagger\SwaggerCodeGenerator.cs" />
     <Compile Include="CustomTool\Swagger\SwaggerCSharpCodeGenerator.cs" />
     <Compile Include="Generators\AutoRest\AutoRestCSharpCodeGenerator.cs" />
@@ -79,6 +82,7 @@
     <Compile Include="Generators\FileHelper.cs" />
     <Compile Include="Generators\CSharpFileMerger.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGenerator.cs" />
+    <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGenerator.cs" />
     <Compile Include="Generators\ProcessHelper.cs" />
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGenerator.cs" />
     <Compile Include="GlobalSuppressions.cs" />

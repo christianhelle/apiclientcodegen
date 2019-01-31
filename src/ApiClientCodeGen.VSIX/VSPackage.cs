@@ -22,7 +22,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         private readonly ICustomToolSetter[] commands = {
             new AutoRestCodeGeneratorCustomToolSetter(),
             new NSwagCodeGeneratorCustomToolSetter(),
-            new SwaggerCodeGeneratorCustomToolSetter()
+            new SwaggerCodeGeneratorCustomToolSetter(),
+            new OpenApiCodeGeneratorCustomToolSetter()
         };
 
         protected override async Task InitializeAsync(
