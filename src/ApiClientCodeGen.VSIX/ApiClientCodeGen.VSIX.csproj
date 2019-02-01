@@ -62,6 +62,7 @@
     <Compile Include="Commands\NSwagCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="Commands\OpenApiCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="Commands\SwaggerCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="Extensions\AsyncPackageExtensions.cs" />
     <Compile Include="Core\SupportedCodeGenerator.cs" />
     <Compile Include="CustomTool\NSwag\NSwagCodeGenerator.cs" />
     <Compile Include="CustomTool\NSwag\NSwagCSharpCodeGenerator.cs" />
