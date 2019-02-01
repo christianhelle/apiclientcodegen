@@ -55,13 +55,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Commands\AutoRestCodeGeneratorCustomToolSetter.cs" />
-    <Compile Include="Commands\CustomToolSetter.cs" />
-    <Compile Include="Commands\CustomToolSetterBase.cs" />
-    <Compile Include="Commands\ICustomToolSetter.cs" />
-    <Compile Include="Commands\NSwagCodeGeneratorCustomToolSetter.cs" />
-    <Compile Include="Commands\OpenApiCodeGeneratorCustomToolSetter.cs" />
-    <Compile Include="Commands\SwaggerCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="Commands\CustomTool\AutoRestCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="Commands\CustomTool\CustomToolSetter.cs" />
+    <Compile Include="Commands\CustomTool\CustomToolSetterCommand.cs" />
+    <Compile Include="Commands\ICommandInitializer.cs" />
+    <Compile Include="Commands\CustomTool\NSwagCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="Commands\CustomTool\OpenApiCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="Commands\CustomTool\SwaggerCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="Extensions\AsyncPackageExtensions.cs" />
+    <Compile Include="Commands\NSwagStudio\NSwagStudioCommand.cs" />
     <Compile Include="Core\SupportedCodeGenerator.cs" />
     <Compile Include="CustomTool\NSwag\NSwagCodeGenerator.cs" />
     <Compile Include="CustomTool\NSwag\NSwagCSharpCodeGenerator.cs" />
@@ -70,7 +72,6 @@
     <Compile Include="CustomTool\Swagger\SwaggerCodeGenerator.cs" />
     <Compile Include="CustomTool\Swagger\SwaggerCSharpCodeGenerator.cs" />
     <Compile Include="Generators\AutoRest\AutoRestCSharpCodeGenerator.cs" />
-    <Compile Include="Core\ClassNameExtractor.cs" />
     <Compile Include="Generators\CodeGeneratorFactory.cs" />
     <Compile Include="Generators\CodeGenerator.cs" />
     <Compile Include="Core\NotInstalledException.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Generators\FileHelper.cs" />
     <Compile Include="Generators\CSharpFileMerger.cs" />
+    <Compile Include="Generators\NSwagStudio\NSwagStudioCodeGenerator.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGenerator.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGenerator.cs" />
     <Compile Include="Generators\ProcessHelper.cs" />

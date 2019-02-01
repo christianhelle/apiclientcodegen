@@ -5,9 +5,10 @@ A collection of Visual Studio custom tool code generators for Swagger / OpenAPI 
 
 **Features**
 
+- Supports Visual Studio 2017 and 2019
 - Define custom namespace for the generated file
 - Auto-updating of generated code file when changes are made to the Swagger.json file
-- Supports Visual Studio 2017 and 2019
+- Generate code using an NSwag Studio file by including it in the project and using the **Generate with NSwag Studio** context menu
 
 
 **Custom Tools**
@@ -35,6 +36,8 @@ The custom tool code generators piggy back on top of well known Open API client 
 **Screenshots**
 
 ![Solution Explorer Context Menus](https://github.com/christianhelle/apiclientcodegen/raw/master/images/solution-explorer-context-menu.jpg)
+
+![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/nswagstudio-context-menu.jpg)
 
 ![AutoRestCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/autorestcodegenerator-custom-tool.jpg)
 

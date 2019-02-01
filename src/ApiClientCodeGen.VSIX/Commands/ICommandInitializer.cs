@@ -4,7 +4,7 @@ using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
 {
-    public interface ICustomToolSetter
+    public interface ICommandInitializer
     {
         Task InitializeAsync(
             AsyncPackage package,

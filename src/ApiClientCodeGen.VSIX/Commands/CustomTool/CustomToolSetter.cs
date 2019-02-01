@@ -9,7 +9,7 @@ using Task = System.Threading.Tasks.Task;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
 {
     public abstract class CustomToolSetter<T>
-        : ICustomToolSetter
+        : ICommandInitializer
         where T : IVsSingleFileGenerator
     {
         private DTE dte;
