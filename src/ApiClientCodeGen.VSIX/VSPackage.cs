@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
@@ -18,13 +20,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         CustomToolSetterCommand.Expression,
         new[] { CustomToolSetterCommand.Expression },
         new[] { CustomToolSetterCommand.TermValue })]
+    [ProvideUIContextRule(
+        NSwagStudioCommand.ContextGuid,
+        NSwagStudioCommand.Name,
+        NSwagStudioCommand.Expression,
+        new[] { NSwagStudioCommand.Expression },
+        new[] { NSwagStudioCommand.TermValue })]
     public sealed class VsPackage : AsyncPackage
     {
         private readonly ICommandInitializer[] commands = {
             new AutoRestCodeGeneratorCustomToolSetter(),
             new NSwagCodeGeneratorCustomToolSetter(),
             new SwaggerCodeGeneratorCustomToolSetter(),
-            new OpenApiCodeGeneratorCustomToolSetter()
+            new OpenApiCodeGeneratorCustomToolSetter(),
+            new NSwagStudioCommand()
         };
 
         protected override async Task InitializeAsync(
