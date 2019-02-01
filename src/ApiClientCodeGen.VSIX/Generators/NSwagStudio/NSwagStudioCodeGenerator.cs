@@ -22,7 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             if (!File.Exists(command))
                 throw new NotInstalledException("NSwag not installed. Please install NSwagStudio");
 
-            ProcessHelper.StartProcess(command, $"run {nswagStudioFile}");
+            ProcessHelper.StartProcess(command, $"run \"{nswagStudioFile}\"");
             return null;
         }
     }
