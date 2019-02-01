@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
 using Microsoft.VisualStudio.Shell.Interop;
 
@@ -34,9 +35,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
         {
             try
             {
-                var className = ClassNameExtractor.GetClassName(wszInputFilePath);
                 var factory = new CodeGeneratorFactory();
-
                 var codeGenerator = factory.Create(
                     wszDefaultNamespace,
                     bstrInputFileContents,
@@ -45,11 +44,18 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
                     supportedCodeGenerator);
 
                 var code = codeGenerator.GenerateCode();
+                if (string.IsNullOrWhiteSpace(code))
+                {
+                    pcbOutput = 0;
+                    return 1;
+                }
+
                 rgbOutputFileContents[0] = code.ConvertToIntPtr(out pcbOutput);
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, "Unable to generate code");
+                Trace.WriteLine(e);
                 throw;
             }
 

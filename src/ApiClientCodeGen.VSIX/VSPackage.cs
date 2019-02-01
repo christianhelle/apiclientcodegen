@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
@@ -12,14 +13,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
     [InstalledProductRegistration("REST API Client Code Generator", "", "1.0")]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideUIContextRule(
-        CustomToolSetterBase.ContextGuid,
-        CustomToolSetterBase.Name,
-        CustomToolSetterBase.Expression,
-        new[] { CustomToolSetterBase.Expression },
-        new[] { CustomToolSetterBase.TermValue })]
+        CustomToolSetterCommand.ContextGuid,
+        CustomToolSetterCommand.Name,
+        CustomToolSetterCommand.Expression,
+        new[] { CustomToolSetterCommand.Expression },
+        new[] { CustomToolSetterCommand.TermValue })]
     public sealed class VsPackage : AsyncPackage
     {
-        private readonly ICustomToolSetter[] commands = {
+        private readonly ICommandInitializer[] commands = {
             new AutoRestCodeGeneratorCustomToolSetter(),
             new NSwagCodeGeneratorCustomToolSetter(),
             new SwaggerCodeGeneratorCustomToolSetter(),

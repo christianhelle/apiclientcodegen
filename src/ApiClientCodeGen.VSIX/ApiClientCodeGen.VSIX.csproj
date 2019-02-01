@@ -55,13 +55,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Commands\AutoRestCodeGeneratorCustomToolSetter.cs" />
-    <Compile Include="Commands\CustomToolSetter.cs" />
-    <Compile Include="Commands\CustomToolSetterBase.cs" />
-    <Compile Include="Commands\ICustomToolSetter.cs" />
-    <Compile Include="Commands\NSwagCodeGeneratorCustomToolSetter.cs" />
-    <Compile Include="Commands\OpenApiCodeGeneratorCustomToolSetter.cs" />
-    <Compile Include="Commands\SwaggerCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="Commands\CustomTool\AutoRestCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="Commands\CustomTool\CustomToolSetter.cs" />
+    <Compile Include="Commands\CustomTool\CustomToolSetterCommand.cs" />
+    <Compile Include="Commands\ICommandInitializer.cs" />
+    <Compile Include="Commands\CustomTool\NSwagCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="Commands\CustomTool\OpenApiCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="Commands\CustomTool\SwaggerCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="Extensions\AsyncPackageExtensions.cs" />
     <Compile Include="Core\SupportedCodeGenerator.cs" />
     <Compile Include="CustomTool\NSwag\NSwagCodeGenerator.cs" />
