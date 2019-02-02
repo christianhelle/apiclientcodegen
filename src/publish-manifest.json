@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json.schemastore.org/vsix-publish",
+    "categories": [ "tools", "coding" ],
+    "identity": {
+        "internalName": "ApiClientCodeGenerator"
+    },
+    "overview": "README.md",
+    "priceCategory": "free",
+    "publisher": "ChristianResmaHelle",
+    "private": false,
+    "qna": true,
+    "repo": "https://github.com/christianhelle/apiclientcodegen"
+}
