@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
@@ -35,6 +36,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
         {
             try
             {
+                pGenerateProgress.Progress(5);
+
                 var factory = new CodeGeneratorFactory();
                 var codeGenerator = factory.Create(
                     wszDefaultNamespace,
@@ -51,9 +54,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
                 }
 
                 rgbOutputFileContents[0] = code.ConvertToIntPtr(out pcbOutput);
+                pGenerateProgress.Progress(100);
             }
             catch (Exception e)
             {
+                pGenerateProgress.GeneratorError(e);
                 MessageBox.Show(e.Message, "Unable to generate code");
                 Trace.WriteLine(e);
                 throw;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio
@@ -16,6 +17,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
 
         public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
         {
+            pGenerateProgress?.Progress(10);
+
             var command = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
                 "Rico Suter\\NSwagStudio\\Win\\NSwag.exe");
@@ -24,6 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                 throw new NotInstalledException("NSwag not installed. Please install NSwagStudio");
 
             ProcessHelper.StartProcess(command, $"run \"{nswagStudioFile}\"");
+            pGenerateProgress?.Progress(90);
             return null;
         }
     }
