@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.VisualStudio.Shell.Interop;
 using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;
@@ -16,7 +17,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
         }
 
-        public string GenerateCode()
+        public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
         {
             var document = SwaggerDocument
                 .FromFileAsync(swaggerFile)

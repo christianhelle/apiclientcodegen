@@ -43,7 +43,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
                     supportedLanguage,
                     supportedCodeGenerator);
 
-                var code = codeGenerator.GenerateCode();
+                var code = codeGenerator.GenerateCode(pGenerateProgress);
                 if (string.IsNullOrWhiteSpace(code))
                 {
                     pcbOutput = 0;

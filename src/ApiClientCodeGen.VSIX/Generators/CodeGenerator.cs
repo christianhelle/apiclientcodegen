@@ -1,11 +1,12 @@
 ﻿using System;
 using System.IO;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
     public interface ICodeGenerator
     {
-        string GenerateCode();
+        string GenerateCode(IVsGeneratorProgress pGenerateProgress);
     }
 
     public abstract class CodeGenerator : ICodeGenerator
@@ -19,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
         }
 
-        public string GenerateCode()
+        public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
         {
             var path = Path.GetDirectoryName(swaggerFile);
             var outputFile = Path.Combine(path, "TempApiClient.cs");

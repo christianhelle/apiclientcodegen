@@ -14,7 +14,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             => new OpenApiCSharpCodeGenerator(
                     Path.GetFullPath("Swagger.json"), 
                     GetType().Namespace)
-                .GenerateCode()
+                .GenerateCode(null)
                 .Should()
                 .NotBeNullOrWhiteSpace();
     }

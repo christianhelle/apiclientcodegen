@@ -32,7 +32,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
 
             var nswagStudioFile = item.FileNames[0];
             var codeGenerator = new NSwagStudioCodeGenerator(nswagStudioFile);
-            codeGenerator.GenerateCode();
+            codeGenerator.GenerateCode(null);
         }
     }
 }

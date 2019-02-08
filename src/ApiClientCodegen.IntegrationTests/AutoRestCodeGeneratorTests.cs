@@ -14,7 +14,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             => new AutoRestCSharpCodeGenerator(
                     Path.GetFullPath("Swagger.json"), 
                     GetType().Namespace)
-                .GenerateCode()
+                .GenerateCode(null)
                 .Should()
                 .NotBeNullOrWhiteSpace();
     }

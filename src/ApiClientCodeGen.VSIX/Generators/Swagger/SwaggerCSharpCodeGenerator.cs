@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger
 {
@@ -18,7 +19,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
             cliPath = Path.Combine(Path.GetTempPath(), "swagger-codegen-cli.jar");
         }
 
-        public string GenerateCode()
+        public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
         {
             VerifySwaggerCodegenCli();
 
