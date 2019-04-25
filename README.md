@@ -46,6 +46,3 @@ The custom tool code generators piggy back on top of well known Open API client 
 ![SwaggerCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/swaggercodegenerator-custom-tool.jpg)
 
 ![OpenApiCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/openapicodegenerator-custom-tool.jpg)
-
-
-***More custom tools coming soon...***
