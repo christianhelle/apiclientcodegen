@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger
 {
@@ -18,28 +20,41 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
             cliPath = Path.Combine(Path.GetTempPath(), "swagger-codegen-cli.jar");
         }
 
-        public string GenerateCode()
+        public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
         {
-            VerifySwaggerCodegenCli();
+            try
+            {
+                pGenerateProgress.Progress(10);
 
-            var output = Path.Combine(
-                Path.GetDirectoryName(swaggerFile) ?? throw new InvalidOperationException(),
-                "TempApiClient");
+                VerifySwaggerCodegenCli();
+                pGenerateProgress.Progress(30);
 
-            Directory.CreateDirectory(output);
+                var output = Path.Combine(
+                    Path.GetDirectoryName(swaggerFile) ?? throw new InvalidOperationException(),
+                    "TempApiClient");
 
-            var arguments =
-                $"-jar \"{cliPath}\" generate " +
-                $"-l csharp " +
-                $"--input-spec \"{swaggerFile}\" " +
-                $"--output \"{output}\" " +
-                $"--api-package={defaultNamespace} " +
-                $"--model-package={defaultNamespace} " +
-                $"-DapiTests=false -DmodelTests=false --skip-overwrite " +
-                $"-DpackageName={defaultNamespace}";
+                Directory.CreateDirectory(output);
+                pGenerateProgress.Progress(40);
 
-            ProcessHelper.StartProcess("java", arguments);
-            return MergeFilesAndDeleteFolder(output);
+                var arguments =
+                    $"-jar \"{cliPath}\" generate " +
+                    $"-l csharp " +
+                    $"--input-spec \"{swaggerFile}\" " +
+                    $"--output \"{output}\" " +
+                    $"--api-package={defaultNamespace} " +
+                    $"--model-package={defaultNamespace} " +
+                    $"-DapiTests=false -DmodelTests=false --skip-overwrite " +
+                    $"-DpackageName={defaultNamespace}";
+
+                ProcessHelper.StartProcess("java", arguments);
+                pGenerateProgress.Progress(80);
+
+                return MergeFilesAndDeleteFolder(output);
+            }
+            finally
+            {
+                pGenerateProgress.Progress(90);
+            }
         }
 
         private void VerifySwaggerCodegenCli()

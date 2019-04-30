@@ -1,4 +1,7 @@
 ﻿using System;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Shell.Interop;
 using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;
@@ -16,30 +19,42 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
         }
 
-        public string GenerateCode()
+        public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
         {
-            var document = SwaggerDocument
-                .FromFileAsync(swaggerFile)
-                .GetAwaiter()
-                .GetResult();
-            
-            var settings = new SwaggerToCSharpClientGeneratorSettings
+            try
             {
-                ClassName = "ApiClient",
-                InjectHttpClient = true,
-                GenerateClientInterfaces = true,
-                GenerateDtoTypes = true,
-                UseBaseUrl = false,
-                CSharpGeneratorSettings =
-                {
-                    Namespace = defaultNamespace,
-                    ClassStyle = CSharpClassStyle.Inpc
-                },
-            };
+                pGenerateProgress?.Progress(10);
 
-            var generator = new SwaggerToCSharpClientGenerator(document, settings);
-            var code = generator.GenerateFile();
-            return code;
+                var document = SwaggerDocument
+                    .FromFileAsync(swaggerFile)
+                    .GetAwaiter()
+                    .GetResult();
+                
+                pGenerateProgress?.Progress(20);
+
+                var settings = new SwaggerToCSharpClientGeneratorSettings
+                {
+                    ClassName = "ApiClient",
+                    InjectHttpClient = true,
+                    GenerateClientInterfaces = true,
+                    GenerateDtoTypes = true,
+                    UseBaseUrl = false,
+                    CSharpGeneratorSettings =
+                    {
+                        Namespace = defaultNamespace,
+                        ClassStyle = CSharpClassStyle.Inpc
+                    },
+                };
+                
+                pGenerateProgress?.Progress(50);
+
+                var generator = new SwaggerToCSharpClientGenerator(document, settings);
+                return generator.GenerateFile();
+            }
+            finally
+            {
+                pGenerateProgress?.Progress(90);
+            }
         }
     }
 }

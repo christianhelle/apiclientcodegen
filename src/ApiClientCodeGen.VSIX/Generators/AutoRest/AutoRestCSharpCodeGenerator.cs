@@ -13,9 +13,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Auto
 
         protected override string GetArguments(string outputFile) 
             => $"--csharp " +
-               $"--input-file=\"{swaggerFile}\" " +
+               $"--input-file=\"{SwaggerFile}\" " +
                $"--output-file=\"{outputFile}\" " +
-               $"--namespace=\"{defaultNamespace}\" " +
+               $"--namespace=\"{DefaultNamespace}\" " +
                $"--add-credentials";
 
         protected override string GetCommand()
