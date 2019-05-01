@@ -60,12 +60,18 @@
     <Compile Include="CodeGeneratorFactoryTests.cs" />
     <Compile Include="CSharpFileMergerTests.cs" />
     <Compile Include="DeploymentItemTests.cs" />
+    <Compile Include="NSwagStudioCodeGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
     <Content Include="Resources\Swagger.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Swagger.nswag">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\NSwagFileWithoutSwaggerJson.nswag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
