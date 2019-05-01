@@ -44,8 +44,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                     return;
 
                 obj.swaggerGenerator.fromSwagger.json = null;
-                json = JsonConvert.SerializeObject(obj);
-                
+                json = JsonConvert.SerializeObject(obj, Formatting.Indented);
+
                 File.WriteAllText(nswagFile, json);
             }
             catch (Exception e)
