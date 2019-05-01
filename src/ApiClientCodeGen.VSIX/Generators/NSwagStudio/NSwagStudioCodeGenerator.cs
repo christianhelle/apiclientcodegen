@@ -28,32 +28,29 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             if (!File.Exists(command))
                 throw new NotInstalledException("NSwag not installed. Please install NSwagStudio");
 
-            var path = TryRemoveSwaggerJsonSpec(nswagStudioFile);
-            ProcessHelper.StartProcess(command, $"run \"{path}\"");
+            TryRemoveSwaggerJsonSpec(nswagStudioFile);
+            ProcessHelper.StartProcess(command, $"run \"{nswagStudioFile}\"");
             pGenerateProgress?.Progress(90);
             return null;
         }
 
-        public static string TryRemoveSwaggerJsonSpec(string nswagFile)
+        public static void TryRemoveSwaggerJsonSpec(string nswagFile)
         {
             try
             {
                 var json = File.ReadAllText(nswagFile);
                 dynamic obj = JsonConvert.DeserializeObject(json);
                 if (obj.swaggerGenerator.fromSwagger.json == null)
-                    return nswagFile;
+                    return;
 
                 obj.swaggerGenerator.fromSwagger.json = null;
                 json = JsonConvert.SerializeObject(obj);
                 
-                var tempFile = Path.GetTempFileName();
-                File.WriteAllText(tempFile, json);
-                return tempFile;
+                File.WriteAllText(nswagFile, json);
             }
             catch (Exception e)
             {
                 Trace.WriteLine(e);
-                return nswagFile;
             }
         }
     }
