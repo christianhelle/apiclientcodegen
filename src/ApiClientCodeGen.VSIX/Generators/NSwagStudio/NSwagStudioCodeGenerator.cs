@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using Microsoft.VisualStudio.Shell.Interop;
+using Newtonsoft.Json;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio
 {
@@ -26,26 +28,33 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             if (!File.Exists(command))
                 throw new NotInstalledException("NSwag not installed. Please install NSwagStudio");
 
-            //TryRemoveSwaggerJsonSpec();
-            ProcessHelper.StartProcess(command, $"run \"{nswagStudioFile}\"");
+            var path = TryRemoveSwaggerJsonSpec(nswagStudioFile);
+            ProcessHelper.StartProcess(command, $"run \"{path}\"");
             pGenerateProgress?.Progress(90);
             return null;
         }
 
-        //private void TryRemoveSwaggerJsonSpec()
-        //{
-        //    try
-        //    {
-        //        var json = File.ReadAllText(nswagStudioFile);
-        //        dynamic obj = JsonConvert.DeserializeObject(json);
-        //        obj.swaggerGenerator.fromSwagger.json = null;
-        //        json = JsonConvert.SerializeObject(obj);
-        //        File.WriteAllText(nswagStudioFile, json);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Trace.WriteLine(e);
-        //    }
-        //}
+        public static string TryRemoveSwaggerJsonSpec(string nswagFile)
+        {
+            try
+            {
+                var json = File.ReadAllText(nswagFile);
+                dynamic obj = JsonConvert.DeserializeObject(json);
+                if (obj.swaggerGenerator.fromSwagger.json == null)
+                    return nswagFile;
+
+                obj.swaggerGenerator.fromSwagger.json = null;
+                json = JsonConvert.SerializeObject(obj);
+                
+                var tempFile = Path.GetTempFileName();
+                File.WriteAllText(tempFile, json);
+                return tempFile;
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e);
+                return nswagFile;
+            }
+        }
     }
 }
