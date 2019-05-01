@@ -34,7 +34,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             return null;
         }
 
-        public static void TryRemoveSwaggerJsonSpec(string nswagFile)
+        private static void TryRemoveSwaggerJsonSpec(string nswagFile)
         {
             try
             {
