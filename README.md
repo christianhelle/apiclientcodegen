@@ -30,7 +30,9 @@ The output file is the result of merging all the files generated using the OpenA
 
 **Important note:**
 
-The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest**, **NSwag**, and **Swagger Codegen** and requires **NPM**, **AutoRest**, and **Java SDK** to be installed on the developers machine. The **Swagger Codegen CLI** and **OpenAPI Generator** is downloaded on demand but requires the Java SDK to be installed on the machine
+The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest**, **NSwag**, and **Swagger Codegen**. These tools require **NPM**, **AutoRest**, and the **Java SDK** to be installed on the developers machine. 
+
+The **Swagger Codegen CLI** and **OpenAPI Generator** are downloaded on demand but requires the Java SDK to be installed on the machine. This also means that using the **SwaggerCodeGenerator** and **OpenApiCodeGenerator** custom tools have a initial delay upon first time use.
 
 
 **Screenshots**
