@@ -3,7 +3,7 @@
     <Metadata>
         <Identity Id="18316dd0-2bbc-49b0-bd7c-c355031fade2" Version="1.0.0" Language="en-US" Publisher="Christian Resma Helle" />
         <DisplayName>REST API Client Code Generator</DisplayName>
-        <Description xml:space="preserve">A Visual Studio Custom Tool for generating a strongly typed REST API Client from an Open API / Swagger specification file</Description>
+        <Description xml:space="preserve">A collection of Visual Studio custom tools for generating a strongly typed REST API Client from an Open API / Swagger specification file</Description>
         <MoreInfo>https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator</MoreInfo>
         <License>License.txt</License>
     </Metadata>
