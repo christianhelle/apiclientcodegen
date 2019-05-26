@@ -32,7 +32,11 @@ The output file is the result of merging all the files generated using the OpenA
 
 The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest**, **NSwag**, and **Swagger Codegen**. These tools require **NPM**, **AutoRest**, and the **Java SDK** to be installed on the developers machine. 
 
-The **Swagger Codegen CLI** and **OpenAPI Generator** are downloaded on demand but requires the Java SDK to be installed on the machine. This also means that using the **SwaggerCodeGenerator** and **OpenApiCodeGenerator** custom tools have a initial delay upon first time use.
+The **Swagger Codegen CLI** and **OpenAPI Generator** are downloaded on demand but requires the Java SDK to be installed on the machine. This also means that using the **SwaggerCodeGenerator** and **OpenApiCodeGenerator** custom tools have a initial delay upon first time use. The generated code that these tools produce depends on the [RestSharp v105.1.0](https://www.nuget.org/packages/RestSharp/105.1.0) and [JsonSubTypes v1.2.0](https://www.nuget.org/packages/JsonSubTypes/1.2.0) nuget packages
+
+The **AutoRestCodeGenerator** code generator produces code that depends on the [Microsoft.Rest.ClientRuntime v2.3.20](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime/2.3.20) nuget package
+
+The current version of this Visual Studio Extension requires you to manually add the nuget package that the generated code depends on. This might change in the future, but for now its a manual step
 
 
 **Screenshots**
