@@ -40,9 +40,9 @@
           <ButtonText>Generate with OpenAPI</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidPackageNSwagStudioCmdSet" id="NSwagStudioCommand" type="Button">
+      <Button guid="guidPackageNSwagStudioCmdSet" id="NSwagStudioCommand">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
-        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
         <Strings>
           <ButtonText>Generate NSwag Studio output</ButtonText>
         </Strings>
