@@ -47,6 +47,13 @@
           <ButtonText>Generate NSwag Studio output</ButtonText>
         </Strings>
       </Button>
+      <Button guid="guidNewRestApiClientCmdSet" id="NewRestApiClientCommand" priority="0x0200" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_ADD_ITEMS"/>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>API Client from OpenAPI Specification</ButtonText>
+        </Strings>
+      </Button>
     </Buttons>
   </Commands>
 
@@ -95,6 +102,11 @@
     <GuidSymbol name="guidNSwagStudioContext" value="{65B3A74F-CD47-476A-A992-0C3DE31455FD}" />
     <GuidSymbol name="guidPackageNSwagStudioCmdSet" value="{F76783DA-7AE3-4EDB-BDF4-B580CAB1BA90}">
       <IDSymbol name="NSwagStudioCommand" value="0x0100" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidNewRestApiClientContext" value="{7CEC8679-C1B8-48BF-9FA4-5FAA38CBE0FA}" />
+    <GuidSymbol name="guidNewRestApiClientCmdSet" value="{E4B99F94-D11F-4CAA-ADCD-24302C232938}">
+      <IDSymbol name="NewRestApiClientCommand" value="0x0100" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

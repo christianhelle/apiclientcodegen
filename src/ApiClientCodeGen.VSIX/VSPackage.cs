@@ -2,9 +2,10 @@
 using System.Runtime.InteropServices;
 using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
+using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using OutputWindow = ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility.OutputWindow;
 using Task = System.Threading.Tasks.Task;
@@ -27,23 +28,33 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         NSwagStudioCommand.Expression,
         new[] { NSwagStudioCommand.Expression },
         new[] { NSwagStudioCommand.TermValue })]
+    [ProvideUIContextRule(
+        NewRestClientCommand.ContextGuid,
+        NewRestClientCommand.Name,
+        NewRestClientCommand.Expression,
+        new[] { NewRestClientCommand.Expression },
+        new[] { NewRestClientCommand.TermValue })]
     public sealed class VsPackage : AsyncPackage
     {
         public const string VsixName = "REST API Client Code Generator";
+
         private readonly ICommandInitializer[] commands = {
             new AutoRestCodeGeneratorCustomToolSetter(),
             new NSwagCodeGeneratorCustomToolSetter(),
             new SwaggerCodeGeneratorCustomToolSetter(),
             new OpenApiCodeGeneratorCustomToolSetter(),
-            new NSwagStudioCommand()
+            new NSwagStudioCommand(),
+            new NewRestClientCommand()
         };
 
         protected override async Task InitializeAsync(
             CancellationToken cancellationToken,
             IProgress<ServiceProgressData> progress)
         {
+            await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await base.InitializeAsync(cancellationToken, progress);
             OutputWindow.Initialize(this, VsixName);
+
             foreach (var command in commands)
                 await command.InitializeAsync(this, cancellationToken);
         }
