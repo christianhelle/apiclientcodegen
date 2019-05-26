@@ -2,8 +2,8 @@
 {
     public enum SupportedCodeGenerator
     {
-        AutoRest,
         NSwag,
+        AutoRest,
         Swagger,
         OpenApi
     }
