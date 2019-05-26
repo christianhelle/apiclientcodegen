@@ -41,10 +41,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
                     $"-l csharp " +
                     $"--input-spec \"{swaggerFile}\" " +
                     $"--output \"{output}\" " +
-                    $"--api-package={defaultNamespace} " +
-                    $"--model-package={defaultNamespace} " +
-                    $"-DapiTests=false -DmodelTests=false --skip-overwrite " +
-                    $"-DpackageName={defaultNamespace}";
+                    $"-DapiTests=false -DmodelTests=false " +
+                    $"-DpackageName={defaultNamespace} " +
+                    $"--skip-overwrite ";
 
                 ProcessHelper.StartProcess("java", arguments);
                 pGenerateProgress.Progress(80);
@@ -59,11 +58,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
 
         private void VerifySwaggerCodegenCli()
         {
-            if (File.Exists(cliPath)) 
+            if (File.Exists(cliPath))
                 return;
 
             const string swaggerCliUrl =
-                "http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.3.1/swagger-codegen-cli-2.3.1.jar";
+                "https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.5/swagger-codegen-cli-2.4.5.jar";
 
             new WebClient()
                 .DownloadFile(

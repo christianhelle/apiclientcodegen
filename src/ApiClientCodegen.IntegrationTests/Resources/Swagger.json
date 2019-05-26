@@ -1,1262 +1,1036 @@
 ﻿{
   "swagger": "2.0",
   "info": {
-    "version": "1.0",
-    "title": "Fleet Logger Gateway API",
-    "x-ms-code-generation-settings": {
-      "internalConstructors": true,
-      "useDateTimeOffset": true
+    "description": "This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.",
+    "version": "1.0.0",
+    "title": "Swagger Petstore",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "apiteam@swagger.io"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
     }
   },
-  "host": "nilfisknemodevapiloggergateway.azurewebsites.net",
+  "host": "petstore.swagger.io",
+  "basePath": "/v2",
+  "tags": [
+    {
+      "name": "pet",
+      "description": "Everything about your Pets",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    },
+    {
+      "name": "store",
+      "description": "Access to Petstore orders"
+    },
+    {
+      "name": "user",
+      "description": "Operations about user",
+      "externalDocs": {
+        "description": "Find out more about our store",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
   "paths": {
-    "/accounts/{accountId}/machines/{machineId}": {
-      "get": {
+    "/pet": {
+      "post": {
         "tags": [
-          "Machines"
+          "pet"
         ],
-        "operationId": "GetMachine",
-        "consumes": [],
-        "produces": [
+        "summary": "Add a new pet to the store",
+        "description": "",
+        "operationId": "addPet",
+        "consumes": [
           "application/json",
-          "text/json"
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
         ],
         "parameters": [
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account ID.",
+            "in": "body",
+            "name": "body",
+            "description": "Pet object that needs to be added to the store",
             "required": true,
-            "type": "string"
-          },
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
           {
-            "name": "machineId",
-            "in": "path",
-            "description": "Machine ID.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "description": "The requested API version",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "1.0"
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
             ]
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "pet"
+        ],
+        "summary": "Update an existing pet",
+        "description": "",
+        "operationId": "updatePet",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Pet object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/pet/findByStatus": {
+      "get": {
+        "tags": [
+          "pet"
+        ],
+        "summary": "Finds Pets by status",
+        "description": "Multiple status values can be provided with comma separated strings",
+        "operationId": "findPetsByStatus",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Status values that need to be considered for filter",
+            "required": true,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "available",
+                "pending",
+                "sold"
+              ],
+              "default": "available"
+            },
+            "collectionFormat": "multi"
           }
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/Machine"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pet"
+              }
             }
           },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
-            }
-          },
-          "401": {
-            "description": "Request was valid but the calling user does not have the required role"
-          },
-          "default": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "403": {
-            "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+          "400": {
+            "description": "Invalid status value"
           }
-        }
-      },
-      "put": {
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/pet/findByTags": {
+      "get": {
         "tags": [
-          "Machines"
+          "pet"
         ],
-        "operationId": "UpdateMachine",
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
+        "summary": "Finds Pets by tags",
+        "description": "Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.",
+        "operationId": "findPetsByTags",
         "produces": [
-          "application/json",
-          "text/json"
+          "application/xml",
+          "application/json"
         ],
         "parameters": [
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account ID.",
+            "name": "tags",
+            "in": "query",
+            "description": "Tags to filter by",
             "required": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Pet"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid tag value"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ],
+        "deprecated": true
+      }
+    },
+    "/pet/{petId}": {
+      "get": {
+        "tags": [
+          "pet"
+        ],
+        "summary": "Find pet by ID",
+        "description": "Returns a single pet",
+        "operationId": "getPetById",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "ID of pet to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Pet"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "pet"
+        ],
+        "summary": "Updates a pet in the store with form data",
+        "description": "",
+        "operationId": "updatePetWithForm",
+        "consumes": [
+          "application/x-www-form-urlencoded"
+        ],
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "ID of pet that needs to be updated",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Updated name of the pet",
+            "required": false,
             "type": "string"
           },
           {
-            "name": "machineId",
-            "in": "path",
-            "description": "Site ID.",
-            "required": true,
+            "name": "status",
+            "in": "formData",
+            "description": "Updated status of the pet",
+            "required": false,
             "type": "string"
-          },
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
           {
-            "name": "If-Match",
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "pet"
+        ],
+        "summary": "Deletes a pet",
+        "description": "",
+        "operationId": "deletePet",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "api_key",
             "in": "header",
             "required": false,
             "type": "string"
           },
           {
-            "name": "Request",
-            "in": "body",
-            "required": false,
-            "schema": {
-              "$ref": "#/definitions/UpdateMachineRequest"
-            }
+            "name": "petId",
+            "in": "path",
+            "description": "Pet id to delete",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Pet not found"
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/pet/{petId}/uploadImage": {
+      "post": {
+        "tags": [
+          "pet"
+        ],
+        "summary": "uploads an image",
+        "description": "",
+        "operationId": "uploadFile",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "description": "ID of pet to update",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
           },
           {
-            "name": "api-version",
-            "in": "query",
-            "description": "The requested API version",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "1.0"
-            ]
+            "name": "additionalMetadata",
+            "in": "formData",
+            "description": "Additional data to pass to server",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "file to upload",
+            "required": false,
+            "type": "file"
           }
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/Machine"
+              "$ref": "#/definitions/ApiResponse"
             }
+          }
+        },
+        "security": [
+          {
+            "petstore_auth": [
+              "write:pets",
+              "read:pets"
+            ]
+          }
+        ]
+      }
+    },
+    "/store/inventory": {
+      "get": {
+        "tags": [
+          "store"
+        ],
+        "summary": "Returns pet inventories by status",
+        "description": "Returns a map of status codes to quantities",
+        "operationId": "getInventory",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer",
+                "format": "int32"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/store/order": {
+      "post": {
+        "tags": [
+          "store"
+        ],
+        "summary": "Place an order for a pet",
+        "description": "",
+        "operationId": "placeOrder",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "order placed for purchasing the pet",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          },
+          "400": {
+            "description": "Invalid Order"
+          }
+        }
+      }
+    },
+    "/store/order/{orderId}": {
+      "get": {
+        "tags": [
+          "store"
+        ],
+        "summary": "Find purchase order by ID",
+        "description": "For valid response try integer IDs with value >= 1 and <= 10. Other values will generated exceptions",
+        "operationId": "getOrderById",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "ID of pet that needs to be fetched",
+            "required": true,
+            "type": "integer",
+            "maximum": 10.0,
+            "minimum": 1.0,
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Order"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
           },
           "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
-            }
-          },
-          "401": {
-            "description": "Request was valid but the calling user does not have the required role"
-          },
-          "default": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "403": {
-            "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+            "description": "Order not found"
           }
         }
       },
       "delete": {
         "tags": [
-          "Machines"
+          "store"
         ],
-        "operationId": "DeleteMachine",
-        "consumes": [],
+        "summary": "Delete purchase order by ID",
+        "description": "For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors",
+        "operationId": "deleteOrder",
         "produces": [
-          "application/json",
-          "text/json"
+          "application/xml",
+          "application/json"
         ],
         "parameters": [
           {
-            "name": "accountId",
+            "name": "orderId",
             "in": "path",
-            "description": "Account ID.",
+            "description": "ID of the order that needs to be deleted",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "machineId",
-            "in": "path",
-            "description": "Site ID.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "If-Match",
-            "in": "header",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "description": "The requested API version",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "1.0"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
-            }
-          },
-          "401": {
-            "description": "Request was valid but the calling user does not have the required role"
-          },
-          "default": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "403": {
-            "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
-          }
-        }
-      }
-    },
-    "/accounts/{accountId}/machines/qr": {
-      "get": {
-        "tags": [
-          "Machines"
-        ],
-        "operationId": "GetMachineByQrCode",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account ID.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "qrCode",
-            "in": "query",
-            "description": "Qr Code.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "description": "The requested API version",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "1.0"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/Machine"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
-            }
-          },
-          "401": {
-            "description": "Request was valid but the calling user does not have the required role"
-          },
-          "default": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "403": {
-            "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
-          }
-        }
-      }
-    },
-    "/accounts/{accountId}/sites/{siteId}": {
-      "get": {
-        "tags": [
-          "Sites"
-        ],
-        "operationId": "GetSite",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account ID.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "siteId",
-            "in": "path",
-            "description": "Site ID.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "description": "The requested API version",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "1.0"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/Site"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
-            }
-          },
-          "401": {
-            "description": "Request was valid but the calling user does not have the required role"
-          },
-          "default": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "403": {
-            "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
-          }
-        }
-      }
-    },
-    "/accounts": {
-      "get": {
-        "tags": [
-          "Accounts"
-        ],
-        "operationId": "ListAccounts",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "searchFilter",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "The maximum number of items to return per page.\r\nPartial or empty result pages are possible even before the end of the list has been reached.\r\nAcceptable values are 1 to 1000, inclusive. (Default: 100).",
-            "required": false,
             "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "pageToken",
-            "in": "query",
-            "description": "The token for continuing a previous list request on the next page.\r\nThis should be set to the value of 'nextPageToken' from the previous response.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "description": "The requested API version",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "1.0"
-            ]
+            "minimum": 1.0,
+            "format": "int64"
           }
         ],
         "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/PagedGatewayResult[AccountDescriptor]"
-            }
+          "400": {
+            "description": "Invalid ID supplied"
           },
-          "401": {
-            "description": "Request was valid but the calling user does not have the required role"
-          },
-          "default": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "403": {
-            "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+          "404": {
+            "description": "Order not found"
           }
         }
       }
     },
-    "/accounts/{accountId}/brands": {
-      "get": {
+    "/user": {
+      "post": {
         "tags": [
-          "Brands"
+          "user"
         ],
-        "operationId": "ListBrands",
-        "consumes": [],
+        "summary": "Create user",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "createUser",
         "produces": [
-          "application/json",
-          "text/json"
+          "application/xml",
+          "application/json"
         ],
         "parameters": [
           {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account ID.",
+            "in": "body",
+            "name": "body",
+            "description": "Created user object",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "description": "The requested API version",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "1.0"
-            ]
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
           }
         ],
         "responses": {
-          "200": {
-            "description": "Success",
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user/createWithArray": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Creates list of users with given input array",
+        "description": "",
+        "operationId": "createUsersWithArrayInput",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "List of user object",
+            "required": true,
             "schema": {
-              "uniqueItems": false,
               "type": "array",
               "items": {
-                "type": "string"
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user/createWithList": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Creates list of users with given input array",
+        "description": "",
+        "operationId": "createUsersWithListInput",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "List of user object",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Logs user into the system",
+        "description": "",
+        "operationId": "loginUser",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "The user name for login",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "The password for login in clear text",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "string"
+            },
+            "headers": {
+              "X-Rate-Limit": {
+                "type": "integer",
+                "format": "int32",
+                "description": "calls per hour allowed by the user"
+              },
+              "X-Expires-After": {
+                "type": "string",
+                "format": "date-time",
+                "description": "date in UTC when token expires"
               }
             }
           },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
-            }
-          },
-          "401": {
-            "description": "Request was valid but the calling user does not have the required role"
-          },
-          "default": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "403": {
-            "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+          "400": {
+            "description": "Invalid username/password supplied"
           }
         }
       }
     },
-    "/accounts/{accountId}/machines": {
+    "/user/logout": {
       "get": {
         "tags": [
-          "Machines"
+          "user"
         ],
-        "operationId": "ListMachines",
-        "consumes": [],
+        "summary": "Logs out current logged in user session",
+        "description": "",
+        "operationId": "logoutUser",
         "produces": [
-          "application/json",
-          "text/json"
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "default": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user/{username}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "summary": "Get user by user name",
+        "description": "",
+        "operationId": "getUserByName",
+        "produces": [
+          "application/xml",
+          "application/json"
         ],
         "parameters": [
           {
-            "name": "accountId",
+            "name": "username",
             "in": "path",
-            "description": "Account ID.",
+            "description": "The name that needs to be fetched. Use user1 for testing. ",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "machineFilter",
-            "in": "query",
-            "required": false,
-            "type": "string",
-            "enum": [
-              "All",
-              "WithoutSite",
-              "WithSite"
-            ]
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "The maximum number of items to return per page.\r\nPartial or empty result pages are possible even before the end of the list has been reached.\r\nAcceptable values are 1 to 1000, inclusive. (Default: 100).",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "pageToken",
-            "in": "query",
-            "description": "The token for continuing a previous list request on the next page.\r\nThis should be set to the value of 'nextPageToken' from the previous response.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "description": "The requested API version",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "1.0"
-            ]
           }
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "successful operation",
             "schema": {
-              "$ref": "#/definitions/PagedGatewayResult[Machine]"
+              "$ref": "#/definitions/User"
             }
           },
-          "401": {
-            "description": "Request was valid but the calling user does not have the required role"
+          "400": {
+            "description": "Invalid username supplied"
           },
-          "default": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "403": {
-            "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+          "404": {
+            "description": "User not found"
           }
         }
       },
-      "post": {
+      "put": {
         "tags": [
-          "Machines"
+          "user"
         ],
-        "operationId": "CreateMachine",
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
+        "summary": "Updated user",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "updateUser",
         "produces": [
-          "application/json",
-          "text/json"
+          "application/xml",
+          "application/json"
         ],
         "parameters": [
           {
-            "name": "accountId",
+            "name": "username",
             "in": "path",
-            "description": "Account ID.",
+            "description": "name that need to be updated",
             "required": true,
             "type": "string"
           },
           {
-            "name": "Request",
             "in": "body",
-            "required": false,
-            "schema": {
-              "$ref": "#/definitions/CreateMachineRequest"
-            }
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "description": "The requested API version",
+            "name": "body",
+            "description": "Updated user object",
             "required": true,
-            "type": "string",
-            "enum": [
-              "1.0"
-            ]
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
           }
         ],
         "responses": {
-          "201": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/Machine"
-            }
+          "400": {
+            "description": "Invalid user supplied"
           },
           "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
-            }
-          },
-          "401": {
-            "description": "Request was valid but the calling user does not have the required role"
-          },
-          "default": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "403": {
-            "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
-          }
-        }
-      }
-    },
-    "/accounts/{accountId}/sites/{siteId}/machines": {
-      "get": {
-        "tags": [
-          "Sites.Machines"
-        ],
-        "operationId": "ListMachinesBySiteId",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account ID.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "siteId",
-            "in": "path",
-            "description": "Site ID.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "description": "The requested API version",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "1.0"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "uniqueItems": false,
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Machine"
-              }
-            }
-          },
-          "401": {
-            "description": "Request was valid but the calling user does not have the required role"
-          },
-          "default": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "403": {
-            "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+            "description": "User not found"
           }
         }
       },
-      "post": {
+      "delete": {
         "tags": [
-          "Sites.Machines"
+          "user"
         ],
-        "operationId": "CreateSiteMachine",
-        "consumes": [
-          "application/json-patch+json",
-          "application/json",
-          "text/json",
-          "application/*+json"
-        ],
+        "summary": "Delete user",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "deleteUser",
         "produces": [
-          "application/json",
-          "text/json"
+          "application/xml",
+          "application/json"
         ],
         "parameters": [
           {
-            "name": "accountId",
+            "name": "username",
             "in": "path",
-            "description": "Account ID.",
+            "description": "The name that needs to be deleted",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "siteId",
-            "in": "path",
-            "description": "Site ID.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "Request",
-            "in": "body",
-            "required": false,
-            "schema": {
-              "$ref": "#/definitions/CreateMachineRequest"
-            }
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "description": "The requested API version",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "1.0"
-            ]
           }
         ],
         "responses": {
-          "201": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/Machine"
-            }
+          "400": {
+            "description": "Invalid username supplied"
           },
           "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
-            }
-          },
-          "401": {
-            "description": "Request was valid but the calling user does not have the required role"
-          },
-          "default": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "403": {
-            "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
-          }
-        }
-      }
-    },
-    "/accounts/{accountId}/sites": {
-      "get": {
-        "tags": [
-          "Sites"
-        ],
-        "operationId": "ListSites",
-        "consumes": [],
-        "produces": [
-          "application/json",
-          "text/json"
-        ],
-        "parameters": [
-          {
-            "name": "accountId",
-            "in": "path",
-            "description": "Account ID.",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "searchFilter",
-            "in": "query",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "The maximum number of items to return per page.\r\nPartial or empty result pages are possible even before the end of the list has been reached.\r\nAcceptable values are 1 to 1000, inclusive. (Default: 100).",
-            "required": false,
-            "type": "integer",
-            "format": "int32"
-          },
-          {
-            "name": "pageToken",
-            "in": "query",
-            "description": "The token for continuing a previous list request on the next page.\r\nThis should be set to the value of 'nextPageToken' from the previous response.",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "api-version",
-            "in": "query",
-            "description": "The requested API version",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "1.0"
-            ]
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/PagedGatewayResult[Site]"
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "schema": {
-              "$ref": "#/definitions/ProblemDetails"
-            }
-          },
-          "401": {
-            "description": "Request was valid but the calling user does not have the required role"
-          },
-          "default": {
-            "description": "Bad Request",
-            "schema": {
-              "$ref": "#/definitions/ValidationProblemDetails"
-            }
-          },
-          "403": {
-            "description": "The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource"
+            "description": "User not found"
           }
         }
       }
     }
   },
+  "securityDefinitions": {
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://petstore.swagger.io/oauth/authorize",
+      "flow": "implicit",
+      "scopes": {
+        "write:pets": "modify pets in your account",
+        "read:pets": "read your pets"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
   "definitions": {
-    "ProblemDetails": {
+    "Order": {
       "type": "object",
       "properties": {
-        "type": {
-          "type": "string"
+        "id": {
+          "type": "integer",
+          "format": "int64"
         },
-        "title": {
-          "type": "string"
+        "petId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "shipDate": {
+          "type": "string",
+          "format": "date-time"
         },
         "status": {
-          "format": "int32",
-          "type": "integer"
+          "type": "string",
+          "description": "Order Status",
+          "enum": [
+            "placed",
+            "approved",
+            "delivered"
+          ]
         },
-        "detail": {
+        "complete": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "xml": {
+        "name": "Order"
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "username": {
           "type": "string"
         },
-        "instance": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "userStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "User Status"
+        }
+      },
+      "xml": {
+        "name": "User"
+      }
+    },
+    "Category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
           "type": "string"
         }
       },
-      "additionalProperties": {
-        "type": "object"
+      "xml": {
+        "name": "Category"
       }
     },
-    "ValidationProblemDetails": {
+    "Tag": {
       "type": "object",
       "properties": {
-        "errors": {
-          "type": "object",
-          "additionalProperties": {
-            "uniqueItems": false,
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "xml": {
+        "name": "Tag"
+      }
+    },
+    "Pet": {
+      "type": "object",
+      "required": [
+        "name",
+        "photoUrls"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "category": {
+          "$ref": "#/definitions/Category"
+        },
+        "name": {
+          "type": "string",
+          "example": "doggie"
+        },
+        "photoUrls": {
+          "type": "array",
+          "xml": {
+            "name": "photoUrl",
+            "wrapped": true
           },
-          "readOnly": true
+          "items": {
+            "type": "string"
+          }
         },
-        "type": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
+        "tags": {
+          "type": "array",
+          "xml": {
+            "name": "tag",
+            "wrapped": true
+          },
+          "items": {
+            "$ref": "#/definitions/Tag"
+          }
         },
         "status": {
-          "format": "int32",
-          "type": "integer"
-        },
-        "detail": {
-          "type": "string"
-        },
-        "instance": {
-          "type": "string"
+          "type": "string",
+          "description": "pet status in the store",
+          "enum": [
+            "available",
+            "pending",
+            "sold"
+          ]
         }
       },
-      "additionalProperties": {
-        "type": "object"
+      "xml": {
+        "name": "Pet"
       }
     },
-    "Machine": {
+    "ApiResponse": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string"
-        },
-        "accountId": {
-          "type": "string"
-        },
-        "siteId": {
-          "type": "string"
-        },
-        "eTag": {
-          "type": "string"
-        },
-        "brand": {
-          "type": "string"
-        },
-        "type": {
-          "$ref": "#/definitions/MachineType"
-        },
-        "modelNumber": {
-          "type": "string"
-        },
-        "serialNumber": {
-          "type": "string"
-        },
-        "condition": {
-          "$ref": "#/definitions/Condition"
-        },
-        "verifiedBy": {
-          "$ref": "#/definitions/UserDescriptor"
-        },
-        "verificationDate": {
-          "format": "date-time",
-          "type": "string"
-        },
-        "registrationState": {
-          "$ref": "#/definitions/RegistrationState"
-        },
-        "comment": {
-          "type": "string"
-        },
-        "imageUri": {
-          "type": "string"
-        },
-        "qrCode": {
-          "type": "string"
-        },
-        "parts": {
-          "uniqueItems": false,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MachinePart"
-          }
-        },
-        "friendlyName": {
-          "type": "string"
-        }
-      }
-    },
-    "MachineType": {
-      "enum": [
-        "ScrubberDryer",
-        "Sweeper",
-        "Combination",
-        "VacuumCleaner",
-        "HighPressureWasher",
-        "Other"
-      ],
-      "type": "string"
-    },
-    "Condition": {
-      "enum": [
-        "Functioning",
-        "NotFunctioning",
-        "Unused",
-        "Missing",
-        "Scrapped",
-        "Moved"
-      ],
-      "type": "string"
-    },
-    "UserDescriptor": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "displayName": {
-          "type": "string"
-        }
-      }
-    },
-    "RegistrationState": {
-      "enum": [
-        "Unknown",
-        "Expired",
-        "AlmostExpired",
-        "Ok"
-      ],
-      "type": "string"
-    },
-    "MachinePart": {
-      "type": "object",
-      "properties": {
-        "identifier": {
-          "type": "string"
+        "code": {
+          "type": "integer",
+          "format": "int32"
         },
         "type": {
           "type": "string"
-        }
-      }
-    },
-    "UpdateMachineRequest": {
-      "type": "object",
-      "properties": {
-        "siteId": {
+        },
+        "message": {
           "type": "string"
-        },
-        "brand": {
-          "type": "string"
-        },
-        "type": {
-          "$ref": "#/definitions/MachineType"
-        },
-        "modelNumber": {
-          "type": "string"
-        },
-        "serialNumber": {
-          "type": "string"
-        },
-        "condition": {
-          "$ref": "#/definitions/Condition"
-        },
-        "position": {
-          "$ref": "#/definitions/GeoLocation"
-        },
-        "imageData": {
-          "type": "string"
-        },
-        "comment": {
-          "type": "string"
-        },
-        "qrCode": {
-          "type": "string"
-        },
-        "imageUri": {
-          "type": "string"
-        },
-        "parts": {
-          "uniqueItems": false,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MachinePart"
-          }
-        },
-        "friendlyName": {
-          "type": "string"
-        }
-      }
-    },
-    "GeoLocation": {
-      "type": "object",
-      "properties": {
-        "latitude": {
-          "format": "double",
-          "type": "number"
-        },
-        "longitude": {
-          "format": "double",
-          "type": "number"
-        }
-      }
-    },
-    "Site": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "accountId": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "location": {
-          "$ref": "#/definitions/Location"
-        },
-        "verificationFrequency": {
-          "format": "int32",
-          "type": "integer"
-        }
-      }
-    },
-    "Location": {
-      "type": "object",
-      "properties": {
-        "position": {
-          "$ref": "#/definitions/GeoLocation"
-        },
-        "address": {
-          "$ref": "#/definitions/Address"
-        }
-      }
-    },
-    "Address": {
-      "type": "object",
-      "properties": {
-        "streetName": {
-          "type": "string"
-        },
-        "streetNumber": {
-          "type": "string"
-        },
-        "postalCode": {
-          "type": "string"
-        },
-        "city": {
-          "type": "string"
-        },
-        "country": {
-          "type": "string"
-        }
-      }
-    },
-    "PagedGatewayResult[AccountDescriptor]": {
-      "type": "object",
-      "properties": {
-        "kind": {
-          "description": "Identifies what kind of resource this is.",
-          "type": "string"
-        },
-        "nextPageToken": {
-          "description": "The page token for the next page of items.\r\nThis will be absent if the end of the items list has been reached.\r\nIf the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
-          "type": "string"
-        },
-        "items": {
-          "description": "The list of items.\r\nIf nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
-          "uniqueItems": false,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/AccountDescriptor"
-          }
-        }
-      }
-    },
-    "AccountDescriptor": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        }
-      }
-    },
-    "MachineFilter": {
-      "enum": [
-        "All",
-        "WithoutSite",
-        "WithSite"
-      ],
-      "type": "string"
-    },
-    "PagedGatewayResult[Machine]": {
-      "type": "object",
-      "properties": {
-        "kind": {
-          "description": "Identifies what kind of resource this is.",
-          "type": "string"
-        },
-        "nextPageToken": {
-          "description": "The page token for the next page of items.\r\nThis will be absent if the end of the items list has been reached.\r\nIf the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
-          "type": "string"
-        },
-        "items": {
-          "description": "The list of items.\r\nIf nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
-          "uniqueItems": false,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Machine"
-          }
-        }
-      }
-    },
-    "CreateMachineRequest": {
-      "type": "object",
-      "properties": {
-        "brand": {
-          "type": "string"
-        },
-        "type": {
-          "$ref": "#/definitions/MachineType"
-        },
-        "modelNumber": {
-          "type": "string"
-        },
-        "serialNumber": {
-          "type": "string"
-        },
-        "condition": {
-          "$ref": "#/definitions/Condition"
-        },
-        "position": {
-          "$ref": "#/definitions/GeoLocation"
-        },
-        "imageData": {
-          "type": "string"
-        },
-        "comment": {
-          "type": "string"
-        },
-        "qrCode": {
-          "type": "string"
-        },
-        "parts": {
-          "uniqueItems": false,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/MachinePart"
-          }
-        },
-        "friendlyName": {
-          "type": "string"
-        }
-      }
-    },
-    "PagedGatewayResult[Site]": {
-      "type": "object",
-      "properties": {
-        "kind": {
-          "description": "Identifies what kind of resource this is.",
-          "type": "string"
-        },
-        "nextPageToken": {
-          "description": "The page token for the next page of items.\r\nThis will be absent if the end of the items list has been reached.\r\nIf the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
-          "type": "string"
-        },
-        "items": {
-          "description": "The list of items.\r\nIf nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
-          "uniqueItems": false,
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Site"
-          }
         }
       }
     }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
   }
 }

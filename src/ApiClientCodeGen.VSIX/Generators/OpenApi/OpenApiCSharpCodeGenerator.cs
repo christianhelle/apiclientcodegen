@@ -41,10 +41,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Open
                     $"-l csharp " +
                     $"--input-spec \"{swaggerFile}\" " +
                     $"--output \"{output}\" " +
-                    $"--api-package={defaultNamespace} " +
-                    $"--model-package={defaultNamespace} " +
-                    $"-DapiTests=false -DmodelTests=false --skip-overwrite " +
-                    $"-DpackageName={defaultNamespace}";
+                    $"-DapiTests=false -DmodelTests=false " +
+                    $"-DpackageName={defaultNamespace} " +
+                    $"--skip-overwrite ";
 
                 ProcessHelper.StartProcess("java", arguments);
                 pGenerateProgress.Progress(80);
