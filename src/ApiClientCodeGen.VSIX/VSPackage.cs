@@ -47,6 +47,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
             new NewRestClientCommand()
         };
 
+        public static DTE Dte { get; private set; }
+
         protected override async Task InitializeAsync(
             CancellationToken cancellationToken,
             IProgress<ServiceProgressData> progress)
@@ -54,6 +56,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await base.InitializeAsync(cancellationToken, progress);
             OutputWindow.Initialize(this, VsixName);
+            Dte = (DTE)await GetServiceAsync(typeof(DTE));
 
             foreach (var command in commands)
                 await command.InitializeAsync(this, cancellationToken);
