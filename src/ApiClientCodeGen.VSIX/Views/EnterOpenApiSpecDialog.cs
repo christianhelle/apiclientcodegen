@@ -14,6 +14,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Views
             InitializeComponent();
         }
 
+        public static EnterOpenApiSpecDialogResult GetResult()
+        {
+            DialogResult dialogResult;
+            EnterOpenApiSpecDialogResult result;
+            using (var form = new EnterOpenApiSpecDialog())
+            {
+                dialogResult = form.ShowDialog();
+                result = form.Result;
+            }
+
+            return dialogResult == DialogResult.OK ? result : null;
+        }
+
         public string OpenApiSpecification { get; private set; }
 
         public SupportedCodeGenerator SelectedCodeGenerator
@@ -64,6 +77,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Views
                     Trace.WriteLine($"Unable to download OpenAPI specification file from {tbUrl.Text}");
                     return;
                 }
+
+                Trace.WriteLine("OpenAPI Specifications:");
+                Trace.WriteLine(OpenApiSpecification);
 
                 Result = new EnterOpenApiSpecDialogResult(
                     OpenApiSpecification,
