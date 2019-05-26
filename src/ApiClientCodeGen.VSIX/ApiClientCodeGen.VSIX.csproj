@@ -89,7 +89,9 @@
     <Compile Include="Generators\ProcessHelper.cs" />
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGenerator.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Utility\OutputWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\OutputWindowTraceListener.cs" />
     <Compile Include="VsPackage.cs" />
   </ItemGroup>
   <ItemGroup>
