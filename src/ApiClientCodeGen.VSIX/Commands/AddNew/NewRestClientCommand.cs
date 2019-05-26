@@ -22,7 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
         protected int CommandId { get; } = 0x100;
         protected Guid CommandSet { get; } = new Guid("E4B99F94-D11F-4CAA-ADCD-24302C232938");
 
-        private DTE _dte;
+        private DTE dte;
 
         public async Task InitializeAsync(AsyncPackage package, CancellationToken token)
         {
@@ -32,8 +32,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             if (dteTask == null)
                 return;
 
-            _dte = await dteTask as DTE;
-            if (_dte == null)
+            dte = await dteTask as DTE;
+            if (dte == null)
                 return;
 
             var commandServiceTask = package.GetServiceAsync((typeof(IMenuCommandService)));
@@ -78,10 +78,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             switch (item)
             {
                 case ProjectItem projectItem:
-                {
-                    var fileName = projectItem.FileNames[1];
-                    return File.Exists(fileName) ? Path.GetDirectoryName(fileName) : fileName;
-                }
+                    return File.Exists(projectItem.FileNames[1])
+                        ? Path.GetDirectoryName(projectItem.FileNames[1])
+                        : projectItem.FileNames[1];
 
                 case Project project:
                     return project.GetRootFolder();

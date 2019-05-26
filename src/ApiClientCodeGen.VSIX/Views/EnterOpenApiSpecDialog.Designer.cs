@@ -140,7 +140,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(552, 157);
-            this.ControlBox = false;
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbFilename);
@@ -150,8 +149,13 @@
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.lblUrl);
             this.Controls.Add(this.tbUrl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EnterOpenApiSpecDialog";
+            this.ShowIcon = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Enter URL to OpenAPI Specification JSON file";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.EnterOpenApiSpecDialog_Load);
