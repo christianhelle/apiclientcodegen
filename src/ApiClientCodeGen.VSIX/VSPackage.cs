@@ -6,13 +6,14 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
 using Microsoft.VisualStudio.Shell;
+using OutputWindow = ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility.OutputWindow;
 using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
 {
     [Guid("47AFE4E1-5A52-4FE1-8CA7-EDB8310BDA4A")]
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
-    [InstalledProductRegistration("REST API Client Code Generator", "", "1.0")]
+    [InstalledProductRegistration(VsixName, "", "1.0")]
     [ProvideMenuResource("Menus.ctmenu", 1)]
     [ProvideUIContextRule(
         CustomToolSetterCommand.ContextGuid,
@@ -28,6 +29,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         new[] { NSwagStudioCommand.TermValue })]
     public sealed class VsPackage : AsyncPackage
     {
+        public const string VsixName = "REST API Client Code Generator";
         private readonly ICommandInitializer[] commands = {
             new AutoRestCodeGeneratorCustomToolSetter(),
             new NSwagCodeGeneratorCustomToolSetter(),
@@ -41,6 +43,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
             IProgress<ServiceProgressData> progress)
         {
             await base.InitializeAsync(cancellationToken, progress);
+            OutputWindow.Initialize(this, VsixName);
             foreach (var command in commands)
                 await command.InitializeAsync(this, cancellationToken);
         }
