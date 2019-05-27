@@ -229,6 +229,10 @@
     <Reference Include="NSwag.Core, Version=12.2.5.0, Culture=neutral, PublicKeyToken=c2d88086e098d109, processorArchitecture=MSIL">
       <HintPath>..\packages\NSwag.Core.12.2.5\lib\net45\NSwag.Core.dll</HintPath>
     </Reference>
+    <Reference Include="NuGet.VisualStudio, Version=3.3.0.167, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.VisualStudio.3.3.0\lib\net45\NuGet.VisualStudio.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\stdole.7.0.3302\lib\net10\stdole.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
