@@ -1,13 +1,16 @@
 ﻿using System;
-using System.ComponentModel.Design;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Views;
 using EnvDTE;
+using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
+using NuGet.VisualStudio;
 using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
@@ -22,10 +25,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
         protected int CommandId { get; } = 0x100;
         protected Guid CommandSet { get; } = new Guid("E4B99F94-D11F-4CAA-ADCD-24302C232938");
 
-        public Task InitializeAsync(AsyncPackage package, CancellationToken token)
-            => package.SetupCommandAsync(CommandSet, CommandId, OnExecute, token);
+        public async Task InitializeAsync(AsyncPackage package, CancellationToken token)
+        {
+            await package.SetupCommandAsync(CommandSet, CommandId, OnExecuteAsync, token);
+        }
 
-        private static void OnExecute(DTE dte)
+        private static async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
             var result = EnterOpenApiSpecDialog.GetResult();
             if (result == null)
@@ -47,6 +52,34 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
             var customTool = result.SelectedCodeGenerator.GetCustomToolName();
             projectItem.Properties.Item("CustomTool").Value = customTool;
+
+            await InstallDependenciesAsync(package, project, result.SelectedCodeGenerator);
+        }
+
+        private static async Task InstallDependenciesAsync(AsyncPackage package, Project project, SupportedCodeGenerator codeGenerator)
+        {
+            var componentModel = (IComponentModel) await package.GetServiceAsync(typeof(SComponentModel));
+            var packageInstaller = componentModel.GetService<IVsPackageInstaller>();
+            var installedServices = componentModel.GetService<IVsPackageInstallerServices>();
+            var installedPackages = installedServices.GetInstalledPackages(project)?.ToList() ?? new List<IVsPackageMetadata>();
+            
+            var requiredPackages = codeGenerator.GetDependencies();
+            foreach (var packageDependency in requiredPackages)
+            {
+                if (installedPackages.Any(
+                    c => string.Equals(c.Id, packageDependency.Name, StringComparison.InvariantCultureIgnoreCase)))
+                {
+                    if (installedPackages.Any(c => c.VersionString == packageDependency.Version.ToString(3)))
+                        continue;
+                }
+
+                packageInstaller.InstallPackage(
+                    null,
+                    project,
+                    packageDependency.Name,
+                    packageDependency.Version,
+                    false);
+            }
         }
 
         private static string FindFolder(object item, DTE dte)
