@@ -34,7 +34,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
 
                 var settings = new SwaggerToCSharpClientGeneratorSettings
                 {
-                    ClassName = "ApiClient",
                     InjectHttpClient = true,
                     GenerateClientInterfaces = true,
                     GenerateDtoTypes = true,
