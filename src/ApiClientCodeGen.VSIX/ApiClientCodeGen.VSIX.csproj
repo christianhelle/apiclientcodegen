@@ -91,6 +91,8 @@
     <Compile Include="Generators\ProcessHelper.cs" />
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGenerator.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="NuGet\PackageDependency.cs" />
+    <Compile Include="NuGet\PackageDependencyListProvider.cs" />
     <Compile Include="Utility\OutputWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\OutputWindowTraceListener.cs" />
