@@ -96,7 +96,7 @@
     <Compile Include="Utility\OutputWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\OutputWindowTraceListener.cs" />
-    <Compile Include="Utility\ProjectHelpers.cs" />
+    <Compile Include="Extensions\ProjectExtensions.cs" />
     <Compile Include="Views\EnterOpenApiSpecDialog.cs">
       <SubType>Form</SubType>
     </Compile>

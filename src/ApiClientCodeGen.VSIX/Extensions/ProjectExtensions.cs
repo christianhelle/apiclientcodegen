@@ -8,9 +8,9 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TextManager.Interop;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 {
-    public static class ProjectHelpers
+    public static class ProjectExtensions
     {
         public static string GetRootFolder(this Project project, DTE Dte)
         {
@@ -86,7 +86,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility
             }
             catch (Exception ex)
             {
-                OutputWindow.Log(ex);
+                Trace.WriteLine(ex);
             }
         }
 
@@ -118,7 +118,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility
             }
             catch (Exception ex)
             {
-                OutputWindow.Log("Error getting the active project" + ex);
+                Trace.WriteLine("Error getting the active project" + ex);
             }
 
             return null;

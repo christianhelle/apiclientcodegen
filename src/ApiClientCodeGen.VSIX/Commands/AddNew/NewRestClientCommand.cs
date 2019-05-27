@@ -31,7 +31,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             if (result == null)
                 return;
 
-            var folder = FindFolder(ProjectHelpers.GetSelectedItem(), dte);
+            var folder = FindFolder(ProjectExtensions.GetSelectedItem(), dte);
             if (string.IsNullOrWhiteSpace(folder))
             {
                 Trace.WriteLine("Unable to get folder name");
@@ -42,7 +42,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             File.WriteAllText(filePath, result.OpenApiSpecification);
 
             var fileInfo = new FileInfo(filePath);
-            var project = ProjectHelpers.GetActiveProject(dte);
+            var project = ProjectExtensions.GetActiveProject(dte);
             var projectItem = project.AddFileToProject(dte, fileInfo);
 
             var customTool = result.SelectedCodeGenerator.GetCustomToolName();
