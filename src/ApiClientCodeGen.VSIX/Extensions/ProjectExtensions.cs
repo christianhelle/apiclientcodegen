@@ -177,6 +177,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             AsyncPackage package, 
             SupportedCodeGenerator codeGenerator)
         {
+            Trace.WriteLine("Checking required dependencies");
+
             var componentModel = (IComponentModel)await package.GetServiceAsync(typeof(SComponentModel));
             var packageInstaller = componentModel.GetService<IVsPackageInstaller>();
             var installedServices = componentModel.GetService<IVsPackageInstallerServices>();
@@ -185,19 +187,26 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             var requiredPackages = codeGenerator.GetDependencies();
             foreach (var packageDependency in requiredPackages)
             {
+                var packageId = packageDependency.Name;
+                var version = packageDependency.Version;
+
                 if (installedPackages.Any(
-                    c => string.Equals(c.Id, packageDependency.Name, StringComparison.InvariantCultureIgnoreCase)))
+                    c => string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase)))
                 {
-                    if (installedPackages.Any(c => c.VersionString == packageDependency.Version.ToString(3)))
+                    if (installedPackages.Any(c => c.VersionString == version.ToString(3)))
                         continue;
                 }
 
+                Trace.WriteLine($"Installing {packageId} version {version}");
+                
                 packageInstaller.InstallPackage(
                     null,
                     project,
-                    packageDependency.Name,
-                    packageDependency.Version,
+                    packageId,
+                    version,
                     false);
+
+                Trace.WriteLine($"Successfully installed {packageId} version {version}");
             }
         }
     }
