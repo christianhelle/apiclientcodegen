@@ -81,7 +81,7 @@
     <Compile Include="Core\SupportedLanguage.cs" />
     <Compile Include="CustomTool\AutoRest\AutoRestCodeGenerator.cs" />
     <Compile Include="CustomTool\AutoRest\AutoRestCSharpCodeGenerator.cs" />
-    <Compile Include="CustomTool\CodeGenerator.cs" />
+    <Compile Include="CustomTool\SingleFileCodeGenerator.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Generators\FileHelper.cs" />
     <Compile Include="Generators\CSharpFileMerger.cs" />

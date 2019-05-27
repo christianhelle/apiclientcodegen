@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.OpenApi;
@@ -36,6 +38,23 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
 
             return customTool;
+        }
+
+        public static SupportedCodeGenerator GetSupportedCodeGenerator(this Type type)
+        {
+            if (type.IsAssignableFrom(typeof(NSwagCodeGenerator)))
+                return SupportedCodeGenerator.NSwag;
+
+            if (type.IsAssignableFrom(typeof(AutoRestCodeGenerator)))
+                return SupportedCodeGenerator.AutoRest;
+
+            if (type.IsAssignableFrom(typeof(SwaggerCodeGenerator)))
+                return SupportedCodeGenerator.Swagger;
+
+            if (type.IsAssignableFrom(typeof(OpenApiCodeGenerator)))
+                return SupportedCodeGenerator.OpenApi;
+
+            throw new NotSupportedException();
         }
 
         public static IEnumerable<PackageDependency> GetDependencies(

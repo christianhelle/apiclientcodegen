@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using EnvDTE;
 using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TextManager.Interop;
+using NuGet.VisualStudio;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 {
@@ -165,6 +170,35 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
 
             return selectedObject;
+        }
+
+        public static async System.Threading.Tasks.Task InstallMissingPackagesAsync(
+            this Project project, 
+            AsyncPackage package, 
+            SupportedCodeGenerator codeGenerator)
+        {
+            var componentModel = (IComponentModel)await package.GetServiceAsync(typeof(SComponentModel));
+            var packageInstaller = componentModel.GetService<IVsPackageInstaller>();
+            var installedServices = componentModel.GetService<IVsPackageInstallerServices>();
+            var installedPackages = installedServices.GetInstalledPackages(project)?.ToList() ?? new List<IVsPackageMetadata>();
+
+            var requiredPackages = codeGenerator.GetDependencies();
+            foreach (var packageDependency in requiredPackages)
+            {
+                if (installedPackages.Any(
+                    c => string.Equals(c.Id, packageDependency.Name, StringComparison.InvariantCultureIgnoreCase)))
+                {
+                    if (installedPackages.Any(c => c.VersionString == packageDependency.Version.ToString(3)))
+                        continue;
+                }
+
+                packageInstaller.InstallPackage(
+                    null,
+                    project,
+                    packageDependency.Name,
+                    packageDependency.Version,
+                    false);
+            }
         }
     }
 

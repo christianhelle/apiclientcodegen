@@ -53,33 +53,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             var customTool = result.SelectedCodeGenerator.GetCustomToolName();
             projectItem.Properties.Item("CustomTool").Value = customTool;
 
-            await InstallDependenciesAsync(package, project, result.SelectedCodeGenerator);
-        }
-
-        private static async Task InstallDependenciesAsync(AsyncPackage package, Project project, SupportedCodeGenerator codeGenerator)
-        {
-            var componentModel = (IComponentModel) await package.GetServiceAsync(typeof(SComponentModel));
-            var packageInstaller = componentModel.GetService<IVsPackageInstaller>();
-            var installedServices = componentModel.GetService<IVsPackageInstallerServices>();
-            var installedPackages = installedServices.GetInstalledPackages(project)?.ToList() ?? new List<IVsPackageMetadata>();
-            
-            var requiredPackages = codeGenerator.GetDependencies();
-            foreach (var packageDependency in requiredPackages)
-            {
-                if (installedPackages.Any(
-                    c => string.Equals(c.Id, packageDependency.Name, StringComparison.InvariantCultureIgnoreCase)))
-                {
-                    if (installedPackages.Any(c => c.VersionString == packageDependency.Version.ToString(3)))
-                        continue;
-                }
-
-                packageInstaller.InstallPackage(
-                    null,
-                    project,
-                    packageDependency.Name,
-                    packageDependency.Version,
-                    false);
-            }
+            await project.InstallMissingPackagesAsync(package, result.SelectedCodeGenerator);
         }
 
         private static string FindFolder(object item, DTE dte)

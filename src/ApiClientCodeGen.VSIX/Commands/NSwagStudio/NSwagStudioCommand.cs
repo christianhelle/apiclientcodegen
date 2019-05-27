@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
 using EnvDTE;
@@ -25,14 +26,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
                 OnExecute,
                 token);
 
-        private static void OnExecute(DTE dte)
+        private static async Task OnExecute(DTE dte, AsyncPackage package)
         {
-            ThreadHelper.ThrowIfNotOnUIThread();
             var item = dte.SelectedItems.Item(1).ProjectItem;
-
             var nswagStudioFile = item.FileNames[0];
             var codeGenerator = new NSwagStudioCodeGenerator(nswagStudioFile);
             codeGenerator.GenerateCode(null);
+            
+            var project = ProjectExtensions.GetActiveProject(dte);
+            await project.InstallMissingPackagesAsync(package, SupportedCodeGenerator.NSwag);
         }
     }
 }
