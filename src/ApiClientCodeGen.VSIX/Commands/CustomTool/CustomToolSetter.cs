@@ -1,12 +1,12 @@
 ﻿using System;
-using EnvDTE;
 using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
 {
     public abstract class CustomToolSetter<T>
         : ICommandInitializer

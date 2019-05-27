@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.OpenApi;
@@ -12,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 {
     public static class SupportedCodeGeneratorExtensions
     {
-        private static readonly PackageDependencyListProvider dependencyListProvider
+        private static readonly PackageDependencyListProvider DependencyListProvider
             = new PackageDependencyListProvider();
 
         public static string GetCustomToolName(this SupportedCodeGenerator generator)
@@ -59,7 +58,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
         public static IEnumerable<PackageDependency> GetDependencies(
             this SupportedCodeGenerator generator)
-            => dependencyListProvider
+            => DependencyListProvider
                 .GetDependencies(generator);
     }
 }

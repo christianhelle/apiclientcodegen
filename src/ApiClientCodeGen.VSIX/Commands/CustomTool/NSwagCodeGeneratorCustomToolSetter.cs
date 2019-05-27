@@ -1,7 +1,6 @@
-﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.NSwag;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.NSwag;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
 {
     public class NSwagCodeGeneratorCustomToolSetter
         : CustomToolSetter<NSwagCodeGenerator>

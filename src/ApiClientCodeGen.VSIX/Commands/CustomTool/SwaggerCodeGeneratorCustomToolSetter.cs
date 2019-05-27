@@ -1,7 +1,6 @@
-﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Swagger;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Swagger;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
 {
     public class SwaggerCodeGeneratorCustomToolSetter
         : CustomToolSetter<SwaggerCodeGenerator>
