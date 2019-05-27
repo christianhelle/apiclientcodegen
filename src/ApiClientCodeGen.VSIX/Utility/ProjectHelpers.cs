@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using EnvDTE;
 using Microsoft.VisualStudio;
@@ -14,42 +12,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility
 {
     public static class ProjectHelpers
     {
-        private static readonly DTE Dte = VsPackage.Dte;
-
-        public static string GetRootNamespace(this Project project)
-        {
-            if (project == null)
-                return null;
-
-            var ns = project.Name ?? string.Empty;
-
-            try
-            {
-                var prop = project.Properties.Item("RootNamespace");
-
-                if (prop != null && prop.Value != null && !string.IsNullOrEmpty(prop.Value.ToString()))
-                    ns = prop.Value.ToString();
-            }
-            catch
-            {
-                /* Project doesn't have a root namespace */
-            }
-
-            return CleanNameSpace(ns, false);
-        }
-
-        public static string CleanNameSpace(string ns, bool stripPeriods = true)
-        {
-            if (stripPeriods) ns = ns.Replace(".", "");
-
-            ns = ns.Replace(" ", "")
-                .Replace("-", "")
-                .Replace("\\", ".");
-
-            return ns;
-        }
-
-        public static string GetRootFolder(this Project project)
+        public static string GetRootFolder(this Project project, DTE Dte)
         {
             if (project == null)
                 return null;
@@ -92,12 +55,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility
             return null;
         }
 
-        public static ProjectItem AddFileToProject(this Project project, FileInfo file, string itemType = null)
+        public static ProjectItem AddFileToProject(this Project project, DTE Dte, FileInfo file, string itemType = null)
         {
             if (project.IsKind(ProjectTypes.ASPNET_5, ProjectTypes.SSDT))
                 return Dte.Solution.FindProjectItem(file.FullName);
 
-            var root = project.GetRootFolder();
+            var root = project.GetRootFolder(Dte);
 
             if (string.IsNullOrEmpty(root) || !file.FullName.StartsWith(root, StringComparison.OrdinalIgnoreCase))
                 return null;
@@ -136,28 +99,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility
             return false;
         }
 
-        private static IEnumerable<Project> GetChildProjects(Project parent)
-        {
-            try
-            {
-                if (!parent.IsKind("{66A26720-8FB5-11D2-AA7E-00C04F688DDE}") && parent.Collection == null) // Unloaded
-                    return Enumerable.Empty<Project>();
-
-                if (!string.IsNullOrEmpty(parent.FullName))
-                    return new[] { parent };
-            }
-            catch (COMException)
-            {
-                return Enumerable.Empty<Project>();
-            }
-
-            return parent.ProjectItems
-                .Cast<ProjectItem>()
-                .Where(p => p.SubProject != null)
-                .SelectMany(p => GetChildProjects(p.SubProject));
-        }
-
-        public static Project GetActiveProject()
+        public static Project GetActiveProject(DTE Dte)
         {
             try
             {
@@ -182,16 +124,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility
             return null;
         }
 
-        //public static IWpfTextView GetCurentTextView()
-        //{
-        //    IComponentModel componentModel = GetComponentModel();
-        //    if (componentModel == null) return null;
-        //    IVsEditorAdaptersFactoryService
-        //        editorAdapter = componentModel.GetService<IVsEditorAdaptersFactoryService>();
-
-        //    return editorAdapter.GetWpfTextView(GetCurrentNativeTextView());
-        //}
-
         public static IVsTextView GetCurrentNativeTextView()
         {
             var textManager = (IVsTextManager)ServiceProvider.GlobalProvider.GetService(typeof(SVsTextManager));
@@ -199,11 +131,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility
             ErrorHandler.ThrowOnFailure(textManager.GetActiveView(1, null, out var activeView));
             return activeView;
         }
-
-        //public static IComponentModel GetComponentModel()
-        //{
-        //    return (IComponentModel)AddAnyFilePackage.GetGlobalService(typeof(SComponentModel));
-        //}
 
         public static object GetSelectedItem()
         {
