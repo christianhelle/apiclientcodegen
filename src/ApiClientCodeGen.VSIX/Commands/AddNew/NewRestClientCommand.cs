@@ -22,40 +22,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
         protected int CommandId { get; } = 0x100;
         protected Guid CommandSet { get; } = new Guid("E4B99F94-D11F-4CAA-ADCD-24302C232938");
 
-        private DTE dte;
+        public Task InitializeAsync(AsyncPackage package, CancellationToken token)
+            => package.SetupCommandAsync(CommandSet, CommandId, OnExecute, token);
 
-        public async Task InitializeAsync(AsyncPackage package, CancellationToken token)
-        {
-            await package.JoinableTaskFactory.SwitchToMainThreadAsync(token);
-
-            var dteTask = package.GetServiceAsync(typeof(DTE));
-            if (dteTask == null)
-                return;
-
-            dte = await dteTask as DTE;
-            if (dte == null)
-                return;
-
-            var commandServiceTask = package.GetServiceAsync((typeof(IMenuCommandService)));
-            if (commandServiceTask == null)
-                return;
-
-            var commandService = await commandServiceTask as IMenuCommandService;
-            if (commandService == null)
-                return;
-
-            var cmdId = new CommandID(CommandSet, CommandId);
-            var cmd = new MenuCommand(OnExecute, cmdId);
-            commandService.AddCommand(cmd);
-        }
-
-        private void OnExecute(object sender, EventArgs e)
+        private static void OnExecute(DTE dte)
         {
             var result = EnterOpenApiSpecDialog.GetResult();
             if (result == null)
                 return;
 
-            var folder = FindFolder(ProjectHelpers.GetSelectedItem());
+            var folder = FindFolder(ProjectHelpers.GetSelectedItem(), dte);
             if (string.IsNullOrWhiteSpace(folder))
             {
                 Trace.WriteLine("Unable to get folder name");
@@ -66,14 +42,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             File.WriteAllText(filePath, result.OpenApiSpecification);
 
             var fileInfo = new FileInfo(filePath);
-            var project = ProjectHelpers.GetActiveProject();
-            var projectItem = project.AddFileToProject(fileInfo);
+            var project = ProjectHelpers.GetActiveProject(dte);
+            var projectItem = project.AddFileToProject(dte, fileInfo);
 
             var customTool = result.SelectedCodeGenerator.GetCustomToolName();
             projectItem.Properties.Item("CustomTool").Value = customTool;
         }
 
-        private static string FindFolder(object item)
+        private static string FindFolder(object item, DTE dte)
         {
             switch (item)
             {
@@ -83,7 +59,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
                         : projectItem.FileNames[1];
 
                 case Project project:
-                    return project.GetRootFolder();
+                    return project.GetRootFolder(dte);
 
                 default:
                     return null;
