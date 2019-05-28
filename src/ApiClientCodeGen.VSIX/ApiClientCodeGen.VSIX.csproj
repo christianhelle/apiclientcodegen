@@ -86,6 +86,7 @@
     <Compile Include="Generators\FileHelper.cs" />
     <Compile Include="Generators\CSharpFileMerger.cs" />
     <Compile Include="Generators\NSwagStudio\NSwagStudioCodeGenerator.cs" />
+    <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelper.cs" />
     <Compile Include="Extensions\SwaggerDocumentExtensions.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGenerator.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGenerator.cs" />
