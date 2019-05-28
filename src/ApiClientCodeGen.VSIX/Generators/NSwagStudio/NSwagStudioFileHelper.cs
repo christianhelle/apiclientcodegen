@@ -9,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
         public static async Task<string> CreateNSwagStudioFileAsync(
             string openApiSpec, 
             string openApiSpecUrl,
-            string outputNamespace)
+            string outputNamespace = null)
         {
             var className = (await SwaggerDocument.FromJsonAsync(openApiSpec)).GenerateClassName();
             return new
