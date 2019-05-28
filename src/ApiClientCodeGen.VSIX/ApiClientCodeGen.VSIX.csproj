@@ -55,6 +55,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddNew\NewRestClientCommand.cs" />
     <Compile Include="Commands\CustomTool\AutoRestCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="Commands\CustomTool\CustomToolSetter.cs" />
     <Compile Include="Commands\CustomTool\CustomToolSetterCommand.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Commands\CustomTool\NSwagCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="Commands\CustomTool\OpenApiCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="Commands\CustomTool\SwaggerCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="Extensions\SupportedCodeGeneratorExtensions.cs" />
     <Compile Include="Extensions\AsyncPackageExtensions.cs" />
     <Compile Include="Commands\NSwagStudio\NSwagStudioCommand.cs" />
     <Compile Include="Core\SupportedCodeGenerator.cs" />
@@ -79,7 +81,7 @@
     <Compile Include="Core\SupportedLanguage.cs" />
     <Compile Include="CustomTool\AutoRest\AutoRestCodeGenerator.cs" />
     <Compile Include="CustomTool\AutoRest\AutoRestCSharpCodeGenerator.cs" />
-    <Compile Include="CustomTool\CodeGenerator.cs" />
+    <Compile Include="CustomTool\SingleFileCodeGenerator.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Generators\FileHelper.cs" />
     <Compile Include="Generators\CSharpFileMerger.cs" />
@@ -89,8 +91,21 @@
     <Compile Include="Generators\ProcessHelper.cs" />
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGenerator.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="NuGet\PackageDependency.cs" />
+    <Compile Include="NuGet\PackageDependencyListProvider.cs" />
+    <Compile Include="Utility\OutputWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\OutputWindowTraceListener.cs" />
+    <Compile Include="Extensions\ProjectExtensions.cs" />
+    <Compile Include="Windows\EnterOpenApiSpecDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\EnterOpenApiSpecDialog.Designer.cs">
+      <DependentUpon>EnterOpenApiSpecDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="VsPackage.cs" />
+    <Compile Include="Windows\EnterOpenApiSpecDialogResult.cs" />
+    <Compile Include="Windows\NativeMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -111,6 +126,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.CommandBars, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.ComponentModelHost, Version=16.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.VisualStudio.ComponentModelHost.16.1.89\lib\net46\Microsoft.VisualStudio.ComponentModelHost.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.CoreUtility, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.VisualStudio.CoreUtility.15.8.525\lib\net46\Microsoft.VisualStudio.CoreUtility.dll</HintPath>
@@ -218,6 +236,10 @@
     <Reference Include="NSwag.Core, Version=12.2.5.0, Culture=neutral, PublicKeyToken=c2d88086e098d109, processorArchitecture=MSIL">
       <HintPath>..\packages\NSwag.Core.12.2.5\lib\net45\NSwag.Core.dll</HintPath>
     </Reference>
+    <Reference Include="NuGet.VisualStudio, Version=3.3.0.167, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.VisualStudio.3.3.0\lib\net45\NuGet.VisualStudio.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <HintPath>..\packages\stdole.7.0.3302\lib\net10\stdole.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -263,6 +285,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
@@ -284,6 +307,9 @@
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Windows\EnterOpenApiSpecDialog.resx">
+      <DependentUpon>EnterOpenApiSpecDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VsPackage.resx">
       <DependentUpon>VsPackage.cs</DependentUpon>
       <MergeWithCTO>true</MergeWithCTO>

@@ -36,7 +36,7 @@ The **Swagger Codegen CLI** and **OpenAPI Generator** are downloaded on demand b
 
 The **AutoRestCodeGenerator** code generator produces code that depends on the [Microsoft.Rest.ClientRuntime v2.3.20](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime/2.3.20) nuget package
 
-The current version of this Visual Studio Extension requires you to manually add the nuget package that the generated code depends on. This might change in the future, but for now its a manual step
+This Visual Studio Extension will automatically add the required nuget packages that the generated code depends on
 
 
 **Screenshots**
@@ -52,3 +52,7 @@ The current version of this Visual Studio Extension requires you to manually add
 ![SwaggerCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/swaggercodegenerator-custom-tool.jpg)
 
 ![OpenApiCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/openapicodegenerator-custom-tool.jpg)
+
+![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-menu.jpg)
+
+![Enter URL to OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-dialog.jpg)

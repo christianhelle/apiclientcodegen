@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
@@ -35,13 +36,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                     async () =>
                     {
                         await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                        pGenerateProgress.GeneratorError(0, 0, exception.Message, 0, 0);
+                        GenerateErrorInternal(pGenerateProgress, exception);
                     });
             }
             catch
             {
-                pGenerateProgress.GeneratorError(0, 0, exception.Message, 0, 0);
+                GenerateErrorInternal(pGenerateProgress, exception);
             }
+        }
+
+        private static void GenerateErrorInternal(IVsGeneratorProgress pGenerateProgress, Exception exception)
+        {
+            pGenerateProgress?.GeneratorError(0, 0, exception.Message, 0, 0);
+            Trace.WriteLine(exception);
         }
     }
 }

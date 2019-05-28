@@ -13,7 +13,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             this AsyncPackage package,
             Guid commandSet,
             int commandId,
-            Action<DTE> action,
+            Func<DTE, AsyncPackage, Task> func,
             CancellationToken? cancellationToken = null)
         {
             var token = cancellationToken ?? CancellationToken.None;
@@ -34,11 +34,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 return;
 
             var menuCommand = new MenuCommand(
-                (sender, e) =>
-                {
-                    ThreadHelper.ThrowIfNotOnUIThread();
-                    action?.Invoke(dte);
-                }, 
+                async (sender, e) => await func.Invoke(dte, package), 
                 new CommandID(commandSet, commandId));
 
             commandService.AddCommand(menuCommand);

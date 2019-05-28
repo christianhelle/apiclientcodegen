@@ -1,7 +1,6 @@
-﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
 {
     public class AutoRestCodeGeneratorCustomToolSetter
         : CustomToolSetter<AutoRestCodeGenerator>

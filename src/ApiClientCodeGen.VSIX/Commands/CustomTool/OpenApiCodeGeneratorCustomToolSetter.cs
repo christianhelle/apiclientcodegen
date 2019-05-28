@@ -1,7 +1,6 @@
-﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.OpenApi;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.OpenApi;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
 {
     public class OpenApiCodeGeneratorCustomToolSetter
         : CustomToolSetter<OpenApiCodeGenerator>

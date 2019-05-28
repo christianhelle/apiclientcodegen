@@ -13,14 +13,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
     [ComVisible(true)]
     public abstract class SingleFileCodeGenerator : IVsSingleFileGenerator
     {
-        private readonly SupportedCodeGenerator supportedCodeGenerator;
         private readonly SupportedLanguage supportedLanguage;
+
+        public SupportedCodeGenerator CodeGenerator { get; }
 
         protected SingleFileCodeGenerator(
             SupportedCodeGenerator supportedCodeGenerator,
             SupportedLanguage supportedLanguage = SupportedLanguage.CSharp)
         {
-            this.supportedCodeGenerator = supportedCodeGenerator;
+            this.CodeGenerator = supportedCodeGenerator;
             this.supportedLanguage = supportedLanguage;
         }
 
@@ -44,7 +45,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
                     bstrInputFileContents,
                     wszInputFilePath,
                     supportedLanguage,
-                    supportedCodeGenerator);
+                    CodeGenerator);
 
                 var code = codeGenerator.GenerateCode(pGenerateProgress);
                 if (string.IsNullOrWhiteSpace(code))
