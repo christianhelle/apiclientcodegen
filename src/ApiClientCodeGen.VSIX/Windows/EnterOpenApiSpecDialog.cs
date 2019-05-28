@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net;
-using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Views
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 {
     public partial class EnterOpenApiSpecDialog : Form
     {
@@ -27,30 +27,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Views
             return dialogResult == DialogResult.OK ? result : null;
         }
 
-        public string OpenApiSpecification { get; private set; }
-
         public SupportedCodeGenerator SelectedCodeGenerator
             => cbCustomTool.SelectedIndex == -1
                 ? default(SupportedCodeGenerator)
                 : (SupportedCodeGenerator)cbCustomTool.SelectedIndex;
 
-        public string OutputFilename => $"{tbFilename.Text}.json";
-
         public EnterOpenApiSpecDialogResult Result { get; private set; }
 
-        [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        private static extern int SendMessage(
-            IntPtr hWnd,
-            int msg,
-            int wParam,
-            [MarshalAs(UnmanagedType.LPWStr)] string lParam);
-
         private void EnterOpenApiSpecDialog_Load(object sender, EventArgs e)
-            => SendMessage(
+            => NativeMethods.SendMessage(
                 tbUrl.Handle,
-                0x1501, // EM_SETCUEBANNER
+                NativeMethods.EM_SETCUEBANNER,
                 0,
-                "Enter OpenAPI Specification URL");
+                "Enter OpenAPI Specification URL (e.g. https://petstore.swagger.io/v2/swagger.json)");
 
         private async void BtnOK_Click(object sender, EventArgs e)
         {
@@ -66,12 +55,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Views
             try
             {
                 lblStatus.Text = "Downloading...";
-
-                var uri = new Uri(tbUrl.Text);
-                using (var client = new WebClient())
-                    OpenApiSpecification = await client.DownloadStringTaskAsync(uri);
-
-                if (string.IsNullOrWhiteSpace(OpenApiSpecification))
+                
+                var openApiSpecification = await DownloadOpenApiSpecAsync();
+                if (string.IsNullOrWhiteSpace(openApiSpecification))
                 {
                     lblStatus.Text = "No content!";
                     Trace.WriteLine($"Unable to download OpenAPI specification file from {tbUrl.Text}");
@@ -79,10 +65,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Views
                 }
 
                 Trace.WriteLine("OpenAPI Specifications:");
-                Trace.WriteLine(OpenApiSpecification);
+                Trace.WriteLine(openApiSpecification);
 
                 Result = new EnterOpenApiSpecDialogResult(
-                    OpenApiSpecification,
+                    openApiSpecification,
                     SelectedCodeGenerator,
                     tbFilename.Text + ".json");
 
@@ -91,7 +77,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Views
             }
             catch (UriFormatException ex)
             {
-                var message = "Invalid URL";
+                const string message = "Invalid URL";
                 lblStatus.Text = message;
                 Trace.WriteLine(message);
                 Trace.WriteLine(ex);
@@ -102,22 +88,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Views
                 Trace.WriteLine(ex);
             }
         }
-    }
 
-    public class EnterOpenApiSpecDialogResult
-    {
-        public EnterOpenApiSpecDialogResult(
-            string openApiSpecification,
-            SupportedCodeGenerator selectedCodeGenerator,
-            string outputFilename)
+        private async Task<string> DownloadOpenApiSpecAsync()
         {
-            OpenApiSpecification = openApiSpecification;
-            SelectedCodeGenerator = selectedCodeGenerator;
-            OutputFilename = outputFilename;
+            using (var client = new WebClient())
+                return await client.DownloadStringTaskAsync(
+                    new Uri(tbUrl.Text));
         }
-
-        public string OpenApiSpecification { get; }
-        public SupportedCodeGenerator SelectedCodeGenerator { get; }
-        public string OutputFilename { get; }
     }
 }

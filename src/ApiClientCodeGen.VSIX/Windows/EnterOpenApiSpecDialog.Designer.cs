@@ -1,4 +1,4 @@
-﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Views
+﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 {
     partial class EnterOpenApiSpecDialog
     {

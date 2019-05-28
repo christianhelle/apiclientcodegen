@@ -97,13 +97,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\OutputWindowTraceListener.cs" />
     <Compile Include="Extensions\ProjectExtensions.cs" />
-    <Compile Include="Views\EnterOpenApiSpecDialog.cs">
+    <Compile Include="Windows\EnterOpenApiSpecDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\EnterOpenApiSpecDialog.Designer.cs">
+    <Compile Include="Windows\EnterOpenApiSpecDialog.Designer.cs">
       <DependentUpon>EnterOpenApiSpecDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="VsPackage.cs" />
+    <Compile Include="Windows\EnterOpenApiSpecDialogResult.cs" />
+    <Compile Include="Windows\NativeMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -305,7 +307,7 @@
     </VSCTCompile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\EnterOpenApiSpecDialog.resx">
+    <EmbeddedResource Include="Windows\EnterOpenApiSpecDialog.resx">
       <DependentUpon>EnterOpenApiSpecDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VsPackage.resx">
