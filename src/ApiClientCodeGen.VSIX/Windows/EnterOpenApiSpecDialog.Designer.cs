@@ -65,7 +65,7 @@
             this.btnOK.Location = new System.Drawing.Point(384, 120);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 2;
+            this.btnOK.TabIndex = 3;
             this.btnOK.Text = "&OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
@@ -77,7 +77,7 @@
             this.btnCancel.Location = new System.Drawing.Point(465, 120);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -88,11 +88,12 @@
             "NSwag",
             "AutoRest",
             "Swagger Codegen",
-            "OpenAPI Code Generator"});
+            "OpenAPI Code Generator",
+            "NSwag Studio"});
             this.cbCustomTool.Location = new System.Drawing.Point(111, 50);
             this.cbCustomTool.Name = "cbCustomTool";
             this.cbCustomTool.Size = new System.Drawing.Size(429, 21);
-            this.cbCustomTool.TabIndex = 4;
+            this.cbCustomTool.TabIndex = 1;
             this.cbCustomTool.Text = "NSwag";
             // 
             // label1
@@ -122,7 +123,7 @@
             this.tbFilename.Location = new System.Drawing.Point(111, 85);
             this.tbFilename.Name = "tbFilename";
             this.tbFilename.Size = new System.Drawing.Size(429, 20);
-            this.tbFilename.TabIndex = 6;
+            this.tbFilename.TabIndex = 2;
             this.tbFilename.Text = "Swagger";
             // 
             // lblStatus
