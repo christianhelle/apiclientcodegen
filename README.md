@@ -52,3 +52,7 @@ The current version of this Visual Studio Extension requires you to manually add
 ![SwaggerCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/swaggercodegenerator-custom-tool.jpg)
 
 ![OpenApiCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/openapicodegenerator-custom-tool.jpg)
+
+![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-menu.jpg)
+
+![Enter URL to OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-dialog.jpg)
