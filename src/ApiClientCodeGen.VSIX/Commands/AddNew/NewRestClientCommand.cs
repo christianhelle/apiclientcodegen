@@ -34,7 +34,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             if (result == null)
                 return;
 
-            var folder = FindFolder(ProjectExtensions.GetSelectedItem(), dte);
+            var selectedItem = ProjectExtensions.GetSelectedItem();
+            var folder = FindFolder(selectedItem, dte);
             if (string.IsNullOrWhiteSpace(folder))
             {
                 Trace.WriteLine("Unable to get folder name");
@@ -44,9 +45,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             var contents = result.OpenApiSpecification;
             if (result.SelectedCodeGenerator == SupportedCodeGenerator.NSwagStudio)
             {
+                var outputNamespace = ProjectExtensions.GetActiveProject(dte)?.GetTopLevelNamespace();
                 contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
                     result.OpenApiSpecification,
-                    result.Url);
+                    result.Url,
+                    outputNamespace);
             }
 
             var filePath = Path.Combine(folder, result.OutputFilename);
