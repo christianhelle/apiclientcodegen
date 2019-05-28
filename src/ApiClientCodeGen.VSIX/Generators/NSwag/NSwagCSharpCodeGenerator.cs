@@ -61,7 +61,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
         private static string GetClassName(SwaggerDocument document)
             => string.IsNullOrWhiteSpace(document.Info?.Title)
                 ? "ApiClient"
-                : $"{RemoveCharacters(document.Info.Title, " ", ".", "-")}Client";
+                : $"{SanitizeTitle(document)}Client";
+
+        private static string SanitizeTitle(SwaggerDocument document)
+            => RemoveCharacters(
+                document.Info.Title,
+                "Swagger", " ", ".", "-");
 
         private static string RemoveCharacters(string source, params string[] removeChars)
             => removeChars.Aggregate(
