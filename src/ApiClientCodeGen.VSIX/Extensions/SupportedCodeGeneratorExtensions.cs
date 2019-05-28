@@ -16,7 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
         public static string GetCustomToolName(this SupportedCodeGenerator generator)
         {
-            string customTool;
+            string customTool = null;
             switch (generator)
             {
                 case SupportedCodeGenerator.NSwag:
@@ -30,9 +30,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                     break;
                 case SupportedCodeGenerator.OpenApi:
                     customTool = nameof(OpenApiCodeGenerator);
-                    break;
-                default:
-                    customTool = nameof(NSwagCodeGenerator);
                     break;
             }
 
