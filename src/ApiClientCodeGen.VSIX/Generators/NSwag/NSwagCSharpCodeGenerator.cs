@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -29,11 +30,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                     .FromFileAsync(swaggerFile)
                     .GetAwaiter()
                     .GetResult();
-                
+
                 pGenerateProgress?.Progress(20);
 
                 var settings = new SwaggerToCSharpClientGeneratorSettings
                 {
+                    ClassName = GetClassName(document),
                     InjectHttpClient = true,
                     GenerateClientInterfaces = true,
                     GenerateDtoTypes = true,
@@ -44,7 +46,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                         ClassStyle = CSharpClassStyle.Inpc
                     },
                 };
-                
+
                 pGenerateProgress?.Progress(50);
 
                 var generator = new SwaggerToCSharpClientGenerator(document, settings);
@@ -55,5 +57,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                 pGenerateProgress?.Progress(90);
             }
         }
+
+        private static string GetClassName(SwaggerDocument document)
+            => string.IsNullOrWhiteSpace(document.Info?.Title)
+                ? "ApiClient"
+                : $"{RemoveCharacters(document.Info.Title, " ", ".", "-")}Client";
+
+        private static string RemoveCharacters(string source, params string[] removeChars)
+            => removeChars.Aggregate(
+                source,
+                (current, c) => current.Replace(c, string.Empty));
     }
 }
