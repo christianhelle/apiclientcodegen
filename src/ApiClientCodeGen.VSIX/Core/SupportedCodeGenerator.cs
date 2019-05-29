@@ -5,6 +5,7 @@
         NSwag,
         AutoRest,
         Swagger,
-        OpenApi
+        OpenApi,
+        NSwagStudio
     }
 }

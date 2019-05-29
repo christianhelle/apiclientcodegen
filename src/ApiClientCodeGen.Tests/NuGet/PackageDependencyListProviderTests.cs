@@ -18,6 +18,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
                 .NotBeNullOrEmpty();
 
         [TestMethod]
+        public void GetDependencies_NSwagStudio_Returns_NotEmpty() 
+            => sut.GetDependencies(SupportedCodeGenerator.NSwagStudio)
+                .Should()
+                .NotBeNullOrEmpty();
+
+        [TestMethod]
         public void GetDependencies_AutoRest_Returns_NotEmpty() 
             => sut.GetDependencies(SupportedCodeGenerator.AutoRest)
                 .Should()
@@ -46,6 +52,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
         [TestMethod]
         public void GetDependencies_NSwag_Contains_NewtonsoftJson()
             => sut.GetDependencies(SupportedCodeGenerator.NSwag)
+                .Should()
+                .Contain(c => c.Name == "Newtonsoft.Json");
+
+        [TestMethod]
+        public void GetDependencies_NSwagStudio_Contains_NewtonsoftJson()
+            => sut.GetDependencies(SupportedCodeGenerator.NSwagStudio)
                 .Should()
                 .Contain(c => c.Name == "Newtonsoft.Json");
 

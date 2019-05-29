@@ -173,8 +173,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
         }
 
         public static async System.Threading.Tasks.Task InstallMissingPackagesAsync(
-            this Project project, 
-            AsyncPackage package, 
+            this Project project,
+            AsyncPackage package,
             SupportedCodeGenerator codeGenerator)
         {
             Trace.WriteLine("Checking required dependencies");
@@ -198,7 +198,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 }
 
                 Trace.WriteLine($"Installing {packageId} version {version}");
-                
+
                 packageInstaller.InstallPackage(
                     null,
                     project,
@@ -208,6 +208,25 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
                 Trace.WriteLine($"Successfully installed {packageId} version {version}");
             }
+        }
+
+        public static string GetTopLevelNamespace(this Project item)
+        {
+            try
+            {
+                var model = item.CodeModel;
+                foreach (CodeElement element in model.CodeElements)
+                {
+                    if (element.Kind == vsCMElement.vsCMElementNamespace)
+                    {
+                        return element.FullName;
+                    }
+                }
+            }
+            catch
+            {
+            }
+            return null;
         }
     }
 

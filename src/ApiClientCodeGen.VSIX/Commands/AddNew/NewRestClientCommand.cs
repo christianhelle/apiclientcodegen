@@ -2,10 +2,13 @@
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
+using Newtonsoft.Json;
 using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
@@ -31,22 +34,44 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             if (result == null)
                 return;
 
-            var folder = FindFolder(ProjectExtensions.GetSelectedItem(), dte);
+            var selectedItem = ProjectExtensions.GetSelectedItem();
+            var folder = FindFolder(selectedItem, dte);
             if (string.IsNullOrWhiteSpace(folder))
             {
                 Trace.WriteLine("Unable to get folder name");
                 return;
             }
 
+            var contents = result.OpenApiSpecification;
+            if (result.SelectedCodeGenerator == SupportedCodeGenerator.NSwagStudio)
+            {
+                var outputNamespace = ProjectExtensions.GetActiveProject(dte)?.GetTopLevelNamespace();
+                contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
+                    result.OpenApiSpecification,
+                    result.Url,
+                    outputNamespace);
+            }
+
             var filePath = Path.Combine(folder, result.OutputFilename);
-            File.WriteAllText(filePath, result.OpenApiSpecification);
+            File.WriteAllText(filePath, contents);
 
             var fileInfo = new FileInfo(filePath);
             var project = ProjectExtensions.GetActiveProject(dte);
             var projectItem = project.AddFileToProject(dte, fileInfo);
 
-            var customTool = result.SelectedCodeGenerator.GetCustomToolName();
-            projectItem.Properties.Item("CustomTool").Value = customTool;
+            if (result.SelectedCodeGenerator != SupportedCodeGenerator.NSwagStudio)
+            {
+                var customTool = result.SelectedCodeGenerator.GetCustomToolName();
+                projectItem.Properties.Item("CustomTool").Value = customTool;
+            }
+            else
+            {
+                var generator = new NSwagStudioCodeGenerator(filePath);
+                generator.GenerateCode(null);
+                dynamic nswag = JsonConvert.DeserializeObject(contents);
+                var nswagOutput = nswag.codeGenerators.swaggerToCSharpClient.output.ToString();
+                project.AddFileToProject(dte, new FileInfo(Path.Combine(folder, nswagOutput)));
+            }
 
             await project.InstallMissingPackagesAsync(package, result.SelectedCodeGenerator);
         }

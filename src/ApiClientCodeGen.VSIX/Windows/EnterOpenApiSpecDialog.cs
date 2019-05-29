@@ -43,7 +43,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 
         private async void BtnOK_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(tbUrl.Text))
+            var url = tbUrl.Text;
+            if (string.IsNullOrWhiteSpace(url))
             {
                 lblStatus.Text = @"Please enter the URL";
                 return;
@@ -60,7 +61,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
                 if (string.IsNullOrWhiteSpace(openApiSpecification))
                 {
                     lblStatus.Text = "No content!";
-                    Trace.WriteLine($"Unable to download OpenAPI specification file from {tbUrl.Text}");
+                    Trace.WriteLine($"Unable to download OpenAPI specification file from {url}");
                     return;
                 }
 
@@ -70,7 +71,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
                 Result = new EnterOpenApiSpecDialogResult(
                     openApiSpecification,
                     SelectedCodeGenerator,
-                    tbFilename.Text + ".json");
+                    tbFilename.Text + GetExtension(),
+                    url);
 
                 DialogResult = DialogResult.OK;
                 Close();
@@ -84,10 +86,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             }
             catch (Exception ex)
             {
-                Trace.WriteLine($"Unable to download OpenAPI specification file from {tbUrl.Text}");
+                Trace.WriteLine($"Unable to download OpenAPI specification file from {url}");
                 Trace.WriteLine(ex);
             }
         }
+
+        private string GetExtension()
+            => SelectedCodeGenerator != SupportedCodeGenerator.NSwagStudio
+                ? ".json"
+                : ".nswag";
 
         private async Task<string> DownloadOpenApiSpecAsync()
         {

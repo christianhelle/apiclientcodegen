@@ -13,11 +13,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
             switch (generator)
             {
                 case SupportedCodeGenerator.NSwag:
+                case SupportedCodeGenerator.NSwagStudio:
                     yield return new PackageDependency(
                         "Newtonsoft.Json",
                         new Version(12, 0, 1, 0));
                     break;
-                
+
                 case SupportedCodeGenerator.AutoRest:
                     yield return new PackageDependency(
                         "Microsoft.Rest.ClientRuntime",

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 {
@@ -16,5 +18,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             pcbOutput = (uint)data.Length;
             return ptr;
         }
+
+        public static string ToJson(this object value)
+            => JsonConvert.SerializeObject(
+                value,
+                new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+                });
     }
 }
