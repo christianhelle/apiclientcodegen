@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.Design;
+using System.Diagnostics;
 using System.Threading;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
@@ -34,10 +35,24 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 return;
 
             var menuCommand = new MenuCommand(
-                async (sender, e) => await func.Invoke(dte, package), 
+                (sender, e) => Invoke(package, func, dte), 
                 new CommandID(commandSet, commandId));
 
             commandService.AddCommand(menuCommand);
+        }
+
+#pragma warning disable VSTHRD100 // Avoid async void methods
+        private static async void Invoke(AsyncPackage package, Func<DTE, AsyncPackage, Task> func, DTE dte)
+#pragma warning restore VSTHRD100 // Avoid async void methods
+        {
+            try
+            {
+                await func.Invoke(dte, package);
+            }
+            catch (Exception e)
+            {
+                Trace.TraceError(e.ToString());
+            }
         }
     }
 }
