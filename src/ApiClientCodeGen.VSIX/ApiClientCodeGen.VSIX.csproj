@@ -55,7 +55,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddNew\NewAutoRestClientCommand.cs" />
+    <Compile Include="Commands\AddNew\NewNSwagClientCommand.cs" />
+    <Compile Include="Commands\AddNew\NewNSwagStudioClientCommand.cs" />
+    <Compile Include="Commands\AddNew\NewOpenApiClientCommand.cs" />
     <Compile Include="Commands\AddNew\NewRestClientCommand.cs" />
+    <Compile Include="Commands\AddNew\NewSwaggerClientCommand.cs" />
     <Compile Include="Commands\CustomTool\AutoRestCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="Commands\CustomTool\CustomToolSetter.cs" />
     <Compile Include="Commands\CustomTool\CustomToolSetterCommand.cs" />

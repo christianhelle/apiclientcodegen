@@ -13,22 +13,17 @@ using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 {
-    public class NewRestClientCommand : ICommandInitializer
+    public abstract class NewRestClientCommand : ICommandInitializer
     {
-        public const string ContextGuid = "7CEC8679-C1B8-48BF-9FA4-5FAA38CBE0FA";
-        public const string Name = "NSwag Studio Context";
-        public const string Expression = "nswag";
-        public const string TermValue = "HierSingleSelectionName:.nswag$";
-
-        protected int CommandId { get; } = 0x100;
         protected Guid CommandSet { get; } = new Guid("E4B99F94-D11F-4CAA-ADCD-24302C232938");
 
-        public async Task InitializeAsync(AsyncPackage package, CancellationToken token)
-        {
-            await package.SetupCommandAsync(CommandSet, CommandId, OnExecuteAsync, token);
-        }
+        protected virtual int CommandId { get; } = 0x100;
+        protected abstract SupportedCodeGenerator CodeGenerator { get; }
 
-        private static async Task OnExecuteAsync(DTE dte, AsyncPackage package)
+        public Task InitializeAsync(AsyncPackage package, CancellationToken token) 
+            => package.SetupCommandAsync(CommandSet, CommandId, OnExecuteAsync, token);
+
+        private async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
             var result = EnterOpenApiSpecDialog.GetResult();
             if (result == null)
@@ -43,25 +38,28 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             }
 
             var contents = result.OpenApiSpecification;
-            if (result.SelectedCodeGenerator == SupportedCodeGenerator.NSwagStudio)
+            var filename = result.OutputFilename + ".json";
+
+            if (CodeGenerator == SupportedCodeGenerator.NSwagStudio)
             {
                 var outputNamespace = ProjectExtensions.GetActiveProject(dte)?.GetTopLevelNamespace();
                 contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
                     result.OpenApiSpecification,
                     result.Url,
                     outputNamespace);
+                filename = filename.Replace(".json", ".nswag");
             }
 
-            var filePath = Path.Combine(folder, result.OutputFilename);
+            var filePath = Path.Combine(folder, filename);
             File.WriteAllText(filePath, contents);
 
             var fileInfo = new FileInfo(filePath);
             var project = ProjectExtensions.GetActiveProject(dte);
             var projectItem = project.AddFileToProject(dte, fileInfo);
 
-            if (result.SelectedCodeGenerator != SupportedCodeGenerator.NSwagStudio)
+            if (CodeGenerator != SupportedCodeGenerator.NSwagStudio)
             {
-                var customTool = result.SelectedCodeGenerator.GetCustomToolName();
+                var customTool = CodeGenerator.GetCustomToolName();
                 projectItem.Properties.Item("CustomTool").Value = customTool;
             }
             else
@@ -73,7 +71,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
                 project.AddFileToProject(dte, new FileInfo(Path.Combine(folder, nswagOutput)));
             }
 
-            await project.InstallMissingPackagesAsync(package, result.SelectedCodeGenerator);
+            await project.InstallMissingPackagesAsync(package, CodeGenerator);
         }
 
         private static string FindFolder(object item, DTE dte)
