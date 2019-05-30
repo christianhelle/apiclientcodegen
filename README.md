@@ -56,3 +56,6 @@ This Visual Studio Extension will automatically add the required nuget packages 
 ![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-menu.png)
 
 ![Enter URL to OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-dialog.png)
+
+
+For tips and tricks on software development, check out [my blog](https://christian-helle.blogspot.com)
