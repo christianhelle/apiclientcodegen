@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 {
@@ -26,11 +25,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 
             return dialogResult == DialogResult.OK ? result : null;
         }
-
-        public SupportedCodeGenerator SelectedCodeGenerator
-            => cbCustomTool.SelectedIndex == -1
-                ? default(SupportedCodeGenerator)
-                : (SupportedCodeGenerator)cbCustomTool.SelectedIndex;
 
         public EnterOpenApiSpecDialogResult Result { get; private set; }
 
@@ -70,8 +64,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 
                 Result = new EnterOpenApiSpecDialogResult(
                     openApiSpecification,
-                    SelectedCodeGenerator,
-                    tbFilename.Text + GetExtension(),
+                    tbFilename.Text,
                     url);
 
                 DialogResult = DialogResult.OK;
@@ -90,11 +83,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
                 Trace.WriteLine(ex);
             }
         }
-
-        private string GetExtension()
-            => SelectedCodeGenerator != SupportedCodeGenerator.NSwagStudio
-                ? ".json"
-                : ".nswag";
 
         private async Task<string> DownloadOpenApiSpecAsync()
         {
