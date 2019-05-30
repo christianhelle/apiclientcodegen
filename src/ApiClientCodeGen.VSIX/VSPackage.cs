@@ -27,12 +27,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         NSwagStudioCommand.Expression,
         new[] { NSwagStudioCommand.Expression },
         new[] { NSwagStudioCommand.TermValue })]
-    [ProvideUIContextRule(
-        NewRestClientCommand.ContextGuid,
-        NewRestClientCommand.Name,
-        NewRestClientCommand.Expression,
-        new[] { NewRestClientCommand.Expression },
-        new[] { NewRestClientCommand.TermValue })]
     public sealed class VsPackage : AsyncPackage
     {
         public const string VsixName = "REST API Client Code Generator";
@@ -43,7 +37,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
             new SwaggerCodeGeneratorCustomToolSetter(),
             new OpenApiCodeGeneratorCustomToolSetter(),
             new NSwagStudioCommand(),
-            new NewRestClientCommand()
+            new NewAutoRestClientCommand(),
+            new NewNSwagClientCommand(),
+            new NewSwaggerClientCommand(),
+            new NewOpenApiClientCommand(),
+            new NewNSwagStudioClientCommand()
         };
 
         protected override async Task InitializeAsync(
