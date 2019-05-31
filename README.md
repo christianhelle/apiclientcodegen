@@ -1,13 +1,14 @@
 ![build status](https://christianhelle.visualstudio.com/API%20Client%20Code%20Generator/_apis/build/status/CI%20Build)
 
 # REST API Client Code Generator
-A collection of Visual Studio custom tool code generators for Swagger / OpenAPI specification files
+A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files
 
 **Features**
 
 - Supports Visual Studio 2017 and 2019
+- Add New REST API Client to a project from an OpenAPI specification URL (e.g https://petstore.swagger.io/v2/swagger.json) using **AutoRest**, **NSwag**, **Swagger Codegen**, or **OpenAPI Codegen**
 - Define custom namespace for the generated file
-- Auto-updating of generated code file when changes are made to the Swagger.json file
+- Auto-updating of generated code file when changes are made to the OpenAPI specification json file (Swagger.json)
 - Generate code using an NSwag Studio file by including it in the project and using the **Generate with NSwag Studio** context menu
 
 
@@ -41,6 +42,10 @@ This Visual Studio Extension will automatically add the required nuget packages 
 
 **Screenshots**
 
+![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-menu.png)
+
+![Enter URL to OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-dialog.png)
+
 ![Solution Explorer Context Menus](https://github.com/christianhelle/apiclientcodegen/raw/master/images/solution-explorer-context-menu.jpg)
 
 ![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/nswagstudio-context-menu.jpg)
@@ -52,10 +57,6 @@ This Visual Studio Extension will automatically add the required nuget packages 
 ![SwaggerCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/swaggercodegenerator-custom-tool.jpg)
 
 ![OpenApiCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/openapicodegenerator-custom-tool.jpg)
-
-![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-menu.png)
-
-![Enter URL to OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-dialog.png)
 
 
 For tips and tricks on software development, check out [my blog](https://christian-helle.blogspot.com)
