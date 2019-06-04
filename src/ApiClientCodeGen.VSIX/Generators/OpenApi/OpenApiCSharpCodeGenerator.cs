@@ -9,6 +9,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Open
 {
     public class OpenApiCSharpCodeGenerator : ICodeGenerator
     {
+        private const string DownloadUrl = "http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/4.0.0/openapi-generator-cli-4.0.0.jar";
+        private const string Checksum = "61574C43BEC9B6EDD54E2DD0993F81D5";
         private readonly string swaggerFile;
         private readonly string defaultNamespace;
         private readonly string cliPath;
@@ -38,12 +40,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Open
 
                 var arguments =
                     $"-jar \"{cliPath}\" generate " +
-                    $"-l csharp " +
+                    "-g csharp-netcore " +
                     $"--input-spec \"{swaggerFile}\" " +
                     $"--output \"{output}\" " +
-                    $"-DapiTests=false -DmodelTests=false " +
+                    "-DapiTests=false -DmodelTests=false " +
                     $"-DpackageName={defaultNamespace} " +
-                    $"--skip-overwrite ";
+                    "--skip-overwrite ";
 
                 ProcessHelper.StartProcess("java", arguments);
                 pGenerateProgress.Progress(80);
@@ -58,16 +60,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Open
 
         private void VerifySwaggerCodegenCli()
         {
-            if (File.Exists(cliPath))
+            if (File.Exists(cliPath) && FileHelper.CalculateMd5(cliPath) == Checksum)
                 return;
 
-            const string url =
-                "http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/3.3.4/openapi-generator-cli-3.3.4.jar";
-
-            new WebClient()
-                .DownloadFile(
-                    url,
-                    cliPath);
+            new WebClient().DownloadFile(DownloadUrl, cliPath);
         }
 
         private static string MergeFilesAndDeleteFolder(string output)

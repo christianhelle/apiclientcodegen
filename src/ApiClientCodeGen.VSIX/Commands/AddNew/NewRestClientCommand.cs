@@ -9,6 +9,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Newtonsoft.Json;
+using VSLangProj;
 using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
@@ -55,7 +56,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
             var fileInfo = new FileInfo(filePath);
             var project = ProjectExtensions.GetActiveProject(dte);
-            var projectItem = project.AddFileToProject(dte, fileInfo);
+            var projectItem = project.AddFileToProject(dte, fileInfo, "None");
+            projectItem.Properties.Item("BuildAction").Value = prjBuildAction.prjBuildActionNone;
 
             if (CodeGenerator != SupportedCodeGenerator.NSwagStudio)
             {
