@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoRestCodeGeneratorTests.cs" />
+    <Compile Include="Utility\DependencyUninstaller.cs" />
     <Compile Include="NSwagStudioCodeGeneratorTests.cs" />
     <Compile Include="NSwagCodeGeneratorTests.cs" />
     <Compile Include="OpenApiCodeGeneratorTests.cs" />

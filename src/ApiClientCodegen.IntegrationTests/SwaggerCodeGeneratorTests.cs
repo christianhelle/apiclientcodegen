@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -23,6 +24,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
             code = codeGenerator.GenerateCode(mock.Object);
         }
+
+        [TestCleanup]
+        public void CleanUp()
+            => DependencyUninstaller.UninstallSwaggerCodegen();
 
         [TestMethod]
         public void Generated_Code_NotNullOrWhitespace()

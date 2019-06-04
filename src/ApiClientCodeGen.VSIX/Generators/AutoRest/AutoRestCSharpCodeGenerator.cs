@@ -11,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Auto
         {
         }
 
-        protected override string GetArguments(string outputFile) 
+        protected override string GetArguments(string outputFile)
             => $"--csharp " +
                $"--input-file=\"{SwaggerFile}\" " +
                $"--output-file=\"{outputFile}\" " +
@@ -24,8 +24,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Auto
                             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                             "npm\\autorest.cmd");
 
-            if (!File.Exists(autorestCmd))
-                throw new NotInstalledException("AutoRest not installed. Please install this through NPM");
+            if (!File.Exists(autorestCmd)) 
+                DependencyDownloader.InstallAutoRest();
 
             return autorestCmd;
         }
