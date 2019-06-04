@@ -21,13 +21,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
         public static string CalculateMd5(string filename)
         {
             using (var md5 = MD5.Create())
-            {
-                using (var stream = File.OpenRead(filename))
-                {
-                    var hash = md5.ComputeHash(stream);
-                    return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
-                }
-            }
+            using (var stream = File.OpenRead(filename))
+                return BitConverter
+                    .ToString(md5.ComputeHash(stream))
+                    .Replace("-", "")
+                    .ToUpperInvariant();
         }
     }
 }
