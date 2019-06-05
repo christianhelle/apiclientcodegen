@@ -40,7 +40,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Open
 
                 var arguments =
                     $"-jar \"{cliPath}\" generate " +
-                    "-g csharp-netcore " +
+                    "-g csharp " +
                     $"--input-spec \"{swaggerFile}\" " +
                     $"--output \"{output}\" " +
                     "-DapiTests=false -DmodelTests=false " +

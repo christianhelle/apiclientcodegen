@@ -26,7 +26,7 @@ The output file is the result of merging all the files generated using the Swagg
 
 - OpenApiCodeGenerator - Generates a single file C# REST API Client using OpenAPI Generator.
 The output file is the result of merging all the files generated using the OpenAPI Generator tool with:
-` generate -g csharp-netcore --input-spec [swaggerFile] --output [output] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite`
+` generate -g csharp --input-spec [swaggerFile] --output [output] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite`
 
 
 **Important note:**
