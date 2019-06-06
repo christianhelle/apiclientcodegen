@@ -193,8 +193,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 if (installedPackages.Any(
                     c => string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase)))
                 {
-                    if (installedPackages.Any(c => c.VersionString == version.ToString(3)))
+                    if (installedPackages.Any(c => c.VersionString == version.ToString(3)) || !packageDependency.ForceUpdate)
+                    {
+                        Trace.WriteLine($"{packageDependency.Name} is already installed (version {packageDependency.Version})");
                         continue;
+                    }
                 }
 
                 Trace.WriteLine($"Installing {packageId} version {version}");
