@@ -5,14 +5,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
 {
     public class PackageDependency
     {
-        public PackageDependency(string name, Version version)
+        public PackageDependency(string name, Version version, bool forceUpdate = false)
         {
             Name = name;
             Version = version;
+            ForceUpdate = forceUpdate;
         }
 
         public string Name { get; set; }
         public Version Version { get; set; }
+        public bool ForceUpdate { get; set; }
 
         public override bool Equals(object obj)
         {
