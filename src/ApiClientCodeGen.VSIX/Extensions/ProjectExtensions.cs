@@ -195,7 +195,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 {
                     if (installedPackages.Any(c => c.VersionString == version.ToString(3)) || !packageDependency.ForceUpdate)
                     {
-                        Trace.WriteLine($"{packageDependency.Name} is already installed (version {packageDependency.Version})");
+                        Trace.WriteLine($"{packageDependency.Name} is already installed");
                         continue;
                     }
                 }
