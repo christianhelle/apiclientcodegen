@@ -5,7 +5,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
 {
     public class PackageDependency
     {
-        public PackageDependency(string name, Version version, bool forceUpdate = false)
+        public PackageDependency(string name, Version version, bool forceUpdate = true)
         {
             Name = name;
             Version = version;
