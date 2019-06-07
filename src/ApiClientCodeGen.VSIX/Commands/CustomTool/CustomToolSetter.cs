@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
@@ -28,10 +29,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
 
         private async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
+            string name = typeof(T).Name.Replace("CodeGenerator", string.Empty);
+            Trace.WriteLine($"Generating code using {name}");
+
             var item = dte.SelectedItems.Item(1).ProjectItem;
             item.Properties.Item("CustomTool").Value = typeof(T).Name;
 
             var project = ProjectExtensions.GetActiveProject(dte);
+
             await project.InstallMissingPackagesAsync(
                 package,
                 typeof(T).GetSupportedCodeGenerator());
