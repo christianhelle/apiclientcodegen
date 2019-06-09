@@ -43,12 +43,18 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 
                 case SupportedCodeGenerator.Swagger:
                     if (language == SupportedLanguage.CSharp)
-                        return new SwaggerCSharpCodeGenerator(inputFilePath, defaultNamespace);
+                        return new SwaggerCSharpCodeGenerator(
+                            inputFilePath, 
+                            defaultNamespace,
+                            optionsFactory.Create<IGeneralOptions, GeneralOptionPage>());
                     break;
 
                 case SupportedCodeGenerator.OpenApi:
                     if (language == SupportedLanguage.CSharp)
-                        return new OpenApiCSharpCodeGenerator(inputFilePath, defaultNamespace);
+                        return new OpenApiCSharpCodeGenerator(
+                            inputFilePath, 
+                            defaultNamespace,
+                            optionsFactory.Create<IGeneralOptions, GeneralOptionPage>());
                     break;
             }
 

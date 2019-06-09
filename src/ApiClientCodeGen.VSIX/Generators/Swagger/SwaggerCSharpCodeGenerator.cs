@@ -2,6 +2,7 @@
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger
@@ -10,11 +11,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
     {
         private readonly string swaggerFile;
         private readonly string defaultNamespace;
+        private readonly JavaPathProvider javaPathProvider;
 
-        public SwaggerCSharpCodeGenerator(string swaggerFile, string defaultNamespace)
+        public SwaggerCSharpCodeGenerator(string swaggerFile, string defaultNamespace, IGeneralOptions options)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
+            javaPathProvider = new JavaPathProvider(options ?? throw new ArgumentNullException(nameof(options)));
         }
 
         public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
@@ -41,8 +44,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
                     $"-DapiTests=false -DmodelTests=false " +
                     $"-DpackageName={defaultNamespace} " +
                     $"--skip-overwrite ";
-
-                ProcessHelper.StartProcess("java", arguments);
+                
+                ProcessHelper.StartProcess(javaPathProvider.GetJavaExePath(), arguments);
                 pGenerateProgress.Progress(80);
 
                 return CSharpFileMerger.MergeFilesAndDeleteSource(output);

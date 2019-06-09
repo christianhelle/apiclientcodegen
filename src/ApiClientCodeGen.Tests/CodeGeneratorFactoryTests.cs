@@ -3,6 +3,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -22,6 +23,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
             mockFactory
                 .Setup(c => c.Create<INSwagOption, NSwagOptionsPage>())
                 .Returns(Test.CreateDummy<INSwagOption>());
+            mockFactory
+                .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage>())
+                .Returns(Test.CreateDummy<IGeneralOptions>());
 
             sut = new CodeGeneratorFactory(mockFactory.Object);
         }
@@ -58,5 +62,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
                 SupportedCodeGenerator.Swagger)
             .Should()
             .BeOfType<SwaggerCSharpCodeGenerator>();
+
+        [TestMethod]
+        public void Can_Create_OpenApiCodeGenerator()
+            => sut.Create(
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    SupportedLanguage.CSharp,
+                    SupportedCodeGenerator.OpenApi)
+                .Should()
+                .BeOfType<OpenApiCSharpCodeGenerator>();
     }
 }
