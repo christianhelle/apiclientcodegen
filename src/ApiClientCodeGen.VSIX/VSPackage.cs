@@ -30,9 +30,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         new[] { NSwagStudioCommand.Expression },
         new[] { NSwagStudioCommand.TermValue })]
     [ProvideOptionPage(
-        typeof(OptionPageGrid),
+        typeof(GeneralOptionPage),
         VsixName,
-        OptionPageGrid.General,
+        GeneralOptionPage.Name,
+        0,
+        0,
+        true)]
+    [ProvideOptionPage(
+        typeof(NSwagOptionPage),
+        VsixName,
+        NSwagOptionPage.Name,
         0,
         0,
         true)]

@@ -6,20 +6,29 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
 {
     public class NSwagCSharpOptions
     {
-        public NSwagCSharpOptions()
+        public NSwagCSharpOptions(INSwagOptionPage options = null)
         {
             try
             {
-                var dialogPage = (OptionPageGrid)VsPackage.Instance.GetDialogPage(typeof(OptionPageGrid));
-                InjectHttpClient = dialogPage.InjectHttpClient;
-                GenerateClientInterfaces = dialogPage.GenerateClientInterfaces;
-                GenerateDtoTypes = dialogPage.GenerateDtoTypes;
-                UseBaseUrl = dialogPage.UseBaseUrl;
-                ClassStyle = dialogPage.ClassStyle;
+                if (options == null)
+                    options = (INSwagOptionPage)VsPackage.Instance.GetDialogPage(typeof(NSwagOptionPage));
+
+                InjectHttpClient = options.InjectHttpClient;
+                GenerateClientInterfaces = options.GenerateClientInterfaces;
+                GenerateDtoTypes = options.GenerateDtoTypes;
+                UseBaseUrl = options.UseBaseUrl;
+                ClassStyle = options.ClassStyle;
             }
             catch (Exception e)
             {
                 Trace.WriteLine(e);
+                Trace.WriteLine(Environment.NewLine);
+                Trace.WriteLine("Error reading user options. Reverting to default values");
+                Trace.WriteLine("InjectHttpClient = true");
+                Trace.WriteLine("GenerateClientInterfaces = true");
+                Trace.WriteLine("GenerateDtoTypes = true");
+                Trace.WriteLine("UseBaseUrl = false");
+                Trace.WriteLine("ClassStyle = CSharpClassStyle.Poco");
 
                 InjectHttpClient = true;
                 GenerateClientInterfaces = true;
