@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Linq;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
-using Microsoft.VisualStudio.Shell;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using Microsoft.VisualStudio.Shell.Interop;
-using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;
 
@@ -13,11 +12,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
     {
         private readonly string swaggerFile;
         private readonly string defaultNamespace;
+        private readonly NSwagCSharpOptions options;
 
         public NSwagCSharpCodeGenerator(string swaggerFile, string defaultNamespace)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
+            options = new NSwagCSharpOptions();
         }
 
         public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
@@ -36,14 +37,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                 var settings = new SwaggerToCSharpClientGeneratorSettings
                 {
                     ClassName = GetClassName(document),
-                    InjectHttpClient = true,
-                    GenerateClientInterfaces = true,
-                    GenerateDtoTypes = true,
-                    UseBaseUrl = false,
+                    InjectHttpClient = options.InjectHttpClient,
+                    GenerateClientInterfaces = options.GenerateClientInterfaces,
+                    GenerateDtoTypes = options.GenerateDtoTypes,
+                    UseBaseUrl = options.UseBaseUrl,
                     CSharpGeneratorSettings =
                     {
                         Namespace = defaultNamespace,
-                        ClassStyle = CSharpClassStyle.Inpc
+                        ClassStyle = options.ClassStyle
                     },
                 };
 

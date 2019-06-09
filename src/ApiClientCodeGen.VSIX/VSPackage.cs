@@ -6,6 +6,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using OutputWindow = ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility.OutputWindow;
 using Task = System.Threading.Tasks.Task;
@@ -31,7 +32,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
     [ProvideOptionPage(
         typeof(OptionPageGrid),
         VsixName,
-        "General",
+        OptionPageGrid.General,
         0,
         0,
         true)]
@@ -52,6 +53,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
             new NewNSwagStudioClientCommand()
         };
 
+        public static AsyncPackage Instance { get; private set; }
+
         protected override async Task InitializeAsync(
             CancellationToken cancellationToken,
             IProgress<ServiceProgressData> progress)
@@ -59,6 +62,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await base.InitializeAsync(cancellationToken, progress);
             OutputWindow.Initialize(this, VsixName);
+            Instance = this;
 
             foreach (var command in commands)
                 await command.InitializeAsync(this, cancellationToken);

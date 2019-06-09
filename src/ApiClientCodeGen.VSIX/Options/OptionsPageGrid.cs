@@ -6,6 +6,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
 {
     public class OptionPageGrid : DialogPage
     {
+        public const string General = nameof(General);
+
         public OptionPageGrid()
         {
             JavaPath = PathProvider.GetJavaPath();
