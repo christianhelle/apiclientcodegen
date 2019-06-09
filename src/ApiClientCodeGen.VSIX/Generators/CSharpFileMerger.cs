@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,25 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
             var filesToParse = GetSourceFileNames(folder).ToList();
             var namespaces = GetUniqueNamespaces(filesToParse);
             return GenerateCombinedSource(namespaces, filesToParse);
+        }
+
+        public static string MergeFilesAndDeleteSource(string output)
+        {
+            try
+            {
+                return MergeFiles(output);
+            }
+            finally
+            {
+                try
+                {
+                    Directory.Delete(output, true);
+                }
+                catch (Exception e)
+                {
+                    Trace.WriteLine(e);
+                }
+            }
         }
 
         private static string GenerateCombinedSource(IEnumerable<string> namespaces, IEnumerable<string> files)

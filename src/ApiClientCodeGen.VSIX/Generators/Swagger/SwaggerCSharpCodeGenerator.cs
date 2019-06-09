@@ -45,29 +45,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
                 ProcessHelper.StartProcess("java", arguments);
                 pGenerateProgress.Progress(80);
 
-                return MergeFilesAndDeleteFolder(output);
+                return CSharpFileMerger.MergeFilesAndDeleteSource(output);
             }
             finally
             {
                 pGenerateProgress.Progress(90);
-            }
-        }
-        private static string MergeFilesAndDeleteFolder(string output)
-        {
-            try
-            {
-                return CSharpFileMerger.MergeFiles(output);
-            }
-            finally
-            {
-                try
-                {
-                    Directory.Delete(output, true);
-                }
-                catch (Exception e)
-                {
-                    Trace.WriteLine(e);
-                }
             }
         }
     }
