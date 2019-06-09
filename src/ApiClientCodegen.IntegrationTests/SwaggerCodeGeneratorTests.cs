@@ -30,11 +30,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             => DependencyUninstaller.UninstallSwaggerCodegen();
 
         [TestMethod]
-        public void Generated_Code_NotNullOrWhitespace()
+        public void Swagger_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
 
         [TestMethod]
-        public void Reports_Progres()
+        public void Swagger_Reports_Progres()
             => mock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
                 Times.AtLeastOnce);

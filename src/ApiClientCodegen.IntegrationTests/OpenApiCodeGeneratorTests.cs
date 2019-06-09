@@ -30,11 +30,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             => DependencyUninstaller.UninstallOpenApiGenerator();
 
         [TestMethod]
-        public void Generated_Code_NotNullOrWhitespace()
+        public void OpenApi_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
 
         [TestMethod]
-        public void Reports_Progres()
+        public void OpenApi_Reports_Progres()
             => mock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
                 Times.AtLeastOnce);

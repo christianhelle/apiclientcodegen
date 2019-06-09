@@ -14,7 +14,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     public class NSwagStudioCodeGeneratorTests
     {
         [TestMethod]
-        public void IntegrationTest_Generate_Code_Using_NSwagStudio()
+        public void NSwagStudio_Generate_Code_Using_NSwagStudio()
             => new NSwagStudioCodeGenerator(
                     Path.GetFullPath("Swagger.nswag"))
                 .GenerateCode(new Mock<IVsGeneratorProgress>().Object)
@@ -22,7 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .BeNull();
         
         [TestMethod]
-        public async Task IntegrationTest_Generate_Code_Using_NSwagStudio_From_SwaggerSpec()
+        public async Task NSwagStudio_Generate_Code_Using_NSwagStudio_From_SwaggerSpec()
         {
             var contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
                 File.ReadAllText("Swagger.json"),
