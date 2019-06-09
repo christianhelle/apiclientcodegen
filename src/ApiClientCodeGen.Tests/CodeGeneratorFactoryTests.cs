@@ -3,15 +3,28 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
 {
     [TestClass]
     public class CodeGeneratorFactoryTests
     {
-        private readonly CodeGeneratorFactory sut = new CodeGeneratorFactory();
+        private CodeGeneratorFactory sut;
+
+        [TestInitialize]
+        public void Init()
+        {
+            var mockFactory = new Mock<IOptionsFactory>();
+            mockFactory
+                .Setup(c => c.Create<INSwagOption, NSwagOptionsPage>())
+                .Returns(Test.CreateDummy<INSwagOption>());
+
+            sut = new CodeGeneratorFactory(mockFactory.Object);
+        }
 
         [TestMethod]
         public void Can_Create_NSwagCodeGenerator()

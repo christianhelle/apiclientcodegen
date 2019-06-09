@@ -6,12 +6,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
 {
     public class NSwagCSharpOptions
     {
-        public NSwagCSharpOptions(INSwagOptionPage options = null)
+        public NSwagCSharpOptions(INSwagOption options = null)
         {
             try
             {
                 if (options == null)
-                    options = (INSwagOptionPage)VsPackage.Instance.GetDialogPage(typeof(NSwagOptionPage));
+                    options = (INSwagOption)VsPackage.Instance.GetDialogPage(typeof(NSwagOptionsPage));
 
                 InjectHttpClient = options.InjectHttpClient;
                 GenerateClientInterfaces = options.GenerateClientInterfaces;

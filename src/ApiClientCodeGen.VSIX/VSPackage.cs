@@ -37,9 +37,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         0,
         true)]
     [ProvideOptionPage(
-        typeof(NSwagOptionPage),
+        typeof(NSwagOptionsPage),
         VsixName,
-        NSwagOptionPage.Name,
+        NSwagOptionsPage.Name,
         0,
         0,
         true)]

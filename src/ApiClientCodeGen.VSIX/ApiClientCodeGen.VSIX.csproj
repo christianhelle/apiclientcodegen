@@ -105,6 +105,7 @@
     <Compile Include="Options\NSwagOptionPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Options\OptionsFactory.cs" />
     <Compile Include="Options\OptionsPageGrid.cs">
       <SubType>Component</SubType>
     </Compile>

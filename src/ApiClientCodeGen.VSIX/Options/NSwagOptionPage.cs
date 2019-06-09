@@ -4,7 +4,7 @@ using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
 {
-    public interface INSwagOptionPage
+    public interface INSwagOption
     {
         bool InjectHttpClient { get; set; }
         bool GenerateClientInterfaces { get; set; }
@@ -13,7 +13,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
         CSharpClassStyle ClassStyle { get; set; }
     }
 
-    public class NSwagOptionPage : DialogPage, INSwagOptionPage
+    public class NSwagOptionsPage : DialogPage, INSwagOption
     {
         public const string Name = "NSwag";
 

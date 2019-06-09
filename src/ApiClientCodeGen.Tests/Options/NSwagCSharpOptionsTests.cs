@@ -9,13 +9,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
     [TestClass]
     public class NSwagCSharpOptionsTests
     {
-        private INSwagOptionPage options;
+        private INSwagOption options;
 
         [TestInitialize]
         public void Init()
         {
             var fixture = new Fixture();
-            var mock = new Mock<INSwagOptionPage>();
+            var mock = new Mock<INSwagOption>();
             options = mock.Object;
         }
 

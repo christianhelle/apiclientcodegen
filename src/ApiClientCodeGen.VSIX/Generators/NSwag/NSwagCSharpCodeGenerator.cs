@@ -14,7 +14,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
         private readonly string defaultNamespace;
         private readonly NSwagCSharpOptions options;
 
-        public NSwagCSharpCodeGenerator(string swaggerFile, string defaultNamespace)
+        public NSwagCSharpCodeGenerator(string swaggerFile, string defaultNamespace, INSwagOption create)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
