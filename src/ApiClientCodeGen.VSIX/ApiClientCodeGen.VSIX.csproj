@@ -96,6 +96,7 @@
     <Compile Include="Extensions\SwaggerDocumentExtensions.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGenerator.cs" />
     <Compile Include="Options\CustomPathOptions.cs" />
+    <Compile Include="Options\JavaPathProvider.cs" />
     <Compile Include="Options\NSwagCSharpOptions.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGenerator.cs" />
     <Compile Include="Generators\ProcessHelper.cs" />

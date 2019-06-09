@@ -100,6 +100,7 @@
     <Compile Include="DeploymentItemTests.cs" />
     <Compile Include="NuGet\SupportedCodeGeneratorExtensionsTests.cs" />
     <Compile Include="NuGet\PackageDependencyListProviderTests.cs" />
+    <Compile Include="Options\JavaPathProviderTests.cs" />
     <Compile Include="Options\NSwagCSharpOptionsTests.cs" />
     <Compile Include="Options\PathProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
