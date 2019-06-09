@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio
@@ -36,7 +37,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                             GenerateResponseClasses = true,
                             GenerateJsonMethods = true,
                             RequiredPropertiesMustBeDefined = true,
-                            classStyle = "Inpc",
+                            classStyle = CSharpClassStyle.Poco,
                             GenerateDefaultValues = true,
                             GenerateDataAnnotations = true,
                             Namespace = outputNamespace ?? "GeneratedCode",
