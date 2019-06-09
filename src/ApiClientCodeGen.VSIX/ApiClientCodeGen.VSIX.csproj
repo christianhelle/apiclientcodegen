@@ -96,6 +96,9 @@
     <Compile Include="Extensions\SwaggerDocumentExtensions.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGenerator.cs" />
     <Compile Include="Options\CustomPathOptions.cs" />
+    <Compile Include="Options\IGeneralOptions.cs" />
+    <Compile Include="Options\INSwagOption.cs" />
+    <Compile Include="Options\IOptionsFactory.cs" />
     <Compile Include="Options\JavaPathProvider.cs" />
     <Compile Include="Options\NSwagCSharpOptions.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGenerator.cs" />
@@ -104,11 +107,11 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="NuGet\PackageDependency.cs" />
     <Compile Include="NuGet\PackageDependencyListProvider.cs" />
-    <Compile Include="Options\NSwagOptionPage.cs">
+    <Compile Include="Options\NSwagOptionsPage.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Options\OptionsFactory.cs" />
-    <Compile Include="Options\OptionsPageGrid.cs">
+    <Compile Include="Options\GeneralOptionPage.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Options\PathProvider.cs" />
