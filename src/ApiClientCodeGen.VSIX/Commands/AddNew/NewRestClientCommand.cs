@@ -5,6 +5,7 @@ using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
@@ -66,7 +67,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             }
             else
             {
-                var generator = new NSwagStudioCodeGenerator(filePath);
+                var generator = new NSwagStudioCodeGenerator(filePath, new CustomPathOptions());
                 generator.GenerateCode(null);
                 dynamic nswag = JsonConvert.DeserializeObject(contents);
                 var nswagOutput = nswag.codeGenerators.swaggerToCSharpClient.output.ToString();

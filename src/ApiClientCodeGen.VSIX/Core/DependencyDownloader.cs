@@ -51,7 +51,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
                 path = Path.Combine(Path.GetTempPath(), jar);
 
             if (!File.Exists(path) || FileHelper.CalculateMd5(path) != md5)
+            {
+                Trace.WriteLine($"{jar} not found. Attempting to download {jar}");
                 new WebClient().DownloadFile(url, path);
+                Trace.WriteLine($"{jar} downloaded successfully");
+            }
 
             return path;
         }

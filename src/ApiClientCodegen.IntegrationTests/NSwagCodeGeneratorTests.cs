@@ -5,6 +5,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests
 {
@@ -13,6 +14,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     public class NSwagCodeGeneratorTests
     {
         private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
+        private static readonly Mock<INSwagOption> optionsMock = new Mock<INSwagOption>();
         private static string code = null;
 
         [ClassInitialize]
@@ -21,7 +23,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             var codeGenerator = new NSwagCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
                 typeof(NSwagCodeGeneratorTests).Namespace,
-                new Mock<INSwagOption>().Object);
+                optionsMock.Object);
 
             code = codeGenerator.GenerateCode(mock.Object);
         }
@@ -33,7 +35,27 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         [TestMethod]
         public void NSwag_Reports_Progres()
             => mock.Verify(
-                c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
+                c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()),
                 Times.AtLeastOnce);
+
+        [TestMethod]
+        public void Reads_InjectHttpClient_From_Options()
+            => optionsMock.Verify(c => c.InjectHttpClient);
+
+        [TestMethod]
+        public void Reads_GenerateClientInterfaces_From_Options()
+            => optionsMock.Verify(c => c.GenerateClientInterfaces);
+
+        [TestMethod]
+        public void Reads_GenerateDtoTypes_From_Options()
+            => optionsMock.Verify(c => c.GenerateDtoTypes);
+
+        [TestMethod]
+        public void Reads_UseBaseUrl_From_Options()
+            => optionsMock.Verify(c => c.UseBaseUrl);
+
+        [TestMethod]
+        public void Reads_ClassStyle_From_Options()
+            => optionsMock.Verify(c => c.ClassStyle);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest
 {
@@ -20,9 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Auto
 
         protected override string GetCommand()
         {
-            var autorestCmd = Path.Combine(
-                            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                            "npm\\autorest.cmd");
+            var autorestCmd = PathProvider.GetAutoRestPath();
 
             if (!File.Exists(autorestCmd)) 
                 DependencyDownloader.InstallAutoRest();

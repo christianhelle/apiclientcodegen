@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
@@ -7,9 +8,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
     {
         public static string GetJavaPath()
         {
-            var javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
-            var javaExe = Path.Combine(javaHome, "bin\\java.exe");
-            return javaExe;
+            try
+            {
+                var javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
+                var javaExe = Path.Combine(javaHome, "bin\\java.exe");
+                return javaExe;
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e);
+                Trace.WriteLine(Environment.NewLine);
+                Trace.WriteLine("Unable to find JAVA_HOME environment variable");
+                return null;
+            }
         }
 
         public static string GetNpmPath()
@@ -29,5 +40,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
             => Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
                 "Rico Suter\\NSwagStudio\\Win\\NSwag.exe");
+
+        public static string GetAutoRestPath()
+            => Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "npm\\autorest.cmd");
     }
 }
