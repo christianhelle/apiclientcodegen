@@ -5,6 +5,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using Microsoft.VisualStudio.Shell;
 using OutputWindow = ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility.OutputWindow;
 using Task = System.Threading.Tasks.Task;
@@ -27,6 +28,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         NSwagStudioCommand.Expression,
         new[] { NSwagStudioCommand.Expression },
         new[] { NSwagStudioCommand.TermValue })]
+    [ProvideOptionPage(
+        typeof(OptionPageGrid),
+        VsixName,
+        "General",
+        0,
+        0,
+        true)]
     public sealed class VsPackage : AsyncPackage
     {
         public const string VsixName = "REST API Client Code Generator";
