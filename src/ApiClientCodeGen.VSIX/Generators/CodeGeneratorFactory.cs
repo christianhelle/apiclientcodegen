@@ -38,7 +38,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                         return new NSwagCSharpCodeGenerator(
                             inputFilePath, 
                             defaultNamespace,
-                            optionsFactory.Create<INSwagOption, NSwagCSharpOptions>());
+                            optionsFactory.Create<INSwagOptions, NSwagCSharpOptions>());
                     break;
 
                 case SupportedCodeGenerator.Swagger:

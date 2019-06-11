@@ -14,7 +14,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     public class NSwagCodeGeneratorTests
     {
         private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
-        private static readonly Mock<INSwagOption> optionsMock = new Mock<INSwagOption>();
+        private static readonly Mock<INSwagOptions> optionsMock = new Mock<INSwagOptions>();
         private static string code = null;
 
         [ClassInitialize]

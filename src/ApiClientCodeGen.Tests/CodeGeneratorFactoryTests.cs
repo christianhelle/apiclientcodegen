@@ -21,8 +21,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
         {
             var mockFactory = new Mock<IOptionsFactory>();
             mockFactory
-                .Setup(c => c.Create<INSwagOption, NSwagOptionsPage>())
-                .Returns(Test.CreateDummy<INSwagOption>());
+                .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage>())
+                .Returns(Test.CreateDummy<INSwagOptions>());
             mockFactory
                 .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage>())
                 .Returns(Test.CreateDummy<IGeneralOptions>());

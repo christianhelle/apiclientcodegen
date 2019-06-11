@@ -2,7 +2,7 @@
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
 {
-    public interface INSwagOption
+    public interface INSwagOptions
     {
         bool InjectHttpClient { get; set; }
         bool GenerateClientInterfaces { get; set; }
