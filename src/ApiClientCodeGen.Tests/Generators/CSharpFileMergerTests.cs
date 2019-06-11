@@ -3,7 +3,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators
 {
     [TestClass]
     public class CSharpFileMergerTests

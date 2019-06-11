@@ -1,15 +1,15 @@
 ﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.OpenApi;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators
 {
     [TestClass]
     public class CodeGeneratorFactoryTests

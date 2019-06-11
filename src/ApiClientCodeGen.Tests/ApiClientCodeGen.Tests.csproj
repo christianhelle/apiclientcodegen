@@ -55,11 +55,20 @@
       <HintPath>..\packages\FluentAssertions.5.6.0\lib\net45\FluentAssertions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Microsoft.VisualStudio.OLE.Interop.7.10.6071\lib\Microsoft.VisualStudio.OLE.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Microsoft.VisualStudio.Shell.Interop.7.10.6072\lib\net11\Microsoft.VisualStudio.Shell.Interop.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.4.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.4.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextManager.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <HintPath>..\packages\Microsoft.VisualStudio.TextManager.Interop.7.10.6071\lib\net11\Microsoft.VisualStudio.TextManager.Interop.dll</HintPath>
     </Reference>
     <Reference Include="Moq, Version=4.11.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.11.0\lib\net45\Moq.dll</HintPath>
@@ -95,11 +104,15 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CodeGeneratorFactoryTests.cs" />
-    <Compile Include="CSharpFileMergerTests.cs" />
+    <Compile Include="Extensions\GetDependenciesTests.cs" />
+    <Compile Include="Extensions\GetSupportedCodeGeneratorTests.cs" />
     <Compile Include="Extensions\StringToIntPtrTests.cs" />
+    <Compile Include="Extensions\GetCustomToolNameTests.cs" />
     <Compile Include="Extensions\ToJsonTests.cs" />
+    <Compile Include="Generators\CodeGeneratorFactoryTests.cs" />
+    <Compile Include="Generators\CSharpFileMergerTests.cs" />
     <Compile Include="DeploymentItemTests.cs" />
+    <Compile Include="Generators\CodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelperTests.cs" />
     <Compile Include="NuGet\SupportedCodeGeneratorExtensionsTests.cs" />
     <Compile Include="NuGet\PackageDependencyListProviderTests.cs" />
