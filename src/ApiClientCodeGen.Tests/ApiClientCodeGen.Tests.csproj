@@ -97,6 +97,8 @@
   <ItemGroup>
     <Compile Include="CodeGeneratorFactoryTests.cs" />
     <Compile Include="CSharpFileMergerTests.cs" />
+    <Compile Include="Extensions\StringToIntPtrTests.cs" />
+    <Compile Include="Extensions\ToJsonTests.cs" />
     <Compile Include="DeploymentItemTests.cs" />
     <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelperTests.cs" />
     <Compile Include="NuGet\SupportedCodeGeneratorExtensionsTests.cs" />
