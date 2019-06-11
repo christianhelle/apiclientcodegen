@@ -98,6 +98,7 @@
     <Compile Include="Options\CustomPathOptions.cs" />
     <Compile Include="Options\IGeneralOptions.cs" />
     <Compile Include="Options\INSwagOption.cs" />
+    <Compile Include="Options\INSwagStudioOption.cs" />
     <Compile Include="Options\IOptionsFactory.cs" />
     <Compile Include="Options\JavaPathProvider.cs" />
     <Compile Include="Options\NSwagCSharpOptions.cs" />
@@ -108,6 +109,9 @@
     <Compile Include="NuGet\PackageDependency.cs" />
     <Compile Include="NuGet\PackageDependencyListProvider.cs" />
     <Compile Include="Options\NSwagOptionsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Options\NSwagStudioOptionsPage.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Options\OptionsFactory.cs" />

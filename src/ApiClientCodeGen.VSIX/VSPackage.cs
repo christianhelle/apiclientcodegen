@@ -43,6 +43,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         0,
         0,
         true)]
+    [ProvideOptionPage(
+        typeof(NSwagStudioOptionsPage),
+        VsixName,
+        NSwagStudioOptionsPage.Name,
+        0,
+        0,
+        true)]
     public sealed class VsPackage : AsyncPackage
     {
         public const string VsixName = "REST API Client Code Generator";
