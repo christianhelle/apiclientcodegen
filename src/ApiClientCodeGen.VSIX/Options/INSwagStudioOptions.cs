@@ -2,10 +2,10 @@
 {
     public interface INSwagStudioOptions : INSwagOptions
     {
-        bool GenerateResponseClasses { get; set; }
-        bool GenerateJsonMethods { get; set; }
-        bool RequiredPropertiesMustBeDefined { get; set; }
-        bool GenerateDefaultValues { get; set; }
-        bool GenerateDataAnnotations { get; set; }
+        bool GenerateResponseClasses { get; }
+        bool GenerateJsonMethods { get; }
+        bool RequiredPropertiesMustBeDefined { get; }
+        bool GenerateDefaultValues { get; }
+        bool GenerateDataAnnotations { get; }
     }
 }
