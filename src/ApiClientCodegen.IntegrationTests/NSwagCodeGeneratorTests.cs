@@ -5,11 +5,11 @@ using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests
 {
     [TestClass]
+    [TestCategory("SkipWhenLiveUnitTesting")]
     [DeploymentItem("Resources/Swagger.json")]
     public class NSwagCodeGeneratorTests
     {

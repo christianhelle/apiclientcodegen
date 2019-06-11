@@ -10,6 +10,7 @@ using Moq;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests
 {
     [TestClass]
+    [TestCategory("SkipWhenLiveUnitTesting")]
     [DeploymentItem("Resources/Swagger.json")]
     public class SwaggerCodeGeneratorTests
     {
