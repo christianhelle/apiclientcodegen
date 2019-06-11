@@ -4,7 +4,7 @@ using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
 {
-    public class NSwagCSharpOptions
+    public class NSwagCSharpOptions : INSwagOptions
     {
         public NSwagCSharpOptions(INSwagOptions options = null)
         {
