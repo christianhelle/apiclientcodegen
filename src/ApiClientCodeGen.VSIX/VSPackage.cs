@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands;
@@ -13,6 +14,7 @@ using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
 {
+    [ExcludeFromCodeCoverage]
     [Guid("47AFE4E1-5A52-4FE1-8CA7-EDB8310BDA4A")]
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [InstalledProductRegistration(VsixName, "", "1.0")]

@@ -1,5 +1,8 @@
-﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 {
+    [ExcludeFromCodeCoverage]
     public class EnterOpenApiSpecDialogResult
     {
         public EnterOpenApiSpecDialogResult(
