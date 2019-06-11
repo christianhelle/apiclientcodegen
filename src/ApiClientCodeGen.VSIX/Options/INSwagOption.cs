@@ -4,10 +4,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
 {
     public interface INSwagOptions
     {
-        bool InjectHttpClient { get; set; }
-        bool GenerateClientInterfaces { get; set; }
-        bool GenerateDtoTypes { get; set; }
-        bool UseBaseUrl { get; set; }
-        CSharpClassStyle ClassStyle { get; set; }
+        bool InjectHttpClient { get; }
+        bool GenerateClientInterfaces { get; }
+        bool GenerateDtoTypes { get; }
+        bool UseBaseUrl { get; }
+        CSharpClassStyle ClassStyle { get; }
     }
 }
