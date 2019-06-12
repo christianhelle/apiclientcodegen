@@ -50,13 +50,16 @@ This Visual Studio Extension will automatically add the required nuget packages 
 
 ![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/nswagstudio-context-menu.jpg)
 
-![AutoRestCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/autorestcodegenerator-custom-tool.jpg)
 
-![NSwagCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/nswagcodegenerator-custom-tool.jpg)
+**Settings**
 
-![SwaggerCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/swaggercodegenerator-custom-tool.jpg)
+This extension will by default make some assumptions on the installation paths for **Java**, **NSwag** and **NPM** but also provides option pages for configuring this
 
-![OpenApiCodeGenerator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/openapicodegenerator-custom-tool.jpg)
+![Options - General](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-general.png)
+
+![Options - NSwag](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswag.png)
+
+![Options - NSwag Studio](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswagstudio.png)
 
 
 For tips and tricks on software development, check out [my blog](https://christian-helle.blogspot.com)
