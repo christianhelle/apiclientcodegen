@@ -132,6 +132,12 @@
     </Compile>
     <Compile Include="VsPackage.cs" />
     <Compile Include="Windows\EnterOpenApiSpecDialogResult.cs" />
+    <Compile Include="Windows\GeneralOptionsPageCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\GeneralOptionsPageCustom.Designer.cs">
+      <DependentUpon>GeneralOptionsPageCustom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\NativeMethods.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -345,6 +351,9 @@
       <DependentUpon>VsPackage.cs</DependentUpon>
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\GeneralOptionsPageCustom.resx">
+      <DependentUpon>GeneralOptionsPageCustom.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

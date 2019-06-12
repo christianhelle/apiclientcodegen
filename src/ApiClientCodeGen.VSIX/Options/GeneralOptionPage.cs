@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel;
+using System.Windows.Forms;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using Microsoft.VisualStudio.Shell;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
@@ -15,8 +17,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
         }
 
         [Category("File Paths")]
-        [DisplayName("Custom Java Path")]
-        [Description("Custom full path to java.exe. Leave empty to get path from JAVA_HOME")]
+        [DisplayName("Java Path")]
+        [Description("Full path to java.exe. Leave empty to get path from JAVA_HOME")]
         public string JavaPath { get; set; }
 
         [Category("File Paths")]
@@ -28,5 +30,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
         [DisplayName("NSwag Path")]
         [Description("Full path to nswag.exe")]
         public string NSwagPath { get; set; }
+
+        protected override IWin32Window Window
+            => new GeneralOptionsPageCustom(this);
     }
 }
