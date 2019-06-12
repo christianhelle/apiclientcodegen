@@ -39,7 +39,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                             GenerateResponseClasses = options?.GenerateResponseClasses ?? true,
                             GenerateJsonMethods = options?.GenerateJsonMethods ?? true,
                             RequiredPropertiesMustBeDefined = options?.RequiredPropertiesMustBeDefined ?? true,
-                            classStyle = options?.ClassStyle ?? CSharpClassStyle.Poco,
+                            ClassStyle = options?.ClassStyle ?? CSharpClassStyle.Poco,
                             GenerateDefaultValues = options?.GenerateDefaultValues ?? true,
                             GenerateDataAnnotations = options?.GenerateDataAnnotations ?? true,
                             Namespace = outputNamespace ?? "GeneratedCode",

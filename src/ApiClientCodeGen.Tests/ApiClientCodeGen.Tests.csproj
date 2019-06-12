@@ -104,6 +104,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomTool\SingleFileCodeGeneratorTests.cs" />
+    <Compile Include="CustomTool\TestSingleFileCodeGenerator.cs" />
     <Compile Include="Extensions\GetDependenciesTests.cs" />
     <Compile Include="Extensions\GetSupportedCodeGeneratorTests.cs" />
     <Compile Include="Extensions\StringToIntPtrTests.cs" />

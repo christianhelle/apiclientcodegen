@@ -8,7 +8,17 @@ using System;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
-    public class CodeGeneratorFactory
+    public interface ICodeGeneratorFactory
+    {
+        ICodeGenerator Create(
+            string defaultNamespace,
+            string inputFileContents,
+            string inputFilePath,
+            SupportedLanguage language,
+            SupportedCodeGenerator generator);
+    }
+
+    public class CodeGeneratorFactory : ICodeGeneratorFactory
     {
         private readonly IOptionsFactory optionsFactory;
 
