@@ -34,6 +34,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
             catch (Exception e)
             {
                 Trace.WriteLine("Java not installed using default settings");
+                Trace.WriteLine(e);
             }
 
             if (string.IsNullOrWhiteSpace(options.JavaPath))
