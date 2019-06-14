@@ -15,7 +15,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
         private Mock<INSwagStudioOptions> mock;
 
         [TestInitialize]
-        public async Task Init()
+        public async Task InitAsync()
         {
             mock = new Mock<INSwagStudioOptions>();
 
