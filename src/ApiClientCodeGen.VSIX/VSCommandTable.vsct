@@ -15,7 +15,7 @@
     </Groups>
 
     <Menus>
-      <Menu guid="guidPackageCmdSet" id="Submenu" type="Menu">
+      <Menu guid="guidPackageCmdSet" id="Submenu" type="Menu" priority="0x0001">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
@@ -53,8 +53,8 @@
         </Strings>
       </Button>
 
-      <Button guid="guidPackageNSwagStudioCmdSet" id="NSwagStudioCommand">
-        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
+      <Button guid="guidPackageNSwagStudioCmdSet" id="NSwagStudioCommand" priority="0x0001">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE" />
         <CommandFlag>DefaultInvisible</CommandFlag>
         <Strings>
           <ButtonText>Generate NSwag Studio output</ButtonText>
