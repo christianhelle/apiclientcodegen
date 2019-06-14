@@ -10,6 +10,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Threading;
 using Newtonsoft.Json;
 using VSLangProj;
 using Task = System.Threading.Tasks.Task;
@@ -29,6 +30,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
         private async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
             var result = EnterOpenApiSpecDialog.GetResult();
             if (result == null)
                 return;
@@ -82,6 +85,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
         private static string FindFolder(object item, DTE dte)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             switch (item)
             {
                 case ProjectItem projectItem:

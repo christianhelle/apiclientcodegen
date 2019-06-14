@@ -24,11 +24,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
             => package.SetupCommandAsync(
                 CommandSet,
                 CommandId,
-                OnExecute,
+                OnExecuteAsync,
                 token);
 
-        private static async Task OnExecute(DTE dte, AsyncPackage package)
+        private static async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
             var item = dte.SelectedItems.Item(1).ProjectItem;
             var nswagStudioFile = item.FileNames[0];
             var codeGenerator = new NSwagStudioCodeGenerator(nswagStudioFile, new CustomPathOptions());
