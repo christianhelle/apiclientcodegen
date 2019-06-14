@@ -17,7 +17,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
         public NSwagStudioCodeGenerator(string nswagStudioFile, IGeneralOptions options)
         {
             this.nswagStudioFile = nswagStudioFile ?? throw new ArgumentNullException(nameof(nswagStudioFile));
-            this.options = new CustomPathOptions(options);
+            this.options = new CustomPathOptions(options ?? throw new ArgumentNullException(nameof(options)));
         }
 
         public string GenerateCode(IVsGeneratorProgress pGenerateProgress)

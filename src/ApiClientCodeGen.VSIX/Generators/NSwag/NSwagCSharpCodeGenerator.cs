@@ -18,7 +18,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
-            this.options = new NSwagCSharpOptions(options);
+            this.options = new NSwagCSharpOptions(options ?? throw new ArgumentNullException(nameof(options)));
         }
 
         public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
