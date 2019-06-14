@@ -95,12 +95,31 @@
     <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelper.cs" />
     <Compile Include="Extensions\SwaggerDocumentExtensions.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGenerator.cs" />
+    <Compile Include="Options\CustomPathOptions.cs" />
+    <Compile Include="Options\IGeneralOptions.cs" />
+    <Compile Include="Options\INSwagOption.cs" />
+    <Compile Include="Options\INSwagStudioOptions.cs" />
+    <Compile Include="Options\IOptionsFactory.cs" />
+    <Compile Include="Options\JavaPathProvider.cs" />
+    <Compile Include="Options\NSwagStudioOptions.cs" />
+    <Compile Include="Options\NSwagCSharpOptions.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGenerator.cs" />
     <Compile Include="Generators\ProcessHelper.cs" />
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGenerator.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="NuGet\PackageDependency.cs" />
     <Compile Include="NuGet\PackageDependencyListProvider.cs" />
+    <Compile Include="Options\NSwagOptionsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Options\NSwagStudioOptionsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Options\OptionsFactory.cs" />
+    <Compile Include="Options\GeneralOptionPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Options\PathProvider.cs" />
     <Compile Include="Utility\OutputWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\OutputWindowTraceListener.cs" />
@@ -113,6 +132,12 @@
     </Compile>
     <Compile Include="VsPackage.cs" />
     <Compile Include="Windows\EnterOpenApiSpecDialogResult.cs" />
+    <Compile Include="Windows\GeneralOptionsPageCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\GeneralOptionsPageCustom.Designer.cs">
+      <DependentUpon>GeneralOptionsPageCustom.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\NativeMethods.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -326,6 +351,9 @@
       <DependentUpon>VsPackage.cs</DependentUpon>
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\GeneralOptionsPageCustom.resx">
+      <DependentUpon>GeneralOptionsPageCustom.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

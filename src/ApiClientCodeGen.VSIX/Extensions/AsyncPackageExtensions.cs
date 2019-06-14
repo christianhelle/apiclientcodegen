@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.Design;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
@@ -8,6 +9,7 @@ using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 {
+    [ExcludeFromCodeCoverage]
     public static class AsyncPackageExtensions
     {
         public static async Task SetupCommandAsync(

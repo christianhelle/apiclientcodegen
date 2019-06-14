@@ -1,25 +1,23 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
-using System.Net;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.OpenApi
 {
     public class OpenApiCSharpCodeGenerator : ICodeGenerator
     {
-        private const string DownloadUrl = "http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/4.0.0/openapi-generator-cli-4.0.0.jar";
-        private const string Checksum = "61574C43BEC9B6EDD54E2DD0993F81D5";
         private readonly string swaggerFile;
         private readonly string defaultNamespace;
-        private readonly string cliPath;
+        private readonly JavaPathProvider javaPathProvider;
 
-        public OpenApiCSharpCodeGenerator(string swaggerFile, string defaultNamespace)
+        public OpenApiCSharpCodeGenerator(string swaggerFile, string defaultNamespace, IGeneralOptions options)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
-            cliPath = Path.Combine(Path.GetTempPath(), "openapi-generator-cli.jar");
+            javaPathProvider = new JavaPathProvider(options ?? throw new ArgumentNullException(nameof(options)));
         }
 
         public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
@@ -28,7 +26,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Open
             {
                 pGenerateProgress.Progress(10);
 
-                VerifySwaggerCodegenCli();
+                var cliPath = DependencyDownloader.InstallOpenApiGenerator();
                 pGenerateProgress.Progress(30);
 
                 var output = Path.Combine(
@@ -47,41 +45,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Open
                     $"-DpackageName={defaultNamespace} " +
                     "--skip-overwrite ";
 
-                ProcessHelper.StartProcess("java", arguments);
+                ProcessHelper.StartProcess(javaPathProvider.GetJavaExePath(), arguments);
                 pGenerateProgress.Progress(80);
 
-                return MergeFilesAndDeleteFolder(output);
+                return CSharpFileMerger.MergeFilesAndDeleteSource(output);
             }
             finally
             {
                 pGenerateProgress.Progress(90);
-            }
-        }
-
-        private void VerifySwaggerCodegenCli()
-        {
-            if (File.Exists(cliPath) && FileHelper.CalculateMd5(cliPath) == Checksum)
-                return;
-
-            new WebClient().DownloadFile(DownloadUrl, cliPath);
-        }
-
-        private static string MergeFilesAndDeleteFolder(string output)
-        {
-            try
-            {
-                return CSharpFileMerger.MergeFiles(output);
-            }
-            finally
-            {
-                try
-                {
-                    Directory.Delete(output, true);
-                }
-                catch (Exception e)
-                {
-                    Trace.WriteLine(e);
-                }
             }
         }
     }

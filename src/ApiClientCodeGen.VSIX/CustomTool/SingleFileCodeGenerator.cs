@@ -27,6 +27,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 
         public abstract int DefaultExtension(out string pbstrDefaultExtension);
 
+        public ICodeGeneratorFactory Factory { get; set; } = new CodeGeneratorFactory();
+
         public int Generate(
             string wszInputFilePath,
             string bstrInputFileContents,
@@ -39,8 +41,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
             {
                 pGenerateProgress.Progress(5);
 
-                var factory = new CodeGeneratorFactory();
-                var codeGenerator = factory.Create(
+                var codeGenerator = Factory.Create(
                     wszDefaultNamespace,
                     bstrInputFileContents,
                     wszInputFilePath,
@@ -60,7 +61,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
             catch (Exception e)
             {
                 pGenerateProgress.GeneratorError(e);
-                MessageBox.Show(e.Message, "Unable to generate code");
+                Trace.WriteLine("Unable to generate code");
                 Trace.WriteLine(e);
                 throw;
             }

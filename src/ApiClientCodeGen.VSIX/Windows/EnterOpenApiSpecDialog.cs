@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 {
+    [ExcludeFromCodeCoverage]
     public partial class EnterOpenApiSpecDialog : Form
     {
         public EnterOpenApiSpecDialog()

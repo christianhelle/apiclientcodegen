@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
@@ -14,6 +16,7 @@ using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 {
+    [ExcludeFromCodeCoverage]
     public abstract class NewRestClientCommand : ICommandInitializer
     {
         protected Guid CommandSet { get; } = new Guid("E4B99F94-D11F-4CAA-ADCD-24302C232938");
@@ -47,6 +50,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
                 contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
                     result.OpenApiSpecification,
                     result.Url,
+                    new NSwagStudioOptions(),
                     outputNamespace);
                 filename = filename.Replace(".json", ".nswag");
             }
@@ -66,7 +70,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             }
             else
             {
-                var generator = new NSwagStudioCodeGenerator(filePath);
+                var generator = new NSwagStudioCodeGenerator(filePath, new CustomPathOptions());
                 generator.GenerateCode(null);
                 dynamic nswag = JsonConvert.DeserializeObject(contents);
                 var nswagOutput = nswag.codeGenerators.swaggerToCSharpClient.output.ToString();

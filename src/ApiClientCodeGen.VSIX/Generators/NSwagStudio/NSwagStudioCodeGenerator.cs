@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using Microsoft.VisualStudio.Shell.Interop;
 using Newtonsoft.Json;
 
@@ -11,22 +12,25 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
     public class NSwagStudioCodeGenerator : ICodeGenerator
     {
         private readonly string nswagStudioFile;
+        private readonly CustomPathOptions options;
 
-        public NSwagStudioCodeGenerator(string nswagStudioFile)
+        public NSwagStudioCodeGenerator(string nswagStudioFile, IGeneralOptions options)
         {
             this.nswagStudioFile = nswagStudioFile ?? throw new ArgumentNullException(nameof(nswagStudioFile));
+            this.options = new CustomPathOptions(options);
         }
 
         public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
         {
             pGenerateProgress?.Progress(10);
 
-            var command = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
-                "Rico Suter\\NSwagStudio\\Win\\NSwag.exe");
-
+            var command = options.NSwagPath;
             if (!File.Exists(command))
-                throw new NotInstalledException("NSwag not installed. Please install NSwagStudio");
+            {
+                command = PathProvider.GetNSwagPath();
+                if (!File.Exists(command))
+                    throw new NotInstalledException("NSwag not installed. Please install NSwagStudio");
+            }
 
             TryRemoveSwaggerJsonSpec(nswagStudioFile);
             ProcessHelper.StartProcess(command, $"run \"{nswagStudioFile}\"");

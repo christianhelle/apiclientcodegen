@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio
@@ -9,6 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
         public static async Task<string> CreateNSwagStudioFileAsync(
             string openApiSpec, 
             string openApiSpecUrl,
+            INSwagStudioOptions options = null,
             string outputNamespace = null)
         {
             var className = (await SwaggerDocument.FromJsonAsync(openApiSpec)).GenerateClassName();
@@ -28,17 +31,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                         SwaggerToCSharpClient = new
                         {
                             ClassName = className,
-                            InjectHttpClient = true,
-                            GenerateClientInterfaces = true,
-                            GenerateDtoTypes = true,
-                            UseBaseUrl = false,
+                            InjectHttpClient = options?.InjectHttpClient ?? true,
+                            GenerateClientInterfaces = options?.GenerateClientInterfaces ?? true,
+                            GenerateDtoTypes = options?.GenerateDtoTypes ?? true,
+                            UseBaseUrl = options?.UseBaseUrl ?? false,
                             OperationGenerationMode = "MultipleClientsFromOperationId",
-                            GenerateResponseClasses = true,
-                            GenerateJsonMethods = true,
-                            RequiredPropertiesMustBeDefined = true,
-                            classStyle = "Inpc",
-                            GenerateDefaultValues = true,
-                            GenerateDataAnnotations = true,
+                            GenerateResponseClasses = options?.GenerateResponseClasses ?? true,
+                            GenerateJsonMethods = options?.GenerateJsonMethods ?? true,
+                            RequiredPropertiesMustBeDefined = options?.RequiredPropertiesMustBeDefined ?? true,
+                            ClassStyle = options?.ClassStyle ?? CSharpClassStyle.Poco,
+                            GenerateDefaultValues = options?.GenerateDefaultValues ?? true,
+                            GenerateDataAnnotations = options?.GenerateDataAnnotations ?? true,
                             Namespace = outputNamespace ?? "GeneratedCode",
                             Output = $"{className}.cs"
                         }

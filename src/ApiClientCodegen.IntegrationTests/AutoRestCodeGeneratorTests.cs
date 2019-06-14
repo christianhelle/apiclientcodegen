@@ -9,32 +9,33 @@ using Moq;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests
 {
     [TestClass]
+    [TestCategory("SkipWhenLiveUnitTesting")]
     [DeploymentItem("Resources/Swagger.json")]
     public class AutoRestCodeGeneratorTests
     {
-        private readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
-        private string code = null;
+        private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
+        private static string code = null;
 
-        [TestInitialize]
-        public void Init()
+        [ClassInitialize]
+        public static void Init(TestContext testContext)
         {
             var codeGenerator = new AutoRestCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
-                GetType().Namespace);
+                typeof(AutoRestCodeGeneratorTests).Namespace);
 
             code = codeGenerator.GenerateCode(mock.Object);
         }
 
-        [TestCleanup]
-        public void CleanUp()
+        [ClassCleanup]
+        public static void CleanUp()
             => DependencyUninstaller.UninstallAutoRest();
 
         [TestMethod]
-        public void Generated_Code_NotNullOrWhitespace()
+        public void AutoRest_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
 
         [TestMethod]
-        public void Reports_Progres()
+        public void AutoRest_Reports_Progres()
             => mock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
                 Times.AtLeastOnce);

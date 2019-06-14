@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
-using System.Net;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger
@@ -11,13 +11,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
     {
         private readonly string swaggerFile;
         private readonly string defaultNamespace;
-        private readonly string cliPath;
+        private readonly JavaPathProvider javaPathProvider;
 
-        public SwaggerCSharpCodeGenerator(string swaggerFile, string defaultNamespace)
+        public SwaggerCSharpCodeGenerator(string swaggerFile, string defaultNamespace, IGeneralOptions options)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
-            cliPath = Path.Combine(Path.GetTempPath(), "swagger-codegen-cli.jar");
+            javaPathProvider = new JavaPathProvider(options ?? throw new ArgumentNullException(nameof(options)));
         }
 
         public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
@@ -25,8 +25,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
             try
             {
                 pGenerateProgress.Progress(10);
-
-                VerifySwaggerCodegenCli();
+                
+                var cliPath = DependencyDownloader.InstallSwaggerCodegenCli();
                 pGenerateProgress.Progress(30);
 
                 var output = Path.Combine(
@@ -44,48 +44,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
                     $"-DapiTests=false -DmodelTests=false " +
                     $"-DpackageName={defaultNamespace} " +
                     $"--skip-overwrite ";
-
-                ProcessHelper.StartProcess("java", arguments);
+                
+                ProcessHelper.StartProcess(javaPathProvider.GetJavaExePath(), arguments);
                 pGenerateProgress.Progress(80);
 
-                return MergeFilesAndDeleteFolder(output);
+                return CSharpFileMerger.MergeFilesAndDeleteSource(output);
             }
             finally
             {
                 pGenerateProgress.Progress(90);
-            }
-        }
-
-        private void VerifySwaggerCodegenCli()
-        {
-            if (File.Exists(cliPath))
-                return;
-
-            const string swaggerCliUrl =
-                "https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.5/swagger-codegen-cli-2.4.5.jar";
-
-            new WebClient()
-                .DownloadFile(
-                    swaggerCliUrl,
-                    cliPath);
-        }
-
-        private static string MergeFilesAndDeleteFolder(string output)
-        {
-            try
-            {
-                return CSharpFileMerger.MergeFiles(output);
-            }
-            finally
-            {
-                try
-                {
-                    Directory.Delete(output, true);
-                }
-                catch (Exception e)
-                {
-                    Trace.WriteLine(e);
-                }
             }
         }
     }

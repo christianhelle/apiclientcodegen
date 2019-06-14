@@ -3,6 +3,7 @@ using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
@@ -30,7 +31,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
         {
             var item = dte.SelectedItems.Item(1).ProjectItem;
             var nswagStudioFile = item.FileNames[0];
-            var codeGenerator = new NSwagStudioCodeGenerator(nswagStudioFile);
+            var codeGenerator = new NSwagStudioCodeGenerator(nswagStudioFile, new CustomPathOptions());
             codeGenerator.GenerateCode(null);
             
             var project = ProjectExtensions.GetActiveProject(dte);

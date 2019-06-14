@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,34 +10,44 @@ using Moq;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests
 {
     [TestClass]
+    [TestCategory("SkipWhenLiveUnitTesting")]
     [DeploymentItem("Resources/Swagger.json")]
     public class SwaggerCodeGeneratorTests
     {
-        private readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
-        private string code = null;
+        private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
+        private static Mock<IGeneralOptions> optionsMock;
+        private static string code = null;
 
-        [TestInitialize]
-        public void Init()
+        [ClassInitialize]
+        public static void Init(TestContext testContext)
         {
+            optionsMock = new Mock<IGeneralOptions>();
+            optionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
+
             var codeGenerator = new SwaggerCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
-                GetType().Namespace);
+                typeof(SwaggerCodeGeneratorTests).Namespace,
+                optionsMock.Object);
 
             code = codeGenerator.GenerateCode(mock.Object);
         }
 
-        [TestCleanup]
-        public void CleanUp()
+        [ClassCleanup]
+        public static void CleanUp()
             => DependencyUninstaller.UninstallSwaggerCodegen();
 
         [TestMethod]
-        public void Generated_Code_NotNullOrWhitespace()
+        public void Swagger_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
 
         [TestMethod]
-        public void Reports_Progres()
+        public void Swagger_Reports_Progres()
             => mock.Verify(
-                c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
+                c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()),
                 Times.AtLeastOnce);
+
+        [TestMethod]
+        public void Reads_JavaPath_From_Options() 
+            => optionsMock.Verify(c => c.JavaPath);
     }
 }
