@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using EnvDTE;
+using Microsoft;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
@@ -21,6 +22,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
     {
         public static string GetRootFolder(this Project project, DTE Dte)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             if (project == null)
                 return null;
 
@@ -64,6 +67,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
         public static ProjectItem AddFileToProject(this Project project, DTE Dte, FileInfo file, string itemType = null)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             if (project.IsKind(ProjectTypes.ASPNET_5, ProjectTypes.SSDT))
                 return Dte.Solution.FindProjectItem(file.FullName);
 
@@ -81,6 +86,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
         {
             try
             {
+                ThreadHelper.ThrowIfNotOnUIThread();
+
                 if (item == null || item.ContainingProject == null)
                     return;
 
@@ -99,6 +106,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
         public static bool IsKind(this Project project, params string[] kindGuids)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             foreach (var guid in kindGuids)
                 if (project.Kind.Equals(guid, StringComparison.OrdinalIgnoreCase))
                     return true;
@@ -110,6 +119,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
         {
             try
             {
+                ThreadHelper.ThrowIfNotOnUIThread();
+
                 if (Dte.ActiveSolutionProjects is Array activeSolutionProjects && activeSolutionProjects.Length > 0)
                     return activeSolutionProjects.GetValue(0) as Project;
 
@@ -133,14 +144,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
         public static IVsTextView GetCurrentNativeTextView()
         {
-            var textManager = (IVsTextManager)ServiceProvider.GlobalProvider.GetService(typeof(SVsTextManager));
-
+            ThreadHelper.ThrowIfNotOnUIThread();
+            IVsTextManager textManager = (IVsTextManager)ServiceProvider.GlobalProvider.GetService(typeof(SVsTextManager));
+            Assumes.Present(textManager);
             ErrorHandler.ThrowOnFailure(textManager.GetActiveView(1, null, out var activeView));
             return activeView;
         }
 
         public static object GetSelectedItem()
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             object selectedObject = null;
 
             var monitorSelection = (IVsMonitorSelection)Package.GetGlobalService(typeof(SVsShellMonitorSelection));
@@ -182,6 +195,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             Trace.WriteLine("Checking required dependencies");
 
             var componentModel = (IComponentModel)await package.GetServiceAsync(typeof(SComponentModel));
+            Assumes.Present(componentModel);
+
             var packageInstaller = componentModel.GetService<IVsPackageInstaller>();
             var installedServices = componentModel.GetService<IVsPackageInstallerServices>();
             var installedPackages = installedServices.GetInstalledPackages(project)?.ToList() ?? new List<IVsPackageMetadata>();
@@ -219,6 +234,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
         {
             try
             {
+                ThreadHelper.ThrowIfNotOnUIThread();
+
                 var model = item.CodeModel;
                 foreach (CodeElement element in model.CodeElements)
                 {

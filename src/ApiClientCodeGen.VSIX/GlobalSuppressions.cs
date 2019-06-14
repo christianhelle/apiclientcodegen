@@ -5,4 +5,5 @@
 // a specific target and scoped to a namespace, type, member, etc.
 
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "VSTHRD002:Avoid problematic synchronous waits", Justification = "<Pending>", Scope = "member", Target = "~M:ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag.NSwagCSharpCodeGenerator.GenerateCodeAsync~System.String")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "VSTHRD002:Avoid problematic synchronous waits", Justification = "<Pending>", Scope = "member", Target = "~M:ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag.NSwagCSharpCodeGenerator.GenerateCode(Microsoft.VisualStudio.Shell.Interop.IVsGeneratorProgress)~System.String")]
 

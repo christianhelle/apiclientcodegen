@@ -13,8 +13,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
         : ICommandInitializer
         where T : SingleFileCodeGenerator
     {
-        private DTE dte;
-
         protected abstract int CommandId { get; }
         protected Guid CommandSet { get; } = new Guid("C292653B-5876-4B8C-B672-3375D8561881");
 
@@ -29,6 +27,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
 
         private async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
             string name = typeof(T).Name.Replace("CodeGenerator", string.Empty);
             Trace.WriteLine($"Generating code using {name}");
 
