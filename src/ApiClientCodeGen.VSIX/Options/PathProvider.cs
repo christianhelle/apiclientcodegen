@@ -45,5 +45,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
             => Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 "npm\\autorest.cmd");
+
+        public static string GetSwaggerCodegenPath()
+            => Path.Combine(
+                Path.GetTempPath(), 
+                "swagger-codegen-cli.jar");
+
+        public static string GetOpenApiGeneratorPath()
+            => Path.Combine(
+                Path.GetTempPath(),
+                "openapi-generator-cli.jar");
     }
 }
