@@ -27,6 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             var command = options.NSwagPath;
             if (!File.Exists(command))
             {
+                Trace.WriteLine(command + " does not exist! Retrying with default NSwag.exe path");
                 command = PathProvider.GetNSwagPath();
                 if (!File.Exists(command))
                     throw new NotInstalledException("NSwag not installed. Please install NSwagStudio");
