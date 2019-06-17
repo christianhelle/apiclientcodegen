@@ -1,6 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
@@ -14,26 +12,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
             {
                 case SupportedCodeGenerator.NSwag:
                 case SupportedCodeGenerator.NSwagStudio:
-                    yield return new PackageDependency(
-                        "Newtonsoft.Json",
-                        new Version(12, 0, 2, 0),
-                        false);
+                    yield return PackageDependencies.NewtonsoftJson;
+                    yield return PackageDependencies.SystemRuntimeSerializationPrimitives;
+                    yield return PackageDependencies.SystemComponentModelAnnotations;
                     break;
 
                 case SupportedCodeGenerator.AutoRest:
-                    yield return new PackageDependency(
-                        "Microsoft.Rest.ClientRuntime",
-                        new Version(2, 3, 20, 0));
+                    yield return PackageDependencies.MicrosoftRestClientRuntime;
                     break;
 
                 case SupportedCodeGenerator.Swagger:
                 case SupportedCodeGenerator.OpenApi:
-                    yield return new PackageDependency(
-                        "RestSharp",
-                        new Version(105, 1, 0, 0));
-                    yield return new PackageDependency(
-                        "JsonSubTypes",
-                        new Version(1, 2, 0, 0));
+                    yield return PackageDependencies.RestSharp;
+                    yield return PackageDependencies.JsonSubTypes;
+                    yield return PackageDependencies.SystemRuntimeSerializationPrimitives;
+                    yield return PackageDependencies.SystemComponentModelAnnotations;
                     break;
             }
         }

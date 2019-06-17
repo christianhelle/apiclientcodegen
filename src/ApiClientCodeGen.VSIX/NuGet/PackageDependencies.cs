@@ -10,7 +10,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
                 new Version(12, 0, 2, 0),
                 false);
 
-        public static readonly PackageDependency RestClientRuntime =
+        public static readonly PackageDependency MicrosoftRestClientRuntime =
             new PackageDependency(
                 "Microsoft.Rest.ClientRuntime",
                 new Version(2, 3, 20, 0));
@@ -25,22 +25,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
                 "JsonSubTypes",
                 new Version(1, 2, 0, 0));
 
-        public static readonly PackageDependency SystemRuntime =
-            new PackageDependency(
-                "System.Runtime",
-                new Version(4, 3, 0));
-
-        public static readonly PackageDependency SerializationPrimitives =
+        public static readonly PackageDependency SystemRuntimeSerializationPrimitives =
             new PackageDependency(
                 "System.Runtime.Serialization.Primitives",
                 new Version(4, 3, 0));
 
-        public static readonly PackageDependency ComponentModel =
-            new PackageDependency(
-                "System.ComponentModel",
-                new Version(4, 3, 0));
-
-        public static readonly PackageDependency ComponentModelAnnotations =
+        public static readonly PackageDependency SystemComponentModelAnnotations =
             new PackageDependency(
                 "System.ComponentModel.Annotations",
                 new Version(4, 5, 0));
