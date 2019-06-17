@@ -7,6 +7,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
     {
         public static void StartProcess(string command, string arguments)
         {
+            Trace.WriteLine("Executing:");
+            Trace.WriteLine($"{command} {arguments}");
+
             var processInfo = new ProcessStartInfo(command, arguments);
             using (var process = new Process { StartInfo = processInfo })
             {
