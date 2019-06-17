@@ -22,6 +22,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             tbJavaPath.Text = options.JavaPath;
             tbNpmPath.Text = options.NpmPath;
             tbNSwagPath.Text = options.NSwagPath;
+            tbSwaggerPath.Text = options.SwaggerCodegenPath;
+            tbOpenApiPath.Text = options.OpenApiGeneratorPath;
         }
 
         private void OpenFileDialog(Control output)
@@ -46,6 +48,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
         private void TbNSwagPath_TextChanged(object sender, EventArgs e)
             => options.NSwagPath = tbNSwagPath.Text;
 
+        private void TbSwaggerPath_TextChanged(object sender, EventArgs e)
+            => options.SwaggerCodegenPath = tbSwaggerPath.Text;
+
+        private void TbOpenApiPath_TextChanged(object sender, EventArgs e)
+            => options.OpenApiGeneratorPath = tbOpenApiPath.Text;
+
         private void BtnJavaPath_Click(object sender, EventArgs e)
             => OpenFileDialog(tbJavaPath);
 
@@ -54,5 +62,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 
         private void BtnNSwagPath_Click(object sender, EventArgs e)
             => OpenFileDialog(tbNSwagPath);
+
+        private void BtnSwagger_Click(object sender, EventArgs e)
+            => OpenFileDialog(tbSwaggerPath);
+
+        private void BtnOpenApi_Click(object sender, EventArgs e)
+            => OpenFileDialog(tbOpenApiPath);
     }
 }

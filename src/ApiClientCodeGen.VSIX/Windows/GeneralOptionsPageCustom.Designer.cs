@@ -37,6 +37,12 @@
             this.btnNSwagPath = new System.Windows.Forms.Button();
             this.tbNSwagPath = new System.Windows.Forms.TextBox();
             this.lblNSwagPath = new System.Windows.Forms.Label();
+            this.btnOpenApi = new System.Windows.Forms.Button();
+            this.tbOpenApiPath = new System.Windows.Forms.TextBox();
+            this.lblOpenApiPath = new System.Windows.Forms.Label();
+            this.btnSwagger = new System.Windows.Forms.Button();
+            this.tbSwaggerPath = new System.Windows.Forms.TextBox();
+            this.lblSwaggerPath = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblJavaPath
@@ -132,10 +138,78 @@
             this.lblNSwagPath.TabIndex = 6;
             this.lblNSwagPath.Text = "Full path to nswag.exe";
             // 
+            // btnOpenApi
+            // 
+            this.btnOpenApi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenApi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpenApi.Location = new System.Drawing.Point(347, 246);
+            this.btnOpenApi.Name = "btnOpenApi";
+            this.btnOpenApi.Size = new System.Drawing.Size(30, 20);
+            this.btnOpenApi.TabIndex = 14;
+            this.btnOpenApi.Text = "...";
+            this.btnOpenApi.UseVisualStyleBackColor = true;
+            this.btnOpenApi.Click += new System.EventHandler(this.BtnOpenApi_Click);
+            // 
+            // tbOpenApiPath
+            // 
+            this.tbOpenApiPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbOpenApiPath.Location = new System.Drawing.Point(16, 246);
+            this.tbOpenApiPath.Name = "tbOpenApiPath";
+            this.tbOpenApiPath.Size = new System.Drawing.Size(325, 20);
+            this.tbOpenApiPath.TabIndex = 13;
+            this.tbOpenApiPath.TextChanged += new System.EventHandler(this.TbOpenApiPath_TextChanged);
+            // 
+            // lblOpenApiPath
+            // 
+            this.lblOpenApiPath.AutoSize = true;
+            this.lblOpenApiPath.Location = new System.Drawing.Point(13, 230);
+            this.lblOpenApiPath.Name = "lblOpenApiPath";
+            this.lblOpenApiPath.Size = new System.Drawing.Size(366, 13);
+            this.lblOpenApiPath.TabIndex = 12;
+            this.lblOpenApiPath.Text = "Full path OpenAPI Generator JAR file. Leave empty to download on-demand";
+            // 
+            // btnSwagger
+            // 
+            this.btnSwagger.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSwagger.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSwagger.Location = new System.Drawing.Point(347, 191);
+            this.btnSwagger.Name = "btnSwagger";
+            this.btnSwagger.Size = new System.Drawing.Size(30, 20);
+            this.btnSwagger.TabIndex = 11;
+            this.btnSwagger.Text = "...";
+            this.btnSwagger.UseVisualStyleBackColor = true;
+            this.btnSwagger.Click += new System.EventHandler(this.BtnSwagger_Click);
+            // 
+            // tbSwaggerPath
+            // 
+            this.tbSwaggerPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSwaggerPath.Location = new System.Drawing.Point(16, 191);
+            this.tbSwaggerPath.Name = "tbSwaggerPath";
+            this.tbSwaggerPath.Size = new System.Drawing.Size(325, 20);
+            this.tbSwaggerPath.TabIndex = 10;
+            this.tbSwaggerPath.TextChanged += new System.EventHandler(this.TbSwaggerPath_TextChanged);
+            // 
+            // lblSwaggerPath
+            // 
+            this.lblSwaggerPath.AutoSize = true;
+            this.lblSwaggerPath.Location = new System.Drawing.Point(13, 175);
+            this.lblSwaggerPath.Name = "lblSwaggerPath";
+            this.lblSwaggerPath.Size = new System.Drawing.Size(373, 13);
+            this.lblSwaggerPath.TabIndex = 9;
+            this.lblSwaggerPath.Text = "Full path to Swagger Codegen JAR file. Leave empty to download on-demand";
+            // 
             // GeneralOptionsPageCustom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnOpenApi);
+            this.Controls.Add(this.tbOpenApiPath);
+            this.Controls.Add(this.lblOpenApiPath);
+            this.Controls.Add(this.btnSwagger);
+            this.Controls.Add(this.tbSwaggerPath);
+            this.Controls.Add(this.lblSwaggerPath);
             this.Controls.Add(this.btnNSwagPath);
             this.Controls.Add(this.tbNSwagPath);
             this.Controls.Add(this.lblNSwagPath);
@@ -146,7 +220,7 @@
             this.Controls.Add(this.tbJavaPath);
             this.Controls.Add(this.lblJavaPath);
             this.Name = "GeneralOptionsPageCustom";
-            this.Size = new System.Drawing.Size(390, 176);
+            this.Size = new System.Drawing.Size(390, 282);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,5 +237,11 @@
         private System.Windows.Forms.Button btnNSwagPath;
         private System.Windows.Forms.TextBox tbNSwagPath;
         private System.Windows.Forms.Label lblNSwagPath;
+        private System.Windows.Forms.Button btnOpenApi;
+        private System.Windows.Forms.TextBox tbOpenApiPath;
+        private System.Windows.Forms.Label lblOpenApiPath;
+        private System.Windows.Forms.Button btnSwagger;
+        private System.Windows.Forms.TextBox tbSwaggerPath;
+        private System.Windows.Forms.Label lblSwaggerPath;
     }
 }
