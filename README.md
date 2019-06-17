@@ -31,7 +31,7 @@ The output file is the result of merging all the files generated using the OpenA
 
 **Important note:**
 
-The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest**, **NSwag**, **OpenAPI Generator**, and **Swagger Codegen**. These tools require [NPM](https://www.npmjs.com/get-npm), **AutoRest**, and the [Java SDK](https://java.com/en/download/manual.jsp) to be installed on the developers machine. 
+The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest**, **NSwag**, **OpenAPI Generator**, and **Swagger Codegen**. These tools require [NPM](https://www.npmjs.com/get-npm), **AutoRest**, and the [Java SDK](https://java.com/en/download/manual.jsp) to be installed on the developers machine. Alternative Java SDK implementations such as the [OpenJDK](https://adoptopenjdk.net) works fine with this extension. By default, the path to **java.exe** is read from the **JAVA_HOME** environment variable, but is also configurable in the Settings screen
 
 The **Swagger Codegen CLI** and **OpenAPI Generator** are downloaded on demand but requires the Java SDK to be installed on the machine. This also means that using the **SwaggerCodeGenerator** and **OpenApiCodeGenerator** custom tools have a initial delay upon first time use. The generated code that these tools produce depends on the [RestSharp v105.1.0](https://www.nuget.org/packages/RestSharp/105.1.0) and [JsonSubTypes v1.2.0](https://www.nuget.org/packages/JsonSubTypes/1.2.0) nuget packages
 
@@ -53,7 +53,7 @@ This Visual Studio Extension will automatically add the required nuget packages 
 
 **Settings**
 
-This extension will by default make some assumptions on the installation paths for **Java**, **NSwag** and **NPM** but also provides option pages for configuring this
+This extension will by default make some assumptions on the installation paths for **Java**, **NSwag** and **NPM** but also provides option pages for configuring this. The **Swagger Codegen CLI** and the **OpenAPI Generator** JAR files are by default downloaded to the user TEMP folder but it is also possible to specify to use existing JAR files
 
 ![Options - General](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-general.png)
 
