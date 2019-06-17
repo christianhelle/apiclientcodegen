@@ -95,6 +95,7 @@
     <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelper.cs" />
     <Compile Include="Extensions\SwaggerDocumentExtensions.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGenerator.cs" />
+    <Compile Include="NuGet\PackageDependencies.cs" />
     <Compile Include="Options\CustomPathOptions.cs" />
     <Compile Include="Options\IGeneralOptions.cs" />
     <Compile Include="Options\INSwagOption.cs" />

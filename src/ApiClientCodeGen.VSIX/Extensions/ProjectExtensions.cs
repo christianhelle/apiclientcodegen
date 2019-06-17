@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet;
 using EnvDTE;
 using Microsoft;
 using Microsoft.VisualStudio;
@@ -203,30 +204,45 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
             var requiredPackages = codeGenerator.GetDependencies();
             foreach (var packageDependency in requiredPackages)
+                InstallPackageDependency(project, packageDependency, installedPackages, packageInstaller);
+        }
+
+        private static void InstallPackageDependency(
+            Project project,
+            PackageDependency packageDependency,
+            IReadOnlyCollection<IVsPackageMetadata> installedPackages,
+            IVsPackageInstaller packageInstaller)
+        {
+            var packageId = packageDependency.Name;
+            var version = packageDependency.Version;
+
+            if (installedPackages.Any(
+                c => string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase)))
             {
-                var packageId = packageDependency.Name;
-                var version = packageDependency.Version;
-
-                if (installedPackages.Any(
-                    c => string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase)))
+                if (installedPackages.Any(c => c.VersionString == version.ToString(3)) || !packageDependency.ForceUpdate)
                 {
-                    if (installedPackages.Any(c => c.VersionString == version.ToString(3)) || !packageDependency.ForceUpdate)
-                    {
-                        Trace.WriteLine($"{packageDependency.Name} is already installed");
-                        continue;
-                    }
+                    Trace.WriteLine($"{packageDependency.Name} is already installed");
+                    return;
                 }
+            }
 
-                Trace.WriteLine($"Installing {packageId} version {version}");
+            Trace.WriteLine($"Installing {packageId} version {version}");
 
+            try
+            {
                 packageInstaller.InstallPackage(
-                    null,
-                    project,
-                    packageId,
-                    version,
-                    false);
+                        null,
+                        project,
+                        packageId,
+                        version,
+                        true);
 
                 Trace.WriteLine($"Successfully installed {packageId} version {version}");
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine($"Unable to install {packageId} version {version}");
+                Trace.WriteLine(e);
             }
         }
 
