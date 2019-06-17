@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet;
 using EnvDTE;
 using Microsoft;
 using Microsoft.VisualStudio;
@@ -14,6 +15,7 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TextManager.Interop;
 using NuGet.VisualStudio;
+using Debugger = System.Diagnostics.Debugger;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 {
@@ -204,30 +206,93 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             var requiredPackages = codeGenerator.GetDependencies();
             foreach (var packageDependency in requiredPackages)
             {
-                var packageId = packageDependency.Name;
-                var version = packageDependency.Version;
+                InstallPackageDependency(project, packageDependency, installedPackages, packageInstaller);
+            }
 
-                if (installedPackages.Any(
-                    c => string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase)))
+            //if (project.IsNetStandardProject())
+            {
+                foreach (var packageDependency in GetNetStandardPackageDependencies())
                 {
-                    if (installedPackages.Any(c => c.VersionString == version.ToString(3)) || !packageDependency.ForceUpdate)
-                    {
-                        Trace.WriteLine($"{packageDependency.Name} is already installed");
-                        continue;
-                    }
+                    InstallPackageDependency(project, packageDependency, installedPackages, packageInstaller);
                 }
+            }
+        }
 
-                Trace.WriteLine($"Installing {packageId} version {version}");
+        private static void InstallPackageDependency(
+            Project project,
+            PackageDependency packageDependency,
+            IReadOnlyCollection<IVsPackageMetadata> installedPackages,
+            IVsPackageInstaller packageInstaller)
+        {
+            var packageId = packageDependency.Name;
+            var version = packageDependency.Version;
 
+            if (installedPackages.Any(
+                c => string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase)))
+            {
+                if (installedPackages.Any(c => c.VersionString == version.ToString(3)) || !packageDependency.ForceUpdate)
+                {
+                    Trace.WriteLine($"{packageDependency.Name} is already installed");
+                    return;
+                }
+            }
+
+            Trace.WriteLine($"Installing {packageId} version {version}");
+
+            try
+            {
                 packageInstaller.InstallPackage(
-                    null,
-                    project,
-                    packageId,
-                    version,
-                    false);
+                        null,
+                        project,
+                        packageId,
+                        version,
+                        true);
 
                 Trace.WriteLine($"Successfully installed {packageId} version {version}");
             }
+            catch (Exception e)
+            {
+                Trace.WriteLine($"Unable to install {packageId} version {version}");
+                Trace.WriteLine(e);
+            }
+        }
+
+        private static bool IsNetStandardProject(this Project project)
+        {
+            try
+            {
+                return project?.Properties
+                           ?.Item("TargetFrameworkMoniker")
+                           ?.Value
+                           ?.ToString()
+                           ?.ToLowerInvariant()
+                           ?.Contains("netstandard") ??
+                       false;
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e);
+                return false;
+            }
+        }
+
+        private static IEnumerable<PackageDependency> GetNetStandardPackageDependencies()
+        {
+            yield return new PackageDependency(
+                "System.Runtime",
+                new Version(4, 3, 0));
+            
+            yield return new PackageDependency(
+                "System.Runtime.Serialization.Primitives",
+                new Version(4, 3, 0));
+
+            yield return new PackageDependency(
+                "System.ComponentModel",
+                new Version(4, 3, 0));
+
+            yield return new PackageDependency(
+                "System.ComponentModel.Annotations",
+                new Version(4, 5, 0));
         }
 
         public static string GetTopLevelNamespace(this Project item)
@@ -256,6 +321,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
     {
         public const string ASPNET_5 = "{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}";
         public const string DOTNET_Core = "{9A19103F-16F7-4668-BE54-9A1E7A4F7556}";
+        public const string NETStandard = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}";
         public const string WEBSITE_PROJECT = "{E24C65DC-7377-472B-9ABA-BC803B73C61A}";
         public const string UNIVERSAL_APP = "{262852C6-CD72-467D-83FE-5EEB1973A190}";
         public const string NODE_JS = "{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}";
