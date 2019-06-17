@@ -15,7 +15,6 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TextManager.Interop;
 using NuGet.VisualStudio;
-using Debugger = System.Diagnostics.Debugger;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 {
@@ -205,17 +204,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
             var requiredPackages = codeGenerator.GetDependencies();
             foreach (var packageDependency in requiredPackages)
-            {
                 InstallPackageDependency(project, packageDependency, installedPackages, packageInstaller);
-            }
-
-            //if (project.IsNetStandardProject())
-            {
-                foreach (var packageDependency in GetNetStandardPackageDependencies())
-                {
-                    InstallPackageDependency(project, packageDependency, installedPackages, packageInstaller);
-                }
-            }
         }
 
         private static void InstallPackageDependency(
@@ -257,44 +246,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
         }
 
-        private static bool IsNetStandardProject(this Project project)
-        {
-            try
-            {
-                return project?.Properties
-                           ?.Item("TargetFrameworkMoniker")
-                           ?.Value
-                           ?.ToString()
-                           ?.ToLowerInvariant()
-                           ?.Contains("netstandard") ??
-                       false;
-            }
-            catch (Exception e)
-            {
-                Trace.WriteLine(e);
-                return false;
-            }
-        }
-
-        private static IEnumerable<PackageDependency> GetNetStandardPackageDependencies()
-        {
-            yield return new PackageDependency(
-                "System.Runtime",
-                new Version(4, 3, 0));
-            
-            yield return new PackageDependency(
-                "System.Runtime.Serialization.Primitives",
-                new Version(4, 3, 0));
-
-            yield return new PackageDependency(
-                "System.ComponentModel",
-                new Version(4, 3, 0));
-
-            yield return new PackageDependency(
-                "System.ComponentModel.Annotations",
-                new Version(4, 5, 0));
-        }
-
         public static string GetTopLevelNamespace(this Project item)
         {
             try
@@ -321,7 +272,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
     {
         public const string ASPNET_5 = "{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}";
         public const string DOTNET_Core = "{9A19103F-16F7-4668-BE54-9A1E7A4F7556}";
-        public const string NETStandard = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}";
         public const string WEBSITE_PROJECT = "{E24C65DC-7377-472B-9ABA-BC803B73C61A}";
         public const string UNIVERSAL_APP = "{262852C6-CD72-467D-83FE-5EEB1973A190}";
         public const string NODE_JS = "{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}";
