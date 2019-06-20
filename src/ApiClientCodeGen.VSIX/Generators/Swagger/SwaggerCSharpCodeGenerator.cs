@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
@@ -12,12 +13,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
         private readonly string swaggerFile;
         private readonly string defaultNamespace;
         private readonly JavaPathProvider javaPathProvider;
+        private readonly CustomPathOptions options;
 
         public SwaggerCSharpCodeGenerator(string swaggerFile, string defaultNamespace, IGeneralOptions options)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
-            javaPathProvider = new JavaPathProvider(options ?? throw new ArgumentNullException(nameof(options)));
+            this.options = new CustomPathOptions(options ?? throw new ArgumentNullException(nameof(options)));
+            javaPathProvider = new JavaPathProvider(options);
         }
 
         public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
@@ -26,7 +29,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
             {
                 pGenerateProgress.Progress(10);
                 
-                var cliPath = DependencyDownloader.InstallSwaggerCodegenCli();
+                var jarFile = options.SwaggerCodegenPath;
+                if (!File.Exists(jarFile))
+                {
+                    Trace.WriteLine(jarFile + " does not exist");
+                    jarFile = DependencyDownloader.InstallSwaggerCodegenCli();
+                }
+
                 pGenerateProgress.Progress(30);
 
                 var output = Path.Combine(
@@ -37,7 +46,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
                 pGenerateProgress.Progress(40);
 
                 var arguments =
-                    $"-jar \"{cliPath}\" generate " +
+                    $"-jar \"{jarFile}\" generate " +
                     $"-l csharp " +
                     $"--input-spec \"{swaggerFile}\" " +
                     $"--output \"{output}\" " +

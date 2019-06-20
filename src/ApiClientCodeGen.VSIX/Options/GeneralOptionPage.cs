@@ -30,6 +30,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
         [DisplayName("NSwag Path")]
         [Description("Full path to nswag.exe")]
         public string NSwagPath { get; set; }
+        
+        [Category("File Paths")]
+        [DisplayName("Swagger Codegen CLI Path")]
+        [Description("Full path to Swagger Codegen JAR file")]
+        public string SwaggerCodegenPath { get; set; }
+        
+        [Category("File Paths")]
+        [DisplayName("OpenAPI Generator Path")]
+        [Description("Full path OpenAPI Generator JAR file")]
+        public string OpenApiGeneratorPath { get; set; }
 
         protected override IWin32Window Window
             => new GeneralOptionsPageCustom(this);
