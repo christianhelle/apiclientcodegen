@@ -1,8 +1,8 @@
 ﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using Microsoft.VisualStudio.Shell.Interop;
-using ICSharpCode.CodeConverter.VB;
-using ICSharpCode.CodeConverter.Shared;
 using System;
+using ICSharpCode.CodeConverter;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag
 {
@@ -22,16 +22,23 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
 
         public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
         {
-            var csharp = csharpGenerator.GenerateCode(pGenerateProgress);
-            var result = ProjectConversion
-                .ConvertText<CSToVBConversion>(csharp, null, defaultNamespace)
-                .GetAwaiter()
-                .GetResult();
+            try
+            {
+                var csharp = csharpGenerator.GenerateCode(pGenerateProgress);
+                var result = CodeConverter
+                    .Convert(new CodeWithOptions(csharp))
+                    .GetAwaiter()
+                    .GetResult();
 
-            if (!result.Success)
-                throw new Exception(result.GetExceptionsAsString());
+                if (!result.Success)
+                    throw new Exception(result.GetExceptionsAsString());
 
-            return result.ConvertedCode;
+                return result.ConvertedCode;
+            }
+            finally
+            {
+                pGenerateProgress?.Progress(95);
+            }
         }
     }
 }
