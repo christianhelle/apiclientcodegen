@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Generators\AutoRestCodeGeneratorTests.cs" />
+    <Compile Include="Generators\NSwagVisualBasicCodeGeneratorTests.cs" />
     <Compile Include="Utility\DependencyUninstaller.cs" />
     <Compile Include="Generators\NSwagStudioCSharpCodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwagCSharpCodeGeneratorTests.cs" />
@@ -120,6 +121,10 @@
       <Project>{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}</Project>
       <Name>ApiClientCodeGen.VSIX</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
