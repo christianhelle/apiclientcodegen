@@ -11,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [TestClass]
     [TestCategory("SkipWhenLiveUnitTesting")]
     [DeploymentItem("Resources/Swagger.json")]
-    public class NSwagCodeGeneratorTests
+    public class NSwagCSharpCodeGeneratorTests
     {
         private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
         private static readonly Mock<INSwagOptions> optionsMock = new Mock<INSwagOptions>();
@@ -22,7 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         {
             var codeGenerator = new NSwagCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
-                typeof(NSwagCodeGeneratorTests).Namespace,
+                typeof(NSwagCSharpCodeGeneratorTests).Namespace,
                 optionsMock.Object);
 
             code = codeGenerator.GenerateCode(mock.Object);
