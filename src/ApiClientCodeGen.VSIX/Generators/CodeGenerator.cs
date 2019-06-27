@@ -21,7 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
             DefaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
         }
 
-        public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
+        public virtual string GenerateCode(IVsGeneratorProgress pGenerateProgress)
         {
             try
             {
