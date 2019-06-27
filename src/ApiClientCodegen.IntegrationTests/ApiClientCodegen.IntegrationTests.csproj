@@ -265,8 +265,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="VisualBasic\CustomTool\VisualBasicSingleFileCodeGeneratorTests.cs" />
-    <Compile Include="VisualBasic\CustomTool\VisualBasicSingleFileCodeGenerator.cs" />
+    <Compile Include="CustomTool\VisualBasicSingleFileCodeGeneratorTests.cs" />
+    <Compile Include="CustomTool\VisualBasicSingleFileCodeGenerator.cs" />
     <Compile Include="VisualBasic\AutoRestVisualBasicCodeGeneratorTests.cs" />
     <Compile Include="Generators\AutoRestCodeGeneratorTests.cs" />
     <Compile Include="Utility\CSharpToVisualBasicLanguageConverter.cs" />
