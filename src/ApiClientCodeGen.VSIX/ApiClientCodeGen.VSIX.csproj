@@ -69,6 +69,7 @@
     <Compile Include="Commands\CustomTool\OpenApiCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="Commands\CustomTool\SwaggerCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="Converters\ILanguageConverter.cs" />
+    <Compile Include="Converters\CSharpToVisualBasicLanguageConverter.cs" />
     <Compile Include="Converters\NullLanguageConverter.cs" />
     <Compile Include="Extensions\SupportedCodeGeneratorExtensions.cs" />
     <Compile Include="Extensions\AsyncPackageExtensions.cs" />
