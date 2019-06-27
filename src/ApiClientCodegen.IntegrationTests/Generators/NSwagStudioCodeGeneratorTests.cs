@@ -13,7 +13,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [TestCategory("SkipWhenLiveUnitTesting")]
     [DeploymentItem("Resources/Swagger.nswag")]
     [DeploymentItem("Resources/Swagger.json")]
-    public class NSwagStudioCSharpCodeGeneratorTests
+    public class NSwagStudioCodeGeneratorTests
     {
         private Mock<IGeneralOptions> optionsMock;
         private IGeneralOptions options;

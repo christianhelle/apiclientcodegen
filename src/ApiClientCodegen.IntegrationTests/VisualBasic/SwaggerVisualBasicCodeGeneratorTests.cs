@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using FluentAssertions;
@@ -7,7 +8,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.VisualBasic
 {
     [TestClass]
     [TestCategory("SkipWhenLiveUnitTesting")]
@@ -26,7 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
             var codeGenerator = new SwaggerCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
-                typeof(SwaggerCSharpCodeGeneratorTests).Namespace,
+                typeof(SwaggerCodeGeneratorTests).Namespace,
                 optionsMock.Object);
 
             code = codeGenerator.GenerateCode(mock.Object);
