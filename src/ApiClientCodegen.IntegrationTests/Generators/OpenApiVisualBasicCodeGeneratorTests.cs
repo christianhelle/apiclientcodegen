@@ -1,6 +1,7 @@
 ﻿using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using FluentAssertions;
 using ICSharpCode.CodeConverter;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -12,17 +13,22 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [TestClass]
     [TestCategory("SkipWhenLiveUnitTesting")]
     [DeploymentItem("Resources/Swagger.json")]
-    public class AutoRestVisualBasicCodeGeneratorTests
+    public class OpenApiVisualBasicCodeGeneratorTests
     {
         private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
+        private static Mock<IGeneralOptions> optionsMock;
         private static string code = null;
 
         [ClassInitialize]
         public static void Init(TestContext testContext)
         {
-            var codeGenerator = new AutoRestCSharpCodeGenerator(
+            optionsMock = new Mock<IGeneralOptions>();
+            optionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
+
+            var codeGenerator = new OpenApiCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
-                typeof(AutoRestVisualBasicCodeGeneratorTests).Namespace);
+                typeof(OpenApiVisualBasicCodeGeneratorTests).Namespace,
+                optionsMock.Object);
 
             var options = new CodeWithOptions(codeGenerator.GenerateCode(mock.Object));
             var result = CodeConverter
@@ -35,16 +41,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
         [ClassCleanup]
         public static void CleanUp()
-            => DependencyUninstaller.UninstallAutoRest();
+            => DependencyUninstaller.UninstallOpenApiGenerator();
 
         [TestMethod]
-        public void AutoRest_Generated_Code_NotNullOrWhitespace()
+        public void OpenApi_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
 
         [TestMethod]
-        public void AutoRest_Reports_Progres()
+        public void OpenApi_Reports_Progres()
             => mock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
                 Times.AtLeastOnce);
+
+        [TestMethod]
+        public void Reads_JavaPath_From_Options() 
+            => optionsMock.Verify(c => c.JavaPath);
     }
 }

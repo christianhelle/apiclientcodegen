@@ -267,13 +267,16 @@
   <ItemGroup>
     <Compile Include="Generators\AutoRestVisualBasicCodeGeneratorTests.cs" />
     <Compile Include="Generators\AutoRestCSharpCodeGeneratorTests.cs" />
+    <Compile Include="Generators\NSwagStudioVisualBasicCodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwagVisualBasicCodeGeneratorTests.cs" />
+    <Compile Include="Generators\OpenApiVisualBasicCodeGeneratorTests.cs" />
+    <Compile Include="Generators\SwaggerVisualBasicCodeGeneratorTests.cs" />
     <Compile Include="Utility\DependencyUninstaller.cs" />
     <Compile Include="Generators\NSwagStudioCSharpCodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwagCSharpCodeGeneratorTests.cs" />
-    <Compile Include="Generators\OpenApiCodeGeneratorTests.cs" />
+    <Compile Include="Generators\OpenApiCSharpCodeGeneratorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Generators\SwaggerCodeGeneratorTests.cs" />
+    <Compile Include="Generators\SwaggerCSharpCodeGeneratorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
