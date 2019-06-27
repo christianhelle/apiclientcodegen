@@ -2,9 +2,11 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+using ICSharpCode.CodeConverter;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
@@ -14,15 +16,18 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
     public abstract class SingleFileCodeGenerator : IVsSingleFileGenerator
     {
         private readonly SupportedLanguage supportedLanguage;
+        private readonly ILanguageConverter converter;
 
         public SupportedCodeGenerator CodeGenerator { get; }
 
         protected SingleFileCodeGenerator(
             SupportedCodeGenerator supportedCodeGenerator,
-            SupportedLanguage supportedLanguage = SupportedLanguage.CSharp)
+            SupportedLanguage supportedLanguage = SupportedLanguage.CSharp,
+            ILanguageConverter converter = null)
         {
             this.CodeGenerator = supportedCodeGenerator;
             this.supportedLanguage = supportedLanguage;
+            this.converter = converter;
         }
 
         public abstract int DefaultExtension(out string pbstrDefaultExtension);
@@ -53,6 +58,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
                 {
                     pcbOutput = 0;
                     return 1;
+                }
+
+                if (supportedLanguage == SupportedLanguage.VisualBasic && converter != null)
+                {
+                    code = converter
+                        .Convert(code)
+                        .GetAwaiter()
+                        .GetResult();
                 }
 
                 rgbOutputFileContents[0] = code.ConvertToIntPtr(out pcbOutput);
