@@ -11,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [TestClass]
     [TestCategory("SkipWhenLiveUnitTesting")]
     [DeploymentItem("Resources/Swagger.json")]
-    public class AutoRestCodeGeneratorTests
+    public class AutoRestCSharpCodeGeneratorTests
     {
         private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
         private static string code = null;
@@ -21,7 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         {
             var codeGenerator = new AutoRestCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
-                typeof(AutoRestCodeGeneratorTests).Namespace);
+                typeof(AutoRestCSharpCodeGeneratorTests).Namespace);
 
             code = codeGenerator.GenerateCode(mock.Object);
         }
@@ -31,11 +31,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             => DependencyUninstaller.UninstallAutoRest();
 
         [TestMethod]
-        public void AutoRest_Generated_Code_NotNullOrWhitespace()
+        public void AutoRest_CSharp_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
 
         [TestMethod]
-        public void AutoRest_Reports_Progres()
+        public void AutoRest_CSharp_Reports_Progres()
             => mock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
                 Times.AtLeastOnce);

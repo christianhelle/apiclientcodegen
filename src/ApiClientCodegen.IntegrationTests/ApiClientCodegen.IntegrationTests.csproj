@@ -265,7 +265,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Generators\AutoRestCodeGeneratorTests.cs" />
+    <Compile Include="Generators\AutoRestVisualBasicCodeGeneratorTests.cs" />
+    <Compile Include="Generators\AutoRestCSharpCodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwagVisualBasicCodeGeneratorTests.cs" />
     <Compile Include="Utility\DependencyUninstaller.cs" />
     <Compile Include="Generators\NSwagStudioCSharpCodeGeneratorTests.cs" />
