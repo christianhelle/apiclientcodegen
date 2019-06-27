@@ -9,7 +9,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
     public class NSwagVisualBasicCodeGenerator : ICodeGenerator
     {
         private readonly NSwagCSharpCodeGenerator csharpGenerator;
-        private readonly string defaultNamespace;
 
         public NSwagVisualBasicCodeGenerator(
             string swaggerFile, 
@@ -17,7 +16,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             INSwagOptions options)
         {
             csharpGenerator = new NSwagCSharpCodeGenerator(swaggerFile, defaultNamespace, options);
-            this.defaultNamespace = defaultNamespace;
         }
 
         public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
