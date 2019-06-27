@@ -82,7 +82,6 @@
     <Compile Include="CustomTool\Swagger\SwaggerCodeGenerator.cs" />
     <Compile Include="CustomTool\Swagger\SwaggerCSharpCodeGenerator.cs" />
     <Compile Include="Extensions\IVsExtensions.cs" />
-    <Compile Include="Generators\AutoRest\AutoRestVisualBasicCodeGenerator.cs" />
     <Compile Include="Generators\AutoRest\AutoRestCSharpCodeGenerator.cs" />
     <Compile Include="Core\DependencyDownloader.cs" />
     <Compile Include="Generators\CodeGeneratorFactory.cs" />
@@ -99,7 +98,6 @@
     <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelper.cs" />
     <Compile Include="Extensions\SwaggerDocumentExtensions.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGenerator.cs" />
-    <Compile Include="Generators\NSwag\NSwagVisualBasicCodeGenerator.cs" />
     <Compile Include="NuGet\PackageDependencies.cs" />
     <Compile Include="Options\CustomPathOptions.cs" />
     <Compile Include="Options\IGeneralOptions.cs" />
