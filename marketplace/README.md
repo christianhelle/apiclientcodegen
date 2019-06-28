@@ -1,5 +1,3 @@
-![build status](https://christianhelle.visualstudio.com/API%20Client%20Code%20Generator/_apis/build/status/CI%20Build)
-
 # REST API Client Code Generator
 A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files
 
