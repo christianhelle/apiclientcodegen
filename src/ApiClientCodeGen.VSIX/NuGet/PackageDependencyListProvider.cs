@@ -19,6 +19,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
 
                 case SupportedCodeGenerator.AutoRest:
                     yield return PackageDependencies.MicrosoftRestClientRuntime;
+                    yield return PackageDependencies.NewtonsoftJson;
                     break;
 
                 case SupportedCodeGenerator.Swagger:

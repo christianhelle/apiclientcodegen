@@ -92,6 +92,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
                 .Contain(PackageDependencies.MicrosoftRestClientRuntime);
 
         [TestMethod]
+        public void GetDependencies_AutoRest_Contains_NewtonsoftJson()
+            => sut.GetDependencies(SupportedCodeGenerator.AutoRest)
+                .Should()
+                .Contain(PackageDependencies.NewtonsoftJson);
+
+        [TestMethod]
         public void GetDependencies_Swagger_Contains_RestSharp()
             => sut.GetDependencies(SupportedCodeGenerator.Swagger)
                 .Should()
