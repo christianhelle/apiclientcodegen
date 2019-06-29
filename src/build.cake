@@ -33,10 +33,10 @@ Task("Build")
     });
 
 Task("Run-Unit-Tests")
-    .IsDependentOn("Restore")
+    .IsDependentOn("Build")
     .Does(() =>
 {
-    MSTest("./**/bin/" + configuration + "/*.Tests.dll");
+    MSTest("./**/bin/" + configuration + "/*Tests.dll");
 });
 
 Task("Post-Build")
@@ -46,6 +46,7 @@ Task("Post-Build")
     });
 
 Task("Default")
-	.IsDependentOn("Post-Build");
+	.IsDependentOn("Post-Build")
+    .IsDependentOn("Run-Unit-Tests");
 
 RunTarget(target);
