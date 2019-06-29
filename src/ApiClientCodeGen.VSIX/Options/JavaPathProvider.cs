@@ -21,7 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
             var javaPath = options.JavaPath;
             if (!string.IsNullOrWhiteSpace(javaPath))
             {
-                if (File.Exists(javaPath))
+                if (File.Exists(javaPath) || javaPath != "java")
                     return javaPath;
             }
 
