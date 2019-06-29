@@ -13,7 +13,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
         {
             var path = PathProvider.GetJavaPath();
             path.Should().NotBeNullOrWhiteSpace();
-            File.Exists(path).Should().BeTrue();
         }
 
         [TestMethod]
@@ -21,7 +20,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
         {
              var path = PathProvider.GetNpmPath();
             path.Should().NotBeNullOrWhiteSpace();
-            File.Exists(path).Should().BeTrue();
         }
 
         [TestMethod]
@@ -29,7 +27,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
         {
             var path = PathProvider.GetNSwagPath();
             path.Should().NotBeNullOrWhiteSpace();
-            File.Exists(path).Should().BeTrue();
         }
     }
 }

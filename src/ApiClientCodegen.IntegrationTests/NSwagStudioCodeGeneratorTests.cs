@@ -46,7 +46,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .Should()
                 .BeNull();
 
-            File.Exists("PetstoreClient.cs")
+            File.Exists(Path.GetFullPath("PetstoreClient.cs"))
                 .Should()
                 .BeTrue();
         }
