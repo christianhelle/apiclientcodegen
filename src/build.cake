@@ -1,3 +1,5 @@
+#tool "nuget:?package=Microsoft.TestPlatform&version=15.7.0"
+
 var target = Argument("target", "Default");
 var configuration = "Release";
 FilePath solutionPath = File("./ApiClientCodeGenerator.sln");
@@ -36,7 +38,7 @@ Task("Run-Unit-Tests")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    MSTest("./**/bin/" + configuration + "/*Tests.dll");
+    VSTest("./**/bin/" + configuration + "/*Tests.dll");
 });
 
 Task("Post-Build")
