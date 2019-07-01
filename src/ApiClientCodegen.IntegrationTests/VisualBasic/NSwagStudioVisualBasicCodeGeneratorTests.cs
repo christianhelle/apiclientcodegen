@@ -40,11 +40,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .Should()
                 .BeNull();
 
-            File.Exists("PetstoreClient.cs")
+            var outputFile = Path.GetFullPath("PetstoreClient.cs");
+            File.Exists(outputFile)
                 .Should()
                 .BeTrue();
 
-            var csharp = File.ReadAllText("PetstoreClient.cs");
+            var csharp = File.ReadAllText(outputFile);
             var result = CodeConverter
                 .Convert(new CodeWithOptions(csharp))
                 .GetAwaiter()
