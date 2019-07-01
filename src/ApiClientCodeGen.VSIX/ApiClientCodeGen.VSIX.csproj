@@ -71,6 +71,10 @@
     <Compile Include="Converters\ILanguageConverter.cs" />
     <Compile Include="Converters\CSharpToVisualBasicLanguageConverter.cs" />
     <Compile Include="Converters\NullLanguageConverter.cs" />
+    <Compile Include="CustomTool\AutoRest\AutoRestVisualBasicCodeGenerator.cs" />
+    <Compile Include="CustomTool\NSwag\NSwagVisualBasicCodeGenerator.cs" />
+    <Compile Include="CustomTool\OpenApi\OpenApiVisualBasicCodeGenerator.cs" />
+    <Compile Include="CustomTool\Swagger\SwaggerVisualBasicCodeGenerator.cs" />
     <Compile Include="Extensions\SupportedCodeGeneratorExtensions.cs" />
     <Compile Include="Extensions\AsyncPackageExtensions.cs" />
     <Compile Include="Commands\NSwagStudio\NSwagStudioCommand.cs" />
