@@ -6,7 +6,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 {
     internal class CSharpToVisualBasicLanguageConverter : ILanguageConverter
     {
-        public async Task<string> Convert(string code)
+        public async Task<string> ConvertAsync(string code)
         {
             var options = new CodeWithOptions(code);
             var result = await CodeConverter.Convert(options);

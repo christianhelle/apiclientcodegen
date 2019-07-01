@@ -6,4 +6,5 @@
 
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "VSTHRD002:Avoid problematic synchronous waits", Justification = "<Pending>", Scope = "member", Target = "~M:ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag.NSwagCSharpCodeGenerator.GenerateCodeAsync~System.String")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "VSTHRD002:Avoid problematic synchronous waits", Justification = "<Pending>", Scope = "member", Target = "~M:ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag.NSwagCSharpCodeGenerator.GenerateCode(Microsoft.VisualStudio.Shell.Interop.IVsGeneratorProgress)~System.String")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "VSTHRD002:Avoid problematic synchronous waits", Justification = "<Pending>", Scope = "member", Target = "~M:ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.SingleFileCodeGenerator.Generate(System.String,System.String,System.String,System.IntPtr[],System.UInt32@,Microsoft.VisualStudio.Shell.Interop.IVsGeneratorProgress)~System.Int32")]
 

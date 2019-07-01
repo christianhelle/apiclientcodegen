@@ -63,7 +63,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
                 if (supportedLanguage == SupportedLanguage.VisualBasic && converter != null)
                 {
                     code = converter
-                        .Convert(code)
+                        .ConvertAsync(code)
                         .GetAwaiter()
                         .GetResult();
                 }
