@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.TextTemplating.VSHost;
@@ -18,7 +19,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Auto
         public const string Description = "VB.NET AutoRest API Client Code Generator";
 
         public AutoRestVisualBasicCodeGenerator()
-            : base(SupportedLanguage.VisualBasic)
+            : base(SupportedLanguage.VisualBasic, new CSharpToVisualBasicLanguageConverter())
         {
         }
 
