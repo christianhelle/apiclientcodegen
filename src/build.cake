@@ -14,7 +14,6 @@ Task("Clean")
 });
 
 Task("Restore")
-    .IsDependentOn("Clean")
 	.Does(() =>
 {
 	Information("Restoring solution...");
