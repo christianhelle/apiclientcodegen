@@ -265,6 +265,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Build\NetCoreProject.cs" />
     <Compile Include="CustomTool\CSharpSingleFileCodeGeneratorTests.cs" />
     <Compile Include="CustomTool\VisualBasicSingleFileCodeGeneratorTests.cs" />
     <Compile Include="CustomTool\VisualBasicSingleFileCodeGenerator.cs" />
