@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -39,5 +41,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             => mock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
                 Times.AtLeastOnce);
+
+        [TestMethod]
+        public void AutoRest_CSharp_Generated_Code_Builds_In_NetCoreApp()
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), Guid.NewGuid().ToString("N"));
+            Directory.CreateDirectory(path);
+            var projectFile = Path.Combine(path, "Test.csproj");
+            var codeFile = Path.Combine(path, "GeneratedCode.cs");
+            File.WriteAllText(projectFile, ProjectFileContents.NetCoreApp);
+            File.WriteAllText(codeFile, code);
+        }
     }
 }
