@@ -16,16 +16,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         private const SupportedLanguage Language = SupportedLanguage.CSharp;
 
         [TestMethod]
-        public void AutoRest_VisualBasic_Test() => Assert(SupportedCodeGenerator.AutoRest);
+        public void AutoRest_CSharp_Test() => Assert(SupportedCodeGenerator.AutoRest);
         
         [TestMethod]
-        public void NSwag_VisualBasic_Test() => Assert(SupportedCodeGenerator.AutoRest);
+        public void NSwag_CSharp_Test() => Assert(SupportedCodeGenerator.AutoRest);
         
         [TestMethod]
-        public void Swagger_VisualBasic_Test() => Assert(SupportedCodeGenerator.AutoRest);
+        public void Swagger_CSharp_Test() => Assert(SupportedCodeGenerator.AutoRest);
         
         [TestMethod]
-        public void OpenApi_VisualBasic_Test() => Assert(SupportedCodeGenerator.AutoRest);
+        public void OpenApi_CSharp_Test() => Assert(SupportedCodeGenerator.AutoRest);
 
         private static void Assert(SupportedCodeGenerator generator)
         {
