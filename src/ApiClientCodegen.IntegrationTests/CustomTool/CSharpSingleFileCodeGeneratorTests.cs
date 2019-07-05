@@ -13,8 +13,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [DeploymentItem("Resources/Swagger.json")]
     public class CSharpSingleFileCodeGeneratorTests
     {
-        private const SupportedLanguage Language = SupportedLanguage.CSharp;
-
         [TestMethod]
         public void AutoRest_CSharp_Test() => Assert(SupportedCodeGenerator.AutoRest);
         
@@ -32,12 +30,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             var rgbOutputFileContents = new[] {IntPtr.Zero};
             var progressMock = new Mock<IVsGeneratorProgress>();
 
-            var sut = new VisualBasicSingleFileCodeGenerator(generator);
+            var sut = new CSharpSingleFileCodeGenerator(generator);
 
             var result = sut.Generate(
                 Path.GetFullPath("Swagger.json"),
                 string.Empty,
-                typeof(VisualBasicSingleFileCodeGeneratorTests).Namespace,
+                typeof(CSharpSingleFileCodeGeneratorTests).Namespace,
                 rgbOutputFileContents,
                 out var pcbOutput,
                 progressMock.Object);
