@@ -1,10 +1,12 @@
 ﻿using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
@@ -20,6 +22,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         [ClassInitialize]
         public static void Init(TestContext testContext)
         {
+            optionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
+            optionsMock.Setup(c => c.InjectHttpClient).Returns(true);
+            optionsMock.Setup(c => c.GenerateClientInterfaces).Returns(true);
+            optionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
+            optionsMock.Setup(c => c.UseBaseUrl).Returns(true);
+            optionsMock.Setup(c => c.ClassStyle).Returns(CSharpClassStyle.Poco);
+
             var codeGenerator = new NSwagCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
                 typeof(NSwagCodeGeneratorTests).Namespace,
@@ -57,5 +66,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         [TestMethod]
         public void Reads_ClassStyle_From_Options()
             => optionsMock.Verify(c => c.ClassStyle);
+
+        [TestMethod]
+        public void GeneratedCode_Can_Build_In_NetCoreApp() 
+            => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, code);
+
+        [TestMethod]
+        public void GeneratedCode_Can_Build_In_NetStandardLibrary() 
+            => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code);
     }
 }
