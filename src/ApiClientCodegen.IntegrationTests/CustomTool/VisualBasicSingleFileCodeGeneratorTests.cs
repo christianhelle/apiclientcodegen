@@ -13,19 +13,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [DeploymentItem("Resources/Swagger.json")]
     public class VisualBasicSingleFileCodeGeneratorTests
     {
-        private const SupportedLanguage Language = SupportedLanguage.VisualBasic;
-
         [TestMethod]
         public void AutoRest_VisualBasic_Test() => Assert(SupportedCodeGenerator.AutoRest);
         
         [TestMethod]
-        public void NSwag_VisualBasic_Test() => Assert(SupportedCodeGenerator.AutoRest);
+        public void NSwag_VisualBasic_Test() => Assert(SupportedCodeGenerator.NSwag);
         
         [TestMethod]
-        public void Swagger_VisualBasic_Test() => Assert(SupportedCodeGenerator.AutoRest);
+        public void Swagger_VisualBasic_Test() => Assert(SupportedCodeGenerator.Swagger);
         
         [TestMethod]
-        public void OpenApi_VisualBasic_Test() => Assert(SupportedCodeGenerator.AutoRest);
+        public void OpenApi_VisualBasic_Test() => Assert(SupportedCodeGenerator.OpenApi);
 
         private static void Assert(SupportedCodeGenerator generator)
         {

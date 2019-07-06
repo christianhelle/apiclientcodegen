@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -15,15 +16,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     {
         [TestMethod]
         public void AutoRest_CSharp_Test() => Assert(SupportedCodeGenerator.AutoRest);
+
+        [TestMethod]
+        public void NSwag_CSharp_Test() => Assert(SupportedCodeGenerator.NSwag);
+
+        [TestMethod]
+        public void Swagger_CSharp_Test() => Assert(SupportedCodeGenerator.Swagger);
         
         [TestMethod]
-        public void NSwag_CSharp_Test() => Assert(SupportedCodeGenerator.AutoRest);
-        
-        [TestMethod]
-        public void Swagger_CSharp_Test() => Assert(SupportedCodeGenerator.AutoRest);
-        
-        [TestMethod]
-        public void OpenApi_CSharp_Test() => Assert(SupportedCodeGenerator.AutoRest);
+        public void OpenApi_CSharp_Test() => Assert(SupportedCodeGenerator.OpenApi);
 
         private static void Assert(SupportedCodeGenerator generator)
         {
