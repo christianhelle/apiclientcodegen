@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using FluentAssertions;
@@ -19,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         private static string code = null;
 
         [ClassInitialize]
-        public static void Init(TestContext testContext)
+        public static async Task InitAsync(TestContext testContext)
         {
             var codeGenerator = new NSwagCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
@@ -27,10 +28,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 optionsMock.Object);
 
             var options = new CodeWithOptions(codeGenerator.GenerateCode(mock.Object));
-            var result = CodeConverter
-                .Convert(options)
-                .GetAwaiter()
-                .GetResult();
+            var result = await CodeConverter.Convert(options);
 
             code = result.ConvertedCode;
         }

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
@@ -20,7 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         private static string code = null;
 
         [ClassInitialize]
-        public static void Init(TestContext testContext)
+        public static async Task InitAsync(TestContext testContext)
         {
             optionsMock = new Mock<IGeneralOptions>();
             optionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
@@ -31,10 +32,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 optionsMock.Object);
 
             var options = new CodeWithOptions(codeGenerator.GenerateCode(mock.Object));
-            var result = CodeConverter
-                .Convert(options)
-                .GetAwaiter()
-                .GetResult();
+            var result = await CodeConverter.Convert(options);
 
             code = result.ConvertedCode;
         }

@@ -46,10 +46,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .BeTrue();
 
             var csharp = File.ReadAllText(outputFile);
-            var result = CodeConverter
-                .Convert(new CodeWithOptions(csharp))
-                .GetAwaiter()
-                .GetResult();
+            var result = await CodeConverter.Convert(new CodeWithOptions(csharp));
 
             result.ConvertedCode
                 .Should()
