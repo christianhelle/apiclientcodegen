@@ -266,7 +266,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Build\BuildHelper.cs" />
-    <Compile Include="Build\NetCoreProject.cs" />
+    <Compile Include="Build\ProjectFileContents.cs" />
     <Compile Include="Build\ProjectTypes.cs" />
     <Compile Include="CustomTool\CSharpSingleFileCodeGeneratorTests.cs" />
     <Compile Include="CustomTool\CSharpSingleFileCodeGenerator.cs" />
