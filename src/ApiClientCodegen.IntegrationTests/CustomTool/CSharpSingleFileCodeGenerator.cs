@@ -8,9 +8,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     {
         internal CSharpSingleFileCodeGenerator(
             SupportedCodeGenerator supportedCodeGenerator)
-            : base(
-                supportedCodeGenerator, 
-                SupportedLanguage.CSharp)
+            : base(supportedCodeGenerator)
         {
         }
 
