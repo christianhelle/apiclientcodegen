@@ -341,6 +341,7 @@
     <Compile Include="CustomTool\VisualBasicSingleFileCodeGeneratorTests.cs" />
     <Compile Include="CustomTool\VisualBasicSingleFileCodeGenerator.cs" />
     <Compile Include="Generators\NSwagStudioCodeGeneratorBuildTests.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="VisualBasic\AutoRestVisualBasicCodeGeneratorTests.cs" />
     <Compile Include="Generators\AutoRestCodeGeneratorTests.cs" />
     <Compile Include="Utility\CSharpToVisualBasicLanguageConverter.cs" />
