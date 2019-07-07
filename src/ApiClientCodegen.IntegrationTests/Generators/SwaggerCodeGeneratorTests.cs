@@ -31,10 +31,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 typeof(SwaggerCodeGeneratorTests).Namespace,
                 optionsMock.Object);
 
-            var options = new CodeWithOptions(codeGenerator.GenerateCode(mock.Object));
-            var result = await CodeConverter.Convert(options);
-
-            code = result.ConvertedCode;
+            code = codeGenerator.GenerateCode(mock.Object);
         }
 
         [ClassCleanup]
