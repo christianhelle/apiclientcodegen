@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
@@ -43,14 +44,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 Times.AtLeastOnce);
 
         [TestMethod]
-        public void AutoRest_CSharp_Generated_Code_Builds_In_NetCoreApp()
-        {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), Guid.NewGuid().ToString("N"));
-            Directory.CreateDirectory(path);
-            var projectFile = Path.Combine(path, "Test.csproj");
-            var codeFile = Path.Combine(path, "GeneratedCode.cs");
-            File.WriteAllText(projectFile, ProjectFileContents.NetCoreApp);
-            File.WriteAllText(codeFile, code);
-        }
+        public void GeneratedCode_Can_Build_In_NetCoreApp()
+            => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, code, SupportedCodeGenerator.AutoRest);
+
+        [TestMethod]
+        public void GeneratedCode_Can_Build_In_NetStandardLibrary()
+            => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code, SupportedCodeGenerator.AutoRest);
     }
 }

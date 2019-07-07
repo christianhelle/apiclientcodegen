@@ -333,9 +333,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Build\Projects\AutoRestProjectFileContents.cs" />
     <Compile Include="Build\BuildHelper.cs" />
-    <Compile Include="Build\ProjectFileContents.cs" />
+    <Compile Include="Build\Projects\NSwagProjectFileContents.cs" />
     <Compile Include="Build\ProjectTypes.cs" />
+    <Compile Include="Build\Projects\SwaggerProjectFileContents.cs" />
     <Compile Include="CustomTool\CSharpSingleFileCodeGeneratorTests.cs" />
     <Compile Include="CustomTool\CSharpSingleFileCodeGenerator.cs" />
     <Compile Include="CustomTool\VisualBasicSingleFileCodeGeneratorTests.cs" />

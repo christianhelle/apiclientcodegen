@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
@@ -69,10 +70,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
         [TestMethod]
         public void GeneratedCode_Can_Build_In_NetCoreApp() 
-            => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, code);
+            => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, code, SupportedCodeGenerator.NSwag);
 
         [TestMethod]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary() 
-            => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code);
+            => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code, SupportedCodeGenerator.NSwag);
     }
 }
