@@ -48,7 +48,7 @@ Task("Post-Build")
     });
 
 Task("Default")
-	.IsDependentOn("Post-Build")
+	// .IsDependentOn("Post-Build")
     .IsDependentOn("Run-Unit-Tests");
 
 RunTarget(target);
