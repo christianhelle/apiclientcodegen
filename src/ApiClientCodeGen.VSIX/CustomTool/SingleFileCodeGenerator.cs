@@ -59,6 +59,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 
                 if (supportedLanguage == SupportedLanguage.VisualBasic && converter != null)
                 {
+                    var crlf = Environment.NewLine;
+                    Trace.WriteLine($"{crlf}EXPERIMENTAL - Attempting to convert C# code to Visual Basic...{crlf}");
+
                     code = converter
                         .ConvertAsync(code)
                         .GetAwaiter()
