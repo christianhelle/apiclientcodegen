@@ -1,31 +1,36 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using FluentAssertions;
+using ICSharpCode.CodeConverter;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.VisualBasic
 {
     [TestClass]
     [TestCategory("SkipWhenLiveUnitTesting")]
     [DeploymentItem("Resources/Swagger.json")]
-    public class NSwagCodeGeneratorTests
+    public class NSwagVisualBasicCodeGeneratorTests
     {
         private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
         private static readonly Mock<INSwagOptions> optionsMock = new Mock<INSwagOptions>();
         private static string code = null;
 
         [ClassInitialize]
-        public static void Init(TestContext testContext)
+        public static async Task InitAsync(TestContext testContext)
         {
             var codeGenerator = new NSwagCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
-                typeof(NSwagCodeGeneratorTests).Namespace,
+                typeof(NSwagVisualBasicCodeGeneratorTests).Namespace,
                 optionsMock.Object);
 
-            code = codeGenerator.GenerateCode(mock.Object);
+            var options = new CodeWithOptions(codeGenerator.GenerateCode(mock.Object));
+            var result = await CodeConverter.Convert(options);
+
+            code = result.ConvertedCode;
         }
 
         [TestMethod]

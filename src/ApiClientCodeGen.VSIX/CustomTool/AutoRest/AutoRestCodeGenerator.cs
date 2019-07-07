@@ -1,4 +1,5 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using System.Runtime.InteropServices;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest
@@ -6,8 +7,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Auto
     [ComVisible(true)]
     public abstract class AutoRestCodeGenerator : SingleFileCodeGenerator
     {
-        protected AutoRestCodeGenerator(SupportedLanguage language)
-            : base(SupportedCodeGenerator.AutoRest, language)
+        protected AutoRestCodeGenerator(SupportedLanguage language, ILanguageConverter languageConverter = null)
+            : base(SupportedCodeGenerator.AutoRest, language, languageConverter)
         {
         }
     }

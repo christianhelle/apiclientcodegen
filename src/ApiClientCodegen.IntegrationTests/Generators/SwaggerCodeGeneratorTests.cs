@@ -1,13 +1,17 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using FluentAssertions;
+using ICSharpCode.CodeConverter;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
     [TestClass]
     [TestCategory("SkipWhenLiveUnitTesting")]
@@ -49,5 +53,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         [TestMethod]
         public void Reads_JavaPath_From_Options() 
             => optionsMock.Verify(c => c.JavaPath);
+
+        [TestMethod]
+        public void GeneratedCode_Can_Build_In_NetCoreApp()
+            => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, code, SupportedCodeGenerator.Swagger);
+
+        [TestMethod]
+        public void GeneratedCode_Can_Build_In_NetStandardLibrary()
+            => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code, SupportedCodeGenerator.Swagger);
     }
 }

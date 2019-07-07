@@ -14,7 +14,6 @@ Task("Clean")
 });
 
 Task("Restore")
-    .IsDependentOn("Clean")
 	.Does(() =>
 {
 	Information("Restoring solution...");
@@ -38,7 +37,8 @@ Task("Run-Unit-Tests")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    VSTest("./**/bin/" + configuration + "/*Tests.dll");
+    VSTest("./**/bin/" + configuration + "/*Tests.dll",
+           new VSTestSettings { Parallel = false });
 });
 
 Task("Post-Build")
@@ -48,7 +48,7 @@ Task("Post-Build")
     });
 
 Task("Default")
-	.IsDependentOn("Post-Build")
+	// .IsDependentOn("Post-Build")
     .IsDependentOn("Run-Unit-Tests");
 
 RunTarget(target);

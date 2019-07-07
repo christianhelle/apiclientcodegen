@@ -37,35 +37,27 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
             switch (generator)
             {
                 case SupportedCodeGenerator.AutoRest:
-                    if (language == SupportedLanguage.CSharp)
-                        return new AutoRestCSharpCodeGenerator(
-                            inputFilePath, 
-                            defaultNamespace);
-                    break;
+                    return new AutoRestCSharpCodeGenerator(
+                        inputFilePath,
+                        defaultNamespace);
 
                 case SupportedCodeGenerator.NSwag:
-                    if (language == SupportedLanguage.CSharp)
-                        return new NSwagCSharpCodeGenerator(
-                            inputFilePath, 
-                            defaultNamespace,
-                            optionsFactory.Create<INSwagOptions, NSwagOptionsPage>());
-                    break;
+                    return new NSwagCSharpCodeGenerator(
+                        inputFilePath,
+                        defaultNamespace,
+                        optionsFactory.Create<INSwagOptions, NSwagOptionsPage>());
 
                 case SupportedCodeGenerator.Swagger:
-                    if (language == SupportedLanguage.CSharp)
-                        return new SwaggerCSharpCodeGenerator(
-                            inputFilePath, 
-                            defaultNamespace,
-                            optionsFactory.Create<IGeneralOptions, GeneralOptionPage>());
-                    break;
+                    return new SwaggerCSharpCodeGenerator(
+                        inputFilePath,
+                        defaultNamespace,
+                        optionsFactory.Create<IGeneralOptions, GeneralOptionPage>());
 
                 case SupportedCodeGenerator.OpenApi:
-                    if (language == SupportedLanguage.CSharp)
-                        return new OpenApiCSharpCodeGenerator(
-                            inputFilePath, 
-                            defaultNamespace,
-                            optionsFactory.Create<IGeneralOptions, GeneralOptionPage>());
-                    break;
+                    return new OpenApiCSharpCodeGenerator(
+                        inputFilePath,
+                        defaultNamespace,
+                        optionsFactory.Create<IGeneralOptions, GeneralOptionPage>());
             }
 
             throw new NotSupportedException();

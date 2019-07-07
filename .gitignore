@@ -262,3 +262,4 @@ __pycache__/
 
 # Cake Build
 src/tools/
+src/.ionide/

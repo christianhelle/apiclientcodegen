@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
     [TestClass]
     [TestCategory("SkipWhenLiveUnitTesting")]
@@ -37,7 +37,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         public async Task NSwagStudio_Generate_Code_Using_NSwagStudio_From_SwaggerSpec()
         {
             var contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
-                File.ReadAllText("Swagger.json"),
+                File.ReadAllText(Path.GetFullPath("Swagger.json")),
                 "https://petstore.swagger.io/v2/swagger.json");
 
             File.WriteAllText("Petstore.nswag", contents);
