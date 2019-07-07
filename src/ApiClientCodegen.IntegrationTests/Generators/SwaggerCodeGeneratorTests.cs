@@ -21,7 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         private static string code = null;
 
         [ClassInitialize]
-        public static async Task InitAsync(TestContext testContext)
+        public static void Init(TestContext testContext)
         {
             optionsMock = new Mock<IGeneralOptions>();
             optionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
