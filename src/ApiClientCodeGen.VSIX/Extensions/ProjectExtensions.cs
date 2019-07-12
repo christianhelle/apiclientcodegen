@@ -261,8 +261,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                     }
                 }
             }
-            catch
+            catch (Exception e)
             {
+                Trace.WriteLine("Unable to read top level namespace from Project");
+                Trace.WriteLine(e);
             }
             return null;
         }

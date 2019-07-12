@@ -38,6 +38,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility
             }
             catch
             {
+                // ignored
             }
         }
         
