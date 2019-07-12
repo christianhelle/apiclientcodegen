@@ -19,10 +19,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
         public string GetJavaExePath()
         {
             var javaPath = options.JavaPath;
-            if (!string.IsNullOrWhiteSpace(javaPath))
+            if (!string.IsNullOrWhiteSpace(javaPath) && (File.Exists(javaPath) || javaPath != "java"))
             {
-                if (File.Exists(javaPath) || javaPath != "java")
-                    return javaPath;
+                return javaPath;
             }
 
             try
