@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
@@ -11,7 +12,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
             try
             {
                 if (options == null)
-                    options = (INSwagOptions)VsPackage.Instance.GetDialogPage(typeof(NSwagOptionsPage));
+                    options = GetFromDialogPage();
 
                 InjectHttpClient = options.InjectHttpClient;
                 GenerateClientInterfaces = options.GenerateClientInterfaces;
@@ -37,6 +38,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
                 ClassStyle = CSharpClassStyle.Poco;
             }
         }
+
+        [ExcludeFromCodeCoverage]
+        private static INSwagOptions GetFromDialogPage()
+            => (INSwagOptions)VsPackage.Instance.GetDialogPage(typeof(NSwagOptionsPage));
 
         public bool InjectHttpClient { get; }
 

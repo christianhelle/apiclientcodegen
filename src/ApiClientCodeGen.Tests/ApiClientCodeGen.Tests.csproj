@@ -223,7 +223,9 @@
     <Compile Include="Options\CustomPathOptionsNullOptionsTests.cs" />
     <Compile Include="Options\CustomPathOptionsTests.cs" />
     <Compile Include="Options\JavaPathProviderTests.cs" />
+    <Compile Include="Options\NSwagCSharpOptionsNullOptionsTests.cs" />
     <Compile Include="Options\NSwagCSharpOptionsTests.cs" />
+    <Compile Include="Options\NSwagStudioOptionsNullOptionsTests.cs" />
     <Compile Include="Options\NSwagStudioOptionsTests.cs" />
     <Compile Include="Options\PathProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
