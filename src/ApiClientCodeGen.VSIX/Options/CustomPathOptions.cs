@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
 {
@@ -10,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
             try
             {
                 if (options == null)
-                    options = (IGeneralOptions)VsPackage.Instance.GetDialogPage(typeof(GeneralOptionPage));
+                    options = GetFromDialogPage();
 
                 JavaPath = options.JavaPath;
                 NpmPath = options.NpmPath;
@@ -36,6 +37,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
                 Trace.WriteLine($"OpenApiGeneratorPath = {OpenApiGeneratorPath}");
             }
         }
+
+        [ExcludeFromCodeCoverage]
+        private static IGeneralOptions GetFromDialogPage()
+            => (IGeneralOptions)VsPackage.Instance.GetDialogPage(typeof(GeneralOptionPage));
 
         public string JavaPath { get; set; }
         public string NpmPath { get; set; }
