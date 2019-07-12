@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
-    public class ProcessHelper
+    public static class ProcessHelper
     {
         public static void StartProcess(string command, string arguments)
         {
