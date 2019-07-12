@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators
 {
     [TestClass]
+    [TestCategory("SkipWhenLiveUnitTesting")]
     public class CSharpFileMergerTests
     {
         [TestMethod]
