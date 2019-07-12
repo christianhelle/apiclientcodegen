@@ -6,7 +6,7 @@ using NSwag;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio
 {
-    public sealed class NSwagStudioFileHelper
+    public static class NSwagStudioFileHelper
     {
         public static async Task<string> CreateNSwagStudioFileAsync(
             string openApiSpec, 
