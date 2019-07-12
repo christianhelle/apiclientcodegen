@@ -69,9 +69,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
             
             while (queue.Count > 0)
             {
+                string[] files = null;
                 path = queue.Dequeue();
                 try
                 {
+                    files = Directory.GetFiles(path);
                     foreach (var subDir in Directory.GetDirectories(path))
                     {
                         queue.Enqueue(subDir);
@@ -79,17 +81,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 }
                 catch (Exception ex)
                 {
-                    Console.Error.WriteLine(ex);
-                }
-
-                string[] files = null;
-                try
-                {
-                    files = Directory.GetFiles(path);
-                }
-                catch (Exception ex)
-                {
-                    Console.Error.WriteLine(ex);
+                    Trace.TraceError(ex.ToString());
                 }
 
                 if (files == null) 
