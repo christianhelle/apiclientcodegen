@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
 {
-    public class PackageDependency
+    public sealed class PackageDependency
     {
         public PackageDependency(string name, Version version, bool forceUpdate = true)
         {
