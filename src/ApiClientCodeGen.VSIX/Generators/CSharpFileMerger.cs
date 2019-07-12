@@ -47,10 +47,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 var sourceLines = File.ReadAllLines(file);
                 foreach (var sourceLine in sourceLines)
                 {
+                    if (string.IsNullOrWhiteSpace(sourceLine))
+                        continue;
+
                     var trimmedLine = sourceLine.Trim().Replace("  ", " ");
                     var isUsingDir = trimmedLine.StartsWith(openingTag) && trimmedLine.EndsWith(";");
 
-                    if (!string.IsNullOrWhiteSpace(sourceLine) && !isUsingDir)
+                    if (!isUsingDir)
                         sb.AppendLine(sourceLine);
                 }
             }
