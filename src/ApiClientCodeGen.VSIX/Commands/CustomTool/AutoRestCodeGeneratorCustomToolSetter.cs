@@ -1,7 +1,9 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
+﻿using System.Diagnostics.CodeAnalysis;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
 {
+    [ExcludeFromCodeCoverage]
     public class AutoRestCodeGeneratorCustomToolSetter
         : CustomToolSetter<AutoRestCodeGenerator>
     {
