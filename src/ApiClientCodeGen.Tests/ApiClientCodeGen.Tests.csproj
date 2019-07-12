@@ -208,6 +208,7 @@
     <Compile Include="Extensions\StringToIntPtrTests.cs" />
     <Compile Include="Extensions\GetCustomToolNameTests.cs" />
     <Compile Include="Extensions\ToJsonTests.cs" />
+    <Compile Include="FileHelperTests.cs" />
     <Compile Include="Generators\CodeGeneratorFactoryTests.cs" />
     <Compile Include="Generators\CSharpFileMergerTests.cs" />
     <Compile Include="DeploymentItemTests.cs" />
@@ -218,6 +219,8 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="NuGet\SupportedCodeGeneratorExtensionsTests.cs" />
     <Compile Include="NuGet\PackageDependencyListProviderTests.cs" />
+    <Compile Include="Options\CustomPathOptionsExceptionTests.cs" />
+    <Compile Include="Options\CustomPathOptionsTests.cs" />
     <Compile Include="Options\JavaPathProviderTests.cs" />
     <Compile Include="Options\NSwagCSharpOptionsTests.cs" />
     <Compile Include="Options\NSwagStudioOptionsTests.cs" />
