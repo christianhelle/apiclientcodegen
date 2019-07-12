@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
-    public class FileHelper
+    public static class FileHelper
     {
         public static string ReadThenDelete(string outputFile)
         {
