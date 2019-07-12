@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using Microsoft.VisualStudio.Shell;
@@ -6,6 +7,7 @@ using Microsoft.VisualStudio.TextTemplating.VSHost;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.OpenApi
 {
+    [ExcludeFromCodeCoverage]
     [Guid("551706C0-F37F-4938-9DF8-9D3B2CBF452A")]
     [ComVisible(true)]
     [ProvideObject(typeof(OpenApiVisualBasicCodeGenerator))]

@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using Microsoft.VisualStudio.Shell;
@@ -6,6 +7,7 @@ using Microsoft.VisualStudio.TextTemplating.VSHost;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.NSwag
 {
+    [ExcludeFromCodeCoverage]
     [Guid("5EB59F57-9C54-45F1-9301-59CBF65385D0")]
     [ComVisible(true)]
     [ProvideObject(typeof(NSwagVisualBasicCodeGenerator))]

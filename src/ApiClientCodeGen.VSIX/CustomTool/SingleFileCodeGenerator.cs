@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
@@ -9,6 +10,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 {
+    [ExcludeFromCodeCoverage]
     [ComVisible(true)]
     public abstract class SingleFileCodeGenerator : IVsSingleFileGenerator
     {
