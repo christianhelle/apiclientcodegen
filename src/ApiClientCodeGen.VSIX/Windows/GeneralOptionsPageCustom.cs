@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 {
+    [ExcludeFromCodeCoverage]
     public partial class GeneralOptionsPageCustom : UserControl
     {
         private readonly GeneralOptionPage options;
