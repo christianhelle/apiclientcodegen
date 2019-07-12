@@ -1,9 +1,11 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+﻿using System.Diagnostics.CodeAnalysis;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using System.Runtime.InteropServices;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.NSwag
 {
+    [ExcludeFromCodeCoverage]
     [ComVisible(true)]
     public abstract class NSwagCodeGenerator : SingleFileCodeGenerator
     {

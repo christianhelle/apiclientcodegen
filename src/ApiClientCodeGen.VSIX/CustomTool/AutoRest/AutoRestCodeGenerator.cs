@@ -1,9 +1,11 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
+﻿using System.Diagnostics.CodeAnalysis;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using System.Runtime.InteropServices;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest
 {
+    [ExcludeFromCodeCoverage]
     [ComVisible(true)]
     public abstract class AutoRestCodeGenerator : SingleFileCodeGenerator
     {

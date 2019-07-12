@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
@@ -9,6 +10,7 @@ using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
 {
+    [ExcludeFromCodeCoverage]
     public abstract class CustomToolSetter<T>
         : ICommandInitializer
         where T : SingleFileCodeGenerator

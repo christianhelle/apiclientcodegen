@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using Microsoft.VisualStudio.Shell;
@@ -6,6 +7,7 @@ using Microsoft.VisualStudio.TextTemplating.VSHost;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest
 {
+    [ExcludeFromCodeCoverage]
     [Guid("EB8E6CE3-C2AC-46F3-A397-336618B567D2")]
     [ComVisible(true)]
     [ProvideObject(typeof(AutoRestVisualBasicCodeGenerator))]

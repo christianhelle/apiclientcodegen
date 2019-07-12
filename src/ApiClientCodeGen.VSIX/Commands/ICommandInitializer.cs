@@ -8,6 +8,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands
     {
         Task InitializeAsync(
             AsyncPackage package,
-            CancellationToken cancellationToken);
+            CancellationToken token);
     }
 }

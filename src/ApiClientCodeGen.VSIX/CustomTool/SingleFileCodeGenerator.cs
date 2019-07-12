@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
@@ -9,6 +10,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 {
+    [ExcludeFromCodeCoverage]
     [ComVisible(true)]
     public abstract class SingleFileCodeGenerator : IVsSingleFileGenerator
     {
@@ -59,8 +61,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 
                 if (supportedLanguage == SupportedLanguage.VisualBasic && converter != null)
                 {
-                    var crlf = Environment.NewLine;
-                    Trace.WriteLine($"{crlf}EXPERIMENTAL - Attempting to convert C# code to Visual Basic...{crlf}");
+                    Trace.WriteLine(Environment.NewLine);
+                    Trace.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    Trace.WriteLine("!!! EXPERIMENTAL - Attempting to convert C# code to Visual Basic !!!");
+                    Trace.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    Trace.WriteLine(Environment.NewLine);
 
                     code = converter
                         .ConvertAsync(code)

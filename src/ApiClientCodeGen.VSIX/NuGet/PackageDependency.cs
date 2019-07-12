@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
 {
-    public class PackageDependency
+    public sealed class PackageDependency
     {
         public PackageDependency(string name, Version version, bool forceUpdate = true)
         {
@@ -12,20 +12,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
             ForceUpdate = forceUpdate;
         }
 
-        public string Name { get; set; }
-        public Version Version { get; set; }
-        public bool ForceUpdate { get; set; }
+        public string Name { get; }
+        public Version Version { get; }
+        public bool ForceUpdate { get; }
 
         public override bool Equals(object obj)
         {
             return obj is PackageDependency dependency &&
                    Name == dependency.Name &&
                    EqualityComparer<Version>.Default.Equals(Version, dependency.Version);
-        }
-
-        protected bool Equals(PackageDependency other)
-        {
-            return string.Equals(Name, other.Name) && Equals(Version, other.Version);
         }
 
         public override int GetHashCode()

@@ -1,7 +1,9 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Swagger;
+﻿using System.Diagnostics.CodeAnalysis;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Swagger;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
 {
+    [ExcludeFromCodeCoverage]
     public class SwaggerCodeGeneratorCustomToolSetter
         : CustomToolSetter<SwaggerCodeGenerator>
     {

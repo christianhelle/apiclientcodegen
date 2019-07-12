@@ -1,7 +1,9 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.OpenApi;
+﻿using System.Diagnostics.CodeAnalysis;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.OpenApi;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
 {
+    [ExcludeFromCodeCoverage]
     public class OpenApiCodeGeneratorCustomToolSetter
         : CustomToolSetter<OpenApiCodeGenerator>
     {

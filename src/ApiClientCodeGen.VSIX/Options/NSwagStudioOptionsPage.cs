@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.Shell;
 using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
 {
+    [ExcludeFromCodeCoverage]
     public class NSwagStudioOptionsPage : DialogPage, INSwagStudioOptions
     {
         public const string Name = "NSwag Studio";

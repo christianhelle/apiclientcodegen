@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
@@ -10,6 +11,7 @@ using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagStudio
 {
+    [ExcludeFromCodeCoverage]
     public class NSwagStudioCommand : ICommandInitializer
     {
         public const string ContextGuid = "65B3A74F-CD47-476A-A992-0C3DE31455FD";
