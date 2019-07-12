@@ -346,7 +346,6 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="VisualBasic\AutoRestVisualBasicCodeGeneratorTests.cs" />
     <Compile Include="Generators\AutoRestCodeGeneratorTests.cs" />
-    <Compile Include="Utility\CSharpToVisualBasicLanguageConverter.cs" />
     <Compile Include="VisualBasic\NSwagStudioVisualBasicCodeGeneratorTests.cs" />
     <Compile Include="VisualBasic\NSwagVisualBasicCodeGeneratorTests.cs" />
     <Compile Include="VisualBasic\OpenApiVisualBasicCodeGeneratorTests.cs" />
