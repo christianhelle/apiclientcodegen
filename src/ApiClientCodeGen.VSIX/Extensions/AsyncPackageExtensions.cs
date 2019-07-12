@@ -37,13 +37,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 return;
 
             var menuCommand = new MenuCommand(
-                async (sender, e) => await Invoke(package, func, dte), 
+                async (sender, e) => await InvokeAsync(package, func, dte), 
                 new CommandID(commandSet, commandId));
 
             commandService.AddCommand(menuCommand);
         }
 
-        private static async Task Invoke(AsyncPackage package, Func<DTE, AsyncPackage, Task> func, DTE dte)
+        private static async Task InvokeAsync(AsyncPackage package, Func<DTE, AsyncPackage, Task> func, DTE dte)
         {
             try
             {
