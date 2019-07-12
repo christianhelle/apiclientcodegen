@@ -8,23 +8,9 @@ using Moq;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
 {
     [TestClass]
-    public class CustomPathOptionsExceptionTests
+    public class CustomPathOptionsNullOptionsTests
     {
-        private CustomPathOptions sut;
-
-        [TestInitialize]
-        public void Init()
-        {
-            var fixture = new Fixture();
-            var mock = new Mock<IGeneralOptions>();
-            mock.Setup(c => c.JavaPath).Throws<Exception>();
-            mock.Setup(c => c.NpmPath).Throws<Exception>();
-            mock.Setup(c => c.NSwagPath).Throws<Exception>();
-            mock.Setup(c => c.SwaggerCodegenPath).Throws<Exception>();
-            mock.Setup(c => c.OpenApiGeneratorPath).Throws<Exception>();
-
-            sut = new CustomPathOptions(mock.Object);
-        }
+        private readonly CustomPathOptions sut = new CustomPathOptions();
 
         [TestMethod]
         public void JavaPath_NotNullOrWhiteSpace()
