@@ -338,6 +338,7 @@
     <Compile Include="Build\Projects\NSwagProjectFileContents.cs" />
     <Compile Include="Build\ProjectTypes.cs" />
     <Compile Include="Build\Projects\SwaggerProjectFileContents.cs" />
+    <Compile Include="Converters\CSharpToVisualBasicLanguageConverterTests.cs" />
     <Compile Include="CustomTool\CSharpSingleFileCodeGeneratorTests.cs" />
     <Compile Include="CustomTool\CSharpSingleFileCodeGenerator.cs" />
     <Compile Include="CustomTool\VisualBasicSingleFileCodeGeneratorTests.cs" />
