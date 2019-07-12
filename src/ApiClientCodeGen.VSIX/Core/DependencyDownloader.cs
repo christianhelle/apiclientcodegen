@@ -50,7 +50,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
             if (string.IsNullOrWhiteSpace(path))
                 path = Path.Combine(Path.GetTempPath(), jar);
 
-            if (!File.Exists(path) || FileHelper.CalculateMd5(path) != md5)
+            if (!File.Exists(path) || FileHelper.CalculateChecksum(path) != md5)
             {
                 Trace.WriteLine($"{jar} not found. Attempting to download {jar}");
                 new WebClient().DownloadFile(url, path);

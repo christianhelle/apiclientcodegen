@@ -1,52 +1,46 @@
 ﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
+using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
 {
     [TestClass]
-    public class NSwagCSharpOptionsTests
+    public class NSwagCSharpOptionsNullOptionsTests
     {
-        private INSwagOptions options;
-
-        [TestInitialize]
-        public void Init()
-            => options = new Mock<INSwagOptions>().Object;
-
         [TestMethod]
         public void Reads_InjectHttpClient_From_Options()
-            => new NSwagCSharpOptions(options)
+            => new NSwagCSharpOptions(null)
                 .InjectHttpClient
                 .Should()
-                .Be(options.InjectHttpClient);
+                .Be(true);
 
         [TestMethod]
         public void Reads_GenerateClientInterfaces_From_Options()
-            => new NSwagCSharpOptions(options)
+            => new NSwagCSharpOptions()
                 .GenerateClientInterfaces
                 .Should()
-                .Be(options.GenerateClientInterfaces);
+                .Be(true);
 
         [TestMethod]
         public void Reads_GenerateDtoTypes_From_Options()
-            => new NSwagCSharpOptions(options)
+            => new NSwagCSharpOptions()
                 .GenerateDtoTypes
                 .Should()
-                .Be(options.GenerateDtoTypes);
+                .Be(true);
 
         [TestMethod]
         public void Reads_UseBaseUrl_From_Options()
-            => new NSwagCSharpOptions(options)
+            => new NSwagCSharpOptions()
                 .UseBaseUrl
                 .Should()
-                .Be(options.UseBaseUrl);
+                .Be(false);
 
         [TestMethod]
         public void Reads_ClassStyle_From_Options()
-            => new NSwagCSharpOptions(options)
+            => new NSwagCSharpOptions()
                 .ClassStyle
                 .Should()
-                .Be(options.ClassStyle);
+                .Be(CSharpClassStyle.Poco);
     }
 }

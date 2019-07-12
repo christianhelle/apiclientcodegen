@@ -37,15 +37,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 return;
 
             var menuCommand = new MenuCommand(
-                (sender, e) => Invoke(package, func, dte), 
+                async (sender, e) => await InvokeAsync(package, func, dte), 
                 new CommandID(commandSet, commandId));
 
             commandService.AddCommand(menuCommand);
         }
 
-#pragma warning disable VSTHRD100 // Avoid async void methods
-        private static async void Invoke(AsyncPackage package, Func<DTE, AsyncPackage, Task> func, DTE dte)
-#pragma warning restore VSTHRD100 // Avoid async void methods
+        private static async Task InvokeAsync(AsyncPackage package, Func<DTE, AsyncPackage, Task> func, DTE dte)
         {
             try
             {

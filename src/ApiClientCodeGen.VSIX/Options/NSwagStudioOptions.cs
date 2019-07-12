@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
 {
@@ -11,7 +12,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
             try
             {
                 if (options == null)
-                    options = (INSwagStudioOptions)VsPackage.Instance.GetDialogPage(typeof(NSwagStudioOptionsPage));
+                    options = GetFromDialogPage();
 
                 GenerateResponseClasses = options.GenerateResponseClasses;
                 GenerateJsonMethods = options.GenerateJsonMethods;
@@ -37,6 +38,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
                 GenerateDataAnnotations = true;
             }
         }
+
+        [ExcludeFromCodeCoverage]
+        private static INSwagStudioOptions GetFromDialogPage()
+            => (INSwagStudioOptions)VsPackage.Instance.GetDialogPage(typeof(NSwagStudioOptionsPage));
 
         public bool GenerateResponseClasses { get; set; }
         public bool GenerateJsonMethods { get; set; }
