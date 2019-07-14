@@ -34,5 +34,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
             new PackageDependency(
                 "System.ComponentModel.Annotations",
                 new Version(4, 5, 0));
+
+        public static readonly PackageDependency MicrosoftCSharp =
+            new PackageDependency(
+                "Microsoft.CSharp",
+                new Version(4, 5, 0));
     }
 }
