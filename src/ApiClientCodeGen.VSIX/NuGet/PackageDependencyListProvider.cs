@@ -28,6 +28,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
                     yield return PackageDependencies.JsonSubTypes;
                     yield return PackageDependencies.SystemRuntimeSerializationPrimitives;
                     yield return PackageDependencies.SystemComponentModelAnnotations;
+                    yield return PackageDependencies.MicrosoftCSharp;
                     break;
             }
         }

@@ -128,6 +128,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
                 .Contain(PackageDependencies.SystemComponentModelAnnotations);
 
         [TestMethod]
+        public void GetDependencies_Swagger_Contains_MicrosoftCSharp()
+            => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
+                .Should()
+                .Contain(PackageDependencies.MicrosoftCSharp);
+
+        [TestMethod]
         public void GetDependencies_OpenApi_Contains_RestSharp()
             => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
                 .Should()
@@ -150,5 +156,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
             => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
                 .Should()
                 .Contain(PackageDependencies.SystemComponentModelAnnotations);
+
+        [TestMethod]
+        public void GetDependencies_OpenApi_Contains_MicrosoftCSharp()
+            => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
+                .Should()
+                .Contain(PackageDependencies.MicrosoftCSharp);
     }
 }
