@@ -25,7 +25,6 @@
     <PackageReference Include = ""RestSharp"" Version=""105.1.0"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
-    <PackageReference Include = ""Microsoft.CSharp"" Version=""4.5.0"" />
   </ItemGroup>
 </Project>";
     }
