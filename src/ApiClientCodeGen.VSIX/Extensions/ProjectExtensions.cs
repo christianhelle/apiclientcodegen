@@ -265,6 +265,25 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
             return null;
         }
+
+        public static bool IsNetStandardLibrary(this Project project)
+        {
+            try
+            {
+                var fileName = project.FileName;
+                Trace.WriteLine("Project filename = " + fileName);
+                var contents = File.ReadAllText(fileName);
+                var result = contents.Contains("<TargetFramework>netstandard");
+                return result;
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine("Unable to read project file contents");
+                Trace.WriteLine(e);
+            }
+
+            return false;
+        }
     }
 
     public static class ProjectTypes
