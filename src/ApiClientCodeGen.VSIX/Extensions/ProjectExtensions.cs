@@ -223,6 +223,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 return;
             }
 
+            if (packageDependency.IsSystemLibrary)
+            {
+                Trace.WriteLine("Package is a system library");
+                if (!project.IsNetStandardLibrary())
+                {
+                    Trace.WriteLine("Skipping package installation");
+                    return;
+                }
+            }
+
             Trace.WriteLine($"Installing {packageId} version {version}");
 
             try
