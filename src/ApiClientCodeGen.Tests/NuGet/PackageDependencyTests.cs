@@ -12,6 +12,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
         private string name;
         private Version version;
         private bool forceUpdate;
+        private bool isSystemLibrary;
         private PackageDependency sut;
 
         [TestInitialize]
@@ -21,7 +22,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
             name = fixture.Create<string>();
             version = fixture.Create<Version>();
             forceUpdate = fixture.Create<bool>();
-            sut = new PackageDependency(name, version, forceUpdate);
+            isSystemLibrary = fixture.Create<bool>();
+            sut = new PackageDependency(name, version, forceUpdate, isSystemLibrary);
         }
 
         [TestMethod]
@@ -30,6 +32,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
                     new PackageDependency(sut.Name, sut.Version, sut.ForceUpdate))
                 .Should()
                 .BeTrue();
+
+        [TestMethod]
+        public void GetHashCode_Compares_Values()
+            => sut.GetHashCode()
+                .Should()
+                .Be(new PackageDependency(sut.Name, sut.Version, sut.ForceUpdate).GetHashCode());
 
         [TestMethod]
         public void Name_Set()
@@ -42,6 +50,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
         [TestMethod]
         public void ForceUpdate_Set()
             => sut.ForceUpdate.Should().Be(forceUpdate);
+
+        [TestMethod]
+        public void IsSystemLibrary_Set()
+            => sut.IsSystemLibrary.Should().Be(isSystemLibrary);
 
         [TestMethod]
         public void Name_NotBeNullOrWhiteSpace()
