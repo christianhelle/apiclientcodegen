@@ -223,6 +223,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 return;
             }
 
+            if (packageDependency.IsSystemLibrary)
+            {
+                Trace.WriteLine("Package is a system library");
+                if (!project.IsNetStandardLibrary())
+                {
+                    Trace.WriteLine("Skipping package installation");
+                    return;
+                }
+            }
+
             Trace.WriteLine($"Installing {packageId} version {version}");
 
             try
@@ -264,6 +274,25 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 Trace.WriteLine(e);
             }
             return null;
+        }
+
+        public static bool IsNetStandardLibrary(this Project project)
+        {
+            try
+            {
+                var fileName = project.FileName;
+                Trace.WriteLine("Project filename = " + fileName);
+                var contents = File.ReadAllText(fileName);
+                var result = contents.Contains("<TargetFramework>netstandard");
+                return result;
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine("Unable to read project file contents");
+                Trace.WriteLine(e);
+            }
+
+            return false;
         }
     }
 

@@ -75,6 +75,7 @@
     <Compile Include="CustomTool\NSwag\NSwagVisualBasicCodeGenerator.cs" />
     <Compile Include="CustomTool\OpenApi\OpenApiVisualBasicCodeGenerator.cs" />
     <Compile Include="CustomTool\Swagger\SwaggerVisualBasicCodeGenerator.cs" />
+    <Compile Include="Core\ProjectTypes.cs" />
     <Compile Include="Extensions\SupportedCodeGeneratorExtensions.cs" />
     <Compile Include="Extensions\AsyncPackageExtensions.cs" />
     <Compile Include="Commands\NSwagStudio\NSwagStudioCommand.cs" />

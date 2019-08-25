@@ -28,11 +28,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
         public static readonly PackageDependency SystemRuntimeSerializationPrimitives =
             new PackageDependency(
                 "System.Runtime.Serialization.Primitives",
-                new Version(4, 3, 0));
+                new Version(4, 3, 0),
+                isSystemLibrary: true);
 
         public static readonly PackageDependency SystemComponentModelAnnotations =
             new PackageDependency(
                 "System.ComponentModel.Annotations",
-                new Version(4, 5, 0));
+                new Version(4, 5, 0),
+                isSystemLibrary: true);
+
+        public static readonly PackageDependency MicrosoftCSharp =
+            new PackageDependency(
+                "Microsoft.CSharp",
+                new Version(4, 5, 0),
+                isSystemLibrary: true);
     }
 }
