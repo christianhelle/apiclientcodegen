@@ -21,7 +21,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Trace.WriteLine(projectContents);
             File.WriteAllText(projectFile, projectContents);
             File.WriteAllText(Path.Combine(path, "Generated.cs"), generatedCode);
-            ProcessHelper.StartProcess("dotnet.exe", $"build \"{projectFile}\"");
+
+            if (projecType == ProjectTypes.DotNetFramework)
+                ProcessHelper.StartProcess("msbuild.exe", $"/t:restore /t:Rebuild \"{projectFile}\"");
+            else
+                ProcessHelper.StartProcess("dotnet.exe", $"build \"{projectFile}\"");
         }
 
         private static string GetProjectContents(
@@ -66,6 +70,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
                         case ProjectTypes.DotNetStandardLibrary:
                             return SwaggerProjectFileContents.NetStandardLibrary;
+
+                        case ProjectTypes.DotNetFramework:
+                            return SwaggerProjectFileContents.NetFrameworkApp;
 
                         default:
                             throw new ArgumentOutOfRangeException(nameof(projecType), projecType, null);

@@ -20,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Open
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
             this.options = new CustomPathOptions(options ?? throw new ArgumentNullException(nameof(options)));
-            javaPathProvider = new JavaPathProvider(options ?? throw new ArgumentNullException(nameof(options)));
+            javaPathProvider = new JavaPathProvider(options);
         }
 
         public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
