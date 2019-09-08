@@ -30,7 +30,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
         public static string InstallOpenApiGenerator(string path = null)
         {
             const string md5 = "61574C43BEC9B6EDD54E2DD0993F81D5";
-            const string url = "http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/4.0.0/openapi-generator-cli-4.0.0.jar";
+            const string url = "http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/4.1.1/openapi-generator-cli-4.1.1.jar";
             const string jar = "openapi-generator-cli.jar";
 
             return InstallJarFile(path, jar, md5, url);
