@@ -14,7 +14,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             INSwagStudioOptions options = null,
             string outputNamespace = null)
         {
-            var className = (await SwaggerDocument.FromJsonAsync(openApiSpec)).GenerateClassName();
+            var className = (await OpenApiDocument.FromJsonAsync(openApiSpec)).GenerateClassName();
             return new
                 {
                     Runtime = "Default",

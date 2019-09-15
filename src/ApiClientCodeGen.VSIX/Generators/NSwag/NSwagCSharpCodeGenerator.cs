@@ -27,14 +27,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             {
                 pGenerateProgress?.Progress(10);
 
-                var document = SwaggerDocument
+                var document = OpenApiDocument
                     .FromFileAsync(swaggerFile)
                     .GetAwaiter()
                     .GetResult();
 
                 pGenerateProgress?.Progress(20);
 
-                var settings = new SwaggerToCSharpClientGeneratorSettings
+                var settings = new CSharpClientGeneratorSettings
                 {
                     ClassName = GetClassName(document),
                     InjectHttpClient = options.InjectHttpClient,
@@ -50,7 +50,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
 
                 pGenerateProgress?.Progress(50);
 
-                var generator = new SwaggerToCSharpClientGenerator(document, settings);
+                var generator = new CSharpClientGenerator(document, settings);
                 return generator.GenerateFile();
             }
             finally
@@ -59,12 +59,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             }
         }
 
-        private static string GetClassName(SwaggerDocument document)
+        private static string GetClassName(OpenApiDocument document)
             => string.IsNullOrWhiteSpace(document.Info?.Title)
                 ? "ApiClient"
                 : $"{SanitizeTitle(document)}Client";
 
-        private static string SanitizeTitle(SwaggerDocument document)
+        private static string SanitizeTitle(OpenApiDocument document)
             => RemoveCharacters(
                 document.Info.Title,
                 "Swagger", " ", ".", "-");
