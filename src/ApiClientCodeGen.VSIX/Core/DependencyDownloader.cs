@@ -38,8 +38,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 
         public static string InstallSwaggerCodegenCli(string path = null)
         {
-            const string md5 = "219F1453FF22482D9E080EFFBFA7FA81";
-            const string url = "https://repo1.maven.org/maven2/io/swagger/swagger-codegen-cli/2.4.8/swagger-codegen-cli-2.4.8.jar";
+            const string md5 = "89E1C5F578CC0B7A5D430CDF8210AC44";
+            const string url = "https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.11/swagger-codegen-cli-3.0.11.jar";
             const string jar = "swagger-codegen-cli.jar";
             
             return InstallJarFile(path, jar, md5, url);
