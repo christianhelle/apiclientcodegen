@@ -280,6 +280,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
         {
             try
             {
+                ThreadHelper.ThrowIfNotOnUIThread();
+
                 var fileName = project.FileName;
                 Trace.WriteLine("Project filename = " + fileName);
                 var contents = File.ReadAllText(fileName);
