@@ -37,6 +37,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 
         private static string GenerateCombinedSource(IEnumerable<string> namespaces, IEnumerable<string> files)
         {
+            //
+            // NOTE:
+            // Swagger Codegen CLI 3.0.11 has a bug where the -DapiTests=false and -DmodelTests=false are not respected
+            // Because of this we need to exclude the generated unit test files and the NUnit.* namespaces
+            //
+
             var sb = new StringBuilder();
             foreach (var ns in namespaces.Where(c => !c.Contains("NUnit")).OrderBy(s => s))
                 sb.AppendLine("using " + ns + ";");
