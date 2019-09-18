@@ -38,11 +38,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
         private static string GenerateCombinedSource(IEnumerable<string> namespaces, IEnumerable<string> files)
         {
             var sb = new StringBuilder();
-            foreach (var ns in namespaces.OrderBy(s => s))
+            foreach (var ns in namespaces.Where(c => !c.Contains("NUnit")).OrderBy(s => s))
                 sb.AppendLine("using " + ns + ";");
 
             const string openingTag = "using ";
-            foreach (var file in files)
+            foreach (var file in files.Where(c => !c.EndsWith("tests.cs", StringComparison.OrdinalIgnoreCase)))
             {
                 var sourceLines = File.ReadAllLines(file);
                 foreach (var sourceLine in sourceLines)
