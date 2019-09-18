@@ -59,5 +59,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         [TestMethod]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code, SupportedCodeGenerator.OpenApi);
+
+        //[TestMethod]
+        //public void GeneratedCode_Can_Build_In_NetFrameworkApp()
+        //    => BuildHelper.BuildCSharp(ProjectTypes.DotNetFramework, code, SupportedCodeGenerator.OpenApi);
     }
 }

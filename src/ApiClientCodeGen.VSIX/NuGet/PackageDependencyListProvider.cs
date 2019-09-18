@@ -26,6 +26,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
                 case SupportedCodeGenerator.OpenApi:
                     yield return PackageDependencies.RestSharp;
                     yield return PackageDependencies.JsonSubTypes;
+                    yield return PackageDependencies.NewtonsoftJson;
                     yield return PackageDependencies.SystemRuntimeSerializationPrimitives;
                     yield return PackageDependencies.SystemComponentModelAnnotations;
                     yield return PackageDependencies.MicrosoftCSharp;

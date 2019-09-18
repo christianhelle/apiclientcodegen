@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.Threading;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;
 
@@ -26,31 +29,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             try
             {
                 pGenerateProgress?.Progress(10);
-
-                var document = SwaggerDocument
-                    .FromFileAsync(swaggerFile)
-                    .GetAwaiter()
-                    .GetResult();
-
+                var document = GetOpenApiDocument();
                 pGenerateProgress?.Progress(20);
-
-                var settings = new SwaggerToCSharpClientGeneratorSettings
-                {
-                    ClassName = GetClassName(document),
-                    InjectHttpClient = options.InjectHttpClient,
-                    GenerateClientInterfaces = options.GenerateClientInterfaces,
-                    GenerateDtoTypes = options.GenerateDtoTypes,
-                    UseBaseUrl = options.UseBaseUrl,
-                    CSharpGeneratorSettings =
-                    {
-                        Namespace = defaultNamespace,
-                        ClassStyle = options.ClassStyle
-                    },
-                };
-
+                var settings = GetGeneratorSettings(document);
                 pGenerateProgress?.Progress(50);
-
-                var generator = new SwaggerToCSharpClientGenerator(document, settings);
+                var generator = new CSharpClientGenerator(document, settings);
                 return generator.GenerateFile();
             }
             finally
@@ -59,12 +42,45 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             }
         }
 
-        private static string GetClassName(SwaggerDocument document)
+        [ExcludeFromCodeCoverage]
+        private CSharpClientGeneratorSettings GetGeneratorSettings(OpenApiDocument document)
+            => new CSharpClientGeneratorSettings
+            {
+                ClassName = GetClassName(document),
+                InjectHttpClient = options.InjectHttpClient,
+                GenerateClientInterfaces = options.GenerateClientInterfaces,
+                GenerateDtoTypes = options.GenerateDtoTypes,
+                UseBaseUrl = options.UseBaseUrl,
+                CSharpGeneratorSettings =
+                {
+                    Namespace = defaultNamespace,
+                    ClassStyle = options.ClassStyle
+                },
+            };
+
+        [ExcludeFromCodeCoverage]
+        private OpenApiDocument GetOpenApiDocument()
+        {
+            try
+            {
+                return ThreadHelper.JoinableTaskFactory
+                    ?.Run(() => OpenApiDocument.FromFileAsync(swaggerFile));
+            }
+            catch (NullReferenceException)
+            {
+                return OpenApiDocument
+                    .FromFileAsync(swaggerFile)
+                    .GetAwaiter()
+                    .GetResult();
+            }
+        }
+
+        private static string GetClassName(OpenApiDocument document)
             => string.IsNullOrWhiteSpace(document.Info?.Title)
                 ? "ApiClient"
                 : $"{SanitizeTitle(document)}Client";
 
-        private static string SanitizeTitle(SwaggerDocument document)
+        private static string SanitizeTitle(OpenApiDocument document)
             => RemoveCharacters(
                 document.Info.Title,
                 "Swagger", " ", ".", "-");

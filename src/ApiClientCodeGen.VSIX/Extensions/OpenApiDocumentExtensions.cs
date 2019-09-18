@@ -3,14 +3,14 @@ using NSwag;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 {
-    public static class SwaggerDocumentExtensions
+    public static class OpenApiDocumentExtensions
     {
-        public static string GenerateClassName(this SwaggerDocument document)
+        public static string GenerateClassName(this OpenApiDocument document)
             => string.IsNullOrWhiteSpace(document.Info?.Title)
                 ? "ApiClient"
                 : $"{GetSanitizeTitle(document)}Client";
 
-        public static string GetSanitizeTitle(this SwaggerDocument document)
+        public static string GetSanitizeTitle(this OpenApiDocument document)
             => RemoveCharacters(
                 document.Info.Title,
                 "Swagger", " ", ".", "-");

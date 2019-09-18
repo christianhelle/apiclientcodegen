@@ -51,8 +51,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
                     $"--input-spec \"{swaggerFile}\" " +
                     $"--output \"{output}\" " +
                     $"-DapiTests=false -DmodelTests=false " +
-                    $"-DpackageName={defaultNamespace} " +
-                    $"--skip-overwrite ";
+                    $"-DpackageName={defaultNamespace} ";
                 
                 ProcessHelper.StartProcess(javaPathProvider.GetJavaExePath(), arguments);
                 pGenerateProgress.Progress(80);
