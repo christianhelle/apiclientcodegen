@@ -3,7 +3,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Converters
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Converters
 {
     [TestClass]
     public class CSharpToVisualBasicLanguageConverterTests
