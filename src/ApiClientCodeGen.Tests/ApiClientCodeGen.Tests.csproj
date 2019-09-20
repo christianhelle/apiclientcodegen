@@ -152,6 +152,15 @@
     <Reference Include="NJsonSchema.CodeGeneration.CSharp, Version=10.0.23.0, Culture=neutral, PublicKeyToken=c2f9c3bdfae56102, processorArchitecture=MSIL">
       <HintPath>..\packages\NJsonSchema.CodeGeneration.CSharp.10.0.23\lib\net451\NJsonSchema.CodeGeneration.CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="NSwag.CodeGeneration, Version=13.0.6.0, Culture=neutral, PublicKeyToken=c2d88086e098d109, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSwag.CodeGeneration.13.0.6\lib\net451\NSwag.CodeGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="NSwag.CodeGeneration.CSharp, Version=13.0.6.0, Culture=neutral, PublicKeyToken=c2d88086e098d109, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSwag.CodeGeneration.CSharp.13.0.6\lib\net451\NSwag.CodeGeneration.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="NSwag.Core, Version=13.0.6.0, Culture=neutral, PublicKeyToken=c2d88086e098d109, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSwag.Core.13.0.6\lib\net45\NSwag.Core.dll</HintPath>
+    </Reference>
     <Reference Include="StreamJsonRpc, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\StreamJsonRpc.1.5.43\lib\net46\StreamJsonRpc.dll</HintPath>
     </Reference>
