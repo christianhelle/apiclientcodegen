@@ -30,10 +30,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             optionsMock.Setup(c => c.UseBaseUrl).Returns(true);
             optionsMock.Setup(c => c.ClassStyle).Returns(CSharpClassStyle.Poco);
 
+            var defaultNamespace = typeof(NSwagCodeGeneratorTests).Namespace;
             var codeGenerator = new NSwagCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
-                typeof(NSwagCodeGeneratorTests).Namespace,
-                optionsMock.Object);
+                defaultNamespace,
+                optionsMock.Object,
+                new OpenApiDocumentFactory(), 
+                new NSwagCodeGeneratorSettingsFactory(defaultNamespace, optionsMock.Object));
 
             code = codeGenerator.GenerateCode(mock.Object);
         }

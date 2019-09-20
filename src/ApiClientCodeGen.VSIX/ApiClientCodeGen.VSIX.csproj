@@ -102,7 +102,9 @@
     <Compile Include="Generators\NSwagStudio\NSwagStudioCodeGenerator.cs" />
     <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelper.cs" />
     <Compile Include="Extensions\OpenApiDocumentExtensions.cs" />
+    <Compile Include="Generators\NSwag\NSwagCodeGeneratorSettingsFactory.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGenerator.cs" />
+    <Compile Include="Generators\NSwag\OpenApiDocumentFactory.cs" />
     <Compile Include="NuGet\PackageDependencies.cs" />
     <Compile Include="Options\CustomPathOptions.cs" />
     <Compile Include="Options\IGeneralOptions.cs" />

@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     [Serializable]
+    [ExcludeFromCodeCoverage]
     public class NotInstalledException : Exception
     {
         public NotInstalledException() { }
