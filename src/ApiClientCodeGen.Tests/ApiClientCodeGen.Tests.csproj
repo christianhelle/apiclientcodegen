@@ -226,6 +226,7 @@
     <Compile Include="DeploymentItemTests.cs" />
     <Compile Include="Generators\CodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelperTests.cs" />
+    <Compile Include="Generators\NSwag\NSwagCSharpCodeGeneratorTests.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGeneratorExceptionTests.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGeneratorTests.cs" />
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorExceptionTests.cs" />

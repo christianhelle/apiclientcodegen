@@ -42,10 +42,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                         defaultNamespace);
 
                 case SupportedCodeGenerator.NSwag:
+                    var nswagOptions = optionsFactory.Create<INSwagOptions, NSwagOptionsPage>();
                     return new NSwagCSharpCodeGenerator(
                         inputFilePath,
                         defaultNamespace,
-                        optionsFactory.Create<INSwagOptions, NSwagOptionsPage>());
+                        nswagOptions,
+                        new OpenApiDocumentFactory(),
+                        new NSwagCodeGeneratorSettingsFactory(defaultNamespace, nswagOptions));
 
                 case SupportedCodeGenerator.Swagger:
                     return new SwaggerCSharpCodeGenerator(
