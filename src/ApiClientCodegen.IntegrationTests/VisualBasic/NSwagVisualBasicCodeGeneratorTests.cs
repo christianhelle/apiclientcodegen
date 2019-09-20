@@ -24,12 +24,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         [ClassInitialize]
         public static async Task InitAsync(TestContext testContext)
         {
+            var defaultNamespace = typeof(NSwagVisualBasicCodeGeneratorTests).Namespace;
             var codeGenerator = new NSwagCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
-                typeof(NSwagVisualBasicCodeGeneratorTests).Namespace,
+                defaultNamespace,
                 optionsMock.Object,
-                documentFactoryMock.Object,
-                settingsMock.Object);
+                new OpenApiDocumentFactory(), 
+                new NSwagCodeGeneratorSettingsFactory(defaultNamespace, optionsMock.Object));
 
             var options = new CodeWithOptions(codeGenerator.GenerateCode(mock.Object));
             var result = await CodeConverter.Convert(options);

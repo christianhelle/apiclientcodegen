@@ -18,8 +18,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     {
         private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
         private static readonly Mock<INSwagOptions> optionsMock = new Mock<INSwagOptions>();
-        private static readonly Mock<IOpenApiDocumentFactory> documentFactoryMock = new Mock<IOpenApiDocumentFactory>();
-        private static readonly Mock<INSwagCodeGeneratorSettingsFactory> settingsMock = new Mock<INSwagCodeGeneratorSettingsFactory>();
         private static string code = null;
 
         [ClassInitialize]
@@ -32,12 +30,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             optionsMock.Setup(c => c.UseBaseUrl).Returns(true);
             optionsMock.Setup(c => c.ClassStyle).Returns(CSharpClassStyle.Poco);
 
+            var defaultNamespace = typeof(NSwagCodeGeneratorTests).Namespace;
             var codeGenerator = new NSwagCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
-                typeof(NSwagCodeGeneratorTests).Namespace,
+                defaultNamespace,
                 optionsMock.Object,
-                documentFactoryMock.Object,
-                settingsMock.Object);
+                new OpenApiDocumentFactory(), 
+                new NSwagCodeGeneratorSettingsFactory(defaultNamespace, optionsMock.Object));
 
             code = codeGenerator.GenerateCode(mock.Object);
         }
