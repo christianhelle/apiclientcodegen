@@ -19,6 +19,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
                 GenerateDtoTypes = options.GenerateDtoTypes;
                 UseBaseUrl = options.UseBaseUrl;
                 ClassStyle = options.ClassStyle;
+                UseDocumentTitle = options.UseDocumentTitle;
             }
             catch (Exception e)
             {
@@ -30,12 +31,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
                 Trace.WriteLine("GenerateDtoTypes = true");
                 Trace.WriteLine("UseBaseUrl = false");
                 Trace.WriteLine("ClassStyle = CSharpClassStyle.Poco");
+                Trace.WriteLine("UseDocumentTitle = true");
 
                 InjectHttpClient = true;
                 GenerateClientInterfaces = true;
                 GenerateDtoTypes = true;
                 UseBaseUrl = false;
                 ClassStyle = CSharpClassStyle.Poco;
+                UseDocumentTitle = true;
             }
         }
 
@@ -52,5 +55,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
         public bool UseBaseUrl { get; }
 
         public CSharpClassStyle ClassStyle { get; }
+        public bool UseDocumentTitle { get; }
     }
 }

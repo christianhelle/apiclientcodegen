@@ -9,5 +9,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
         bool GenerateDtoTypes { get; }
         bool UseBaseUrl { get; }
         CSharpClassStyle ClassStyle { get; }
+        bool UseDocumentTitle { get; }
     }
 }

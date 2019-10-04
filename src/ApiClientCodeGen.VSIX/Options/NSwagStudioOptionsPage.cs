@@ -34,27 +34,32 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
         [DisplayName("C# Class Style")]
         [Description("POCO (Plain Old C# Objects), Inpc (Implements INotifyPropertyChanged), Prism (Prism base class), Records (readonly POCO)")]
         public CSharpClassStyle ClassStyle { get; set; }
-        
+
+        [Category(Name)]
+        [DisplayName("Use OpenAPI document title as class name")]
+        [Description("Set this to TRUE to use the OpenAPI Document Info Title as the generated class name. Set this to FALSE to use the filename")]
+        public bool UseDocumentTitle { get; set; } = true;
+
         [Category(Name)]
         [DisplayName("Generate Response Classes")]
         [Description("Set this to TRUE to generate response classes")]
         public bool GenerateResponseClasses { get; set; } = true;
-        
+
         [Category(Name)]
         [DisplayName("Generate JSON methods")]
         [Description("Set this to TRUE to generate JSON methods")]
         public bool GenerateJsonMethods { get; set; } = true;
-        
+
         [Category(Name)]
         [DisplayName("Required properties must be defined")]
         [Description("Set this to TRUE if required properties must be defined")]
         public bool RequiredPropertiesMustBeDefined { get; set; } = true;
-        
+
         [Category(Name)]
         [DisplayName("Generate Default Values")]
         [Description("Set this to TRUE to generate default values")]
         public bool GenerateDefaultValues { get; set; } = true;
-        
+
         [Category(Name)]
         [DisplayName("Generate Default Values")]
         [Description("Set this to TRUE to generate data annotations")]

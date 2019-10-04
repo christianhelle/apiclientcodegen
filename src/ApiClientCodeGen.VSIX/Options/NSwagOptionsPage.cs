@@ -34,5 +34,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
         [DisplayName("C# Class Style")]
         [Description("POCO (Plain Old C# Objects), Inpc (Implements INotifyPropertyChanged), Prism (Prism base class), Records (readonly POCO)")]
         public CSharpClassStyle ClassStyle { get; set; }
+        
+        [Category(Name)]
+        [DisplayName("Use document title as class name")]
+        [Description("Set this to TRUE to use the OpenAPI Document Info Title as the generated class name. Set this to FALSE to use the filename")]
+        public bool UseDocumentTitle { get; } = true;
     }
 }
