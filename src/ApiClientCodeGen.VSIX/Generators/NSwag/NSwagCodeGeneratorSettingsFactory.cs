@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;
@@ -25,7 +28,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
         public CSharpClientGeneratorSettings GetGeneratorSettings(OpenApiDocument document)
             => new CSharpClientGeneratorSettings
             {
-                ClassName = GetClassName(document),
+                ClassName = document.GenerateClassName(options.UseDocumentTitle),
                 InjectHttpClient = options.InjectHttpClient,
                 GenerateClientInterfaces = options.GenerateClientInterfaces,
                 GenerateDtoTypes = options.GenerateDtoTypes,
@@ -36,20 +39,5 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                     ClassStyle = options.ClassStyle
                 },
             };
-
-        private static string GetClassName(OpenApiDocument document)
-            => string.IsNullOrWhiteSpace(document.Info?.Title)
-                ? "ApiClient"
-                : $"{SanitizeTitle(document)}Client";
-
-        private static string SanitizeTitle(OpenApiDocument document)
-            => RemoveCharacters(
-                document.Info.Title,
-                "Swagger", " ", ".", "-");
-
-        private static string RemoveCharacters(string source, params string[] removeChars)
-            => removeChars.Aggregate(
-                source,
-                (current, c) => current.Replace(c, string.Empty));
     }
 }
