@@ -5,7 +5,8 @@ using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
 {
-    public class NSwagCSharpOptions : INSwagOptions
+    public class NSwagCSharpOptions 
+        : OptionsBase<INSwagOptions, NSwagOptionsPage>, INSwagOptions
     {
         public NSwagCSharpOptions(INSwagOptions options = null)
         {
@@ -42,18 +43,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
             }
         }
 
-        [ExcludeFromCodeCoverage]
-        private static INSwagOptions GetFromDialogPage()
-            => (INSwagOptions)VsPackage.Instance.GetDialogPage(typeof(NSwagOptionsPage));
-
         public bool InjectHttpClient { get; }
-
         public bool GenerateClientInterfaces { get; }
-
         public bool GenerateDtoTypes { get; }
-
         public bool UseBaseUrl { get; }
-
         public CSharpClassStyle ClassStyle { get; }
         public bool UseDocumentTitle { get; }
     }
