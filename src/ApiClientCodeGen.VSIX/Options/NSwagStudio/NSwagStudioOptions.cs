@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using NJsonSchema.CodeGeneration.CSharp;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio
 {
     public class NSwagStudioOptions
         : OptionsBase<INSwagStudioOptions, NSwagStudioOptionsPage>, INSwagStudioOptions

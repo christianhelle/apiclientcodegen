@@ -116,10 +116,10 @@
     <Compile Include="Options\General\CustomPathOptions.cs" />
     <Compile Include="Options\General\IGeneralOptions.cs" />
     <Compile Include="Options\NSwag\INSwagOption.cs" />
-    <Compile Include="Options\NSwag\INSwagStudioOptions.cs" />
+    <Compile Include="Options\NSwagStudio\INSwagStudioOptions.cs" />
     <Compile Include="Options\IOptionsFactory.cs" />
     <Compile Include="Options\General\JavaPathProvider.cs" />
-    <Compile Include="Options\NSwag\NSwagStudioOptions.cs" />
+    <Compile Include="Options\NSwagStudio\NSwagStudioOptions.cs" />
     <Compile Include="Options\NSwag\NSwagCSharpOptions.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGenerator.cs" />
     <Compile Include="Generators\ProcessHelper.cs" />
@@ -130,7 +130,7 @@
     <Compile Include="Options\NSwag\NSwagOptionsPage.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Options\NSwag\NSwagStudioOptionsPage.cs">
+    <Compile Include="Options\NSwagStudio\NSwagStudioOptionsPage.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Options\OptionsFactory.cs" />
