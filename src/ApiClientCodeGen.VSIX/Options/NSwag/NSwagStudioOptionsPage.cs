@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.Shell;
 using NJsonSchema.CodeGeneration.CSharp;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag
 {
     [ExcludeFromCodeCoverage]
     public class NSwagStudioOptionsPage : DialogPage, INSwagStudioOptions

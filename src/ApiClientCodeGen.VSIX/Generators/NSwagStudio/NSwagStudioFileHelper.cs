@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
 

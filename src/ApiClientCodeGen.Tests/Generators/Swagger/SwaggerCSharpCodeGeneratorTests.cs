@@ -1,6 +1,7 @@
 ﻿using AutoFixture;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
 {
     public class CustomPathOptions 
         : OptionsBase<IGeneralOptions, GeneralOptionPage>, IGeneralOptions

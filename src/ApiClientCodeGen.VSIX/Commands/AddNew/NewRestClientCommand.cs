@@ -7,6 +7,8 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;

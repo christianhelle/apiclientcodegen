@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using Microsoft.VisualStudio.Shell;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
 {
     [ExcludeFromCodeCoverage]
     public class GeneralOptionPage : DialogPage, IGeneralOptions

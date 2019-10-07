@@ -7,6 +7,8 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using OutputWindow = ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility.OutputWindow;

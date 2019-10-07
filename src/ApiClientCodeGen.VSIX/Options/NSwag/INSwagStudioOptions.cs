@@ -1,4 +1,4 @@
-﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
+﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag
 {
     public interface INSwagStudioOptions : INSwagOptions
     {

@@ -5,6 +5,8 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
