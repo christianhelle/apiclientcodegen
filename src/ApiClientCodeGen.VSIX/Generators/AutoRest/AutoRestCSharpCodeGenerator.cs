@@ -12,6 +12,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Auto
         {
         }
 
+        // TODO: 
+        // 1. Implement options page for AutoRest
+        // 2. Inject AutoRest options to this class
+        // 3. Add support for generating code using the settings exposed in the options page
+
         protected override string GetArguments(string outputFile)
             => $"--csharp " +
                $"--input-file=\"{SwaggerFile}\" " +
