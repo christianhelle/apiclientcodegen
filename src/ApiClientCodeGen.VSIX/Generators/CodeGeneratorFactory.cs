@@ -4,9 +4,10 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
-using System;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
+using System;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
@@ -41,16 +42,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 case SupportedCodeGenerator.AutoRest:
                     return new AutoRestCSharpCodeGenerator(
                         inputFilePath,
-                        defaultNamespace);
+                        defaultNamespace,
+                        optionsFactory.Create<IAutoRestOptions, AutoRestOptionsPage>());
 
                 case SupportedCodeGenerator.NSwag:
-                    var nswagOptions = optionsFactory.Create<INSwagOptions, NSwagOptionsPage>();
                     return new NSwagCSharpCodeGenerator(
                         inputFilePath,
                         defaultNamespace,
-                        nswagOptions,
+                        optionsFactory.Create<INSwagOptions, NSwagOptionsPage>(),
                         new OpenApiDocumentFactory(),
-                        new NSwagCodeGeneratorSettingsFactory(defaultNamespace, nswagOptions));
+                        new NSwagCodeGeneratorSettingsFactory(defaultNamespace, optionsFactory.Create<INSwagOptions, NSwagOptionsPage>()));
 
                 case SupportedCodeGenerator.Swagger:
                     return new SwaggerCSharpCodeGenerator(
@@ -63,9 +64,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                         inputFilePath,
                         defaultNamespace,
                         optionsFactory.Create<IGeneralOptions, GeneralOptionPage>());
+
+                default:
+                    throw new NotSupportedException();
             }
 
-            throw new NotSupportedException();
         }
     }
 }
