@@ -7,6 +7,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using EnvDTE;
@@ -37,6 +38,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         typeof(GeneralOptionPage),
         VsixName,
         GeneralOptionPage.Name,
+        0,
+        0,
+        true)]
+    [ProvideOptionPage(
+        typeof(AutoRestOptionsPage),
+        VsixName,
+        AutoRestOptionsPage.Name,
         0,
         0,
         true)]
