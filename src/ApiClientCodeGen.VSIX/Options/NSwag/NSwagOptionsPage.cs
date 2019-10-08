@@ -36,8 +36,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag
         public CSharpClassStyle ClassStyle { get; set; }
         
         [Category(Name)]
-        [DisplayName("Use document title as class name")]
+        [DisplayName("Document title as class name")]
         [Description("Set this to TRUE to use the OpenAPI Document Info Title as the generated class name. Set this to FALSE to use the filename")]
-        public bool UseDocumentTitle { get; } = true;
+        public bool UseDocumentTitle { get; set;  } = true;
     }
 }

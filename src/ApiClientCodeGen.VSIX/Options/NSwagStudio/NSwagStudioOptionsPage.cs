@@ -36,7 +36,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagSt
         public CSharpClassStyle ClassStyle { get; set; }
 
         [Category(Name)]
-        [DisplayName("Use OpenAPI document title as class name")]
+        [DisplayName("Document title as class name")]
         [Description("Set this to TRUE to use the OpenAPI Document Info Title as the generated class name. Set this to FALSE to use the filename")]
         public bool UseDocumentTitle { get; set; } = true;
 
@@ -61,7 +61,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagSt
         public bool GenerateDefaultValues { get; set; } = true;
 
         [Category(Name)]
-        [DisplayName("Generate Default Values")]
+        [DisplayName("Generate Data Annotations")]
         [Description("Set this to TRUE to generate data annotations")]
         public bool GenerateDataAnnotations { get; set; } = true;
     }
