@@ -11,10 +11,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
     public class NSwagStudioOptionsNullOptionsTests
     {
         [TestMethod]
-        public void Extends_NSwagCSharpOptions() 
+        public void Implements_INSwagStudioOptions() 
             => typeof(NSwagStudioOptions)
                 .Should()
-                .BeAssignableTo<NSwagCSharpOptions>();
+                .BeAssignableTo<INSwagStudioOptions>();
 
         [TestMethod]
         public void Reads_InjectHttpClient_From_Options()

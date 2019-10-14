@@ -4,6 +4,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using FluentAssertions;
@@ -20,7 +21,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     public class CSharpSingleFileCodeGeneratorTests
     {
         [TestMethod]
-        public void AutoRest_CSharp_Test() => Assert(SupportedCodeGenerator.AutoRest);
+        public void AutoRest_CSharp_Test()
+        {
+            var optionsMock = new Mock<IAutoRestOptions>();
+            var optionsFactory = new Mock<IOptionsFactory>();
+            optionsFactory
+                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
+                .Returns(optionsMock.Object);
+
+            Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
+        }
 
         [TestMethod]
         public void NSwag_CSharp_Test()
