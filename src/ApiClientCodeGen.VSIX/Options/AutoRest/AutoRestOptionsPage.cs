@@ -16,7 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRes
 
         [Category(Name)]
         [DisplayName("Override Client Name")]
-        [Description("Overrides the name of the client class (usually derived from $.info.title)")]
+        [Description("Overrides the name of the client class (usually derived from $.info.title) and use the document filename instead")]
         public bool OverrideClientName { get; set; }
 
 
