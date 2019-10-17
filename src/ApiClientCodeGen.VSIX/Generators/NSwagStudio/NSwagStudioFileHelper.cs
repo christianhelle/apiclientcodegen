@@ -1,7 +1,5 @@
 ﻿using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
 using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
@@ -16,7 +14,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
             INSwagStudioOptions options = null,
             string outputNamespace = null)
         {
-            var className = (await OpenApiDocument.FromJsonAsync(openApiSpec)).GenerateClassName();
+            var openApiDocument = await OpenApiDocument.FromJsonAsync(openApiSpec);
+            var className = openApiDocument.GenerateClassName(options?.UseDocumentTitle ?? true);
+
             return new
                 {
                     Runtime = "Default",
