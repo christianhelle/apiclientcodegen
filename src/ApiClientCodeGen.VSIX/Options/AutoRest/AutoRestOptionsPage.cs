@@ -21,7 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRes
 
 
         [Category(Name)]
-        [DisplayName("Use Internal COnstructors")]
+        [DisplayName("Use Internal Constructors")]
         [Description("Generate constructors with internal instead of public visibility (useful for convenience layers)")]
         public bool UseInternalConstructors { get; set; }
 
