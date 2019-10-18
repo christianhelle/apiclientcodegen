@@ -54,8 +54,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             {
                 var outputNamespace = ProjectExtensions.GetActiveProject(dte)?.GetTopLevelNamespace();
                 contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
-                    result.OpenApiSpecification,
-                    result.Url,
+                    result,
                     new NSwagStudioOptions(),
                     outputNamespace);
                 filename = filename.Replace(".json", ".nswag");
