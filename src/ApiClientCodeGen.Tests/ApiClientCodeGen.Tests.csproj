@@ -352,7 +352,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\CSharpToVisualBasicLanguageConverterTests.cs" />
+    <None Include="Converters\CSharpToVisualBasicLanguageConverterTests.cs" />
     <Compile Include="CustomTool\SingleFileCodeGeneratorTests.cs" />
     <Compile Include="CustomTool\TestSingleFileCodeGenerator.cs" />
     <Compile Include="Extensions\GetDependenciesTests.cs" />
@@ -381,6 +381,7 @@
     <Compile Include="Options\CustomPathOptionsTests.cs" />
     <Compile Include="Options\JavaPathProviderTests.cs" />
     <Compile Include="Options\NSwagCSharpOptionsNullOptionsTests.cs" />
+    <Compile Include="Options\AutoRestOptionsTests.cs" />
     <Compile Include="Options\NSwagCSharpOptionsTests.cs" />
     <Compile Include="Options\NSwagStudioOptionsNullOptionsTests.cs" />
     <Compile Include="Options\NSwagStudioOptionsTests.cs" />

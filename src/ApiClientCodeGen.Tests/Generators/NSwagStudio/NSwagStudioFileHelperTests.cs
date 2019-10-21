@@ -4,6 +4,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.IO;
 using System.Threading.Tasks;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.NSwagStudio
 {
@@ -20,8 +23,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             mock = new Mock<INSwagStudioOptions>();
 
             await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
-                File.ReadAllText("Swagger.json"),
-                "https://petstore.swagger.io/v2/swagger.json",
+                new EnterOpenApiSpecDialogResult(File.ReadAllText("Swagger.json"), "Swagger", "https://petstore.swagger.io/v2/swagger.json"),
                 mock.Object);
         }
 

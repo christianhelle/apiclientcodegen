@@ -6,8 +6,10 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
-using EnvDTE;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
 using Microsoft.VisualStudio.Shell;
 using OutputWindow = ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility.OutputWindow;
 using Task = System.Threading.Tasks.Task;
@@ -35,6 +37,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         typeof(GeneralOptionPage),
         VsixName,
         GeneralOptionPage.Name,
+        0,
+        0,
+        true)]
+    [ProvideOptionPage(
+        typeof(AutoRestOptionsPage),
+        VsixName,
+        AutoRestOptionsPage.Name,
         0,
         0,
         true)]

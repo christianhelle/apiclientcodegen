@@ -106,31 +106,38 @@
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGenerator.cs" />
     <Compile Include="Generators\NSwag\OpenApiDocumentFactory.cs" />
     <Compile Include="NuGet\PackageDependencies.cs" />
-    <Compile Include="Options\CustomPathOptions.cs" />
-    <Compile Include="Options\IGeneralOptions.cs" />
-    <Compile Include="Options\INSwagOption.cs" />
-    <Compile Include="Options\INSwagStudioOptions.cs" />
+    <Compile Include="Options\AutoRest\AutoRestOptions.cs" />
+    <Compile Include="Options\AutoRest\AutoRestOptionsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Options\AutoRest\IAutoRestOptions.cs" />
+    <Compile Include="Options\OptionsBase.cs" />
+    <Compile Include="Options\AutoRest\SyncMethodOptions.cs" />
+    <Compile Include="Options\General\CustomPathOptions.cs" />
+    <Compile Include="Options\General\IGeneralOptions.cs" />
+    <Compile Include="Options\NSwag\INSwagOption.cs" />
+    <Compile Include="Options\NSwagStudio\INSwagStudioOptions.cs" />
     <Compile Include="Options\IOptionsFactory.cs" />
-    <Compile Include="Options\JavaPathProvider.cs" />
-    <Compile Include="Options\NSwagStudioOptions.cs" />
-    <Compile Include="Options\NSwagCSharpOptions.cs" />
+    <Compile Include="Options\General\JavaPathProvider.cs" />
+    <Compile Include="Options\NSwagStudio\NSwagStudioOptions.cs" />
+    <Compile Include="Options\NSwag\NSwagCSharpOptions.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGenerator.cs" />
     <Compile Include="Generators\ProcessHelper.cs" />
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGenerator.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="NuGet\PackageDependency.cs" />
     <Compile Include="NuGet\PackageDependencyListProvider.cs" />
-    <Compile Include="Options\NSwagOptionsPage.cs">
+    <Compile Include="Options\NSwag\NSwagOptionsPage.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Options\NSwagStudioOptionsPage.cs">
+    <Compile Include="Options\NSwagStudio\NSwagStudioOptionsPage.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Options\OptionsFactory.cs" />
-    <Compile Include="Options\GeneralOptionPage.cs">
+    <Compile Include="Options\General\GeneralOptionPage.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Options\PathProvider.cs" />
+    <Compile Include="Options\General\PathProvider.cs" />
     <Compile Include="Utility\OutputWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\OutputWindowTraceListener.cs" />

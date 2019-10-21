@@ -2,6 +2,9 @@
 using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -37,8 +40,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         public async Task NSwagStudio_Generate_Code_Using_NSwagStudio_From_SwaggerSpec()
         {
             var contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
-                File.ReadAllText(Path.GetFullPath("Swagger.json")),
-                "https://petstore.swagger.io/v2/swagger.json");
+                new EnterOpenApiSpecDialogResult(File.ReadAllText("Swagger.json"), "Swagger", "https://petstore.swagger.io/v2/swagger.json"),
+                new Mock<INSwagStudioOptions>().Object);
 
             File.WriteAllText("Petstore.nswag", contents);
             new NSwagStudioCodeGenerator(Path.GetFullPath("Petstore.nswag"), options)

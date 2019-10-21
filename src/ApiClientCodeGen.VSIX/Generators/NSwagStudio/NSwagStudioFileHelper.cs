@@ -1,6 +1,9 @@
 ﻿using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
 
@@ -9,12 +12,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
     public static class NSwagStudioFileHelper
     {
         public static async Task<string> CreateNSwagStudioFileAsync(
-            string openApiSpec, 
-            string openApiSpecUrl,
+            EnterOpenApiSpecDialogResult enterOpenApiSpecDialogResult,
             INSwagStudioOptions options = null,
             string outputNamespace = null)
         {
-            var className = (await OpenApiDocument.FromJsonAsync(openApiSpec)).GenerateClassName();
+            var json = enterOpenApiSpecDialogResult.OpenApiSpecification;
+            var outputFilename = enterOpenApiSpecDialogResult.OutputFilename;
+            var openApiDocument = await OpenApiDocument.FromJsonAsync(json);
+            var className = options?.UseDocumentTitle ?? true ? openApiDocument.GenerateClassName() : outputFilename;
             return new
                 {
                     Runtime = "Default",
@@ -22,8 +27,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                     {
                         FromSwagger = new
                         {
-                            Json = openApiSpec,
-                            Url = openApiSpecUrl
+                            Json = json,
+                            Url = enterOpenApiSpecDialogResult.Url
                         }
                     },
                     CodeGenerators = new

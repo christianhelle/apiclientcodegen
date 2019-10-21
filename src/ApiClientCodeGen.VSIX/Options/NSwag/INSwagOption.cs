@@ -1,6 +1,6 @@
 ﻿using NJsonSchema.CodeGeneration.CSharp;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag
 {
     public interface INSwagOptions
     {
@@ -9,5 +9,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
         bool GenerateDtoTypes { get; }
         bool UseBaseUrl { get; }
         CSharpClassStyle ClassStyle { get; }
+        bool UseDocumentTitle { get; }
     }
 }

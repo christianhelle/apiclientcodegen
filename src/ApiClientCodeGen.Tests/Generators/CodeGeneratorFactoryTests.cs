@@ -5,6 +5,9 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -26,6 +29,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             mockFactory
                 .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage>())
                 .Returns(Test.CreateDummy<IGeneralOptions>());
+            mockFactory
+                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
+                .Returns(Test.CreateDummy<IAutoRestOptions>());
 
             sut = new CodeGeneratorFactory(mockFactory.Object);
         }

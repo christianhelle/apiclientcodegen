@@ -3,6 +3,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -35,7 +36,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 Path.GetFullPath("Swagger.json"),
                 defaultNamespace,
                 optionsMock.Object,
-                new OpenApiDocumentFactory(), 
+                new OpenApiDocumentFactory(),
                 new NSwagCodeGeneratorSettingsFactory(defaultNamespace, optionsMock.Object));
 
             code = codeGenerator.GenerateCode(mock.Object);
@@ -72,11 +73,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             => optionsMock.Verify(c => c.ClassStyle);
 
         [TestMethod]
-        public void GeneratedCode_Can_Build_In_NetCoreApp() 
-            => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, code, SupportedCodeGenerator.NSwag);
+        public void Reads_UseDocumentTitle_From_Options()
+            => optionsMock.Verify(c => c.UseDocumentTitle);
 
         [TestMethod]
-        public void GeneratedCode_Can_Build_In_NetStandardLibrary() 
-            => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code, SupportedCodeGenerator.NSwag);
+        public void GeneratedCode_Can_Build_In_NetCoreApp()
+            => BuildHelper.BuildCSharp(
+                ProjectTypes.DotNetCoreApp,
+                code,
+                SupportedCodeGenerator.NSwag);
+
+        [TestMethod]
+        public void GeneratedCode_Can_Build_In_NetStandardLibrary()
+            => BuildHelper.BuildCSharp(
+                ProjectTypes.DotNetStandardLibrary,
+                code,
+                SupportedCodeGenerator.NSwag);
     }
 }

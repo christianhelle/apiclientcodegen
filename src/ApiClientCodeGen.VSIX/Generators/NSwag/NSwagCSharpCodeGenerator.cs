@@ -1,6 +1,7 @@
 ﻿using System;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using Microsoft.VisualStudio.Shell.Interop;
 using NSwag.CodeGeneration.CSharp;
 

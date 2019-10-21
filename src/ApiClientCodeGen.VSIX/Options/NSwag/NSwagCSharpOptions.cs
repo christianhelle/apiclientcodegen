@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using NJsonSchema.CodeGeneration.CSharp;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag
 {
-    public class NSwagCSharpOptions : INSwagOptions
+    public class NSwagCSharpOptions 
+        : OptionsBase<INSwagOptions, NSwagOptionsPage>, INSwagOptions
     {
         public NSwagCSharpOptions(INSwagOptions options = null)
         {
@@ -19,6 +19,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
                 GenerateDtoTypes = options.GenerateDtoTypes;
                 UseBaseUrl = options.UseBaseUrl;
                 ClassStyle = options.ClassStyle;
+                UseDocumentTitle = options.UseDocumentTitle;
             }
             catch (Exception e)
             {
@@ -30,27 +31,22 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
                 Trace.WriteLine("GenerateDtoTypes = true");
                 Trace.WriteLine("UseBaseUrl = false");
                 Trace.WriteLine("ClassStyle = CSharpClassStyle.Poco");
+                Trace.WriteLine("UseDocumentTitle = true");
 
                 InjectHttpClient = true;
                 GenerateClientInterfaces = true;
                 GenerateDtoTypes = true;
                 UseBaseUrl = false;
                 ClassStyle = CSharpClassStyle.Poco;
+                UseDocumentTitle = true;
             }
         }
 
-        [ExcludeFromCodeCoverage]
-        private static INSwagOptions GetFromDialogPage()
-            => (INSwagOptions)VsPackage.Instance.GetDialogPage(typeof(NSwagOptionsPage));
-
         public bool InjectHttpClient { get; }
-
         public bool GenerateClientInterfaces { get; }
-
         public bool GenerateDtoTypes { get; }
-
         public bool UseBaseUrl { get; }
-
         public CSharpClassStyle ClassStyle { get; }
+        public bool UseDocumentTitle { get; }
     }
 }

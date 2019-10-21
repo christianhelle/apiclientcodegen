@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
 {
     public static class PathProvider
     {

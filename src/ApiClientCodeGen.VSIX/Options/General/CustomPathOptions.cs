@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
 {
-    public class CustomPathOptions : IGeneralOptions
+    public class CustomPathOptions 
+        : OptionsBase<IGeneralOptions, GeneralOptionPage>, IGeneralOptions
     {
         public CustomPathOptions(IGeneralOptions options = null)
         {
@@ -37,10 +37,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
                 Trace.WriteLine($"OpenApiGeneratorPath = {OpenApiGeneratorPath}");
             }
         }
-
-        [ExcludeFromCodeCoverage]
-        private static IGeneralOptions GetFromDialogPage()
-            => (IGeneralOptions)VsPackage.Instance.GetDialogPage(typeof(GeneralOptionPage));
 
         public string JavaPath { get; set; }
         public string NpmPath { get; set; }
