@@ -1,7 +1,5 @@
 ﻿using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using NJsonSchema.CodeGeneration.CSharp;
@@ -27,8 +25,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                     {
                         FromSwagger = new
                         {
-                            Json = json,
-                            Url = enterOpenApiSpecDialogResult.Url
+                            Json = json, enterOpenApiSpecDialogResult.Url
                         }
                     },
                     CodeGenerators = new

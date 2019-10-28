@@ -1,4 +1,5 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+﻿using System;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.OpenApi;
@@ -7,7 +8,6 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
-using System;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
@@ -48,10 +48,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 case SupportedCodeGenerator.NSwag:
                     return new NSwagCSharpCodeGenerator(
                         inputFilePath,
-                        defaultNamespace,
-                        optionsFactory.Create<INSwagOptions, NSwagOptionsPage>(),
                         new OpenApiDocumentFactory(),
-                        new NSwagCodeGeneratorSettingsFactory(defaultNamespace, optionsFactory.Create<INSwagOptions, NSwagOptionsPage>()));
+                        new NSwagCodeGeneratorSettingsFactory(
+                            defaultNamespace,
+                            optionsFactory.Create<INSwagOptions, NSwagOptionsPage>()));
 
                 case SupportedCodeGenerator.Swagger:
                     return new SwaggerCSharpCodeGenerator(
@@ -68,7 +68,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 default:
                     throw new NotSupportedException();
             }
-
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 using Newtonsoft.Json;
@@ -9,18 +10,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 {
     public static class StringExtension
     {
-        private static readonly JsonSerializerSettings jsonSettings;
-
-        static StringExtension()
+        private static readonly JsonSerializerSettings JsonSettings = new JsonSerializerSettings
         {
-            jsonSettings = new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                ContractResolver = new CamelCasePropertyNamesContractResolver()
-            };
-
-            jsonSettings.Converters.Add(new StringEnumConverter());
-        }
+            NullValueHandling = NullValueHandling.Ignore,
+            ContractResolver = new CamelCasePropertyNamesContractResolver(),
+            Converters = new List<JsonConverter> { new StringEnumConverter() }
+        };
 
         public static IntPtr ConvertToIntPtr(this string code, out uint pcbOutput)
         {
@@ -36,6 +31,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
         public static string ToJson(this object value)
             => JsonConvert.SerializeObject(
                 value,
-                jsonSettings);
+                JsonSettings);
     }
 }

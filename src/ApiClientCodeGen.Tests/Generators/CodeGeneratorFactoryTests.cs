@@ -1,4 +1,5 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+﻿using System;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
@@ -23,6 +24,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
         public void Init()
         {
             var mockFactory = new Mock<IOptionsFactory>();
+            mockFactory
+                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
+                .Returns(Test.CreateDummy<IAutoRestOptions>());
             mockFactory
                 .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage>())
                 .Returns(Test.CreateDummy<INSwagOptions>());
@@ -79,5 +83,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
                     SupportedCodeGenerator.OpenApi)
                 .Should()
                 .BeOfType<OpenApiCSharpCodeGenerator>();
+
+        [TestMethod]
+        public void Create_NSwagStudio_Throws_NotSupported()
+            => new Action(
+                    () => sut.Create(
+                        string.Empty,
+                        string.Empty,
+                        string.Empty,
+                        SupportedLanguage.CSharp,
+                        SupportedCodeGenerator.NSwagStudio))
+                .Should()
+                .ThrowExactly<NotSupportedException>();
     }
 }

@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using Microsoft.VisualStudio.Shell.Interop;
 
@@ -11,10 +10,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Open
 {
     public class OpenApiCSharpCodeGenerator : ICodeGenerator
     {
-        private readonly string swaggerFile;
         private readonly string defaultNamespace;
         private readonly JavaPathProvider javaPathProvider;
         private readonly CustomPathOptions options;
+        private readonly string swaggerFile;
 
         public OpenApiCSharpCodeGenerator(string swaggerFile, string defaultNamespace, IGeneralOptions options)
         {

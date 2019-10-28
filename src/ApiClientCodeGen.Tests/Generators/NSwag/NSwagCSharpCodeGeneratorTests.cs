@@ -35,8 +35,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
 
             var sut = new NSwagCSharpCodeGenerator(
                 "Swagger.json",
-                Test.CreateAnnonymous<string>(),
-                optionsMock.Object,
                 documentFactoryMock.Object,
                 settingsMock.Object);
             

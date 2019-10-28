@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using Microsoft.VisualStudio.Shell.Interop;
 
@@ -11,10 +10,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
 {
     public class SwaggerCSharpCodeGenerator : ICodeGenerator
     {
-        private readonly string swaggerFile;
         private readonly string defaultNamespace;
         private readonly JavaPathProvider javaPathProvider;
         private readonly CustomPathOptions options;
+        private readonly string swaggerFile;
 
         public SwaggerCSharpCodeGenerator(string swaggerFile, string defaultNamespace, IGeneralOptions options)
         {
@@ -29,7 +28,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
             try
             {
                 pGenerateProgress.Progress(10);
-                
+
                 var jarFile = options.SwaggerCodegenPath;
                 if (!File.Exists(jarFile))
                 {
@@ -48,12 +47,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
 
                 var arguments =
                     $"-jar \"{jarFile}\" generate " +
-                    $"-l csharp " +
+                    "-l csharp " +
                     $"--input-spec \"{swaggerFile}\" " +
                     $"--output \"{output}\" " +
-                    $"-DapiTests=false -DmodelTests=false " +
+                    "-DapiTests=false -DmodelTests=false " +
                     $"-DpackageName={defaultNamespace} ";
-                
+
                 ProcessHelper.StartProcess(javaPathProvider.GetJavaExePath(), arguments);
                 pGenerateProgress.Progress(80);
 
