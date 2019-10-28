@@ -57,6 +57,8 @@ This extension will by default make some assumptions on the installation paths f
 
 ![Options - General](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-general.png)
 
+![Options - AutoRest](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-autorest.png)
+
 ![Options - NSwag](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswag.png)
 
 ![Options - NSwag Studio](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswagstudio.png)
