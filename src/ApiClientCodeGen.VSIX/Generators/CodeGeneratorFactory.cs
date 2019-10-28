@@ -48,8 +48,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 case SupportedCodeGenerator.NSwag:
                     return new NSwagCSharpCodeGenerator(
                         inputFilePath,
-                        defaultNamespace,
-                        optionsFactory.Create<INSwagOptions, NSwagOptionsPage>(),
                         new OpenApiDocumentFactory(),
                         new NSwagCodeGeneratorSettingsFactory(
                             defaultNamespace,
