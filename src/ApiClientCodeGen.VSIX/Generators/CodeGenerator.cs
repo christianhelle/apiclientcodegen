@@ -12,8 +12,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 
     public abstract class CodeGenerator : ICodeGenerator
     {
-        protected readonly string SwaggerFile;
         protected readonly string DefaultNamespace;
+        protected readonly string SwaggerFile;
 
         protected CodeGenerator(string swaggerFile, string defaultNamespace)
         {

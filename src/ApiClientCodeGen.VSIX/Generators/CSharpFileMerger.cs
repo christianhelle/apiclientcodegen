@@ -72,7 +72,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
         {
             var queue = new Queue<string>();
             queue.Enqueue(path);
-            
+
             while (queue.Count > 0)
             {
                 string[] files = null;
@@ -80,29 +80,25 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 try
                 {
                     files = Directory.GetFiles(path);
-                    foreach (var subDir in Directory.GetDirectories(path))
-                    {
-                        queue.Enqueue(subDir);
-                    }
+                    foreach (var subDir in Directory.GetDirectories(path)) queue.Enqueue(subDir);
                 }
                 catch (Exception ex)
                 {
                     Trace.TraceError(ex.ToString());
                 }
 
-                if (files == null) 
+                if (files == null)
                     continue;
 
-                foreach (var file in files.Where(Predicate()))
-                {
-                    yield return file;
-                }
+                foreach (var file in files.Where(Predicate())) yield return file;
             }
         }
 
-        private static Func<string, bool> Predicate() 
-            => file => file.EndsWith(".cs") && 
-                       !file.Contains("AssemblyInfo.cs");
+        private static Func<string, bool> Predicate()
+        {
+            return file => file.EndsWith(".cs") &&
+                           !file.Contains("AssemblyInfo.cs");
+        }
 
 
         private static IEnumerable<string> GetUniqueNamespaces(IEnumerable<string> files)
@@ -118,7 +114,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                 foreach (var sourceLine in sourceLines)
                 {
                     var trimmedLine = sourceLine.Trim().Replace("  ", " ");
-                    if (!trimmedLine.StartsWith(openingTag) || !trimmedLine.EndsWith(";")) 
+                    if (!trimmedLine.StartsWith(openingTag) || !trimmedLine.EndsWith(";"))
                         continue;
 
                     var name = trimmedLine.Substring(namespaceStartIndex, trimmedLine.Length - namespaceStartIndex - 1);
@@ -129,6 +125,5 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 
             return names;
         }
-
     }
 }

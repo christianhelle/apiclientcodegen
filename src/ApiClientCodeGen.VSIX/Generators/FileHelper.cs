@@ -22,10 +22,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
         {
             using (var hashAlgorithm = MD5.Create())
             using (var stream = File.OpenRead(filename))
+            {
                 return BitConverter
                     .ToString(hashAlgorithm.ComputeHash(stream))
                     .Replace("-", "")
                     .ToUpperInvariant();
+            }
         }
     }
 }
