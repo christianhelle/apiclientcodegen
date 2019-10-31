@@ -2,9 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
-using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger
 {
@@ -12,18 +10,18 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swag
     {
         private readonly string defaultNamespace;
         private readonly JavaPathProvider javaPathProvider;
-        private readonly CustomPathOptions options;
+        private readonly IGeneralOptions options;
         private readonly string swaggerFile;
 
         public SwaggerCSharpCodeGenerator(string swaggerFile, string defaultNamespace, IGeneralOptions options)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
-            this.options = new CustomPathOptions(options ?? throw new ArgumentNullException(nameof(options)));
+            this.options = options ?? throw new ArgumentNullException(nameof(options));
             javaPathProvider = new JavaPathProvider(options);
         }
 
-        public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
+        public string GenerateCode(IProgressReporter pGenerateProgress)
         {
             try
             {

@@ -1,13 +1,12 @@
-﻿using System;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using System;
 using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
-using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
     public interface ICodeGenerator
     {
-        string GenerateCode(IVsGeneratorProgress pGenerateProgress);
+        string GenerateCode(IProgressReporter pGenerateProgress);
     }
 
     public abstract class CodeGenerator : ICodeGenerator
@@ -21,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
             DefaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
         }
 
-        public virtual string GenerateCode(IVsGeneratorProgress pGenerateProgress)
+        public virtual string GenerateCode(IProgressReporter pGenerateProgress)
         {
             try
             {

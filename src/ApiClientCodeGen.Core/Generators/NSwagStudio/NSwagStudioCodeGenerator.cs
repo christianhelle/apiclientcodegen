@@ -2,9 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
-using Microsoft.VisualStudio.Shell.Interop;
 using Newtonsoft.Json;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio
@@ -12,15 +10,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
     public class NSwagStudioCodeGenerator : ICodeGenerator
     {
         private readonly string nswagStudioFile;
-        private readonly CustomPathOptions options;
+        private readonly IGeneralOptions options;
 
         public NSwagStudioCodeGenerator(string nswagStudioFile, IGeneralOptions options)
         {
             this.nswagStudioFile = nswagStudioFile ?? throw new ArgumentNullException(nameof(nswagStudioFile));
-            this.options = new CustomPathOptions(options ?? throw new ArgumentNullException(nameof(options)));
+            this.options = options ?? throw new ArgumentNullException(nameof(options));
         }
 
-        public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
+        public string GenerateCode(IProgressReporter pGenerateProgress)
         {
             pGenerateProgress?.Progress(10);
 

@@ -8,11 +8,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
 {
     public class JavaPathProvider
     {
-        private readonly CustomPathOptions options;
+        private readonly IGeneralOptions options;
 
         public JavaPathProvider(IGeneralOptions options)
         {
-            this.options = new CustomPathOptions(options);
+            this.options = options ?? throw new ArgumentNullException(nameof(options));
         }
 
         public string GetJavaExePath()

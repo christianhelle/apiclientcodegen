@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using NSwag;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
 {
     public static class OpenApiDocumentExtensions
     {

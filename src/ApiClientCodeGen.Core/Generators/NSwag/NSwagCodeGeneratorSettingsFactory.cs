@@ -1,5 +1,5 @@
 ﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;

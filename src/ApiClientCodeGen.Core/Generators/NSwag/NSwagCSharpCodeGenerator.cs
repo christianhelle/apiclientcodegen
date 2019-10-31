@@ -1,6 +1,5 @@
 ﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
-using Microsoft.VisualStudio.Shell.Interop;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using NSwag.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag
@@ -22,7 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
                                             throw new ArgumentNullException(nameof(generatorSettingsFactory));
         }
 
-        public string GenerateCode(IVsGeneratorProgress pGenerateProgress)
+        public string GenerateCode(IProgressReporter pGenerateProgress)
         {
             try
             {
