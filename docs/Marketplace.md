@@ -57,9 +57,15 @@ This extension will by default make some assumptions on the installation paths f
 
 ![Options - General](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-general.png)
 
+Supports customising how AutoRest generates code based on the C# generator settings that the AutoRest CLI tool provides
+
 ![Options - AutoRest](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-autorest.png)
 
+Supports customising how NSwag generates code using the properties exposed by the NSwag NuGet package
+
 ![Options - NSwag](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswag.png)
+
+Supports customising how the **.nswag** file is generated using a subset of the options available in NSwag Studio
 
 ![Options - NSwag Studio](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswagstudio.png)
 
