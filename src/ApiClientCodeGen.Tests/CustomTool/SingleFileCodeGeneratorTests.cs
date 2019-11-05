@@ -31,7 +31,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.CustomToo
 
             var generatorMock = new Mock<ICodeGenerator>();
             generatorMock
-                .Setup(c => c.GenerateCode(new ProgressReporter(progressMock.Object)))
+                .Setup(c => c.GenerateCode(It.IsAny<IProgressReporter>()))
                 .Returns(code);
 
             var factoryMock = new Mock<ICodeGeneratorFactory>();

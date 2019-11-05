@@ -195,9 +195,7 @@
       <Name>ApiClientCodeGen.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PackageReference Include="ICSharpCode.CodeConverter">
       <Version>6.9.0</Version>
