@@ -15,7 +15,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [DeploymentItem("Resources/Swagger.json")]
     public class SwaggerVisualBasicCodeGeneratorTests
     {
-        private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
+        private static readonly Mock<IProgressReporter> mock = new Mock<IProgressReporter>();
         private static Mock<IGeneralOptions> optionsMock;
         private static string code = null;
 

@@ -371,6 +371,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj">
+      <Project>{24639115-9e66-4dc5-be93-9e72fbe5ec5f}</Project>
+      <Name>ApiClientCodeGen.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ApiClientCodeGen.Tests\ApiClientCodeGen.Tests.csproj">
       <Project>{6C7BEBC6-6568-44A3-88EC-2DFC57F87A31}</Project>
       <Name>ApiClientCodeGen.Tests</Name>

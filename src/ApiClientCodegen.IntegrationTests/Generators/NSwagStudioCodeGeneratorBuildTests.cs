@@ -37,7 +37,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
             File.WriteAllText("Swagger.nswag", contents);
             new NSwagStudioCodeGenerator(Path.GetFullPath("Swagger.nswag"), options)
-                .GenerateCode(new Mock<IVsGeneratorProgress>().Object)
+                .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
                 .BeNull();
 

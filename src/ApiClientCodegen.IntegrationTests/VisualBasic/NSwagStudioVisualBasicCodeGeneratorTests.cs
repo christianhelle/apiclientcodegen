@@ -36,7 +36,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
             File.WriteAllText("Petstore.nswag", contents);
             new NSwagStudioCodeGenerator(Path.GetFullPath("Petstore.nswag"), options)
-                .GenerateCode(new Mock<IVsGeneratorProgress>().Object)
+                .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
                 .BeNull();
 

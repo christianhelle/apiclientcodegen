@@ -67,7 +67,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             IOptionsFactory optionsFactory = null)
         {
             var rgbOutputFileContents = new[] { IntPtr.Zero };
-            var progressMock = new Mock<IVsGeneratorProgress>();
+            var progressMock = new Mock<IProgressReporter>();
 
             var sut = new VisualBasicSingleFileCodeGenerator(generator);
             sut.Factory = new CodeGeneratorFactory(optionsFactory);

@@ -14,10 +14,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
             this.pGenerateProgress = pGenerateProgress;
         }
 
-        public void Progress(int progress)
+        public void Progress(uint progress, uint total = 100)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            pGenerateProgress.Progress((uint)progress, 100);
+            pGenerateProgress.Progress(progress, total);
         }
     }
 }

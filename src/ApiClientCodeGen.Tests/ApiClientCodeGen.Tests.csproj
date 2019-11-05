@@ -400,6 +400,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj">
+      <Project>{24639115-9e66-4dc5-be93-9e72fbe5ec5f}</Project>
+      <Name>ApiClientCodeGen.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ApiClientCodeGen.VSIX\ApiClientCodeGen.VSIX.csproj">
       <Project>{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}</Project>
       <Name>ApiClientCodeGen.VSIX</Name>

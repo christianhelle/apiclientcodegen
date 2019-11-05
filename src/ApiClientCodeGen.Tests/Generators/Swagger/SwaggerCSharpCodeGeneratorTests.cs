@@ -1,4 +1,5 @@
 ﻿using AutoFixture;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
@@ -13,7 +14,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
     public class SwaggerCSharpCodeGeneratorTests
     {
         private readonly Mock<IGeneralOptions> optionsMock = new Mock<IGeneralOptions>();
-        private readonly Mock<IVsGeneratorProgress> progressMock = new Mock<IVsGeneratorProgress>();
+        private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
 
         [TestInitialize]
         public void Init()

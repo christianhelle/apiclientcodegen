@@ -1,4 +1,5 @@
 ﻿using AutoFixture;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -11,13 +12,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
     [DeploymentItem("Resources/Swagger.json")]
     public class CodeGeneratorTests
     {
-        private Mock<IVsGeneratorProgress> mock;
+        private Mock<IProgressReporter> mock;
         private CodeGenerator sut;
 
         [TestInitialize]
         public void Init()
         {
-            mock = new Mock<IVsGeneratorProgress>();
+            mock = new Mock<IProgressReporter>();
 
             var fixture = new Fixture();
             sut = new TestCodeGenerator(
@@ -38,8 +39,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
         public void GenerateCode_ReportsProgress()
             => mock.Verify(
                 c => c.Progress(
-                    It.IsAny<uint>(),
-                    It.IsAny<uint>()));
+                    It.IsAny<uint>(), It.IsAny<uint>()));
 
         [TestMethod]
         public void GetsCommand() 
