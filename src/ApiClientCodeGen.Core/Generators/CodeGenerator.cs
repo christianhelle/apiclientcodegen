@@ -12,11 +12,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     {
         protected readonly string DefaultNamespace;
         protected readonly string SwaggerFile;
+        private readonly IProcessLauncher processLauncher;
 
-        protected CodeGenerator(string swaggerFile, string defaultNamespace)
+        protected CodeGenerator(string swaggerFile, string defaultNamespace, IProcessLauncher processLauncher)
         {
             SwaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             DefaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
+            this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
         }
 
         public virtual string GenerateCode(IProgressReporter pGenerateProgress)
@@ -33,7 +35,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 var arguments = GetArguments(outputFile);
                 pGenerateProgress.Progress(30);
 
-                ProcessHelper.StartProcess(command, arguments);
+                processLauncher.Start(command, arguments);
                 pGenerateProgress.Progress(80);
 
                 return FileHelper.ReadThenDelete(outputFile);

@@ -53,7 +53,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
         internal class TestCodeGenerator : CodeGenerator
         {
             public TestCodeGenerator(string swaggerFile, string defaultNamespace)
-                : base(swaggerFile, defaultNamespace)
+                : base(swaggerFile, defaultNamespace, Test.CreateDummy<IProcessLauncher>())
             {
             }
 

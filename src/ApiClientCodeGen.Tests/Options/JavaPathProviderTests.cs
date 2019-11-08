@@ -1,4 +1,5 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -18,7 +19,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
             mock.Setup(c => c.JavaPath)
                 .Returns(Test.CreateAnnonymous<string>());
 
-            result = new JavaPathProvider(mock.Object)
+            result = new JavaPathProvider(
+                    mock.Object, 
+                    Test.CreateDummy<IProcessLauncher>())
                 .GetJavaExePath();
         }
 

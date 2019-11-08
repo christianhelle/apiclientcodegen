@@ -20,10 +20,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
             {
                 npmCommand = Path.Combine(programFiles64, "nodejs\\npm.cmd");
                 if (!File.Exists(npmCommand))
-                    throw new NotInstalledException("Unable to find NPM. Please install Node.js");
+                    throw new InvalidOperationException("Unable to find NPM. Please install Node.js");
             }
 
-            ProcessHelper.StartProcess(npmCommand, "install -g autorest");
+            new ProcessLauncher().Start(npmCommand, "install -g autorest");
             Trace.WriteLine("AutoRest installed successfully through NPM");
         }
 

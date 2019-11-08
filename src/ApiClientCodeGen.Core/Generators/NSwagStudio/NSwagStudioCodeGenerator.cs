@@ -10,11 +10,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     {
         private readonly string nswagStudioFile;
         private readonly IGeneralOptions options;
+        private readonly IProcessLauncher processLauncher;
 
-        public NSwagStudioCodeGenerator(string nswagStudioFile, IGeneralOptions options)
+        public NSwagStudioCodeGenerator(string nswagStudioFile, IGeneralOptions options, IProcessLauncher processLauncher)
         {
             this.nswagStudioFile = nswagStudioFile ?? throw new ArgumentNullException(nameof(nswagStudioFile));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
+            this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
         }
 
         public string GenerateCode(IProgressReporter pGenerateProgress)
@@ -27,11 +29,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 Trace.WriteLine(command + " does not exist! Retrying with default NSwag.exe path");
                 command = PathProvider.GetNSwagPath();
                 if (!File.Exists(command))
-                    throw new NotInstalledException("NSwag not installed. Please install NSwagStudio");
+                    throw new InvalidOperationException("NSwag not installed. Please install NSwagStudio");
             }
 
             TryRemoveSwaggerJsonSpec(nswagStudioFile);
-            ProcessHelper.StartProcess(command, $"run \"{nswagStudioFile}\"");
+            processLauncher.Start(command, $"run \"{nswagStudioFile}\"");
             pGenerateProgress?.Progress(90);
             return null;
         }

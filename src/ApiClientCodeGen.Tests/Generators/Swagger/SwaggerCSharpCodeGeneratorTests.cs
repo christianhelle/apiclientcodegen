@@ -1,5 +1,6 @@
 ﻿using AutoFixture;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -19,7 +20,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             => new SwaggerCSharpCodeGenerator(
                     "Swagger.json",
                     new Fixture().Create<string>(),
-                    optionsMock.Object)
+                    optionsMock.Object,
+                    new ProcessLauncher())
                 .GenerateCode(progressMock.Object);
 
         [TestMethod]

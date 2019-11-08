@@ -1,5 +1,6 @@
 ﻿using AutoFixture;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
@@ -22,7 +23,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             => new OpenApiCSharpCodeGenerator(
                     "Swagger.json",
                     new Fixture().Create<string>(),
-                    optionsMock.Object)
+                    optionsMock.Object,
+                    new ProcessLauncher())
                 .GenerateCode(progressMock.Object);
 
         [TestMethod]

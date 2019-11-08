@@ -77,7 +77,6 @@
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorExceptionTests.cs" />
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="NotInstalledExceptionTests.cs" />
     <Compile Include="NuGet\PackageDependencyTests.cs" />
     <Compile Include="NuGet\SupportedCodeGeneratorExtensionsTests.cs" />
     <Compile Include="NuGet\PackageDependencyListProviderTests.cs" />

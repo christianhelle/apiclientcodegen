@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
@@ -36,7 +37,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
 
             var item = dte.SelectedItems.Item(1).ProjectItem;
             var nswagStudioFile = item.FileNames[0];
-            var codeGenerator = new NSwagStudioCodeGenerator(nswagStudioFile, new CustomPathOptions());
+            var codeGenerator = new NSwagStudioCodeGenerator(nswagStudioFile, new CustomPathOptions(), new ProcessLauncher());
             codeGenerator.GenerateCode(null);
 
             var project = ProjectExtensions.GetActiveProject(dte);

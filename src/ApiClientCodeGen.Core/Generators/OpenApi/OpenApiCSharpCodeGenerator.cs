@@ -10,14 +10,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly string defaultNamespace;
         private readonly JavaPathProvider javaPathProvider;
         private readonly IGeneralOptions options;
+        private readonly IProcessLauncher processLauncher;
         private readonly string swaggerFile;
 
-        public OpenApiCSharpCodeGenerator(string swaggerFile, string defaultNamespace, IGeneralOptions options)
+        public OpenApiCSharpCodeGenerator(string swaggerFile, string defaultNamespace, IGeneralOptions options, IProcessLauncher processLauncher)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
-            javaPathProvider = new JavaPathProvider(options);
+            this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
+            javaPathProvider = new JavaPathProvider(options, processLauncher);
         }
 
         public string GenerateCode(IProgressReporter pGenerateProgress)
@@ -51,7 +53,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     $"-DpackageName={defaultNamespace} " +
                     "--skip-overwrite ";
 
-                ProcessHelper.StartProcess(javaPathProvider.GetJavaExePath(), arguments);
+                processLauncher.Start(javaPathProvider.GetJavaExePath(), arguments);
                 pGenerateProgress.Progress(80);
 
                 return CSharpFileMerger.MergeFilesAndDeleteSource(output);

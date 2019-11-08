@@ -8,10 +8,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
     public class JavaPathProvider
     {
         private readonly IGeneralOptions options;
+        private readonly IProcessLauncher processLauncher;
 
-        public JavaPathProvider(IGeneralOptions options)
+        public JavaPathProvider(IGeneralOptions options, IProcessLauncher processLauncher)
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
+            this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
         }
 
         public string GetJavaExePath()
@@ -25,7 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
             try
             {
                 Trace.WriteLine("Checking Java version");
-                ProcessHelper.StartProcess("java", "-version");
+                processLauncher.Start("java", "-version");
                 return "java";
             }
             catch (Exception e)
@@ -40,7 +42,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
             if (File.Exists(javaPath))
                 return javaPath;
 
-            throw new NotInstalledException("Unable to find Java");
+            throw new FileNotFoundException("Unable to find Java");
         }
     }
 }

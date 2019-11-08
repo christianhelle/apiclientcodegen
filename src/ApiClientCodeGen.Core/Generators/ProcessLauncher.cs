@@ -3,9 +3,14 @@ using System.Diagnostics;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
-    public static class ProcessHelper
+    public interface IProcessLauncher
     {
-        public static void StartProcess(string command, string arguments)
+        void Start(string command, string arguments);
+    }
+
+    public class ProcessLauncher : IProcessLauncher
+    {
+        public void Start(string command, string arguments)
         {
             Trace.WriteLine("Executing:");
             Trace.WriteLine($"{command} {arguments}");

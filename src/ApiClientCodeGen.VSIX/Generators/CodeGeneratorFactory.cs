@@ -19,11 +19,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
     public class CodeGeneratorFactory : ICodeGeneratorFactory
     {
+        private readonly IProcessLauncher processLauncher;
         private readonly IOptionsFactory optionsFactory;
 
-        public CodeGeneratorFactory(IOptionsFactory optionsFactory = null)
+        public CodeGeneratorFactory(IOptionsFactory optionsFactory = null, IProcessLauncher processLauncher = null)
         {
             this.optionsFactory = optionsFactory ?? new OptionsFactory();
+            this.processLauncher = processLauncher ?? new ProcessLauncher();
         }
 
         public ICodeGenerator Create(
@@ -39,7 +41,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                     return new AutoRestCSharpCodeGenerator(
                         inputFilePath,
                         defaultNamespace,
-                        optionsFactory.Create<IAutoRestOptions, AutoRestOptionsPage>());
+                        optionsFactory.Create<IAutoRestOptions, AutoRestOptionsPage>(),
+                        processLauncher);
 
                 case SupportedCodeGenerator.NSwag:
                     return new NSwagCSharpCodeGenerator(
@@ -53,13 +56,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                     return new SwaggerCSharpCodeGenerator(
                         inputFilePath,
                         defaultNamespace,
-                        optionsFactory.Create<IGeneralOptions, GeneralOptionPage>());
+                        optionsFactory.Create<IGeneralOptions, GeneralOptionPage>(),
+                        processLauncher);
 
                 case SupportedCodeGenerator.OpenApi:
                     return new OpenApiCSharpCodeGenerator(
                         inputFilePath,
                         defaultNamespace,
-                        optionsFactory.Create<IGeneralOptions, GeneralOptionPage>());
+                        optionsFactory.Create<IGeneralOptions, GeneralOptionPage>(),
+                        processLauncher);
 
                 default:
                     throw new NotSupportedException();

@@ -12,8 +12,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         public AutoRestCSharpCodeGenerator(
             string swaggerFile,
             string defaultNamespace,
-            IAutoRestOptions options)
-            : base(swaggerFile, defaultNamespace)
+            IAutoRestOptions options,
+            IProcessLauncher processLauncher)
+            : base(swaggerFile, defaultNamespace, processLauncher)
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
         }
