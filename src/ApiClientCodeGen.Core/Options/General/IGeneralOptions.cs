@@ -1,4 +1,4 @@
-﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
+﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General
 {
     public interface IGeneralOptions
     {

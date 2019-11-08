@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Converters
 {
     public interface ILanguageConverter
     {

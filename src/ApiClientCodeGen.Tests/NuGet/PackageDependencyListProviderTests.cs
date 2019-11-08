@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

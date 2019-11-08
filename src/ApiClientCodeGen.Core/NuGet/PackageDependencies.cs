@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
 {
     public static class PackageDependencies
     {

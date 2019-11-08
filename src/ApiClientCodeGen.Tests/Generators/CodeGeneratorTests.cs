@@ -1,5 +1,6 @@
 ﻿using AutoFixture;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;

@@ -83,6 +83,7 @@
     <Compile Include="CustomTool\AutoRest\AutoRestCodeGenerator.cs" />
     <Compile Include="CustomTool\AutoRest\AutoRestCSharpCodeGenerator.cs" />
     <Compile Include="CustomTool\SingleFileCodeGenerator.cs" />
+    <Compile Include="Extensions\SupportedCodeGeneratorExtensions.cs" />
     <Compile Include="Generators\CodeGeneratorFactory.cs" />
     <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelper.cs" />
     <Compile Include="Generators\NSwag\OpenApiDocumentFactory.cs" />

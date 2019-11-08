@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
 {
     public sealed class PackageDependency
     {

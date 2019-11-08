@@ -1,7 +1,6 @@
-﻿using System;
-using NSwag;
+﻿using NSwag;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag
 {
     public interface IOpenApiDocumentFactory
     {

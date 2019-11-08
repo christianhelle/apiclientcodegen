@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
 {
     public class PackageDependencyListProvider
     {

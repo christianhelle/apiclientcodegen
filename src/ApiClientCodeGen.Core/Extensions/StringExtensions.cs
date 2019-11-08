@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
 {
     public static class StringExtension
     {

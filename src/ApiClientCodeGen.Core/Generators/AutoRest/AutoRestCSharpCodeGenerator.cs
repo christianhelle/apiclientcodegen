@@ -1,10 +1,9 @@
 ﻿using System;
 using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest
 {
     public class AutoRestCSharpCodeGenerator : CodeGenerator
     {

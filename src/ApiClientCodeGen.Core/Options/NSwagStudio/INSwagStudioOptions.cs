@@ -1,6 +1,6 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio
 {
     public interface INSwagStudioOptions : INSwagOptions
     {

@@ -1,6 +1,6 @@
 ﻿using NJsonSchema.CodeGeneration.CSharp;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag
 {
     public interface INSwagOptions
     {

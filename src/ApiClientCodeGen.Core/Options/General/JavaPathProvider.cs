@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General
 {
     public class JavaPathProvider
     {

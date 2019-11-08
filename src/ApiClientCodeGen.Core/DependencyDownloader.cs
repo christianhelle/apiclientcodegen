@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Net;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {

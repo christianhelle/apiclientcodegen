@@ -11,7 +11,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
 using Microsoft.VisualStudio.Shell;
-using OutputWindow = ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Utility.OutputWindow;
+using OutputWindow = ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows.OutputWindow;
 using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient

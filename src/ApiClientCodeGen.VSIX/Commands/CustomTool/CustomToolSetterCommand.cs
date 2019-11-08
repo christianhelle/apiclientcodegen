@@ -1,5 +1,8 @@
-﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
 {
+    [ExcludeFromCodeCoverage]
     public static class CustomToolSetterCommand
     {
         public const string ContextGuid = "A3381E62-5D85-436F-824E-5F0097387C11";

@@ -1,4 +1,4 @@
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest
 {
     public interface IAutoRestOptions
     {

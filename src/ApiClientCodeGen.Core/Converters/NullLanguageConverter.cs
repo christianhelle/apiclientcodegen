@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Converters
 {
     [ExcludeFromCodeCoverage]
     public class NullLanguageConverter : ILanguageConverter

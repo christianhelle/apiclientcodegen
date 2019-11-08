@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger
 {
     public class SwaggerCSharpCodeGenerator : ICodeGenerator
     {

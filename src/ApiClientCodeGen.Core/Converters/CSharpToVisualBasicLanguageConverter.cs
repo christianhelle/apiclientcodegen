@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using ICSharpCode.CodeConverter;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Converters
 {
     public class CSharpToVisualBasicLanguageConverter : ILanguageConverter
     {

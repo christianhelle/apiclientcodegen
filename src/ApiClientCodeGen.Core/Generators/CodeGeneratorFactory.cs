@@ -1,6 +1,4 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
+﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
     public interface ICodeGeneratorFactory
     {

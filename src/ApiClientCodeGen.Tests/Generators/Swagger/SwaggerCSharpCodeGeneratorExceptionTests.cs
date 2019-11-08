@@ -1,5 +1,5 @@
 ﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
