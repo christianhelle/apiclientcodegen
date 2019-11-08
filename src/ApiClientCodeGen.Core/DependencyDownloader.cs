@@ -28,22 +28,18 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
         }
 
         public static string InstallOpenApiGenerator(string path = null)
-        {
-            const string md5 = "45F0AEDA24983AC998878C4D8516CF48";
-            const string url = "http://central.maven.org/maven2/org/openapitools/openapi-generator-cli/4.1.2/openapi-generator-cli-4.1.2.jar";
-            const string jar = "openapi-generator-cli.jar";
-
-            return InstallJarFile(path, jar, md5, url);
-        }
+            => InstallJarFile(
+                path,
+                "openapi-generator-cli.jar",
+                Resource.OpenApiGenerator_MD5,
+                Resource.OpenApiGenerator_DownloadUrl);
 
         public static string InstallSwaggerCodegenCli(string path = null)
-        {
-            const string md5 = "89E1C5F578CC0B7A5D430CDF8210AC44";
-            const string url = "https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.11/swagger-codegen-cli-3.0.11.jar";
-            const string jar = "swagger-codegen-cli.jar";
-            
-            return InstallJarFile(path, jar, md5, url);
-        }
+            => InstallJarFile(
+                path,
+                "swagger-codegen-cli.jar",
+                Resource.SwaggerCodegenCli_MD5,
+                Resource.SwaggerCodegenCli_DownloadUrl);
 
         private static string InstallJarFile(string path, string jar, string md5, string url)
         {
