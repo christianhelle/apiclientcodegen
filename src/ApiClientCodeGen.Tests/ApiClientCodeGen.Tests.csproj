@@ -59,6 +59,7 @@
     <Compile Include="CustomTool\TestSingleFileCodeGenerator.cs" />
     <Compile Include="Extensions\GetDependenciesTests.cs" />
     <Compile Include="Extensions\GetSupportedCodeGeneratorTests.cs" />
+    <Compile Include="Extensions\OpenApiDocumentExtensionsTests.cs" />
     <Compile Include="Extensions\StringToIntPtrTests.cs" />
     <Compile Include="Extensions\GetCustomToolNameTests.cs" />
     <Compile Include="Extensions\ToJsonTests.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorExceptionTests.cs" />
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="NotInstalledExceptionTests.cs" />
     <Compile Include="NuGet\PackageDependencyTests.cs" />
     <Compile Include="NuGet\SupportedCodeGeneratorExtensionsTests.cs" />
     <Compile Include="NuGet\PackageDependencyListProviderTests.cs" />

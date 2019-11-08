@@ -66,6 +66,7 @@
     <Compile Include="Commands\CustomTool\NSwagCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="Commands\CustomTool\OpenApiCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="Commands\CustomTool\SwaggerCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="Converters\CSharpToVisualBasicLanguageConverter.cs" />
     <Compile Include="CustomTool\AutoRest\AutoRestVisualBasicCodeGenerator.cs" />
     <Compile Include="CustomTool\NSwag\NSwagVisualBasicCodeGenerator.cs" />
     <Compile Include="CustomTool\OpenApi\OpenApiVisualBasicCodeGenerator.cs" />
