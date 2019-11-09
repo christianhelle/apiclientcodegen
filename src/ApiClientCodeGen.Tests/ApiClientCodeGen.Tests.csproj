@@ -68,6 +68,7 @@
     <Compile Include="Generators\CSharpFileMergerTests.cs" />
     <Compile Include="DeploymentItemTests.cs" />
     <Compile Include="Generators\CodeGeneratorTests.cs" />
+    <Compile Include="Generators\NSwagStudio\NSwagStudioCodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelperTests.cs" />
     <Compile Include="Generators\NSwag\NSwagCodeGeneratorSettingsFactoryTests.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGeneratorTests.cs" />
