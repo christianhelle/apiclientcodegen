@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options;
 using Microsoft.VisualStudio.Shell;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
@@ -8,7 +9,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
     {
         public TOptions Create<TOptions, TDialogPage>()
             where TOptions : class
-            where TDialogPage : DialogPage
             => VsPackage.Instance.GetDialogPage(typeof(TDialogPage)) as TOptions;
     }
 }

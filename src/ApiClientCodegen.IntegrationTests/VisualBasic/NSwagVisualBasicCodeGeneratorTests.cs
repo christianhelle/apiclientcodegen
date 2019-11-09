@@ -15,7 +15,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [DeploymentItem("Resources/Swagger.json")]
     public class NSwagVisualBasicCodeGeneratorTests
     {
-        private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
+        private static readonly Mock<IProgressReporter> mock = new Mock<IProgressReporter>();
         private static readonly Mock<INSwagOptions> optionsMock = new Mock<INSwagOptions>();
         private static readonly Mock<IOpenApiDocumentFactory> documentFactoryMock = new Mock<IOpenApiDocumentFactory>();
         private static readonly Mock<INSwagCodeGeneratorSettingsFactory> settingsMock = new Mock<INSwagCodeGeneratorSettingsFactory>();

@@ -1,12 +1,11 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using FluentAssertions;
-using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -17,7 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [DeploymentItem("Resources/Swagger.json")]
     public class AutoRestCodeGeneratorTests
     {
-        private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
+        private static readonly Mock<IProgressReporter> mock = new Mock<IProgressReporter>();
         private static readonly Mock<IAutoRestOptions> optionsMock = new Mock<IAutoRestOptions>();
         private static string code = null;
 
@@ -27,7 +26,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             var codeGenerator = new AutoRestCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
                 typeof(AutoRestCodeGeneratorTests).Namespace,
-                optionsMock.Object);
+                optionsMock.Object,
+                new ProcessLauncher());
 
             optionsMock.Setup(c => c.OverrideClientName).Returns(true);
             code = codeGenerator.GenerateCode(mock.Object);

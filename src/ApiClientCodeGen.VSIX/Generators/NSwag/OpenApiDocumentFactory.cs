@@ -1,14 +1,10 @@
 ﻿using System;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using Microsoft.VisualStudio.Shell;
 using NSwag;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag
 {
-    public interface IOpenApiDocumentFactory
-    {
-        OpenApiDocument GetDocument(string swaggerFile);
-    }
-
     public class OpenApiDocumentFactory : IOpenApiDocumentFactory
     {
         public OpenApiDocument GetDocument(string swaggerFile)

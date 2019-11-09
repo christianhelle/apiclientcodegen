@@ -1,5 +1,7 @@
 ﻿using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
@@ -17,7 +19,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [DeploymentItem("Resources/Swagger.json")]
     public class NSwagCodeGeneratorTests
     {
-        private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
+        private static readonly Mock<IProgressReporter> mock = new Mock<IProgressReporter>();
         private static readonly Mock<INSwagOptions> optionsMock = new Mock<INSwagOptions>();
         private static string code = null;
 

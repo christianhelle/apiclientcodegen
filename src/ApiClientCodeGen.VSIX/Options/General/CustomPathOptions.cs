@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
 {

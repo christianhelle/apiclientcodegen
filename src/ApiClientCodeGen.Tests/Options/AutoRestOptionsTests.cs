@@ -1,4 +1,5 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

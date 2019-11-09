@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Swagger;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 {

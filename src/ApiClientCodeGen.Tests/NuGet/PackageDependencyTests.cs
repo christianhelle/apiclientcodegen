@@ -1,6 +1,6 @@
 ﻿using System;
 using AutoFixture;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.NuGet;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

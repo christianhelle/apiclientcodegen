@@ -5,6 +5,8 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.CustomTool
 {
@@ -30,7 +32,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.CustomToo
 
             var generatorMock = new Mock<ICodeGenerator>();
             generatorMock
-                .Setup(c => c.GenerateCode(progressMock.Object))
+                .Setup(c => c.GenerateCode(It.IsAny<IProgressReporter>()))
                 .Returns(code);
 
             var factoryMock = new Mock<ICodeGeneratorFactory>();

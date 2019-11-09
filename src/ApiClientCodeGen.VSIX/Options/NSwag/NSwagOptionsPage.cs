@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using Microsoft.VisualStudio.Shell;
 using NJsonSchema.CodeGeneration.CSharp;
 

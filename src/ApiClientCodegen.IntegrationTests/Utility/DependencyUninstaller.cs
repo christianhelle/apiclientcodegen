@@ -2,8 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility
 {
@@ -22,10 +21,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             {
                 npmCommand = Path.Combine(programFiles64, "nodejs\\npm.cmd");
                 if (!File.Exists(npmCommand))
-                    throw new NotInstalledException("Unable to find NPM. Please install Node.js");
+                    throw new InvalidOperationException("Unable to find NPM. Please install Node.js");
             }
 
-            ProcessHelper.StartProcess(npmCommand, "uninstall -g autorest");
+            new ProcessLauncher().Start(npmCommand, "uninstall -g autorest");
             Trace.WriteLine("AutoRest installed successfully through NPM");
         }
 

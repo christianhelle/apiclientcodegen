@@ -1,14 +1,11 @@
 ﻿using System.IO;
-using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.Swagger;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using FluentAssertions;
-using ICSharpCode.CodeConverter;
-using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -19,7 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [DeploymentItem("Resources/Swagger.json")]
     public class SwaggerCodeGeneratorTests
     {
-        private static readonly Mock<IVsGeneratorProgress> mock = new Mock<IVsGeneratorProgress>();
+        private static readonly Mock<IProgressReporter> mock = new Mock<IProgressReporter>();
         private static Mock<IGeneralOptions> optionsMock;
         private static string code = null;
 
@@ -32,7 +29,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             var codeGenerator = new SwaggerCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
                 typeof(SwaggerCodeGeneratorTests).Namespace,
-                optionsMock.Object);
+                optionsMock.Object,
+                new ProcessLauncher());
 
             code = codeGenerator.GenerateCode(mock.Object);
         }

@@ -1,5 +1,8 @@
 ﻿using AutoFixture;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.OpenApi;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -13,14 +16,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
     public class OpenApiCSharpCodeGeneratorTests
     {
         private readonly Mock<IGeneralOptions> optionsMock = new Mock<IGeneralOptions>();
-        private readonly Mock<IVsGeneratorProgress> progressMock = new Mock<IVsGeneratorProgress>();
+        private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
 
         [TestInitialize]
         public void Init()
             => new OpenApiCSharpCodeGenerator(
                     "Swagger.json",
                     new Fixture().Create<string>(),
-                    optionsMock.Object)
+                    optionsMock.Object,
+                    new ProcessLauncher())
                 .GenerateCode(progressMock.Object);
 
         [TestMethod]

@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.IO;
 using System.Threading.Tasks;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;

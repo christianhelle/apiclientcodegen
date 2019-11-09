@@ -1,12 +1,13 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using FluentAssertions;
-using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -31,8 +32,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
         [TestMethod]
         public void NSwagStudio_Generate_Code_Using_NSwagStudio()
-            => new NSwagStudioCodeGenerator(Path.GetFullPath("Swagger.nswag"), options)
-                .GenerateCode(new Mock<IVsGeneratorProgress>().Object)
+            => new NSwagStudioCodeGenerator(Path.GetFullPath("Swagger.nswag"), options, new ProcessLauncher())
+                .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
                 .BeNull();
         
@@ -44,8 +45,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 new Mock<INSwagStudioOptions>().Object);
 
             File.WriteAllText("Petstore.nswag", contents);
-            new NSwagStudioCodeGenerator(Path.GetFullPath("Petstore.nswag"), options)
-                .GenerateCode(new Mock<IVsGeneratorProgress>().Object)
+            new NSwagStudioCodeGenerator(Path.GetFullPath("Petstore.nswag"), options, new ProcessLauncher())
+                .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
                 .BeNull();
 
@@ -59,8 +60,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         {
             new NSwagStudioCodeGenerator(
                     Path.GetFullPath("Swagger.nswag"), 
-                    options)
-                .GenerateCode(new Mock<IVsGeneratorProgress>().Object);
+                    options,
+                    new ProcessLauncher())
+                .GenerateCode(new Mock<IProgressReporter>().Object);
 
             optionsMock.Verify(c => c.NSwagPath);
         }

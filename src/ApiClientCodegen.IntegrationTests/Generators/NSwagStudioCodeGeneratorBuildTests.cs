@@ -1,13 +1,12 @@
 ﻿using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using FluentAssertions;
-using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -36,8 +35,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .GetResult();
 
             File.WriteAllText("Swagger.nswag", contents);
-            new NSwagStudioCodeGenerator(Path.GetFullPath("Swagger.nswag"), options)
-                .GenerateCode(new Mock<IVsGeneratorProgress>().Object)
+            new NSwagStudioCodeGenerator(Path.GetFullPath("Swagger.nswag"), options, new ProcessLauncher())
+                .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
                 .BeNull();
 

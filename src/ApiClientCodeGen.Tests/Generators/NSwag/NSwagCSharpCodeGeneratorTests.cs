@@ -1,5 +1,8 @@
 ﻿using System.Threading.Tasks;
 using AutoFixture;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
@@ -17,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
     public class NSwagCSharpCodeGeneratorTests
     {
         private readonly Mock<INSwagOptions> optionsMock = new Mock<INSwagOptions>();
-        private readonly Mock<IVsGeneratorProgress> progressMock = new Mock<IVsGeneratorProgress>();
+        private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
         private readonly Mock<IOpenApiDocumentFactory> documentFactoryMock = new Mock<IOpenApiDocumentFactory>();
         private readonly Mock<INSwagCodeGeneratorSettingsFactory> settingsMock = new Mock<INSwagCodeGeneratorSettingsFactory>();
         private OpenApiDocument document;
