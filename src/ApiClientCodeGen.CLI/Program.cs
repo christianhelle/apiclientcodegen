@@ -2,6 +2,9 @@
 using System.Reflection;
 using System.Threading.Tasks;
 using ApiClientCodeGen.CLI.Commands;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -36,9 +39,13 @@ namespace ApiClientCodeGen.CLI
             }
         }
 
-        private static void ConfigureServices(HostBuilderContext arg1, IServiceCollection arg2)
+        private static void ConfigureServices(IServiceCollection services)
         {
-            // Method intentionally left empty.
+            services.AddLogging(b => b.AddDebug());
+            services.AddTransient<IProgressReporter, ProgressReporter>();
+            services.AddTransient<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
+            services.AddTransient<INSwagOptions, NSwagOptions>();
+            services.AddTransient<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();
         }
     }
 }
