@@ -14,6 +14,9 @@ namespace ApiClientCodeGen.CLI.Commands
         [Argument(1, "namespace", "Default namespace to in the generated code")]
         public string DefaultNamespace { get; set; }
         
+        [Argument(2, "outputFile", "Output filename to write the generated code to. Default is the swaggerFile .cs")]
+        public string OutputFile { get; set; }
+        
         public virtual Task<int> OnExecuteAsync()
         {
             return Task.FromResult(ResultCodes.Error);
