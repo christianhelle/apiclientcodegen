@@ -12,7 +12,7 @@ namespace ApiClientCodeGen.CLI.Commands
         public string SwaggerFile { get; set; }
 
         [Argument(1, "namespace", "Default namespace to in the generated code")]
-        public string DefaultNamespace { get; set; }
+        public string DefaultNamespace { get; set; } = "GeneratedCode";
         
         [Argument(2, "outputFile", "Output filename to write the generated code to. Default is the swaggerFile .cs")]
         public string OutputFile { get; set; }
