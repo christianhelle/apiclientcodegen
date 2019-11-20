@@ -1,21 +1,33 @@
 ﻿using System;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using McMaster.Extensions.CommandLineUtils;
-using Microsoft.Extensions.Logging;
 
 namespace ApiClientCodeGen.CLI.Commands
 {
     [Command("autorest", Description = "Generate Swagger / Open API client using AutoRest")]
-    public class AutoRestCommand : SwaggerCommand
+    public class AutoRestCommand : CodeGeneratorCommand
     {
-        private readonly ILogger<RootCommand> logger;
-        private readonly IConsole console;
+        private readonly IAutoRestOptions options;
+        private readonly IProcessLauncher processLauncher;
 
         public AutoRestCommand(
-            ILogger<RootCommand> logger,
-            IConsole console)
+            IConsole console,
+            IAutoRestOptions options,
+            IProcessLauncher processLauncher,
+            IProgressReporter progressReporter) : base(console, progressReporter)
         {
-            this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            this.console = console ?? throw new ArgumentNullException(nameof(console));
+            this.options = options ?? throw new ArgumentNullException(nameof(options));
+            this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
         }
+
+        public override ICodeGenerator CreateGenerator()
+            => new AutoRestCSharpCodeGenerator(
+                SwaggerFile,
+                DefaultNamespace,
+                options,
+                processLauncher);
     }
 }
