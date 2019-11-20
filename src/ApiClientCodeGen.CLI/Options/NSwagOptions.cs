@@ -1,7 +1,7 @@
 ﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using NJsonSchema.CodeGeneration.CSharp;
 
-namespace ApiClientCodeGen.CLI
+namespace ApiClientCodeGen.CLI.Options
 {
     public class NSwagOptions : INSwagOptions
     {
