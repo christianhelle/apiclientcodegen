@@ -9,7 +9,6 @@ namespace ApiClientCodeGen.CLI.Commands
     [Subcommand(
         typeof(AutoRestCommand),
         typeof(NswagCommand),
-        typeof(NswagStudioCommand),
         typeof(SwaggerCodegenCommand),
         typeof(OpenApiGeneratorCommand))]
     public class RootCommand
