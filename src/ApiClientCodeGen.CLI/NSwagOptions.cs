@@ -9,7 +9,7 @@ namespace ApiClientCodeGen.CLI
         public bool GenerateClientInterfaces { get; } = true;
         public bool GenerateDtoTypes { get; } = true;
         public CSharpClassStyle ClassStyle { get; } = CSharpClassStyle.Poco;
-        public bool UseDocumentTitle { get; }
+        public bool UseDocumentTitle { get; } = true;
         public bool UseBaseUrl { get; }
     }
 }
