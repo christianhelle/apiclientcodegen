@@ -2,8 +2,12 @@
 using System.Reflection;
 using System.Threading.Tasks;
 using ApiClientCodeGen.CLI.Commands;
+using ApiClientCodeGen.CLI.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -42,10 +46,13 @@ namespace ApiClientCodeGen.CLI
         private static void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging(b => b.AddDebug());
+            services.AddTransient<INSwagOptions, NSwagOptions>();
+            services.AddTransient<IGeneralOptions, GeneralOptions>();
+            services.AddTransient<IAutoRestOptions, AutoRestOptions>();
             services.AddTransient<IProgressReporter, ProgressReporter>();
             services.AddTransient<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
-            services.AddTransient<INSwagOptions, NSwagOptions>();
             services.AddTransient<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();
+            services.AddTransient<IProcessLauncher, ProcessLauncher>();
         }
     }
 }
