@@ -5,7 +5,6 @@ using McMaster.Extensions.CommandLineUtils;
 namespace ApiClientCodeGen.CLI.Commands
 {
     [Command(Name = "run", ThrowOnUnexpectedArgument = false, OptionsComparison = StringComparison.InvariantCultureIgnoreCase)]
-    [VersionOptionFromMember(MemberName = nameof(GetVersion))]
     [Subcommand(
         typeof(AutoRestCommand),
         typeof(NswagCommand),
@@ -21,8 +20,5 @@ namespace ApiClientCodeGen.CLI.Commands
             app.ShowHelp(false);
             return 0;
         }
-
-        private static string GetVersion()
-            => $"Version {typeof(RootCommand).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion}";
     }
 }
