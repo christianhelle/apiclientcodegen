@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.Tests", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodegen.IntegrationTests", "ApiClientCodegen.IntegrationTests\ApiClientCodegen.IntegrationTests.csproj", "{AB65E72E-8666-4213-86D6-AFB424D2C10B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.Core", "ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj", "{24639115-9E66-4DC5-BE93-9E72FBE5EC5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.Core", "ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj", "{24639115-9E66-4DC5-BE93-9E72FBE5EC5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
