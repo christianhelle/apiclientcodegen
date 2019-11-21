@@ -13,6 +13,7 @@
     <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/christianhelle/apiclientcodegen</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/src/ApiClientCodeGen.VSIX/Resources/Icon.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/christianhelle/apiclientcodegen</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -35,6 +36,7 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
+    <None Include="..\..\images\icon.png" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
