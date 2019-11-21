@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using McMaster.Extensions.CommandLineUtils;
 
 namespace ApiClientCodeGen.CLI.Commands
