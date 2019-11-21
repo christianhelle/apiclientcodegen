@@ -23,6 +23,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         [ClassInitialize]
         public static void Init(TestContext testContext)
         {
+            optionsMock.Setup(c => c.AddCredentials).Returns(true);
+            optionsMock.Setup(c => c.UseDateTimeOffset).Returns(true);
+            optionsMock.Setup(c => c.UseInternalConstructors).Returns(true);
+
             var codeGenerator = new AutoRestCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.json"),
                 typeof(AutoRestCodeGeneratorTests).Namespace,

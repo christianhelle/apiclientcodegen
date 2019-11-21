@@ -76,6 +76,67 @@ Supports customising how the **.nswag** file is generated using a subset of the 
 ![Options - NSwag Studio](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswagstudio.png)
 
 
+## Cross Platform Command Line Tool
+All custom tools mentioned above are also implemented in a cross platform command line
+
+#### Requirments
+- .NET Core 3.0 runtime
+
+### Installation
+The tool can be installed as a .NET Core global tool that you can call from the shell / command line
+```
+dotnet tool install --global rapicgen
+```
+or by following the instructions [here](https://www.nuget.org/packages/rapicgen) to install a specific version of tool
+
+### Usage
+Since the tool is published as a .NET Core Tool, it can be launched from anywhere using any command line interface by calling **rapicgen**.
+The help information is displayed when not specifying any arguments to **rapicgen**
+
+```
+Usage: run [options] [command]
+
+Options:
+  -v|--verbose  Show verbose output
+  -?|-h|--help  Show help information
+
+Commands:
+  autorest      Generate Swagger / Open API client using AutoRest
+  nswag         Generate Swagger / Open API client using NSwag
+  openapi       Generate Swagger / Open API client using OpenAPI Generator
+  swagger       Generate Swagger / Open API client using Swagger Codegen CLI
+
+Run 'run [command] --help' for more information about a command.
+```
+
+Some help information is also provided per command and can be launched by 
+
+```
+$ rapicgen [command name] -?
+```
+
+For example:
+
+```
+$ rapicgen autorest -?
+```
+
+will output this:
+
+```
+Generate Swagger / Open API client using AutoRest
+
+Usage: run autorest [options] <swaggerFile> <namespace> <outputFile>
+
+Arguments:
+  swaggerFile   Path to the Swagger / Open API specification file
+  namespace     Default namespace to in the generated code
+  outputFile    Output filename to write the generated code to. Default is the swaggerFile .cs
+
+Options:
+  -?|-h|--help  Show help information
+```
+
 For tips and tricks on software development, check out [my blog](https://christian-helle.blogspot.com)
 
 If you find this useful and feel a bit generous then feel free to [buy me a coffee](https://www.buymeacoffee.com/christianhelle) :)
