@@ -7,13 +7,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
         public static readonly PackageDependency NewtonsoftJson =
             new PackageDependency(
                 "Newtonsoft.Json",
-                new Version(12, 0, 2, 0),
+                new Version(12, 0, 3, 0),
                 false);
 
         public static readonly PackageDependency MicrosoftRestClientRuntime =
             new PackageDependency(
                 "Microsoft.Rest.ClientRuntime",
-                new Version(2, 3, 20, 0));
+                new Version(2, 3, 21, 0));
 
         public static readonly PackageDependency RestSharp =
             new PackageDependency(
