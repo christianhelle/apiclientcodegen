@@ -31,7 +31,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
 
         [Category("File Paths")]
         [DisplayName("NSwag Path")]
-        [Description("Full path to nswag.exe")]
+        [Description("Full path to NSwag.exe (Installs from NPM if not found)")]
         public string NSwagPath { get; set; }
         
         [Category("File Paths")]

@@ -136,7 +136,7 @@
             this.lblNSwagPath.Name = "lblNSwagPath";
             this.lblNSwagPath.Size = new System.Drawing.Size(113, 13);
             this.lblNSwagPath.TabIndex = 6;
-            this.lblNSwagPath.Text = "Full path to nswag.exe";
+            this.lblNSwagPath.Text = "Full path to NSwag.exe (Installs from NPM if not found)";
             // 
             // btnOpenApi
             // 
