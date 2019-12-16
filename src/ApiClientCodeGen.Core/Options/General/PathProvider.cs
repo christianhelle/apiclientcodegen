@@ -35,6 +35,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
             npmCommand = Path.Combine(programFiles64, "nodejs\\npm.cmd");
             return !File.Exists(npmCommand) ? null : npmCommand;
         }
+        
+        public static string GetNSwagStudioPath()
+            => Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+                "Rico Suter\\NSwagStudio\\Win\\NSwag.exe");
 
         public static string GetNSwagPath()
             => Path.Combine(
