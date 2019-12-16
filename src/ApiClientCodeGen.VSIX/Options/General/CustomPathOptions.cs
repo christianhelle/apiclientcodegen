@@ -24,7 +24,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
             {
                 JavaPath = PathProvider.GetJavaPath();
                 NpmPath = PathProvider.GetNpmPath();
-                NSwagPath = PathProvider.GetNSwagPath();
+                NSwagPath = PathProvider.GetNSwagStudioPath();
                 SwaggerCodegenPath = PathProvider.GetSwaggerCodegenPath();
                 OpenApiGeneratorPath = PathProvider.GetOpenApiGeneratorPath();
 

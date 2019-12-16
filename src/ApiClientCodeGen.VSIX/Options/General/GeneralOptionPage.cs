@@ -16,7 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
         {
             JavaPath = PathProvider.GetJavaPath();
             NpmPath = PathProvider.GetNpmPath();
-            NSwagPath = PathProvider.GetNSwagPath();
+            NSwagPath = PathProvider.GetNSwagStudioPath();
         }
 
         [Category("File Paths")]
