@@ -38,8 +38,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
 
         public static string GetNSwagPath()
             => Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
-                "Rico Suter\\NSwagStudio\\Win\\NSwag.exe");
+                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "npm\\nswag.cmd");
 
         public static string GetAutoRestPath()
             => Path.Combine(
