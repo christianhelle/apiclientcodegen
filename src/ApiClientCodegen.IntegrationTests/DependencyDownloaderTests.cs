@@ -27,5 +27,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             => new Action(DependencyDownloader.InstallAutoRest)
                 .Should()
                 .NotThrow();
+
+        [TestMethod]
+        public void InstallNSwag_Returns_Path()
+            => new Action(DependencyDownloader.InstallNSwag)
+                .Should()
+                .NotThrow();
     }
 }
