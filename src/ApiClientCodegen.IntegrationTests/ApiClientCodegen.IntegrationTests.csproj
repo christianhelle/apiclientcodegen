@@ -61,7 +61,6 @@
     <Compile Include="CustomTool\CSharpSingleFileCodeGenerator.cs" />
     <None Include="CustomTool\VisualBasicSingleFileCodeGeneratorTests.cs" />
     <None Include="CustomTool\VisualBasicSingleFileCodeGenerator.cs" />
-    <Compile Include="DependencyDownloaderTests.cs" />
     <Compile Include="Generators\NSwagStudioCodeGeneratorBuildTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <None Include="VisualBasic\AutoRestVisualBasicCodeGeneratorTests.cs" />
@@ -70,7 +69,6 @@
     <None Include="VisualBasic\NSwagVisualBasicCodeGeneratorTests.cs" />
     <None Include="VisualBasic\OpenApiVisualBasicCodeGeneratorTests.cs" />
     <None Include="VisualBasic\SwaggerVisualBasicCodeGeneratorTests.cs" />
-    <Compile Include="NpmHelerTests.cs" />
     <Compile Include="Utility\DependencyUninstaller.cs" />
     <Compile Include="Generators\NSwagStudioCodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwagCodeGeneratorTests.cs" />
