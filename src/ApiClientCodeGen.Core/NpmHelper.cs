@@ -38,7 +38,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
                 new ProcessLauncher().Start(
                     npm,
                     "config get prefix",
-                    o => prefix = o,
+                    o => prefix += o,
                     e => Trace.WriteLine(e));
                 return prefix;
             }
