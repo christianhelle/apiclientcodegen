@@ -3,7 +3,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
 {
     [TestClass]
     public class DependencyDownloaderTests
@@ -25,6 +25,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         [TestMethod]
         public void InstallAutoRest_Returns_Path()
             => new Action(DependencyDownloader.InstallAutoRest)
+                .Should()
+                .NotThrow();
+
+        [TestMethod]
+        public void InstallNSwag_Returns_Path()
+            => new Action(DependencyDownloader.InstallNSwag)
                 .Should()
                 .NotThrow();
     }

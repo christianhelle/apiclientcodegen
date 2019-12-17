@@ -57,6 +57,7 @@
     <None Include="Converters\CSharpToVisualBasicLanguageConverterTests.cs" />
     <Compile Include="CustomTool\SingleFileCodeGeneratorTests.cs" />
     <Compile Include="CustomTool\TestSingleFileCodeGenerator.cs" />
+    <Compile Include="DependencyDownloaderTests.cs" />
     <Compile Include="Extensions\GetDependenciesTests.cs" />
     <Compile Include="Extensions\GetSupportedCodeGeneratorTests.cs" />
     <Compile Include="Extensions\OpenApiDocumentExtensionsTests.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorExceptionTests.cs" />
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="NpmHelperTests.cs" />
     <Compile Include="NuGet\PackageDependencyTests.cs" />
     <Compile Include="NuGet\SupportedCodeGeneratorExtensionsTests.cs" />
     <Compile Include="NuGet\PackageDependencyListProviderTests.cs" />

@@ -8,23 +8,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     public static class DependencyDownloader
     {
-        public static void InstallAutoRest()
+        public static void InstallAutoRest() => InstallNpmPackage("autorest");
+
+        public static void InstallNSwag() => InstallNpmPackage("nswag");
+
+        private static void InstallNpmPackage(string packageName)
         {
-            Trace.WriteLine("AutoRest not installed. Attempting to install through NPM");
+            Trace.WriteLine($"Attempting to install {packageName} through NPM");
+            
+            var processLauncher = new ProcessLauncher();
+            var npmPath = NpmHelper.GetNpmPath();
+            processLauncher.Start(
+                npmPath,
+                $"install -g {packageName}");
 
-            var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            var programFiles64 = programFiles.Replace(" (x86)", newValue: string.Empty);
-
-            var npmCommand = Path.Combine(programFiles, "nodejs\\npm.cmd");
-            if (!File.Exists(npmCommand))
-            {
-                npmCommand = Path.Combine(programFiles64, "nodejs\\npm.cmd");
-                if (!File.Exists(npmCommand))
-                    throw new InvalidOperationException("Unable to find NPM. Please install Node.js");
-            }
-
-            new ProcessLauncher().Start(npmCommand, "install -g autorest");
-            Trace.WriteLine("AutoRest installed successfully through NPM");
+            Trace.WriteLine($"{packageName} installed successfully through NPM");
         }
 
         public static string InstallOpenApiGenerator(string path = null)

@@ -36,7 +36,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
 
         [TestMethod]
         public void NSwagPath_Reads_From_Options()
-            => sut.NSwagPath.Should().Be(PathProvider.GetNSwagPath());
+            => sut.NSwagPath.Should().Be(PathProvider.GetNSwagStudioPath());
 
         [TestMethod]
         public void SwaggerCodegenPath_NotNullOrWhiteSpace()

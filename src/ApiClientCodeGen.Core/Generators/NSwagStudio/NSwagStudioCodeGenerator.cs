@@ -29,7 +29,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 Trace.WriteLine(command + " does not exist! Retrying with default NSwag.exe path");
                 command = PathProvider.GetNSwagPath();
                 if (!File.Exists(command))
-                    throw new InvalidOperationException("NSwag not installed. Please install NSwagStudio");
+                    DependencyDownloader.InstallNSwag();
             }
 
             TryRemoveSwaggerJsonSpec(nswagStudioFile);

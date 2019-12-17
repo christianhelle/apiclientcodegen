@@ -11,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
             try
             {
                 var javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
-                var javaExe = Path.Combine(javaHome, "bin\\java.exe");
+                var javaExe = Path.Combine(javaHome ?? throw new InvalidOperationException(), "bin\\java.exe");
                 return javaExe;
             }
             catch (Exception e)
@@ -35,16 +35,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
             npmCommand = Path.Combine(programFiles64, "nodejs\\npm.cmd");
             return !File.Exists(npmCommand) ? null : npmCommand;
         }
-
-        public static string GetNSwagPath()
+        
+        public static string GetNSwagStudioPath()
             => Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
                 "Rico Suter\\NSwagStudio\\Win\\NSwag.exe");
 
+        public static string GetNSwagPath()
+            => Path.Combine(
+                NpmHelper.GetPrefixPath(),
+                "nswag.cmd");
+
         public static string GetAutoRestPath()
             => Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                "npm\\autorest.cmd");
+                NpmHelper.GetPrefixPath(),
+                "autorest.cmd");
 
         public static string GetSwaggerCodegenPath()
             => Path.Combine(
