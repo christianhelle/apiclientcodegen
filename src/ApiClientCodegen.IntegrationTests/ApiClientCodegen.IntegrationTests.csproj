@@ -70,6 +70,7 @@
     <None Include="VisualBasic\NSwagVisualBasicCodeGeneratorTests.cs" />
     <None Include="VisualBasic\OpenApiVisualBasicCodeGeneratorTests.cs" />
     <None Include="VisualBasic\SwaggerVisualBasicCodeGeneratorTests.cs" />
+    <Compile Include="NpmHelerTests.cs" />
     <Compile Include="Utility\DependencyUninstaller.cs" />
     <Compile Include="Generators\NSwagStudioCodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwagCodeGeneratorTests.cs" />

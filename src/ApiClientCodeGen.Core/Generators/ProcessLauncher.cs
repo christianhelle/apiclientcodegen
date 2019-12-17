@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Text;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
@@ -11,6 +12,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     public class ProcessLauncher : IProcessLauncher
     {
         public void Start(string command, string arguments)
+            => Start(command, arguments, o => Trace.WriteLine(o), e => Trace.WriteLine(e));
+
+        public void Start(string command, string arguments, Action<string> onOutputData, Action<string> onErrorData)
         {
             Trace.WriteLine("Executing:");
             Trace.WriteLine($"{command} {arguments}");
@@ -18,8 +22,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             var processInfo = new ProcessStartInfo(command, arguments);
             using (var process = new Process { StartInfo = processInfo })
             {
-                process.OutputDataReceived += (s, e) => Trace.WriteLine(e.Data);
-                process.ErrorDataReceived += (s, e) => Trace.WriteLine(e.Data);
+                process.OutputDataReceived += (s, e) => onOutputData?.Invoke(e.Data);
+                process.ErrorDataReceived += (s, e) => onErrorData?.Invoke(e.Data);
                 process.StartInfo.RedirectStandardOutput = true;
                 process.StartInfo.RedirectStandardError = true;
                 process.StartInfo.RedirectStandardInput = true;

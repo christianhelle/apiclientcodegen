@@ -17,28 +17,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
             Trace.WriteLine($"Attempting to install {packageName} through NPM");
             
             var processLauncher = new ProcessLauncher();
-            var npmPath = GetNpmPath();
+            var npmPath = NpmHelper.GetNpmPath();
             processLauncher.Start(
                 npmPath,
                 $"install -g {packageName}");
 
             Trace.WriteLine($"{packageName} installed successfully through NPM");
-        }
-
-        private static string GetNpmPath()
-        {
-            var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            var programFiles64 = programFiles.Replace(" (x86)", newValue: string.Empty);
-
-            var npmCommand = Path.Combine(programFiles, "nodejs\\npm.cmd");
-            if (File.Exists(npmCommand))
-                return npmCommand;
-
-            npmCommand = Path.Combine(programFiles64, "nodejs\\npm.cmd");
-            if (!File.Exists(npmCommand))
-                throw new InvalidOperationException("Unable to find NPM. Please install Node.js");
-
-            return npmCommand;
         }
 
         public static string InstallOpenApiGenerator(string path = null)

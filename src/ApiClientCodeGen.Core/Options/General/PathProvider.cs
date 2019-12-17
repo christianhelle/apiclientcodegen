@@ -11,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
             try
             {
                 var javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
-                var javaExe = Path.Combine(javaHome, "bin\\java.exe");
+                var javaExe = Path.Combine(javaHome ?? throw new InvalidOperationException(), "bin\\java.exe");
                 return javaExe;
             }
             catch (Exception e)
@@ -43,13 +43,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
 
         public static string GetNSwagPath()
             => Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                "npm\\nswag.cmd");
+                NpmHelper.GetPrefixPath(),
+                "nswag.cmd");
 
         public static string GetAutoRestPath()
             => Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                "npm\\autorest.cmd");
+                NpmHelper.GetPrefixPath(),
+                "autorest.cmd");
 
         public static string GetSwaggerCodegenPath()
             => Path.Combine(
