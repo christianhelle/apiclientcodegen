@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using System.Threading.Tasks;
 using ApiClientCodeGen.CLI.Commands;
 using ApiClientCodeGen.CLI.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
@@ -17,7 +16,7 @@ namespace ApiClientCodeGen.CLI
 {
     internal static class Program
     {
-        static async Task<int> Main(string[] args)
+        public static int Main(string[] args)
         {
             var builder = new HostBuilder()
                 .ConfigureServices(ConfigureServices);
@@ -27,9 +26,10 @@ namespace ApiClientCodeGen.CLI
 
             try
             {
-                return await builder
-                    .RunCommandLineApplicationAsync<RootCommand>(
-                        args);
+                return builder
+                    .RunCommandLineApplicationAsync<RootCommand>(args)
+                    .GetAwaiter()
+                    .GetResult();
             }
             catch (TargetInvocationException ex) when (ex.InnerException != null)
             {
