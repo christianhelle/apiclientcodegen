@@ -80,7 +80,7 @@ Supports customising how the **.nswag** file is generated using a subset of the 
 All custom tools mentioned above are also implemented in a cross platform command line
 
 #### Requirments
-- .NET Core 3.0 runtime
+- .NET Core 2.1 runtime
 
 ### Installation
 The tool can be installed as a .NET Core global tool that you can call from the shell / command line
