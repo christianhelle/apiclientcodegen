@@ -29,15 +29,19 @@ The output file is the result of merging all the files generated using the OpenA
 
 ### Dependencies
 
-The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest**, **NSwag**, **OpenAPI Generator**, and **Swagger Codegen**. These tools require [NPM](https://www.npmjs.com/get-npm), **AutoRest**, and the [Java SDK](https://java.com/en/download/manual.jsp) to be installed on the developers machine. Alternative Java SDK implementations such as the [OpenJDK](https://adoptopenjdk.net) works fine with this extension. By default, the path to **java.exe** is read from the **JAVA_HOME** environment variable, but is also configurable in the Settings screen
+The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest**, **NSwag**, **OpenAPI Generator**, and **Swagger Codegen CLI**. These tools require [NPM](https://www.npmjs.com/get-npm) and the [Java Runtime Environment](https://java.com/en/download/manual.jsp) to be installed on the developers machine. Alternative Java SDK implementations such as the [OpenJDK](https://adoptopenjdk.net) works fine with this extension. By default, the path to **java.exe** is read from the **JAVA_HOME** environment variable, but is also configurable in the Settings screen
 
-The **Swagger Codegen CLI** and **OpenAPI Generator** are downloaded on demand but requires the Java SDK to be installed on the machine. This also means that using the **SwaggerCodeGenerator** and **OpenApiCodeGenerator** custom tools have a initial delay upon first time use. The generated code that these tools produce depends on the [RestSharp v105.1.0](https://www.nuget.org/packages/RestSharp/105.1.0) and [JsonSubTypes v1.2.0](https://www.nuget.org/packages/JsonSubTypes/1.2.0) nuget packages. 
+The **Swagger Codegen CLI v3.0.11** and **OpenAPI Generator v4.1.2** are distributed as JAR files and are downloaded on demand but requires the Java SDK to be installed on the machine. **AutoRest** is installed on-demand via [NPM](https://www.npmjs.com/get-npm) as a global tool and uses the latest available version. This means that using these custom tools have an initial delay upon first time use. 
 
-The **AutoRest** code generator produces code that depends on the [Microsoft.Rest.ClientRuntime v2.3.20](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime/2.3.20) and [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/12.0.2) nuget packages. 
+**NSwagStudio** is stand alone UI tool for editing a **.nswag** specification file for generating code. This tool is optional to install and official installation instructions are available on the [NSwag Wiki on Github](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio). If **NSwagStudio** is not installed on the machine then the Visual Studio Extension will install the **NSwag CLI** via [NPM](https://www.npmjs.com/get-npm) as a global tool using the latest available version. 
 
-The **NSwag** code generator produces code that depends on the [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/12.0.2) nuget package.
+The **OpenAPI Generator** and **Swagger Codegen CLI** code generators produces code that depends on the [RestSharp](https://www.nuget.org/packages/RestSharp/105.1.0) and [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/1.2.0) NuGet packages
 
-This Visual Studio Extension will automatically add the required nuget packages that the generated code depends on
+The **AutoRest** code generator produces code that depends on the [Microsoft.Rest.ClientRuntime](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime/2.3.21) and [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/12.0.3) NuGet packages
+
+The **NSwag** code generator produces code that depends on the [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/12.0.3) NuGet package
+
+This Visual Studio Extension will automatically add the required NuGet packages that the generated code depends on
 
 
 ## Screenshots
