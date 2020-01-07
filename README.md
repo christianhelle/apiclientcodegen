@@ -85,6 +85,8 @@ All custom tools mentioned above are also implemented in a cross platform comman
 
 #### Requirments
 - .NET Core 2.1 runtime
+- Java Runtime Environment
+- NPM
 
 ### Installation
 The tool can be installed as a .NET Core global tool that you can call from the shell / command line
