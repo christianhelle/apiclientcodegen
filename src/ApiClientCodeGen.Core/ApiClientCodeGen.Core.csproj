@@ -16,9 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ICSharpCode.CodeConverter" Version="7.3.0" />
+    <PackageReference Include="ICSharpCode.CodeConverter" Version="7.6.0" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="13.1.6" />
+    <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="13.2.1" />
   </ItemGroup>
 
   <ItemGroup>
