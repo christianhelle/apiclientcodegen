@@ -83,7 +83,7 @@ Supports customising how the **.nswag** file is generated using a subset of the 
 ## Cross Platform Command Line Tool
 All custom tools mentioned above are also implemented in a cross platform command line
 
-#### Requirments
+#### Requirements
 - .NET Core 2.1 runtime
 - Java Runtime Environment
 - NPM
