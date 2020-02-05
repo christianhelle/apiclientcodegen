@@ -11,6 +11,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
     public class ProcessLauncher : IProcessLauncher
     {
+        private static readonly object syncLock = new object();
+
         public void Start(string command, string arguments)
             => Start(command, arguments, o => Trace.WriteLine(o), e => Trace.WriteLine(e));
 
@@ -30,10 +32,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.CreateNoWindow = true;
 
-                process.Start();
-                process.BeginOutputReadLine();
-                process.BeginErrorReadLine();
-                process.WaitForExit();
+                lock (syncLock)
+                {
+                    process.Start();
+                    process.BeginOutputReadLine();
+                    process.BeginErrorReadLine();
+                    process.WaitForExit(); 
+                }
 
                 if (process.ExitCode != 0)
                     throw new InvalidOperationException($"{command} failed");
