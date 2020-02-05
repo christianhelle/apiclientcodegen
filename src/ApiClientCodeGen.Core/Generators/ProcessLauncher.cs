@@ -21,6 +21,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             Trace.WriteLine("Executing:");
             Trace.WriteLine($"{command} {arguments}");
 
+            lock (syncLock)
+                StartInternal(command, arguments, onOutputData, onErrorData);
+        }
+
+        private static void StartInternal(string command, string arguments, Action<string> onOutputData, Action<string> onErrorData)
+        {
             var processInfo = new ProcessStartInfo(command, arguments);
             using (var process = new Process { StartInfo = processInfo })
             {
@@ -32,13 +38,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.CreateNoWindow = true;
 
-                lock (syncLock)
-                {
-                    process.Start();
-                    process.BeginOutputReadLine();
-                    process.BeginErrorReadLine();
-                    process.WaitForExit(); 
-                }
+                process.Start();
+                process.BeginOutputReadLine();
+                process.BeginErrorReadLine();
+                process.WaitForExit();
 
                 if (process.ExitCode != 0)
                     throw new InvalidOperationException($"{command} failed");
