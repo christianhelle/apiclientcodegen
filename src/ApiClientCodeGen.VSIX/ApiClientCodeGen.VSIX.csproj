@@ -238,11 +238,6 @@
     <PackageReference Include="System.Security.Cryptography.X509Certificates">
       <Version>4.3.2</Version>
     </PackageReference>
-    <PackageReference Include="UtilPack.NuGet.MSBuild">
-      <Version>2.7.0</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
     <PackageReference Include="VSLangProj">
       <Version>7.0.3301</Version>
     </PackageReference>
