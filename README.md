@@ -142,6 +142,7 @@ Arguments:
 Options:
   -?|-h|--help  Show help information
 ```
+#
 
 For tips and tricks on software development, check out [my blog](https://christian-helle.blogspot.com)
 
