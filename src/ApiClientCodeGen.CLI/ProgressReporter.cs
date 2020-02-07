@@ -14,7 +14,7 @@ namespace ApiClientCodeGen.CLI
         }
 
         public void Progress(uint progress, uint total = 100)
-            => console.Out.WriteLine(
+            => console.WriteLine(
                 total == 100
                     ? $"PROGRESS: {progress}%"
                     : $"PROGRESS: {progress} / {total}");
