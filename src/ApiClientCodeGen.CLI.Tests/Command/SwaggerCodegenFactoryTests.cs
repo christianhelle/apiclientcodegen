@@ -1,0 +1,29 @@
+using ApiClientCodeGen.CLI.Commands;
+using ApiClientCodeGen.CLI.Tests.Infrastructure;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
+using FluentAssertions;
+using Xunit;
+
+namespace ApiClientCodeGen.CLI.Tests.Command
+{
+    public class SwaggerCodegenFactoryTests
+    {
+        [Theory, AutoMoqData]
+        public void Create_Should_Return_NotNull(
+            SwaggerCodegenFactory sut,
+            string swaggerFile,
+            string defaultNamespace,
+            IGeneralOptions options,
+            IProcessLauncher processLauncher)
+            => sut.Create(
+                    swaggerFile,
+                    defaultNamespace,
+                    options,
+                    processLauncher)
+                .Should()
+                .NotBeNull();
+    }
+}
