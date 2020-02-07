@@ -12,19 +12,22 @@ namespace ApiClientCodeGen.CLI.Commands
     {
         private readonly IGeneralOptions options;
         private readonly IProcessLauncher processLauncher;
+        private readonly ISwaggerCodegenFactory factory;
 
         public SwaggerCodegenCommand(
             IConsoleOutput console,
             IProgressReporter progressReporter,
             IGeneralOptions options,
-            IProcessLauncher processLauncher) : base(console, progressReporter)
+            IProcessLauncher processLauncher,
+            ISwaggerCodegenFactory factory) : base(console, progressReporter)
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
+            this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
         }
 
         public override ICodeGenerator CreateGenerator()
-            => new SwaggerCSharpCodeGenerator(
+            => factory.Create(
                 SwaggerFile,
                 DefaultNamespace,
                 options,
