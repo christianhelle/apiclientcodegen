@@ -6,9 +6,9 @@ namespace ApiClientCodeGen.CLI
 {
     public class ProgressReporter : IProgressReporter
     {
-        private readonly IConsole console;
+        private readonly IConsoleOutput console;
 
-        public ProgressReporter(IConsole console)
+        public ProgressReporter(IConsoleOutput console)
         {
             this.console = console ?? throw new ArgumentNullException(nameof(console));
         }
