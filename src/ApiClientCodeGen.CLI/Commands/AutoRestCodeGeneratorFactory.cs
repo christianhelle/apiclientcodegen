@@ -10,7 +10,7 @@ namespace ApiClientCodeGen.CLI.Commands
         ICodeGenerator Create(
             string swaggerFile,
             string defaultNamespace,
-            object options,
+            IAutoRestOptions options,
             IProcessLauncher processLauncher);
     }
 
@@ -19,12 +19,12 @@ namespace ApiClientCodeGen.CLI.Commands
         public ICodeGenerator Create(
             string swaggerFile,
             string defaultNamespace,
-            object options,
+            IAutoRestOptions options,
             IProcessLauncher processLauncher)
             => new AutoRestCSharpCodeGenerator(
                 swaggerFile,
                 defaultNamespace,
-                (IAutoRestOptions)options,
+                options,
                 processLauncher);
     }
 }
