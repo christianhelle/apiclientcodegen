@@ -14,7 +14,7 @@ namespace ApiClientCodeGen.CLI.Commands
         private readonly IProcessLauncher processLauncher;
 
         public AutoRestCommand(
-            IConsole console,
+            IConsoleOutput console,
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
             IProgressReporter progressReporter) : base(console, progressReporter)

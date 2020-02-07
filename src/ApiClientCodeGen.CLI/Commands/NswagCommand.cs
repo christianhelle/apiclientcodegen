@@ -14,7 +14,7 @@ namespace ApiClientCodeGen.CLI.Commands
         private readonly INSwagOptions options;
 
         public NswagCommand(
-            IConsole console,
+            IConsoleOutput console,
             IProgressReporter progressReporter,
             IOpenApiDocumentFactory openApiDocumentFactory,
             INSwagOptions options) 

@@ -14,7 +14,7 @@ namespace ApiClientCodeGen.CLI.Commands
         private readonly IProcessLauncher processLauncher;
 
         public OpenApiGeneratorCommand(
-            IConsole console,
+            IConsoleOutput console,
             IProgressReporter progressReporter,
             IGeneralOptions options,
             IProcessLauncher processLauncher) : base(console, progressReporter)
