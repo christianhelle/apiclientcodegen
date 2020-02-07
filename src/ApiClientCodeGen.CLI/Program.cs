@@ -58,6 +58,7 @@ namespace ApiClientCodeGen.CLI
             services.AddTransient<IConsoleOutput, ConsoleOutput>();
             services.AddTransient<IAutoRestCodeGeneratorFactory, AutoRestCodeGeneratorFactory>();
             services.AddTransient<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
+            services.AddTransient<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
         }
     }
 }
