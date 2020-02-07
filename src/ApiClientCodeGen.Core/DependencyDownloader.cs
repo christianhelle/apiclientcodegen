@@ -47,8 +47,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
             if (!File.Exists(path) || FileHelper.CalculateChecksum(path) != md5)
             {
                 Trace.WriteLine($"{jar} not found. Attempting to download {jar}");
-                new WebClient().DownloadFile(url, path);
+                
+                var tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.jar");
+                new WebClient().DownloadFile(url, tempFile);
+
                 Trace.WriteLine($"{jar} downloaded successfully");
+
+                try
+                {
+                    File.Delete(path);
+                    File.Move(tempFile, path);
+                }
+                catch (Exception e)
+                {
+                    Trace.WriteLine(e);
+                }
             }
 
             return path;

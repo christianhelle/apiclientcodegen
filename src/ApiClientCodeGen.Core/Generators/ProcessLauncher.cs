@@ -11,6 +11,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
     public class ProcessLauncher : IProcessLauncher
     {
+        private static readonly object syncLock = new object();
+
         public void Start(string command, string arguments)
             => Start(command, arguments, o => Trace.WriteLine(o), e => Trace.WriteLine(e));
 
@@ -19,6 +21,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             Trace.WriteLine("Executing:");
             Trace.WriteLine($"{command} {arguments}");
 
+            lock (syncLock)
+                StartInternal(command, arguments, onOutputData, onErrorData);
+        }
+
+        private static void StartInternal(string command, string arguments, Action<string> onOutputData, Action<string> onErrorData)
+        {
             var processInfo = new ProcessStartInfo(command, arguments);
             using (var process = new Process { StartInfo = processInfo })
             {
