@@ -10,10 +10,11 @@ namespace ApiClientCodeGen.CLI.Commands
 {
     public abstract class CodeGeneratorCommand
     {
-        private readonly IConsole console;
+        private readonly IConsoleOutput console;
         private readonly IProgressReporter progressReporter;
+        private string outputFile;
 
-        protected CodeGeneratorCommand(IConsole console, IProgressReporter progressReporter)
+        protected CodeGeneratorCommand(IConsoleOutput console, IProgressReporter progressReporter)
         {
             this.console = console ?? throw new ArgumentNullException(nameof(console));
             this.progressReporter = progressReporter ?? throw new ArgumentNullException(nameof(progressReporter));
@@ -26,19 +27,22 @@ namespace ApiClientCodeGen.CLI.Commands
 
         [Argument(1, "namespace", "Default namespace to in the generated code")]
         public string DefaultNamespace { get; set; } = "GeneratedCode";
-        
+
         [Argument(2, "outputFile", "Output filename to write the generated code to. Default is the swaggerFile .cs")]
-        public string OutputFile { get; set; }
-        
+        public string OutputFile
+        {
+            get => outputFile ?? Path.GetFileNameWithoutExtension(SwaggerFile) + ".cs";
+            set => outputFile = value;
+        }
+
         public virtual async Task<int> OnExecuteAsync()
         {
             var generator = CreateGenerator();
-            var filename = OutputFile ?? Path.GetFileNameWithoutExtension(SwaggerFile) + ".cs";
             var code = await Task.Run(() => generator.GenerateCode(progressReporter));
-            await File.WriteAllTextAsync(filename, code);
+            await File.WriteAllTextAsync(OutputFile, code);
 
-            console.WriteLine($"Output file name: {filename}");
-            console.WriteLine($"Output file size: {new FileInfo(filename).Length}");
+            console.WriteLine($"Output file name: {OutputFile}");
+            console.WriteLine($"Output file size: {new FileInfo(OutputFile).Length}");
             return ResultCodes.Success;
         }
 

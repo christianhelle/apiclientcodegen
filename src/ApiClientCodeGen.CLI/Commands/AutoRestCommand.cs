@@ -12,19 +12,22 @@ namespace ApiClientCodeGen.CLI.Commands
     {
         private readonly IAutoRestOptions options;
         private readonly IProcessLauncher processLauncher;
+        private readonly ICodeGeneratorCommandFactory commandFactory;
 
         public AutoRestCommand(
             IConsoleOutput console,
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
-            IProgressReporter progressReporter) : base(console, progressReporter)
+            IProgressReporter progressReporter,
+            ICodeGeneratorCommandFactory commandFactory) : base(console, progressReporter)
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
+            this.commandFactory = commandFactory ?? throw new ArgumentNullException(nameof(commandFactory));
         }
 
         public override ICodeGenerator CreateGenerator()
-            => new AutoRestCSharpCodeGenerator(
+            => commandFactory.Create<AutoRestCommand>(
                 SwaggerFile,
                 DefaultNamespace,
                 options,
