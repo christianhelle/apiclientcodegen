@@ -9,6 +9,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
     {
         public static string GetNpmPath()
         {
+            if (Environment.OSVersion.Platform == PlatformID.MacOSX ||
+                Environment.OSVersion.Platform == PlatformID.Unix)
+                return "npm";
+            
             var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
             var programFiles64 = programFiles.Replace(" (x86)", newValue: String.Empty);
 
