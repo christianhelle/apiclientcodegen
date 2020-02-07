@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.Core", "Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.CLI", "ApiClientCodeGen.CLI\ApiClientCodeGen.CLI.csproj", "{808920F0-D581-4376-8033-2E125E8EF66B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.CLI.Tests", "ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj", "{2DD9174D-0360-46F6-AFCE-1A5D6C1E7518}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{808920F0-D581-4376-8033-2E125E8EF66B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{808920F0-D581-4376-8033-2E125E8EF66B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{808920F0-D581-4376-8033-2E125E8EF66B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DD9174D-0360-46F6-AFCE-1A5D6C1E7518}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DD9174D-0360-46F6-AFCE-1A5D6C1E7518}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DD9174D-0360-46F6-AFCE-1A5D6C1E7518}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DD9174D-0360-46F6-AFCE-1A5D6C1E7518}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
