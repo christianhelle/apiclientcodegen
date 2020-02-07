@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using ApiClientCodeGen.CLI.Commands;
 using ApiClientCodeGen.CLI.Options;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ApiClientCodeGen.CLI
 {
+    [ExcludeFromCodeCoverage]
     internal static class Program
     {
         public static int Main(string[] args)
