@@ -37,11 +37,11 @@ namespace ApiClientCodeGen.CLI.Tests.Command
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
             IProgressReporter progressReporter,
-            ICodeGeneratorCommandFactory commandFactory,
+            IAutoRestCodeGeneratorFactory factory,
             ICodeGenerator generator,
             string code)
         {
-            var sut = new AutoRestCommand(console, options, processLauncher, progressReporter, commandFactory);
+            var sut = new AutoRestCommand(console, options, processLauncher, progressReporter, factory);
             Mock.Get(generator).Setup(c => c.GenerateCode(progressReporter)).Returns(code);
             new Func<Task>(sut.OnExecuteAsync).Should().NotThrow();
         }

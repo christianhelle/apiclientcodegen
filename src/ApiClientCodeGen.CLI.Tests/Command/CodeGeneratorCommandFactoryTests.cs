@@ -11,34 +11,18 @@ namespace ApiClientCodeGen.CLI.Tests.Command
     public class CodeGeneratorCommandFactoryTests
     {
         [Theory, AutoMoqData]
-        public void Create_AutoRestCommand_Should_Return_NotNull(
-            CodeGeneratorCommandFactory sut,
+        public void CreateAutoRestCommand_Should_Return_NotNull(
+            AutoRestCodeGeneratorFactory sut,
             string swaggerFile,
             string defaultNamespace,
             IAutoRestOptions options,
             IProcessLauncher processLauncher)
-            => sut.Create<AutoRestCommand>(
+            => sut.Create(
                     swaggerFile,
                     defaultNamespace,
                     options,
                     processLauncher)
                 .Should()
                 .NotBeNull();
-
-        [Theory, AutoMoqData]
-        public void Create_CodeGeneratorCommand_Should_Throw_NotSupported(
-            CodeGeneratorCommandFactory sut,
-            string swaggerFile,
-            string defaultNamespace,
-            object options,
-            IProcessLauncher processLauncher)
-            => new Action(
-                    () => sut.Create<CodeGeneratorCommand>(
-                        swaggerFile,
-                        defaultNamespace,
-                        options,
-                        processLauncher))
-                .Should()
-                .ThrowExactly<NotSupportedException>();
     }
 }
