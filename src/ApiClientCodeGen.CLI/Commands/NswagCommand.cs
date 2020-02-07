@@ -8,26 +8,30 @@ using McMaster.Extensions.CommandLineUtils;
 namespace ApiClientCodeGen.CLI.Commands
 {
     [Command("nswag", Description = "Generate Swagger / Open API client using NSwag")]
-    public class NswagCommand : CodeGeneratorCommand
+    public class NSwagCommand : CodeGeneratorCommand
     {
         private readonly IOpenApiDocumentFactory openApiDocumentFactory;
         private readonly INSwagOptions options;
+        private readonly INSwagCodeGeneratorFactory codeGeneratorFactory;
 
-        public NswagCommand(
+        public NSwagCommand(
             IConsoleOutput console,
             IProgressReporter progressReporter,
             IOpenApiDocumentFactory openApiDocumentFactory,
-            INSwagOptions options) 
+            INSwagOptions options,
+            INSwagCodeGeneratorFactory codeGeneratorFactory) 
             : base(console, progressReporter)
         {
             this.openApiDocumentFactory = openApiDocumentFactory ?? throw new ArgumentNullException(nameof(openApiDocumentFactory));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
+            this.codeGeneratorFactory = codeGeneratorFactory ?? throw new ArgumentNullException(nameof(codeGeneratorFactory));
         }
 
-        public override ICodeGenerator CreateGenerator() 
-            => new NSwagCSharpCodeGenerator(
+        public override ICodeGenerator CreateGenerator()
+            => codeGeneratorFactory.Create(
                 SwaggerFile,
-                openApiDocumentFactory,
-                new NSwagCodeGeneratorSettingsFactory(DefaultNamespace, options));
+                DefaultNamespace,
+                options,
+                openApiDocumentFactory);
     }
 }

@@ -6,7 +6,7 @@ namespace ApiClientCodeGen.CLI.Commands
     [Command(Name = "run", ThrowOnUnexpectedArgument = false, OptionsComparison = StringComparison.InvariantCultureIgnoreCase)]
     [Subcommand(
         typeof(AutoRestCommand),
-        typeof(NswagCommand),
+        typeof(NSwagCommand),
         typeof(SwaggerCodegenCommand),
         typeof(OpenApiGeneratorCommand))]
     public class RootCommand

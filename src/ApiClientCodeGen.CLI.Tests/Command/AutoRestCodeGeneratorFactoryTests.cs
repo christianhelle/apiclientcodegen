@@ -8,10 +8,10 @@ using Xunit;
 
 namespace ApiClientCodeGen.CLI.Tests.Command
 {
-    public class CodeGeneratorCommandFactoryTests
+    public class AutoRestCodeGeneratorFactoryTests
     {
         [Theory, AutoMoqData]
-        public void CreateAutoRestCommand_Should_Return_NotNull(
+        public void Create_Should_Return_NotNull(
             AutoRestCodeGeneratorFactory sut,
             string swaggerFile,
             string defaultNamespace,
