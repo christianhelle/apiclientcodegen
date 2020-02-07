@@ -6,15 +6,15 @@ namespace ApiClientCodeGen.CLI
 {
     public class ProgressReporter : IProgressReporter
     {
-        private readonly IConsole console;
+        private readonly IConsoleOutput console;
 
-        public ProgressReporter(IConsole console)
+        public ProgressReporter(IConsoleOutput console)
         {
             this.console = console ?? throw new ArgumentNullException(nameof(console));
         }
 
         public void Progress(uint progress, uint total = 100)
-            => console.Out.WriteLine(
+            => console.WriteLine(
                 total == 100
                     ? $"PROGRESS: {progress}%"
                     : $"PROGRESS: {progress} / {total}");

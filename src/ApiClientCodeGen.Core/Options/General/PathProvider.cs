@@ -47,9 +47,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
                 "nswag.cmd");
 
         public static string GetAutoRestPath()
-            => Path.Combine(
+        {
+            if (Environment.OSVersion.Platform == PlatformID.MacOSX ||
+                Environment.OSVersion.Platform == PlatformID.Unix)
+                return "autorest";
+            
+            return Path.Combine(
                 NpmHelper.GetPrefixPath(),
                 "autorest.cmd");
+        }
 
         public static string GetSwaggerCodegenPath()
             => Path.Combine(

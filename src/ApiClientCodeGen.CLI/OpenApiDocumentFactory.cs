@@ -1,8 +1,10 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+﻿using System.Diagnostics.CodeAnalysis;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using NSwag;
 
 namespace ApiClientCodeGen.CLI
 {
+    [ExcludeFromCodeCoverage]
     public class OpenApiDocumentFactory : IOpenApiDocumentFactory
     {
         public OpenApiDocument GetDocument(string swaggerFile)

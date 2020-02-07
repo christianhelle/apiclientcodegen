@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using ApiClientCodeGen.CLI.Commands;
 using ApiClientCodeGen.CLI.Options;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ApiClientCodeGen.CLI
 {
+    [ExcludeFromCodeCoverage]
     internal static class Program
     {
         public static int Main(string[] args)
@@ -53,6 +55,11 @@ namespace ApiClientCodeGen.CLI
             services.AddTransient<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
             services.AddTransient<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();
             services.AddTransient<IProcessLauncher, ProcessLauncher>();
+            services.AddTransient<IConsoleOutput, ConsoleOutput>();
+            services.AddTransient<IAutoRestCodeGeneratorFactory, AutoRestCodeGeneratorFactory>();
+            services.AddTransient<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
+            services.AddTransient<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
+            services.AddTransient<ISwaggerCodegenFactory, SwaggerCodegenFactory>();
         }
     }
 }

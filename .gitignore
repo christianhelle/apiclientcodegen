@@ -264,3 +264,8 @@ __pycache__/
 src/tools/
 src/.ionide/
 src/MigrationBackup/
+src/ApiClientCodeGen.CLI/Swagger.cs
+src/AutoRestOutput.cs
+src/NSwagOutput.cs
+src/OpenApiOutput.cs
+src/SwaggerOutput.cs

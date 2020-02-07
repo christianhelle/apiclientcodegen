@@ -53,12 +53,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
         protected override string GetCommand()
         {
-            var autorestCmd = PathProvider.GetAutoRestPath();
-
-            if (!File.Exists(autorestCmd))
-                DependencyDownloader.InstallAutoRest();
-
-            return autorestCmd;
+            DependencyDownloader.InstallAutoRest();
+            return PathProvider.GetAutoRestPath();
         }
     }
 }

@@ -36,7 +36,7 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
-    <None Include="..\..\images\icon.png" Pack="true" PackagePath="\"/>
+    <None Include="..\..\images\icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>
