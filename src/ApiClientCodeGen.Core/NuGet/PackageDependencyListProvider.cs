@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
 {
@@ -7,30 +8,41 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
         public IEnumerable<PackageDependency> GetDependencies(
             SupportedCodeGenerator generator)
         {
+            var list = new List<PackageDependency>();
             switch (generator)
             {
                 case SupportedCodeGenerator.NSwag:
                 case SupportedCodeGenerator.NSwagStudio:
-                    yield return PackageDependencies.NewtonsoftJson;
-                    yield return PackageDependencies.SystemRuntimeSerializationPrimitives;
-                    yield return PackageDependencies.SystemComponentModelAnnotations;
+                    list.AddRange(new[]
+                    {
+                        PackageDependencies.NewtonsoftJson,
+                        PackageDependencies.SystemRuntimeSerializationPrimitives,
+                        PackageDependencies.SystemComponentModelAnnotations
+                    });
                     break;
 
                 case SupportedCodeGenerator.AutoRest:
-                    yield return PackageDependencies.MicrosoftRestClientRuntime;
-                    yield return PackageDependencies.NewtonsoftJson;
+                    list.AddRange(new[]
+                    {
+                        PackageDependencies.MicrosoftRestClientRuntime,
+                        PackageDependencies.NewtonsoftJson
+                    });
                     break;
 
                 case SupportedCodeGenerator.Swagger:
                 case SupportedCodeGenerator.OpenApi:
-                    yield return PackageDependencies.RestSharp;
-                    yield return PackageDependencies.JsonSubTypes;
-                    yield return PackageDependencies.NewtonsoftJson;
-                    yield return PackageDependencies.SystemRuntimeSerializationPrimitives;
-                    yield return PackageDependencies.SystemComponentModelAnnotations;
-                    yield return PackageDependencies.MicrosoftCSharp;
+                    list.AddRange(new[]
+                    {
+                        PackageDependencies.RestSharp,
+                        PackageDependencies.JsonSubTypes,
+                        PackageDependencies.NewtonsoftJson,
+                        PackageDependencies.SystemRuntimeSerializationPrimitives,
+                        PackageDependencies.SystemComponentModelAnnotations,
+                        PackageDependencies.MicrosoftCSharp
+                    });
                     break;
             }
+            return list;
         }
     }
 }
