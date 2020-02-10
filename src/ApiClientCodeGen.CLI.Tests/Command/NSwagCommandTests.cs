@@ -38,6 +38,7 @@ namespace ApiClientCodeGen.CLI.Tests.Command
             INSwagOptions options,
             INSwagCodeGeneratorFactory codeGeneratorFactory,
             ICodeGenerator generator,
+            string outputFile,
             string code)
         {
             var sut = new NSwagCommand(
@@ -46,6 +47,7 @@ namespace ApiClientCodeGen.CLI.Tests.Command
                 openApiDocumentFactory,
                 options,
                 codeGeneratorFactory);
+            sut.OutputFile = outputFile;
             
             Mock.Get(generator)
                 .Setup(c => c.GenerateCode(progressReporter))
