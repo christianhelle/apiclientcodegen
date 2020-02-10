@@ -39,9 +39,18 @@ namespace ApiClientCodeGen.CLI.Tests.Command
             IProgressReporter progressReporter,
             IAutoRestCodeGeneratorFactory factory,
             ICodeGenerator generator,
+            string outputFile,
             string code)
         {
-            var sut = new AutoRestCommand(console, options, processLauncher, progressReporter, factory);
+            var sut = new AutoRestCommand(
+                console,
+                options,
+                processLauncher,
+                progressReporter,
+                factory)
+            {
+                OutputFile = outputFile
+            };
             Mock.Get(generator).Setup(c => c.GenerateCode(progressReporter)).Returns(code);
             new Func<Task>(sut.OnExecuteAsync).Should().NotThrow();
         }
