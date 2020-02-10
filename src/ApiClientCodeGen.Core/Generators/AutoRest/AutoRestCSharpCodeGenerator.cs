@@ -21,6 +21,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
         protected override string GetArguments(string outputFile)
         {
+            if (string.IsNullOrWhiteSpace(Path.GetDirectoryName(outputFile)))
+                outputFile = Path.Combine(Directory.GetCurrentDirectory(), outputFile);
+
             var args = "--csharp " +
                        $"--input-file=\"{SwaggerFile}\" " +
                        $"--output-file=\"{outputFile}\" " +
