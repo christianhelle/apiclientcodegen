@@ -28,7 +28,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
                 : $"{GetSanitizeTitle(document)}Client";
         }
 
-        public static string GetSanitizeTitle(this OpenApiDocument document)
+        private static string GetSanitizeTitle(this OpenApiDocument document)
             => RemoveCharacters(
                 document.Info.Title,
                 "Swagger", " ", ".", "-");

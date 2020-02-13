@@ -22,20 +22,29 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         public string GenerateCode(IProgressReporter pGenerateProgress)
         {
             pGenerateProgress?.Progress(10);
-
-            var command = options.NSwagPath;
-            if (!File.Exists(command))
-            {
-                Trace.WriteLine(command + " does not exist! Retrying with default NSwag.exe path");
-                command = PathProvider.GetNSwagPath();
-                if (!File.Exists(command))
-                    DependencyDownloader.InstallNSwag();
-            }
-
             TryRemoveSwaggerJsonSpec(nswagStudioFile);
+            var command = GetNSwagPath();
             processLauncher.Start(command, $"run \"{nswagStudioFile}\"");
             pGenerateProgress?.Progress(90);
             return null;
+        }
+
+        public string GetNSwagPath(bool forceDownload = false)
+        {
+            var command = options.NSwagPath;
+            if (!string.IsNullOrWhiteSpace(command) && File.Exists(command) && !forceDownload)
+                return command;
+
+            Trace.WriteLine(
+                forceDownload
+                    ? "Downloading NSwag using NPM"
+                    : $"{command} could not be found in specified path! Retrying with default NSwag.exe path");
+            
+            command = PathProvider.GetNSwagPath();
+            if (!File.Exists(command) || forceDownload)
+                DependencyDownloader.InstallNSwag();
+
+            return command;
         }
 
         private static void TryRemoveSwaggerJsonSpec(string nswagFile)

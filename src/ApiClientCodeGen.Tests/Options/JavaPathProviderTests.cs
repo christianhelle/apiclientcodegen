@@ -1,4 +1,5 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+﻿using System;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -20,7 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
                 .Returns(Test.CreateAnnonymous<string>());
 
             result = new JavaPathProvider(
-                    mock.Object, 
+                    mock.Object,
                     Test.CreateDummy<IProcessLauncher>())
                 .GetJavaExePath();
         }
@@ -32,5 +33,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
         [TestMethod]
         public void GetJavaExePath_Should_Read_JavaPath_Option()
             => mock.Verify(c => c.JavaPath);
+
+        [TestMethod]
+        public void GetJavaExePath_Returns_Default_Path()
+        {
+            var launcher = new Mock<IProcessLauncher>();
+            launcher.Setup(c => c.Start(It.IsAny<string>(), It.IsAny<string>()))
+                .Throws(new Exception());
+
+            new JavaPathProvider(
+                    mock.Object,
+                    launcher.Object)
+                .GetJavaExePath()
+                .Should()
+                .NotBeNullOrWhiteSpace();
+        }
     }
 }

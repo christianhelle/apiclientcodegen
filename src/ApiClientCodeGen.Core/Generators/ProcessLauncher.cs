@@ -6,6 +6,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     public interface IProcessLauncher
     {
         void Start(string command, string arguments);
+        void Start(string command, string arguments, Action<string> onOutputData, Action<string> onErrorData);
     }
 
     public class ProcessLauncher : IProcessLauncher

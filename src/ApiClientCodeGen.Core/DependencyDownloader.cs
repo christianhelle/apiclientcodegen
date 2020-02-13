@@ -25,26 +25,28 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
             Trace.WriteLine($"{packageName} installed successfully through NPM");
         }
 
-        public static string InstallOpenApiGenerator(string path = null)
+        public static string InstallOpenApiGenerator(string path = null, bool forceDownload = false)
             => InstallJarFile(
                 path,
                 "openapi-generator-cli.jar",
                 Resource.OpenApiGenerator_MD5,
-                Resource.OpenApiGenerator_DownloadUrl);
+                Resource.OpenApiGenerator_DownloadUrl,
+                forceDownload);
 
-        public static string InstallSwaggerCodegenCli(string path = null)
+        public static string InstallSwaggerCodegenCli(string path = null, bool forceDownload = false)
             => InstallJarFile(
                 path,
                 "swagger-codegen-cli.jar",
                 Resource.SwaggerCodegenCli_MD5,
-                Resource.SwaggerCodegenCli_DownloadUrl);
+                Resource.SwaggerCodegenCli_DownloadUrl,
+                forceDownload);
 
-        private static string InstallJarFile(string path, string jar, string md5, string url)
+        private static string InstallJarFile(string path, string jar, string md5, string url, bool forceDownload)
         {
             if (string.IsNullOrWhiteSpace(path))
                 path = Path.Combine(Path.GetTempPath(), jar);
 
-            if (!File.Exists(path) || FileHelper.CalculateChecksum(path) != md5)
+            if (!File.Exists(path) || FileHelper.CalculateChecksum(path) != md5 || forceDownload)
             {
                 Trace.WriteLine($"{jar} not found. Attempting to download {jar}");
                 
@@ -55,7 +57,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 
                 try
                 {
-                    File.Delete(path);
+                    if (File.Exists(path))
+                        File.Delete(path);
                     File.Move(tempFile, path);
                 }
                 catch (Exception e)

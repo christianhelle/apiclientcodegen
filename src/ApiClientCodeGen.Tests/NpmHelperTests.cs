@@ -1,7 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
 {
@@ -13,6 +16,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
             => NpmHelper.GetNpmPath()
                 .Should()
                 .NotBeNullOrWhiteSpace();
+
+        [TestMethod]
+        public void GetNpmPath_IgnorePath_Returns_Npm()
+            => NpmHelper.GetNpmPath(true)
+                .Should()
+                .Be("npm");
 
         [TestMethod]
         public void FileExists_GetNpmPath()
@@ -31,5 +40,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
             => Directory.Exists(NpmHelper.GetPrefixPath())
                 .Should()
                 .BeTrue();
+
+        [TestMethod]
+        public void TryGetNpmPrefixPathFromNpmConfig()
+        {
+            var mock = new Mock<IProcessLauncher>();
+            mock.Setup(
+                    c => c.Start(
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<Action<string>>(),
+                        It.IsAny<Action<string>>()))
+                .Throws(new Exception());
+            NpmHelper.TryGetNpmPrefixPathFromNpmConfig(mock.Object)
+                .Should()
+                .BeNullOrEmpty();
+        }
     }
 }

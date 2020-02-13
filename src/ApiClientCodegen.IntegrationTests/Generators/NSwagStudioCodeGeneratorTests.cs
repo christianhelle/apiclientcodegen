@@ -66,5 +66,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
             optionsMock.Verify(c => c.NSwagPath);
         }
+
+        [TestMethod]
+        public void GetNSwagPath_ForceDownload()
+            => new NSwagStudioCodeGenerator(
+                    Path.GetFullPath("Swagger.nswag"),
+                    options,
+                    new ProcessLauncher())
+                .GetNSwagPath(true)
+                .Should()
+                .NotBeNullOrWhiteSpace();
     }
 }

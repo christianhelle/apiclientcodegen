@@ -76,6 +76,7 @@
     <Compile Include="Generators\NSwag\OpenApiDocumentFactoryTests.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGeneratorExceptionTests.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGeneratorTests.cs" />
+    <Compile Include="Generators\ProcessLauncherTests.cs" />
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorExceptionTests.cs" />
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />

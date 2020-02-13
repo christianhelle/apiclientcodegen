@@ -12,9 +12,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
     public class OpenApiDocumentExtensionsTests
     {
         [TestMethod]
-        public async Task Can_GenerateClassName_From_DocumentTitle()
+        public async Task Can_GenerateClassName_From_Json_Using_DocumentTitle()
             => (await OpenApiDocument.FromJsonAsync(File.ReadAllText("Swagger.json")))
-            .GenerateClassName(true)
+            .GenerateClassName()
             .Should()
             .Be("PetstoreClient");
 
@@ -24,5 +24,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
                 .GenerateClassName(false)
                 .Should()
                 .Be("Swagger");
+        
+        [TestMethod]
+        public async Task Can_GenerateClassName_From_Json()
+            => (await OpenApiDocument.FromJsonAsync(File.ReadAllText("Swagger.json")))
+                .GenerateClassName(false)
+                .Should()
+                .Be("PetstoreClient");
     }
 }

@@ -7,12 +7,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     public static class NpmHelper
     {
-        public static string GetNpmPath()
+        public static string GetNpmPath(bool ignorePath = false)
         {
             if (Environment.OSVersion.Platform == PlatformID.MacOSX ||
-                Environment.OSVersion.Platform == PlatformID.Unix)
+                Environment.OSVersion.Platform == PlatformID.Unix ||
+                ignorePath)
                 return "npm";
-            
+
             var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
             var programFiles64 = programFiles.Replace(" (x86)", newValue: String.Empty);
 
@@ -33,13 +34,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                    "npm");
 
-        private static string TryGetNpmPrefixPathFromNpmConfig()
+        public static string TryGetNpmPrefixPathFromNpmConfig(IProcessLauncher processLauncher = null)
         {
             try
             {
                 var npm = GetNpmPath();
                 string prefix = null;
-                new ProcessLauncher().Start(
+                (processLauncher ?? new ProcessLauncher()).Start(
                     npm,
                     "config get prefix",
                     o => prefix += o,

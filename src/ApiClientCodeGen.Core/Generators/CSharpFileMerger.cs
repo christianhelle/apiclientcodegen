@@ -75,22 +75,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
             while (queue.Count > 0)
             {
-                string[] files = null;
                 path = queue.Dequeue();
-                try
-                {
-                    files = Directory.GetFiles(path);
-                    foreach (var subDir in Directory.GetDirectories(path)) queue.Enqueue(subDir);
-                }
-                catch (Exception ex)
-                {
-                    Trace.TraceError(ex.ToString());
-                }
+                var files = Directory.GetFiles(path);
+                foreach (var subDir in Directory.GetDirectories(path))
+                    queue.Enqueue(subDir);
 
-                if (files == null)
-                    continue;
-
-                foreach (var file in files.Where(Predicate())) yield return file;
+                foreach (var file in files?.Where(Predicate())) yield return file;
             }
         }
 
