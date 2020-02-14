@@ -2,30 +2,18 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     public static class NpmHelper
     {
-        public static string GetNpmPath(bool ignorePath = false)
+        public static string GetNpmPath(bool withoutPath = false)
         {
-            if (Environment.OSVersion.Platform == PlatformID.MacOSX ||
-                Environment.OSVersion.Platform == PlatformID.Unix ||
-                ignorePath)
-                return "npm";
-
-            var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-            var programFiles64 = programFiles.Replace(" (x86)", newValue: String.Empty);
-
-            var npmCommand = Path.Combine(programFiles, "nodejs\\npm.cmd");
-            if (File.Exists(npmCommand))
-                return npmCommand;
-
-            npmCommand = Path.Combine(programFiles64, "nodejs\\npm.cmd");
-            if (!File.Exists(npmCommand))
-                throw new InvalidOperationException("Unable to find NPM. Please install Node.js");
-
-            return npmCommand;
+            var npmCommand = PathProvider.GetNpmPath(withoutPath: withoutPath);
+            return !File.Exists(npmCommand)
+                ? throw new InvalidOperationException("Unable to find NPM. Please install Node.js")
+                : npmCommand;
         }
 
         public static string GetPrefixPath()

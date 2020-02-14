@@ -39,10 +39,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
             if (string.IsNullOrWhiteSpace(options.JavaPath))
                 javaPath = PathProvider.GetJavaPath();
 
-            if (File.Exists(javaPath))
-                return javaPath;
-
-            throw new FileNotFoundException("Unable to find Java");
+            return javaPath;
         }
     }
 }
