@@ -9,12 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
     public static class NpmHelper
     {
         public static string GetNpmPath(bool withoutPath = false)
-        {
-            var npmCommand = PathProvider.GetNpmPath(withoutPath: withoutPath);
-            return !File.Exists(npmCommand)
-                ? throw new InvalidOperationException("Unable to find NPM. Please install Node.js")
-                : npmCommand;
-        }
+            => PathProvider.GetNpmPath(withoutPath: withoutPath);
 
         public static string GetPrefixPath()
             => TryGetNpmPrefixPathFromNpmConfig() ??
