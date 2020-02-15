@@ -12,7 +12,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly IGeneralOptions options;
         private readonly IProcessLauncher processLauncher;
 
-        public NSwagStudioCodeGenerator(string nswagStudioFile, IGeneralOptions options, IProcessLauncher processLauncher)
+        public NSwagStudioCodeGenerator(
+            string nswagStudioFile,
+            IGeneralOptions options,
+            IProcessLauncher processLauncher)
         {
             this.nswagStudioFile = nswagStudioFile ?? throw new ArgumentNullException(nameof(nswagStudioFile));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
@@ -39,7 +42,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 forceDownload
                     ? "Downloading NSwag using NPM"
                     : $"{command} could not be found in specified path! Retrying with default NSwag.exe path");
-            
+
             command = PathProvider.GetNSwagPath();
             if (!File.Exists(command) || forceDownload)
                 DependencyDownloader.InstallNSwag();
@@ -49,22 +52,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
         private static void TryRemoveSwaggerJsonSpec(string nswagFile)
         {
-            try
-            {
-                var json = File.ReadAllText(nswagFile);
-                dynamic obj = JsonConvert.DeserializeObject(json);
-                if (obj.swaggerGenerator.fromSwagger.json == null)
-                    return;
+            var json = File.ReadAllText(nswagFile);
+            dynamic obj = JsonConvert.DeserializeObject(json);
+            if (obj.swaggerGenerator.fromSwagger.json == null)
+                return;
 
-                obj.swaggerGenerator.fromSwagger.json = null;
-                json = JsonConvert.SerializeObject(obj, Formatting.Indented);
+            obj.swaggerGenerator.fromSwagger.json = null;
+            json = JsonConvert.SerializeObject(obj, Formatting.Indented);
 
-                File.WriteAllText(nswagFile, json);
-            }
-            catch (Exception e)
-            {
-                Trace.WriteLine(e);
-            }
+            File.WriteAllText(nswagFile, json);
         }
     }
 }
