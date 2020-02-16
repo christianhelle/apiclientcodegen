@@ -1,4 +1,4 @@
-#tool "nuget:?package=Microsoft.TestPlatform&version=15.7.0"
+#tool "nuget:?package=Microsoft.TestPlatform&version=16.5.0"
 
 var target = Argument("target", "Default");
 var configuration = "Release";
@@ -38,7 +38,12 @@ Task("Run-Unit-Tests")
     .Does(() =>
 {
     VSTest("./**/bin/" + configuration + "/*Tests.dll",
-           new VSTestSettings { Parallel = false, EnableCodeCoverage = true });
+           new VSTestSettings 
+           { 
+               Parallel = true, 
+               EnableCodeCoverage = true,
+               SettingsFile = File("./Tests.runsettings")
+           });
 });
 
 Task("Post-Build")
