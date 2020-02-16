@@ -9,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters
         public async Task<string> ConvertAsync(string code)
         {
             var options = new CodeWithOptions(code);
-            var result = await CodeConverter.Convert(options);
+            var result = await ICSharpCode.CodeConverter.CodeConverter.Convert(options);
             return result.ConvertedCode;
         }
     }
