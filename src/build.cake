@@ -10,6 +10,7 @@ Task("Clean")
     // Clean directories.
     CleanDirectory("./artifacts");
     CleanDirectories("./**/bin/**");
+    CleanDirectories("./**/obj/**");
     CleanDirectories("./packages/");
 });
 
