@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		build.cake = build.cake
 		..\README.md = ..\README.md
+		Tests.runsettings = Tests.runsettings
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.Tests", "ApiClientCodeGen.Tests\ApiClientCodeGen.Tests.csproj", "{6C7BEBC6-6568-44A3-88EC-2DFC57F87A31}"
