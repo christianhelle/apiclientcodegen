@@ -1,4 +1,4 @@
-#tool "nuget:?package=Microsoft.TestPlatform&version=16.5.0"
+#tool "nuget:?package=Microsoft.TestPlatform&version=15.7.0"
 
 var target = Argument("target", "Default");
 var configuration = "Release";
@@ -46,6 +46,7 @@ Task("Post-Build")
     .Does(() => {
         CopyFileToDirectory("./ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix", "./Artifacts/");
     });
+
 
 Task("Default")
 	// .IsDependentOn("Post-Build")
