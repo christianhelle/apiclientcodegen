@@ -1,4 +1,4 @@
-#tool "nuget:?package=Microsoft.TestPlatform&version=15.7.0"
+#tool "nuget:?package=Microsoft.TestPlatform&version=16.5.0"
 
 var target = Argument("target", "Default");
 var configuration = "Release";
@@ -27,8 +27,7 @@ Task("Build")
         MSBuild(solutionPath, settings =>
             settings.SetPlatformTarget(PlatformTarget.MSIL)
                 .SetMSBuildPlatform(MSBuildPlatform.x86)
-                .UseToolVersion(MSBuildToolVersion.VS2017)
-                .WithProperty("TreatWarningsAsErrors","true")
+                .UseToolVersion(MSBuildToolVersion.VS2019)
                 .WithTarget("Build")
                 .SetConfiguration(configuration));
     });
