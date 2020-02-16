@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
@@ -9,6 +10,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         void Start(string command, string arguments, Action<string> onOutputData, Action<string> onErrorData);
     }
 
+    [ExcludeFromCodeCoverage]
     public class ProcessLauncher : IProcessLauncher
     {
         private static readonly object syncLock = new object();
