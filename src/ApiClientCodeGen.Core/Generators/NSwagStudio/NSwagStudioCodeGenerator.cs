@@ -54,10 +54,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         {
             var json = File.ReadAllText(nswagFile);
             dynamic obj = JsonConvert.DeserializeObject(json);
-            if (obj.swaggerGenerator.fromSwagger.json == null)
+
+            if (obj?.swaggerGenerator?.fromSwagger?.json == null &&
+                obj?.documentGenerator?.fromSwagger?.json == null)
                 return;
 
-            obj.swaggerGenerator.fromSwagger.json = null;
+            if (obj?.documentGenerator?.fromSwagger?.json != null)
+                obj.documentGenerator.fromSwagger.json = null;
+
+            if (obj?.swaggerGenerator?.fromSwagger?.json != null)
+                obj.swaggerGenerator.fromSwagger.json = null;
+
             json = JsonConvert.SerializeObject(obj, Formatting.Indented);
 
             File.WriteAllText(nswagFile, json);
