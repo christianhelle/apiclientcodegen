@@ -100,7 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentAssertions">
-      <Version>5.10.0</Version>
+      <Version>5.10.2</Version>
     </PackageReference>
     <PackageReference Include="Moq">
       <Version>4.13.1</Version>
