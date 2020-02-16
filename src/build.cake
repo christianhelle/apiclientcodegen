@@ -38,7 +38,7 @@ Task("Run-Unit-Tests")
     .Does(() =>
 {
     VSTest("./**/bin/" + configuration + "/*Tests.dll",
-           new VSTestSettings { Parallel = false });
+           new VSTestSettings { Parallel = false, EnableCodeCoverage = true });
 });
 
 Task("Post-Build")
