@@ -37,6 +37,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 process.StartInfo.RedirectStandardInput = true;
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.CreateNoWindow = true;
+                process.StartInfo.EnvironmentVariables["CORECLR_ENABLE_PROFILING"] = "0";
+                process.StartInfo.EnvironmentVariables["COR_ENABLE_PROFILING"] = "0";
 
                 process.Start();
                 process.BeginOutputReadLine();
