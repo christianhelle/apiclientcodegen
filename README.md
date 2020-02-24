@@ -1,4 +1,4 @@
-![travis ci](https://travis-ci.com/christianhelle/apiclientcodegen.svg?branch=master)
+[![Build Status](https://travis-ci.com/christianhelle/apiclientcodegen.svg?branch=master)](https://travis-ci.com/christianhelle/apiclientcodegen)
 ![build status](https://christianhelle.visualstudio.com/API%20Client%20Code%20Generator/_apis/build/status/CI%20Build) 
 [![Version](https://vsmarketplacebadge.apphb.com/version/ChristianResmaHelle.APIClientCodeGenerator.svg)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator) 
 [![Installs](https://vsmarketplacebadge.apphb.com/downloads-short/ChristianResmaHelle.APIClientCodeGenerator.svg)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator) 
