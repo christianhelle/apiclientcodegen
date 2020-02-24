@@ -1,0 +1,10 @@
+language: csharp
+mono: none
+dotnet: 2.1
+
+install:
+  - dotnet restore src/Rapicgen.sln
+
+script:
+  - dotnet build src/Rapicgen.sln
+  - dotnet test src/Rapicgen.sln
