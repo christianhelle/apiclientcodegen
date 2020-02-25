@@ -2,7 +2,7 @@
 
 var target = Argument("target", "Default");
 var configuration = "Release";
-FilePath solutionPath = File("./ApiClientCodeGenerator.sln");
+FilePath solutionPath = File("./All.sln");
 
 Task("Clean")
     .Does(() =>
