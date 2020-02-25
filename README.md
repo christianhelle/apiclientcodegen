@@ -7,6 +7,9 @@
 [![Installs](https://vsmarketplacebadge.apphb.com/downloads-short/ChristianResmaHelle.APIClientCodeGenerator.svg)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator) 
 [![Rating](https://vsmarketplacebadge.apphb.com/rating-star/ChristianResmaHelle.APIClientCodeGenerator.svg)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)
 
+[![NuGet](https://img.shields.io/nuget/v/rapicgen.svg?style=flat-square)](http://www.nuget.org/packages/rapicgen)
+[![NuGet](https://img.shields.io/nuget/dt/rapicgen.svg?style=flat-square)](http://www.nuget.org/packages/rapicgen)
+
 # REST API Client Code Generator
 A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files
 
