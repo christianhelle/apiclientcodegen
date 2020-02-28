@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/christianhelle/apiclientcodegen.svg?branch=master)](https://travis-ci.com/christianhelle/apiclientcodegen)
 [![Build status](https://ci.appveyor.com/api/projects/status/gb2doe3tgwjt47cn/branch/master?svg=true)](https://ci.appveyor.com/project/christianhelle/apiclientcodegen/branch/master)
+![.NET Core](https://github.com/christianhelle/apiclientcodegen/workflows/.NET%20Core/badge.svg?branch=master)
 ![build status](https://christianhelle.visualstudio.com/API%20Client%20Code%20Generator/_apis/build/status/CI%20Build) 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=alert_status)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
 
