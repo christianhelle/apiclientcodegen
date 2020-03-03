@@ -14,5 +14,16 @@ namespace ApiClientCodeGen.CLI.Tests.Logging
                 .Parse(argument)
                 .Should()
                 .BeTrue();
+        
+        [Theory]
+        [InlineData("-v")]
+        [InlineData("--verbose")]
+        public void Enabled_True_For_v(string argument)
+        {
+            VerboseOption.Parse(argument);
+            VerboseOption.Enabled
+                .Should()
+                .BeTrue();
+        }
     }
 }
