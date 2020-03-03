@@ -39,7 +39,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         {
             //
             // NOTE:
-            // Swagger Codegen CLI 3.0.11 has a bug where the -DapiTests=false and -DmodelTests=false are not respected
+            // Swagger Codegen CLI 3.0.18 has a bug where the -DapiTests=false and -DmodelTests=false are not respected
             // Because of this we need to exclude the generated unit test files and the NUnit.* namespaces
             //
 
