@@ -124,9 +124,9 @@
     <value>cda48eb414c8b4585e280c3fb2656e24</value>
   </data>
   <data name="SwaggerCodegenCli_DownloadUrl" xml:space="preserve">
-    <value>https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.11/swagger-codegen-cli-3.0.11.jar</value>
+    <value>https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.18/swagger-codegen-cli-3.0.18.jar</value>
   </data>
   <data name="SwaggerCodegenCli_MD5" xml:space="preserve">
-    <value>89E1C5F578CC0B7A5D430CDF8210AC44</value>
+    <value>19134e0aaeb3b256d65f4394d21cf274</value>
   </data>
 </root>
