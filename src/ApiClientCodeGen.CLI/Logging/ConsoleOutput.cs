@@ -8,7 +8,6 @@ namespace ApiClientCodeGen.CLI.Logging
     public interface IConsoleOutput
     {
         void WriteLine(string value);
-
     }
 
     [ExcludeFromCodeCoverage]
@@ -16,10 +15,12 @@ namespace ApiClientCodeGen.CLI.Logging
     {
         private readonly IConsole console;
 
-        public ConsoleOutput(IConsole console )
+        public ConsoleOutput(IConsole console)
         {
-            this.console = console ?? throw new ArgumentNullException(nameof(console)); 
-            Trace.Listeners.Add(new ConsoleOutputTraceListener(this));
+            this.console = console ?? throw new ArgumentNullException(nameof(console));
+
+            if (VerboseOption.Enabled) 
+                Trace.Listeners.Add(new ConsoleOutputTraceListener(this));
         }
 
         public void WriteLine(string value)
