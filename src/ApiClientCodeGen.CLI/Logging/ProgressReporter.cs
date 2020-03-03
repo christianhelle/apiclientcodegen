@@ -15,7 +15,10 @@ namespace ApiClientCodeGen.CLI.Logging
         public void Progress(uint progress, uint total = 100)
             => console.WriteLine(
                 total == 100
-                    ? $"PROGRESS: {progress}%"
-                    : $"PROGRESS: {progress} / {total}");
+                    ? $"{OptionalLineBreak}PROGRESS: {progress}%"
+                    : $"{OptionalLineBreak}PROGRESS: {progress} / {total}");
+
+        private static string OptionalLineBreak
+            => (VerboseOption.Enabled ?Environment.NewLine : string.Empty);
     }
 }
