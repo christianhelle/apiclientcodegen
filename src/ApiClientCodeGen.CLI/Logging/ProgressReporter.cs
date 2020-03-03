@@ -1,6 +1,5 @@
 ﻿using System;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using McMaster.Extensions.CommandLineUtils;
 
 namespace ApiClientCodeGen.CLI
 {

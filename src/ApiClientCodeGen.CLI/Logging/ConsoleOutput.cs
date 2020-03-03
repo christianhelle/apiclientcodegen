@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using McMaster.Extensions.CommandLineUtils;
 
@@ -17,7 +18,8 @@ namespace ApiClientCodeGen.CLI
 
         public ConsoleOutput(IConsole console )
         {
-            this.console = console ?? throw new ArgumentNullException(nameof(console));
+            this.console = console ?? throw new ArgumentNullException(nameof(console)); 
+            Trace.Listeners.Add(new ConsoleOutputTraceListener(this));
         }
 
         public void WriteLine(string value)
