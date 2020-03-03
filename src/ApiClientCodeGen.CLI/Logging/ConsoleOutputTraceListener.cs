@@ -6,17 +6,17 @@ namespace ApiClientCodeGen.CLI.Logging
     [ExcludeFromCodeCoverage]
     public class ConsoleOutputTraceListener : TraceListener
     {
-        private readonly IConsoleOutput console;
+        public IConsoleOutput Console { get; }
 
         public ConsoleOutputTraceListener(IConsoleOutput console)
         {
-            this.console = console;
+            this.Console = console;
         }
         
         public override void Write(string message)
-            => console.WriteLine(message);
+            => Console.WriteLine(message);
 
         public override void WriteLine(string message) 
-            => console.WriteLine(message);
+            => Console.WriteLine(message);
     }
 }

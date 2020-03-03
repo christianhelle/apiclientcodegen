@@ -2,7 +2,7 @@
 using FluentAssertions;
 using Xunit;
 
-namespace ApiClientCodeGen.CLI.Tests
+namespace ApiClientCodeGen.CLI.Tests.Logging
 {
     public class VerboseOptionTests
     {

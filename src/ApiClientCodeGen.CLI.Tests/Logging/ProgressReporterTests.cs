@@ -5,7 +5,7 @@ using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ApiClientCodeGen.CLI.Tests
+namespace ApiClientCodeGen.CLI.Tests.Logging
 {
     public class ProgressReporterTests
     {
