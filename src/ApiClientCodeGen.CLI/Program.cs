@@ -49,6 +49,7 @@ namespace ApiClientCodeGen.CLI
         private static void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging(b => b.AddDebug());
+            services.AddSingleton<IConsoleOutput, ConsoleOutput>();
             services.AddTransient<INSwagOptions, NSwagOptions>();
             services.AddTransient<IGeneralOptions, GeneralOptions>();
             services.AddTransient<IAutoRestOptions, AutoRestOptions>();
@@ -56,7 +57,6 @@ namespace ApiClientCodeGen.CLI
             services.AddTransient<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
             services.AddTransient<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();
             services.AddTransient<IProcessLauncher, ProcessLauncher>();
-            services.AddTransient<IConsoleOutput, ConsoleOutput>();
             services.AddTransient<IAutoRestCodeGeneratorFactory, AutoRestCodeGeneratorFactory>();
             services.AddTransient<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
             services.AddTransient<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
