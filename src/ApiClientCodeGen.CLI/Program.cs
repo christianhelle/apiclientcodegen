@@ -24,7 +24,7 @@ namespace ApiClientCodeGen.CLI
             var verboseOptions = new VerboseOption(args);
 
             var builder = new HostBuilder()
-                .ConfigureServices(s => s.AddSingleton(verboseOptions))
+                .ConfigureServices(s => s.AddSingleton<IVerboseOptions>(verboseOptions))
                 .ConfigureServices(ConfigureServices);
             
             if (verboseOptions.Enabled)
