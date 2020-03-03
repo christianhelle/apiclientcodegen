@@ -1,4 +1,5 @@
 ﻿using System;
+using ApiClientCodeGen.CLI.Logging;
 using ApiClientCodeGen.CLI.Tests.Infrastructure;
 using FluentAssertions;
 using Moq;

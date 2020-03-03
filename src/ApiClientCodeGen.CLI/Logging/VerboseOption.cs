@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace ApiClientCodeGen.CLI
+namespace ApiClientCodeGen.CLI.Logging
 {
     public static class VerboseOption
     {

@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ApiClientCodeGen.CLI
+namespace ApiClientCodeGen.CLI.Logging
 {
     [ExcludeFromCodeCoverage]
     public class ConsoleOutputTraceListener : TraceListener

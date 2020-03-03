@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using ApiClientCodeGen.CLI.Commands;
+using ApiClientCodeGen.CLI.Logging;
 using ApiClientCodeGen.CLI.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;

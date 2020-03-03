@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using ApiClientCodeGen.CLI.Logging;
+using FluentAssertions;
 using Xunit;
 
 namespace ApiClientCodeGen.CLI.Tests
