@@ -1,21 +1,26 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ApiClientCodeGen.CLI.Logging
 {
-    public static class VerboseOption
+    public interface IVerboseOptions
+    {
+        bool Enabled { get; }
+    }
+    
+    public class VerboseOption : IVerboseOptions
     {
         public const string Template = "-v|--verbose";
         public const string Description = "Show verbose output";
 
-        public static bool Parse(params string[] args)
+        public VerboseOption(IEnumerable<string> args)
         {
             Enabled = args.Any(s
                 => s.Equals("-v", StringComparison.OrdinalIgnoreCase)
                    || s.Equals("--verbose", StringComparison.OrdinalIgnoreCase));
-            return Enabled;
         }
 
-        public static bool Enabled { get; set; }
+        public bool Enabled { get; }
     }
 }

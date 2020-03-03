@@ -6,10 +6,12 @@ namespace ApiClientCodeGen.CLI.Logging
     public class ProgressReporter : IProgressReporter
     {
         private readonly IConsoleOutput console;
+        private readonly IVerboseOptions verboseOptions;
 
-        public ProgressReporter(IConsoleOutput console)
+        public ProgressReporter(IConsoleOutput console, IVerboseOptions verboseOptions)
         {
             this.console = console ?? throw new ArgumentNullException(nameof(console));
+            this.verboseOptions = verboseOptions ?? throw new ArgumentNullException(nameof(verboseOptions));
         }
 
         public void Progress(uint progress, uint total = 100)
@@ -18,7 +20,7 @@ namespace ApiClientCodeGen.CLI.Logging
                     ? $"{OptionalLineBreak}PROGRESS: {progress}%"
                     : $"{OptionalLineBreak}PROGRESS: {progress} / {total}");
 
-        private static string OptionalLineBreak
-            => (VerboseOption.Enabled ?Environment.NewLine : string.Empty);
+        private string OptionalLineBreak
+            => (verboseOptions.Enabled ?Environment.NewLine : string.Empty);
     }
 }

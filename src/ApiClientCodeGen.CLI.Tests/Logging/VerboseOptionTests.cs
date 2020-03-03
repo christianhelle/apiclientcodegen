@@ -1,4 +1,5 @@
 ﻿using ApiClientCodeGen.CLI.Logging;
+using AutoFixture.Xunit2;
 using FluentAssertions;
 using Xunit;
 
@@ -9,21 +10,17 @@ namespace ApiClientCodeGen.CLI.Tests.Logging
         [Theory]
         [InlineData("-v")]
         [InlineData("--verbose")]
-        public void Parse_Returns_True_For_v(string argument)
-            => VerboseOption
-                .Parse(argument)
+        public void Constructor_Sets_Enabled_True_For_Valid_Args(string argument)
+            => new VerboseOption(new[] {argument})
+                .Enabled
                 .Should()
                 .BeTrue();
-        
-        [Theory]
-        [InlineData("-v")]
-        [InlineData("--verbose")]
-        public void Enabled_True_For_v(string argument)
-        {
-            VerboseOption.Parse(argument);
-            VerboseOption.Enabled
+
+        [Theory, AutoData]
+        public void Constructor_Sets_Enabled_False_For_Invalid_Args(string argument)
+            => new VerboseOption(new[] {argument})
+                .Enabled
                 .Should()
-                .BeTrue();
-        }
+                .BeFalse();
     }
 }

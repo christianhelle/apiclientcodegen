@@ -15,11 +15,11 @@ namespace ApiClientCodeGen.CLI.Logging
     {
         private readonly IConsole console;
 
-        public ConsoleOutput(IConsole console)
+        public ConsoleOutput(IConsole console, IVerboseOptions verboseOptions)
         {
             this.console = console ?? throw new ArgumentNullException(nameof(console));
 
-            if (VerboseOption.Enabled) 
+            if (verboseOptions.Enabled) 
                 Trace.Listeners.Add(new ConsoleOutputTraceListener(this));
         }
 

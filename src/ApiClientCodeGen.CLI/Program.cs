@@ -21,10 +21,13 @@ namespace ApiClientCodeGen.CLI
     {
         public static int Main(string[] args)
         {
-            var builder = new HostBuilder()
-                .ConfigureServices(ConfigureServices);
+            var verboseOptions = new VerboseOption(args);
 
-            if (VerboseOption.Parse(args))
+            var builder = new HostBuilder()
+                .ConfigureServices(s => s.AddSingleton(verboseOptions))
+                .ConfigureServices(ConfigureServices);
+            
+            if (verboseOptions.Enabled)
                 builder.ConfigureLogging(b => b.AddConsole());
 
             try
