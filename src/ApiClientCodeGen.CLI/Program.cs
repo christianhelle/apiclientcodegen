@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using ApiClientCodeGen.CLI.Commands;
+using ApiClientCodeGen.CLI.Logging;
 using ApiClientCodeGen.CLI.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
@@ -20,10 +21,13 @@ namespace ApiClientCodeGen.CLI
     {
         public static int Main(string[] args)
         {
-            var builder = new HostBuilder()
-                .ConfigureServices(ConfigureServices);
+            var verboseOptions = new VerboseOption(args);
 
-            if (VerboseOption.Parse(args))
+            var builder = new HostBuilder()
+                .ConfigureServices(s => s.AddSingleton<IVerboseOptions>(verboseOptions))
+                .ConfigureServices(ConfigureServices);
+            
+            if (verboseOptions.Enabled)
                 builder.ConfigureLogging(b => b.AddConsole());
 
             try
@@ -48,18 +52,18 @@ namespace ApiClientCodeGen.CLI
         private static void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging(b => b.AddDebug());
-            services.AddTransient<INSwagOptions, NSwagOptions>();
-            services.AddTransient<IGeneralOptions, GeneralOptions>();
-            services.AddTransient<IAutoRestOptions, AutoRestOptions>();
-            services.AddTransient<IProgressReporter, ProgressReporter>();
-            services.AddTransient<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
-            services.AddTransient<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();
-            services.AddTransient<IProcessLauncher, ProcessLauncher>();
-            services.AddTransient<IConsoleOutput, ConsoleOutput>();
-            services.AddTransient<IAutoRestCodeGeneratorFactory, AutoRestCodeGeneratorFactory>();
-            services.AddTransient<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
-            services.AddTransient<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
-            services.AddTransient<ISwaggerCodegenFactory, SwaggerCodegenFactory>();
+            services.AddSingleton<IConsoleOutput, ConsoleOutput>();
+            services.AddSingleton<INSwagOptions, NSwagOptions>();
+            services.AddSingleton<IGeneralOptions, GeneralOptions>();
+            services.AddSingleton<IAutoRestOptions, AutoRestOptions>();
+            services.AddSingleton<IProgressReporter, ProgressReporter>();
+            services.AddSingleton<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
+            services.AddSingleton<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();
+            services.AddSingleton<IProcessLauncher, ProcessLauncher>();
+            services.AddSingleton<IAutoRestCodeGeneratorFactory, AutoRestCodeGeneratorFactory>();
+            services.AddSingleton<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
+            services.AddSingleton<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
+            services.AddSingleton<ISwaggerCodegenFactory, SwaggerCodegenFactory>();
         }
     }
 }

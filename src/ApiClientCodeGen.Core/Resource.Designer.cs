@@ -61,7 +61,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/4.1.2/openapi-generator-cli-4.1.2.jar.
+        ///   Looks up a localized string similar to https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/4.2.3/openapi-generator-cli-4.2.3.jar.
         /// </summary>
         internal static string OpenApiGenerator_DownloadUrl {
             get {
@@ -70,7 +70,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 45F0AEDA24983AC998878C4D8516CF48.
+        ///   Looks up a localized string similar to cda48eb414c8b4585e280c3fb2656e24.
         /// </summary>
         internal static string OpenApiGenerator_MD5 {
             get {
@@ -79,7 +79,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.11/swagger-codegen-cli-3.0.11.jar.
+        ///   Looks up a localized string similar to https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.14/swagger-codegen-cli-3.0.14.jar.
         /// </summary>
         internal static string SwaggerCodegenCli_DownloadUrl {
             get {
@@ -88,7 +88,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 89E1C5F578CC0B7A5D430CDF8210AC44.
+        ///   Looks up a localized string similar to D9D14AF2BDDCD754ACDB2585BA696C2C.
         /// </summary>
         internal static string SwaggerCodegenCli_MD5 {
             get {

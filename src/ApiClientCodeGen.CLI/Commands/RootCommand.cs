@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using ApiClientCodeGen.CLI.Logging;
 using McMaster.Extensions.CommandLineUtils;
 
 namespace ApiClientCodeGen.CLI.Commands
