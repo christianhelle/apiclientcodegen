@@ -50,17 +50,17 @@ namespace ApiClientCodeGen.CLI
         {
             services.AddLogging(b => b.AddDebug());
             services.AddSingleton<IConsoleOutput, ConsoleOutput>();
-            services.AddTransient<INSwagOptions, NSwagOptions>();
-            services.AddTransient<IGeneralOptions, GeneralOptions>();
-            services.AddTransient<IAutoRestOptions, AutoRestOptions>();
-            services.AddTransient<IProgressReporter, ProgressReporter>();
-            services.AddTransient<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
-            services.AddTransient<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();
-            services.AddTransient<IProcessLauncher, ProcessLauncher>();
-            services.AddTransient<IAutoRestCodeGeneratorFactory, AutoRestCodeGeneratorFactory>();
-            services.AddTransient<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
-            services.AddTransient<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
-            services.AddTransient<ISwaggerCodegenFactory, SwaggerCodegenFactory>();
+            services.AddSingleton<INSwagOptions, NSwagOptions>();
+            services.AddSingleton<IGeneralOptions, GeneralOptions>();
+            services.AddSingleton<IAutoRestOptions, AutoRestOptions>();
+            services.AddSingleton<IProgressReporter, ProgressReporter>();
+            services.AddSingleton<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
+            services.AddSingleton<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();
+            services.AddSingleton<IProcessLauncher, ProcessLauncher>();
+            services.AddSingleton<IAutoRestCodeGeneratorFactory, AutoRestCodeGeneratorFactory>();
+            services.AddSingleton<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
+            services.AddSingleton<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
+            services.AddSingleton<ISwaggerCodegenFactory, SwaggerCodegenFactory>();
         }
     }
 }
