@@ -7,11 +7,12 @@ FilePath solutionPath = File("./All.sln");
 Task("Clean")
     .Does(() =>
 {
-    // Clean directories.
     CleanDirectory("./artifacts");
     CleanDirectories("./**/bin/**");
     CleanDirectories("./**/obj/**");
     CleanDirectories("./packages/");
+    CleanDirectories("./generated/");
+    CleanDirectories("./TestResults/");
 });
 
 Task("Restore")
@@ -40,7 +41,7 @@ Task("Run-Unit-Tests")
     VSTest("./**/bin/" + configuration + "/*Tests.dll",
            new VSTestSettings 
            { 
-               Parallel = true, 
+               Parallel = false, 
                EnableCodeCoverage = true,
                SettingsFile = File("./Tests.runsettings")
            });
