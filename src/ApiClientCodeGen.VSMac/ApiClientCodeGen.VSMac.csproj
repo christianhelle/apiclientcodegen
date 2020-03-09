@@ -5,4 +5,7 @@
   <ItemGroup>
     <PackageReference Include="MonoDevelop.Addins" Version="0.4.6" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CommandHandlers\" />
+  </ItemGroup>
 </Project>

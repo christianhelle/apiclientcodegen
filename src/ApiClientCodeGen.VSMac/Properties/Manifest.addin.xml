@@ -1,5 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ExtensionModel>
+    
     <Runtime>
     </Runtime>
+    
+    <Extension path="/MonoDevelop/Ide/Commands/Edit">
+        <Command id="ApiClientCodeGen.VSMac.Commands.RunNSwagCLI" 
+                 _label="Generate with NSwag"
+                 _description="Generate code using the NSwag CLI"
+                 defaultHandler="ApiClientCodeGen.VSMac.CommandHandlers.NSwagCliCommandHandler" />
+    </Extension>
+    
+    <Extension path="/MonoDevelop/Ide/MainMenu/Edit">
+        <CommandItem id="ApiClientCodeGen.VSMac.Commands.RunNSwagCLI" />
+    </Extension>
+    
 </ExtensionModel>
