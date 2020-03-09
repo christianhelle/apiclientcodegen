@@ -1,0 +1,31 @@
+parameters:
+  agentSpecification: ''
+
+jobs:
+
+- job: SmokeTest
+  pool:
+    name: Azure Pipelines
+    vmImage: '$(agentSpecification)'
+    demands: npm
+  displayName: 'Smoke test on $(agentSpecification)'
+
+  steps:
+  - task: UseDotNet@2
+    displayName: 'Use .Net Core sdk 2.1.x'
+    inputs:
+      version: 2.1.x
+
+  - task: Npm@0
+    displayName: 'npm install'
+    inputs:
+      arguments: '-g autorest'
+
+  - task: PowerShell@2
+    displayName: 'PowerShell Script'
+    inputs:
+      targetType: filePath
+      filePath: ./src/ApiClientCodeGen.CLI/test.ps1
+      failOnStderr: true
+      pwsh: true
+      workingDirectory: src/ApiClientCodeGen.CLI

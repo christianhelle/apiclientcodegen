@@ -1,0 +1,9 @@
+name: 1.1.$(Build.BuildId)
+
+resources:
+- repo: self
+
+jobs:
+
+- template: cli-tool.yml
+- template: vsix.yml
