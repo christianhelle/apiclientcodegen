@@ -91,13 +91,13 @@ jobs:
     inputs:
       SourceFolder: '$(system.defaultworkingdirectory)'
       Contents: |
-      **\bin\Release\**\*.vsix
-      README.md
-      docs/Marketplace.md
-      src/publish-manifest.json
-      src/publish.ps1
-      TargetFolder: '$(build.artifactstagingdirectory)'
-      flattenFolders: true
+        **\bin\Release\**\*.vsix
+        README.md
+        docs/Marketplace.md
+        src/publish-manifest.json
+        src/publish.ps1
+        TargetFolder: '$(build.artifactstagingdirectory)'
+        flattenFolders: true
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
