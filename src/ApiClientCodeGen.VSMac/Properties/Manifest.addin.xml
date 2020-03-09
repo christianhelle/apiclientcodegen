@@ -1,18 +1,36 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ExtensionModel>
     
-    <Runtime>
-    </Runtime>
-    
-    <Extension path="/MonoDevelop/Ide/Commands/Edit">
-        <Command id="ApiClientCodeGen.VSMac.Commands.RunNSwagCLI" 
-                 _label="Generate with NSwag"
-                 _description="Generate code using the NSwag CLI"
-                 defaultHandler="ApiClientCodeGen.VSMac.CommandHandlers.NSwagCliCommandHandler" />
+    <Extension path = "/MonoDevelop/Ide/ContextMenu/ProjectPad">
+        <ItemSet id = "Add" _label = "_Add" autohide="True">
+            <ItemSet id = "NewApiClient" _label = "New REST API Client" autohide="True">
+                <Condition id="ItemType" value="Project">
+                    <CommandItem id = "ApiClientCodeGen.VSMac.AddToProjectCommands.AutoRest" />
+                    <CommandItem id = "ApiClientCodeGen.VSMac.AddToProjectCommands.NSwag" />
+                    <CommandItem id = "ApiClientCodeGen.VSMac.AddToProjectCommands.NSwagStudio" />
+                    <CommandItem id = "ApiClientCodeGen.VSMac.AddToProjectCommands.Swagger" />
+                    <CommandItem id = "ApiClientCodeGen.VSMac.AddToProjectCommands.OpenApi" />
+                </Condition>
+            </ItemSet>
+        </ItemSet>
     </Extension>
     
-    <Extension path="/MonoDevelop/Ide/MainMenu/Edit">
-        <CommandItem id="ApiClientCodeGen.VSMac.Commands.RunNSwagCLI" />
+    <Extension path="/MonoDevelop/Ide/Commands">
+        <Command id = "ApiClientCodeGen.VSMac.AddToProjectCommands.AutoRest"
+                 _label = "Generate with AutoRest"
+                 defaultHandler="ApiClientCodeGen.VSMac.CommandHandlers.AddNewAutoRestCommandHandler" />
+        <Command id = "ApiClientCodeGen.VSMac.AddToProjectCommands.NSwag"
+                 _label = "Generate with NSwag"
+                 defaultHandler="ApiClientCodeGen.VSMac.CommandHandlers.AddNewNSwagCommandHandler" />
+        <Command id = "ApiClientCodeGen.VSMac.AddToProjectCommands.NSwagStudio"
+                 _label = "Generate with NSwag Studio"
+                 defaultHandler="ApiClientCodeGen.VSMac.CommandHandlers.AddNewNSwagStudioCommandHandler" />
+        <Command id = "ApiClientCodeGen.VSMac.AddToProjectCommands.Swagger"
+                 _label = "Generate with Swagger Codegen"
+                 defaultHandler="ApiClientCodeGen.VSMac.CommandHandlers.AddNewSwaggerCommandHandler" />
+        <Command id = "ApiClientCodeGen.VSMac.AddToProjectCommands.OpenApi"
+                 _label = "Generate with OpenAPI Generator"
+                 defaultHandler="ApiClientCodeGen.VSMac.CommandHandlers.AddNewOpenApiCommandHandler" />
     </Extension>
     
 </ExtensionModel>
