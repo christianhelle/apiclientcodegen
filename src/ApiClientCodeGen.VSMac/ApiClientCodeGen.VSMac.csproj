@@ -8,4 +8,7 @@
   <ItemGroup>
     <Folder Include="CommandHandlers\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
+  </ItemGroup>
 </Project>
