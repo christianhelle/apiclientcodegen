@@ -1,7 +1,10 @@
 name: 1.1.$(Build.BuildId)
 
-pool:
-  vmImage: 'windows-2019'
+trigger:
+- master
+
+pr:
+- master
 
 jobs:
 

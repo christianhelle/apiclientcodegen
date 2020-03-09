@@ -1,0 +1,14 @@
+name: 1.1.$(Build.BuildId)
+
+trigger:
+  batch: false
+  branches:
+    exclude:
+      - master
+
+pr: none
+
+jobs:
+
+- template: cli-tool.yml
+- template: vsix.yml
