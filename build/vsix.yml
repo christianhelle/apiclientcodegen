@@ -12,94 +12,94 @@ jobs:
     - vstest
     - java
 
-steps:
-- task: Npm@0
-  displayName: 'npm install'
-  inputs:
-    arguments: '-g autorest'
+  steps:
+  - task: Npm@0
+    displayName: 'npm install'
+    inputs:
+      arguments: '-g autorest'
 
-- task: Npm@0
-  displayName: 'npm install'
-  inputs:
-    arguments: '-g nswag'
+  - task: Npm@0
+    displayName: 'npm install'
+    inputs:
+      arguments: '-g nswag'
 
-- task: NuGetToolInstaller@0
-  displayName: 'Use NuGet 4.4.1'
-  inputs:
-    versionSpec: 4.4.1
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.4.1'
+    inputs:
+      versionSpec: 4.4.1
 
-- task: NuGetCommand@2
-  displayName: 'NuGet restore'
-  inputs:
-    restoreSolution: '**\*.sln'
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+      restoreSolution: '**\*.sln'
 
-- task: SamirBoulema.Vsix-Tools.Vsix-Tools-Update-Version.VsixToolsUpdateVersion@1
-  displayName: 'Set Vsix Version'
-  inputs:
-    FileName: src/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
-    VersionNumber: '$(build.buildnumber)'
+  - task: SamirBoulema.Vsix-Tools.Vsix-Tools-Update-Version.VsixToolsUpdateVersion@1
+    displayName: 'Set Vsix Version'
+    inputs:
+      FileName: src/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
+      VersionNumber: '$(build.buildnumber)'
 
-- task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
-  displayName: 'Prepare analysis on SonarCloud'
-  inputs:
-    SonarCloud: Default
-    organization: 'christianhelle-github'
-    projectKey: 'christianhelle_apiclientcodegen'
-    projectName: apiclientcodegen
+  - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
+    displayName: 'Prepare analysis on SonarCloud'
+    inputs:
+      SonarCloud: Default
+      organization: 'christianhelle-github'
+      projectKey: 'christianhelle_apiclientcodegen'
+      projectName: apiclientcodegen
 
-- task: VSBuild@1
-  displayName: 'Build solution src/ApiClientCodeGenerator.sln'
-  inputs:
-    solution: src/ApiClientCodeGenerator.sln
-    platform: 'Any CPU'
-    configuration: 'Release'
-  timeoutInMinutes: 20
+  - task: VSBuild@1
+    displayName: 'Build solution src/ApiClientCodeGenerator.sln'
+    inputs:
+      solution: src/ApiClientCodeGenerator.sln
+      platform: 'Any CPU'
+      configuration: 'Release'
+    timeoutInMinutes: 20
 
-- task: VSTest@2
-  displayName: 'Visual Studio Test'
-  inputs:
-    runSettingsFile: src/Tests.runsettings
-    runInParallel: true
-    codeCoverageEnabled: true
-    platform: 'Any CPU'
-    configuration: 'Release'
-    diagnosticsEnabled: true
-    rerunFailedTests: true
-    rerunMaxAttempts: 1
-  continueOnError: true
+  - task: VSTest@2
+    displayName: 'Visual Studio Test'
+    inputs:
+      runSettingsFile: src/Tests.runsettings
+      runInParallel: true
+      codeCoverageEnabled: true
+      platform: 'Any CPU'
+      configuration: 'Release'
+      diagnosticsEnabled: true
+      rerunFailedTests: true
+      rerunMaxAttempts: 1
+    continueOnError: true
 
-- task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
-  displayName: 'Run Code Analysis'
+  - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
+    displayName: 'Run Code Analysis'
 
-- task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
-  displayName: 'Publish Quality Gate Result'
+  - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
+    displayName: 'Publish Quality Gate Result'
 
-- task: PublishSymbols@2
-  displayName: 'Publish symbols path'
-  inputs:
-    SearchPattern: '**\bin\**\*.pdb'
-    PublishSymbols: false
-  enabled: false
-  continueOnError: true
+  - task: PublishSymbols@2
+    displayName: 'Publish symbols path'
+    inputs:
+      SearchPattern: '**\bin\**\*.pdb'
+      PublishSymbols: false
+    enabled: false
+    continueOnError: true
 
-- powershell: 'mv ApiClientCodeGenerator.vsix ApiClientCodeGenerator-$(build.buildnumber).vsix'
-  workingDirectory: 'src\ApiClientCodeGen.VSIX\bin\Release'
-  displayName: 'PowerShell Script'
+  - powershell: 'mv ApiClientCodeGenerator.vsix ApiClientCodeGenerator-$(build.buildnumber).vsix'
+    workingDirectory: 'src\ApiClientCodeGen.VSIX\bin\Release'
+    displayName: 'PowerShell Script'
 
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-  inputs:
-    SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: |
-     **\bin\Release\**\*.vsix
-     README.md
-     docs/Marketplace.md
-     src/publish-manifest.json
-     src/publish.ps1
-    TargetFolder: '$(build.artifactstagingdirectory)'
-    flattenFolders: true
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+    inputs:
+      SourceFolder: '$(system.defaultworkingdirectory)'
+      Contents: |
+      **\bin\Release\**\*.vsix
+      README.md
+      docs/Marketplace.md
+      src/publish-manifest.json
+      src/publish.ps1
+      TargetFolder: '$(build.artifactstagingdirectory)'
+      flattenFolders: true
 
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: drop'
-  inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
