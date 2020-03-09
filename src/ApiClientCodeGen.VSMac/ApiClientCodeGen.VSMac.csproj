@@ -6,7 +6,9 @@
     <PackageReference Include="MonoDevelop.Addins" Version="0.4.6" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CommandHandlers\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Commands\Handlers\" />
+    <Folder Include="CustomTools\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
