@@ -1,11 +1,9 @@
-pool:
-  name: Azure Pipelines
-  vmImage: 'windows-2019'
-
 jobs:
 
-- job: ${{ parameters.name }}
-  name: 'Build CLI Tool'
+- job: CliToolJob
+  displayName: 'Build CLI Tool'
+  pool:
+    vmImage: 'windows-2019'
 
   steps:
 

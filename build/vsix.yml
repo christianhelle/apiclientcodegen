@@ -3,7 +3,6 @@ jobs:
 - job: VsixJob
   displayName: 'Build VSIX'
   pool:
-    name: Azure Pipelines
     vmImage: 'windows-2019'
     demands:
     - JDK

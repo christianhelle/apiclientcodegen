@@ -5,7 +5,6 @@ jobs:
 
 - job: SmokeTest
   pool:
-    name: Azure Pipelines
     vmImage: '$(agentSpecification)'
     demands: npm
   displayName: 'Smoke test on $(agentSpecification)'
