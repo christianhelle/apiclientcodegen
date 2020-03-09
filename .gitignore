@@ -270,3 +270,4 @@ src/NSwagOutput.cs
 src/OpenApiOutput.cs
 src/SwaggerOutput.cs
 src/ApiClientCodeGen.CLI/Properties/launchSettings.json
+.DS_Store
