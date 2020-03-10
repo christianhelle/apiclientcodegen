@@ -1,12 +1,13 @@
 parameters:
+  name: ''
   agentSpecification: ''
   scriptFilePath: ''
 
 jobs:
 
-- job: ScriptTest
+- job: ${{ parameters.name }}
   pool:
-    vmImage: '$(agentSpecification)'
+    vmImage: '${{ agentSpecification }}'
     demands: npm
   displayName: 'Test on $(agentSpecification)'
 
@@ -25,7 +26,7 @@ jobs:
     displayName: 'PowerShell Script'
     inputs:
       targetType: filePath
-      filePath: '$(scriptFilePath)'
+      filePath: '${{ parameters.scriptFilePath }}'
       failOnStderr: true
       pwsh: true
       workingDirectory: src
