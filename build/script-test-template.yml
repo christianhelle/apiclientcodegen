@@ -1,13 +1,14 @@
 parameters:
   agentSpecification: ''
+  scriptFilePath: ''
 
 jobs:
 
-- job: SmokeTest
+- job: ScriptTest
   pool:
     vmImage: '$(agentSpecification)'
     demands: npm
-  displayName: 'Smoke test on $(agentSpecification)'
+  displayName: 'Test on $(agentSpecification)'
 
   steps:
   - task: UseDotNet@2
@@ -24,7 +25,7 @@ jobs:
     displayName: 'PowerShell Script'
     inputs:
       targetType: filePath
-      filePath: ./src/ApiClientCodeGen.CLI/test.ps1
+      filePath: '$(scriptFilePath)'
       failOnStderr: true
       pwsh: true
-      workingDirectory: src/ApiClientCodeGen.CLI
+      workingDirectory: src
