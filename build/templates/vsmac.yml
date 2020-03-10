@@ -11,7 +11,7 @@ jobs:
       cd $(system.defaultworkingdirectory)/src/ApiClientCodeGen.VSMac
       sed -i -e 's/1.0/$(build.buildnumber)/g' Properties/AddinInfo.cs
       make release
-      mv ApiClientCodeGen.VSMac.ApiClientCodeGenerator_$(build.buildnumber).mpack ApiClientCodeGenerator_$(build.buildnumber).mpack
+      mv ApiClientCodeGen.VSMac.ApiClientCodeGenerator_$(build.buildnumber).mpack ApiClientCodeGenerator-$(build.buildnumber).mpack
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
