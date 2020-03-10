@@ -13,7 +13,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     [ExcludeFromCodeCoverage]
     public class ProcessLauncher : IProcessLauncher
     {
+        private readonly string workingDirectory;
         private static readonly object syncLock = new object();
+
+        public ProcessLauncher(string workingDirectory = null)
+        {
+            this.workingDirectory = workingDirectory;
+        }
 
         public void Start(string command, string arguments)
             => Start(command, arguments, o => Trace.WriteLine(o), e => Trace.WriteLine(e));
@@ -27,7 +33,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 StartInternal(command, arguments, onOutputData, onErrorData);
         }
 
-        private static void StartInternal(string command, string arguments, Action<string> onOutputData, Action<string> onErrorData)
+        private void StartInternal(
+            string command, 
+            string arguments, 
+            Action<string> onOutputData, 
+            Action<string> onErrorData)
         {
             var processInfo = new ProcessStartInfo(command, arguments);
             using (var process = new Process { StartInfo = processInfo })
@@ -41,6 +51,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 process.StartInfo.CreateNoWindow = true;
                 process.StartInfo.EnvironmentVariables["CORECLR_ENABLE_PROFILING"] = "0";
                 process.StartInfo.EnvironmentVariables["COR_ENABLE_PROFILING"] = "0";
+
+                if (workingDirectory != null)
+                    process.StartInfo.WorkingDirectory = workingDirectory;
 
                 process.Start();
                 process.BeginOutputReadLine();
