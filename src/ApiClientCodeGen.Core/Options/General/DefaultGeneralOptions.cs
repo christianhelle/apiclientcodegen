@@ -1,10 +1,8 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
-
-namespace ApiClientCodeGen.CLI.Options
+﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General
 {
-    public class GeneralOptions : IGeneralOptions
+    public class DefaultGeneralOptions : IGeneralOptions
     {
-        public GeneralOptions()
+        public DefaultGeneralOptions()
         {
             JavaPath = PathProvider.GetJavaPath();
             NpmPath = PathProvider.GetNpmPath();

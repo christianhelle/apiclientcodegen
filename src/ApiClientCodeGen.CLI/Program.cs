@@ -3,7 +3,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using ApiClientCodeGen.CLI.Commands;
 using ApiClientCodeGen.CLI.Logging;
-using ApiClientCodeGen.CLI.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
@@ -53,9 +52,9 @@ namespace ApiClientCodeGen.CLI
         {
             services.AddLogging(b => b.AddDebug());
             services.AddSingleton<IConsoleOutput, ConsoleOutput>();
-            services.AddSingleton<INSwagOptions, NSwagOptions>();
-            services.AddSingleton<IGeneralOptions, GeneralOptions>();
-            services.AddSingleton<IAutoRestOptions, AutoRestOptions>();
+            services.AddSingleton<INSwagOptions, DefaultNSwagOptions>();
+            services.AddSingleton<IGeneralOptions, DefaultGeneralOptions>();
+            services.AddSingleton<IAutoRestOptions, DefaultAutoRestOptions>();
             services.AddSingleton<IProgressReporter, ProgressReporter>();
             services.AddSingleton<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
             services.AddSingleton<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();

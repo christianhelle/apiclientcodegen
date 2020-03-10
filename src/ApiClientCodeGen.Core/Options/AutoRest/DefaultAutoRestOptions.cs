@@ -1,10 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 
-namespace ApiClientCodeGen.CLI.Options
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest
 {
     [ExcludeFromCodeCoverage]
-    public class AutoRestOptions : IAutoRestOptions
+    public class DefaultAutoRestOptions : IAutoRestOptions
     {
         public bool AddCredentials { get; set; }
         public bool OverrideClientName { get; set; }
