@@ -8,5 +8,5 @@ pr:
 
 jobs:
 
-- template: cli-tool.yml
-- template: vsix.yml
+- template: templates/cli-tool.yml
+- template: templates/vsix.yml
