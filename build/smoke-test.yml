@@ -3,6 +3,8 @@ trigger:
     include:
     - '*'
 
+pr: none
+
 jobs:
 
 - template: templates/script-test-template.yml
