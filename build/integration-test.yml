@@ -10,12 +10,12 @@ jobs:
 
 - template: templates/script-test-template.yml
   parameters:
-    name: 'Windows 2019'
+    name: 'Windows2019'
     agentSpecification: 'windows-2019'
     scriptFilePath: './src/integration-tests.ps1'
 
 - template: templates/script-test-template.yml
   parameters:
-    name: 'Windows 2016'
+    name: 'Windows2016'
     agentSpecification: 'vs2017-win2016'
     scriptFilePath: './src/integration-tests.ps1'
