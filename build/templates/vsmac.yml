@@ -1,0 +1,38 @@
+jobs:
+
+- job: VsMacJob
+  displayName: 'Build VS Mac Extension'
+  pool:
+    vmImage: 'macOS-10.15'
+
+  steps:
+  
+  - bash: |
+      cd $(system.defaultworkingdirectory)/src/ApiClientCodeGen.VSMac
+      sed -i -e 's/1.0/$(build.buildnumber)/g' Properties/AddinInfo.cs
+
+  - task: VSBuild@1
+    displayName: 'Build Solution'
+    inputs:
+      solution: src/ApiClientCodeGen.VSMac/ApiClientCodeGen.VSMac.sln
+      platform: 'Any CPU'
+      configuration: 'Release'
+    timeoutInMinutes: 20
+  
+  - bash: |
+      cd $(system.defaultworkingdirectory)/src/ApiClientCodeGen.VSMac
+      mono /Applications/Visual\ Studio.app/Contents/Resources/lib/monodevelop/bin/vstool.exe setup pack /bin/Release/net471/ApiClientCodeGen.VSMac.dll
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+    inputs:
+      sourceFolder: '$(system.defaultworkingdirectory)'
+      contents: |
+        **\*.mpack
+      targetFolder: '$(build.artifactstagingdirectory)'
+      flattenFolders: true
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
