@@ -7,9 +7,9 @@ jobs:
 
 - job: ${{ parameters.name }}
   pool:
-    vmImage: '${{ agentSpecification }}'
+    vmImage: '${{ parameters.agentSpecification }}'
     demands: npm
-  displayName: 'Test on $(agentSpecification)'
+  displayName: 'Test on ${{ parameters.agentSpecification }}'
 
   steps:
   - task: UseDotNet@2
