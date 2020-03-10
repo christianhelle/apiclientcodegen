@@ -5,6 +5,14 @@ trigger:
     exclude:
       - master
 
+schedules:
+- cron: "0 0 * * *"
+  displayName: Daily midnight runs
+  branches:
+    include:
+    - master
+  always: true
+
 pr: none
 
 jobs:
