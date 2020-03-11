@@ -1,4 +1,6 @@
+using System;
 using System.Diagnostics;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using MonoDevelop.Core;
 using MonoDevelop.Core.Logging;
 
@@ -7,18 +9,15 @@ namespace ApiClientCodeGen.VSMac
     public class LoggingServiceTraceListener : TraceListener
     {
         public LoggingServiceTraceListener()
-        {
-            LoggingService.Initialize(true);
-        }
+            => new Action(() => LoggingService.Initialize(true))
+                .SafeInvoke();
 
         public override void Write(string message)
-        {
-            LoggingService.Log(LogLevel.Info, message);
-        }
+            => new Action(() => LoggingService.Log(LogLevel.Info, message))
+                .SafeInvoke();
 
         public override void WriteLine(string message)
-        {
-            LoggingService.Log(LogLevel.Info, message);
-        }
+            => new Action(() => LoggingService.Log(LogLevel.Info, message))
+                .SafeInvoke();
     }
 }
