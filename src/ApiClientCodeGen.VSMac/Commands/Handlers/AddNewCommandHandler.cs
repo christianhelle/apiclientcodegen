@@ -2,14 +2,7 @@ using MonoDevelop.Components.Commands;
 
 namespace ApiClientCodeGen.VSMac.Commands.Handlers
 {
-    public abstract class AddNewCommandHandler : CommandHandler
+    public abstract class AddNewCommandHandler : BaseCommandHandler
     {
-        protected override void Run()
-        {
-        }
-
-        protected override void Run(object dataItem)
-        {
-        }
     }
 }

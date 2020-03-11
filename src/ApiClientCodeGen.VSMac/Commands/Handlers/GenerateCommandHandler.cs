@@ -6,18 +6,14 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 {
     public abstract class GenerateCommandHandler : BaseCommandHandler
     {
-        protected override void Run()
-        {
-        }
-
-        protected override void Run(object dataItem)
-        {
-        }
-
+        protected virtual string SupportedFileExtension => ".json";
+        protected string FilePath { get; private set; }
+        
         protected override void Update(CommandInfo info)
         {
             var item = IdeApp.ProjectOperations.CurrentSelectedItem as ProjectFile;
-            info.Visible = item?.Name?.EndsWith(".json", System.StringComparison.OrdinalIgnoreCase) == true;
+            info.Visible = item?.Name?.EndsWith(SupportedFileExtension, System.StringComparison.OrdinalIgnoreCase) == true;
+            FilePath = item?.FilePath;
         }
     }
 }

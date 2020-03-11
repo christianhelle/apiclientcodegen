@@ -12,7 +12,6 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 {
     public class GenerateNSwagStudioCommandHandler : GenerateCommandHandler
     {
-        private string nswagStudioFile;
         private readonly GenerateNSwagStudioCommand command;
 
         public GenerateNSwagStudioCommandHandler()
@@ -20,15 +19,10 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
             command = Container.Instance.Resolve<GenerateNSwagStudioCommand>();
         }
 
-        protected override void Run() => command.Run(nswagStudioFile);
+        protected override string SupportedFileExtension => ".nswag";
 
-        protected override void Run(object dataItem) => command.Run(nswagStudioFile);
+        protected override void Run() => command.Run(FilePath);
 
-        protected override void Update(CommandInfo info)
-        {
-            var item = IdeApp.ProjectOperations.CurrentSelectedItem as ProjectFile;
-            info.Visible = item?.Name?.EndsWith(".nswag", StringComparison.OrdinalIgnoreCase) == true;
-            nswagStudioFile = item?.FilePath;
-        }
+        protected override void Run(object dataItem) => command.Run(FilePath);
     }
 }
