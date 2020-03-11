@@ -1,5 +1,7 @@
 using System;
+using ApiClientCodeGen.VSMac.Commands.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,10 +18,15 @@ namespace ApiClientCodeGen.VSMac
         public Container()
         {
             var services = new ServiceCollection();
+
             services.AddSingleton<LoggingServiceTraceListener>();
+            services.AddSingleton<IGeneralOptions, DefaultGeneralOptions>();
             services.AddSingleton<INSwagOptions, DefaultNSwagOptions>();
             services.AddSingleton<INSwagStudioOptions, DefaultNSwagStudioOptions>();
-            services.AddTransient<IProcessLauncher, ProcessLauncher>();
+            services.AddSingleton<IProcessLauncher, ProcessLauncher>();
+
+            services.AddSingleton<INSwagStudioCodeGeneratorFactory, NSwagStudioCodeGeneratorFactory>();
+            services.AddSingleton<GenerateNSwagStudioCommand>();
 
             serviceProvider = services.BuildServiceProvider();
         }
