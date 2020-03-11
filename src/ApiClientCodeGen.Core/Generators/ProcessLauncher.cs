@@ -6,41 +6,63 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
     public interface IProcessLauncher
     {
-        void Start(string command, string arguments);
-        void Start(string command, string arguments, Action<string> onOutputData, Action<string> onErrorData);
+        void Start(
+            string command,
+            string arguments,
+            string workingDirectory = null);
+
+        void Start(
+            string command,
+            string arguments,
+            Action<string> onOutputData,
+            Action<string> onErrorData,
+            string workingDirectory = null);
     }
 
     [ExcludeFromCodeCoverage]
     public class ProcessLauncher : IProcessLauncher
     {
-        private readonly string workingDirectory;
-        private static readonly object syncLock = new object();
+        private static readonly object SyncLock = new object();
 
-        public ProcessLauncher(string workingDirectory = null)
-        {
-            this.workingDirectory = workingDirectory;
-        }
+        public void Start(
+            string command,
+            string arguments,
+            string workingDirectory = null)
+            => Start(
+                command,
+                arguments,
+                o => Trace.WriteLine(o),
+                e => Trace.WriteLine(e),
+                workingDirectory);
 
-        public void Start(string command, string arguments)
-            => Start(command, arguments, o => Trace.WriteLine(o), e => Trace.WriteLine(e));
-
-        public void Start(string command, string arguments, Action<string> onOutputData, Action<string> onErrorData)
+        public void Start(
+            string command,
+            string arguments,
+            Action<string> onOutputData,
+            Action<string> onErrorData,
+            string workingDirectory = null)
         {
             Trace.WriteLine("Executing:");
             Trace.WriteLine($"{command} {arguments}");
 
-            lock (syncLock)
-                StartInternal(command, arguments, onOutputData, onErrorData);
+            lock (SyncLock)
+                StartInternal(
+                    command,
+                    arguments,
+                    onOutputData,
+                    onErrorData,
+                    workingDirectory);
         }
 
-        private void StartInternal(
-            string command, 
-            string arguments, 
-            Action<string> onOutputData, 
-            Action<string> onErrorData)
+        private static void StartInternal(
+            string command,
+            string arguments,
+            Action<string> onOutputData,
+            Action<string> onErrorData,
+            string workingDirectory = null)
         {
             var processInfo = new ProcessStartInfo(command, arguments);
-            using (var process = new Process { StartInfo = processInfo })
+            using (var process = new Process {StartInfo = processInfo})
             {
                 process.OutputDataReceived += (s, e) => onOutputData?.Invoke(e.Data);
                 process.ErrorDataReceived += (s, e) => onErrorData?.Invoke(e.Data);
