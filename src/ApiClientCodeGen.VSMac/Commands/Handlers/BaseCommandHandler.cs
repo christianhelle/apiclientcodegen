@@ -6,7 +6,7 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
     {
         protected BaseCommandHandler()
         {
-            LoggingServiceTraceListener.Initialize();
+            Bootstrapper.Initialize();
         }
     }
 }
