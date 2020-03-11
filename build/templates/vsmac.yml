@@ -12,6 +12,7 @@ jobs:
       sed -i -e 's/1.0/$(build.buildnumber)/g' Properties/AddinInfo.cs
       make release
       mv ApiClientCodeGen.VSMac.ApiClientCodeGenerator_$(build.buildnumber).mpack ApiClientCodeGenerator-$(build.buildnumber).mpack
+    displayName: 'Build .mpack file'
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
