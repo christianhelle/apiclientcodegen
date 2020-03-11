@@ -50,7 +50,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
                         It.IsAny<string>(),
                         It.IsAny<string>(),
                         It.IsAny<Action<string>>(),
-                        It.IsAny<Action<string>>()))
+                        It.IsAny<Action<string>>(),
+                        It.IsAny<string>()))
                 .Throws(new Exception());
             NpmHelper.TryGetNpmPrefixPathFromNpmConfig(mock.Object)
                 .Should()
