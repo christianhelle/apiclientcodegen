@@ -5,7 +5,6 @@ using System.Reflection;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
-    [ExcludeFromCodeCoverage]
     public static class TestingUtility
     {
         static TestingUtility()
@@ -15,7 +14,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 
         private static bool IsTestFramework(Assembly assembly) 
             => assembly.FullName.Contains("Xunit") 
-            || assembly.FullName.Contains("Microsoft.VisualStudio.TestTools.UnitTesting");
+            || assembly.FullName.Contains("Microsoft.VisualStudio.TestPlatform.TestFramework");
 
         public static bool IsRunningFromUnitTest { get; }
     }

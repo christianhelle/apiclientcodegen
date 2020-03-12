@@ -54,6 +54,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestingUtilityTests.cs" />
     <None Include="Converters\CSharpToVisualBasicLanguageConverterTests.cs" />
     <Compile Include="CustomTool\SingleFileCodeGeneratorTests.cs" />
     <Compile Include="CustomTool\TestSingleFileCodeGenerator.cs" />
