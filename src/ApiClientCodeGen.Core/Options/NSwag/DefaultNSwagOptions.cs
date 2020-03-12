@@ -3,7 +3,6 @@ using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag
 {
-    [ExcludeFromCodeCoverage]
     public class DefaultNSwagOptions : INSwagOptions
     {
         public bool InjectHttpClient { get; } = true;

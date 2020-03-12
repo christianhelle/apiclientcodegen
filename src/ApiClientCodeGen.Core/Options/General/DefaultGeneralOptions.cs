@@ -11,10 +11,10 @@
             OpenApiGeneratorPath = PathProvider.GetOpenApiGeneratorPath();
         }
 
-        public string JavaPath { get; set; }
-        public string NpmPath { get; set; }
-        public string NSwagPath { get; set; }
-        public string SwaggerCodegenPath { get; set; }
-        public string OpenApiGeneratorPath { get; set; }
+        public string JavaPath { get; }
+        public string NpmPath { get; }
+        public string NSwagPath { get; }
+        public string SwaggerCodegenPath { get; }
+        public string OpenApiGeneratorPath { get; }
     }
 }

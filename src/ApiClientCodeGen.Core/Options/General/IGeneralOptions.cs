@@ -2,10 +2,10 @@
 {
     public interface IGeneralOptions
     {
-        string JavaPath { get; set; }
-        string NpmPath { get; set; }
-        string NSwagPath { get; set; }
-        string SwaggerCodegenPath { get; set; }
-        string OpenApiGeneratorPath { get; set; }
+        string JavaPath { get; }
+        string NpmPath { get; }
+        string NSwagPath { get; }
+        string SwaggerCodegenPath { get; }
+        string OpenApiGeneratorPath { get; }
     }
 }
