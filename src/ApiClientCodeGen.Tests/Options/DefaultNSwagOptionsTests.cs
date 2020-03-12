@@ -8,16 +8,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
     [TestClass]
     public class DefaultNSwagOptionsTests 
     {
-        private INSwagOptions sut;
-
-        [TestInitialize]
-        public void Init() => sut = Create();
-
-        protected virtual INSwagOptions Create()
-            => new DefaultNSwagOptions();
+        private readonly INSwagOptions sut = new DefaultNSwagOptions();
 
         [TestMethod]
-        public void ClassStyle_Be_POCO()
+        public void ClassStyle_Be_Poco()
             => sut.ClassStyle.Should().Be(CSharpClassStyle.Poco);
 
         [TestMethod]
