@@ -1,5 +1,4 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NJsonSchema.CodeGeneration.CSharp;
@@ -7,7 +6,7 @@ using NJsonSchema.CodeGeneration.CSharp;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
 {
     [TestClass]
-    public class DefaultNSwagStudioOptionsTests : DefaultNSwagOptionsTests
+    public class DefaultNSwagStudioOptionsTests
     {
         private readonly INSwagStudioOptions sut = new DefaultNSwagStudioOptions();
         

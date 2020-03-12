@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using NJsonSchema.CodeGeneration.CSharp;
+﻿using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag
 {
