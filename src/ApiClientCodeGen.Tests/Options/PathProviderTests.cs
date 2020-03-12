@@ -52,10 +52,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
         }
 
         [TestMethod]
-        public void GetAutoRestPath_Without_Path_Returns_Autorest()
+        public void GetAutoRestPath_Without_Path_Returns_autorest()
         {
             var path = PathProvider.GetAutoRestPath(true);
             path.Should().Be("autorest");
+        }
+
+        [TestMethod]
+        public void GetNSwagPath_Without_Path_Returns_nswag()
+        {
+            var path = PathProvider.GetNSwagPath(true);
+            path.Should().Be("nswag");
         }
     }
 }

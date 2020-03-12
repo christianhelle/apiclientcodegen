@@ -58,6 +58,7 @@
     <Compile Include="CustomTool\SingleFileCodeGeneratorTests.cs" />
     <Compile Include="CustomTool\TestSingleFileCodeGenerator.cs" />
     <Compile Include="DependencyDownloaderTests.cs" />
+    <Compile Include="Extensions\ActionExtensionsTests.cs" />
     <Compile Include="Extensions\GetDependenciesTests.cs" />
     <Compile Include="Extensions\GetSupportedCodeGeneratorTests.cs" />
     <Compile Include="Extensions\OpenApiDocumentExtensionsTests.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="NuGet\PackageDependencyListProviderTests.cs" />
     <Compile Include="Options\CustomPathOptionsNullOptionsTests.cs" />
     <Compile Include="Options\CustomPathOptionsTests.cs" />
+    <Compile Include="Options\DefaultGeneralOptionsTests.cs" />
     <Compile Include="Options\JavaPathProviderTests.cs" />
     <Compile Include="Options\NSwagCSharpOptionsNullOptionsTests.cs" />
     <Compile Include="Options\AutoRestOptionsTests.cs" />
