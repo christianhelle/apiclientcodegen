@@ -1,8 +1,11 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using ApiClientCodeGen.VSMac.Commands.NSwagStudio;
+using ApiClientCodeGen.VSMac.CustomTools;
+using ApiClientCodeGen.VSMac.CustomTools.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
@@ -36,6 +39,11 @@ namespace ApiClientCodeGen.VSMac
 
             services.AddSingleton<INSwagStudioCodeGeneratorFactory, NSwagStudioCodeGeneratorFactory>();
             services.AddSingleton<GenerateNSwagStudioCommand>();
+
+            services.AddSingleton<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
+            services.AddSingleton<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();
+            services.AddSingleton<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
+            services.AddSingleton<NSwagCSharpCodeGenerator>();
 
             serviceProvider = services.BuildServiceProvider();
         }

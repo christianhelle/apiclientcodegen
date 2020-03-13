@@ -57,5 +57,9 @@
                  _label = "Generate with OpenAPI Generator"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateOpenApiCommandHandler" />
     </Extension>
+
+    <Extension path = "/MonoDevelop/Ide/CustomTools">
+        <Tool name="NSwagCodeGenerator" type="ApiClientCodeGen.VSMac.CustomTools.NSwag.NSwagSingleFileCustomTool"/>
+    </Extension>
     
 </ExtensionModel>
