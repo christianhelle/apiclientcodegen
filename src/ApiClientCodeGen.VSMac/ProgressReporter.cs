@@ -2,7 +2,7 @@ using System;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using MonoDevelop.Core;
 
-namespace ApiClientCodeGen.VSMac.CustomTools.NSwag
+namespace ApiClientCodeGen.VSMac
 {
     public class ProgressReporter : IProgressReporter
     {
@@ -15,6 +15,7 @@ namespace ApiClientCodeGen.VSMac.CustomTools.NSwag
 
         public void Progress(uint progress, uint total = 100)
         {
+            monitor.Step((int)progress);
         }
     }
 }
