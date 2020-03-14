@@ -11,6 +11,8 @@ namespace ApiClientCodeGen.VSMac.CustomTools.NSwag
 {
     public class NSwagSingleFileCustomTool : BaseSingleFileCustomTool
     {
+        public const string GeneratorName = "NSwagCodeGenerator";
+        
         private readonly INSwagCodeGeneratorFactory factory;
         private readonly IOpenApiDocumentFactory openApiDocumentFactory;
         private readonly INSwagOptions options;
