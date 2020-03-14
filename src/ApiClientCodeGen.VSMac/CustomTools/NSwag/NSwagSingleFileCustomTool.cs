@@ -42,15 +42,19 @@ namespace ApiClientCodeGen.VSMac.CustomTools.NSwag
             var path = file.FilePath.ChangeExtension(".cs");
             result.GeneratedFilePath = path;
 
+            var customToolNamespace = file.CustomToolNamespace;
+            if (string.IsNullOrWhiteSpace(customToolNamespace))
+                customToolNamespace = CustomToolService.GetFileNamespace(file, path);
+
             var generator = factory.Create(
                 file.FilePath,
-                file.CustomToolNamespace,
+                customToolNamespace,
                 options,
                 openApiDocumentFactory);
 
             var progressReporter = new ProgressReporter(monitor);
             var contents = await Task.Run(() => generator.GenerateCode(progressReporter));
-            File.WriteAllText(path, contents);
+            await Task.Run(() => File.WriteAllText(path, contents));
         }
     }
 }
