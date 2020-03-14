@@ -41,7 +41,6 @@ namespace ApiClientCodeGen.VSMac
             services.AddSingleton<GenerateNSwagStudioCommand>();
 
             services.AddSingleton<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
-            services.AddSingleton<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();
             services.AddSingleton<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
             services.AddSingleton<NSwagCSharpCodeGenerator>();
 
