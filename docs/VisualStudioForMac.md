@@ -54,27 +54,7 @@ The **NSwag** code generator produces code that depends on the [Newtonsoft.Json]
 
 ![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-nswag-studio.png)
 
-
-
-### Settings
-
-This extension will by default make some assumptions on the installation paths for **Java**, **NSwag** and **NPM** but also provides option pages for configuring this. The **Swagger Codegen CLI** and the **OpenAPI Generator** JAR files are by default downloaded to the user TEMP folder but it is also possible to specify to use existing JAR files
-
-![Options - General](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-general.png)
-
-Supports customising how AutoRest generates code based on the C# generator settings that the AutoRest CLI tool provides
-
-![Options - AutoRest](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-autorest.png)
-
-Supports customising how NSwag generates code using the properties exposed by the NSwag NuGet package
-
-![Options - NSwag](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswag.png)
-
-Supports customising how the **.nswag** file is generated using a subset of the options available in NSwag Studio
-
-![Options - NSwag Studio](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswagstudio.png)
-
-
+#
 For tips and tricks on software development, check out [my blog](https://christian-helle.blogspot.com)
 
 If you find this useful and feel a bit generous then feel free to [buy me a coffee](https://www.buymeacoffee.com/christianhelle) :)
