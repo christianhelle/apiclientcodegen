@@ -1,8 +1,6 @@
-using System.Threading.Tasks;
+using System;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using MonoDevelop.Core;
-using MonoDevelop.Ide.CustomTools;
-using MonoDevelop.Projects;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
 namespace ApiClientCodeGen.VSMac.CustomTools.OpenApi
 {
@@ -10,11 +8,35 @@ namespace ApiClientCodeGen.VSMac.CustomTools.OpenApi
     {
         public const string GeneratorName = "OpenApiCodeGenerator";
 
-        protected override ICodeGenerator GetCodeGenerator(
-            string swaggerFile, 
-            string customToolNamespace)
+        private readonly IGeneralOptions options;
+        private readonly IProcessLauncher processLauncher;
+        private readonly IOpenApiGeneratorFactory factory;
+
+        public OpenApiSingleFileCustomTool()
+            : this(
+                Container.Instance.Resolve<IGeneralOptions>(),
+                Container.Instance.Resolve<IProcessLauncher>(),
+                Container.Instance.Resolve<IOpenApiGeneratorFactory>())
         {
-            throw new System.NotImplementedException();
         }
+
+        public OpenApiSingleFileCustomTool(
+            IGeneralOptions options,
+            IProcessLauncher processLauncher,
+            IOpenApiGeneratorFactory factory)
+        {
+            this.options = options ?? throw new ArgumentNullException(nameof(options));
+            this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
+            this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
+        }
+
+        protected override ICodeGenerator GetCodeGenerator(
+            string swaggerFile,
+            string customToolNamespace)
+            => factory.Create(
+                swaggerFile,
+                customToolNamespace,
+                options,
+                processLauncher);
     }
 }
