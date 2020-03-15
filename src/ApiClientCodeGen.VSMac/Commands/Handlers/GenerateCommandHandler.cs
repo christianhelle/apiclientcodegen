@@ -32,6 +32,7 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
             var project = IdeApp.ProjectOperations.CurrentSelectedProject;
             var item = project.Files.GetFile(FilePath);
             item.Generator = GeneratorName;
+            IdeApp.ProjectOperations.MarkFileDirty(item.FilePath);
         }
     }
 }
