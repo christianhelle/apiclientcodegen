@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using MonoDevelop.Core;
 using MonoDevelop.Ide.CustomTools;
 using MonoDevelop.Projects;
@@ -9,10 +10,9 @@ namespace ApiClientCodeGen.VSMac.CustomTools.Swagger
     {
         public const string GeneratorName = "SwaggerCodeGenerator";
 
-        protected override Task OnGenerate(
-            ProgressMonitor monitor, 
-            ProjectFile file, 
-            SingleFileCustomToolResult result)
+        protected override ICodeGenerator GetCodeGenerator(
+            string swaggerFile, 
+            string customToolNamespace)
         {
             throw new System.NotImplementedException();
         }

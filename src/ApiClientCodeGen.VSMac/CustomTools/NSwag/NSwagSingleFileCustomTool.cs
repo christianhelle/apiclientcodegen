@@ -1,11 +1,7 @@
 using System;
-using System.IO;
-using System.Threading.Tasks;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
-using MonoDevelop.Core;
-using MonoDevelop.Ide.CustomTools;
-using MonoDevelop.Projects;
 
 namespace ApiClientCodeGen.VSMac.CustomTools.NSwag
 {
@@ -36,27 +32,13 @@ namespace ApiClientCodeGen.VSMac.CustomTools.NSwag
             this.options = options ?? throw new ArgumentNullException(nameof(options));
         }
 
-        protected override async Task OnGenerate(
-            ProgressMonitor monitor,
-            ProjectFile file,
-            SingleFileCustomToolResult result)
-        {
-            var path = file.FilePath.ChangeExtension(".cs");
-            result.GeneratedFilePath = path;
-
-            var customToolNamespace = file.CustomToolNamespace;
-            if (string.IsNullOrWhiteSpace(customToolNamespace))
-                customToolNamespace = CustomToolService.GetFileNamespace(file, path);
-
-            var generator = factory.Create(
-                file.FilePath,
+        protected override ICodeGenerator GetCodeGenerator(
+            string swaggerFile,
+            string customToolNamespace)
+            => factory.Create(
+                swaggerFile,
                 customToolNamespace,
                 options,
                 openApiDocumentFactory);
-
-            var progressReporter = new ProgressReporter(monitor);
-            var contents = await Task.Run(() => generator.GenerateCode(progressReporter));
-            await Task.Run(() => File.WriteAllText(path, contents));
-        }
     }
 }

@@ -14,14 +14,16 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 
         protected override void Run() => SetGenerator();
         protected override void Run(object dataItem) => SetGenerator();
-        
+
         protected override void Update(CommandInfo info)
         {
-            var item = IdeApp.ProjectOperations.CurrentSelectedItem as ProjectFile;
-            if (item == null)
+            if (!(IdeApp.ProjectOperations.CurrentSelectedItem is ProjectFile item))
                 return;
 
-            info.Visible = item.Name.EndsWith(SupportedFileExtension, StringComparison.OrdinalIgnoreCase);
+            info.Visible = item.Name.EndsWith(
+                SupportedFileExtension,
+                StringComparison.OrdinalIgnoreCase);
+
             FilePath = item.FilePath;
         }
 
