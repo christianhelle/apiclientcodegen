@@ -17,14 +17,17 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 
         protected override void Update(CommandInfo info)
         {
-            if (!(IdeApp.ProjectOperations.CurrentSelectedItem is ProjectFile item))
+            if (!(IdeApp.ProjectOperations.CurrentSelectedItem is ProjectFile projectFile))
+            {
+                info.Visible = false;
                 return;
+            }
 
-            info.Visible = item.Name.EndsWith(
+            info.Visible = projectFile.Name.EndsWith(
                 SupportedFileExtension,
                 StringComparison.OrdinalIgnoreCase);
 
-            FilePath = item.FilePath;
+            FilePath = projectFile.FilePath;
         }
 
         private void SetGenerator()
