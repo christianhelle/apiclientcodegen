@@ -1,12 +1,5 @@
 using System;
-using System.IO;
 using ApiClientCodeGen.VSMac.Commands.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
-using MonoDevelop.Components.Commands;
-using MonoDevelop.Ide;
-using MonoDevelop.Projects;
 
 namespace ApiClientCodeGen.VSMac.Commands.Handlers
 {
@@ -19,6 +12,9 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
             command = Container.Instance.Resolve<GenerateNSwagStudioCommand>();
         }
 
+        protected override string GeneratorName
+            => throw new NotSupportedException();
+        
         protected override string SupportedFileExtension => ".nswag";
 
         protected override void Run() => command.Run(FilePath);
