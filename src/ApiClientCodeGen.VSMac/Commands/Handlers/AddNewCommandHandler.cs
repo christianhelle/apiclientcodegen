@@ -82,9 +82,6 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 
             await AddRequiredPackages(project);
             await AddFile(project, path, url);
-
-            project.NotifyModified(string.Empty);
-            project.ReloadProjectBuilder();
         }
 
         protected abstract SupportedCodeGenerator CodeGeneratorType { get; }
@@ -96,6 +93,9 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
                 var arguments = $"add package {package.Name} --version {package.Version}";
                 await Task.Run(() => process.Start("dotnet", arguments, project.ItemDirectory));
             }
+
+            project.NotifyModified(string.Empty);
+            await project.RefreshProjectBuilder();
         }
 
         protected virtual async Task AddFile(
