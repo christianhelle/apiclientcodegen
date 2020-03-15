@@ -52,7 +52,15 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
                     path = project.ItemDirectory;
             }
 
-            var filename = Path.Combine(path, "Swagger.json");
+            await AddFile(project, path, url);
+        }
+
+        protected virtual async Task AddFile(
+            Project project, 
+            string itemPath,
+            string url)
+        {
+            var filename = Path.Combine(itemPath, "Swagger.json");
             var contents = await DownloadTextAsync(url);
             File.WriteAllText(filename, contents);
 
@@ -61,7 +69,7 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
             IdeApp.ProjectOperations.MarkFileDirty(item.FilePath);
         }
 
-        private static async Task<string> DownloadTextAsync(string url)
+        protected static async Task<string> DownloadTextAsync(string url)
         {
             using (var client = new WebClient())
                 return await client.DownloadStringTaskAsync(
