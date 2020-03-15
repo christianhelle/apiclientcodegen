@@ -9,6 +9,7 @@ using ApiClientCodeGen.VSMac.CustomTools.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
@@ -52,6 +53,8 @@ namespace ApiClientCodeGen.VSMac
             services.AddSingleton<IAutoRestCodeGeneratorFactory, AutoRestCodeGeneratorFactory>();
             services.AddSingleton<ISwaggerCodegenFactory, SwaggerCodegenFactory>();
             services.AddSingleton<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
+
+            services.AddSingleton<PackageDependencyListProvider>();
 
             serviceProvider = services.BuildServiceProvider();
         }
