@@ -59,7 +59,14 @@
     </Extension>
 
     <Extension path = "/MonoDevelop/Ide/CustomTools">
-        <Tool name="NSwagCodeGenerator" type="ApiClientCodeGen.VSMac.CustomTools.NSwag.NSwagSingleFileCustomTool"/>
+        <Tool name="NSwagCodeGenerator" 
+              type="ApiClientCodeGen.VSMac.CustomTools.NSwag.NSwagSingleFileCustomTool"/>
+        <Tool name="AutoRestCodeGenerator"
+              type="ApiClientCodeGen.VSMac.CustomTools.AutoRest.AutoRestSingleFileCustomTool"/>
+        <Tool name="SwaggerCodeGenerator"
+              type="ApiClientCodeGen.VSMac.CustomTools.Swagger.SwaggerSingleFileCustomTool"/>
+        <Tool name="OpenApiCodeGenerator"
+              type="ApiClientCodeGen.VSMac.CustomTools.OpenApi.OpenApiSingleFileCustomTool"/>
     </Extension>
     
 </ExtensionModel>
