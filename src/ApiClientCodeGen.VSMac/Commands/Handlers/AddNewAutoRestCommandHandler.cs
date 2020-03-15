@@ -1,4 +1,7 @@
-﻿using ApiClientCodeGen.VSMac.CustomTools.AutoRest;
+﻿using System.Threading.Tasks;
+using ApiClientCodeGen.VSMac.CustomTools.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using MonoDevelop.Projects;
 
 namespace ApiClientCodeGen.VSMac.Commands.Handlers
 {
@@ -6,5 +9,8 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
     {
         protected override string GeneratorName
             => AutoRestSingleFileCustomTool.GeneratorName;
+
+        protected override SupportedCodeGenerator CodeGeneratorType
+            => SupportedCodeGenerator.AutoRest;
     }
 }

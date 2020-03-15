@@ -1,17 +1,41 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using Microsoft.VisualStudio.Threading;
 using MonoDevelop.Components.Commands;
+using MonoDevelop.Core;
 using MonoDevelop.Ide;
 using MonoDevelop.Ide.Gui.Pads.ProjectPad;
 using MonoDevelop.Projects;
+using PackageDependency = ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet.PackageDependency;
 
 namespace ApiClientCodeGen.VSMac.Commands.Handlers
 {
     public abstract class AddNewCommandHandler : BaseCommandHandler
     {
+        private readonly IProcessLauncher process;
+        private readonly PackageDependencyListProvider dependencyProvider;
+
+        protected AddNewCommandHandler()
+            : this(
+                Container.Instance.Resolve<IProcessLauncher>(),
+                Container.Instance.Resolve<PackageDependencyListProvider>())
+        {
+        }
+
+        protected AddNewCommandHandler(
+            IProcessLauncher processLauncher,
+            PackageDependencyListProvider dependencyListProvider)
+        {
+            process = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
+            dependencyProvider = dependencyListProvider ?? throw new ArgumentNullException(nameof(dependencyListProvider));
+        }
+
         protected abstract string GeneratorName { get; }
 
         protected override void Run()
@@ -56,11 +80,26 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
                 path = project.ItemDirectory;
             }
 
+            await AddRequiredPackages(project);
             await AddFile(project, path, url);
+
+            project.NotifyModified(string.Empty);
+            project.ReloadProjectBuilder();
+        }
+
+        protected abstract SupportedCodeGenerator CodeGeneratorType { get; }
+
+        private async Task AddRequiredPackages(Project project)
+        {
+            foreach (var package in dependencyProvider.GetDependencies(CodeGeneratorType))
+            {
+                var arguments = $"add package {package.Name} --version {package.Version}";
+                await Task.Run(() => process.Start("dotnet", arguments, project.ItemDirectory));
+            }
         }
 
         protected virtual async Task AddFile(
-            Project project, 
+            Project project,
             string itemPath,
             string url)
         {
@@ -70,6 +109,7 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 
             var item = project.AddFile(filename, "None");
             item.Generator = GeneratorName;
+
             IdeApp.ProjectOperations.MarkFileDirty(item.FilePath);
         }
 

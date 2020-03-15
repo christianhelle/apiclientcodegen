@@ -1,6 +1,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using ApiClientCodeGen.VSMac.Commands.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using MonoDevelop.Projects;
 
 namespace ApiClientCodeGen.VSMac.Commands.Handlers
@@ -15,6 +16,9 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
         {
             command = Container.Instance.Resolve<GenerateNSwagStudioCommand>();
         }
+
+        protected override SupportedCodeGenerator CodeGeneratorType
+            => SupportedCodeGenerator.NSwagStudio;
 
         protected override async Task AddFile(Project project, string itemPath, string url)
         {
