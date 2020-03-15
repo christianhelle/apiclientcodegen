@@ -4,6 +4,7 @@ using ApiClientCodeGen.VSMac.Commands.NSwagStudio;
 using ApiClientCodeGen.VSMac.CustomTools;
 using ApiClientCodeGen.VSMac.CustomTools.AutoRest;
 using ApiClientCodeGen.VSMac.CustomTools.NSwag;
+using ApiClientCodeGen.VSMac.CustomTools.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
@@ -37,6 +38,7 @@ namespace ApiClientCodeGen.VSMac
             services.AddSingleton<IGeneralOptions, DefaultGeneralOptions>();
             services.AddSingleton<INSwagOptions, DefaultNSwagOptions>();
             services.AddSingleton<INSwagStudioOptions, DefaultNSwagStudioOptions>();
+            services.AddSingleton<IAutoRestOptions, DefaultAutoRestOptions>();
             services.AddSingleton<IProcessLauncher, ProcessLauncher>();
 
             services.AddSingleton<INSwagStudioCodeGeneratorFactory, NSwagStudioCodeGeneratorFactory>();
@@ -47,7 +49,7 @@ namespace ApiClientCodeGen.VSMac
             services.AddSingleton<NSwagCSharpCodeGenerator>();
 
             services.AddSingleton<IAutoRestCodeGeneratorFactory, AutoRestCodeGeneratorFactory>();
-            services.AddSingleton<IAutoRestOptions, DefaultAutoRestOptions>();
+            services.AddSingleton<ISwaggerCodegenFactory, SwaggerCodegenFactory>();
 
             serviceProvider = services.BuildServiceProvider();
         }
