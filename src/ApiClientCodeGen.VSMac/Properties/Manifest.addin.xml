@@ -4,13 +4,11 @@
     <Extension path = "/MonoDevelop/Ide/ContextMenu/ProjectPad">
         <ItemSet id = "Add" _label = "_Add" autohide="True">
             <ItemSet id = "NewApiClient" _label = "New REST API Client" autohide="True">
-                <Condition id="ItemType" value="Project">
-                    <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.AutoRest" />
-                    <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.NSwag" />
-                    <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.NSwagStudio" />
-                    <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Swagger" />
-                    <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.OpenApi" />
-                </Condition>
+                <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.AutoRest" />
+                <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.NSwag" />
+                <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.NSwagStudio" />
+                <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Swagger" />
+                <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.OpenApi" />
             </ItemSet>
         </ItemSet>
         <ItemSet id = "GenerateApiClient" _label = "REST API Client Generator" autohide="True">
@@ -56,6 +54,17 @@
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.OpenApi"
                  _label = "Generate with OpenAPI Generator"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateOpenApiCommandHandler" />
+    </Extension>
+
+    <Extension path = "/MonoDevelop/Ide/CustomTools">
+        <Tool name="NSwagCodeGenerator" 
+              type="ApiClientCodeGen.VSMac.CustomTools.NSwag.NSwagSingleFileCustomTool"/>
+        <Tool name="AutoRestCodeGenerator"
+              type="ApiClientCodeGen.VSMac.CustomTools.AutoRest.AutoRestSingleFileCustomTool"/>
+        <Tool name="SwaggerCodeGenerator"
+              type="ApiClientCodeGen.VSMac.CustomTools.Swagger.SwaggerSingleFileCustomTool"/>
+        <Tool name="OpenApiCodeGenerator"
+              type="ApiClientCodeGen.VSMac.CustomTools.OpenApi.OpenApiSingleFileCustomTool"/>
     </Extension>
     
 </ExtensionModel>

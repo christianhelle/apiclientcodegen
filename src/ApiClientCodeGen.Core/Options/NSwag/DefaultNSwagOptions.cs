@@ -1,11 +1,8 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
-using NJsonSchema.CodeGeneration.CSharp;
+﻿using NJsonSchema.CodeGeneration.CSharp;
 
-namespace ApiClientCodeGen.CLI.Options
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag
 {
-    [ExcludeFromCodeCoverage]
-    public class NSwagOptions : INSwagOptions
+    public class DefaultNSwagOptions : INSwagOptions
     {
         public bool InjectHttpClient { get; } = true;
         public bool GenerateClientInterfaces { get; } = true;

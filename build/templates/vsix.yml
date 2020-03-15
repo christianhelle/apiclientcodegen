@@ -31,7 +31,7 @@ jobs:
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
     inputs:
-      restoreSolution: '**\*.sln'
+      restoreSolution: 'src/ApiClientCodeGenerator.sln'
 
   - task: SamirBoulema.Vsix-Tools.Vsix-Tools-Update-Version.VsixToolsUpdateVersion@1
     displayName: 'Set Vsix Version'

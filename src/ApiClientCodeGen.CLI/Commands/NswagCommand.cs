@@ -21,7 +21,7 @@ namespace ApiClientCodeGen.CLI.Commands
             IOpenApiDocumentFactory openApiDocumentFactory,
             INSwagOptions options,
             INSwagCodeGeneratorFactory codeGeneratorFactory) 
-            : base(console, progressReporter)
+            : base(console, progressReporter)    
         {
             this.openApiDocumentFactory = openApiDocumentFactory ?? throw new ArgumentNullException(nameof(openApiDocumentFactory));
             this.options = options ?? throw new ArgumentNullException(nameof(options));

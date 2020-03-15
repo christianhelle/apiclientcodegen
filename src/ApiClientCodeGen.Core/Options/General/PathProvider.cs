@@ -51,10 +51,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
                 Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
                 "Rico Suter\\NSwagStudio\\Win\\NSwag.exe");
 
-        public static string GetNSwagPath()
-            => Path.Combine(
+        public static string GetNSwagPath(bool withoutPath = false)
+        {
+            if (Environment.OSVersion.Platform == PlatformID.MacOSX ||
+                Environment.OSVersion.Platform == PlatformID.Unix ||
+                withoutPath)
+                return "nswag";
+
+            return Path.Combine(
                 NpmHelper.GetPrefixPath(),
                 "nswag.cmd");
+        }
 
         public static string GetAutoRestPath(bool withoutPath = false)
         {

@@ -1,0 +1,29 @@
+jobs:
+
+- job: VsMacJob
+  displayName: 'Build VS Mac Extension'
+  pool:
+    vmImage: 'macOS-10.15'
+
+  steps:
+  
+  - bash: |
+      cd $(system.defaultworkingdirectory)/src/ApiClientCodeGen.VSMac
+      sed -i -e 's/1.0/$(build.buildnumber)/g' Properties/AddinInfo.cs
+      make release
+      mv ApiClientCodeGen.VSMac.ApiClientCodeGenerator_$(build.buildnumber).mpack ApiClientCodeGenerator-$(build.buildnumber).mpack
+    displayName: 'Build .mpack file'
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+    inputs:
+      sourceFolder: '$(system.defaultworkingdirectory)/src/ApiClientCodeGen.VSMac'
+      contents: |
+        *.mpack
+      targetFolder: '$(build.artifactstagingdirectory)'
+      flattenFolders: true
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'

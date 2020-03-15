@@ -26,8 +26,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         {
             pGenerateProgress?.Progress(10);
             TryRemoveSwaggerJsonSpec(nswagStudioFile);
+            
             var command = GetNSwagPath();
-            processLauncher.Start(command, $"run \"{nswagStudioFile}\"");
+            var arguments = $"run \"{nswagStudioFile}\"";
+            var workingDirectory = Path.GetDirectoryName(nswagStudioFile);
+            processLauncher.Start(command, arguments, workingDirectory);
+            
             pGenerateProgress?.Progress(90);
             return null;
         }

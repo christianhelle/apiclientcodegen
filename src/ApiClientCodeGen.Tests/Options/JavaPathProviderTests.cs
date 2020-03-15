@@ -38,7 +38,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
         public void GetJavaExePath_Returns_Default_Path()
         {
             var launcher = new Mock<IProcessLauncher>();
-            launcher.Setup(c => c.Start("java", "-version"))
+            launcher.Setup(c => c.Start("java", "-version", It.IsAny<string>()))
                 .Throws(new Exception());
 
             new JavaPathProvider(

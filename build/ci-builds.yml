@@ -9,3 +9,4 @@ jobs:
 
 - template: templates/cli-tool.yml
 - template: templates/vsix.yml
+- template: templates/vsmac.yml
