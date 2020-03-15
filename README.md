@@ -16,7 +16,7 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 
 ## Features
 
-- Supports Visual Studio 2017 and 2019
+- Supports Visual Studio 2017, 2019, and ***Visual Studio for Mac (NEW)***
 - Add New REST API Client to a project from an OpenAPI specification URL (e.g https://petstore.swagger.io/v2/swagger.json) using [AutoRest](https://github.com/Azure/autorest), [NSwag](https://github.com/RicoSuter/NSwag), [Swagger Codegen](https://github.com/swagger-api/swagger-codegen), or [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
 - Define custom namespace for the generated file
 - Auto-updating of generated code file when changes are made to the OpenAPI specification json file (Swagger.json)
@@ -56,8 +56,10 @@ The **NSwag** code generator produces code that depends on the [Newtonsoft.Json]
 
 This Visual Studio Extension will automatically add the required NuGet packages that the generated code depends on
 
+***NOTE: The brand new Visual Studio for Mac version currently does not have support for automatically adding missing NuGet packages***
 
-## Screenshots
+
+### Screenshots - Visual Studio 2019
 
 ![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-menu.png)
 
@@ -66,6 +68,16 @@ This Visual Studio Extension will automatically add the required NuGet packages 
 ![Solution Explorer Context Menus](https://github.com/christianhelle/apiclientcodegen/raw/master/images/solution-explorer-context-menu.jpg)
 
 ![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/nswagstudio-context-menu.jpg)
+
+### Screenshots - Visual Studio for Mac
+
+![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-add-new-menu.png)
+
+![Enter URL to OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-add-new-dialog.png)
+
+![Solution Explorer Context Menus](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-generate-code.jpg)
+
+![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-nswag-studio.jpg)
 
 
 ### Settings
