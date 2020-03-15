@@ -51,6 +51,10 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
                 if (string.IsNullOrWhiteSpace(path))
                     path = project.ItemDirectory;
             }
+            else
+            {
+                path = project.ItemDirectory;
+            }
 
             await AddFile(project, path, url);
         }
