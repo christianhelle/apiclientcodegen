@@ -12,18 +12,19 @@ namespace ApiClientCodeGen.VSMac.CustomTools
         public async Task Generate(ProgressMonitor monitor, ProjectFile file, SingleFileCustomToolResult result)
         {
             Bootstrapper.Initialize();
-            
-            var path = file.FilePath.ChangeExtension(".cs");
-            result.GeneratedFilePath = path;
+
+            var swaggerFile = file.FilePath;
+            var outputFile = swaggerFile.ChangeExtension(".cs");
+            result.GeneratedFilePath = outputFile;
 
             var customToolNamespace = file.CustomToolNamespace;
             if (string.IsNullOrWhiteSpace(customToolNamespace))
-                customToolNamespace = CustomToolService.GetFileNamespace(file, path);
+                customToolNamespace = CustomToolService.GetFileNamespace(file, outputFile);
 
-            var generator = GetCodeGenerator(path, customToolNamespace);
+            var generator = GetCodeGenerator(swaggerFile, customToolNamespace);
             var progressReporter = new ProgressReporter(monitor);
             var contents = await Task.Run(() => generator.GenerateCode(progressReporter));
-            await Task.Run(() => File.WriteAllText(path, contents));
+            await Task.Run(() => File.WriteAllText(outputFile, contents));
         }
 
         protected abstract ICodeGenerator GetCodeGenerator(
