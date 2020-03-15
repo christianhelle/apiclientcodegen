@@ -59,7 +59,7 @@ This Visual Studio Extension will automatically add the required NuGet packages 
 ***NOTE: The brand new Visual Studio for Mac version currently does not have support for automatically adding missing NuGet packages***
 
 
-### Screenshots - Visual Studio 2019
+## Screenshots
 
 ![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-menu.png)
 
@@ -68,16 +68,6 @@ This Visual Studio Extension will automatically add the required NuGet packages 
 ![Solution Explorer Context Menus](https://github.com/christianhelle/apiclientcodegen/raw/master/images/solution-explorer-context-menu.jpg)
 
 ![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/nswagstudio-context-menu.jpg)
-
-### Screenshots - Visual Studio for Mac
-
-![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-add-new-menu.png)
-
-![Enter URL to OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-add-new-dialog.png)
-
-![Solution Explorer Context Menus](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-generate-code.png)
-
-![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-nswag-studio.png)
 
 
 ### Settings
@@ -97,6 +87,17 @@ Supports customising how NSwag generates code using the properties exposed by th
 Supports customising how the **.nswag** file is generated using a subset of the options available in NSwag Studio
 
 ![Options - NSwag Studio](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswagstudio.png)
+
+
+### Visual Studio for Mac
+
+![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-add-new-menu.png)
+
+![Enter URL to OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-add-new-dialog.png)
+
+![Solution Explorer Context Menus](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-generate-code.png)
+
+![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-nswag-studio.png)
 
 
 ## Cross Platform Command Line Tool
