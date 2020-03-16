@@ -7,6 +7,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using Microsoft.VisualStudio.Threading;
+using Mono.Addins;
 using MonoDevelop.Components.Commands;
 using MonoDevelop.Core;
 using MonoDevelop.Ide;
@@ -33,7 +34,8 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
             PackageDependencyListProvider dependencyListProvider)
         {
             process = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
-            dependencyProvider = dependencyListProvider ?? throw new ArgumentNullException(nameof(dependencyListProvider));
+            dependencyProvider =
+                dependencyListProvider ?? throw new ArgumentNullException(nameof(dependencyListProvider));
         }
 
         protected abstract string GeneratorName { get; }
@@ -59,29 +61,25 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
             if (string.IsNullOrWhiteSpace(url))
                 return;
 
-            var path = string.Empty;
-            var project = IdeApp.ProjectOperations.CurrentSelectedItem as Project;
-            if (project == null)
-            {
-                if (IdeApp.ProjectOperations.CurrentSelectedItem is ProjectFolder folder)
-                {
-                    project = folder.Project;
-                    path = folder.Path;
-                }
-
-                if (project == null)
-                    return;
-
-                if (string.IsNullOrWhiteSpace(path))
-                    path = project.ItemDirectory;
-            }
-            else
-            {
-                path = project.ItemDirectory;
-            }
+            var project = GetCurrentProject();
+            string path = IdeApp.ProjectOperations.CurrentSelectedItem is ProjectFolder folder
+                ? folder.Path
+                : project.ItemDirectory;
 
             await AddRequiredPackages(project);
-            await AddFile(project, path, url);
+            await AddFile(path, url);
+        }
+
+        private static Project GetCurrentProject()
+        {
+            var project = IdeApp.ProjectOperations.CurrentSelectedItem as Project;
+            if (project != null)
+                return project;
+
+            if (IdeApp.ProjectOperations.CurrentSelectedItem is ProjectFolder folder)
+                project = folder.Project;
+
+            return project;
         }
 
         protected abstract SupportedCodeGenerator CodeGeneratorType { get; }
@@ -98,16 +96,14 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
             await project.RefreshProjectBuilder();
         }
 
-        protected virtual async Task AddFile(
-            Project project,
-            string itemPath,
-            string url)
+        protected virtual async Task AddFile(string itemPath, string url)
         {
             var filename = Path.Combine(itemPath, "Swagger.json");
             var contents = await DownloadTextAsync(url);
             File.WriteAllText(filename, contents);
 
-            var item = project.AddFile(filename, "None");
+            var item = IdeApp.ProjectOperations.CurrentSelectedProject.AddFile(filename);
+            item.BuildAction = BuildAction.None;
             item.Generator = GeneratorName;
 
             IdeApp.ProjectOperations.MarkFileDirty(item.FilePath);
