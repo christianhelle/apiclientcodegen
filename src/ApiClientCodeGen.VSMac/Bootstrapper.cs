@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using ApiClientCodeGen.VSMac.Logging;
 
 namespace ApiClientCodeGen.VSMac
 {

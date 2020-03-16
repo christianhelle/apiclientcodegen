@@ -6,6 +6,7 @@ using ApiClientCodeGen.VSMac.CustomTools.AutoRest;
 using ApiClientCodeGen.VSMac.CustomTools.NSwag;
 using ApiClientCodeGen.VSMac.CustomTools.OpenApi;
 using ApiClientCodeGen.VSMac.CustomTools.Swagger;
+using ApiClientCodeGen.VSMac.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
