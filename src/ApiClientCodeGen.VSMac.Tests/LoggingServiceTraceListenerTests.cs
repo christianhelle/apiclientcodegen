@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using ApiClientCodeGen.VSMac.Logging;
 using ApiClientCodeGen.VSMac.Tests.Infrastructure;
 using FluentAssertions;
 using Moq;

@@ -1,6 +1,8 @@
 using System.IO;
 using System.Threading.Tasks;
 using ApiClientCodeGen.VSMac.Commands.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using MonoDevelop.Ide;
 using MonoDevelop.Projects;
 
 namespace ApiClientCodeGen.VSMac.Commands.Handlers
@@ -16,7 +18,10 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
             command = Container.Instance.Resolve<GenerateNSwagStudioCommand>();
         }
 
-        protected override async Task AddFile(Project project, string itemPath, string url)
+        protected override SupportedCodeGenerator CodeGeneratorType
+            => SupportedCodeGenerator.NSwagStudio;
+
+        protected override async Task AddFile(string itemPath, string url)
         {
             var filename = Path.Combine(itemPath, "Swagger.nswag");
             var swaggerJson = await DownloadTextAsync(url);
@@ -25,7 +30,7 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
                 url);
             
             File.WriteAllText(filename, contents);
-            project.AddFile(filename, "None");
+            IdeApp.ProjectOperations.CurrentSelectedProject.AddFile(filename, BuildAction.None);
             command.Run(filename);
         }
     }

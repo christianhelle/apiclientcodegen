@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using MonoDevelop.Core;
 
-namespace ApiClientCodeGen.VSMac
+namespace ApiClientCodeGen.VSMac.Logging
 {
     [ExcludeFromCodeCoverage]
     public class ProgressReporter : IProgressReporter
