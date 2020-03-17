@@ -101,7 +101,7 @@ Supports customising how the **.nswag** file is generated using a subset of the 
 
 
 ## Cross Platform Command Line Tool
-All custom tools mentioned above are also implemented in a cross platform command line
+All custom tools mentioned above are also implemented in a cross platform command line application
 
 #### Requirements
 - .NET Core 2.1 runtime
@@ -162,6 +162,47 @@ Arguments:
 Options:
   -?|-h|--help  Show help information
 ```
+
+## Usage Examples:
+
+Let's say we have a OpenAPI Specifications document called **Swagger.json**
+
+For starters, we can use the Swagger Petstore spec. Here's an example powershell script for downloading it
+
+```
+Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile Swagger.json
+```
+
+In case you don't have the CLI tool installed you can install it by
+
+```
+dotnet tool install --global rapicgen
+```
+
+Here's an example of how to generate code using **AutoRest**
+
+```
+$ rapicgen autorest Swagger.json GeneratedCode ./AutoRestOutput.cs
+```
+
+Here's an example of how to generate code using **NSwag**
+
+```
+$ rapicgen nswag Swagger.json GeneratedCode ./NSwagOutput.cs
+```
+
+Here's an example of how to generate code using **Swagger Codegen CLI**
+
+```
+$ rapicgen swagger Swagger.json GeneratedCode ./SwaggerOutput.cs
+```
+
+And last but but not the least, here's an example of how to generate code using **OpenAPI Generator**
+
+```
+$ rapicgen openapi Swagger.json GeneratedCode ./OpenApiOutput.cs
+```
+
 #
 
 For tips and tricks on software development, check out [my blog](https://christian-helle.blogspot.com)
