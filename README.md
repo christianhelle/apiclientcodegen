@@ -98,6 +98,34 @@ Supports customising how the **.nswag** file is generated using a subset of the 
 ![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-nswag-studio.png)
 
 
+## Installation
+
+The Visual Studio extension can be installed directly from Visual Studio 2017 or 2019 via the **Extensions Dialog Box**. The process is best described in the official Microsoft documentation for [Managing extensions for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/ide/finding-and-using-visual-studio-extensions?view=vs-2019)
+
+This installation process for Visual Studio for Mac is currently a bit troublesome as the MonoDevelop Addin Repository is currently not accepting new users so I can't really register and upload my extension. 
+
+Here's what you need to do:
+- Download the latest **.mpack file** from the [Latest Github Release](https://github.com/christianhelle/apiclientcodegen/releases/latest)
+- Now from within Visual Studio for Mac you need to launch the **Extensions Dialog Box**. You can do this from the menu **Visual Studio** -> **Extentions**
+
+![Open Extensions Dialog Box](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-menu.png)
+
+- Click on the **Install from File** button
+
+![Manually install .mpack file](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-install.png)
+
+- Browse to the .mpack file and select it. You will be prompted with a confirmation dialog
+
+![Confirm .mpack file install](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-install-confirm.png)
+
+- Click **Install** and restart Visual Studio for Mac
+- To Verify that the Add-in was installed you can re-open the Extensions Dialog Box, select the **Installed** tab and expand the **IDE Extensions**. You should be able to see the **REST API Client Code Generator**.
+
+- Uninstalling the Add-in is done in this same dialog box by clicking the **Uninstall** button
+
+![Manually uninstall Add-in](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-uninstall.png)
+
+
 ## Cross Platform Command Line Tool
 All custom tools mentioned above are also implemented in a cross platform command line application
 
