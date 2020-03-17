@@ -56,8 +56,6 @@ The **NSwag** code generator produces code that depends on the [Newtonsoft.Json]
 
 This Visual Studio Extension will automatically add the required NuGet packages that the generated code depends on
 
-***NOTE: The brand new Visual Studio for Mac version currently does not have support for automatically adding missing NuGet packages***
-
 
 ## Screenshots
 
