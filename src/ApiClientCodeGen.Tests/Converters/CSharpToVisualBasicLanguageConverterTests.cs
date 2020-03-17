@@ -8,7 +8,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Converter
     [TestClass]
     public class CSharpToVisualBasicLanguageConverterTests
     {
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public async Task ConvertShouldNotBeNullOrWhiteSpaceAsync()
         {
             const string code = "namespace X.X.X { public class Foo { } }";

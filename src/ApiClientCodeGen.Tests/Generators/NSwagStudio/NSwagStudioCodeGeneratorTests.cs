@@ -31,14 +31,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             progressMock = new Mock<IProgressReporter>();
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void NSwagStudio_Generate_Code_Using_NSwagStudio()
             => new NSwagStudioCodeGenerator(Path.GetFullPath("Swagger.nswag"), options, processMock.Object)
                 .GenerateCode(progressMock.Object)
                 .Should()
                 .BeNull();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_NSwagPath_From_Options()
         {
             progressMock = new Mock<IProgressReporter>();

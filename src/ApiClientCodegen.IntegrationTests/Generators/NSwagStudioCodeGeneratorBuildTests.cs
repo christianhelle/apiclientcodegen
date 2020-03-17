@@ -43,11 +43,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             code = File.ReadAllText(Path.GetFullPath("PetstoreClient.cs"));
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GeneratedCode_Can_Build_In_NetCoreApp() 
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, code, SupportedCodeGenerator.NSwagStudio);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary() 
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code, SupportedCodeGenerator.NSwagStudio);
     }

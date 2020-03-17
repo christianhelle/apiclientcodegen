@@ -9,23 +9,23 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
     {
         private readonly IGeneralOptions sut = new DefaultGeneralOptions();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void JavaPath_NotNull()
             => sut.JavaPath.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void NpmPath_NotNull()
             => sut.NpmPath.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void NSwagPath_NotNull()
             => sut.NSwagPath.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void SwaggerCodegenPath_NotNull()
             => sut.SwaggerCodegenPath.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void OpenApiGeneratorPath_NotNull()
             => sut.OpenApiGeneratorPath.Should().NotBeNullOrWhiteSpace();
     }

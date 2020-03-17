@@ -15,42 +15,42 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
         public void Init()
             => options = new Mock<IAutoRestOptions>().Object;
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_AddCredentials_From_Options()
             => new AutoRestOptions(options)
                 .AddCredentials
                 .Should()
                 .Be(options.AddCredentials);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_ClientSideValidation_From_Options()
             => new AutoRestOptions(options)
                 .ClientSideValidation
                 .Should()
                 .Be(options.ClientSideValidation);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_SyncMethods_From_Options()
             => new AutoRestOptions(options)
                 .SyncMethods
                 .Should()
                 .Be(options.SyncMethods);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_UseDateTimeOffset_From_Options()
             => new AutoRestOptions(options)
                 .UseDateTimeOffset
                 .Should()
                 .Be(options.UseDateTimeOffset);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_UseInternalConstructors_From_Options()
             => new AutoRestOptions(options)
                 .UseInternalConstructors
                 .Should()
                 .Be(options.UseInternalConstructors);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_OverrideClientName_From_Options()
             => new AutoRestOptions(options)
                 .OverrideClientName

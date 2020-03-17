@@ -34,17 +34,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             }
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GenerateCode_ReportsProgress()
             => mock.Verify(
                 c => c.Progress(
                     It.IsAny<uint>(), It.IsAny<uint>()));
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GetsCommand() 
             => ((TestCodeGenerator) sut).GetCommandCalled.Should().BeGreaterThan(0);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GetsArgument() 
             => ((TestCodeGenerator) sut).GetArgumentsCalled.Should().BeGreaterThan(0);
 

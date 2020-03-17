@@ -9,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
     [TestClass]
     public class FileHelperTests
     {
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void ReadThenDelete_Reads_File_Contents()
         {
             var tempFile = Path.GetTempFileName();
@@ -20,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
                 .Be(contents);
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void ReadThenDelete_Removes_File()
         {
             var tempFile = Path.GetTempFileName();
@@ -29,7 +29,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
             File.Exists(tempFile).Should().BeFalse();
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void CalculateChecksum_Always_Returns_Same_Hash()
         {
             var tempFile = Path.GetTempFileName();

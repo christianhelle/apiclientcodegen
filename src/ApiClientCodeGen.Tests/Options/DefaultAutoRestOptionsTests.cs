@@ -11,27 +11,27 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
     {
         private IAutoRestOptions sut = new DefaultAutoRestOptions();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void AddCredentials_Be_False()
             => sut.AddCredentials.Should().BeFalse();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void SyncMethods_Be_Essential()
             => sut.SyncMethods.Should().Be(SyncMethodOptions.Essential);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void ClientSideValidation_Be_False()
             => sut.ClientSideValidation.Should().BeTrue();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void OverrideClientName_Be_False()
             => sut.OverrideClientName.Should().BeFalse();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void UseInternalConstructors_Be_False()
             => sut.UseInternalConstructors.Should().BeFalse();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void UseDateTimeOffset_Be_False()
             => sut.UseDateTimeOffset.Should().BeFalse();
     }

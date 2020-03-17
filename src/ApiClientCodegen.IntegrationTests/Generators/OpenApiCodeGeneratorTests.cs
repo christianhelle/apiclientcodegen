@@ -39,29 +39,29 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         public static void CleanUp()
             => DependencyUninstaller.UninstallOpenApiGenerator();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void OpenApi_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void OpenApi_Reports_Progres()
             => mock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
                 Times.AtLeastOnce);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_JavaPath_From_Options() 
             => optionsMock.Verify(c => c.JavaPath);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, code, SupportedCodeGenerator.OpenApi);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code, SupportedCodeGenerator.OpenApi);
 
-        //[TestMethod]
+        //[TestMethod, Xunit.Fact]
         //public void GeneratedCode_Can_Build_In_NetFrameworkApp()
         //    => BuildHelper.BuildCSharp(ProjectTypes.DotNetFramework, code, SupportedCodeGenerator.OpenApi);
     }

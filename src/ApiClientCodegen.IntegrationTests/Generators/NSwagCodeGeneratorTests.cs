@@ -39,48 +39,48 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             code = codeGenerator.GenerateCode(mock.Object);
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void NSwag_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void NSwag_Reports_Progres()
             => mock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()),
                 Times.AtLeastOnce);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_InjectHttpClient_From_Options()
             => optionsMock.Verify(c => c.InjectHttpClient);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_GenerateClientInterfaces_From_Options()
             => optionsMock.Verify(c => c.GenerateClientInterfaces);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_GenerateDtoTypes_From_Options()
             => optionsMock.Verify(c => c.GenerateDtoTypes);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_UseBaseUrl_From_Options()
             => optionsMock.Verify(c => c.UseBaseUrl);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_ClassStyle_From_Options()
             => optionsMock.Verify(c => c.ClassStyle);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_UseDocumentTitle_From_Options()
             => optionsMock.Verify(c => c.UseDocumentTitle);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
             => BuildHelper.BuildCSharp(
                 ProjectTypes.DotNetCoreApp,
                 code,
                 SupportedCodeGenerator.NSwag);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
             => BuildHelper.BuildCSharp(
                 ProjectTypes.DotNetStandardLibrary,

@@ -9,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
     [TestClass]
     public class ProcessLauncherTests
     {
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Start_Random_Command_Throws_Win32Exception()
         {
             new Action(
@@ -21,7 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
                 .ThrowExactly<Win32Exception>();
         }
         
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Start_Invalid_Throws_InvalidOperationException()
         {
             new Action(

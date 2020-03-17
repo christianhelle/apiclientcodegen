@@ -13,35 +13,35 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
     [TestClass]
     public class GetSupportedCodeGeneratorTests
     {
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GetSupportedCodeGenerator_AutoRest()
             => typeof(AutoRestCodeGenerator)
                 .GetSupportedCodeGenerator()
                 .Should()
                 .Be(SupportedCodeGenerator.AutoRest);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GetSupportedCodeGenerator_NSwag()
             => typeof(NSwagCodeGenerator)
                 .GetSupportedCodeGenerator()
                 .Should()
                 .Be(SupportedCodeGenerator.NSwag);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GetSupportedCodeGenerator_Swagger()
             => typeof(SwaggerCodeGenerator)
                 .GetSupportedCodeGenerator()
                 .Should()
                 .Be(SupportedCodeGenerator.Swagger);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GetSupportedCodeGenerator_OpenApi()
             => typeof(OpenApiCodeGenerator)
                 .GetSupportedCodeGenerator()
                 .Should()
                 .Be(SupportedCodeGenerator.OpenApi);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Throws_NotSupported()
             => new Action(() => GetType().GetSupportedCodeGenerator())
                 .Should()

@@ -26,40 +26,40 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
             sut = new PackageDependency(name, version, forceUpdate, isSystemLibrary);
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Equals_Compares_Values()
             => sut.Equals(
                     new PackageDependency(sut.Name, sut.Version, sut.ForceUpdate))
                 .Should()
                 .BeTrue();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GetHashCode_Compares_Values()
             => sut.GetHashCode()
                 .Should()
                 .Be(new PackageDependency(sut.Name, sut.Version, sut.ForceUpdate).GetHashCode());
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Name_Set()
             => sut.Name.Should().Be(name);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Version_Set()
             => sut.Version.Should().Be(version);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void ForceUpdate_Set()
             => sut.ForceUpdate.Should().Be(forceUpdate);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void IsSystemLibrary_Set()
             => sut.IsSystemLibrary.Should().Be(isSystemLibrary);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Name_NotBeNullOrWhiteSpace()
             => sut.Name.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Version_NotBeNull()
             => sut.Version.Should().NotBeNull();
     }

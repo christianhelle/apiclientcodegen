@@ -8,7 +8,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
     [TestClass]
     public class ActionExtensionsTests
     {
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void SafeInvoke_Invokes_Action()
         {
             var actionInvoked = false;
@@ -16,7 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
             actionInvoked.Should().BeTrue();
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void SafeInvoke_Swallows_Exceptions()
             => new Action(() => throw new Exception())
                 .SafeInvoke();

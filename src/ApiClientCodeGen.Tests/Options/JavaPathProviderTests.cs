@@ -26,15 +26,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
                 .GetJavaExePath();
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GetJavaExePath_Should_NotBeNull()
             => result.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GetJavaExePath_Should_Read_JavaPath_Option()
             => mock.Verify(c => c.JavaPath);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GetJavaExePath_Returns_Default_Path()
         {
             var launcher = new Mock<IProcessLauncher>();

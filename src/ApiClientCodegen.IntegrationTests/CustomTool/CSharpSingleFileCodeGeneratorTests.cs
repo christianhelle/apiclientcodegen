@@ -22,7 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [DeploymentItem("Resources/Swagger.json")]
     public class CSharpSingleFileCodeGeneratorTests
     {
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void AutoRest_CSharp_Test()
         {
             var optionsMock = new Mock<IAutoRestOptions>();
@@ -34,7 +34,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void NSwag_CSharp_Test()
         {
             var optionsMock = new Mock<INSwagOptions>();
@@ -53,7 +53,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.NSwag, optionsFactory.Object);
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Swagger_CSharp_Test()
         {
             var optionsMock = new Mock<IGeneralOptions>();
@@ -65,7 +65,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.Swagger, optionsFactory.Object);
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void OpenApi_CSharp_Test()
         {
             var optionsMock = new Mock<IGeneralOptions>();

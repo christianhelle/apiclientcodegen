@@ -16,10 +16,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [DeploymentItem("Resources/Swagger.json")]
     public class VisualBasicSingleFileCodeGeneratorTests
     {
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void AutoRest_VisualBasic_Test() => Assert(SupportedCodeGenerator.AutoRest);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void NSwag_VisualBasic_Test()
         {
             var optionsMock = new Mock<INSwagOptions>();
@@ -38,7 +38,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.NSwag, optionsFactory.Object);
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Swagger_VisualBasic_Test()
         {
             var optionsMock = new Mock<IGeneralOptions>();
@@ -50,7 +50,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.Swagger, optionsFactory.Object);
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void OpenApi_VisualBasic_Test()
         {
             var optionsMock = new Mock<IGeneralOptions>();

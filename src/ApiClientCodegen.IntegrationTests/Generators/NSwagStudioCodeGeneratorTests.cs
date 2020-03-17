@@ -30,14 +30,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             options = optionsMock.Object;
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void NSwagStudio_Generate_Code_Using_NSwagStudio()
             => new NSwagStudioCodeGenerator(Path.GetFullPath("Swagger.nswag"), options, new ProcessLauncher())
                 .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
                 .BeNull();
         
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public async Task NSwagStudio_Generate_Code_Using_NSwagStudio_From_SwaggerSpec()
         {
             var contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
@@ -55,7 +55,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .BeTrue();
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_NSwagPath_From_Options()
         {
             new NSwagStudioCodeGenerator(
@@ -67,7 +67,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             optionsMock.Verify(c => c.NSwagPath);
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GetNSwagPath_ForceDownload()
             => new NSwagStudioCodeGenerator(
                     Path.GetFullPath("Swagger.nswag"),

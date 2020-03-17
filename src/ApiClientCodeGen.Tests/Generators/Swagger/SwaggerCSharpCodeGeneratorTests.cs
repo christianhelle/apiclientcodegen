@@ -24,11 +24,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
                     new ProcessLauncher())
                 .GenerateCode(progressMock.Object);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_SwaggerCodegenPath()
             => optionsMock.Verify(c => c.SwaggerCodegenPath);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Updates_Progress()
             => progressMock.Verify(
                 c => c.Progress(

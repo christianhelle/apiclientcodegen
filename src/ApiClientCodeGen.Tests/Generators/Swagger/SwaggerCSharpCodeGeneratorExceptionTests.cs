@@ -9,19 +9,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
     [TestClass]
     public class SwaggerCSharpCodeGeneratorExceptionTests
     {
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Constructor_Requires_SwaggerFile()
             => new Action(() => new SwaggerCSharpCodeGenerator(null, null, null, new ProcessLauncher()))
                 .Should()
                 .ThrowExactly<ArgumentNullException>();
         
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Constructor_Requires_DefaultNamespace()
             => new Action(() => new SwaggerCSharpCodeGenerator("", null, null, new ProcessLauncher()))
                 .Should()
                 .ThrowExactly<ArgumentNullException>();
         
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Constructor_Requires_Options()
             => new Action(() => new SwaggerCSharpCodeGenerator("", "", null, new ProcessLauncher()))
                 .Should()

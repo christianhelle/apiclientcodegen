@@ -20,15 +20,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
             }.ToJson();
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void NotNull()
             => json.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Is_CamelCase()
             => json.Should().NotContain("Str").And.Contain("str");
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Ignores_Null_Values()
             => json.Should().NotContain("null");
     }

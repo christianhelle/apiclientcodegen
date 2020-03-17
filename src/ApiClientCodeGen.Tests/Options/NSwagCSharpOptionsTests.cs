@@ -15,35 +15,35 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
         public void Init()
             => options = new Mock<INSwagOptions>().Object;
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_InjectHttpClient_From_Options()
             => new NSwagCSharpOptions(options)
                 .InjectHttpClient
                 .Should()
                 .Be(options.InjectHttpClient);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_GenerateClientInterfaces_From_Options()
             => new NSwagCSharpOptions(options)
                 .GenerateClientInterfaces
                 .Should()
                 .Be(options.GenerateClientInterfaces);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_GenerateDtoTypes_From_Options()
             => new NSwagCSharpOptions(options)
                 .GenerateDtoTypes
                 .Should()
                 .Be(options.GenerateDtoTypes);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_UseBaseUrl_From_Options()
             => new NSwagCSharpOptions(options)
                 .UseBaseUrl
                 .Should()
                 .Be(options.UseBaseUrl);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_ClassStyle_From_Options()
             => new NSwagCSharpOptions(options)
                 .ClassStyle

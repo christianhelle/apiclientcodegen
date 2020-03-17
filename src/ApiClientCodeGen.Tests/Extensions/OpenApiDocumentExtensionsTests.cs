@@ -11,21 +11,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
     [DeploymentItem("Resources/Swagger.json")]
     public class OpenApiDocumentExtensionsTests
     {
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public async Task Can_GenerateClassName_From_Json_Using_DocumentTitle()
             => (await OpenApiDocument.FromJsonAsync(File.ReadAllText("Swagger.json")))
             .GenerateClassName()
             .Should()
             .Be("PetstoreClient");
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public async Task Can_GenerateClassName_From_FileName()
             => (await OpenApiDocument.FromFileAsync("Swagger.json"))
                 .GenerateClassName(false)
                 .Should()
                 .Be("Swagger");
         
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public async Task Can_GenerateClassName_From_Json()
             => (await OpenApiDocument.FromJsonAsync(File.ReadAllText("Swagger.json")))
                 .GenerateClassName(false)

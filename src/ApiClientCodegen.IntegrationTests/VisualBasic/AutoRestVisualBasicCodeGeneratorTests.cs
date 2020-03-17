@@ -37,11 +37,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         public static void CleanUp()
             => DependencyUninstaller.UninstallAutoRest();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void AutoRest_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void AutoRest_Reports_Progres()
             => mock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 

@@ -25,43 +25,43 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
                 mock.Object);
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_InjectHttpClient_From_Options()
             => mock.Verify(c => c.InjectHttpClient);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_GenerateClientInterfaces_From_Options()
             => mock.Verify(c => c.GenerateClientInterfaces);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_GenerateDtoTypes_From_Options()
             => mock.Verify(c => c.GenerateDtoTypes);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_UseBaseUrl_From_Options()
             => mock.Verify(c => c.UseBaseUrl);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_ClassStyle_From_Options()
             => mock.Verify(c => c.ClassStyle);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_GenerateResponseClasses_From_Options()
             => mock.Verify(c => c.GenerateResponseClasses);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_GenerateJsonMethods_From_Options()
             => mock.Verify(c => c.GenerateJsonMethods);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_RequiredPropertiesMustBeDefined_From_Options()
             => mock.Verify(c => c.RequiredPropertiesMustBeDefined);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_GenerateDefaultValues_From_Options()
             => mock.Verify(c => c.GenerateDefaultValues);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_GenerateDataAnnotations_From_Options()
             => mock.Verify(c => c.GenerateDataAnnotations);
     }

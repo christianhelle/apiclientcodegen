@@ -8,7 +8,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
     [DeploymentItem("Resources/Swagger.json")]
     public class DeploymentItemTests
     {        
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Can_Read_Test_Swagger_Spec()
             => File.ReadAllText("Swagger.json")
                 .Should()

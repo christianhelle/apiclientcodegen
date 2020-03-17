@@ -7,7 +7,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
     [TestClass]   
     public class TestingUtilityTests
     {
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void IsRunningFromUnitTest_BeTrue()
             => TestingUtility.IsRunningFromUnitTest.Should().BeTrue();
     }

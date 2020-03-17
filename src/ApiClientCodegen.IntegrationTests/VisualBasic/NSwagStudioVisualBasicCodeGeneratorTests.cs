@@ -27,7 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             options = optionsMock.Object;
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public async Task NSwagStudio_Generate_Code_Using_NSwagStudio()
         {
             var contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(

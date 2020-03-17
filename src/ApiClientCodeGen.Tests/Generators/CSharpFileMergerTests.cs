@@ -9,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
     [TestCategory("SkipWhenLiveUnitTesting")]
     public class CSharpFileMergerTests
     {
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Can_Merge_CSharp_Files()
             => CSharpFileMerger.MergeFiles(
                     Path.Combine(

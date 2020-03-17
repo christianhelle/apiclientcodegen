@@ -41,48 +41,48 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         public static void CleanUp()
             => DependencyUninstaller.UninstallAutoRest();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void AutoRest_CSharp_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void AutoRest_CSharp_Reports_Progres()
             => mock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
                 Times.AtLeastOnce);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_AddCredentials_From_Options() 
             => optionsMock.Verify(c => c.AddCredentials, Times.AtLeastOnce);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_ClientSideValidation_From_Options() 
             => optionsMock.Verify(c => c.ClientSideValidation, Times.AtLeastOnce);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_OverrideClientName_From_Options() 
             => optionsMock.Verify(c => c.OverrideClientName, Times.AtLeastOnce);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_SyncMethods_From_Options() 
             => optionsMock.Verify(c => c.SyncMethods, Times.AtLeastOnce);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_UseDateTimeOffset_From_Options() 
             => optionsMock.Verify(c => c.UseDateTimeOffset, Times.AtLeastOnce);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_UseInternalConstructors_From_Options() 
             => optionsMock.Verify(c => c.UseInternalConstructors, Times.AtLeastOnce);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
             => BuildHelper.BuildCSharp(
                 ProjectTypes.DotNetCoreApp,
                 code,
                 SupportedCodeGenerator.AutoRest);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
             => BuildHelper.BuildCSharp(
                 ProjectTypes.DotNetStandardLibrary,

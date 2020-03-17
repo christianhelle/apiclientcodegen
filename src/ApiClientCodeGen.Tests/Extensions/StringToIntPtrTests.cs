@@ -19,15 +19,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
             result = str.ConvertToIntPtr(out length);
         }
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void IntPtr_Not_Zero()
             => result.Should().NotBe(IntPtr.Zero);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Length_Not_Zero()
             => length.Should().BeGreaterThan(0);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Length_Matches_String_Length()
             => length.Should().Be((uint)str.Length);
     }

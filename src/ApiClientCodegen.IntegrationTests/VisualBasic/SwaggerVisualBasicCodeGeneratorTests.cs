@@ -37,17 +37,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         public static void CleanUp()
             => DependencyUninstaller.UninstallSwaggerCodegen();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Swagger_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Swagger_Reports_Progres()
             => mock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()),
                 Times.AtLeastOnce);
 
-        [TestMethod]
+        [TestMethod, Xunit.Fact]
         public void Reads_JavaPath_From_Options() 
             => optionsMock.Verify(c => c.JavaPath);
     }
