@@ -208,25 +208,25 @@ dotnet tool install --global rapicgen
 Here's an example of how to generate code using **AutoRest**
 
 ```
-$ rapicgen autorest Swagger.json GeneratedCode ./AutoRestOutput.cs
+rapicgen autorest Swagger.json GeneratedCode ./AutoRestOutput.cs
 ```
 
 Here's an example of how to generate code using **NSwag**
 
 ```
-$ rapicgen nswag Swagger.json GeneratedCode ./NSwagOutput.cs
+rapicgen nswag Swagger.json GeneratedCode ./NSwagOutput.cs
 ```
 
 Here's an example of how to generate code using **Swagger Codegen CLI**
 
 ```
-$ rapicgen swagger Swagger.json GeneratedCode ./SwaggerOutput.cs
+rapicgen swagger Swagger.json GeneratedCode ./SwaggerOutput.cs
 ```
 
 And last but but not the least, here's an example of how to generate code using **OpenAPI Generator**
 
 ```
-$ rapicgen openapi Swagger.json GeneratedCode ./OpenApiOutput.cs
+rapicgen openapi Swagger.json GeneratedCode ./OpenApiOutput.cs
 ```
 
 #
