@@ -19,6 +19,7 @@
     <TestProjectType>UnitTest</TestProjectType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,7 +57,9 @@
   <ItemGroup>
     <Compile Include="Options\DefaultNSwagOptionsTests.cs" />
     <Compile Include="Options\DefaultNSwagStudioOptionsTests.cs" />
+    <Compile Include="Resources\EmbeddedResources.cs" />
     <Compile Include="TestingUtilityTests.cs" />
+    <Compile Include="TestWithResources.cs" />
     <None Include="Converters\CSharpToVisualBasicLanguageConverterTests.cs" />
     <Compile Include="CustomTool\SingleFileCodeGeneratorTests.cs" />
     <Compile Include="CustomTool\TestSingleFileCodeGenerator.cs" />
@@ -103,12 +106,12 @@
     <Compile Include="TestClassBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Swagger.json">
+    <EmbeddedResource Include="Resources\Swagger.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Swagger.nswag">
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Swagger.nswag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj">
