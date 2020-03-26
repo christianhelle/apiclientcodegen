@@ -2,14 +2,14 @@
 using System.ComponentModel;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators
 {
-    [TestClass]
+    
     public class ProcessLauncherTests
     {
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void Start_Random_Command_Throws_Win32Exception()
         {
             new Action(
@@ -21,7 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
                 .ThrowExactly<Win32Exception>();
         }
         
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void Start_Invalid_Throws_InvalidOperationException()
         {
             new Action(

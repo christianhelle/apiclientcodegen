@@ -11,18 +11,18 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using Moq;
 using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.CustomTool
 {
-    [TestClass]
-    [TestCategory("SkipWhenLiveUnitTesting")]
-    [DeploymentItem("Resources/Swagger.json")]
+    
+    [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
+    // [DeploymentItem("Resources/Swagger.json")]
     public class CSharpSingleFileCodeGeneratorTests
     {
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void AutoRest_CSharp_Test()
         {
             var optionsMock = new Mock<IAutoRestOptions>();
@@ -34,7 +34,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
         }
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void NSwag_CSharp_Test()
         {
             var optionsMock = new Mock<INSwagOptions>();
@@ -53,7 +53,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.NSwag, optionsFactory.Object);
         }
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void Swagger_CSharp_Test()
         {
             var optionsMock = new Mock<IGeneralOptions>();
@@ -65,7 +65,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.Swagger, optionsFactory.Object);
         }
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void OpenApi_CSharp_Test()
         {
             var optionsMock = new Mock<IGeneralOptions>();

@@ -6,22 +6,22 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Genera
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
-    [TestClass]
-    [TestCategory("SkipWhenLiveUnitTesting")]
-    [DeploymentItem("Resources/Swagger.json")]
+    
+    [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
+    // [DeploymentItem("Resources/Swagger.json")]
     public class SwaggerCodeGeneratorTests
     {
         private static readonly Mock<IProgressReporter> mock = new Mock<IProgressReporter>();
         private static Mock<IGeneralOptions> optionsMock;
         private static string code = null;
 
-        [ClassInitialize]
-        public static void Init(TestContext testContext)
+        // [ClassInitialize]
+        public static void Init(/* TestContext testContext */)
         {
             optionsMock = new Mock<IGeneralOptions>();
             optionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
@@ -35,29 +35,29 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             code = codeGenerator.GenerateCode(mock.Object);
         }
 
-        [ClassCleanup]
+        // [ClassCleanup]
         public static void CleanUp()
             => DependencyUninstaller.UninstallSwaggerCodegen();
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void Swagger_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void Swagger_Reports_Progres()
             => mock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()),
                 Times.AtLeastOnce);
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void Reads_JavaPath_From_Options() 
             => optionsMock.Verify(c => c.JavaPath);
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, code, SupportedCodeGenerator.Swagger);
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code, SupportedCodeGenerator.Swagger);
     }

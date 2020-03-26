@@ -7,23 +7,23 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStu
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
-    [TestClass]
-    [TestCategory("SkipWhenLiveUnitTesting")]
-    [DeploymentItem("Resources/Swagger.nswag")]
-    [DeploymentItem("Resources/Swagger.json")]
+    
+    [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
+    // [DeploymentItem("Resources/Swagger.nswag")]
+    // [DeploymentItem("Resources/Swagger.json")]
     public class NSwagStudioCodeGeneratorBuildTests
     {
         private static Mock<IGeneralOptions> optionsMock;
         private static IGeneralOptions options;
         private static string code;
 
-        [ClassInitialize]
-        public static void Init(TestContext testContext)
+        // [ClassInitialize]
+        public static void Init(/* TestContext testContext */)
         {
             optionsMock = new Mock<IGeneralOptions>();
             optionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetNSwagPath());
@@ -43,11 +43,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             code = File.ReadAllText(Path.GetFullPath("PetstoreClient.cs"));
         }
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void GeneratedCode_Can_Build_In_NetCoreApp() 
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, code, SupportedCodeGenerator.NSwagStudio);
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary() 
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code, SupportedCodeGenerator.NSwagStudio);
     }

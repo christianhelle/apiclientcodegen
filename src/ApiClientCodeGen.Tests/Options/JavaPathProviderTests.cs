@@ -2,19 +2,18 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
 {
-    [TestClass]
+    
     public class JavaPathProviderTests
     {
         private Mock<IGeneralOptions> mock;
         private string result;
 
-        [TestInitialize]
-        public void Init()
+        public JavaPathProviderTests()
         {
             mock = new Mock<IGeneralOptions>();
             mock.Setup(c => c.JavaPath)
@@ -26,15 +25,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
                 .GetJavaExePath();
         }
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void GetJavaExePath_Should_NotBeNull()
             => result.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void GetJavaExePath_Should_Read_JavaPath_Option()
             => mock.Verify(c => c.JavaPath);
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void GetJavaExePath_Returns_Default_Path()
         {
             var launcher = new Mock<IProcessLauncher>();

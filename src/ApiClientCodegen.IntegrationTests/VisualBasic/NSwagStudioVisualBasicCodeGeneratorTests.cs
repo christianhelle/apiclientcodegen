@@ -5,15 +5,15 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using FluentAssertions;
 using ICSharpCode.CodeConverter;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.VisualBasic
 {
-    [TestClass]
-    [TestCategory("SkipWhenLiveUnitTesting")]
-    [DeploymentItem("Resources/Swagger.nswag")]
-    [DeploymentItem("Resources/Swagger.json")]
+    
+    [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
+    // [DeploymentItem("Resources/Swagger.nswag")]
+    // [DeploymentItem("Resources/Swagger.json")]
     public class NSwagStudioVisualBasicCodeGeneratorTests
     {
         private Mock<IGeneralOptions> optionsMock;
@@ -27,7 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             options = optionsMock.Object;
         }
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public async Task NSwagStudio_Generate_Code_Using_NSwagStudio()
         {
             var contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(

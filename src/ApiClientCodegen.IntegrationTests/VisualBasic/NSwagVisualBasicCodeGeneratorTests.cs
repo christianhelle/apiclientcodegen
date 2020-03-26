@@ -5,14 +5,14 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using FluentAssertions;
 using ICSharpCode.CodeConverter;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.VisualBasic
 {
-    [TestClass]
-    [TestCategory("SkipWhenLiveUnitTesting")]
-    [DeploymentItem("Resources/Swagger.json")]
+    
+    [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
+    // [DeploymentItem("Resources/Swagger.json")]
     public class NSwagVisualBasicCodeGeneratorTests
     {
         private static readonly Mock<IProgressReporter> mock = new Mock<IProgressReporter>();
@@ -21,8 +21,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         private static readonly Mock<INSwagCodeGeneratorSettingsFactory> settingsMock = new Mock<INSwagCodeGeneratorSettingsFactory>();
         private static string code = null;
 
-        [ClassInitialize]
-        public static async Task InitAsync(TestContext testContext)
+        // [ClassInitialize]
+        public static async Task InitAsync(/* TestContext testContext */)
         {
             var defaultNamespace = typeof(NSwagVisualBasicCodeGeneratorTests).Namespace;
             var codeGenerator = new NSwagCSharpCodeGenerator(
@@ -38,33 +38,33 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             code = result.ConvertedCode;
         }
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void NSwag_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void NSwag_Reports_Progres()
             => mock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()),
                 Times.AtLeastOnce);
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void Reads_InjectHttpClient_From_Options()
             => optionsMock.Verify(c => c.InjectHttpClient);
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void Reads_GenerateClientInterfaces_From_Options()
             => optionsMock.Verify(c => c.GenerateClientInterfaces);
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void Reads_GenerateDtoTypes_From_Options()
             => optionsMock.Verify(c => c.GenerateDtoTypes);
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void Reads_UseBaseUrl_From_Options()
             => optionsMock.Verify(c => c.UseBaseUrl);
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void Reads_ClassStyle_From_Options()
             => optionsMock.Verify(c => c.ClassStyle);
     }

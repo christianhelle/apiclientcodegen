@@ -8,36 +8,35 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagS
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
-    [TestClass]
-    [TestCategory("SkipWhenLiveUnitTesting")]
-    [DeploymentItem("Resources/Swagger.nswag")]
-    [DeploymentItem("Resources/Swagger.json")]
+    
+    [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
+    // [DeploymentItem("Resources/Swagger.nswag")]
+    // [DeploymentItem("Resources/Swagger.json")]
     public class NSwagStudioCodeGeneratorTests
     {
         private Mock<IGeneralOptions> optionsMock;
         private IGeneralOptions options;
 
-        [TestInitialize]
-        public void Init()
+        public NSwagStudioCodeGeneratorTests()
         {
             optionsMock = new Mock<IGeneralOptions>();
             optionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetNSwagPath());
             options = optionsMock.Object;
         }
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void NSwagStudio_Generate_Code_Using_NSwagStudio()
             => new NSwagStudioCodeGenerator(Path.GetFullPath("Swagger.nswag"), options, new ProcessLauncher())
                 .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
                 .BeNull();
         
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public async Task NSwagStudio_Generate_Code_Using_NSwagStudio_From_SwaggerSpec()
         {
             var contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
@@ -55,7 +54,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .BeTrue();
         }
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void Reads_NSwagPath_From_Options()
         {
             new NSwagStudioCodeGenerator(
@@ -67,7 +66,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             optionsMock.Verify(c => c.NSwagPath);
         }
 
-        [TestMethod, Xunit.Fact]
+        [Xunit.Fact]
         public void GetNSwagPath_ForceDownload()
             => new NSwagStudioCodeGenerator(
                     Path.GetFullPath("Swagger.nswag"),
