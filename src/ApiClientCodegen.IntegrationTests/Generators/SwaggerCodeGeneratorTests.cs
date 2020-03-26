@@ -5,6 +5,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swa
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
 using FluentAssertions;
 
 using Moq;
@@ -13,15 +14,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 {
     
     [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
-    // [DeploymentItem("Resources/Swagger.json")]
-    public class SwaggerCodeGeneratorTests
+    public class SwaggerCodeGeneratorTests : TestWithResources
     {
         private static readonly Mock<IProgressReporter> mock = new Mock<IProgressReporter>();
         private static Mock<IGeneralOptions> optionsMock;
-        private static string code = null;
+        private readonly string code = null;
 
-        // [ClassInitialize]
-        public static void Init(/* TestContext testContext */)
+        public SwaggerCodeGeneratorTests()
         {
             optionsMock = new Mock<IGeneralOptions>();
             optionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());

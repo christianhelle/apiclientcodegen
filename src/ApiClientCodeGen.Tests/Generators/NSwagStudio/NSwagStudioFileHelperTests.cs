@@ -8,10 +8,7 @@ using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.NSwagStudio
 {
-    
-    // [DeploymentItem("Resources/Swagger.nswag")]
-    // [DeploymentItem("Resources/Swagger.json")]
-    public class NSwagStudioFileHelperTests
+    public class NSwagStudioFileHelperTests : TestWithResources
     {
         private Mock<INSwagStudioOptions> mock;
 

@@ -5,6 +5,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSw
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using FluentAssertions;
 
@@ -14,16 +15,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 {
     
     [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
-    // [DeploymentItem("Resources/Swagger.nswag")]
-    // [DeploymentItem("Resources/Swagger.json")]
-    public class NSwagStudioCodeGeneratorBuildTests
+    public class NSwagStudioCodeGeneratorBuildTests : TestWithResources
     {
         private static Mock<IGeneralOptions> optionsMock;
         private static IGeneralOptions options;
-        private static string code;
+        private readonly string code;
 
-        // [ClassInitialize]
-        public static void Init(/* TestContext testContext */)
+        public NSwagStudioCodeGeneratorBuildTests()
         {
             optionsMock = new Mock<IGeneralOptions>();
             optionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetNSwagPath());

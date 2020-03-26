@@ -8,7 +8,7 @@ using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.CustomTool
 {
-    public class SingleFileCodeGeneratorTests
+    public class SingleFileCodeGeneratorTests : TestWithResources
     {
         private const SupportedLanguage lang = SupportedLanguage.CSharp;
 

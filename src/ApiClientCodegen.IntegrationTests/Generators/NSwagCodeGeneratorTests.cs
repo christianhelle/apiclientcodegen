@@ -4,6 +4,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSw
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
 using FluentAssertions;
 
 using Moq;
@@ -13,15 +14,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 {
     
     [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
-    // [DeploymentItem("Resources/Swagger.json")]
-    public class NSwagCodeGeneratorTests
+    public class NSwagCodeGeneratorTests : TestWithResources
     {
         private static readonly Mock<IProgressReporter> mock = new Mock<IProgressReporter>();
         private static readonly Mock<INSwagOptions> optionsMock = new Mock<INSwagOptions>();
-        private static string code = null;
+        private readonly string code = null;
 
-        // [ClassInitialize]
-        public static void Init(/* TestContext testContext */)
+        public NSwagCodeGeneratorTests()
         {
             optionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
             optionsMock.Setup(c => c.InjectHttpClient).Returns(true);

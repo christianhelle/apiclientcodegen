@@ -4,9 +4,7 @@ using FluentAssertions;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
 {
-    
-    // [DeploymentItem("Resources/Swagger.json")]
-    public class DeploymentItemTests
+    public class DeploymentItemTests : TestWithResources
     {        
         [Xunit.Fact]
         public void Can_Read_Test_Swagger_Spec()

@@ -12,7 +12,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
 {
     
     // [DeploymentItem("Resources/Swagger.json")]
-    public class NSwagCSharpCodeGeneratorTests
+    public class NSwagCSharpCodeGeneratorTests : TestWithResources
     {
         private readonly Mock<INSwagOptions> optionsMock = new Mock<INSwagOptions>();
         private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();

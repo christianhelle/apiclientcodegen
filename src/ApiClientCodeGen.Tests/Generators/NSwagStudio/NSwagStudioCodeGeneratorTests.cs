@@ -11,9 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
 {
     
     [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
-    // [DeploymentItem("Resources/Swagger.nswag")]
-    // [DeploymentItem("Resources/Swagger.json")]
-    public class NSwagStudioCodeGeneratorTests
+    public class NSwagStudioCodeGeneratorTests : TestWithResources
     {
         private Mock<IGeneralOptions> optionsMock;
         private Mock<IProcessLauncher> processMock;

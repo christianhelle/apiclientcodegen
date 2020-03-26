@@ -8,9 +8,7 @@ using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.OpenApi
 {
-    
-    // [DeploymentItem("Resources/Swagger.json")]
-    public class OpenApiCSharpCodeGeneratorTests
+    public class OpenApiCSharpCodeGeneratorTests : TestWithResources
     {
         private readonly Mock<IGeneralOptions> optionsMock = new Mock<IGeneralOptions>();
         private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
