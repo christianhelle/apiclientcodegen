@@ -77,12 +77,6 @@
     <Compile Include="Generators\SwaggerCodeGeneratorTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Swagger.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Swagger.nswag">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj">
