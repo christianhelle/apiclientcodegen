@@ -1,63 +1,42 @@
-﻿using System.IO;
+﻿using System;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
 using FluentAssertions;
-
 using Moq;
+using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
-    
-    [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
-    public class SwaggerCodeGeneratorTests : TestWithResources
+    [Trait("Category", "SkipWhenLiveUnitTesting")]
+    public class SwaggerCodeGeneratorTests : IClassFixture<SwaggerCodeGeneratorFixture>
     {
-        private static readonly Mock<IProgressReporter> mock = new Mock<IProgressReporter>();
-        private static Mock<IGeneralOptions> optionsMock;
-        private readonly string code = null;
+        private readonly SwaggerCodeGeneratorFixture fixture;
 
-        public SwaggerCodeGeneratorTests()
+        public SwaggerCodeGeneratorTests(SwaggerCodeGeneratorFixture fixture)
         {
-            optionsMock = new Mock<IGeneralOptions>();
-            optionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
-
-            var codeGenerator = new SwaggerCSharpCodeGenerator(
-                Path.GetFullPath("Swagger.json"),
-                typeof(SwaggerCodeGeneratorTests).Namespace,
-                optionsMock.Object,
-                new ProcessLauncher());
-
-            code = codeGenerator.GenerateCode(mock.Object);
+            this.fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
         }
 
-        // [ClassCleanup]
-        public static void CleanUp()
-            => DependencyUninstaller.UninstallSwaggerCodegen();
-
-        [Xunit.Fact]
+        [Fact]
         public void Swagger_Generated_Code_NotNullOrWhitespace()
-            => code.Should().NotBeNullOrWhiteSpace();
+            => fixture.Code.Should().NotBeNullOrWhiteSpace();
 
-        [Xunit.Fact]
+        [Fact]
         public void Swagger_Reports_Progres()
-            => mock.Verify(
+            => fixture.ProgressReporterMock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()),
                 Times.AtLeastOnce);
 
-        [Xunit.Fact]
-        public void Reads_JavaPath_From_Options() 
-            => optionsMock.Verify(c => c.JavaPath);
+        [Fact]
+        public void Reads_JavaPath_From_Options()
+            => fixture.OptionsMock.Verify(c => c.JavaPath);
 
-        [Xunit.Fact]
+        [Fact]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
-            => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, code, SupportedCodeGenerator.Swagger);
+            => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, fixture.Code, SupportedCodeGenerator.Swagger);
 
-        [Xunit.Fact]
+        [Fact]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
-            => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code, SupportedCodeGenerator.Swagger);
+            => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, fixture.Code, SupportedCodeGenerator.Swagger);
     }
 }

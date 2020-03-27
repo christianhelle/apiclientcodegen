@@ -61,7 +61,11 @@
     <Compile Include="CustomTool\CSharpSingleFileCodeGenerator.cs" />
     <None Include="CustomTool\VisualBasicSingleFileCodeGeneratorTests.cs" />
     <None Include="CustomTool\VisualBasicSingleFileCodeGenerator.cs" />
+    <Compile Include="Generators\AutoRestCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\NSwagCodeGeneratorFixture.cs" />
     <Compile Include="Generators\NSwagStudioCodeGeneratorBuildTests.cs" />
+    <Compile Include="Generators\OpenApiCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\SwaggerCodeGeneratorFixture.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <None Include="VisualBasic\AutoRestVisualBasicCodeGeneratorTests.cs" />
     <Compile Include="Generators\AutoRestCodeGeneratorTests.cs" />

@@ -1,91 +1,69 @@
-﻿using System.IO;
+﻿using System;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
 using FluentAssertions;
 
 using Moq;
+using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
-    
-    [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
-    public class AutoRestCodeGeneratorTests : TestWithResources
+    [Trait("Category", "SkipWhenLiveUnitTesting")]
+    public class AutoRestCodeGeneratorTests : IClassFixture<AutoRestCodeGeneratorFixture>
     {
-        private static readonly Mock<IProgressReporter> mock = new Mock<IProgressReporter>();
-        private static readonly Mock<IAutoRestOptions> optionsMock = new Mock<IAutoRestOptions>();
-        private readonly string code = null;
+        private readonly AutoRestCodeGeneratorFixture fixture;
 
-        public AutoRestCodeGeneratorTests()
+        public AutoRestCodeGeneratorTests(AutoRestCodeGeneratorFixture fixture)
         {
-            optionsMock.Setup(c => c.AddCredentials).Returns(true);
-            optionsMock.Setup(c => c.UseDateTimeOffset).Returns(true);
-            optionsMock.Setup(c => c.UseInternalConstructors).Returns(true);
-
-            var codeGenerator = new AutoRestCSharpCodeGenerator(
-                Path.GetFullPath("Swagger.json"),
-                typeof(AutoRestCodeGeneratorTests).Namespace,
-                optionsMock.Object,
-                new ProcessLauncher());
-
-            optionsMock.Setup(c => c.OverrideClientName).Returns(true);
-            code = codeGenerator.GenerateCode(mock.Object);
+            this.fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
         }
-
-        // [ClassCleanup]
-        public static void CleanUp()
-            => DependencyUninstaller.UninstallAutoRest();
-
-        [Xunit.Fact]
+        
+        [Fact]
         public void AutoRest_CSharp_Generated_Code_NotNullOrWhitespace()
-            => code.Should().NotBeNullOrWhiteSpace();
+            => fixture.Code.Should().NotBeNullOrWhiteSpace();
 
-        [Xunit.Fact]
+        [Fact]
         public void AutoRest_CSharp_Reports_Progres()
-            => mock.Verify(
+            => fixture.ProgressReporterMock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
                 Times.AtLeastOnce);
 
-        [Xunit.Fact]
+        [Fact]
         public void Reads_AddCredentials_From_Options() 
-            => optionsMock.Verify(c => c.AddCredentials, Times.AtLeastOnce);
+            => fixture.OptionsMock.Verify(c => c.AddCredentials, Times.AtLeastOnce);
 
-        [Xunit.Fact]
+        [Fact]
         public void Reads_ClientSideValidation_From_Options() 
-            => optionsMock.Verify(c => c.ClientSideValidation, Times.AtLeastOnce);
+            => fixture.OptionsMock.Verify(c => c.ClientSideValidation, Times.AtLeastOnce);
 
-        [Xunit.Fact]
+        [Fact]
         public void Reads_OverrideClientName_From_Options() 
-            => optionsMock.Verify(c => c.OverrideClientName, Times.AtLeastOnce);
+            => fixture.OptionsMock.Verify(c => c.OverrideClientName, Times.AtLeastOnce);
 
-        [Xunit.Fact]
+        [Fact]
         public void Reads_SyncMethods_From_Options() 
-            => optionsMock.Verify(c => c.SyncMethods, Times.AtLeastOnce);
+            => fixture.OptionsMock.Verify(c => c.SyncMethods, Times.AtLeastOnce);
 
-        [Xunit.Fact]
+        [Fact]
         public void Reads_UseDateTimeOffset_From_Options() 
-            => optionsMock.Verify(c => c.UseDateTimeOffset, Times.AtLeastOnce);
+            => fixture.OptionsMock.Verify(c => c.UseDateTimeOffset, Times.AtLeastOnce);
 
-        [Xunit.Fact]
+        [Fact]
         public void Reads_UseInternalConstructors_From_Options() 
-            => optionsMock.Verify(c => c.UseInternalConstructors, Times.AtLeastOnce);
+            => fixture.OptionsMock.Verify(c => c.UseInternalConstructors, Times.AtLeastOnce);
 
-        [Xunit.Fact]
+        [Fact]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
             => BuildHelper.BuildCSharp(
                 ProjectTypes.DotNetCoreApp,
-                code,
+                fixture.Code,
                 SupportedCodeGenerator.AutoRest);
 
-        [Xunit.Fact]
+        [Fact]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
             => BuildHelper.BuildCSharp(
                 ProjectTypes.DotNetStandardLibrary,
-                code,
+                fixture.Code,
                 SupportedCodeGenerator.AutoRest);
     }
 }
