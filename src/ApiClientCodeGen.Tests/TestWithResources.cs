@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Net;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Resources;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
@@ -16,6 +17,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
                 CreateFileFromEmbeddedResource("Swagger.json");
                 CreateFileFromEmbeddedResource("Swagger.nswag");
             }
+            
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls |
+                                                   SecurityProtocolType.Tls11 |
+                                                   SecurityProtocolType.Tls12 |
+                                                   SecurityProtocolType.Ssl3;
         }
 
         private static void CreateFileFromEmbeddedResource(string resourceName)
