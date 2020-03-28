@@ -59,13 +59,13 @@ jobs:
     displayName: 'Visual Studio Test'
     inputs:
       runSettingsFile: src/Tests.runsettings
-      runInParallel: true
+      runInParallel: false
       codeCoverageEnabled: true
       platform: 'Any CPU'
       configuration: 'Release'
       diagnosticsEnabled: true
       rerunFailedTests: true
-      rerunMaxAttempts: 3
+      rerunMaxAttempts: 10
       rerunFailedThreshold: 30
     continueOnError: true
 
