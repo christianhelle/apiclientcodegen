@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Converters;
 using ICSharpCode.CodeConverter;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters
 {
+    [ExcludeFromCodeCoverage]
     public class CSharpToVisualBasicLanguageConverter : ILanguageConverter
     {
         public async Task<string> ConvertAsync(string code)
