@@ -3,14 +3,12 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
-
 using Moq;
+using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.Swagger
 {
-    
-    // [DeploymentItem("Resources/Swagger.json")]
-    public class SwaggerCSharpCodeGeneratorTests
+    public class SwaggerCSharpCodeGeneratorTests : TestWithResources
     {
         private readonly Mock<IGeneralOptions> optionsMock = new Mock<IGeneralOptions>();
         private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
@@ -23,11 +21,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
                     new ProcessLauncher())
                 .GenerateCode(progressMock.Object);
 
-        [Xunit.Fact]
+        [Fact]
         public void Reads_SwaggerCodegenPath()
             => optionsMock.Verify(c => c.SwaggerCodegenPath);
 
-        [Xunit.Fact]
+        [Fact]
         public void Updates_Progress()
             => progressMock.Verify(
                 c => c.Progress(

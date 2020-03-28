@@ -2,14 +2,12 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
-
 using Moq;
+using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators
 {
-    
-    // [DeploymentItem("Resources/Swagger.json")]
-    public class CodeGeneratorTests
+    public class CodeGeneratorTests : TestWithResources
     {
         private Mock<IProgressReporter> mock;
         private CodeGenerator sut;
@@ -33,17 +31,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             }
         }
 
-        [Xunit.Fact]
+        [Fact]
         public void GenerateCode_ReportsProgress()
             => mock.Verify(
                 c => c.Progress(
                     It.IsAny<uint>(), It.IsAny<uint>()));
 
-        [Xunit.Fact]
+        [Fact]
         public void GetsCommand() 
             => ((TestCodeGenerator) sut).GetCommandCalled.Should().BeGreaterThan(0);
 
-        [Xunit.Fact]
+        [Fact]
         public void GetsArgument() 
             => ((TestCodeGenerator) sut).GetArgumentsCalled.Should().BeGreaterThan(0);
 

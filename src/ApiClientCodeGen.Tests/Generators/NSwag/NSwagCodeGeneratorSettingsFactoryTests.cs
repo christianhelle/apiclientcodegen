@@ -3,12 +3,9 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using FluentAssertions;
 
-
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.NSwag
-{
-    
-    // [DeploymentItem("Resources/Swagger.json")]
-    public class NSwagCodeGeneratorSettingsFactoryTests
+{ 
+    public class NSwagCodeGeneratorSettingsFactoryTests : TestWithResources
     {
         [Xunit.Fact]
         public void Does_Not_Return_Null()

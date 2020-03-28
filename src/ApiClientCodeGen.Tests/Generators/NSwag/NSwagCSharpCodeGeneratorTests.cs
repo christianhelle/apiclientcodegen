@@ -1,17 +1,14 @@
-﻿using System.Threading.Tasks;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using FluentAssertions;
-
 using Moq;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;
+using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.NSwag
 {
-    
-    // [DeploymentItem("Resources/Swagger.json")]
     public class NSwagCSharpCodeGeneratorTests : TestWithResources
     {
         private readonly Mock<INSwagOptions> optionsMock = new Mock<INSwagOptions>();
@@ -38,7 +35,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             code = sut.GenerateCode(progressMock.Object);
         }
 
-        [Xunit.Fact]
+        [Fact]
         public void Updates_Progress()
             => progressMock.Verify(
                 c => c.Progress(
@@ -46,19 +43,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
                     It.IsAny<uint>()),
                 Times.Exactly(4));
 
-        [Xunit.Fact]
+        [Fact]
         public void Gets_Document_From_Factory()
             => documentFactoryMock.Verify(
                 c => c.GetDocument("Swagger.json"),
                 Times.Once);
 
-        [Xunit.Fact]
+        [Fact]
         public void Gets_GeneratorSettings()
             => settingsMock.Verify(
                 c => c.GetGeneratorSettings(document),
                 Times.Once);
 
-        [Xunit.Fact]
+        [Fact]
         public void Generated_Code()
             => code.Should().NotBeNullOrWhiteSpace();
     }
