@@ -10,7 +10,7 @@ using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
-    public class SwaggerCodeGeneratorFixture : TestWithResources, IDisposable
+    public class SwaggerCodeGeneratorFixture : TestWithResources
     {
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
         public readonly Mock<IGeneralOptions> OptionsMock= new Mock<IGeneralOptions>();
@@ -28,8 +28,5 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
         }
-
-        public void Dispose()
-            => DependencyUninstaller.UninstallSwaggerCodegen();
     }
 }

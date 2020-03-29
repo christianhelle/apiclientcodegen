@@ -10,7 +10,7 @@ using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
-    public class OpenApiCodeGeneratorFixture : TestWithResources, IDisposable
+    public class OpenApiCodeGeneratorFixture : TestWithResources
     {
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
         public Mock<IGeneralOptions> OptionsMock;
@@ -29,8 +29,5 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
         }
-
-        public void Dispose()
-            => DependencyUninstaller.UninstallOpenApiGenerator();
     }
 }
