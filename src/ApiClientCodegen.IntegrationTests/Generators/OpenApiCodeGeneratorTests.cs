@@ -1,68 +1,46 @@
-﻿using System.IO;
+﻿using System;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
-    [TestClass]
-    [TestCategory("SkipWhenLiveUnitTesting")]
-    [DeploymentItem("Resources/Swagger.json")]
-    public class OpenApiCodeGeneratorTests
+    [Trait("Category", "SkipWhenLiveUnitTesting")]
+    public class OpenApiCodeGeneratorTests : IClassFixture<OpenApiCodeGeneratorFixture>
     {
-        private static readonly Mock<IProgressReporter> mock = new Mock<IProgressReporter>();
-        private static Mock<IGeneralOptions> optionsMock;
-        private static string code = null;
+        private readonly OpenApiCodeGeneratorFixture fixture;
 
-        [ClassInitialize]
-        public static void Init(TestContext testContext)
+        public OpenApiCodeGeneratorTests(OpenApiCodeGeneratorFixture fixture)
         {
-            optionsMock = new Mock<IGeneralOptions>();
-            optionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
-
-            var codeGenerator = new OpenApiCSharpCodeGenerator(
-                Path.GetFullPath("Swagger.json"),
-                typeof(OpenApiCodeGeneratorTests).Namespace,
-                optionsMock.Object,
-                new ProcessLauncher());
-
-            code = codeGenerator.GenerateCode(mock.Object);
+            this.fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
         }
-
-        [ClassCleanup]
-        public static void CleanUp()
-            => DependencyUninstaller.UninstallOpenApiGenerator();
-
-        [TestMethod]
+        
+        [Fact]
         public void OpenApi_Generated_Code_NotNullOrWhitespace()
-            => code.Should().NotBeNullOrWhiteSpace();
+            => fixture.Code.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [Fact]
         public void OpenApi_Reports_Progres()
-            => mock.Verify(
+            => fixture.ProgressReporterMock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
                 Times.AtLeastOnce);
 
-        [TestMethod]
+        [Fact]
         public void Reads_JavaPath_From_Options() 
-            => optionsMock.Verify(c => c.JavaPath);
+            => fixture.OptionsMock.Verify(c => c.JavaPath);
 
-        [TestMethod]
+        [Fact]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
-            => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, code, SupportedCodeGenerator.OpenApi);
+            => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, fixture.Code, SupportedCodeGenerator.OpenApi);
 
-        [TestMethod]
+        [Fact]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
-            => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code, SupportedCodeGenerator.OpenApi);
+            => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, fixture.Code, SupportedCodeGenerator.OpenApi);
 
-        //[TestMethod]
-        //public void GeneratedCode_Can_Build_In_NetFrameworkApp()
-        //    => BuildHelper.BuildCSharp(ProjectTypes.DotNetFramework, code, SupportedCodeGenerator.OpenApi);
+        // [Fact]
+        // public void GeneratedCode_Can_Build_In_NetFrameworkApp()
+        //     => BuildHelper.BuildCSharp(ProjectTypes.DotNetFramework, fixture.Code, SupportedCodeGenerator.OpenApi);
     }
 }

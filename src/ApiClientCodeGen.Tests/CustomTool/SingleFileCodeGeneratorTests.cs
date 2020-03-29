@@ -3,21 +3,20 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.CustomTool
 {
-    [TestClass]
-    public class SingleFileCodeGeneratorTests
+    public class SingleFileCodeGeneratorTests : TestWithResources
     {
         private const SupportedLanguage lang = SupportedLanguage.CSharp;
 
-        [DataTestMethod]
-        [DataRow(SupportedCodeGenerator.AutoRest)]
-        [DataRow(SupportedCodeGenerator.NSwag)]
-        [DataRow(SupportedCodeGenerator.Swagger)]
-        [DataRow(SupportedCodeGenerator.OpenApi)]
+        [Theory]
+        [InlineData(SupportedCodeGenerator.AutoRest)]
+        [InlineData(SupportedCodeGenerator.NSwag)]
+        [InlineData(SupportedCodeGenerator.Swagger)]
+        [InlineData(SupportedCodeGenerator.OpenApi)]
         public void Generate_Test(SupportedCodeGenerator generator)
         {
             var code = Test.CreateAnnonymous<string>();

@@ -9,20 +9,19 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using NJsonSchema.CodeGeneration.CSharp;
+using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.CustomTool
 {
-    [TestClass]
-    [TestCategory("SkipWhenLiveUnitTesting")]
-    [DeploymentItem("Resources/Swagger.json")]
-    public class CSharpSingleFileCodeGeneratorTests
+    [Trait("Category", "SkipWhenLiveUnitTesting")]
+    public class CSharpSingleFileCodeGeneratorTests : TestWithResources
     {
-        [TestMethod]
+        [Fact]
         public void AutoRest_CSharp_Test()
         {
             var optionsMock = new Mock<IAutoRestOptions>();
@@ -34,7 +33,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
         }
 
-        [TestMethod]
+        [Fact]
         public void NSwag_CSharp_Test()
         {
             var optionsMock = new Mock<INSwagOptions>();
@@ -53,7 +52,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.NSwag, optionsFactory.Object);
         }
 
-        [TestMethod]
+        [Fact]
         public void Swagger_CSharp_Test()
         {
             var optionsMock = new Mock<IGeneralOptions>();
@@ -65,7 +64,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.Swagger, optionsFactory.Object);
         }
 
-        [TestMethod]
+        [Fact]
         public void OpenApi_CSharp_Test()
         {
             var optionsMock = new Mock<IGeneralOptions>();

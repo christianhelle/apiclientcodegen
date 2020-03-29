@@ -2,15 +2,12 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.NSwag
-{
-    [TestClass]
-    [DeploymentItem("Resources/Swagger.json")]
-    public class NSwagCodeGeneratorSettingsFactoryTests
+{ 
+    public class NSwagCodeGeneratorSettingsFactoryTests : TestWithResources
     {
-        [TestMethod]
+        [Xunit.Fact]
         public void Does_Not_Return_Null()
             => new NSwagCodeGeneratorSettingsFactory(
                     Test.CreateAnnonymous<string>(),

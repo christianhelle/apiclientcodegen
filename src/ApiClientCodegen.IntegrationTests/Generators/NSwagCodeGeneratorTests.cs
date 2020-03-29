@@ -1,90 +1,68 @@
-﻿using System.IO;
+﻿using System;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using NJsonSchema.CodeGeneration.CSharp;
+using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
-    [TestClass]
-    [TestCategory("SkipWhenLiveUnitTesting")]
-    [DeploymentItem("Resources/Swagger.json")]
-    public class NSwagCodeGeneratorTests
+    [Trait("Category", "SkipWhenLiveUnitTesting")]
+    public class NSwagCodeGeneratorTests : IClassFixture<NSwagCodeGeneratorFixture>
     {
-        private static readonly Mock<IProgressReporter> mock = new Mock<IProgressReporter>();
-        private static readonly Mock<INSwagOptions> optionsMock = new Mock<INSwagOptions>();
-        private static string code = null;
+        private readonly NSwagCodeGeneratorFixture fixture;
 
-        [ClassInitialize]
-        public static void Init(TestContext testContext)
+        public NSwagCodeGeneratorTests(NSwagCodeGeneratorFixture fixture)
         {
-            optionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
-            optionsMock.Setup(c => c.InjectHttpClient).Returns(true);
-            optionsMock.Setup(c => c.GenerateClientInterfaces).Returns(true);
-            optionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
-            optionsMock.Setup(c => c.UseBaseUrl).Returns(true);
-            optionsMock.Setup(c => c.ClassStyle).Returns(CSharpClassStyle.Poco);
-
-            var defaultNamespace = typeof(NSwagCodeGeneratorTests).Namespace;
-            var codeGenerator = new NSwagCSharpCodeGenerator(
-                Path.GetFullPath("Swagger.json"),
-                new OpenApiDocumentFactory(),
-                new NSwagCodeGeneratorSettingsFactory(defaultNamespace, optionsMock.Object));
-
-            code = codeGenerator.GenerateCode(mock.Object);
+            this.fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
         }
 
-        [TestMethod]
+        [Fact]
         public void NSwag_Generated_Code_NotNullOrWhitespace()
-            => code.Should().NotBeNullOrWhiteSpace();
+            => fixture.Code.Should().NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [Fact]
         public void NSwag_Reports_Progres()
-            => mock.Verify(
+            => fixture.ProgressReporterMock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()),
                 Times.AtLeastOnce);
 
-        [TestMethod]
+        [Fact]
         public void Reads_InjectHttpClient_From_Options()
-            => optionsMock.Verify(c => c.InjectHttpClient);
+            => fixture.OptionsMock.Verify(c => c.InjectHttpClient);
 
-        [TestMethod]
+        [Fact]
         public void Reads_GenerateClientInterfaces_From_Options()
-            => optionsMock.Verify(c => c.GenerateClientInterfaces);
+            => fixture.OptionsMock.Verify(c => c.GenerateClientInterfaces);
 
-        [TestMethod]
+        [Fact]
         public void Reads_GenerateDtoTypes_From_Options()
-            => optionsMock.Verify(c => c.GenerateDtoTypes);
+            => fixture.OptionsMock.Verify(c => c.GenerateDtoTypes);
 
-        [TestMethod]
+        [Fact]
         public void Reads_UseBaseUrl_From_Options()
-            => optionsMock.Verify(c => c.UseBaseUrl);
+            => fixture.OptionsMock.Verify(c => c.UseBaseUrl);
 
-        [TestMethod]
+        [Fact]
         public void Reads_ClassStyle_From_Options()
-            => optionsMock.Verify(c => c.ClassStyle);
+            => fixture.OptionsMock.Verify(c => c.ClassStyle);
 
-        [TestMethod]
+        [Fact]
         public void Reads_UseDocumentTitle_From_Options()
-            => optionsMock.Verify(c => c.UseDocumentTitle);
+            => fixture.OptionsMock.Verify(c => c.UseDocumentTitle);
 
-        [TestMethod]
+        [Fact]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
             => BuildHelper.BuildCSharp(
                 ProjectTypes.DotNetCoreApp,
-                code,
+                fixture.Code,
                 SupportedCodeGenerator.NSwag);
 
-        [TestMethod]
+        [Fact]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
             => BuildHelper.BuildCSharp(
                 ProjectTypes.DotNetStandardLibrary,
-                code,
+                fixture.Code,
                 SupportedCodeGenerator.NSwag);
     }
 }

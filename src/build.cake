@@ -41,7 +41,7 @@ Task("Run-Unit-Tests")
     VSTest("./**/bin/" + configuration + "/*Tests.dll",
            new VSTestSettings 
            { 
-               Parallel = false, 
+               Parallel = true, 
                EnableCodeCoverage = true,
                SettingsFile = File("./Tests.runsettings")
            });

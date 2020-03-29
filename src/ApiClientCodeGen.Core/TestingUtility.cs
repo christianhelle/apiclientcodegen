@@ -13,7 +13,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 
         private static bool IsTestFramework(Assembly assembly) 
             => assembly.FullName.Contains("Xunit") 
-            || assembly.FullName.Contains("Microsoft.VisualStudio.TestPlatform.TestFramework");
+            || assembly.FullName.Contains("Test");
 
         public static bool IsRunningFromUnitTest { get; }
     }

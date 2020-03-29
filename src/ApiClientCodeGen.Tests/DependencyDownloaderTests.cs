@@ -2,62 +2,61 @@
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
 {
-    [TestClass]
-    public class DependencyDownloaderTests
+    public class DependencyDownloaderTests : TestWithResources
     {
-        [TestMethod]
+        [Fact]
         public void InstallOpenApiGenerator_Returns_Path()
             => DependencyDownloader
                 .InstallOpenApiGenerator()
                 .Should()
                 .NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [Fact]
         public void InstallSwaggerCodegenCli_Returns_Path()
             => DependencyDownloader
                 .InstallSwaggerCodegenCli()
                 .Should()
                 .NotBeNullOrWhiteSpace();
                 
-        [TestMethod]
+        [Fact]
         public void InstallOpenApiGenerator_With_Path_Returns_Path()
             => DependencyDownloader
                 .InstallOpenApiGenerator(Path.GetTempPath())
                 .Should()
                 .NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [Fact]
         public void InstallSwaggerCodegenCli_With_Path_Returns_Path()
             => DependencyDownloader
                 .InstallSwaggerCodegenCli(Path.GetTempPath())
                 .Should()
                 .NotBeNullOrWhiteSpace();
         
-        [TestMethod]
+        [Fact]
         public void InstallOpenApiGenerator_Force_Returns_Path()
             => DependencyDownloader
                 .InstallOpenApiGenerator(forceDownload: true)
                 .Should()
                 .NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [Fact]
         public void InstallSwaggerCodegenCli_Force_Returns_Path()
             => DependencyDownloader
                 .InstallSwaggerCodegenCli(forceDownload: true)
                 .Should()
                 .NotBeNullOrWhiteSpace();
 
-        [TestMethod]
+        [Fact]
         public void InstallAutoRest_Returns_Path()
             => new Action(DependencyDownloader.InstallAutoRest)
                 .Should()
                 .NotThrow();
 
-        [TestMethod]
+        [Fact]
         public void InstallNSwag_Returns_Path()
             => new Action(DependencyDownloader.InstallNSwag)
                 .Should()

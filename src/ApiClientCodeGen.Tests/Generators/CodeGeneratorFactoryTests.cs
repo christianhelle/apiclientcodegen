@@ -13,18 +13,17 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators
 {
-    [TestClass]
+    
     public class CodeGeneratorFactoryTests
     {
-        private CodeGeneratorFactory sut;
+        private readonly CodeGeneratorFactory sut;
 
-        [TestInitialize]
-        public void Init()
+        public CodeGeneratorFactoryTests()
         {
             var mockFactory = new Mock<IOptionsFactory>();
             mockFactory
@@ -43,7 +42,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             sut = new CodeGeneratorFactory(mockFactory.Object);
         }
 
-        [TestMethod]
+        [Xunit.Fact]
         public void Can_Create_NSwagCodeGenerator()
             => sut.Create(
                 string.Empty,
@@ -54,7 +53,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             .Should()
             .BeOfType<NSwagCSharpCodeGenerator>();
 
-        [TestMethod]
+        [Xunit.Fact]
         public void Can_Create_AutoRestCodeGenerator()
             => sut.Create(
                 string.Empty,
@@ -65,7 +64,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             .Should()
             .BeOfType<AutoRestCSharpCodeGenerator>();
 
-        [TestMethod]
+        [Xunit.Fact]
         public void Can_Create_SwaggerCodeGenerator()
             => sut.Create(
                 string.Empty,
@@ -76,7 +75,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             .Should()
             .BeOfType<SwaggerCSharpCodeGenerator>();
 
-        [TestMethod]
+        [Xunit.Fact]
         public void Can_Create_OpenApiCodeGenerator()
             => sut.Create(
                     string.Empty,
@@ -87,7 +86,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
                 .Should()
                 .BeOfType<OpenApiCSharpCodeGenerator>();
 
-        [TestMethod]
+        [Xunit.Fact]
         public void Create_NSwagStudio_Throws_NotSupported()
             => new Action(
                     () => sut.Create(
