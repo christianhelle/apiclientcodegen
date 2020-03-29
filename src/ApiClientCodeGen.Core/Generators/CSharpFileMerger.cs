@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -24,14 +25,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             }
             finally
             {
-                try
-                {
-                    Directory.Delete(output, true);
-                }
-                catch (Exception e)
-                {
-                    Trace.WriteLine(e);
-                }
+                TryDeleteOutput(output);
+            }
+        }
+
+        [ExcludeFromCodeCoverage]
+        private static void TryDeleteOutput(string output)
+        {
+            try
+            {
+                Directory.Delete(output, true);
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e);
             }
         }
 
