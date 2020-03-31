@@ -22,6 +22,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.CLI", "Api
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.CLI.Tests", "ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj", "{2A86E93C-24D9-48D9-925A-D0882A683EB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.Core.Tests", "ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj", "{0B0009BF-5278-4804-B6E4-D36B0FF6BFA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{2A86E93C-24D9-48D9-925A-D0882A683EB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A86E93C-24D9-48D9-925A-D0882A683EB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A86E93C-24D9-48D9-925A-D0882A683EB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B0009BF-5278-4804-B6E4-D36B0FF6BFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B0009BF-5278-4804-B6E4-D36B0FF6BFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B0009BF-5278-4804-B6E4-D36B0FF6BFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B0009BF-5278-4804-B6E4-D36B0FF6BFA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

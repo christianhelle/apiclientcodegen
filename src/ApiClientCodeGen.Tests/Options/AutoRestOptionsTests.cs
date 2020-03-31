@@ -6,7 +6,6 @@ using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
 {
-    
     public class AutoRestOptionsTests
     {
         private readonly IAutoRestOptions options;
