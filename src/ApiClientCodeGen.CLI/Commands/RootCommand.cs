@@ -6,7 +6,7 @@ using McMaster.Extensions.CommandLineUtils;
 namespace ApiClientCodeGen.CLI.Commands
 {
     [ExcludeFromCodeCoverage]
-    [Command(Name = "run", ThrowOnUnexpectedArgument = false, OptionsComparison = StringComparison.InvariantCultureIgnoreCase)]
+    [Command(Name = "run", OptionsComparison = StringComparison.InvariantCultureIgnoreCase)]
     [Subcommand(
         typeof(AutoRestCommand),
         typeof(NSwagCommand),
