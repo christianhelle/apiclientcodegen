@@ -7,6 +7,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using EnvDTE;
 using Microsoft;
 using Microsoft.VisualStudio;
@@ -194,6 +196,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             AsyncPackage package,
             SupportedCodeGenerator codeGenerator)
         {
+            var options = VsPackage.Instance.GetDialogPage(typeof(GeneralOptionPage)) as IGeneralOptions;
+            if (options?.InstallMissingPackages == false)
+            {
+                Trace.WriteLine("Skipping automatic depedency package installation");
+                return;
+            }
+
             Trace.WriteLine("Checking required dependencies");
 
             var componentModel = (IComponentModel)await package.GetServiceAsync(typeof(SComponentModel));
