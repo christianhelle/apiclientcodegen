@@ -19,6 +19,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
                 NSwagPath = options.NSwagPath;
                 SwaggerCodegenPath = options.SwaggerCodegenPath;
                 OpenApiGeneratorPath = options.OpenApiGeneratorPath;
+                InstallMissingPackages = options.InstallMissingPackages;
             }
             catch (Exception e)
             {
@@ -27,6 +28,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
                 NSwagPath = PathProvider.GetNSwagStudioPath();
                 SwaggerCodegenPath = PathProvider.GetSwaggerCodegenPath();
                 OpenApiGeneratorPath = PathProvider.GetOpenApiGeneratorPath();
+                InstallMissingPackages = true;
 
                 Trace.WriteLine(e);
                 Trace.WriteLine(Environment.NewLine);
@@ -36,6 +38,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
                 Trace.WriteLine($"NSwagPath = {NSwagPath}");
                 Trace.WriteLine($"SwaggerCodegenPath = {SwaggerCodegenPath}");
                 Trace.WriteLine($"OpenApiGeneratorPath = {OpenApiGeneratorPath}");
+                Trace.WriteLine($"InstallMissingPackages = {InstallMissingPackages}");
             }
         }
 
@@ -44,5 +47,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
         public string NSwagPath { get; set; }
         public string SwaggerCodegenPath { get; set; }
         public string OpenApiGeneratorPath { get; set; }
+        public bool InstallMissingPackages { get; }
     }
 }

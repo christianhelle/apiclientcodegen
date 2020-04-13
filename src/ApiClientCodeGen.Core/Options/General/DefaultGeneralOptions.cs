@@ -16,5 +16,6 @@
         public string NSwagPath { get; }
         public string SwaggerCodegenPath { get; }
         public string OpenApiGeneratorPath { get; }
+        public bool InstallMissingPackages { get; } = true;
     }
 }
