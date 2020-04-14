@@ -47,6 +47,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
         public string NSwagPath { get; set; }
         public string SwaggerCodegenPath { get; set; }
         public string OpenApiGeneratorPath { get; set; }
-        public bool InstallMissingPackages { get; }
+        public bool? InstallMissingPackages { get; }
     }
 }

@@ -7,6 +7,6 @@
         string NSwagPath { get; }
         string SwaggerCodegenPath { get; }
         string OpenApiGeneratorPath { get; }
-        bool InstallMissingPackages { get; }
+        bool? InstallMissingPackages { get; }
     }
 }

@@ -26,7 +26,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             tbNSwagPath.Text = options.NSwagPath;
             tbSwaggerPath.Text = options.SwaggerCodegenPath;
             tbOpenApiPath.Text = options.OpenApiGeneratorPath;
-            cbInstallMissingPackages.Checked = options.InstallMissingPackages;
+            cbInstallMissingPackages.Checked = options.InstallMissingPackages ?? true;
         }
 
         private void OpenFileDialog(Control output)
