@@ -49,7 +49,7 @@
             // lblJavaPath
             // 
             this.lblJavaPath.AutoSize = true;
-            this.lblJavaPath.Location = new System.Drawing.Point(13, 46);
+            this.lblJavaPath.Location = new System.Drawing.Point(13, 16);
             this.lblJavaPath.Name = "lblJavaPath";
             this.lblJavaPath.Size = new System.Drawing.Size(295, 13);
             this.lblJavaPath.TabIndex = 0;
@@ -59,7 +59,7 @@
             // 
             this.tbJavaPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbJavaPath.Location = new System.Drawing.Point(16, 62);
+            this.tbJavaPath.Location = new System.Drawing.Point(16, 32);
             this.tbJavaPath.Name = "tbJavaPath";
             this.tbJavaPath.Size = new System.Drawing.Size(325, 20);
             this.tbJavaPath.TabIndex = 1;
@@ -69,7 +69,7 @@
             // 
             this.btnJavaPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnJavaPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJavaPath.Location = new System.Drawing.Point(347, 62);
+            this.btnJavaPath.Location = new System.Drawing.Point(347, 32);
             this.btnJavaPath.Name = "btnJavaPath";
             this.btnJavaPath.Size = new System.Drawing.Size(30, 20);
             this.btnJavaPath.TabIndex = 2;
@@ -81,7 +81,7 @@
             // 
             this.btnNpmPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNpmPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNpmPath.Location = new System.Drawing.Point(347, 113);
+            this.btnNpmPath.Location = new System.Drawing.Point(347, 83);
             this.btnNpmPath.Name = "btnNpmPath";
             this.btnNpmPath.Size = new System.Drawing.Size(30, 20);
             this.btnNpmPath.TabIndex = 5;
@@ -93,7 +93,7 @@
             // 
             this.tbNpmPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbNpmPath.Location = new System.Drawing.Point(16, 113);
+            this.tbNpmPath.Location = new System.Drawing.Point(16, 83);
             this.tbNpmPath.Name = "tbNpmPath";
             this.tbNpmPath.Size = new System.Drawing.Size(325, 20);
             this.tbNpmPath.TabIndex = 4;
@@ -102,7 +102,7 @@
             // lblNpmPath
             // 
             this.lblNpmPath.AutoSize = true;
-            this.lblNpmPath.Location = new System.Drawing.Point(13, 97);
+            this.lblNpmPath.Location = new System.Drawing.Point(13, 67);
             this.lblNpmPath.Name = "lblNpmPath";
             this.lblNpmPath.Size = new System.Drawing.Size(105, 13);
             this.lblNpmPath.TabIndex = 3;
@@ -112,7 +112,7 @@
             // 
             this.btnNSwagPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNSwagPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNSwagPath.Location = new System.Drawing.Point(347, 168);
+            this.btnNSwagPath.Location = new System.Drawing.Point(347, 138);
             this.btnNSwagPath.Name = "btnNSwagPath";
             this.btnNSwagPath.Size = new System.Drawing.Size(30, 20);
             this.btnNSwagPath.TabIndex = 8;
@@ -124,7 +124,7 @@
             // 
             this.tbNSwagPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbNSwagPath.Location = new System.Drawing.Point(16, 168);
+            this.tbNSwagPath.Location = new System.Drawing.Point(16, 138);
             this.tbNSwagPath.Name = "tbNSwagPath";
             this.tbNSwagPath.Size = new System.Drawing.Size(325, 20);
             this.tbNSwagPath.TabIndex = 7;
@@ -133,7 +133,7 @@
             // lblNSwagPath
             // 
             this.lblNSwagPath.AutoSize = true;
-            this.lblNSwagPath.Location = new System.Drawing.Point(13, 152);
+            this.lblNSwagPath.Location = new System.Drawing.Point(13, 122);
             this.lblNSwagPath.Name = "lblNSwagPath";
             this.lblNSwagPath.Size = new System.Drawing.Size(264, 13);
             this.lblNSwagPath.TabIndex = 6;
@@ -143,7 +143,7 @@
             // 
             this.btnOpenApi.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOpenApi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpenApi.Location = new System.Drawing.Point(347, 280);
+            this.btnOpenApi.Location = new System.Drawing.Point(347, 250);
             this.btnOpenApi.Name = "btnOpenApi";
             this.btnOpenApi.Size = new System.Drawing.Size(30, 20);
             this.btnOpenApi.TabIndex = 14;
@@ -155,7 +155,7 @@
             // 
             this.tbOpenApiPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbOpenApiPath.Location = new System.Drawing.Point(16, 280);
+            this.tbOpenApiPath.Location = new System.Drawing.Point(16, 250);
             this.tbOpenApiPath.Name = "tbOpenApiPath";
             this.tbOpenApiPath.Size = new System.Drawing.Size(325, 20);
             this.tbOpenApiPath.TabIndex = 13;
@@ -164,7 +164,7 @@
             // lblOpenApiPath
             // 
             this.lblOpenApiPath.AutoSize = true;
-            this.lblOpenApiPath.Location = new System.Drawing.Point(13, 264);
+            this.lblOpenApiPath.Location = new System.Drawing.Point(13, 234);
             this.lblOpenApiPath.Name = "lblOpenApiPath";
             this.lblOpenApiPath.Size = new System.Drawing.Size(366, 13);
             this.lblOpenApiPath.TabIndex = 12;
@@ -174,7 +174,7 @@
             // 
             this.btnSwagger.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSwagger.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSwagger.Location = new System.Drawing.Point(347, 225);
+            this.btnSwagger.Location = new System.Drawing.Point(347, 195);
             this.btnSwagger.Name = "btnSwagger";
             this.btnSwagger.Size = new System.Drawing.Size(30, 20);
             this.btnSwagger.TabIndex = 11;
@@ -186,7 +186,7 @@
             // 
             this.tbSwaggerPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSwaggerPath.Location = new System.Drawing.Point(16, 225);
+            this.tbSwaggerPath.Location = new System.Drawing.Point(16, 195);
             this.tbSwaggerPath.Name = "tbSwaggerPath";
             this.tbSwaggerPath.Size = new System.Drawing.Size(325, 20);
             this.tbSwaggerPath.TabIndex = 10;
@@ -195,7 +195,7 @@
             // lblSwaggerPath
             // 
             this.lblSwaggerPath.AutoSize = true;
-            this.lblSwaggerPath.Location = new System.Drawing.Point(13, 209);
+            this.lblSwaggerPath.Location = new System.Drawing.Point(13, 179);
             this.lblSwaggerPath.Name = "lblSwaggerPath";
             this.lblSwaggerPath.Size = new System.Drawing.Size(373, 13);
             this.lblSwaggerPath.TabIndex = 9;
@@ -204,10 +204,10 @@
             // cbInstallMissingPackages
             // 
             this.cbInstallMissingPackages.AutoSize = true;
-            this.cbInstallMissingPackages.Location = new System.Drawing.Point(16, 14);
+            this.cbInstallMissingPackages.Location = new System.Drawing.Point(16, 285);
             this.cbInstallMissingPackages.Name = "cbInstallMissingPackages";
             this.cbInstallMissingPackages.Size = new System.Drawing.Size(238, 17);
-            this.cbInstallMissingPackages.TabIndex = 15;
+            this.cbInstallMissingPackages.TabIndex = 16;
             this.cbInstallMissingPackages.Text = "Automatically install missing NuGet packages";
             this.cbInstallMissingPackages.UseVisualStyleBackColor = true;
             this.cbInstallMissingPackages.CheckedChanged += new System.EventHandler(this.InstallMissingPackages_CheckedChanged);
