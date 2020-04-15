@@ -41,15 +41,13 @@
             // 
             this.tbUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbUrl.Location = new System.Drawing.Point(111, 15);
+            this.tbUrl.Location = new System.Drawing.Point(120, 15);
             this.tbUrl.Name = "tbUrl";
-            this.tbUrl.Size = new System.Drawing.Size(429, 20);
+            this.tbUrl.Size = new System.Drawing.Size(420, 20);
             this.tbUrl.TabIndex = 0;
             // 
             // lblUrl
             // 
-            this.lblUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUrl.AutoSize = true;
             this.lblUrl.Location = new System.Drawing.Point(12, 18);
             this.lblUrl.Name = "lblUrl";
@@ -81,8 +79,6 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(56, 44);
             this.label2.Name = "label2";
@@ -94,9 +90,9 @@
             // 
             this.tbFilename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbFilename.Location = new System.Drawing.Point(111, 41);
+            this.tbFilename.Location = new System.Drawing.Point(120, 41);
             this.tbFilename.Name = "tbFilename";
-            this.tbFilename.Size = new System.Drawing.Size(429, 20);
+            this.tbFilename.Size = new System.Drawing.Size(420, 20);
             this.tbFilename.TabIndex = 2;
             this.tbFilename.Text = "Swagger";
             // 
@@ -114,6 +110,7 @@
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(552, 111);
             this.Controls.Add(this.lblStatus);

@@ -44,6 +44,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
         [Description("Full path OpenAPI Generator JAR file")]
         public string OpenApiGeneratorPath { get; set; }
 
+        [Category("NuGet Options")]
+        [DisplayName("Install Required Packages")]
+        [Description("Automatically install required NuGet packages")]
+        public bool? InstallMissingPackages { get; set; } = true;
+
         protected override IWin32Window Window
             => new GeneralOptionsPageCustom(this);
     }

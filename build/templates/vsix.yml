@@ -23,10 +23,10 @@ jobs:
     inputs:
       arguments: '-g nswag'
 
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 4.4.1'
+  - task: NuGetToolInstaller@1
+    displayName: 'Use NuGet 5.4'
     inputs:
-      versionSpec: 4.4.1
+      versionSpec: 5.4.x
 
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
