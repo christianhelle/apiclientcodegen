@@ -198,7 +198,7 @@
       <Version>16.3.14</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.SDK.EmbedInteropTypes">
-      <Version>15.0.27</Version>
+      <Version>15.0.30</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Text.Data">
       <Version>15.8.525</Version>
