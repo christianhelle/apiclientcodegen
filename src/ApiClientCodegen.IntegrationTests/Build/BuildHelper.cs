@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build.Projects;
@@ -21,11 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Trace.WriteLine(projectContents);
             File.WriteAllText(projectFile, projectContents);
             File.WriteAllText(Path.Combine(path, "Generated.cs"), generatedCode);
-
-            if (projecType == ProjectTypes.DotNetFramework)
-                new ProcessLauncher().Start("msbuild.exe", $"/t:restore /t:Rebuild \"{projectFile}\"");
-            else
-                new ProcessLauncher().Start("dotnet.exe", $"build \"{projectFile}\"");
+            new ProcessLauncher().Start("dotnet.exe", $"build \"{projectFile}\"");
         }
 
         private static string GetProjectContents(
