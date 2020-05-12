@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbFilename = new System.Windows.Forms.TextBox();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.btnAddCustomHeaders = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbUrl
@@ -105,6 +106,18 @@
             this.lblStatus.Size = new System.Drawing.Size(0, 13);
             this.lblStatus.TabIndex = 8;
             // 
+            // btnAddCustomHeaders
+            // 
+            this.btnAddCustomHeaders.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddCustomHeaders.AutoSize = true;
+            this.btnAddCustomHeaders.Location = new System.Drawing.Point(15, 74);
+            this.btnAddCustomHeaders.Name = "btnAddCustomHeaders";
+            this.btnAddCustomHeaders.Size = new System.Drawing.Size(117, 23);
+            this.btnAddCustomHeaders.TabIndex = 9;
+            this.btnAddCustomHeaders.Text = "Add Custom &Headers";
+            this.btnAddCustomHeaders.UseVisualStyleBackColor = true;
+            this.btnAddCustomHeaders.Click += new System.EventHandler(this.btnAddCustomHeaders_Click);
+            // 
             // EnterOpenApiSpecDialog
             // 
             this.AcceptButton = this.btnOK;
@@ -113,6 +126,7 @@
             this.AutoSize = true;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(552, 111);
+            this.Controls.Add(this.btnAddCustomHeaders);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbFilename);
@@ -144,5 +158,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbFilename;
         private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Button btnAddCustomHeaders;
     }
 }
