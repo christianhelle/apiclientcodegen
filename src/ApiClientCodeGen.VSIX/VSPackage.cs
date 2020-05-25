@@ -25,8 +25,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         CustomToolSetterCommand.ContextGuid,
         CustomToolSetterCommand.Name,
         CustomToolSetterCommand.Expression,
-        new[] { CustomToolSetterCommand.Expression },
-        new[] { CustomToolSetterCommand.TermValue })]
+        new [] { CustomToolSetterCommand.TermNameJson, CustomToolSetterCommand.TermNameYaml },
+        new [] { CustomToolSetterCommand.TermValueJson, CustomToolSetterCommand.TermValueYaml })]
     [ProvideUIContextRule(
         NSwagStudioCommand.ContextGuid,
         NSwagStudioCommand.Name,
