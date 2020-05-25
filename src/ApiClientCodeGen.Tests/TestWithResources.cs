@@ -15,6 +15,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
             lock (SyncLock)
             {
                 CreateFileFromEmbeddedResource("Swagger.json");
+                CreateFileFromEmbeddedResource("Swagger.yaml");
                 CreateFileFromEmbeddedResource("Swagger.nswag");
             }
             
