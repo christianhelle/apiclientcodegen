@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
+using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using EnvDTE;
@@ -17,6 +18,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
     {
         protected abstract int CommandId { get; }
         protected Guid CommandSet { get; } = new Guid("C292653B-5876-4B8C-B672-3375D8561881");
+        protected virtual bool SupportsYaml { get; } = true;
 
         public Task InitializeAsync(
             AsyncPackage package,
@@ -30,6 +32,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
         private async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+
+            if (!SupportsYaml)
+            {
+                const string message = "Specified code generator doesn't support YAML files";
+                MessageBox.Show(message, "Not Supported");
+                Trace.WriteLine(message);
+                return;
+            }
 
             string name = typeof(T).Name.Replace("CodeGenerator", string.Empty);
             Trace.WriteLine($"Generating code using {name}");

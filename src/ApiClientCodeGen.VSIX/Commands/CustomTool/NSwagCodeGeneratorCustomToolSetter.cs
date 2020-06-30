@@ -10,5 +10,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
         public const string Name = nameof(NSwagCodeGeneratorCustomToolSetter);
 
         protected override int CommandId { get; } = 0x0300;
+
+        protected override bool SupportsYaml => false;
     }
 }
