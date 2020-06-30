@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Converters;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
@@ -43,6 +44,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
             out uint pcbOutput,
             IVsGeneratorProgress pGenerateProgress)
         {
+            pcbOutput = 0;
             try
             {
                 pGenerateProgress.Progress(5);
@@ -57,7 +59,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
                 var code = codeGenerator.GenerateCode(new ProgressReporter(pGenerateProgress));
                 if (string.IsNullOrWhiteSpace(code))
                 {
-                    pcbOutput = 0;
                     return 1;
                 }
 
@@ -76,17 +77,36 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
                 }
 
                 rgbOutputFileContents[0] = code.ConvertToIntPtr(out pcbOutput);
-                pGenerateProgress.Progress(100);
+            }
+            catch (NotSupportedException e)
+            {
+                MessageBox.Show(e.Message, "Not Supported");
+                HandleException(e, pGenerateProgress, rgbOutputFileContents, out pcbOutput);
             }
             catch (Exception e)
             {
-                pGenerateProgress.GeneratorError(e);
-                Trace.WriteLine("Unable to generate code");
-                Trace.WriteLine(e);
+                HandleException(e, pGenerateProgress, rgbOutputFileContents, out pcbOutput);
                 throw;
+            }
+            finally
+            {
+                pGenerateProgress.Progress(100);
             }
 
             return 0;
+        }
+
+        private static void HandleException(
+            Exception e,
+            IVsGeneratorProgress pGenerateProgress,
+            IntPtr[] rgbOutputFileContents,
+            out uint pcbOutput)
+        {
+            rgbOutputFileContents[0] = string.Empty.ConvertToIntPtr(out pcbOutput);
+            pGenerateProgress.GeneratorError(e);
+
+            Trace.WriteLine("Unable to generate code");
+            Trace.WriteLine(e);
         }
     }
 }
