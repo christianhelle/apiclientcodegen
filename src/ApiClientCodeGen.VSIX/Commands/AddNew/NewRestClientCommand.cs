@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading;
+using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
@@ -26,6 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
         protected virtual int CommandId { get; } = 0x100;
         protected abstract SupportedCodeGenerator CodeGenerator { get; }
+        protected virtual bool SupportsYaml { get; } = true;
 
         public Task InitializeAsync(AsyncPackage package, CancellationToken token) 
             => package.SetupCommandAsync(CommandSet, CommandId, OnExecuteAsync, token);
@@ -38,6 +40,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             if (result == null)
                 return;
 
+            if (!SupportsYaml && result.Url.EndsWith("yaml", StringComparison.OrdinalIgnoreCase))
+            {
+                const string message = "Specified code generator doesn't support YAML files";
+                MessageBox.Show(message, "Not Supported");
+                Trace.WriteLine(message);
+                return;
+            }
+
             var selectedItem = ProjectExtensions.GetSelectedItem();
             var folder = FindFolder(selectedItem, dte);
             if (string.IsNullOrWhiteSpace(folder))
@@ -47,7 +57,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             }
 
             var contents = result.OpenApiSpecification;
-            var filename = result.OutputFilename + ".json";
+            var filename = $"{result.OutputFilename}{Path.GetExtension(result.Url)}";
 
             if (CodeGenerator == SupportedCodeGenerator.NSwagStudio)
             {
