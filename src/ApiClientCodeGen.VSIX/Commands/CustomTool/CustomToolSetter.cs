@@ -33,7 +33,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-            if (!SupportsYaml)
+            var item = dte.SelectedItems.Item(1).ProjectItem;
+            item.Properties.Item("CustomTool").Value = typeof(T).Name;
+
+            if (!SupportsYaml && item.Name.EndsWith("yaml", StringComparison.OrdinalIgnoreCase))
             {
                 const string message = "Specified code generator doesn't support YAML files";
                 MessageBox.Show(message, "Not Supported");
@@ -41,11 +44,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
                 return;
             }
 
-            string name = typeof(T).Name.Replace("CodeGenerator", string.Empty);
+            var name = typeof(T).Name.Replace("CodeGenerator", string.Empty);
             Trace.WriteLine($"Generating code using {name}");
-
-            var item = dte.SelectedItems.Item(1).ProjectItem;
-            item.Properties.Item("CustomTool").Value = typeof(T).Name;
 
             var project = ProjectExtensions.GetActiveProject(dte);
 
