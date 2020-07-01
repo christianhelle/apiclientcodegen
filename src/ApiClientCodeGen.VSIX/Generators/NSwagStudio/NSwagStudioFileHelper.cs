@@ -1,11 +1,11 @@
-﻿﻿using System.Threading.Tasks;
- using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
- using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
- using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
- using NJsonSchema.CodeGeneration.CSharp;
- using NSwag;
+﻿using System.Threading.Tasks;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
+using NJsonSchema.CodeGeneration.CSharp;
+using NSwag;
 
- namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio
 {
     public static class NSwagStudioFileHelper
     {
@@ -14,20 +14,22 @@
             INSwagStudioOptions options = null,
             string outputNamespace = null)
         {
-            var json = enterOpenApiSpecDialogResult.OpenApiSpecification;
+            var specifications = enterOpenApiSpecDialogResult.OpenApiSpecification;
             var outputFilename = enterOpenApiSpecDialogResult.OutputFilename;
-            var openApiDocument = await OpenApiDocument.FromJsonAsync(json);
-            var className = options?.UseDocumentTitle ?? true ? openApiDocument.GenerateClassName() : outputFilename;
+            var openApiDocument =
+                enterOpenApiSpecDialogResult.Url.EndsWith("yaml")
+                    ? await OpenApiDocument.FromUrlAsync(enterOpenApiSpecDialogResult.Url)
+                    : await OpenApiDocument.FromJsonAsync(specifications);
+            var className = options?.UseDocumentTitle ?? true
+                ? openApiDocument.GenerateClassName()
+                : outputFilename;
+
             return new
             {
                 Runtime = "Default",
                 SwaggerGenerator = new
                 {
-                    FromSwagger = new
-                    {
-                        Json = json,
-                        enterOpenApiSpecDialogResult.Url
-                    }
+                    FromSwagger = GetFromSwagger(enterOpenApiSpecDialogResult, specifications)
                 },
                 CodeGenerators = new
                 {
@@ -51,6 +53,25 @@
                 }
             }
                 .ToJson();
+        }
+
+        private static object GetFromSwagger(
+            EnterOpenApiSpecDialogResult enterOpenApiSpecDialogResult,
+            string specifications)
+        {
+            var url = enterOpenApiSpecDialogResult.Url;
+            if (url.EndsWith("yaml"))
+                return new
+                {
+                    Yaml = specifications,
+                    Url = url
+                };
+            
+            return new
+            {
+                Json = specifications,
+                Url = url
+            };
         }
     }
 }

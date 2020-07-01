@@ -19,22 +19,10 @@ using Xunit;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.CustomTool
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
-    public class CSharpSingleFileCodeGeneratorTests : TestWithResources
+    public class CSharpSingleFileCodeGeneratorYamlTests : TestWithResources
     {
         [Fact]
         public void AutoRest_CSharp_Test()
-        {
-            var optionsMock = new Mock<IAutoRestOptions>();
-            var optionsFactory = new Mock<IOptionsFactory>();
-            optionsFactory
-                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
-                .Returns(optionsMock.Object);
-
-            Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
-        }
-
-        [Fact]
-        public void AutoRest_CSharp_Yaml_Test()
         {
             var optionsMock = new Mock<IAutoRestOptions>();
             var optionsFactory = new Mock<IOptionsFactory>();
@@ -46,38 +34,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         }
 
         [Fact]
-        public void NSwag_CSharp_Test()
-        {
-            var optionsMock = new Mock<INSwagOptions>();
-            optionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
-            optionsMock.Setup(c => c.InjectHttpClient).Returns(true);
-            optionsMock.Setup(c => c.GenerateClientInterfaces).Returns(true);
-            optionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
-            optionsMock.Setup(c => c.UseBaseUrl).Returns(true);
-            optionsMock.Setup(c => c.ClassStyle).Returns(CSharpClassStyle.Poco);
-
-            var optionsFactory = new Mock<IOptionsFactory>();
-            optionsFactory
-                .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage>())
-                .Returns(optionsMock.Object);
-
-            Assert(SupportedCodeGenerator.NSwag, optionsFactory.Object);
-        }
-
-        [Fact]
         public void Swagger_CSharp_Test()
-        {
-            var optionsMock = new Mock<IGeneralOptions>();
-            var optionsFactory = new Mock<IOptionsFactory>();
-            optionsFactory
-                .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage>())
-                .Returns(optionsMock.Object);
-
-            Assert(SupportedCodeGenerator.Swagger, optionsFactory.Object);
-        }
-
-        [Fact]
-        public void Swagger_CSharp_Yaml_Test()
         {
             var optionsMock = new Mock<IGeneralOptions>();
             var optionsFactory = new Mock<IOptionsFactory>();
@@ -90,18 +47,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
         [Fact]
         public void OpenApi_CSharp_Test()
-        {
-            var optionsMock = new Mock<IGeneralOptions>();
-            var optionsFactory = new Mock<IOptionsFactory>();
-            optionsFactory
-                .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage>())
-                .Returns(optionsMock.Object);
-
-            Assert(SupportedCodeGenerator.OpenApi, optionsFactory.Object);
-        }
-
-        [Fact]
-        public void OpenApi_CSharp_Yaml_Test()
         {
             var optionsMock = new Mock<IGeneralOptions>();
             var optionsFactory = new Mock<IOptionsFactory>();
