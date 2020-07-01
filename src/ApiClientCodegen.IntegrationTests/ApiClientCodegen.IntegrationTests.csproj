@@ -57,6 +57,7 @@
     <Compile Include="Build\BuildHelper.cs" />
     <Compile Include="Build\Projects\NSwagProjectFileContents.cs" />
     <Compile Include="Build\Projects\SwaggerProjectFileContents.cs" />
+    <Compile Include="CustomTool\CSharpSingleFileCodeGeneratorYamlTests.cs" />
     <Compile Include="CustomTool\CSharpSingleFileCodeGeneratorTests.cs" />
     <Compile Include="CustomTool\CSharpSingleFileCodeGenerator.cs" />
     <None Include="CustomTool\VisualBasicSingleFileCodeGeneratorTests.cs" />
@@ -66,6 +67,12 @@
     <Compile Include="Generators\NSwagStudioCodeGeneratorBuildTests.cs" />
     <Compile Include="Generators\OpenApiCodeGeneratorFixture.cs" />
     <Compile Include="Generators\SwaggerCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\Yaml\AutoRestCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\Yaml\AutoRestCodeGeneratorYamlTests.cs" />
+    <Compile Include="Generators\Yaml\OpenApiCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\Yaml\OpenApiCodeGeneratorYamlTests.cs" />
+    <Compile Include="Generators\Yaml\SwaggerCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\Yaml\SwaggerCodeGeneratorYamlTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <None Include="VisualBasic\AutoRestVisualBasicCodeGeneratorTests.cs" />
     <Compile Include="Generators\AutoRestCodeGeneratorTests.cs" />

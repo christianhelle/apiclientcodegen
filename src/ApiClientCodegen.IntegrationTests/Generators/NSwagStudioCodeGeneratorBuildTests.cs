@@ -8,7 +8,6 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Bu
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using FluentAssertions;
-
 using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
