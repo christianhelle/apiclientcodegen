@@ -29,7 +29,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
 
         [Xunit.Fact]
         public void NSwagStudio_Generate_Code_Using_NSwagStudio()
-            => new NSwagStudioCodeGenerator(Path.GetFullPath("SwaggerJson.nswag"), options, processMock.Object)
+            => new NSwagStudioCodeGenerator(Path.GetFullPath("Swagger.nswag"), options, processMock.Object)
                 .GenerateCode(progressMock.Object)
                 .Should()
                 .BeNull();
