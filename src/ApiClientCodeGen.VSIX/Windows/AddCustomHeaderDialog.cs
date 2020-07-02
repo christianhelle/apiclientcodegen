@@ -1,4 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
@@ -6,45 +9,37 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
     [ExcludeFromCodeCoverage]
     public partial class AddCustomHeaderDialog : Form
     {
-        public AddCustomHeaderDialog()
+        private readonly BindingList<CustomHeader> bindingList 
+            = new BindingList<CustomHeader>();
+
+        public AddCustomHeaderDialog(
+            IReadOnlyDictionary<string, string> existingHeaders = null)
         {
             InitializeComponent();
-        }
+            dataGridView.DataSource = bindingList;
+            dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-        public string Key => tbKey.Text;
-        public string Value => tbValue.Text;
-
-        private void AddCustomHeaderDialog_Load(object sender, System.EventArgs e)
-        {
-            NativeMethods.SendMessage(
-                tbKey.Handle,
-                NativeMethods.EM_SETCUEBANNER,
-                0,
-                "Authorization");
-
-            NativeMethods.SendMessage(
-                tbValue.Handle,
-                NativeMethods.EM_SETCUEBANNER,
-                0,
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...");
-        }
-
-        private void btnOK_Click(object sender, System.EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(tbKey.Text) || string.IsNullOrWhiteSpace(tbValue.Text))
-            {
-                DialogResult = DialogResult.Cancel;
-                Close();
+            if (existingHeaders == null) 
                 return;
-            }
 
-            DialogResult = DialogResult.OK;
+            foreach (var keyValuePair in existingHeaders)
+                bindingList.Add(
+                    new CustomHeader
+                    {
+                        Key = keyValuePair.Key,
+                        Value = keyValuePair.Value
+                    });
         }
 
-        private void btnCancel_Click(object sender, System.EventArgs e)
+        public IReadOnlyDictionary<string, string> CustomHeaders
+            => bindingList
+                .Where(c => !string.IsNullOrWhiteSpace(c.Key) && !string.IsNullOrWhiteSpace(c.Value))
+                .ToDictionary(k => k.Key, v => v.Value);
+
+        private class CustomHeader
         {
-            DialogResult = DialogResult.Cancel;
-            Close();
+            public string Key { get; set; }
+            public string Value { get; set; }
         }
     }
 }

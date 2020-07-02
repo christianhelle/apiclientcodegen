@@ -11,7 +11,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
     [ExcludeFromCodeCoverage]
     public partial class EnterOpenApiSpecDialog : Form
     {
-        private readonly Dictionary<string, string> customHeaders = new Dictionary<string, string>();
+        private IReadOnlyDictionary<string, string> customHeaders
+            = new Dictionary<string, string>();
 
         public EnterOpenApiSpecDialog()
         {
@@ -103,11 +104,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 
         private void btnAddCustomHeaders_Click(object sender, EventArgs e)
         {
-            using (var form = new AddCustomHeaderDialog())
+            using (var form = new AddCustomHeaderDialog(customHeaders))
             {
-                var result = form.ShowDialog();
-                if (result == DialogResult.OK)
-                    customHeaders[form.Key] = form.Value;
+                form.ShowDialog();
+                customHeaders = form.CustomHeaders;
             }
         }
     }
