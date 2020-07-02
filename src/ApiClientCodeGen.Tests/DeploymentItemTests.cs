@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using FluentAssertions;
 
-
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
 {
     public class DeploymentItemTests : TestWithResources

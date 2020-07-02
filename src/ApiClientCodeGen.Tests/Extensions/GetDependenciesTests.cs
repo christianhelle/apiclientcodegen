@@ -3,7 +3,6 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using FluentAssertions;
 
-
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extensions
 {
     

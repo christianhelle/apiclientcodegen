@@ -3,7 +3,6 @@ using AutoFixture;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using FluentAssertions;
 
-
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
 {
     

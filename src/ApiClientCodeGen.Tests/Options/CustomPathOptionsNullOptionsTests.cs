@@ -2,7 +2,6 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using FluentAssertions;
 
-
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
 {
     

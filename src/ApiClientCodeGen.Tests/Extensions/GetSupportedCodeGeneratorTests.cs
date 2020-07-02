@@ -7,7 +7,6 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using FluentAssertions;
 
-
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extensions
 {
     

@@ -5,7 +5,6 @@ using ApiClientCodeGen.CLI.Logging;
 using ApiClientCodeGen.CLI.Tests.Infrastructure;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using FluentAssertions;
 using Moq;

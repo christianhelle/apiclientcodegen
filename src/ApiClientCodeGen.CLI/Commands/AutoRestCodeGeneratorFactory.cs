@@ -1,5 +1,4 @@
-﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 

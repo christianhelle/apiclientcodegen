@@ -1,10 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
 using Moq;
 
