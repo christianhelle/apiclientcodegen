@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
@@ -10,6 +11,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
     [ExcludeFromCodeCoverage]
     public partial class EnterOpenApiSpecDialog : Form
     {
+        private IReadOnlyDictionary<string, string> customHeaders
+            = new Dictionary<string, string>();
+
         public EnterOpenApiSpecDialog()
         {
             InitializeComponent();
@@ -89,8 +93,22 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
         private async Task<string> DownloadOpenApiSpecAsync()
         {
             using (var client = new WebClient())
+            {
+                foreach (var header in customHeaders)
+                    client.Headers.Add(header.Key, header.Value);
+
                 return await client.DownloadStringTaskAsync(
                     new Uri(tbUrl.Text));
+            }
+        }
+
+        private void btnAddCustomHeaders_Click(object sender, EventArgs e)
+        {
+            using (var form = new AddCustomHeaderDialog(customHeaders))
+            {
+                form.ShowDialog();
+                customHeaders = form.CustomHeaders;
+            }
         }
     }
 }
