@@ -108,7 +108,7 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 
         protected virtual async Task AddFile(string itemPath, string url)
         {
-            var filename = Path.Combine(itemPath, "Swagger.json");
+            var filename = Path.Combine(itemPath, $"Swagger{Path.GetExtension(url)}");
             var contents = await DownloadTextAsync(url);
             File.WriteAllText(filename, contents);
 
