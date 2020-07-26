@@ -21,6 +21,8 @@ namespace ApiClientCodeGen.VSMac.CustomTools.NSwag
         {
         }
 
+        protected override bool SupportsYaml => false;
+
         public NSwagSingleFileCustomTool(
             INSwagCodeGeneratorFactory factory,
             IOpenApiDocumentFactory openApiDocumentFactory,
