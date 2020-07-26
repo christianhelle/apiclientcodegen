@@ -21,6 +21,8 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
         protected override SupportedCodeGenerator CodeGeneratorType
             => SupportedCodeGenerator.NSwagStudio;
 
+        protected override bool SupportsYaml => false;
+
         protected override async Task AddFile(string itemPath, string url)
         {
             var filename = Path.Combine(itemPath, "Swagger.nswag");
