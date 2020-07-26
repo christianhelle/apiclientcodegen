@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using MonoDevelop.Components.Commands;
 using MonoDevelop.Core;
 using MonoDevelop.Ide;
@@ -9,7 +10,7 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
     public abstract class GenerateCommandHandler : BaseCommandHandler
     {
         protected abstract string GeneratorName { get; }
-        protected virtual string SupportedFileExtension => ".json";
+        protected virtual string SupportedFileExtension => ".json;.yaml;.yml";
         protected FilePath FilePath { get; private set; }
 
         protected override void Run() => SetGenerator();
@@ -23,9 +24,19 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
                 return;
             }
 
-            info.Visible = projectFile.Name.EndsWith(
-                SupportedFileExtension,
-                StringComparison.OrdinalIgnoreCase);
+            if (string.IsNullOrWhiteSpace(SupportedFileExtension))
+                throw new InvalidOperationException(
+                    $"{nameof(SupportedFileExtension)} must not be null or whitespace");
+
+            var extensions = SupportedFileExtension.Split(';');
+            info.Visible = extensions?.Length > 1
+                ? extensions.Any(
+                    ext => projectFile.Name.EndsWith(
+                        ext,
+                        StringComparison.OrdinalIgnoreCase))
+                : projectFile.Name.EndsWith(
+                    SupportedFileExtension,
+                    StringComparison.OrdinalIgnoreCase);
 
             FilePath = projectFile.FilePath;
         }
