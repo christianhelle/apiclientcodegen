@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
@@ -61,6 +62,14 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 
             if (string.IsNullOrWhiteSpace(url))
                 return;
+
+            if (!SupportsYaml && url.EndsWith("yaml", StringComparison.OrdinalIgnoreCase))
+            {
+                const string message = "Specified code generator doesn't support YAML files";
+                MessageService.ShowWarning(message, "Not Supported");
+                Trace.WriteLine(message);
+                return;
+            }
 
             var project = GetCurrentProject();
             string path = IdeApp.ProjectOperations.CurrentSelectedItem is ProjectFolder folder
