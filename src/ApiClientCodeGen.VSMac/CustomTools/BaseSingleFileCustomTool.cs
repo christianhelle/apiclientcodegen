@@ -1,8 +1,11 @@
+using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using ApiClientCodeGen.VSMac.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using MonoDevelop.Core;
+using MonoDevelop.Ide;
 using MonoDevelop.Ide.CustomTools;
 using MonoDevelop.Projects;
 
@@ -10,6 +13,8 @@ namespace ApiClientCodeGen.VSMac.CustomTools
 {
     public abstract class BaseSingleFileCustomTool : ISingleFileCustomTool
     {
+        protected virtual bool SupportsYaml { get; } = true;
+
         public async Task Generate(
             ProgressMonitor monitor,
             ProjectFile file,
@@ -17,13 +22,22 @@ namespace ApiClientCodeGen.VSMac.CustomTools
         {
             Bootstrapper.Initialize();
 
-            using var traceListener = new DisposableTraceListener(
-                new LoggingServiceTraceListener(
-                    new ProgressMonitorLoggingService(monitor, "Generating code...")));
-
             var swaggerFile = file.FilePath;
             var outputFile = swaggerFile.ChangeExtension(".cs");
             result.GeneratedFilePath = outputFile;
+
+            if (!SupportsYaml && swaggerFile.FileName.EndsWith("yaml", StringComparison.OrdinalIgnoreCase))
+            {
+                await Task.Run(() => File.WriteAllText(outputFile, string.Empty));
+                const string message = "Specified code generator doesn't support YAML files";
+                MessageService.ShowWarning(message, "Not Supported");
+                Trace.WriteLine(message);
+                return;
+            }
+
+            using var traceListener = new DisposableTraceListener(
+                new LoggingServiceTraceListener(
+                    new ProgressMonitorLoggingService(monitor, "Generating code...")));
 
             var customToolNamespace = file.CustomToolNamespace;
             if (string.IsNullOrWhiteSpace(customToolNamespace))
