@@ -39,6 +39,7 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
         }
 
         protected abstract string GeneratorName { get; }
+        protected virtual bool SupportsYaml { get; } = true;
 
         protected override void Run()
             => AddNewSwaggerFile().Forget();
