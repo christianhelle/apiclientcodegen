@@ -29,6 +29,12 @@ namespace ApiClientCodeGen.VSMac.CustomTools
             if (!SupportsYaml && swaggerFile.FileName.EndsWith("yaml", StringComparison.OrdinalIgnoreCase))
             {
                 await Task.Run(() => File.WriteAllText(outputFile, string.Empty));
+                var project = IdeApp.ProjectOperations.CurrentSelectedProject;
+                var item = project.Files.GetFile(file.FilePath);
+                item.Generator = null;
+                IdeApp.ProjectOperations.MarkFileDirty(item.FilePath);
+                project.Files.Remove(outputFile);
+
                 const string message = "Specified code generator doesn't support YAML files";
                 MessageService.ShowWarning(message, "Not Supported");
                 Trace.WriteLine(message);
