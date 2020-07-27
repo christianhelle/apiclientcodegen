@@ -28,16 +28,7 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
                 throw new InvalidOperationException(
                     $"{nameof(SupportedFileExtension)} must not be null or whitespace");
 
-            var extensions = SupportedFileExtension.Split(';');
-            info.Visible = extensions?.Length > 1
-                ? extensions.Any(
-                    ext => projectFile.Name.EndsWith(
-                        ext,
-                        StringComparison.OrdinalIgnoreCase))
-                : projectFile.Name.EndsWith(
-                    SupportedFileExtension,
-                    StringComparison.OrdinalIgnoreCase);
-
+            info.Visible = IsSupported(projectFile);
             FilePath = projectFile.FilePath;
         }
 
@@ -45,8 +36,24 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
         {
             var project = IdeApp.ProjectOperations.CurrentSelectedProject;
             var item = project.Files.GetFile(FilePath);
-            item.Generator = GeneratorName;
+            var projectFile = IdeApp.ProjectOperations.CurrentSelectedItem as ProjectFile;
+            item.Generator = IsSupported(projectFile) ? GeneratorName : null;
             IdeApp.ProjectOperations.MarkFileDirty(item.FilePath);
+        }
+
+        private bool IsSupported(ProjectFile projectFile)
+        {
+            var extensions = SupportedFileExtension.Split(';');
+            return extensions?.Length > 1
+                ? extensions.Any(ext => IsSupported1(projectFile, ext))
+                : IsSupported1(projectFile, SupportedFileExtension);
+        }
+
+        private static bool IsSupported1(ProjectFile projectFile, string extension)
+        {
+            return projectFile?.Name?.EndsWith(
+                extension,
+                StringComparison.OrdinalIgnoreCase) ?? false;
         }
     }
 }
