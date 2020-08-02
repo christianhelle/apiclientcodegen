@@ -5,6 +5,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using Microsoft.VisualStudio.Threading;
@@ -63,7 +64,7 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
             if (string.IsNullOrWhiteSpace(url))
                 return;
 
-            if (!SupportsYaml && url.EndsWith("yaml", StringComparison.OrdinalIgnoreCase))
+            if (!SupportsYaml && url.EndsWithAny("yaml", "yml"))
             {
                 const string message = "Specified code generator doesn't support YAML files";
                 MessageService.ShowWarning(message, "Not Supported");

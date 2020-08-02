@@ -1,8 +1,8 @@
-using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using ApiClientCodeGen.VSMac.Logging;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using MonoDevelop.Core;
 using MonoDevelop.Ide;
@@ -26,7 +26,7 @@ namespace ApiClientCodeGen.VSMac.CustomTools
             var outputFile = swaggerFile.ChangeExtension(".cs");
             result.GeneratedFilePath = outputFile;
 
-            if (!SupportsYaml && swaggerFile.FileName.EndsWith("yaml", StringComparison.OrdinalIgnoreCase))
+            if (!SupportsYaml && swaggerFile.FileName.EndsWithAny("yaml", "yml"))
             {
                 await Task.Run(() => File.WriteAllText(outputFile, string.Empty));
                 var project = IdeApp.ProjectOperations.CurrentSelectedProject;
