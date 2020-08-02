@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using Newtonsoft.Json;
@@ -32,5 +33,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
             => JsonConvert.SerializeObject(
                 value,
                 JsonSettings);
+
+        public static bool EndsWithAny(this string text, params string[] words) 
+            => EndsWithAny(text, words, StringComparison.CurrentCultureIgnoreCase);
+
+        public static bool EndsWithAny(
+            this string text,
+            IEnumerable<string> words,
+            StringComparison comparisonType)
+        {
+            if (text == null) throw new ArgumentNullException(nameof(text));
+            return words.Any(
+                word =>
+                    text.EndsWith(word, comparisonType));
+        }
     }
 }
