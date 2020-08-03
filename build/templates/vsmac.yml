@@ -8,8 +8,8 @@ jobs:
   steps:
   
   - bash: |
-      cd $(system.defaultworkingdirectory)/src/ApiClientCodeGen.VSMac
-      sed -i -e 's/1.0/$(build.buildnumber)/g' Properties/AddinInfo.cs
+      cd $(system.defaultworkingdirectory)/src
+      sed -i -e 's/1.0/$(build.buildnumber)/g' ApiClientCodeGen.VSMac/Properties/AddinInfo.cs
       make release
       mv ApiClientCodeGen.VSMac.ApiClientCodeGenerator_$(build.buildnumber).mpack ApiClientCodeGenerator-$(build.buildnumber).mpack
     displayName: 'Build .mpack file'
