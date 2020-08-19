@@ -11,13 +11,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
         {
             try
             {
-                return ThreadHelper.JoinableTaskFactory
-                    ?.Run(() => OpenApiDocument.FromFileAsync(swaggerFile));
+                return ThreadHelper.JoinableTaskFactory?.Run(
+                    () => swaggerFile.EndsWith("yaml") || swaggerFile.EndsWith("yml")
+                        ? OpenApiYamlDocument.FromFileAsync(swaggerFile)
+                        : OpenApiDocument.FromFileAsync(swaggerFile));
             }
             catch (NullReferenceException)
             {
-                return OpenApiDocument
-                    .FromFileAsync(swaggerFile)
+                return (swaggerFile.EndsWith("yaml") || swaggerFile.EndsWith("yml")
+                        ? OpenApiYamlDocument.FromFileAsync(swaggerFile)
+                        : OpenApiDocument.FromFileAsync(swaggerFile))
                     .GetAwaiter()
                     .GetResult();
             }
