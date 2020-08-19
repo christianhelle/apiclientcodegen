@@ -70,7 +70,7 @@
     <Compile Include="Generators\Yaml\AutoRestCodeGeneratorFixture.cs" />
     <Compile Include="Generators\Yaml\AutoRestCodeGeneratorYamlTests.cs" />
     <Compile Include="Generators\Yaml\NSwagCodeGeneratorFixture.cs" />
-    <Compile Include="Generators\Yaml\NSwagCodeGeneratorTests.cs" />
+    <Compile Include="Generators\Yaml\NSwagCodeGeneratorYamlTests.cs" />
     <Compile Include="Generators\Yaml\OpenApiCodeGeneratorFixture.cs" />
     <Compile Include="Generators\Yaml\OpenApiCodeGeneratorYamlTests.cs" />
     <Compile Include="Generators\Yaml\SwaggerCodeGeneratorFixture.cs" />
