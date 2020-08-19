@@ -10,7 +10,5 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 
         protected override SupportedCodeGenerator CodeGeneratorType
             => SupportedCodeGenerator.NSwag;
-
-        protected override bool SupportsYaml => false;
     }
 }

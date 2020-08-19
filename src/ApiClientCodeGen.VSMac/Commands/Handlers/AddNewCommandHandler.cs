@@ -41,7 +41,6 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
         }
 
         protected abstract string GeneratorName { get; }
-        protected virtual bool SupportsYaml { get; } = true;
 
         protected override void Run()
             => AddNewSwaggerFile().Forget();
@@ -63,14 +62,6 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 
             if (string.IsNullOrWhiteSpace(url))
                 return;
-
-            if (!SupportsYaml && url.EndsWithAny("yaml", "yml"))
-            {
-                const string message = "Specified code generator doesn't support YAML files";
-                MessageService.ShowWarning(message, "Not Supported");
-                Trace.WriteLine(message);
-                return;
-            }
 
             var project = GetCurrentProject();
             string path = IdeApp.ProjectOperations.CurrentSelectedItem is ProjectFolder folder
