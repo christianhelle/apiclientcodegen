@@ -16,10 +16,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
         {
             var specifications = enterOpenApiSpecDialogResult.OpenApiSpecification;
             var outputFilename = enterOpenApiSpecDialogResult.OutputFilename;
-            var openApiDocument =
-                enterOpenApiSpecDialogResult.Url.EndsWith("yaml")
-                    ? await OpenApiDocument.FromUrlAsync(enterOpenApiSpecDialogResult.Url)
-                    : await OpenApiDocument.FromJsonAsync(specifications);
+            var url = enterOpenApiSpecDialogResult.Url;
+            var openApiDocument = url.EndsWith("yaml") || url.EndsWith("yml")
+                ? await OpenApiYamlDocument.FromUrlAsync(url)
+                : await OpenApiDocument.FromJsonAsync(specifications);
             var className = options?.UseDocumentTitle ?? true
                 ? openApiDocument.GenerateClassName()
                 : outputFilename;
