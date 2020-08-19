@@ -15,7 +15,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
                 if (!useDocumentTitle)
                     return new FileInfo(document.DocumentPath)
                         .Name
-                        .Replace(".json", string.Empty);
+                        .Replace(".json", string.Empty)
+                        .Replace(".yaml", string.Empty)
+                        .Replace(".yml", string.Empty);
             }
             catch (Exception e)
             {
