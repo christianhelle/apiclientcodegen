@@ -9,9 +9,13 @@ namespace ApiClientCodeGen.CLI
     {
         public OpenApiDocument GetDocument(string swaggerFile)
         {
-            return OpenApiDocument.FromFileAsync(swaggerFile)
-                .GetAwaiter()
-                .GetResult();
+            return swaggerFile.EndsWith("yaml") || swaggerFile.EndsWith("yml")
+                ? OpenApiYamlDocument.FromFileAsync(swaggerFile)
+                    .GetAwaiter()
+                    .GetResult()
+                : OpenApiDocument.FromFileAsync(swaggerFile)
+                    .GetAwaiter()
+                    .GetResult();
         }
     }
 }

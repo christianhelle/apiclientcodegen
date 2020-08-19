@@ -5,6 +5,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
 using Moq;
+using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.Yaml
 {
@@ -12,20 +13,24 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     {
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
         public readonly Mock<INSwagOptions> OptionsMock = new Mock<INSwagOptions>();
-        private readonly NSwagCSharpCodeGenerator codeGenerator;
+        public readonly string Code = null;
 
         public NSwagCodeGeneratorFixture()
         {
+            OptionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
+            OptionsMock.Setup(c => c.InjectHttpClient).Returns(true);
+            OptionsMock.Setup(c => c.GenerateClientInterfaces).Returns(true);
+            OptionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
+            OptionsMock.Setup(c => c.UseBaseUrl).Returns(true);
+            OptionsMock.Setup(c => c.ClassStyle).Returns(CSharpClassStyle.Poco);
+
             var defaultNamespace = typeof(NSwagCodeGeneratorTests).Namespace;
-            codeGenerator = new NSwagCSharpCodeGenerator(
+            var codeGenerator = new NSwagCSharpCodeGenerator(
                 Path.GetFullPath("Swagger.yaml"),
                 new OpenApiDocumentFactory(),
                 new NSwagCodeGeneratorSettingsFactory(defaultNamespace, OptionsMock.Object));
-        }
 
-        public void GenerateCode()
-        {
-            codeGenerator.GenerateCode(ProgressReporterMock.Object);
+            Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
         }
     }
 }

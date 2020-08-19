@@ -9,7 +9,5 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
         protected override int CommandId { get; } = 0x0300;
 
         protected override SupportedCodeGenerator CodeGenerator { get; } = SupportedCodeGenerator.NSwag;
-
-        protected override bool SupportsYaml => false;
     }
 }
