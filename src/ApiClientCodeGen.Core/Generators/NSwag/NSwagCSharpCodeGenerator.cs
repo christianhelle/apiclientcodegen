@@ -24,9 +24,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         {
             try
             {
-                if (swaggerFile.EndsWith("yaml", StringComparison.OrdinalIgnoreCase))
-                    throw new NotSupportedException("NSwag code generator doesn't support YAML files");
-
                 pGenerateProgress?.Progress(10);
                 var document = documentFactory.GetDocument(swaggerFile);
                 pGenerateProgress?.Progress(20);

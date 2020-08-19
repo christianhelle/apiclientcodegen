@@ -27,7 +27,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
         protected virtual int CommandId { get; } = 0x100;
         protected abstract SupportedCodeGenerator CodeGenerator { get; }
-        protected virtual bool SupportsYaml { get; } = true;
 
         public Task InitializeAsync(AsyncPackage package, CancellationToken token) 
             => package.SetupCommandAsync(CommandSet, CommandId, OnExecuteAsync, token);
@@ -39,14 +38,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             var result = EnterOpenApiSpecDialog.GetResult();
             if (result == null)
                 return;
-
-            if (!SupportsYaml && result.Url.EndsWith("yaml", StringComparison.OrdinalIgnoreCase))
-            {
-                const string message = "Specified code generator doesn't support YAML files";
-                MessageBox.Show(message, "Not Supported");
-                Trace.WriteLine(message);
-                return;
-            }
 
             var selectedItem = ProjectExtensions.GetSelectedItem();
             var folder = FindFolder(selectedItem, dte);
