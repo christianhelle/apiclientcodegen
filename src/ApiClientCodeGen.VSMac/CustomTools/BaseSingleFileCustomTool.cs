@@ -13,8 +13,6 @@ namespace ApiClientCodeGen.VSMac.CustomTools
 {
     public abstract class BaseSingleFileCustomTool : ISingleFileCustomTool
     {
-        protected virtual bool SupportsYaml { get; } = true;
-
         public async Task Generate(
             ProgressMonitor monitor,
             ProjectFile file,
@@ -25,21 +23,6 @@ namespace ApiClientCodeGen.VSMac.CustomTools
             var swaggerFile = file.FilePath;
             var outputFile = swaggerFile.ChangeExtension(".cs");
             result.GeneratedFilePath = outputFile;
-
-            if (!SupportsYaml && swaggerFile.FileName.EndsWithAny("yaml", "yml"))
-            {
-                await Task.Run(() => File.WriteAllText(outputFile, string.Empty));
-                var project = IdeApp.ProjectOperations.CurrentSelectedProject;
-                var item = project.Files.GetFile(file.FilePath);
-                item.Generator = null;
-                IdeApp.ProjectOperations.MarkFileDirty(item.FilePath);
-                project.Files.Remove(outputFile);
-
-                const string message = "Specified code generator doesn't support YAML files";
-                MessageService.ShowWarning(message, "Not Supported");
-                Trace.WriteLine(message);
-                return;
-            }
 
             using var traceListener = new DisposableTraceListener(
                 new LoggingServiceTraceListener(
