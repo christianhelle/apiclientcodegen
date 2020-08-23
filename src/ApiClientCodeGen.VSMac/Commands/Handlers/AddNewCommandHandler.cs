@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using Microsoft.VisualStudio.Threading;
@@ -98,7 +100,7 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 
         protected virtual async Task AddFile(string itemPath, string url)
         {
-            var filename = Path.Combine(itemPath, "Swagger.json");
+            var filename = Path.Combine(itemPath, $"Swagger{Path.GetExtension(url)}");
             var contents = await DownloadTextAsync(url);
             File.WriteAllText(filename, contents);
 

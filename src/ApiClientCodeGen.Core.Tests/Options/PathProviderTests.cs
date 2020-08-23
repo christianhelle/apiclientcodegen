@@ -1,4 +1,5 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+﻿using System;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using FluentAssertions;
 
 namespace ApiClientCodeGen.Core.Tests.Options
@@ -33,7 +34,12 @@ namespace ApiClientCodeGen.Core.Tests.Options
             var path = PathProvider.GetNpmPath(
                 Test.CreateAnnonymous<string>(),
                 Test.CreateAnnonymous<string>());
-            path.Should().BeNull();
+
+            if (Environment.OSVersion.Platform == PlatformID.MacOSX ||
+                Environment.OSVersion.Platform == PlatformID.Unix)
+                path.Should().Be("npm");
+            else
+                path.Should().BeNull();
         }
 
         [Xunit.Fact]
@@ -47,7 +53,7 @@ namespace ApiClientCodeGen.Core.Tests.Options
         public void GetAutoRestPath_Returns_NpmPrefix_AutoRestCmd()
         {
             var path = PathProvider.GetAutoRestPath();
-            path.Should().EndWith("autorest.cmd");
+            path.Should().ContainAny("autorest");
         }
 
         [Xunit.Fact]

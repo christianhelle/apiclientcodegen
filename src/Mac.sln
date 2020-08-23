@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSMac", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSMac.Tests", "ApiClientCodeGen.VSMac.Tests\ApiClientCodeGen.VSMac.Tests.csproj", "{4A8E6DBF-B6E6-4776-86B2-4D7A20B7B17D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.Core.Tests", "ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj", "{07734934-973E-4FD9-A192-15013B7DB7C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{4A8E6DBF-B6E6-4776-86B2-4D7A20B7B17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A8E6DBF-B6E6-4776-86B2-4D7A20B7B17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A8E6DBF-B6E6-4776-86B2-4D7A20B7B17D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07734934-973E-4FD9-A192-15013B7DB7C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07734934-973E-4FD9-A192-15013B7DB7C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07734934-973E-4FD9-A192-15013B7DB7C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07734934-973E-4FD9-A192-15013B7DB7C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

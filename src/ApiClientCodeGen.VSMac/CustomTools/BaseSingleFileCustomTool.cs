@@ -1,8 +1,11 @@
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using ApiClientCodeGen.VSMac.Logging;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using MonoDevelop.Core;
+using MonoDevelop.Ide;
 using MonoDevelop.Ide.CustomTools;
 using MonoDevelop.Projects;
 
@@ -17,13 +20,13 @@ namespace ApiClientCodeGen.VSMac.CustomTools
         {
             Bootstrapper.Initialize();
 
-            using var traceListener = new DisposableTraceListener(
-                new LoggingServiceTraceListener(
-                    new ProgressMonitorLoggingService(monitor, "Generating code...")));
-
             var swaggerFile = file.FilePath;
             var outputFile = swaggerFile.ChangeExtension(".cs");
             result.GeneratedFilePath = outputFile;
+
+            using var traceListener = new DisposableTraceListener(
+                new LoggingServiceTraceListener(
+                    new ProgressMonitorLoggingService(monitor, "Generating code...")));
 
             var customToolNamespace = file.CustomToolNamespace;
             if (string.IsNullOrWhiteSpace(customToolNamespace))
