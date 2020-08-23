@@ -2,7 +2,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using FluentAssertions;
 using Xunit;
 
-namespace ApiClientCodeGen.VSMac.Tests
+namespace ApiClientCodeGen.Core.Tests.Extensions
 {
     public class StringExtensionsTests
     {
