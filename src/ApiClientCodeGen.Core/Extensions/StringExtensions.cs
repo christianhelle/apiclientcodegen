@@ -43,9 +43,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
             StringComparison comparisonType)
         {
             if (text == null) throw new ArgumentNullException(nameof(text));
-            return words.Any(
-                word =>
-                    text.EndsWith(word, comparisonType));
+            if (words == null) throw new ArgumentNullException(nameof(words));
+            return words.Any(word => text.EndsWith(word, comparisonType));
         }
     }
 }

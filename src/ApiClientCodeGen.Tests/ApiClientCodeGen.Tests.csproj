@@ -55,6 +55,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\StringExtensionsTests.cs" />
     <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorYamlTests.cs" />
     <Compile Include="Options\AutoRestOptionsTests.cs" />
     <Compile Include="Options\CustomPathOptionsNullOptionsTests.cs" />
