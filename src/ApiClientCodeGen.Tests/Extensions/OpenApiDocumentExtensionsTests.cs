@@ -7,12 +7,29 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
 {
     public class OpenApiDocumentExtensionsTests : TestWithResources
     {
+        private readonly string swaggerJson;
+
+        public OpenApiDocumentExtensionsTests() 
+            => swaggerJson = ReadAllText("Swagger.json");
+
         [Xunit.Fact]
         public async Task Can_GenerateClassName_From_Json_Using_DocumentTitle()
-            => (await OpenApiDocument.FromJsonAsync(ReadAllText("Swagger.json")))
-            .GenerateClassName()
-            .Should()
-            .Be("PetstoreClient");
+        {
+            (await OpenApiDocument.FromJsonAsync(swaggerJson))
+                .GenerateClassName()
+                .Should()
+                .Be("PetstoreClient");
+        }
+
+        [Xunit.Fact]
+        public async Task Can_GenerateClassName_From_Json_Without_DocumentTitle()
+        {
+            var sut = await OpenApiDocument.FromJsonAsync(swaggerJson);
+            sut.Info.Title = null;
+            sut.GenerateClassName()
+                .Should()
+                .Be("ApiClient");
+        }
 
         [Xunit.Fact]
         public async Task Can_GenerateClassName_From_FileName()
@@ -23,7 +40,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
         
         [Xunit.Fact]
         public async Task Can_GenerateClassName_From_Json()
-            => (await OpenApiDocument.FromJsonAsync(ReadAllText("Swagger.json")))
+            => (await OpenApiDocument.FromJsonAsync(swaggerJson))
                 .GenerateClassName(false)
                 .Should()
                 .Be("PetstoreClient");
