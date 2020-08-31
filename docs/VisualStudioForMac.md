@@ -6,7 +6,7 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 - Supports Visual Studio for Mac
 - Add New REST API Client to a project from an OpenAPI specification URL (e.g https://petstore.swagger.io/v2/swagger.json) using [AutoRest](https://github.com/Azure/autorest), [NSwag](https://github.com/RicoSuter/NSwag), [Swagger Codegen](https://github.com/swagger-api/swagger-codegen), or [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
 - Define custom namespace for the generated file
-- Auto-updating of generated code file when changes are made to the OpenAPI specification json file (Swagger.json)
+- Auto-updating of generated code file when changes are made to the OpenAPI specification JSON or YAML file
 - Generate code using an [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) specification file by including it in the project and using the **Generate with NSwag** context menu
 
 
