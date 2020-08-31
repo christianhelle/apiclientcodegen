@@ -17,7 +17,7 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
     inputs:
-      sourceFolder: '$(system.defaultworkingdirectory)/src/ApiClientCodeGen.VSMac'
+      sourceFolder: '$(system.defaultworkingdirectory)/src'
       contents: |
         *.mpack
       targetFolder: '$(build.artifactstagingdirectory)'
