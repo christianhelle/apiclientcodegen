@@ -74,7 +74,7 @@ Supports customising how the **.nswag** file is generated using a subset of the 
 ![Options - NSwag Studio](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswagstudio.png)
 
 
-For tips and tricks on software development, check out [my blog](https://christian-helle.blogspot.com)
+For tips and tricks on software development, check out [my blog](https://christianhelle.com)
 
 If you find this useful and feel a bit generous then feel free to [buy me a coffee](https://www.buymeacoffee.com/christianhelle) :)
 
