@@ -272,3 +272,5 @@ src/SwaggerOutput.cs
 src/ApiClientCodeGen.CLI/Properties/launchSettings.json
 .DS_Store
 *.mpack
+*.mrep
+src/index.html
