@@ -20,6 +20,8 @@ jobs:
       sourceFolder: '$(system.defaultworkingdirectory)/src'
       contents: |
         *.mpack
+        *.mrep
+        index.html
       targetFolder: '$(build.artifactstagingdirectory)'
       flattenFolders: true
 
