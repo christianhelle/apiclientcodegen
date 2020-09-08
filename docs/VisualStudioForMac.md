@@ -57,7 +57,55 @@ The **NSwag** code generator produces code that depends on the [Newtonsoft.Json]
 
 ## Installation
 
-This installation process for Visual Studio for Mac is currently a bit troublesome as the MonoDevelop Addin Repository is currently not accepting new users so I can't really register and upload my extension. 
+The Visual Studio extension can be installed directly from Visual Studio 2017 or 2019 via the **Extensions Dialog Box**. The process is best described in the official Microsoft documentation for [Managing extensions for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/ide/finding-and-using-visual-studio-extensions?view=vs-2019)
+
+### Visual Studio for Mac
+
+This installation process for **Visual Studio for Mac** is currently a bit troublesome as the MonoDevelop Addin Repository is currently not accepting new users so I can't really register and setup my extension.
+
+There are 2 ways of installing my extension on Visual Studio for Mac: Adding a custom extension repository or Installing the **.mpack** file directly from the Extensions Manager
+
+### Adding a new extension repository
+
+Here's what you need to do:
+
+- Open the Visual Studio for Mac **Extension Manager**
+- You can do this from the menu **Visual Studio** -> **Extentions**
+
+![Open Extensions Dialog Box](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-menu.png)
+
+- Select the **Gallery** Tab
+- Expand the Repository drop down box and select **Manage Repositories**
+
+![Manage Repositories](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-manage-repositories.png)
+
+- Press on the **Add** button to add a new custom extension repository
+
+![Manage Repositories](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-repositories.png)
+
+- Register an online repository at **https://christianhelle.com/vsmac/main.mrep**
+- Click **OK**
+
+![Add Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-add-repository.png)
+
+- Now my extension repository is added to the list
+- Make sure that this is enabled (indicated by a check box)
+
+![Add Repository Dialog](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-added-repository.png)
+
+- You should now be able to see my extensions from the **Gallery** tab
+
+![Added Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-gallery.png)
+
+- By adding my extension repository you will be able to conveniently update my extension using the Visual Studio for Mac Extension Manager
+
+![Add Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-updates.png)
+
+![Add Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-update-install.png)
+
+![Add Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-update-install-progress.png)
+
+### Installing the **.mpack** file directly
 
 Here's what you need to do:
 - Download the latest **.mpack file** from the [Latest Github Release](https://github.com/christianhelle/apiclientcodegen/releases/latest)
