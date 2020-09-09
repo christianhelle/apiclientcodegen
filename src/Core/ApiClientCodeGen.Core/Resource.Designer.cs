@@ -79,7 +79,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.14/swagger-codegen-cli-3.0.14.jar.
+        ///   Looks up a localized string similar to https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.21/swagger-codegen-cli-3.0.21.jar.
         /// </summary>
         public static string SwaggerCodegenCli_DownloadUrl {
             get {
@@ -88,7 +88,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D9D14AF2BDDCD754ACDB2585BA696C2C.
+        ///   Looks up a localized string similar to F4CBC1CA1203BB13F69D4B737943E681.
         /// </summary>
         public static string SwaggerCodegenCli_MD5 {
             get {
