@@ -30,6 +30,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                        $"--output-file=\"{outputFile}\" " +
                        $"--namespace=\"{DefaultNamespace}\" ";
 
+            var document = documentFactory.GetDocument(SwaggerFile);
+            if (!string.IsNullOrEmpty(document.OpenApi) && 
+                Version.TryParse(document.OpenApi, out var openApiVersion) && 
+                openApiVersion > Version.Parse("3.0.0"))
+            {
+                args += "--v3 ";
+            }
+
             if (options.AddCredentials)
                 args += "--add-credentials ";
 
