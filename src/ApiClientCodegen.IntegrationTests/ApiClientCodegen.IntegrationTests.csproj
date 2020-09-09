@@ -67,6 +67,24 @@
     <Compile Include="Generators\NSwagStudioCodeGeneratorBuildTests.cs" />
     <Compile Include="Generators\OpenApiCodeGeneratorFixture.cs" />
     <Compile Include="Generators\SwaggerCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\OpenApi3\AutoRestCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\OpenApi3\AutoRestCodeGeneratorTests.cs" />
+    <Compile Include="Generators\OpenApi3\NSwagCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\OpenApi3\NSwagCodeGeneratorTests.cs" />
+    <Compile Include="Generators\OpenApi3\NSwagStudioCodeGeneratorBuildTests.cs" />
+    <Compile Include="Generators\OpenApi3\NSwagStudioCodeGeneratorTests.cs" />
+    <Compile Include="Generators\OpenApi3\OpenApiCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\OpenApi3\OpenApiCodeGeneratorTests.cs" />
+    <Compile Include="Generators\OpenApi3\SwaggerCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\OpenApi3\SwaggerCodeGeneratorTests.cs" />
+    <Compile Include="Generators\OpenApi3\Yaml\AutoRestCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\OpenApi3\Yaml\AutoRestCodeGeneratorYamlTests.cs" />
+    <Compile Include="Generators\OpenApi3\Yaml\NSwagCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\OpenApi3\Yaml\NSwagCodeGeneratorYamlTests.cs" />
+    <Compile Include="Generators\OpenApi3\Yaml\OpenApiCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\OpenApi3\Yaml\OpenApiCodeGeneratorYamlTests.cs" />
+    <Compile Include="Generators\OpenApi3\Yaml\SwaggerCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\OpenApi3\Yaml\SwaggerCodeGeneratorYamlTests.cs" />
     <Compile Include="Generators\Yaml\AutoRestCodeGeneratorFixture.cs" />
     <Compile Include="Generators\Yaml\AutoRestCodeGeneratorYamlTests.cs" />
     <Compile Include="Generators\Yaml\NSwagCodeGeneratorFixture.cs" />
@@ -89,8 +107,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Generators\SwaggerCodeGeneratorTests.cs" />
   </ItemGroup>
-  <ItemGroup>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj">
       <Project>{24639115-9e66-4dc5-be93-9e72fbe5ec5f}</Project>
