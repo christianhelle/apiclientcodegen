@@ -109,13 +109,13 @@
     <EmbeddedResource Include="Resources\Swagger.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\OpenApi3\Swagger.yaml">
+    <EmbeddedResource Include="Resources\Swagger_v3.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\OpenApi3\Swagger.json">
+    <EmbeddedResource Include="Resources\Swagger_v3.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\OpenApi3\Swagger.nswag">
+    <EmbeddedResource Include="Resources\Swagger_v3.nswag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
