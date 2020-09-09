@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
@@ -8,15 +9,18 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     public class AutoRestCSharpCodeGenerator : CodeGenerator
     {
         private readonly IAutoRestOptions options;
+        private readonly IOpenApiDocumentFactory documentFactory;
 
         public AutoRestCSharpCodeGenerator(
             string swaggerFile,
             string defaultNamespace,
             IAutoRestOptions options,
-            IProcessLauncher processLauncher)
+            IProcessLauncher processLauncher,
+            IOpenApiDocumentFactory documentFactory)
             : base(swaggerFile, defaultNamespace, processLauncher)
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
+            this.documentFactory = documentFactory ?? throw new ArgumentNullException(nameof(documentFactory));
         }
 
         protected override string GetArguments(string outputFile)

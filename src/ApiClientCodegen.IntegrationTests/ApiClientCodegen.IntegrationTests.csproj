@@ -67,8 +67,8 @@
     <Compile Include="Generators\NSwagStudioCodeGeneratorBuildTests.cs" />
     <Compile Include="Generators\OpenApiCodeGeneratorFixture.cs" />
     <Compile Include="Generators\SwaggerCodeGeneratorFixture.cs" />
-    <None Include="Generators\OpenApi3\AutoRestCodeGeneratorFixture.cs" />
-    <None Include="Generators\OpenApi3\AutoRestCodeGeneratorTests.cs" />
+    <Compile Include="Generators\OpenApi3\AutoRestCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\OpenApi3\AutoRestCodeGeneratorTests.cs" />
     <Compile Include="Generators\OpenApi3\NSwagCodeGeneratorFixture.cs" />
     <Compile Include="Generators\OpenApi3\NSwagCodeGeneratorTests.cs" />
     <Compile Include="Generators\OpenApi3\NSwagStudioCodeGeneratorBuildTests.cs" />
@@ -77,8 +77,8 @@
     <Compile Include="Generators\OpenApi3\OpenApiCodeGeneratorTests.cs" />
     <Compile Include="Generators\OpenApi3\SwaggerCodeGeneratorFixture.cs" />
     <Compile Include="Generators\OpenApi3\SwaggerCodeGeneratorTests.cs" />
-    <None Include="Generators\OpenApi3\Yaml\AutoRestCodeGeneratorFixture.cs" />
-    <None Include="Generators\OpenApi3\Yaml\AutoRestCodeGeneratorYamlTests.cs" />
+    <Compile Include="Generators\OpenApi3\Yaml\AutoRestCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\OpenApi3\Yaml\AutoRestCodeGeneratorYamlTests.cs" />
     <Compile Include="Generators\OpenApi3\Yaml\NSwagCodeGeneratorFixture.cs" />
     <Compile Include="Generators\OpenApi3\Yaml\NSwagCodeGeneratorYamlTests.cs" />
     <Compile Include="Generators\OpenApi3\Yaml\OpenApiCodeGeneratorFixture.cs" />

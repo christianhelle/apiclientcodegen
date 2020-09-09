@@ -5,6 +5,7 @@ using ApiClientCodeGen.CLI.Logging;
 using ApiClientCodeGen.CLI.Tests.Infrastructure;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using FluentAssertions;
 using Moq;
@@ -38,6 +39,7 @@ namespace ApiClientCodeGen.CLI.Tests.Command
             IProgressReporter progressReporter,
             IAutoRestCodeGeneratorFactory factory,
             ICodeGenerator generator,
+            IOpenApiDocumentFactory documentFactory,
             string outputFile,
             string code)
         {
@@ -46,7 +48,8 @@ namespace ApiClientCodeGen.CLI.Tests.Command
                 options,
                 processLauncher,
                 progressReporter,
-                factory)
+                factory,
+                documentFactory)
             {
                 OutputFile = outputFile
             };

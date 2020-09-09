@@ -19,13 +19,18 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
     public class CodeGeneratorFactory : ICodeGeneratorFactory
     {
+        private readonly IOpenApiDocumentFactory documentFactory;
         private readonly IProcessLauncher processLauncher;
         private readonly IOptionsFactory optionsFactory;
 
-        public CodeGeneratorFactory(IOptionsFactory optionsFactory = null, IProcessLauncher processLauncher = null)
+        public CodeGeneratorFactory(
+            IOptionsFactory optionsFactory = null, 
+            IProcessLauncher processLauncher = null,
+            IOpenApiDocumentFactory documentFactory = null)
         {
             this.optionsFactory = optionsFactory ?? new OptionsFactory();
             this.processLauncher = processLauncher ?? new ProcessLauncher();
+            this.documentFactory = documentFactory ?? new OpenApiDocumentFactory();
         }
 
         public ICodeGenerator Create(
@@ -42,7 +47,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                         inputFilePath,
                         defaultNamespace,
                         optionsFactory.Create<IAutoRestOptions, AutoRestOptionsPage>(),
-                        processLauncher);
+                        processLauncher,
+                        documentFactory);
 
                 case SupportedCodeGenerator.NSwag:
                     return new NSwagCSharpCodeGenerator(
