@@ -17,6 +17,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
                 CreateFileFromEmbeddedResource("Swagger.json");
                 CreateFileFromEmbeddedResource("Swagger.yaml");
                 CreateFileFromEmbeddedResource("Swagger.nswag");
+                CreateFileFromEmbeddedResource("Swagger_v3.json");
+                CreateFileFromEmbeddedResource("Swagger_v3.yaml");
+                CreateFileFromEmbeddedResource("Swagger_v3.nswag");
             }
             
             ServicePointManager.Expect100Continue = true;
