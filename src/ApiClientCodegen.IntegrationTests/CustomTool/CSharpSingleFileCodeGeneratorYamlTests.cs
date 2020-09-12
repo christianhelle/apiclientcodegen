@@ -27,7 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
                 .Returns(optionsMock.Object);
 
-            Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object, "Swagger.yaml");
+            Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
         }
 
         [Fact]
@@ -39,7 +39,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage>())
                 .Returns(optionsMock.Object);
 
-            Assert(SupportedCodeGenerator.Swagger, optionsFactory.Object, "Swagger.yaml");
+            Assert(SupportedCodeGenerator.Swagger, optionsFactory.Object);
         }
 
         [Fact]
@@ -51,13 +51,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage>())
                 .Returns(optionsMock.Object);
 
-            Assert(SupportedCodeGenerator.OpenApi, optionsFactory.Object, "Swagger.yaml");
+            Assert(SupportedCodeGenerator.OpenApi, optionsFactory.Object);
         }
 
         private static void Assert(
             SupportedCodeGenerator generator,
             IOptionsFactory optionsFactory = null,
-            string swaggerFile = "Swagger.json")
+            string swaggerFile = "Swagger.yaml")
         {
             var rgbOutputFileContents = new[] { IntPtr.Zero };
             var progressMock = new Mock<IVsGeneratorProgress>();
