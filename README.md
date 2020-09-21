@@ -1,8 +1,19 @@
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=sqale_index)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=code_smells)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=bugs)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=coverage)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=alert_status)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=security_rating)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
+
 [![Build Status](https://travis-ci.com/christianhelle/apiclientcodegen.svg?branch=master)](https://travis-ci.com/christianhelle/apiclientcodegen)
 [![Build status](https://ci.appveyor.com/api/projects/status/gb2doe3tgwjt47cn/branch/master?svg=true)](https://ci.appveyor.com/project/christianhelle/apiclientcodegen/branch/master)
 ![.NET Core](https://github.com/christianhelle/apiclientcodegen/workflows/.NET%20Core/badge.svg?branch=master)
-![build status](https://christianhelle.visualstudio.com/API%20Client%20Code%20Generator/_apis/build/status/CI%20Build) 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=alert_status)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
+![Build status](https://christianhelle.visualstudio.com/API%20Client%20Code%20Generator/_apis/build/status/CI%20Build)
 
 [![Version](https://vsmarketplacebadge.apphb.com/version/ChristianResmaHelle.APIClientCodeGenerator.svg)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator) 
 [![Installs](https://vsmarketplacebadge.apphb.com/downloads-short/ChristianResmaHelle.APIClientCodeGenerator.svg)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator) 
