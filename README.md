@@ -14,6 +14,8 @@
 # REST API Client Code Generator
 A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files
 
+Download the **[latest version](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)** from the Visual Studio Marketplace
+
 ## Features
 
 - Supports Visual Studio 2017, 2019, and ***Visual Studio for Mac (NEW)***
