@@ -10,9 +10,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install NPM global packages
-      run: npm install -g autorest
-      run: npm install -g nswag
+    - run: npm install -g autorest
+    - run: npm install -g nswag
 
     - name: Cake Build
       run: powershell ./build.ps1
