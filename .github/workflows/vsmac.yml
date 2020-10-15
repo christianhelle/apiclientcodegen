@@ -1,9 +1,5 @@
-name: VS Mac
-
-on: [push]
-
 jobs:
-  build:
+  VS Mac:
 
     runs-on: macos-latest
 

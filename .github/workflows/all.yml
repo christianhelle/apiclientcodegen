@@ -3,72 +3,7 @@ name: build
 on: [push]
 
 jobs:
-  CLI-Tool:
 
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 2.1.607
-
-    - name: Build with dotnet
-      run: dotnet build Rapicgen.sln
-      working-directory: src
-
-    - name: Test with dotnet
-      run: dotnet test Rapicgen.sln
-      working-directory: src
-
-  VSIX:
-
-    runs-on: windows-2019
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Cake Build
-      run: powershell ./build.ps1
-      working-directory: src
-
-    - name: Publish artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: Artifacts
-        path: |
-          **/*.vsix
-
-  VSMac:
-
-    runs-on: macos-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Update Extension Version Info
-      run: sed -i -e 's/1.0/1.0.${{ github.run_number }}/g' ./AddinInfo.cs
-      working-directory: src/ApiClientCodeGen.VSMac/Properties
-
-    - name: Build
-      run: make release
-      working-directory: src
-
-    - name: Rename build output
-      run: mv *.mpack ApiClientCodeGenerator-1.0.${{ github.run_number }}.mpack
-      working-directory: src
-
-    - name: Create MonoDevelop Extension repository files
-      run: make publish
-      working-directory: src
-
-    - name: Publish artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: Artifacts
-        path: |
-          src/*.mpack
-          src/*.mrep
-          src/index.html
+- template: cli-tool.yml
+- template: vsix.yml
+- template: vsmac.yml

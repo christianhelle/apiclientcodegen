@@ -1,9 +1,5 @@
-name: VSIX
-
-on: [push]
-
 jobs:
-  build:
+  VSIX:
 
     runs-on: windows-2019
 
