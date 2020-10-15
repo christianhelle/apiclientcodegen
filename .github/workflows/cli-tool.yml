@@ -1,5 +1,9 @@
+name: CLI Tool
+
+on: [push]
+
 jobs:
-  CLI Tool:
+  build:
 
     runs-on: ubuntu-latest
 
