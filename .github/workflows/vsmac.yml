@@ -18,9 +18,19 @@ jobs:
       run: make release
       working-directory: src
 
+    - name: Rename build output
+      run: mv *.mpack ApiClientCodeGenerator-1.0.${{ github.run_number }}.mpack
+      working-directory: src
+
+    - name: Create MonoDevelop Extension repository files
+      run: make publish
+      working-directory: src
+
     - name: Publish artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: .mpack file
+        name: Artifacts
         path: |
-          **/*.mpack
+          src/*.mpack
+          src/*.mrep
+          src/index.html
