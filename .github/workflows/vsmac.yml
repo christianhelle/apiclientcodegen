@@ -1,0 +1,26 @@
+name: Visual Studio for Mac Extension
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Update Extension Version Info
+      run: sed -i -e 's/1.0/1.0.${{ github.run_number }}/g' ./AddinInfo.cs
+      working-directory: src/ApiClientCodeGen.VSMac/Properties
+
+    - name: Build
+      run: make release
+      working-directory: src
+
+    - name: Publish artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: .mpack file
+        path: |
+          **/*.mpack
