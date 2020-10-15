@@ -1,4 +1,4 @@
-name: Visual Studio for Mac Extension
+name: VS Mac
 
 on: [push]
 
