@@ -38,7 +38,7 @@ Task("Run-Unit-Tests")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    VSTest("./**/bin/" + configuration + "/*Tests.dll",
+    VSTest("./**/bin/" + configuration + "/*.Tests.dll",
            new VSTestSettings 
            { 
                Parallel = true, 
