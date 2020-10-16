@@ -1,0 +1,25 @@
+name: VSIX
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - run: npm install -g autorest
+    - run: npm install -g nswag
+
+    - name: Cake Build
+      run: powershell ./build.ps1
+      working-directory: src
+
+    - name: Publish artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: Artifacts
+        path: |
+          **/*.vsix
