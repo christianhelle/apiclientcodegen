@@ -1,8 +1,8 @@
 ﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using FluentAssertions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
+namespace ApiClientCodeGen.Core.Tests.NuGet
 {
     
     public class SupportedCodeGeneratorExtensionsTests
