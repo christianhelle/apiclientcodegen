@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using FluentAssertions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extensions
+namespace ApiClientCodeGen.Core.Tests.Extensions
 {
     public class GetDependenciesTests
     {
