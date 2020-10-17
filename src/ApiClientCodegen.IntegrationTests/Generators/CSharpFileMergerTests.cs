@@ -2,7 +2,7 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
 
-namespace ApiClientCodeGen.Core.Tests.Generators
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
     
     [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]

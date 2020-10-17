@@ -65,6 +65,7 @@
     <None Include="CustomTool\VisualBasicSingleFileCodeGeneratorTests.cs" />
     <None Include="CustomTool\VisualBasicSingleFileCodeGenerator.cs" />
     <Compile Include="Generators\AutoRestCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\CSharpFileMergerTests.cs" />
     <Compile Include="Generators\NSwagCodeGeneratorFixture.cs" />
     <Compile Include="Generators\NSwagStudioCodeGeneratorBuildTests.cs" />
     <Compile Include="Generators\OpenApiCodeGeneratorFixture.cs" />
