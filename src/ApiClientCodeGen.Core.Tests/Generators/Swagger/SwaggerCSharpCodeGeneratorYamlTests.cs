@@ -12,13 +12,14 @@ namespace ApiClientCodeGen.Core.Tests.Generators.Swagger
     {
         private readonly Mock<IGeneralOptions> optionsMock = new Mock<IGeneralOptions>();
         private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
+        private readonly Mock<IProcessLauncher> processMock = new Mock<IProcessLauncher>();
 
         public SwaggerCSharpCodeGeneratorYamlTests()
             => new SwaggerCSharpCodeGenerator(
                     "Swagger.yaml",
                     new Fixture().Create<string>(),
                     optionsMock.Object,
-                    new ProcessLauncher())
+                    processMock.Object)
                 .GenerateCode(progressMock.Object);
 
         [Fact]

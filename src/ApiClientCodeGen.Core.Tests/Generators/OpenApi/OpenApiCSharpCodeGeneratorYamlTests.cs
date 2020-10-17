@@ -1,32 +1,31 @@
 ﻿using AutoFixture;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using Moq;
-using Xunit;
 
-namespace ApiClientCodeGen.Core.Tests.Generators.Swagger
+namespace ApiClientCodeGen.Core.Tests.Generators.OpenApi
 {
-    public class SwaggerCSharpCodeGeneratorTests : TestWithResources
+    public class OpenApiCSharpCodeGeneratorYamlTests : TestWithResources
     {
         private readonly Mock<IGeneralOptions> optionsMock = new Mock<IGeneralOptions>();
         private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
         private readonly Mock<IProcessLauncher> processMock = new Mock<IProcessLauncher>();
 
-        public SwaggerCSharpCodeGeneratorTests()
-            => new SwaggerCSharpCodeGenerator(
-                    "Swagger.json",
+        public OpenApiCSharpCodeGeneratorYamlTests()
+            => new OpenApiCSharpCodeGenerator(
+                    "Swagger.yaml",
                     new Fixture().Create<string>(),
                     optionsMock.Object,
                     processMock.Object)
                 .GenerateCode(progressMock.Object);
 
-        [Fact]
+        [Xunit.Fact]
         public void Reads_SwaggerCodegenPath()
-            => optionsMock.Verify(c => c.SwaggerCodegenPath);
+            => optionsMock.Verify(c => c.OpenApiGeneratorPath);
 
-        [Fact]
+        [Xunit.Fact]
         public void Updates_Progress()
             => progressMock.Verify(
                 c => c.Progress(

@@ -11,13 +11,14 @@ namespace ApiClientCodeGen.Core.Tests.Generators.OpenApi
     {
         private readonly Mock<IGeneralOptions> optionsMock = new Mock<IGeneralOptions>();
         private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
+        private readonly Mock<IProcessLauncher> processMock = new Mock<IProcessLauncher>();
 
         public OpenApiCSharpCodeGeneratorTests()
             => new OpenApiCSharpCodeGenerator(
                     "Swagger.json",
                     new Fixture().Create<string>(),
                     optionsMock.Object,
-                    new ProcessLauncher())
+                    processMock.Object)
                 .GenerateCode(progressMock.Object);
 
         [Xunit.Fact]
