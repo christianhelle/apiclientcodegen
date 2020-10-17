@@ -7,7 +7,7 @@ using NSwag;
 using NSwag.CodeGeneration.CSharp;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.NSwag
+namespace ApiClientCodeGen.Core.Tests.Generators.NSwag
 {
     public class NSwagCSharpCodeGeneratorTests : TestWithResources
     {

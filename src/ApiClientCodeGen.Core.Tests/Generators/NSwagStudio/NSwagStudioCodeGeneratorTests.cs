@@ -6,7 +6,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Genera
 using FluentAssertions;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.NSwagStudio
+namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
 {
     
     [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]

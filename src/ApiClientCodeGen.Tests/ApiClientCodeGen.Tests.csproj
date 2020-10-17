@@ -55,7 +55,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorYamlTests.cs" />
     <Compile Include="Options\AutoRestOptionsTests.cs" />
     <Compile Include="Options\CustomPathOptionsNullOptionsTests.cs" />
     <Compile Include="Options\CustomPathOptionsTests.cs" />
@@ -80,19 +79,10 @@
     <Compile Include="Extensions\GetCustomToolNameTests.cs" />
     <Compile Include="FileHelperTests.cs" />
     <Compile Include="Generators\CodeGeneratorFactoryTests.cs" />
-    <Compile Include="Generators\CSharpFileMergerTests.cs" />
     <Compile Include="DeploymentItemTests.cs" />
-    <Compile Include="Generators\CodeGeneratorTests.cs" />
-    <Compile Include="Generators\NSwagStudio\NSwagStudioCodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelperTests.cs" />
     <Compile Include="Generators\NSwag\NSwagCodeGeneratorSettingsFactoryTests.cs" />
-    <Compile Include="Generators\NSwag\NSwagCSharpCodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwag\OpenApiDocumentFactoryTests.cs" />
-    <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGeneratorExceptionTests.cs" />
-    <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGeneratorTests.cs" />
-    <Compile Include="Generators\ProcessLauncherTests.cs" />
-    <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorExceptionTests.cs" />
-    <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="NpmHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

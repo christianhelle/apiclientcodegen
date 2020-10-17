@@ -6,7 +6,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Genera
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.Swagger
+namespace ApiClientCodeGen.Core.Tests.Generators.Swagger
 {
     public class SwaggerCSharpCodeGeneratorYamlTests : TestWithResources
     {
