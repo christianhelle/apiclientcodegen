@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSIX", "Ap
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2163CD80-1242-47F5-928B-26898374C4AE}"
 	ProjectSection(SolutionItems) = preProject
+		..\.travis.yml = ..\.travis.yml
 		build.cake = build.cake
 		..\README.md = ..\README.md
 		Tests.runsettings = Tests.runsettings
@@ -22,7 +23,30 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.CLI", "Api
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.CLI.Tests", "ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj", "{2A86E93C-24D9-48D9-925A-D0882A683EB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.Core.Tests", "ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj", "{0B0009BF-5278-4804-B6E4-D36B0FF6BFA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.Core.Tests", "ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj", "{0B0009BF-5278-4804-B6E4-D36B0FF6BFA6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Actions", "Github Actions", "{FA2B6312-D202-4B2D-BD13-1A875D04B673}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\cli-tool.yml = ..\.github\workflows\cli-tool.yml
+		..\.github\workflows\vsix.yml = ..\.github\workflows\vsix.yml
+		..\.github\workflows\vsmac.yml = ..\.github\workflows\vsmac.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure Pipelines", "Azure Pipelines", "{6E9B603B-B53F-41C9-9F3F-E2588B9FF84C}"
+	ProjectSection(SolutionItems) = preProject
+		..\build\ci-builds.yml = ..\build\ci-builds.yml
+		..\build\dev-builds.yml = ..\build\dev-builds.yml
+		..\build\integration-test.yml = ..\build\integration-test.yml
+		..\build\smoke-test.yml = ..\build\smoke-test.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{03061C35-1859-42E3-A2E5-CEF336224612}"
+	ProjectSection(SolutionItems) = preProject
+		..\build\templates\cli-tool.yml = ..\build\templates\cli-tool.yml
+		..\build\templates\script-test-template.yml = ..\build\templates\script-test-template.yml
+		..\build\templates\vsix.yml = ..\build\templates\vsix.yml
+		..\build\templates\vsmac.yml = ..\build\templates\vsmac.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +85,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{03061C35-1859-42E3-A2E5-CEF336224612} = {6E9B603B-B53F-41C9-9F3F-E2588B9FF84C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F80AB22A-52F6-46F7-A186-E650C75D076F}
