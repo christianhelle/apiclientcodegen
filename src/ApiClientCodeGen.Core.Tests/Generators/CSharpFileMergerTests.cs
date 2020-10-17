@@ -13,7 +13,7 @@ namespace ApiClientCodeGen.Core.Tests.Generators
             => CSharpFileMerger.MergeFiles(
                     Path.Combine(
                         Directory.GetCurrentDirectory(),
-                        "..\\..\\..\\"))
+                        "..//..//..//"))
                 .Should()
                 .NotBeNullOrWhiteSpace();
     }
