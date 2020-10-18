@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using ApiClientCodeGen.Core.Tests;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using FluentAssertions;
 using Xunit;
