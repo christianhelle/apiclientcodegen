@@ -31,7 +31,7 @@ jobs:
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
     inputs:
-      restoreSolution: 'src/ApiClientCodeGenerator.sln'
+      restoreSolution: 'src/All.sln'
 
   - task: SamirBoulema.Vsix-Tools.Vsix-Tools-Update-Version.VsixToolsUpdateVersion@1
     displayName: 'Set Vsix Version'
@@ -48,9 +48,9 @@ jobs:
       projectName: apiclientcodegen
 
   - task: VSBuild@1
-    displayName: 'Build solution src/ApiClientCodeGenerator.sln'
+    displayName: 'Build solution src/All.sln'
     inputs:
-      solution: src/ApiClientCodeGenerator.sln
+      solution: src/All.sln
       platform: 'Any CPU'
       configuration: 'Release'
     timeoutInMinutes: 20
