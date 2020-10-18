@@ -2,7 +2,7 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
     
     [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
@@ -13,7 +13,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             => CSharpFileMerger.MergeFiles(
                     Path.Combine(
                         Directory.GetCurrentDirectory(),
-                        "..\\..\\..\\"))
+                        "..//..//..//"))
                 .Should()
                 .NotBeNullOrWhiteSpace();
     }

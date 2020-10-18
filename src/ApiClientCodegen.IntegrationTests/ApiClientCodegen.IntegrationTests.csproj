@@ -64,7 +64,9 @@
     <Compile Include="CustomTool\CSharpSingleFileCodeGenerator.cs" />
     <None Include="CustomTool\VisualBasicSingleFileCodeGeneratorTests.cs" />
     <None Include="CustomTool\VisualBasicSingleFileCodeGenerator.cs" />
+    <Compile Include="DependencyDownloaderTests.cs" />
     <Compile Include="Generators\AutoRestCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\CSharpFileMergerTests.cs" />
     <Compile Include="Generators\NSwagCodeGeneratorFixture.cs" />
     <Compile Include="Generators\NSwagStudioCodeGeneratorBuildTests.cs" />
     <Compile Include="Generators\OpenApiCodeGeneratorFixture.cs" />
@@ -129,7 +131,7 @@
       <Version>5.10.3</Version>
     </PackageReference>
     <PackageReference Include="Moq">
-      <Version>4.14.6</Version>
+      <Version>4.14.7</Version>
     </PackageReference>
     <PackageReference Include="xunit">
       <Version>2.4.1</Version>

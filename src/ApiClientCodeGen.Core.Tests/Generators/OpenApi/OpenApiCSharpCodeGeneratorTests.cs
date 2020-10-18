@@ -5,19 +5,20 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Ope
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.OpenApi
+namespace ApiClientCodeGen.Core.Tests.Generators.OpenApi
 {
     public class OpenApiCSharpCodeGeneratorTests : TestWithResources
     {
         private readonly Mock<IGeneralOptions> optionsMock = new Mock<IGeneralOptions>();
         private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
+        private readonly Mock<IProcessLauncher> processMock = new Mock<IProcessLauncher>();
 
         public OpenApiCSharpCodeGeneratorTests()
             => new OpenApiCSharpCodeGenerator(
                     "Swagger.json",
                     new Fixture().Create<string>(),
                     optionsMock.Object,
-                    new ProcessLauncher())
+                    processMock.Object)
                 .GenerateCode(progressMock.Object);
 
         [Xunit.Fact]

@@ -2,14 +2,13 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using FluentAssertions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extensions
+namespace ApiClientCodeGen.Core.Tests.Extensions
 {
-    
     public class StringToIntPtrTests
     {
-        private string str;
-        private IntPtr result;
-        private uint length;
+        private readonly string str;
+        private readonly IntPtr result;
+        private readonly uint length;
 
         public StringToIntPtrTests()
         {

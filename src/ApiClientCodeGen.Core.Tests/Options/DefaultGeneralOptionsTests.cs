@@ -27,5 +27,9 @@ namespace ApiClientCodeGen.Core.Tests.Options
         [Xunit.Fact]
         public void OpenApiGeneratorPath_NotNull()
             => sut.OpenApiGeneratorPath.Should().NotBeNullOrWhiteSpace();
+
+        [Xunit.Fact]
+        public void InstallMissingPackages_BeTrue()
+            => sut.InstallMissingPackages.Should().BeTrue();
     }
 }

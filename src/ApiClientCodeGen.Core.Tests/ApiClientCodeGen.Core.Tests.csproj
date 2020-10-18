@@ -4,13 +4,46 @@
         <TargetFramework>netcoreapp2.1</TargetFramework>
 
         <IsPackable>false</IsPackable>
+
+        <LangVersion>8.0</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Resources\Swagger.json" />
+      <None Remove="Resources\Swagger.nswag" />
+      <None Remove="Resources\Swagger.yaml" />
+      <None Remove="Resources\Swagger_v3.json" />
+      <None Remove="Resources\Swagger_v3.nswag" />
+      <None Remove="Resources\Swagger_v3.yaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Resources\Swagger.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Include="Resources\Swagger.nswag">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Include="Resources\Swagger.yaml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Include="Resources\Swagger_v3.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Include="Resources\Swagger_v3.nswag">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <EmbeddedResource Include="Resources\Swagger_v3.yaml">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="AutoFixture" Version="4.14.0" />
+        <PackageReference Include="AutoFixture.Xunit2" Version="4.14.0" />
         <PackageReference Include="FluentAssertions" Version="5.10.3" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
-        <PackageReference Include="Moq" Version="4.14.6" />
+        <PackageReference Include="Moq" Version="4.14.7" />
         <PackageReference Include="xunit" Version="2.4.1" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
           <PrivateAssets>all</PrivateAssets>

@@ -6,19 +6,20 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Genera
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.Swagger
+namespace ApiClientCodeGen.Core.Tests.Generators.Swagger
 {
-    public class SwaggerCSharpCodeGeneratorTests : TestWithResources
+    public class SwaggerCSharpCodeGeneratorYamlTests : TestWithResources
     {
         private readonly Mock<IGeneralOptions> optionsMock = new Mock<IGeneralOptions>();
         private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
+        private readonly Mock<IProcessLauncher> processMock = new Mock<IProcessLauncher>();
 
-        public SwaggerCSharpCodeGeneratorTests()
+        public SwaggerCSharpCodeGeneratorYamlTests()
             => new SwaggerCSharpCodeGenerator(
-                    "Swagger.json",
+                    "Swagger.yaml",
                     new Fixture().Create<string>(),
                     optionsMock.Object,
-                    new ProcessLauncher())
+                    processMock.Object)
                 .GenerateCode(progressMock.Object);
 
         [Fact]

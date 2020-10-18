@@ -1,12 +1,13 @@
 ﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using FluentAssertions;
+using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extensions
+namespace ApiClientCodeGen.Core.Tests.Extensions
 {
     
     public class ToJsonTests
     {
-        string json;
+        private readonly string json;
 
         public ToJsonTests()
         {
@@ -19,15 +20,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
             }.ToJson();
         }
 
-        [Xunit.Fact]
+        [Fact]
         public void NotNull()
             => json.Should().NotBeNullOrWhiteSpace();
 
-        [Xunit.Fact]
+        [Fact]
         public void Is_CamelCase()
             => json.Should().NotContain("Str").And.Contain("str");
 
-        [Xunit.Fact]
+        [Fact]
         public void Ignores_Null_Values()
             => json.Should().NotContain("null");
     }

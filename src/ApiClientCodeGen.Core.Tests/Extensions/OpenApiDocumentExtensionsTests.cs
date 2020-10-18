@@ -3,7 +3,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using FluentAssertions;
 using NSwag;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extensions
+namespace ApiClientCodeGen.Core.Tests.Extensions
 {
     public class OpenApiDocumentExtensionsTests : TestWithResources
     {
