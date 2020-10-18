@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
-using ApiClientCodeGen.Core.Tests;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
 using FluentAssertions;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests
 {
     public class DependencyDownloaderTests : TestWithResources
     {
