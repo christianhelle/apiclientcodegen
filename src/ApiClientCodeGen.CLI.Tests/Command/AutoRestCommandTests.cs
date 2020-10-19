@@ -56,5 +56,107 @@ namespace ApiClientCodeGen.CLI.Tests.Command
             Mock.Get(generator).Setup(c => c.GenerateCode(progressReporter)).Returns(code);
             new Func<Task>(sut.OnExecuteAsync).Should().NotThrow();
         }
+
+        [Theory, AutoMoqData]
+        public void Constructor_Should_Throw_On_Null_IAutoRestOptions(
+            IConsoleOutput console,
+            IProcessLauncher processLauncher,
+            IProgressReporter progressReporter,
+            IAutoRestCodeGeneratorFactory factory,
+            IOpenApiDocumentFactory documentFactory)
+            => new Action(
+                    () => new AutoRestCommand(
+                        console,
+                        null,
+                        processLauncher,
+                        progressReporter,
+                        factory,
+                        documentFactory))
+                .Should()
+                .ThrowExactly<ArgumentNullException>();
+
+        [Theory, AutoMoqData]
+        public void Constructor_Should_Throw_On_Null_IProcessLauncher(
+            IConsoleOutput console,
+            IAutoRestOptions options,
+            IProgressReporter progressReporter,
+            IAutoRestCodeGeneratorFactory factory,
+            IOpenApiDocumentFactory documentFactory)
+            => new Action(
+                    () => new AutoRestCommand(
+                        console,
+                        options,
+                        null,
+                        progressReporter,
+                        factory,
+                        documentFactory))
+                .Should()
+                .ThrowExactly<ArgumentNullException>();
+
+        [Theory, AutoMoqData]
+        public void Constructor_Should_Throw_On_Null_IAutoRestCodeGeneratorFactory(
+            IConsoleOutput console,
+            IAutoRestOptions options,
+            IProcessLauncher processLauncher,
+            IProgressReporter progressReporter,
+            IOpenApiDocumentFactory documentFactory)
+            => new Action(
+                    () => new AutoRestCommand(
+                        console,
+                        options,
+                        processLauncher,
+                        progressReporter,
+                        null,
+                        documentFactory))
+                .Should()
+                .ThrowExactly<ArgumentNullException>();
+
+        [Theory, AutoMoqData]
+        public void Constructor_Should_Throw_On_Null_IOpenApiDocumentFactory(
+            IConsoleOutput console,
+            IAutoRestOptions options,
+            IProcessLauncher processLauncher,
+            IProgressReporter progressReporter,
+            IAutoRestCodeGeneratorFactory factory)
+            => new Action(
+                    () => new AutoRestCommand(
+                        console,
+                        options,
+                        processLauncher,
+                        progressReporter,
+                        factory,
+                        null))
+                .Should()
+                .ThrowExactly<ArgumentNullException>();
+
+        [Theory, AutoMoqData]
+        public async Task OnExecuteAsync_Should_Create_Generator(
+            IConsoleOutput console,
+            IAutoRestOptions options,
+            IProcessLauncher processLauncher,
+            IProgressReporter progressReporter,
+            IAutoRestCodeGeneratorFactory factory,
+            IOpenApiDocumentFactory documentFactory,
+            string swaggerFile)
+            => await new AutoRestCommand(
+                    console,
+                    options,
+                    processLauncher,
+                    progressReporter,
+                    factory,
+                    documentFactory)
+                {
+                    SwaggerFile = swaggerFile
+                }
+                .OnExecuteAsync()
+                .ContinueWith(
+                    t => Mock.Get(factory)
+                        .Verify(
+                            c => c.Create(
+                                swaggerFile,
+                                "GeneratedCode",
+                                options,
+                                processLauncher,
+                                documentFactory)));
     }
 }
