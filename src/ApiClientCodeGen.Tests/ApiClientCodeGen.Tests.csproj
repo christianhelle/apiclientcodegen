@@ -55,13 +55,32 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generators\CodeGeneratorTests.cs" />
+    <Compile Include="Generators\NSwagStudio\NSwagStudioCodeGeneratorTests.cs" />
+    <Compile Include="Generators\NSwag\NSwagCSharpCodeGeneratorTests.cs" />
+    <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGeneratorExceptionTests.cs" />
+    <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGeneratorTests.cs" />
+    <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGeneratorYamlTests.cs" />
+    <Compile Include="Generators\ProcessLauncherTests.cs" />
+    <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorExceptionTests.cs" />
+    <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorTests.cs" />
+    <Compile Include="Generators\Swagger\SwaggerCSharpCodeGeneratorYamlTests.cs" />
+    <Compile Include="NuGet\PackageDependencyListProviderTests.cs" />
+    <Compile Include="NuGet\PackageDependencyTests.cs" />
+    <Compile Include="NuGet\SupportedCodeGeneratorExtensionsTests.cs" />
     <Compile Include="Options\AutoRestOptionsTests.cs" />
     <Compile Include="Options\CustomPathOptionsNullOptionsTests.cs" />
     <Compile Include="Options\CustomPathOptionsTests.cs" />
+    <Compile Include="Options\DefaultAutoRestOptionsTests.cs" />
+    <Compile Include="Options\DefaultGeneralOptionsTests.cs" />
+    <Compile Include="Options\DefaultNSwagOptionsTests.cs" />
+    <Compile Include="Options\DefaultNSwagStudioOptionsTests.cs" />
+    <Compile Include="Options\JavaPathProviderTests.cs" />
     <Compile Include="Options\NSwagCSharpOptionsNullOptionsTests.cs" />
     <Compile Include="Options\NSwagCSharpOptionsTests.cs" />
     <Compile Include="Options\NSwagStudioOptionsNullOptionsTests.cs" />
     <Compile Include="Options\NSwagStudioOptionsTests.cs" />
+    <Compile Include="Options\PathProviderTests.cs" />
     <Compile Include="Resources\EmbeddedResources.cs" />
     <Compile Include="TestingUtilityTests.cs" />
     <Compile Include="TestWithResources.cs" />
