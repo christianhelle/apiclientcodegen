@@ -55,6 +55,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ActionExtensionsTests.cs" />
+    <Compile Include="Extensions\GetDependenciesTests.cs" />
+    <Compile Include="Extensions\OpenApiDocumentExtensionsTests.cs" />
+    <Compile Include="Extensions\StringExtensionsTests.cs" />
+    <Compile Include="Extensions\StringToIntPtrTests.cs" />
+    <Compile Include="Extensions\ToJsonTests.cs" />
     <Compile Include="Generators\CodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwagStudio\NSwagStudioCodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGeneratorTests.cs" />
