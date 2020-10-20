@@ -2,7 +2,7 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using FluentAssertions;
 
-namespace ApiClientCodeGen.Core.Tests.Extensions
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extensions
 {
     public class StringToIntPtrTests
     {
