@@ -25,13 +25,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
             Trace.WriteLine($"{packageName} installed successfully through NPM");
         }
 
-        public static string InstallOpenApiGenerator(string path = null, bool forceDownload = false)
-            => InstallJarFile(
-                path,
-                "openapi-generator-cli.jar",
-                Resource.OpenApiGenerator_MD5,
-                Resource.OpenApiGenerator_DownloadUrl,
-                forceDownload);
+        public static void InstallOpenApiGenerator()
+            => InstallNpmPackage("@openapitools/openapi-generator-cli");
 
         public static string InstallSwaggerCodegenCli(string path = null, bool forceDownload = false)
             => InstallJarFile(

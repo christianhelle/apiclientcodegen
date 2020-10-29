@@ -11,10 +11,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     {
         [Fact]
         public void InstallOpenApiGenerator_Returns_Path()
-            => DependencyDownloader
-                .InstallOpenApiGenerator()
+            => new Action(DependencyDownloader.InstallOpenApiGenerator)
                 .Should()
-                .NotBeNullOrWhiteSpace();
+                .NotThrow();
 
         [Fact]
         public void InstallSwaggerCodegenCli_Returns_Path()
@@ -22,25 +21,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .InstallSwaggerCodegenCli()
                 .Should()
                 .NotBeNullOrWhiteSpace();
-                
-        [Fact]
-        public void InstallOpenApiGenerator_With_Path_Returns_Path()
-            => DependencyDownloader
-                .InstallOpenApiGenerator(Path.GetTempPath())
-                .Should()
-                .NotBeNullOrWhiteSpace();
 
         [Fact]
         public void InstallSwaggerCodegenCli_With_Path_Returns_Path()
             => DependencyDownloader
                 .InstallSwaggerCodegenCli(Path.GetTempPath())
-                .Should()
-                .NotBeNullOrWhiteSpace();
-        
-        [Fact]
-        public void InstallOpenApiGenerator_Force_Returns_Path()
-            => DependencyDownloader
-                .InstallOpenApiGenerator(forceDownload: true)
                 .Should()
                 .NotBeNullOrWhiteSpace();
 
