@@ -29,11 +29,23 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
                     break;
 
                 case SupportedCodeGenerator.Swagger:
-                case SupportedCodeGenerator.OpenApi:
                     list.AddRange(new[]
                     {
                         PackageDependencies.RestSharp,
                         PackageDependencies.JsonSubTypes,
+                        PackageDependencies.NewtonsoftJson,
+                        PackageDependencies.SystemRuntimeSerializationPrimitives,
+                        PackageDependencies.SystemComponentModelAnnotations,
+                        PackageDependencies.MicrosoftCSharp
+                    });
+                    break;
+
+                case SupportedCodeGenerator.OpenApi:
+                    list.AddRange(new[]
+                    {
+                        PackageDependencies.Polly,
+                        PackageDependencies.RestSharpLatest,
+                        PackageDependencies.JsonSubTypesLatest,
                         PackageDependencies.NewtonsoftJson,
                         PackageDependencies.SystemRuntimeSerializationPrimitives,
                         PackageDependencies.SystemComponentModelAnnotations,
