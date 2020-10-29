@@ -43,15 +43,6 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
                 .NotBeNullOrEmpty();
 
         [Xunit.Fact]
-        public void GetDependencies_Swagger_OpenApi_Same_Dependencies()
-            => SupportedCodeGenerator.Swagger
-                .GetDependencies()
-                .Should()
-                .BeEquivalentTo(
-                    SupportedCodeGenerator.OpenApi
-                            .GetDependencies());
-
-        [Xunit.Fact]
         public void GetDependencies_NSwag_Contains_NewtonsoftJson()
             => SupportedCodeGenerator.NSwag
                 .GetDependencies()
