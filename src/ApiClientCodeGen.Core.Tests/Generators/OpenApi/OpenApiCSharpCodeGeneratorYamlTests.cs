@@ -22,15 +22,11 @@ namespace ApiClientCodeGen.Core.Tests.Generators.OpenApi
                 .GenerateCode(progressMock.Object);
 
         [Xunit.Fact]
-        public void Reads_SwaggerCodegenPath()
-            => optionsMock.Verify(c => c.OpenApiGeneratorPath);
-
-        [Xunit.Fact]
         public void Updates_Progress()
             => progressMock.Verify(
                 c => c.Progress(
                     It.IsAny<uint>(),
                     It.IsAny<uint>()),
-                Times.Exactly(5));
+                Times.Exactly(4));
     }
 }

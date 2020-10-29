@@ -5,7 +5,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Genera
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi
 {
-    public class OpenApiCSharpCodeGenerator : ICodeGenerator
+    public class OpenApiCSharpCodeGenerator : CodeGenerator
     {
         private readonly string defaultNamespace;
         private readonly JavaPathProvider javaPathProvider;
@@ -13,7 +13,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly IProcessLauncher processLauncher;
         private readonly string swaggerFile;
 
-        public OpenApiCSharpCodeGenerator(string swaggerFile, string defaultNamespace, IGeneralOptions options, IProcessLauncher processLauncher)
+        public OpenApiCSharpCodeGenerator(
+            string swaggerFile,
+            string defaultNamespace,
+            IGeneralOptions options,
+            IProcessLauncher processLauncher)
+            : base(swaggerFile, defaultNamespace, processLauncher)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
@@ -22,46 +27,41 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             javaPathProvider = new JavaPathProvider(options, processLauncher);
         }
 
-        public string GenerateCode(IProgressReporter pGenerateProgress)
+        public override string GenerateCode(IProgressReporter pGenerateProgress)
         {
-            try
-            {
-                pGenerateProgress.Progress(10);
+            base.GenerateCode(pGenerateProgress);
+            return CSharpFileMerger.MergeFilesAndDeleteSource(GetOutputPath());
+        }
 
-                var jarFile = options.OpenApiGeneratorPath;
-                if (!File.Exists(jarFile))
-                {
-                    Trace.WriteLine(jarFile + " does not exist");
-                    jarFile = DependencyDownloader.InstallOpenApiGenerator();
-                }
+        protected override string GetArguments(string outputFile)
+        {
+            var output = GetOutputPath();
 
-                pGenerateProgress.Progress(30);
+            return "generate " +
+                   "-g csharp " +
+                   $"--input-spec \"{swaggerFile}\" " +
+                   $"--output \"{output}\" " +
+                   "-DapiTests=false -DmodelTests=false " +
+                   $"-DpackageName={defaultNamespace} " +
+                   "--skip-overwrite ";
+        }
 
-                var output = Path.Combine(
-                    Path.GetDirectoryName(swaggerFile) ?? throw new InvalidOperationException(),
-                    "TempApiClient");
+        private string GetOutputPath()
+        {
+            var output = Path.Combine(
+                Path.GetDirectoryName(swaggerFile) ?? throw new InvalidOperationException(),
+                "TempApiClient");
 
+            if (!Directory.Exists(output))
                 Directory.CreateDirectory(output);
-                pGenerateProgress.Progress(40);
 
-                var arguments =
-                    $"-jar \"{jarFile}\" generate " +
-                    "-g csharp " +
-                    $"--input-spec \"{swaggerFile}\" " +
-                    $"--output \"{output}\" " +
-                    "-DapiTests=false -DmodelTests=false " +
-                    $"-DpackageName={defaultNamespace} " +
-                    "--skip-overwrite ";
+            return output;
+        }
 
-                processLauncher.Start(javaPathProvider.GetJavaExePath(), arguments);
-                pGenerateProgress.Progress(80);
-
-                return CSharpFileMerger.MergeFilesAndDeleteSource(output);
-            }
-            finally
-            {
-                pGenerateProgress.Progress(90);
-            }
+        protected override string GetCommand()
+        {
+            DependencyDownloader.InstallOpenApiGenerator();
+            return PathProvider.GetOpenApiGeneratorPath();
         }
     }
 }
