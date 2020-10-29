@@ -46,7 +46,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                 var arguments =
                     $"-jar \"{jarFile}\" generate " +
-                    "-g csharp " +
+                    "--generator-name csharp " +
                     $"--input-spec \"{swaggerFile}\" " +
                     $"--output \"{output}\" " +
                     $"--package-name \"{defaultNamespace}\" " +
