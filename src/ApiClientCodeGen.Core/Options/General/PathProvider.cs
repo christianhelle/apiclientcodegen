@@ -80,9 +80,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
                 Path.GetTempPath(),
                 "swagger-codegen-cli.jar");
 
-        public static string GetOpenApiGeneratorPath()
-            => Path.Combine(
-                Path.GetTempPath(),
-                "openapi-generator-cli.jar");
+        public static string GetOpenApiGeneratorPath(bool withoutPath = false)
+        {
+            if (Environment.OSVersion.Platform == PlatformID.MacOSX ||
+                Environment.OSVersion.Platform == PlatformID.Unix ||
+                withoutPath)
+                return "openapi-generator-cli";
+
+            return Path.Combine(
+                NpmHelper.GetPrefixPath(),
+                "openapi-generator-cli.cmd");
+        }
     }
 }
