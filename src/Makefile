@@ -10,6 +10,7 @@ debug: restore-packages
 
 release: restore-packages
 	msbuild /p:Configuration="Release" /t:"Rebuild" Mac.sln
+	ls -la ApiClientCodeGen.VSMac/bin/Release/net471/
 	mono /Applications/Visual\ Studio.app/Contents/Resources/lib/monodevelop/bin/vstool.exe setup pack ApiClientCodeGen.VSMac/bin/Release/net471/ApiClientCodeGen.VSMac.dll
 
 publish:
