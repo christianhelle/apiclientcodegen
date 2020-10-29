@@ -49,8 +49,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     "-g csharp " +
                     $"--input-spec \"{swaggerFile}\" " +
                     $"--output \"{output}\" " +
-                    "-DapiTests=false -DmodelTests=false " +
-                    $"-DpackageName={defaultNamespace} " +
+                    $"--package-name \"{defaultNamespace}\" " +
+                    "--global-property apiTests=false,modelTests=false " +
                     "--skip-overwrite ";
 
                 processLauncher.Start(javaPathProvider.GetJavaExePath(), arguments);
