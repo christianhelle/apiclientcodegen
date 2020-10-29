@@ -28,10 +28,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 Times.AtLeastOnce);
 
         [Fact]
-        public void Reads_JavaPath_From_Options() 
-            => fixture.OptionsMock.Verify(c => c.JavaPath);
-
-        [Fact]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, fixture.Code, SupportedCodeGenerator.OpenApi);
 
