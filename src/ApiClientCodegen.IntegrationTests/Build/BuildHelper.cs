@@ -58,7 +58,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                     }
 
                 case SupportedCodeGenerator.Swagger:
-                case SupportedCodeGenerator.OpenApi:
                     switch (projecType)
                     {
                         case ProjectTypes.DotNetCoreApp:
@@ -69,6 +68,22 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
                         case ProjectTypes.DotNetFramework:
                             return SwaggerProjectFileContents.NetFrameworkApp;
+
+                        default:
+                            throw new ArgumentOutOfRangeException(nameof(projecType), projecType, null);
+                    }
+
+                case SupportedCodeGenerator.OpenApi:
+                    switch (projecType)
+                    {
+                        case ProjectTypes.DotNetCoreApp:
+                            return OpenApiGeneratorProjectFileContents.NetCoreApp;
+
+                        case ProjectTypes.DotNetStandardLibrary:
+                            return OpenApiGeneratorProjectFileContents.NetStandardLibrary;
+
+                        case ProjectTypes.DotNetFramework:
+                            return OpenApiGeneratorProjectFileContents.NetFrameworkApp;
 
                         default:
                             throw new ArgumentOutOfRangeException(nameof(projecType), projecType, null);
