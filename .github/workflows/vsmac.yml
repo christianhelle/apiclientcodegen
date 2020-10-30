@@ -26,6 +26,10 @@ jobs:
       run: make package
       working-directory: src
 
+    - name: Create mpack file
+      run: make package
+      working-directory: src
+
     - name: Rename build output
       run: mv *.mpack ApiClientCodeGenerator-1.0.${{ github.run_number }}.mpack
       working-directory: src
