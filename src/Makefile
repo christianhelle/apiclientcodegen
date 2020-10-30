@@ -1,6 +1,6 @@
 .PHONY: restore-packages debug release
 
-all: debug release
+all: debug release package publish
 	
 restore-packages: 
 	nuget restore Mac.sln
@@ -11,7 +11,7 @@ debug: restore-packages
 release: restore-packages
 	msbuild /p:Configuration="Release" /t:"Rebuild" Mac.sln
 
-package: release
+package:
 	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack ./ApiClientCodeGen.VSMac/bin/Release/net471/ApiClientCodeGen.VSMac.dll
 
 publish:
