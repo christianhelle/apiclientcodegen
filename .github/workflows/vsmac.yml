@@ -39,8 +39,8 @@ jobs:
         path: src/ApiClientCodeGen.VSMac/bin/Release/net48/VSMac-Binaries.zip
 
     - name: Create mpack file
-      run: make package
-      working-directory: src
+      run: /Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack ApiClientCodeGen.VSMac.dll -d:"../../../../../src"
+      working-directory: src/ApiClientCodeGen.VSMac/bin/Release/net48/
 
     - name: Rename build output
       run: mv *.mpack ApiClientCodeGenerator-1.0.${{ github.run_number }}.mpack
