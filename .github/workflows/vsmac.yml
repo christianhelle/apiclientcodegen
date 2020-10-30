@@ -28,6 +28,16 @@ jobs:
       run: make package
       working-directory: src
 
+    - name: Archive binaries
+      run: zip VSMac-Binaries.zip ./ApiClientCodeGen.VSMac/bin/Release/net48/*
+      working-directory: src
+
+    - name: Publish artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: Artifacts
+        path: VSMac-Binaries.zip
+
     - name: Create mpack file
       run: make package
       working-directory: src
