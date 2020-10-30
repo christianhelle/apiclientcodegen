@@ -19,7 +19,9 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Update Extension Version Info
-      run: sed -i -e 's/1.0/1.0.${{ github.run_number }}/g' ./AddinInfo.cs
+      run: |
+        sed -i -e 's/1.0/1.0.${{ github.run_number }}/g' ./AddinInfo.cs
+        cat ./AddinInfo.cs
       working-directory: src/ApiClientCodeGen.VSMac/Properties
 
     - name: Build
