@@ -13,7 +13,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
         public static readonly PackageDependency MicrosoftRestClientRuntime =
             new PackageDependency(
                 "Microsoft.Rest.ClientRuntime",
-                new Version(2, 3, 21, 0));
+                new Version(2, 3, 22, 0));
 
         public static readonly PackageDependency RestSharp =
             new PackageDependency(
@@ -24,6 +24,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
             new PackageDependency(
                 "JsonSubTypes",
                 new Version(1, 2, 0, 0));
+
+        public static readonly PackageDependency RestSharpLatest =
+            new PackageDependency(
+                "RestSharp",
+                new Version(106, 11, 7, 0));
+
+        public static readonly PackageDependency JsonSubTypesLatest =
+            new PackageDependency(
+                "JsonSubTypes",
+                new Version(1, 8, 0, 0));
 
         public static readonly PackageDependency SystemRuntimeSerializationPrimitives =
             new PackageDependency(
@@ -42,5 +52,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
                 "Microsoft.CSharp",
                 new Version(4, 5, 0),
                 isSystemLibrary: true);
+
+        public static readonly PackageDependency Polly = 
+            new PackageDependency(
+                "Polly",
+                new Version(7,2,1));
     }
 }

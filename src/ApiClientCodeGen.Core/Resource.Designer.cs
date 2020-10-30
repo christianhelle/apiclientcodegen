@@ -61,7 +61,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/4.3.0/openapi-generator-cli-4.3.0.jar.
+        ///   Looks up a localized string similar to https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.0.0-beta2/openapi-generator-cli-5.0.0-beta2.jar.
         /// </summary>
         internal static string OpenApiGenerator_DownloadUrl {
             get {
@@ -70,7 +70,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1B7E049810E97BEC4D214F1EAC0424DB.
+        ///   Looks up a localized string similar to E958272E78BEEF5C1B1D1C4BBBA0CA92.
         /// </summary>
         internal static string OpenApiGenerator_MD5 {
             get {

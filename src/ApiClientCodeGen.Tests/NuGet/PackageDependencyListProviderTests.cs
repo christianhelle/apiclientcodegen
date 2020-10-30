@@ -47,14 +47,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
                 .NotBeNullOrEmpty();
 
         [Xunit.Fact]
-        public void GetDependencies_Swagger_OpenApi_Same_Dependencies()
-            => sut.GetDependencies(SupportedCodeGenerator.Swagger)
-                .Should()
-                .BeEquivalentTo(
-                    sut.GetDependencies(
-                        SupportedCodeGenerator.OpenApi));
-
-        [Xunit.Fact]
         public void GetDependencies_NSwag_Contains_NewtonsoftJson()
             => sut.GetDependencies(SupportedCodeGenerator.NSwag)
                 .Should()
@@ -133,16 +125,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
                 .Contain(PackageDependencies.MicrosoftCSharp);
 
         [Xunit.Fact]
-        public void GetDependencies_OpenApi_Contains_RestSharp()
+        public void GetDependencies_OpenApi_Contains_RestSharpLatest()
             => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
                 .Should()
-                .Contain(PackageDependencies.RestSharp);
+                .Contain(PackageDependencies.RestSharpLatest);
 
         [Xunit.Fact]
-        public void GetDependencies_OpenApi_Contains_JsonSubTypes()
+        public void GetDependencies_OpenApi_Contains_JsonSubTypesLatest()
             => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
                 .Should()
-                .Contain(PackageDependencies.JsonSubTypes);
+                .Contain(PackageDependencies.JsonSubTypesLatest);
 
         [Xunit.Fact]
         public void GetDependencies_OpenApi_Contains_SystemRuntimeSerializationPrimitives()

@@ -46,11 +46,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                 var arguments =
                     $"-jar \"{jarFile}\" generate " +
-                    "-g csharp " +
+                    "--generator-name csharp-netcore " +
                     $"--input-spec \"{swaggerFile}\" " +
                     $"--output \"{output}\" " +
-                    "-DapiTests=false -DmodelTests=false " +
-                    $"-DpackageName={defaultNamespace} " +
+                    $"--package-name \"{defaultNamespace}\" " +
+                    "--global-property apiTests=false,modelTests=false " +
                     "--skip-overwrite ";
 
                 processLauncher.Start(javaPathProvider.GetJavaExePath(), arguments);
