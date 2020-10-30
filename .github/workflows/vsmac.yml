@@ -35,7 +35,7 @@ jobs:
     - name: Publish binaries
       uses: actions/upload-artifact@v2
       with:
-        name: Artifacts
+        name: Binaries
         path: src/VSMac-Binaries.zip
 
     - name: Create mpack file
@@ -53,7 +53,7 @@ jobs:
     - name: Publish artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: Artifacts
+        name: Extension
         path: |
           src/*.mpack
           src/*.mrep
