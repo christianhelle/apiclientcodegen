@@ -12,7 +12,7 @@ release: restore-packages
 	msbuild /p:Configuration="Release" /t:"Rebuild" Mac.sln
 
 package: release
-	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack ./ApiClientCodeGen.VSMac/bin/Release/net471/ApiClientCodeGen.VSMac.dll
+	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack ./ApiClientCodeGen.VSMac/bin/Release/net471/ApiClientCodeGen.VSMac.dll -format:mpack -debugSymbols:true
 
 publish:
 	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup rep-build .
