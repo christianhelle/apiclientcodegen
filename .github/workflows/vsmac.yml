@@ -36,7 +36,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: Binaries
-        path: src/VSMac-Binaries.zip
+        path: src/ApiClientCodeGen.VSMac/bin/Release/net48/VSMac-Binaries.zip
 
     - name: Create mpack file
       run: make package
