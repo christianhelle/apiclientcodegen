@@ -29,8 +29,8 @@ jobs:
       working-directory: src
 
     - name: Archive binaries
-      run: zip VSMac-Binaries.zip ./ApiClientCodeGen.VSMac/bin/Release/net48/*
-      working-directory: src
+      run: zip -r VSMac-Binaries.zip .
+      working-directory: src/ApiClientCodeGen.VSMac/bin/Release/net48/
 
     - name: Publish binaries
       uses: actions/upload-artifact@v2
