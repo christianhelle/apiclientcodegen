@@ -10,10 +10,25 @@ jobs:
   - bash: |
       cd $(system.defaultworkingdirectory)/src
       sed -i -e 's/1.0/$(build.buildnumber)/g' ApiClientCodeGen.VSMac/Properties/AddinInfo.cs
+      cat ApiClientCodeGen.VSMac/Properties/AddinInfo.cs
+    displayName: 'Update version information'
+  
+  - bash: |
+      cd $(system.defaultworkingdirectory)/src
+      make release
+    displayName: 'Build'
+  
+  - bash: |
+      cd $(system.defaultworkingdirectory)/src
       make package
       mv ApiClientCodeGen.VSMac.ApiClientCodeGenerator_$(build.buildnumber).mpack ApiClientCodeGenerator-$(build.buildnumber).mpack
       make publish
-    displayName: 'Build .mpack file'
+    displayName: 'Create .mpack file'
+  
+  - bash: |
+      cd $(system.defaultworkingdirectory)/src/ApiClientCodeGen.VSMac/bin/Release/net48/
+      zip -r VSMac-Binaries.zip .
+    displayName: 'Archive Binaries'
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
@@ -23,6 +38,7 @@ jobs:
         *.mpack
         *.mrep
         index.html
+        **/VSMac-Binaries.zip
       targetFolder: '$(build.artifactstagingdirectory)'
       flattenFolders: true
 
