@@ -15,7 +15,7 @@ jobs:
       working-directory: src/ApiClientCodeGen.VSMac/Properties
 
     - name: Build
-      run: make release
+      run: make package
       working-directory: src
 
     - name: Rename build output
