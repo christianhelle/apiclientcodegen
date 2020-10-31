@@ -13,16 +13,32 @@ on:
 jobs:
   build:
 
-    runs-on: macos-latest
+    runs-on: macos-11.0
 
     steps:
     - uses: actions/checkout@v2
 
     - name: Update Extension Version Info
-      run: sed -i -e 's/1.0/1.0.${{ github.run_number }}/g' ./AddinInfo.cs
+      run: |
+        sed -i -e 's/1.0/1.0.${{ github.run_number }}/g' ./AddinInfo.cs
+        cat ./AddinInfo.cs
       working-directory: src/ApiClientCodeGen.VSMac/Properties
 
     - name: Build
+      run: make release
+      working-directory: src
+
+    - name: Archive binaries
+      run: zip -r VSMac-Binaries.zip .
+      working-directory: src/ApiClientCodeGen.VSMac/bin/Release/net48/
+
+    - name: Publish binaries
+      uses: actions/upload-artifact@v2
+      with:
+        name: Binaries
+        path: src/ApiClientCodeGen.VSMac/bin/Release/net48/VSMac-Binaries.zip
+
+    - name: Create mpack file
       run: make package
       working-directory: src
 
@@ -37,7 +53,7 @@ jobs:
     - name: Publish artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: Artifacts
+        name: Extension
         path: |
           src/*.mpack
           src/*.mrep
