@@ -10,10 +10,27 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Restore Packages
-      run: nuget restore Mac.sln
-      working-directory: src
+    - name: Update Extension Version Info
+      run: sed -i -e 's/1.0/1.0.${{ github.run_number }}/g' ./AddinInfo.cs
+      working-directory: src/ApiClientCodeGen.VSMac/Properties
 
     - name: Build
-      run: msbuild /p:Configuration="Release" /t:"Rebuild" Mac.sln
+      run: make release
       working-directory: src
+
+    - name: Rename build output
+      run: mv *.mpack ApiClientCodeGenerator-1.0.${{ github.run_number }}.mpack
+      working-directory: src
+
+    - name: Create MonoDevelop Extension repository files
+      run: make publish
+      working-directory: src
+
+    - name: Publish artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: Artifacts
+        path: |
+          src/*.mpack
+          src/*.mrep
+          src/index.html
