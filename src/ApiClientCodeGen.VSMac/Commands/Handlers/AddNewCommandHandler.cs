@@ -53,7 +53,7 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
                 IdeApp.ProjectOperations.CurrentSelectedItem is Project ||
                 IdeApp.ProjectOperations.CurrentSelectedItem is ProjectFolder;
 
-        private async Task AddNewSwaggerFile()
+        private async ValueTask AddNewSwaggerFile()
         {
             var url = MessageService.GetTextResponse(
                 "Enter the URL to the Swagger / Open API spec file",
