@@ -214,7 +214,7 @@
       <Version>16.6.255</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.TextTemplating.VSHost.15.0">
-      <Version>15.9.28307</Version>
+      <Version>16.7.30329.88</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Threading">
       <Version>16.8.51</Version>
