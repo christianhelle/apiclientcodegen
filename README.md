@@ -3,7 +3,7 @@
 ![CLI Tool](https://github.com/christianhelle/apiclientcodegen/workflows/CLI%20Tool/badge.svg)
 ![VSIX](https://github.com/christianhelle/apiclientcodegen/workflows/VSIX/badge.svg)
 ![VS Mac](https://github.com/christianhelle/apiclientcodegen/workflows/VS%20Mac/badge.svg)
-![Azure Pipelines](https://christianhelle.visualstudio.com/API%20Client%20Code%20Generator/_apis/build/status/CI%20Build) 
+[![Azure Pipelines](https://christianhelle.visualstudio.com/API%20Client%20Code%20Generator/_apis/build/status/CI%20Build)](https://dev.azure.com/christianhelle/API%20Client%20Code%20Generator/_build?definitionId=32)
 
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
