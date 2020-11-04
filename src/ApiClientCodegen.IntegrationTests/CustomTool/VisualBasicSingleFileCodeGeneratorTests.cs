@@ -1,25 +1,29 @@
 ﻿using System;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
-
 using Moq;
 using NJsonSchema.CodeGeneration.CSharp;
+using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.CustomTool
 {
     
-    [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
-    // [DeploymentItem("Resources/Swagger.json")]
+    [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class VisualBasicSingleFileCodeGeneratorTests
     {
-        [Xunit.Fact]
-        public void AutoRest_VisualBasic_Test() => Assert(SupportedCodeGenerator.AutoRest);
+        //[Fact]
+        //public void AutoRest_VisualBasic_Test()
+        //    => Assert(SupportedCodeGenerator.AutoRest);
 
-        [Xunit.Fact]
+        [Fact]
         public void NSwag_VisualBasic_Test()
         {
             var optionsMock = new Mock<INSwagOptions>();
@@ -38,7 +42,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.NSwag, optionsFactory.Object);
         }
 
-        [Xunit.Fact]
+        [Fact]
         public void Swagger_VisualBasic_Test()
         {
             var optionsMock = new Mock<IGeneralOptions>();
@@ -50,7 +54,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.Swagger, optionsFactory.Object);
         }
 
-        [Xunit.Fact]
+        [Fact]
         public void OpenApi_VisualBasic_Test()
         {
             var optionsMock = new Mock<IGeneralOptions>();
@@ -67,7 +71,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             IOptionsFactory optionsFactory = null)
         {
             var rgbOutputFileContents = new[] { IntPtr.Zero };
-            var progressMock = new Mock<IProgressReporter>();
+            var progressMock = new Mock<IVsGeneratorProgress>();
 
             var sut = new VisualBasicSingleFileCodeGenerator(generator);
             sut.Factory = new CodeGeneratorFactory(optionsFactory);
