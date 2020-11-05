@@ -29,7 +29,7 @@ Download the **[latest version for Windows](https://marketplace.visualstudio.com
 
 ## Features
 
-- Supports Visual Studio 2017, 2019, and ***[Visual Studio for Mac (NEW)](#visual-studio-for-mac-1)***
+- Supports Visual Studio 2017, 2019, and [Visual Studio for Mac](#visual-studio-for-mac-1)
 - Add New REST API Client to a project from an OpenAPI specification URL (e.g https://petstore.swagger.io/v2/swagger.json) using [AutoRest](https://github.com/Azure/autorest), [NSwag](https://github.com/RicoSuter/NSwag), [Swagger Codegen](https://github.com/swagger-api/swagger-codegen), or [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
 - Define custom namespace for the generated file
 - Auto-updating of generated code file when changes are made to the OpenAPI specification JSON or YAML file
