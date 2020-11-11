@@ -30,4 +30,4 @@ jobs:
       with:
         name: Artifacts
         path: |
-          **/*.vsix
+          **/ApiClientCodeGenerator.vsix
