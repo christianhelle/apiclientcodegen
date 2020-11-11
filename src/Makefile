@@ -3,7 +3,7 @@
 all: debug release package publish
 	
 restore-packages: 
-	msbuild /t:"Restore" Mac.sln
+	dotnet restore Mac.sln
 
 debug: restore-packages
 	msbuild /p:Configuration="Debug" /t:"Rebuild" Mac.sln
