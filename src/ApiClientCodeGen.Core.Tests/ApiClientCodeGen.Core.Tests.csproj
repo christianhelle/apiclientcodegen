@@ -39,7 +39,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="AutoFixture" Version="4.14.0" />
         <PackageReference Include="AutoFixture.Xunit2" Version="4.14.0" />
         <PackageReference Include="FluentAssertions" Version="5.10.3" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
