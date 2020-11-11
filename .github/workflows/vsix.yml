@@ -25,9 +25,13 @@ jobs:
       run: powershell ./build.ps1
       working-directory: src
 
+    - name: Move build output
+      run: mv **/*.vsix ../ApiClientCodeGenerator-1.0.${{ github.run_number }}.vsix
+      working-directory: src
+
     - name: Publish artifacts
       uses: actions/upload-artifact@v2
       with:
         name: Artifacts
         path: |
-          **/ApiClientCodeGenerator.vsix
+          *.vsix
