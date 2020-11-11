@@ -2,11 +2,9 @@
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
@@ -21,17 +19,18 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class CSharpSingleFileCodeGeneratorOpenApi3Tests : TestWithResources
     {
-        [Fact]
-        public void AutoRest_CSharp_Test()
-        {
-            var optionsMock = new Mock<IAutoRestOptions>();
-            var optionsFactory = new Mock<IOptionsFactory>();
-            optionsFactory
-                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
-                .Returns(optionsMock.Object);
+        // TODO: Re-enable once AutoRest works properly for C#
+        //[Fact]
+        //public void AutoRest_CSharp_Test()
+        //{
+        //    var optionsMock = new Mock<IAutoRestOptions>();
+        //    var optionsFactory = new Mock<IOptionsFactory>();
+        //    optionsFactory
+        //        .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
+        //        .Returns(optionsMock.Object);
 
-            Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
-        }
+        //    Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
+        //}
 
         [Fact]
         public void NSwag_CSharp_Test()
