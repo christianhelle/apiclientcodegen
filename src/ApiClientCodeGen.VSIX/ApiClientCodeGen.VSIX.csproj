@@ -217,7 +217,7 @@
       <Version>16.7.30329.88</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Threading">
-      <Version>16.8.55</Version>
+      <Version>16.8.51</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers">
       <Version>16.8.55</Version>
