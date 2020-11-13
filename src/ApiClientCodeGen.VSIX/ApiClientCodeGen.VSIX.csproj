@@ -211,7 +211,7 @@
       <Version>15.0.34</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Text.Data">
-      <Version>15.8.525</Version>
+      <Version>16.6.255</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.TextTemplating.VSHost.15.0">
       <Version>15.9.28307</Version>
