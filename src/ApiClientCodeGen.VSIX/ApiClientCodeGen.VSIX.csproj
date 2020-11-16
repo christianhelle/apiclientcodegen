@@ -231,7 +231,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="NuGet.VisualStudio">
-      <Version>3.3.0</Version>
+      <Version>4.6.4</Version>
     </PackageReference>
     <PackageReference Include="StreamJsonRpc">
       <Version>1.5.43</Version>
