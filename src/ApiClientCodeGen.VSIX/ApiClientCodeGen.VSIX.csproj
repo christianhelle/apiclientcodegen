@@ -223,7 +223,7 @@
       <Version>16.7.56</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Validation">
-      <Version>15.5.31</Version>
+      <Version>16.8.33</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VSSDK.BuildTools">
       <Version>16.9.9</Version>
