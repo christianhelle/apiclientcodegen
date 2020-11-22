@@ -25,10 +25,10 @@ Task("Restore")
     }
 });
 
-Task("Build")
+Task("Build-All")
     .IsDependentOn("Restore")
     .Does(() => {
-        Information("Building solutions...");
+        Information("Building solutions");
         foreach(var solution in GetFiles("./**/*.sln"))
         {
             if (solution.ToString().Contains("Mac.sln"))
@@ -60,7 +60,7 @@ Task("Build-VSIX")
     });
 
 Task("Run-Unit-Tests")
-    .IsDependentOn("Build")
+    .IsDependentOn("Build-All")
     .Does(() =>
 {
     VSTest("./**/bin/" + configuration + "/*.Tests.dll",
