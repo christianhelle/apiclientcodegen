@@ -16,10 +16,14 @@ Task("Clean")
 });
 
 Task("Restore")
-	.Does(() =>
+    .Does(() =>
 {
-	Information("Restoring solution...");
-	NuGetRestore(solutionPath);
+    var solutions = GetFiles("./**/*.sln");
+    foreach(var solution in solutions)
+    {
+        Information("Restoring {0}", solution);
+        DotNetCoreRestore(solution.ToString());
+    }
 });
 
 Task("Build")
