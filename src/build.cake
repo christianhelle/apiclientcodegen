@@ -45,6 +45,20 @@ Task("Build")
         }
     });
 
+Task("Build-VSIX")
+    .IsDependentOn("Restore")
+    .Does(() => {
+        Information("Building VSIX");
+        MSBuild(
+            File("ApiClientCodeGenerator.sln"),
+            settings =>
+                settings.SetPlatformTarget(PlatformTarget.MSIL)
+                    .SetMSBuildPlatform(MSBuildPlatform.x86)
+                    .UseToolVersion(MSBuildToolVersion.VS2019)
+                    .WithTarget("Build")
+                    .SetConfiguration(configuration));
+    });
+
 Task("Run-Unit-Tests")
     .IsDependentOn("Build")
     .Does(() =>
