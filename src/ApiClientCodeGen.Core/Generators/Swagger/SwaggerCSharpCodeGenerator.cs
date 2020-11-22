@@ -39,6 +39,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                 var output = Path.Combine(
                     Path.GetDirectoryName(swaggerFile) ?? throw new InvalidOperationException(),
+                    Guid.NewGuid().ToString("N"),
                     "TempApiClient");
 
                 Directory.CreateDirectory(output);
