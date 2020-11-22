@@ -93,7 +93,6 @@ Task("VSIX")
     .IsDependentOn("Build-VSIX");
 
 Task("Default")
-    .IsDependentOn("Build-All")
     .IsDependentOn("Run-Unit-Tests");
 
 RunTarget(target);
