@@ -15,7 +15,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
 
         public OpenApiCSharpCodeGeneratorYamlTests()
             => new OpenApiCSharpCodeGenerator(
-                    "Swagger.yaml",
+                    SwaggerYamlFilename,
                     new Fixture().Create<string>(),
                     optionsMock.Object,
                     processMock.Object)

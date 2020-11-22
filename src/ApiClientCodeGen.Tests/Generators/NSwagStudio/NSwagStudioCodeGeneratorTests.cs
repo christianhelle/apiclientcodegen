@@ -29,7 +29,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
 
         [Xunit.Fact]
         public void NSwagStudio_Generate_Code_Using_NSwagStudio()
-            => new NSwagStudioCodeGenerator(Path.GetFullPath("Swagger.nswag"), options, processMock.Object)
+            => new NSwagStudioCodeGenerator(Path.GetFullPath(SwaggerNSwagFilename), options, processMock.Object)
                 .GenerateCode(progressMock.Object)
                 .Should()
                 .BeNull();
@@ -39,7 +39,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
         {
             progressMock = new Mock<IProgressReporter>();
             new NSwagStudioCodeGenerator(
-                    Path.GetFullPath("Swagger.nswag"), 
+                    Path.GetFullPath(SwaggerNSwagFilename), 
                     options,
                     processMock.Object)
                 .GenerateCode(progressMock.Object);

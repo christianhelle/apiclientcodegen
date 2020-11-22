@@ -26,7 +26,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
             var defaultNamespace = typeof(NSwagCodeGeneratorTests).Namespace;
             var codeGenerator = new NSwagCSharpCodeGenerator(
-                Path.GetFullPath("Swagger.json"),
+                Path.GetFullPath(SwaggerJsonFilename),
                 new OpenApiDocumentFactory(),
                 new NSwagCodeGeneratorSettingsFactory(defaultNamespace, OptionsMock.Object));
 

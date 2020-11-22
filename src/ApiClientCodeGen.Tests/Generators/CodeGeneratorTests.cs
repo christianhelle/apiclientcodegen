@@ -18,7 +18,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
 
             var fixture = new Fixture();
             sut = new TestCodeGenerator(
-                "Swagger.json",
+                SwaggerJsonFilename,
                 fixture.Create<string>());
 
             try

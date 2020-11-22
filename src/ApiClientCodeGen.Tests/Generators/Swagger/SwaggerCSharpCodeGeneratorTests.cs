@@ -16,7 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
 
         public SwaggerCSharpCodeGeneratorTests()
             => new SwaggerCSharpCodeGenerator(
-                    "Swagger.json",
+                    SwaggerJsonFilename,
                     new Fixture().Create<string>(),
                     optionsMock.Object,
                     processMock.Object)

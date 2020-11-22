@@ -76,10 +76,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             Assert(SupportedCodeGenerator.OpenApi, optionsFactory.Object);
         }
 
-        private static void Assert(
+        private void Assert(
             SupportedCodeGenerator generator,
-            IOptionsFactory optionsFactory = null,
-            string swaggerFile = "Swagger.json")
+            IOptionsFactory optionsFactory = null)
         {
             var rgbOutputFileContents = new[] { IntPtr.Zero };
             var progressMock = new Mock<IVsGeneratorProgress>();
@@ -88,7 +87,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             sut.Factory = new CodeGeneratorFactory(optionsFactory);
 
             var result = sut.Generate(
-                Path.GetFullPath(swaggerFile),
+                Path.GetFullPath(SwaggerV3JsonFilename),
                 string.Empty,
                 typeof(CSharpSingleFileCodeGeneratorTests).Namespace,
                 rgbOutputFileContents,

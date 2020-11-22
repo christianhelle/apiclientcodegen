@@ -10,7 +10,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
         private readonly string swaggerJson;
 
         public OpenApiDocumentExtensionsTests() 
-            => swaggerJson = ReadAllText("Swagger.json");
+            => swaggerJson = ReadAllText(SwaggerJson);
 
         [Xunit.Fact]
         public async Task Can_GenerateClassName_From_Json_Using_DocumentTitle()
@@ -33,10 +33,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
 
         [Xunit.Fact]
         public async Task Can_GenerateClassName_From_FileName()
-            => (await OpenApiDocument.FromFileAsync("Swagger.json"))
+            => (await OpenApiDocument.FromFileAsync(SwaggerJsonFilename))
                 .GenerateClassName(false)
                 .Should()
-                .Be("Swagger");
+                .Be(SwaggerJsonFilename);
         
         [Xunit.Fact]
         public async Task Can_GenerateClassName_From_Json()
