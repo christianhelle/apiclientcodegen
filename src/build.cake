@@ -2,7 +2,6 @@
 
 var target = Argument("target", "Default");
 var configuration = "Release";
-FilePath solutionPath = File("./All.sln");
 
 Task("Clean")
     .Does(() =>
@@ -29,13 +28,21 @@ Task("Restore")
 Task("Build")
     .IsDependentOn("Restore")
     .Does(() => {
-        Information("Building solution...");
-        MSBuild(solutionPath, settings =>
-            settings.SetPlatformTarget(PlatformTarget.MSIL)
-                .SetMSBuildPlatform(MSBuildPlatform.x86)
-                .UseToolVersion(MSBuildToolVersion.VS2019)
-                .WithTarget("Build")
-                .SetConfiguration(configuration));
+        Information("Building solutions...");
+        foreach(var solution in GetFiles("./**/*.sln"))
+        {
+            if (solution.ToString().Contains("Mac.sln"))
+                continue;
+            Information("Building {0}", solution);
+            MSBuild(
+                solution, 
+                settings =>
+                    settings.SetPlatformTarget(PlatformTarget.MSIL)
+                        .SetMSBuildPlatform(MSBuildPlatform.x86)
+                        .UseToolVersion(MSBuildToolVersion.VS2019)
+                        .WithTarget("Build")
+                        .SetConfiguration(configuration));
+        }
     });
 
 Task("Run-Unit-Tests")
