@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Text;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
@@ -65,7 +66,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             using (var process = new Process {StartInfo = processInfo})
             {
                 process.OutputDataReceived += (s, e) => onOutputData?.Invoke(e.Data);
-                process.ErrorDataReceived += (s, e) => onErrorData?.Invoke(e.Data);
+
+                var stringBuilder = new StringBuilder();
+                process.ErrorDataReceived += (s, e) =>
+                {
+                    stringBuilder.AppendLine(e.Data);
+                    onErrorData?.Invoke(e.Data);
+                };
+
                 process.StartInfo.RedirectStandardOutput = true;
                 process.StartInfo.RedirectStandardError = true;
                 process.StartInfo.RedirectStandardInput = true;
@@ -83,7 +91,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 process.WaitForExit();
 
                 if (process.ExitCode != 0)
-                    throw new InvalidOperationException($"{command} failed");
+                    throw new InvalidOperationException(
+                        $"{command} failed!{Environment.NewLine}Error:{Environment.NewLine}{stringBuilder}");
             }
         }
     }
