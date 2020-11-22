@@ -72,6 +72,19 @@ Task("Run-Unit-Tests")
            });
 });
 
+Task("Run-Integration-Tests")
+    .IsDependentOn("Build-All")
+    .Does(() =>
+{
+    VSTest("./**/bin/" + configuration + "/*.IntegrationTests.dll",
+           new VSTestSettings 
+           { 
+               Parallel = true, 
+               EnableCodeCoverage = true,
+               SettingsFile = File("./Tests.runsettings")
+           });
+});
+
 Task("Default")
     .IsDependentOn("Run-Unit-Tests");
 
