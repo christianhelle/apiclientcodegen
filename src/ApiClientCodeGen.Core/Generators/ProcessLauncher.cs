@@ -23,7 +23,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     [ExcludeFromCodeCoverage]
     public class ProcessLauncher : IProcessLauncher
     {
-
         public void Start(
             string command,
             string arguments,
@@ -63,12 +62,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             var processInfo = new ProcessStartInfo(command, arguments);
             using (var process = new Process {StartInfo = processInfo})
             {
-                process.OutputDataReceived += (s, e) => onOutputData?.Invoke(e.Data);
+                var outputData = new StringBuilder();
+                process.OutputDataReceived += (s, e) =>
+                {
+                    outputData.AppendLine(e.Data);
+                    onOutputData?.Invoke(e.Data);
+                };
 
-                var stringBuilder = new StringBuilder();
+                var errorData = new StringBuilder();
                 process.ErrorDataReceived += (s, e) =>
                 {
-                    stringBuilder.AppendLine(e.Data);
+                    errorData.AppendLine(e.Data);
                     onErrorData?.Invoke(e.Data);
                 };
 
@@ -90,7 +94,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                 if (process.ExitCode != 0)
                     throw new InvalidOperationException(
-                        $"{command} failed!{Environment.NewLine}Error:{Environment.NewLine}{stringBuilder}");
+                        $"{command} failed!{Environment.NewLine}Output:{Environment.NewLine}{outputData}{Environment.NewLine}Error:{Environment.NewLine}{errorData}");
             }
         }
     }
