@@ -85,7 +85,15 @@ Task("Run-Integration-Tests")
            });
 });
 
+Task("All")
+    .IsDependentOn("Run-Unit-Tests")
+    .IsDependentOn("Run-Integration-Tests");
+
+Task("VSIX")
+    .IsDependentOn("Build-VSIX");
+
 Task("Default")
+    .IsDependentOn("Build-All")
     .IsDependentOn("Run-Unit-Tests");
 
 RunTarget(target);
