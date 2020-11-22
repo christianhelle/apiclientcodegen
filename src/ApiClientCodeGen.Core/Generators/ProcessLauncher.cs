@@ -23,7 +23,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     [ExcludeFromCodeCoverage]
     public class ProcessLauncher : IProcessLauncher
     {
-        private static readonly object SyncLock = new object();
 
         public void Start(
             string command,
@@ -46,13 +45,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             Trace.WriteLine("Executing:");
             Trace.WriteLine($"{command} {arguments}");
 
-            lock (SyncLock)
-                StartInternal(
-                    command,
-                    arguments,
-                    onOutputData,
-                    onErrorData,
-                    workingDirectory);
+            StartInternal(
+                command,
+                arguments,
+                onOutputData,
+                onErrorData,
+                workingDirectory);
         }
 
         private static void StartInternal(
