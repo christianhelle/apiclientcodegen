@@ -52,6 +52,7 @@ Task("Run-Unit-Tests")
 });
 
 Task("Default")
+    .IsDependentOn("Clean")
     .IsDependentOn("Run-Unit-Tests");
 
 RunTarget(target);
