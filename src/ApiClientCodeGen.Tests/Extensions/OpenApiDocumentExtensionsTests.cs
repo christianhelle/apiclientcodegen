@@ -36,7 +36,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extension
             => (await OpenApiDocument.FromFileAsync(SwaggerJsonFilename))
                 .GenerateClassName(false)
                 .Should()
-                .Be(SwaggerJsonFilename);
+                .Be(SwaggerJsonFilename.Replace(".json", string.Empty));
         
         [Xunit.Fact]
         public async Task Can_GenerateClassName_From_Json()
