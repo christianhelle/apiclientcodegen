@@ -32,7 +32,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             => new NSwagStudioCodeGenerator(Path.GetFullPath(SwaggerNSwagFilename), options, new ProcessLauncher())
                 .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
-                .NotBeNullOrWhiteSpace();
+                .BeNull();
         
         [Xunit.Fact]
         public async Task NSwagStudio_Generate_Code_Using_NSwagStudio_From_SwaggerSpec()
@@ -45,7 +45,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             new NSwagStudioCodeGenerator(Path.GetFullPath("Petstore.nswag"), options, new ProcessLauncher())
                 .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
-                .NotBeNullOrWhiteSpace();
+                .BeNull();
 
             File.Exists(Path.GetFullPath("PetstoreClient.cs"))
                 .Should()
