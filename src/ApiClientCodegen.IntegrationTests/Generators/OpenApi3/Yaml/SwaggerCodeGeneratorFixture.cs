@@ -20,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
             var codeGenerator = new SwaggerCSharpCodeGenerator(
                 Path.GetFullPath(SwaggerV3YamlFilename),
-                typeof(SwaggerCodeGeneratorYamlTests).Namespace,
+                "GeneratedCode",
                 OptionsMock.Object,
                 new ProcessLauncher());
 

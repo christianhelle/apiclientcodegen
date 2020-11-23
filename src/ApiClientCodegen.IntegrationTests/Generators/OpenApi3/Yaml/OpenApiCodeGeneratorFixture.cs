@@ -21,7 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
             var codeGenerator = new OpenApiCSharpCodeGenerator(
                 Path.GetFullPath(SwaggerV3YamlFilename),
-                typeof(OpenApiCodeGeneratorYamlTests).Namespace,
+                "GeneratedCode",
                 OptionsMock.Object,
                 new ProcessLauncher());
 
