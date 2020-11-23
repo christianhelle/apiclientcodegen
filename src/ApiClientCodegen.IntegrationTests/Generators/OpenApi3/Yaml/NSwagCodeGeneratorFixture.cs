@@ -24,7 +24,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             OptionsMock.Setup(c => c.UseBaseUrl).Returns(true);
             OptionsMock.Setup(c => c.ClassStyle).Returns(CSharpClassStyle.Poco);
 
-            var defaultNamespace = typeof(NSwagCodeGeneratorTests).Namespace;
+            var defaultNamespace = "GeneratedCode";
             var codeGenerator = new NSwagCSharpCodeGenerator(
                 Path.GetFullPath(SwaggerV3YamlFilename),
                 new OpenApiDocumentFactory(),

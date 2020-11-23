@@ -67,7 +67,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             var result = sut.Generate(
                 Path.GetFullPath(SwaggerYamlFilename),
                 string.Empty,
-                typeof(CSharpSingleFileCodeGeneratorTests).Namespace,
+                "GeneratedCode",
                 rgbOutputFileContents,
                 out var pcbOutput,
                 progressMock.Object);

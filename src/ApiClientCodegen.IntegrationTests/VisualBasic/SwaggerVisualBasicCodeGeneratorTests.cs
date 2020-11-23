@@ -27,7 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
             var codeGenerator = new SwaggerCSharpCodeGenerator(
                 Path.GetFullPath(SwaggerJsonFilename),
-                typeof(SwaggerCodeGeneratorTests).Namespace,
+                "GeneratedCode",
                 optionsMock.Object);
 
             code = codeGenerator.GenerateCode(mock.Object);

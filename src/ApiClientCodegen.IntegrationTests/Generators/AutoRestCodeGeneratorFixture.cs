@@ -25,7 +25,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
             var codeGenerator = new AutoRestCSharpCodeGenerator(
                 Path.GetFullPath(SwaggerJsonFilename),
-                typeof(AutoRestCodeGeneratorTests).Namespace,
+                "GeneratedCode",
                 OptionsMock.Object,
                 new ProcessLauncher(),
                 new OpenApiDocumentFactory());

@@ -88,7 +88,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             var result = sut.Generate(
                 Path.GetFullPath(SwaggerV3JsonFilename),
                 string.Empty,
-                typeof(CSharpSingleFileCodeGeneratorTests).Namespace,
+                "GeneratedCode",
                 rgbOutputFileContents,
                 out var pcbOutput,
                 progressMock.Object);
