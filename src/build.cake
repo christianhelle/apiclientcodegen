@@ -72,11 +72,11 @@ Task("Run-Unit-Tests")
            });
 });
 
-Task("Run-Integration-Tests")
+Task("Run-All-Tests")
     .IsDependentOn("Build-All")
     .Does(() =>
 {
-    VSTest("./**/bin/" + configuration + "/*.IntegrationTests.dll",
+    VSTest("./**/bin/" + configuration + "/*Tests.dll",
            new VSTestSettings 
            { 
                Parallel = true, 
@@ -86,8 +86,7 @@ Task("Run-Integration-Tests")
 });
 
 Task("All")
-    .IsDependentOn("Run-Unit-Tests")
-    .IsDependentOn("Run-Integration-Tests");
+    .IsDependentOn("Run-All-Tests");
 
 Task("VSIX")
     .IsDependentOn("Build-VSIX");
