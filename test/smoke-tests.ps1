@@ -1,3 +1,5 @@
+$ErrorActionPreference = "Stop"
+
 Write-Host "`r`nDownload Swagger Petstore spec`r`n"
 Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile Swagger.json
 
