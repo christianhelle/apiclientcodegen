@@ -1,7 +1,7 @@
 $ErrorActionPreference = "Stop"
 
 Write-Host "`r`nInstall .NET Core Tool`r`n"
-dotnet tool update --global rapicgen
+dotnet tool install --global rapicgen
 
 Write-Host "`r`nDownload Swagger Petstore spec`r`n"
 Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile Swagger.json
@@ -23,5 +23,6 @@ rapicgen openapi ./Swagger.json GeneratedCode ./GeneratedCode/OpenApiGenerator/O
 dotnet build ./GeneratedCode/OpenApiGenerator/Project.csproj
 
 Remove-Item Swagger.json
+dotnet tool uninstall --global rapicgen
 
 Write-Host "`r`n"
