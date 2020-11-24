@@ -17,11 +17,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         public OpenApiCodeGeneratorFixture()
         {
             OptionsMock = new Mock<IGeneralOptions>();
-            OptionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
+            OptionsMock.Setup(c => c.JavaPath).Returns(PathProvider.GetJavaPath());
 
             var codeGenerator = new OpenApiCSharpCodeGenerator(
-                Path.GetFullPath("Swagger_v3.json"),
-                typeof(OpenApiCodeGeneratorTests).Namespace,
+                Path.GetFullPath(SwaggerV3JsonFilename),
+                "GeneratedCode",
                 OptionsMock.Object,
                 new ProcessLauncher());
 

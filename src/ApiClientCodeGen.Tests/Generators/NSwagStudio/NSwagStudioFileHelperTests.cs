@@ -16,7 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
 
             NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
                     new EnterOpenApiSpecDialogResult(
-                        File.ReadAllText("Swagger.json"),
+                        File.ReadAllText(SwaggerJsonFilename),
                         "Swagger",
                         "https://petstore.swagger.io/v2/swagger.json"),
                     mock.Object)

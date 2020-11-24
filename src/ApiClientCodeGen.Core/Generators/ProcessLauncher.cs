@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Text;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
@@ -22,8 +23,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     [ExcludeFromCodeCoverage]
     public class ProcessLauncher : IProcessLauncher
     {
-        private static readonly object SyncLock = new object();
-
         public void Start(
             string command,
             string arguments,
@@ -45,13 +44,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             Trace.WriteLine("Executing:");
             Trace.WriteLine($"{command} {arguments}");
 
-            lock (SyncLock)
-                StartInternal(
-                    command,
-                    arguments,
-                    onOutputData,
-                    onErrorData,
-                    workingDirectory);
+            StartInternal(
+                command,
+                arguments,
+                onOutputData,
+                onErrorData,
+                workingDirectory);
         }
 
         private static void StartInternal(
@@ -64,8 +62,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             var processInfo = new ProcessStartInfo(command, arguments);
             using (var process = new Process {StartInfo = processInfo})
             {
-                process.OutputDataReceived += (s, e) => onOutputData?.Invoke(e.Data);
-                process.ErrorDataReceived += (s, e) => onErrorData?.Invoke(e.Data);
+                var outputData = new StringBuilder();
+                process.OutputDataReceived += (s, e) =>
+                {
+                    outputData.AppendLine(e.Data);
+                    onOutputData?.Invoke(e.Data);
+                };
+
+                var errorData = new StringBuilder();
+                process.ErrorDataReceived += (s, e) =>
+                {
+                    errorData.AppendLine(e.Data);
+                    onErrorData?.Invoke(e.Data);
+                };
+
                 process.StartInfo.RedirectStandardOutput = true;
                 process.StartInfo.RedirectStandardError = true;
                 process.StartInfo.RedirectStandardInput = true;
@@ -83,7 +93,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 process.WaitForExit();
 
                 if (process.ExitCode != 0)
-                    throw new InvalidOperationException($"{command} failed");
+                    throw new InvalidOperationException(
+                        $"{command} failed!{Environment.NewLine}Output:{Environment.NewLine}{outputData}{Environment.NewLine}Error:{Environment.NewLine}{errorData}");
             }
         }
     }

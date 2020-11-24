@@ -27,12 +27,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             options = optionsMock.Object;
 
             var contents = NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
-                    new EnterOpenApiSpecDialogResult(File.ReadAllText("Swagger_v3.json"), "Swagger", "https://petstore.swagger.io/v2/swagger.json"))
+                    new EnterOpenApiSpecDialogResult(File.ReadAllText(SwaggerV3JsonFilename), "Swagger", "https://petstore.swagger.io/v2/swagger.json"))
                 .GetAwaiter()
                 .GetResult();
 
-            File.WriteAllText("Swagger_v3.nswag", contents);
-            new NSwagStudioCodeGenerator(Path.GetFullPath("Swagger_v3.nswag"), options, new ProcessLauncher())
+            File.WriteAllText(SwaggerV3NSwagFilename, contents);
+            new NSwagStudioCodeGenerator(Path.GetFullPath(SwaggerV3NSwagFilename), options, new ProcessLauncher())
                 .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
                 .BeNull();

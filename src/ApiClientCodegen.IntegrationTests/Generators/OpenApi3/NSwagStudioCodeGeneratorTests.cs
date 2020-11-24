@@ -29,7 +29,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
         [Xunit.Fact]
         public void NSwagStudio_Generate_Code_Using_NSwagStudio()
-            => new NSwagStudioCodeGenerator(Path.GetFullPath("Swagger_v3.nswag"), options, new ProcessLauncher())
+            => new NSwagStudioCodeGenerator(Path.GetFullPath(SwaggerV3NSwagFilename), options, new ProcessLauncher())
                 .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
                 .BeNull();
@@ -38,7 +38,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         public async Task NSwagStudio_Generate_Code_Using_NSwagStudio_From_SwaggerSpec()
         {
             var contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
-                new EnterOpenApiSpecDialogResult(File.ReadAllText("Swagger_v3.json"), "Swagger", "https://petstore.swagger.io/v2/swagger.json"),
+                new EnterOpenApiSpecDialogResult(File.ReadAllText(SwaggerV3NSwagFilename), "Swagger", "https://petstore.swagger.io/v2/swagger.json"),
                 new Mock<INSwagStudioOptions>().Object);
 
             File.WriteAllText("Petstore.nswag", contents);
@@ -56,7 +56,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         public void Reads_NSwagPath_From_Options()
         {
             new NSwagStudioCodeGenerator(
-                    Path.GetFullPath("Swagger_v3.nswag"), 
+                    Path.GetFullPath(SwaggerV3NSwagFilename), 
                     options,
                     new ProcessLauncher())
                 .GenerateCode(new Mock<IProgressReporter>().Object);
@@ -67,7 +67,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         [Xunit.Fact]
         public void GetNSwagPath_ForceDownload()
             => new NSwagStudioCodeGenerator(
-                    Path.GetFullPath("Swagger_v3.nswag"),
+                    Path.GetFullPath(SwaggerV3NSwagFilename),
                     options,
                     new ProcessLauncher())
                 .GetNSwagPath(true)

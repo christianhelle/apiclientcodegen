@@ -2,7 +2,6 @@
 
 var target = Argument("target", "Default");
 var configuration = "Release";
-FilePath solutionPath = File("./All.sln");
 
 Task("Clean")
     .Does(() =>
@@ -16,26 +15,52 @@ Task("Clean")
 });
 
 Task("Restore")
-	.Does(() =>
+    .Does(() =>
 {
-	Information("Restoring solution...");
-	NuGetRestore(solutionPath);
+    var solutions = GetFiles("./**/*.sln");
+    foreach(var solution in solutions)
+    {
+        Information("Restoring {0}", solution);
+        DotNetCoreRestore(solution.ToString());
+    }
 });
 
-Task("Build")
+Task("Build-All")
     .IsDependentOn("Restore")
     .Does(() => {
-        Information("Building solution...");
-        MSBuild(solutionPath, settings =>
-            settings.SetPlatformTarget(PlatformTarget.MSIL)
-                .SetMSBuildPlatform(MSBuildPlatform.x86)
-                .UseToolVersion(MSBuildToolVersion.VS2019)
-                .WithTarget("Build")
-                .SetConfiguration(configuration));
+        Information("Building solutions");
+        foreach(var solution in GetFiles("./**/*.sln"))
+        {
+            if (solution.ToString().Contains("Mac.sln"))
+                continue;
+            Information("Building {0}", solution);
+            MSBuild(
+                solution, 
+                settings =>
+                    settings.SetPlatformTarget(PlatformTarget.MSIL)
+                        .SetMSBuildPlatform(MSBuildPlatform.x86)
+                        .UseToolVersion(MSBuildToolVersion.VS2019)
+                        .WithTarget("Build")
+                        .SetConfiguration(configuration));
+        }
+    });
+
+Task("Build-VSIX")
+    .IsDependentOn("Restore")
+    .Does(() => {
+        Information("Building VSIX");
+        MSBuild(
+            File("ApiClientCodeGenerator.sln"),
+            settings =>
+                settings.SetPlatformTarget(PlatformTarget.MSIL)
+                    .SetMSBuildPlatform(MSBuildPlatform.x86)
+                    .UseToolVersion(MSBuildToolVersion.VS2019)
+                    .WithTarget("Build")
+                    .SetConfiguration(configuration));
     });
 
 Task("Run-Unit-Tests")
-    .IsDependentOn("Build")
+    .IsDependentOn("Build-All")
     .Does(() =>
 {
     VSTest("./**/bin/" + configuration + "/*.Tests.dll",
@@ -46,6 +71,26 @@ Task("Run-Unit-Tests")
                SettingsFile = File("./Tests.runsettings")
            });
 });
+
+Task("Run-Integration-Tests")
+    .IsDependentOn("Build-All")
+    .Does(() =>
+{
+    VSTest("./**/bin/" + configuration + "/*.IntegrationTests.dll",
+           new VSTestSettings 
+           { 
+               Parallel = true, 
+               EnableCodeCoverage = true,
+               SettingsFile = File("./Tests.runsettings")
+           });
+});
+
+Task("All")
+    .IsDependentOn("Run-Unit-Tests")
+    .IsDependentOn("Run-Integration-Tests");
+
+Task("VSIX")
+    .IsDependentOn("Build-VSIX");
 
 Task("Default")
     .IsDependentOn("Run-Unit-Tests");

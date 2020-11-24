@@ -73,7 +73,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             sut.Factory = new CodeGeneratorFactory(optionsFactory);
 
             var result = sut.Generate(
-                Path.GetFullPath("Swagger.json"),
+                Path.GetFullPath(SwaggerJsonFilename),
                 string.Empty,
                 typeof(VisualBasicSingleFileCodeGeneratorTests).Namespace,
                 rgbOutputFileContents,

@@ -20,15 +20,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
 
         public NSwagCSharpCodeGeneratorTests()
         {
-            document = OpenApiDocument.FromFileAsync("Swagger.json").GetAwaiter().GetResult();
-            documentFactoryMock.Setup(c => c.GetDocument("Swagger.json"))
+            document = OpenApiDocument.FromFileAsync(SwaggerJsonFilename).GetAwaiter().GetResult();
+            documentFactoryMock.Setup(c => c.GetDocument(SwaggerJsonFilename))
                 .Returns(document);
 
             settingsMock.Setup(c => c.GetGeneratorSettings(It.IsAny<OpenApiDocument>()))
                 .Returns(new CSharpClientGeneratorSettings());
 
             var sut = new NSwagCSharpCodeGenerator(
-                "Swagger.json",
+                SwaggerJsonFilename,
                 documentFactoryMock.Object,
                 settingsMock.Object);
             
@@ -46,7 +46,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
         [Fact]
         public void Gets_Document_From_Factory()
             => documentFactoryMock.Verify(
-                c => c.GetDocument("Swagger.json"),
+                c => c.GetDocument(SwaggerJsonFilename),
                 Times.Once);
 
         [Fact]

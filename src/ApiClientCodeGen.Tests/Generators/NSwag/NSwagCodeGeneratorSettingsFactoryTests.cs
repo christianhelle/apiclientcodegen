@@ -14,7 +14,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
                     Test.CreateDummy<INSwagOptions>())
                 .GetGeneratorSettings(
                     new OpenApiDocumentFactory()
-                        .GetDocument("Swagger.json"))
+                        .GetDocument(SwaggerJsonFilename))
                 .Should()
                 .NotBeNull();
     }

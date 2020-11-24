@@ -9,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
         [Fact]
         public void Does_Not_Return_Null()
             => new OpenApiDocumentFactory()
-                .GetDocument("Swagger.json")
+                .GetDocument(SwaggerJsonFilename)
                 .Should()
                 .NotBeNull();
     }

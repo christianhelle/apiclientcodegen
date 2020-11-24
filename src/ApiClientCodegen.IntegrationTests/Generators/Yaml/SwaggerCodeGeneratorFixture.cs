@@ -16,11 +16,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
         public SwaggerCodeGeneratorFixture()
         {
-            OptionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
+            OptionsMock.Setup(c => c.JavaPath).Returns(PathProvider.GetJavaPath());
 
             var codeGenerator = new SwaggerCSharpCodeGenerator(
-                Path.GetFullPath("Swagger.yaml"),
-                typeof(SwaggerCodeGeneratorYamlTests).Namespace,
+                Path.GetFullPath(SwaggerYamlFilename),
+                "GeneratedCode",
                 OptionsMock.Object,
                 new ProcessLauncher());
 

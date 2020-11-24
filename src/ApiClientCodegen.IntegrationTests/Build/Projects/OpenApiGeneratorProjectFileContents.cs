@@ -5,7 +5,7 @@
         public const string NetCoreApp =
             @"<Project Sdk=""Microsoft.NET.Sdk"">
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include = ""JsonSubTypes"" Version=""1.8.0"" />

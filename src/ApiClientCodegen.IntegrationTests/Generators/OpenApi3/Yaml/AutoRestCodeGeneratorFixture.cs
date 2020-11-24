@@ -24,8 +24,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             OptionsMock.Setup(c => c.UseInternalConstructors).Returns(true);
 
             var codeGenerator = new AutoRestCSharpCodeGenerator(
-                Path.GetFullPath("Swagger_v3.yaml"),
-                typeof(AutoRestCodeGeneratorYamlTests).Namespace,
+                Path.GetFullPath(SwaggerV3YamlFilename),
+                "GeneratedCode",
                 OptionsMock.Object,
                 new ProcessLauncher(),
                 new OpenApiDocumentFactory());

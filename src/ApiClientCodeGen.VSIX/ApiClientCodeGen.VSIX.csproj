@@ -7,6 +7,7 @@
     </NuGetPackageImportStamp>
     <UseCodebase>true</UseCodebase>
     <TargetFrameworkProfile />
+    <RuntimeIdentifier>win</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

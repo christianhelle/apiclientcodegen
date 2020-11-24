@@ -27,8 +27,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             optionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
 
             var codeGenerator = new OpenApiCSharpCodeGenerator(
-                Path.GetFullPath("Swagger.json"),
-                typeof(OpenApiVisualBasicCodeGeneratorTests).Namespace,
+                Path.GetFullPath(SwaggerJsonFilename),
+                "GeneratedCode",
                 optionsMock.Object);
 
             var options = new CodeWithOptions(codeGenerator.GenerateCode(mock.Object));

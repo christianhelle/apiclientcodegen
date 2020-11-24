@@ -31,7 +31,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         public async Task NSwagStudio_Generate_Code_Using_NSwagStudio()
         {
             var contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
-                File.ReadAllText("Swagger.json"),
+                File.ReadAllText(SwaggerJsonFilename),
                 "https://petstore.swagger.io/v2/swagger.json");
 
             File.WriteAllText("Petstore.nswag", contents);
