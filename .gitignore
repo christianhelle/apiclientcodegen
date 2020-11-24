@@ -265,10 +265,10 @@ src/tools/
 src/.ionide/
 src/MigrationBackup/
 src/ApiClientCodeGen.CLI/Swagger.cs
-src/AutoRestOutput.cs
-src/NSwagOutput.cs
-src/OpenApiOutput.cs
-src/SwaggerOutput.cs
+**/AutoRestOutput.cs
+**/NSwagOutput.cs
+**/OpenApiOutput.cs
+**/SwaggerOutput.cs
 src/ApiClientCodeGen.CLI/Properties/launchSettings.json
 .DS_Store
 *.mpack
