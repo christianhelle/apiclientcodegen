@@ -26,17 +26,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         public string GenerateCode(IProgressReporter pGenerateProgress)
         {
             pGenerateProgress?.Progress(10);
-            TryRemoveSwaggerJsonSpec(nswagStudioFile);
 
             lock (SyncLock)
             {
+                TryRemoveSwaggerJsonSpec(nswagStudioFile);
+                pGenerateProgress?.Progress(25);
+
                 var command = GetNSwagPath();
+                pGenerateProgress?.Progress(50);
+
                 var arguments = $"run \"{nswagStudioFile}\"";
                 var workingDirectory = Path.GetDirectoryName(nswagStudioFile);
                 processLauncher.Start(command, arguments, workingDirectory); 
             }
             
-            pGenerateProgress?.Progress(90);
+            pGenerateProgress?.Progress(100);
             return null;
         }
 
