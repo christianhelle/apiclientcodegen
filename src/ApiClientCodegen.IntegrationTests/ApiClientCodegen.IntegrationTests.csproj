@@ -71,7 +71,9 @@
     <Compile Include="Generators\AutoRestCodeGeneratorFixture.cs" />
     <Compile Include="Generators\CSharpFileMergerTests.cs" />
     <Compile Include="Generators\NSwagCodeGeneratorFixture.cs" />
+    <Compile Include="Generators\NSwagStudioCodeGeneratorFixture.cs" />
     <Compile Include="Generators\NSwagStudioCodeGeneratorBuildTests.cs" />
+    <Compile Include="Generators\OpenApi3\NSwagStudioCodeGeneratorFixture.cs" />
     <Compile Include="Generators\OpenApiCodeGeneratorFixture.cs" />
     <Compile Include="Generators\SwaggerCodeGeneratorFixture.cs" />
     <Compile Include="Generators\OpenApi3\AutoRestCodeGeneratorFixture.cs" />
