@@ -24,7 +24,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             options = optionsMock.Object;
 
             var contents = NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
-                    new EnterOpenApiSpecDialogResult(File.ReadAllText(SwaggerV3JsonFilename), "Swagger", "https://petstore.swagger.io/v2/swagger.json"))
+                    new EnterOpenApiSpecDialogResult(File.ReadAllText(SwaggerV3JsonFilename), "PetstoreClient", "https://petstore.swagger.io/v2/swagger.json"))
                 .GetAwaiter()
                 .GetResult();
 

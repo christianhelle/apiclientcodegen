@@ -4,7 +4,6 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using FluentAssertions;
@@ -26,7 +25,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             options = optionsMock.Object;
 
             var contents = NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
-                    new EnterOpenApiSpecDialogResult(File.ReadAllText(SwaggerJsonFilename), "Swagger", "https://petstore.swagger.io/v2/swagger.json"))
+                    new EnterOpenApiSpecDialogResult(File.ReadAllText(SwaggerJsonFilename), "PetstoreClient", "https://petstore.swagger.io/v2/swagger.json"))
                 .GetAwaiter()
                 .GetResult();
 
