@@ -33,10 +33,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             code = result.ConvertedCode;
         }
 
-        // [ClassCleanup]
-        public static void CleanUp()
-            => DependencyUninstaller.UninstallAutoRest();
-
         [Xunit.Fact]
         public void AutoRest_Generated_Code_NotNullOrWhitespace()
             => code.Should().NotBeNullOrWhiteSpace();
