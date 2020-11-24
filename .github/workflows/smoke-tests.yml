@@ -1,0 +1,52 @@
+name: Smoke Tests
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+  schedule:
+    - cron:  '0 8 * * *'
+
+jobs:
+  build:
+  
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1.607
+
+    - name: Download Petstore OpenAPI Spec
+      run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile Swagger.json
+      working-directory: test
+
+    - name: Generate code with AutoRest
+      run: |
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- autorest ./Swagger.json GeneratedCode ./GeneratedCode/AutoRest/AutoRestOutput.cs
+        dotnet build ./GeneratedCode/AutoRest/Project.csproj
+      working-directory: test
+
+    - name: Generate code with NSwag
+      run: |
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- nswag ./Swagger.json GeneratedCode ./GeneratedCode/NSwag/NSwagOutput.cs
+        dotnet build ./GeneratedCode/NSwag/Project.csproj
+      working-directory: test
+
+    - name: Generate code with Swagger Codegen CLI
+      run: |
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- nswag ./Swagger.json GeneratedCode ./GeneratedCode/SwaggerCodegen/NSwagOutput.cs
+        dotnet build ./GeneratedCode/SwaggerCodegen/Project.csproj
+      working-directory: test
+
+    - name: Generate code with OpenAPI Generator
+      run: |
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- nswag ./Swagger.json GeneratedCode ./GeneratedCode/OpenApiGenerator/NSwagOutput.cs
+        dotnet build ./GeneratedCode/OpenApiGenerator/Project.csproj
+      working-directory: test
