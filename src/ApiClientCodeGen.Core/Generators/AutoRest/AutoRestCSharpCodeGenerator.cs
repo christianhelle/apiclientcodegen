@@ -10,6 +10,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     {
         private readonly IAutoRestOptions options;
         private readonly IOpenApiDocumentFactory documentFactory;
+        private static readonly object SyncLock = new object();
 
         public AutoRestCSharpCodeGenerator(
             string swaggerFile,
@@ -21,6 +22,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.documentFactory = documentFactory ?? throw new ArgumentNullException(nameof(documentFactory));
+        }
+
+        public override string GenerateCode(IProgressReporter pGenerateProgress)
+        {
+            lock (SyncLock)
+                return base.GenerateCode(pGenerateProgress);
         }
 
         protected override string GetArguments(string outputFile)

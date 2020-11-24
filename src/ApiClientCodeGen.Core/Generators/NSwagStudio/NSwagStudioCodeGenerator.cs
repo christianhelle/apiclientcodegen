@@ -11,6 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly string nswagStudioFile;
         private readonly IGeneralOptions options;
         private readonly IProcessLauncher processLauncher;
+        private static readonly object SyncLock = new object();
 
         public NSwagStudioCodeGenerator(
             string nswagStudioFile,
@@ -26,11 +27,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         {
             pGenerateProgress?.Progress(10);
             TryRemoveSwaggerJsonSpec(nswagStudioFile);
-            
-            var command = GetNSwagPath();
-            var arguments = $"run \"{nswagStudioFile}\"";
-            var workingDirectory = Path.GetDirectoryName(nswagStudioFile);
-            processLauncher.Start(command, arguments, workingDirectory);
+
+            lock (SyncLock)
+            {
+                var command = GetNSwagPath();
+                var arguments = $"run \"{nswagStudioFile}\"";
+                var workingDirectory = Path.GetDirectoryName(nswagStudioFile);
+                processLauncher.Start(command, arguments, workingDirectory); 
+            }
             
             pGenerateProgress?.Progress(90);
             return null;
