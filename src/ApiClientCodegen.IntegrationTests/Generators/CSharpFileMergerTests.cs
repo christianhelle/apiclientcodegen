@@ -13,7 +13,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             => CSharpFileMerger.MergeFiles(
                     Path.Combine(
                         Directory.GetCurrentDirectory(),
-                        $"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}"))
+                        $"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Generators"))
                 .Should()
                 .NotBeNullOrWhiteSpace();
     }
