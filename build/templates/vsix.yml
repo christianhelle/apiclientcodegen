@@ -70,8 +70,8 @@ jobs:
       configuration: 'Release'
       diagnosticsEnabled: true
       rerunFailedTests: true
-      rerunMaxAttempts: 3
-      rerunFailedThreshold: 10
+      rerunMaxAttempts: 10
+      rerunFailedThreshold: 30
     continueOnError: true
 
   - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
