@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/christianhelle/apiclientcodegen.svg?branch=master)](https://travis-ci.com/christianhelle/apiclientcodegen)
 [![Build status](https://ci.appveyor.com/api/projects/status/gb2doe3tgwjt47cn/branch/master?svg=true)](https://ci.appveyor.com/project/christianhelle/apiclientcodegen/branch/master)
 ![CLI Tool](https://github.com/christianhelle/apiclientcodegen/workflows/CLI%20Tool/badge.svg)
 ![VSIX](https://github.com/christianhelle/apiclientcodegen/workflows/VSIX/badge.svg)
