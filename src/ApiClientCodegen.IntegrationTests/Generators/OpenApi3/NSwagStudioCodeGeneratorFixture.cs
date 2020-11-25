@@ -1,40 +1,55 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using FluentAssertions;
 using Moq;
+using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.OpenApi3
 {
-    public class NSwagStudioCodeGeneratorFixture : TestWithResources
+    public class NSwagStudioCodeGeneratorFixture : TestWithResources, IAsyncLifetime
     {
-        private readonly Mock<IGeneralOptions> optionsMock;
-        private readonly IGeneralOptions options;
-        public string Code { get; }
+        public string Code { get; private set; }
 
-        public NSwagStudioCodeGeneratorFixture()
+        public async Task InitializeAsync()
         {
-            optionsMock = new Mock<IGeneralOptions>();
-            optionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetNSwagPath());
-            options = optionsMock.Object;
+            var generalOptions = new Mock<IGeneralOptions>();
+            generalOptions.Setup(c => c.NSwagPath).Returns(PathProvider.GetNSwagPath());
 
-            var contents = NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
-                    new EnterOpenApiSpecDialogResult(File.ReadAllText(SwaggerV3JsonFilename), "PetstoreClient", "https://petstore.swagger.io/v2/swagger.json"))
-                .GetAwaiter()
-                .GetResult();
+            var options = new Mock<INSwagStudioOptions>();
+            options.Setup(c => c.UseDocumentTitle).Returns(false);
+            options.Setup(c => c.GenerateDtoTypes).Returns(true);
 
-            File.WriteAllText(SwaggerV3NSwagFilename, contents);
-            new NSwagStudioCodeGenerator(Path.GetFullPath(SwaggerV3NSwagFilename), options, new ProcessLauncher())
+            var outputFilename = $"PetstoreClient{Guid.NewGuid():N}";
+            var contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
+                new EnterOpenApiSpecDialogResult(
+                    ReadAllText(SwaggerV3Json),
+                    outputFilename,
+                    "https://petstore.swagger.io/v2/swagger.json"),
+                options.Object);
+
+            var tempFile = Path.GetTempFileName();
+            File.WriteAllText(tempFile, contents);
+
+            new NSwagStudioCodeGenerator(tempFile, generalOptions.Object, new ProcessLauncher())
                 .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
                 .BeNull();
 
-            Code = File.ReadAllText(Path.GetFullPath("PetstoreClient.cs"));
+            Code = File.ReadAllText(
+                Path.Combine(
+                    Path.GetDirectoryName(tempFile) ?? throw new InvalidOperationException(),
+                    $"{outputFilename}.cs"));
         }
+
+        public Task DisposeAsync() => Task.CompletedTask;
     }
 }
