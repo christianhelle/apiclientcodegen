@@ -42,16 +42,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
         private static void CreateFileFromEmbeddedResource(string resourceName, string outputFile)
         {
             var directory = Directory.GetCurrentDirectory();
-            using var source = EmbeddedResources.GetStream(resourceName);
-            using var writer = File.Create(Path.Combine(directory, outputFile));
-            source.CopyTo(writer);
+            using (var source = EmbeddedResources.GetStream(resourceName))
+            using (var writer = File.Create(Path.Combine(directory, outputFile)))
+                source.CopyTo(writer);
         }
 
         protected string ReadAllText(string resourceName)
         {
-            using var stream = EmbeddedResources.GetStream(resourceName);
-            using var reader = new StreamReader(stream);
-            return reader.ReadToEnd();
+            using (var stream = EmbeddedResources.GetStream(resourceName))
+            using (var reader = new StreamReader(stream))
+                return reader.ReadToEnd();
         }
     }
 }
