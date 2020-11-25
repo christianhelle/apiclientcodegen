@@ -29,4 +29,4 @@ jobs:
       filePath: '${{ parameters.scriptFilePath }}'
       failOnStderr: true
       pwsh: true
-      workingDirectory: src/ApiClientCodeGen.CLI
+      workingDirectory: test

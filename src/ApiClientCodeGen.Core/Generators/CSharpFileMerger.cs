@@ -24,7 +24,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             }
             finally
             {
-                ActionExtensions.SafeInvoke(() => Directory.Delete(output, true));
+                ActionExtensions.SafeInvoke(
+                    () => Directory.Delete(
+                        Directory.GetParent(output).FullName,
+                        true));
             }
         }
 

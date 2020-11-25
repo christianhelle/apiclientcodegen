@@ -11,8 +11,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     {
         public static void UninstallAutoRest()
         {
-            Trace.WriteLine("AutoRest not installed. Attempting to install through NPM");
-
             var programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
             var programFiles64 = programFiles.Replace(" (x86)", newValue: string.Empty);
 
@@ -25,7 +23,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             }
 
             new ProcessLauncher().Start(npmCommand, "uninstall -g autorest");
-            Trace.WriteLine("AutoRest installed successfully through NPM");
+            Trace.WriteLine("AutoRest uninstalled successfully through NPM");
         }
 
         public static void UninstallOpenApiGenerator() 

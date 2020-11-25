@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
@@ -37,26 +38,34 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         [Xunit.Fact]
         public async Task NSwagStudio_Generate_Code_Using_NSwagStudio_From_SwaggerSpec()
         {
-            var contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
-                new EnterOpenApiSpecDialogResult(File.ReadAllText(SwaggerV3NSwagFilename), "Swagger", "https://petstore.swagger.io/v2/swagger.json"),
-                new Mock<INSwagStudioOptions>().Object);
+            var options = new Mock<INSwagStudioOptions>();
+            options.Setup(c => c.UseDocumentTitle).Returns(false);
+            options.Setup(c => c.GenerateDtoTypes).Returns(true);
 
-            File.WriteAllText("Petstore.nswag", contents);
-            new NSwagStudioCodeGenerator(Path.GetFullPath("Petstore.nswag"), options, new ProcessLauncher())
+            var outputFilename = $"PetstoreClient{Guid.NewGuid():N}";
+            var contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
+                new EnterOpenApiSpecDialogResult(
+                    ReadAllText(SwaggerV3Json),
+                    outputFilename,
+                    "https://petstore.swagger.io/v2/swagger.json"),
+                options.Object);
+
+            var tempFile = Path.GetTempFileName();
+            File.WriteAllText(tempFile, contents);
+
+            new NSwagStudioCodeGenerator(tempFile, optionsMock.Object, new ProcessLauncher())
                 .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
                 .BeNull();
-
-            File.Exists(Path.GetFullPath("PetstoreClient.cs"))
-                .Should()
-                .BeTrue();
         }
 
         [Xunit.Fact]
         public void Reads_NSwagPath_From_Options()
         {
+            var tempFile = Path.GetTempFileName();
+            File.WriteAllText(tempFile, ReadAllText(SwaggerV3Json));
             new NSwagStudioCodeGenerator(
-                    Path.GetFullPath(SwaggerV3NSwagFilename), 
+                    tempFile, 
                     options,
                     new ProcessLauncher())
                 .GenerateCode(new Mock<IProgressReporter>().Object);

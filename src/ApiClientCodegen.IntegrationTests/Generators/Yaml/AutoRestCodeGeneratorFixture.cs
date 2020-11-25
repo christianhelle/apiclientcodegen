@@ -1,17 +1,15 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests;
 using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.Yaml
 {
-    public class AutoRestCodeGeneratorFixture : TestWithResources, IDisposable
+    public class AutoRestCodeGeneratorFixture : TestWithResources
     {
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
         public readonly Mock<IAutoRestOptions> OptionsMock = new Mock<IAutoRestOptions>();
@@ -33,8 +31,5 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             OptionsMock.Setup(c => c.OverrideClientName).Returns(true);
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
         }
-
-        public void Dispose()
-            => DependencyUninstaller.UninstallAutoRest();
     }
 }
