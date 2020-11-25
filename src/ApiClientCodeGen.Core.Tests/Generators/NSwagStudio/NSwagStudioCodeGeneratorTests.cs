@@ -16,9 +16,11 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
         private Mock<IProcessLauncher> processMock;
         private Mock<IProgressReporter> progressMock;
         private IGeneralOptions options;
+        private readonly string path;
 
         public NSwagStudioCodeGeneratorTests()
         {
+            path = Path.GetTempFileName();
             optionsMock = new Mock<IGeneralOptions>();
             optionsMock.Setup(c => c.NSwagPath).Returns(Path.GetTempFileName());
             options = optionsMock.Object;
@@ -46,5 +48,13 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
 
             optionsMock.Verify(c => c.NSwagPath);
         }
+
+        [Xunit.Fact]
+        public void Launches_NSwag()
+            => processMock.Verify(
+                c => c.Start(
+                    path,
+                    It.IsAny<string>(),
+                    It.IsAny<string>()));
     }
 }
