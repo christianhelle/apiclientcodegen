@@ -1,5 +1,5 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
+﻿using ApiClientCodeGen.Tests.Common.Build;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.OpenApi3

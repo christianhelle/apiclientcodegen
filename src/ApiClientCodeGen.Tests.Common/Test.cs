@@ -1,7 +1,7 @@
 ﻿using AutoFixture;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
+namespace ApiClientCodeGen.Tests.Common
 {
     public static class Test
     {

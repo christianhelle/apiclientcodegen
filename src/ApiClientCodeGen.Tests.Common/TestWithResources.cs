@@ -2,9 +2,9 @@
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Resources;
+using ApiClientCodeGen.Tests.Common.Resources;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
+namespace ApiClientCodeGen.Tests.Common
 {
     [ExcludeFromCodeCoverage]
     public abstract class TestWithResources

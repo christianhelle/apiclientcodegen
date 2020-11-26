@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Resources
+namespace ApiClientCodeGen.Tests.Common.Resources
 {
     public static class EmbeddedResources
     {
