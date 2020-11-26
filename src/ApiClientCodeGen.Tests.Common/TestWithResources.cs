@@ -32,11 +32,17 @@ namespace ApiClientCodeGen.Tests.Common
             CreateFileFromEmbeddedResource(SwaggerV3Yaml, SwaggerV3YamlFilename);
             CreateFileFromEmbeddedResource(SwaggerV3Nswag, SwaggerV3NSwagFilename);
 
-            ServicePointManager.Expect100Continue = true;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls |
-                                                   SecurityProtocolType.Tls11 |
-                                                   SecurityProtocolType.Tls12 |
-                                                   SecurityProtocolType.Ssl3;
+            try
+            {
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls |
+                                                       SecurityProtocolType.Tls11 |
+                                                       SecurityProtocolType.Tls12 |
+                                                       SecurityProtocolType.Ssl3;
+            }
+            catch (NotSupportedException)
+            {
+            }
         }
 
         private static void CreateFileFromEmbeddedResource(string resourceName, string outputFile)
