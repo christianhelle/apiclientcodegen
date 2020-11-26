@@ -88,7 +88,6 @@
     <Compile Include="CustomTool\SingleFileCodeGenerator.cs" />
     <Compile Include="Extensions\SupportedCodeGeneratorExtensions.cs" />
     <Compile Include="Generators\CodeGeneratorFactory.cs" />
-    <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelper.cs" />
     <Compile Include="Generators\NSwag\OpenApiDocumentFactory.cs" />
     <Compile Include="Options\AutoRest\AutoRestOptions.cs" />
     <Compile Include="Options\AutoRest\AutoRestOptionsPage.cs">
@@ -126,7 +125,6 @@
       <DependentUpon>EnterOpenApiSpecDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="VsPackage.cs" />
-    <Compile Include="Windows\EnterOpenApiSpecDialogResult.cs" />
     <Compile Include="Windows\GeneralOptionsPageCustom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -200,7 +198,9 @@
       <Name>ApiClientCodeGen.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Generators\NSwagStudio\" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost">
       <Version>15.8.525</Version>
