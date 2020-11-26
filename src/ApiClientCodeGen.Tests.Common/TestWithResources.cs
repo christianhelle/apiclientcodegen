@@ -9,6 +9,8 @@ namespace ApiClientCodeGen.Tests.Common
     [ExcludeFromCodeCoverage]
     public abstract class TestWithResources
     {
+        private static readonly object syncLock = new object();
+
         public const string SwaggerJson = "Swagger.json";
         public const string SwaggerYaml = "Swagger.yaml";
         public const string SwaggerNswag = "Swagger.nswag";
@@ -25,12 +27,22 @@ namespace ApiClientCodeGen.Tests.Common
 
         protected TestWithResources()
         {
-            CreateFileFromEmbeddedResource(SwaggerJson, SwaggerJsonFilename);
-            CreateFileFromEmbeddedResource(SwaggerYaml, SwaggerYamlFilename);
-            CreateFileFromEmbeddedResource(SwaggerNswag, SwaggerNSwagFilename);
-            CreateFileFromEmbeddedResource(SwaggerV3Json, SwaggerV3JsonFilename);
-            CreateFileFromEmbeddedResource(SwaggerV3Yaml, SwaggerV3YamlFilename);
-            CreateFileFromEmbeddedResource(SwaggerV3Nswag, SwaggerV3NSwagFilename);
+            lock (syncLock)
+            {
+                CreateFileFromEmbeddedResource(SwaggerJson);
+                CreateFileFromEmbeddedResource(SwaggerYaml);
+                CreateFileFromEmbeddedResource(SwaggerNswag);
+                CreateFileFromEmbeddedResource(SwaggerV3Json);
+                CreateFileFromEmbeddedResource(SwaggerV3Yaml);
+                CreateFileFromEmbeddedResource(SwaggerV3Nswag);
+
+                CreateFileFromEmbeddedResource(SwaggerJson, SwaggerJsonFilename);
+                CreateFileFromEmbeddedResource(SwaggerYaml, SwaggerYamlFilename);
+                CreateFileFromEmbeddedResource(SwaggerNswag, SwaggerNSwagFilename);
+                CreateFileFromEmbeddedResource(SwaggerV3Json, SwaggerV3JsonFilename);
+                CreateFileFromEmbeddedResource(SwaggerV3Yaml, SwaggerV3YamlFilename);
+                CreateFileFromEmbeddedResource(SwaggerV3Nswag, SwaggerV3NSwagFilename);
+            }
 
             try
             {
@@ -42,14 +54,15 @@ namespace ApiClientCodeGen.Tests.Common
             }
             catch (NotSupportedException)
             {
+                // Ignore
             }
         }
 
-        private static void CreateFileFromEmbeddedResource(string resourceName, string outputFile)
+        private static void CreateFileFromEmbeddedResource(string resourceName, string outputFile = null)
         {
             var directory = Directory.GetCurrentDirectory();
             using (var source = EmbeddedResources.GetStream(resourceName))
-            using (var writer = File.Create(Path.Combine(directory, outputFile)))
+            using (var writer = File.Create(Path.Combine(directory, outputFile ?? resourceName)))
                 source.CopyTo(writer);
         }
 
