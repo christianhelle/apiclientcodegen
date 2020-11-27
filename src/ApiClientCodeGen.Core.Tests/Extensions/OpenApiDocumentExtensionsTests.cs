@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using FluentAssertions;
 using NSwag;

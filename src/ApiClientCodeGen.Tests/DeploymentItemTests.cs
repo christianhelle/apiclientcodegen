@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using ApiClientCodeGen.Tests.Common;
 using FluentAssertions;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests

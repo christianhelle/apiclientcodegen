@@ -1,7 +1,7 @@
 ﻿using AutoFixture;
 using Moq;
 
-namespace ApiClientCodeGen.Core.Tests
+namespace ApiClientCodeGen.Tests.Common
 {
     public static class Test
     {

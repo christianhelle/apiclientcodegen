@@ -1,4 +1,5 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
+﻿using ApiClientCodeGen.Tests.Common;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using FluentAssertions;
 using Xunit;
 

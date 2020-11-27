@@ -13,13 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.Core", "Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.CLI", "ApiClientCodeGen.CLI\ApiClientCodeGen.CLI.csproj", "{808920F0-D581-4376-8033-2E125E8EF66B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.CLI.Tests", "ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj", "{2DD9174D-0360-46F6-AFCE-1A5D6C1E7518}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.CLI.Tests", "ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj", "{2DD9174D-0360-46F6-AFCE-1A5D6C1E7518}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSMac", "ApiClientCodeGen.VSMac\ApiClientCodeGen.VSMac.csproj", "{4E536A35-2AE4-4276-91C5-C43BEDB72D1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.VSMac", "ApiClientCodeGen.VSMac\ApiClientCodeGen.VSMac.csproj", "{4E536A35-2AE4-4276-91C5-C43BEDB72D1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSMac.Tests", "ApiClientCodeGen.VSMac.Tests\ApiClientCodeGen.VSMac.Tests.csproj", "{4A8E6DBF-B6E6-4776-86B2-4D7A20B7B17D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.VSMac.Tests", "ApiClientCodeGen.VSMac.Tests\ApiClientCodeGen.VSMac.Tests.csproj", "{4A8E6DBF-B6E6-4776-86B2-4D7A20B7B17D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.Core.Tests", "ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj", "{07734934-973E-4FD9-A192-15013B7DB7C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.Core.Tests", "ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj", "{07734934-973E-4FD9-A192-15013B7DB7C2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.Tests.Common", "ApiClientCodeGen.Tests.Common\ApiClientCodeGen.Tests.Common.csproj", "{02E9A964-A720-49CF-938E-4D5C37206199}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{07734934-973E-4FD9-A192-15013B7DB7C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07734934-973E-4FD9-A192-15013B7DB7C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07734934-973E-4FD9-A192-15013B7DB7C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02E9A964-A720-49CF-938E-4D5C37206199}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02E9A964-A720-49CF-938E-4D5C37206199}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02E9A964-A720-49CF-938E-4D5C37206199}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02E9A964-A720-49CF-938E-4D5C37206199}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

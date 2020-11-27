@@ -9,36 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Remove="Resources\Swagger.json" />
-      <None Remove="Resources\Swagger.nswag" />
-      <None Remove="Resources\Swagger.yaml" />
-      <None Remove="Resources\Swagger_v3.json" />
-      <None Remove="Resources\Swagger_v3.nswag" />
-      <None Remove="Resources\Swagger_v3.yaml" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Include="Resources\Swagger.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </EmbeddedResource>
-      <EmbeddedResource Include="Resources\Swagger.nswag">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </EmbeddedResource>
-      <EmbeddedResource Include="Resources\Swagger.yaml">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </EmbeddedResource>
-      <EmbeddedResource Include="Resources\Swagger_v3.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </EmbeddedResource>
-      <EmbeddedResource Include="Resources\Swagger_v3.nswag">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </EmbeddedResource>
-      <EmbeddedResource Include="Resources\Swagger_v3.yaml">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
         <PackageReference Include="AutoFixture.Xunit2" Version="4.14.0" />
         <PackageReference Include="FluentAssertions" Version="5.10.3" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
@@ -56,6 +26,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
+      <ProjectReference Include="..\ApiClientCodeGen.Tests.Common\ApiClientCodeGen.Tests.Common.csproj" />
     </ItemGroup>
 
 </Project>

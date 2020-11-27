@@ -1,4 +1,4 @@
-﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build.Projects
+﻿namespace ApiClientCodeGen.Tests.Common.Build.Projects
 {
     public class SwaggerProjectFileContents
     {

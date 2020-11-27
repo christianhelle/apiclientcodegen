@@ -65,6 +65,7 @@
     <Compile Include="Extensions\ToJsonTests.cs" />
     <Compile Include="Generators\CodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwagStudio\NSwagStudioCodeGeneratorTests.cs" />
+    <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelperYamlTests.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGeneratorTests.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGeneratorExceptionTests.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGeneratorTests.cs" />
@@ -89,9 +90,7 @@
     <Compile Include="Options\NSwagStudioOptionsNullOptionsTests.cs" />
     <Compile Include="Options\NSwagStudioOptionsTests.cs" />
     <Compile Include="Options\PathProviderTests.cs" />
-    <Compile Include="Resources\EmbeddedResources.cs" />
     <Compile Include="TestingUtilityTests.cs" />
-    <Compile Include="TestWithResources.cs" />
     <None Include="Converters\CSharpToVisualBasicLanguageConverterTests.cs" />
     <Compile Include="CustomTool\SingleFileCodeGeneratorTests.cs" />
     <Compile Include="CustomTool\TestSingleFileCodeGenerator.cs" />
@@ -106,32 +105,15 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="NpmHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test.cs" />
-    <EmbeddedResource Include="Resources\Swagger.yaml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Swagger_v3.yaml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Swagger_v3.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Swagger_v3.nswag">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Swagger.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Swagger.nswag">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj">
       <Project>{24639115-9e66-4dc5-be93-9e72fbe5ec5f}</Project>
       <Name>ApiClientCodeGen.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ApiClientCodeGen.Tests.Common\ApiClientCodeGen.Tests.Common.csproj">
+      <Project>{e153aae7-3b06-4804-9d4e-39865b7d27c3}</Project>
+      <Name>ApiClientCodeGen.Tests.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\ApiClientCodeGen.VSIX\ApiClientCodeGen.VSIX.csproj">
       <Project>{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}</Project>

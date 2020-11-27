@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Utility
+namespace ApiClientCodeGen.Tests.Common.Utility
 {
     [ExcludeFromCodeCoverage]
     public static class DependencyUninstaller

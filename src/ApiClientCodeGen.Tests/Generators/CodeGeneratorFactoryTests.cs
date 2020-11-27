@@ -1,4 +1,5 @@
 ﻿using System;
+using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;

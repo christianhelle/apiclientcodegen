@@ -1,6 +1,5 @@
 ﻿using System;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build;
 using FluentAssertions;
 using Moq;
 using Xunit;

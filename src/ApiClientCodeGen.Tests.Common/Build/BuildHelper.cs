@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using ApiClientCodeGen.Tests.Common.Build.Projects;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build.Projects;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Build
+namespace ApiClientCodeGen.Tests.Common.Build
 {
+    [ExcludeFromCodeCoverage]
     public sealed class BuildHelper
     {
         public static void BuildCSharp(
