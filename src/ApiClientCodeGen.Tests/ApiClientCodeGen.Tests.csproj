@@ -65,6 +65,7 @@
     <Compile Include="Extensions\ToJsonTests.cs" />
     <Compile Include="Generators\CodeGeneratorTests.cs" />
     <Compile Include="Generators\NSwagStudio\NSwagStudioCodeGeneratorTests.cs" />
+    <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelperYamlTests.cs" />
     <Compile Include="Generators\NSwag\NSwagCSharpCodeGeneratorTests.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGeneratorExceptionTests.cs" />
     <Compile Include="Generators\OpenApi\OpenApiCSharpCodeGeneratorTests.cs" />

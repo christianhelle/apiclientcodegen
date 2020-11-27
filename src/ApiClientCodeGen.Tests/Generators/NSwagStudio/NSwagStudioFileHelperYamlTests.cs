@@ -7,17 +7,17 @@ using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.NSwagStudio
 {
-    public class NSwagStudioFileHelperTests : TestWithResources
+    public class NSwagStudioFileHelperYamlTests : TestWithResources
     {
         private Mock<INSwagStudioOptions> mock;
 
-        public NSwagStudioFileHelperTests()
+        public NSwagStudioFileHelperYamlTests()
         {
             mock = new Mock<INSwagStudioOptions>();
 
             NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
                     new EnterOpenApiSpecDialogResult(
-                        File.ReadAllText(SwaggerJsonFilename),
+                        ReadAllText(SwaggerYaml),
                         "Swagger",
                         "https://petstore.swagger.io/v2/swagger.yaml"),
                     mock.Object)
