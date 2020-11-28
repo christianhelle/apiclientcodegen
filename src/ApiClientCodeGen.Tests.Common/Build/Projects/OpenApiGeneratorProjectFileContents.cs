@@ -1,6 +1,6 @@
 ﻿namespace ApiClientCodeGen.Tests.Common.Build.Projects
 {
-    public class OpenApiGeneratorProjectFileContents
+    public static class OpenApiGeneratorProjectFileContents
     {
         public const string NetCoreApp =
             @"<Project Sdk=""Microsoft.NET.Sdk"">

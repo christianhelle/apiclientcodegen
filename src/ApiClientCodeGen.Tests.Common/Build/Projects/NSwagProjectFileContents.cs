@@ -1,6 +1,6 @@
 ﻿namespace ApiClientCodeGen.Tests.Common.Build.Projects
 {
-    public class NSwagProjectFileContents
+    public static class NSwagProjectFileContents
     {
         public const string NetCoreApp =
             @"<Project Sdk=""Microsoft.NET.Sdk"">

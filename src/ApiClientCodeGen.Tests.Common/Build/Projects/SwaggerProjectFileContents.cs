@@ -1,6 +1,6 @@
 ﻿namespace ApiClientCodeGen.Tests.Common.Build.Projects
 {
-    public class SwaggerProjectFileContents
+    public static class SwaggerProjectFileContents
     {
         public const string NetCoreApp =
             @"<Project Sdk=""Microsoft.NET.Sdk"">
