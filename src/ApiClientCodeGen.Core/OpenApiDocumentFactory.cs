@@ -8,7 +8,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
     [ExcludeFromCodeCoverage]
     public class OpenApiDocumentFactory : IOpenApiDocumentFactory
     {
-        public Task<OpenApiDocument> GetDocument(string swaggerFile)
+        public Task<OpenApiDocument> GetDocumentAsync(string swaggerFile)
         {
             return swaggerFile.EndsWith("yaml") || swaggerFile.EndsWith("yml")
                 ? OpenApiYamlDocument.FromFileAsync(swaggerFile)

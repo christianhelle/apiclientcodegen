@@ -10,7 +10,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwa
     [ExcludeFromCodeCoverage]
     internal class OpenApiDocumentFactory : IOpenApiDocumentFactory
     {
-        public async Task<OpenApiDocument> GetDocument(string swaggerFile)
+        public async Task<OpenApiDocument> GetDocumentAsync(string swaggerFile)
         {
             try
             {

@@ -22,7 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
         public NSwagCSharpCodeGeneratorTests()
         {
             document = OpenApiDocument.FromFileAsync(SwaggerJsonFilename).GetAwaiter().GetResult();
-            documentFactoryMock.Setup(c => c.GetDocument(SwaggerJsonFilename))
+            documentFactoryMock.Setup(c => c.GetDocumentAsync(SwaggerJsonFilename))
                 .ReturnsAsync(document);
 
             settingsMock.Setup(c => c.GetGeneratorSettings(It.IsAny<OpenApiDocument>()))
@@ -47,7 +47,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
         [Fact]
         public void Gets_Document_From_Factory()
             => documentFactoryMock.Verify(
-                c => c.GetDocument(SwaggerJsonFilename),
+                c => c.GetDocumentAsync(SwaggerJsonFilename),
                 Times.Once);
 
         [Fact]

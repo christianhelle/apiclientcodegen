@@ -25,7 +25,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             try
             {
                 pGenerateProgress?.Progress(10);
-                var document = documentFactory.GetDocument(swaggerFile).GetAwaiter().GetResult();
+                var document = documentFactory.GetDocumentAsync(swaggerFile).GetAwaiter().GetResult();
                 pGenerateProgress?.Progress(20);
                 var settings = generatorSettingsFactory.GetGeneratorSettings(document);
                 pGenerateProgress?.Progress(50);
