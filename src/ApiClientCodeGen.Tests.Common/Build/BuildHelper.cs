@@ -9,7 +9,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 namespace ApiClientCodeGen.Tests.Common.Build
 {
     [ExcludeFromCodeCoverage]
-    public sealed class BuildHelper
+    public static class BuildHelper
     {
         public static void BuildCSharp(
             ProjectTypes projecType,
