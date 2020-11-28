@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using Microsoft.VisualStudio.Shell;
@@ -6,7 +7,8 @@ using NSwag;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag
 {
-    public class OpenApiDocumentFactory : IOpenApiDocumentFactory
+    [ExcludeFromCodeCoverage]
+    internal class OpenApiDocumentFactory : IOpenApiDocumentFactory
     {
         public async Task<OpenApiDocument> GetDocument(string swaggerFile)
         {

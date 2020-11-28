@@ -3,7 +3,6 @@ using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
 using Moq;
 using NJsonSchema.CodeGeneration.CSharp;
 
@@ -13,7 +12,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     {
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
         public readonly Mock<INSwagOptions> OptionsMock = new Mock<INSwagOptions>();
-        public readonly string Code = null;
+        public readonly string Code;
 
         public NSwagCodeGeneratorFixture()
         {

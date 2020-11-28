@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using NSwag;
 
-namespace ApiClientCodeGen.CLI
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     [ExcludeFromCodeCoverage]
     public class OpenApiDocumentFactory : IOpenApiDocumentFactory
