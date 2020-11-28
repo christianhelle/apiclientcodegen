@@ -23,7 +23,15 @@ namespace ApiClientCodeGen.Tests.Common.Build
             Trace.WriteLine(projectContents);
             File.WriteAllText(projectFile, projectContents);
             File.WriteAllText(Path.Combine(path, "Generated.cs"), generatedCode);
-            new ProcessLauncher().Start("dotnet.exe", $"build \"{projectFile}\"");
+            new ProcessLauncher().Start(GetDotNetCli(), $"build \"{projectFile}\"");
+        }
+
+        private static string GetDotNetCli()
+        {
+            if (Environment.OSVersion.Platform == PlatformID.Unix)
+                return "dotnet";
+            else
+                return "dotnet.exe";
         }
 
         private static string GetProjectContents(
