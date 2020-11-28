@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
@@ -30,6 +31,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 return base.GenerateCode(pGenerateProgress);
         }
 
+        [SuppressMessage("Usage", "VSTHRD002:Avoid problematic synchronous waits", Justification = "This is code is called from an old pre-TPL interface")]
         protected override string GetArguments(string outputFile)
         {
             var args = "--csharp " +
