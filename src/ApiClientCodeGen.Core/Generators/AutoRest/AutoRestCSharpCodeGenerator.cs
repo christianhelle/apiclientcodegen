@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
@@ -30,6 +31,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 return base.GenerateCode(pGenerateProgress);
         }
 
+        [SuppressMessage("Usage", "VSTHRD002:Avoid problematic synchronous waits", Justification = "This is code is called from an old pre-TPL interface")]
         protected override string GetArguments(string outputFile)
         {
             var args = "--csharp " +
@@ -37,7 +39,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                        $"--output-file=\"{outputFile}\" " +
                        $"--namespace=\"{DefaultNamespace}\" ";
 
-            var document = documentFactory.GetDocument(SwaggerFile);
+            var document = documentFactory.GetDocumentAsync(SwaggerFile).GetAwaiter().GetResult();
             if (!string.IsNullOrEmpty(document.OpenApi) && 
                 Version.TryParse(document.OpenApi, out var openApiVersion) && 
                 openApiVersion > Version.Parse("3.0.0"))

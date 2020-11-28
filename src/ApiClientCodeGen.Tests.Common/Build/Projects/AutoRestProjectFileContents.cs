@@ -1,6 +1,6 @@
 ﻿namespace ApiClientCodeGen.Tests.Common.Build.Projects
 {
-    public class AutoRestProjectFileContents
+    public static class AutoRestProjectFileContents
     {
         public const string NetCoreApp =
             @"<Project Sdk=""Microsoft.NET.Sdk"">

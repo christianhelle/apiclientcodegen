@@ -101,7 +101,6 @@
     <Compile Include="DeploymentItemTests.cs" />
     <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelperTests.cs" />
     <Compile Include="Generators\NSwag\NSwagCodeGeneratorSettingsFactoryTests.cs" />
-    <Compile Include="Generators\NSwag\OpenApiDocumentFactoryTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="NpmHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

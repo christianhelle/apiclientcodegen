@@ -1,16 +1,16 @@
 ﻿using ApiClientCodeGen.Tests.Common;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using FluentAssertions;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.NSwag
+namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
 {
     public class OpenApiDocumentFactoryTests : TestWithResources
     {
         [Fact]
         public void Does_Not_Return_Null()
             => new OpenApiDocumentFactory()
-                .GetDocument(SwaggerJsonFilename)
+                .GetDocumentAsync(SwaggerJsonFilename)
                 .Should()
                 .NotBeNull();
     }

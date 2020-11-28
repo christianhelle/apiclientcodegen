@@ -1,9 +1,10 @@
-﻿using NSwag;
+﻿using System.Threading.Tasks;
+using NSwag;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag
 {
     public interface IOpenApiDocumentFactory
     {
-        OpenApiDocument GetDocument(string swaggerFile);
+        Task<OpenApiDocument> GetDocumentAsync(string swaggerFile);
     }
 }
