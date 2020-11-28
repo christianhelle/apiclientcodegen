@@ -36,8 +36,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 pGenerateProgress?.Progress(50);
 
                 var arguments = $"run \"{nswagStudioFile}\"";
-                var workingDirectory = Path.GetDirectoryName(nswagStudioFile);
-                processLauncher.Start(command, arguments, workingDirectory); 
+                processLauncher.Start(command, arguments); 
             }
             
             pGenerateProgress?.Progress(100);
