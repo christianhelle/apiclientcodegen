@@ -23,7 +23,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
         {
             document = OpenApiDocument.FromFileAsync(SwaggerJsonFilename).GetAwaiter().GetResult();
             documentFactoryMock.Setup(c => c.GetDocument(SwaggerJsonFilename))
-                .Returns(document);
+                .ReturnsAsync(document);
 
             settingsMock.Setup(c => c.GetGeneratorSettings(It.IsAny<OpenApiDocument>()))
                 .Returns(new CSharpClientGeneratorSettings());

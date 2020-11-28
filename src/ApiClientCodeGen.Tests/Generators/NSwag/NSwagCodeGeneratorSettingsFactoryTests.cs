@@ -1,4 +1,5 @@
-﻿using ApiClientCodeGen.Tests.Common;
+﻿using System.Threading.Tasks;
+using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
@@ -9,12 +10,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
     public class NSwagCodeGeneratorSettingsFactoryTests : TestWithResources
     {
         [Xunit.Fact]
-        public void Does_Not_Return_Null()
+        public async Task Does_Not_Return_Null()
             => new NSwagCodeGeneratorSettingsFactory(
                     Test.CreateAnnonymous<string>(),
                     Test.CreateDummy<INSwagOptions>())
                 .GetGeneratorSettings(
-                    new OpenApiDocumentFactory()
+                    await new OpenApiDocumentFactory()
                         .GetDocument(SwaggerJsonFilename))
                 .Should()
                 .NotBeNull();
