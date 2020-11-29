@@ -15,12 +15,12 @@ using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
 {
-    [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
-    public class NSwagStudioCodeGeneratorFixture : TestWithResources, IAsyncLifetime
+    [Trait("Category", "SkipWhenLiveUnitTesting")]
+    public class NSwagStudioCodeGeneratorFixture : TestWithResources
     {
         public string Code { get; private set; }
 
-        public async Task InitializeAsync()
+        protected override async Task OnInitializeAsync()
         {
             var generalOptions = new Mock<IGeneralOptions>();
             generalOptions.Setup(c => c.NSwagPath).Returns(PathProvider.GetNSwagPath());
@@ -50,7 +50,5 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                     Path.GetDirectoryName(tempFile) ?? throw new InvalidOperationException(),
                     $"{outputFilename}.cs"));
         }
-
-        public Task DisposeAsync() => Task.CompletedTask;
     }
 }

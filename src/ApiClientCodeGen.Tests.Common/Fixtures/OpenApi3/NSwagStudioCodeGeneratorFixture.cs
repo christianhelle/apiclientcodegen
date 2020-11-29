@@ -15,11 +15,11 @@ using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.OpenApi3
 {
-    public class NSwagStudioCodeGeneratorFixture : TestWithResources, IAsyncLifetime
+    public class NSwagStudioCodeGeneratorFixture : TestWithResources
     {
         public string Code { get; private set; }
 
-        public async Task InitializeAsync()
+        protected override async Task OnInitializeAsync()
         {
             var generalOptions = new Mock<IGeneralOptions>();
             generalOptions.Setup(c => c.NSwagPath).Returns(PathProvider.GetNSwagPath());
@@ -49,7 +49,5 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                     Path.GetDirectoryName(tempFile) ?? throw new InvalidOperationException(),
                     $"{outputFilename}.cs"));
         }
-
-        public Task DisposeAsync() => Task.CompletedTask;
     }
 }

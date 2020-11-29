@@ -12,9 +12,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     {
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
         public readonly Mock<IGeneralOptions> OptionsMock= new Mock<IGeneralOptions>();
-        public readonly string Code = null;
+        public string Code;
 
-        public SwaggerCodeGeneratorFixture()
+        protected override void OnInitialize()
         {
             OptionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
 

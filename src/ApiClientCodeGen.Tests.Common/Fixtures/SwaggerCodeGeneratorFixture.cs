@@ -11,13 +11,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     public class SwaggerCodeGeneratorFixture : TestWithResources
     {
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
-        public readonly Mock<IGeneralOptions> OptionsMock= new Mock<IGeneralOptions>();
-        public readonly string Code = null;
+        public readonly Mock<IGeneralOptions> OptionsMock = new Mock<IGeneralOptions>();
+        public string Code;
 
         public SwaggerCodeGeneratorFixture()
         {
             OptionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
+        }
 
+        protected override void OnInitialize()
+        {
             var codeGenerator = new SwaggerCSharpCodeGenerator(
                 Path.GetFullPath(SwaggerJsonFilename),
                 "GeneratedCode",

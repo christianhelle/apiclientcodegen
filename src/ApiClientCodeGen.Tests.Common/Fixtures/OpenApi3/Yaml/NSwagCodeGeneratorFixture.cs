@@ -12,7 +12,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     {
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
         public readonly Mock<INSwagOptions> OptionsMock = new Mock<INSwagOptions>();
-        public readonly string Code;
+        public string Code;
 
         public NSwagCodeGeneratorFixture()
         {
@@ -22,12 +22,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             OptionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
             OptionsMock.Setup(c => c.UseBaseUrl).Returns(true);
             OptionsMock.Setup(c => c.ClassStyle).Returns(CSharpClassStyle.Poco);
+        }
 
-            var defaultNamespace = "GeneratedCode";
+        protected override void  OnInitialize()
+        {
             var codeGenerator = new NSwagCSharpCodeGenerator(
                 Path.GetFullPath(SwaggerV3YamlFilename),
                 new OpenApiDocumentFactory(),
-                new NSwagCodeGeneratorSettingsFactory(defaultNamespace, OptionsMock.Object));
+                new NSwagCodeGeneratorSettingsFactory("GeneratedCode", OptionsMock.Object));
 
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
         }

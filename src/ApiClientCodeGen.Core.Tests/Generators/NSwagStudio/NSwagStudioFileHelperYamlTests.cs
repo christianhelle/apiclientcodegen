@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStudio;
@@ -9,21 +10,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
 {
     public class NSwagStudioFileHelperYamlTests : TestWithResources
     {
-        private Mock<INSwagStudioOptions> mock;
+        private readonly Mock<INSwagStudioOptions> mock = new Mock<INSwagStudioOptions>();
 
-        public NSwagStudioFileHelperYamlTests()
-        {
-            mock = new Mock<INSwagStudioOptions>();
-
-            NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
-                    new EnterOpenApiSpecDialogResult(
-                        ReadAllText(SwaggerYaml),
-                        "Swagger",
-                        "https://petstore.swagger.io/v2/swagger.yaml"),
-                    mock.Object)
-                .GetAwaiter()
-                .GetResult();
-        }
+        protected override Task OnInitializeAsync()
+            => NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
+                new EnterOpenApiSpecDialogResult(
+                    ReadAllText(SwaggerYaml),
+                    "Swagger",
+                    "https://petstore.swagger.io/v2/swagger.yaml"),
+                mock.Object);
 
         [Xunit.Fact]
         public void Reads_InjectHttpClient_From_Options()

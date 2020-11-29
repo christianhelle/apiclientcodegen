@@ -12,9 +12,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     {
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
         public readonly Mock<IAutoRestOptions> OptionsMock = new Mock<IAutoRestOptions>();
-        public readonly string Code;
+        public string Code;
 
-        public AutoRestCodeGeneratorFixture()
+        protected override void OnInitialize()
         {
             OptionsMock.Setup(c => c.AddCredentials).Returns(true);
             OptionsMock.Setup(c => c.UseDateTimeOffset).Returns(true);
