@@ -11,6 +11,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
         static TestingUtility()
         {
             IsRunningFromUnitTest = AppDomain.CurrentDomain.GetAssemblies().Any(IsTestFramework);
+
+            IsRunningFromIntegrationTest = AppDomain.CurrentDomain.GetAssemblies()
+                .Any(asm => asm.FullName.Contains("IntegrationTests"));
         }
 
         private static bool IsTestFramework(Assembly assembly) 
@@ -18,5 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
             || assembly.FullName.Contains("Test");
 
         public static bool IsRunningFromUnitTest { get; }
+
+        public static bool IsRunningFromIntegrationTest { get; }
     }
 }
