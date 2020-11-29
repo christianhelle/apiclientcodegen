@@ -31,5 +31,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
                             Test.CreateAnnonymous<string>()))
                 .Should()
                 .ThrowExactly<ProcessLaunchException>();
+        }
     }
 }
