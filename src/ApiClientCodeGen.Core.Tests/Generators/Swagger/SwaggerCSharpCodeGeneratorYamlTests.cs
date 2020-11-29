@@ -17,7 +17,7 @@ namespace ApiClientCodeGen.Core.Tests.Generators.Swagger
 
         public SwaggerCSharpCodeGeneratorYamlTests()
             => new SwaggerCSharpCodeGenerator(
-                    "Swagger.yaml",
+                    SwaggerJsonFilename,
                     new Fixture().Create<string>(),
                     optionsMock.Object,
                     processMock.Object)
