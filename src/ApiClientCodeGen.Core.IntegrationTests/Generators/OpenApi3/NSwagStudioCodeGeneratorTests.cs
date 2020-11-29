@@ -79,7 +79,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                     Path.GetFullPath(SwaggerV3NSwagFilename),
                     options,
                     new ProcessLauncher())
-                .GetNSwagPath(true)
+                .GetNSwagPath()
                 .Should()
                 .NotBeNullOrWhiteSpace();
     }

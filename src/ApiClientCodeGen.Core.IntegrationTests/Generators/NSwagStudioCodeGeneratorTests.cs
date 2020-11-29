@@ -73,12 +73,25 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         }
 
         [Xunit.Fact]
+        public void GetNSwagPath_Returns_NotNullOrWhiteSpace()
+        {
+            new NSwagStudioCodeGenerator(
+                    Path.GetFullPath(SwaggerNSwagFilename),
+                    optionsMock.Object,
+                    new ProcessLauncher())
+                .GetNSwagPath()
+                .Should()
+                .NotBeNullOrWhiteSpace();
+        }
+
+        [Xunit.Fact]
         public void GetNSwagPath_ForceDownload()
             => new NSwagStudioCodeGenerator(
                     Path.GetFullPath(SwaggerNSwagFilename),
                     optionsMock.Object,
-                    new ProcessLauncher())
-                .GetNSwagPath(true)
+                    new ProcessLauncher(),
+                    true)
+                .GetNSwagPath()
                 .Should()
                 .NotBeNullOrWhiteSpace();
     }
