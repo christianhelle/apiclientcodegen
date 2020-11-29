@@ -31,7 +31,7 @@ jobs:
     displayName: 'dotnet test'
     inputs:
       command: test
-      projects: '**/*.CLI.Tests.csproj'
+      projects: 'src/Rapicgen.sln'
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'

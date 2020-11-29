@@ -46,3 +46,9 @@ jobs:
     displayName: 'Publish Artifact: drop'
     inputs:
       PathtoPublish: '$(build.artifactstagingdirectory)'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet test'
+    inputs:
+      command: test
+      projects: 'src/Mac.sln'
