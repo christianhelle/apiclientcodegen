@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApiClientCodeGen.CLI\ApiClientCodeGen.CLI.csproj" />
+    <ProjectReference Include="..\ApiClientCodeGen.Tests.Common\ApiClientCodeGen.Tests.Common.csproj" />
   </ItemGroup>
 
 </Project>
