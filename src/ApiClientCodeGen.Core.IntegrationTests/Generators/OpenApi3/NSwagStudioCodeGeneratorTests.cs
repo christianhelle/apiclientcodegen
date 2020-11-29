@@ -35,7 +35,7 @@ namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3
                 .Should()
                 .BeNull();
         
-        [Xunit.Retry]
+        [Xunit.Fact]
         public async Task NSwagStudio_Generate_Code_Using_NSwagStudio_From_SwaggerSpec()
         {
             var options = new Mock<INSwagStudioOptions>();
