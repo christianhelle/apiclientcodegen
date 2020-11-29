@@ -78,7 +78,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                     Path.GetFullPath(SwaggerNSwagFilename),
                     optionsMock.Object,
                     new ProcessLauncher())
-                .GetNSwagPath(true)
+                .GetNSwagPath()
                 .Should()
                 .NotBeNullOrWhiteSpace();
     }
