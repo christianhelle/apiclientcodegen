@@ -1,0 +1,85 @@
+name: Live Integration Tests
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+  schedule:
+    - cron:  '0 8 * * *'
+
+jobs:
+
+  test-petstore-v2:
+
+    name: Swagger Petstore v2
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install rapicgen
+      run: dotnet tool install --global rapicgen
+
+    - name: Download Swagger Petstore v2 OpenAPI Spec
+      run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile Swagger.json
+      working-directory: test
+
+    - name: Generate code with AutoRest
+      run: |
+        rapicgen -v autorest ./Swagger.json GeneratedCode ./GeneratedCode/AutoRest/AutoRestOutput.cs
+        dotnet build ./GeneratedCode/AutoRest/Project.csproj
+      working-directory: test
+
+    - name: Generate code with NSwag
+      run: |
+        rapicgen -v -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/NSwag/NSwagOutput.cs
+        dotnet build ./GeneratedCode/NSwag/Project.csproj
+      working-directory: test
+
+    - name: Generate code with Swagger Codegen CLI
+      run: |
+        rapicgen -v -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/SwaggerCodegen/NSwagOutput.cs
+        dotnet build ./GeneratedCode/SwaggerCodegen/Project.csproj
+      working-directory: test
+
+    - name: Generate code with OpenAPI Generator
+      run: |
+        rapicgen -v -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/OpenApiGenerator/NSwagOutput.cs
+        dotnet build ./GeneratedCode/OpenApiGenerator/Project.csproj
+      working-directory: test
+
+  test-petstore-v3:
+
+    name: Swagger Petstore v3
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install rapicgen
+      run: dotnet tool install --global rapicgen
+
+    - name: Download Swagger Petstore v3 OpenAPI Spec
+      run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.json -OutFile Swagger.json
+      working-directory: test
+
+    - name: Generate code with NSwag
+      run: |
+        rapicgen -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/NSwag/NSwagOutput.cs
+        dotnet build ./GeneratedCode/NSwag/Project.csproj
+      working-directory: test
+
+    - name: Generate code with Swagger Codegen CLI
+      run: |
+        rapicgen -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/SwaggerCodegen/NSwagOutput.cs
+        dotnet build ./GeneratedCode/SwaggerCodegen/Project.csproj
+      working-directory: test
+
+    - name: Generate code with OpenAPI Generator
+      run: |
+        rapicgen -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/OpenApiGenerator/NSwagOutput.cs
+        dotnet build ./GeneratedCode/OpenApiGenerator/Project.csproj
+      working-directory: test
