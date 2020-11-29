@@ -22,7 +22,7 @@ namespace ApiClientCodeGen.Core.Tests.Generators
         }
         
         [Xunit.Fact]
-        public void Start_Invalid_Throws_InvalidOperationException()
+        public void Start_Invalid_Throws_ProcessLaunchException()
         {
             new Action(
                     () => new ProcessLauncher()
@@ -30,7 +30,7 @@ namespace ApiClientCodeGen.Core.Tests.Generators
                             "java",
                             Test.CreateAnnonymous<string>()))
                 .Should()
-                .ThrowExactly<InvalidOperationException>();
+                .ThrowExactly<ProcessLaunchException>();
         }
     }
 }
