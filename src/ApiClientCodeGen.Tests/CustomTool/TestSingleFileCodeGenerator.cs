@@ -1,8 +1,10 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+﻿using System.Diagnostics.CodeAnalysis;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.CustomTool
 {
+    [ExcludeFromCodeCoverage]
     internal class TestSingleFileCodeGenerator : SingleFileCodeGenerator
     {
         internal TestSingleFileCodeGenerator(

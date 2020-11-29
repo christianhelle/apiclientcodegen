@@ -1,7 +1,7 @@
-﻿using ApiClientCodeGen.Tests.Common;
+﻿using System.Threading.Tasks;
+using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using FluentAssertions;
 using Moq;
 using NSwag;
@@ -12,24 +12,23 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwag
 {
     public class NSwagCSharpCodeGeneratorTests : TestWithResources
     {
-        private readonly Mock<INSwagOptions> optionsMock = new Mock<INSwagOptions>();
         private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
         private readonly Mock<IOpenApiDocumentFactory> documentFactoryMock = new Mock<IOpenApiDocumentFactory>();
         private readonly Mock<INSwagCodeGeneratorSettingsFactory> settingsMock = new Mock<INSwagCodeGeneratorSettingsFactory>();
         private OpenApiDocument document;
         private string code;
 
-        public NSwagCSharpCodeGeneratorTests()
+        protected override async Task OnInitializeAsync()
         {
-            document = OpenApiDocument.FromFileAsync("Swagger.json").GetAwaiter().GetResult();
-            documentFactoryMock.Setup(c => c.GetDocumentAsync("Swagger.json"))
+            document = await OpenApiDocument.FromFileAsync(SwaggerJsonFilename);
+            documentFactoryMock.Setup(c => c.GetDocumentAsync(It.IsAny<string>()))
                 .ReturnsAsync(document);
 
             settingsMock.Setup(c => c.GetGeneratorSettings(It.IsAny<OpenApiDocument>()))
                 .Returns(new CSharpClientGeneratorSettings());
 
             var sut = new NSwagCSharpCodeGenerator(
-                "Swagger.json",
+                SwaggerJsonFilename,
                 documentFactoryMock.Object,
                 settingsMock.Object);
             
@@ -47,7 +46,7 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwag
         [Fact]
         public void Gets_Document_From_Factory()
             => documentFactoryMock.Verify(
-                c => c.GetDocumentAsync("Swagger.json"),
+                c => c.GetDocumentAsync(SwaggerJsonFilename),
                 Times.Once);
 
         [Fact]

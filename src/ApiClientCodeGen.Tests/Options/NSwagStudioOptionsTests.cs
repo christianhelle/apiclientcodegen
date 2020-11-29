@@ -91,5 +91,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
                 .GenerateDataAnnotations
                 .Should()
                 .Be(options.GenerateDataAnnotations);
+
+        [Xunit.Fact]
+        public void Reads_UseDocumentTitle_From_Options()
+            => new NSwagStudioOptions(options)
+                .UseDocumentTitle
+                .Should()
+                .Be(options.UseDocumentTitle);
     }
 }

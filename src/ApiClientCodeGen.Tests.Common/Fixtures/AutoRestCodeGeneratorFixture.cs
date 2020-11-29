@@ -13,16 +13,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
         public readonly Mock<IAutoRestOptions> OptionsMock = new Mock<IAutoRestOptions>();
         public string Code;
-
-        public AutoRestCodeGeneratorFixture()
+        
+        protected override void OnInitialize()
         {
             OptionsMock.Setup(c => c.AddCredentials).Returns(true);
             OptionsMock.Setup(c => c.UseDateTimeOffset).Returns(true);
             OptionsMock.Setup(c => c.UseInternalConstructors).Returns(true);
-        }
 
-        protected override void OnInitialize()
-        {
             var codeGenerator = new AutoRestCSharpCodeGenerator(
                 Path.GetFullPath(SwaggerJsonFilename),
                 "GeneratedCode",
