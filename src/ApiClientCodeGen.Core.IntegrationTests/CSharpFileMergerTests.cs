@@ -8,7 +8,7 @@ namespace ApiClientCodeGen.Core.IntegrationTests
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class CSharpFileMergerTests
     {
-        [Retry(3)]
+        [Fact]
         public void Can_Merge_CSharp_Files()
             => CSharpFileMerger.MergeFiles(
                     Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)
