@@ -1,0 +1,73 @@
+name: Integration Tests
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+  schedule:
+    - cron:  '0 8 * * *'
+
+jobs:
+
+  rapicgen:
+
+    name: CLI Tool
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1.607
+
+    - name: Build with dotnet
+      run: dotnet build Rapicgen.sln
+      working-directory: src
+
+    - name: Core Integration Test project
+      run: dotnet test src\ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj
+
+  vsmac:
+
+    name: VS Mac Extension
+    runs-on: macos-11.0
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1.607
+
+    - name: Build
+      run: make release
+      working-directory: src
+
+    - name: Core Integration Test project
+      run: dotnet test src\ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj
+
+  vsix:
+
+    name: VSIX Extension
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1.607
+
+    - name: Cake Build
+      run: powershell ./build.ps1 -target VSIX
+      working-directory: src
+
+    - name: VSIX Integration Test project
+      run: dotnet test src\ApiClientCodegen.IntegrationTests\ApiClientCodegen.IntegrationTests.csproj
