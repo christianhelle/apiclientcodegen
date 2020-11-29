@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using Polly;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
@@ -44,12 +45,23 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             Trace.WriteLine("Executing:");
             Trace.WriteLine($"{command} {arguments}");
 
-            StartInternal(
-                command,
-                arguments,
-                onOutputData,
-                onErrorData,
-                workingDirectory);
+            TimeSpan SleepDurationProvider(int retryAttempt)
+            {
+                var duration = TimeSpan.FromSeconds(Math.Pow(2, retryAttempt));
+                Trace.WriteLine($"Operation failed! Retrying in {duration}");
+                return duration;
+            }
+
+            Policy
+                .Handle<ProcessLaunchException>()
+                .WaitAndRetry(5, SleepDurationProvider)
+                .Execute(
+                    () => StartInternal(
+                        command,
+                        arguments,
+                        onOutputData,
+                        onErrorData,
+                        workingDirectory));
         }
 
         private static void StartInternal(
@@ -60,7 +72,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             string workingDirectory = null)
         {
             var processInfo = new ProcessStartInfo(command, arguments);
-            using (var process = new Process {StartInfo = processInfo})
+            using (var process = new Process { StartInfo = processInfo })
             {
                 var outputData = new StringBuilder();
                 process.OutputDataReceived += (s, e) =>
@@ -93,8 +105,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 process.WaitForExit();
 
                 if (process.ExitCode != 0)
-                    throw new InvalidOperationException(
-                        $"{command} failed!{Environment.NewLine}Output:{Environment.NewLine}{outputData}{Environment.NewLine}Error:{Environment.NewLine}{errorData}");
+                    throw new ProcessLaunchException(
+                        command,
+                        arguments,
+                        workingDirectory,
+                        outputData.ToString(),
+                        errorData.ToString());
             }
         }
     }
