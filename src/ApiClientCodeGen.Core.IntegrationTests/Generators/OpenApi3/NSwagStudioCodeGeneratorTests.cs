@@ -35,7 +35,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .Should()
                 .BeNull();
         
-        [Xunit.Fact]
+        [Xunit.Retry]
         public async Task NSwagStudio_Generate_Code_Using_NSwagStudio_From_SwaggerSpec()
         {
             var options = new Mock<INSwagStudioOptions>();
