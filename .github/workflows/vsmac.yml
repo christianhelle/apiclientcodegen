@@ -59,6 +59,8 @@ jobs:
           src/*.mrep
           src/index.html
 
-    - name: Test with dotnet
-      run: dotnet test Mac.sln
-      working-directory: src
+    - name: Core Test project
+      run: dotnet test src\ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj
+
+    - name: VS Mac Test project
+      run: dotnet test src\ApiClientCodeGen.VSMac.Tests\ApiClientCodeGen.VSMac.Tests.csproj
