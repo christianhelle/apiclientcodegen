@@ -46,17 +46,3 @@ jobs:
     displayName: 'Publish Artifact: drop'
     inputs:
       PathtoPublish: '$(build.artifactstagingdirectory)'
-
-  - task: VSTest@2
-    displayName: 'Visual Studio Test'
-    inputs:
-      runSettingsFile: src/Tests.runsettings
-      runInParallel: true
-      codeCoverageEnabled: true
-      platform: 'Any CPU'
-      configuration: 'Release'
-      diagnosticsEnabled: true
-      rerunFailedTests: true
-      rerunMaxAttempts: 10
-      rerunFailedThreshold: 30
-    continueOnError: true
