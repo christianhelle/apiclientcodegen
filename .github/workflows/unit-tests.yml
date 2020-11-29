@@ -74,15 +74,10 @@ jobs:
       with:
         dotnet-version: 2.1.607
 
-    - name: Cake Build
+    - name: Build VSIX
       run: powershell ./build.ps1 -target VSIX
       working-directory: src
 
-    - name: Core test project
-      run: dotnet test src\ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj
-
-    - name: Core Test project
-      run: dotnet test src\ApiClientCodeGen.Tests\ApiClientCodeGen.Tests.csproj
-
-    - name: VSIX Integration Test project
-      run: dotnet test src\ApiClientCodegen.IntegrationTests\ApiClientCodegen.IntegrationTests.csproj
+    - name: Run Tests
+      run: powershell ./build.ps1 -target Run-All-Tests
+      working-directory: src
