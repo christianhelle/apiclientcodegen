@@ -58,3 +58,7 @@ jobs:
           src/*.mpack
           src/*.mrep
           src/index.html
+
+    - name: Test with dotnet
+      run: dotnet test Mac.sln
+      working-directory: src
