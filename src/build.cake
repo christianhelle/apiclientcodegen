@@ -19,6 +19,8 @@ Task("Restore")
     var solutions = GetFiles("./**/*.sln");
     foreach(var solution in solutions)
     {
+        if (solution.ToString().Contains("Mac.sln"))
+            continue;
         Information("Restoring {0}", solution);
         DotNetCoreRestore(solution.ToString());
     }
