@@ -12,7 +12,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using FluentAssertions;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.OpenApi3
+namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3
 {
     
     [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]

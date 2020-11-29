@@ -3,7 +3,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
+namespace ApiClientCodeGen.Core.IntegrationTests
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class CSharpFileMergerTests

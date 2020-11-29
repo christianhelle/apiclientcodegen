@@ -12,7 +12,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using FluentAssertions;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
+namespace ApiClientCodeGen.Core.IntegrationTests.Generators
 {
 
     [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]

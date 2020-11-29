@@ -5,7 +5,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using FluentAssertions;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests
+namespace ApiClientCodeGen.Core.IntegrationTests
 {
     public class DependencyDownloaderTests : TestWithResources
     {

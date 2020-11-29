@@ -1,11 +1,12 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.Yaml;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.Yaml
+namespace ApiClientCodeGen.Core.IntegrationTests.Generators.Yaml
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class OpenApiCodeGeneratorYamlTests : IClassFixture<OpenApiCodeGeneratorFixture>

@@ -1,8 +1,9 @@
 ﻿using ApiClientCodeGen.Tests.Common.Build;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.OpenApi3;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.OpenApi3
+namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class NSwagStudioCodeGeneratorBuildTests : IClassFixture<NSwagStudioCodeGeneratorFixture>

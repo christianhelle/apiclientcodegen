@@ -1,10 +1,10 @@
 ﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.OpenApi3;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.OpenApi3
+namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class AutoRestCodeGeneratorTests : IClassFixture<AutoRestCodeGeneratorFixture>
