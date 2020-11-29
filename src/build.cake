@@ -50,7 +50,7 @@ Task("Build-VSIX")
     .Does(() => {
         Information("Building VSIX");
         MSBuild(
-            File("ApiClientCodeGenerator.sln"),
+            File("VSIX.sln"),
             settings =>
                 settings.SetPlatformTarget(PlatformTarget.MSIL)
                     .SetMSBuildPlatform(MSBuildPlatform.x86)
@@ -64,6 +64,19 @@ Task("Run-Unit-Tests")
     .Does(() =>
 {
     VSTest("./**/bin/" + configuration + "/*.Tests.dll",
+           new VSTestSettings 
+           { 
+               Parallel = true, 
+               EnableCodeCoverage = true,
+               SettingsFile = File("./Tests.runsettings")
+           });
+});
+
+Task("Run-Integration-Tests")
+    .IsDependentOn("Build-All")
+    .Does(() =>
+{
+    VSTest("./**/bin/" + configuration + "/*.IntegrationTests.dll",
            new VSTestSettings 
            { 
                Parallel = true, 
