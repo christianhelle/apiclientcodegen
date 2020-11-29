@@ -47,8 +47,16 @@ jobs:
     inputs:
       PathtoPublish: '$(build.artifactstagingdirectory)'
 
-  - task: DotNetCoreCLI@2
-    displayName: 'dotnet test'
+  - task: VSTest@2
+    displayName: 'Visual Studio Test'
     inputs:
-      command: test
-      projects: 'src/Mac.sln'
+      runSettingsFile: src/Tests.runsettings
+      runInParallel: true
+      codeCoverageEnabled: true
+      platform: 'Any CPU'
+      configuration: 'Release'
+      diagnosticsEnabled: true
+      rerunFailedTests: true
+      rerunMaxAttempts: 10
+      rerunFailedThreshold: 30
+    continueOnError: true
