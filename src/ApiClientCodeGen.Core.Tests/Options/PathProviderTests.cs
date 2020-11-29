@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using FluentAssertions;
@@ -70,5 +71,20 @@ namespace ApiClientCodeGen.Core.Tests.Options
             var path = PathProvider.GetNSwagPath(true);
             path.Should().Be("nswag");
         }
+
+        [Xunit.Fact]
+        public void GetNSwagStudioPath_Returns_NotNull()
+            => PathProvider.GetNSwagStudioPath()
+                .Should()
+                .NotBeNullOrWhiteSpace();
+
+        [Xunit.Fact]
+        public void GetNpmPath_Without_Path()
+            => PathProvider.GetNpmPath(
+                    Test.CreateAnnonymous<string>(),
+                    Test.CreateAnnonymous<string>(),
+                    true)
+                .Should()
+                .Be("npm");
     }
 }
