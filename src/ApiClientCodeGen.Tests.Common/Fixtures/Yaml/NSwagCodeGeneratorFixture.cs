@@ -1,12 +1,11 @@
 ﻿using System.IO;
-using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using Moq;
 using NJsonSchema.CodeGeneration.CSharp;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.Yaml
+namespace ApiClientCodeGen.Tests.Common.Fixtures.Yaml
 {
     public class NSwagCodeGeneratorFixture : TestWithResources
     {

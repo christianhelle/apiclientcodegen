@@ -1,5 +1,5 @@
 ﻿using System;
-using ApiClientCodeGen.CLI.Tests.Infrastructure;
+using ApiClientCodeGen.Tests.Common.Infrastructure;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
@@ -10,7 +10,7 @@ namespace ApiClientCodeGen.Core.Tests
 {
     public class NpmHelperTests
     {
-        [Theory, AutoMoqData]
+        [Fact]
         public void TryGetNpmPrefixPathFromNpmConfig_Returns_NotNull()
         {
             NpmHelper.TryGetNpmPrefixPathFromNpmConfig()

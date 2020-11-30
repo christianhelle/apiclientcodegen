@@ -1,7 +1,7 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
 
-namespace ApiClientCodeGen.CLI.Tests.Infrastructure
+namespace ApiClientCodeGen.Tests.Common.Infrastructure
 {
     public class AutoMoqCompositeCustomization : CompositeCustomization
     {

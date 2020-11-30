@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
@@ -11,9 +10,8 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStu
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using FluentAssertions;
 using Moq;
-using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.OpenApi3
+namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
 {
     public class NSwagStudioCodeGeneratorFixture : TestWithResources
     {

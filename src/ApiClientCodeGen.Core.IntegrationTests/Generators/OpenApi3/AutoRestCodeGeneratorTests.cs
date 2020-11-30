@@ -1,5 +1,5 @@
 ﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.OpenApi3;
+using ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3;
 using FluentAssertions;
 using Moq;
 using Xunit;

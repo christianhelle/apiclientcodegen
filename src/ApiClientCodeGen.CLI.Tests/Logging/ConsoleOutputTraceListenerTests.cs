@@ -1,5 +1,5 @@
 using ApiClientCodeGen.CLI.Logging;
-using ApiClientCodeGen.CLI.Tests.Infrastructure;
+using ApiClientCodeGen.Tests.Common.Infrastructure;
 using FluentAssertions;
 using Moq;
 using Xunit;

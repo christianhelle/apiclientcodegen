@@ -1,7 +1,7 @@
 ﻿using AutoFixture;
 using AutoFixture.Xunit2;
 
-namespace ApiClientCodeGen.CLI.Tests.Infrastructure
+namespace ApiClientCodeGen.Tests.Common.Infrastructure
 {
     public class AutoMoqDataAttribute : AutoDataAttribute
     {

@@ -1,5 +1,5 @@
 ﻿using System;
-using ApiClientCodeGen.CLI.Tests.Infrastructure;
+using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;

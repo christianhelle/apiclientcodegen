@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
@@ -7,7 +6,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRe
 using FluentAssertions;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
+namespace ApiClientCodeGen.Tests.Common.Fixtures
 {
     public class AutoRestCodeGeneratorFixture : TestWithResources
     {

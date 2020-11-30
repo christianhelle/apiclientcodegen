@@ -5,7 +5,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwagStu
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.NSwagStudio
+namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
 {
     public class NSwagStudioFileHelperTests : TestWithResources
     {

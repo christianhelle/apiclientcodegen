@@ -1,4 +1,5 @@
 ﻿using System;
+using ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3.Yaml;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using FluentAssertions;
 using Moq;

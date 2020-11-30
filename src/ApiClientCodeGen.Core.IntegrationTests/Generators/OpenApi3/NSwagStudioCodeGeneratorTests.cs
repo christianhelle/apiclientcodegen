@@ -1,6 +1,6 @@
 ﻿using ApiClientCodeGen.Tests.Common.Build;
+using ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.OpenApi3;
 using Xunit;
 
 namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3

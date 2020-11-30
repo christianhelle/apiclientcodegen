@@ -1,6 +1,6 @@
 ﻿using ApiClientCodeGen.Tests.Common.Build;
+using ApiClientCodeGen.Tests.Common.Fixtures.Yaml;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.Yaml;
 using Xunit;
 
 namespace ApiClientCodeGen.Core.IntegrationTests.Generators.Yaml
