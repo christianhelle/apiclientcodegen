@@ -36,11 +36,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
                 Test.CreateAnnonymous<string>(),
                 Test.CreateAnnonymous<string>());
 
-            if (Environment.OSVersion.Platform == PlatformID.MacOSX ||
-                Environment.OSVersion.Platform == PlatformID.Unix)
-                path.Should().Be("npm");
-            else
-                path.Should().BeNull();
+            path.Should()
+                .Be(
+                    Environment.OSVersion.Platform == PlatformID.MacOSX ||
+                    Environment.OSVersion.Platform == PlatformID.Unix
+                        ? "npm"
+                        : null);
         }
 
         [Xunit.Fact]
