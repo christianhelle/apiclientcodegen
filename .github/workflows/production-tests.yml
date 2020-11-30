@@ -1,4 +1,4 @@
-name: Integration Tests
+name: Production Tests
 
 on:
   push:
