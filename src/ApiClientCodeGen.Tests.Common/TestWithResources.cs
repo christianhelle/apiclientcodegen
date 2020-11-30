@@ -88,12 +88,12 @@ namespace ApiClientCodeGen.Tests.Common
             
             Policy
                 .Handle<Exception>()
-                .WaitAndRetry(5, SleepDurationProvider)
+                .WaitAndRetry(3, SleepDurationProvider)
                 .Execute(OnInitialize);
             
             await Policy
                 .Handle<Exception>()
-                .WaitAndRetry(5, SleepDurationProvider)
+                .WaitAndRetry(3, SleepDurationProvider)
                 .Execute(OnInitializeAsync);
         }
 
