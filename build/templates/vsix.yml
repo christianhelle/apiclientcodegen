@@ -44,14 +44,6 @@ jobs:
       FileName: src/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
       VersionNumber: '$(build.buildnumber)'
 
-  - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
-    displayName: 'Prepare analysis on SonarCloud'
-    inputs:
-      SonarCloud: Default
-      organization: 'christianhelle-github'
-      projectKey: 'christianhelle_apiclientcodegen'
-      projectName: apiclientcodegen
-
   - task: VSBuild@1
     displayName: 'Build solution src/VSIX.sln'
     inputs:
@@ -73,12 +65,6 @@ jobs:
       rerunMaxAttempts: 10
       rerunFailedThreshold: 30
     continueOnError: true
-
-  - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
-    displayName: 'Run Code Analysis'
-
-  - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
-    displayName: 'Publish Quality Gate Result'
 
   - task: PublishSymbols@2
     displayName: 'Publish symbols path'

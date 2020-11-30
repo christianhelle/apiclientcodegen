@@ -1,0 +1,75 @@
+jobs:
+
+- job: AllJob
+  displayName: 'Build All'
+  pool:
+    vmImage: 'windows-2019'
+    demands:
+    - JDK
+    - npm
+    - msbuild
+    - visualstudio
+    - vstest
+    - java
+
+  steps:
+  - task: UseDotNet@2
+    displayName: 'Use .Net Core sdk 2.1.x'
+    inputs:
+      version: 2.1.x
+
+  - task: Npm@0
+    displayName: 'npm install'
+    inputs:
+      arguments: '-g autorest'
+
+  - task: Npm@0
+    displayName: 'npm install'
+    inputs:
+      arguments: '-g nswag'
+
+  - task: NuGetToolInstaller@1
+    displayName: 'Use NuGet 5.4'
+    inputs:
+      versionSpec: 5.4.x
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+      restoreSolution: 'src/All.sln'
+
+  - task: SonarSource.sonarcloud.14d9cde6-c1da-4d55-aa01-2965cd301255.SonarCloudPrepare@1
+    displayName: 'Prepare analysis on SonarCloud'
+    inputs:
+      SonarCloud: Default
+      organization: 'christianhelle-github'
+      projectKey: 'christianhelle_apiclientcodegen'
+      projectName: apiclientcodegen
+
+  - task: VSBuild@1
+    displayName: 'Build solution src/All.sln'
+    inputs:
+      solution: src/All.sln
+      platform: 'Any CPU'
+      configuration: 'Release'
+    timeoutInMinutes: 20
+
+  - task: VSTest@2
+    displayName: 'Visual Studio Test'
+    inputs:
+      runSettingsFile: src/Tests.runsettings
+      runInParallel: true
+      codeCoverageEnabled: true
+      platform: 'Any CPU'
+      configuration: 'Release'
+      diagnosticsEnabled: true
+      rerunFailedTests: true
+      rerunMaxAttempts: 10
+      rerunFailedThreshold: 30
+    continueOnError: true
+
+  - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
+    displayName: 'Run Code Analysis'
+
+  - task: SonarSource.sonarcloud.38b27399-a642-40af-bb7d-9971f69712e8.SonarCloudPublish@1
+    displayName: 'Publish Quality Gate Result'
