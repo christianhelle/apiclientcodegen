@@ -18,25 +18,25 @@ namespace ApiClientCodeGen.Core.IntegrationTests.Generators
             this.fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
         }
         
-        [Fact]
+        [SkippableFact(typeof(NotSupportedException))]
         public void OpenApi_Generated_Code_NotNullOrWhitespace()
             => fixture.Code.Should().NotBeNullOrWhiteSpace();
 
-        [Fact]
+        [SkippableFact(typeof(NotSupportedException))]
         public void OpenApi_Reports_Progres()
             => fixture.ProgressReporterMock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
                 Times.AtLeastOnce);
 
-        [Fact]
+        [SkippableFact(typeof(NotSupportedException))]
         public void Reads_JavaPath_From_Options() 
             => fixture.OptionsMock.Verify(c => c.JavaPath);
 
-        [Fact]
+        [SkippableFact(typeof(NotSupportedException))]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, fixture.Code, SupportedCodeGenerator.OpenApi);
 
-        [Fact]
+        [SkippableFact(typeof(NotSupportedException))]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, fixture.Code, SupportedCodeGenerator.OpenApi);
 

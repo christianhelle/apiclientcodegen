@@ -18,29 +18,29 @@ namespace ApiClientCodeGen.Core.IntegrationTests.Generators
             this.fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
         }
 
-        [Fact]
+        [SkippableFact(typeof(NotSupportedException))]
         public void Swagger_Generated_Code_NotNullOrWhitespace()
             => fixture.Code.Should().NotBeNullOrWhiteSpace();
 
-        [Fact]
+        [SkippableFact(typeof(NotSupportedException))]
         public void Swagger_Reports_Progres()
             => fixture.ProgressReporterMock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()),
                 Times.AtLeastOnce);
 
-        [Fact]
+        [SkippableFact(typeof(NotSupportedException))]
         public void Reads_JavaPath_From_Options()
             => fixture.OptionsMock.Verify(c => c.JavaPath);
 
-        [Fact]
+        [SkippableFact(typeof(NotSupportedException))]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, fixture.Code, SupportedCodeGenerator.Swagger);
 
-        [Fact]
+        [SkippableFact(typeof(NotSupportedException))]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, fixture.Code, SupportedCodeGenerator.Swagger);
 
-        // [Fact]
+        // [SkippableFact(typeof(NotSupportedException))]
         // public void GeneratedCode_Can_Build_In_NetFrameworkApp()
         //     => BuildHelper.BuildCSharp(ProjectTypes.DotNetFramework, fixture.Code, SupportedCodeGenerator.Swagger);
     }

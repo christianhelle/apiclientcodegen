@@ -4,6 +4,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
+using FluentAssertions;
 using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators
@@ -29,6 +30,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
             OptionsMock.Setup(c => c.OverrideClientName).Returns(true);
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
+            Code.Should().NotBeNullOrWhiteSpace();
         }
     }
 }

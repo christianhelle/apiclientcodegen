@@ -97,6 +97,13 @@ namespace ApiClientCodeGen.Tests.Common
                 .Execute(OnInitializeAsync);
         }
 
+        protected void ThrowNotSupportedOnUnix()
+        {
+            if (Environment.OSVersion.Platform == PlatformID.Unix ||
+                Environment.OSVersion.Platform == PlatformID.MacOSX)
+                throw new NotSupportedException();
+        }
+
         protected virtual void OnInitialize() { }
 
         protected virtual Task OnInitializeAsync() => Task.CompletedTask;

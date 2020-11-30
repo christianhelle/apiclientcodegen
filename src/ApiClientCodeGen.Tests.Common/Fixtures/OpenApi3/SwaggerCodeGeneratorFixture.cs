@@ -16,6 +16,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
 
         protected override void OnInitialize()
         {
+            ThrowNotSupportedOnUnix();
+            
             OptionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
             
             var codeGenerator = new SwaggerCSharpCodeGenerator(
