@@ -78,6 +78,14 @@ jobs:
       run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.yaml -OutFile OpenApi.spec
       working-directory: test
 
+    - name: Generate code with AutoRest
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.spec GeneratedCode ./GeneratedCode/AutoRest/Output.cs
+      working-directory: test
+
+    - name: Build AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Project.csproj
+      working-directory: test
+
     - name: Generate code with NSwag
       run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/NSwag/Output.cs
       working-directory: test
@@ -119,6 +127,14 @@ jobs:
       run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.json -OutFile OpenApi.spec
       working-directory: test
 
+    - name: Generate code with AutoRest
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.spec GeneratedCode ./GeneratedCode/AutoRest/Output.cs
+      working-directory: test
+
+    - name: Build AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Project.csproj
+      working-directory: test
+
     - name: Generate code with NSwag
       run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/NSwag/Output.cs
       working-directory: test
@@ -158,6 +174,14 @@ jobs:
 
     - name: Download Swagger Petstore v3 OpenAPI Spec
       run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.yaml -OutFile OpenApi.spec
+      working-directory: test
+
+    - name: Generate code with AutoRest
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.spec GeneratedCode ./GeneratedCode/AutoRest/Output.cs
+      working-directory: test
+
+    - name: Build AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Project.csproj
       working-directory: test
 
     - name: Generate code with NSwag
