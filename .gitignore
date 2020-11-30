@@ -274,3 +274,4 @@ src/ApiClientCodeGen.CLI/Properties/launchSettings.json
 *.mpack
 *.mrep
 src/index.html
+test/GeneratedCode/**/Output.cs
