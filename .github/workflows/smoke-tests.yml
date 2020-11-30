@@ -31,25 +31,25 @@ jobs:
 
     - name: Generate code with AutoRest
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./Swagger.json GeneratedCode ./GeneratedCode/AutoRest/AutoRestOutput.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./Swagger.json GeneratedCode ./GeneratedCode/AutoRest/Output.cs
         dotnet build ./GeneratedCode/AutoRest/Project.csproj
       working-directory: test
 
     - name: Generate code with NSwag
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/NSwag/NSwagOutput.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/NSwag/Output.cs
         dotnet build ./GeneratedCode/NSwag/Project.csproj
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/SwaggerCodegen/NSwagOutput.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
         dotnet build ./GeneratedCode/SwaggerCodegen/Project.csproj
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/OpenApiGenerator/NSwagOutput.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
         dotnet build ./GeneratedCode/OpenApiGenerator/Project.csproj
       working-directory: test
 
@@ -72,18 +72,18 @@ jobs:
 
     - name: Generate code with NSwag
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/NSwag/NSwagOutput.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/NSwag/Output.cs
         dotnet build ./GeneratedCode/NSwag/Project.csproj
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/SwaggerCodegen/NSwagOutput.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
         dotnet build ./GeneratedCode/SwaggerCodegen/Project.csproj
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/OpenApiGenerator/NSwagOutput.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
         dotnet build ./GeneratedCode/OpenApiGenerator/Project.csproj
       working-directory: test
