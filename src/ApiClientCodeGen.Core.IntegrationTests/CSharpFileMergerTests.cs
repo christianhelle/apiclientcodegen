@@ -11,7 +11,7 @@ namespace ApiClientCodeGen.Core.IntegrationTests
         [Fact]
         public void Can_Merge_CSharp_Files()
         {
-            var folder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            var folder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
             CSharpFileMerger.MergeFiles(
                     folder)
                 .Should()
