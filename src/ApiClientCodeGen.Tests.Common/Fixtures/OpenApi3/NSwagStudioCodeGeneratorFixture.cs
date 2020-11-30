@@ -44,10 +44,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .Should()
                 .BeNull();
 
-            Code = File.ReadAllText(
-                Path.Combine(
-                    Path.GetDirectoryName(tempFile) ?? throw new InvalidOperationException(),
-                    $"{outputFilename}.cs"));
+            (Code = File.ReadAllText(
+                    Path.Combine(
+                        Path.GetDirectoryName(tempFile) ?? throw new InvalidOperationException(),
+                        $"{outputFilename}.cs")))
+                .Should()
+                .NotBeNullOrWhiteSpace();
         }
     }
 }
