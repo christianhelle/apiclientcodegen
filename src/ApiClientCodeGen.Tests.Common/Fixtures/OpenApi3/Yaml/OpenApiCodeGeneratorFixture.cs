@@ -11,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     public class OpenApiCodeGeneratorFixture : TestWithResources
     {
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
-        public readonly Mock<IGeneralOptions> OptionsMock = new Mock<IGeneralOptions>();;
+        public readonly Mock<IGeneralOptions> OptionsMock = new Mock<IGeneralOptions>();
         public string Code;
 
         protected override void OnInitialize()
