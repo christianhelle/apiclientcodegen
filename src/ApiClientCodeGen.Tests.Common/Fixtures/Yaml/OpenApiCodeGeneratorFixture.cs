@@ -11,12 +11,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     public class OpenApiCodeGeneratorFixture : TestWithResources
     {
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
-        public Mock<IGeneralOptions> OptionsMock;
+        public readonly Mock<IGeneralOptions> OptionsMock = new Mock<IGeneralOptions>();
         public string Code;
 
         protected override void OnInitialize()
         {
-            OptionsMock = new Mock<IGeneralOptions>();
+            ThrowNotSupportedOnUnix();
+            
             OptionsMock.Setup(c => c.JavaPath).Returns(PathProvider.GetJavaPath());
 
             var codeGenerator = new OpenApiCSharpCodeGenerator(
