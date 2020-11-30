@@ -31,6 +31,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Actions", "Github Ac
 		..\.github\workflows\cli-tool.yml = ..\.github\workflows\cli-tool.yml
 		..\.github\workflows\vsix.yml = ..\.github\workflows\vsix.yml
 		..\.github\workflows\vsmac.yml = ..\.github\workflows\vsmac.yml
+		..\.github\workflows\smoke-tests.yml = ..\.github\workflows\smoke-tests.yml
+		..\.github\workflows\unit-tests.yml = ..\.github\workflows\unit-tests.yml
+		..\.github\workflows\production-tests.yml = ..\.github\workflows\production-tests.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure Pipelines", "Azure Pipelines", "{6E9B603B-B53F-41C9-9F3F-E2588B9FF84C}"
