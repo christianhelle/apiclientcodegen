@@ -2,6 +2,16 @@ name: VS Mac
 
 on:
   push:
+    paths-ignore:
+      - 'docs/**'
+      - 'test/**'
+      - 'build/**'
+      - 'images/**'
+      - 'README.md'
+      - 'src/ApiClientCodeGen.CLI*/**'
+      - 'src/ApiClientCodeGen.VSIX*/**'
+      - 'src/ApiClientCodeGen.Tests/**'
+      - 'src/ApiClientCodeGen.IntegrationTests/**'
     branches:
       - '*'
   pull_request:
