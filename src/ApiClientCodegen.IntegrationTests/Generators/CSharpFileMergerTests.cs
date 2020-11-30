@@ -10,11 +10,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     {
         [Xunit.Fact]
         public void Can_Merge_CSharp_Files()
-            => CSharpFileMerger.MergeFiles(
-                    Path.Combine(
-                        Directory.GetCurrentDirectory(),
-                        $"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Generators"))
+        {
+            var folder = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                $"..{Path.DirectorySeparatorChar}..{Path.DirectorySeparatorChar}Generators");
+
+            CSharpFileMerger.MergeFiles(
+                    folder)
                 .Should()
-                .NotBeNullOrWhiteSpace();
+                .NotBeNullOrWhiteSpace(folder);
+        }
     }
 }

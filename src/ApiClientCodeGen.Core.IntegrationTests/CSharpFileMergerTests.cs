@@ -10,9 +10,12 @@ namespace ApiClientCodeGen.Core.IntegrationTests
     {
         [Fact]
         public void Can_Merge_CSharp_Files()
-            => CSharpFileMerger.MergeFiles(
-                    Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName)
+        {
+            var folder = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+            CSharpFileMerger.MergeFiles(
+                    folder)
                 .Should()
-                .NotBeNullOrWhiteSpace();
+                .NotBeNullOrWhiteSpace(folder);
+        }
     }
 }
