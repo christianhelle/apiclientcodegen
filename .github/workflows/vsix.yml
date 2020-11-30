@@ -2,6 +2,14 @@ name: VSIX
 
 on:
   push:
+    paths-ignore:
+      - 'docs/**'
+      - 'test/**'
+      - 'build/**'
+      - 'images/**'
+      - 'README.md'
+      - 'src/ApiClientCodeGen.CLI*/**'
+      - 'src/ApiClientCodeGen.VSMac*/**'
     branches:
       - '*'
   pull_request:
