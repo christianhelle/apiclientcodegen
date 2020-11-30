@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.Serialization;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
+    [Serializable]
     [ExcludeFromCodeCoverage]
     public class ProcessLaunchException : Exception
     {
@@ -20,6 +22,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             WorkingDirectory = workingDirectory;
             OutputData = outputData;
             ErrorData = errorData;
+        }
+
+        protected ProcessLaunchException(
+            SerializationInfo info,
+            StreamingContext context) : base(info, context)
+        {
         }
     }
 }
