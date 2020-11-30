@@ -11,16 +11,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly string nswagStudioFile;
         private readonly IGeneralOptions options;
         private readonly IProcessLauncher processLauncher;
+        private readonly bool forceDownload;
         private static readonly object SyncLock = new object();
 
         public NSwagStudioCodeGenerator(
             string nswagStudioFile,
             IGeneralOptions options,
-            IProcessLauncher processLauncher)
+            IProcessLauncher processLauncher,
+            bool forceDownload = false)
         {
             this.nswagStudioFile = nswagStudioFile ?? throw new ArgumentNullException(nameof(nswagStudioFile));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
+            this.forceDownload = forceDownload;
         }
 
         public string GenerateCode(IProgressReporter pGenerateProgress)
@@ -36,15 +39,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 pGenerateProgress?.Progress(50);
 
                 var arguments = $"run \"{nswagStudioFile}\"";
-                var workingDirectory = Path.GetDirectoryName(nswagStudioFile);
-                processLauncher.Start(command, arguments, workingDirectory); 
+                processLauncher.Start(command, arguments, Path.GetDirectoryName(nswagStudioFile)); 
             }
             
             pGenerateProgress?.Progress(100);
             return null;
         }
 
-        public string GetNSwagPath(bool forceDownload = false)
+        public string GetNSwagPath()
         {
             var command = options.NSwagPath;
             if (!string.IsNullOrWhiteSpace(command) && File.Exists(command) && !forceDownload)

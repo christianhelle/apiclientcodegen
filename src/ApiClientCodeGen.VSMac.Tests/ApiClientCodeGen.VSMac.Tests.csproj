@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <TargetFramework>net48</TargetFramework>
 
         <IsPackable>false</IsPackable>
     </PropertyGroup>
@@ -23,6 +23,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
+      <ProjectReference Include="..\ApiClientCodeGen.Tests.Common\ApiClientCodeGen.Tests.Common.csproj" />
       <ProjectReference Include="..\ApiClientCodeGen.VSMac\ApiClientCodeGen.VSMac.csproj" />
     </ItemGroup>
 

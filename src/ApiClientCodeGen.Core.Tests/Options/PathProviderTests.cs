@@ -1,11 +1,11 @@
 ﻿using System;
+using System.IO;
 using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using FluentAssertions;
 
 namespace ApiClientCodeGen.Core.Tests.Options
 {
-    
     public class PathProviderTests
     {
         [Xunit.Fact]
@@ -14,7 +14,7 @@ namespace ApiClientCodeGen.Core.Tests.Options
             var path = PathProvider.GetJavaPath();
             path.Should().NotBeNullOrWhiteSpace();
         }
-        
+
         [Xunit.Fact]
         public void GetJavaPath_Returns_No_Path_For_Bad_EnvironmentVariableName()
         {
@@ -25,7 +25,7 @@ namespace ApiClientCodeGen.Core.Tests.Options
         [Xunit.Fact]
         public void GetNpmPath_Exists()
         {
-             var path = PathProvider.GetNpmPath();
+            var path = PathProvider.GetNpmPath();
             path.Should().NotBeNullOrWhiteSpace();
         }
 
@@ -36,11 +36,12 @@ namespace ApiClientCodeGen.Core.Tests.Options
                 Test.CreateAnnonymous<string>(),
                 Test.CreateAnnonymous<string>());
 
-            if (Environment.OSVersion.Platform == PlatformID.MacOSX ||
-                Environment.OSVersion.Platform == PlatformID.Unix)
-                path.Should().Be("npm");
-            else
-                path.Should().BeNull();
+            path.Should()
+                .Be(
+                    Environment.OSVersion.Platform == PlatformID.MacOSX ||
+                    Environment.OSVersion.Platform == PlatformID.Unix
+                        ? "npm"
+                        : null);
         }
 
         [Xunit.Fact]
@@ -70,5 +71,20 @@ namespace ApiClientCodeGen.Core.Tests.Options
             var path = PathProvider.GetNSwagPath(true);
             path.Should().Be("nswag");
         }
+
+        [Xunit.Fact]
+        public void GetNSwagStudioPath_Returns_NotNull()
+            => PathProvider.GetNSwagStudioPath()
+                .Should()
+                .NotBeNullOrWhiteSpace();
+
+        [Xunit.Fact]
+        public void GetNpmPath_Without_Path()
+            => PathProvider.GetNpmPath(
+                    Test.CreateAnnonymous<string>(),
+                    Test.CreateAnnonymous<string>(),
+                    true)
+                .Should()
+                .Be("npm");
     }
 }

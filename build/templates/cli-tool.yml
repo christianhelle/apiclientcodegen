@@ -27,11 +27,19 @@ jobs:
       packagesToPack: '**/*.CLI.csproj'
       versioningScheme: byBuildNumber
 
-  - task: DotNetCoreCLI@2
-    displayName: 'dotnet test'
+  - task: VSTest@2
+    displayName: 'Visual Studio Test'
     inputs:
-      command: test
-      projects: '**/*.CLI.Tests.csproj'
+      runSettingsFile: src/Tests.runsettings
+      runInParallel: true
+      codeCoverageEnabled: true
+      platform: 'Any CPU'
+      configuration: 'Release'
+      diagnosticsEnabled: true
+      rerunFailedTests: true
+      rerunMaxAttempts: 10
+      rerunFailedThreshold: 30
+    continueOnError: true
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'

@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common.Resources;
+using Polly;
+using Xunit;
 
 namespace ApiClientCodeGen.Tests.Common
 {
     [ExcludeFromCodeCoverage]
-    public abstract class TestWithResources
+    public abstract class TestWithResources : IAsyncLifetime
     {
         private static readonly object syncLock = new object();
 
@@ -72,5 +76,38 @@ namespace ApiClientCodeGen.Tests.Common
             using (var reader = new StreamReader(stream))
                 return reader.ReadToEnd();
         }
+
+        public async Task InitializeAsync()
+        {
+            TimeSpan SleepDurationProvider(int retryAttempt)
+            {
+                var duration = TimeSpan.FromSeconds(Math.Pow(2, retryAttempt));
+                Trace.WriteLine($"Operation failed! Retrying in {duration}");
+                return duration;
+            }
+            
+            Policy
+                .Handle<Exception>()
+                .WaitAndRetry(3, SleepDurationProvider)
+                .Execute(OnInitialize);
+            
+            await Policy
+                .Handle<Exception>()
+                .WaitAndRetry(3, SleepDurationProvider)
+                .Execute(OnInitializeAsync);
+        }
+
+        protected void ThrowNotSupportedOnUnix()
+        {
+            if (Environment.OSVersion.Platform == PlatformID.Unix ||
+                Environment.OSVersion.Platform == PlatformID.MacOSX)
+                throw new NotSupportedException();
+        }
+
+        protected virtual void OnInitialize() { }
+
+        protected virtual Task OnInitializeAsync() => Task.CompletedTask;
+
+        public virtual Task DisposeAsync() => Task.CompletedTask;
     }
 }

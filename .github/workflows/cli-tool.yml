@@ -27,6 +27,8 @@ jobs:
       run: dotnet build Rapicgen.sln
       working-directory: src
 
-    - name: Test with dotnet
-      run: dotnet test Rapicgen.sln
-      working-directory: src
+    - name: CLI test project
+      run: dotnet test src\ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj
+
+    - name: Core test project
+      run: dotnet test src\ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj

@@ -11,9 +11,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 {
     public static class SupportedCodeGeneratorExtensions
     {
-        private static readonly PackageDependencyListProvider DependencyListProvider
-            = new PackageDependencyListProvider();
-
         public static string GetCustomToolName(this SupportedCodeGenerator generator)
         {
             string customTool = null;
@@ -52,10 +49,5 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
             throw new NotSupportedException();
         }
-
-        public static IEnumerable<PackageDependency> GetDependencies(
-            this SupportedCodeGenerator generator)
-            => DependencyListProvider
-                .GetDependencies(generator);
     }
 }

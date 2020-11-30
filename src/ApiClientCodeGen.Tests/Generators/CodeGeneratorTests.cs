@@ -1,6 +1,7 @@
 ﻿using ApiClientCodeGen.Tests.Common;
 using AutoFixture;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
 using Moq;
@@ -22,14 +23,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
                 SwaggerJsonFilename,
                 fixture.Create<string>());
 
-            try
-            {
-                sut.GenerateCode(mock.Object);
-            }
-            catch
-            {
-                // ignored
-            }
+            ActionExtensions.SafeInvoke(() => sut.GenerateCode(mock.Object));
         }
 
         [Fact]

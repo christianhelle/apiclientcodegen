@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using ApiClientCodeGen.CLI.Commands;
 using ApiClientCodeGen.CLI.Logging;
-using ApiClientCodeGen.CLI.Tests.Infrastructure;
+using ApiClientCodeGen.Tests.Common.Infrastructure;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;

@@ -9,7 +9,6 @@ using Moq;
 
 namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
 {
-    
     [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
     public class NSwagStudioCodeGeneratorTests : TestWithResources
     {
@@ -30,7 +29,7 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
             progressMock = new Mock<IProgressReporter>();
             
             code = new NSwagStudioCodeGenerator(
-                    Path.GetFullPath("Swagger.nswag"), 
+                    Path.GetFullPath(SwaggerNSwagFilename), 
                     options,
                     processMock.Object)
                 .GenerateCode(progressMock.Object);

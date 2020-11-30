@@ -7,4 +7,3 @@ install:
 
 script:
   - dotnet build src/Rapicgen.sln
-  - dotnet test src/Rapicgen.sln

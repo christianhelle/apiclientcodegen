@@ -22,7 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
         }
         
         [Xunit.Fact]
-        public void Start_Invalid_Throws_InvalidOperationException()
+        public void Start_Invalid_Throws_ProcessLaunchException()
         {
             new Action(
                     () => new ProcessLauncher()
@@ -30,7 +30,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
                             "java",
                             Test.CreateAnnonymous<string>()))
                 .Should()
-                .ThrowExactly<InvalidOperationException>();
+                .ThrowExactly<ProcessLaunchException>();
         }
     }
 }

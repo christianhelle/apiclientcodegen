@@ -1,4 +1,5 @@
 ﻿using ApiClientCodeGen.Tests.Common.Build;
+using ApiClientCodeGen.Tests.Common.Fixtures;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using Xunit;
 

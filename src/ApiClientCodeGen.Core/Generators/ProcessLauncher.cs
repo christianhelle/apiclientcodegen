@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using Polly;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
@@ -93,8 +94,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 process.WaitForExit();
 
                 if (process.ExitCode != 0)
-                    throw new InvalidOperationException(
-                        $"{command} failed!{Environment.NewLine}Output:{Environment.NewLine}{outputData}{Environment.NewLine}Error:{Environment.NewLine}{errorData}");
+                    throw new ProcessLaunchException(
+                        command,
+                        arguments,
+                        workingDirectory,
+                        outputData.ToString(),
+                        errorData.ToString());
             }
         }
     }

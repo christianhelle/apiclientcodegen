@@ -47,5 +47,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
                 .ClassStyle
                 .Should()
                 .Be(options.ClassStyle);
+
+        [Xunit.Fact]
+        public void Reads_UseDocumentTitle_From_Options()
+            => new NSwagCSharpOptions(options)
+                .UseDocumentTitle
+                .Should()
+                .Be(options.UseDocumentTitle);
     }
 }
