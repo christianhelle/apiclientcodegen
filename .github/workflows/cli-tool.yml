@@ -2,6 +2,16 @@ name: CLI Tool
 
 on:
   push:
+    paths-ignore:
+      - 'docs/**'
+      - 'test/**'
+      - 'build/**'
+      - 'images/**'
+      - 'README.md'
+      - 'src/ApiClientCodeGen.VSIX*/**'
+      - 'src/ApiClientCodeGen.Tests/**'
+      - 'src/ApiClientCodeGen.VSMac*/**'
+      - 'src/ApiClientCodeGen.IntegrationTests/**'
     branches:
       - '*'
   pull_request:
