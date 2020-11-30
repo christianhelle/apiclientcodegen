@@ -36,7 +36,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                     "https://petstore.swagger.io/v2/swagger.json"),
                 options.Object);
 
-            var tempFile = Path.GetTempFileName();
+            var folder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            Directory.CreateDirectory(folder);
+            var tempFile = Path.Combine(folder, "Petstore.nswag");
             File.WriteAllText(tempFile, contents);
 
             new NSwagStudioCodeGenerator(tempFile, generalOptions.Object, new ProcessLauncher())
