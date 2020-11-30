@@ -2,6 +2,11 @@ name: Smoke Tests
 
 on:
   push:
+    paths-ignore:
+      - 'docs/**'
+      - 'build/**'
+      - 'images/**'
+      - 'README.md'
     branches:
       - '*'
   pull_request:
