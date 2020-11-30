@@ -12,9 +12,9 @@ on:
 
 jobs:
 
-  test-petstore-v2:
+  test-petstore-v2-json:
 
-    name: Swagger Petstore v2
+    name: Swagger Petstore v2 (JSON)
     runs-on: windows-2019
 
     steps:
@@ -26,36 +26,77 @@ jobs:
         dotnet-version: 2.1.607
 
     - name: Download Swagger Petstore v2 OpenAPI Spec
-      run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile Swagger.json
+      run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile OpenApi.spec
       working-directory: test
 
     - name: Generate code with AutoRest
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./Swagger.json GeneratedCode ./GeneratedCode/AutoRest/Output.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.spec GeneratedCode ./GeneratedCode/AutoRest/Output.cs
         dotnet build ./GeneratedCode/AutoRest/Project.csproj
       working-directory: test
 
     - name: Generate code with NSwag
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/NSwag/Output.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/NSwag/Output.cs
         dotnet build ./GeneratedCode/NSwag/Project.csproj
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
         dotnet build ./GeneratedCode/SwaggerCodegen/Project.csproj
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
         dotnet build ./GeneratedCode/OpenApiGenerator/Project.csproj
       working-directory: test
 
-  test-petstore-v3:
+  test-petstore-v2-yaml:
 
-    name: Swagger Petstore v3
+    name: Swagger Petstore v2 (YAML)
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1.607
+
+    - name: Download Swagger Petstore v2 OpenAPI Spec
+      run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.yaml -OutFile OpenApi.spec
+      working-directory: test
+
+    - name: Generate code with AutoRest
+      run: |
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.spec GeneratedCode ./GeneratedCode/AutoRest/Output.cs
+        dotnet build ./GeneratedCode/AutoRest/Project.csproj
+      working-directory: test
+
+    - name: Generate code with NSwag
+      run: |
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/NSwag/Output.cs
+        dotnet build ./GeneratedCode/NSwag/Project.csproj
+      working-directory: test
+
+    - name: Generate code with Swagger Codegen CLI
+      run: |
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+        dotnet build ./GeneratedCode/SwaggerCodegen/Project.csproj
+      working-directory: test
+
+    - name: Generate code with OpenAPI Generator
+      run: |
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+        dotnet build ./GeneratedCode/OpenApiGenerator/Project.csproj
+      working-directory: test
+
+  test-petstore-v3-json:
+
+    name: Swagger Petstore v3 (JSON)
     runs-on: windows-2019
 
     steps:
@@ -67,23 +108,58 @@ jobs:
         dotnet-version: 2.1.607
 
     - name: Download Swagger Petstore v3 OpenAPI Spec
-      run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.json -OutFile Swagger.json
+      run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.json -OutFile OpenApi.spec
       working-directory: test
 
     - name: Generate code with NSwag
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/NSwag/Output.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/NSwag/Output.cs
         dotnet build ./GeneratedCode/NSwag/Project.csproj
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
         dotnet build ./GeneratedCode/SwaggerCodegen/Project.csproj
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
       run: |
-        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./Swagger.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+        dotnet build ./GeneratedCode/OpenApiGenerator/Project.csproj
+      working-directory: test
+
+  test-petstore-v3-yaml:
+
+    name: Swagger Petstore v3 (YAML)
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1.607
+
+    - name: Download Swagger Petstore v3 OpenAPI Spec
+      run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.yaml -OutFile OpenApi.spec
+      working-directory: test
+
+    - name: Generate code with NSwag
+      run: |
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/NSwag/Output.cs
+        dotnet build ./GeneratedCode/NSwag/Project.csproj
+      working-directory: test
+
+    - name: Generate code with Swagger Codegen CLI
+      run: |
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+        dotnet build ./GeneratedCode/SwaggerCodegen/Project.csproj
+      working-directory: test
+
+    - name: Generate code with OpenAPI Generator
+      run: |
+        dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
         dotnet build ./GeneratedCode/OpenApiGenerator/Project.csproj
       working-directory: test
