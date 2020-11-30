@@ -45,23 +45,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             Trace.WriteLine("Executing:");
             Trace.WriteLine($"{command} {arguments}");
 
-            TimeSpan SleepDurationProvider(int retryAttempt)
-            {
-                var duration = TimeSpan.FromSeconds(Math.Pow(2, retryAttempt));
-                Trace.WriteLine($"Operation failed! Retrying in {duration}");
-                return duration;
-            }
-
-            Policy
-                .Handle<ProcessLaunchException>()
-                .WaitAndRetry(5, SleepDurationProvider)
-                .Execute(
-                    () => StartInternal(
-                        command,
-                        arguments,
-                        onOutputData,
-                        onErrorData,
-                        workingDirectory));
+            StartInternal(
+                command,
+                arguments,
+                onOutputData,
+                onErrorData,
+                workingDirectory);
         }
 
         private static void StartInternal(
@@ -72,7 +61,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             string workingDirectory = null)
         {
             var processInfo = new ProcessStartInfo(command, arguments);
-            using (var process = new Process { StartInfo = processInfo })
+            using (var process = new Process {StartInfo = processInfo})
             {
                 var outputData = new StringBuilder();
                 process.OutputDataReceived += (s, e) =>
