@@ -10,7 +10,7 @@
     <None Remove="Resources\Swagger.nswag" />
     <None Remove="Resources\Swagger.yaml" />
     <None Remove="Resources\Swagger_v3.json" />
-    <None Remove="Resources\Swagger_v3.legacy..nswag" />
+    <None Remove="Resources\Swagger_v3.legacy.nswag" />
     <None Remove="Resources\Swagger_v3.nswag" />
     <None Remove="Resources\Swagger_v3.yaml" />
   </ItemGroup>
@@ -31,7 +31,7 @@
     <EmbeddedResource Include="Resources\Swagger_v3.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Swagger_v3.legacy..nswag">
+    <EmbeddedResource Include="Resources\Swagger_v3.legacy.nswag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Swagger_v3.nswag">
