@@ -26,11 +26,11 @@ jobs:
         dotnet-version: 2.1.607
 
     - name: Download Swagger Petstore v2 OpenAPI Spec
-      run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile OpenApi.spec
+      run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile OpenApi.json
       working-directory: test
 
     - name: Generate code with AutoRest
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.spec GeneratedCode ./GeneratedCode/AutoRest/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.json GeneratedCode ./GeneratedCode/AutoRest/Output.cs
       working-directory: test
 
     - name: Build AutoRest generated code
@@ -38,7 +38,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with NSwag
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/NSwag/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/NSwag/Output.cs
       working-directory: test
 
     - name: Build NSwag generated code
@@ -46,7 +46,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
       working-directory: test
 
     - name: Build Swagger Codegen CLI generated code
@@ -54,7 +54,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
       working-directory: test
 
     - name: Build OpenAPI Generator generated code
@@ -75,11 +75,11 @@ jobs:
         dotnet-version: 2.1.607
 
     - name: Download Swagger Petstore v2 OpenAPI Spec
-      run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.yaml -OutFile OpenApi.spec
+      run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.yaml -OutFile OpenApi.yaml
       working-directory: test
 
     - name: Generate code with AutoRest
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.spec GeneratedCode ./GeneratedCode/AutoRest/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.yaml GeneratedCode ./GeneratedCode/AutoRest/Output.cs
       working-directory: test
 
     - name: Build AutoRest generated code
@@ -87,7 +87,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with NSwag
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/NSwag/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/NSwag/Output.cs
       working-directory: test
 
     - name: Build NSwag generated code
@@ -95,7 +95,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
       working-directory: test
 
     - name: Build Swagger Codegen CLI generated code
@@ -103,7 +103,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
       working-directory: test
 
     - name: Build OpenAPI Generator generated code
@@ -124,11 +124,11 @@ jobs:
         dotnet-version: 2.1.607
 
     - name: Download Swagger Petstore v3 OpenAPI Spec
-      run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.json -OutFile OpenApi.spec
+      run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.json -OutFile OpenApi.json
       working-directory: test
 
     - name: Generate code with AutoRest
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.spec GeneratedCode ./GeneratedCode/AutoRest/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.json GeneratedCode ./GeneratedCode/AutoRest/Output.cs
       working-directory: test
 
     - name: Build AutoRest generated code
@@ -136,7 +136,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with NSwag
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/NSwag/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/NSwag/Output.cs
       working-directory: test
 
     - name: Build NSwag generated code
@@ -144,7 +144,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
       working-directory: test
 
     - name: Build Swagger Codegen CLI generated code
@@ -152,7 +152,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
       working-directory: test
 
     - name: Build OpenAPI Generator generated code
@@ -173,11 +173,11 @@ jobs:
         dotnet-version: 2.1.607
 
     - name: Download Swagger Petstore v3 OpenAPI Spec
-      run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.yaml -OutFile OpenApi.spec
+      run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.yaml -OutFile OpenApi.yaml
       working-directory: test
 
     - name: Generate code with AutoRest
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.spec GeneratedCode ./GeneratedCode/AutoRest/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.yaml GeneratedCode ./GeneratedCode/AutoRest/Output.cs
       working-directory: test
 
     - name: Build AutoRest generated code
@@ -185,7 +185,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with NSwag
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/NSwag/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/NSwag/Output.cs
       working-directory: test
 
     - name: Build NSwag generated code
@@ -193,7 +193,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
       working-directory: test
 
     - name: Build Swagger Codegen CLI generated code
@@ -201,7 +201,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
-      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.spec GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+      run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
       working-directory: test
 
     - name: Build OpenAPI Generator generated code
