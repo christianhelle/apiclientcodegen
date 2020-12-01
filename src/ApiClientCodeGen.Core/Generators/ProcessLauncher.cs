@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
@@ -92,12 +93,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 process.BeginErrorReadLine();
                 process.WaitForExit();
 
-                if (process.ExitCode != 0)
+                var output = outputData.ToString();
+                if (process.ExitCode != 0 && !output.Contains("Done."))
                     throw new ProcessLaunchException(
                         command,
                         arguments,
                         workingDirectory,
-                        outputData.ToString(),
+                        output,
                         errorData.ToString());
             }
         }
