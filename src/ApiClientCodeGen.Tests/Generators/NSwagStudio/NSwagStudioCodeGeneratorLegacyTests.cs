@@ -10,10 +10,10 @@ using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.NSwagStudio
+namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
-    public class NSwagStudioCodeGeneratorTests : TestWithResources
+    public class NSwagStudioCodeGeneratorLegacyTests : TestWithResources
     {
         [Theory, AutoMoqData]
         public void NSwagStudio_GenerateCode_Returns_Null(
@@ -22,7 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
             IProgressReporter progressReporter)
         {
             new NSwagStudioCodeGenerator(
-                    Path.GetFullPath(SwaggerNSwagFilename),
+                    Path.GetFullPath(SwaggerLegacyNSwagFilename),
                     options,
                     process)
                 .GenerateCode(progressReporter)
