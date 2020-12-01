@@ -3,6 +3,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
+using FluentAssertions;
 using Moq;
 
 namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
@@ -28,6 +29,7 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
 
             OptionsMock.Setup(c => c.OverrideClientName).Returns(true);
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
+            Code.Should().NotBeNullOrWhiteSpace();
         }
     }
 }
