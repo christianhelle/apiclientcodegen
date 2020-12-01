@@ -43,39 +43,39 @@ Remove-Item Swagger.json
 Remove-Item ./**/*Output.cs
 
 Write-Host "`r`nDownload Swagger Petstore V2 spec (YAML)`r`n"
-Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.yaml -OutFile Swagger.json
+Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.yaml -OutFile Swagger.yaml
 
 Write-Host "`r`nTesting NSwag Code Generation`r`n"
-dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- nswag ./Swagger.json GeneratedCode ./GeneratedCode/NSwag/Output.cs
+dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- nswag ./Swagger.yaml GeneratedCode ./GeneratedCode/NSwag/Output.cs
 dotnet build ./GeneratedCode/NSwag/Project.csproj
 
 Write-Host "`r`nTesting Swagger Code Generation`r`n"
-dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- swagger ./Swagger.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- swagger ./Swagger.yaml GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
 dotnet build ./GeneratedCode/SwaggerCodegen/Project.csproj
 
 Write-Host "`r`nTesting Open API Code Generation`r`n"
-dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- openapi ./Swagger.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- openapi ./Swagger.yaml GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
 dotnet build ./GeneratedCode/OpenApiGenerator/Project.csproj
 
-Remove-Item Swagger.json
+Remove-Item Swagger.yaml
 Remove-Item ./**/*Output.cs
 
 Write-Host "`r`nDownload Swagger Petstore V3 spec (YAML)`r`n"
-Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.yaml -OutFile Swagger.json
+Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.yaml -OutFile Swagger.yaml
 
 Write-Host "`r`nTesting NSwag Code Generation`r`n"
-dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- nswag ./Swagger.json GeneratedCode ./GeneratedCode/NSwag/Output.cs
+dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- nswag ./Swagger.yaml GeneratedCode ./GeneratedCode/NSwag/Output.cs
 dotnet build ./GeneratedCode/NSwag/Project.csproj
 
 Write-Host "`r`nTesting Swagger Code Generation`r`n"
-dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- swagger ./Swagger.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- swagger ./Swagger.yaml GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
 dotnet build ./GeneratedCode/SwaggerCodegen/Project.csproj
 
 Write-Host "`r`nTesting Open API Code Generation`r`n"
-dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- openapi ./Swagger.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- openapi ./Swagger.yaml GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
 dotnet build ./GeneratedCode/OpenApiGenerator/Project.csproj
 
-Remove-Item Swagger.json
+Remove-Item Swagger.yaml
 Remove-Item ./**/*Output.cs
 
 Write-Host "`r`n"
