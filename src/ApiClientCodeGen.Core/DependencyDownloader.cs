@@ -8,6 +8,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     public static class DependencyDownloader
     {
+        private static readonly object npmSyncLock = new object();
+
         public static void InstallAutoRest() => InstallNpmPackage("autorest");
 
         public static void InstallNSwag() => InstallNpmPackage("nswag");
@@ -15,12 +17,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
         private static void InstallNpmPackage(string packageName)
         {
             Trace.WriteLine($"Attempting to install {packageName} through NPM");
-            
+
             var processLauncher = new ProcessLauncher();
             var npmPath = NpmHelper.GetNpmPath();
-            processLauncher.Start(
-                npmPath,
-                $"install -g {packageName}");
+
+            lock (npmSyncLock)
+            {
+                processLauncher.Start(
+                    npmPath,
+                    $"install -g {packageName}");
+            }
 
             Trace.WriteLine($"{packageName} installed successfully through NPM");
         }
@@ -49,7 +55,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
             if (!File.Exists(path) || FileHelper.CalculateChecksum(path) != md5 || forceDownload)
             {
                 Trace.WriteLine($"{jar} not found. Attempting to download {jar}");
-                
+
                 var tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.jar");
                 new WebClient().DownloadFile(url, tempFile);
 
