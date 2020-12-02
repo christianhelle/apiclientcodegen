@@ -8,8 +8,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     public static class DependencyDownloader
     {
-        private static readonly object npmSyncLock = new object();
-
         public static void InstallAutoRest() => InstallNpmPackage("autorest");
 
         public static void InstallNSwag() => InstallNpmPackage("nswag");
@@ -21,12 +19,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
             var processLauncher = new ProcessLauncher();
             var npmPath = NpmHelper.GetNpmPath();
 
-            lock (npmSyncLock)
-            {
-                processLauncher.Start(
-                    npmPath,
-                    $"install -g {packageName}");
-            }
+            processLauncher.Start(
+                npmPath,
+                $"install -g {packageName}");
 
             Trace.WriteLine($"{packageName} installed successfully through NPM");
         }
