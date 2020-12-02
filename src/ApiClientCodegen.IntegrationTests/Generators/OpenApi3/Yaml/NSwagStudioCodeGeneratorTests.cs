@@ -1,16 +1,16 @@
 ﻿using ApiClientCodeGen.Tests.Common.Build;
-using ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3;
+using ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3.Yaml;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.OpenApi3
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.OpenApi3.Yaml
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
-    public class NSwagStudioCodeGeneratorBuildTests : IClassFixture<NSwagStudioCodeGeneratorFixture>
+    public class NSwagStudioCodeGeneratorTests : IClassFixture<NSwagStudioCodeGeneratorFixture>
     {
         private readonly string code;
 
-        public NSwagStudioCodeGeneratorBuildTests(NSwagStudioCodeGeneratorFixture fixture)
+        public NSwagStudioCodeGeneratorTests(NSwagStudioCodeGeneratorFixture fixture)
         {
             code = fixture.Code;
         }
