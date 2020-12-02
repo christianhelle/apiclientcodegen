@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using System.Threading;
+using Polly;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
@@ -23,6 +25,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     [ExcludeFromCodeCoverage]
     public class ProcessLauncher : IProcessLauncher
     {
+        private static readonly object SyncLock = new object();
+
         public void Start(
             string command,
             string arguments,
@@ -44,12 +48,52 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             Trace.WriteLine("Executing:");
             Trace.WriteLine($"{command} {arguments}");
 
-            StartInternal(
-                command,
-                arguments,
-                onOutputData,
-                onErrorData,
-                workingDirectory);
+            if (command.Contains("npm"))
+            {
+                lock (SyncLock)
+                {
+                    StartWithRetryPolicy(
+                        command,
+                        arguments,
+                        onOutputData,
+                        onErrorData,
+                        workingDirectory);
+                }
+            }
+            else
+            {
+                StartInternal(
+                    command,
+                    arguments,
+                    onOutputData,
+                    onErrorData,
+                    workingDirectory);
+            }
+        }
+
+        private static void StartWithRetryPolicy(
+            string command,
+            string arguments,
+            Action<string> onOutputData,
+            Action<string> onErrorData,
+            string workingDirectory)
+        {
+            TimeSpan SleepDurationProvider(int retryAttempt)
+            {
+                var duration = TimeSpan.FromSeconds(Math.Pow(2, retryAttempt));
+                Trace.WriteLine($"Operation failed! Retrying in {duration}");
+                return duration;
+            }
+
+            Policy.Handle<ProcessLaunchException>()
+                .WaitAndRetry(3, SleepDurationProvider)
+                .Execute(
+                    () => StartInternal(
+                        command,
+                        arguments,
+                        onOutputData,
+                        onErrorData,
+                        workingDirectory));
         }
 
         private static void StartInternal(
