@@ -11,8 +11,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly string nswagStudioFile;
         private readonly IGeneralOptions options;
         private readonly IProcessLauncher processLauncher;
-        private readonly bool forceDownload;
         private static readonly object SyncLock = new object();
+        private readonly bool forceDownload;
 
         public NSwagStudioCodeGenerator(
             string nswagStudioFile,
@@ -66,18 +66,29 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
         private static void TryRemoveSwaggerJsonSpec(string nswagFile)
         {
-            var json = File.ReadAllText(nswagFile);
-            dynamic obj = JsonConvert.DeserializeObject(json);
+            try
+            {
+                var json = File.ReadAllText(nswagFile);
+                dynamic obj = JsonConvert.DeserializeObject(json);
 
-            if (obj?.swaggerGenerator?.fromSwagger?.json == null)
-                return;
+                if (obj?.swaggerGenerator?.fromSwagger?.json == null && 
+                    obj?.documentGenerator?.fromDocument?.json == null)
+                    return;
 
-            if (obj?.swaggerGenerator?.fromSwagger?.json != null)
-                obj.swaggerGenerator.fromSwagger.json = null;
+                if (obj?.swaggerGenerator?.fromSwagger?.json != null)
+                    obj.swaggerGenerator.fromSwagger.json = null;
 
-            json = JsonConvert.SerializeObject(obj, Formatting.Indented);
+                if (obj?.documentGenerator?.fromDocument?.json != null)
+                    obj.documentGenerator.fromDocument.json = null;
 
-            File.WriteAllText(nswagFile, json);
+                json = JsonConvert.SerializeObject(obj, Formatting.Indented);
+
+                File.WriteAllText(nswagFile, json);
+            }
+            catch (Exception e)
+            {
+                Trace.TraceError(e.ToString());
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using System.Threading.Tasks;
 using ApiClientCodeGen.CLI.Commands;
 using ApiClientCodeGen.CLI.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
@@ -18,7 +19,7 @@ namespace ApiClientCodeGen.CLI
     [ExcludeFromCodeCoverage]
     internal static class Program
     {
-        public static int Main(string[] args)
+        public static async Task<int> Main(string[] args)
         {
             var verboseOptions = new VerboseOption(args);
 
@@ -31,10 +32,7 @@ namespace ApiClientCodeGen.CLI
 
             try
             {
-                return builder
-                    .RunCommandLineApplicationAsync<RootCommand>(args)
-                    .GetAwaiter()
-                    .GetResult();
+                return await builder.RunCommandLineApplicationAsync<RootCommand>(args);
             }
             catch (TargetInvocationException ex) when (ex.InnerException != null)
             {

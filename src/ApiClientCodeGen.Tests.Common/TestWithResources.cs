@@ -18,16 +18,20 @@ namespace ApiClientCodeGen.Tests.Common
         public const string SwaggerJson = "Swagger.json";
         public const string SwaggerYaml = "Swagger.yaml";
         public const string SwaggerNswag = "Swagger.nswag";
+        public const string SwaggerLegacyNswag = "Swagger.legacy.nswag";
         public const string SwaggerV3Json = "Swagger_v3.json";
         public const string SwaggerV3Yaml = "Swagger_v3.yaml";
         public const string SwaggerV3Nswag = "Swagger_v3.nswag";
+        public const string SwaggerV3LegacyNswag = "Swagger_v3.legacy.nswag";
 
         protected string SwaggerJsonFilename { get; } = $"Swagger{Guid.NewGuid():N}.json";
         protected string SwaggerYamlFilename { get; } = $"Swagger{Guid.NewGuid():N}.yaml";
         protected string SwaggerNSwagFilename { get; } = $"Swagger{Guid.NewGuid():N}.nswag";
+        protected string SwaggerLegacyNSwagFilename { get; } = $"Swagger{Guid.NewGuid():N}.legacy.nswag";
         protected string SwaggerV3JsonFilename { get; } = $"Swagger{Guid.NewGuid():N}.json";
         protected string SwaggerV3YamlFilename { get; } = $"Swagger{Guid.NewGuid():N}.yaml";
         protected string SwaggerV3NSwagFilename { get; } = $"Swagger{Guid.NewGuid():N}.nswag";
+        protected string SwaggerV3LegacyNSwagFilename { get; } = $"Swagger{Guid.NewGuid():N}.legacy.nswag";
 
         protected TestWithResources()
         {
@@ -36,16 +40,20 @@ namespace ApiClientCodeGen.Tests.Common
                 CreateFileFromEmbeddedResource(SwaggerJson);
                 CreateFileFromEmbeddedResource(SwaggerYaml);
                 CreateFileFromEmbeddedResource(SwaggerNswag);
+                CreateFileFromEmbeddedResource(SwaggerLegacyNswag);
                 CreateFileFromEmbeddedResource(SwaggerV3Json);
                 CreateFileFromEmbeddedResource(SwaggerV3Yaml);
                 CreateFileFromEmbeddedResource(SwaggerV3Nswag);
+                CreateFileFromEmbeddedResource(SwaggerV3LegacyNswag);
 
                 CreateFileFromEmbeddedResource(SwaggerJson, SwaggerJsonFilename);
                 CreateFileFromEmbeddedResource(SwaggerYaml, SwaggerYamlFilename);
                 CreateFileFromEmbeddedResource(SwaggerNswag, SwaggerNSwagFilename);
+                CreateFileFromEmbeddedResource(SwaggerLegacyNswag, SwaggerLegacyNSwagFilename);
                 CreateFileFromEmbeddedResource(SwaggerV3Json, SwaggerV3JsonFilename);
                 CreateFileFromEmbeddedResource(SwaggerV3Yaml, SwaggerV3YamlFilename);
                 CreateFileFromEmbeddedResource(SwaggerV3Nswag, SwaggerV3NSwagFilename);
+                CreateFileFromEmbeddedResource(SwaggerV3LegacyNswag, SwaggerV3LegacyNSwagFilename);
             }
 
             try
