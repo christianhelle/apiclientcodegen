@@ -46,13 +46,14 @@ jobs:
       projectKey: 'christianhelle_apiclientcodegen'
       projectName: apiclientcodegen
 
-  - task: VSBuild@1
-    displayName: 'Build solution src/All.sln'
+  - task: PowerShell@2
+    displayName: 'PowerShell Script'
     inputs:
-      solution: src/All.sln
-      platform: 'Any CPU'
-      configuration: 'Release'
-    timeoutInMinutes: 20
+      targetType: inline
+      script: './build.ps1 -target Build-All'
+      failOnStderr: true
+      pwsh: true
+      workingDirectory: src
 
   - task: VSTest@2
     displayName: 'Visual Studio Test'

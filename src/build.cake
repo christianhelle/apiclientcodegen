@@ -123,6 +123,10 @@ Task("All")
     .IsDependentOn("Build-Release")
     .IsDependentOn("Run-All-Tests");
 
+Task("Build-All")
+    .IsDependentOn("Build-Debug")
+    .IsDependentOn("Build-Release");
+
 Task("VSIX")
     .IsDependentOn("Build-VSIX");
 
