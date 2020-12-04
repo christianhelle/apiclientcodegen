@@ -83,7 +83,7 @@ Task("Build-VSIX")
 Task("Build-Mac")
     .IsDependentOn("Restore")
     .Does(() => {
-        Information("Building VSIX");
+        Information("Building Mac");
         MSBuild(
             File("Mac.sln"),
             settings =>
