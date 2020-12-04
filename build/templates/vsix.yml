@@ -58,19 +58,14 @@ jobs:
       pwsh: true
       workingDirectory: src
 
-  - task: VSTest@2
-    displayName: 'Visual Studio Test'
+  - task: PowerShell@2
+    displayName: 'PowerShell Script'
     inputs:
-      runSettingsFile: src/Tests.runsettings
-      runInParallel: true
-      codeCoverageEnabled: true
-      platform: 'Any CPU'
-      configuration: 'Release'
-      diagnosticsEnabled: true
-      rerunFailedTests: true
-      rerunMaxAttempts: 10
-      rerunFailedThreshold: 30
-    continueOnError: true
+      targetType: inline
+      script: './build.ps1 -target Run-Unit-Tests'
+      failOnStderr: true
+      pwsh: true
+      workingDirectory: src
 
   - task: PublishSymbols@2
     displayName: 'Publish symbols path'

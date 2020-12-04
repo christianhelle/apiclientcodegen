@@ -60,19 +60,14 @@ jobs:
       pwsh: true
       workingDirectory: src
 
-  - task: VSTest@2
-    displayName: 'Visual Studio Test'
+  - task: PowerShell@2
+    displayName: 'PowerShell Script'
     inputs:
-      runSettingsFile: src/Tests.runsettings
-      runInParallel: true
-      codeCoverageEnabled: true
-      platform: 'Any CPU'
-      configuration: 'Release'
-      diagnosticsEnabled: true
-      rerunFailedTests: true
-      rerunMaxAttempts: 10
-      rerunFailedThreshold: 30
-    continueOnError: true
+      targetType: inline
+      script: './build.ps1 -target Run-All-Tests'
+      failOnStderr: true
+      pwsh: true
+      workingDirectory: src
 
   - task: SonarSource.sonarcloud.ce096e50-6155-4de8-8800-4221aaeed4a1.SonarCloudAnalyze@1
     displayName: 'Run Code Analysis'
