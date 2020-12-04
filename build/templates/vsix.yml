@@ -49,13 +49,14 @@ jobs:
       FileName: src/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
       VersionNumber: '$(build.buildnumber)'
 
-  - task: VSBuild@1
-    displayName: 'Build solution src/VSIX.sln'
+  - task: PowerShell@2
+    displayName: 'PowerShell Script'
     inputs:
-      solution: src/VSIX.sln
-      platform: 'Any CPU'
-      configuration: 'Release'
-    timeoutInMinutes: 20
+      targetType: inline
+      script: './build.ps1 -target VSIX'
+      failOnStderr: true
+      pwsh: true
+      workingDirectory: src
 
   - task: VSTest@2
     displayName: 'Visual Studio Test'
