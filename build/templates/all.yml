@@ -18,6 +18,11 @@ jobs:
     inputs:
       version: 2.1.x
 
+  - task: UseDotNet@2
+    displayName: 'Use .Net 5'
+    inputs:
+      version: 5.0.x
+
   - task: Npm@0
     displayName: 'npm install'
     inputs:
