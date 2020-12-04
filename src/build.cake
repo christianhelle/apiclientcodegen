@@ -80,6 +80,20 @@ Task("Build-VSIX")
                     .SetConfiguration("Release"));
     });
 
+Task("Build-Mac")
+    .IsDependentOn("Restore")
+    .Does(() => {
+        Information("Building VSIX");
+        MSBuild(
+            File("Mac.sln"),
+            settings =>
+                settings.SetPlatformTarget(PlatformTarget.MSIL)
+                    .SetMSBuildPlatform(MSBuildPlatform.x86)
+                    .UseToolVersion(MSBuildToolVersion.VS2019)
+                    .WithTarget("Build")
+                    .SetConfiguration("Release"));
+    });
+
 Task("Run-Unit-Tests")
     .IsDependentOn("Build-Release")
     .Does(() =>
