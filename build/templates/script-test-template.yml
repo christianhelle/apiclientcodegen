@@ -30,7 +30,7 @@ jobs:
       failOnStderr: true
       script: |
         Invoke-WebRequest -Uri https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install.ps1 -OutFile ./dotnet-install.ps1
-        ./dotnet-install.ps1 --version 5.0.100
+        ./dotnet-install.ps1 -Version 5.0.100
 
   - task: Npm@0
     displayName: 'npm install'
