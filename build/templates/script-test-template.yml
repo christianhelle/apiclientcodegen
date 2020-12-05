@@ -13,26 +13,6 @@ jobs:
 
   steps:
 
-  - task: UseDotNet@2
-    displayName: 'Use .Net Core sdk 2.1.x'
-    inputs:
-      version: 2.1.x
-
-  - task: UseDotNet@2
-    displayName: 'Use .Net Core sdk 3.1.x'
-    inputs:
-      version: 3.1.x
-
-  - task: PowerShell@2
-    displayName: 'Install .NET 5'
-    inputs:
-      targetType: inline
-      failOnStderr: true
-      script: |
-        Invoke-WebRequest -Uri https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install.ps1 -OutFile ./dotnet-install.ps1
-        ./dotnet-install.ps1 -Version 5.0.100
-        dotnet --list-sdks
-
   - task: Npm@0
     displayName: 'npm install'
     inputs:

@@ -1,6 +1,8 @@
 $ErrorActionPreference = "Stop"
 
 Invoke-WebRequest -Uri https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install.ps1 -OutFile ./dotnet-install.ps1
+./dotnet-install.ps1 -Version 2.1.811
+./dotnet-install.ps1 -Version 3.1.404
 ./dotnet-install.ps1 -Version 5.0.100
 
 ############################
