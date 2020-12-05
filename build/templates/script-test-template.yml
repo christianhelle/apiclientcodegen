@@ -30,7 +30,7 @@ jobs:
       failOnStderr: true
       pwsh: true
       script: |
-        Invoke-WebRequest -Uri https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install.ps1 -OutFile dotnet-install.ps1
+        Invoke-WebRequest -Uri https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install.ps1 -OutFile ./dotnet-install.ps1
         ./dotnet-install.ps1 --version 5.0.100
 
   - task: Npm@0
