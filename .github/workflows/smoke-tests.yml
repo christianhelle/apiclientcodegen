@@ -34,6 +34,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1
+    
+    - name: Setup .NET 5
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0
 
     - name: Download Swagger Petstore v2 OpenAPI Spec
       run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile OpenApi.json
@@ -51,6 +56,10 @@ jobs:
       run: dotnet build ./GeneratedCode/AutoRest/NetCore31.csproj
       working-directory: test
 
+    - name: Build .NET 5 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net5.csproj
+      working-directory: test
+
     - name: Generate code with NSwag
       run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/NSwag/Output.cs
       working-directory: test
@@ -61,6 +70,10 @@ jobs:
 
     - name: Build .NET Core 3.1 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/NetCore31.csproj
+      working-directory: test
+
+    - name: Build .NET 5 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net5.csproj
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
@@ -75,6 +88,10 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore31.csproj
       working-directory: test
 
+    - name: Build .NET 5 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5.csproj
+      working-directory: test
+
     - name: Generate code with OpenAPI Generator
       run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
       working-directory: test
@@ -85,6 +102,10 @@ jobs:
 
     - name: Build .NET Core 3.1 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore31.csproj
+      working-directory: test
+
+    - name: Build .NET 5 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5.csproj
       working-directory: test
 
   test-petstore-v2-yaml:
@@ -121,6 +142,10 @@ jobs:
       run: dotnet build ./GeneratedCode/AutoRest/NetCore31.csproj
       working-directory: test
 
+    - name: Build .NET 5 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net5.csproj
+      working-directory: test
+
     - name: Generate code with NSwag
       run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/NSwag/Output.cs
       working-directory: test
@@ -131,6 +156,10 @@ jobs:
 
     - name: Build .NET Core 3.1 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/NetCore31.csproj
+      working-directory: test
+
+    - name: Build .NET 5 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net5.csproj
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
@@ -145,6 +174,10 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore31.csproj
       working-directory: test
 
+    - name: Build .NET 5 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5.csproj
+      working-directory: test
+
     - name: Generate code with OpenAPI Generator
       run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
       working-directory: test
@@ -155,6 +188,10 @@ jobs:
 
     - name: Build .NET Core 3.1 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore31.csproj
+      working-directory: test
+
+    - name: Build .NET 5 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5.csproj
       working-directory: test
 
   test-petstore-v3-json:
@@ -174,6 +211,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1
+    
+    - name: Setup .NET 5
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0
 
     - name: Download Swagger Petstore v3 OpenAPI Spec
       run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.json -OutFile OpenApi.json
@@ -191,6 +233,10 @@ jobs:
       run: dotnet build ./GeneratedCode/NSwag/NetCore31.csproj
       working-directory: test
 
+    - name: Build .NET 5 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net5.csproj
+      working-directory: test
+
     - name: Generate code with Swagger Codegen CLI
       run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
       working-directory: test
@@ -203,6 +249,10 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore31.csproj
       working-directory: test
 
+    - name: Build .NET 5 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5.csproj
+      working-directory: test
+
     - name: Generate code with OpenAPI Generator
       run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
       working-directory: test
@@ -213,6 +263,10 @@ jobs:
 
     - name: Build .NET Core 3.1 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore31.csproj
+      working-directory: test
+
+    - name: Build .NET 5 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5.csproj
       working-directory: test
 
   test-petstore-v3-yaml:
@@ -232,6 +286,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1
+    
+    - name: Setup .NET 5
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0
 
     - name: Download Swagger Petstore v3 OpenAPI Spec
       run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.yaml -OutFile OpenApi.yaml
@@ -249,6 +308,10 @@ jobs:
       run: dotnet build ./GeneratedCode/NSwag/NetCore31.csproj
       working-directory: test
 
+    - name: Build .NET 5 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net5.csproj
+      working-directory: test
+
     - name: Generate code with Swagger Codegen CLI
       run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
       working-directory: test
@@ -261,6 +324,10 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore31.csproj
       working-directory: test
 
+    - name: Build .NET 5 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5.csproj
+      working-directory: test
+
     - name: Generate code with OpenAPI Generator
       run: dotnet run --project ../src/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
       working-directory: test
@@ -271,4 +338,8 @@ jobs:
 
     - name: Build .NET Core 3.1 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore31.csproj
+      working-directory: test
+
+    - name: Build .NET 5 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5.csproj
       working-directory: test
