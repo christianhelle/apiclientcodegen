@@ -104,11 +104,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1
-    
-    - name: Setup .NET 5
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.100
 
     - name: Download Swagger Petstore v2 OpenAPI Spec
       run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.yaml -OutFile OpenApi.yaml
