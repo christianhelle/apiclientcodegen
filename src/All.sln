@@ -22,8 +22,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.Core", "Ap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.CLI", "ApiClientCodeGen.CLI\ApiClientCodeGen.CLI.csproj", "{9B0DD52C-415F-4D4B-B15B-FFDE8ADE8F66}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.CLI.Tests", "ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj", "{2A86E93C-24D9-48D9-925A-D0882A683EB8}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.Core.Tests", "ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj", "{0B0009BF-5278-4804-B6E4-D36B0FF6BFA6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Github Actions", "Github Actions", "{FA2B6312-D202-4B2D-BD13-1A875D04B673}"
@@ -95,10 +93,6 @@ Global
 		{9B0DD52C-415F-4D4B-B15B-FFDE8ADE8F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B0DD52C-415F-4D4B-B15B-FFDE8ADE8F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B0DD52C-415F-4D4B-B15B-FFDE8ADE8F66}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2A86E93C-24D9-48D9-925A-D0882A683EB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A86E93C-24D9-48D9-925A-D0882A683EB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A86E93C-24D9-48D9-925A-D0882A683EB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A86E93C-24D9-48D9-925A-D0882A683EB8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0B0009BF-5278-4804-B6E4-D36B0FF6BFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0B0009BF-5278-4804-B6E4-D36B0FF6BFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B0009BF-5278-4804-B6E4-D36B0FF6BFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
