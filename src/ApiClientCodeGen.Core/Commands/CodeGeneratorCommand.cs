@@ -36,10 +36,10 @@ namespace ApiClientCodeGen.CLI.Commands
             set => outputFile = value;
         }
 
-        public virtual async Task<int> OnExecuteAsync()
+        public int OnExecute()
         {
             var generator = CreateGenerator();
-            var code = await Task.Run(() => generator.GenerateCode(progressReporter));
+            var code = generator.GenerateCode(progressReporter);
             File.WriteAllText(OutputFile, code);
 
             console.WriteLine($"Output file name: {OutputFile}");
