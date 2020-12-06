@@ -40,7 +40,7 @@ namespace ApiClientCodeGen.CLI.Commands
         {
             var generator = CreateGenerator();
             var code = await Task.Run(() => generator.GenerateCode(progressReporter));
-            await File.WriteAllTextAsync(OutputFile, code);
+            File.WriteAllText(OutputFile, code);
 
             console.WriteLine($"Output file name: {OutputFile}");
             console.WriteLine($"Output file size: {new FileInfo(OutputFile).Length}");
