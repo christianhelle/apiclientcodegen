@@ -1,7 +1,6 @@
 ﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 
-namespace ApiClientCodeGen.CLI.Logging
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 {
     public class ProgressReporter : IProgressReporter
     {

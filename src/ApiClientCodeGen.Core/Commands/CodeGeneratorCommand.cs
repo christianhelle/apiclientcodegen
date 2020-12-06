@@ -1,13 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
-using System.Threading.Tasks;
-using ApiClientCodeGen.CLI.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace ApiClientCodeGen.CLI.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
 {
     public abstract class CodeGeneratorCommand
     {
@@ -36,11 +34,11 @@ namespace ApiClientCodeGen.CLI.Commands
             set => outputFile = value;
         }
 
-        public virtual async Task<int> OnExecuteAsync()
+        public int OnExecute()
         {
             var generator = CreateGenerator();
-            var code = await Task.Run(() => generator.GenerateCode(progressReporter));
-            await File.WriteAllTextAsync(OutputFile, code);
+            var code = generator.GenerateCode(progressReporter);
+            File.WriteAllText(OutputFile, code);
 
             console.WriteLine($"Output file name: {OutputFile}");
             console.WriteLine($"Output file size: {new FileInfo(OutputFile).Length}");

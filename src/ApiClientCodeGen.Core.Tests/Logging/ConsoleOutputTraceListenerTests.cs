@@ -1,10 +1,10 @@
-using ApiClientCodeGen.CLI.Logging;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ApiClientCodeGen.CLI.Tests.Logging
+namespace ApiClientCodeGen.Core.Tests.Logging
 {
     public class ConsoleOutputTraceListenerTests
     {

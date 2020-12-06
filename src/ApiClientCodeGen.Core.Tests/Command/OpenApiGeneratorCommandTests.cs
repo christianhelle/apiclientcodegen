@@ -1,33 +1,32 @@
 using System;
-using System.Threading.Tasks;
-using ApiClientCodeGen.CLI.Commands;
-using ApiClientCodeGen.CLI.Logging;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ApiClientCodeGen.CLI.Tests.Command
+namespace ApiClientCodeGen.Core.Tests.Command
 {
-    public class SwaggerCodegenCommandTests
+    public class OpenApiGeneratorCommandTests
     {   
         [Theory, AutoMoqData]
-        public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(SwaggerCodegenCommand sut)
+        public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(OpenApiGeneratorCommand sut)
             => sut.DefaultNamespace.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void SwaggerFile_Should_NotBeNullOrWhiteSpace(SwaggerCodegenCommand sut)
+        public void SwaggerFile_Should_NotBeNullOrWhiteSpace(OpenApiGeneratorCommand sut)
             => sut.SwaggerFile.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void OutputFile_Should_NotBeNullOrWhiteSpace(SwaggerCodegenCommand sut)
+        public void OutputFile_Should_NotBeNullOrWhiteSpace(OpenApiGeneratorCommand sut)
             => sut.OutputFile.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void CreateGenerator_Should_NotNull(SwaggerCodegenCommand sut)
+        public void CreateGenerator_Should_NotNull(OpenApiGeneratorCommand sut)
             => sut.CreateGenerator().Should().NotBeNull();
 
         [Theory, AutoMoqData]
@@ -36,11 +35,11 @@ namespace ApiClientCodeGen.CLI.Tests.Command
             IProgressReporter progressReporter,
             IProcessLauncher processLauncher,
             IGeneralOptions options,
-            ISwaggerCodegenFactory codeGeneratorFactory,
+            IOpenApiGeneratorFactory codeGeneratorFactory,
             ICodeGenerator generator,
             string code)
         {
-            var sut = new SwaggerCodegenCommand(
+            var sut = new OpenApiGeneratorCommand(
                 console,
                 progressReporter, 
                 options,
@@ -51,7 +50,7 @@ namespace ApiClientCodeGen.CLI.Tests.Command
                 .Setup(c => c.GenerateCode(progressReporter))
                 .Returns(code);
             
-            new Func<Task>(sut.OnExecuteAsync).Should().NotThrow();
+            new Func<int>(sut.OnExecute).Should().NotThrow();
         }
     }
 }

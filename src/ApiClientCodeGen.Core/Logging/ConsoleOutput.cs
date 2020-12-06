@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace ApiClientCodeGen.CLI.Logging
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 {
     public interface IConsoleOutput
     {

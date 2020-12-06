@@ -275,3 +275,4 @@ src/ApiClientCodeGen.CLI/Properties/launchSettings.json
 *.mrep
 src/index.html
 test/GeneratedCode/**/Output.cs
+test/dotnet-install.ps1

@@ -3,7 +3,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Aut
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 
-namespace ApiClientCodeGen.CLI.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
 {
     public interface IAutoRestCodeGeneratorFactory
     {

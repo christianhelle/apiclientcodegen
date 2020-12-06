@@ -1,10 +1,10 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
-namespace ApiClientCodeGen.CLI.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
 {
-    public interface ISwaggerCodegenFactory
+    public interface IOpenApiGeneratorFactory
     {
         ICodeGenerator Create(
             string swaggerFile,
@@ -13,14 +13,14 @@ namespace ApiClientCodeGen.CLI.Commands
             IProcessLauncher processLauncher);
     }
 
-    public class SwaggerCodegenFactory : ISwaggerCodegenFactory
+    public class OpenApiGeneratorFactory : IOpenApiGeneratorFactory
     {
         public ICodeGenerator Create(
             string swaggerFile,
             string defaultNamespace,
             IGeneralOptions options,
             IProcessLauncher processLauncher)
-            => new SwaggerCSharpCodeGenerator(
+            => new OpenApiCSharpCodeGenerator(
                 swaggerFile,
                 defaultNamespace,
                 options,

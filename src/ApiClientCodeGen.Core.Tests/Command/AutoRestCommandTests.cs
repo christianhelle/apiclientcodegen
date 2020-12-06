@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Threading.Tasks;
-using ApiClientCodeGen.CLI.Commands;
-using ApiClientCodeGen.CLI.Logging;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ApiClientCodeGen.CLI.Tests.Command
+namespace ApiClientCodeGen.Core.Tests.Command
 {
     public class AutoRestCommandTests
     {
@@ -54,7 +53,7 @@ namespace ApiClientCodeGen.CLI.Tests.Command
                 OutputFile = outputFile
             };
             Mock.Get(generator).Setup(c => c.GenerateCode(progressReporter)).Returns(code);
-            new Func<Task>(sut.OnExecuteAsync).Should().NotThrow();
+            new Func<int>(sut.OnExecute).Should().NotThrow();
         }
 
         [Theory, AutoMoqData]
@@ -130,7 +129,7 @@ namespace ApiClientCodeGen.CLI.Tests.Command
                 .ThrowExactly<ArgumentNullException>();
 
         [Theory, AutoMoqData]
-        public async Task OnExecuteAsync_Should_Create_Generator(
+        public void OnExecute_Should_Create_Generator(
             IConsoleOutput console,
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
@@ -138,7 +137,8 @@ namespace ApiClientCodeGen.CLI.Tests.Command
             IAutoRestCodeGeneratorFactory factory,
             IOpenApiDocumentFactory documentFactory,
             string swaggerFile)
-            => await new AutoRestCommand(
+        {
+            new AutoRestCommand(
                     console,
                     options,
                     processLauncher,
@@ -148,15 +148,16 @@ namespace ApiClientCodeGen.CLI.Tests.Command
                 {
                     SwaggerFile = swaggerFile
                 }
-                .OnExecuteAsync()
-                .ContinueWith(
-                    t => Mock.Get(factory)
-                        .Verify(
-                            c => c.Create(
-                                swaggerFile,
-                                "GeneratedCode",
-                                options,
-                                processLauncher,
-                                documentFactory)));
+                .OnExecute();
+
+            Mock.Get(factory)
+                .Verify(
+                    c => c.Create(
+                        swaggerFile,
+                        "GeneratedCode",
+                        options,
+                        processLauncher,
+                        documentFactory));
+        }
     }
 }
