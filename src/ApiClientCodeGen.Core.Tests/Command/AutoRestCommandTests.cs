@@ -130,7 +130,7 @@ namespace ApiClientCodeGen.CLI.Tests.Command
                 .ThrowExactly<ArgumentNullException>();
 
         [Theory, AutoMoqData]
-        public async Task OnExecuteAsync_Should_Create_Generator(
+        public void OnExecute_Should_Create_Generator(
             IConsoleOutput console,
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
@@ -138,7 +138,8 @@ namespace ApiClientCodeGen.CLI.Tests.Command
             IAutoRestCodeGeneratorFactory factory,
             IOpenApiDocumentFactory documentFactory,
             string swaggerFile)
-            => await new AutoRestCommand(
+        {
+            new AutoRestCommand(
                     console,
                     options,
                     processLauncher,
@@ -148,15 +149,16 @@ namespace ApiClientCodeGen.CLI.Tests.Command
                 {
                     SwaggerFile = swaggerFile
                 }
-                .OnExecuteAsync()
-                .ContinueWith(
-                    t => Mock.Get(factory)
-                        .Verify(
-                            c => c.Create(
-                                swaggerFile,
-                                "GeneratedCode",
-                                options,
-                                processLauncher,
-                                documentFactory)));
+                .OnExecute();
+
+            Mock.Get(factory)
+                .Verify(
+                    c => c.Create(
+                        swaggerFile,
+                        "GeneratedCode",
+                        options,
+                        processLauncher,
+                        documentFactory));
+        }
     }
 }

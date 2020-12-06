@@ -54,7 +54,7 @@ namespace ApiClientCodeGen.CLI.Tests.Command
                 .Setup(c => c.GenerateCode(progressReporter))
                 .Returns(code);
             
-            new Func<Task>(sut.OnExecuteAsync).Should().NotThrow();
+            new Func<int>(sut.OnExecute).Should().NotThrow();
         }
     }
 }
