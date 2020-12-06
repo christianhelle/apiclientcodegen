@@ -1,8 +1,13 @@
 name: Production Tests
 
 on:
+  push:
+    paths: 
+    - '.github/workflows/production-tests.yml'
+    branches: 
+    - '*'
   schedule:
-    - cron:  '0 8 * * *'
+    - cron: '0 8 * * *'
 
 jobs:
 
