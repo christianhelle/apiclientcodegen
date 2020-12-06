@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using ApiClientCodeGen.CLI.Logging;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace ApiClientCodeGen.CLI.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
 {
     [ExcludeFromCodeCoverage]
     [Command(Name = "run", OptionsComparison = StringComparison.InvariantCultureIgnoreCase)]

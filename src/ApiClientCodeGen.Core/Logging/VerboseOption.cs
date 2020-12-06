@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ApiClientCodeGen.CLI.Logging
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 {
     public interface IVerboseOptions
     {

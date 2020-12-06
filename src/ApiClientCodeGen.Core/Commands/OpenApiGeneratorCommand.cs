@@ -1,11 +1,10 @@
 ﻿using System;
-using ApiClientCodeGen.CLI.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace ApiClientCodeGen.CLI.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
 {
     [Command("openapi", Description = "Generate Swagger / Open API client using OpenAPI Generator")]
     public class OpenApiGeneratorCommand : CodeGeneratorCommand

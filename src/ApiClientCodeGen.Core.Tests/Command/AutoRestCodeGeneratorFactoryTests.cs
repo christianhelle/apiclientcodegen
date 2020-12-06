@@ -1,12 +1,12 @@
-﻿using ApiClientCodeGen.CLI.Commands;
-using ApiClientCodeGen.Tests.Common.Infrastructure;
+﻿using ApiClientCodeGen.Tests.Common.Infrastructure;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using FluentAssertions;
 using Xunit;
 
-namespace ApiClientCodeGen.CLI.Tests.Command
+namespace ApiClientCodeGen.Core.Tests.Command
 {
     public class AutoRestCodeGeneratorFactoryTests
     {

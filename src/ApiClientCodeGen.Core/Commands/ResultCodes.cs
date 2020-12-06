@@ -1,4 +1,4 @@
-﻿namespace ApiClientCodeGen.CLI
+﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
 {
     public static class ResultCodes
     {

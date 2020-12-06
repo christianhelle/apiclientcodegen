@@ -1,12 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
-using ApiClientCodeGen.CLI.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace ApiClientCodeGen.CLI.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
 {
     public abstract class CodeGeneratorCommand
     {

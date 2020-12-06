@@ -1,9 +1,9 @@
-﻿using ApiClientCodeGen.CLI.Logging;
-using AutoFixture.Xunit2;
+﻿using AutoFixture.Xunit2;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using FluentAssertions;
 using Xunit;
 
-namespace ApiClientCodeGen.CLI.Tests.Logging
+namespace ApiClientCodeGen.Core.Tests.Logging
 {
     public class VerboseOptionTests
     {
