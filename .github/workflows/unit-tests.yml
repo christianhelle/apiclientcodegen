@@ -9,7 +9,7 @@ on:
       - 'images/**'
       - 'README.md'
     branches:
-      - 'master'
+      - '*'
   pull_request:
     branches:
       - '*'
