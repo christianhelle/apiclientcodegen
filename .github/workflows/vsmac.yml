@@ -40,13 +40,13 @@ jobs:
 
     - name: Archive binaries
       run: zip -r VSMac-Binaries.zip .
-      working-directory: src/ApiClientCodeGen.VSMac/bin/Release/net48/
+      working-directory: src/ApiClientCodeGen.VSMac/bin/Release/net472/
 
     - name: Publish binaries
       uses: actions/upload-artifact@v2
       with:
         name: Binaries
-        path: src/ApiClientCodeGen.VSMac/bin/Release/net48/VSMac-Binaries.zip
+        path: src/ApiClientCodeGen.VSMac/bin/Release/net472/VSMac-Binaries.zip
 
     - name: Create mpack file
       run: make package
