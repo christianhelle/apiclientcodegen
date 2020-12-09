@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using McMaster.Extensions.CommandLineUtils;
@@ -36,6 +37,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
 
         public int OnExecute()
         {
+            Logger.Instance.TrackFeatureUsage(this.GetCodeGeneratorName(), "CLI");
             var generator = CreateGenerator();
             var code = generator.GenerateCode(progressReporter);
             File.WriteAllText(OutputFile, code);
