@@ -4,11 +4,6 @@ using System.Linq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 {
-    public interface IVerboseOptions
-    {
-        bool Enabled { get; }
-    }
-    
     public class VerboseOption : IVerboseOptions
     {
         public const string Template = "-v|--verbose";
