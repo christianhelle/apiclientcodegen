@@ -1,8 +1,10 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Exceptionless;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 {
+    [ExcludeFromCodeCoverage]
     public class ExceptionlessLogger : ILogger
     {
         public ExceptionlessLogger()
