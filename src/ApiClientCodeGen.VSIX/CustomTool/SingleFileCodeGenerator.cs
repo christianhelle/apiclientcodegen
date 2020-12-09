@@ -7,6 +7,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Converters;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -102,6 +103,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
             IntPtr[] rgbOutputFileContents,
             out uint pcbOutput)
         {
+            Logger.Instance.TrackError(e);
             rgbOutputFileContents[0] = string.Empty.ConvertToIntPtr(out pcbOutput);
             pGenerateProgress.GeneratorError(e);
 
