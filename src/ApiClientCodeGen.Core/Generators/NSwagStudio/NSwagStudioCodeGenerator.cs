@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using Newtonsoft.Json;
 
@@ -28,6 +30,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
         public string GenerateCode(IProgressReporter pGenerateProgress)
         {
+            Logger.Instance.TrackFeatureUsage(
+                SupportedCodeGenerator.NSwagStudio.GetName(),
+                "VSIX");
+
             pGenerateProgress?.Progress(10);
 
             lock (SyncLock)
