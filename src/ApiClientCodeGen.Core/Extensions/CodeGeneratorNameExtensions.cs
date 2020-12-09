@@ -12,6 +12,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
                     return "Swagger Codegen CLI";
                 case SupportedCodeGenerator.OpenApi:
                     return "OpenAPI Generator";
+                case SupportedCodeGenerator.NSwagStudio:
+                    return "NSwag Studio";
                 default:
                     return generator.ToString();
             }
