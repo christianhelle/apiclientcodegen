@@ -18,16 +18,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
         {
             switch (generator)
             {
-                case SupportedCodeGenerator.NSwag:
-                case SupportedCodeGenerator.NSwagStudio:
-                case SupportedCodeGenerator.AutoRest:
-                    return generator.ToString();
                 case SupportedCodeGenerator.Swagger:
                     return "Swagger Codegen CLI";
                 case SupportedCodeGenerator.OpenApi:
                     return "OpenAPI Generator";
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(generator), generator, null);
+                    return generator.ToString();
             }
         }
     }
