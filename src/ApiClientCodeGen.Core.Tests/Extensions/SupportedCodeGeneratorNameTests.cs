@@ -26,7 +26,7 @@ namespace ApiClientCodeGen.Core.Tests.Extensions
             => SupportedCodeGenerator.NSwagStudio
                 .GetName()
                 .Should()
-                .Be(SupportedCodeGenerator.NSwagStudio.ToString());
+                .Be("NSwag Studio");
 
         [Fact]
         public void GetName_Swagger()

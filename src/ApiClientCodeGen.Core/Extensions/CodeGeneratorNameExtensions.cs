@@ -23,12 +23,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
         {
             var type = generator.GetType();
             
-            if (type == typeof(AutoRestCommand))
-                return SupportedCodeGenerator.AutoRest.GetName();
-            
-            if (type == typeof(NSwagCommand))
-                return SupportedCodeGenerator.NSwag.GetName();
-            
             if (type == typeof(OpenApiGeneratorCommand))
                 return SupportedCodeGenerator.OpenApi.GetName();
             
