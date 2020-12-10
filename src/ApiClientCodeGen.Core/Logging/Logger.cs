@@ -6,19 +6,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
     public static class Logger
     {
         private static readonly object SyncLock = new object();
-        private static ILogger logger;
+        private static IRemoteLogger remoteLogger;
 
-        public static ILogger Instance
+        public static IRemoteLogger Instance
         {
             get
             {
                 lock (SyncLock)
                 {
-                    if (logger == null)
-                        logger = new ExceptionlessLogger();
+                    if (remoteLogger == null)
+                        remoteLogger = new ExceptionlessRemoteLogger();
                 }
 
-                return logger;
+                return remoteLogger;
             }
         }
     }

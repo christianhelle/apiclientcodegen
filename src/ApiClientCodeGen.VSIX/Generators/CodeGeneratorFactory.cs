@@ -22,7 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
     public class CodeGeneratorFactory : ICodeGeneratorFactory
     {
-        private readonly ILogger logger;
+        private readonly IRemoteLogger remoteLogger;
         private readonly IOpenApiDocumentFactory documentFactory;
         private readonly IProcessLauncher processLauncher;
         private readonly IOptionsFactory optionsFactory;
@@ -31,12 +31,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
             IOptionsFactory optionsFactory = null,
             IProcessLauncher processLauncher = null,
             IOpenApiDocumentFactory documentFactory = null,
-            ILogger logger = null)
+            IRemoteLogger remoteLogger = null)
         {
             this.optionsFactory = optionsFactory ?? new OptionsFactory();
             this.processLauncher = processLauncher ?? new ProcessLauncher();
             this.documentFactory = documentFactory ?? new OpenApiDocumentFactory();
-            this.logger = logger ?? Logger.Instance;
+            this.remoteLogger = remoteLogger ?? Logger.Instance;
         }
 
         public ICodeGenerator Create(
@@ -46,7 +46,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
             SupportedLanguage language,
             SupportedCodeGenerator generator)
         {
-            logger.TrackFeatureUsage(
+            remoteLogger.TrackFeatureUsage(
                 generator.GetName(),
                 "VSIX");
 

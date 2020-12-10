@@ -5,9 +5,9 @@ using Exceptionless;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 {
     [ExcludeFromCodeCoverage]
-    public class ExceptionlessLogger : ILogger
+    public class ExceptionlessRemoteLogger : IRemoteLogger
     {
-        public ExceptionlessLogger()
+        public ExceptionlessRemoteLogger()
         {
             ExceptionlessClient.Default.Startup("6CRkH7zip11qalrUJgxi78lVyi93rxhQkzbYZfK2");
         }
