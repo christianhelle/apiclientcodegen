@@ -1,4 +1,5 @@
 using System;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 
 namespace ApiClientCodeGen.VSMac.Commands.NSwagStudio
 {
@@ -15,6 +16,8 @@ namespace ApiClientCodeGen.VSMac.Commands.NSwagStudio
         {
             if (string.IsNullOrWhiteSpace(file))
                 return;
+
+            Logger.Instance.TrackFeatureUsage("Generate NSwag Studio output", "VSMac");
 
             var codeGenerator = factory.Create(file);
             codeGenerator.GenerateCode(null);
