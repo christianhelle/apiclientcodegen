@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using NSwag;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
@@ -21,6 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
             }
             catch (Exception e)
             {
+                Logger.Instance.TrackError(e);
                 Trace.WriteLine("Unable to extract class name from document path: " + document.DocumentPath);
                 Trace.WriteLine(e);
             }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General
 {
@@ -16,6 +17,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
             }
             catch (Exception e)
             {
+                Logger.Instance.TrackError(e);
                 Trace.WriteLine(e);
                 Trace.WriteLine(Environment.NewLine);
                 Trace.WriteLine("Unable to find JAVA_HOME environment variable");

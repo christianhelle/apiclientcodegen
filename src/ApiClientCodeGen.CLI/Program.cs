@@ -36,11 +36,13 @@ namespace ApiClientCodeGen.CLI
             }
             catch (TargetInvocationException ex) when (ex.InnerException != null)
             {
+                Logger.Instance.TrackError(ex);
                 Console.WriteLine($@"Error: {ex.InnerException.Message}");
                 return ResultCodes.Error;
             }
             catch (Exception ex)
             {
+                Logger.Instance.TrackError(ex);
                 Console.WriteLine($@"Error: {ex.Message}");
                 return ResultCodes.Error;
             }

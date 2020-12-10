@@ -6,6 +6,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 {
@@ -79,6 +80,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             }
             catch (UriFormatException ex)
             {
+                Logger.Instance.TrackError(ex);
                 const string message = "Invalid URL";
                 lblStatus.Text = message;
                 Trace.WriteLine(message);
@@ -86,6 +88,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             }
             catch (Exception ex)
             {
+                Logger.Instance.TrackError(ex);
                 Trace.WriteLine($"Unable to download OpenAPI specification file from {url}");
                 Trace.WriteLine(ex);
             }

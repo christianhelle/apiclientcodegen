@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
@@ -23,6 +24,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
             }
             catch (Exception e)
             {
+                Logger.Instance.TrackError(e);
+                
                 JavaPath = PathProvider.GetJavaPath();
                 NpmPath = PathProvider.GetNpmPath();
                 NSwagPath = PathProvider.GetNSwagStudioPath();

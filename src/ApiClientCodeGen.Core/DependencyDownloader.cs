@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
@@ -64,6 +65,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
                 }
                 catch (Exception e)
                 {
+                    Logger.Instance.TrackError(e);
                     Trace.WriteLine(e);
                 }
             }

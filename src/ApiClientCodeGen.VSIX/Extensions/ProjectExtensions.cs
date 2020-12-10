@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
@@ -105,6 +106,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
             catch (Exception ex)
             {
+                Logger.Instance.TrackError(ex);
                 Trace.WriteLine(ex);
             }
         }
@@ -141,6 +143,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
             catch (Exception ex)
             {
+                Logger.Instance.TrackError(ex);
                 Trace.WriteLine("Error getting the active project" + ex);
             }
 
@@ -186,7 +189,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
             catch (Exception ex)
             {
-                Debug.Write(ex);
+                Logger.Instance.TrackError(ex);
+                Trace.TraceError(ex.ToString());
             }
 
             return selectedObject;
@@ -259,6 +263,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
             catch (Exception e)
             {
+                Logger.Instance.TrackError(e);
                 Trace.WriteLine($"Unable to install {packageId} version {version}");
                 Trace.WriteLine(e);
             }
@@ -281,6 +286,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
             catch (Exception e)
             {
+                Logger.Instance.TrackError(e);
                 Trace.WriteLine("Unable to read top level namespace from Project");
                 Trace.WriteLine(e);
             }
@@ -301,6 +307,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
             catch (Exception e)
             {
+                Logger.Instance.TrackError(e);
                 Trace.WriteLine("Unable to read project file contents");
                 Trace.WriteLine(e);
             }

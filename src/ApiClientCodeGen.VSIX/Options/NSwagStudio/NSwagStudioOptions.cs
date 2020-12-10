@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
 using NJsonSchema.CodeGeneration.CSharp;
 
@@ -30,6 +31,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagSt
             }
             catch (Exception e)
             {
+                Logger.Instance.TrackError(e);
+                
                 Trace.WriteLine(e);
                 Trace.WriteLine(Environment.NewLine);
                 Trace.WriteLine("Error reading user options. Reverting to default values");
