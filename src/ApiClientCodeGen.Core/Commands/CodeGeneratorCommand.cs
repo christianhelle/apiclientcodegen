@@ -48,9 +48,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
             var generator = CreateGenerator();
             var code = generator.GenerateCode(progressReporter);
             File.WriteAllText(OutputFile, code);
-            
-            if (SkipLogging) 
-                console.WriteLine("Remote logging is disabled");
 
             console.WriteLine($"Output file name: {OutputFile}");
             console.WriteLine($"Output file size: {new FileInfo(OutputFile).Length}");
