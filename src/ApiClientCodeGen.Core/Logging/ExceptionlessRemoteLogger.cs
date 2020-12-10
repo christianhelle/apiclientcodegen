@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Exceptionless;
 
@@ -14,7 +15,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 
         public void TrackFeatureUsage(string featureName, params string[] tags)
         {
-            if (!TestingUtility.IsRunningFromUnitTest)
+            if (!TestingUtility.IsRunningFromUnitTest && !Debugger.IsAttached)
                 ExceptionlessClient.Default
                     .CreateFeatureUsage(featureName)
                     .AddTags(tags)
@@ -23,7 +24,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 
         public void TrackEvent(string message, string source, params string[] tags)
         {
-            if (!TestingUtility.IsRunningFromUnitTest)
+            if (!TestingUtility.IsRunningFromUnitTest && !Debugger.IsAttached)
                 ExceptionlessClient.Default
                     .CreateLog(source, message)
                     .AddTags(tags)
@@ -32,7 +33,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 
         public void TrackError(Exception exception)
         {
-            if (!TestingUtility.IsRunningFromUnitTest)
+            if (!TestingUtility.IsRunningFromUnitTest && !Debugger.IsAttached)
                 exception.ToExceptionless().Submit();
         }
     }
