@@ -11,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
     {
         static TestingUtility()
         {
-            IsRunningFromUnitTest = AppDomain.CurrentDomain.GetAssemblies().Any(IsTestFramework) || Debugger.IsAttached;
+            IsRunningFromUnitTest = AppDomain.CurrentDomain.GetAssemblies().Any(IsTestFramework);
         }
 
         private static bool IsTestFramework(Assembly assembly) 
