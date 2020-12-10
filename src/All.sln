@@ -51,10 +51,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{5183CDE3-7961-4810-B8CA-779688727E35}"
-	ProjectSection(SolutionItems) = preProject
-		integration-tests.ps1 = integration-tests.ps1
-		ApiClientCodeGen.CLI\test.ps1 = ApiClientCodeGen.CLI\test.ps1
-	EndProjectSection
+ProjectSection(SolutionItems) = preProject
+	..\test\integration-tests.ps1 = ..\test\integration-tests.ps1
+	..\test\smoke-tests.ps1 = ..\test\smoke-tests.ps1
+EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deployment", "Deployment", "{671566F3-C278-4364-8688-F89EA603575B}"
 	ProjectSection(SolutionItems) = preProject
