@@ -13,18 +13,27 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         }
 
         public void TrackFeatureUsage(string featureName, params string[] tags)
-            => ExceptionlessClient.Default
-                .CreateFeatureUsage(featureName)
-                .AddTags(tags)
-                .Submit();
+        {
+            if (!TestingUtility.IsRunningFromUnitTest)
+                ExceptionlessClient.Default
+                    .CreateFeatureUsage(featureName)
+                    .AddTags(tags)
+                    .Submit();
+        }
 
         public void TrackEvent(string message, string source, params string[] tags)
-            => ExceptionlessClient.Default
-                .CreateLog(source, message)
-                .AddTags(tags)
-                .Submit();
+        {
+            if (!TestingUtility.IsRunningFromUnitTest)
+                ExceptionlessClient.Default
+                    .CreateLog(source, message)
+                    .AddTags(tags)
+                    .Submit();
+        }
 
-        public void TrackError(Exception exception) 
-            => exception.ToExceptionless().Submit();
+        public void TrackError(Exception exception)
+        {
+            if (!TestingUtility.IsRunningFromUnitTest)
+                exception.ToExceptionless().Submit();
+        }
     }
 }
