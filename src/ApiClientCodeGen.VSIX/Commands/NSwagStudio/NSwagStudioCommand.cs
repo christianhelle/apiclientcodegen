@@ -4,6 +4,7 @@ using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using EnvDTE;
@@ -32,6 +33,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
 
         private static async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
+            Logger.Instance.TrackFeatureUsage("NSwag Studio", "VSIX");
+            
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
             var item = dte.SelectedItems.Item(1).ProjectItem;
