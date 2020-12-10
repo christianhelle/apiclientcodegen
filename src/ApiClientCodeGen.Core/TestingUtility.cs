@@ -11,12 +11,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
     {
         static TestingUtility()
         {
-            IsRunningFromUnitTest = AppDomain.CurrentDomain.GetAssemblies().Any(IsTestFramework);
+            var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+            IsRunningFromUnitTest = assemblies.Any(IsTestFramework);
         }
 
         private static bool IsTestFramework(Assembly assembly) 
-            => assembly.FullName.Contains("Xunit") 
-            || assembly.FullName.Contains("Test");
+            => assembly.FullName.Contains("Xunit");
 
         public static bool IsRunningFromUnitTest { get; }
     }
