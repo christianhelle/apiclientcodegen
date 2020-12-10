@@ -1,13 +1,14 @@
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using ApiClientCodeGen.VSMac.CustomTools.OpenApi;
+using ApiClientCodeGen.VSMac.CustomTools.Swagger;
 using ApiClientCodeGen.VSMac.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using MonoDevelop.Core;
-using MonoDevelop.Ide;
 using MonoDevelop.Ide.CustomTools;
 using MonoDevelop.Projects;
+using ProgressReporter = ApiClientCodeGen.VSMac.Logging.ProgressReporter;
 
 namespace ApiClientCodeGen.VSMac.CustomTools
 {
@@ -18,6 +19,16 @@ namespace ApiClientCodeGen.VSMac.CustomTools
             ProjectFile file,
             SingleFileCustomToolResult result)
         {
+            string generatorName;
+            if (GetType() == typeof(OpenApiSingleFileCustomTool))
+                generatorName = "OpenAPI Generator";
+            else if (GetType() == typeof(SwaggerSingleFileCustomTool))
+                generatorName = "Swagger Codegen CLI";
+            else
+                generatorName = GetType().Name.Replace("SingleFileCustomTool", string.Empty);
+                
+            Logger.Instance.TrackFeatureUsage(generatorName, "VSMac");
+
             Bootstrapper.Initialize();
 
             var swaggerFile = file.FilePath;
