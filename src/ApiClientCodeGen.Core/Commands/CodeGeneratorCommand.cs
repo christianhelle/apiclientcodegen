@@ -35,15 +35,26 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
             set => outputFile = value;
         }
 
+        [Option(ShortName = "nl", LongName = "no-logging", Description = "Disables Analytics and Error Reporting")]
+        public bool SkipLogging { get; set; }
+
         public int OnExecute()
         {
-            Logger.Instance.TrackFeatureUsage(this.GetCodeGeneratorName(), "CLI");
+            if (!SkipLogging)
+                Logger.Instance.TrackFeatureUsage(
+                    this.GetCodeGeneratorName(),
+                    "CLI");
+
             var generator = CreateGenerator();
             var code = generator.GenerateCode(progressReporter);
             File.WriteAllText(OutputFile, code);
+            
+            if (SkipLogging) 
+                console.WriteLine("Remote logging is disabled");
 
             console.WriteLine($"Output file name: {OutputFile}");
             console.WriteLine($"Output file size: {new FileInfo(OutputFile).Length}");
+            
             return ResultCodes.Success;
         }
 
