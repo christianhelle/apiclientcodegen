@@ -1,5 +1,4 @@
 language: csharp
-mono: latest
 dotnet: 2.1
 script:
   - dotnet restore src/Rapicgen.sln
