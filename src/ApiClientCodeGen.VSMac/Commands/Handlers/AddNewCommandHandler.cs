@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using Microsoft.VisualStudio.Threading;
 using Mono.Addins;
@@ -55,6 +56,8 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 
         private async ValueTask AddNewSwaggerFile()
         {
+            Logger.Instance.TrackFeatureUsage("New REST API Client", "VSMac");
+
             var url = MessageService.GetTextResponse(
                 "Enter the URL to the Swagger / Open API spec file",
                 "Add New REST API Client",
