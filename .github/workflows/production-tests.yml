@@ -57,6 +57,14 @@ jobs:
       run: dotnet build ./GeneratedCode/AutoRest/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.7.2 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/NetStandard20.csproj
+      working-directory: test
+
     - name: Generate code with NSwag
       run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/NSwag/Output.cs
       working-directory: test
@@ -71,6 +79,14 @@ jobs:
 
     - name: Build .NET 5 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/Net5.csproj
+      working-directory: test
+
+    - name: Build .NET 4.7.2 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
@@ -89,6 +105,14 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.7.2 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20.csproj
+      working-directory: test
+
     - name: Generate code with OpenAPI Generator
       run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
       working-directory: test
@@ -103,6 +127,14 @@ jobs:
 
     - name: Build .NET 5 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5.csproj
+      working-directory: test
+
+    - name: Build .NET 4.7.2 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20.csproj
       working-directory: test
 
   test-petstore-v2-yaml:
@@ -151,6 +183,14 @@ jobs:
       run: dotnet build ./GeneratedCode/AutoRest/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.7.2 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/NetStandard20.csproj
+      working-directory: test
+
     - name: Generate code with NSwag
       run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/NSwag/Output.cs
       working-directory: test
@@ -165,6 +205,14 @@ jobs:
 
     - name: Build .NET 5 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/Net5.csproj
+      working-directory: test
+
+    - name: Build .NET 4.7.2 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
@@ -183,6 +231,14 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.7.2 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20.csproj
+      working-directory: test
+
     - name: Generate code with OpenAPI Generator
       run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
       working-directory: test
@@ -198,6 +254,15 @@ jobs:
     - name: Build .NET 5 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5.csproj
       working-directory: test
+
+    - name: Build .NET 4.7.2 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20.csproj
+      working-directory: test
+
 
   test-petstore-v3-json:
 
@@ -245,6 +310,14 @@ jobs:
       run: dotnet build ./GeneratedCode/NSwag/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.7.2 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/NetStandard20.csproj
+      working-directory: test
+
     - name: Generate code with Swagger Codegen CLI
       run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
       working-directory: test
@@ -261,6 +334,14 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.7.2 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20.csproj
+      working-directory: test
+
     - name: Generate code with OpenAPI Generator
       run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
       working-directory: test
@@ -275,6 +356,14 @@ jobs:
 
     - name: Build .NET 5 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5.csproj
+      working-directory: test
+
+    - name: Build .NET 4.7.2 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20.csproj
       working-directory: test
 
   test-petstore-v3-yaml:
@@ -323,6 +412,14 @@ jobs:
       run: dotnet build ./GeneratedCode/NSwag/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.7.2 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/NetStandard20.csproj
+      working-directory: test
+
     - name: Generate code with Swagger Codegen CLI
       run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
       working-directory: test
@@ -339,6 +436,14 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.7.2 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20.csproj
+      working-directory: test
+
     - name: Generate code with OpenAPI Generator
       run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
       working-directory: test
@@ -353,4 +458,12 @@ jobs:
 
     - name: Build .NET 5 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5.csproj
+      working-directory: test
+
+    - name: Build .NET 4.7.2 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20.csproj
       working-directory: test
