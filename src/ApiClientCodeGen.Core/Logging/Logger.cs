@@ -21,5 +21,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
                 return remoteLogger;
             }
         }
+
+        public static void Setup(params IRemoteLogger[] loggers)
+        {
+            lock (SyncLock)
+            {
+                remoteLogger = new RemoteLogger(loggers);
+            }
+        }
     }
 }
