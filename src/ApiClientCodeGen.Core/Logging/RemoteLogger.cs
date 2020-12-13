@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 {
@@ -7,18 +8,23 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
     {
         private readonly List<IRemoteLogger> loggers = new List<IRemoteLogger>();
 
-        public RemoteLogger()
+        public RemoteLogger(params IRemoteLogger[] remoteLoggers)
         {
             loggers.AddRange(
                 new IRemoteLogger[]
                 {
                     new ExceptionlessRemoteLogger()
                 });
+
+            if (remoteLoggers.Any())
+            {
+                loggers.AddRange(remoteLoggers);
+            }
         }
-    
+
         public void TrackFeatureUsage(string featureName, params string[] tags)
         {
-            foreach (var logger in loggers) 
+            foreach (var logger in loggers)
                 logger.TrackFeatureUsage(featureName, tags);
         }
 
