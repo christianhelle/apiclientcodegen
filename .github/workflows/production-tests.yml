@@ -42,7 +42,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with AutoRest
-      run: rapicgen -v autorest ./OpenApi.json GeneratedCode ./GeneratedCode/AutoRest/Output.cs
+      run: rapicgen -v autorest ./OpenApi.json GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 AutoRest generated code
@@ -66,7 +66,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with NSwag
-      run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/NSwag/Output.cs
+      run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 NSwag generated code
@@ -90,7 +90,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
-      run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+      run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 Swagger Codegen CLI generated code
@@ -114,7 +114,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
-      run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+      run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 OpenAPI Generator generated code
@@ -168,7 +168,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with AutoRest
-      run: rapicgen -v autorest ./OpenApi.yaml GeneratedCode ./GeneratedCode/AutoRest/Output.cs
+      run: rapicgen -v autorest ./OpenApi.yaml GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 AutoRest generated code
@@ -192,7 +192,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with NSwag
-      run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/NSwag/Output.cs
+      run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 NSwag generated code
@@ -216,7 +216,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
-      run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+      run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 Swagger Codegen CLI generated code
@@ -240,7 +240,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
-      run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+      run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 OpenAPI Generator generated code
@@ -295,7 +295,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with NSwag
-      run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/NSwag/Output.cs
+      run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 NSwag generated code
@@ -319,7 +319,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
-      run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+      run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 Swagger Codegen CLI generated code
@@ -343,7 +343,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
-      run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+      run: rapicgen -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 OpenAPI Generator generated code
@@ -397,7 +397,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with NSwag
-      run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/NSwag/Output.cs
+      run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 NSwag generated code
@@ -421,7 +421,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
-      run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs
+      run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 Swagger Codegen CLI generated code
@@ -445,7 +445,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
-      run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs
+      run: rapicgen -v nswag ./OpenApi.yaml GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 OpenAPI Generator generated code
