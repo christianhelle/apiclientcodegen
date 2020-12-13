@@ -15,7 +15,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
                 lock (SyncLock)
                 {
                     if (remoteLogger == null)
-                        remoteLogger = new ExceptionlessRemoteLogger();
+                        remoteLogger = new RemoteLogger();
                 }
 
                 return remoteLogger;
