@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Threading.Tasks;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
@@ -29,6 +30,8 @@ namespace ApiClientCodeGen.CLI
             
             if (verboseOptions.Enabled)
                 builder.ConfigureLogging(b => b.AddConsole());
+
+            Logger.Setup(new SentryRemoteLogger());
 
             try
             {
