@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using Sentry;
+using Sentry.Protocol;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
 {
@@ -15,11 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         
         public void TrackFeatureUsage(string featureName, params string[] tags)
         {
-            SentrySdk.CaptureMessage(featureName);
-        }
-
-        public void TrackEvent(string message, string source, params string[] tags)
-        {
+            SentrySdk.CaptureMessage($"[FEATURE USAGE] {featureName}", SentryLevel.Debug);
         }
 
         public void TrackError(Exception exception)

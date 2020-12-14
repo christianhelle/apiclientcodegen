@@ -28,12 +28,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
                 logger.TrackFeatureUsage(featureName, tags);
         }
 
-        public void TrackEvent(string message, string source, params string[] tags)
-        {
-            foreach (var logger in loggers)
-                logger.TrackEvent(message, source, tags);
-        }
-
         public void TrackError(Exception exception)
         {
             foreach (var logger in loggers)

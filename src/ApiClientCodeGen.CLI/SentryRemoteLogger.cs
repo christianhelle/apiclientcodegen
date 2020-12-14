@@ -16,11 +16,7 @@ namespace ApiClientCodeGen.CLI
         
         public void TrackFeatureUsage(string featureName, params string[] tags)
         {
-            SentrySdk.CaptureMessage(featureName, SentryLevel.Debug);
-        }
-
-        public void TrackEvent(string message, string source, params string[] tags)
-        {
+            SentrySdk.CaptureMessage($"[FEATURE USAGE] {featureName}", SentryLevel.Debug);
         }
 
         public void TrackError(Exception exception)
