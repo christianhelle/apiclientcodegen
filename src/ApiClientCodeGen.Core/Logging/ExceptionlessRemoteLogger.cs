@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Exceptionless;
 
@@ -15,17 +14,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 
         public void TrackFeatureUsage(string featureName, params string[] tags)
         {
-            if (!TestingUtility.IsRunningFromUnitTest && !Debugger.IsAttached)
-                ExceptionlessClient.Default
-                    .CreateFeatureUsage(featureName)
-                    .AddTags(tags)
-                    .Submit();
+            ExceptionlessClient.Default
+                .CreateFeatureUsage(featureName)
+                .AddTags(tags)
+                .Submit();
         }
 
         public void TrackError(Exception exception)
         {
-            if (!TestingUtility.IsRunningFromUnitTest && !Debugger.IsAttached)
-                exception.ToExceptionless().Submit();
+            exception.ToExceptionless().Submit();
         }
     }
 }
