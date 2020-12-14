@@ -22,7 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
                 return;
-            SentrySdk.CaptureMessage($"[FEATURE USAGE] {featureName}", SentryLevel.Debug);
+            SentrySdk.CaptureMessage($"[VSIX] {featureName}", SentryLevel.Debug);
         }
 
         public void TrackError(Exception exception)
