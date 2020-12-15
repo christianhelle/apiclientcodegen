@@ -33,9 +33,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
         private async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
-            Logger.Instance.TrackFeatureUsage(
-                $"New REST API Client ({CodeGenerator.GetName()})",
-                "VSIX");
+            Logger.Instance.TrackFeatureUsage($"New REST API Client ({CodeGenerator.GetName()})");
 
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
