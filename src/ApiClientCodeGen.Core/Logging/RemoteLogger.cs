@@ -8,6 +8,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
     {
         public List<IRemoteLogger> Loggers { get; } = new List<IRemoteLogger>();
 
+        public List<string> DefaultTags { get; } = new List<string>();
+
         public RemoteLogger(params IRemoteLogger[] remoteLoggers)
         {
             Loggers.AddRange(
@@ -25,7 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         public void TrackFeatureUsage(string featureName, params string[] tags)
         {
             foreach (var logger in Loggers)
-                logger.TrackFeatureUsage(featureName, tags);
+                logger.TrackFeatureUsage(featureName, DefaultTags.Union(tags).ToArray());
         }
 
         public void TrackError(Exception exception)
