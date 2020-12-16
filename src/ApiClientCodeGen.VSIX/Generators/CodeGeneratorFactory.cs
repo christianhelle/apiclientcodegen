@@ -46,9 +46,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
             SupportedLanguage language,
             SupportedCodeGenerator generator)
         {
-            remoteLogger.TrackFeatureUsage(
-                generator.GetName(),
-                "VSIX");
+            remoteLogger.TrackFeatureUsage(generator.GetName());
 
             switch (generator)
             {

@@ -29,6 +29,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
         public string GenerateCode(IProgressReporter pGenerateProgress)
         {
+            Logger.Instance.TrackFeatureUsage("Generate NSwag Studio output");
+            
             pGenerateProgress?.Progress(10);
 
             lock (SyncLock)

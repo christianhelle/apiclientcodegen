@@ -33,7 +33,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
 
         private static async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
-            Logger.Instance.TrackFeatureUsage("Generate NSwag Studio output", "VSIX");
+            Logger.Instance.TrackFeatureUsage("Generate NSwag Studio output");
             
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 

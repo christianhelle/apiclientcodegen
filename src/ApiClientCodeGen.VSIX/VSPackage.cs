@@ -6,11 +6,13 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
@@ -84,6 +86,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
             CancellationToken cancellationToken,
             IProgress<ServiceProgressData> progress)
         {
+            Logger.Setup(new SentryRemoteLogger()).WithDefaultTags("VSIX");
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await base.InitializeAsync(cancellationToken, progress);
             OutputWindow.Initialize(this, VsixName);

@@ -44,6 +44,13 @@ jobs:
       FileName: src/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
       VersionNumber: '$(build.buildnumber)'
 
+  - task: bleddynrichards.Assembly-Info-Task.Assembly-Info-NetCore.Assembly-Info-NetCore@2
+    displayName: 'Set Assembly Manifest Data'
+    inputs:
+      VersionNumber: '$(build.buildnumber)'
+      FileVersionNumber: '$(build.buildnumber)'
+      InformationalVersion: '$(build.buildnumber)'
+
   - task: VSBuild@1
     displayName: 'Build solution src/VSIX.sln'
     inputs:
