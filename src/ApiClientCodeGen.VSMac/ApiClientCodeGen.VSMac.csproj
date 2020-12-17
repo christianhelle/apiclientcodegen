@@ -6,6 +6,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="MonoDevelop.Addins" Version="0.4.7" />
+    <PackageReference Include="Sentry" Version="2.1.8" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />
@@ -13,6 +14,6 @@
     <Folder Include="CustomTools\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
+   <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
   </ItemGroup>
 </Project>

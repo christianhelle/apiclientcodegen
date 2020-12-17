@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using ApiClientCodeGen.VSMac.Logging;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 
 namespace ApiClientCodeGen.VSMac
 {
@@ -16,6 +17,7 @@ namespace ApiClientCodeGen.VSMac
                     return;
                 var listener = Container.Instance.Resolve<LoggingServiceTraceListener>();
                 Trace.Listeners.Add(listener);
+                Logger.Setup(new SentryRemoteLogger()).WithDefaultTags("VSMac");
                 isRegistered = true;
             }
         }
