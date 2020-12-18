@@ -5,7 +5,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 {
     public static class SupportInformation
     {
-        public static string GetShortSupportKey()
+        public static string GetAnnonymousName()
             => GetFullSupportKey().Substring(0, 7);
 
         public static string GetFullSupportKey()
