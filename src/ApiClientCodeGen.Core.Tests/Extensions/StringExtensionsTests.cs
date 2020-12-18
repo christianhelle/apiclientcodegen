@@ -40,5 +40,12 @@ namespace ApiClientCodeGen.Core.Tests.Extensions
             => new Action(() => sut.EndsWithAny(null))
                 .Should()
                 .ThrowExactly<ArgumentNullException>();
+
+        [Theory]
+        [AutoData]
+        public void ToSha256_Returns_NotNullOrWhitespace(string sut)
+            => sut.ToSha256()
+                .Should()
+                .NotBeNullOrWhiteSpace();
     }
 }
