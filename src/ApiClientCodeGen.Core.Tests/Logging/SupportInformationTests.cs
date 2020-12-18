@@ -13,8 +13,8 @@ namespace ApiClientCodeGen.Core.Tests.Logging
                 .NotBeNullOrWhiteSpace();
 
         [Fact]
-        public void GetAnnonymousName_Returns_NotNullOrWhitespace()
-            => SupportInformation.GetAnnonymousName()
+        public void GetAnonymousName_Returns_NotNullOrWhitespace()
+            => SupportInformation.GetAnonymousName()
                 .Should()
                 .NotBeNullOrWhiteSpace();
     }

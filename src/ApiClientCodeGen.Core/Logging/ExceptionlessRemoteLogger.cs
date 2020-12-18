@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using Exceptionless;
 using Exceptionless.Plugins;
 
@@ -15,9 +18,27 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
                 return;
+
+            EnableAnonymousUserTracking();
             ExceptionlessClient.Default.Configuration.AddPlugin<IgnoreNonProjectReletedExceptionsPlugin>();
-            ExceptionlessClient.Default.Configuration.UseSessions();
             ExceptionlessClient.Default.Startup("6CRkH7zip11qalrUJgxi78lVyi93rxhQkzbYZfK2");
+        }
+
+        private void EnableAnonymousUserTracking()
+        {
+            try
+            {
+                ExceptionlessClient.Default.Configuration.SetUserIdentity(
+                    SupportInformation.GetSupportKey(),
+                    SupportInformation.GetAnonymousName());
+
+                ExceptionlessClient.Default.Configuration.UseSessions();
+            }
+            catch (Exception e)
+            {
+                Trace.TraceError(e.ToString());
+                TrackError(e);
+            }
         }
 
         public void TrackFeatureUsage(string featureName, params string[] tags)
