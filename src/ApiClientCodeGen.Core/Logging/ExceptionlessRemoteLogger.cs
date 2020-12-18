@@ -16,6 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
                 return;
             ExceptionlessClient.Default.Configuration.AddPlugin<IgnoreNonProjectReletedExceptionsPlugin>();
+            ExceptionlessClient.Default.Configuration.UseSessions();
             ExceptionlessClient.Default.Startup("6CRkH7zip11qalrUJgxi78lVyi93rxhQkzbYZfK2");
         }
 
