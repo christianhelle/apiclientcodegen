@@ -6,9 +6,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
     public static class SupportInformation
     {
         public static string GetAnnonymousName()
-            => GetFullSupportKey().Substring(0, 7);
+            => GetSupportKey().Substring(0, 7);
 
-        public static string GetFullSupportKey()
+        public static string GetSupportKey()
             => Environment.UserName.ToSha256();
     }
 }

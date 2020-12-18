@@ -7,8 +7,8 @@ namespace ApiClientCodeGen.Core.Tests.Logging
     public class SupportInformationTests
     {
         [Fact]
-        public void GetFullSupportKey_Returns_NotNullOrWhitespace()
-            => SupportInformation.GetFullSupportKey()
+        public void GetSupportKey_Returns_NotNullOrWhitespace()
+            => SupportInformation.GetSupportKey()
                 .Should()
                 .NotBeNullOrWhiteSpace();
 
