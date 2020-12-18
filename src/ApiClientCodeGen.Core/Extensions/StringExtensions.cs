@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -45,6 +46,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
             if (text == null) throw new ArgumentNullException(nameof(text));
             if (words == null) throw new ArgumentNullException(nameof(words));
             return words.Any(word => text.EndsWith(word, comparisonType));
+        }
+
+        public static string ToSha256(this string value)
+        {
+            var stringBuilder = new StringBuilder();
+            using (var hash = SHA256.Create())
+            {
+                var enc = Encoding.UTF8;
+                var result = hash.ComputeHash(enc.GetBytes(value));
+
+                foreach (var b in result)
+                    stringBuilder.Append(b.ToString("x2"));
+            }
+            return stringBuilder.ToString();
         }
     }
 }
