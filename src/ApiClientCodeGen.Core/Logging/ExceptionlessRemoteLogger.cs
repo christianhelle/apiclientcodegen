@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using Exceptionless;
 using Exceptionless.Plugins;
 
