@@ -64,20 +64,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
                 "ApiClientCodeGen"
             };
 
-            public void Run(EventPluginContext ctx)
+            public void Run(EventPluginContext context)
             {
-                if (!ctx.ContextData.IsUnhandledError || !ctx.Event.IsError() || !ctx.ContextData.HasException())
+                if (!context.ContextData.IsUnhandledError || !context.Event.IsError() || !context.ContextData.HasException())
                     return;
 
-                var exception = ctx.ContextData.GetException();
+                var exception = context.ContextData.GetException();
                 if (exception == null)
                     return;
 
-                var error = ctx.Event.GetError();
+                var error = context.Event.GetError();
                 if (error == null)
                     return;
 
-                ctx.Cancel = !error.StackTrace
+                context.Cancel = !error.StackTrace
                     .Select(s => s.DeclaringNamespace)
                     .Distinct()
                     .Any(ns => HandledNamespaces.Any(ns.Contains));
