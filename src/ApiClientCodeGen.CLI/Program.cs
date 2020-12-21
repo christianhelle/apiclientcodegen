@@ -30,7 +30,7 @@ namespace ApiClientCodeGen.CLI
             if (verboseOptions.Enabled)
                 builder.ConfigureLogging(b => b.AddConsole());
 
-            Logger.Setup(new SentryRemoteLogger()).WithDefaultTags("CLI");;
+            Logger.Setup(new SentryRemoteLogger()).WithDefaultTags("CLI");
 
             try
             {
