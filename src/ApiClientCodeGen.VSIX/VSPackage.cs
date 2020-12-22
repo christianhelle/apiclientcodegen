@@ -7,6 +7,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.Analytics;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
@@ -60,6 +61,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         typeof(NSwagStudioOptionsPage),
         VsixName,
         NSwagStudioOptionsPage.Name,
+        0,
+        0,
+        true)]
+    [ProvideOptionPage(
+        typeof(AnalyticsOptionPage),
+        VsixName,
+        AnalyticsOptionPage.Name,
         0,
         0,
         true)]
