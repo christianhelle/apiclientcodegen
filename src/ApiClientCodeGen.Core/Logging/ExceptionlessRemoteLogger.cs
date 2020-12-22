@@ -26,8 +26,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             try
             {
                 ExceptionlessClient.Default.Configuration.SetUserIdentity(
-                    SupportInformation.GetSupportKey(),
-                    SupportInformation.GetAnonymousName());
+                    SupportInformation.GetAnonymousIdentity(),
+                    SupportInformation.GetSupportKey());
 
                 ExceptionlessClient.Default.Configuration.UseSessions();
             }
