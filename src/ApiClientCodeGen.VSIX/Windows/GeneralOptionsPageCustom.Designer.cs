@@ -44,6 +44,7 @@
             this.tbSwaggerPath = new System.Windows.Forms.TextBox();
             this.lblSwaggerPath = new System.Windows.Forms.Label();
             this.cbInstallMissingPackages = new System.Windows.Forms.CheckBox();
+            this.lblSupportKey = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblJavaPath
@@ -212,10 +213,21 @@
             this.cbInstallMissingPackages.UseVisualStyleBackColor = true;
             this.cbInstallMissingPackages.CheckedChanged += new System.EventHandler(this.InstallMissingPackages_CheckedChanged);
             // 
+            // lblSupportKey
+            // 
+            this.lblSupportKey.AutoSize = true;
+            this.lblSupportKey.Location = new System.Drawing.Point(13, 316);
+            this.lblSupportKey.Name = "lblSupportKey";
+            this.lblSupportKey.Size = new System.Drawing.Size(68, 13);
+            this.lblSupportKey.TabIndex = 17;
+            this.lblSupportKey.Text = "Support Key:";
+            // 
             // GeneralOptionsPageCustom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.Controls.Add(this.lblSupportKey);
             this.Controls.Add(this.cbInstallMissingPackages);
             this.Controls.Add(this.btnOpenApi);
             this.Controls.Add(this.tbOpenApiPath);
@@ -233,7 +245,7 @@
             this.Controls.Add(this.tbJavaPath);
             this.Controls.Add(this.lblJavaPath);
             this.Name = "GeneralOptionsPageCustom";
-            this.Size = new System.Drawing.Size(390, 316);
+            this.Size = new System.Drawing.Size(390, 351);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,5 +269,6 @@
         private System.Windows.Forms.TextBox tbSwaggerPath;
         private System.Windows.Forms.Label lblSwaggerPath;
         private System.Windows.Forms.CheckBox cbInstallMissingPackages;
+        private System.Windows.Forms.Label lblSupportKey;
     }
 }

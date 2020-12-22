@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Windows.Forms;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
@@ -27,6 +28,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             tbSwaggerPath.Text = options.SwaggerCodegenPath;
             tbOpenApiPath.Text = options.OpenApiGeneratorPath;
             cbInstallMissingPackages.Checked = options.InstallMissingPackages ?? true;
+            lblSupportKey.Text = $"Support Key: {SupportInformation.GetSupportKey()}";
         }
 
         private void OpenFileDialog(Control output)
