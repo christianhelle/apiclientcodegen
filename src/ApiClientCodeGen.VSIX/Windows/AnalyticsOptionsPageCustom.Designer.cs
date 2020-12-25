@@ -45,6 +45,9 @@
             // 
             // lblAnalyticsInfo
             // 
+            this.lblAnalyticsInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAnalyticsInfo.AutoSize = true;
             this.lblAnalyticsInfo.Location = new System.Drawing.Point(16, 43);
             this.lblAnalyticsInfo.Name = "lblAnalyticsInfo";
@@ -54,6 +57,7 @@
             // 
             // btnSupportKey
             // 
+            this.btnSupportKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSupportKey.Location = new System.Drawing.Point(295, 7);
             this.btnSupportKey.Name = "btnSupportKey";
             this.btnSupportKey.Size = new System.Drawing.Size(75, 23);
@@ -71,7 +75,7 @@
             this.Controls.Add(this.lblAnalyticsInfo);
             this.Controls.Add(this.lblSupportKey);
             this.Name = "AnalyticsOptionsPageCustom";
-            this.Size = new System.Drawing.Size(390, 351);
+            this.Size = new System.Drawing.Size(390, 258);
             this.ResumeLayout(false);
             this.PerformLayout();
 
