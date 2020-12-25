@@ -31,32 +31,43 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnalyticsOptionsPageCustom));
             this.lblSupportKey = new System.Windows.Forms.Label();
             this.lblAnalyticsInfo = new System.Windows.Forms.Label();
+            this.btnSupportKey = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblSupportKey
             // 
             this.lblSupportKey.AutoSize = true;
-            this.lblSupportKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSupportKey.Location = new System.Drawing.Point(16, 12);
             this.lblSupportKey.Name = "lblSupportKey";
-            this.lblSupportKey.Size = new System.Drawing.Size(96, 16);
+            this.lblSupportKey.Size = new System.Drawing.Size(68, 13);
             this.lblSupportKey.TabIndex = 17;
             this.lblSupportKey.Text = "Support Key:";
             // 
             // lblAnalyticsInfo
             // 
             this.lblAnalyticsInfo.AutoSize = true;
-            this.lblAnalyticsInfo.Location = new System.Drawing.Point(16, 51);
+            this.lblAnalyticsInfo.Location = new System.Drawing.Point(16, 43);
             this.lblAnalyticsInfo.Name = "lblAnalyticsInfo";
             this.lblAnalyticsInfo.Size = new System.Drawing.Size(354, 195);
             this.lblAnalyticsInfo.TabIndex = 20;
             this.lblAnalyticsInfo.Text = resources.GetString("lblAnalyticsInfo.Text");
+            // 
+            // btnSupportKey
+            // 
+            this.btnSupportKey.Location = new System.Drawing.Point(295, 7);
+            this.btnSupportKey.Name = "btnSupportKey";
+            this.btnSupportKey.Size = new System.Drawing.Size(75, 23);
+            this.btnSupportKey.TabIndex = 21;
+            this.btnSupportKey.Text = "Copy";
+            this.btnSupportKey.UseVisualStyleBackColor = true;
+            this.btnSupportKey.Click += new System.EventHandler(this.btnSupportKey_Click);
             // 
             // AnalyticsOptionsPageCustom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.btnSupportKey);
             this.Controls.Add(this.lblAnalyticsInfo);
             this.Controls.Add(this.lblSupportKey);
             this.Name = "AnalyticsOptionsPageCustom";
@@ -69,5 +80,6 @@
         #endregion
         private System.Windows.Forms.Label lblSupportKey;
         private System.Windows.Forms.Label lblAnalyticsInfo;
+        private System.Windows.Forms.Button btnSupportKey;
     }
 }
