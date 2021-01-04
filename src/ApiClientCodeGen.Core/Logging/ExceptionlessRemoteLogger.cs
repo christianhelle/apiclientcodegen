@@ -17,6 +17,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
                 return;
 
             EnableAnonymousUserTracking();
+            ExceptionlessClient.Default.Configuration.SetVersion(GetType().Assembly.GetName().Version);
             ExceptionlessClient.Default.Configuration.AddPlugin<IgnoreNonProjectReletedExceptionsPlugin>();
             ExceptionlessClient.Default.Startup("6CRkH7zip11qalrUJgxi78lVyi93rxhQkzbYZfK2");
         }
