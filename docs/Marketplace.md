@@ -24,7 +24,7 @@ The resulting file is the equivalent of using the AutoRest CLI tool with:
 The output file is the result of merging all the files generated using the Swagger Codegen CLI tool with:
 ` generate -l csharp --input-spec [swaggerFile] --output [output] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite`
 
-- ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **OpenAPI Generator v5.0.0-beta3**.
+- ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **OpenAPI Generator v5.0.0**.
 The output file is the result of merging all the files generated using the OpenAPI Generator tool with:
 ` generate -g csharp --input-spec [swaggerFile] --output [output] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite`
 
