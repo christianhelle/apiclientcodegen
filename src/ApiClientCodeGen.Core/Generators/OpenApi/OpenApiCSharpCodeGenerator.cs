@@ -48,13 +48,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 var arguments =
                     $"-jar \"{jarFile}\" generate " +
                     "--generator-name csharp-netcore " +
-                    $"--input-spec \"{swaggerFile}\" " +
+                    $"--input-spec \"{Path.GetFileName(swaggerFile)}\" " +
                     $"--output \"{output}\" " +
                     $"--package-name \"{defaultNamespace}\" " +
                     "--global-property apiTests=false,modelTests=false " +
                     "--skip-overwrite ";
 
-                processLauncher.Start(javaPathProvider.GetJavaExePath(), arguments);
+                processLauncher.Start(javaPathProvider.GetJavaExePath(), arguments, Path.GetDirectoryName(swaggerFile));
                 pGenerateProgress.Progress(80);
 
                 return CSharpFileMerger.MergeFilesAndDeleteSource(output);
