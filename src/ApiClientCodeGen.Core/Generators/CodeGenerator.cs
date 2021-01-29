@@ -32,7 +32,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 var arguments = GetArguments(outputFile);
                 pGenerateProgress.Progress(30);
 
-                processLauncher.Start(command, arguments);
+                processLauncher.Start(command, arguments, Path.GetDirectoryName(SwaggerFile));
                 pGenerateProgress.Progress(80);
 
                 return FileHelper.ReadThenDelete(outputFile);
