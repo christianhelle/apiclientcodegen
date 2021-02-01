@@ -47,6 +47,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             Trace.WriteLine("Executing:");
             Trace.WriteLine($"{command} {arguments}");
 
+            if (!string.IsNullOrWhiteSpace(workingDirectory)) 
+                Trace.WriteLine($"Working directory: {workingDirectory}");
+
             if (command.Contains("npm"))
             {
                 lock (SyncLock)
