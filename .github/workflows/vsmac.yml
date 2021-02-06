@@ -8,10 +8,10 @@ on:
       - 'build/**'
       - 'images/**'
       - 'README.md'
-      - 'src/ApiClientCodeGen.CLI*/**'
-      - 'src/ApiClientCodeGen.VSIX*/**'
-      - 'src/ApiClientCodeGen.Tests/**'
-      - 'src/ApiClientCodeGen.IntegrationTests/**'
+      - 'src/CLI/ApiClientCodeGen.CLI*/**'
+      - 'src/VSIX/ApiClientCodeGen.VSIX*/**'
+      - 'src/VSIX/ApiClientCodeGen.Tests/**'
+      - 'src/VSIX/ApiClientCodeGen.IntegrationTests/**'
     branches:
       - '*'
   pull_request:
@@ -32,7 +32,7 @@ jobs:
       run: |
         sed -i -e 's/1.0/1.0.${{ github.run_number }}/g' ./AddinInfo.cs
         cat ./AddinInfo.cs
-      working-directory: src/ApiClientCodeGen.VSMac/Properties
+      working-directory: src/VSMac/ApiClientCodeGen.VSMac/Properties
 
     - name: Build
       run: make release
@@ -40,13 +40,13 @@ jobs:
 
     - name: Archive binaries
       run: zip -r VSMac-Binaries.zip .
-      working-directory: src/ApiClientCodeGen.VSMac/bin/Release/net472/
+      working-directory: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net472/
 
     - name: Publish binaries
       uses: actions/upload-artifact@v2
       with:
         name: Binaries
-        path: src/ApiClientCodeGen.VSMac/bin/Release/net472/VSMac-Binaries.zip
+        path: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net472/VSMac-Binaries.zip
 
     - name: Create mpack file
       run: make package
