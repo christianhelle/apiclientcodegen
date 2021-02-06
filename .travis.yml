@@ -2,5 +2,5 @@ language: csharp
 mono: none
 dotnet: 2.1
 script:
-  - dotnet restore src/Rapicgen.sln
-  - dotnet build src/Rapicgen.sln
+  - dotnet restore src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj
+  - dotnet build src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj
