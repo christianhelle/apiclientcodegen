@@ -34,11 +34,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1
-    
-    - name: Setup .NET 5
-      run: |
-        Invoke-WebRequest -Uri https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install.ps1 -OutFile dotnet-install.ps1
-        ./dotnet-install.ps1 --version 5.0.100
+
+    - name: Setup .NET 5.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
 
     - name: Download Swagger Petstore v2 OpenAPI Spec
       run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile OpenApi.json
@@ -157,11 +157,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1
-    
-    - name: Setup .NET 5
-      run: |
-        Invoke-WebRequest -Uri https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install.ps1 -OutFile dotnet-install.ps1
-        ./dotnet-install.ps1 --version 5.0.100
+
+    - name: Setup .NET 5.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
 
     - name: Download Swagger Petstore v2 OpenAPI Spec
       run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.yaml -OutFile OpenApi.yaml
@@ -280,11 +280,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1
-    
-    - name: Setup .NET 5
-      run: |
-        Invoke-WebRequest -Uri https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install.ps1 -OutFile dotnet-install.ps1
-        ./dotnet-install.ps1 --version 5.0.100
+
+    - name: Setup .NET 5.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
 
     - name: Download Swagger Petstore v3 OpenAPI Spec
       run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.json -OutFile OpenApi.json
@@ -379,11 +379,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1
-    
-    - name: Setup .NET 5
-      run: |
-        Invoke-WebRequest -Uri https://dotnet.microsoft.com/download/dotnet-core/scripts/v1/dotnet-install.ps1 -OutFile dotnet-install.ps1
-        ./dotnet-install.ps1 --version 5.0.100
+
+    - name: Setup .NET 5.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
 
     - name: Download Swagger Petstore v3 OpenAPI Spec
       run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.yaml -OutFile OpenApi.yaml
