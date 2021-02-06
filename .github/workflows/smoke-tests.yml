@@ -20,7 +20,10 @@ jobs:
   test-petstore-v2-json:
 
     name: Swagger Petstore v2 (JSON)
-    runs-on: windows-2019
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
@@ -143,7 +146,10 @@ jobs:
   test-petstore-v2-yaml:
 
     name: Swagger Petstore v2 (YAML)
-    runs-on: windows-2019
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
@@ -266,7 +272,10 @@ jobs:
   test-petstore-v3-json:
 
     name: Swagger Petstore v3 (JSON)
-    runs-on: windows-2019
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
@@ -365,7 +374,10 @@ jobs:
   test-petstore-v3-yaml:
 
     name: Swagger Petstore v3 (YAML)
-    runs-on: windows-2019
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
