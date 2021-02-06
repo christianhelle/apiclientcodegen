@@ -8,10 +8,10 @@ on:
       - 'build/**'
       - 'images/**'
       - 'README.md'
-      - 'src/ApiClientCodeGen.VSIX*/**'
-      - 'src/ApiClientCodeGen.Tests/**'
-      - 'src/ApiClientCodeGen.VSMac*/**'
-      - 'src/ApiClientCodeGen.IntegrationTests/**'
+      - 'src/VSIX/ApiClientCodeGen.VSIX*/**'
+      - 'src/VSIX/ApiClientCodeGen.Tests/**'
+      - 'src/VSMac/ApiClientCodeGen.VSMac*/**'
+      - 'src/VSIX/ApiClientCodeGen.IntegrationTests/**'
     branches:
       - '*'
   pull_request:
@@ -38,4 +38,4 @@ jobs:
       working-directory: src
 
     - name: Core test project
-      run: dotnet test src\ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj
+      run: dotnet test src\Core\ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj
