@@ -27,8 +27,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
-      <ProjectReference Include="..\ApiClientCodeGen.Tests.Common\ApiClientCodeGen.Tests.Common.csproj" />
+      <ProjectReference Include="..\..\Core\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
+      <ProjectReference Include="..\..\Core\ApiClientCodeGen.Tests.Common\ApiClientCodeGen.Tests.Common.csproj" />
     </ItemGroup>
 
 </Project>
