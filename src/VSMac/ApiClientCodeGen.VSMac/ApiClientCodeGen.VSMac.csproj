@@ -14,6 +14,6 @@
     <Folder Include="CustomTools\" />
   </ItemGroup>
   <ItemGroup>
-   <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
+   <ProjectReference Include="..\..\Core\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
   </ItemGroup>
 </Project>
