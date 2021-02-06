@@ -41,7 +41,7 @@ jobs:
   - task: SamirBoulema.Vsix-Tools.Vsix-Tools-Update-Version.VsixToolsUpdateVersion@1
     displayName: 'Set Vsix Version'
     inputs:
-      FileName: src/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
+      FileName: src/VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
       VersionNumber: '$(build.buildnumber)'
 
   - task: bleddynrichards.Assembly-Info-Task.Assembly-Info-NetCore.Assembly-Info-NetCore@2
@@ -82,7 +82,7 @@ jobs:
     continueOnError: true
 
   - powershell: 'mv ApiClientCodeGenerator.vsix ApiClientCodeGenerator-$(build.buildnumber).vsix'
-    workingDirectory: 'src\ApiClientCodeGen.VSIX\bin\Release'
+    workingDirectory: 'src\VSIX\ApiClientCodeGen.VSIX\bin\Release'
     displayName: 'PowerShell Script'
 
   - task: CopyFiles@2
