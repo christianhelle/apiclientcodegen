@@ -12,7 +12,7 @@ release: restore-packages
 	/Applications/Visual\ Studio.app/Contents/MacOS/vstool build --configuration:Release Mac.sln
 
 package:
-	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack ./ApiClientCodeGen.VSMac/bin/Release/**/ApiClientCodeGen.VSMac.dll
+	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack ./VSMac/ApiClientCodeGen.VSMac/bin/Release/**/ApiClientCodeGen.VSMac.dll
 
 publish:
 	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup rep-build .
