@@ -107,11 +107,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj">
+    <ProjectReference Include="..\..\Core\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj">
       <Project>{24639115-9e66-4dc5-be93-9e72fbe5ec5f}</Project>
       <Name>ApiClientCodeGen.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ApiClientCodeGen.Tests.Common\ApiClientCodeGen.Tests.Common.csproj">
+    <ProjectReference Include="..\..\Core\ApiClientCodeGen.Tests.Common\ApiClientCodeGen.Tests.Common.csproj">
       <Project>{e153aae7-3b06-4804-9d4e-39865b7d27c3}</Project>
       <Name>ApiClientCodeGen.Tests.Common</Name>
     </ProjectReference>
