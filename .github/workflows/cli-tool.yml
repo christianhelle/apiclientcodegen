@@ -37,8 +37,7 @@ jobs:
         dotnet-version: 2.1.607
 
     - name: Build with dotnet
-      run: dotnet build Rapicgen.sln
-      working-directory: src
+      run: dotnet build src\CLI\ApiClientCodeGen.CLI\ApiClientCodeGen.CLI.csproj
 
     - name: Core test project
       run: dotnet test src\Core\ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj
