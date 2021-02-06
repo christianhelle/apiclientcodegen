@@ -119,13 +119,17 @@ function Generate-Code {
 
     switch ($Method) {
         "dotnet-run" {
-            Start-Process "dotnet" -Args "run --project $project -- $arguments" -Wait -NoNewWindow
+            $process = Start-Process "dotnet" -Args "run --project $project -- $arguments" -Wait -NoNewWindow -PassThru
             Break
         }
         "rapicgen" {
-            Start-Process "rapicgen" -Args $arguments -Wait -NoNewWindow
+            $process = Start-Process "rapicgen" -Args $arguments -Wait -NoNewWindow -PassThru
             Break
         }
+    }
+
+    if ($process.ExitCode -ne 0) {
+        throw "$_ exited with status code $($process.ExitCode)"
     }
 }
 
