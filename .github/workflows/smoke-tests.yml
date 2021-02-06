@@ -41,7 +41,7 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Download Swagger Petstore v2 OpenAPI Spec
-      run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile OpenApi.json
+      run: curl -sSL https://petstore.swagger.io/v2/swagger.json -o OpenApi.json
       working-directory: test
 
     - name: Generate code with AutoRest
@@ -164,7 +164,7 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Download Swagger Petstore v2 OpenAPI Spec
-      run: Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.yaml -OutFile OpenApi.yaml
+      run: curl -sSL https://petstore.swagger.io/v2/swagger.yaml -o OpenApi.yaml
       working-directory: test
 
     - name: Generate code with AutoRest
@@ -287,7 +287,7 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Download Swagger Petstore v3 OpenAPI Spec
-      run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.json -OutFile OpenApi.json
+      run: curl -sSL https://petstore3.swagger.io/api/v3/openapi.json -o OpenApi.json
       working-directory: test
 
     - name: Generate code with NSwag
@@ -386,7 +386,7 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Download Swagger Petstore v3 OpenAPI Spec
-      run: Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.yaml -OutFile OpenApi.yaml
+      run: curl -sSL https://petstore3.swagger.io/api/v3/openapi.yaml -o OpenApi.yaml
       working-directory: test
 
     - name: Generate code with NSwag

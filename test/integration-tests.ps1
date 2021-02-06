@@ -4,7 +4,7 @@ Write-Host "`r`nInstall .NET Core Tool`r`n"
 dotnet tool install --global rapicgen
 
 Write-Host "`r`nDownload Swagger Petstore spec`r`n"
-Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile Swagger.json
+curl -sSL https://petstore.swagger.io/v2/swagger.json -o Swagger.json
 
 Write-Host "`r`nTesting AutoRest Code Generation`r`n"
 rapicgen autorest ./Swagger.json GeneratedCode ./GeneratedCode/AutoRest/AutoRestOutput.cs --no-logging
