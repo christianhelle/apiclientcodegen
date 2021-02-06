@@ -36,10 +36,10 @@ jobs:
       working-directory: src
 
     - name: Core test project
-      run: dotnet test src\ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj
+      run: dotnet test ../src/Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj
 
     - name: Core Integration Test project
-      run: dotnet test src\ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj
+      run: dotnet test ../src/Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj
 
   vsmac:
 
@@ -59,10 +59,10 @@ jobs:
       working-directory: src
 
     - name: Core Test project
-      run: dotnet test src/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj -f netcoreapp2.1
+      run: dotnet test ../src/Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj -f netcoreapp2.1
 
     - name: Core Integration Test project
-      run: dotnet test src/ApiClientCodeGen.Core.IntegrationTests/ApiClientCodeGen.Core.IntegrationTests.csproj -f netcoreapp2.1
+      run: dotnet test ../src/Core/ApiClientCodeGen.Core.IntegrationTests/ApiClientCodeGen.Core.IntegrationTests.csproj -f netcoreapp2.1
 
   vsix:
 
