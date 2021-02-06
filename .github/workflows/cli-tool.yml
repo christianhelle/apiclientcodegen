@@ -39,3 +39,6 @@ jobs:
 
     - name: Core test project
       run: dotnet test src\Core\ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj
+
+    - name: Build .NET Tool package
+      run: dotnet pack src\CLI\ApiClientCodeGen.CLI\ApiClientCodeGen.CLI.csproj
