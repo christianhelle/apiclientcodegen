@@ -160,7 +160,7 @@ function Generate-CodeThenBuild {
         
         [Parameter(Mandatory=$false)]
         [bool]
-        $Parallel = $false
+        $Parallel = $true
     )
 
     Write-Host "`r`n$ToolName - Generate Code then Build`r`n"
