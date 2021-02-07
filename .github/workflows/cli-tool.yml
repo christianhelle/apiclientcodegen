@@ -25,7 +25,7 @@ jobs:
   
     strategy:
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -37,7 +37,8 @@ jobs:
         dotnet-version: 2.1.607
 
     - name: Build with dotnet
-      run: dotnet build src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj
+      run: dotnet build Rapicgen.sln
+      working-directory: src
 
     - name: Core test project
       run: dotnet test src/Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj
