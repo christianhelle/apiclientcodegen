@@ -62,11 +62,11 @@ function Build-GeneratedCode {
 
     if ($Parallel) {
         $argumentsList = @(
-            "build ./GeneratedCode/$ToolName/NetCore21.csproj",
-            "build ./GeneratedCode/$ToolName/NetCore31.csproj",
-            "build ./GeneratedCode/$ToolName/Net5.csproj",
-            "build ./GeneratedCode/$ToolName/Net472.csproj",
-            "build ./GeneratedCode/$ToolName/NetStandard20.csproj"
+            "build ./GeneratedCode/$ToolName/NetCore21/NetCore21.csproj",
+            "build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj",
+            "build ./GeneratedCode/$ToolName/Net5/Net5.csproj",
+            "build ./GeneratedCode/$ToolName/Net472/Net472.csproj",
+            "build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj"
         )
         
         $processes = ($argumentsList | ForEach-Object {
@@ -75,11 +75,11 @@ function Build-GeneratedCode {
         $processes | Wait-Process
     }
     else {
-        dotnet build ./GeneratedCode/$ToolName/NetCore21.csproj; ThrowOnNativeFailure
-        dotnet build ./GeneratedCode/$ToolName/NetCore31.csproj; ThrowOnNativeFailure
-        dotnet build ./GeneratedCode/$ToolName/Net5.csproj; ThrowOnNativeFailure
-        dotnet build ./GeneratedCode/$ToolName/Net472.csproj; ThrowOnNativeFailure
-        dotnet build ./GeneratedCode/$ToolName/NetStandard20.csproj; ThrowOnNativeFailure
+        dotnet build ./GeneratedCode/$ToolName/NetCore21/NetCore21.csproj; ThrowOnNativeFailure
+        dotnet build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj; ThrowOnNativeFailure
+        dotnet build ./GeneratedCode/$ToolName/Net5/Net5.csproj; ThrowOnNativeFailure
+        dotnet build ./GeneratedCode/$ToolName/Net472/Net472.csproj; ThrowOnNativeFailure
+        dotnet build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
     }
 }
 
@@ -131,6 +131,13 @@ function Generate-Code {
     if ($process.ExitCode -ne 0) {
         throw "$_ exited with status code $($process.ExitCode)"
     }
+
+    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net5/Output.cs" -Force
+    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net472/Output.cs" -Force
+    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/NetCore21/Output.cs" -Force
+    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/NetCore31/Output.cs" -Force
+    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/NetStandard20/Output.cs" -Force
+    Remove-Item "GeneratedCode/$ToolName/Output.cs" -Force
 }
 
 function Generate-CodeThenBuild {
