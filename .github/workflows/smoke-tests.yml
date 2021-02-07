@@ -52,23 +52,23 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/AutoRest/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net5.csproj
+      run: dotnet build ./GeneratedCode/AutoRest/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net472.csproj
+      run: dotnet build ./GeneratedCode/AutoRest/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/AutoRest/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with NSwag
@@ -76,23 +76,23 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/NSwag/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/NSwag/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/Net5.csproj
+      run: dotnet build ./GeneratedCode/NSwag/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/Net472.csproj
+      run: dotnet build ./GeneratedCode/NSwag/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/NSwag/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
@@ -100,23 +100,23 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
@@ -124,23 +124,23 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20/NetStandard20.csproj
       working-directory: test
 
   test-petstore-v2-yaml:
@@ -178,23 +178,23 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/AutoRest/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net5.csproj
+      run: dotnet build ./GeneratedCode/AutoRest/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net472.csproj
+      run: dotnet build ./GeneratedCode/AutoRest/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/AutoRest/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with NSwag
@@ -202,23 +202,23 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/NSwag/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/NSwag/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/Net5.csproj
+      run: dotnet build ./GeneratedCode/NSwag/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/Net472.csproj
+      run: dotnet build ./GeneratedCode/NSwag/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/NSwag/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
@@ -226,23 +226,23 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
@@ -250,23 +250,23 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20/NetStandard20.csproj
       working-directory: test
 
   test-petstore-v3-json:
@@ -304,23 +304,23 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/NSwag/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/NSwag/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/Net5.csproj
+      run: dotnet build ./GeneratedCode/NSwag/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/Net472.csproj
+      run: dotnet build ./GeneratedCode/NSwag/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/NSwag/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
@@ -328,23 +328,23 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
@@ -352,23 +352,23 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20/NetStandard20.csproj
       working-directory: test
 
   test-petstore-v3-yaml:
@@ -406,23 +406,23 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/NSwag/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/NSwag/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/Net5.csproj
+      run: dotnet build ./GeneratedCode/NSwag/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/Net472.csproj
+      run: dotnet build ./GeneratedCode/NSwag/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/NSwag/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
@@ -430,23 +430,23 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
@@ -454,21 +454,21 @@ jobs:
       working-directory: test
 
     - name: Build .NET Core 2.1 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20/NetStandard20.csproj
       working-directory: test
