@@ -1,5 +1,5 @@
 . .\utilities.ps1
-Install-DotNetRuntimes
+# Install-DotNetRuntimes
 Install-Rapicgen
 
 ############################
