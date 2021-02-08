@@ -8,12 +8,7 @@ Install-Rapicgen
 
 Remove-Item ./**/*Output.cs
 Download-SwaggerPetstore -Version "v2" -Format "json"
-
-Generate-CodeThenBuild -ToolName "AutoRest" -Format "json" -Method "rapicgen"
-Generate-CodeThenBuild -ToolName "NSwag" -Format "json" -Method "rapicgen"
-Generate-CodeThenBuild -ToolName "SwaggerCodegen" -Format "json" -Method "rapicgen"
-Generate-CodeThenBuild -ToolName "OpenApiGenerator" -Format "json" -Method "rapicgen"
-
+Generate-CodeThenBuild -ToolName "All" -Format "json" -Method "rapicgen"
 Remove-Item Swagger.*
 Remove-Item ./**/*Output.cs
 
@@ -23,12 +18,7 @@ Remove-Item ./**/*Output.cs
 
 Remove-Item ./**/*Output.cs
 Download-SwaggerPetstore -Version "v2" -Format "yaml"
-
-Generate-CodeThenBuild -ToolName "AutoRest" -Format "yaml" -Method "rapicgen"
-Generate-CodeThenBuild -ToolName "NSwag" -Format "yaml" -Method "rapicgen"
-Generate-CodeThenBuild -ToolName "SwaggerCodegen" -Format "yaml" -Method "rapicgen"
-Generate-CodeThenBuild -ToolName "OpenApiGenerator" -Format "yaml" -Method "rapicgen"
-
+Generate-CodeThenBuild -ToolName "All" -Format "yaml" -Method "rapicgen"
 Remove-Item Swagger.*
 Remove-Item ./**/*Output.cs
 
@@ -38,7 +28,6 @@ Remove-Item ./**/*Output.cs
 
 Remove-Item ./**/*Output.cs
 Download-SwaggerPetstore -Version "v3" -Format "json"
-
 Generate-CodeThenBuild -ToolName "NSwag" -Format "json" -Method "rapicgen"
 Generate-CodeThenBuild -ToolName "SwaggerCodegen" -Format "json" -Method "rapicgen"
 Generate-CodeThenBuild -ToolName "OpenApiGenerator" -Format "json" -Method "rapicgen"
@@ -52,11 +41,9 @@ Remove-Item ./**/*Output.cs
 
 Remove-Item ./**/*Output.cs
 Download-SwaggerPetstore -Version "v3" -Format "yaml"
-
 Generate-CodeThenBuild -ToolName "NSwag" -Format "yaml" -Method "rapicgen"
 Generate-CodeThenBuild -ToolName "SwaggerCodegen" -Format "yaml" -Method "rapicgen"
 Generate-CodeThenBuild -ToolName "OpenApiGenerator" -Format "yaml" -Method "rapicgen"
-
 Remove-Item Swagger.*
 Remove-Item ./**/*Output.cs
 
