@@ -3,6 +3,7 @@ name: VS Mac
 on:
   push:
     paths-ignore:
+      - '.github/workflows/**'
       - 'docs/**'
       - 'test/**'
       - 'build/**'

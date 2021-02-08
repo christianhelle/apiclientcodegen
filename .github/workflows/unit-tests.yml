@@ -3,6 +3,7 @@ name: Unit Tests
 on:
   push:
     paths-ignore:
+      - '.github/workflows/**'
       - 'docs/**'
       - 'test/**'
       - 'build/**'
