@@ -3,6 +3,8 @@ name: Smoke Tests
 on:
   push:
     paths-ignore:
+      - '.github/workflows/**'
+      - '!.github/workflows/smoke-tests.yml'
       - 'docs/**'
       - 'build/**'
       - 'images/**'
