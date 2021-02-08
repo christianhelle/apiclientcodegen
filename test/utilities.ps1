@@ -62,11 +62,14 @@ function Build-GeneratedCode {
 
     if ($Parallel) {
         $argumentsList = @(
+            "build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj",
             "build ./GeneratedCode/$ToolName/NetCore21/NetCore21.csproj",
             "build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj",
             "build ./GeneratedCode/$ToolName/Net5/Net5.csproj",
+            "build ./GeneratedCode/$ToolName/Net48/Net48.csproj",
             "build ./GeneratedCode/$ToolName/Net472/Net472.csproj",
-            "build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj"
+            "build ./GeneratedCode/$ToolName/Net462/Net462.csproj",
+            "build ./GeneratedCode/$ToolName/Net452/Net452.csproj"
         )
         
         $processes = ($argumentsList | ForEach-Object {
@@ -80,11 +83,14 @@ function Build-GeneratedCode {
         }
     }
     else {
+        dotnet build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
         dotnet build ./GeneratedCode/$ToolName/NetCore21/NetCore21.csproj; ThrowOnNativeFailure
         dotnet build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj; ThrowOnNativeFailure
         dotnet build ./GeneratedCode/$ToolName/Net5/Net5.csproj; ThrowOnNativeFailure
+        dotnet build ./GeneratedCode/$ToolName/Net48/Net48.csproj; ThrowOnNativeFailure
         dotnet build ./GeneratedCode/$ToolName/Net472/Net472.csproj; ThrowOnNativeFailure
-        dotnet build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
+        dotnet build ./GeneratedCode/$ToolName/Net462/Net462.csproj; ThrowOnNativeFailure
+        dotnet build ./GeneratedCode/$ToolName/Net452/Net452.csproj; ThrowOnNativeFailure
     }
 }
 
