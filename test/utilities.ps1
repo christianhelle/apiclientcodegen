@@ -73,6 +73,11 @@ function Build-GeneratedCode {
             Start-Process "dotnet" -Args $PSItem -NoNewWindow -PassThru
         })
         $processes | Wait-Process
+        $processes | ForEach-Object {
+            if ($_.ExitCode -ne 0) {
+                throw "Build Failed!"
+            }
+        }
     }
     else {
         dotnet build ./GeneratedCode/$ToolName/NetCore21/NetCore21.csproj; ThrowOnNativeFailure
