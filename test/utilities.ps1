@@ -149,7 +149,7 @@ function Generate-CodeThenBuild {
     
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
+        [ValidateSet("All", "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
         [string]
         $ToolName,
 
@@ -168,7 +168,13 @@ function Generate-CodeThenBuild {
         $Parallel = $true
     )
 
-    Write-Host "`r`n$ToolName - Generate Code then Build`r`n"
-    Generate-Code -ToolName $ToolName -Format $Format -Method $Method
-    Build-GeneratedCode -ToolName $ToolName -Parallel $Parallel
+    if ($ToolName -eq "All") {
+        "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+            Generate-CodeThenBuild -ToolName $_ -Format $Format -Method $Method -Parallel $Parallel
+        }
+    } else {
+        Write-Host "`r`n$ToolName - Generate Code then Build`r`n"
+        Generate-Code -ToolName $ToolName -Format $Format -Method $Method
+        Build-GeneratedCode -ToolName $ToolName -Parallel $Parallel
+    }
 }
