@@ -63,8 +63,20 @@ jobs:
       run: dotnet build ./GeneratedCode/AutoRest/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net452/Net452.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 AutoRest generated code
@@ -87,8 +99,20 @@ jobs:
       run: dotnet build ./GeneratedCode/NSwag/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net452/Net452.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 NSwag generated code
@@ -111,8 +135,24 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 Swagger Codegen CLI generated code
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net452/Net452.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
@@ -135,8 +175,20 @@ jobs:
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net452/Net452.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 OpenAPI Generator generated code
@@ -189,8 +241,20 @@ jobs:
       run: dotnet build ./GeneratedCode/AutoRest/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net452/Net452.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 AutoRest generated code
@@ -213,8 +277,20 @@ jobs:
       run: dotnet build ./GeneratedCode/NSwag/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net452/Net452.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 NSwag generated code
@@ -237,8 +313,24 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 Swagger Codegen CLI generated code
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net452/Net452.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
@@ -261,8 +353,20 @@ jobs:
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net452/Net452.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 OpenAPI Generator generated code
@@ -315,8 +419,20 @@ jobs:
       run: dotnet build ./GeneratedCode/NSwag/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net452/Net452.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 NSwag generated code
@@ -339,8 +455,24 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 Swagger Codegen CLI generated code
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net452/Net452.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
@@ -363,8 +495,20 @@ jobs:
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net452/Net452.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 OpenAPI Generator generated code
@@ -417,8 +561,20 @@ jobs:
       run: dotnet build ./GeneratedCode/NSwag/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net452/Net452.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 NSwag generated code
@@ -441,8 +597,24 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 Swagger Codegen CLI generated code
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net452/Net452.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
@@ -465,8 +637,20 @@ jobs:
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5/Net5.csproj
       working-directory: test
 
+    - name: Build .NET 4.8 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net48/Net48.csproj
+      working-directory: test
+
     - name: Build .NET 4.7.2 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net452/Net452.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 OpenAPI Generator generated code
