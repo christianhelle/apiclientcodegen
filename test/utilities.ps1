@@ -51,7 +51,7 @@ function Build-GeneratedCode {
     
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
+        [ValidateSet("All", "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
         [string]
         $ToolName,
         
@@ -61,16 +61,30 @@ function Build-GeneratedCode {
     )
 
     if ($Parallel) {
-        $argumentsList = @(
-            "build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj",
-            "build ./GeneratedCode/$ToolName/NetCore21/NetCore21.csproj",
-            "build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj",
-            "build ./GeneratedCode/$ToolName/Net5/Net5.csproj",
-            "build ./GeneratedCode/$ToolName/Net48/Net48.csproj",
-            "build ./GeneratedCode/$ToolName/Net472/Net472.csproj",
-            "build ./GeneratedCode/$ToolName/Net462/Net462.csproj",
-            "build ./GeneratedCode/$ToolName/Net452/Net452.csproj"
-        )
+        $argumentsList = @()
+        if ($ToolName -eq "All") {
+            "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+                $argumentsList += "build ./GeneratedCode/$_/NetStandard20/NetStandard20.csproj"
+                $argumentsList += "build ./GeneratedCode/$_/NetCore21/NetCore21.csproj"
+                $argumentsList += "build ./GeneratedCode/$_/NetCore31/NetCore31.csproj"
+                $argumentsList += "build ./GeneratedCode/$_/Net5/Net5.csproj"
+                $argumentsList += "build ./GeneratedCode/$_/Net48/Net48.csproj"
+                $argumentsList += "build ./GeneratedCode/$_/Net472/Net472.csproj"
+                $argumentsList += "build ./GeneratedCode/$_/Net462/Net462.csproj"
+                $argumentsList += "build ./GeneratedCode/$_/Net452/Net452.csproj"
+            }
+        } else {
+            $argumentsList = @(
+                "build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj",
+                "build ./GeneratedCode/$ToolName/NetCore21/NetCore21.csproj",
+                "build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj",
+                "build ./GeneratedCode/$ToolName/Net5/Net5.csproj",
+                "build ./GeneratedCode/$ToolName/Net48/Net48.csproj",
+                "build ./GeneratedCode/$ToolName/Net472/Net472.csproj",
+                "build ./GeneratedCode/$ToolName/Net462/Net462.csproj",
+                "build ./GeneratedCode/$ToolName/Net452/Net452.csproj"
+            )
+        }
         
         $processes = ($argumentsList | ForEach-Object {
             Start-Process "dotnet" -Args $PSItem -NoNewWindow -PassThru
@@ -81,16 +95,30 @@ function Build-GeneratedCode {
                 throw "Build Failed!"
             }
         }
-    }
-    else {
-        dotnet build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
-        dotnet build ./GeneratedCode/$ToolName/NetCore21/NetCore21.csproj; ThrowOnNativeFailure
-        dotnet build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj; ThrowOnNativeFailure
-        dotnet build ./GeneratedCode/$ToolName/Net5/Net5.csproj; ThrowOnNativeFailure
-        dotnet build ./GeneratedCode/$ToolName/Net48/Net48.csproj; ThrowOnNativeFailure
-        dotnet build ./GeneratedCode/$ToolName/Net472/Net472.csproj; ThrowOnNativeFailure
-        dotnet build ./GeneratedCode/$ToolName/Net462/Net462.csproj; ThrowOnNativeFailure
-        dotnet build ./GeneratedCode/$ToolName/Net452/Net452.csproj; ThrowOnNativeFailure
+    } else {
+        if ($ToolName -eq "All") {
+            "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+                Write-Host "`r`nBuilding $_`r`n"
+                dotnet build ./GeneratedCode/$_/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$_/NetCore21/NetCore21.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$_/NetCore31/NetCore31.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$_/Net5/Net5.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$_/Net48/Net48.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$_/Net472/Net472.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$_/Net462/Net462.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$_/Net452/Net452.csproj; ThrowOnNativeFailure
+            }
+        } else {
+            Write-Host "`r`nBuilding $ToolName`r`n"
+            dotnet build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
+            dotnet build ./GeneratedCode/$ToolName/NetCore21/NetCore21.csproj; ThrowOnNativeFailure
+            dotnet build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj; ThrowOnNativeFailure
+            dotnet build ./GeneratedCode/$ToolName/Net5/Net5.csproj; ThrowOnNativeFailure
+            dotnet build ./GeneratedCode/$ToolName/Net48/Net48.csproj; ThrowOnNativeFailure
+            dotnet build ./GeneratedCode/$ToolName/Net472/Net472.csproj; ThrowOnNativeFailure
+            dotnet build ./GeneratedCode/$ToolName/Net462/Net462.csproj; ThrowOnNativeFailure
+            dotnet build ./GeneratedCode/$ToolName/Net452/Net452.csproj; ThrowOnNativeFailure
+        }
     }
 }
 
@@ -144,11 +172,78 @@ function Generate-Code {
     }
 
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net5/Output.cs" -Force
+    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net48/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net472/Output.cs" -Force
+    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net462/Output.cs" -Force
+    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net452/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/NetCore21/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/NetCore31/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/NetStandard20/Output.cs" -Force
     Remove-Item "GeneratedCode/$ToolName/Output.cs" -Force
+}
+
+function Generate-CodeParallel {
+    
+    param (
+        [Parameter(Mandatory=$true)]
+        [ValidateSet("json", "yaml")]
+        [string]
+        $Format,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateSet("dotnet-run", "rapicgen")]
+        [string]
+        $Method
+    )
+
+    $processes = @()
+    "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+        switch ($_) {
+            "SwaggerCodegen" {
+                $command = "swagger"
+            }
+            "OpenApiGenerator" { 
+                $command = "openapi"
+            }
+            Default {
+                $command = $_.ToLower()
+            }
+        }
+
+        $project = "../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj"
+        $arguments = "$command ./Swagger.$Format GeneratedCode ./GeneratedCode/$_/Output.cs --no-logging"
+
+        switch ($Method) {
+            "dotnet-run" {
+                $processes += Start-Process "dotnet" -Args "run --project $project -- $arguments" -NoNewWindow -PassThru
+                Break
+            }
+            "rapicgen" {
+                $processes += Start-Process "rapicgen" -Args $arguments -NoNewWindow -PassThru
+                Break
+            }
+        }
+    }
+
+    foreach ($process in $processes) {
+        $process.WaitForExit()
+    }
+
+    "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+        if (Test-Path "GeneratedCode/$_/Output.cs" -PathType Leaf) {
+            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net5/Output.cs" -Force
+            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net48/Output.cs" -Force
+            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net472/Output.cs" -Force
+            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net462/Output.cs" -Force
+            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net452/Output.cs" -Force
+            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/NetCore21/Output.cs" -Force
+            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/NetCore31/Output.cs" -Force
+            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/NetStandard20/Output.cs" -Force
+            Remove-Item "GeneratedCode/$_/Output.cs" -Force
+        } else {            
+            throw "$_ code generation failed"
+        }
+    }
 }
 
 function Generate-CodeThenBuild {
@@ -171,12 +266,17 @@ function Generate-CodeThenBuild {
         
         [Parameter(Mandatory=$false)]
         [bool]
-        $Parallel = $true
+        $Parallel = $false
     )
 
     if ($ToolName -eq "All") {
-        "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
-            Generate-CodeThenBuild -ToolName $_ -Format $Format -Method $Method -Parallel $Parallel
+        if ($Parallel) {
+            Generate-CodeParallel -Format $Format -Method $Method
+            Build-GeneratedCode -ToolName $ToolName -Parallel $Parallel
+        } else {
+            "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+                Generate-CodeThenBuild -ToolName $_ -Format $Format -Method $Method -Parallel $Parallel
+            }
         }
     } else {
         Write-Host "`r`n$ToolName - Generate Code then Build`r`n"
