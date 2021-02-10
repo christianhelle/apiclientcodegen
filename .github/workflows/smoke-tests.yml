@@ -49,42 +49,6 @@ jobs:
       run: curl -sSL https://petstore.swagger.io/v2/swagger.json -o OpenApi.json
       working-directory: test
 
-    - name: Generate code with AutoRest
-      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.json GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
-      working-directory: test
-
-    - name: Build .NET Core 2.1 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
-      working-directory: test
-
-    - name: Build .NET Core 3.1 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/NetCore31/NetCore31.csproj
-      working-directory: test
-
-    - name: Build .NET 5 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net5/Net5.csproj
-      working-directory: test
-
-    - name: Build .NET 4.8 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net48/Net48.csproj
-      working-directory: test
-
-    - name: Build .NET 4.7.2 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net472/Net472.csproj
-      working-directory: test
-
-    - name: Build .NET 4.6.2 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net462/Net462.csproj
-      working-directory: test
-
-    - name: Build .NET 4.5.2 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net452/Net452.csproj
-      working-directory: test
-
-    - name: Build .NET Standard 2.0 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/NetStandard20/NetStandard20.csproj
-      working-directory: test
-
     - name: Generate code with NSwag
       run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
       working-directory: test
@@ -197,38 +161,8 @@ jobs:
       run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20/NetStandard20.csproj
       working-directory: test
 
-  test-petstore-v2-yaml:
-
-    name: Swagger Petstore v2 (YAML)
-    strategy:
-      matrix:
-        os: [macos-11.0, macos-10.15, windows-latest]
-    runs-on: ${{ matrix.os }}
-
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Setup .NET Core 2.1
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 2.1
-    
-    - name: Setup .NET Core 3.1
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1
-
-    - name: Setup .NET 5.0
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '5.0.x'
-
-    - name: Download Swagger Petstore v2 OpenAPI Spec
-      run: curl -sSL https://petstore.swagger.io/v2/swagger.yaml -o OpenApi.yaml
-      working-directory: test
-
     - name: Generate code with AutoRest
-      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.yaml GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
+      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.json GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 AutoRest generated code
@@ -261,6 +195,36 @@ jobs:
 
     - name: Build .NET Standard 2.0 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest/NetStandard20/NetStandard20.csproj
+      working-directory: test
+
+  test-petstore-v2-yaml:
+
+    name: Swagger Petstore v2 (YAML)
+    strategy:
+      matrix:
+        os: [macos-11.0, macos-10.15, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET Core 2.1
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1
+    
+    - name: Setup .NET Core 3.1
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1
+
+    - name: Setup .NET 5.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
+
+    - name: Download Swagger Petstore v2 OpenAPI Spec
+      run: curl -sSL https://petstore.swagger.io/v2/swagger.yaml -o OpenApi.yaml
       working-directory: test
 
     - name: Generate code with NSwag
@@ -373,6 +337,42 @@ jobs:
 
     - name: Build .NET Standard 2.0 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20/NetStandard20.csproj
+      working-directory: test
+
+    - name: Generate code with AutoRest
+      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.yaml GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
+      working-directory: test
+
+    - name: Build .NET Core 2.1 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
+      working-directory: test
+
+    - name: Build .NET Core 3.1 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/NetCore31/NetCore31.csproj
+      working-directory: test
+
+    - name: Build .NET 5 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net5/Net5.csproj
+      working-directory: test
+
+    - name: Build .NET 4.8 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net48/Net48.csproj
+      working-directory: test
+
+    - name: Build .NET 4.7.2 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net452/Net452.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/NetStandard20/NetStandard20.csproj
       working-directory: test
 
   test-petstore-v3-json:
