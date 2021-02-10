@@ -6,7 +6,6 @@ param (
 
 . .\utilities.ps1
 # Install-DotNetRuntimes
-npm uninstall -g autorest
 
 ############################
 ## OpenAPI Spec v2 (JSON) ##

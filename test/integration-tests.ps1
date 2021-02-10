@@ -7,7 +7,6 @@ param (
 . .\utilities.ps1
 # Install-DotNetRuntimes
 Install-Rapicgen
-npm uninstall -g autorest
 
 ############################
 ## OpenAPI Spec v2 (JSON) ##
