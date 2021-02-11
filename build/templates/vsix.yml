@@ -69,8 +69,7 @@ jobs:
       configuration: 'Release'
       diagnosticsEnabled: true
       rerunFailedTests: true
-      rerunMaxAttempts: 10
-      rerunFailedThreshold: 30
+      rerunMaxAttempts: 3
     continueOnError: true
 
   - task: PublishSymbols@2
@@ -83,7 +82,7 @@ jobs:
 
   - powershell: 'mv ApiClientCodeGenerator.vsix ApiClientCodeGenerator-$(build.buildnumber).vsix'
     workingDirectory: 'src\ApiClientCodeGen.VSIX\bin\Release'
-    displayName: 'PowerShell Script'
+    displayName: 'Rename VSIX file'
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
