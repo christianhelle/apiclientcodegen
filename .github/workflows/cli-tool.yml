@@ -3,15 +3,16 @@ name: CLI Tool
 on:
   push:
     paths-ignore:
+      - '.github/workflows/**'
       - 'docs/**'
       - 'test/**'
       - 'build/**'
       - 'images/**'
       - 'README.md'
-      - 'src/ApiClientCodeGen.VSIX*/**'
-      - 'src/ApiClientCodeGen.Tests/**'
-      - 'src/ApiClientCodeGen.VSMac*/**'
-      - 'src/ApiClientCodeGen.IntegrationTests/**'
+      - 'src/VSIX/ApiClientCodeGen.VSIX*/**'
+      - 'src/VSIX/ApiClientCodeGen.Tests/**'
+      - 'src/VSMac/ApiClientCodeGen.VSMac*/**'
+      - 'src/VSIX/ApiClientCodeGen.IntegrationTests/**'
     branches:
       - '*'
   pull_request:
@@ -23,7 +24,10 @@ on:
 jobs:
   build:
   
-    runs-on: windows-2019
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
@@ -38,4 +42,8 @@ jobs:
       working-directory: src
 
     - name: Core test project
-      run: dotnet test src\ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj
+      run: dotnet test src/Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj
+      continue-on-error: true
+
+    - name: Build .NET Tool package
+      run: dotnet pack src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj

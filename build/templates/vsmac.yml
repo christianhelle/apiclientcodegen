@@ -9,8 +9,8 @@ jobs:
   
   - bash: |
       cd $(system.defaultworkingdirectory)/src
-      sed -i -e 's/1.0/$(build.buildnumber)/g' ApiClientCodeGen.VSMac/Properties/AddinInfo.cs
-      cat ApiClientCodeGen.VSMac/Properties/AddinInfo.cs
+      sed -i -e 's/1.0/$(build.buildnumber)/g' VSMac/ApiClientCodeGen.VSMac/Properties/AddinInfo.cs
+      cat VSMac/ApiClientCodeGen.VSMac/Properties/AddinInfo.cs
     displayName: 'Update version information'
   
   - bash: |
@@ -26,7 +26,7 @@ jobs:
     displayName: 'Create .mpack file'
   
   - bash: |
-      cd $(system.defaultworkingdirectory)/src/ApiClientCodeGen.VSMac/bin/Release/net48/
+      cd $(system.defaultworkingdirectory)/src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net48/
       zip -r VSMac-Binaries.zip .
     displayName: 'Archive Binaries'
 

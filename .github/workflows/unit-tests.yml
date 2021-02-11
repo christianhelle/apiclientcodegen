@@ -3,6 +3,7 @@ name: Unit Tests
 on:
   push:
     paths-ignore:
+      - '.github/workflows/**'
       - 'docs/**'
       - 'test/**'
       - 'build/**'
@@ -36,15 +37,19 @@ jobs:
       working-directory: src
 
     - name: Core test project
-      run: dotnet test src\ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj
+      run: dotnet test src/Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj
 
     - name: Core Integration Test project
-      run: dotnet test src\ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj
+      run: dotnet test src/Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj
 
   vsmac:
 
     name: VS Mac Extension
-    runs-on: macos-11.0
+
+    strategy:
+      matrix:
+        os: [macos-11.0, macos-10.15]
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v2
@@ -59,10 +64,10 @@ jobs:
       working-directory: src
 
     - name: Core Test project
-      run: dotnet test src/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj -f netcoreapp2.1
+      run: dotnet test src/Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj -f netcoreapp2.1
 
     - name: Core Integration Test project
-      run: dotnet test src/ApiClientCodeGen.Core.IntegrationTests/ApiClientCodeGen.Core.IntegrationTests.csproj -f netcoreapp2.1
+      run: dotnet test src/Core/ApiClientCodeGen.Core.IntegrationTests/ApiClientCodeGen.Core.IntegrationTests.csproj -f netcoreapp2.1
 
   vsix:
 

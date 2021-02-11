@@ -1,28 +1,56 @@
-$ErrorActionPreference = "Stop"
+param (
+    [Parameter(Mandatory=$false)]
+    [bool]
+    $Parallel = $false
+)
 
-Write-Host "`r`nInstall .NET Core Tool`r`n"
-dotnet tool install --global rapicgen
+. .\utilities.ps1
+# Install-DotNetRuntimes
+Install-Rapicgen
 
-Write-Host "`r`nDownload Swagger Petstore spec`r`n"
-Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile Swagger.json
+############################
+## OpenAPI Spec v2 (JSON) ##
+############################
 
-Write-Host "`r`nTesting AutoRest Code Generation`r`n"
-rapicgen autorest ./Swagger.json GeneratedCode ./GeneratedCode/AutoRest/AutoRestOutput.cs --no-logging
-dotnet build ./GeneratedCode/AutoRest/Project.csproj
+Remove-Item ./**/*Output.cs
+Download-SwaggerPetstore -Version "v2" -Format "json"
+Generate-CodeThenBuild -ToolName "All" -Format "json" -Method "rapicgen" -Parallel $Parallel
+Remove-Item Swagger.*
+Remove-Item ./**/*Output.cs
 
-Write-Host "`r`nTesting NSwag Code Generation`r`n"
-rapicgen nswag ./Swagger.json GeneratedCode ./GeneratedCode/NSwag/NSwagOutput.cs --no-logging
-dotnet build ./GeneratedCode/NSwag/Project.csproj
+############################
+## OpenAPI Spec v2 (YAML) ##
+############################
 
-Write-Host "`r`nTesting Swagger Code Generation`r`n"
-rapicgen swagger ./Swagger.json GeneratedCode ./GeneratedCode/SwaggerCodegen/SwaggerOutput.cs --no-logging
-dotnet build ./GeneratedCode/SwaggerCodegen/Project.csproj
+Remove-Item ./**/*Output.cs
+Download-SwaggerPetstore -Version "v2" -Format "yaml"
+Generate-CodeThenBuild -ToolName "All" -Format "yaml" -Method "rapicgen" -Parallel $Parallel
+Remove-Item Swagger.*
+Remove-Item ./**/*Output.cs
 
-Write-Host "`r`nTesting Open API Code Generation`r`n"
-rapicgen openapi ./Swagger.json GeneratedCode ./GeneratedCode/OpenApiGenerator/OpenApiOutput.cs --no-logging
-dotnet build ./GeneratedCode/OpenApiGenerator/Project.csproj
+############################
+## OpenAPI Spec v3 (JSON) ##
+############################
 
-Remove-Item Swagger.json
-dotnet tool uninstall --global rapicgen
+Remove-Item ./**/*Output.cs
+Download-SwaggerPetstore -Version "v3" -Format "json"
+Generate-CodeThenBuild -ToolName "NSwag" -Format "json" -Method "rapicgen" -Parallel $Parallel
+Generate-CodeThenBuild -ToolName "SwaggerCodegen" -Format "json" -Method "rapicgen" -Parallel $Parallel
+Generate-CodeThenBuild -ToolName "OpenApiGenerator" -Format "json" -Method "rapicgen" -Parallel $Parallel
+
+Remove-Item Swagger.*
+Remove-Item ./**/*Output.cs
+
+############################
+## OpenAPI Spec v3 (YAML) ##
+############################
+
+Remove-Item ./**/*Output.cs
+Download-SwaggerPetstore -Version "v3" -Format "yaml"
+Generate-CodeThenBuild -ToolName "NSwag" -Format "yaml" -Method "rapicgen" -Parallel $Parallel
+Generate-CodeThenBuild -ToolName "SwaggerCodegen" -Format "yaml" -Method "rapicgen" -Parallel $Parallel
+Generate-CodeThenBuild -ToolName "OpenApiGenerator" -Format "yaml" -Method "rapicgen" -Parallel $Parallel
+Remove-Item Swagger.*
+Remove-Item ./**/*Output.cs
 
 Write-Host "`r`n"

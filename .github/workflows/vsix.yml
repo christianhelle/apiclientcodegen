@@ -3,13 +3,14 @@ name: VSIX
 on:
   push:
     paths-ignore:
+      - '.github/workflows/**'
       - 'docs/**'
       - 'test/**'
       - 'build/**'
       - 'images/**'
       - 'README.md'
-      - 'src/ApiClientCodeGen.CLI*/**'
-      - 'src/ApiClientCodeGen.VSMac*/**'
+      - 'src/CLI/ApiClientCodeGen.CLI*/**'
+      - 'src/VSMac/ApiClientCodeGen.VSMac*/**'
     branches:
       - '*'
   pull_request:
@@ -34,7 +35,7 @@ jobs:
       working-directory: src
 
     - name: Move build output
-      run: mv ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-1.0.${{ github.run_number }}.vsix
+      run: mv VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-1.0.${{ github.run_number }}.vsix
       working-directory: src
 
     - name: Publish artifacts
