@@ -47,6 +47,7 @@ jobs:
     - name: Generate code with AutoRest
       run: rapicgen -v autorest ./OpenApi.json GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
       working-directory: test
+      continue-on-error: true
 
     - name: Build .NET Core 2.1 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
@@ -228,6 +229,7 @@ jobs:
     - name: Generate code with AutoRest
       run: rapicgen -v autorest ./OpenApi.yaml GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
       working-directory: test
+      continue-on-error: true
 
     - name: Build .NET Core 2.1 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
