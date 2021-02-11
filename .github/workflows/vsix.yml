@@ -30,7 +30,7 @@ jobs:
     - run: npm install -g nswag
 
     - name: Cake Build
-      run: powershell ./build.ps1
+      run: pwsh ./build.ps1 --target VSIX
       working-directory: src
 
     - name: Move build output
