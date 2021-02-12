@@ -154,7 +154,7 @@ function Generate-Code {
     }
 
     $project = "../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj"
-    $arguments = "$command ./Swagger.$Format GeneratedCode ./GeneratedCode/$ToolName/Output.cs --no-logging"
+    $arguments = "--verbose $command ./Swagger.$Format GeneratedCode ./GeneratedCode/$ToolName/Output.cs --no-logging"
 
     switch ($Method) {
         "dotnet-run" {
@@ -211,7 +211,7 @@ function Generate-CodeParallel {
         }
 
         $project = "../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj"
-        $arguments = "$command ./Swagger.$Format GeneratedCode ./GeneratedCode/$_/Output.cs --no-logging"
+        $arguments = "--verbose $command ./Swagger.$Format GeneratedCode ./GeneratedCode/$_/Output.cs --no-logging"
 
         switch ($Method) {
             "dotnet-run" {
