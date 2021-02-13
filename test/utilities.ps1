@@ -63,7 +63,8 @@ function Build-GeneratedCode {
     if ($Parallel) {
         $argumentsList = @()
         if ($ToolName -eq "All") {
-            "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+            # "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+            "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
                 $argumentsList += "build ./GeneratedCode/$_/NetStandard20/NetStandard20.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/NetCore21/NetCore21.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/NetCore31/NetCore31.csproj"
@@ -97,7 +98,8 @@ function Build-GeneratedCode {
         }
     } else {
         if ($ToolName -eq "All") {
-            "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+            # "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+            "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
                 Write-Host "`r`nBuilding $_`r`n"
                 dotnet build ./GeneratedCode/$_/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/NetCore21/NetCore21.csproj; ThrowOnNativeFailure
@@ -197,7 +199,8 @@ function Generate-CodeParallel {
     )
 
     $processes = @()
-    "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+    # "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+    "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
         switch ($_) {
             "SwaggerCodegen" {
                 $command = "swagger"
@@ -229,7 +232,8 @@ function Generate-CodeParallel {
         $process.WaitForExit()
     }
 
-    "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+    # "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+    "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
         if (Test-Path "GeneratedCode/$_/Output.cs" -PathType Leaf) {
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net5/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net48/Output.cs" -Force
@@ -249,10 +253,10 @@ function Generate-CodeParallel {
 function Generate-CodeThenBuild {
     
     param (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory=$false)]
         [ValidateSet("All", "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
         [string]
-        $ToolName,
+        $ToolName = "All",
 
         [Parameter(Mandatory=$true)]
         [ValidateSet("json", "yaml")]
@@ -274,7 +278,8 @@ function Generate-CodeThenBuild {
             Generate-CodeParallel -Format $Format -Method $Method
             Build-GeneratedCode -ToolName $ToolName -Parallel $Parallel
         } else {
-            "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+            # "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+            "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
                 Generate-CodeThenBuild -ToolName $_ -Format $Format -Method $Method -Parallel $Parallel
             }
         }
@@ -282,5 +287,31 @@ function Generate-CodeThenBuild {
         Write-Host "`r`n$ToolName - Generate Code then Build`r`n"
         Generate-Code -ToolName $ToolName -Format $Format -Method $Method
         Build-GeneratedCode -ToolName $ToolName -Parallel $Parallel
+    }
+}
+
+function RunTests {
+
+    param (
+        [Parameter(Mandatory=$true)]
+        [ValidateSet("dotnet-run", "rapicgen")]
+        [string]
+        $Method,
+        
+        [Parameter(Mandatory=$false)]
+        [bool]
+        $Parallel = $false
+    )
+
+    "v2", "v3" | ForEach-Object {
+        $version = $_
+        "json", "yaml" | ForEach-Object {
+            $format = $_
+            Remove-Item ./**/*Output.cs
+            Download-SwaggerPetstore -Version $version -Format $format
+            Generate-CodeThenBuild -Format $format -Method $Method -Parallel $Parallel
+            Remove-Item Swagger.*
+            Remove-Item ./**/*Output.cs
+        }
     }
 }
