@@ -2,6 +2,7 @@ jobs:
 
 - job: AllJob
   displayName: 'Build All'
+  timeoutInMinutes: 120
   pool:
     vmImage: 'windows-2019'
     demands:
