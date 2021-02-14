@@ -84,9 +84,9 @@ jobs:
         dotnet-version: 2.1.607
 
     - name: Build VSIX
-      run: powershell ./build.ps1 --target VSIX
+      run: powershell build.ps1 --target VSIX
       working-directory: src
 
     - name: Run Tests
-      run: powershell ./build.ps1 --target Run-All-Tests
+      run: powershell build.ps1 --target Run-All-Tests
       working-directory: src
