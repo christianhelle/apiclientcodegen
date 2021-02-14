@@ -2,6 +2,7 @@
 using ApiClientCodeGen.Tests.Common.Build;
 using ApiClientCodeGen.Tests.Common.Fixtures.Yaml;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
 using Moq;
 using Xunit;
@@ -18,48 +19,48 @@ namespace ApiClientCodeGen.Core.IntegrationTests.Generators.Yaml
             this.fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
         }
         
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void AutoRest_CSharp_Generated_Code_NotNullOrWhitespace()
             => fixture.Code.Should().NotBeNullOrWhiteSpace();
 
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void AutoRest_CSharp_Reports_Progres()
             => fixture.ProgressReporterMock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), 
                 Times.AtLeastOnce);
 
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void Reads_AddCredentials_From_Options() 
             => fixture.OptionsMock.Verify(c => c.AddCredentials, Times.AtLeastOnce);
 
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void Reads_ClientSideValidation_From_Options() 
             => fixture.OptionsMock.Verify(c => c.ClientSideValidation, Times.AtLeastOnce);
 
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void Reads_OverrideClientName_From_Options() 
             => fixture.OptionsMock.Verify(c => c.OverrideClientName, Times.AtLeastOnce);
 
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void Reads_SyncMethods_From_Options() 
             => fixture.OptionsMock.Verify(c => c.SyncMethods, Times.AtLeastOnce);
 
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void Reads_UseDateTimeOffset_From_Options() 
             => fixture.OptionsMock.Verify(c => c.UseDateTimeOffset, Times.AtLeastOnce);
 
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void Reads_UseInternalConstructors_From_Options() 
             => fixture.OptionsMock.Verify(c => c.UseInternalConstructors, Times.AtLeastOnce);
 
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
             => BuildHelper.BuildCSharp(
                 ProjectTypes.DotNetCoreApp,
                 fixture.Code,
                 SupportedCodeGenerator.AutoRest);
 
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
             => BuildHelper.BuildCSharp(
                 ProjectTypes.DotNetStandardLibrary,

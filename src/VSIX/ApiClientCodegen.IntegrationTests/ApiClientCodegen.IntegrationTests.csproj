@@ -53,6 +53,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
+    <Reference Include="Xunit.SkippableFact, Version=1.4.0.0, Culture=neutral, PublicKeyToken=b2b52da82b58eb73">
+      <HintPath>..\..\..\..\..\..\Users\christian\.nuget\packages\xunit.skippablefact\1.4.13\lib\netstandard2.0\Xunit.SkippableFact.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomTool\CSharpSingleFileCodeGeneratorOpenApi3Tests.cs" />
@@ -116,6 +119,9 @@
     </PackageReference>
     <PackageReference Include="xunit">
       <Version>2.4.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xunit.SkippableFact">
+      <Version>1.4.13</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
