@@ -77,11 +77,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 2.1.607
 
     - name: Build VSIX
       run: powershell ./build.ps1 --target VSIX
