@@ -249,10 +249,10 @@ function Generate-CodeParallel {
 function Generate-CodeThenBuild {
     
     param (
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory=$false)]
         [ValidateSet("All", "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
         [string]
-        $ToolName,
+        $ToolName = "All",
 
         [Parameter(Mandatory=$true)]
         [ValidateSet("json", "yaml")]
@@ -282,5 +282,31 @@ function Generate-CodeThenBuild {
         Write-Host "`r`n$ToolName - Generate Code then Build`r`n"
         Generate-Code -ToolName $ToolName -Format $Format -Method $Method
         Build-GeneratedCode -ToolName $ToolName -Parallel $Parallel
+    }
+}
+
+function RunTests {
+
+    param (
+        [Parameter(Mandatory=$true)]
+        [ValidateSet("dotnet-run", "rapicgen")]
+        [string]
+        $Method,
+        
+        [Parameter(Mandatory=$false)]
+        [bool]
+        $Parallel = $false
+    )
+
+    "v2", "v3" | ForEach-Object {
+        $version = $_
+        "json", "yaml" | ForEach-Object {
+            $format = $_
+            Remove-Item ./**/*Output.cs
+            Download-SwaggerPetstore -Version $version -Format $format
+            Generate-CodeThenBuild -Format $format -Method $Method -Parallel $Parallel
+            Remove-Item Swagger.*
+            Remove-Item ./**/*Output.cs
+        }
     }
 }

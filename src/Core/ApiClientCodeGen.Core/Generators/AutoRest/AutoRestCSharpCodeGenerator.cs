@@ -31,17 +31,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 return base.GenerateCode(pGenerateProgress);
         }
 
-        [SuppressMessage("Usage", "VSTHRD002:Avoid problematic synchronous waits", Justification = "This is code is called from an old pre-TPL interface")]
+        [SuppressMessage(
+            "Usage",
+            "VSTHRD002:Avoid problematic synchronous waits",
+            Justification = "This is code is called from an old pre-TPL interface")]
         protected override string GetArguments(string outputFile)
         {
-            var args = "--csharp " +
+            var args = "--version 2.0.4413 --csharp " +
                        $"--input-file=\"{SwaggerFile}\" " +
                        $"--output-file=\"{outputFile}\" " +
                        $"--namespace=\"{DefaultNamespace}\" ";
 
             var document = documentFactory.GetDocumentAsync(SwaggerFile).GetAwaiter().GetResult();
-            if (!string.IsNullOrEmpty(document.OpenApi) && 
-                Version.TryParse(document.OpenApi, out var openApiVersion) && 
+            if (!string.IsNullOrEmpty(document.OpenApi) &&
+                Version.TryParse(document.OpenApi, out var openApiVersion) &&
                 openApiVersion > Version.Parse("3.0.0"))
             {
                 args += "--v3 ";

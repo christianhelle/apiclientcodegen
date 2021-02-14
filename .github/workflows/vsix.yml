@@ -4,6 +4,7 @@ on:
   push:
     paths-ignore:
       - '.github/workflows/**'
+      - '!.github/workflows/vsix.yml'
       - 'docs/**'
       - 'test/**'
       - 'build/**'
@@ -31,7 +32,7 @@ jobs:
     - run: npm install -g nswag
 
     - name: Cake Build
-      run: pwsh ./build.ps1 --target VSIX
+      run: powershell ./build.ps1 --target VSIX
       working-directory: src
 
     - name: Move build output
