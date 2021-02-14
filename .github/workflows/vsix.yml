@@ -4,6 +4,7 @@ on:
   push:
     paths-ignore:
       - '.github/workflows/**'
+      - '!.github/workflows/vsix.yml'
       - 'docs/**'
       - 'test/**'
       - 'build/**'
