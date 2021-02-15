@@ -1,4 +1,5 @@
 [![Join the chat at https://gitter.im/apiclientcodegen/community](https://badges.gitter.im/apiclientcodegen/community.svg)](https://gitter.im/apiclientcodegen/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![buymeacoffee](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://www.buymeacoffee.com/christianhelle)
 
 # REST API Client Code Generator
 A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files

@@ -20,6 +20,8 @@
 [![NuGet](https://img.shields.io/nuget/v/rapicgen.svg?style=flat-square)](http://www.nuget.org/packages/rapicgen)
 [![NuGet](https://img.shields.io/nuget/dt/rapicgen.svg?style=flat-square)](http://www.nuget.org/packages/rapicgen)
 
+[![buymeacoffee](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://www.buymeacoffee.com/christianhelle)
+
 # REST API Client Code Generator
 A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files
 
@@ -292,5 +294,5 @@ rapicgen openapi Swagger.json GeneratedCode ./OpenApiOutput.cs
 
 For tips and tricks on software development, check out [my blog](https://christian-helle.blogspot.com)
 
-If you find this useful and feel a bit generous then feel free to [buy me a coffee](https://www.buymeacoffee.com/christianhelle) :)
+If you find this useful and feel a bit generous then feel free to [buy me a coffee ☕](https://www.buymeacoffee.com/christianhelle)
 
