@@ -53,7 +53,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                         continue;
 
                     var trimmedLine = sourceLine.Trim().Replace("  ", " ");
-                    var isUsingDir = trimmedLine.StartsWith(openingTag) && trimmedLine.EndsWith(";");
+                    var isUsingDir = trimmedLine.StartsWith(openingTag) &&
+                                     !trimmedLine.Contains(" var ") &&
+                                     trimmedLine.EndsWith(";");
 
                     if (!isUsingDir)
                         sb.AppendLine(sourceLine);
@@ -99,11 +101,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                 foreach (var sourceLine in sourceLines)
                 {
-                    var trimmedLine = sourceLine.Trim().Replace("  ", " ");
-                    if (!trimmedLine.StartsWith(openingTag) || !trimmedLine.EndsWith(";"))
+                    var line = sourceLine.Trim().Replace("  ", " ");
+                    if (!line.StartsWith(openingTag) || line.Contains(" var ") || !line.EndsWith(";"))
                         continue;
 
-                    var name = trimmedLine.Substring(namespaceStartIndex, trimmedLine.Length - namespaceStartIndex - 1);
+                    var name = line.Substring(namespaceStartIndex, line.Length - namespaceStartIndex - 1);
                     if (!names.Contains(name))
                         names.Add(name);
                 }
