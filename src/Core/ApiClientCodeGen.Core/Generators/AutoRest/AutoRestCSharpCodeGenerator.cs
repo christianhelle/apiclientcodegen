@@ -94,7 +94,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private string GetArguments(string outputFolder)
         {
             return AppendCommonArguments(
-                "--use:@autorest/csharp@3.0.0-beta.20210210.4 " +
+                "--use:@autorest/csharp@3.0.0-beta.20210218.1 " +
                 $"--input-file=\"{SwaggerFile}\" " +
                 $"--output-folder=\"{outputFolder}\" " +
                 $"--namespace=\"{DefaultNamespace}\" ");
