@@ -62,7 +62,7 @@ function Build-GeneratedCode {
         
         [Parameter(Mandatory=$false)]
         [bool]
-        $Parallel = $false
+        $Parallel = $true
     )
 
     if ($Parallel) {
@@ -296,7 +296,7 @@ function Generate-CodeThenBuild {
     if ($ToolName -eq "All") {
         if ($Parallel) {
             Generate-CodeParallel -Format $Format -Method $Method
-            Build-GeneratedCode -ToolName $ToolName -Parallel $Parallel
+            Build-GeneratedCode -ToolName $ToolName
         } else {
             "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
                 Generate-CodeThenBuild `
@@ -310,7 +310,7 @@ function Generate-CodeThenBuild {
     } else {
         Write-Host "`r`n$ToolName - Generate Code then Build`r`n"
         Generate-Code -ToolName $ToolName -Format $Format -Method $Method -Version $Version
-        Build-GeneratedCode -Version $Version -ToolName $ToolName -Parallel $Parallel
+        Build-GeneratedCode -Version $Version -ToolName $ToolName
     }
 }
 
