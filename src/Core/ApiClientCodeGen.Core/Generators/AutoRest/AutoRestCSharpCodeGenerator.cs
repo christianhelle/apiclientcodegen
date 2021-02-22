@@ -47,9 +47,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             {
                 pGenerateProgress.Progress(10);
 
-                DependencyDownloader.InstallAutoRest();
                 var command = PathProvider.GetAutoRestPath();
-
                 pGenerateProgress.Progress(30);
 
                 var document = documentFactory.GetDocumentAsync(SwaggerFile).GetAwaiter().GetResult();
@@ -57,6 +55,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     Version.TryParse(document.OpenApi, out var openApiVersion) &&
                     openApiVersion > Version.Parse("3.0.0"))
                 {
+                    DependencyDownloader.InstallAutoRestV3();
+                    pGenerateProgress.Progress(50);
+
                     var outputFolder = Path.Combine(
                         Path.GetDirectoryName(SwaggerFile) ?? throw new InvalidOperationException(),
                         Guid.NewGuid().ToString("N"),
@@ -69,6 +70,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 }
                 else
                 {
+                    DependencyDownloader.InstallAutoRestV2();
+                    pGenerateProgress.Progress(50);
+
                     var outputFile = Path.GetTempFileName();
                     processLauncher.Start(command, GetLegacyArguments(outputFile), Path.GetDirectoryName(SwaggerFile));
                     pGenerateProgress.Progress(80);
