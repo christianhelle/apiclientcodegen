@@ -385,6 +385,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2.1.5
 
     - name: Install AutoRest v3
       run: npm install -g autorest@3.0.6339
@@ -566,6 +569,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2.1.5
 
     - name: Install AutoRest v3
       run: npm install -g autorest@3.0.6339
