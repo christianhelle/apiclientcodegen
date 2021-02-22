@@ -385,6 +385,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Install AutoRest v3
+      run: npm install -g autorest@3.0.6339
     
     - name: Setup .NET Core 2.1
       uses: actions/setup-dotnet@v1
@@ -563,6 +566,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Install AutoRest v3
+      run: npm install -g autorest@3.0.6339
     
     - name: Setup .NET Core 2.1
       uses: actions/setup-dotnet@v1
