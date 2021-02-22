@@ -388,9 +388,6 @@ jobs:
     
     - name: Setup Node.js environment
       uses: actions/setup-node@v2.1.5
-
-    - name: Install AutoRest v3
-      run: npm install -g autorest@3.0.6339
     
     - name: Setup .NET Core 2.1
       uses: actions/setup-dotnet@v1
@@ -572,9 +569,6 @@ jobs:
     
     - name: Setup Node.js environment
       uses: actions/setup-node@v2.1.5
-
-    - name: Install AutoRest v3
-      run: npm install -g autorest@3.0.6339
     
     - name: Setup .NET Core 2.1
       uses: actions/setup-dotnet@v1
