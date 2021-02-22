@@ -52,8 +52,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .NotBeNullOrWhiteSpace();
 
         [Fact]
-        public void InstallAutoRest_Returns_Path()
-            => new Action(DependencyDownloader.InstallAutoRest)
+        public void InstallAutoRestV2_Returns_Path()
+            => new Action(DependencyDownloader.InstallAutoRestV2)
+                .Should()
+                .NotThrow();
+
+        [Fact]
+        public void InstallAutoRestV3_Returns_Path()
+            => new Action(DependencyDownloader.InstallAutoRestV3)
                 .Should()
                 .NotThrow();
 
