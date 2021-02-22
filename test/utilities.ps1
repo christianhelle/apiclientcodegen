@@ -331,11 +331,11 @@ function RunTests {
         $version = $_
         "json", "yaml" | ForEach-Object {
             $format = $_
-            Remove-Item ./**/*Output.cs
+            Remove-Item ./**/*Output.cs -Force
             Download-SwaggerPetstore -Version $version -Format $format
             Generate-CodeThenBuild -Version $version -Format $format -Method $Method -Parallel $Parallel
-            Remove-Item Swagger.*
-            Remove-Item ./**/*Output.cs
+            Remove-Item Swagger.* -Force
+            Remove-Item ./**/*Output.cs -Force
         }
     }
 }
