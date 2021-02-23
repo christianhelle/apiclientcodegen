@@ -49,6 +49,9 @@ jobs:
       with:
         dotnet-version: '5.0.x'
 
+    - name: Install rapicgen
+      run: dotnet tool install --global rapicgen
+
     - name: Download Swagger Petstore V2 OpenAPI Spec
       run: curl -sSL https://petstore3.swagger.io/api/v3/openapi.${{ matrix.format }} -o OpenApi.${{ matrix.format }}
       if: ${{ matrix.version == 'v2' }}
