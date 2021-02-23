@@ -22,8 +22,13 @@ jobs:
   Petstore:
 
     name: Swagger Petstore
+    continue-on-error: true
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
+        format: [ json, yaml ]
+        version: [ v2, v3 ]
         os: [
           ubuntu-20.04,
           ubuntu-18.04,
@@ -32,29 +37,6 @@ jobs:
           macos-10.15,
           windows-latest
         ]
-        format: [ json, yaml ]
-        version: [ v2, v3 ]
-        petstore-url: ['https://petstore.swagger.io/v2/swagger.json']
-        experimental: [true]
-        include:
-          - os: macos-10.15
-            experimental: false
-          - os: windows-latest
-            experimental: false
-          - version: v2
-            format: json
-            petstore-url: https://petstore.swagger.io/v2/swagger.json
-          - version: v2
-            format: yaml
-            petstore-url: https://petstore.swagger.io/v2/swagger.yaml
-          - version: v3
-            format: json
-            petstore-url: https://petstore3.swagger.io/api/v3/openapi.json
-          - version: v3
-            format: yaml
-            petstore-url: https://petstore3.swagger.io/api/v3/openapi.yaml
-    runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ matrix.experimental }}
 
     steps:
     - uses: actions/checkout@v2
@@ -74,8 +56,14 @@ jobs:
       with:
         dotnet-version: '5.0.x'
 
-    - name: Download Swagger Petstore OpenAPI Spec
-      run: curl -sSL ${{ matrix.petstore-url }} -o OpenApi.${{ matrix.format }}
+    - name: Download Swagger Petstore V2 OpenAPI Spec
+      run: curl -sSL https://petstore3.swagger.io/api/v3/openapi.${{ matrix.format }} -o OpenApi.${{ matrix.format }}
+      if: ${{ matrix.version == 'v2' }}
+      working-directory: test
+
+    - name: Download Swagger Petstore V3 OpenAPI Spec
+      run: curl -sSL https://petstore.swagger.io/v2/swagger.${{ matrix.format }} -o OpenApi.${{ matrix.format }}
+      if: ${{ matrix.version == 'v3' }}
       working-directory: test
 
     - name: Generate code with NSwag
