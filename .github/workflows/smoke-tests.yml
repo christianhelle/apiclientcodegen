@@ -34,7 +34,7 @@ jobs:
         ]
         format: [ json, yaml ]
         version: [ v2, v3 ]
-        petstore-url: ''
+        petstore-url: ['']
         include:
           - version: v2
             format: json
