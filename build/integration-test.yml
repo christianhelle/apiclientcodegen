@@ -1,3 +1,4 @@
+trigger: none
 schedules:
 - cron: "0 0 * * *"
   displayName: Daily midnight runs
@@ -5,14 +6,6 @@ schedules:
     include:
     - master
   always: true
-
-trigger:
-  paths-ignore:
-    - '*'
-    - '!build/integration-test.yml'
-    - '!build/templates/script-test-template.yml'
-  branches:
-    - '*'
 
 jobs:
 
