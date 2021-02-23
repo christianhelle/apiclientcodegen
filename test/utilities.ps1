@@ -327,7 +327,7 @@ function RunTests {
         $Parallel = $false
     )
 
-    "v3", "v2" | ForEach-Object {
+    "v2", "v3" | ForEach-Object {
         $version = $_
         "json", "yaml" | ForEach-Object {
             $format = $_
