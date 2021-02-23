@@ -24,7 +24,7 @@ jobs:
     name: Swagger Petstore (JSON)
     strategy:
       matrix:
-        petstore-url: ['https://petstore.swagger.io/v2/swagger.json', https://petstore3.swagger.io/api/v3/openapi.json]
+        petstore-url: ['https://petstore.swagger.io/v2/swagger.json', 'https://petstore3.swagger.io/api/v3/openapi.json']
         os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-11.0, macos-10.15, windows-latest]
         experimental: [false]
         include:
@@ -216,7 +216,7 @@ jobs:
     name: Swagger Petstore (YAML)
     strategy:
       matrix:
-        petstore-url: ['https://petstore.swagger.io/v2/swagger.yaml', https://petstore3.swagger.io/api/v3/openapi.yaml]
+        petstore-url: ['https://petstore.swagger.io/v2/swagger.yaml', 'https://petstore3.swagger.io/api/v3/openapi.yaml']
         os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-11.0, macos-10.15, windows-latest]
         experimental: [false]
         include:
