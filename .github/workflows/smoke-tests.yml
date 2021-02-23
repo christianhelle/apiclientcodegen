@@ -23,6 +23,7 @@ jobs:
 
     name: Swagger Petstore
     runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.os == 'macos-11.0' }}
     strategy:
       fail-fast: false
       matrix:
