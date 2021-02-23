@@ -38,7 +38,7 @@ jobs:
           windows-latest
         ]
         experimental: [false]
-        include:
+        exclude:
         - os: ubuntu-20.04
           experimental: true
         - os: ubuntu-18.04
