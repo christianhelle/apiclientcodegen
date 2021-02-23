@@ -386,9 +386,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v2.1.5
-    
     - name: Setup .NET Core 2.1
       uses: actions/setup-dotnet@v1
       with:
@@ -566,9 +563,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Setup Node.js environment
-      uses: actions/setup-node@v2.1.5
     
     - name: Setup .NET Core 2.1
       uses: actions/setup-dotnet@v1
