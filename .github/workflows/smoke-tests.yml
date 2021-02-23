@@ -35,7 +35,12 @@ jobs:
         format: [ json, yaml ]
         version: [ v2, v3 ]
         petstore-url: ['']
+        experimental: [true]
         include:
+          - os: macos-10.15
+            experimental: false
+          - os: windows-latest
+            experimental: false
           - version: v2
             format: json
             petstore-url: https://petstore.swagger.io/v2/swagger.json
@@ -48,12 +53,6 @@ jobs:
           - version: v3
             format: yaml
             petstore-url: https://petstore3.swagger.io/api/v3/openapi.yaml
-        experimental: [true]
-        include:
-          - os: macos-10.15
-            experimental: false
-          - os: windows-latest
-            experimental: false
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
 
