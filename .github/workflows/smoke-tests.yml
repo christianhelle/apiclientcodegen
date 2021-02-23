@@ -67,7 +67,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with NSwag
-      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
+      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 NSwag generated code
@@ -103,7 +103,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
-      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
+      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 Swagger Codegen CLI generated code
@@ -143,7 +143,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
-      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.json GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
+      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 OpenAPI Generator generated code
@@ -179,7 +179,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with AutoRest
-      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.json GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
+      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
       working-directory: test
 
     - name: Build .NET Core 2.1 AutoRest generated code
