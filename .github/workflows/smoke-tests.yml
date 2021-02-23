@@ -34,7 +34,7 @@ jobs:
         ]
         format: [ json, yaml ]
         version: [ v2, v3 ]
-        petstore-url: [https://petstore.swagger.io/v2/swagger.json]
+        petstore-url: ['https://petstore.swagger.io/v2/swagger.json']
         experimental: [true]
         include:
           - os: macos-10.15
