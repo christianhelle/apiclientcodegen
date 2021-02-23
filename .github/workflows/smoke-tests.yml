@@ -39,7 +39,6 @@ jobs:
           - os: macos-11.0
             experimental: true
     runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ matrix.experimental }}
 
     steps:
     - uses: actions/checkout@v2
@@ -178,6 +177,7 @@ jobs:
     - name: Generate code with AutoRest
       run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.json GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
       working-directory: test
+      continue-on-error: ${{ matrix.experimental }}
 
     - name: Build .NET Core 2.1 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
@@ -231,7 +231,6 @@ jobs:
           - os: macos-11.0
             experimental: true
     runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ matrix.experimental }}
 
     steps:
     - uses: actions/checkout@v2
@@ -370,6 +369,7 @@ jobs:
     - name: Generate code with AutoRest
       run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.yaml GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
       working-directory: test
+      continue-on-error: ${{ matrix.experimental }}
 
     - name: Build .NET Core 2.1 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
