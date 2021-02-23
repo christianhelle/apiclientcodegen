@@ -25,8 +25,8 @@ jobs:
     strategy:
       matrix:
         spec-format: [
-          json,
-          yaml          
+          'json',
+          'yaml'          
         ]
         petstore-url: [
           https://petstore.swagger.io/v2/swagger.${{ matrix.spec-format }}, 
