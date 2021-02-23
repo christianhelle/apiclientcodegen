@@ -24,13 +24,13 @@ jobs:
     name: Swagger Petstore (JSON)
     strategy:
       matrix:
-        format: [
-          yaml,
-          json
+        spec-format: [
+          json,
+          yaml          
         ]
         petstore-url: [
-          https://petstore.swagger.io/v2/swagger.${{ matrix.format }}, 
-          https://petstore3.swagger.io/api/v3/openapi.${{ matrix.foramt }}
+          https://petstore.swagger.io/v2/swagger.${{ matrix.spec-format }}, 
+          https://petstore3.swagger.io/api/v3/openapi.${{ matrix.spec-foramt }}
         ]
         os: [
           ubuntu-20.04,
@@ -43,16 +43,16 @@ jobs:
         experimental: [true]
         include:
           - os: macos-10.15
-            petstore-url: https://petstore.swagger.io/v2/swagger.${{ matrix.format }}
+            petstore-url: https://petstore.swagger.io/v2/swagger.${{ matrix.spec-format }}
             experimental: false
           - os: macos-10.15
-            petstore-url: https://petstore3.swagger.io/api/v3/openapi.${{ matrix.foramt }}
+            petstore-url: https://petstore3.swagger.io/api/v3/openapi.${{ matrix.spec-foramt }}
             experimental: false
           - os: windows-latest
-            petstore-url: https://petstore.swagger.io/v2/swagger.${{ matrix.format }}
+            petstore-url: https://petstore.swagger.io/v2/swagger.${{ matrix.spec-format }}
             experimental: false
           - os: windows-latest
-            petstore-url: https://petstore3.swagger.io/api/v3/openapi.${{ matrix.foramt }}
+            petstore-url: https://petstore3.swagger.io/api/v3/openapi.${{ matrix.spec-foramt }}
             experimental: false
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
