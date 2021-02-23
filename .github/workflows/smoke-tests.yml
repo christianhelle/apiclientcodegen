@@ -24,19 +24,34 @@ jobs:
     name: Swagger Petstore (JSON)
     strategy:
       matrix:
-        petstore-url: ['https://petstore.swagger.io/v2/swagger.json', 'https://petstore3.swagger.io/api/v3/openapi.json']
-        os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-11.0, macos-10.15, windows-latest]
+        petstore-url: [
+          'https://petstore.swagger.io/v2/swagger.json', 
+          'https://petstore3.swagger.io/api/v3/openapi.json'
+        ]
+        os: [
+          ubuntu-20.04,
+          ubuntu-18.04,
+          ubuntu-16.04,
+          macos-11.0,
+          macos-10.15,
+          windows-latest
+        ]
         experimental: [false]
         include:
           - os: ubuntu-20.04
+            petstore-url: '*'
             experimental: true
           - os: ubuntu-18.04
+            petstore-url: '*'
             experimental: true
           - os: ubuntu-16.04
+            petstore-url: '*'
             experimental: true
           - os: ubuntu-16.04
+            petstore-url: '*'
             experimental: true
           - os: macos-11.0
+            petstore-url: '*'
             experimental: true
     runs-on: ${{ matrix.os }}
 
