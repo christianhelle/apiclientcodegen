@@ -6,6 +6,14 @@ schedules:
     - master
   always: true
 
+trigger:
+  paths-ignore:
+    - '*'
+    - '!build/integration-test.yml'
+    - '!build/templates/script-test-template.yml'
+  branches:
+    - '*'
+
 jobs:
 
 - template: templates/script-test-template.yml

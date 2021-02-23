@@ -1,4 +1,12 @@
 trigger:
+  paths-ignore:
+    - '.github/**'
+    - 'build/**'
+    - '!build/smoke-test.yml'
+    - '!build/templates/script-test-template.yml'
+    - 'docs/**'
+    - 'images/**'
+    - 'README.md'
   branches:
     include:
     - '*'
