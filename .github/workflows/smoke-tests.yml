@@ -24,8 +24,21 @@ jobs:
     name: Swagger Petstore v2 (JSON)
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-10.15, windows-latest]
+        os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-11.0, macos-10.15, windows-latest]
+        experimental: [false]
+        include:
+          - os: ubuntu-20.04
+            experimental: true
+          - os: ubuntu-18.04
+            experimental: true
+          - os: ubuntu-16.04
+            experimental: true
+          - os: ubuntu-16.04
+            experimental: true
+          - os: macos-11.0
+            experimental: true
     runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
 
     steps:
     - uses: actions/checkout@v2
@@ -164,7 +177,6 @@ jobs:
     - name: Generate code with AutoRest
       run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.json GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
       working-directory: test
-      continue-on-error: true
 
     - name: Build .NET Core 2.1 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
@@ -203,8 +215,21 @@ jobs:
     name: Swagger Petstore v2 (YAML)
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-10.15, windows-latest]
+        os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-11.0, macos-10.15, windows-latest]
+        experimental: [false]
+        include:
+          - os: ubuntu-20.04
+            experimental: true
+          - os: ubuntu-18.04
+            experimental: true
+          - os: ubuntu-16.04
+            experimental: true
+          - os: ubuntu-16.04
+            experimental: true
+          - os: macos-11.0
+            experimental: true
     runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
 
     steps:
     - uses: actions/checkout@v2
@@ -343,7 +368,6 @@ jobs:
     - name: Generate code with AutoRest
       run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.yaml GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
       working-directory: test
-      continue-on-error: true
 
     - name: Build .NET Core 2.1 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
@@ -382,8 +406,21 @@ jobs:
     name: Swagger Petstore v3 (JSON)
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-10.15, windows-latest]
+        os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-11.0, macos-10.15, windows-latest]
+        experimental: [false]
+        include:
+          - os: ubuntu-20.04
+            experimental: true
+          - os: ubuntu-18.04
+            experimental: true
+          - os: ubuntu-16.04
+            experimental: true
+          - os: ubuntu-16.04
+            experimental: true
+          - os: macos-11.0
+            experimental: true
     runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
 
     steps:
     - uses: actions/checkout@v2
@@ -522,7 +559,6 @@ jobs:
     - name: Generate code with AutoRest
       run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.json GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
       working-directory: test
-      continue-on-error: true
 
     - name: Build .NET Core 2.1 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
@@ -561,8 +597,21 @@ jobs:
     name: Swagger Petstore v3 (YAML)
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-10.15, windows-latest]
+        os: [ubuntu-20.04, ubuntu-18.04, ubuntu-16.04, macos-11.0, macos-10.15, windows-latest]
+        experimental: [false]
+        include:
+          - os: ubuntu-20.04
+            experimental: true
+          - os: ubuntu-18.04
+            experimental: true
+          - os: ubuntu-16.04
+            experimental: true
+          - os: ubuntu-16.04
+            experimental: true
+          - os: macos-11.0
+            experimental: true
     runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
 
     steps:
     - uses: actions/checkout@v2
@@ -701,7 +750,6 @@ jobs:
     - name: Generate code with AutoRest
       run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.yaml GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
       working-directory: test
-      continue-on-error: true
 
     - name: Build .NET Core 2.1 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
