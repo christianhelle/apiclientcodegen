@@ -25,7 +25,7 @@ jobs:
     strategy:
       matrix:
         format: [
-          yaml
+          yaml,
           json
         ]
         petstore-url: [
