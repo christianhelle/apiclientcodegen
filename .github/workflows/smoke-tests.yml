@@ -36,16 +36,6 @@ jobs:
           macos-10.15,
           windows-latest
         ]
-        experimental: [false]
-        exclude:
-        - os: ubuntu-20.04
-          experimental: true
-        - os: ubuntu-18.04
-          experimental: true
-        - os: ubuntu-16.04
-          experimental: true
-        - os: macos-11.0
-          experimental: true
 
     steps:
     - uses: actions/checkout@v2
@@ -190,7 +180,7 @@ jobs:
     - name: Generate code with AutoRest
       run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
       working-directory: test
-      continue-on-error: ${{ matrix.experimental }}
+      continue-on-error: ${{ contains(matrix.os, 'ubuntu') }}
 
     - name: Build .NET Core 2.1 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
