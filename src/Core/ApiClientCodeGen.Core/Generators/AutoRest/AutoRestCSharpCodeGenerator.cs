@@ -49,15 +49,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                 var command = PathProvider.GetAutoRestPath();
                 pGenerateProgress.Progress(30);
+                
+                DependencyDownloader.InstallAutoRest();
+                pGenerateProgress.Progress(50);
 
                 var document = documentFactory.GetDocumentAsync(SwaggerFile).GetAwaiter().GetResult();
                 if (!string.IsNullOrEmpty(document.OpenApi) &&
                     Version.TryParse(document.OpenApi, out var openApiVersion) &&
                     openApiVersion > Version.Parse("3.0.0"))
                 {
-                    DependencyDownloader.InstallAutoRestV3();
-                    pGenerateProgress.Progress(50);
-
                     var outputFolder = Path.Combine(
                         Path.GetDirectoryName(SwaggerFile) ?? throw new InvalidOperationException(),
                         Guid.NewGuid().ToString("N"),
@@ -70,9 +70,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 }
                 else
                 {
-                    DependencyDownloader.InstallAutoRestV2();
-                    pGenerateProgress.Progress(50);
-
                     var outputFile = Path.GetTempFileName();
                     processLauncher.Start(command, GetLegacyArguments(outputFile), Path.GetDirectoryName(SwaggerFile));
                     pGenerateProgress.Progress(80);
@@ -89,7 +86,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private string GetLegacyArguments(string outputFile)
         {
             return AppendCommonArguments(
-                "--version 2.0.4413 --csharp " +
+                "--version 2.0.4417 --csharp " +
                 $"--input-file=\"{SwaggerFile}\" " +
                 $"--output-file=\"{outputFile}\" " +
                 $"--namespace=\"{DefaultNamespace}\" ");
