@@ -25,7 +25,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.os == 'macos-11.0' }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         format: [ json, yaml ]
         version: [ v2, v3 ]
@@ -177,6 +177,59 @@ jobs:
 
     - name: Build .NET Standard 2.0 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20/NetStandard20.csproj
+      working-directory: test
+
+  Petstore-AutoRest:
+
+    name: Swagger Petstore (AutoRest)
+    runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.os == 'macos-11.0' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [10, 12, 14, 15]
+        format: [ json, yaml ]
+        version: [ v2, v3 ]
+        os: [
+          ubuntu-20.04,
+          ubuntu-18.04,
+          ubuntu-16.04,
+          macos-11.0,
+          macos-10.15,
+          windows-2019,
+          windows-2016
+        ]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node }}
+    
+    - name: Setup .NET Core 2.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.0
+    
+    - name: Setup .NET Core 2.1
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1
+    
+    - name: Setup .NET Core 3.1
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1
+
+    - name: Download Swagger Petstore V2 OpenAPI Spec
+      run: curl -sSL https://petstore.swagger.io/v2/swagger.${{ matrix.format }} -o OpenApi.${{ matrix.format }}
+      if: ${{ matrix.version == 'v2' }}
+      working-directory: test
+
+    - name: Download Swagger Petstore V3 OpenAPI Spec
+      run: curl -sSL https://petstore3.swagger.io/api/v3/openapi.${{ matrix.format }} -o OpenApi.${{ matrix.format }}
+      if: ${{ matrix.version == 'v3' }}
       working-directory: test
 
     - name: Generate code with AutoRest
