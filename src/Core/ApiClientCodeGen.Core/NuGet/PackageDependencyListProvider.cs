@@ -24,7 +24,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
                     list.AddRange(new[]
                     {
                         PackageDependencies.MicrosoftRestClientRuntime,
-                        PackageDependencies.NewtonsoftJson
+                        PackageDependencies.NewtonsoftJson,
+                    });
+                    break;
+
+                case SupportedCodeGenerator.AutoRestV3:
+                    list.AddRange(new[]
+                    {
+                        PackageDependencies.MicrosoftRestClientRuntime,
+                        PackageDependencies.NewtonsoftJson,
+                        PackageDependencies.AutoRestCSharp,
+                        PackageDependencies.AzureCore,
                     });
                     break;
 
