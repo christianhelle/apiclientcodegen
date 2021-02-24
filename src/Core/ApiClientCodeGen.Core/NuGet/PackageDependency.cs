@@ -6,8 +6,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
     public sealed class PackageDependency
     {
         public PackageDependency(
+            string name,
+            Version version,
+            bool forceUpdate = true,
+            bool isSystemLibrary = false)
+        {
+            Name = name;
+            Version = version.ToString();
+            ForceUpdate = forceUpdate;
+            IsSystemLibrary = isSystemLibrary;
+        }
+
+        public PackageDependency(
             string name, 
-            Version version, 
+            string version, 
             bool forceUpdate = true, 
             bool isSystemLibrary = false)
         {
@@ -18,7 +30,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
         }
 
         public string Name { get; }
-        public Version Version { get; }
+        public string Version { get; }
         public bool ForceUpdate { get; }
         public bool IsSystemLibrary { get; set; }
 
@@ -26,7 +38,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
         {
             return obj is PackageDependency dependency &&
                    Name == dependency.Name &&
-                   EqualityComparer<Version>.Default.Equals(Version, dependency.Version);
+                   EqualityComparer<string>.Default.Equals(Version, dependency.Version);
         }
 
         public override int GetHashCode()

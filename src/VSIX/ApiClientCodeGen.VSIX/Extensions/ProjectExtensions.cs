@@ -232,7 +232,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             var version = packageDependency.Version;
 
             if (installedPackages.Any(c => string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase)) &&
-               (installedPackages.Any(c => c.VersionString == version.ToString(3)) || !packageDependency.ForceUpdate))
+               (installedPackages.Any(c => c.VersionString == version) || !packageDependency.ForceUpdate))
             {
                 Trace.WriteLine($"{packageDependency.Name} is already installed");
                 return;
