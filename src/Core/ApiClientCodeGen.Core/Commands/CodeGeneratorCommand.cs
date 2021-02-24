@@ -49,10 +49,22 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
             var code = generator.GenerateCode(progressReporter);
             File.WriteAllText(OutputFile, code);
 
+            var fileInfo = new FileInfo(OutputFile);
             console.WriteLine($"Output file name: {OutputFile}");
-            console.WriteLine($"Output file size: {new FileInfo(OutputFile).Length}");
-            
-            return ResultCodes.Success;
+            console.WriteLine($"Output file size: {fileInfo.Length}");
+            console.WriteLine(string.Empty);
+
+            if (fileInfo.Length != 0)
+                return ResultCodes.Success;
+
+            const string errorMessage = "ERROR!! Output file is empty :(";
+            console.WriteLine(errorMessage);
+            console.WriteLine(string.Empty);
+
+            if (!SkipLogging)
+                Logger.Instance.TrackError(new Exception(errorMessage));
+
+            return ResultCodes.Error;
         }
 
         public abstract ICodeGenerator CreateGenerator();
