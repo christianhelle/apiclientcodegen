@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
-using Polly;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
@@ -80,22 +79,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             Action<string> onErrorData,
             string workingDirectory)
         {
-            TimeSpan SleepDurationProvider(int retryAttempt)
-            {
-                var duration = TimeSpan.FromSeconds(Math.Pow(2, retryAttempt));
-                Trace.WriteLine($"Operation failed! Retrying in {duration}");
-                return duration;
-            }
-
-            Policy.Handle<ProcessLaunchException>()
-                .WaitAndRetry(3, SleepDurationProvider)
-                .Execute(
-                    () => StartInternal(
-                        command,
-                        arguments,
-                        onOutputData,
-                        onErrorData,
-                        workingDirectory));
+            StartInternal(
+                command,
+                arguments,
+                onOutputData,
+                onErrorData,
+                workingDirectory);
         }
 
         private static void StartInternal(
