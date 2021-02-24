@@ -57,5 +57,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
             new PackageDependency(
                 "Polly",
                 new Version(7,2,1));
+
+        public static readonly PackageDependency AutoRestCSharp =
+            new PackageDependency(
+                "Microsoft.Azure.AutoRest.CSharp",
+                "3.0.0-beta.20210218.1");
+
+        public static readonly PackageDependency AzureCore =
+            new PackageDependency(
+                "Azure.Core",
+                new Version(1, 6, 0));
     }
 }

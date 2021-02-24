@@ -10,17 +10,18 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
             Version version,
             bool forceUpdate = true,
             bool isSystemLibrary = false)
+            : this(
+                name,
+                version.ToString(),
+                forceUpdate,
+                isSystemLibrary)
         {
-            Name = name;
-            Version = version.ToString();
-            ForceUpdate = forceUpdate;
-            IsSystemLibrary = isSystemLibrary;
         }
 
         public PackageDependency(
-            string name, 
-            string version, 
-            bool forceUpdate = true, 
+            string name,
+            string version,
+            bool forceUpdate = true,
             bool isSystemLibrary = false)
         {
             Name = name;
@@ -32,7 +33,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
         public string Name { get; }
         public string Version { get; }
         public bool ForceUpdate { get; }
-        public bool IsSystemLibrary { get; set; }
+        public bool IsSystemLibrary { get; }
 
         public override bool Equals(object obj)
         {
