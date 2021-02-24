@@ -185,7 +185,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.os == 'macos-11.0' }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         node: [10, 12, 14, 15]
         format: [ json, yaml ]
