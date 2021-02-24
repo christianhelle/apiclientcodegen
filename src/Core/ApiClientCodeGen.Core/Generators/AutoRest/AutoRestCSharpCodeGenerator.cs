@@ -86,7 +86,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private string GetLegacyArguments(string outputFile)
         {
             return AppendCommonArguments(
-                "--version 2.0.4417 --csharp " +
+                "--version 2.0.4413 --csharp " +
                 $"--input-file=\"{SwaggerFile}\" " +
                 $"--output-file=\"{outputFile}\" " +
                 $"--namespace=\"{DefaultNamespace}\" ");
