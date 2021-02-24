@@ -13,7 +13,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly IProcessLauncher processLauncher;
         private readonly IOpenApiDocumentFactory documentFactory;
         private static readonly object SyncLock = new object();
-        
+
         public string SwaggerFile { get; }
         public string DefaultNamespace { get; }
 
@@ -49,7 +49,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                 var command = PathProvider.GetAutoRestPath();
                 pGenerateProgress.Progress(30);
-                
+
                 DependencyDownloader.InstallAutoRest();
                 pGenerateProgress.Progress(50);
 
@@ -71,8 +71,25 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 else
                 {
                     var outputFile = Path.GetTempFileName();
-                    processLauncher.Start(command, GetLegacyArguments(outputFile), Path.GetDirectoryName(SwaggerFile));
-                    pGenerateProgress.Progress(80);
+                    var arguments = GetLegacyArguments(outputFile);
+                    try
+                    {
+                        processLauncher.Start(
+                            command,
+                            arguments,
+                            Path.GetDirectoryName(SwaggerFile));
+                    }
+                    catch (ProcessLaunchException)
+                    {
+                        processLauncher.Start(
+                            command,
+                            arguments.Replace("--version=", "--version "),
+                            Path.GetDirectoryName(SwaggerFile));
+                    }
+                    finally
+                    {
+                        pGenerateProgress.Progress(80);
+                    }
 
                     return FileHelper.ReadThenDelete(outputFile);
                 }
