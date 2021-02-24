@@ -41,6 +41,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 14
     
     - name: Setup .NET Core 2.1
       uses: actions/setup-dotnet@v1
@@ -65,6 +69,43 @@ jobs:
     - name: Download Swagger Petstore V3 OpenAPI Spec
       run: curl -sSL https://petstore3.swagger.io/api/v3/openapi.${{ matrix.format }} -o OpenApi.${{ matrix.format }}
       if: ${{ matrix.version == 'v3' }}
+      working-directory: test
+
+    - name: Generate code with AutoRest
+      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
+      working-directory: test
+      continue-on-error: ${{ contains(matrix.os, 'ubuntu') }}
+
+    - name: Build .NET Core 2.1 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
+      working-directory: test
+
+    - name: Build .NET Core 3.1 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/NetCore31/NetCore31.csproj
+      working-directory: test
+
+    - name: Build .NET 5 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net5/Net5.csproj
+      working-directory: test
+
+    - name: Build .NET 4.8 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net48/Net48.csproj
+      working-directory: test
+
+    - name: Build .NET 4.7.2 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET 4.5.2 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/Net452/Net452.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with NSwag
