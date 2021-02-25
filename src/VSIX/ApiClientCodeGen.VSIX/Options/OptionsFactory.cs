@@ -8,6 +8,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
     {
         public TOptions Create<TOptions, TDialogPage>()
             where TOptions : class
-            => VsPackage.Instance.GetDialogPage(typeof(TDialogPage)) as TOptions;
+            => VsPackage.Instance?.GetDialogPage(typeof(TDialogPage)) as TOptions;
     }
 }

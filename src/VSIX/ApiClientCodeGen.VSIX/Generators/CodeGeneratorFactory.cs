@@ -54,7 +54,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                     return new AutoRestCSharpCodeGenerator(
                         inputFilePath,
                         defaultNamespace,
-                        optionsFactory.Create<IAutoRestOptions, AutoRestOptionsPage>(),
+                        optionsFactory.Create<IAutoRestOptions, AutoRestOptionsPage>() ?? new DefaultAutoRestOptions(),
                         processLauncher,
                         documentFactory);
 
