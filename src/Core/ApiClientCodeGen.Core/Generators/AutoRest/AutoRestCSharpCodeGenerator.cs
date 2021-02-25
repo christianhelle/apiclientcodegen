@@ -31,16 +31,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             this.documentFactory = documentFactory ?? throw new ArgumentNullException(nameof(documentFactory));
         }
 
-        [SuppressMessage(
-            "Usage",
-            "VSTHRD002:Avoid problematic synchronous waits",
-            Justification = "This is code is called from an old pre-TPL interface")]
         public string GenerateCode(IProgressReporter pGenerateProgress)
         {
             lock (SyncLock)
                 return OnGenerateCode(pGenerateProgress);
         }
 
+        [SuppressMessage(
+            "Usage",
+            "VSTHRD002:Avoid problematic synchronous waits",
+            Justification = "This is code is called from an old pre-TPL interface")]
         private string OnGenerateCode(IProgressReporter pGenerateProgress)
         {
             try
@@ -66,7 +66,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     processLauncher.Start(command, GetArguments(outputFolder), Path.GetDirectoryName(SwaggerFile));
                     pGenerateProgress.Progress(80);
 
-                    return CSharpFileMerger.MergeFiles(outputFolder);
+                    return CSharpFileMerger.MergeFilesAndDeleteSource(outputFolder);
                 }
                 else
                 {
