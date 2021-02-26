@@ -26,7 +26,7 @@ function Prepare-SwaggerPetstore {
 
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("v2", "v3")]
+        [ValidateSet("V2", "V3")]
         [string]
         $Version,
 
@@ -43,11 +43,11 @@ function Prepare-SwaggerPetstore {
     if ($Download) {
         Write-Host "`r`nDownload Swagger Petstore $Version spec ($Format)`r`n"
 
-        if ($Version -eq "v2") {
+        if ($Version -eq "V2") {
             Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.$Format -OutFile Swagger.$Format
         }
 
-        if ($Version -eq "v3") {
+        if ($Version -eq "V3") {
             Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.$Format -OutFile Swagger.$Format
         }
     } else {
@@ -64,7 +64,7 @@ function Build-GeneratedCode {
         $ToolName,
 
         [Parameter(Mandatory=$true)]
-        [ValidateSet("v2", "v3")]
+        [ValidateSet("V2", "V3")]
         [string]
         $Version,
         
@@ -73,7 +73,7 @@ function Build-GeneratedCode {
         $Parallel = $true
     )
 
-    if ($Version -eq "v2") {
+    if ($Version -eq "V2") {
         $tools = @("AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
     } else {
         $tools = @("AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
@@ -172,7 +172,7 @@ function Generate-Code {
         $Method,
 
         [Parameter(Mandatory=$true)]
-        [ValidateSet("v2", "v3")]
+        [ValidateSet("V2", "V3")]
         [string]
         $Version
     )
@@ -195,7 +195,7 @@ function Generate-Code {
         }
     }
 
-    if ($Version -eq "v3" -and $ToolName -eq "AutoRest-V2") {
+    if ($Version -eq "V3" -and $ToolName -eq "AutoRest-V2") {
         $ToolName = "AutoRest-V3"
     }
 
@@ -303,7 +303,7 @@ function Generate-CodeThenBuild {
         $ToolName = "All",
 
         [Parameter(Mandatory=$true)]
-        [ValidateSet("v2", "v3")]
+        [ValidateSet("V2", "V3")]
         [string]
         $Version,
 
@@ -327,7 +327,7 @@ function Generate-CodeThenBuild {
             Generate-CodeParallel -Format $Format -Method $Method
             Build-GeneratedCode -ToolName $ToolName
         } else {
-            if ($Version -eq "v2") {
+            if ($Version -eq "V2") {
                 $tools = @("AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
             } else {
                 $tools = @("AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
@@ -361,7 +361,7 @@ function RunTests {
         $Parallel = $false
     )
 
-    "v2", "v3" | ForEach-Object {
+    "V2", "V3" | ForEach-Object {
         $version = $_
         "json", "yaml" | ForEach-Object {
             $format = $_
