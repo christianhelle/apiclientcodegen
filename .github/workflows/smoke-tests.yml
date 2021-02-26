@@ -75,6 +75,7 @@ jobs:
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net472/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net462/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net452/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/NetStandard20/Output.cs
       working-directory: test
 
     - name: Build .NET Core 2.1 AutoRest generated code
@@ -99,10 +100,12 @@ jobs:
 
     - name: Build .NET 4.6.2 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net462/Net462.csproj
+      if: ${{ matrix.version == 'V2' }}
       working-directory: test
 
     - name: Build .NET 4.5.2 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net452/Net452.csproj
+      if: ${{ matrix.version == 'V2' }}
       working-directory: test
 
     - name: Build .NET Standard 2.0 AutoRest generated code
@@ -119,6 +122,7 @@ jobs:
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net472/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net462/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net452/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/NetStandard20/Output.cs
       working-directory: test
 
     - name: Build .NET Core 2.1 NSwag generated code
@@ -163,6 +167,7 @@ jobs:
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net472/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net462/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net452/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/NetStandard20/Output.cs
       working-directory: test
 
     - name: Build .NET Core 2.1 Swagger Codegen CLI generated code
@@ -211,6 +216,7 @@ jobs:
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net472/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net462/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net452/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/NetStandard20/Output.cs
       working-directory: test
 
     - name: Build .NET Core 2.1 OpenAPI Generator generated code
