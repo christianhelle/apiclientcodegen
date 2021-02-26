@@ -59,7 +59,7 @@ function Build-GeneratedCode {
     
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("All", "AutoRest", "AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
+        [ValidateSet("All", "AutoRest-V2", "AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
         [string]
         $ToolName,
 
@@ -73,18 +73,15 @@ function Build-GeneratedCode {
         $Parallel = $true
     )
 
-    if ($Version -eq "v3" -and $ToolName -eq "AutoRest") {
-        $ToolName = "AutoRest-V3"
-    }
+    if ($Version -eq "v2") {
+        $tools = @("AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
+    } else {
+        $tools = @("AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
+    }  
 
     if ($Parallel) {
         $argumentsList = @()
         if ($ToolName -eq "All") {
-            if ($Version -eq "v2") {
-                $tools = @("AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
-            } else {
-                $tools = @("AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
-            }        
             $tools | ForEach-Object {
                 $argumentsList += "build ./GeneratedCode/$_/NetStandard20/NetStandard20.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/NetCore21/NetCore21.csproj"
@@ -92,8 +89,11 @@ function Build-GeneratedCode {
                 $argumentsList += "build ./GeneratedCode/$_/Net5/Net5.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net48/Net48.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net472/Net472.csproj"
-                $argumentsList += "build ./GeneratedCode/$_/Net462/Net462.csproj"
-                $argumentsList += "build ./GeneratedCode/$_/Net452/Net452.csproj"
+
+                if ($_ -notcontains "AutoRest-V3") {
+                    $argumentsList += "build ./GeneratedCode/$_/Net462/Net462.csproj"
+                    $argumentsList += "build ./GeneratedCode/$_/Net452/Net452.csproj"
+                }
             }
         } else {
             $argumentsList = @(
@@ -102,10 +102,13 @@ function Build-GeneratedCode {
                 "build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj",
                 "build ./GeneratedCode/$ToolName/Net5/Net5.csproj",
                 "build ./GeneratedCode/$ToolName/Net48/Net48.csproj",
-                "build ./GeneratedCode/$ToolName/Net472/Net472.csproj",
-                "build ./GeneratedCode/$ToolName/Net462/Net462.csproj",
-                "build ./GeneratedCode/$ToolName/Net452/Net452.csproj"
+                "build ./GeneratedCode/$ToolName/Net472/Net472.csproj"
             )
+
+            if ($_ -notcontains "AutoRest-V3") {
+                $argumentsList += "build ./GeneratedCode/$_/Net462/Net462.csproj"
+                $argumentsList += "build ./GeneratedCode/$_/Net452/Net452.csproj"
+            }
         }
         
         $processes = ($argumentsList | ForEach-Object {
@@ -119,7 +122,7 @@ function Build-GeneratedCode {
         }
     } else {
         if ($ToolName -eq "All") {
-            "AutoRest", "AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+            $tools | ForEach-Object {
                 Write-Host "`r`nBuilding $_`r`n"
                 dotnet build ./GeneratedCode/$_/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/NetCore21/NetCore21.csproj; ThrowOnNativeFailure
@@ -127,8 +130,11 @@ function Build-GeneratedCode {
                 dotnet build ./GeneratedCode/$_/Net5/Net5.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/Net48/Net48.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/Net472/Net472.csproj; ThrowOnNativeFailure
-                dotnet build ./GeneratedCode/$_/Net462/Net462.csproj; ThrowOnNativeFailure
-                dotnet build ./GeneratedCode/$_/Net452/Net452.csproj; ThrowOnNativeFailure
+
+                if ($_ -notcontains "AutoRest-V3") {
+                    dotnet build ./GeneratedCode/$_/Net462/Net462.csproj; ThrowOnNativeFailure
+                    dotnet build ./GeneratedCode/$_/Net452/Net452.csproj; ThrowOnNativeFailure
+                }
             }
         } else {
             Write-Host "`r`nBuilding $ToolName`r`n"
@@ -138,8 +144,11 @@ function Build-GeneratedCode {
             dotnet build ./GeneratedCode/$ToolName/Net5/Net5.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/Net48/Net48.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/Net472/Net472.csproj; ThrowOnNativeFailure
-            dotnet build ./GeneratedCode/$ToolName/Net462/Net462.csproj; ThrowOnNativeFailure
-            dotnet build ./GeneratedCode/$ToolName/Net452/Net452.csproj; ThrowOnNativeFailure
+
+            if ($_ -notcontains "AutoRest-V3") {
+                dotnet build ./GeneratedCode/$ToolName/Net462/Net462.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$ToolName/Net452/Net452.csproj; ThrowOnNativeFailure
+            }
         }
     }
 }
@@ -148,7 +157,7 @@ function Generate-Code {
     
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("AutoRest", "AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
+        [ValidateSet("AutoRest-V2", "AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
         [string]
         $ToolName,
 
@@ -175,12 +184,18 @@ function Generate-Code {
         "OpenApiGenerator" { 
             $command = "openapi"
         }
-        Default {
-            $command = $ToolName.ToLower()
+        "AutoRest-V2" {
+            $command = "autorest"
+        } 
+        "AutoRest-V3" {
+            $command = "autorest"
+        }
+        "NSwag" {
+            $command = "nswag"
         }
     }
 
-    if ($Version -eq "v3" -and $ToolName -eq "AutoRest") {
+    if ($Version -eq "v3" -and $ToolName -eq "AutoRest-V2") {
         $ToolName = "AutoRest-V3"
     }
 
@@ -230,7 +245,7 @@ function Generate-CodeParallel {
     )
 
     $processes = @()
-    "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+    "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
         switch ($_) {
             "SwaggerCodegen" {
                 $command = "swagger"
@@ -262,7 +277,7 @@ function Generate-CodeParallel {
         $process.WaitForExit()
     }
 
-    "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+    "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
         if (Test-Path "GeneratedCode/$_/Output.cs" -PathType Leaf) {
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net5/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net48/Output.cs" -Force
@@ -283,7 +298,7 @@ function Generate-CodeThenBuild {
     
     param (
         [Parameter(Mandatory=$false)]
-        [ValidateSet("All", "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
+        [ValidateSet("All", "AutoRest-V2", "AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
         [string]
         $ToolName = "All",
 
@@ -312,7 +327,12 @@ function Generate-CodeThenBuild {
             Generate-CodeParallel -Format $Format -Method $Method
             Build-GeneratedCode -ToolName $ToolName
         } else {
-            "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+            if ($Version -eq "v2") {
+                $tools = @("AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
+            } else {
+                $tools = @("AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
+            }  
+            $tools | ForEach-Object {
                 Generate-CodeThenBuild `
                     -ToolName $_ `
                     -Format $Format `
@@ -341,7 +361,7 @@ function RunTests {
         $Parallel = $false
     )
 
-    "v3", "v2" | ForEach-Object {
+    "v2", "v3" | ForEach-Object {
         $version = $_
         "json", "yaml" | ForEach-Object {
             $format = $_
