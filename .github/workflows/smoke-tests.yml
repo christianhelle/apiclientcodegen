@@ -55,14 +55,8 @@ jobs:
       with:
         dotnet-version: '5.0.x'
 
-    - name: Download Swagger Petstore V2 OpenAPI Spec
-      run: curl -sSL https://petstore.swagger.io/v2/swagger.${{ matrix.format }} -o OpenApi.${{ matrix.format }}
-      if: ${{ matrix.version == 'V2' }}
-      working-directory: test
-
-    - name: Download Swagger Petstore V3 OpenAPI Spec
-      run: curl -sSL https://petstore3.swagger.io/api/v3/openapi.${{ matrix.format }} -o OpenApi.${{ matrix.format }}
-      if: ${{ matrix.version == 'V3' }}
+    - name: Prepare Swagger Petstore OpenAPI Spec
+      run: cp ./OpenAPI/${{ matrix.format }}/Swagger.${{ matrix.format }} ./Swagger.${{ matrix.format }}
       working-directory: test
 
     - name: Generate code with AutoRest
