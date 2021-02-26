@@ -22,7 +22,7 @@ function Install-Rapicgen {
     dotnet tool update --global rapicgen    
 }
 
-function Download-SwaggerPetstore {
+function Prepare-SwaggerPetstore {
 
     param (
         [Parameter(Mandatory=$true)]
@@ -33,17 +33,25 @@ function Download-SwaggerPetstore {
         [Parameter(Mandatory=$true)]
         [ValidateSet("json", "yaml")]
         [string]
-        $Format
+        $Format,
+
+        [Parameter(Mandatory=$false)]
+        [switch]
+        $Download
     )
 
-    Write-Host "`r`nDownload Swagger Petstore $Version spec ($Format)`r`n"
+    if ($Download) {
+        Write-Host "`r`nDownload Swagger Petstore $Version spec ($Format)`r`n"
 
-    if ($Version -eq "v2") {
-        Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.$Format -OutFile Swagger.$Format
-    }
+        if ($Version -eq "v2") {
+            Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.$Format -OutFile Swagger.$Format
+        }
 
-    if ($Version -eq "v3") {
-        Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.$Format -OutFile Swagger.$Format
+        if ($Version -eq "v3") {
+            Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.$Format -OutFile Swagger.$Format
+        }
+    } else {
+        Copy-Item ./OpenAPI/$Version/Swagger.$Format ./Swagger.$Format
     }
 }
 
@@ -332,7 +340,7 @@ function RunTests {
         "json", "yaml" | ForEach-Object {
             $format = $_
             Remove-Item ./**/*Output.cs -Force
-            Download-SwaggerPetstore -Version $version -Format $format
+            Prepare-SwaggerPetstore -Version $version -Format $format
             Generate-CodeThenBuild -Version $version -Format $format -Method $Method -Parallel $Parallel
             Remove-Item Swagger.* -Force
             Remove-Item ./**/*Output.cs -Force
