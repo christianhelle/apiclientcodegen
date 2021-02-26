@@ -56,7 +56,7 @@ jobs:
         dotnet-version: '5.0.x'
 
     - name: Prepare Swagger Petstore OpenAPI Spec
-      run: cp ./OpenAPI/${{ matrix.format }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
+      run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
       working-directory: test
 
     - name: Generate code with AutoRest
