@@ -58,54 +58,68 @@ jobs:
       with:
         dotnet-version: '5.0.x'
 
-    - name: Download Swagger Petstore V2 OpenAPI Spec
-      run: curl -sSL https://petstore.swagger.io/v2/swagger.${{ matrix.format }} -o OpenApi.${{ matrix.format }}
-      if: ${{ matrix.version == 'v2' }}
-      working-directory: test
-
-    - name: Download Swagger Petstore V3 OpenAPI Spec
-      run: curl -sSL https://petstore3.swagger.io/api/v3/openapi.${{ matrix.format }} -o OpenApi.${{ matrix.format }}
-      if: ${{ matrix.version == 'v3' }}
+    - name: Prepare Swagger Petstore OpenAPI Spec
+      run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
       working-directory: test
 
     - name: Generate code with AutoRest
-      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/AutoRest/Output.cs --no-logging
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs --no-logging
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/NetCore21/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/NetCore31/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net5/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net48/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net472/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net462/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net452/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/NetStandard20/Output.cs
       working-directory: test
 
     - name: Build .NET Core 2.1 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/NetCore21/NetCore21.csproj
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/NetCore21/NetCore21.csproj
       working-directory: test
 
     - name: Build .NET Core 3.1 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/NetCore31/NetCore31.csproj
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/NetCore31/NetCore31.csproj
       working-directory: test
 
     - name: Build .NET 5 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net5/Net5.csproj
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 4.8 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net48/Net48.csproj
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net48/Net48.csproj
       working-directory: test
 
     - name: Build .NET 4.7.2 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net472/Net472.csproj
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net472/Net472.csproj
       working-directory: test
 
     - name: Build .NET 4.6.2 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net462/Net462.csproj
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net462/Net462.csproj
+      if: ${{ matrix.version == 'V2' }}
       working-directory: test
 
     - name: Build .NET 4.5.2 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/Net452/Net452.csproj
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net452/Net452.csproj
+      if: ${{ matrix.version == 'V2' }}
       working-directory: test
 
     - name: Build .NET Standard 2.0 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest/NetStandard20/NetStandard20.csproj
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/NetStandard20/NetStandard20.csproj
       working-directory: test
 
     - name: Generate code with NSwag
-      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/NetCore21/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/NetCore31/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net5/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net48/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net472/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net462/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net452/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/NetStandard20/Output.cs
       working-directory: test
 
     - name: Build .NET Core 2.1 NSwag generated code
@@ -141,7 +155,16 @@ jobs:
       working-directory: test
 
     - name: Generate code with Swagger Codegen CLI
-      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/NetCore21/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/NetCore31/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net5/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net48/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net472/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net462/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net452/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/NetStandard20/Output.cs
       working-directory: test
 
     - name: Build .NET Core 2.1 Swagger Codegen CLI generated code
@@ -181,7 +204,16 @@ jobs:
       working-directory: test
 
     - name: Generate code with OpenAPI Generator
-      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/NetCore21/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/NetCore31/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net5/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net48/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net472/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net462/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net452/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/NetStandard20/Output.cs
       working-directory: test
 
     - name: Build .NET Core 2.1 OpenAPI Generator generated code
