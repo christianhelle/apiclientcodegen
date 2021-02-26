@@ -73,6 +73,10 @@ function Build-GeneratedCode {
         $Parallel = $true
     )
 
+    if ($Version -eq "v3" -and $ToolName -eq "AutoRest") {
+        $ToolName = "AutoRest-V3"
+    }
+
     if ($Parallel) {
         $argumentsList = @()
         if ($ToolName -eq "All") {
@@ -193,6 +197,8 @@ function Generate-Code {
             Break
         }
     }
+
+    Write-Host "`r`n$ToolName - Code Generation Completed`r`n"
 
     if ($process.ExitCode -ne 0) {
         throw "$_ exited with status code $($process.ExitCode)"
