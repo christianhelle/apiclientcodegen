@@ -1,4 +1,4 @@
-﻿{
+{
   "openapi": "3.0.2",
   "info": {
     "title": "Swagger Petstore - OpenAPI 3.0",
@@ -197,14 +197,6 @@
           "200": {
             "description": "successful operation",
             "content": {
-              "application/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Pet"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
                   "type": "array",
@@ -256,14 +248,6 @@
           "200": {
             "description": "successful operation",
             "content": {
-              "application/xml": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Pet"
-                  }
-                }
-              },
               "application/json": {
                 "schema": {
                   "type": "array",
@@ -595,11 +579,6 @@
           "200": {
             "description": "successful operation",
             "content": {
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/Order"
-                }
-              },
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Order"
@@ -781,11 +760,6 @@
               }
             },
             "content": {
-              "application/xml": {
-                "schema": {
-                  "type": "string"
-                }
-              },
               "application/json": {
                 "schema": {
                   "type": "string"
@@ -838,11 +812,6 @@
           "200": {
             "description": "successful operation",
             "content": {
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              },
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/User"
