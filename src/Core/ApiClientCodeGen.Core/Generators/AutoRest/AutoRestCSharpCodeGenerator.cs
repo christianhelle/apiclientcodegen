@@ -12,6 +12,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly IAutoRestOptions options;
         private readonly IProcessLauncher processLauncher;
         private readonly IOpenApiDocumentFactory documentFactory;
+        private readonly IAutoRestArgumentProvider argumentProvider;
         private static readonly object SyncLock = new object();
 
         public string SwaggerFile { get; }
@@ -22,13 +23,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             string defaultNamespace,
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
-            IOpenApiDocumentFactory documentFactory)
+            IOpenApiDocumentFactory documentFactory,
+            IAutoRestArgumentProvider argumentProvider = null)
         {
             SwaggerFile = swaggerFile;
             DefaultNamespace = defaultNamespace;
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher;
             this.documentFactory = documentFactory ?? throw new ArgumentNullException(nameof(documentFactory));
+            this.argumentProvider = argumentProvider ?? new AutoRestArgumentProvider(options);
         }
 
         public string GenerateCode(IProgressReporter pGenerateProgress)
@@ -66,7 +69,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     if (!Directory.Exists(outputFolder))
                         Directory.CreateDirectory(outputFolder);
 
-                    processLauncher.Start(command, GetArguments(outputFolder), Path.GetDirectoryName(SwaggerFile));
+                    processLauncher.Start(
+                        command,
+                        argumentProvider.GetArguments(
+                            outputFolder,
+                            SwaggerFile,
+                            DefaultNamespace),
+                        Path.GetDirectoryName(SwaggerFile));
+
                     pGenerateProgress.Progress(80);
 
                     return CSharpFileMerger.MergeFilesAndDeleteSource(outputFolder);
@@ -74,7 +84,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 else
                 {
                     var outputFile = Path.GetTempFileName();
-                    var arguments = GetLegacyArguments(outputFile);
+                    var arguments = argumentProvider.GetLegacyArguments(
+                        outputFile,
+                        SwaggerFile,
+                        DefaultNamespace);
+
                     try
                     {
                         processLauncher.Start(
@@ -101,50 +115,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             {
                 pGenerateProgress.Progress(90);
             }
-        }
-
-        private string GetLegacyArguments(string outputFile)
-        {
-            return AppendCommonArguments(
-                "--version=2.0.4417 --csharp " +
-                $"--input-file=\"{SwaggerFile}\" " +
-                $"--output-file=\"{outputFile}\" " +
-                $"--namespace=\"{DefaultNamespace}\" ");
-        }
-
-        private string GetArguments(string outputFolder)
-        {
-            return AppendCommonArguments(
-                "--use:@autorest/csharp@3.0.0-beta.20210218.1 " +
-                $"--input-file=\"{SwaggerFile}\" " +
-                $"--output-folder=\"{outputFolder}\" " +
-                $"--namespace=\"{DefaultNamespace}\" ");
-        }
-
-        private string AppendCommonArguments(string args)
-        {
-            if (options.AddCredentials)
-                args += "--add-credentials ";
-
-            args += $"--client-side-validation=\"{options.ClientSideValidation}\" ";
-            args += $"--sync-methods=\"{options.SyncMethods}\" ";
-
-            if (options.UseDateTimeOffset)
-                args += "--use-datetimeoffset ";
-
-            if (options.UseInternalConstructors)
-                args += " --use-internal-constructors ";
-
-            if (!options.OverrideClientName)
-                return args;
-
-            var file = new FileInfo(SwaggerFile);
-            var name = file.Name
-                .Replace(" ", string.Empty)
-                .Replace(file.Extension, string.Empty);
-
-            args += $" --override-client-name=\"{name}\"";
-            return args;
         }
     }
 }

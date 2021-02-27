@@ -5,7 +5,6 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using Moq;
 using NSwag;
 using Xunit;
@@ -14,78 +13,6 @@ namespace ApiClientCodeGen.Core.Tests.Generators.AutoRest
 {
     public class AutoRestCSharpCodeGeneratorTests : TestWithResources
     {
-        [Theory, AutoMoqData]
-        public void Reads_AddCredentials_From_Options(
-            [Frozen] IAutoRestOptions options,
-            [Frozen] IOpenApiDocumentFactory factory,
-            AutoRestCSharpCodeGenerator sut,
-            IProgressReporter progress)
-        {
-            ArrangeOpenApiDocumentFactory(factory);
-            sut.GenerateCode(progress);
-            Mock.Get(options).Verify(c => c.AddCredentials, Times.AtLeastOnce);
-        }
-
-        [Theory, AutoMoqData]
-        public void Reads_ClientSideValidation_From_Options(
-            [Frozen] IAutoRestOptions options,
-            [Frozen] IOpenApiDocumentFactory factory,
-            AutoRestCSharpCodeGenerator sut,
-            IProgressReporter progress)
-        {
-            ArrangeOpenApiDocumentFactory(factory);
-            sut.GenerateCode(progress);
-            Mock.Get(options).Verify(c => c.ClientSideValidation, Times.AtLeastOnce);
-        }
-
-        [Theory, AutoMoqData]
-        public void Reads_OverrideClientName_From_Options(
-            [Frozen] IAutoRestOptions options,
-            [Frozen] IOpenApiDocumentFactory factory,
-            AutoRestCSharpCodeGenerator sut,
-            IProgressReporter progress)
-        {
-            ArrangeOpenApiDocumentFactory(factory);
-            sut.GenerateCode(progress);
-            Mock.Get(options).Verify(c => c.OverrideClientName, Times.AtLeastOnce);
-        }
-
-        [Theory, AutoMoqData]
-        public void Reads_SyncMethods_From_Options(
-            [Frozen] IAutoRestOptions options,
-            [Frozen] IOpenApiDocumentFactory factory,
-            AutoRestCSharpCodeGenerator sut,
-            IProgressReporter progress)
-        {
-            ArrangeOpenApiDocumentFactory(factory);
-            sut.GenerateCode(progress);
-            Mock.Get(options).Verify(c => c.SyncMethods, Times.AtLeastOnce);
-        }
-
-        [Theory, AutoMoqData]
-        public void Reads_UseDateTimeOffset_From_Options(
-            [Frozen] IAutoRestOptions options,
-            [Frozen] IOpenApiDocumentFactory factory,
-            AutoRestCSharpCodeGenerator sut,
-            IProgressReporter progress)
-        {
-            ArrangeOpenApiDocumentFactory(factory);
-            sut.GenerateCode(progress);
-            Mock.Get(options).Verify(c => c.UseDateTimeOffset, Times.AtLeastOnce);
-        }
-
-        [Theory, AutoMoqData]
-        public void Reads_UseInternalConstructors_From_Options(
-            [Frozen] IAutoRestOptions options,
-            [Frozen] IOpenApiDocumentFactory factory,
-            AutoRestCSharpCodeGenerator sut,
-            IProgressReporter progress)
-        {
-            ArrangeOpenApiDocumentFactory(factory);
-            sut.GenerateCode(progress);
-            Mock.Get(options).Verify(c => c.UseInternalConstructors, Times.AtLeastOnce);
-        }
-
         [Theory, AutoMoqData]
         public void Updates_Progress(
             [Frozen] IOpenApiDocumentFactory factory,
@@ -122,27 +49,32 @@ namespace ApiClientCodeGen.Core.Tests.Generators.AutoRest
         public void Tries_Again_Upon_ProcessLaunchException_For_OpenApi_v2(
             [Frozen] IOpenApiDocumentFactory factory,
             [Frozen] IProcessLauncher processLauncher,
+            [Frozen] IAutoRestArgumentProvider argumentProvider,
             AutoRestCSharpCodeGenerator sut,
             IProgressReporter progress,
-            ProcessLaunchException exception)
+            ProcessLaunchException exception,
+            string arguments)
         {
+            arguments += "--version=[some version]";
+            
             Mock.Get(processLauncher)
                 .Setup(
                     c => c.Start(
                         It.IsAny<string>(),
-                        It.IsAny<string>(),
+                        arguments,
                         It.IsAny<string>()))
                 .Throws(exception);
 
-            ArrangeOpenApiDocumentFactory(factory);
+            Mock.Get(argumentProvider)
+                .Setup(
+                    c => c.GetLegacyArguments(
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<string>()))
+                .Returns(arguments);
 
-            try
-            {
-                sut.GenerateCode(progress);
-            }
-            catch (ProcessLaunchException)
-            {
-            }
+            ArrangeOpenApiDocumentFactory(factory);
+            sut.GenerateCode(progress);
 
             Mock.Get(processLauncher)
                 .Verify(
