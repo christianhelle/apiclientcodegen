@@ -20,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
             this.xml = xml;
         }
 
-        public XDocument UpdatePropertyGroup(Dictionary<string, string> properties)
+        public XDocument UpdatePropertyGroup(IReadOnlyDictionary<string, string> properties)
         {
             var propertyGroups = xml
                 .Elements("Project")

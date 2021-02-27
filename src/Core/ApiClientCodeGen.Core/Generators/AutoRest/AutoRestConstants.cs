@@ -4,7 +4,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
     public static class AutoRestConstants
     {
-        public static readonly Dictionary<string, string> PropertyGroups
+        public static IReadOnlyDictionary<string, string> PropertyGroups { get; }
             = new Dictionary<string, string>
             {
                 {"IncludeGeneratorSharedCode", bool.TrueString},
