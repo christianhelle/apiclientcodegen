@@ -5,8 +5,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
     public interface IAutoRestArgumentProvider
     {
-        string GetArguments(string outputFile, string SwaggerFile, string DefaultNamespace);
-        string GetLegacyArguments(string outputFile, string SwaggerFile, string DefaultNamespace);
+        string GetArguments(string outputFile, string swaggerFile, string defaultNamespace);
+        string GetLegacyArguments(string outputFile, string swaggerFile, string defaultNamespace);
     }
 
     public class AutoRestArgumentProvider : IAutoRestArgumentProvider
