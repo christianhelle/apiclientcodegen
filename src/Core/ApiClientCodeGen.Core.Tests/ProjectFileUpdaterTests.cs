@@ -1,4 +1,5 @@
-﻿using System.Xml.Linq;
+﻿using System.IO;
+using System.Xml.Linq;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
 using FluentAssertions;
@@ -8,33 +9,73 @@ namespace ApiClientCodeGen.Core.Tests
 {
     public class ProjectFileUpdaterTests
     {
-        private const string CSharpProjectFileContents = @"
+        private const string CSharpProjectFileContentsWithout = @"
 <Project Sdk=""Microsoft.NET.Sdk"">
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 </Project>";
 
-        private readonly string xml;
+        private const string CSharpProjectFileContentsWith = @"
+<Project Sdk=""Microsoft.NET.Sdk"">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <IncludeGeneratorSharedCode>false</IncludeGeneratorSharedCode>
+    <RestoreAdditionalProjectSources>empty</RestoreAdditionalProjectSources>
+  </PropertyGroup>
+</Project>";
 
-        public ProjectFileUpdaterTests()
+        private static string ArrangeAndAct(string contents = null)
         {
-            var sut = new ProjectFileUpdater(XDocument.Parse(CSharpProjectFileContents));
+            var sut = new ProjectFileUpdater(XDocument.Parse(contents ?? CSharpProjectFileContentsWithout));
             var document = sut.UpdatePropertyGroup(AutoRestConstants.PropertyGroups);
-            xml = document.ToString();
+            return document.ToString();
+        }
+
+        [Fact]
+        public void UpdatePropertyGroup_Returns_NotNull()
+        {
+            var projectFile = Path.GetTempFileName();
+            File.WriteAllText(projectFile, CSharpProjectFileContentsWithout);
+            var sut = new ProjectFileUpdater(projectFile);
+            sut.UpdatePropertyGroup(AutoRestConstants.PropertyGroups)
+                .Should()
+                .NotBeNull();
         }
 
         [Fact]
         public void Updates_PropertyGroups()
-            => xml.Should().NotBeEquivalentTo(CSharpProjectFileContents);
+            => ArrangeAndAct().Should().NotBeEquivalentTo(CSharpProjectFileContentsWithout);
 
         [Fact]
-        public void Sets_IncludeGeneratorSharedCode() 
-            => xml.Should().Contain("<IncludeGeneratorSharedCode>true</IncludeGeneratorSharedCode>");
+        public void Sets_IncludeGeneratorSharedCode()
+            => ArrangeAndAct().Should().Contain("<IncludeGeneratorSharedCode>True</IncludeGeneratorSharedCode>");
 
         [Fact]
         public void Sets_RestoreAdditionalProjectSources()
         {
+            var xml = ArrangeAndAct();
+            xml.Should().Contain("<RestoreAdditionalProjectSources>");
+            xml.Should().Contain("</RestoreAdditionalProjectSources>");
+            xml.Should().Contain("https://azuresdkartifacts.blob.core.windows.net/azure-sdk-tools/index.json");
+        }
+
+        [Fact]
+        public void Updates_Existing_PropertyGroups()
+            => ArrangeAndAct(CSharpProjectFileContentsWith)
+                .Should()
+                .NotBeEquivalentTo(CSharpProjectFileContentsWith);
+
+        [Fact]
+        public void Sets_Existing_IncludeGeneratorSharedCode()
+            => ArrangeAndAct(CSharpProjectFileContentsWith)
+                .Should()
+                .Contain("<IncludeGeneratorSharedCode>True</IncludeGeneratorSharedCode>");
+
+        [Fact]
+        public void Sets_Existing_RestoreAdditionalProjectSources()
+        {
+            var xml = ArrangeAndAct(CSharpProjectFileContentsWith);
             xml.Should().Contain("<RestoreAdditionalProjectSources>");
             xml.Should().Contain("</RestoreAdditionalProjectSources>");
             xml.Should().Contain("https://azuresdkartifacts.blob.core.windows.net/azure-sdk-tools/index.json");

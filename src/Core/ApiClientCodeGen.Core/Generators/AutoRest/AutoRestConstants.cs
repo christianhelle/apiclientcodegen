@@ -4,10 +4,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
     public static class AutoRestConstants
     {
-        public static readonly Dictionary<string, object> PropertyGroups
-            = new Dictionary<string, object>
+        public static readonly Dictionary<string, string> PropertyGroups
+            = new Dictionary<string, string>
             {
-                {"IncludeGeneratorSharedCode", true},
+                {"IncludeGeneratorSharedCode", bool.TrueString},
                 {
                     "RestoreAdditionalProjectSources",
                     "https://azuresdkartifacts.blob.core.windows.net/azure-sdk-tools/index.json"
