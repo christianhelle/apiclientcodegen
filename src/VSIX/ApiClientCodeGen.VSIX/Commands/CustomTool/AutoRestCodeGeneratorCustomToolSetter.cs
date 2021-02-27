@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Xml.Linq;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using EnvDTE;
@@ -45,9 +44,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
                     package,
                     SupportedCodeGenerator.AutoRestV3);
 
-                project.Save();
-
-                UpdatePropertyGroups(project.FileName);
+                await project.UpdatePropertyGroups(
+                    AutoRestConstants.PropertyGroups);
             }
             else
             {
@@ -55,41 +53,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
                     package,
                     type.GetSupportedCodeGenerator());
             }
-        }
-
-        private static void UpdatePropertyGroups(string projectFile)
-        {
-            var xml = XDocument.Load(projectFile);
-            var propertyGroups = xml.Elements("Project").Elements("PropertyGroup").Elements().ToList();
-
-            if (propertyGroups.All(c => c.Name != "IncludeGeneratorSharedCode"))
-            {
-                propertyGroups.Add(
-                    new XElement("IncludeGeneratorSharedCode", true));
-            }
-            else
-            {
-                propertyGroups
-                    .First(c => c.Name == "IncludeGeneratorSharedCode")
-                    .Value = bool.TrueString;
-            }
-
-            if (propertyGroups.All(c => c.Name != "RestoreAdditionalProjectSources"))
-            {
-                propertyGroups.Add(
-                    new XElement(
-                        "RestoreAdditionalProjectSources",
-                        "https://azuresdkartifacts.blob.core.windows.net/azure-sdk-tools/index.json"));
-            }
-            else
-            {
-                propertyGroups
-                    .First(c => c.Name == "RestoreAdditionalProjectSources")
-                    .Value = "https://azuresdkartifacts.blob.core.windows.net/azure-sdk-tools/index.json";
-            }
-
-            xml?.Root?.Element("PropertyGroup")?.ReplaceNodes(propertyGroups);
-            xml.Save(projectFile);
         }
     }
 }

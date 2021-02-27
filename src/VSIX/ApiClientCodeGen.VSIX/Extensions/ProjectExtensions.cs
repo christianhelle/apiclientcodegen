@@ -314,6 +314,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
             return false;
         }
+
+        public static async Task UpdatePropertyGroups(
+            this Project project,
+            Dictionary<string, object> properties)
+        {
+            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+            project.Save();
+            var projectFileUpdater = new ProjectFileUpdater(project.FileName);
+            projectFileUpdater.UpdatePropertyGroup(properties);
+        }
     }
 
     public static class ProjectTypes
