@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Linq;
 
@@ -17,7 +18,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 
         public ProjectFileUpdater(XDocument xml)
         {
-            this.xml = xml;
+            this.xml = xml ?? throw new ArgumentNullException(nameof(xml));
         }
 
         public XDocument UpdatePropertyGroup(IReadOnlyDictionary<string, string> properties)
@@ -43,7 +44,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
                 }
             }
 
-            xml?.Root?.Element("PropertyGroup")?.ReplaceNodes(propertyGroups);
+            xml.Root?.Element("PropertyGroup")?.ReplaceNodes(propertyGroups);
 
             if (file != null)
                 xml.Save(file);

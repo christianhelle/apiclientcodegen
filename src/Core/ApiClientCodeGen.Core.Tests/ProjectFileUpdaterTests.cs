@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Xml.Linq;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
@@ -31,6 +32,12 @@ namespace ApiClientCodeGen.Core.Tests
             var document = sut.UpdatePropertyGroup(AutoRestConstants.PropertyGroups);
             return document.ToString();
         }
+
+        [Fact]
+        public void Constructor_Requires_XDocument()
+            => new Action(() => new ProjectFileUpdater(null as XDocument))
+                .Should()
+                .ThrowExactly<ArgumentNullException>();
 
         [Fact]
         public void UpdatePropertyGroup_Returns_NotNull()
