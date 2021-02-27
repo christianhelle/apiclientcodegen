@@ -317,7 +317,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
         public static async Task UpdatePropertyGroups(
             this Project project,
-            Dictionary<string, object> properties)
+            Dictionary<string, string> properties)
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             project.Save();
