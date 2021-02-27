@@ -1,5 +1,6 @@
 using ApiClientCodeGen.Tests.Common;
-using AutoFixture;
+using ApiClientCodeGen.Tests.Common.Infrastructure;
+using AutoFixture.Xunit2;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
@@ -13,56 +14,154 @@ namespace ApiClientCodeGen.Core.Tests.Generators.AutoRest
 {
     public class AutoRestCSharpCodeGeneratorTests : TestWithResources
     {
-        private readonly Mock<IAutoRestOptions> optionsMock = new Mock<IAutoRestOptions>();
-        private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
-        private readonly Mock<IProcessLauncher> processMock = new Mock<IProcessLauncher>();
-        private readonly Mock<IOpenApiDocumentFactory> factoryMock = new Mock<IOpenApiDocumentFactory>();
-        
-        public AutoRestCSharpCodeGeneratorTests()
+        [Theory, AutoMoqData]
+        public void Reads_AddCredentials_From_Options(
+            [Frozen] IAutoRestOptions options,
+            [Frozen] IOpenApiDocumentFactory factory,
+            AutoRestCSharpCodeGenerator sut,
+            IProgressReporter progress)
         {
-            var document = OpenApiDocument.FromFileAsync(SwaggerJsonFilename).GetAwaiter().GetResult();
-            factoryMock.Setup(c => c.GetDocumentAsync(It.IsAny<string>()))
-                .ReturnsAsync(document);
-            
-            new AutoRestCSharpCodeGenerator(
-                    "Swagger.json",
-                    new Fixture().Create<string>(),
-                    optionsMock.Object,
-                    processMock.Object,
-                    factoryMock.Object)
-                .GenerateCode(progressMock.Object);
+            ArrangeOpenApiDocumentFactory(factory);
+            sut.GenerateCode(progress);
+            Mock.Get(options).Verify(c => c.AddCredentials, Times.AtLeastOnce);
         }
 
-        [Fact]
-        public void Reads_AddCredentials_From_Options() 
-            => optionsMock.Verify(c => c.AddCredentials, Times.AtLeastOnce);
+        [Theory, AutoMoqData]
+        public void Reads_ClientSideValidation_From_Options(
+            [Frozen] IAutoRestOptions options,
+            [Frozen] IOpenApiDocumentFactory factory,
+            AutoRestCSharpCodeGenerator sut,
+            IProgressReporter progress)
+        {
+            ArrangeOpenApiDocumentFactory(factory);
+            sut.GenerateCode(progress);
+            Mock.Get(options).Verify(c => c.ClientSideValidation, Times.AtLeastOnce);
+        }
 
-        [Fact]
-        public void Reads_ClientSideValidation_From_Options() 
-            => optionsMock.Verify(c => c.ClientSideValidation, Times.AtLeastOnce);
+        [Theory, AutoMoqData]
+        public void Reads_OverrideClientName_From_Options(
+            [Frozen] IAutoRestOptions options,
+            [Frozen] IOpenApiDocumentFactory factory,
+            AutoRestCSharpCodeGenerator sut,
+            IProgressReporter progress)
+        {
+            ArrangeOpenApiDocumentFactory(factory);
+            sut.GenerateCode(progress);
+            Mock.Get(options).Verify(c => c.OverrideClientName, Times.AtLeastOnce);
+        }
 
-        [Fact]
-        public void Reads_OverrideClientName_From_Options() 
-            => optionsMock.Verify(c => c.OverrideClientName, Times.AtLeastOnce);
+        [Theory, AutoMoqData]
+        public void Reads_SyncMethods_From_Options(
+            [Frozen] IAutoRestOptions options,
+            [Frozen] IOpenApiDocumentFactory factory,
+            AutoRestCSharpCodeGenerator sut,
+            IProgressReporter progress)
+        {
+            ArrangeOpenApiDocumentFactory(factory);
+            sut.GenerateCode(progress);
+            Mock.Get(options).Verify(c => c.SyncMethods, Times.AtLeastOnce);
+        }
 
-        [Fact]
-        public void Reads_SyncMethods_From_Options() 
-            => optionsMock.Verify(c => c.SyncMethods, Times.AtLeastOnce);
+        [Theory, AutoMoqData]
+        public void Reads_UseDateTimeOffset_From_Options(
+            [Frozen] IAutoRestOptions options,
+            [Frozen] IOpenApiDocumentFactory factory,
+            AutoRestCSharpCodeGenerator sut,
+            IProgressReporter progress)
+        {
+            ArrangeOpenApiDocumentFactory(factory);
+            sut.GenerateCode(progress);
+            Mock.Get(options).Verify(c => c.UseDateTimeOffset, Times.AtLeastOnce);
+        }
 
-        [Fact]
-        public void Reads_UseDateTimeOffset_From_Options() 
-            => optionsMock.Verify(c => c.UseDateTimeOffset, Times.AtLeastOnce);
+        [Theory, AutoMoqData]
+        public void Reads_UseInternalConstructors_From_Options(
+            [Frozen] IAutoRestOptions options,
+            [Frozen] IOpenApiDocumentFactory factory,
+            AutoRestCSharpCodeGenerator sut,
+            IProgressReporter progress)
+        {
+            ArrangeOpenApiDocumentFactory(factory);
+            sut.GenerateCode(progress);
+            Mock.Get(options).Verify(c => c.UseInternalConstructors, Times.AtLeastOnce);
+        }
 
-        [Fact]
-        public void Reads_UseInternalConstructors_From_Options() 
-            => optionsMock.Verify(c => c.UseInternalConstructors, Times.AtLeastOnce);
+        [Theory, AutoMoqData]
+        public void Updates_Progress(
+            [Frozen] IOpenApiDocumentFactory factory,
+            AutoRestCSharpCodeGenerator sut,
+            IProgressReporter progress)
+        {
+            ArrangeOpenApiDocumentFactory(factory);
+            sut.GenerateCode(progress);
+            Mock.Get(progress)
+                .Verify(
+                    c => c.Progress(
+                        It.IsAny<uint>(),
+                        It.IsAny<uint>()),
+                    Times.Exactly(5));
+        }
 
-        [Fact]
-        public void Updates_Progress()
-            => progressMock.Verify(
-                c => c.Progress(
-                    It.IsAny<uint>(),
-                    It.IsAny<uint>()),
-                Times.Exactly(5));
+        [Theory, AutoMoqData]
+        public void Parses_OpenApi_v3(
+            [Frozen] IOpenApiDocumentFactory factory,
+            AutoRestCSharpCodeGenerator sut,
+            IProgressReporter progress)
+        {
+            ArrangeOpenApiDocumentFactory(factory, SwaggerV3JsonFilename);
+            sut.GenerateCode(progress);
+            Mock.Get(progress)
+                .Verify(
+                    c => c.Progress(
+                        It.IsAny<uint>(),
+                        It.IsAny<uint>()),
+                    Times.Exactly(5));
+        }
+
+        [Theory, AutoMoqData]
+        public void Tries_Again_Upon_ProcessLaunchException_For_OpenApi_v2(
+            [Frozen] IOpenApiDocumentFactory factory,
+            [Frozen] IProcessLauncher processLauncher,
+            AutoRestCSharpCodeGenerator sut,
+            IProgressReporter progress,
+            ProcessLaunchException exception)
+        {
+            Mock.Get(processLauncher)
+                .Setup(
+                    c => c.Start(
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<string>()))
+                .Throws(exception);
+
+            ArrangeOpenApiDocumentFactory(factory);
+
+            try
+            {
+                sut.GenerateCode(progress);
+            }
+            catch (ProcessLaunchException)
+            {
+            }
+
+            Mock.Get(processLauncher)
+                .Verify(
+                    c => c.Start(
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        It.IsAny<string>()),
+                    Times.Exactly(2));
+        }
+
+        private void ArrangeOpenApiDocumentFactory(
+            IOpenApiDocumentFactory factory,
+            string swaggerFile = null)
+        {
+            Mock.Get(factory)
+                .Setup(
+                    c => c.GetDocumentAsync(
+                        It.IsAny<string>()))
+                .Returns(OpenApiDocument.FromFileAsync(swaggerFile ?? SwaggerJsonFilename));
+        }
     }
 }

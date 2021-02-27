@@ -63,6 +63,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                         Guid.NewGuid().ToString("N"),
                         "TempApiClient");
 
+                    if (!Directory.Exists(outputFolder))
+                        Directory.CreateDirectory(outputFolder);
+
                     processLauncher.Start(command, GetArguments(outputFolder), Path.GetDirectoryName(SwaggerFile));
                     pGenerateProgress.Progress(80);
 
