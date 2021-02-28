@@ -122,7 +122,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             return false;
         }
 
-        public static Project GetActiveProject(DTE Dte)
+        public static Project GetActiveProject(this DTE Dte)
         {
             try
             {
