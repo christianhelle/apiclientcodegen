@@ -5,7 +5,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
     public interface IAutoRestArgumentProvider
     {
-        string GetArguments(string outputFile, string swaggerFile, string defaultNamespace);
+        string GetArguments(string outputFolder, string swaggerFile, string defaultNamespace);
         string GetLegacyArguments(string outputFile, string swaggerFile, string defaultNamespace);
     }
 
@@ -18,19 +18,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             this.options = options;
         }
 
-        public string GetLegacyArguments(
-            string outputFile,
-            string swaggerFile,
-            string defaultNamespace)
-        {
-            return AppendCommonArguments(
-                swaggerFile,
-                "--version=2.0.4417 --csharp " +
-                $"--input-file=\"{swaggerFile}\" " +
-                $"--output-file=\"{outputFile}\" " +
-                $"--namespace=\"{defaultNamespace}\" ");
-        }
-
         public string GetArguments(
             string outputFolder,
             string swaggerFile,
@@ -41,6 +28,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 "--use:@autorest/csharp@3.0.0-beta.20210218.1 " +
                 $"--input-file=\"{swaggerFile}\" " +
                 $"--output-folder=\"{outputFolder}\" " +
+                $"--namespace=\"{defaultNamespace}\" ");
+        }
+
+        public string GetLegacyArguments(
+            string outputFile,
+            string swaggerFile,
+            string defaultNamespace)
+        {
+            return AppendCommonArguments(
+                swaggerFile,
+                "--version=2.0.4417 --csharp " +
+                $"--input-file=\"{swaggerFile}\" " +
+                $"--output-file=\"{outputFile}\" " +
                 $"--namespace=\"{defaultNamespace}\" ");
         }
 
