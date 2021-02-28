@@ -84,6 +84,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
                 project.AddFileToProject(dte, new FileInfo(Path.Combine(folder, nswagOutput)));
             }
 
+            await OnInstallPackagesAsync(package, project, result);
+        }
+
+        protected virtual async Task OnInstallPackagesAsync(
+            AsyncPackage package,
+            Project project,
+            EnterOpenApiSpecDialogResult dialogResult)
+        {
             await project.InstallMissingPackagesAsync(package, CodeGenerator);
         }
 
