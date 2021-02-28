@@ -1,14 +1,10 @@
-name: Smoke Tests
+name: Regression Tests
 
 on:
   push:
     paths-ignore:
-      - '.github/workflows/**'
-      - '!.github/workflows/smoke-tests.yml'
-      - 'docs/**'
-      - 'build/**'
-      - 'images/**'
-      - 'README.md'
+      - '**/*'
+      - '!.github/workflows/regression-tests.yml'
     branches:
       - '*'
   pull_request:
@@ -23,14 +19,21 @@ jobs:
 
     name: Swagger Petstore
     runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.os == 'macos-11.0' }}
     strategy:
       fail-fast: true
       matrix:
+        node: [10, 12, 14, 15]
         format: [ json, yaml ]
         version: [ V2, V3 ]
         os: [
+          ubuntu-20.04,
+          ubuntu-18.04,
+          ubuntu-16.04,
+          macos-11.0,
           macos-10.15,
-          windows-2019
+          windows-2019,
+          windows-2016
         ]
 
     steps:
@@ -38,7 +41,7 @@ jobs:
 
     - uses: actions/setup-node@v1
       with:
-        node-version: 14
+        node-version: ${{ matrix.node }}
     
     - name: Setup .NET Core 2.1
       uses: actions/setup-dotnet@v1

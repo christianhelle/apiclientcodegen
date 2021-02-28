@@ -22,28 +22,36 @@ function Install-Rapicgen {
     dotnet tool update --global rapicgen    
 }
 
-function Download-SwaggerPetstore {
+function Prepare-SwaggerPetstore {
 
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("v2", "v3")]
+        [ValidateSet("V2", "V3")]
         [string]
         $Version,
 
         [Parameter(Mandatory=$true)]
         [ValidateSet("json", "yaml")]
         [string]
-        $Format
+        $Format,
+
+        [Parameter(Mandatory=$false)]
+        [switch]
+        $Download
     )
 
-    Write-Host "`r`nDownload Swagger Petstore $Version spec ($Format)`r`n"
+    if ($Download) {
+        Write-Host "`r`nDownload Swagger Petstore $Version spec ($Format)`r`n"
 
-    if ($Version -eq "v2") {
-        Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.$Format -OutFile Swagger.$Format
-    }
+        if ($Version -eq "V2") {
+            Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.$Format -OutFile Swagger.$Format
+        }
 
-    if ($Version -eq "v3") {
-        Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.$Format -OutFile Swagger.$Format
+        if ($Version -eq "V3") {
+            Invoke-WebRequest -Uri https://petstore3.swagger.io/api/v3/openapi.$Format -OutFile Swagger.$Format
+        }
+    } else {
+        Copy-Item ./OpenAPI/$Version/Swagger.$Format ./Swagger.$Format
     }
 }
 
@@ -51,27 +59,41 @@ function Build-GeneratedCode {
     
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("All", "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
+        [ValidateSet("All", "AutoRest-V2", "AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
         [string]
         $ToolName,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateSet("V2", "V3")]
+        [string]
+        $Version,
         
         [Parameter(Mandatory=$false)]
         [bool]
-        $Parallel = $false
+        $Parallel = $true
     )
+
+    if ($Version -eq "V2") {
+        $tools = @("AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
+    } else {
+        $tools = @("AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
+    }  
 
     if ($Parallel) {
         $argumentsList = @()
         if ($ToolName -eq "All") {
-            "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+            $tools | ForEach-Object {
                 $argumentsList += "build ./GeneratedCode/$_/NetStandard20/NetStandard20.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/NetCore21/NetCore21.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/NetCore31/NetCore31.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net5/Net5.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net48/Net48.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net472/Net472.csproj"
-                $argumentsList += "build ./GeneratedCode/$_/Net462/Net462.csproj"
-                $argumentsList += "build ./GeneratedCode/$_/Net452/Net452.csproj"
+
+                if ($_ -notcontains "AutoRest-V3") {
+                    $argumentsList += "build ./GeneratedCode/$_/Net462/Net462.csproj"
+                    $argumentsList += "build ./GeneratedCode/$_/Net452/Net452.csproj"
+                }
             }
         } else {
             $argumentsList = @(
@@ -80,10 +102,13 @@ function Build-GeneratedCode {
                 "build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj",
                 "build ./GeneratedCode/$ToolName/Net5/Net5.csproj",
                 "build ./GeneratedCode/$ToolName/Net48/Net48.csproj",
-                "build ./GeneratedCode/$ToolName/Net472/Net472.csproj",
-                "build ./GeneratedCode/$ToolName/Net462/Net462.csproj",
-                "build ./GeneratedCode/$ToolName/Net452/Net452.csproj"
+                "build ./GeneratedCode/$ToolName/Net472/Net472.csproj"
             )
+
+            if ($_ -notcontains "AutoRest-V3") {
+                $argumentsList += "build ./GeneratedCode/$_/Net462/Net462.csproj"
+                $argumentsList += "build ./GeneratedCode/$_/Net452/Net452.csproj"
+            }
         }
         
         $processes = ($argumentsList | ForEach-Object {
@@ -97,7 +122,7 @@ function Build-GeneratedCode {
         }
     } else {
         if ($ToolName -eq "All") {
-            "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+            $tools | ForEach-Object {
                 Write-Host "`r`nBuilding $_`r`n"
                 dotnet build ./GeneratedCode/$_/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/NetCore21/NetCore21.csproj; ThrowOnNativeFailure
@@ -105,8 +130,11 @@ function Build-GeneratedCode {
                 dotnet build ./GeneratedCode/$_/Net5/Net5.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/Net48/Net48.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/Net472/Net472.csproj; ThrowOnNativeFailure
-                dotnet build ./GeneratedCode/$_/Net462/Net462.csproj; ThrowOnNativeFailure
-                dotnet build ./GeneratedCode/$_/Net452/Net452.csproj; ThrowOnNativeFailure
+
+                if ($_ -notcontains "AutoRest-V3") {
+                    dotnet build ./GeneratedCode/$_/Net462/Net462.csproj; ThrowOnNativeFailure
+                    dotnet build ./GeneratedCode/$_/Net452/Net452.csproj; ThrowOnNativeFailure
+                }
             }
         } else {
             Write-Host "`r`nBuilding $ToolName`r`n"
@@ -116,8 +144,11 @@ function Build-GeneratedCode {
             dotnet build ./GeneratedCode/$ToolName/Net5/Net5.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/Net48/Net48.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/Net472/Net472.csproj; ThrowOnNativeFailure
-            dotnet build ./GeneratedCode/$ToolName/Net462/Net462.csproj; ThrowOnNativeFailure
-            dotnet build ./GeneratedCode/$ToolName/Net452/Net452.csproj; ThrowOnNativeFailure
+
+            if ($_ -notcontains "AutoRest-V3") {
+                dotnet build ./GeneratedCode/$ToolName/Net462/Net462.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$ToolName/Net452/Net452.csproj; ThrowOnNativeFailure
+            }
         }
     }
 }
@@ -126,7 +157,7 @@ function Generate-Code {
     
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
+        [ValidateSet("AutoRest-V2", "AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
         [string]
         $ToolName,
 
@@ -138,7 +169,12 @@ function Generate-Code {
         [Parameter(Mandatory=$true)]
         [ValidateSet("dotnet-run", "rapicgen")]
         [string]
-        $Method
+        $Method,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateSet("V2", "V3")]
+        [string]
+        $Version
     )
 
     switch ($ToolName) {
@@ -148,9 +184,19 @@ function Generate-Code {
         "OpenApiGenerator" { 
             $command = "openapi"
         }
-        Default {
-            $command = $ToolName.ToLower()
+        "AutoRest-V2" {
+            $command = "autorest"
+        } 
+        "AutoRest-V3" {
+            $command = "autorest"
         }
+        "NSwag" {
+            $command = "nswag"
+        }
+    }
+
+    if ($Version -eq "V3" -and $ToolName -eq "AutoRest-V2") {
+        $ToolName = "AutoRest-V3"
     }
 
     $project = "../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj"
@@ -166,6 +212,8 @@ function Generate-Code {
             Break
         }
     }
+
+    Write-Host "`r`n$ToolName - Code Generation Completed`r`n"
 
     if ($process.ExitCode -ne 0) {
         throw "$_ exited with status code $($process.ExitCode)"
@@ -197,7 +245,7 @@ function Generate-CodeParallel {
     )
 
     $processes = @()
-    "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+    "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
         switch ($_) {
             "SwaggerCodegen" {
                 $command = "swagger"
@@ -229,7 +277,7 @@ function Generate-CodeParallel {
         $process.WaitForExit()
     }
 
-    "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+    "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
         if (Test-Path "GeneratedCode/$_/Output.cs" -PathType Leaf) {
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net5/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net48/Output.cs" -Force
@@ -250,9 +298,14 @@ function Generate-CodeThenBuild {
     
     param (
         [Parameter(Mandatory=$false)]
-        [ValidateSet("All", "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
+        [ValidateSet("All", "AutoRest-V2", "AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
         [string]
         $ToolName = "All",
+
+        [Parameter(Mandatory=$true)]
+        [ValidateSet("V2", "V3")]
+        [string]
+        $Version,
 
         [Parameter(Mandatory=$true)]
         [ValidateSet("json", "yaml")]
@@ -272,16 +325,26 @@ function Generate-CodeThenBuild {
     if ($ToolName -eq "All") {
         if ($Parallel) {
             Generate-CodeParallel -Format $Format -Method $Method
-            Build-GeneratedCode -ToolName $ToolName -Parallel $Parallel
+            Build-GeneratedCode -ToolName $ToolName
         } else {
-            "AutoRest", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
-                Generate-CodeThenBuild -ToolName $_ -Format $Format -Method $Method -Parallel $Parallel
+            if ($Version -eq "V2") {
+                $tools = @("AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
+            } else {
+                $tools = @("AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
+            }  
+            $tools | ForEach-Object {
+                Generate-CodeThenBuild `
+                    -ToolName $_ `
+                    -Format $Format `
+                    -Method $Method `
+                    -Parallel $Parallel `
+                    -Version $Version 
             }
         }
     } else {
         Write-Host "`r`n$ToolName - Generate Code then Build`r`n"
-        Generate-Code -ToolName $ToolName -Format $Format -Method $Method
-        Build-GeneratedCode -ToolName $ToolName -Parallel $Parallel
+        Generate-Code -ToolName $ToolName -Format $Format -Method $Method -Version $Version
+        Build-GeneratedCode -Version $Version -ToolName $ToolName
     }
 }
 
@@ -298,15 +361,15 @@ function RunTests {
         $Parallel = $false
     )
 
-    "v2", "v3" | ForEach-Object {
+    "V2", "V3" | ForEach-Object {
         $version = $_
         "json", "yaml" | ForEach-Object {
             $format = $_
-            Remove-Item ./**/*Output.cs
-            Download-SwaggerPetstore -Version $version -Format $format
-            Generate-CodeThenBuild -Format $format -Method $Method -Parallel $Parallel
-            Remove-Item Swagger.*
-            Remove-Item ./**/*Output.cs
+            Remove-Item ./**/*Output.cs -Force
+            Prepare-SwaggerPetstore -Version $version -Format $format
+            Generate-CodeThenBuild -Version $version -Format $format -Method $Method -Parallel $Parallel
+            Remove-Item Swagger.* -Force
+            Remove-Item ./**/*Output.cs -Force
         }
     }
 }

@@ -153,5 +153,29 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
             => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
                 .Should()
                 .Contain(PackageDependencies.MicrosoftCSharp);
+
+        [Xunit.Fact]
+        public void GetDependencies_AutoRestV3_Contains_RestClientRuntime()
+            => sut.GetDependencies(SupportedCodeGenerator.AutoRestV3)
+                .Should()
+                .Contain(PackageDependencies.MicrosoftRestClientRuntime);
+
+        [Xunit.Fact]
+        public void GetDependencies_AutoRestV3_Contains_NewtonsoftJson()
+            => sut.GetDependencies(SupportedCodeGenerator.AutoRestV3)
+                .Should()
+                .Contain(PackageDependencies.NewtonsoftJson);
+
+        [Xunit.Fact]
+        public void GetDependencies_AutoRestV3_Contains_AutoRestCSharp()
+            => sut.GetDependencies(SupportedCodeGenerator.AutoRestV3)
+                .Should()
+                .Contain(PackageDependencies.AutoRestCSharp);
+
+        [Xunit.Fact]
+        public void GetDependencies_AutoRestV3_Contains_AzureCore()
+            => sut.GetDependencies(SupportedCodeGenerator.AutoRestV3)
+                .Should()
+                .Contain(PackageDependencies.AzureCore);
     }
 }

@@ -27,7 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
                 OnExecuteAsync,
                 token);
 
-        private async Task OnExecuteAsync(DTE dte, AsyncPackage package)
+        protected virtual async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 

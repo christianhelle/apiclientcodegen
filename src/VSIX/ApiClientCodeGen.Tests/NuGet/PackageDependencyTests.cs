@@ -5,11 +5,10 @@ using FluentAssertions;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
 {
-    
     public class PackageDependencyTests
     {
         private string name;
-        private Version version;
+        private string version;
         private bool forceUpdate;
         private bool isSystemLibrary;
         private PackageDependency sut;
@@ -18,7 +17,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
         {
             var fixture = new Fixture();
             name = fixture.Create<string>();
-            version = fixture.Create<Version>();
+            version = fixture.Create<string>();
             forceUpdate = fixture.Create<bool>();
             isSystemLibrary = fixture.Create<bool>();
             sut = new PackageDependency(name, version, forceUpdate, isSystemLibrary);

@@ -9,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     public static class DependencyDownloader
     {
-        public static void InstallAutoRest() => InstallNpmPackage("autorest");
+        public static void InstallAutoRest() => InstallNpmPackage("autorest@3.1.1");
 
         public static void InstallNSwag() => InstallNpmPackage("nswag");
 
