@@ -9,7 +9,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
     public class AutoRestCSharpCodeGenerator : ICodeGenerator
     {
-        private readonly IAutoRestOptions options;
         private readonly IProcessLauncher processLauncher;
         private readonly IOpenApiDocumentFactory documentFactory;
         private readonly IAutoRestArgumentProvider argumentProvider;
@@ -28,7 +27,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         {
             SwaggerFile = swaggerFile;
             DefaultNamespace = defaultNamespace;
-            this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher;
             this.documentFactory = documentFactory ?? throw new ArgumentNullException(nameof(documentFactory));
             this.argumentProvider = argumentProvider ?? new AutoRestArgumentProvider(options);
