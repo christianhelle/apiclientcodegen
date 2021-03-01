@@ -1,4 +1,6 @@
+pr: none
 trigger: none
+
 schedules:
 - cron: "0 0 * * *"
   displayName: Daily midnight runs
