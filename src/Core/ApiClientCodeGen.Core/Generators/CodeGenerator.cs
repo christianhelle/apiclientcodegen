@@ -26,7 +26,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             try
             {
                 pGenerateProgress.Progress(10);
-                var outputFile = Path.GetTempFileName();
+
+                var outputFile = Path.Combine(
+                    Path.GetDirectoryName(SwaggerFile) ?? throw new InvalidOperationException(),
+                    $"{Guid.NewGuid():N}.tmp");
 
                 var command = GetCommand();
                 var arguments = GetArguments(outputFile);
