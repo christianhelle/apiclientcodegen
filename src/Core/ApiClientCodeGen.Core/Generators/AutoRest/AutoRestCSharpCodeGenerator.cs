@@ -81,10 +81,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 }
                 else
                 {
-                    var outputFile = Path.Combine(
-                        Path.GetDirectoryName(SwaggerFile) ?? throw new InvalidOperationException(),
-                        $"{Guid.NewGuid():N}.tmp");
-
+                    var outputFile = Path.GetTempFileName();
                     var arguments = argumentProvider.GetLegacyArguments(
                         outputFile,
                         SwaggerFile,
