@@ -2,6 +2,7 @@
 using System.IO;
 using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
 using Xunit;
 
@@ -57,7 +58,7 @@ namespace ApiClientCodeGen.Core.IntegrationTests
                 .Should()
                 .NotThrow();
 
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void InstallNSwag_Returns_Path()
             => new Action(DependencyDownloader.InstallNSwag)
                 .Should()

@@ -1,6 +1,7 @@
 ﻿using ApiClientCodeGen.Tests.Common.Build;
 using ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3.Yaml;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using Xunit;
 
 namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3.Yaml
@@ -15,11 +16,11 @@ namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3.Yaml
             code = fixture.Code;
         }
 
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void GeneratedCode_Can_Build_In_NetCoreApp() 
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, code, SupportedCodeGenerator.NSwagStudio);
 
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary() 
             => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, code, SupportedCodeGenerator.NSwagStudio);
     }
