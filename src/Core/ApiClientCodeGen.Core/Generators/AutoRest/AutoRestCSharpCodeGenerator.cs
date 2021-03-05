@@ -82,6 +82,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 else
                 {
                     var outputFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid():N}.tmp");
+                    File.Create(outputFile).Dispose();
+                    
                     var arguments = argumentProvider.GetLegacyArguments(
                         outputFile,
                         SwaggerFile,
