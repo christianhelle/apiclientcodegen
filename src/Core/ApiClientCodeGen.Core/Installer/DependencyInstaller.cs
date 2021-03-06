@@ -24,7 +24,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
             return npm.InstallNpmPackage("nswag");
         }
 
-        public Task InstallOpenApiGenerator()
+        public Task<string> InstallOpenApiGenerator()
         {
             return downloader.DownloadFile(
                 null,
@@ -33,7 +33,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
                 Resource.OpenApiGenerator_DownloadUrl);
         }
 
-        public Task InstallSwaggerCodegen()
+        public Task<string> InstallSwaggerCodegen()
         {
             return downloader.DownloadFile(
                 null,

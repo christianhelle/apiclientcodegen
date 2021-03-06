@@ -6,7 +6,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
     {
         Task InstallAutoRest();
         Task InstallNSwag();
-        Task InstallOpenApiGenerator();
-        Task InstallSwaggerCodegen();
+        Task<string> InstallOpenApiGenerator();
+        Task<string> InstallSwaggerCodegen();
     }
 }
