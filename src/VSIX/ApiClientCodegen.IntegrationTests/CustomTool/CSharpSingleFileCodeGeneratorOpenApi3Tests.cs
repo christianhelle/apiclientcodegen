@@ -83,7 +83,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             var progressMock = new Mock<IVsGeneratorProgress>();
 
             var sut = new CSharpSingleFileCodeGenerator(generator);
-            sut.Factory = new CodeGeneratorFactory(optionsFactory);
+            sut.Factory = new CodeGeneratorFactory(optionsFactory, null);
 
             var result = sut.Generate(
                 Path.GetFullPath(SwaggerV3JsonFilename),

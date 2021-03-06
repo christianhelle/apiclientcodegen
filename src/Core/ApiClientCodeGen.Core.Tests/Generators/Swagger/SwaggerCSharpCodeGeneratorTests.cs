@@ -1,7 +1,7 @@
 ﻿using ApiClientCodeGen.Tests.Common;
-using AutoFixture;
+using ApiClientCodeGen.Tests.Common.Infrastructure;
+using AutoFixture.Xunit2;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using Moq;
@@ -11,28 +11,27 @@ namespace ApiClientCodeGen.Core.Tests.Generators.Swagger
 {
     public class SwaggerCSharpCodeGeneratorTests : TestWithResources
     {
-        private readonly Mock<IGeneralOptions> optionsMock = new Mock<IGeneralOptions>();
-        private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
-        private readonly Mock<IProcessLauncher> processMock = new Mock<IProcessLauncher>();
+        [Theory, AutoMoqData]
+        public void Reads_SwaggerCodegenPath(
+            [Frozen] IGeneralOptions options,
+            [Frozen] IProgressReporter progressReporter,
+            SwaggerCSharpCodeGenerator sut)
+        {
+            sut.GenerateCode(progressReporter);
+            Mock.Get(options).Verify(c => c.SwaggerCodegenPath);
+        }
 
-        public SwaggerCSharpCodeGeneratorTests()
-            => new SwaggerCSharpCodeGenerator(
-                    "Swagger.json",
-                    new Fixture().Create<string>(),
-                    optionsMock.Object,
-                    processMock.Object)
-                .GenerateCode(progressMock.Object);
-
-        [Fact]
-        public void Reads_SwaggerCodegenPath()
-            => optionsMock.Verify(c => c.SwaggerCodegenPath);
-
-        [Fact]
-        public void Updates_Progress()
-            => progressMock.Verify(
+        [Theory, AutoMoqData]
+        public void Updates_Progress(
+            [Frozen] IProgressReporter progressReporter,
+            SwaggerCSharpCodeGenerator sut)
+        {
+            sut.GenerateCode(progressReporter);
+            Mock.Get(progressReporter).Verify(
                 c => c.Progress(
                     It.IsAny<uint>(),
                     It.IsAny<uint>()),
                 Times.Exactly(5));
+        }
     }
 }

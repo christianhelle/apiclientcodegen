@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using Newtonsoft.Json;
@@ -12,6 +13,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly string nswagStudioFile;
         private readonly IGeneralOptions options;
         private readonly IProcessLauncher processLauncher;
+        private readonly IDependencyInstaller dependencyInstaller;
         private static readonly object SyncLock = new object();
         private readonly bool forceDownload;
 
@@ -19,11 +21,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             string nswagStudioFile,
             IGeneralOptions options,
             IProcessLauncher processLauncher,
+            IDependencyInstaller dependencyInstaller,
             bool forceDownload = false)
         {
             this.nswagStudioFile = nswagStudioFile ?? throw new ArgumentNullException(nameof(nswagStudioFile));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
+            this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
             this.forceDownload = forceDownload;
         }
 
@@ -62,7 +66,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
             command = PathProvider.GetNSwagPath();
             if (!File.Exists(command) || forceDownload)
-                DependencyDownloader.InstallNSwag();
+                dependencyInstaller.InstallNSwag().GetAwaiter().GetResult();
 
             return command;
         }

@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
@@ -11,6 +12,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     {
         private readonly IProcessLauncher processLauncher;
         private readonly IOpenApiDocumentFactory documentFactory;
+        private readonly IDependencyInstaller dependencyInstaller;
         private readonly IAutoRestArgumentProvider argumentProvider;
         private static readonly object SyncLock = new object();
 
@@ -23,12 +25,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
             IOpenApiDocumentFactory documentFactory,
+            IDependencyInstaller dependencyInstaller,
             IAutoRestArgumentProvider argumentProvider = null)
         {
             SwaggerFile = swaggerFile;
             DefaultNamespace = defaultNamespace;
             this.processLauncher = processLauncher;
             this.documentFactory = documentFactory ?? throw new ArgumentNullException(nameof(documentFactory));
+            this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
             this.argumentProvider = argumentProvider ?? new AutoRestArgumentProvider(options);
         }
 
@@ -51,7 +55,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 var command = PathProvider.GetAutoRestPath();
                 pGenerateProgress.Progress(30);
 
-                DependencyDownloader.InstallAutoRest();
+                dependencyInstaller.InstallAutoRest().GetAwaiter().GetResult();
                 pGenerateProgress.Progress(50);
 
                 var document = documentFactory.GetDocumentAsync(SwaggerFile).GetAwaiter().GetResult();
