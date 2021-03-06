@@ -35,7 +35,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 
         public abstract int DefaultExtension(out string pbstrDefaultExtension);
 
-        public ICodeGeneratorFactory Factory { get; set; } = new CodeGeneratorFactory();
+        public ICodeGeneratorFactory Factory { get; set; } = new CodeGeneratorFactory(null);
 
         public int Generate(
             string wszInputFilePath,

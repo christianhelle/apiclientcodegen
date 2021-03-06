@@ -2,6 +2,7 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using Moq;
 
@@ -23,7 +24,10 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
                 Path.GetFullPath(SwaggerV3JsonFilename),
                 "GeneratedCode",
                 OptionsMock.Object,
-                new ProcessLauncher());
+                new ProcessLauncher(),
+                new DependencyInstaller(
+                    new NpmInstaller(new ProcessLauncher()),
+                    new FileDownloader(new WebDownloader())));
 
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
         }

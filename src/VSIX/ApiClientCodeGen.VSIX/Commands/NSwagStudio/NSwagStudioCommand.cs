@@ -4,6 +4,7 @@ using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
@@ -34,12 +35,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
         private static async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
             Logger.Instance.TrackFeatureUsage("Generate NSwag Studio output");
-            
+
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
             var item = dte.SelectedItems.Item(1).ProjectItem;
             var nswagStudioFile = item.FileNames[0];
-            var codeGenerator = new NSwagStudioCodeGenerator(nswagStudioFile, new CustomPathOptions(), new ProcessLauncher());
+
+            var codeGenerator = new NSwagStudioCodeGenerator(
+                nswagStudioFile,
+                new CustomPathOptions(),
+                new ProcessLauncher(),
+                new DependencyInstaller(
+                    new NpmInstaller(new ProcessLauncher()),
+                    new FileDownloader(new WebDownloader())));
+            
             codeGenerator.GenerateCode(null);
 
             var project = ProjectExtensions.GetActiveProject(dte);

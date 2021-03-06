@@ -5,6 +5,7 @@ using AutoFixture.Xunit2;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using FluentAssertions;
 using Moq;
@@ -19,12 +20,14 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
         public void NSwagStudio_GenerateCode_Returns_Null(
             IProcessLauncher process,
             IGeneralOptions options,
-            IProgressReporter progressReporter)
+            IProgressReporter progressReporter,
+            IDependencyInstaller dependencyInstaller)
         {
             new NSwagStudioCodeGenerator(
                     Path.GetFullPath(SwaggerLegacyNSwagFilename),
                     options,
-                    process)
+                    process,
+                    dependencyInstaller)
                 .GenerateCode(progressReporter)
                 .Should()
                 .BeNull();
@@ -34,12 +37,14 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
         public void Reads_NSwagPath_From_Options(
             IProcessLauncher process,
             IGeneralOptions options,
-            IProgressReporter progressReporter)
+            IProgressReporter progressReporter,
+            IDependencyInstaller dependencyInstaller)
         {
             new NSwagStudioCodeGenerator(
                     Path.GetFullPath(SwaggerNSwagFilename),
                     options,
                     process,
+                    dependencyInstaller,
                     true)
                 .GenerateCode(progressReporter);
             Mock.Get(options).Verify(c => c.NSwagPath);

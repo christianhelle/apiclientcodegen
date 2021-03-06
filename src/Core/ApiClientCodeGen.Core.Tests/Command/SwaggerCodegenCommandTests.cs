@@ -3,6 +3,7 @@ using ApiClientCodeGen.Tests.Common.Infrastructure;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using FluentAssertions;
@@ -37,6 +38,7 @@ namespace ApiClientCodeGen.Core.Tests.Command
             IGeneralOptions options,
             ISwaggerCodegenFactory codeGeneratorFactory,
             ICodeGenerator generator,
+            IDependencyInstaller dependencyInstaller,
             string code)
         {
             var sut = new SwaggerCodegenCommand(
@@ -44,7 +46,8 @@ namespace ApiClientCodeGen.Core.Tests.Command
                 progressReporter, 
                 options,
                 processLauncher, 
-                codeGeneratorFactory);
+                codeGeneratorFactory,
+                dependencyInstaller);
             
             Mock.Get(generator)
                 .Setup(c => c.GenerateCode(progressReporter))

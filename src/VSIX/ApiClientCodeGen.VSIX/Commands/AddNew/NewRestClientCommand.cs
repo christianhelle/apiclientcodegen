@@ -9,6 +9,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSw
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
@@ -28,7 +29,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
         protected virtual int CommandId { get; } = 0x100;
         protected abstract SupportedCodeGenerator CodeGenerator { get; }
 
-        public Task InitializeAsync(AsyncPackage package, CancellationToken token) 
+        public Task InitializeAsync(AsyncPackage package, CancellationToken token)
             => package.SetupCommandAsync(CommandSet, CommandId, OnExecuteAsync, token);
 
         private async Task OnExecuteAsync(DTE dte, AsyncPackage package)
@@ -77,8 +78,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             }
             else
             {
-                var generator = new NSwagStudioCodeGenerator(filePath, new CustomPathOptions(), new ProcessLauncher());
+                var generator = new NSwagStudioCodeGenerator(
+                    filePath,
+                    new CustomPathOptions(),
+                    new ProcessLauncher(),
+                    new DependencyInstaller(
+                        new NpmInstaller(new ProcessLauncher()),
+                        new FileDownloader(new WebDownloader())));
+                
                 generator.GenerateCode(null);
+                
                 dynamic nswag = JsonConvert.DeserializeObject(contents);
                 var nswagOutput = nswag.codeGenerators.swaggerToCSharpClient.output.ToString();
                 project.AddFileToProject(dte, new FileInfo(Path.Combine(folder, nswagOutput)));

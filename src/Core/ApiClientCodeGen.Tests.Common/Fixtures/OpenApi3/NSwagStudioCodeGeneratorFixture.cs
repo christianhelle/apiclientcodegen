@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
 using FluentAssertions;
@@ -37,7 +38,13 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
             var tempFile = Path.Combine(folder, "Petstore.nswag");
             File.WriteAllText(tempFile, contents);
 
-            new NSwagStudioCodeGenerator(tempFile, generalOptions.Object, new ProcessLauncher())
+            new NSwagStudioCodeGenerator(
+                    tempFile,
+                    generalOptions.Object,
+                    new ProcessLauncher(),
+                    new DependencyInstaller(
+                        new NpmInstaller(new ProcessLauncher()),
+                        new FileDownloader(new WebDownloader())))
                 .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
                 .BeNull();

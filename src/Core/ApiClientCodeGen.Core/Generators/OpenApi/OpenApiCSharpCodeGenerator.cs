@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi
@@ -11,14 +12,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly JavaPathProvider javaPathProvider;
         private readonly IGeneralOptions options;
         private readonly IProcessLauncher processLauncher;
+        private readonly IDependencyInstaller dependencyInstaller;
         private readonly string swaggerFile;
 
-        public OpenApiCSharpCodeGenerator(string swaggerFile, string defaultNamespace, IGeneralOptions options, IProcessLauncher processLauncher)
+        public OpenApiCSharpCodeGenerator(
+            string swaggerFile,
+            string defaultNamespace,
+            IGeneralOptions options,
+            IProcessLauncher processLauncher,
+            IDependencyInstaller dependencyInstaller)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
+            this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
             javaPathProvider = new JavaPathProvider(options, processLauncher);
         }
 
@@ -32,7 +40,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 if (!File.Exists(jarFile))
                 {
                     Trace.WriteLine(jarFile + " does not exist");
-                    jarFile = DependencyDownloader.InstallOpenApiGenerator();
+                    jarFile = dependencyInstaller.InstallOpenApiGenerator().GetAwaiter().GetResult();
                 }
 
                 pGenerateProgress.Progress(30);

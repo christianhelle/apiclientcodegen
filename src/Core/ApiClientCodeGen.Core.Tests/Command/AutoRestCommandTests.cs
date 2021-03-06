@@ -1,9 +1,11 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
+using AutoFixture.Xunit2;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using FluentAssertions;
@@ -31,28 +33,8 @@ namespace ApiClientCodeGen.Core.Tests.Command
             => sut.CreateGenerator().Should().NotBeNull();
 
         [Theory, AutoMoqData]
-        public void OnExecuteAsync_Should_NotThrow(
-            IConsoleOutput console,
-            IAutoRestOptions options,
-            IProcessLauncher processLauncher,
-            IProgressReporter progressReporter,
-            IAutoRestCodeGeneratorFactory factory,
-            ICodeGenerator generator,
-            IOpenApiDocumentFactory documentFactory,
-            string outputFile,
-            string code)
+        public void OnExecuteAsync_Should_NotThrow(AutoRestCommand sut)
         {
-            var sut = new AutoRestCommand(
-                console,
-                options,
-                processLauncher,
-                progressReporter,
-                factory,
-                documentFactory)
-            {
-                OutputFile = outputFile
-            };
-            Mock.Get(generator).Setup(c => c.GenerateCode(progressReporter)).Returns(code);
             new Func<int>(sut.OnExecute).Should().NotThrow();
         }
 
@@ -62,7 +44,8 @@ namespace ApiClientCodeGen.Core.Tests.Command
             IProcessLauncher processLauncher,
             IProgressReporter progressReporter,
             IAutoRestCodeGeneratorFactory factory,
-            IOpenApiDocumentFactory documentFactory)
+            IOpenApiDocumentFactory documentFactory,
+            IDependencyInstaller dependencyInstaller)
             => new Action(
                     () => new AutoRestCommand(
                         console,
@@ -70,7 +53,8 @@ namespace ApiClientCodeGen.Core.Tests.Command
                         processLauncher,
                         progressReporter,
                         factory,
-                        documentFactory))
+                        documentFactory,
+                        dependencyInstaller))
                 .Should()
                 .ThrowExactly<ArgumentNullException>();
 
@@ -80,7 +64,8 @@ namespace ApiClientCodeGen.Core.Tests.Command
             IAutoRestOptions options,
             IProgressReporter progressReporter,
             IAutoRestCodeGeneratorFactory factory,
-            IOpenApiDocumentFactory documentFactory)
+            IOpenApiDocumentFactory documentFactory,
+            IDependencyInstaller dependencyInstaller)
             => new Action(
                     () => new AutoRestCommand(
                         console,
@@ -88,7 +73,8 @@ namespace ApiClientCodeGen.Core.Tests.Command
                         null,
                         progressReporter,
                         factory,
-                        documentFactory))
+                        documentFactory,
+                        dependencyInstaller))
                 .Should()
                 .ThrowExactly<ArgumentNullException>();
 
@@ -98,7 +84,8 @@ namespace ApiClientCodeGen.Core.Tests.Command
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
             IProgressReporter progressReporter,
-            IOpenApiDocumentFactory documentFactory)
+            IOpenApiDocumentFactory documentFactory,
+            IDependencyInstaller dependencyInstaller)
             => new Action(
                     () => new AutoRestCommand(
                         console,
@@ -106,7 +93,8 @@ namespace ApiClientCodeGen.Core.Tests.Command
                         processLauncher,
                         progressReporter,
                         null,
-                        documentFactory))
+                        documentFactory,
+                        dependencyInstaller))
                 .Should()
                 .ThrowExactly<ArgumentNullException>();
 
@@ -116,7 +104,8 @@ namespace ApiClientCodeGen.Core.Tests.Command
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
             IProgressReporter progressReporter,
-            IAutoRestCodeGeneratorFactory factory)
+            IAutoRestCodeGeneratorFactory factory,
+            IDependencyInstaller dependencyInstaller)
             => new Action(
                     () => new AutoRestCommand(
                         console,
@@ -124,7 +113,8 @@ namespace ApiClientCodeGen.Core.Tests.Command
                         processLauncher,
                         progressReporter,
                         factory,
-                        null))
+                        null,
+                        dependencyInstaller))
                 .Should()
                 .ThrowExactly<ArgumentNullException>();
 
@@ -136,6 +126,7 @@ namespace ApiClientCodeGen.Core.Tests.Command
             IProgressReporter progressReporter,
             IAutoRestCodeGeneratorFactory factory,
             IOpenApiDocumentFactory documentFactory,
+            IDependencyInstaller dependencyInstaller,
             string swaggerFile)
         {
             new AutoRestCommand(
@@ -144,7 +135,8 @@ namespace ApiClientCodeGen.Core.Tests.Command
                     processLauncher,
                     progressReporter,
                     factory,
-                    documentFactory)
+                    documentFactory,
+                    dependencyInstaller)
                 {
                     SwaggerFile = swaggerFile
                 }
@@ -157,7 +149,8 @@ namespace ApiClientCodeGen.Core.Tests.Command
                         "GeneratedCode",
                         options,
                         processLauncher,
-                        documentFactory));
+                        documentFactory,
+                        dependencyInstaller));
         }
     }
 }
