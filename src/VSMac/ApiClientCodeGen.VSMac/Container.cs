@@ -10,6 +10,7 @@ using ApiClientCodeGen.VSMac.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
@@ -56,6 +57,11 @@ namespace ApiClientCodeGen.VSMac
             services.AddSingleton<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
 
             services.AddSingleton<PackageDependencyListProvider>();
+            
+            services.AddSingleton<IDependencyInstaller, DependencyInstaller>();
+            services.AddSingleton<INpmInstaller, NpmInstaller>();
+            services.AddSingleton<IFileDownloader, FileDownloader>();
+            services.AddSingleton<IWebDownloader, WebDownloader>();
 
             serviceProvider = services.BuildServiceProvider();
         }
