@@ -4,7 +4,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
-    [Obsolete]
+    [Obsolete("Use IDependencyInstaller instead", true)]
     public static class DependencyDownloader
     {
         private static readonly IDependencyInstaller installer
