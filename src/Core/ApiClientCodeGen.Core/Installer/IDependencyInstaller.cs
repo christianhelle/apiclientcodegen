@@ -27,7 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
 
         public Task InstallNSwag()
         {
-            throw new System.NotImplementedException();
+            return npm.InstallNpmPackage("nswag");
         }
 
         public Task InstallOpenApiGenerator()
