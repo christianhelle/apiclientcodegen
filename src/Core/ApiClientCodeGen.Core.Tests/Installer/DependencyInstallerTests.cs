@@ -60,8 +60,20 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                     c => c.DownloadFile(
                         It.IsAny<string>(),
                         "openapi-generator-cli.jar",
+
+        [Theory, AutoMoqData]
+        public async Task InstallSwaggerCodegen_Invokes_DownloadFile(
+            [Frozen] IFileDownloader downloader,
+            DependencyInstaller sut)
+        {
+            await sut.InstallSwaggerCodegen();
+            Mock.Get(downloader)
+                .Verify(
+                    c => c.DownloadFile(
                         It.IsAny<string>(),
-                        It.IsAny<string>(),
+                        "swagger-codegen-cli.jar",
+                        Resource.SwaggerCodegenCli_MD5,
+                        Resource.SwaggerCodegenCli_DownloadUrl,
                         false));
         }
     }

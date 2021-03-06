@@ -35,7 +35,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
 
         public Task InstallSwaggerCodegen()
         {
-            throw new System.NotImplementedException();
+            return downloader.DownloadFile(
+                null,
+                "swagger-codegen-cli.jar",
+                Resource.SwaggerCodegenCli_MD5,
+                Resource.SwaggerCodegenCli_DownloadUrl);
         }
     }
 }
