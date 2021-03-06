@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using MonoDevelop.Core;
 using MonoDevelop.Ide.CustomTools;
@@ -15,23 +16,27 @@ namespace ApiClientCodeGen.VSMac.CustomTools.Swagger
         private readonly IGeneralOptions options;
         private readonly IProcessLauncher processLauncher;
         private readonly ISwaggerCodegenFactory factory;
+        private readonly IDependencyInstaller dependencyInstaller;
 
         public SwaggerSingleFileCustomTool()
         :this(
             Container.Instance.Resolve<IGeneralOptions>(),
             Container.Instance.Resolve<IProcessLauncher>(),
-            Container.Instance.Resolve<ISwaggerCodegenFactory>())
+            Container.Instance.Resolve<ISwaggerCodegenFactory>(),
+            Container.Instance.Resolve<IDependencyInstaller>())
         {
         }
 
         public SwaggerSingleFileCustomTool(
             IGeneralOptions options,
             IProcessLauncher processLauncher,
-            ISwaggerCodegenFactory factory)
+            ISwaggerCodegenFactory factory,
+            IDependencyInstaller dependencyInstaller)
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
+            this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
         protected override ICodeGenerator GetCodeGenerator(
@@ -41,6 +46,7 @@ namespace ApiClientCodeGen.VSMac.CustomTools.Swagger
                 swaggerFile,
                 customToolNamespace,
                 options,
-                processLauncher);
+                processLauncher,
+                dependencyInstaller);
     }
 }
