@@ -26,8 +26,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             try
             {
                 pGenerateProgress.Progress(10);
-                var outputFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid():N}.tmp");
-                File.Create(outputFile).Dispose();
+                var outputFile = FileHelper.CreateRandomFile();
 
                 var command = GetCommand();
                 var arguments = GetArguments(outputFile);
