@@ -42,7 +42,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
             this.documentFactory = documentFactory ?? new OpenApiDocumentFactory();
             this.dependencyInstaller = dependencyInstaller ??
                                        new DependencyInstaller(
-                                           new NpmInstaller(processLauncher),
+                                           new NpmInstaller(this.processLauncher),
                                            new FileDownloader(new WebDownloader()));
         }
 
