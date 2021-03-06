@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using MonoDevelop.Core;
 using MonoDevelop.Ide.CustomTools;
@@ -18,13 +19,15 @@ namespace ApiClientCodeGen.VSMac.CustomTools.AutoRest
         private readonly IAutoRestOptions options;
         private readonly IProcessLauncher processLauncher;
         private readonly IOpenApiDocumentFactory documentFactory;
+        private readonly IDependencyInstaller dependencyInstaller;
 
         public AutoRestSingleFileCustomTool()
             : this(
                 Container.Instance.Resolve<IAutoRestCodeGeneratorFactory>(),
                 Container.Instance.Resolve<IAutoRestOptions>(),
                 Container.Instance.Resolve<IProcessLauncher>(),
-                Container.Instance.Resolve<IOpenApiDocumentFactory>())
+                Container.Instance.Resolve<IOpenApiDocumentFactory>(),
+                Container.Instance.Resolve<IDependencyInstaller>())
         {
         }
 
@@ -32,12 +35,14 @@ namespace ApiClientCodeGen.VSMac.CustomTools.AutoRest
             IAutoRestCodeGeneratorFactory factory,
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
-            IOpenApiDocumentFactory documentFactory)
+            IOpenApiDocumentFactory documentFactory,
+            IDependencyInstaller dependencyInstaller)
         {
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
             this.documentFactory = documentFactory ?? throw new ArgumentNullException(nameof(documentFactory));
+            this.dependencyInstaller = dependencyInstaller;
         }
 
         protected override ICodeGenerator GetCodeGenerator(
@@ -48,6 +53,7 @@ namespace ApiClientCodeGen.VSMac.CustomTools.AutoRest
                 customToolNamespace,
                 options,
                 processLauncher,
-                documentFactory);
+                documentFactory,
+                dependencyInstaller);
     }
 }
