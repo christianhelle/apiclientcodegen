@@ -19,10 +19,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource {
+    public class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Resource", typeof(Resource).Assembly);
@@ -51,7 +51,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         /// <summary>
         ///   Looks up a localized string similar to https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.0.1/openapi-generator-cli-5.0.1.jar.
         /// </summary>
-        internal static string OpenApiGenerator_DownloadUrl {
+        public static string OpenApiGenerator_DownloadUrl {
             get {
                 return ResourceManager.GetString("OpenApiGenerator_DownloadUrl", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         /// <summary>
         ///   Looks up a localized string similar to 1F37C26325D709E75E54B2209B113D7C.
         /// </summary>
-        internal static string OpenApiGenerator_MD5 {
+        public static string OpenApiGenerator_MD5 {
             get {
                 return ResourceManager.GetString("OpenApiGenerator_MD5", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         /// <summary>
         ///   Looks up a localized string similar to https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.14/swagger-codegen-cli-3.0.14.jar.
         /// </summary>
-        internal static string SwaggerCodegenCli_DownloadUrl {
+        public static string SwaggerCodegenCli_DownloadUrl {
             get {
                 return ResourceManager.GetString("SwaggerCodegenCli_DownloadUrl", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         /// <summary>
         ///   Looks up a localized string similar to D9D14AF2BDDCD754ACDB2585BA696C2C.
         /// </summary>
-        internal static string SwaggerCodegenCli_MD5 {
+        public static string SwaggerCodegenCli_MD5 {
             get {
                 return ResourceManager.GetString("SwaggerCodegenCli_MD5", resourceCulture);
             }
