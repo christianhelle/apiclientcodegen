@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
@@ -12,9 +13,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
 
     public class DependencyInstaller : IDependencyInstaller
     {
+        private readonly INpmInstaller npm;
+
+        public DependencyInstaller(INpmInstaller npm)
+        {
+            this.npm = npm ?? throw new ArgumentNullException(nameof(npm));
+        }
+
         public Task InstallAutoRest()
         {
-            throw new System.NotImplementedException();
+            return npm.InstallNpmPackage("autorest");
         }
 
         public Task InstallNSwag()
