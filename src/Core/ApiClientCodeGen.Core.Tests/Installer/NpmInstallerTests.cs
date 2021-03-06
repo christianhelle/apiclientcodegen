@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
@@ -17,13 +18,21 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                 .Should()
                 .Implement<INpmInstaller>();
 
+        [Fact]
+        public void Requires_ProcessLauncher()
+            => new Action(() => new NpmInstaller(null))
+                .Should()
+                .ThrowExactly<ArgumentNullException>();
+
+
         [Theory, AutoMoqData]
-        public async Task InstallNpmPackage(
+        public async Task InstallNpmPackage_Invokes_Process_Start(
             [Frozen] IProcessLauncher processLauncher,
             NpmInstaller sut,
             string packageName)
         {
             await sut.InstallNpmPackage(packageName);
+
             Mock.Get(processLauncher)
                 .Verify(
                     c => c.Start(
