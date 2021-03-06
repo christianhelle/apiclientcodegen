@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using FluentAssertions;
 using Moq;
@@ -60,6 +61,10 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                     c => c.DownloadFile(
                         It.IsAny<string>(),
                         "openapi-generator-cli.jar",
+                        Resource.OpenApiGenerator_MD5,
+                        Resource.OpenApiGenerator_DownloadUrl,
+                        false));
+        }
 
         [Theory, AutoMoqData]
         public async Task InstallSwaggerCodegen_Invokes_DownloadFile(
