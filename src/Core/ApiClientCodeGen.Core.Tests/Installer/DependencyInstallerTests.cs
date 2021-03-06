@@ -17,9 +17,15 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                 .Should()
                 .Implement<IDependencyInstaller>();
 
-        [Fact]
-        public void Requires_INpmInstaller()
-            => new Action(() => new DependencyInstaller(null))
+        [Theory, AutoMoqData]
+        public void Requires_INpmInstaller(IFileDownloader downloader)
+            => new Action(() => new DependencyInstaller(null, downloader))
+                .Should()
+                .Throw<ArgumentNullException>();
+
+        [Theory, AutoMoqData]
+        public void Requires_IFileDownloader(INpmInstaller npm)
+            => new Action(() => new DependencyInstaller(npm, null))
                 .Should()
                 .Throw<ArgumentNullException>();
 
@@ -41,6 +47,22 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             await sut.InstallNSwag();
             Mock.Get(npm)
                 .Verify(c => c.InstallNpmPackage("nswag"));
+        }
+
+        [Theory, AutoMoqData]
+        public async Task InstallOpenApiGenerator_Invokes_DownloadFile(
+            [Frozen] IFileDownloader downloader,
+            DependencyInstaller sut)
+        {
+            await sut.InstallOpenApiGenerator();
+            Mock.Get(downloader)
+                .Verify(
+                    c => c.DownloadFile(
+                        It.IsAny<string>(),
+                        "openapi-generator-cli.jar",
+                        It.IsAny<string>(),
+                        It.IsAny<string>(),
+                        false));
         }
     }
 }
