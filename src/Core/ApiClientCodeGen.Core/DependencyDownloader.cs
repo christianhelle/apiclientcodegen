@@ -7,6 +7,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
+    [Obsolete]
     public static class DependencyDownloader
     {
         public static void InstallAutoRest() => InstallNpmPackage("autorest");
