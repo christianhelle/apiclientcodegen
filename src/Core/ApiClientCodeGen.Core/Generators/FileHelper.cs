@@ -18,6 +18,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             }
         }
 
+        public static string CreateRandomFile()
+        {
+            var outputFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid():N}.tmp");
+            File.Create(outputFile).Dispose();
+            return outputFile;
+        }
+
         public static string CalculateChecksum(string filename)
         {
             using (var hashAlgorithm = MD5.Create())
