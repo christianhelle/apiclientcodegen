@@ -32,5 +32,15 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             Mock.Get(npm)
                 .Verify(c => c.InstallNpmPackage("autorest"));
         }
+
+        [Theory, AutoMoqData]
+        public async Task InstallNSwag_Invokes_Npm(
+            [Frozen] INpmInstaller npm,
+            DependencyInstaller sut)
+        {
+            await sut.InstallNSwag();
+            Mock.Get(npm)
+                .Verify(c => c.InstallNpmPackage("nswag"));
+        }
     }
 }
