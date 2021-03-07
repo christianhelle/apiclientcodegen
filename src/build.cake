@@ -100,7 +100,7 @@ Task("Run-Integration-Tests")
     VSTest("./**/bin/**/*.IntegrationTests.dll",
            new VSTestSettings 
            { 
-               Parallel = false, 
+               Parallel = true, 
                EnableCodeCoverage = true,
                SettingsFile = File("./Tests.runsettings")
            });
@@ -112,7 +112,7 @@ Task("Run-All-Tests")
     VSTest("./**/bin/**/*Tests.dll",
            new VSTestSettings 
            { 
-               Parallel = false, 
+               Parallel = true, 
                EnableCodeCoverage = true,
                SettingsFile = File("./Tests.runsettings")
            });
