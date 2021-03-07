@@ -4,7 +4,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
 {
     public interface IFileDownloader
     {
-        Task<string> DownloadFile(
+        string DownloadFile(
             string outputFolder,
             string outputFilename,
             string checksumMd5,

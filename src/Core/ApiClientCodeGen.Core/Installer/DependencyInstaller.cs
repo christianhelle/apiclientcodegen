@@ -14,17 +14,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
             this.downloader = downloader ?? throw new ArgumentNullException(nameof(downloader));
         }
 
-        public Task InstallAutoRest()
+        public void InstallAutoRest()
         {
-            return npm.InstallNpmPackage("autorest");
+            npm.InstallNpmPackage("autorest");
         }
 
-        public Task InstallNSwag()
+        public void InstallNSwag()
         {
-            return npm.InstallNpmPackage("nswag");
+            npm.InstallNpmPackage("nswag");
         }
 
-        public Task<string> InstallOpenApiGenerator()
+        public string InstallOpenApiGenerator()
         {
             return downloader.DownloadFile(
                 null,
@@ -33,7 +33,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
                 Resource.OpenApiGenerator_DownloadUrl);
         }
 
-        public Task<string> InstallSwaggerCodegen()
+        public string InstallSwaggerCodegen()
         {
             return downloader.DownloadFile(
                 null,

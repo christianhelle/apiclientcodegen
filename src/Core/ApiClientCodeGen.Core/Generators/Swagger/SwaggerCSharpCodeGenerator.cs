@@ -40,7 +40,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 if (!File.Exists(jarFile))
                 {
                     Trace.WriteLine(jarFile + " does not exist");
-                    jarFile = dependencyInstaller.InstallSwaggerCodegen().GetAwaiter().GetResult();
+                    jarFile = dependencyInstaller.InstallSwaggerCodegen();
                 }
 
                 pGenerateProgress.Progress(30);

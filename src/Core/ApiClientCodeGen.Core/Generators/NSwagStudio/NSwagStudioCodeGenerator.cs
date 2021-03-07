@@ -66,7 +66,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
             command = PathProvider.GetNSwagPath();
             if (!File.Exists(command) || forceDownload)
-                dependencyInstaller.InstallNSwag().GetAwaiter().GetResult();
+                dependencyInstaller.InstallNSwag();
 
             return command;
         }

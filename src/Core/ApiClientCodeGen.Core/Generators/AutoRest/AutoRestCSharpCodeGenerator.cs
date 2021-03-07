@@ -55,7 +55,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 var command = PathProvider.GetAutoRestPath();
                 pGenerateProgress.Progress(30);
 
-                dependencyInstaller.InstallAutoRest().GetAwaiter().GetResult();
+                dependencyInstaller.InstallAutoRest();
                 pGenerateProgress.Progress(50);
 
                 var document = documentFactory.GetDocumentAsync(SwaggerFile).GetAwaiter().GetResult();
