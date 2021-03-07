@@ -31,31 +31,31 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                 .Throw<ArgumentNullException>();
 
         [Theory, AutoMoqData]
-        public async Task InstallAutoRest_Invokes_Npm(
+        public void InstallAutoRest_Invokes_Npm(
             [Frozen] INpmInstaller npm,
             DependencyInstaller sut)
         {
-            await sut.InstallAutoRest();
+            sut.InstallAutoRest();
             Mock.Get(npm)
                 .Verify(c => c.InstallNpmPackage("autorest"));
         }
 
         [Theory, AutoMoqData]
-        public async Task InstallNSwag_Invokes_Npm(
+        public void InstallNSwag_Invokes_Npm(
             [Frozen] INpmInstaller npm,
             DependencyInstaller sut)
         {
-            await sut.InstallNSwag();
+            sut.InstallNSwag();
             Mock.Get(npm)
                 .Verify(c => c.InstallNpmPackage("nswag"));
         }
 
         [Theory, AutoMoqData]
-        public async Task InstallOpenApiGenerator_Invokes_DownloadFile(
+        public void InstallOpenApiGenerator_Invokes_DownloadFile(
             [Frozen] IFileDownloader downloader,
             DependencyInstaller sut)
         {
-            await sut.InstallOpenApiGenerator();
+            sut.InstallOpenApiGenerator();
             Mock.Get(downloader)
                 .Verify(
                     c => c.DownloadFile(
@@ -67,11 +67,11 @@ namespace ApiClientCodeGen.Core.Tests.Installer
         }
 
         [Theory, AutoMoqData]
-        public async Task InstallSwaggerCodegen_Invokes_DownloadFile(
+        public void InstallSwaggerCodegen_Invokes_DownloadFile(
             [Frozen] IFileDownloader downloader,
             DependencyInstaller sut)
         {
-            await sut.InstallSwaggerCodegen();
+            sut.InstallSwaggerCodegen();
             Mock.Get(downloader)
                 .Verify(
                     c => c.DownloadFile(

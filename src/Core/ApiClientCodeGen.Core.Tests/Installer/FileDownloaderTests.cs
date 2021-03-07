@@ -1,6 +1,4 @@
 using System;
-using System.IO;
-using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
@@ -25,15 +23,14 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                 .ThrowExactly<ArgumentNullException>();
 
         [Theory, AutoMoqData]
-        public async Task DownloadFile_Invokes_WebDownloader(
+        public void DownloadFile_Invokes_WebDownloader(
             [Frozen] IWebDownloader downloader,
             FileDownloader sut,
-            string outputFolder,
             string outputFilename,
             string checksumMd5,
             string url)
         {
-            await sut.DownloadFile(
+            sut.DownloadFile(
                 outputFilename,
                 outputFilename,
                 checksumMd5,

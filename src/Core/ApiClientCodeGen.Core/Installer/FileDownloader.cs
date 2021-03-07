@@ -18,7 +18,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
             this.downloader = downloader ?? throw new ArgumentNullException(nameof(downloader));
         }
 
-        public async Task<string> DownloadFile(
+        public string DownloadFile(
             string outputFolder,
             string outputFilename,
             string checksumMd5,
@@ -36,7 +36,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
             Trace.WriteLine($"{outputFilename} not found. Attempting to download {outputFilename}");
 
             var tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.jar");
-            await Task.Run(() => downloader.DownloadFile(url, tempFile));
+            downloader.DownloadFile(url, tempFile);
 
             Trace.WriteLine($"{outputFilename} downloaded successfully");
 

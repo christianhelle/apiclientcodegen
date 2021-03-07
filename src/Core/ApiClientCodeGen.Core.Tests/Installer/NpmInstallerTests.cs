@@ -26,12 +26,12 @@ namespace ApiClientCodeGen.Core.Tests.Installer
 
 
         [Theory, AutoMoqData]
-        public async Task InstallNpmPackage_Invokes_Process_Start(
+        public void InstallNpmPackage_Invokes_Process_Start(
             [Frozen] IProcessLauncher processLauncher,
             NpmInstaller sut,
             string packageName)
         {
-            await sut.InstallNpmPackage(packageName);
+            sut.InstallNpmPackage(packageName);
 
             Mock.Get(processLauncher)
                 .Verify(
