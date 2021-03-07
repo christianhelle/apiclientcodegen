@@ -31,7 +31,7 @@ namespace ApiClientCodeGen.Core.IntegrationTests
         [Fact]
         public async Task InstallAutoRest_Returns_Path()
             => new Func<Task>(
-                    () => new DependencyInstaller(
+                    async () => await new DependencyInstaller(
                         new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader())).InstallAutoRest())
                 .Should()
@@ -40,7 +40,7 @@ namespace ApiClientCodeGen.Core.IntegrationTests
         [SkippableFact(typeof(ProcessLaunchException))]
         public void InstallNSwag_Returns_Path()
             => new Func<Task>(
-                    () => new DependencyInstaller(
+                    async () => await new DependencyInstaller(
                         new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader())).InstallNSwag())
                 .Should()

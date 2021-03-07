@@ -29,9 +29,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                 .NotBeNullOrWhiteSpace();
 
         [Fact]
-        public async Task InstallAutoRest_Returns_Path()
+        public void InstallAutoRest_Returns_Path()
             => new Func<Task>(
-                    () => new DependencyInstaller(
+                    async () => await new DependencyInstaller(
                         new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader())).InstallAutoRest())
                 .Should()
@@ -40,7 +40,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         [SkippableFact(typeof(ProcessLaunchException))]
         public void InstallNSwag_Returns_Path()
             => new Func<Task>(
-                    () => new DependencyInstaller(
+                    async () => await new DependencyInstaller(
                         new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader())).InstallNSwag())
                 .Should()
