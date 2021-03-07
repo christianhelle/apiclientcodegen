@@ -16,3 +16,7 @@ package:
 
 publish:
 	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup rep-build .
+
+test:
+	dotnet test ./Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj -f netcoreapp2.1
+	dotnet test ./Core/ApiClientCodeGen.Core.IntegrationTests/ApiClientCodeGen.Core.IntegrationTests.csproj -f netcoreapp2.1
