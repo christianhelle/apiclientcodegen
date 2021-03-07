@@ -15,17 +15,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
         }
         
-        public async Task InstallNpmPackage(string packageName)
+        public Task InstallNpmPackage(string packageName)
         {
             Trace.WriteLine($"Attempting to install {packageName} through NPM");
 
-            var npmPath = PathProvider.GetNpmPath();
-            await Task.Run(
-                () => processLauncher.Start(
-                    npmPath,
-                    $"install -g {packageName}"));
+            processLauncher.Start(
+                PathProvider.GetNpmPath(),
+                $"install -g {packageName}");
 
             Trace.WriteLine($"{packageName} installed successfully through NPM");
+            return Task.CompletedTask;
         }
     }
 }
