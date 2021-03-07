@@ -7,11 +7,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
     [ExcludeFromCodeCoverage]
     public class WebDownloader : IWebDownloader
     {
-        public async Task DownloadFile(string address, string fileName)
-            => await new WebClient()
-                .DownloadFileTaskAsync(
-                    address,
-                    fileName)
-                .ConfigureAwait(false);
+        public Task DownloadFile(string address, string fileName)
+        {
+            new WebClient().DownloadFile(address, fileName);
+            return Task.CompletedTask;
+        }
     }
 }
