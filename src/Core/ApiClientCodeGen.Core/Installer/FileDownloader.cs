@@ -36,7 +36,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
             Trace.WriteLine($"{outputFilename} not found. Attempting to download {outputFilename}");
 
             var tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.jar");
-            await downloader.DownloadFile(url, tempFile);
+            await Task.Run(() => downloader.DownloadFile(url, tempFile));
 
             Trace.WriteLine($"{outputFilename} downloaded successfully");
 
