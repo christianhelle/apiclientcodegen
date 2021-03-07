@@ -8,9 +8,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
     public class WebDownloader : IWebDownloader
     {
         public Task DownloadFile(string address, string fileName)
-        {
-            new WebClient().DownloadFile(address, fileName);
-            return Task.CompletedTask;
-        }
+            => new WebClient()
+                .DownloadFileTaskAsync(
+                    address,
+                    fileName);
     }
 }
