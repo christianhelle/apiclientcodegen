@@ -64,7 +64,7 @@ jobs:
     displayName: 'Visual Studio Test'
     inputs:
       runSettingsFile: src/Tests.runsettings
-      runInParallel: false
+      runInParallel: true
       codeCoverageEnabled: true
       platform: 'Any CPU'
       configuration: 'Release'
