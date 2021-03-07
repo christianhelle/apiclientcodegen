@@ -11,12 +11,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
         public void DownloadFile(string address, string filename)
         {
             using var mutex = new Mutex(false, nameof(WebDownloader));
-
-            if (mutex.WaitOne(TimeSpan.FromSeconds(3), false)) 
-                return;
+            if (!mutex.WaitOne(TimeSpan.FromMinutes(2)))
+                throw new TimeoutException();
 
             using var client = new WebClient();
             client.DownloadFile(address, filename);
+            
+            mutex.ReleaseMutex();
         }
     }
 }
