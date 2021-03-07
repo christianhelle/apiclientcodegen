@@ -5,6 +5,7 @@
     <RootNamespace>ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core</RootNamespace>
     <AssemblyVersion>1.0</AssemblyVersion>
     <FileVersion>1.0</FileVersion>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
