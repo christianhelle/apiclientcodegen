@@ -2,6 +2,7 @@
 using System.IO;
 using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
@@ -21,7 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class CSharpSingleFileCodeGeneratorOpenApi3YamlTests : TestWithResources
     {
-        [Fact]
+        [SkippableFact(typeof(ProcessLaunchException))]
         public void AutoRest_CSharp_Test()
         {
             var optionsMock = new Mock<IAutoRestOptions>();
