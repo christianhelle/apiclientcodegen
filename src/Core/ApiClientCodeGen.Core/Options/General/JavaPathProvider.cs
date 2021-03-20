@@ -22,7 +22,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
             var javaPath = options.JavaPath;
             if (!string.IsNullOrWhiteSpace(javaPath) && (File.Exists(javaPath) || javaPath != "java"))
             {
-                return javaPath;
+                try
+                {
+                    processLauncher.Start(javaPath, "-version");
+                    return javaPath;
+                }
+                catch (Exception e)
+                {
+                    Logger.Instance.TrackError(e);
+                    Trace.WriteLine($"Unable to start Java from configured path: {javaPath}");
+                    Trace.WriteLine(e);
+                }
             }
 
             try
