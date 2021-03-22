@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
@@ -17,21 +16,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
 
         public void InstallNpmPackage(string packageName)
         {
-            try
-            {
-                Trace.WriteLine($"Attempting to install {packageName} through NPM");
+            Trace.WriteLine($"Attempting to install {packageName} through NPM");
 
-                processLauncher.Start(
-                    PathProvider.GetNpmPath(),
-                    $"install -g {packageName} --force");
+            processLauncher.Start(
+                PathProvider.GetNpmPath(),
+                $"install -g {packageName} --force");
 
-                Trace.WriteLine($"{packageName} installed successfully through NPM");
-            }
-            catch
-            {
-                Trace.WriteLine($"NPM {packageName} installation failed");
-                throw;
-            }
+            Trace.WriteLine($"{packageName} installed successfully through NPM");
         }
     }
 }
