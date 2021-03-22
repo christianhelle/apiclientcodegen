@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
@@ -50,21 +51,29 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
             File.WriteAllText(OutputFile, code);
 
             var fileInfo = new FileInfo(OutputFile);
-            console.WriteLine($"Output file name: {OutputFile}");
-            console.WriteLine($"Output file size: {fileInfo.Length}");
-            console.WriteLine(string.Empty);
+            LogOutput(fileInfo);
 
+            return fileInfo.Length != 0 ? ResultCodes.Success : ResultCodes.Error;
+        }
+
+        [ExcludeFromCodeCoverage]
+        private void LogOutput(FileInfo fileInfo)
+        {
             if (fileInfo.Length != 0)
-                return ResultCodes.Success;
+            {
+                console.WriteLine($"Output file name: {OutputFile}");
+                console.WriteLine($"Output file size: {fileInfo.Length}");
+                console.WriteLine(string.Empty);
+            }
+            else
+            {
+                const string errorMessage = "ERROR!! Output file is empty :(";
+                console.WriteLine(errorMessage);
+                console.WriteLine(string.Empty);
 
-            const string errorMessage = "ERROR!! Output file is empty :(";
-            console.WriteLine(errorMessage);
-            console.WriteLine(string.Empty);
-
-            if (!SkipLogging)
-                Logger.Instance.TrackError(new Exception(errorMessage));
-
-            return ResultCodes.Error;
+                if (!SkipLogging)
+                    Logger.Instance.TrackError(new Exception(errorMessage));
+            }
         }
 
         public abstract ICodeGenerator CreateGenerator();
