@@ -59,7 +59,6 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             Mock.Get(downloader)
                 .Verify(
                     c => c.DownloadFile(
-                        It.IsAny<string>(),
                         "openapi-generator-cli.jar",
                         Resource.OpenApiGenerator_MD5,
                         Resource.OpenApiGenerator_DownloadUrl,
@@ -75,7 +74,6 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             Mock.Get(downloader)
                 .Verify(
                     c => c.DownloadFile(
-                        It.IsAny<string>(),
                         "swagger-codegen-cli.jar",
                         Resource.SwaggerCodegenCli_MD5,
                         Resource.SwaggerCodegenCli_DownloadUrl,

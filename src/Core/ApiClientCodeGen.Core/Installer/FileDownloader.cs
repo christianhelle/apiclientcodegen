@@ -1,9 +1,7 @@
 using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 
@@ -19,19 +17,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
         }
 
         public string DownloadFile(
-            string outputFolder,
             string outputFilename,
             string checksumMd5,
             string url,
             bool forceDownload = false)
         {
-            if (string.IsNullOrWhiteSpace(outputFolder))
-                outputFolder = Path.Combine(Path.GetTempPath(), outputFilename);
-
-            if (File.Exists(outputFolder) &&
-                FileHelper.CalculateChecksum(outputFolder) == checksumMd5 &&
+            var filePath = Path.Combine(Path.GetTempPath(), outputFilename);
+            if (File.Exists(filePath) &&
+                FileHelper.CalculateChecksum(filePath) == checksumMd5 &&
                 !forceDownload)
-                return outputFolder;
+                return filePath;
 
             Trace.WriteLine($"{outputFilename} not found. Attempting to download {outputFilename}");
 
@@ -40,19 +35,25 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
 
             Trace.WriteLine($"{outputFilename} downloaded successfully");
 
+            MoveFile(filePath, tempFile);
+
+            return filePath;
+        }
+
+        [ExcludeFromCodeCoverage]
+        private static void MoveFile(string filePath, string tempFile)
+        {
             try
             {
-                if (File.Exists(outputFolder))
-                    File.Delete(outputFolder);
-                File.Move(tempFile, outputFolder);
+                if (File.Exists(filePath))
+                    File.Delete(filePath);
+                File.Move(tempFile, filePath);
             }
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
                 Trace.WriteLine(e);
             }
-
-            return outputFolder;
         }
     }
 }

@@ -27,7 +27,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
         public string InstallOpenApiGenerator()
         {
             return downloader.DownloadFile(
-                null,
                 "openapi-generator-cli.jar",
                 Resource.OpenApiGenerator_MD5,
                 Resource.OpenApiGenerator_DownloadUrl);
@@ -36,7 +35,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
         public string InstallSwaggerCodegen()
         {
             return downloader.DownloadFile(
-                null,
                 "swagger-codegen-cli.jar",
                 Resource.SwaggerCodegenCli_MD5,
                 Resource.SwaggerCodegenCli_DownloadUrl);

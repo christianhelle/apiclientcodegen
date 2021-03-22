@@ -32,7 +32,6 @@ namespace ApiClientCodeGen.Core.Tests.Installer
         {
             sut.DownloadFile(
                 outputFilename,
-                outputFilename,
                 checksumMd5,
                 url,
                 true);
