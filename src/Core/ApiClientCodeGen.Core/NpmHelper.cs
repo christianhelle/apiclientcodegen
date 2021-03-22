@@ -7,7 +7,6 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Genera
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
-    [Obsolete]
     public static class NpmHelper
     {
         public static string GetNpmPath(bool withoutPath = false)
