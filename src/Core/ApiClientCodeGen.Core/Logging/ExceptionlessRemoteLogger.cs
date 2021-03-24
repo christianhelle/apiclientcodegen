@@ -30,7 +30,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
                     SupportInformation.GetAnonymousIdentity(),
                     SupportInformation.GetSupportKey());
 
-                ExceptionlessClient.Default.Configuration.UseSessions();
+                // ExceptionlessClient.Default.Configuration.UseSessions();
             }
             catch (Exception e)
             {
@@ -54,6 +54,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
                 return;
             exception.ToExceptionless().Submit();
+        }
+
+        public void Disable()
+        {
+            ExceptionlessClient.Default.Configuration.Enabled = false;
         }
 
         [Priority(30)]
