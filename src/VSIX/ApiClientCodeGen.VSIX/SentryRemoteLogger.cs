@@ -4,7 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using Sentry;
-using Sentry.Protocol;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
 {
@@ -30,6 +29,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
                 return;
             SentrySdk.CaptureException(exception);
+        }
+
+        public void Disable()
+        {
+            SentrySdk.Close();
         }
     }
 }

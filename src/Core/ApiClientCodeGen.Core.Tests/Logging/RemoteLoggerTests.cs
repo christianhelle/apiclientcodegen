@@ -50,5 +50,14 @@ namespace ApiClientCodeGen.Core.Tests.Logging
             sut.TrackError(exception);
             Mock.Get(logger).Verify(c => c.TrackError(exception));
         }
+
+        [Theory, AutoMoqData]
+        public void Disable_Calls_Disable_Loggers(
+            [Frozen] IRemoteLogger logger,
+            RemoteLogger sut)
+        {
+            sut.Disable();
+            Mock.Get(logger).Verify(c => c.Disable());
+        }
     }
 }

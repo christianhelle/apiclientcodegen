@@ -56,6 +56,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             exception.ToExceptionless().Submit();
         }
 
+        public void Disable()
+        {
+            ExceptionlessClient.Default.Configuration.Enabled = false;
+        }
+
         [Priority(30)]
         private class IgnoreNonProjectReletedExceptionsPlugin : IEventPlugin
         {

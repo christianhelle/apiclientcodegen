@@ -31,5 +31,10 @@ namespace ApiClientCodeGen.CLI
                 return;
             SentrySdk.CaptureException(exception);
         }
+
+        public void Disable()
+        {
+            SentrySdk.Close();
+        }
     }
 }
