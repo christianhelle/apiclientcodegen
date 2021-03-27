@@ -31,5 +31,10 @@ namespace ApiClientCodeGen.VSMac
                 return;
             SentrySdk.CaptureException(exception);
         }
+
+        public void Disable()
+        {
+            SentrySdk.Close();
+        }
     }
 }
