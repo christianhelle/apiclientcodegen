@@ -21,13 +21,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
         public string GetJavaExePath()
         {
             var javaPath = options.JavaPath;
-            if (!string.IsNullOrWhiteSpace(javaPath) && (File.Exists(javaPath) || javaPath != "java"))
-            {
-                if (CheckJavaVersion(javaPath))
-                    return javaPath;
-            }
+            if (!string.IsNullOrWhiteSpace(javaPath) &&
+                (File.Exists(javaPath) || javaPath != "java") &&
+                CheckJavaVersion(javaPath)) return javaPath;
 
-            
             if (CheckJavaVersion("java"))
                 return "java";
 
