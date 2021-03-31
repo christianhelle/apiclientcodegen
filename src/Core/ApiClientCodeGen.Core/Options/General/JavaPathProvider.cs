@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
@@ -20,38 +21,36 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
         public string GetJavaExePath()
         {
             var javaPath = options.JavaPath;
-            if (!string.IsNullOrWhiteSpace(javaPath) && (File.Exists(javaPath) || javaPath != "java"))
-            {
-                try
-                {
-                    processLauncher.Start(javaPath, "-version");
-                    return javaPath;
-                }
-                catch (Exception e)
-                {
-                    Logger.Instance.TrackError(e);
-                    Trace.WriteLine($"Unable to start Java from configured path: {javaPath}");
-                    Trace.WriteLine(e);
-                }
-            }
+            if (!string.IsNullOrWhiteSpace(javaPath) &&
+                (File.Exists(javaPath) || javaPath != "java") &&
+                CheckJavaVersion(javaPath)) return javaPath;
 
-            try
-            {
-                Trace.WriteLine("Checking Java version");
-                processLauncher.Start("java", "-version");
+            if (CheckJavaVersion("java"))
                 return "java";
-            }
-            catch (Exception e)
-            {
-                Logger.Instance.TrackError(e);
-                Trace.WriteLine("Java not installed using default settings");
-                Trace.WriteLine(e);
-            }
 
             if (string.IsNullOrWhiteSpace(options.JavaPath))
                 javaPath = PathProvider.GetJavaPath();
 
             return javaPath;
+        }
+
+        [ExcludeFromCodeCoverage]
+        private bool CheckJavaVersion(string javaPath)
+        {
+            try
+            {
+                Trace.WriteLine("Checking Java version");
+                processLauncher.Start(javaPath, "-version");
+                return true;
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.TrackError(e);
+                Trace.WriteLine($"Unable to start Java from path: {javaPath}");
+                Trace.WriteLine(e);
+            }
+
+            return false;
         }
     }
 }

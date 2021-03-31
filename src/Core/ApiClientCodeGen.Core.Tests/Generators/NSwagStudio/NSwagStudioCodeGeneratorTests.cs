@@ -17,31 +17,21 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
     {
         [Theory, AutoMoqData]
         public void NSwagStudio_GenerateCode_Returns_Null(
-            IProcessLauncher process,
-            IGeneralOptions options,
-            IProgressReporter progressReporter)
+            IProgressReporter progressReporter,
+            NSwagStudioCodeGenerator sut)
         {
-            new NSwagStudioCodeGenerator(
-                    Path.GetFullPath(SwaggerNSwagFilename),
-                    options,
-                    process)
-                .GenerateCode(progressReporter)
+            sut.GenerateCode(progressReporter)
                 .Should()
                 .BeNull();
         }
 
         [Theory, AutoMoqData]
         public void Reads_NSwagPath_From_Options(
-            IProcessLauncher process,
-            IGeneralOptions options,
-            IProgressReporter progressReporter)
+            [Frozen] IGeneralOptions options,
+            IProgressReporter progressReporter,
+            NSwagStudioCodeGenerator sut)
         {
-            new NSwagStudioCodeGenerator(
-                    Path.GetFullPath(SwaggerNSwagFilename),
-                    options,
-                    process,
-                    true)
-                .GenerateCode(progressReporter);
+            sut.GenerateCode(progressReporter);
             Mock.Get(options).Verify(c => c.NSwagPath);
         }
 

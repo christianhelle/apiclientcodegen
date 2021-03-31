@@ -6,6 +6,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Aut
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
@@ -22,6 +23,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
 {
     public class CodeGeneratorFactory : ICodeGeneratorFactory
     {
+        private readonly IDependencyInstaller dependencyInstaller;
         private readonly IRemoteLogger remoteLogger;
         private readonly IOpenApiDocumentFactory documentFactory;
         private readonly IProcessLauncher processLauncher;
@@ -31,12 +33,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
             IOptionsFactory optionsFactory = null,
             IProcessLauncher processLauncher = null,
             IOpenApiDocumentFactory documentFactory = null,
-            IRemoteLogger remoteLogger = null)
+            IRemoteLogger remoteLogger = null,
+            IDependencyInstaller dependencyInstaller = null)
         {
+            this.remoteLogger = remoteLogger ?? Logger.Instance;
             this.optionsFactory = optionsFactory ?? new OptionsFactory();
             this.processLauncher = processLauncher ?? new ProcessLauncher();
             this.documentFactory = documentFactory ?? new OpenApiDocumentFactory();
-            this.remoteLogger = remoteLogger ?? Logger.Instance;
+            this.dependencyInstaller = dependencyInstaller ??
+                                       new DependencyInstaller(
+                                           new NpmInstaller(this.processLauncher),
+                                           new FileDownloader(new WebDownloader()));
         }
 
         public ICodeGenerator Create(
@@ -56,7 +63,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                         defaultNamespace,
                         optionsFactory.Create<IAutoRestOptions, AutoRestOptionsPage>(),
                         processLauncher,
-                        documentFactory);
+                        documentFactory,
+                        dependencyInstaller);
 
                 case SupportedCodeGenerator.NSwag:
                     return new NSwagCSharpCodeGenerator(
@@ -71,14 +79,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                         inputFilePath,
                         defaultNamespace,
                         optionsFactory.Create<IGeneralOptions, GeneralOptionPage>(),
-                        processLauncher);
+                        processLauncher,
+                        dependencyInstaller);
 
                 case SupportedCodeGenerator.OpenApi:
                     return new OpenApiCSharpCodeGenerator(
                         inputFilePath,
                         defaultNamespace,
                         optionsFactory.Create<IGeneralOptions, GeneralOptionPage>(),
-                        processLauncher);
+                        processLauncher,
+                        dependencyInstaller);
 
                 default:
                     throw new NotSupportedException();

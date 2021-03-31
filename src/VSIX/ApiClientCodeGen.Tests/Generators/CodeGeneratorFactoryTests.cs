@@ -39,7 +39,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
                 .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
                 .Returns(Test.CreateDummy<IAutoRestOptions>());
 
-            sut = new CodeGeneratorFactory(mockFactory.Object);
+            sut = new CodeGeneratorFactory(mockFactory.Object, null);
         }
 
         [Xunit.Fact]

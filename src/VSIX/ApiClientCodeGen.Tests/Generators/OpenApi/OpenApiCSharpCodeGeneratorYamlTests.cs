@@ -3,6 +3,7 @@ using AutoFixture;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using Moq;
 
@@ -13,13 +14,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
         private readonly Mock<IGeneralOptions> optionsMock = new Mock<IGeneralOptions>();
         private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
         private readonly Mock<IProcessLauncher> processMock = new Mock<IProcessLauncher>();
+        private readonly Mock<IDependencyInstaller> dependencyMock = new Mock<IDependencyInstaller>();
 
         public OpenApiCSharpCodeGeneratorYamlTests()
             => new OpenApiCSharpCodeGenerator(
                     SwaggerYamlFilename,
                     new Fixture().Create<string>(),
                     optionsMock.Object,
-                    processMock.Object)
+                    processMock.Object,
+                    dependencyMock.Object)
                 .GenerateCode(progressMock.Object);
 
         [Xunit.Fact]

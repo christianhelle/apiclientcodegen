@@ -2,6 +2,7 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using FluentAssertions;
 using Xunit;
@@ -17,13 +18,15 @@ namespace ApiClientCodeGen.Core.Tests.Command
             string defaultNamespace,
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
-            IOpenApiDocumentFactory documentFactory)
+            IOpenApiDocumentFactory documentFactory,
+            IDependencyInstaller dependencyInstaller)
             => sut.Create(
                     swaggerFile,
                     defaultNamespace,
                     options,
                     processLauncher,
-                    documentFactory)
+                    documentFactory,
+                    dependencyInstaller)
                 .Should()
                 .NotBeNull();
     }

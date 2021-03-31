@@ -2,6 +2,7 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 
 namespace ApiClientCodeGen.VSMac.CustomTools.AutoRest
@@ -13,7 +14,8 @@ namespace ApiClientCodeGen.VSMac.CustomTools.AutoRest
             string defaultNamespace,
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
-            IOpenApiDocumentFactory factory);
+            IOpenApiDocumentFactory factory,
+            IDependencyInstaller dependencyInstaller);
     }
 
     public class AutoRestCodeGeneratorFactory : IAutoRestCodeGeneratorFactory
@@ -23,12 +25,14 @@ namespace ApiClientCodeGen.VSMac.CustomTools.AutoRest
             string defaultNamespace,
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
-            IOpenApiDocumentFactory factory)
+            IOpenApiDocumentFactory factory,
+            IDependencyInstaller dependencyInstaller)
             => new AutoRestCSharpCodeGenerator(
                 swaggerFile,
                 defaultNamespace,
                 options,
                 processLauncher,
-                factory);
+                factory,
+                dependencyInstaller);
     }
 }

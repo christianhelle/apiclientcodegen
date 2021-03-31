@@ -2,13 +2,19 @@
 using System.IO;
 using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Moq;
+using NJsonSchema.CodeGeneration.CSharp;
 using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.CustomTool
@@ -16,18 +22,36 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class CSharpSingleFileCodeGeneratorOpenApi3YamlTests : TestWithResources
     {
-        // TODO: Re-enable once AutoRest works properly for C#
-        //[Fact]
-        //public void AutoRest_CSharp_Test()
-        //{
-        //    var optionsMock = new Mock<IAutoRestOptions>();
-        //    var optionsFactory = new Mock<IOptionsFactory>();
-        //    optionsFactory
-        //        .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
-        //        .Returns(optionsMock.Object);
+        [SkippableFact(typeof(ProcessLaunchException))]
+        public void AutoRest_CSharp_Test()
+        {
+            var optionsMock = new Mock<IAutoRestOptions>();
+            var optionsFactory = new Mock<IOptionsFactory>();
+            optionsFactory
+                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
+                .Returns(optionsMock.Object);
 
-        //    Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
-        //}
+            Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
+        }
+
+        [Fact]
+        public void NSwag_CSharp_Test()
+        {
+            var optionsMock = new Mock<INSwagOptions>();
+            optionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
+            optionsMock.Setup(c => c.InjectHttpClient).Returns(true);
+            optionsMock.Setup(c => c.GenerateClientInterfaces).Returns(true);
+            optionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
+            optionsMock.Setup(c => c.UseBaseUrl).Returns(true);
+            optionsMock.Setup(c => c.ClassStyle).Returns(CSharpClassStyle.Poco);
+
+            var optionsFactory = new Mock<IOptionsFactory>();
+            optionsFactory
+                .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage>())
+                .Returns(optionsMock.Object);
+
+            Assert(SupportedCodeGenerator.NSwag, optionsFactory.Object);
+        }
 
         [Fact]
         public void Swagger_CSharp_Test()
@@ -61,7 +85,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             var progressMock = new Mock<IVsGeneratorProgress>();
 
             var sut = new CSharpSingleFileCodeGenerator(generator);
-            sut.Factory = new CodeGeneratorFactory(optionsFactory);
+            sut.Factory = new CodeGeneratorFactory(optionsFactory, null);
 
             var result = sut.Generate(
                 Path.GetFullPath(SwaggerV3YamlFilename),

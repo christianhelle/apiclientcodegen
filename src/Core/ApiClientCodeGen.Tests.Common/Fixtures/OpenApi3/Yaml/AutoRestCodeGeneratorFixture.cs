@@ -2,6 +2,7 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using FluentAssertions;
 using Moq;
@@ -28,7 +29,10 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3.Yaml
                 "GeneratedCode",
                 OptionsMock.Object,
                 new ProcessLauncher(),
-                new OpenApiDocumentFactory());
+                new OpenApiDocumentFactory(),
+                new DependencyInstaller(
+                    new NpmInstaller(new ProcessLauncher()),
+                    new FileDownloader(new WebDownloader())));
 
             OptionsMock.Setup(c => c.OverrideClientName).Returns(true);
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);

@@ -1,5 +1,6 @@
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
 namespace ApiClientCodeGen.VSMac.CustomTools.OpenApi
@@ -10,7 +11,8 @@ namespace ApiClientCodeGen.VSMac.CustomTools.OpenApi
             string swaggerFile,
             string defaultNamespace,
             IGeneralOptions options,
-            IProcessLauncher processLauncher);
+            IProcessLauncher processLauncher,
+            IDependencyInstaller dependencyInstaller);
     }
 
     public class OpenApiGeneratorFactory : IOpenApiGeneratorFactory
@@ -19,11 +21,13 @@ namespace ApiClientCodeGen.VSMac.CustomTools.OpenApi
             string swaggerFile,
             string defaultNamespace,
             IGeneralOptions options,
-            IProcessLauncher processLauncher)
+            IProcessLauncher processLauncher,
+            IDependencyInstaller dependencyInstaller)
             => new OpenApiCSharpCodeGenerator(
                 swaggerFile,
                 defaultNamespace,
                 options,
-                processLauncher);
+                processLauncher,
+                dependencyInstaller);
     }
 }
