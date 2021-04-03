@@ -101,6 +101,10 @@ Supports customising how the **.nswag** file is generated using a subset of the 
 
 ![Options - NSwag Studio](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswagstudio.png)
 
+This extension collects errors and tracks feature usages to a service called [Exceptionless](https://exceptionless.com). This is done anonymously using a support key and a generated anonymous identity based on a secure hash of username@host
+
+![Options - Analytics](images/support-key.png)
+
 
 ### Visual Studio for Mac
 
