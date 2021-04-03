@@ -9,10 +9,7 @@ assignees: ''
 **Describe the bug**
 A clear and concise description of what the bug is.
 
-**Support Key**: `[my-support-key]` 
-
-*Found in **Tools -> Options -> REST API Client Code Generator - Analytics***
-![](https://github.com/christianhelle/apiclientcodegen/raw/master/images/support-key.png)
+**Support Key**: `[my-support-key]` *Found in **Tools -> Options -> REST API Client Code Generator - Analytics***
 
 **To Reproduce**
 Steps to reproduce the behavior:
