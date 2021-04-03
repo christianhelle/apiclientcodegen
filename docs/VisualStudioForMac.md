@@ -46,13 +46,13 @@ The **NSwag** code generator produces code that depends on the [Newtonsoft.Json]
 
 ## Screenshots
 
-![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-add-new-menu.png)
+![Add - API Client from OpenAPI Specification](../images/vsmac-add-new-menu.png)
 
-![Enter URL to OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-add-new-dialog.png)
+![Enter URL to OpenAPI Specification](../images/vsmac-add-new-dialog.png)
 
-![Solution Explorer Context Menus](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-generate-code.png)
+![Solution Explorer Context Menus](../images/vsmac-generate-code.png)
 
-![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-nswag-studio.png)
+![NSwag Studio Context Menu](../images/vsmac-nswag-studio.png)
 
 
 ## Installation
@@ -72,38 +72,38 @@ Here's what you need to do:
 - Open the Visual Studio for Mac **Extension Manager**
 - You can do this from the menu **Visual Studio** -> **Extentions**
 
-![Open Extensions Dialog Box](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-menu.png)
+![Open Extensions Dialog Box](../images/vsmac-extensions-menu.png)
 
 - Select the **Gallery** Tab
 - Expand the Repository drop down box and select **Manage Repositories**
 
-![Manage Repositories](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-manage-repositories.png)
+![Manage Repositories](../images/vsmac-extensions-manage-repositories.png)
 
 - Press on the **Add** button to add a new custom extension repository
 
-![Manage Repositories](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-repositories.png)
+![Manage Repositories](../images/vsmac-extensions-repositories.png)
 
 - Register an online repository at **https://christianhelle.com/vsmac/main.mrep**
 - Click **OK**
 
-![Add Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-add-repository.png)
+![Add Repository](../images/vsmac-extensions-add-repository.png)
 
 - Now my extension repository is added to the list
 - Make sure that this is enabled (indicated by a check box)
 
-![Add Repository Dialog](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-added-repository.png)
+![Add Repository Dialog](../images/vsmac-extensions-added-repository.png)
 
 - You should now be able to see my extensions from the **Gallery** tab
 
-![Added Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-gallery.png)
+![Added Repository](../images/vsmac-extensions-gallery.png)
 
 - By adding my extension repository you will be able to conveniently update my extension using the Visual Studio for Mac Extension Manager
 
-![Add Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-updates.png)
+![Add Repository](../images/vsmac-updates.png)
 
-![Add Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-update-install.png)
+![Add Repository](../images/vsmac-update-install.png)
 
-![Add Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-update-install-progress.png)
+![Add Repository](../images/vsmac-update-install-progress.png)
 
 ### Installing the **.mpack** file directly
 
@@ -111,22 +111,22 @@ Here's what you need to do:
 - Download the latest **.mpack file** from the [Latest Github Release](https://github.com/christianhelle/apiclientcodegen/releases/latest)
 - Now from within Visual Studio for Mac you need to launch the **Extensions Dialog Box**. You can do this from the menu **Visual Studio** -> **Extentions**
 
-![Open Extensions Dialog Box](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-menu.png)
+![Open Extensions Dialog Box](../images/vsmac-extensions-menu.png)
 
 - Click on the **Install from File** button
 
-![Manually install .mpack file](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-install.png)
+![Manually install .mpack file](../images/vsmac-extensions-install.png)
 
 - Browse to the .mpack file and select it. You will be prompted with a confirmation dialog
 
-![Confirm .mpack file install](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-install-confirm.png)
+![Confirm .mpack file install](../images/vsmac-extensions-install-confirm.png)
 
 - Click **Install** and restart Visual Studio for Mac
 - To Verify that the Add-in was installed you can re-open the Extensions Dialog Box, select the **Installed** tab and expand the **IDE Extensions**. You should be able to see the **REST API Client Code Generator**.
 
 - Uninstalling the Add-in is done in this same dialog box by clicking the **Uninstall** button
 
-![Manually uninstall Add-in](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-uninstall.png)
+![Manually uninstall Add-in](../images/vsmac-extensions-uninstall.png)
 
 
 #

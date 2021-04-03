@@ -74,32 +74,32 @@ This Visual Studio Extension will automatically add the required NuGet packages 
 
 ## Screenshots
 
-![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-menu.png)
+![Add - API Client from OpenAPI Specification](images/add-new-menu.png)
 
-![Enter URL to OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-dialog.png)
+![Enter URL to OpenAPI Specification](images/add-new-dialog.png)
 
-![Solution Explorer Context Menus](https://github.com/christianhelle/apiclientcodegen/raw/master/images/solution-explorer-context-menu.jpg)
+![Solution Explorer Context Menus](images/solution-explorer-context-menu.jpg)
 
-![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/nswagstudio-context-menu.jpg)
+![NSwag Studio Context Menu](images/nswagstudio-context-menu.jpg)
 
 
 ### Settings
 
 This extension will by default make some assumptions on the installation paths for **Java**, **NSwag** and **NPM** but also provides option pages for configuring this. The **Swagger Codegen CLI** and the **OpenAPI Generator** JAR files are by default downloaded to the user TEMP folder but it is also possible to specify to use existing JAR files
 
-![Options - General](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-general.png)
+![Options - General](images/options-general.png)
 
 Supports customising how AutoRest generates code based on the C# generator settings that the AutoRest CLI tool provides
 
-![Options - AutoRest](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-autorest.png)
+![Options - AutoRest](images/options-autorest.png)
 
 Supports customising how NSwag generates code using the properties exposed by the NSwag NuGet package
 
-![Options - NSwag](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswag.png)
+![Options - NSwag](images/options-nswag.png)
 
 Supports customising how the **.nswag** file is generated using a subset of the options available in NSwag Studio
 
-![Options - NSwag Studio](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswagstudio.png)
+![Options - NSwag Studio](images/options-nswagstudio.png)
 
 This extension collects errors and tracks feature usages to a service called [Exceptionless](https://exceptionless.com). This is done anonymously using a support key and a generated anonymous identity based on a secure hash of username@host
 
@@ -108,13 +108,13 @@ This extension collects errors and tracks feature usages to a service called [Ex
 
 ### Visual Studio for Mac
 
-![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-add-new-menu.png)
+![Add - API Client from OpenAPI Specification](images/vsmac-add-new-menu.png)
 
-![Enter URL to OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-add-new-dialog.png)
+![Enter URL to OpenAPI Specification](images/vsmac-add-new-dialog.png)
 
-![Solution Explorer Context Menus](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-generate-code.png)
+![Solution Explorer Context Menus](images/vsmac-generate-code.png)
 
-![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-nswag-studio.png)
+![NSwag Studio Context Menu](images/vsmac-nswag-studio.png)
 
 
 ## Installation
@@ -134,38 +134,38 @@ Here's what you need to do:
 - Open the Visual Studio for Mac **Extension Manager**
 - You can do this from the menu **Visual Studio** -> **Extentions**
 
-![Open Extensions Dialog Box](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-menu.png)
+![Open Extensions Dialog Box](images/vsmac-extensions-menu.png)
 
 - Select the **Gallery** Tab
 - Expand the Repository drop down box and select **Manage Repositories**
 
-![Manage Repositories](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-manage-repositories.png)
+![Manage Repositories](images/vsmac-extensions-manage-repositories.png)
 
 - Press on the **Add** button to add a new custom extension repository
 
-![Manage Repositories](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-repositories.png)
+![Manage Repositories](images/vsmac-extensions-repositories.png)
 
 - Register an online repository at **https://christianhelle.com/vsmac/main.mrep**
 - Click **OK**
 
-![Add Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-add-repository.png)
+![Add Repository](images/vsmac-extensions-add-repository.png)
 
 - Now my extension repository is added to the list
 - Make sure that this is enabled (indicated by a check box)
 
-![Add Repository Dialog](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-added-repository.png)
+![Add Repository Dialog](images/vsmac-extensions-added-repository.png)
 
 - You should now be able to see my extensions from the **Gallery** tab
 
-![Added Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-gallery.png)
+![Added Repository](images/vsmac-extensions-gallery.png)
 
 - By adding my extension repository you will be able to conveniently update my extension using the Visual Studio for Mac Extension Manager
 
-![Add Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-updates.png)
+![Add Repository](images/vsmac-updates.png)
 
-![Add Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-update-install.png)
+![Add Repository](images/vsmac-update-install.png)
 
-![Add Repository](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-update-install-progress.png)
+![Add Repository](images/vsmac-update-install-progress.png)
 
 ### Installing the **.mpack** file directly
 
@@ -173,22 +173,22 @@ Here's what you need to do:
 - Download the latest **.mpack file** from the [Latest Github Release](https://github.com/christianhelle/apiclientcodegen/releases/latest)
 - Now from within Visual Studio for Mac you need to launch the **Extensions Dialog Box**. You can do this from the menu **Visual Studio** -> **Extentions**
 
-![Open Extensions Dialog Box](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-menu.png)
+![Open Extensions Dialog Box](images/vsmac-extensions-menu.png)
 
 - Click on the **Install from File** button
 
-![Manually install .mpack file](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-install.png)
+![Manually install .mpack file](images/vsmac-extensions-install.png)
 
 - Browse to the .mpack file and select it. You will be prompted with a confirmation dialog
 
-![Confirm .mpack file install](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-install-confirm.png)
+![Confirm .mpack file install](images/vsmac-extensions-install-confirm.png)
 
 - Click **Install** and restart Visual Studio for Mac
 - To Verify that the Add-in was installed you can re-open the Extensions Dialog Box, select the **Installed** tab and expand the **IDE Extensions**. You should be able to see the **REST API Client Code Generator**.
 
 - Uninstalling the Add-in is done in this same dialog box by clicking the **Uninstall** button
 
-![Manually uninstall Add-in](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vsmac-extensions-uninstall.png)
+![Manually uninstall Add-in](images/vsmac-extensions-uninstall.png)
 
 
 ## Cross Platform Command Line Tool
