@@ -52,7 +52,7 @@ jobs:
     - name: Setup .NET 5.0
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '5.0.x'
+        dotnet-version: '5.0.104'
 
     - name: Install rapicgen
       run: dotnet tool install --global rapicgen
