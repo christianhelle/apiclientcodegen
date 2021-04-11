@@ -54,7 +54,7 @@ jobs:
     - name: Setup .NET 5.0
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '5.0.x'
+        dotnet-version: '5.0.104'
 
     - name: Prepare Swagger Petstore OpenAPI Spec
       run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
