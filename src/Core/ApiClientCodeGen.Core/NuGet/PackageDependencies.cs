@@ -56,7 +56,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
         public static readonly PackageDependency Polly = 
             new PackageDependency(
                 "Polly",
-                new Version(7,2,1));
+                new Version(7,2,2));
 
         public static readonly PackageDependency AutoRestCSharp =
             new PackageDependency(
