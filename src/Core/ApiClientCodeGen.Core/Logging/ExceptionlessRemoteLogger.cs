@@ -30,7 +30,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
                     SupportInformation.GetAnonymousIdentity(),
                     SupportInformation.GetSupportKey());
 
-                // ExceptionlessClient.Default.Configuration.UseSessions();
+                ExceptionlessClient.Default.Configuration.UseSessions();
             }
             catch (Exception e)
             {
