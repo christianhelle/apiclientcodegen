@@ -64,32 +64,30 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         [Priority(30)]
         private class IgnoreNonProjectReletedExceptionsPlugin : IEventPlugin
         {
-            public void Run(EventPluginContext context) => context.Cancel = true;
-            
-            // private static readonly List<string> HandledNamespaces = new List<string>
-            // {
-            //     "ChristianHelle",
-            //     "ApiClientCodeGen"
-            // };
+            private static readonly List<string> HandledNamespaces = new List<string>
+            {
+                "ChristianHelle",
+                "ApiClientCodeGen"
+            };
 
-            // public void Run(EventPluginContext context)
-            // {
-            //     // if (!context.ContextData.IsUnhandledError || !context.Event.IsError() || !context.ContextData.HasException())
-            //     //     return;
-            //     //
-            //     // var exception = context.ContextData.GetException();
-            //     // if (exception == null)
-            //     //     return;
-            //     //
-            //     // var error = context.Event.GetError();
-            //     // if (error == null)
-            //     //     return;
-            //     //
-            //     // context.Cancel = !error.StackTrace
-            //     //     .Select(s => s.DeclaringNamespace)
-            //     //     .Distinct()
-            //     //     .Any(ns => HandledNamespaces.Any(ns.Contains));
-            // }
+            public void Run(EventPluginContext context)
+            {
+                if (!context.ContextData.IsUnhandledError || !context.Event.IsError() || !context.ContextData.HasException())
+                    return;
+
+                var exception = context.ContextData.GetException();
+                if (exception == null)
+                    return;
+
+                var error = context.Event.GetError();
+                if (error == null)
+                    return;
+
+                context.Cancel = !error.StackTrace
+                    .Select(s => s.DeclaringNamespace)
+                    .Distinct()
+                    .Any(ns => HandledNamespaces.Any(ns.Contains));
+            }
         }
     }
 }
