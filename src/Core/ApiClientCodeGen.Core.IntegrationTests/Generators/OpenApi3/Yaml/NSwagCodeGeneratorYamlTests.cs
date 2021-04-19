@@ -55,15 +55,19 @@ namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3.Yaml
         [Fact]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
             => BuildHelper.BuildCSharp(
-                ProjectTypes.DotNetCoreApp,
-                fixture.Code,
-                SupportedCodeGenerator.NSwag);
+                    ProjectTypes.DotNetCoreApp,
+                    fixture.Code,
+                    SupportedCodeGenerator.NSwag)
+                .Should()
+                .BeTrue();
 
         [Fact]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
             => BuildHelper.BuildCSharp(
-                ProjectTypes.DotNetStandardLibrary,
-                fixture.Code,
-                SupportedCodeGenerator.NSwag);
+                    ProjectTypes.DotNetStandardLibrary,
+                    fixture.Code,
+                    SupportedCodeGenerator.NSwag)
+                .Should()
+                .BeTrue();
     }
 }

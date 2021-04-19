@@ -34,11 +34,21 @@ namespace ApiClientCodeGen.Core.IntegrationTests.Generators
 
         [SkippableFact(typeof(NotSupportedException))]
         public void GeneratedCode_Can_Build_In_NetCoreApp()
-            => BuildHelper.BuildCSharp(ProjectTypes.DotNetCoreApp, fixture.Code, SupportedCodeGenerator.Swagger);
+            => BuildHelper.BuildCSharp(
+                    ProjectTypes.DotNetCoreApp,
+                    fixture.Code,
+                    SupportedCodeGenerator.Swagger)
+                .Should()
+                .BeTrue();
 
         [SkippableFact(typeof(NotSupportedException))]
         public void GeneratedCode_Can_Build_In_NetStandardLibrary()
-            => BuildHelper.BuildCSharp(ProjectTypes.DotNetStandardLibrary, fixture.Code, SupportedCodeGenerator.Swagger);
+            => BuildHelper.BuildCSharp(
+                    ProjectTypes.DotNetStandardLibrary,
+                    fixture.Code,
+                    SupportedCodeGenerator.Swagger)
+                .Should()
+                .BeTrue();
 
         // [SkippableFact(typeof(NotSupportedException))]
         // public void GeneratedCode_Can_Build_In_NetFrameworkApp()
