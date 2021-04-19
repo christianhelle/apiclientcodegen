@@ -11,19 +11,28 @@ namespace ApiClientCodeGen.Tests.Common.Build
     [ExcludeFromCodeCoverage]
     public static class BuildHelper
     {
-        public static void BuildCSharp(
+        public static bool BuildCSharp(
             ProjectTypes projecType,
             string generatedCode,
             SupportedCodeGenerator generator)
         {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), Guid.NewGuid().ToString("N"));
-            Directory.CreateDirectory(path);
-            var projectFile = Path.Combine(path, "Project.csproj");
-            var projectContents = GetProjectContents(projecType, generator);
-            Trace.WriteLine(projectContents);
-            File.WriteAllText(projectFile, projectContents);
-            File.WriteAllText(Path.Combine(path, "Generated.cs"), generatedCode);
-            new ProcessLauncher().Start(GetDotNetCli(), $"build \"{projectFile}\"");
+            try
+            {
+                var path = Path.Combine(Directory.GetCurrentDirectory(), Guid.NewGuid().ToString("N"));
+                Directory.CreateDirectory(path);
+                var projectFile = Path.Combine(path, "Project.csproj");
+                var projectContents = GetProjectContents(projecType, generator);
+                Trace.WriteLine(projectContents);
+                File.WriteAllText(projectFile, projectContents);
+                File.WriteAllText(Path.Combine(path, "Generated.cs"), generatedCode);
+                new ProcessLauncher().Start(GetDotNetCli(), $"build \"{projectFile}\"");
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
         }
 
         private static string GetDotNetCli()
