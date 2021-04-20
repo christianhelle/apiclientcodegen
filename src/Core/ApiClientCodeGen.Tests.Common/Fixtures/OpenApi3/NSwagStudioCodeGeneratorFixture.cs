@@ -49,10 +49,12 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
                 .Should()
                 .BeNull();
 
-            (Code = File.ReadAllText(
-                    Path.Combine(
-                        Path.GetDirectoryName(tempFile) ?? throw new InvalidOperationException(),
-                        $"{outputFilename}.cs")))
+            Code = File.ReadAllText(
+                Path.Combine(
+                    Path.GetDirectoryName(tempFile) ?? throw new InvalidOperationException(),
+                    $"{outputFilename}.cs"));
+            
+            Code
                 .Should()
                 .NotBeNullOrWhiteSpace();
         }
