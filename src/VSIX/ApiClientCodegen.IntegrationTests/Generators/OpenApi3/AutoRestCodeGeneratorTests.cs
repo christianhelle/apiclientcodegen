@@ -51,19 +51,5 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         [SkippableFact(typeof(ProcessLaunchException))]
         public void Reads_UseInternalConstructors_From_Options() 
             => fixture.OptionsMock.Verify(c => c.UseInternalConstructors, Times.AtLeastOnce);
-
-        //[SkippableFact(typeof(ProcessLaunchException))]
-        //public void GeneratedCode_Can_Build_In_NetCoreApp()
-        //    => BuildHelper.BuildCSharp(
-        //        ProjectTypes.DotNetCoreApp,
-        //        fixture.Code,
-        //        SupportedCodeGenerator.AutoRest);
-
-        //[SkippableFact(typeof(ProcessLaunchException))]
-        //public void GeneratedCode_Can_Build_In_NetStandardLibrary()
-        //    => BuildHelper.BuildCSharp(
-        //        ProjectTypes.DotNetStandardLibrary,
-        //        fixture.Code,
-        //        SupportedCodeGenerator.AutoRest);
     }
 }

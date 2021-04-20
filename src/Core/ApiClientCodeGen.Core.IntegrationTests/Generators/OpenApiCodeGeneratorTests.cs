@@ -49,9 +49,5 @@ namespace ApiClientCodeGen.Core.IntegrationTests.Generators
                     SupportedCodeGenerator.OpenApi)
                 .Should()
                 .BeTrue();
-
-        //[Fact]
-        //public void GeneratedCode_Can_Build_In_NetFrameworkApp()
-        //    => BuildHelper.BuildCSharp(ProjectTypes.DotNetFramework, fixture.Code, SupportedCodeGenerator.OpenApi);
     }
 }
