@@ -14,7 +14,7 @@ namespace ApiClientCodeGen.Core.Tests.Extensions
             => swaggerJson = ReadAllText("Swagger.json");
 
         [Xunit.Fact]
-        public async Task Can_GenerateClassName_From_Json_Using_DocumentTitle()
+        public async Task Can_GenerateClassName_From_Json_Using_DocumentTitle_Async()
         {
             (await OpenApiDocument.FromJsonAsync(swaggerJson))
                 .GenerateClassName()
@@ -23,7 +23,7 @@ namespace ApiClientCodeGen.Core.Tests.Extensions
         }
 
         [Xunit.Fact]
-        public async Task Can_GenerateClassName_From_Json_Without_DocumentTitle()
+        public async Task Can_GenerateClassName_From_Json_Without_DocumentTitle_Async()
         {
             var sut = await OpenApiDocument.FromJsonAsync(swaggerJson);
             sut.Info.Title = null;
@@ -33,14 +33,14 @@ namespace ApiClientCodeGen.Core.Tests.Extensions
         }
 
         [Xunit.Fact]
-        public async Task Can_GenerateClassName_From_FileName()
+        public async Task Can_GenerateClassName_From_FileName_Async()
             => (await OpenApiDocument.FromFileAsync("Swagger.json"))
                 .GenerateClassName(false)
                 .Should()
                 .Be("Swagger");
         
         [Xunit.Fact]
-        public async Task Can_GenerateClassName_From_Json()
+        public async Task Can_GenerateClassName_From_Json_Async()
             => (await OpenApiDocument.FromJsonAsync(swaggerJson))
                 .GenerateClassName(false)
                 .Should()

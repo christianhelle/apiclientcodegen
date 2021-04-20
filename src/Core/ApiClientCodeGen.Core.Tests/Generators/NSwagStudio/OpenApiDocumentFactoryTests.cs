@@ -9,7 +9,7 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
     public class OpenApiDocumentFactoryTests : TestWithResources
     {
         [Fact]
-        public async Task Does_Not_Return_Null()
+        public async Task Does_Not_Return_Null_Async()
             => (await new OpenApiDocumentFactory().GetDocumentAsync(SwaggerJsonFilename))
                 .Should()
                 .NotBeNull();
