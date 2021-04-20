@@ -4,7 +4,6 @@ using FluentAssertions;
 
 namespace ApiClientCodeGen.Core.Tests.Extensions
 {
-    
     public class ActionExtensionsTests
     {
         [Xunit.Fact]
@@ -17,7 +16,11 @@ namespace ApiClientCodeGen.Core.Tests.Extensions
 
         [Xunit.Fact]
         public void SafeInvoke_Swallows_Exceptions()
-            => new Action(() => throw new Exception())
-                .SafeInvoke();
+            => new Action(
+                    () => new Action(
+                            () => throw new Exception())
+                        .SafeInvoke())
+                .Should()
+                .NotThrow<Exception>();
     }
 }
