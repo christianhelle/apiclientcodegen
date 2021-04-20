@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading;
@@ -46,7 +45,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             var folder = FindFolder(selectedItem, dte);
             if (string.IsNullOrWhiteSpace(folder))
             {
-                Trace.WriteLine("Unable to get folder name");
+                TraceLogger.WriteLine("Unable to get folder name");
                 return;
             }
 

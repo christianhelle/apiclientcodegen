@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using EnvDTE;
@@ -30,7 +31,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
             item.Properties.Item("CustomTool").Value = type.Name;
 
             var name = type.Name.Replace("CodeGenerator", string.Empty);
-            Trace.WriteLine($"Generating code using {name}");
+            TraceLogger.WriteLine($"Generating code using {name}");
 
             var documentFactory = new OpenApiDocumentFactory();
             var swaggerFile = item.FileNames[0];

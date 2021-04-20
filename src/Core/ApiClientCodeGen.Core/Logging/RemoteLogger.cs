@@ -34,6 +34,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         {
             foreach (var logger in Loggers)
                 logger.TrackError(exception);
+            
+            TraceLogger.Write(exception);
         }
 
         public void Disable() 

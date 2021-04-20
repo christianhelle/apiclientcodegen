@@ -15,7 +15,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.TraceError(e.ToString());
             }
         }
     }

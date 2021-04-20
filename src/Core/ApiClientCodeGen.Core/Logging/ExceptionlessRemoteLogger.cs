@@ -42,7 +42,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             }
             catch (Exception e)
             {
-                Trace.TraceError(e.ToString());
+                TraceLogger.Write(e);
                 TrackError(e);
             }
         }

@@ -65,11 +65,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 
                 if (supportedLanguage == SupportedLanguage.VisualBasic && converter != null)
                 {
-                    Trace.WriteLine(Environment.NewLine);
-                    Trace.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                    Trace.WriteLine("!!! EXPERIMENTAL - Attempting to convert C# code to Visual Basic !!!");
-                    Trace.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                    Trace.WriteLine(Environment.NewLine);
+                    TraceLogger.WriteLine(Environment.NewLine);
+                    TraceLogger.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    TraceLogger.WriteLine("!!! EXPERIMENTAL - Attempting to convert C# code to Visual Basic !!!");
+                    TraceLogger.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    TraceLogger.WriteLine(Environment.NewLine);
 
                     code = converter
                         .ConvertAsync(code)
@@ -107,8 +107,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
             rgbOutputFileContents[0] = string.Empty.ConvertToIntPtr(out pcbOutput);
             pGenerateProgress.GeneratorError(e);
 
-            Trace.WriteLine("Unable to generate code");
-            Trace.WriteLine(e);
+            TraceLogger.WriteLine("Unable to generate code");
         }
     }
 }

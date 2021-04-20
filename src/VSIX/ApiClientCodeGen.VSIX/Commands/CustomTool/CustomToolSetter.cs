@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using EnvDTE;
@@ -35,7 +35,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
             item.Properties.Item("CustomTool").Value = typeof(T).Name;
 
             var name = typeof(T).Name.Replace("CodeGenerator", string.Empty);
-            Trace.WriteLine($"Generating code using {name}");
+            TraceLogger.WriteLine($"Generating code using {name}");
 
             var project = ProjectExtensions.GetActiveProject(dte);
 

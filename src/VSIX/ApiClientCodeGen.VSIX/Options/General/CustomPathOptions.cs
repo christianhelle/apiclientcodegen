@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
@@ -33,15 +32,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
                 OpenApiGeneratorPath = PathProvider.GetOpenApiGeneratorPath();
                 InstallMissingPackages = true;
 
-                Trace.WriteLine(e);
-                Trace.WriteLine(Environment.NewLine);
-                Trace.WriteLine("Error reading user options. Reverting to default values");
-                Trace.WriteLine($"JavaPath = {JavaPath}");
-                Trace.WriteLine($"NpmPath = {NpmPath}");
-                Trace.WriteLine($"NSwagPath = {NSwagPath}");
-                Trace.WriteLine($"SwaggerCodegenPath = {SwaggerCodegenPath}");
-                Trace.WriteLine($"OpenApiGeneratorPath = {OpenApiGeneratorPath}");
-                Trace.WriteLine($"InstallMissingPackages = {InstallMissingPackages}");
+                TraceLogger.WriteLine(Environment.NewLine);
+                TraceLogger.WriteLine("Error reading user options. Reverting to default values");
+                TraceLogger.WriteLine($"JavaPath = {JavaPath}");
+                TraceLogger.WriteLine($"NpmPath = {NpmPath}");
+                TraceLogger.WriteLine($"NSwagPath = {NSwagPath}");
+                TraceLogger.WriteLine($"SwaggerCodegenPath = {SwaggerCodegenPath}");
+                TraceLogger.WriteLine($"OpenApiGeneratorPath = {OpenApiGeneratorPath}");
+                TraceLogger.WriteLine($"InstallMissingPackages = {InstallMissingPackages}");
             }
         }
 

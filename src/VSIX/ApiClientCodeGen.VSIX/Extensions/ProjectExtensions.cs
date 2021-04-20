@@ -107,7 +107,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             catch (Exception ex)
             {
                 Logger.Instance.TrackError(ex);
-                Trace.WriteLine(ex);
             }
         }
 
@@ -144,7 +143,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             catch (Exception ex)
             {
                 Logger.Instance.TrackError(ex);
-                Trace.WriteLine("Error getting the active project" + ex);
+                TraceLogger.WriteLine("Error getting the active project" + ex);
             }
 
             return null;
@@ -204,11 +203,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             var options = VsPackage.Instance.GetDialogPage(typeof(GeneralOptionPage)) as IGeneralOptions;
             if (options?.InstallMissingPackages == false)
             {
-                Trace.WriteLine("Skipping automatic depedency package installation");
+                TraceLogger.WriteLine("Skipping automatic depedency package installation");
                 return;
             }
 
-            Trace.WriteLine("Checking required dependencies");
+            TraceLogger.WriteLine("Checking required dependencies");
 
             var componentModel = (IComponentModel)await package.GetServiceAsync(typeof(SComponentModel));
             Assumes.Present(componentModel);
@@ -234,21 +233,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             if (installedPackages.Any(c => string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase)) &&
                (installedPackages.Any(c => c.VersionString == version) || !packageDependency.ForceUpdate))
             {
-                Trace.WriteLine($"{packageDependency.Name} is already installed");
+                TraceLogger.WriteLine($"{packageDependency.Name} is already installed");
                 return;
             }
 
             if (packageDependency.IsSystemLibrary)
             {
-                Trace.WriteLine("Package is a system library");
+                TraceLogger.WriteLine("Package is a system library");
                 if (!project.IsNetStandardLibrary())
                 {
-                    Trace.WriteLine("Skipping package installation");
+                    TraceLogger.WriteLine("Skipping package installation");
                     return;
                 }
             }
 
-            Trace.WriteLine($"Installing {packageId} version {version}");
+            TraceLogger.WriteLine($"Installing {packageId} version {version}");
 
             try
             {
@@ -259,13 +258,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                         version,
                         true);
 
-                Trace.WriteLine($"Successfully installed {packageId} version {version}");
+                TraceLogger.WriteLine($"Successfully installed {packageId} version {version}");
             }
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.WriteLine($"Unable to install {packageId} version {version}");
-                Trace.WriteLine(e);
+                TraceLogger.WriteLine($"Unable to install {packageId} version {version}");
             }
         }
 
@@ -287,8 +285,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.WriteLine("Unable to read top level namespace from Project");
-                Trace.WriteLine(e);
+                TraceLogger.WriteLine("Unable to read top level namespace from Project");
             }
             return null;
         }
@@ -300,7 +297,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 ThreadHelper.ThrowIfNotOnUIThread();
 
                 var fileName = project.FileName;
-                Trace.WriteLine("Project filename = " + fileName);
+                TraceLogger.WriteLine("Project filename = " + fileName);
                 var contents = File.ReadAllText(fileName);
                 var result = contents.Contains("<TargetFramework>netstandard");
                 return result;
@@ -308,8 +305,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.WriteLine("Unable to read project file contents");
-                Trace.WriteLine(e);
+                TraceLogger.WriteLine("Unable to read project file contents");
             }
 
             return false;

@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 
 namespace ApiClientCodeGen.Tests.Common.Utility
 {
@@ -23,7 +23,7 @@ namespace ApiClientCodeGen.Tests.Common.Utility
             }
 
             new ProcessLauncher().Start(npmCommand, "uninstall -g autorest");
-            Trace.WriteLine("AutoRest uninstalled successfully through NPM");
+            TraceLogger.WriteLine("AutoRest uninstalled successfully through NPM");
         }
 
         public static void UninstallOpenApiGenerator() 

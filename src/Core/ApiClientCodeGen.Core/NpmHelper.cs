@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
@@ -28,13 +27,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
                     npm,
                     "config get prefix",
                     o => prefix += o,
-                    e => Trace.WriteLine(e));
+                    TraceLogger.WriteLine);
                 return prefix;
             }
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.TraceError(e.ToString());
                 return null;
             }
         }

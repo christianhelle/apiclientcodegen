@@ -63,12 +63,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
                 if (string.IsNullOrWhiteSpace(openApiSpecification))
                 {
                     lblStatus.Text = "No content!";
-                    Trace.WriteLine($"Unable to download OpenAPI specification file from {url}");
+                    TraceLogger.WriteLine($"Unable to download OpenAPI specification file from {url}");
                     return;
                 }
 
-                Trace.WriteLine("OpenAPI Specifications:");
-                Trace.WriteLine(openApiSpecification);
+                TraceLogger.WriteLine("OpenAPI Specifications:");
+                TraceLogger.WriteLine(openApiSpecification);
 
                 Result = new EnterOpenApiSpecDialogResult(
                     openApiSpecification,
@@ -83,14 +83,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
                 Logger.Instance.TrackError(ex);
                 const string message = "Invalid URL";
                 lblStatus.Text = message;
-                Trace.WriteLine(message);
-                Trace.WriteLine(ex);
+                TraceLogger.WriteLine(message);
             }
             catch (Exception ex)
             {
                 Logger.Instance.TrackError(ex);
-                Trace.WriteLine($"Unable to download OpenAPI specification file from {url}");
-                Trace.WriteLine(ex);
+                TraceLogger.WriteLine($"Unable to download OpenAPI specification file from {url}");
             }
         }
 

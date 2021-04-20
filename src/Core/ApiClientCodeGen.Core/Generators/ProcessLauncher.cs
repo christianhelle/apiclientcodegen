@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
@@ -32,8 +33,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             => Start(
                 command,
                 arguments,
-                o => Trace.WriteLine(o),
-                e => Trace.WriteLine(e),
+                TraceLogger.WriteLine,
+                TraceLogger.WriteLine,
                 workingDirectory);
 
         public void Start(
@@ -43,11 +44,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             Action<string> onErrorData,
             string workingDirectory = null)
         {
-            Trace.WriteLine("Executing:");
-            Trace.WriteLine($"{command} {arguments}");
+            TraceLogger.WriteLine("Executing:");
+            TraceLogger.WriteLine($"{command} {arguments}");
 
             if (!string.IsNullOrWhiteSpace(workingDirectory)) 
-                Trace.WriteLine($"Working directory: {workingDirectory}");
+                TraceLogger.WriteLine($"Working directory: {workingDirectory}");
 
             if (command.Contains("npm"))
             {

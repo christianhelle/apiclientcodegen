@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 
@@ -25,15 +24,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRes
             {
                 Logger.Instance.TrackError(e);
                 
-                Trace.WriteLine(e);
-                Trace.WriteLine(Environment.NewLine);
-                Trace.WriteLine("Error reading user options. Reverting to default values");
-                Trace.WriteLine($"AddCredentials = {AddCredentials}");
-                Trace.WriteLine($"OverrideClientName = {OverrideClientName}");
-                Trace.WriteLine($"UseInternalConstructors = {UseInternalConstructors}");
-                Trace.WriteLine($"SyncMethods = {SyncMethods}");
-                Trace.WriteLine($"UseDateTimeOffset = {UseDateTimeOffset}");
-                Trace.WriteLine($"UseDateTimeOClientSideValidationffset = {ClientSideValidation}");
+                TraceLogger.WriteLine(Environment.NewLine);
+                TraceLogger.WriteLine("Error reading user options. Reverting to default values");
+                TraceLogger.WriteLine($"AddCredentials = {AddCredentials}");
+                TraceLogger.WriteLine($"OverrideClientName = {OverrideClientName}");
+                TraceLogger.WriteLine($"UseInternalConstructors = {UseInternalConstructors}");
+                TraceLogger.WriteLine($"SyncMethods = {SyncMethods}");
+                TraceLogger.WriteLine($"UseDateTimeOffset = {UseDateTimeOffset}");
+                TraceLogger.WriteLine($"UseDateTimeOClientSideValidationffset = {ClientSideValidation}");
 
                 AddCredentials = false;
                 OverrideClientName = false;

@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
@@ -28,12 +27,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
                 !forceDownload)
                 return filePath;
 
-            Trace.WriteLine($"{outputFilename} not found. Attempting to download {outputFilename}");
+            TraceLogger.WriteLine($"{outputFilename} not found. Attempting to download {outputFilename}");
 
             var tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.jar");
             downloader.DownloadFile(url, tempFile);
 
-            Trace.WriteLine($"{outputFilename} downloaded successfully");
+            TraceLogger.WriteLine($"{outputFilename} downloaded successfully");
 
             MoveFile(filePath, tempFile);
 
@@ -52,7 +51,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.WriteLine(e);
             }
         }
     }

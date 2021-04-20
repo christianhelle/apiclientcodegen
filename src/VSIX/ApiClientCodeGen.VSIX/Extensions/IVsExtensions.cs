@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
@@ -55,7 +56,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             if (!TestingUtility.IsRunningFromUnitTest)
                 ThreadHelper.ThrowIfNotOnUIThread();
             pGenerateProgress?.GeneratorError(0, 0, exception.Message, 0, 0);
-            Trace.WriteLine(exception);
+            TraceLogger.Write(exception);
         }
     }
 }

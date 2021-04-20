@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
@@ -59,7 +58,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             if (!string.IsNullOrWhiteSpace(command) && File.Exists(command) && !forceDownload)
                 return command;
 
-            Trace.WriteLine(
+            TraceLogger.WriteLine(
                 forceDownload
                     ? "Downloading NSwag using NPM"
                     : $"{command} could not be found in specified path! Retrying with default NSwag.exe path");
@@ -95,7 +94,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.TraceError(e.ToString());
             }
         }
     }

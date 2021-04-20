@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.Design;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
@@ -53,7 +52,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.TraceError(e.ToString());
+                TraceLogger.Write(e);
             }
         }
     }

@@ -4,7 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using Sentry;
-using Sentry.Protocol;
 
 namespace ApiClientCodeGen.CLI
 {

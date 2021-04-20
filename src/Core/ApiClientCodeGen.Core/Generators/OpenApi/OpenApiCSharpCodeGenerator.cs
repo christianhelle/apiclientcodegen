@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi
@@ -39,7 +40,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 var jarFile = options.OpenApiGeneratorPath;
                 if (!File.Exists(jarFile))
                 {
-                    Trace.WriteLine(jarFile + " does not exist");
+                    TraceLogger.WriteLine(jarFile + " does not exist");
                     jarFile = dependencyInstaller.InstallOpenApiGenerator();
                 }
 

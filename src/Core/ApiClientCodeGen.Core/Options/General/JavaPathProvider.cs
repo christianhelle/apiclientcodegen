@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
@@ -39,15 +38,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
         {
             try
             {
-                Trace.WriteLine("Checking Java version");
+                TraceLogger.WriteLine("Checking Java version");
                 processLauncher.Start(javaPath, "-version");
                 return true;
             }
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.WriteLine($"Unable to start Java from path: {javaPath}");
-                Trace.WriteLine(e);
+                TraceLogger.WriteLine($"Unable to start Java from path: {javaPath}");
             }
 
             return false;

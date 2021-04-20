@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
 using NJsonSchema.CodeGeneration.CSharp;
@@ -33,20 +32,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagSt
             {
                 Logger.Instance.TrackError(e);
                 
-                Trace.WriteLine(e);
-                Trace.WriteLine(Environment.NewLine);
-                Trace.WriteLine("Error reading user options. Reverting to default values");
-                Trace.WriteLine("GenerateResponseClasses = true");
-                Trace.WriteLine("GenerateJsonMethods = true");
-                Trace.WriteLine("RequiredPropertiesMustBeDefined = true");
-                Trace.WriteLine("GenerateDefaultValues = true");
-                Trace.WriteLine("GenerateDataAnnotations = true");
-                Trace.WriteLine("InjectHttpClient = true");
-                Trace.WriteLine("GenerateClientInterfaces = true");
-                Trace.WriteLine("GenerateDtoTypes = true");
-                Trace.WriteLine("UseBaseUrl = false");
-                Trace.WriteLine("ClassStyle = CSharpClassStyle.Poco");
-                Trace.WriteLine("UseDocumentTitle = true");
+                TraceLogger.WriteLine(Environment.NewLine);
+                TraceLogger.WriteLine("Error reading user options. Reverting to default values");
+                TraceLogger.WriteLine("GenerateResponseClasses = true");
+                TraceLogger.WriteLine("GenerateJsonMethods = true");
+                TraceLogger.WriteLine("RequiredPropertiesMustBeDefined = true");
+                TraceLogger.WriteLine("GenerateDefaultValues = true");
+                TraceLogger.WriteLine("GenerateDataAnnotations = true");
+                TraceLogger.WriteLine("InjectHttpClient = true");
+                TraceLogger.WriteLine("GenerateClientInterfaces = true");
+                TraceLogger.WriteLine("GenerateDtoTypes = true");
+                TraceLogger.WriteLine("UseBaseUrl = false");
+                TraceLogger.WriteLine("ClassStyle = CSharpClassStyle.Poco");
+                TraceLogger.WriteLine("UseDocumentTitle = true");
 
                 GenerateResponseClasses = true;
                 GenerateJsonMethods = true;
