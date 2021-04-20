@@ -11,8 +11,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
 {
     public class CodeGeneratorTests : TestWithResources
     {
-        private Mock<IProgressReporter> mock;
-        private CodeGenerator sut;
+        private readonly Mock<IProgressReporter> mock;
+        private readonly CodeGenerator sut;
 
         public CodeGeneratorTests()
         {

@@ -10,8 +10,8 @@ namespace ApiClientCodeGen.Core.Tests.Options
     
     public class JavaPathProviderTests
     {
-        private Mock<IGeneralOptions> mock;
-        private string result;
+        private readonly Mock<IGeneralOptions> mock;
+        private readonly string result;
 
         public JavaPathProviderTests()
         {

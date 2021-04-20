@@ -6,11 +6,11 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
 {
     public class PackageDependencyTests
     {
-        private string name;
-        private string version;
-        private bool forceUpdate;
-        private bool isSystemLibrary;
-        private PackageDependency sut;
+        private readonly string name;
+        private readonly string version;
+        private readonly bool forceUpdate;
+        private readonly bool isSystemLibrary;
+        private readonly PackageDependency sut;
 
         public PackageDependencyTests()
         {

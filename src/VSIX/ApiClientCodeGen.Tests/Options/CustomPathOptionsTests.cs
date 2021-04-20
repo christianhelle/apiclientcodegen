@@ -9,8 +9,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
     
     public class CustomPathOptionsTests
     {
-        private CustomPathOptions sut;
-        private Mock<IGeneralOptions> mock;
+        private readonly CustomPathOptions sut;
+        private readonly Mock<IGeneralOptions> mock;
 
         public CustomPathOptionsTests()
         {

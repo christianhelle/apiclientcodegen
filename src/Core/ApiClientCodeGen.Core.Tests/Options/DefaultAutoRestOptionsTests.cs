@@ -6,7 +6,7 @@ namespace ApiClientCodeGen.Core.Tests.Options
     
     public class DefaultAutoRestOptionsTests
     {
-        private IAutoRestOptions sut = new DefaultAutoRestOptions();
+        private readonly IAutoRestOptions sut = new DefaultAutoRestOptions();
 
         [Xunit.Fact]
         public void AddCredentials_Be_False()
