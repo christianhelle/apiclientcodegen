@@ -10,7 +10,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
     public class NSwagCodeGeneratorSettingsFactoryTests : TestWithResources
     {
         [Xunit.Fact]
-        public async Task Does_Not_Return_Null()
+        public async Task Does_Not_Return_Null_Async()
             => new NSwagCodeGeneratorSettingsFactory(
                     Test.CreateAnnonymous<string>(),
                     Test.CreateDummy<INSwagOptions>())

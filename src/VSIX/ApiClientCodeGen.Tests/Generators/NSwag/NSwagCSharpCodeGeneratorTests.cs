@@ -1,4 +1,5 @@
-﻿using ApiClientCodeGen.Tests.Common;
+﻿using System.Threading.Tasks;
+using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
@@ -19,9 +20,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
         private OpenApiDocument document;
         private string code;
 
-        public NSwagCSharpCodeGeneratorTests()
+        protected override async Task OnInitializeAsync()
         {
-            document = OpenApiDocument.FromFileAsync(SwaggerJsonFilename).GetAwaiter().GetResult();
+            document = await OpenApiDocument.FromFileAsync(SwaggerJsonFilename);
             documentFactoryMock.Setup(c => c.GetDocumentAsync(SwaggerJsonFilename))
                 .ReturnsAsync(document);
 

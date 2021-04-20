@@ -1,8 +1,7 @@
-﻿using System.IO;
+﻿using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using Moq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.NSwagStudio
@@ -11,18 +10,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generator
     {
         private Mock<INSwagStudioOptions> mock;
 
-        public NSwagStudioFileHelperYamlTests()
+        protected override async Task OnInitializeAsync()
         {
             mock = new Mock<INSwagStudioOptions>();
-
-            NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
+            await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
                     new EnterOpenApiSpecDialogResult(
                         ReadAllText(SwaggerYaml),
                         "Swagger",
                         "https://petstore.swagger.io/v2/swagger.yaml"),
-                    mock.Object)
-                .GetAwaiter()
-                .GetResult();
+                    mock.Object);
         }
 
         [Xunit.Fact]
