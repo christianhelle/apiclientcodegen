@@ -126,7 +126,7 @@
     </Compile>
     <Compile Include="Windows\OutputWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Windows\OutputWindowTraceListener.cs" />
+    <Compile Include="Windows\OutputWindowLogger.cs" />
     <Compile Include="Extensions\ProjectExtensions.cs" />
     <Compile Include="Windows\EnterOpenApiSpecDialog.cs">
       <SubType>Form</SubType>

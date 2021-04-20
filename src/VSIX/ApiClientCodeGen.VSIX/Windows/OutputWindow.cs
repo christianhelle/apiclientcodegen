@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using Microsoft;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -26,7 +26,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             Assumes.Present(output);
             name = outputSource;
 
-            Trace.Listeners.Add(new OutputWindowTraceListener());
+            TraceLogger.Setup(new OutputWindowLogger());
         }
         
         public static void Log(object message)
