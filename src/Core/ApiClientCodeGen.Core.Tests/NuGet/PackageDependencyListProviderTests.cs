@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using FluentAssertions;
 
@@ -14,35 +13,30 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
         [Xunit.Fact]
         public void GetDependencies_NSwag_Returns_NotEmpty() 
             => sut.GetDependencies(SupportedCodeGenerator.NSwag)
-                .ToList()
                 .Should()
                 .NotBeNullOrEmpty();
 
         [Xunit.Fact]
         public void GetDependencies_NSwagStudio_Returns_NotEmpty() 
             => sut.GetDependencies(SupportedCodeGenerator.NSwagStudio)
-                .ToList()
                 .Should()
                 .NotBeNullOrEmpty();
 
         [Xunit.Fact]
         public void GetDependencies_AutoRest_Returns_NotEmpty() 
             => sut.GetDependencies(SupportedCodeGenerator.AutoRest)
-                .ToList()
                 .Should()
                 .NotBeNullOrEmpty();
 
         [Xunit.Fact]
         public void GetDependencies_Swagger_Returns_NotEmpty() 
             => sut.GetDependencies(SupportedCodeGenerator.Swagger)
-                .ToList()
                 .Should()
                 .NotBeNullOrEmpty();
 
         [Xunit.Fact]
         public void GetDependencies_OpenApi_Returns_NotEmpty() 
             => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
-                .ToList()
                 .Should()
                 .NotBeNullOrEmpty();
 
