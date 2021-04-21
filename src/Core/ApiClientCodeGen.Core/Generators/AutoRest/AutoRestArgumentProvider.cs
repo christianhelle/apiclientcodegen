@@ -48,6 +48,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             string swaggerFile,
             string arguments)
         {
+            arguments += "--verbose --debug ";
+
             if (options.AddCredentials)
                 arguments += "--add-credentials ";
 
