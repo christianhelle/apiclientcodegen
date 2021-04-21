@@ -121,17 +121,15 @@ namespace ApiClientCodeGen.Core.Tests.Command
         [Theory, AutoMoqData]
         public void OnExecute_Should_Create_Generator(
             [Frozen] IAutoRestCodeGeneratorFactory factory,
-            AutoRestCommand sut,
-            string swaggerFile)
+            AutoRestCommand sut)
         {
-            sut.SwaggerFile = swaggerFile;
             sut.OnExecute();
 
             Mock.Get(factory)
                 .Verify(
                     c => c.Create(
-                        swaggerFile,
-                        "GeneratedCode",
+                        sut.SwaggerFile,
+                        sut.DefaultNamespace,
                         It.IsAny<IAutoRestOptions>(),
                         It.IsAny<IProcessLauncher>(),
                         It.IsAny<IOpenApiDocumentFactory>(),
