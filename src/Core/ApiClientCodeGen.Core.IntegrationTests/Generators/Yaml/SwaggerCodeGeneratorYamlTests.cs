@@ -49,9 +49,5 @@ namespace ApiClientCodeGen.Core.IntegrationTests.Generators.Yaml
                     SupportedCodeGenerator.Swagger)
                 .Should()
                 .BeTrue();
-
-        // [SkippableFact(typeof(NotSupportedException))]
-        // public void GeneratedCode_Can_Build_In_NetFrameworkApp()
-        //     => BuildHelper.BuildCSharp(ProjectTypes.DotNetFramework, fixture.Code, SupportedCodeGenerator.Swagger);
     }
 }

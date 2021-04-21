@@ -49,9 +49,5 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
                     SupportedCodeGenerator.Swagger)
                 .Should()
                 .BeTrue();
-
-        // [Fact]
-        // public void GeneratedCode_Can_Build_In_NetFrameworkApp()
-        //     => BuildHelper.BuildCSharp(ProjectTypes.DotNetFramework, fixture.Code, SupportedCodeGenerator.Swagger);
     }
 }
