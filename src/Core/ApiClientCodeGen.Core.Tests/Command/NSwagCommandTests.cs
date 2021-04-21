@@ -1,5 +1,6 @@
 using System;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
+using AutoFixture.Xunit2;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
@@ -32,21 +33,12 @@ namespace ApiClientCodeGen.Core.Tests.Command
 
         [Theory, AutoMoqData]
         public void OnExecuteAsync_Should_NotThrow(
-            IConsoleOutput console,
-            IProgressReporter progressReporter,
-            IOpenApiDocumentFactory openApiDocumentFactory,
-            INSwagOptions options,
-            INSwagCodeGeneratorFactory codeGeneratorFactory,
-            ICodeGenerator generator,
+            [Frozen] IProgressReporter progressReporter,
+            [Frozen] ICodeGenerator generator,
+            NSwagCommand sut,
             string outputFile,
             string code)
         {
-            var sut = new NSwagCommand(
-                console,
-                progressReporter,
-                openApiDocumentFactory,
-                options,
-                codeGeneratorFactory);
             sut.OutputFile = outputFile;
             
             Mock.Get(generator)

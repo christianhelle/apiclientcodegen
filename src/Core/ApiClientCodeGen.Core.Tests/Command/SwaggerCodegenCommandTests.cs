@@ -1,5 +1,6 @@
 using System;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
+using AutoFixture.Xunit2;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
@@ -32,23 +33,11 @@ namespace ApiClientCodeGen.Core.Tests.Command
 
         [Theory, AutoMoqData]
         public void OnExecuteAsync_Should_NotThrow(
-            IConsoleOutput console,
-            IProgressReporter progressReporter,
-            IProcessLauncher processLauncher,
-            IGeneralOptions options,
-            ISwaggerCodegenFactory codeGeneratorFactory,
-            ICodeGenerator generator,
-            IDependencyInstaller dependencyInstaller,
+            [Frozen] IProgressReporter progressReporter,
+            [Frozen] ICodeGenerator generator,
+            SwaggerCodegenCommand sut,
             string code)
         {
-            var sut = new SwaggerCodegenCommand(
-                console,
-                progressReporter, 
-                options,
-                processLauncher, 
-                codeGeneratorFactory,
-                dependencyInstaller);
-            
             Mock.Get(generator)
                 .Setup(c => c.GenerateCode(progressReporter))
                 .Returns(code);
