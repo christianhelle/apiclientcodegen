@@ -8,7 +8,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
     
     public class NSwagCSharpOptionsTests
     {
-        private INSwagOptions options;
+        private readonly INSwagOptions options;
 
         public NSwagCSharpOptionsTests()
             => options = new Mock<INSwagOptions>().Object;

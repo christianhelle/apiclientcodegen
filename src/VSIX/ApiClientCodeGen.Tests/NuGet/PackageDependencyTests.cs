@@ -1,5 +1,4 @@
-﻿using System;
-using AutoFixture;
+﻿using AutoFixture;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using FluentAssertions;
 
@@ -7,11 +6,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
 {
     public class PackageDependencyTests
     {
-        private string name;
-        private string version;
-        private bool forceUpdate;
-        private bool isSystemLibrary;
-        private PackageDependency sut;
+        private readonly string name;
+        private readonly string version;
+        private readonly bool forceUpdate;
+        private readonly bool isSystemLibrary;
+        private readonly PackageDependency sut;
 
         public PackageDependencyTests()
         {

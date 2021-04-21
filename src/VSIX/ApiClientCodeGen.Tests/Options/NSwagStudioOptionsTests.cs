@@ -8,7 +8,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
     
     public class NSwagStudioOptionsTests
     {
-        private INSwagStudioOptions options;
+        private readonly INSwagStudioOptions options;
 
         public NSwagStudioOptionsTests()
         {
