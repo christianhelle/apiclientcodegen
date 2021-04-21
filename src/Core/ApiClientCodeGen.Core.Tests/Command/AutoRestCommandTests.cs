@@ -120,37 +120,22 @@ namespace ApiClientCodeGen.Core.Tests.Command
 
         [Theory, AutoMoqData]
         public void OnExecute_Should_Create_Generator(
-            IConsoleOutput console,
-            IAutoRestOptions options,
-            IProcessLauncher processLauncher,
-            IProgressReporter progressReporter,
-            IAutoRestCodeGeneratorFactory factory,
-            IOpenApiDocumentFactory documentFactory,
-            IDependencyInstaller dependencyInstaller,
+            [Frozen] IAutoRestCodeGeneratorFactory factory,
+            AutoRestCommand sut,
             string swaggerFile)
         {
-            new AutoRestCommand(
-                    console,
-                    options,
-                    processLauncher,
-                    progressReporter,
-                    factory,
-                    documentFactory,
-                    dependencyInstaller)
-                {
-                    SwaggerFile = swaggerFile
-                }
-                .OnExecute();
+            sut.SwaggerFile = swaggerFile;
+            sut.OnExecute();
 
             Mock.Get(factory)
                 .Verify(
                     c => c.Create(
                         swaggerFile,
                         "GeneratedCode",
-                        options,
-                        processLauncher,
-                        documentFactory,
-                        dependencyInstaller));
+                        It.IsAny<IAutoRestOptions>(),
+                        It.IsAny<IProcessLauncher>(),
+                        It.IsAny<IOpenApiDocumentFactory>(),
+                        It.IsAny<IDependencyInstaller>()));
         }
     }
 }
