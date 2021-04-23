@@ -278,3 +278,4 @@ test/GeneratedCode/**/Output.cs
 test/dotnet-install.ps1
 test/**/*.cs
 test/**/GeneratedCode.csproj
+test/Swagger.json
