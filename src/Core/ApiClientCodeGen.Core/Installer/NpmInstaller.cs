@@ -20,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
 
             processLauncher.Start(
                 PathProvider.GetNpmPath(),
-                $"install -g {packageName} --force");
+                $"install -g {packageName}");
 
             Trace.WriteLine($"{packageName} installed successfully through NPM");
         }
