@@ -37,7 +37,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                 .Verify(
                     c => c.Start(
                         It.IsAny<string>(),
-                        $"install -g {packageName} --force",
+                        $"install -g {packageName}",
                         null));
         }
     }
