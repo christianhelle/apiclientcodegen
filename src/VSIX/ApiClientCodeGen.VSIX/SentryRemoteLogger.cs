@@ -15,6 +15,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
                 return;
             SentrySdk.Init("https://c925c0d0b9ea438a865377e066eeb8ff@o418075.ingest.sentry.io/5555548");
+            SentrySdk.ConfigureScope(ConfigureScope);
+        }
+
+        private static void ConfigureScope(Scope scope)
+        {
+            scope.User = new User
+            {
+                Id = SupportInformation.GetAnonymousIdentity(),
+                Username = SupportInformation.GetSupportKey()
+            };
         }
         
         public void TrackFeatureUsage(string featureName, params string[] tags)
