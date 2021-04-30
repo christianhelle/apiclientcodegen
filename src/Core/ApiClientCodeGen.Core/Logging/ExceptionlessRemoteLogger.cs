@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Exceptionless;
 using Exceptionless.Plugins;
 
@@ -18,7 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 
             EnableAnonymousUserTracking();
             ExceptionlessClient.Default.Configuration.SetVersion(GetType().Assembly.GetName().Version);
-            ExceptionlessClient.Default.Configuration.AddPlugin<IgnoreNonProjectReletedExceptionsPlugin>();
+            ExceptionlessClient.Default.Configuration.AddPlugin<IgnoreAllExceptionsPlugin>();
             ExceptionlessClient.Default.Startup("6CRkH7zip11qalrUJgxi78lVyi93rxhQkzbYZfK2");
         }
 
@@ -70,33 +68,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         {
             ExceptionlessClient.Default.Configuration.Enabled = false;
         }
-
+        
         [Priority(30)]
-        private class IgnoreNonProjectReletedExceptionsPlugin : IEventPlugin
+        private class IgnoreAllExceptionsPlugin : IEventPlugin
         {
-            private static readonly List<string> HandledNamespaces = new List<string>
-            {
-                "ChristianHelle",
-                "ApiClientCodeGen"
-            };
-
             public void Run(EventPluginContext context)
             {
-                if (!context.ContextData.IsUnhandledError || !context.Event.IsError() || !context.ContextData.HasException())
-                    return;
-
-                var exception = context.ContextData.GetException();
-                if (exception == null)
-                    return;
-
-                var error = context.Event.GetError();
-                if (error == null)
-                    return;
-
-                context.Cancel = !error.StackTrace
-                    .Select(s => s.DeclaringNamespace)
-                    .Distinct()
-                    .Any(ns => HandledNamespaces.Any(ns.Contains));
+                context.Cancel = true;
             }
         }
     }
