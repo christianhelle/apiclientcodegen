@@ -25,7 +25,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         {
             return AppendCommonArguments(
                 swaggerFile,
-                "--use:@autorest/csharp@3.0.0-beta.20210218.1 " +
+                "--use:@autorest/csharp@3.0.0-beta.20210504.2 " +
                 $"--input-file=\"{swaggerFile}\" " +
                 $"--output-folder=\"{outputFolder}\" " +
                 $"--namespace=\"{defaultNamespace}\" ");
