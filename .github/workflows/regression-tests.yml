@@ -1,6 +1,7 @@
 name: Regression Tests
 
 on:
+  workflow_dispatch:
   push:
     paths-ignore:
       - '**/*'

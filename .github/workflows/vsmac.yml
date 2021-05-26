@@ -1,6 +1,7 @@
 name: VS Mac
 
 on:
+  workflow_dispatch:
   push:
     paths-ignore:
       - '.github/workflows/**'
