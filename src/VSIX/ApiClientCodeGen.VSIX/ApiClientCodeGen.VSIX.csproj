@@ -225,7 +225,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="NuGet.VisualStudio">
-      <Version>3.3.0</Version>
+      <Version>6.0.0-preview.0.2</Version>
     </PackageReference>
     <PackageReference Include="Sentry">
       <Version>3.9.2</Version>
