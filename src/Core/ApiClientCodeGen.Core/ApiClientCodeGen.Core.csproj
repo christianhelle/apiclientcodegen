@@ -33,7 +33,7 @@
     <PackageReference Include="Exceptionless" Version="4.6.2" />
     <PackageReference Include="ICSharpCode.CodeConverter" Version="8.2.5" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    <PackageReference Include="NSwag.Core.Yaml" Version="13.11.3" />
+    <PackageReference Include="NSwag.Core.Yaml" Version="13.12.0" />
     <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="13.11.3" />
     <PackageReference Include="Polly" Version="7.2.2" />
     <PackageReference Include="McMaster.Extensions.Hosting.CommandLine" Version="3.1.0" />
