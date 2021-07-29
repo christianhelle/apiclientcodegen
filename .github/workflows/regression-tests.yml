@@ -73,7 +73,7 @@ jobs:
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net452/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/NetStandard20/Output.cs
       working-directory: test
-      continue-on-error: ${{ matrix.node == 10 }}
+      continue-on-error: true
 
     - name: Build .NET Core 2.1 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/NetCore21/NetCore21.csproj
