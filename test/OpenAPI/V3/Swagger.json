@@ -17,11 +17,6 @@
     "description": "Find out more about Swagger",
     "url": "http://swagger.io"
   },
-  "servers": [
-    {
-      "url": "/api/v3"
-    }
-  ],
   "tags": [
     {
       "name": "pet",
