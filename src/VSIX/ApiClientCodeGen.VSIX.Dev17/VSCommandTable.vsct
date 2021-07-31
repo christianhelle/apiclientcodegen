@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+  <Include href="KnownImageIds.vsct" />
+
+  <Commands package="guidPackage">
+    <Groups>
+      <Group guid="guidPackageCmdSet" id="SubmenuGroup" />
+      <Group guid="guidPackageCmdSet" id="CommandsGroup" />
+      
+      <Group guid="guidNewRestApiClientCmdSet" id="NewSubmenuGroup" />
+      <Group guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup" />
+    </Groups>
+
+    <Menus>
+      <Menu guid="guidPackageCmdSet" id="Submenu" type="Menu" priority="0x0001">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>REST API Client Generator</ButtonText>
+        </Strings>
+      </Menu>
+      <Menu guid="guidNewRestApiClientCmdSet" id="NewSubmenu" type="Menu" priority="0xFFFF">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_ADD_ITEMS"/>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>New REST API Client</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+
+    <Buttons>
+      <Button guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0100" type="Button">
+        <Strings>
+          <ButtonText>Generate with AutoRest</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidPackageCmdSet" id="NSwagCodeGeneratorCustomToolSetter" priority="0x0101" type="Button">
+        <Strings>
+          <ButtonText>Generate with NSwag</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidPackageCmdSet" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0102" type="Button">
+        <Strings>
+          <ButtonText>Generate with Swagger</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidPackageCmdSet" id="OpenApiCodeGeneratorCustomToolSetter" priority="0x0103" type="Button">
+        <Strings>
+          <ButtonText>Generate with OpenAPI</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidPackageNSwagStudioCmdSet" id="NSwagStudioCommand" priority="0x0001">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE" />
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Generate NSwag Studio output</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithAutoRest" priority="0x0100" type="Button">
+        <Strings>
+          <ButtonText>Generate with AutoRest</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwag" priority="0x0101" type="Button">
+        <Strings>
+          <ButtonText>Generate with NSwag</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwagStudio" priority="0x0102" type="Button">
+        <Strings>
+          <ButtonText>Generate with NSwag Studio</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithSwagger" priority="0x0103" type="Button">
+        <Strings>
+          <ButtonText>Generate with Swagger</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithOpenApi" priority="0x0104" type="Button">
+        <Strings>
+          <ButtonText>Generate with OpenAPI</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <CommandPlacements>
+    <CommandPlacement guid="guidPackageCmdSet" id="SubmenuGroup" priority="0xFFFF">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidPackageCmdSet" id="Submenu" priority="0x0001">
+      <Parent guid="guidPackageCmdSet" id="SubmenuGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidPackageCmdSet" id="CommandsGroup" priority="0x0001">
+      <Parent guid="guidPackageCmdSet" id="Submenu"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0001" >
+      <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidPackageCmdSet" id="NSwagCodeGeneratorCustomToolSetter" priority="0x0002" >
+      <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidPackageCmdSet" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0003" >
+      <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidPackageCmdSet" id="OpenApiCodeGeneratorCustomToolSetter" priority="0x0004" >
+      <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
+    </CommandPlacement>
+    
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="NewSubmenuGroup" priority="0xFFFF">
+      <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_ADD_ITEMS"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="NewSubmenu" priority="0x0001">
+      <Parent guid="guidNewRestApiClientCmdSet" id="NewSubmenuGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup" priority="0x0001">
+      <Parent guid="guidNewRestApiClientCmdSet" id="NewSubmenu"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithAutoRest" priority="0x0001" >
+      <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwag" priority="0x0002" >
+      <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwagStudio" priority="0x0003" >
+      <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithSwagger" priority="0x0004" >
+      <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithOpenApi" priority="0x0005" >
+      <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
+    </CommandPlacement>
+  </CommandPlacements>
+
+  <VisibilityConstraints>
+    <VisibilityItem guid="guidPackageCmdSet" id="Submenu" context="guidUIContext"/>
+    <VisibilityItem guid="guidPackageNSwagStudioCmdSet" id="NSwagStudioCommand" context="guidNSwagStudioContext"/>
+  </VisibilityConstraints>
+
+  <Symbols>
+    <GuidSymbol name="guidPackage" value="{47AFE4E1-5A52-4FE1-8CA7-EDB8310BDA4A}" />
+
+    <GuidSymbol name="guidUIContext" value="{A3381E62-5D85-436F-824E-5F0097387C11}" />
+    <GuidSymbol name="guidPackageCmdSet" value="{C292653B-5876-4B8C-B672-3375D8561881}">
+      <IDSymbol name="SubmenuGroup" value="0x1020" />
+      <IDSymbol name="CommandsGroup" value="0x1021" />
+      <IDSymbol name="Submenu" value="0x0100" />
+      <IDSymbol name="AutoRestCodeGeneratorCustomToolSetter" value="0x0200" />
+      <IDSymbol name="NSwagCodeGeneratorCustomToolSetter" value="0x0300" />
+      <IDSymbol name="SwaggerCodeGeneratorCustomToolSetter" value="0x0400" />
+      <IDSymbol name="OpenApiCodeGeneratorCustomToolSetter" value="0x0500" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidNSwagStudioContext" value="{65B3A74F-CD47-476A-A992-0C3DE31455FD}" />
+    <GuidSymbol name="guidPackageNSwagStudioCmdSet" value="{F76783DA-7AE3-4EDB-BDF4-B580CAB1BA90}">
+      <IDSymbol name="NSwagStudioCommand" value="0x0100" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidNewRestApiClientContext" value="{7CEC8679-C1B8-48BF-9FA4-5FAA38CBE0FA}" />
+    <GuidSymbol name="guidNewRestApiClientCmdSet" value="{E4B99F94-D11F-4CAA-ADCD-24302C232938}">
+      <IDSymbol name="NewSubmenuGroup" value="0x1020" />
+      <IDSymbol name="NewCommandsGroup" value="0x1021" />
+      <IDSymbol name="NewSubmenu" value="0x0100" />
+      <IDSymbol name="GenerateWithAutoRest" value="0x0200" />
+      <IDSymbol name="GenerateWithNSwag" value="0x0300" />
+      <IDSymbol name="GenerateWithSwagger" value="0x0400" />
+      <IDSymbol name="GenerateWithOpenApi" value="0x0500" />
+      <IDSymbol name="GenerateWithNSwagStudio" value="0x0600" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
