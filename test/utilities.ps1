@@ -204,7 +204,7 @@ function Generate-Code {
 
     switch ($Method) {
         "dotnet-run" {
-            $process = Start-Process "dotnet" -Args "run --project $project -- $arguments" -Wait -NoNewWindow -PassThru
+            $process = Start-Process "dotnet" -Args "run --project $project --configuration Release -- $arguments" -Wait -NoNewWindow -PassThru
             Break
         }
         "rapicgen" {
@@ -263,7 +263,7 @@ function Generate-CodeParallel {
 
         switch ($Method) {
             "dotnet-run" {
-                $processes += Start-Process "dotnet" -Args "run --project $project -- $arguments" -NoNewWindow -PassThru
+                $processes += Start-Process "dotnet" -Args "run --project $project --configuration Release -- $arguments" -NoNewWindow -PassThru
                 Break
             }
             "rapicgen" {
