@@ -60,7 +60,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     $"--output \"{output}\" " +
                     $"--package-name \"{defaultNamespace}\" " +
                     "--global-property apiTests=false,modelTests=false " +
-                    "--skip-overwrite ";
+                    "--skip-overwrite " +
+                    "--additional-properties optionalEmitDefaultValues=true ";
 
                 processLauncher.Start(javaPathProvider.GetJavaExePath(), arguments, Path.GetDirectoryName(swaggerFile));
                 pGenerateProgress.Progress(80);
