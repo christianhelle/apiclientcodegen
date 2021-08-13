@@ -20,20 +20,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         public OpenApiCSharpCodeGenerator(
             string swaggerFile,
             string defaultNamespace,
-            IGeneralOptions options,
+            IGeneralOptions generatlOptions,
             IOpenApiGeneratorOptions openApiGeneratorOptions,
             IProcessLauncher processLauncher,
             IDependencyInstaller dependencyInstaller)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
-            this.options = options ?? throw new ArgumentNullException(nameof(options));
+            this.options = generatlOptions ?? throw new ArgumentNullException(nameof(generatlOptions));
             this.openApiGeneratorOptions = openApiGeneratorOptions ??
                                            throw new ArgumentNullException(nameof(openApiGeneratorOptions));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
             this.dependencyInstaller =
                 dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
-            javaPathProvider = new JavaPathProvider(options, processLauncher);
+            javaPathProvider = new JavaPathProvider(generatlOptions, processLauncher);
         }
 
         public string GenerateCode(IProgressReporter pGenerateProgress)
