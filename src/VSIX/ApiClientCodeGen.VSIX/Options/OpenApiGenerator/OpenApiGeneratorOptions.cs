@@ -29,6 +29,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApi
             }
         }
 
-        public bool EmitDefaultValue { get; }
+        public bool EmitDefaultValue { get; set; }
     }
 }

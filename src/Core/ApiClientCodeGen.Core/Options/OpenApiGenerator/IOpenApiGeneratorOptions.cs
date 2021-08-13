@@ -2,6 +2,6 @@
 {
     public interface IOpenApiGeneratorOptions
     {
-        bool EmitDefaultValue  { get; }
+        bool EmitDefaultValue  { get; set; }
     }
 }

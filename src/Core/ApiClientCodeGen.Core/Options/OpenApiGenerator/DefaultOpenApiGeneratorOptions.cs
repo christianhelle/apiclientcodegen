@@ -2,6 +2,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Op
 {
     public class DefaultOpenApiGeneratorOptions : IOpenApiGeneratorOptions
     {
-        public bool EmitDefaultValue { get; } = true;
+        public bool EmitDefaultValue { get; set; } = true;
     }
 }

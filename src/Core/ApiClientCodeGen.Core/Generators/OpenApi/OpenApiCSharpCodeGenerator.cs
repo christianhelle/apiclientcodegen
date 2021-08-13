@@ -12,6 +12,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly string defaultNamespace;
         private readonly JavaPathProvider javaPathProvider;
         private readonly IGeneralOptions options;
+        private readonly IOpenApiGeneratorOptions openApiGeneratorOptions;
         private readonly IProcessLauncher processLauncher;
         private readonly IDependencyInstaller dependencyInstaller;
         private readonly string swaggerFile;
@@ -27,8 +28,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
+            this.openApiGeneratorOptions = openApiGeneratorOptions ??
+                                           throw new ArgumentNullException(nameof(openApiGeneratorOptions));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
-            this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
+            this.dependencyInstaller =
+                dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
             javaPathProvider = new JavaPathProvider(options, processLauncher);
         }
 
@@ -63,9 +67,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     $"--package-name \"{defaultNamespace}\" " +
                     "--global-property apiTests=false,modelTests=false " +
                     "--skip-overwrite " +
-                    "--additional-properties optionalEmitDefaultValues=true ";
+                    $"--additional-properties optionalEmitDefaultValues={openApiGeneratorOptions.EmitDefaultValue} ";
 
-                processLauncher.Start(javaPathProvider.GetJavaExePath(), arguments, Path.GetDirectoryName(swaggerFile));
+                processLauncher.Start(
+                    javaPathProvider.GetJavaExePath(),
+                    arguments,
+                    Path.GetDirectoryName(swaggerFile));
+
                 pGenerateProgress.Progress(80);
 
                 return CSharpFileMerger.MergeFilesAndDeleteSource(output);
