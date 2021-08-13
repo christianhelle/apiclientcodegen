@@ -17,6 +17,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApiGenerator;
 using OpenApiDocumentFactory =
     ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag.OpenApiDocumentFactory;
 
@@ -88,7 +89,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                         inputFilePath,
                         defaultNamespace,
                         optionsFactory.Create<IGeneralOptions, GeneralOptionPage>(),
-                        optionsFactory.Create<IOpenApiGeneratorOptions, GeneralOptionPage>(),
+                        optionsFactory.Create<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage>(),
                         processLauncher,
                         dependencyInstaller);
 
