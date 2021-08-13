@@ -12,6 +12,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApiGenerator;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
@@ -69,6 +70,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
         typeof(AnalyticsOptionPage),
         VsixName,
         AnalyticsOptionPage.Name,
+        0,
+        0,
+        true)]
+    [ProvideOptionPage(
+        typeof(OpenApiGeneratorOptionsPage),
+        VsixName,
+        OpenApiGeneratorOptionsPage.Name,
         0,
         0,
         true)]
