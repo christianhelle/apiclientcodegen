@@ -33,6 +33,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
             this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
+        [Option(
+            
+            LongName = "emit-default-value",
+            Description =
+                "Set to true if the default value for a member should be generated in the serialization stream. " +
+                "Setting the EmitDefaultValue property to false is not a recommended practice. " +
+                "It should only be done if there is a specific need to do so " +
+                "(such as for interoperability or to reduce data size).")]
+        public bool EmitDefaultValue
+        {
+            get => openApiGeneratorOptions.EmitDefaultValue;
+            set => openApiGeneratorOptions.EmitDefaultValue = value;
+        }
+
         public override ICodeGenerator CreateGenerator()
             => generatorFactory.Create(
                 SwaggerFile,
