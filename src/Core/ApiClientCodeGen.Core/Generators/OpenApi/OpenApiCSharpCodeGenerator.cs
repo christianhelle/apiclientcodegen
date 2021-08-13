@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi
 {
@@ -19,6 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             string swaggerFile,
             string defaultNamespace,
             IGeneralOptions options,
+            IOpenApiGeneratorOptions openApiGeneratorOptions,
             IProcessLauncher processLauncher,
             IDependencyInstaller dependencyInstaller)
         {

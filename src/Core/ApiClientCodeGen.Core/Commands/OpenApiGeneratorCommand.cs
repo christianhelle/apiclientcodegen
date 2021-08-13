@@ -3,6 +3,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 using McMaster.Extensions.CommandLineUtils;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
@@ -11,6 +12,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
     public class OpenApiGeneratorCommand : CodeGeneratorCommand
     {
         private readonly IGeneralOptions options;
+        private readonly IOpenApiGeneratorOptions openApiGeneratorOptions;
         private readonly IProcessLauncher processLauncher;
         private readonly IOpenApiGeneratorFactory generatorFactory;
         private readonly IDependencyInstaller dependencyInstaller;
@@ -19,11 +21,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
             IConsoleOutput console,
             IProgressReporter progressReporter,
             IGeneralOptions options,
+            IOpenApiGeneratorOptions openApiGeneratorOptions,
             IProcessLauncher processLauncher,
             IOpenApiGeneratorFactory generatorFactory,
             IDependencyInstaller dependencyInstaller) : base(console, progressReporter)
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
+            this.openApiGeneratorOptions = openApiGeneratorOptions;
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
             this.generatorFactory = generatorFactory ?? throw new ArgumentNullException(nameof(generatorFactory));
             this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
@@ -34,6 +38,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
                 SwaggerFile,
                 DefaultNamespace,
                 options,
+                openApiGeneratorOptions,
                 processLauncher,
                 dependencyInstaller);
     }

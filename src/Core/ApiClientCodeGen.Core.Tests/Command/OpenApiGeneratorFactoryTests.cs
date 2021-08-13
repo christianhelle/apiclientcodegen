@@ -3,6 +3,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 using FluentAssertions;
 using Xunit;
 
@@ -16,12 +17,14 @@ namespace ApiClientCodeGen.Core.Tests.Command
             string swaggerFile,
             string defaultNamespace,
             IGeneralOptions options,
+            IOpenApiGeneratorOptions openApiGeneratorOptions,
             IProcessLauncher processLauncher,
             IDependencyInstaller dependencyInstaller)
             => sut.Create(
                     swaggerFile,
                     defaultNamespace,
                     options,
+                    openApiGeneratorOptions,
                     processLauncher,
                     dependencyInstaller)
                 .Should()

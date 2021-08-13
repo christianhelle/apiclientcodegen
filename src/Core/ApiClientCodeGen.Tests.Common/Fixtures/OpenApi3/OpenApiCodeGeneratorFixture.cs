@@ -4,6 +4,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 using Moq;
 
 namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
@@ -24,6 +25,7 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
                 Path.GetFullPath(SwaggerV3JsonFilename),
                 "GeneratedCode",
                 OptionsMock.Object,
+                new DefaultOpenApiGeneratorOptions(),
                 new ProcessLauncher(),
                 new DependencyInstaller(
                     new NpmInstaller(new ProcessLauncher()),

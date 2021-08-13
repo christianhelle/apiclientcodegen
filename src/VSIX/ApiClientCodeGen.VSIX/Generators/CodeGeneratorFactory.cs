@@ -12,6 +12,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
@@ -87,6 +88,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
                         inputFilePath,
                         defaultNamespace,
                         optionsFactory.Create<IGeneralOptions, GeneralOptionPage>(),
+                        optionsFactory.Create<IOpenApiGeneratorOptions, GeneralOptionPage>(),
                         processLauncher,
                         dependencyInstaller);
 
