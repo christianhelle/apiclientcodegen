@@ -76,6 +76,10 @@ Supports customising how the **.nswag** file is generated using a subset of the 
 
 ![Options - NSwag Studio](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswagstudio.png)
 
+Supports customising how OpenAPI Generator generates code using the additional optional properties that the OpenAPI Generator CLI tool provides
+
+![Options - OpenAPI Generator](https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-openapigenerator.png)
+
 This extension collects errors and tracks feature usages to a service called [Exceptionless](https://exceptionless.com). This is done anonymously using a support key and a generated anonymous identity based on a secure hash of username@host
 
 ![Options - Analytics](https://github.com/christianhelle/apiclientcodegen/raw/master/images/support-key.png)
