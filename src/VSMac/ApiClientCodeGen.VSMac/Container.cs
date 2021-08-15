@@ -16,6 +16,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRe
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ApiClientCodeGen.VSMac
@@ -43,6 +44,7 @@ namespace ApiClientCodeGen.VSMac
             services.AddSingleton<INSwagOptions, DefaultNSwagOptions>();
             services.AddSingleton<INSwagStudioOptions, DefaultNSwagStudioOptions>();
             services.AddSingleton<IAutoRestOptions, DefaultAutoRestOptions>();
+            services.AddSingleton<IOpenApiGeneratorOptions, DefaultOpenApiGeneratorOptions>();
             services.AddSingleton<IProcessLauncher, ProcessLauncher>();
 
             services.AddSingleton<INSwagStudioCodeGeneratorFactory, NSwagStudioCodeGeneratorFactory>();
