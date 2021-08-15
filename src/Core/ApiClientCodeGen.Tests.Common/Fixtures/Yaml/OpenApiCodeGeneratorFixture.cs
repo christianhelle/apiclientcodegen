@@ -4,6 +4,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 using Moq;
 
 namespace ApiClientCodeGen.Tests.Common.Fixtures.Yaml
@@ -24,6 +25,7 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.Yaml
                 Path.GetFullPath(SwaggerYamlFilename),
                 "GeneratedCode",
                 OptionsMock.Object,
+                new DefaultOpenApiGeneratorOptions(),
                 new ProcessLauncher(),
                 new DependencyInstaller(
                     new NpmInstaller(new ProcessLauncher()),

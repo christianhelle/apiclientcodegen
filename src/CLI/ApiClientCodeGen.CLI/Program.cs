@@ -11,6 +11,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -58,6 +59,7 @@ namespace ApiClientCodeGen.CLI
             services.AddSingleton<INSwagOptions, DefaultNSwagOptions>();
             services.AddSingleton<IGeneralOptions, DefaultGeneralOptions>();
             services.AddSingleton<IAutoRestOptions, DefaultAutoRestOptions>();
+            services.AddSingleton<IOpenApiGeneratorOptions, DefaultOpenApiGeneratorOptions>();
             services.AddSingleton<IProgressReporter, ProgressReporter>();
             services.AddSingleton<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
             services.AddSingleton<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();

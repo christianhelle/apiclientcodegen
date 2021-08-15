@@ -7,10 +7,12 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApiGenerator;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Moq;
@@ -69,10 +71,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
         public void OpenApi_CSharp_Test()
         {
             var optionsMock = new Mock<IGeneralOptions>();
+            var openApiOptionsMock = new Mock<IOpenApiGeneratorOptions>();
             var optionsFactory = new Mock<IOptionsFactory>();
             optionsFactory
                 .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage>())
                 .Returns(optionsMock.Object);
+            
+            optionsFactory
+                .Setup(c => c.Create<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage>())
+                .Returns(openApiOptionsMock.Object);
 
             Assert(SupportedCodeGenerator.OpenApi, optionsFactory.Object);
         }

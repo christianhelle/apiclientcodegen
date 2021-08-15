@@ -3,11 +3,11 @@
 all: debug release
 	
 restore-packages: 
-	nuget restore ApiClientCodeGen.VSMac.sln
+	nuget restore ApiClientCodeGen.VSMac.csproj
 
 debug: restore-packages
-	msbuild /p:Configuration="Debug" /t:"Rebuild" ApiClientCodeGen.VSMac.sln
+	msbuild /p:Configuration="Debug" /t:"Rebuild" ApiClientCodeGen.VSMac.csproj
 
 release: restore-packages
-	msbuild /p:Configuration="Release" /t:"Rebuild" ApiClientCodeGen.VSMac.sln
-	mono /Applications/Visual\ Studio.app/Contents/Resources/lib/monodevelop/bin/vstool.exe setup pack bin/Release/net471/ApiClientCodeGen.VSMac.dll
+	msbuild /p:Configuration="Release" /t:"Rebuild" ApiClientCodeGen.VSMac.csproj
+	mono /Applications/Visual\ Studio.app/Contents/Resources/lib/monodevelop/bin/vstool.exe setup pack bin/Release/net472/ApiClientCodeGen.VSMac.dll

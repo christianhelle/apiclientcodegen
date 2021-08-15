@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi
 {
@@ -11,6 +12,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly string defaultNamespace;
         private readonly JavaPathProvider javaPathProvider;
         private readonly IGeneralOptions options;
+        private readonly IOpenApiGeneratorOptions openApiGeneratorOptions;
         private readonly IProcessLauncher processLauncher;
         private readonly IDependencyInstaller dependencyInstaller;
         private readonly string swaggerFile;
@@ -18,16 +20,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         public OpenApiCSharpCodeGenerator(
             string swaggerFile,
             string defaultNamespace,
-            IGeneralOptions options,
+            IGeneralOptions generatlOptions,
+            IOpenApiGeneratorOptions openApiGeneratorOptions,
             IProcessLauncher processLauncher,
             IDependencyInstaller dependencyInstaller)
         {
             this.swaggerFile = swaggerFile ?? throw new ArgumentNullException(nameof(swaggerFile));
             this.defaultNamespace = defaultNamespace ?? throw new ArgumentNullException(nameof(defaultNamespace));
-            this.options = options ?? throw new ArgumentNullException(nameof(options));
+            this.options = generatlOptions ?? throw new ArgumentNullException(nameof(generatlOptions));
+            this.openApiGeneratorOptions = openApiGeneratorOptions ??
+                                           throw new ArgumentNullException(nameof(openApiGeneratorOptions));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
-            this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
-            javaPathProvider = new JavaPathProvider(options, processLauncher);
+            this.dependencyInstaller =
+                dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
+            javaPathProvider = new JavaPathProvider(generatlOptions, processLauncher);
         }
 
         public string GenerateCode(IProgressReporter pGenerateProgress)
@@ -60,9 +66,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     $"--output \"{output}\" " +
                     $"--package-name \"{defaultNamespace}\" " +
                     "--global-property apiTests=false,modelTests=false " +
-                    "--skip-overwrite ";
+                    "--skip-overwrite " +
+                    $"--additional-properties optionalEmitDefaultValues={openApiGeneratorOptions.EmitDefaultValue} ";
 
-                processLauncher.Start(javaPathProvider.GetJavaExePath(), arguments, Path.GetDirectoryName(swaggerFile));
+                processLauncher.Start(
+                    javaPathProvider.GetJavaExePath(),
+                    arguments,
+                    Path.GetDirectoryName(swaggerFile));
+
                 pGenerateProgress.Progress(80);
 
                 return CSharpFileMerger.MergeFilesAndDeleteSource(output);

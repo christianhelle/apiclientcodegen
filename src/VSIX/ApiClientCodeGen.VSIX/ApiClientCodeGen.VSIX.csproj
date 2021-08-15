@@ -100,6 +100,10 @@
     <Compile Include="Options\NSwag\NSwagOptionsPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Options\OpenApiGenerator\OpenApiGeneratorOptions.cs" />
+    <Compile Include="Options\OpenApiGenerator\OpenApiGeneratorOptionsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Options\OptionsBase.cs" />
     <Compile Include="Options\General\CustomPathOptions.cs" />
     <Compile Include="Options\NSwagStudio\NSwagStudioOptions.cs" />
