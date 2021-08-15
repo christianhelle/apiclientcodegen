@@ -12,10 +12,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApi
 
         [Category(Name)]
         [DisplayName("Emit Default Value")]
-        [Description("Set to true if the default value for a member should be generated in the serialization stream. " +
-                     "Setting the EmitDefaultValue property to false is not a recommended practice. " +
-                     "It should only be done if there is a specific need to do so " +
-                     "(such as for interoperability or to reduce data size).")]
+        [Description("Set to True if the default value for a member should be generated in the serialization stream. " +
+                     "Setting this to False is not a recommended practice. " +
+                     "It should only be done if there is a specific need to do so, " +
+                     "such as for interoperability or to reduce data size.")]
         public bool EmitDefaultValue { get; set; } = true;
     }
 }
