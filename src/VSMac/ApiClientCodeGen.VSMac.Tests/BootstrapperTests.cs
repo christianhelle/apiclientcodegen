@@ -13,17 +13,18 @@ namespace ApiClientCodeGen.VSMac.Tests
             Bootstrapper.Initialize();
 
             Trace.Listeners
+                .Contains(Container.Instance.Resolve<LoggingServiceTraceListener>())
                 .Should()
-                .Contain(
-                    Container.Instance.Resolve<LoggingServiceTraceListener>());
+                .BeTrue();
         }
 
         [Fact]
         public void Initialize_Twice_Does_Nothing()
         {
             Bootstrapper.Initialize();
+            var count = Trace.Listeners.Count;
             Bootstrapper.Initialize();
-            Trace.Listeners.Should().OnlyHaveUniqueItems();
+            Trace.Listeners.Count.Should().Be(count);
         }
     }
 }
