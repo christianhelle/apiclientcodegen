@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>bbecca08-2098-4a52-aeb6-71341098efea</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ChristianHelle.DeveloperTools.CodeGenerators.ApiClient</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewAutoRestClientCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewNSwagClientCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewNSwagStudioClientCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewOpenApiClientCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewRestClientCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewSwaggerClientCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\AutoRestCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\CustomToolSetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\CustomToolSetterCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\NSwagCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\OpenApiCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\SwaggerCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\ICommandInitializer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\NSwagStudio\NSwagStudioCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\CSharpToVisualBasicLanguageConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestCSharpCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestVisualBasicCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\NSwag\NSwagCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\NSwag\NSwagCSharpCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\NSwag\NSwagVisualBasicCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\OpenApi\OpenApiCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\OpenApi\OpenApiCSharpCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\OpenApi\OpenApiVisualBasicCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\ProgressReporter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\SingleFileCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\Swagger\SwaggerCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\Swagger\SwaggerCSharpCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\Swagger\SwaggerVisualBasicCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\AsyncPackageExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\IVsExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ProjectExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\SupportedCodeGeneratorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Generators\CodeGeneratorFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Generators\NSwag\OpenApiDocumentFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GlobalSuppressions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\Analytics\AnalyticsOptionPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Options\AutoRest\AutoRestOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\AutoRest\AutoRestOptionsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Options\General\CustomPathOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\General\GeneralOptionPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Options\NSwagStudio\NSwagStudioOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\NSwagStudio\NSwagStudioOptionsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Options\NSwag\NSwagCSharpOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\NSwag\NSwagOptionsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Options\OpenApiGenerator\OpenApiGeneratorOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\OpenApiGenerator\OpenApiGeneratorOptionsPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\OptionsBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\OptionsFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SentryRemoteLogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VsPackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\AddCustomHeaderDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\AddCustomHeaderDialog.Designer.cs">
+      <DependentUpon>AddCustomHeaderDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\AnalyticsOptionsPageCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\AnalyticsOptionsPageCustom.Designer.cs">
+      <DependentUpon>AnalyticsOptionsPageCustom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\EnterOpenApiSpecDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\EnterOpenApiSpecDialog.Designer.cs">
+      <DependentUpon>EnterOpenApiSpecDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\GeneralOptionsPageCustom.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\GeneralOptionsPageCustom.Designer.cs">
+      <DependentUpon>GeneralOptionsPageCustom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\NativeMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\OutputWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Windows\OutputWindowTraceListener.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\Icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Resources\VSPackage.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)VsPackage.resx">
+      <DependentUpon>VsPackage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Windows\AddCustomHeaderDialog.resx">
+      <DependentUpon>AddCustomHeaderDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Windows\AnalyticsOptionsPageCustom.resx">
+      <DependentUpon>AnalyticsOptionsPageCustom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Windows\EnterOpenApiSpecDialog.resx">
+      <DependentUpon>EnterOpenApiSpecDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Windows\GeneralOptionsPageCustom.resx">
+      <DependentUpon>GeneralOptionsPageCustom.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

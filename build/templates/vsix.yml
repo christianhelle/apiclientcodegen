@@ -81,6 +81,10 @@ jobs:
     workingDirectory: 'src\VSIX\ApiClientCodeGen.VSIX\bin\Release'
     displayName: 'Rename VSIX file'
 
+  - powershell: 'mv ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-$(build.buildnumber).vsix'
+    workingDirectory: 'src\VSIX\ApiClientCodeGen.VSIX.Dev17\bin\Release'
+    displayName: 'Rename VSIX VS2022 file'
+
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
     inputs:

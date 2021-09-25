@@ -20,9 +20,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.Core", "Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.Tests.Common", "Core\ApiClientCodeGen.Tests.Common\ApiClientCodeGen.Tests.Common.csproj", "{74409789-AB43-43E4-96C4-36051A8D607C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.Core.Tests", "Core\ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj", "{DF1744FF-79C4-4F48-9D39-478F64DD7B10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.Core.Tests", "Core\ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj", "{DF1744FF-79C4-4F48-9D39-478F64DD7B10}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ApiClientCodeGen.VSIX.Shared", "VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.shproj", "{BBECCA08-2098-4A52-AEB6-71341098EFEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSIX.Dev17", "VSIX\ApiClientCodeGen.VSIX.Dev17\ApiClientCodeGen.VSIX.Dev17.csproj", "{660BA451-88FB-4504-8170-4118F74467BA}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{660ba451-88fb-4504-8170-4118f74467ba}*SharedItemsImports = 4
+		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{bbecca08-2098-4a52-aeb6-71341098efea}*SharedItemsImports = 13
+		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{f68fef1b-c874-4ef7-8c5c-e3e32e613141}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -52,6 +61,10 @@ Global
 		{DF1744FF-79C4-4F48-9D39-478F64DD7B10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF1744FF-79C4-4F48-9D39-478F64DD7B10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF1744FF-79C4-4F48-9D39-478F64DD7B10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{660BA451-88FB-4504-8170-4118F74467BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{660BA451-88FB-4504-8170-4118F74467BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{660BA451-88FB-4504-8170-4118F74467BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{660BA451-88FB-4504-8170-4118F74467BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
