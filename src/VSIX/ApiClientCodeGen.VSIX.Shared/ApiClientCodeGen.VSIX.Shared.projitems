@@ -64,6 +64,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Options\NSwag\NSwagOptionsPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Options\OpenApiGenerator\OpenApiGeneratorOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\OpenApiGenerator\OpenApiGeneratorOptionsPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Options\OptionsBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Options\OptionsFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SentryRemoteLogger.cs" />
