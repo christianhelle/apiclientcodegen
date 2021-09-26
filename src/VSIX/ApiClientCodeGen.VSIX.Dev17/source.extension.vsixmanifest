@@ -9,6 +9,7 @@
         <Icon>Resources\Icon.png</Icon>
         <PreviewImage>Resources\Icon.png</PreviewImage>
         <Tags>OpenAPI; Swagger; NSwag; AutoRest; REST API; Code Generator</Tags>
+        <Preview>true</Preview>
     </Metadata>
     <Installation>
       <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0, 18.0)">
