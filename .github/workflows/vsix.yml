@@ -48,3 +48,4 @@ jobs:
         name: Artifacts
         path: |
           src/*.vsix
+          docs/Marketplace*.md
