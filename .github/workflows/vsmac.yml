@@ -73,3 +73,4 @@ jobs:
           src/*.mpack
           src/*.mrep
           src/index.html
+          docs/VisualStudioForMac.md
