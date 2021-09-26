@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="18316dd0-2bbc-49b0-bd7c-c355031fade2" Version="1.0.0" Language="en-US" Publisher="Christian Resma Helle" />
-        <DisplayName>REST API Client Code Generator</DisplayName>
+        <Identity Id="3b01a8c6-2264-4646-9361-75dd240c5615" Version="1.0.0" Language="en-US" Publisher="Christian Resma Helle" />
+        <DisplayName>REST API Client Code Generator for VS 2022</DisplayName>
         <Description xml:space="preserve">A collection of Visual Studio custom tools for generating a strongly typed REST API Client from an Open API / Swagger specification file</Description>
         <MoreInfo>https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator</MoreInfo>
         <License>License.txt</License>
