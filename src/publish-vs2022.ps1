@@ -5,7 +5,7 @@ $env:Path += ";$VSIXPublisherPath"
 
 $DropFolder = "$(System.DefaultWorkingDirectory)/CI Builds/drop"
 $VSIXFileName = $DropFolder + "/" + (Get-ChildItem -Path $DropFolder -Filter "ApiClientCodeGenerator-VS2022-*.vsix" | Select-Object -First 1).Name
-$ManifestFile = $DropFolder + "/publish-manifest.json"
+$ManifestFile = $DropFolder + "/publish-manifest-vs2022.json"
 
 VsixPublisher.exe login `
     -personalAccessToken '$(PersonalAccessToken)' `
