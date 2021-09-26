@@ -93,8 +93,11 @@ jobs:
         **\bin\Release\**\*.vsix
         README.md
         docs/Marketplace.md
+        docs/MarketplacePreview.md
         src/publish-manifest.json
         src/publish.ps1
+        src/publish-manifest-vs2022.json
+        src/publish-vs2022.ps1
       targetFolder: '$(build.artifactstagingdirectory)'
       flattenFolders: true
 
