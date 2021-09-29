@@ -1,11 +1,9 @@
 $VisualStudioVersion = "15.0";
 $VSINSTALLDIR =  $(Get-ItemProperty "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\SxS\VS7").$VisualStudioVersion;
 $VSIXPublisherPath = $VSINSTALLDIR + "VSSDK\VisualStudioIntegration\Tools\Bin\"
-$env:Path += ";$VSIXPublisherPath"
-
-$DropFolder = "$(System.DefaultWorkingDirectory)/CI Builds/drop"
+$DropFolder = "$(System.DefaultWorkingDirectory)/CI Build/drop"
 $VSIXFileName = $DropFolder + "/" + (Get-ChildItem -Path $DropFolder -Filter "ApiClientCodeGenerator-*.vsix" | Select-Object -First 1).Name
-$ManifestFile = $DropFolder + "/publish-manifest.json"
+$env:Path += ";$VSIXPublisherPath"
 
 VsixPublisher.exe login `
     -personalAccessToken '$(PersonalAccessToken)' `
@@ -13,5 +11,5 @@ VsixPublisher.exe login `
 
 VsixPublisher.exe publish `
     -payload $VSIXFileName `
-    -publishManifest $ManifestFile `
+    -publishManifest $DropFolder/publish-manifest.json `
     -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
