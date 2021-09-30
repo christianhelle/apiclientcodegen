@@ -41,6 +41,12 @@ jobs:
       FileName: src/VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
       VersionNumber: '$(build.buildnumber)'
 
+  - task: SamirBoulema.Vsix-Tools.Vsix-Tools-Update-Version.VsixToolsUpdateVersion@1
+    displayName: 'Set Vsix Version'
+    inputs:
+      FileName: src/VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
+      VersionNumber: '$(build.buildnumber)'
+
   - task: bleddynrichards.Assembly-Info-Task.Assembly-Info-NetCore.Assembly-Info-NetCore@2
     displayName: 'Set Assembly Manifest Data'
     inputs:
