@@ -37,10 +37,8 @@ jobs:
 
     - name: Update VSIX Version
       run: |
-        $vsixManifestPath = ./VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
-        $vsix2022ManifestPath = ./VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
-        ((Get-Content -path $vsixManifestPath -Raw) -replace 'Version="1.0.0"', 'Version="$VSIX_VERSION"') | Set-Content -Path $vsixManifestPath
-        ((Get-Content -path $vsix2022ManifestPath -Raw) -replace 'Version="1.0.0"', 'Version="$VSIX_VERSION"') | Set-Content -Path $vsix2022ManifestPath
+        ((Get-Content -path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw) -replace 'Version="1.0.0"', 'Version="$VSIX_VERSION"') | Set-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
+        ((Get-Content -path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw) -replace 'Version="1.0.0"', 'Version="$VSIX_VERSION"') | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
       working-directory: src
       shell: pwsh
 
