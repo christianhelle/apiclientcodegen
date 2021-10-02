@@ -1,0 +1,89 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+env:
+  VERSION: 1.4.${{ github.run_number }}
+
+jobs:
+
+  VSIX:
+    runs-on: windows-2019
+    steps:
+    - uses: actions/checkout@v2
+    - name: Update VSIX Version
+      run: |
+        ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
+        ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
+      working-directory: src
+      shell: pwsh
+    - name: Cake Build
+      run: powershell ./build.ps1 --target VSIX
+      working-directory: src
+    - name: Move build output
+      run: |
+        mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-${{ env.VERSION }}.vsix
+        mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
+    - name: Publish artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: Artifacts
+        path: |
+          *.vsix
+          docs/Marketplace*.md
+  
+  CLI:
+    runs-on: windows-2019
+    steps:
+    - uses: actions/checkout@v2    
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1.607
+    - name: Build with dotnet
+      run: dotnet build Rapicgen.sln
+      working-directory: src
+    - name: Core test project
+      run: dotnet test src/Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj
+    - name: Build .NET Tool package
+      run: dotnet pack src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
+  
+  VSMac:
+    runs-on: macos-10.15
+    steps:
+    - uses: actions/checkout@v2
+    - name: Update Extension Version Info
+      run: |
+        sed -i -e 's/1.0/${{ env.VERSION }}/g' ./AddinInfo.cs
+        cat ./AddinInfo.cs
+      working-directory: src/VSMac/ApiClientCodeGen.VSMac/Properties
+    - name: Build
+      run: make release
+      working-directory: src
+    - name: Archive binaries
+      run: zip -r VSMac-Binaries.zip .
+      working-directory: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net472/
+    - name: Publish binaries
+      uses: actions/upload-artifact@v2
+      with:
+        name: Binaries
+        path: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net472/VSMac-Binaries.zip
+    - name: Create mpack file
+      run: make package
+      working-directory: src
+    - name: Rename build output
+      run: mv *.mpack ApiClientCodeGenerator-${{ env.VERSION }}.mpack
+      working-directory: src
+    - name: Create MonoDevelop Extension repository files
+      run: make publish
+      working-directory: src
+    - name: Publish artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: Extension
+        path: |
+          src/*.mpack
+          src/*.mrep
+          src/index.html
+          docs/VisualStudioForMac.md
