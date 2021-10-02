@@ -54,11 +54,7 @@ jobs:
     - name: Sets environment variables - Nerdbank.GitVersioning
       uses: dotnet/nbgv@master
       with:
-        setAllVars: true    
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 2.1.607
+        setAllVars: true   
     - name: Build .NET Tool package
       run: dotnet pack -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
     - name: Push packages to NuGet
