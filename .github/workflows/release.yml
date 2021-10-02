@@ -5,6 +5,7 @@ on:
 
 env:
   VERSION: 1.4.${{ github.run_number }}
+  NUGET_REPO_URL: 'https://api.nuget.org/v3/index.json'
 
 jobs:
 
@@ -12,6 +13,12 @@ jobs:
     runs-on: windows-2019
     steps:
     - uses: actions/checkout@v2
+    - name: ⚛️ Sets environment variables - branch-name
+      uses: nelonoel/branch-name@v1.0.1
+    - name: ⚛️ Sets environment variables - Nerdbank.GitVersioning
+      uses: dotnet/nbgv@master
+      with:
+        setAllVars: true
     - name: Update VSIX Version
       run: |
         ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
@@ -36,23 +43,34 @@ jobs:
   CLI:
     runs-on: windows-2019
     steps:
-    - uses: actions/checkout@v2    
+    - uses: actions/checkout@v2
+    - name: ⚛️ Sets environment variables - branch-name
+      uses: nelonoel/branch-name@v1.0.1
+    - name: ⚛️ Sets environment variables - Nerdbank.GitVersioning
+      uses: dotnet/nbgv@master
+      with:
+        setAllVars: true    
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.1.607
-    - name: Build with dotnet
-      run: dotnet build Rapicgen.sln
-      working-directory: src
-    - name: Core test project
-      run: dotnet test src/Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj
+    - name: Building library in release mode
+      run: dotnet build -c Release --no-restore /p:UseSourceLink=true
     - name: Build .NET Tool package
-      run: dotnet pack src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
+      run: dotnet pack -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
+    - name: Push packages to NuGet
+      run: dotnet nuget push **/*.nupkg' -k ${{ secrets.NUGET_KEY }} -s ${{ env.NUGET_REPO_URL }} --skip-duplicate --no-symbols true
   
   VSMac:
     runs-on: macos-10.15
     steps:
     - uses: actions/checkout@v2
+    - name: ⚛️ Sets environment variables - branch-name
+      uses: nelonoel/branch-name@v1.0.1
+    - name: ⚛️ Sets environment variables - Nerdbank.GitVersioning
+      uses: dotnet/nbgv@master
+      with:
+        setAllVars: true
     - name: Update Extension Version Info
       run: |
         sed -i -e 's/1.0/${{ env.VERSION }}/g' ./AddinInfo.cs
