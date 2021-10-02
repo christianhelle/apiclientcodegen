@@ -44,8 +44,8 @@ jobs:
 
     - name: Show VSIX Manifest
       run: |
-        ((Get-Content -path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw) | Write-Host
-        ((Get-Content -path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw) | Write-Host
+        Get-Content -path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw | Write-Host
+        Get-Content -path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw | Write-Host
       working-directory: src
       shell: pwsh
 
