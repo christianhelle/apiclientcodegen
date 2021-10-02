@@ -62,7 +62,7 @@ jobs:
     - name: Build .NET Tool package
       run: dotnet pack -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
     - name: Push packages to NuGet
-      run: dotnet nuget push **/*.nupkg -k ${{ secrets.NUGET_KEY }} -s ${{ env.NUGET_REPO_URL }} --skip-duplicate --no-symbols true
+      run: dotnet nuget push **/*.nupkg -k ${{ secrets.NUGET_KEY }} -s ${{ env.NUGET_REPO_URL }} --no-symbols true
   
   VSMac:
     runs-on: macos-10.15
