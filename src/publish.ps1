@@ -14,7 +14,7 @@ $VisualStudioVersion = "15.0";
 $VSINSTALLDIR =  $(Get-ItemProperty "Registry::HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\VisualStudio\SxS\VS7").$VisualStudioVersion;
 $VSIXPublisherPath = $VSINSTALLDIR + "VSSDK\VisualStudioIntegration\Tools\Bin\"
 $VSIXFileName = (Get-ChildItem -Path . -Filter "ApiClientCodeGenerator-$version.vsix" | Select-Object -First 1).Name
-$env:Path += ";$VSIXPublisherPath"
+$env:GITHUB_PATH += ";$VSIXPublisherPath"
 
 VsixPublisher.exe login `
     -personalAccessToken $personalAccessToken `
