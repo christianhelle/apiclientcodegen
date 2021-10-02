@@ -35,10 +35,6 @@ jobs:
     - run: npm install -g autorest
     - run: npm install -g nswag
 
-    - name: Cake Build
-      run: powershell ./build.ps1 --target VSIX
-      working-directory: src
-
     - name: Update VSIX Version
       run: |
         $vsixManifestPath = ./VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
