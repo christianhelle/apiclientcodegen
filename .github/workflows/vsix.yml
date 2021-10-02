@@ -21,6 +21,9 @@ on:
   schedule:
     - cron:  '0 8 * * *'
 
+env:
+  VSIX_VERSION: 1.4.${{ github.run_number }}
+
 jobs:
   build:
 
@@ -36,10 +39,22 @@ jobs:
       run: powershell ./build.ps1 --target VSIX
       working-directory: src
 
+    - name: Update VSIX Version
+      run: |
+        $vsixManifestPath = VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
+        $vsix2022ManifestPath = VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
+        ((Get-Content -path $vsixManifestPath -Raw) -replace 'Version="1.0.0"', 'Version="$VSIX_VERSION"') | Set-Content -Path $vsixManifestPath
+        ((Get-Content -path $vsix2022ManifestPath -Raw) -replace 'Version="1.0.0"', 'Version="$VSIX_VERSION"') | Set-Content -Path $vsix2022ManifestPath
+      working-directory: src
+
+    - name: Cake Build
+      run: powershell ./build.ps1 --target VSIX
+      working-directory: src
+
     - name: Move build output
       run: |
-        mv VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-${{ github.run_number }}.vsix
-        mv VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ github.run_number }}.vsix
+        mv VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-$VSIX_VERSION.vsix
+        mv VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-$VSIX_VERSION.vsix
       working-directory: src
 
     - name: Publish artifacts
