@@ -44,6 +44,10 @@ jobs:
         path: |
           *.vsix
           docs/Marketplace*.md
+    - name: Publish VSIX Packages
+      run: |
+        powershell ./publish-vs2022.ps1 -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -version ${{ env.VERSION }}
+      working-directory: src
   
   CLI:
     runs-on: windows-2019
