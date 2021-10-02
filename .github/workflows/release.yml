@@ -35,7 +35,7 @@ jobs:
     - name: Publish artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: Artifacts
+        name: Visual Studio Extension
         path: |
           *.vsix
           docs/Marketplace*.md
@@ -80,11 +80,6 @@ jobs:
     - name: Archive binaries
       run: zip -r VSMac-Binaries.zip .
       working-directory: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net472/
-    - name: Publish binaries
-      uses: actions/upload-artifact@v2
-      with:
-        name: Binaries
-        path: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net472/VSMac-Binaries.zip
     - name: Create mpack file
       run: make package
       working-directory: src
@@ -97,8 +92,9 @@ jobs:
     - name: Publish artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: Extension
+        name: Visual Studio for Mac Extension
         path: |
+          src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net472/VSMac-Binaries.zip
           src/*.mpack
           src/*.mrep
           src/index.html
