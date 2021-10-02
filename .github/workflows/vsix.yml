@@ -32,20 +32,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: npm install -g autorest
-    - run: npm install -g nswag
-
     - name: Update VSIX Version
       run: |
         ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VSIX_VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
         ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VSIX_VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
-      working-directory: src
-      shell: pwsh
-
-    - name: Show VSIX Manifest
-      run: |
-        Get-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw | Write-Host
-        Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw | Write-Host
       working-directory: src
       shell: pwsh
 
