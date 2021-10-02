@@ -54,8 +54,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.1.607
-    - name: Building library in release mode
-      run: dotnet build -c Release --no-restore /p:UseSourceLink=true
     - name: Build .NET Tool package
       run: dotnet pack -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
     - name: Push packages to NuGet
