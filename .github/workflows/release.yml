@@ -140,7 +140,8 @@ jobs:
         ftpHostname: ${{ secrets.FTP_HOSTNAME }}
         ftpUsername: ${{ secrets.FTP_USERNAME }}
         ftpPassword: ${{ secrets.FTP_PASSWORD }}
-        dest: '/public_html/vsmac/'        
+        dest: '/public_html/vsmac/'
+        dryRun: false
         files: |
           src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net472/VSMac-Binaries.zip
           src/*.mpack
