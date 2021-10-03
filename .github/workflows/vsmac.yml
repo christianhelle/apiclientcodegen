@@ -14,6 +14,8 @@ on:
       - 'src/VSIX/ApiClientCodeGen.VSIX*/**'
       - 'src/VSIX/ApiClientCodeGen.Tests/**'
       - 'src/VSIX/ApiClientCodeGen.IntegrationTests/**'
+      - 'src/*.json'
+      - 'src/*.ps1'
     branches:
       - '*'
   pull_request:

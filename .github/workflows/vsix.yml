@@ -13,6 +13,8 @@ on:
       - 'README.md'
       - 'src/CLI/ApiClientCodeGen.CLI*/**'
       - 'src/VSMac/ApiClientCodeGen.VSMac*/**'
+      - 'src/*.json'
+      - 'src/*.ps1'
     branches:
       - '*'
   pull_request:

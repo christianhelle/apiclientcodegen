@@ -10,6 +10,8 @@ on:
       - 'build/**'
       - 'images/**'
       - 'README.md'
+      - 'src/*.json'
+      - 'src/*.ps1'
     branches:
       - '*'
   pull_request:
