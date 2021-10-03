@@ -134,3 +134,15 @@ jobs:
           src/*.mrep
           src/index.html
           docs/VisualStudioForMac.md
+    - name: Upload to FTP
+      uses: zinh/ftp-uploader-action@v0.4
+      with:
+        ftpHostname: ${{ secrets.FTP_HOSTNAME }}
+        ftpUsername: ${{ secrets.FTP_USERNAME }}
+        ftpPassword: ${{ secrets.FTP_PASSWORD }}
+        dest: '/public_html/vsmac/'        
+        files: |
+          src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net472/VSMac-Binaries.zip
+          src/*.mpack
+          src/*.mrep
+          docs/VisualStudioForMac.md
