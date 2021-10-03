@@ -134,16 +134,19 @@ jobs:
           src/*.mrep
           src/index.html
           docs/VisualStudioForMac.md
-    - name: Upload to FTP
-      uses: zinh/ftp-uploader-action@v0.4
+    - name: Upload mpack file to FTP
+      uses: bayssmekanique/action-simple-file-upload@v1.1.3
       with:
-        ftpHostname: ${{ secrets.FTP_HOSTNAME }}
-        ftpUsername: ${{ secrets.FTP_USERNAME }}
-        ftpPassword: ${{ secrets.FTP_PASSWORD }}
+        user: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        host: ${{ secrets.FTP_HOSTNAME }}
+        src: 'src/*.mpack'
         dest: '/public_html/vsmac/'
-        dryRun: false
-        files: |
-          src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net472/VSMac-Binaries.zip
-          src/*.mpack
-          src/*.mrep
-          docs/VisualStudioForMac.md
+    - name: Upload mrep file to FTP
+      uses: bayssmekanique/action-simple-file-upload@v1.1.3
+      with:
+        user: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        host: ${{ secrets.FTP_HOSTNAME }}
+        src: 'src/*.mrep'
+        dest: '/public_html/vsmac/'
