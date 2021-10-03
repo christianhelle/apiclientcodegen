@@ -46,8 +46,9 @@ jobs:
           docs/Marketplace*.md
     - name: Publish VSIX Packages
       run: |
-        powershell ./publish-vs2022.ps1 -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -version ${{ env.VERSION }}
-      working-directory: src
+        $VsixPublisher = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
+        & $VsixPublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
+        & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2022-$version.vsix -publishManifest src/publish-manifest-vs2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
 
   CLI:
     runs-on: windows-2019
