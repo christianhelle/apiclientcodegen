@@ -145,7 +145,7 @@ jobs:
           $ftprequest = [System.Net.FtpWebRequest]::Create("$remote_path/$local_file")
           $ftprequest = [System.Net.FtpWebRequest]$ftprequest
           $ftprequest.Method = [System.Net.WebRequestMethods+Ftp]::UploadFile
-          $ftprequest.Credentials = new-object System.Net.NetworkCredential(${{ secrets.FTP_USERNAME }}, ${{ secrets.FTP_PASSWORD }})
+          $ftprequest.Credentials = new-object System.Net.NetworkCredential("${{ secrets.FTP_USERNAME }}", "${{ secrets.FTP_PASSWORD }}")
           $ftprequest.UseBinary = $true
           $ftprequest.UsePassive = $true
           $filecontent = gc -en byte $local_file
