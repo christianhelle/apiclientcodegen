@@ -138,7 +138,7 @@ jobs:
       working-directory: src
       shell: pwsh
       run: |
-        $local_files = @("ApiClientCodeGenerator-${{ env.VERSION }}.mpack", "main.mrep")
+        $local_files = @("ApiClientCodeGenerator-${{ env.VERSION }}.mpack", "main.mrep", "root.mrep", "index.html")
         $remote_path = "${{ secrets.FTP_HOSTNAME }}/public_html/vsmac/"
                 
         ForEach ($local_file in $local_files) {
