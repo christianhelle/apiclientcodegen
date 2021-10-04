@@ -141,7 +141,7 @@ jobs:
         $local_files = @("ApiClientCodeGenerator-${{ env.VERSION }}.mpack", "main.mrep")
         $remote_path = "${{ secrets.FTP_HOSTNAME }}/public_html/vsmac/"
                 
-        ForEach $local_file in $local_files {
+        ForEach ($local_file in $local_files) {
           $ftprequest = [System.Net.FtpWebRequest]::Create("$remote_path/$local_file")
           $ftprequest = [System.Net.FtpWebRequest]$ftprequest
           $ftprequest.Method = [System.Net.WebRequestMethods+Ftp]::UploadFile
