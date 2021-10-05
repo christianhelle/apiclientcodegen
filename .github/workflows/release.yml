@@ -42,12 +42,12 @@ jobs:
         path: |
           *.vsix
           docs/Marketplace*.md
-    #- name: Publish VSIX Packages
-    #  run: |
-    #    $VsixPublisher = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
-    #    & $VsixPublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
-    #    & $VsixPublisher publish -payload ApiClientCodeGenerator-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
-    #    & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest-vs2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
+    - name: Publish VSIX Packages
+      run: |
+        $VsixPublisher = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
+        & $VsixPublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
+        & $VsixPublisher publish -payload ApiClientCodeGenerator-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
+        & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest-vs2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
 
   CLI:
     runs-on: windows-2019
