@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
@@ -36,6 +37,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 pGenerateProgress.Progress(80);
 
                 return FileHelper.ReadThenDelete(outputFile);
+            }
+            catch (Exception e)
+            {
+                throw new CodeGeneratorException(GetType().Name, e);
             }
             finally
             {
