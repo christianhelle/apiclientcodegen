@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
 using Exceptionless;
 using Exceptionless.Plugins;
 
@@ -73,11 +74,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         [Priority(30)]
         private class IgnoreNonProjectReletedExceptionsPlugin : IEventPlugin
         {
-            private static readonly List<string> HandledNamespaces = new List<string>
-            {
-                "ChristianHelle",
-                "ApiClientCodeGen"
-            };
+            // private static readonly List<string> HandledNamespaces = new List<string>
+            // {
+            //     "ChristianHelle",
+            //     "ApiClientCodeGen"
+            // };
 
             public void Run(EventPluginContext context)
             {
@@ -85,17 +86,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
                     return;
 
                 var exception = context.ContextData.GetException();
-                if (exception == null)
-                    return;
+                context.Cancel = exception?.GetType()?.IsAssignableFrom(typeof(RapicgenException)) != true;
 
-                var error = context.Event.GetError();
-                if (error == null)
-                    return;
-
-                context.Cancel = !error.StackTrace
-                    .Select(s => s.DeclaringNamespace)
-                    .Distinct()
-                    .Any(ns => HandledNamespaces.Any(ns.Contains));
+                // var error = context.Event.GetError();
+                // if (error == null)
+                //     return;
+                // context.Cancel = !error.StackTrace
+                //     .Select(s => s.DeclaringNamespace)
+                //     .Distinct()
+                //     .Any(ns => HandledNamespaces.Any(ns.Contains));
             }
         }
     }
