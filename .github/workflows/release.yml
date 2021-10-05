@@ -3,10 +3,8 @@ name: Release
 on:
   workflow_dispatch:
   push:
-    paths: 
-    - '.github/workflows/release.yml'
     branches:
-      - 'master'
+      - 'release'
 
 env:
   VERSION: 1.4.${{ github.run_number }}
