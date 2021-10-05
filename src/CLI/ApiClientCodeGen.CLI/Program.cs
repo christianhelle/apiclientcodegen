@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
@@ -40,13 +41,13 @@ namespace ApiClientCodeGen.CLI
             }
             catch (TargetInvocationException ex) when (ex.InnerException != null)
             {
-                Logger.Instance.TrackError(ex);
+                Logger.Instance.TrackError(new CommandLineException(ex.Message, ex));
                 Console.WriteLine($@"Error: {ex.InnerException.Message}");
                 return ResultCodes.Error;
             }
             catch (Exception ex)
             {
-                Logger.Instance.TrackError(ex);
+                Logger.Instance.TrackError(new CommandLineException(ex.Message, ex));
                 Console.WriteLine($@"Error: {ex.Message}");
                 return ResultCodes.Error;
             }
