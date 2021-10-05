@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
@@ -29,8 +30,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
             => package.SetupCommandAsync(
                 CommandSet,
                 CommandId,
-                OnExecuteAsync,
+                ExecuteAsync,
                 token);
+
+        private async Task ExecuteAsync(DTE dte, AsyncPackage package)
+        {
+            try
+            {
+                await OnExecuteAsync(dte, package);
+            }
+            catch (Exception e)
+            {
+                throw new RunNSwagStudioCommandException(GetType().Name, e);
+            }
+        }
 
         private static async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
