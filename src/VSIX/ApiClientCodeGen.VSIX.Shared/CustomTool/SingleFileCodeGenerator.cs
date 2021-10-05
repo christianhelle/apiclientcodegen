@@ -2,9 +2,11 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Converters;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
@@ -82,12 +84,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
             catch (NotSupportedException e)
             {
                 MessageBox.Show(e.Message, "Not Supported");
-                HandleException(e, pGenerateProgress, rgbOutputFileContents, out pcbOutput);
+                LogException(e, pGenerateProgress, rgbOutputFileContents, out pcbOutput);
             }
             catch (Exception e)
             {
-                HandleException(e, pGenerateProgress, rgbOutputFileContents, out pcbOutput);
-                throw;
+                LogException(e, pGenerateProgress, rgbOutputFileContents, out pcbOutput);
+                throw new CustomToolException(GetType().Name, e);
             }
             finally
             {
@@ -97,7 +99,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
             return 0;
         }
 
-        private static void HandleException(
+        private static void LogException(
             Exception e,
             IVsGeneratorProgress pGenerateProgress,
             IntPtr[] rgbOutputFileContents,

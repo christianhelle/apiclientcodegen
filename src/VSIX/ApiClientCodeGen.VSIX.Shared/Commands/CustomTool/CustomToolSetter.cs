@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using EnvDTE;
@@ -24,8 +25,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
             => package.SetupCommandAsync(
                 CommandSet,
                 CommandId,
-                OnExecuteAsync,
+                ExecuteAsync,
                 token);
+
+        private async Task ExecuteAsync(DTE dte, AsyncPackage package)
+        {
+            try
+            {
+                await OnExecuteAsync(dte, package);
+            }
+            catch (Exception e)
+            {
+                throw new CustomToolCommandException(GetType().Name, e);
+            }
+        }
 
         protected virtual async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {

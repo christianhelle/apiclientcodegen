@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
@@ -30,7 +31,23 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
         protected abstract SupportedCodeGenerator CodeGenerator { get; }
 
         public Task InitializeAsync(AsyncPackage package, CancellationToken token)
-            => package.SetupCommandAsync(CommandSet, CommandId, OnExecuteAsync, token);
+            => package.SetupCommandAsync(
+                CommandSet,
+                CommandId,
+                ExecuteAsync,
+                token);
+
+        private async Task ExecuteAsync(DTE dte, AsyncPackage package)
+        {
+            try
+            {
+                await OnExecuteAsync(dte, package);
+            }
+            catch (Exception e)
+            {
+                throw new AddNewCommandException(GetType().Name, e);
+            }
+        }
 
         private async Task OnExecuteAsync(DTE dte, AsyncPackage package)
         {
@@ -85,9 +102,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
                     new DependencyInstaller(
                         new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader())));
-                
+
                 generator.GenerateCode(null);
-                
+
                 dynamic nswag = JsonConvert.DeserializeObject(contents);
                 var nswagOutput = nswag.codeGenerators.swaggerToCSharpClient.output.ToString();
                 project.AddFileToProject(dte, new FileInfo(Path.Combine(folder, nswagOutput)));
