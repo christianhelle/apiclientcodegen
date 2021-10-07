@@ -26,7 +26,9 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 
 #### Download
 
-Download the **[latest version for Windows](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)** from the Visual Studio Marketplace or the **[latest version for Mac (.mpack)](https://github.com/christianhelle/apiclientcodegen/releases/latest)** from the Release page. Follow **[these instructions](#visual-studio-for-mac-1)** for update convenience on Visual Studio for Mac
+- **[Visual Studio 2022 Preview](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGeneratorPreview)**
+- **[Visual Studio 2017 and 2019](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)**
+- **[Visual Studio for Mac](https://github.com/christianhelle/apiclientcodegen/releases/latest)**. Follow **[these instructions](#visual-studio-for-mac-1)** for update convenience on Visual Studio for Mac
 
 ## Features
 
