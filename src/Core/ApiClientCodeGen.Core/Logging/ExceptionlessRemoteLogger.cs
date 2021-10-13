@@ -74,12 +74,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         [Priority(30)]
         private class IgnoreNonProjectReletedExceptionsPlugin : IEventPlugin
         {
-            // private static readonly List<string> HandledNamespaces = new List<string>
-            // {
-            //     "ChristianHelle",
-            //     "ApiClientCodeGen"
-            // };
-
             public void Run(EventPluginContext context)
             {
                 if (!context.ContextData.IsUnhandledError || !context.Event.IsError() || !context.ContextData.HasException())
@@ -87,14 +81,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 
                 var exception = context.ContextData.GetException();
                 context.Cancel = exception?.GetType()?.IsAssignableFrom(typeof(RapicgenException)) != true;
-
-                // var error = context.Event.GetError();
-                // if (error == null)
-                //     return;
-                // context.Cancel = !error.StackTrace
-                //     .Select(s => s.DeclaringNamespace)
-                //     .Distinct()
-                //     .Any(ns => HandledNamespaces.Any(ns.Contains));
             }
         }
     }
