@@ -72,7 +72,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         }
 
         [Priority(30)]
-        private class IgnoreNonProjectReletedExceptionsPlugin : IEventPlugin
+        private sealed class IgnoreNonProjectReletedExceptionsPlugin : IEventPlugin
         {
             public void Run(EventPluginContext context)
             {
