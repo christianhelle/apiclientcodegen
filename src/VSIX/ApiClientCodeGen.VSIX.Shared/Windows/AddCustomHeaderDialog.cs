@@ -36,7 +36,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
                 .Where(c => !string.IsNullOrWhiteSpace(c.Key) && !string.IsNullOrWhiteSpace(c.Value))
                 .ToDictionary(k => k.Key, v => v.Value);
 
-        private class CustomHeader
+        private sealed class CustomHeader
         {
             public string Key { get; set; }
             public string Value { get; set; }
