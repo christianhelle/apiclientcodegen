@@ -44,7 +44,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
                     package,
                     SupportedCodeGenerator.AutoRestV3);
 
-                await project.UpdatePropertyGroups(
+                await project.UpdatePropertyGroupsAsync(
                     AutoRestConstants.PropertyGroups);
             }
             else

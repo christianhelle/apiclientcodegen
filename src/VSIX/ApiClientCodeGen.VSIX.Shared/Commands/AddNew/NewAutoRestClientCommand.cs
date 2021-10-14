@@ -37,7 +37,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
                 project.Save();
 
-                await project.UpdatePropertyGroups(AutoRestConstants.PropertyGroups);
+                await project.UpdatePropertyGroupsAsync(AutoRestConstants.PropertyGroups);
             }
         }
 

@@ -311,7 +311,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             return false;
         }
 
-        public static async Task UpdatePropertyGroups(
+        public static async Task UpdatePropertyGroupsAsync(
             this Project project,
             IReadOnlyDictionary<string, string> properties)
         {
