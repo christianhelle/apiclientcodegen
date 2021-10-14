@@ -115,11 +115,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            foreach (var guid in kindGuids)
-                if (project.Kind.Equals(guid, StringComparison.OrdinalIgnoreCase))
-                    return true;
-
-            return false;
+            return kindGuids.Any(guid => project.Kind.Equals(guid, StringComparison.OrdinalIgnoreCase));
         }
 
         public static Project GetActiveProject(this DTE Dte)
