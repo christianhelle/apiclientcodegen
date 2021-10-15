@@ -234,6 +234,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 return;
             }
 
+            ThreadHelper.ThrowIfNotOnUIThread();
             if (packageDependency.IsSystemLibrary)
             {
                 Trace.WriteLine("Package is a system library");
