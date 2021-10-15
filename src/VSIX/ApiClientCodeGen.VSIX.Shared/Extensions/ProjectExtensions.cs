@@ -215,7 +215,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
             var requiredPackages = codeGenerator.GetDependencies();
             foreach (var packageDependency in requiredPackages)
+            {
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
                 InstallPackageDependency(project, packageDependency, installedPackages, packageInstaller);
+            }
         }
 
         private static void InstallPackageDependency(
