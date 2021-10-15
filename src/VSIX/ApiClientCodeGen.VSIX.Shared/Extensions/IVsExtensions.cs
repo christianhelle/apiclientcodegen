@@ -25,8 +25,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
             catch
             {
-                if (!TestingUtility.IsRunningFromUnitTest)
-                    ThreadHelper.ThrowIfNotOnUIThread();
+                ThreadHelper.ThrowIfNotOnUIThread();
                 pGenerateProgress.Progress(complete, 100);
             }
         }
@@ -52,8 +51,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
         private static void GenerateErrorInternal(IVsGeneratorProgress pGenerateProgress, Exception exception)
         {
-            if (!TestingUtility.IsRunningFromUnitTest)
-                ThreadHelper.ThrowIfNotOnUIThread();
+            ThreadHelper.ThrowIfNotOnUIThread();
             pGenerateProgress?.GeneratorError(0, 0, exception.Message, 0, 0);
             Trace.WriteLine(exception);
         }

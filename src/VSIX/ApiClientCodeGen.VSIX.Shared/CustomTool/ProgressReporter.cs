@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 {
+    [ExcludeFromCodeCoverage]
     public class ProgressReporter : IProgressReporter
     {
         private readonly IVsGeneratorProgress pGenerateProgress;
@@ -16,15 +17,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 
         public void Progress(uint progress, uint total = 100)
         {
-            ThrowIfNotOnUIThread();
+            ThreadHelper.ThrowIfNotOnUIThread();
             pGenerateProgress.Progress(progress, total);
-        }
-
-        [ExcludeFromCodeCoverage]
-        private static void ThrowIfNotOnUIThread()
-        {
-            if (!TestingUtility.IsRunningFromUnitTest)
-                ThreadHelper.ThrowIfNotOnUIThread();
         }
     }
 }
