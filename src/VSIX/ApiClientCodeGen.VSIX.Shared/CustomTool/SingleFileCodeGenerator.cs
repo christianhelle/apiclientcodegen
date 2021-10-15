@@ -48,9 +48,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
             IVsGeneratorProgress pGenerateProgress)
         {
             pcbOutput = 0;
+            var progressReporter = new ProgressReporter(pGenerateProgress);
+            
             try
             {
-                pGenerateProgress.Progress(5);
+                progressReporter.Progress(5);
 
                 var codeGenerator = Factory.Create(
                     wszDefaultNamespace,
@@ -59,7 +61,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
                     supportedLanguage,
                     CodeGenerator);
 
-                var code = codeGenerator.GenerateCode(new ProgressReporter(pGenerateProgress));
+                var code = codeGenerator.GenerateCode(progressReporter);
                 if (string.IsNullOrWhiteSpace(code))
                 {
                     return 1;
@@ -93,7 +95,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
             }
             finally
             {
-                pGenerateProgress.Progress(100);
+                progressReporter.Progress(100);
             }
 
             return 0;
