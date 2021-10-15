@@ -111,12 +111,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
         }
 
-        public static bool IsKind(this Project project, params string[] kindGuids)
-        {
-            ThreadHelper.ThrowIfNotOnUIThread();
-
-            return kindGuids.Any(guid => project.Kind.Equals(guid, StringComparison.OrdinalIgnoreCase));
-        }
+        private static bool IsKind(this Project project, params string[] kindGuids) 
+            => kindGuids.Any(guid =>
+            {
+                ThreadHelper.ThrowIfNotOnUIThread();
+                return project.Kind.Equals(guid, StringComparison.OrdinalIgnoreCase);
+            });
 
         public static Project GetActiveProject(this DTE Dte)
         {
