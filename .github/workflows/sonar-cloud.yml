@@ -85,13 +85,9 @@ jobs:
               /d:sonar.cs.opencover.reportsPaths=**/*.coverage.*
 
       - name: Build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        shell: powershell
+        run: powershell ./build.ps1 --target All
         working-directory: src
-        run: |
-          .\build.ps1 --target All
+        continue-on-error: true
 
       - name: Analyze
         env:
