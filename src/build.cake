@@ -90,7 +90,7 @@ Task("Run-Unit-Tests")
                Parallel = true, 
                EnableCodeCoverage = true,
                SettingsFile = File("./Tests.runsettings")
-           });
+           }.WithVisualStudioLogger());
 });
 
 Task("Run-Integration-Tests")
@@ -103,7 +103,7 @@ Task("Run-Integration-Tests")
                Parallel = true, 
                EnableCodeCoverage = true,
                SettingsFile = File("./Tests.runsettings")
-           });
+           }.WithVisualStudioLogger());
 });
 
 Task("Run-All-Tests")
@@ -115,7 +115,7 @@ Task("Run-All-Tests")
                Parallel = true, 
                EnableCodeCoverage = true,
                SettingsFile = File("./Tests.runsettings")
-           });
+           }.WithVisualStudioLogger());
 });
 
 Task("All")
