@@ -68,7 +68,7 @@ jobs:
           New-Item -Path .\src\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\src\.sonar\scanner
 
-      - name: Build and Analyze
+      - name: Prepare
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -80,10 +80,24 @@ jobs:
               /o:"christianhelle-github" `
               /d:sonar.login="${{ secrets.SONAR_TOKEN }}" `
               /d:sonar.host.url="https://sonarcloud.io" `
-              /d:sonar.cs.vstest.reportsPaths=TestResults/**/*.trx `
-              /d:sonar.cs.vscoveragexml.reportsPaths=TestResults/**/*.coverage.* `
-              /d:sonar.cs.opencover.reportsPaths=TestResults/**/*.coverage.*             
-          
-          .\build.ps1
+              /d:sonar.cs.vstest.reportsPaths=**/*.trx `
+              /d:sonar.cs.vscoveragexml.reportsPaths=**/*.coverage.* `
+              /d:sonar.cs.opencover.reportsPaths=**/*.coverage.*
 
+      - name: Build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        shell: powershell
+        working-directory: src
+        run: |
+          .\build.ps1 --target All
+
+      - name: Analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        shell: powershell
+        working-directory: src
+        run: |
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
