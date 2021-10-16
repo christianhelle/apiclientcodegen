@@ -20,6 +20,25 @@ jobs:
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      
+      - name: Setup .NET Core 2.1
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 2.1
+      
+      - name: Setup .NET Core 3.1
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1
+
+      - name: Setup .NET 5.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.104'
+
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
