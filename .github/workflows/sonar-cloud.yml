@@ -1,8 +1,15 @@
 name: SonarCloud
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - '*'
+    paths-ignore:
+      - '**/*'
+      - '!.github/workflows/sonar.cloud.yml'
+      - '!src/build.cake'
+      - '!src/**/*.csproj'
+      - '!src/**/*.cs'
+    branches: 
+    - '*'
   pull_request:
     types: [opened, synchronize, reopened]
     
