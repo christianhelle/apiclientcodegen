@@ -62,7 +62,7 @@ jobs:
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
       - name: Build
-        run: ./build.ps1 --target All
+        run: powershell ./build.ps1
         working-directory: src
         continue-on-error: true
 
