@@ -62,15 +62,17 @@ jobs:
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
       - name: Build
-        run: powershell ./build.ps1
+        shell: powershell
         working-directory: src
         continue-on-error: true
+        run: ./build.ps1
 
       - name: Analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
+        working-directory: src
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"christianhelle_apiclientcodegen" /o:"christianhelle-github" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
