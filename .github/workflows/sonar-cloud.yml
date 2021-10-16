@@ -68,6 +68,6 @@ jobs:
         shell: powershell
         working-directory: src
         run: |
-          .\src\.sonar\scanner\dotnet-sonarscanner begin /k:"christianhelle_apiclientcodegen" /o:"christianhelle-github" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"christianhelle_apiclientcodegen" /o:"christianhelle-github" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           .\build.ps1
-          .\src\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
