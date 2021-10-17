@@ -18,7 +18,7 @@ dotnet tool update dotnet-sonarscanner --tool-path .tools\scanner
     /d:sonar.cs.vscoveragexml.reportsPaths=TestResults/**/*.coveragexml
 
 # Build and Run Tests
-.\build.ps1
+.\build.ps1 --target All
 
 # Convert .coverage files to XML format
 dotnet tool update dotnet-coverageconverter --tool-path .tools\coverage
