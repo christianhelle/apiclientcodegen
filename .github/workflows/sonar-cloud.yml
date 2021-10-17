@@ -84,9 +84,12 @@ jobs:
               /d:sonar.cs.vscoveragexml.reportsPaths=TestResults/**/*.coveragexml
 
       - name: Build
-        run: powershell ./build.ps1 --target All
+        shell: powershell
         working-directory: src
         continue-on-error: true
+        run: |
+          ./build.ps1 --target Build-Release
+          ./build.ps1 --target Run-All-Tests
 
       - name: Convert Code Coverage
         working-directory: src
