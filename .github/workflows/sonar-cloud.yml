@@ -81,13 +81,19 @@ jobs:
               /d:sonar.login="${{ secrets.SONAR_TOKEN }}" `
               /d:sonar.host.url="https://sonarcloud.io" `
               /d:sonar.cs.vstest.reportsPaths=**/*.trx `
-              /d:sonar.cs.vscoveragexml.reportsPaths=**/*.coverage.* `
-              /d:sonar.cs.opencover.reportsPaths=**/*.coverage.*
+              /d:sonar.cs.vscoveragexml.reportsPaths=TestResults/**/*.coveragexml
 
       - name: Build
         run: powershell ./build.ps1 --target All
         working-directory: src
         continue-on-error: true
+
+      - name: Convert Code Coverage
+        working-directory: src
+        continue-on-error: true
+        run: |
+          dotnet tool update dotnet-coverageconverter --tool-path .tools\coverage
+          .\.tools\coverage\dotnet-coverageconverter.exe --CoverageFilesFolder "TestResults"
 
       - name: Analyze
         env:
