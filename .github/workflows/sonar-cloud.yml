@@ -88,6 +88,13 @@ jobs:
         working-directory: src
         continue-on-error: true
 
+      - name: Convert Code Coverage
+        working-directory: src
+        continue-on-error: true
+        run: |
+          dotnet tool update dotnet-coverageconverter --tool-path .tools\coverage
+          .\.tools\coverage\dotnet-coverageconverter.exe --CoverageFilesFolder "TestResults"
+
       - name: Analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
