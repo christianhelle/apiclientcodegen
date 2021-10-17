@@ -281,3 +281,5 @@ test/**/GeneratedCode.csproj
 test/Swagger.json
 src/.sonar/
 src/.sonarqube/
+src/.tools/
+dependencies/
