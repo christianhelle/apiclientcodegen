@@ -1,6 +1,8 @@
-﻿using ApiClientCodeGen.Tests.Common;
+﻿using System;
+using ApiClientCodeGen.Tests.Common;
 using AutoFixture;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
@@ -13,12 +15,13 @@ namespace ApiClientCodeGen.Core.Tests.Generators
     {
         private readonly Mock<IProgressReporter> mock;
         private readonly CodeGenerator sut;
+        private readonly Fixture fixture;
 
         public CodeGeneratorTests()
         {
             mock = new Mock<IProgressReporter>();
 
-            var fixture = new Fixture();
+            fixture = new Fixture();
             sut = new TestCodeGenerator(
                 "Swagger.json",
                 fixture.Create<string>());
@@ -39,6 +42,21 @@ namespace ApiClientCodeGen.Core.Tests.Generators
         [Fact]
         public void GetsArgument() 
             => ((TestCodeGenerator) sut).GetArgumentsCalled.Should().BeGreaterThan(0);
+
+        [Fact]
+        public void GenerateCode_Wraps_Exception()
+        {
+            mock.Setup(c => c.Progress(10, It.IsAny<uint>()))
+                .Throws<Exception>();
+
+            new Action(
+                    () => new TestCodeGenerator(
+                            "Swagger.json",
+                            new Fixture().Create<string>())
+                        .GenerateCode(mock.Object))
+                .Should()
+                .ThrowExactly<CodeGeneratorException>();
+        }
 
         internal class TestCodeGenerator : CodeGenerator
         {
