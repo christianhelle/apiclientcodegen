@@ -152,3 +152,19 @@ jobs:
           $run.Write($filecontent, 0, $filecontent.Length)
           $run.Dispose()
         }
+
+  Tag:
+    needs: [VSIX, CLI, VSMac]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create tag
+      uses: actions/github-script@v3
+      with:
+        github-token: ${{ github.token }}
+        script: |
+          github.git.createRef({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            ref: "refs/tags/${{ env.VERSION }}",
+            sha: context.sha
+          })
