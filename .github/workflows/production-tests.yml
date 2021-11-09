@@ -55,6 +55,11 @@ jobs:
       with:
         dotnet-version: '5.0.104'
 
+    - name: Setup .NET 6.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
     - name: Install rapicgen
       run: dotnet tool install --global rapicgen
 
@@ -68,6 +73,7 @@ jobs:
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/NetCore21/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/NetCore31/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net5/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net6/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net48/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net472/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net462/Output.cs
@@ -86,6 +92,10 @@ jobs:
 
     - name: Build .NET 5 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net5/Net5.csproj
+      working-directory: test
+
+    - name: Build .NET 6 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net6/Net6.csproj
       working-directory: test
 
     - name: Build .NET 4.8 AutoRest generated code
@@ -116,6 +126,7 @@ jobs:
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/NetCore21/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/NetCore31/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net5/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net6/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net48/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net472/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net462/Output.cs
@@ -133,6 +144,10 @@ jobs:
 
     - name: Build .NET 5 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/Net5/Net5.csproj
+      working-directory: test
+
+    - name: Build .NET 6 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net6/Net6.csproj
       working-directory: test
 
     - name: Build .NET 4.8 NSwag generated code
@@ -161,6 +176,7 @@ jobs:
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/NetCore21/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/NetCore31/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net5/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net6/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net48/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net472/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net462/Output.cs
@@ -178,6 +194,10 @@ jobs:
 
     - name: Build .NET 5 Swagger Codegen CLI generated code
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5/Net5.csproj
+      working-directory: test
+
+    - name: Build .NET 6 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net6/Net6.csproj
       working-directory: test
 
     - name: Build .NET 4.8 Swagger Codegen CLI generated code
@@ -210,6 +230,7 @@ jobs:
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/NetCore21/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/NetCore31/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net5/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net6/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net48/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net472/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net462/Output.cs
@@ -227,6 +248,10 @@ jobs:
 
     - name: Build .NET 5 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5/Net5.csproj
+      working-directory: test
+
+    - name: Build .NET 6 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net6/Net6.csproj
       working-directory: test
 
     - name: Build .NET 4.8 OpenAPI Generator generated code
