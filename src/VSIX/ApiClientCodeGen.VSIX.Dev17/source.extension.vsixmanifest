@@ -4,7 +4,7 @@
         <Identity Id="1f1527fe-b1c2-4974-9656-85a9d7478d61" Version="1.0.0" Language="en-US" Publisher="Christian Resma Helle" />
         <DisplayName>REST API Client Code Generator for VS 2022</DisplayName>
         <Description xml:space="preserve">A collection of Visual Studio custom tools for generating a strongly typed REST API Client from an Open API / Swagger specification file</Description>
-        <MoreInfo>https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGeneratorPreview</MoreInfo>
+        <MoreInfo>https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2022</MoreInfo>
         <License>License.txt</License>
         <Icon>Resources\Icon.png</Icon>
         <PreviewImage>Resources\Icon.png</PreviewImage>
