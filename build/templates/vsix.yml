@@ -99,7 +99,7 @@ jobs:
         **\bin\Release\**\*.vsix
         README.md
         docs/Marketplace.md
-        docs/MarketplacePreview.md
+        docs/Marketplace2022.md
         src/publish-manifest.json
         src/publish.ps1
         src/publish-manifest-vs2022.json
