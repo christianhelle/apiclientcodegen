@@ -24,14 +24,16 @@ jobs:
 
   Petstore:
 
-    name: Swagger Petstore
-    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-10.15, windows-2019 ]
+        os: [ macos-10.15, windows-2019, ubuntu-20.04 ]
+
+    name: Swagger Petstore
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
 
     steps:
     - uses: actions/checkout@v2
