@@ -27,6 +27,7 @@ jobs:
 
     name: CLI Tool
     runs-on: windows-2019
+    timeout-minutes: 20
 
     steps:
     - uses: actions/checkout@v2
@@ -64,6 +65,7 @@ jobs:
 
     name: VS Mac Extension
     runs-on: macos-10.15
+    timeout-minutes: 20
 
     steps:
     - uses: actions/checkout@v2
@@ -87,6 +89,7 @@ jobs:
 
     name: VSIX Extension
     runs-on: windows-2019
+    timeout-minutes: 20
 
     steps:
     - uses: actions/checkout@v2
