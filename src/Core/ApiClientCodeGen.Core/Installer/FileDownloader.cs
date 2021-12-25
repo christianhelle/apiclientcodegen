@@ -18,13 +18,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
 
         public string DownloadFile(
             string outputFilename,
-            string checksumMd5,
+            string expectedChecksumMd5,
             string url,
             bool forceDownload = false)
         {
             var filePath = Path.Combine(Path.GetTempPath(), outputFilename);
             if (File.Exists(filePath) &&
-                FileHelper.CalculateChecksum(filePath) == checksumMd5 &&
+                string.Equals(
+                    FileHelper.CalculateChecksum(filePath),
+                    expectedChecksumMd5,
+                    StringComparison.OrdinalIgnoreCase) &&
                 !forceDownload)
                 return filePath;
 
