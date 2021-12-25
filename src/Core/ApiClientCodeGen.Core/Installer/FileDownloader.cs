@@ -23,9 +23,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
             bool forceDownload = false)
         {
             var filePath = Path.Combine(Path.GetTempPath(), outputFilename);
-            var calculatedChecksumMd5 = FileHelper.CalculateChecksum(filePath);
             if (File.Exists(filePath) &&
-                string.Equals(calculatedChecksumMd5, expectedChecksumMd5, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(
+                    FileHelper.CalculateChecksum(filePath),
+                    expectedChecksumMd5,
+                    StringComparison.OrdinalIgnoreCase) &&
                 !forceDownload)
                 return filePath;
 
