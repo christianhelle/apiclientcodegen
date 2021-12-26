@@ -23,6 +23,9 @@ on:
   schedule:
     - cron:  '0 8 * * *'
 
+env:
+  VERSION: 1.4.${{ github.run_number }}
+
 jobs:
   build:
     runs-on: windows-2019
