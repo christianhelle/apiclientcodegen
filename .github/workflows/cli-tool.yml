@@ -39,6 +39,7 @@ jobs:
 
     - name: Update Version
       run: ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
+      working-directory: src
 
     - name: Build with dotnet
       run: dotnet build Rapicgen.sln
