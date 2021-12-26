@@ -22,8 +22,9 @@ jobs:
       uses: dotnet/nbgv@master
       with:
         setAllVars: true
-    - name: Update VSIX Version
+    - name: Update Version
       run: |
+        ((Get-Content -Path VSIX/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
         ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
         ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
       working-directory: src
@@ -58,8 +59,10 @@ jobs:
     - name: Sets environment variables - Nerdbank.GitVersioning
       uses: dotnet/nbgv@master
       with:
-        setAllVars: true   
-    - name: Build .NET Tool package
+        setAllVars: true
+    - name: Build
+      run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.sln -p:PackageVersion="${{ env.VERSION }}"
+    - name: Package
       run: dotnet pack -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
     - name: Push packages to NuGet
       run: dotnet nuget push **/*.nupkg -k ${{ secrets.NUGET_KEY }} -s ${{ env.NUGET_REPO_URL }} --no-symbols true
