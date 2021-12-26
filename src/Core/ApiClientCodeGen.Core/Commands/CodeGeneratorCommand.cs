@@ -46,7 +46,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
                     this.GetCodeGeneratorName(),
                     "CLI");
             else
+            {
+                Logger.Instance.Disable();
                 console.WriteLine("NOTE: Feature usage tracking and error Logging is disabled");
+            }
 
             var generator = CreateGenerator();
             var code = generator.GenerateCode(progressReporter);
