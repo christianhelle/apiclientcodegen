@@ -5,6 +5,7 @@ on:
   push:
     paths-ignore:
       - '.github/workflows/**'
+      - '!.github/workflows/cli-tool.yml'
       - 'docs/**'
       - 'test/**'
       - 'build/**'
