@@ -24,16 +24,14 @@ on:
 
 jobs:
   build:
-  
-    strategy:
-      matrix:
-        os: [macos-latest, windows-latest]
-
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    runs-on: windows-2019
 
     steps:
     - uses: actions/checkout@v2
+    - name: Sets environment variables - branch-name
+      uses: nelonoel/branch-name@v1.0.1
+    - name: Sets environment variables - Nerdbank.GitVersioning
+      uses: dotnet/nbgv@master
 
     - name: Build with dotnet
       run: dotnet build Rapicgen.sln
@@ -42,6 +40,17 @@ jobs:
     - name: Core test project
       run: dotnet test src/Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj
       continue-on-error: true
+    
+    - name: Build
+      run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.sln -p:PackageVersion="${{ env.VERSION }}"
 
-    - name: Build .NET Tool package
-      run: dotnet pack src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj
+    - name: Package
+      run: dotnet pack -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
+
+    - name: Publish artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: CLI Tool
+        path: |
+          **/*.nupkg
+          docs/CLI.md
