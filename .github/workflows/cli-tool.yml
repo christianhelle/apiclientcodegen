@@ -37,16 +37,19 @@ jobs:
     - name: Sets environment variables - Nerdbank.GitVersioning
       uses: dotnet/nbgv@master
 
+    - name: Update Version
+      run: ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
+
     - name: Build with dotnet
       run: dotnet build Rapicgen.sln
       working-directory: src
-
-    - name: Core test project
-      run: dotnet test src/Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj
-      continue-on-error: true
     
     - name: Build
       run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.sln -p:PackageVersion="${{ env.VERSION }}"
+
+    - name: Core test project
+      run: dotnet test --no-build src/Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj
+      continue-on-error: true
 
     - name: Package
       run: dotnet pack --no-build -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
