@@ -1,0 +1,18 @@
+﻿<Project>
+
+  <PropertyGroup>
+    <SdkVersion>2021.2.0</SdkVersion>
+
+    <Title>ApiClientCodeGen.Rider</Title>
+    <Description>Description</Description>
+
+    <Authors>Author</Authors>
+    <Copyright>Copyright $([System.DateTime]::Now.Year) Maintainers of ApiClientCodeGen.Rider</Copyright>
+    <PackageTags>resharper plugin</PackageTags>
+
+    <PackageProjectUrl></PackageProjectUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageIconUrl></PackageIconUrl>
+  </PropertyGroup>
+
+</Project>
