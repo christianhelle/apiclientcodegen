@@ -3,16 +3,16 @@
   <PropertyGroup>
     <SdkVersion>2021.2.0</SdkVersion>
 
-    <Title>ApiClientCodeGen</Title>
-    <Description>Description</Description>
+    <Title>REST API Client Code Generator</Title>
+    <Description>A collection of Visual Studio custom tool code generators for Swagger / OpenAPI specification files</Description>
 
-    <Authors>Author</Authors>
-    <Copyright>Copyright $([System.DateTime]::Now.Year) Maintainers of ApiClientCodeGen</Copyright>
+    <Authors>Christian Resma Helle</Authors>
+    <Copyright>Copyright $([System.DateTime]::Now.Year) Christian Resma Helle</Copyright>
     <PackageTags>resharper plugin</PackageTags>
 
-    <PackageProjectUrl></PackageProjectUrl>
-    <PackageLicenseUrl></PackageLicenseUrl>
-    <PackageIconUrl></PackageIconUrl>
+    <PackageProjectUrl>https://github.com/christianhelle/apiclientcodegen</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/christianhelle/apiclientcodegen/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/icon.png</PackageIconUrl>
   </PropertyGroup>
 
 </Project>
