@@ -1,14 +1,69 @@
 <idea-plugin require-restart="true">
   <id>com.jetbrains.rider.plugins.apiclientcodegen</id>
-  <name>ApiClientCodeGen</name>
+  <name>REST API Client Code Generator</name>
   <version>_PLACEHOLDER_</version>
-  <vendor url="https://project-url">Author</vendor>
+  <vendor url="https://github.com/christianhelle/apiclientcodegen">Christian Resma Helle</vendor>
   <idea-version since-build="_PLACEHOLDER_" until-build="_PLACEHOLDER_" />
   <depends>com.intellij.modules.rider</depends>
 
   <description>
 <![CDATA[
-<p>Sample description</p>
+<p><a href="https://gitter.im/apiclientcodegen/community?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/apiclientcodegen/community.svg" alt="Join the chat at https://gitter.im/apiclientcodegen/community"></a>
+<a href="https://www.buymeacoffee.com/christianhelle"><img src="https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg" alt="buymeacoffee"></a></p>
+<h1 id="rest-api-client-code-generator">REST API Client Code Generator</h1>
+<p>A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files</p>
+<h2 id="features">Features</h2>
+<ul>
+<li>Add New REST API Client to a project from an OpenAPI specification URL (e.g <a href="https://petstore.swagger.io/v2/swagger.json">https://petstore.swagger.io/v2/swagger.json</a>) using <a href="https://github.com/Azure/autorest">AutoRest</a>, <a href="https://github.com/RicoSuter/NSwag">NSwag</a>, <a href="https://github.com/swagger-api/swagger-codegen">Swagger Codegen</a>, or <a href="https://github.com/OpenAPITools/openapi-generator">OpenAPI Generator</a></li>
+<li>Define custom namespace for the generated file</li>
+<li>Auto-updating of generated code file when changes are made to the OpenAPI specification JSON or YAML file</li>
+<li>Generate code using an <a href="https://github.com/RicoSuter/NSwag/wiki/NSwagStudio">NSwagStudio</a> specification file by including it in the project and using the <strong>Generate with NSwag</strong> context menu</li>
+</ul>
+<h3 id="custom-tools">Custom Tools</h3>
+<ul>
+<li><p><strong><em>AutoRestCodeGenerator</em></strong> - Generates a single file C# REST API Client using <strong>AutoRest</strong>. 
+The resulting file is the equivalent of using the AutoRest CLI tool with:
+<code>--csharp --input-file=[swaggerFile] --output-file=[outputFile] --namespace=[namespace] --add-credentials</code></p>
+</li>
+<li><p><strong><em>NSwagCodeGenerator</em></strong> - Generates a single file C# REST API Client using the <a href="https://github.com/RSuter/NSwag/wiki/SwaggerToCSharpClientGenerator">NSwag.CodeGeneration.CSharp</a> <a href="https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/">nuget package</a> v13.15.5</p>
+</li>
+<li><p><strong><em>SwaggerCodeGenerator</em></strong> - Generates a single file C# REST API Client using <strong>Swagger Codegen CLI v3.0.14</strong>.
+The output file is the result of merging all the files generated using the Swagger Codegen CLI tool with:
+<code>generate -l csharp --input-spec [swaggerFile] --output [output] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite</code></p>
+</li>
+<li><p><strong><em>OpenApiCodeGenerator</em></strong> - Generates a single file C# REST API Client using <strong>OpenAPI Generator v5.3.1</strong>.
+The output file is the result of merging all the files generated using the OpenAPI Generator tool with:
+<code>generate -g csharp --input-spec [swaggerFile] --output [output] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite</code></p>
+</li>
+</ul>
+<h3 id="dependencies">Dependencies</h3>
+<p>The custom tool code generators piggy back on top of well known Open API client code generators like <strong>AutoRest</strong>, <strong>NSwag</strong>, <strong>OpenAPI Generator</strong>, and <strong>Swagger Codegen CLI</strong>. These tools require <a href="https://www.npmjs.com/get-npm">NPM</a> and the <a href="https://java.com/en/download/manual.jsp">Java Runtime Environment</a> to be installed on the developers machine. Alternative Java SDK implementations such as the <a href="https://adoptopenjdk.net">OpenJDK</a> works fine with this extension. By default, the path to <strong>java.exe</strong> is read from the <strong>JAVA_HOME</strong> environment variable, but is also configurable in the Settings screen</p>
+<p>The <strong>Swagger Codegen CLI</strong> and <strong>OpenAPI Generator</strong> are distributed as JAR files and are downloaded on demand but requires the Java SDK to be installed on the machine. <strong>AutoRest</strong> is installed on-demand via <a href="https://www.npmjs.com/get-npm">NPM</a> as a global tool and uses the latest available version. This means that using these custom tools have an initial delay upon first time use. </p>
+<p><strong>NSwagStudio</strong> is stand alone UI tool for editing a <strong>.nswag</strong> specification file for generating code. This tool is optional to install and official installation instructions are available on the <a href="https://github.com/RicoSuter/NSwag/wiki/NSwagStudio">NSwag Wiki on Github</a>. If <strong>NSwagStudio</strong> is not installed on the machine then the Visual Studio Extension will install the <strong>NSwag CLI</strong> via <a href="https://www.npmjs.com/get-npm">NPM</a> as a global tool using the latest available version. </p>
+<p>The <strong>OpenAPI Generator</strong> and <strong>Swagger Codegen CLI</strong> code generators produces code that depends on the <a href="https://www.nuget.org/packages/RestSharp/105.1.0">RestSharp</a> and <a href="https://www.nuget.org/packages/JsonSubTypes/1.2.0">JsonSubTypes</a> NuGet packages</p>
+<p>The <strong>AutoRest</strong> code generator produces code that depends on the <a href="https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime/2.3.21">Microsoft.Rest.ClientRuntime</a> and <a href="https://www.nuget.org/packages/Newtonsoft.Json/12.0.3">Newtonsoft.Json</a> NuGet packages</p>
+<p>The <strong>NSwag</strong> code generator produces code that depends on the <a href="https://www.nuget.org/packages/Newtonsoft.Json/12.0.3">Newtonsoft.Json</a> NuGet package</p>
+<p>This Visual Studio Extension will automatically add the required NuGet packages that the generated code depends on</p>
+<h2 id="screenshots">Screenshots</h2>
+<p><img src="https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-menu.png" alt="Add - API Client from OpenAPI Specification"></p>
+<p><img src="https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-dialog.png" alt="Enter URL to OpenAPI Specification"></p>
+<p><img src="https://github.com/christianhelle/apiclientcodegen/raw/master/images/solution-explorer-context-menu.jpg" alt="Solution Explorer Context Menus"></p>
+<p><img src="https://github.com/christianhelle/apiclientcodegen/raw/master/images/nswagstudio-context-menu.jpg" alt="NSwag Studio Context Menu"></p>
+<h3 id="settings">Settings</h3>
+<p>This extension will by default make some assumptions on the installation paths for <strong>Java</strong>, <strong>NSwag</strong> and <strong>NPM</strong> but also provides option pages for configuring this. The <strong>Swagger Codegen CLI</strong> and the <strong>OpenAPI Generator</strong> JAR files are by default downloaded to the user TEMP folder but it is also possible to specify to use existing JAR files</p>
+<p><img src="https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-general.png" alt="Options - General"></p>
+<p>Supports customising how AutoRest generates code based on the C# generator settings that the AutoRest CLI tool provides</p>
+<p><img src="https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-autorest.png" alt="Options - AutoRest"></p>
+<p>Supports customising how NSwag generates code using the properties exposed by the NSwag NuGet package</p>
+<p><img src="https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswag.png" alt="Options - NSwag"></p>
+<p>Supports customising how the <strong>.nswag</strong> file is generated using a subset of the options available in NSwag Studio</p>
+<p><img src="https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-nswagstudio.png" alt="Options - NSwag Studio"></p>
+<p>Supports customising how OpenAPI Generator generates code using the additional optional properties that the OpenAPI Generator CLI tool provides</p>
+<p><img src="https://github.com/christianhelle/apiclientcodegen/raw/master/images/options-openapigenerator.png" alt="Options - OpenAPI Generator"></p>
+<p>This extension collects errors and tracks feature usages to a service called <a href="https://exceptionless.com">Exceptionless</a>. This is done anonymously using a support key and a generated anonymous identity based on a secure hash of username@host</p>
+<p><img src="https://github.com/christianhelle/apiclientcodegen/raw/master/images/support-key.png" alt="Options - Analytics"></p>
+<p>For tips and tricks on software development, check out <a href="https://christianhelle.com">my blog</a></p>
+<p>If you find this useful and feel a bit generous then feel free to <a href="https://www.buymeacoffee.com/christianhelle">buy me a coffee</a> :)</p>
 ]]>
   </description>
 
