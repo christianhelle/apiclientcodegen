@@ -3,11 +3,11 @@
   <PropertyGroup>
     <SdkVersion>2021.2.0</SdkVersion>
 
-    <Title>ApiClientCodeGen.Rider</Title>
+    <Title>ApiClientCodeGen</Title>
     <Description>Description</Description>
 
     <Authors>Author</Authors>
-    <Copyright>Copyright $([System.DateTime]::Now.Year) Maintainers of ApiClientCodeGen.Rider</Copyright>
+    <Copyright>Copyright $([System.DateTime]::Now.Year) Maintainers of ApiClientCodeGen</Copyright>
     <PackageTags>resharper plugin</PackageTags>
 
     <PackageProjectUrl></PackageProjectUrl>

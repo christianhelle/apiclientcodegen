@@ -7,10 +7,11 @@
 
   <ItemGroup>
     <PackageReference Include="JetBrains.ReSharper.SDK.Tests" Version="$(SdkVersion)" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ReSharperPlugin.ApiClientCodeGen.Rider\ReSharperPlugin.ApiClientCodeGen.Rider.csproj" />
+    <ProjectReference Include="..\ReSharperPlugin.ApiClientCodeGen\ReSharperPlugin.ApiClientCodeGen.csproj" />
   </ItemGroup>
 
   <ItemGroup>

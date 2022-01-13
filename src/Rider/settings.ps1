@@ -1,5 +1,5 @@
-$PluginId = "ReSharperPlugin.ApiClientCodeGen.Rider"
-$SolutionPath = "$PSScriptRoot\ReSharperPlugin.ApiClientCodeGen.Rider.sln"
+$PluginId = "ReSharperPlugin.ApiClientCodeGen"
+$SolutionPath = "$PSScriptRoot\ReSharperPlugin.ApiClientCodeGen.sln"
 $SourceBasePath = "$PSScriptRoot\src\dotnet"
 
 $VsWhereOutput = [xml] (& "$PSScriptRoot\tools\vswhere.exe" -format xml -products *)

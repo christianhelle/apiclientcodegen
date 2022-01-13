@@ -8,7 +8,7 @@
 
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
-    <AssemblyName>ReSharperPlugin.ApiClientCodeGen.Rider</AssemblyName>
+    <AssemblyName>ReSharperPlugin.ApiClientCodeGen</AssemblyName>
     <RootNamespace>$(AssemblyName)</RootNamespace>
     <IsPackable>false</IsPackable>
     <DefineConstants>$(DefineConstants);RIDER</DefineConstants>
@@ -16,6 +16,15 @@
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Rider.SDK" Version="$(SdkVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.0" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Core\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
   </ItemGroup>
 
   <!-- TODO: uncomment for xaml icons -->

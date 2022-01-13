@@ -17,6 +17,6 @@ pluginManagement {
     }
 }
 
-rootProject.name = 'apiclientcodegen.rider'
+rootProject.name = 'apiclientcodegen'
 
 include ':protocol'

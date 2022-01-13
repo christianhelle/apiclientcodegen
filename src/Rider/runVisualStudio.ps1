@@ -1,5 +1,5 @@
 Param(
-    $RootSuffix = "ApiClientCodeGen.Rider",
+    $RootSuffix = "ApiClientCodeGen",
     $Version = "9999.0.0"
 )
 
