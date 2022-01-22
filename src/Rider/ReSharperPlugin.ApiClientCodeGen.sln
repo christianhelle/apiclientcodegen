@@ -15,8 +15,6 @@ ProjectSection(SolutionItems) = preProject
 	gradle.properties = gradle.properties
 EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.Core", "..\Core\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj", "{857DC02E-DE73-45E7-B78E-3E16A84E89D7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,9 +33,5 @@ Global
 		{01C3DEF5-50B2-47CB-9467-19BC6DDF9D3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01C3DEF5-50B2-47CB-9467-19BC6DDF9D3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01C3DEF5-50B2-47CB-9467-19BC6DDF9D3D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{857DC02E-DE73-45E7-B78E-3E16A84E89D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{857DC02E-DE73-45E7-B78E-3E16A84E89D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{857DC02E-DE73-45E7-B78E-3E16A84E89D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{857DC02E-DE73-45E7-B78E-3E16A84E89D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
