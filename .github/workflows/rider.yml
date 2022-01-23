@@ -11,11 +11,9 @@ on:
       - 'build/**'
       - 'images/**'
       - 'README.md'
-      - 'src/CLI/ApiClientCodeGen.CLI*/**'
-      - 'src/VSIX/ApiClientCodeGen.VSIX*/**'
-      - 'src/VSIX/ApiClientCodeGen.Tests/**'
-      - 'src/VSMac/ApiClientCodeGen.VSMac*/**'
-      - 'src/VSIX/ApiClientCodeGen.IntegrationTests/**'
+      - 'src/CLI/**'
+      - 'src/VSIX/**'
+      - 'src/VSMac/**'
     branches:
       - '*'
   pull_request:
