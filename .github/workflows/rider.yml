@@ -54,5 +54,5 @@ jobs:
       with:
         name: JetBrains Rider Extension
         path: |
-          **/*.nupkg
+          src/Rider/output/*
           src/Rider/README.md
