@@ -38,9 +38,9 @@ jobs:
 
     - name: Update Version
       run: |
-        ((Get-Content -Path Rider/src/dotnet/ReSharperPlugin.ApiClientCodeGen/ReSharperPlugin.ApiClientCodeGen.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path Rider/src/dotnet/ReSharperPlugin.ApiClientCodeGen/ReSharperPlugin.ApiClientCodeGen.csproj
-        ((Get-Content -Path Rider/src/dotnet/ReSharperPlugin.ApiClientCodeGen/ReSharperPlugin.ApiClientCodeGen.Rider.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path Rider/src/dotnet/ReSharperPlugin.ApiClientCodeGen/ReSharperPlugin.ApiClientCodeGen.Rider.csproj
-        ((Get-Content -Path Rider/src/dotnet/Directory.Build.props -Raw) -Replace "9999.0.0", "${{ env.VERSION }}") | Set-Content -Path Rider/src/dotnet/Directory.Build.props
+        ((Get-Content -Path src/dotnet/ReSharperPlugin.ApiClientCodeGen/ReSharperPlugin.ApiClientCodeGen.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path src/dotnet/ReSharperPlugin.ApiClientCodeGen/ReSharperPlugin.ApiClientCodeGen.csproj
+        ((Get-Content -Path src/dotnet/ReSharperPlugin.ApiClientCodeGen/ReSharperPlugin.ApiClientCodeGen.Rider.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path src/dotnet/ReSharperPlugin.ApiClientCodeGen/ReSharperPlugin.ApiClientCodeGen.Rider.csproj
+        ((Get-Content -Path src/dotnet/Directory.Build.props -Raw) -Replace "9999.0.0", "${{ env.VERSION }}") | Set-Content -Path src/dotnet/Directory.Build.props
         ((Get-Content -Path gradle.properties -Raw) -Replace "9999.0.0", "${{ env.VERSION }}") | Set-Content -Path gradle.properties
         ((Get-Content -Path buildPlugin.ps1 -Raw) -Replace "9999.0.0", "${{ env.VERSION }}") | Set-Content -Path buildPlugin.ps1
       working-directory: src/Rider
