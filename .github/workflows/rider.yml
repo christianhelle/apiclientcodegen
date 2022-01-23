@@ -54,5 +54,6 @@ jobs:
       with:
         name: JetBrains Rider Extension
         path: |
-          src/Rider/output/*
+          src/Rider/output/ApiClientCodeGen.Core.${{ env.VERSION }}.nupkg
+          src/Rider/output/ReSharperPlugin.ApiClientCodeGen.${{ env.VERSION }}.nupkg
           src/Rider/README.md
