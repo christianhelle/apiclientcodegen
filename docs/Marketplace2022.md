@@ -1,5 +1,5 @@
-[![Join the chat at https://gitter.im/apiclientcodegen/community](https://badges.gitter.im/apiclientcodegen/community.png)](https://gitter.im/apiclientcodegen/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![buymeacoffee](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.png)](https://www.buymeacoffee.com/christianhelle)
+[![Join the chat at https://gitter.im/apiclientcodegen/community](https://badges.gitter.im/apiclientcodegen/community.svg)](https://gitter.im/apiclientcodegen/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![buymeacoffee](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://www.buymeacoffee.com/christianhelle)
 
 There is a separate VSIX installer available for **[Visual Studio 2017 and 2019](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)**
 
