@@ -1,0 +1,57 @@
+name: Rider Extension
+
+on:
+  workflow_dispatch:
+  push:
+    paths-ignore:
+      - '.github/workflows/**'
+      - '!.github/workflows/rider.yml'
+      - 'docs/**'
+      - 'test/**'
+      - 'build/**'
+      - 'images/**'
+      - 'README.md'
+      - 'src/CLI/ApiClientCodeGen.CLI*/**'
+      - 'src/VSIX/ApiClientCodeGen.VSIX*/**'
+      - 'src/VSIX/ApiClientCodeGen.Tests/**'
+      - 'src/VSMac/ApiClientCodeGen.VSMac*/**'
+      - 'src/VSIX/ApiClientCodeGen.IntegrationTests/**'
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+  schedule:
+    - cron:  '0 8 * * *'
+
+env:
+  VERSION: 1.4.${{ github.run_number }}
+
+jobs:
+  build:
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Sets environment variables - branch-name
+      uses: nelonoel/branch-name@v1.0.1
+    - name: Sets environment variables - Nerdbank.GitVersioning
+      uses: dotnet/nbgv@master
+
+    - name: Update Version
+      run: |
+        ((Get-Content -Path ReSharperPlugin.ApiClientCodeGen/ReSharperPlugin.ApiClientCodeGen.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path ReSharperPlugin.ApiClientCodeGen/ReSharperPlugin.ApiClientCodeGen.csproj
+        ((Get-Content -Path ReSharperPlugin.ApiClientCodeGen/ReSharperPlugin.ApiClientCodeGen.Rider.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path ReSharperPlugin.ApiClientCodeGen/ReSharperPlugin.ApiClientCodeGen.Rider.csproj
+      working-directory: src/Rider/src/dotnet
+
+    - name: Build Plugin
+      run: powershell ./buildPlugin.ps1
+      working-directory: src/Rider
+
+    - name: Publish artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: JetBrains Rider Extension
+        path: |
+          **/*.nupkg
+          src/Rider/README.md
