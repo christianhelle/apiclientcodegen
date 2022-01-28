@@ -13,7 +13,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
         public static readonly PackageDependency MicrosoftRestClientRuntime =
             new PackageDependency(
                 "Microsoft.Rest.ClientRuntime",
-                new Version(2, 3, 22, 0));
+                new Version(2, 3, 23, 0));
 
         public static readonly PackageDependency RestSharp =
             new PackageDependency(
