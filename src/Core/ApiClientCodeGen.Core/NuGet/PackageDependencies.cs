@@ -7,13 +7,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
         public static readonly PackageDependency NewtonsoftJson =
             new PackageDependency(
                 "Newtonsoft.Json",
-                new Version(12, 0, 3, 0),
+                new Version(13, 0, 1, 0),
                 false);
 
         public static readonly PackageDependency MicrosoftRestClientRuntime =
             new PackageDependency(
                 "Microsoft.Rest.ClientRuntime",
-                new Version(2, 3, 22, 0));
+                new Version(2, 3, 23, 0));
 
         public static readonly PackageDependency RestSharp =
             new PackageDependency(
@@ -23,12 +23,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
         public static readonly PackageDependency JsonSubTypes =
             new PackageDependency(
                 "JsonSubTypes",
-                new Version(1, 2, 0, 0));
+                new Version(1, 8, 0, 0));
 
         public static readonly PackageDependency RestSharpLatest =
             new PackageDependency(
                 "RestSharp",
-                new Version(106, 11, 7, 0));
+                new Version(106, 12, 0, 0));
 
         public static readonly PackageDependency JsonSubTypesLatest =
             new PackageDependency(
@@ -53,10 +53,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
                 new Version(4, 5, 0),
                 isSystemLibrary: true);
 
-        public static readonly PackageDependency Polly = 
+        public static readonly PackageDependency Polly =
             new PackageDependency(
                 "Polly",
-                new Version(7,2,2));
+                new Version(7, 2, 3));
 
         public static readonly PackageDependency AutoRestCSharp =
             new PackageDependency(

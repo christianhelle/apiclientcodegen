@@ -12,7 +12,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include = ""Microsoft.Rest.ClientRuntime"" Version=""2.3.21"" />
-    <PackageReference Include = ""Newtonsoft.Json"" Version=""12.0.3"" />
+    <PackageReference Include = ""Newtonsoft.Json"" Version=""13.0.1"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
     <PackageReference Include = ""Microsoft.Azure.AutoRest.CSharp"" Version=""3.0.0-beta.20210218.1"" PrivateAssets=""All"" />
@@ -30,7 +30,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include = ""Microsoft.Rest.ClientRuntime"" Version=""2.3.21"" />
-    <PackageReference Include = ""Newtonsoft.Json"" Version=""12.0.3"" />
+    <PackageReference Include = ""Newtonsoft.Json"" Version=""13.0.1"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
     <PackageReference Include = ""Microsoft.Azure.AutoRest.CSharp"" Version=""3.0.0-beta.20210218.1"" PrivateAssets=""All"" />
