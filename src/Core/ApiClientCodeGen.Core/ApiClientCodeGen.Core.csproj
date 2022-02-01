@@ -34,7 +34,7 @@
     <PackageReference Include="ICSharpCode.CodeConverter" Version="8.4.5.268" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    <PackageReference Include="NSwag.Core.Yaml" Version="13.15.5" />
+    <PackageReference Include="NSwag.Core.Yaml" Version="13.15.6" />
     <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="13.15.6" />
     <PackageReference Include="Polly" Version="7.2.3" />
     <PackageReference Include="McMaster.Extensions.Hosting.CommandLine" Version="4.0.1" />
