@@ -5,7 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MonoDevelop.Addins" Version="0.4.7" />
-    <PackageReference Include="Sentry" Version="3.13.0" />
+    <PackageReference Include="Sentry" Version="3.14.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />
