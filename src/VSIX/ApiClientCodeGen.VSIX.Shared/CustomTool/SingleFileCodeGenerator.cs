@@ -113,6 +113,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 
             Trace.WriteLine("Unable to generate code");
             Trace.WriteLine(e);
+
+            Trace.WriteLine(Environment.NewLine);
+            Trace.WriteLine("######################################################################################");
+            Trace.WriteLine("# Create a Github Issue at https://github.com/christianhelle/apiclientcodegen/issues #");
+            Trace.WriteLine("######################################################################################");
+            Trace.WriteLine(Environment.NewLine);
         }
     }
 }
