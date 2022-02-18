@@ -7,7 +7,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenAp
 using FluentAssertions;
 using Xunit;
 
-namespace ApiClientCodeGen.Core.Tests.Command
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Tests.Command
 {
     public class OpenApiGeneratorFactoryTests
     {
