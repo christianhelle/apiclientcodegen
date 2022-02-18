@@ -1,6 +1,8 @@
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Extensions
 {
     public static class CodeGeneratorNameExtensions
     {
