@@ -82,6 +82,18 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
                 }
 
                 rgbOutputFileContents[0] = code.ConvertToIntPtr(out pcbOutput);
+                
+                Trace.WriteLine(Environment.NewLine);
+                Trace.WriteLine($"Output file size: {pcbOutput}");
+                
+                Trace.WriteLine(Environment.NewLine);
+                Trace.WriteLine("###################################################################");
+                Trace.WriteLine("#  Do you find this tool useful?                                  #");
+                Trace.WriteLine("#  https://www.buymeacoffee.com/christianhelle                    #");
+                Trace.WriteLine("#                                                                 #");
+                Trace.WriteLine("#  Does this tool not work or does it lack something you need?    #");
+                Trace.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues      #");
+                Trace.WriteLine("###################################################################");
             }
             catch (NotSupportedException e)
             {
