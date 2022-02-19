@@ -1,3 +1,5 @@
+using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using ApiClientCodeGen.VSMac.CustomTools.OpenApi;
@@ -46,7 +48,19 @@ namespace ApiClientCodeGen.VSMac.CustomTools
             var generator = GetCodeGenerator(swaggerFile, customToolNamespace);
             var progressReporter = new ProgressReporter(monitor);
             var contents = await Task.Run(() => generator.GenerateCode(progressReporter));
-            await Task.Run(() => File.WriteAllText(outputFile, contents));
+            await Task.Run(() => File.WriteAllText(outputFile, contents));            
+                
+            Trace.WriteLine(Environment.NewLine);
+            Trace.WriteLine($"Output file size: {new FileInfo(outputFile).Length}");
+            
+            Trace.WriteLine(Environment.NewLine);
+            Trace.WriteLine("###################################################################");
+            Trace.WriteLine("#  Do you find this tool useful?                                  #");
+            Trace.WriteLine("#  https://www.buymeacoffee.com/christianhelle                    #");
+            Trace.WriteLine("#                                                                 #");
+            Trace.WriteLine("#  Does this tool not work or does it lack something you need?    #");
+            Trace.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues      #");
+            Trace.WriteLine("###################################################################");
         }
 
         protected abstract ICodeGenerator GetCodeGenerator(

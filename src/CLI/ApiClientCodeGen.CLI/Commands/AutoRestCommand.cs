@@ -1,31 +1,36 @@
 ﻿using System;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
-    [Command("swagger", Description = "Generate Swagger / Open API client using Swagger Codegen CLI")]
-    public class SwaggerCodegenCommand : CodeGeneratorCommand
+    [Command("autorest", Description = "Generate Swagger / Open API client using AutoRest")]
+    public class AutoRestCommand : CodeGeneratorCommand
     {
-        private readonly IGeneralOptions options;
+        private readonly IAutoRestOptions options;
         private readonly IProcessLauncher processLauncher;
-        private readonly ISwaggerCodegenFactory factory;
+        private readonly IAutoRestCodeGeneratorFactory factory;
+        private readonly IOpenApiDocumentFactory documentFactory;
         private readonly IDependencyInstaller dependencyInstaller;
 
-        public SwaggerCodegenCommand(
+        public AutoRestCommand(
             IConsoleOutput console,
-            IProgressReporter progressReporter,
-            IGeneralOptions options,
+            IAutoRestOptions options,
             IProcessLauncher processLauncher,
-            ISwaggerCodegenFactory factory,
+            IProgressReporter progressReporter,
+            IAutoRestCodeGeneratorFactory factory,
+            IOpenApiDocumentFactory documentFactory,
             IDependencyInstaller dependencyInstaller) : base(console, progressReporter)
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
+            this.documentFactory = documentFactory ?? throw new ArgumentNullException(nameof(documentFactory));
             this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
@@ -35,6 +40,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
                 DefaultNamespace,
                 options,
                 processLauncher,
+                documentFactory,
                 dependencyInstaller);
     }
 }

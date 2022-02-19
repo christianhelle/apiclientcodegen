@@ -23,6 +23,7 @@
     <PackAsTool>true</PackAsTool>
     <TieredCompilation>true</TieredCompilation>
     <PackageReadmeFile>CLI.md</PackageReadmeFile>
+    <RootNamespace>ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,7 +41,7 @@
   <ItemGroup>
     <Folder Include="Properties\" />
     <None Include="..\..\..\images\icon.png" Pack="true" PackagePath="\" />
-    <None Include="..\..\..\docs\CLI.md" Pack="true" PackagePath="\"/>
+    <None Include="..\..\..\docs\CLI.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
 </Project>

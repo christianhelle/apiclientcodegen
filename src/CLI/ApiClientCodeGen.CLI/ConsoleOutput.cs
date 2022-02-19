@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI
 {
     [ExcludeFromCodeCoverage]
     public class ConsoleOutput : IConsoleOutput

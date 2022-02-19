@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
     [ExcludeFromCodeCoverage]
     [Command(Name = "run", OptionsComparison = StringComparison.InvariantCultureIgnoreCase)]

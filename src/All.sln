@@ -71,6 +71,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ApiClientCodeGen.VSIX.Share
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSIX.Dev17", "VSIX\ApiClientCodeGen.VSIX.Dev17\ApiClientCodeGen.VSIX.Dev17.csproj", "{660BA451-88FB-4504-8170-4118F74467BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.CLI.Tests", "CLI\ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj", "{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{660ba451-88fb-4504-8170-4118f74467ba}*SharedItemsImports = 4
@@ -156,6 +158,14 @@ Global
 		{660BA451-88FB-4504-8170-4118F74467BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{660BA451-88FB-4504-8170-4118F74467BA}.Release|x86.ActiveCfg = Release|x86
 		{660BA451-88FB-4504-8170-4118F74467BA}.Release|x86.Build.0 = Release|x86
+		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Debug|x86.Build.0 = Debug|Any CPU
+		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Release|x86.ActiveCfg = Release|Any CPU
+		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

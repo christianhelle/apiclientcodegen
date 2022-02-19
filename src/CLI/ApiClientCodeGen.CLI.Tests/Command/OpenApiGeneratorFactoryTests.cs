@@ -1,31 +1,31 @@
-﻿using ApiClientCodeGen.Tests.Common.Infrastructure;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands;
+using ApiClientCodeGen.Tests.Common.Infrastructure;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 using FluentAssertions;
 using Xunit;
 
-namespace ApiClientCodeGen.Core.Tests.Command
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Tests.Command
 {
-    public class AutoRestCodeGeneratorFactoryTests
+    public class OpenApiGeneratorFactoryTests
     {
         [Theory, AutoMoqData]
         public void Create_Should_Return_NotNull(
-            AutoRestCodeGeneratorFactory sut,
+            OpenApiGeneratorFactory sut,
             string swaggerFile,
             string defaultNamespace,
-            IAutoRestOptions options,
+            IGeneralOptions options,
+            IOpenApiGeneratorOptions openApiGeneratorOptions,
             IProcessLauncher processLauncher,
-            IOpenApiDocumentFactory documentFactory,
             IDependencyInstaller dependencyInstaller)
             => sut.Create(
                     swaggerFile,
                     defaultNamespace,
                     options,
+                    openApiGeneratorOptions,
                     processLauncher,
-                    documentFactory,
                     dependencyInstaller)
                 .Should()
                 .NotBeNull();

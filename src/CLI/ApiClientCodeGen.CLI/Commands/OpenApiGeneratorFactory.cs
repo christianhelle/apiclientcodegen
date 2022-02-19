@@ -4,7 +4,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
     public interface IOpenApiGeneratorFactory
     {

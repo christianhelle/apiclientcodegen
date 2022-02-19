@@ -2,12 +2,13 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
     public abstract class CodeGeneratorCommand
     {
@@ -68,7 +69,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Commands
             {
                 console.WriteLine($"Output file name: {OutputFile}");
                 console.WriteLine($"Output file size: {fileInfo.Length}");
-                console.WriteLine(string.Empty);
+                console.WriteLine(Environment.NewLine);
+                console.WriteLine("###################################################################");
+                console.WriteLine("#  Do you find this tool useful?                                  #");
+                console.WriteLine("#  https://www.buymeacoffee.com/christianhelle                    #");
+                console.WriteLine("#                                                                 #");
+                console.WriteLine("#  Does this tool not work or does it lack something you need?    #");
+                console.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues      #");
+                console.WriteLine("###################################################################");
             }
             else
             {

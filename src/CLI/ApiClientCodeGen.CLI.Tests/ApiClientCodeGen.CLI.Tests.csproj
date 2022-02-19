@@ -1,13 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <RootNamespace>ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Tests</RootNamespace>
         <IsPackable>false</IsPackable>
-
-        <LangVersion>8.0</LangVersion>
-
-        <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Core\ApiClientCodeGen.Tests.Common\ApiClientCodeGen.Tests.Common.csproj" />
+        <ProjectReference Include="..\ApiClientCodeGen.CLI\ApiClientCodeGen.CLI.csproj" />
+    </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
@@ -15,11 +17,6 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\..\Core\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
-      <ProjectReference Include="..\..\Core\ApiClientCodeGen.Tests.Common\ApiClientCodeGen.Tests.Common.csproj" />
     </ItemGroup>
 
 </Project>
