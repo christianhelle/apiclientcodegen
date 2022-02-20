@@ -60,8 +60,10 @@ jobs:
           *.vsix
           docs/Marketplace*.md
 
-    - name: Publish to VSIX Gallery
+    - name: Publish to Open VSIX Gallery
       run: |
         (new-object Net.WebClient).DownloadString("https://raw.github.com/madskristensen/ExtensionScripts/master/AppVeyor/vsix.ps1") | iex
-        Vsix-PushArtifacts | Vsix-PublishToGallery
+        Vsix-PushArtifacts
+        Vsix-PublishToGallery -path ApiClientCodeGenerator-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/Marketplace.md
+        Vsix-PublishToGallery -path ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/Marketplace2022.md
       shell: pwsh
