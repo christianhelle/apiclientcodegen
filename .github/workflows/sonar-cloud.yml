@@ -90,6 +90,7 @@ jobs:
         run: |
           ./build.ps1 --target Build-Release
           ./build.ps1 --target Run-All-Tests
+          dotnet test Rapicgen.sln --no-build --collect "Code coverage"
 
       - name: Convert Code Coverage
         working-directory: src
