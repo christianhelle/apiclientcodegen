@@ -96,7 +96,7 @@ jobs:
         continue-on-error: true
         run: |
           dotnet tool update dotnet-coverageconverter --tool-path .tools\coverage
-          .\.tools\coverage\dotnet-coverageconverter.exe --CoverageFilesFolder "TestResults"
+          .\.tools\coverage\dotnet-coverageconverter.exe --CoverageFilesFolder "TestResults" --ProcessAllFiles 
 
       - name: Analyze
         env:
