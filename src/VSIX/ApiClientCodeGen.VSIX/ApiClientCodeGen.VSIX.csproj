@@ -105,8 +105,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Community.VisualStudio.Toolkit.16">
-      <Version>16.0.394</Version>
+    <PackageReference Include="Community.VisualStudio.Toolkit.15">
+      <Version>15.0.394</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.VSSDK.BuildTools">
       <Version>17.2.2186</Version>
