@@ -15,6 +15,8 @@ function Install-DotNetRuntimes {
     ./dotnet-install.ps1 -Version 2.1.811
     ./dotnet-install.ps1 -Version 3.1.404
     ./dotnet-install.ps1 -Version 5.0.100
+    ./dotnet-install.ps1 -Version 6.0.100
+    ./dotnet-install.ps1 -Version 7.0.100
 }
 
 function Install-Rapicgen {
@@ -88,6 +90,7 @@ function Build-GeneratedCode {
                 $argumentsList += "build ./GeneratedCode/$_/NetCore31/NetCore31.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net5/Net5.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net6/Net6.csproj"
+                $argumentsList += "build ./GeneratedCode/$_/Net7/Net7.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net48/Net48.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net472/Net472.csproj"
 
@@ -103,6 +106,7 @@ function Build-GeneratedCode {
                 "build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj",
                 "build ./GeneratedCode/$ToolName/Net5/Net5.csproj",
                 "build ./GeneratedCode/$ToolName/Net6/Net6.csproj",
+                "build ./GeneratedCode/$ToolName/Net7/Net7.csproj",
                 "build ./GeneratedCode/$ToolName/Net48/Net48.csproj",
                 "build ./GeneratedCode/$ToolName/Net472/Net472.csproj"
             )
@@ -221,6 +225,7 @@ function Generate-Code {
         throw "$_ exited with status code $($process.ExitCode)"
     }
 
+    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net7/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net6/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net5/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net48/Output.cs" -Force
@@ -282,6 +287,7 @@ function Generate-CodeParallel {
 
     "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
         if (Test-Path "GeneratedCode/$_/Output.cs" -PathType Leaf) {
+            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net7/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net6/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net5/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net48/Output.cs" -Force
