@@ -61,6 +61,7 @@ jobs:
           docs/Marketplace*.md
 
     - name: Publish to Open VSIX Gallery
+      if: github.ref == 'refs/heads/master'
       run: |
         (new-object Net.WebClient).DownloadString("https://raw.github.com/madskristensen/ExtensionScripts/master/AppVeyor/vsix.ps1") | iex
         Vsix-PushArtifacts
