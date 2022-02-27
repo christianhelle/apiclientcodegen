@@ -3,10 +3,12 @@ using System.Diagnostics.CodeAnalysis;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
 using Microsoft.VisualStudio.Shell;
 using NJsonSchema.CodeGeneration.CSharp;
+using System.Runtime.InteropServices;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio
 {
     [ExcludeFromCodeCoverage]
+    [ComVisible(true)]
     public class NSwagStudioOptionsPage : DialogPage, INSwagStudioOptions
     {
         public const string Name = "NSwag Studio";
