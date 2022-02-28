@@ -2,10 +2,12 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
 using Microsoft.VisualStudio.Shell;
+using System.Runtime.InteropServices;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest
 {
     [ExcludeFromCodeCoverage]
+    [ComVisible(true)]
     public class AutoRestOptionsPage : DialogPage, IAutoRestOptions
     {
         public const string Name = "AutoRest";

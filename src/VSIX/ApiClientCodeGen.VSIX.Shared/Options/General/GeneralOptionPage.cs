@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
@@ -8,6 +9,7 @@ using Microsoft.VisualStudio.Shell;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
 {
     [ExcludeFromCodeCoverage]
+    [ComVisible(true)]
     public class GeneralOptionPage : DialogPage, IGeneralOptions
     {
         public const string Name = "General";

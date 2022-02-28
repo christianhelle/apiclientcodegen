@@ -2,10 +2,12 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 using Microsoft.VisualStudio.Shell;
+using System.Runtime.InteropServices;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApiGenerator
 {
     [ExcludeFromCodeCoverage]
+    [ComVisible(true)]
     public class OpenApiGeneratorOptionsPage : DialogPage, IOpenApiGeneratorOptions
     {
         public const string Name = "OpenAPI Generator";
