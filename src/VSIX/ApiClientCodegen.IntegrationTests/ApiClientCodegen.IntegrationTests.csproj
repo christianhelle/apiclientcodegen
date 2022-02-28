@@ -115,7 +115,7 @@
       <Version>6.5.1</Version>
     </PackageReference>
     <PackageReference Include="Moq">
-      <Version>4.16.1</Version>
+      <Version>4.17.1</Version>
     </PackageReference>
     <PackageReference Include="xunit">
       <Version>2.4.1</Version>
