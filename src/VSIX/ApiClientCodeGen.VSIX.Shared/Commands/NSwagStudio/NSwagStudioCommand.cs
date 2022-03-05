@@ -9,6 +9,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using Community.VisualStudio.Toolkit;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
@@ -33,11 +34,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
                 ExecuteAsync,
                 token);
 
-        private async Task ExecuteAsync(DTE dte, AsyncPackage package)
+        private async Task ExecuteAsync(AsyncPackage package)
         {
             try
             {
-                await OnExecuteAsync(dte, package);
+                await OnExecuteAsync(package);
             }
             catch (Exception e)
             {
@@ -45,14 +46,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
             }
         }
 
-        private static async Task OnExecuteAsync(DTE dte, AsyncPackage package)
+        private static async Task OnExecuteAsync(AsyncPackage package)
         {
             Logger.Instance.TrackFeatureUsage("Generate NSwag Studio output");
 
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-            var item = dte.SelectedItems.Item(1).ProjectItem;
-            var nswagStudioFile = item.FileNames[0];
+            var item = await VS.Solutions.GetActiveItemAsync();
+            var nswagStudioFile = item.FullPath;
 
             var codeGenerator = new NSwagStudioCodeGenerator(
                 nswagStudioFile,
@@ -61,10 +62,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
                 new DependencyInstaller(
                     new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader())));
-            
+
             codeGenerator.GenerateCode(null);
 
-            var project = ProjectExtensions.GetActiveProject(dte);
+            var project = await package.GetActiveProjectAsync();
             await project.InstallMissingPackagesAsync(package, SupportedCodeGenerator.NSwag);
         }
     }

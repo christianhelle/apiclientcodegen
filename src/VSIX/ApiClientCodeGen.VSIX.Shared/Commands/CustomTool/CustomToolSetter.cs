@@ -5,7 +5,7 @@ using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
-using EnvDTE;
+using Community.VisualStudio.Toolkit;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
@@ -28,11 +28,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
                 ExecuteAsync,
                 token);
 
-        private async Task ExecuteAsync(DTE dte, AsyncPackage package)
+        private async Task ExecuteAsync(AsyncPackage package)
         {
             try
             {
-                await OnExecuteAsync(dte, package);
+                await OnExecuteAsync(package);
             }
             catch (Exception e)
             {
@@ -40,21 +40,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
             }
         }
 
-        protected virtual async Task OnExecuteAsync(DTE dte, AsyncPackage package)
+        protected virtual async Task OnExecuteAsync(AsyncPackage package)
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-            var item = dte.SelectedItems.Item(1).ProjectItem;
-            item.Properties.Item("CustomTool").Value = typeof(T).Name;
+            var item = await VS.Solutions.GetActiveItemAsync();
+            var file = await PhysicalFile.FromFileAsync(item.FullPath);
+            await file.TrySetAttributeAsync("CustomTool", typeof(T).Name);
 
             var name = typeof(T).Name.Replace("CodeGenerator", string.Empty);
             Trace.WriteLine($"Generating code using {name}");
 
-            var project = dte.GetActiveProject();
-            if (project != null)
-                await project.InstallMissingPackagesAsync(
-                    package,
-                    typeof(T).GetSupportedCodeGenerator());
+            var project = await package.GetActiveProjectAsync();
+            await project.InstallMissingPackagesAsync(
+                package,
+                typeof(T).GetSupportedCodeGenerator());
         }
     }
 }

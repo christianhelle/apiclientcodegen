@@ -5,7 +5,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
-using EnvDTE;
+using Community.VisualStudio.Toolkit;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
@@ -19,21 +19,21 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
 
         protected override int CommandId { get; } = 0x0200;
 
-        protected override async Task OnExecuteAsync(DTE dte, AsyncPackage package)
+        protected override async Task OnExecuteAsync(AsyncPackage package)
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-            var project = ProjectExtensions.GetActiveProject(dte);
-
             var type = typeof(AutoRestCodeGenerator);
-            var item = dte.SelectedItems.Item(1).ProjectItem;
-            item.Properties.Item("CustomTool").Value = type.Name;
+            var item = await VS.Solutions.GetActiveItemAsync();
+            var file = await PhysicalFile.FromFileAsync(item.FullPath);
+            await file.TrySetAttributeAsync("CustomTool", type.Name);      
 
             var name = type.Name.Replace("CodeGenerator", string.Empty);
             Trace.WriteLine($"Generating code using {name}");
 
+            var project = await package.GetActiveProjectAsync();
             var documentFactory = new OpenApiDocumentFactory();
-            var swaggerFile = item.FileNames[0];
+            var swaggerFile = item.FullPath;
 
             var document = await documentFactory.GetDocumentAsync(swaggerFile);
             if (!string.IsNullOrEmpty(document.OpenApi) &&

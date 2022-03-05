@@ -18,17 +18,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             this AsyncPackage package,
             Guid commandSet,
             int commandId,
-            Func<DTE, AsyncPackage, Task> func,
+            Func<AsyncPackage, Task> func,
             CancellationToken? cancellationToken = null)
         {
             var token = cancellationToken ?? CancellationToken.None;
             await package.JoinableTaskFactory
                 .SwitchToMainThreadAsync(token);
-
-            var dteTask = package.GetServiceAsync(typeof(DTE));
-            if (dteTask == null)
-                return;
-            var dte = await dteTask as DTE;
             
             var commandServiceTask = package.GetServiceAsync((typeof(IMenuCommandService)));
             if (commandServiceTask == null)
@@ -39,7 +34,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 return;
 
             var menuCommand = new MenuCommand(
-                async (sender, e) => await InvokeAsync(package, func, dte), 
+                async (sender, e) => await InvokeAsync(package, func), 
                 new CommandID(commandSet, commandId));
 
             commandService.AddCommand(menuCommand);
