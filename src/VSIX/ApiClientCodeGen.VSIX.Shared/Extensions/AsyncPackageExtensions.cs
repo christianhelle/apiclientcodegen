@@ -3,6 +3,7 @@ using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
+using System.Threading.Tasks;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
@@ -44,11 +45,29 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             commandService.AddCommand(menuCommand);
         }
 
-        private static async Task InvokeAsync(AsyncPackage package, Func<DTE, AsyncPackage, Task> func, DTE dte)
+        public static async Task<Project> GetActiveProjectAsync(this AsyncPackage package)
         {
             try
             {
-                await func.Invoke(dte, package);
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                var dteTask = package.GetServiceAsync(typeof(EnvDTE.DTE));
+                var Dte = await dteTask as EnvDTE.DTE;
+                return Dte.GetActiveProject();
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.TrackError(ex);
+                Trace.WriteLine("Error getting the active project" + ex);
+            }
+
+            return null;
+        }
+
+        private static async Task InvokeAsync(AsyncPackage package, Func<AsyncPackage, Task> func)
+        {
+            try
+            {
+                await func.Invoke(package);
             }
             catch (Exception e)
             {
