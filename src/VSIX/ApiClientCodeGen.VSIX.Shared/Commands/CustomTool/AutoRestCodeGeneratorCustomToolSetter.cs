@@ -31,7 +31,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
             var name = type.Name.Replace("CodeGenerator", string.Empty);
             Trace.WriteLine($"Generating code using {name}");
 
-            var project = await package.GetActiveProjectAsync();
+            var project = await VS.Solutions.GetActiveProjectAsync();
             var documentFactory = new OpenApiDocumentFactory();
             var swaggerFile = item.FullPath;
 
@@ -41,16 +41,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
                 openApiVersion > Version.Parse("3.0.0"))
             {
                 await project.InstallMissingPackagesAsync(
-                    package,
                     SupportedCodeGenerator.AutoRestV3);
 
-                await project.UpdatePropertyGroupsAsync(
-                    AutoRestConstants.PropertyGroups);
+                var projectFile = new ProjectFileUpdater(project.FullPath);
+                projectFile.UpdatePropertyGroup(AutoRestConstants.PropertyGroups);
             }
             else
             {
                 await project.InstallMissingPackagesAsync(
-                    package,
                     type.GetSupportedCodeGenerator());
             }
         }

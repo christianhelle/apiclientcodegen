@@ -7,18 +7,14 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
-using EnvDTE;
-using Microsoft;
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.ComponentModelHost;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.TextManager.Interop;
-using NuGet.VisualStudio;
 using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
@@ -26,133 +22,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
     [ExcludeFromCodeCoverage]
     public static class ProjectExtensions
     {
-        public static string? GetRootFolder(this Project project, DTE Dte)
+        public static object GetSelectedItem()
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-
-            if (project.IsKind("{66A26720-8FB5-11D2-AA7E-00C04F688DDE}")) //ProjectKinds.vsProjectKindSolutionFolder
-                return Path.GetDirectoryName(Dte.Solution.FullName);
-
-            if (string.IsNullOrEmpty(project.FullName))
-                return null;
-
-            string? fullPath;
-
-            try
-            {
-                fullPath = project.Properties.Item("FullPath").Value as string;
-            }
-            catch (ArgumentException)
-            {
-                try
-                {
-                    // MFC projects don't have FullPath, and there seems to be no way to query existence
-                    fullPath = project.Properties.Item("ProjectDirectory").Value as string;
-                }
-                catch (ArgumentException)
-                {
-                    // Installer projects have a ProjectPath.
-                    fullPath = project.Properties.Item("ProjectPath").Value as string;
-                }
-            }
-
-            if (string.IsNullOrEmpty(fullPath))
-                return File.Exists(project.FullName) ? Path.GetDirectoryName(project.FullName) : null;
-
-            if (Directory.Exists(fullPath))
-                return fullPath;
-
-            if (File.Exists(fullPath))
-                return Path.GetDirectoryName(fullPath);
-
-            return null;
-        }
-
-        public static ProjectItem? AddFileToProject(this Project project, DTE Dte, FileInfo file, string? itemType = null)
-        {
-            ThreadHelper.ThrowIfNotOnUIThread();
-
-            if (project.IsKind(ProjectTypes.ASPNET_5, ProjectTypes.SSDT))
-                return Dte.Solution.FindProjectItem(file.FullName);
-
-            var root = project.GetRootFolder(Dte);
-
-            if (string.IsNullOrEmpty(root) || !file.FullName.StartsWith(root, StringComparison.OrdinalIgnoreCase))
-                return null;
-
-            var item = project.ProjectItems.AddFromFile(file.FullName);
-            
-            try
-            {
-                ThreadHelper.ThrowIfNotOnUIThread();
-
-                if (item.ContainingProject == null)
-                    return item;
-
-                if (string.IsNullOrEmpty(itemType) ||
-                    item.ContainingProject.IsKind(ProjectTypes.WEBSITE_PROJECT) ||
-                    item.ContainingProject.IsKind(ProjectTypes.UNIVERSAL_APP))
-                    return item;
-
-                item.Properties.Item("ItemType").Value = itemType;
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.TrackError(ex);
-                Trace.WriteLine(ex);
-            }
-
-            return item;
-        }
-
-        private static bool IsKind(this Project project, params string[] kindGuids) 
-            => kindGuids.Any(guid =>
-            {
-                ThreadHelper.ThrowIfNotOnUIThread();
-                return project.Kind.Equals(guid, StringComparison.OrdinalIgnoreCase);
-            });
-
-        public static Project? GetActiveProject(this DTE Dte)
-        {
-            try
-            {
-                ThreadHelper.ThrowIfNotOnUIThread();
-
-                if (Dte.ActiveSolutionProjects is Array { Length: > 0 } activeSolutionProjects)
-                    return activeSolutionProjects.GetValue(0) as Project;
-
-                var doc = Dte.ActiveDocument;
-
-                if (doc != null && !string.IsNullOrEmpty(doc.FullName))
-                {
-                    var item = Dte.Solution?.FindProjectItem(doc.FullName);
-
-                    if (item != null)
-                        return item.ContainingProject;
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.Instance.TrackError(ex);
-                Trace.WriteLine("Error getting the active project" + ex);
-            }
-
-            return null;
-        }
-
-        public static IVsTextView GetCurrentNativeTextView()
-        {
-            ThreadHelper.ThrowIfNotOnUIThread();
-            IVsTextManager textManager = (IVsTextManager)ServiceProvider.GlobalProvider.GetService(typeof(SVsTextManager));
-            Assumes.Present(textManager);
-            ErrorHandler.ThrowOnFailure(textManager.GetActiveView(1, null, out var activeView));
-            return activeView;
-        }
-
-        public static object? GetSelectedItem()
-        {
-            ThreadHelper.ThrowIfNotOnUIThread();
-            object? selectedObject = null;
+            object selectedObject = null;
 
             var monitorSelection = (IVsMonitorSelection)Package.GetGlobalService(typeof(SVsShellMonitorSelection));
 
@@ -161,7 +34,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 monitorSelection.GetCurrentSelection(
                     out var hierarchyPointer,
                     out var itemId,
-                    out _,
+                    out var multiItemSelect,
                     out var selectionContainerPointer);
 
 
@@ -187,98 +60,133 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
         }
 
         public static async Task InstallMissingPackagesAsync(
-            this Project project,
-            AsyncPackage package,
+            this Community.VisualStudio.Toolkit.Project project,
             SupportedCodeGenerator codeGenerator)
         {
-            var options = VsPackage.Instance.GetDialogPage(typeof(GeneralOptionPage)) as IGeneralOptions;
-            if (options?.InstallMissingPackages == false)
-            {
-                Trace.WriteLine("Skipping automatic depedency package installation");
-                return;
-            }
-
-            Trace.WriteLine("Checking required dependencies");
-
-            var componentModel = (IComponentModel)await package.GetServiceAsync(typeof(SComponentModel));
-            Assumes.Present(componentModel);
-
-            var packageInstaller = componentModel.GetService<IVsPackageInstaller>();
-#pragma warning disable CS0618
-            var installedServices = componentModel.GetService<IVsPackageInstallerServices>();
-            var installedPackages = installedServices.GetInstalledPackages(project)?.ToList() ?? new List<IVsPackageMetadata>();
-#pragma warning restore CS0618
-
             var requiredPackages = codeGenerator.GetDependencies();
             foreach (var packageDependency in requiredPackages)
             {
-                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                InstallPackageDependency(project, packageDependency, installedPackages, packageInstaller);
+                var packageId = packageDependency.Name;
+                var version = packageDependency.Version;
+
+                var process = new ProcessLauncher();
+                await Task.Run(
+                    () => process.Start(
+                        "dotnet",
+                        $@"add ""{project.FullPath}"" package ""{packageId}"" --version {version}"));
             }
         }
 
-        private static void InstallPackageDependency(
-            Project project,
-            PackageDependency packageDependency,
-            IReadOnlyCollection<IVsPackageMetadata> installedPackages,
-            IVsPackageInstaller packageInstaller)
+        //public static async Task InstallMissingPackagesAsync(
+        //    this Project project,
+        //    AsyncPackage package,
+        //    SupportedCodeGenerator codeGenerator)
+        //{
+        //    var options = VsPackage.Instance.GetDialogPage(typeof(GeneralOptionPage)) as IGeneralOptions;
+        //    if (options?.InstallMissingPackages == false)
+        //    {
+        //        Trace.WriteLine("Skipping automatic depedency package installation");
+        //        return;
+        //    }
+
+        //    Trace.WriteLine("Checking required dependencies");
+
+        //    var componentModel = (IComponentModel)await package.GetServiceAsync(typeof(SComponentModel));
+        //    Assumes.Present(componentModel);
+
+        //    var packageInstaller = componentModel.GetService<IVsPackageInstaller>();
+        //    var installedServices = componentModel.GetService<IVsPackageInstallerServices>();
+        //    var installedPackages = installedServices.GetInstalledPackages(project)?.ToList() ?? new List<IVsPackageMetadata>();
+
+        //    var requiredPackages = codeGenerator.GetDependencies();
+        //    foreach (var packageDependency in requiredPackages)
+        //    {
+        //        await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+        //        InstallPackageDependency(project, packageDependency, installedPackages, packageInstaller);
+        //    }
+        //}
+
+        //private static void InstallPackageDependency(
+        //    Project project,
+        //    PackageDependency packageDependency,
+        //    IReadOnlyCollection<IVsPackageMetadata> installedPackages,
+        //    IVsPackageInstaller packageInstaller)
+        //{
+        //    var packageId = packageDependency.Name;
+        //    var version = packageDependency.Version;
+
+        //    if (installedPackages.Any(c => string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase)) &&
+        //       (installedPackages.Any(c => c.VersionString == version) || !packageDependency.ForceUpdate))
+        //    {
+        //        Trace.WriteLine($"{packageDependency.Name} is already installed");
+        //        return;
+        //    }
+
+        //    ThreadHelper.ThrowIfNotOnUIThread();
+        //    if (packageDependency.IsSystemLibrary)
+        //    {
+        //        Trace.WriteLine("Package is a system library");
+        //        if (!project.IsNetStandardLibrary())
+        //        {
+        //            Trace.WriteLine("Skipping package installation");
+        //            return;
+        //        }
+        //    }
+
+        //    Trace.WriteLine($"Installing {packageId} version {version}");
+
+        //    try
+        //    {
+        //        packageInstaller.InstallPackage(
+        //                null,
+        //                project,
+        //                packageId,
+        //                version,
+        //                true);
+
+        //        Trace.WriteLine($"Successfully installed {packageId} version {version}");
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Logger.Instance.TrackError(e);
+        //        Trace.WriteLine($"Unable to install {packageId} version {version}");
+        //        Trace.WriteLine(e);
+        //    }
+        //}
+
+        //public static string GetTopLevelNamespace(this Project item)
+        //{
+        //    try
+        //    {
+        //        ThreadHelper.ThrowIfNotOnUIThread();
+
+        //        var model = item.CodeModel;
+        //        foreach (CodeElement element in model.CodeElements)
+        //        {
+        //            if (element.Kind == vsCMElement.vsCMElementNamespace)
+        //            {
+        //                return element.FullName;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Logger.Instance.TrackError(e);
+        //        Trace.WriteLine("Unable to read top level namespace from Project");
+        //        Trace.WriteLine(e);
+        //    }
+        //    return null;
+        //}
+
+        public static string GetTopLevelNamespace(this Community.VisualStudio.Toolkit.Project item)
         {
-            var packageId = packageDependency.Name;
-            var version = packageDependency.Version;
-
-            if (installedPackages.Any(c => string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase)) &&
-               (installedPackages.Any(c => c.VersionString == version) || !packageDependency.ForceUpdate))
-            {
-                Trace.WriteLine($"{packageDependency.Name} is already installed");
-                return;
-            }
-
-            ThreadHelper.ThrowIfNotOnUIThread();
-            if (packageDependency.IsSystemLibrary)
-            {
-                Trace.WriteLine("Package is a system library");
-                if (!project.IsNetStandardLibrary())
-                {
-                    Trace.WriteLine("Skipping package installation");
-                    return;
-                }
-            }
-
-            Trace.WriteLine($"Installing {packageId} version {version}");
-
             try
             {
-                packageInstaller.InstallPackage(
-                        null,
-                        project,
-                        packageId,
-                        version,
-                        true);
-
-                Trace.WriteLine($"Successfully installed {packageId} version {version}");
-            }
-            catch (Exception e)
-            {
-                Logger.Instance.TrackError(e);
-                Trace.WriteLine($"Unable to install {packageId} version {version}");
-                Trace.WriteLine(e);
-            }
-        }
-
-        public static string? GetTopLevelNamespace(this Project item)
-        {
-            try
-            {
-                ThreadHelper.ThrowIfNotOnUIThread();
-
-                var model = item.CodeModel;
-                foreach (CodeElement element in model.CodeElements)
-                {
-                    if (element.Kind == vsCMElement.vsCMElementNamespace)
-                    {
-                        return element.FullName;
-                    }
-                }
+                SyntaxTree tree = CSharpSyntaxTree.ParseText(item.Children.FirstOrDefault().FullPath);
+                CompilationUnitSyntax root = tree.GetCompilationUnitRoot();
+                MemberDeclarationSyntax firstMember = root.Members[0];
+                var namespaceDeclaration = (NamespaceDeclarationSyntax)firstMember;
+                return namespaceDeclaration.ToFullString();
             }
             catch (Exception e)
             {
@@ -289,37 +197,37 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             return null;
         }
 
-        private static bool IsNetStandardLibrary(this Project project)
-        {
-            try
-            {
-                ThreadHelper.ThrowIfNotOnUIThread();
+        //public static bool IsNetStandardLibrary(this Project project)
+        //{
+        //    try
+        //    {
+        //        ThreadHelper.ThrowIfNotOnUIThread();
 
-                var fileName = project.FileName;
-                Trace.WriteLine("Project filename = " + fileName);
-                var contents = File.ReadAllText(fileName);
-                var result = contents.Contains("<TargetFramework>netstandard");
-                return result;
-            }
-            catch (Exception e)
-            {
-                Logger.Instance.TrackError(e);
-                Trace.WriteLine("Unable to read project file contents");
-                Trace.WriteLine(e);
-            }
+        //        var fileName = project.FileName;
+        //        Trace.WriteLine("Project filename = " + fileName);
+        //        var contents = File.ReadAllText(fileName);
+        //        var result = contents.Contains("<TargetFramework>netstandard");
+        //        return result;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Logger.Instance.TrackError(e);
+        //        Trace.WriteLine("Unable to read project file contents");
+        //        Trace.WriteLine(e);
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
-        public static async Task UpdatePropertyGroupsAsync(
-            this Project project,
-            IReadOnlyDictionary<string, string> properties)
-        {
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-            project.Save();
-            var projectFileUpdater = new ProjectFileUpdater(project.FileName);
-            projectFileUpdater.UpdatePropertyGroup(properties);
-        }
+        //public static async Task UpdatePropertyGroupsAsync(
+        //    this Project project,
+        //    IReadOnlyDictionary<string, string> properties)
+        //{
+        //    await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+        //    project.Save();
+        //    var projectFileUpdater = new ProjectFileUpdater(project.FileName);
+        //    projectFileUpdater.UpdatePropertyGroup(properties);
+        //}
     }
 
     public static class ProjectTypes

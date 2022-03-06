@@ -20,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
         protected override async Task OnInstallPackagesAsync(
             AsyncPackage package,
-            Project project,
+            Community.VisualStudio.Toolkit.Project project,
             EnterOpenApiSpecDialogResult dialogResult)
         {
             var url = dialogResult.Url;
@@ -29,21 +29,22 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
                 ? await OpenApiYamlDocument.FromYamlAsync(dialogResult.OpenApiSpecification)
                 : await OpenApiDocument.FromJsonAsync(dialogResult.OpenApiSpecification);
 
-            var codeGenerator = GetSupportedCodeGenerator(document.OpenApi);
-            await project.InstallMissingPackagesAsync(package, codeGenerator);
+            var codeGenerator = GetSupportedCodeGenerator(document);
+            await project.InstallMissingPackagesAsync(codeGenerator);
 
             if (codeGenerator == SupportedCodeGenerator.AutoRestV3)
             {
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                project.Save();
+                await project.SaveAsync();
 
-                await project.UpdatePropertyGroupsAsync(AutoRestConstants.PropertyGroups);
+                var projectFile = new ProjectFileUpdater(project.FullPath);
+                projectFile.UpdatePropertyGroup(AutoRestConstants.PropertyGroups);
             }
         }
 
-        private static SupportedCodeGenerator GetSupportedCodeGenerator(string openApiSpecVersion)
-            => !string.IsNullOrEmpty(openApiSpecVersion) &&
-               Version.TryParse(openApiSpecVersion, out var openApiVersion) &&
+        private static SupportedCodeGenerator GetSupportedCodeGenerator(OpenApiDocument document)
+            => !string.IsNullOrEmpty(document.OpenApi) &&
+               Version.TryParse(document.OpenApi, out var openApiVersion) &&
                openApiVersion > Version.Parse("3.0.0")
                 ? SupportedCodeGenerator.AutoRestV3
                 : SupportedCodeGenerator.AutoRest;

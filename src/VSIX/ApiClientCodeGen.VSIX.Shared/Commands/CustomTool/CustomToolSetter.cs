@@ -51,9 +51,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
             var name = typeof(T).Name.Replace("CodeGenerator", string.Empty);
             Trace.WriteLine($"Generating code using {name}");
 
-            var project = await package.GetActiveProjectAsync();
+            var project = await VS.Solutions.GetActiveProjectAsync();
             await project.InstallMissingPackagesAsync(
-                package,
                 typeof(T).GetSupportedCodeGenerator());
         }
     }

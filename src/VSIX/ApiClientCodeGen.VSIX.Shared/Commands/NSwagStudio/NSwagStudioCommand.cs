@@ -65,8 +65,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
 
             codeGenerator.GenerateCode(null);
 
-            var project = await package.GetActiveProjectAsync();
-            await project.InstallMissingPackagesAsync(package, SupportedCodeGenerator.NSwag);
+            var project = await VS.Solutions.GetActiveProjectAsync();
+            await project.InstallMissingPackagesAsync(SupportedCodeGenerator.NSwag);
         }
     }
 }

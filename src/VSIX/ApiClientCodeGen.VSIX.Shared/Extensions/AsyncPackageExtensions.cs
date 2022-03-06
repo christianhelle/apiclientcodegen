@@ -25,11 +25,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             await package.JoinableTaskFactory
                 .SwitchToMainThreadAsync(token);
             
-            var commandServiceTask = package.GetServiceAsync((typeof(IMenuCommandService)));
-            if (commandServiceTask == null)
-                return;
-            
-            var commandService = await commandServiceTask as IMenuCommandService;
+            var commandService = await package.GetServiceAsync(typeof(IMenuCommandService)) as IMenuCommandService;
             if (commandService == null)
                 return;
 
@@ -47,7 +43,35 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
                 var dteTask = package.GetServiceAsync(typeof(EnvDTE.DTE));
                 var Dte = await dteTask as EnvDTE.DTE;
-                return Dte.GetActiveProject();
+                return GetActiveProject(Dte);
+            }
+            catch (Exception ex)
+            {
+                Logger.Instance.TrackError(ex);
+                Trace.WriteLine("Error getting the active project" + ex);
+            }
+
+            return null;
+        }
+
+        private static Project GetActiveProject(this DTE Dte)
+        {
+            try
+            {
+                ThreadHelper.ThrowIfNotOnUIThread();
+
+                if (Dte.ActiveSolutionProjects is Array activeSolutionProjects && activeSolutionProjects.Length > 0)
+                    return activeSolutionProjects.GetValue(0) as Project;
+
+                var doc = Dte.ActiveDocument;
+
+                if (doc != null && !string.IsNullOrEmpty(doc.FullName))
+                {
+                    var item = Dte.Solution?.FindProjectItem(doc.FullName);
+
+                    if (item != null)
+                        return item.ContainingProject;
+                }
             }
             catch (Exception ex)
             {

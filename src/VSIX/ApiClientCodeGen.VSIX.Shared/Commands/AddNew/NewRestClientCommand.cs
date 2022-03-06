@@ -17,8 +17,8 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Newtonsoft.Json;
-using VSLangProj;
 using Task = System.Threading.Tasks.Task;
+using Community.VisualStudio.Toolkit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 {
@@ -54,16 +54,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             Logger.Instance.TrackFeatureUsage($"New REST API Client ({CodeGenerator.GetName()})");
 
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-            
+
             var result = EnterOpenApiSpecDialog.GetResult();
             if (result == null)
                 return;
-            
-            var dteTask = package.GetServiceAsync(typeof(DTE));
-            var dte = await dteTask as DTE;
 
-            var selectedItem = ProjectExtensions.GetSelectedItem();
-            var folder = FindFolder(selectedItem, dte);
+            var selectedItem = ProjectExtensions.GetSelectedItem();            
+            var folder = FindFolder(selectedItem);
             if (string.IsNullOrWhiteSpace(folder))
             {
                 Trace.WriteLine("Unable to get folder name");
@@ -72,10 +69,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
             var contents = result.OpenApiSpecification;
             var filename = $"{result.OutputFilename}{Path.GetExtension(result.Url)}";
+            
+            var project = await VS.Solutions.GetActiveProjectAsync();
 
             if (CodeGenerator == SupportedCodeGenerator.NSwagStudio)
             {
-                var outputNamespace = (await package.GetActiveProjectAsync())?.GetTopLevelNamespace();
+                var outputNamespace = project.GetTopLevelNamespace();
                 contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
                     result,
                     new NSwagStudioOptions(),
@@ -87,14 +86,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             File.WriteAllText(filePath, contents);
 
             var fileInfo = new FileInfo(filePath);
-            var project = ProjectExtensions.GetActiveProject(dte);
-            var projectItem = project.AddFileToProject(dte, fileInfo, "None");
-            projectItem.Properties.Item("BuildAction").Value = prjBuildAction.prjBuildActionNone;
+            await project.AddExistingFilesAsync(fileInfo.FullName);
+
+            var file = await PhysicalFile.FromFileAsync(fileInfo.FullName);
+            await file.TrySetAttributeAsync("BuildAction", "None");
 
             if (CodeGenerator != SupportedCodeGenerator.NSwagStudio)
             {
                 var customTool = CodeGenerator.GetCustomToolName();
-                projectItem.Properties.Item("CustomTool").Value = customTool;
+                await file.TrySetAttributeAsync("CustomTool", customTool);
             }
             else
             {
@@ -110,21 +110,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
                 dynamic nswag = JsonConvert.DeserializeObject(contents);
                 var nswagOutput = nswag.codeGenerators.swaggerToCSharpClient.output.ToString();
-                project.AddFileToProject(dte, new FileInfo(Path.Combine(folder, nswagOutput)));
+                project.AddExistingFilesAsync(Path.Combine(folder, nswagOutput));
             }
 
             await OnInstallPackagesAsync(package, project, result);
         }
 
-        protected virtual async Task OnInstallPackagesAsync(
+        protected virtual Task OnInstallPackagesAsync(
             AsyncPackage package,
-            Project project,
+            Community.VisualStudio.Toolkit.Project project,
             EnterOpenApiSpecDialogResult dialogResult)
-        {
-            await project.InstallMissingPackagesAsync(package, CodeGenerator);
-        }
+            => project.InstallMissingPackagesAsync(CodeGenerator);
 
-        private static string FindFolder(object item, DTE dte)
+        private static string FindFolder(object item)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
@@ -135,8 +133,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
                         ? Path.GetDirectoryName(projectItem.FileNames[1])
                         : projectItem.FileNames[1];
 
-                case Project project:
-                    return project.GetRootFolder(dte);
+                case Community.VisualStudio.Toolkit.Project project:
+                    return Path.GetDirectoryName(project.FullPath);
 
                 default:
                     return null;
