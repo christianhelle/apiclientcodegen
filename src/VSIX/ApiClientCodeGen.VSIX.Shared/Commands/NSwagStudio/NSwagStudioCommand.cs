@@ -38,7 +38,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
         {
             try
             {
-                await OnExecuteAsync(package);
+                await OnExecuteAsync();
             }
             catch (Exception e)
             {
@@ -46,7 +46,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
             }
         }
 
-        private static async Task OnExecuteAsync(AsyncPackage package)
+        private static async Task OnExecuteAsync()
         {
             Logger.Instance.TrackFeatureUsage("Generate NSwag Studio output");
 
