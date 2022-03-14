@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="Exceptionless" Version="4.6.2" />
-    <PackageReference Include="ICSharpCode.CodeConverter" Version="8.4.6.318" />
+    <PackageReference Include="ICSharpCode.CodeConverter" Version="8.4.7.326" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="NSwag.Core.Yaml" Version="13.15.9" />
     <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="13.15.9" />
