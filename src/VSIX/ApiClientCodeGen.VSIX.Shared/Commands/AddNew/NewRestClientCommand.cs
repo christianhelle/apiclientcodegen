@@ -1,24 +1,24 @@
-﻿using System;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
+using Community.VisualStudio.Toolkit;
+using EnvDTE;
+using Microsoft.VisualStudio.Shell;
+using Newtonsoft.Json;
+using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
-using EnvDTE;
-using Microsoft.VisualStudio.Shell;
-using Newtonsoft.Json;
 using Task = System.Threading.Tasks.Task;
-using Community.VisualStudio.Toolkit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 {
@@ -59,7 +59,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             if (result == null)
                 return;
 
-            var selectedItem = ProjectExtensions.GetSelectedItem();            
+            var selectedItem = ProjectExtensions.GetSelectedItem();
             var folder = FindFolder(selectedItem);
             if (string.IsNullOrWhiteSpace(folder))
             {
@@ -69,8 +69,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
             var contents = result.OpenApiSpecification;
             var filename = $"{result.OutputFilename}{Path.GetExtension(result.Url)}";
-            
+
             var project = await VS.Solutions.GetActiveProjectAsync();
+            await OnInstallPackagesAsync(package, project, result);
 
             if (CodeGenerator == SupportedCodeGenerator.NSwagStudio)
             {
@@ -112,8 +113,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
                 var nswagOutput = nswag.codeGenerators.swaggerToCSharpClient.output.ToString();
                 project.AddExistingFilesAsync(Path.Combine(folder, nswagOutput));
             }
-
-            await OnInstallPackagesAsync(package, project, result);
         }
 
         protected virtual Task OnInstallPackagesAsync(

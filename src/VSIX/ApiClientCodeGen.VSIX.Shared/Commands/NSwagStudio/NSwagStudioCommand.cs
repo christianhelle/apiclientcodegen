@@ -1,7 +1,4 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Threading;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
@@ -10,8 +7,10 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 using Community.VisualStudio.Toolkit;
-using EnvDTE;
 using Microsoft.VisualStudio.Shell;
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading;
 using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagStudio
@@ -52,6 +51,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
 
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
+            var project = await VS.Solutions.GetActiveProjectAsync();
+            await project.InstallMissingPackagesAsync(SupportedCodeGenerator.NSwag);
+
             var item = await VS.Solutions.GetActiveItemAsync();
             var nswagStudioFile = item.FullPath;
 
@@ -64,9 +66,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagS
                     new FileDownloader(new WebDownloader())));
 
             codeGenerator.GenerateCode(null);
-
-            var project = await VS.Solutions.GetActiveProjectAsync();
-            await project.InstallMissingPackagesAsync(SupportedCodeGenerator.NSwag);
         }
     }
 }

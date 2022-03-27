@@ -1,12 +1,12 @@
-﻿using System;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using Community.VisualStudio.Toolkit;
 using Microsoft.VisualStudio.Shell;
+using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
@@ -25,11 +25,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
 
             var type = typeof(AutoRestCodeGenerator);
             var item = await VS.Solutions.GetActiveItemAsync();
-            var file = await PhysicalFile.FromFileAsync(item.FullPath);
-            await file.TrySetAttributeAsync("CustomTool", type.Name);      
-
-            var name = type.Name.Replace("CodeGenerator", string.Empty);
-            Trace.WriteLine($"Generating code using {name}");
 
             var project = await VS.Solutions.GetActiveProjectAsync();
             var documentFactory = new OpenApiDocumentFactory();
@@ -51,6 +46,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
                 await project.InstallMissingPackagesAsync(
                     type.GetSupportedCodeGenerator());
             }
+
+            var file = await PhysicalFile.FromFileAsync(item.FullPath);
+            await file.TrySetAttributeAsync("CustomTool", type.Name);
+
+            var name = type.Name.Replace("CodeGenerator", string.Empty);
+            Trace.WriteLine($"Generating code using {name}");
         }
     }
 }
