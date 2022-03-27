@@ -116,7 +116,7 @@
             this.btnAddCustomHeaders.TabIndex = 9;
             this.btnAddCustomHeaders.Text = "HTTP &Headers";
             this.btnAddCustomHeaders.UseVisualStyleBackColor = true;
-            this.btnAddCustomHeaders.Click += new System.EventHandler(this.btnAddCustomHeaders_Click);
+            this.btnAddCustomHeaders.Click += new System.EventHandler(this.BtnAddCustomHeaders_Click);
             // 
             // EnterOpenApiSpecDialog
             // 

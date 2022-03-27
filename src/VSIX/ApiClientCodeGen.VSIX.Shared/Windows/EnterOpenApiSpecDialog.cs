@@ -43,6 +43,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
                 0,
                 "Enter OpenAPI Specification URL (e.g. https://petstore.swagger.io/v2/swagger.json)");
 
+        [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "WinForms event handler")]
         private async void BtnOK_Click(object sender, EventArgs e)
         {
             var url = tbUrl.Text;
@@ -58,7 +59,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             try
             {
                 lblStatus.Text = "Downloading...";
-                
+
                 var openApiSpecification = await DownloadOpenApiSpecAsync();
                 if (string.IsNullOrWhiteSpace(openApiSpecification))
                 {
@@ -106,7 +107,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             }
         }
 
-        private void btnAddCustomHeaders_Click(object sender, EventArgs e)
+        private void BtnAddCustomHeaders_Click(object sender, EventArgs e)
         {
             using (var form = new AddCustomHeaderDialog(customHeaders))
             {

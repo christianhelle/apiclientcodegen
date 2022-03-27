@@ -1,9 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using Microsoft;
+﻿using Microsoft;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 #pragma warning disable VSTHRD010 // Invoke single-threaded types on Main thread
 
@@ -28,20 +28,20 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 
             Trace.Listeners.Add(new OutputWindowTraceListener());
         }
-        
+
         public static void Log(object message)
         {
             try
             {
-                if (EnsurePane()) 
-                    pane.OutputString($"{DateTime.Now}: {message}{Environment.NewLine}");
+                if (EnsurePane())
+                    pane.OutputStringThreadSafe($"{DateTime.Now}: {message}{Environment.NewLine}");
             }
             catch
             {
                 // ignored
             }
         }
-        
+
         private static bool EnsurePane()
         {
             if (pane != null)

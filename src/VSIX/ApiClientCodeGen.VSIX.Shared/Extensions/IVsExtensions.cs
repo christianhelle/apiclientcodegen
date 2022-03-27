@@ -1,15 +1,19 @@
-﻿using System;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using System;
+using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 {
     [ExcludeFromCodeCoverage]
     public static class IVsExtensions
     {
+        [SuppressMessage(
+            "Usage",
+            "VSTHRD108:Assert thread affinity unconditionally",
+            Justification = "This will always throw during unit testing")]
         public static void Progress(
             this IVsGeneratorProgress pGenerateProgress,
             uint complete)
@@ -50,6 +54,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
         }
 
+        [SuppressMessage(
+            "Usage",
+            "VSTHRD108:Assert thread affinity unconditionally",
+            Justification = "Unit testing")]
         private static void GenerateErrorInternal(IVsGeneratorProgress pGenerateProgress, Exception exception)
         {
             if (!TestingUtility.IsRunningFromUnitTest)
