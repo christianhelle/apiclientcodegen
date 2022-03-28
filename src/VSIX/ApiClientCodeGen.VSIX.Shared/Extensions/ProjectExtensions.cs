@@ -5,6 +5,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using Community.VisualStudio.Toolkit;
 using EnvDTE;
 using Microsoft;
 using Microsoft.CodeAnalysis;
@@ -81,19 +82,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
             Trace.WriteLine("Checking required dependencies");
 
-            //var version = await VS.Shell.GetVsVersionAsync();
-            //if (version.Major >= 17)
-            //{
-            //    await InstallMissingPackagesVS2022Async(project, codeGenerator).ConfigureAwait(false);
-            //}
-            //else
-            //{
-            await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-            var dte = (DTE)await VsPackage.Instance.GetServiceAsync(typeof(DTE));
-            Assumes.Present(dte);
-            var dteProject = dte.GetActiveProject();
-            await InstallMissingPackagesAsync(dteProject, codeGenerator);
-            //}
+            var version = await VS.Shell.GetVsVersionAsync();
+            if (version.Major >= 17)
+            {
+                await InstallMissingPackagesVS2022Async(project, codeGenerator).ConfigureAwait(false);
+            }
+            else
+            {
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                var dte = (DTE)await VsPackage.Instance.GetServiceAsync(typeof(DTE));
+                Assumes.Present(dte);
+                var dteProject = dte.GetActiveProject();
+                await InstallMissingPackagesAsync(dteProject, codeGenerator);
+            }
         }
 
         private static async Task InstallMissingPackagesVS2022Async(
