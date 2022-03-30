@@ -47,7 +47,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                     out var multiItemSelect,
                     out var selectionContainerPointer);
 
-
                 if (Marshal.GetTypedObjectForIUnknown(
                     hierarchyPointer,
                     typeof(IVsHierarchy)) is IVsHierarchy selectedHierarchy)
@@ -83,9 +82,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             Trace.WriteLine("Checking required dependencies");
 
             var version = await VS.Shell.GetVsVersionAsync();
-            if (version.Major >= 17)
+            if (version.Major < 17)
             {
-                await InstallMissingPackagesVS2022Async(project, codeGenerator).ConfigureAwait(false);
+                await InstallMissingPackagesUsingCliAsync(project, codeGenerator).ConfigureAwait(false);
             }
             else
             {
@@ -97,7 +96,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
         }
 
-        private static async Task InstallMissingPackagesVS2022Async(
+        private static async Task InstallMissingPackagesUsingCliAsync(
             VSProject project,
             SupportedCodeGenerator codeGenerator)
         {
@@ -307,16 +306,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 
             return false;
         }
-
-        //public static async Task UpdatePropertyGroupsAsync(
-        //    this Project project,
-        //    IReadOnlyDictionary<string, string> properties)
-        //{
-        //    await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-        //    project.Save();
-        //    var projectFileUpdater = new ProjectFileUpdater(project.FileName);
-        //    projectFileUpdater.UpdatePropertyGroup(properties);
-        //}
     }
 
     public static class ProjectTypes
