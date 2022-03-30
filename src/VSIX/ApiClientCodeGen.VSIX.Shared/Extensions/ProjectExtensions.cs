@@ -246,30 +246,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
         }
 
-        //public static string GetTopLevelNamespace(this Project item)
-        //{
-        //    try
-        //    {
-        //        ThreadHelper.ThrowIfNotOnUIThread();
-
-        //        var model = item.CodeModel;
-        //        foreach (CodeElement element in model.CodeElements)
-        //        {
-        //            if (element.Kind == vsCMElement.vsCMElementNamespace)
-        //            {
-        //                return element.FullName;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        Logger.Instance.TrackError(e);
-        //        Trace.WriteLine("Unable to read top level namespace from Project");
-        //        Trace.WriteLine(e);
-        //    }
-        //    return null;
-        //}
-
         public static string GetTopLevelNamespace(this VSProject item)
         {
             try
