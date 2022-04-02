@@ -59,7 +59,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             if (result == null)
                 return;
 
-            var selectedItem = ProjectExtensions.GetSelectedItem();
+            var selectedItem = await VS.Solutions.GetActiveItemAsync();
             var folder = FindFolder(selectedItem);
             if (string.IsNullOrWhiteSpace(folder))
             {
@@ -127,13 +127,18 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
             switch (item)
             {
+                case Community.VisualStudio.Toolkit.Project project:
+                    return Path.GetDirectoryName(project.FullPath);
+
+                case SolutionItem solutionItem:
+                    return File.Exists(solutionItem.FullPath)
+                        ? Path.GetDirectoryName(solutionItem.FullPath)
+                        : solutionItem.FullPath;
+
                 case ProjectItem projectItem:
                     return File.Exists(projectItem.FileNames[1])
                         ? Path.GetDirectoryName(projectItem.FileNames[1])
                         : projectItem.FileNames[1];
-
-                case Community.VisualStudio.Toolkit.Project project:
-                    return Path.GetDirectoryName(project.FullPath);
 
                 default:
                     return null;
