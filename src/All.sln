@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29418.71
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32210.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSIX", "VSIX\ApiClientCodeGen.VSIX\ApiClientCodeGen.VSIX.csproj", "{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}"
 EndProject
@@ -71,12 +71,15 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ApiClientCodeGen.VSIX.Share
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSIX.Dev17", "VSIX\ApiClientCodeGen.VSIX.Dev17\ApiClientCodeGen.VSIX.Dev17.csproj", "{660BA451-88FB-4504-8170-4118F74467BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.CLI.Tests", "CLI\ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj", "{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.CLI.Tests", "CLI\ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj", "{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSIX.Legacy", "VSIX\ApiClientCodeGen.VSIX.Legacy\ApiClientCodeGen.VSIX.Legacy.csproj", "{D8BF2D0E-8867-4DB5-A6DB-22342A534DFC}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{660ba451-88fb-4504-8170-4118f74467ba}*SharedItemsImports = 4
 		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{bbecca08-2098-4a52-aeb6-71341098efea}*SharedItemsImports = 13
+		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{d8bf2d0e-8867-4db5-a6db-22342a534dfc}*SharedItemsImports = 4
 		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{f68fef1b-c874-4ef7-8c5c-e3e32e613141}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -166,6 +169,14 @@ Global
 		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Release|x86.ActiveCfg = Release|Any CPU
 		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Release|x86.Build.0 = Release|Any CPU
+		{D8BF2D0E-8867-4DB5-A6DB-22342A534DFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8BF2D0E-8867-4DB5-A6DB-22342A534DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8BF2D0E-8867-4DB5-A6DB-22342A534DFC}.Debug|x86.ActiveCfg = Debug|x86
+		{D8BF2D0E-8867-4DB5-A6DB-22342A534DFC}.Debug|x86.Build.0 = Debug|x86
+		{D8BF2D0E-8867-4DB5-A6DB-22342A534DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8BF2D0E-8867-4DB5-A6DB-22342A534DFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8BF2D0E-8867-4DB5-A6DB-22342A534DFC}.Release|x86.ActiveCfg = Release|x86
+		{D8BF2D0E-8867-4DB5-A6DB-22342A534DFC}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
