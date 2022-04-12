@@ -68,9 +68,7 @@ jobs:
 
       - name: Install SonarCloud scanner
         shell: powershell
-        run: |
-          New-Item -Path .\src\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path .\src\.sonar\scanner
+        run: dotnet tool update dotnet-sonarscanner --tool-path .\src\.sonar\scanner
 
       - name: Prepare
         env:
