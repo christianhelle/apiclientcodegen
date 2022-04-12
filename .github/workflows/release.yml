@@ -26,7 +26,7 @@ jobs:
       run: |
         ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
         ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
-        ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
+        ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Legacy/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Legacy/source.extension.vsixmanifest
       working-directory: src
       shell: pwsh
     - name: Cake Build
@@ -35,7 +35,7 @@ jobs:
     - name: Move build output
       run: |
         mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-${{ env.VERSION }}.vsix
-        mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
+        mv src/VSIX/ApiClientCodeGen.VSIX.Legacy/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-Legacy-${{ env.VERSION }}.vsix
     - name: Publish artifacts
       uses: actions/upload-artifact@v2
       with:
@@ -48,7 +48,7 @@ jobs:
         $VsixPublisher = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
         & $VsixPublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
         & $VsixPublisher publish -payload ApiClientCodeGenerator-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
-        & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest-vs2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
+        & $VsixPublisher publish -payload ApiClientCodeGenerator-Legacy-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest-legacy.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
 
   CLI:
     runs-on: windows-2019
