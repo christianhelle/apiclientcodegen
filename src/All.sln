@@ -69,19 +69,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.Core.Integ
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ApiClientCodeGen.VSIX.Shared", "VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.shproj", "{BBECCA08-2098-4A52-AEB6-71341098EFEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSIX.Dev17", "VSIX\ApiClientCodeGen.VSIX.Dev17\ApiClientCodeGen.VSIX.Dev17.csproj", "{660BA451-88FB-4504-8170-4118F74467BA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.CLI.Tests", "CLI\ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj", "{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSIX.Legacy", "VSIX\ApiClientCodeGen.VSIX.Legacy\ApiClientCodeGen.VSIX.Legacy.csproj", "{D8BF2D0E-8867-4DB5-A6DB-22342A534DFC}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{660ba451-88fb-4504-8170-4118f74467ba}*SharedItemsImports = 4
-		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{bbecca08-2098-4a52-aeb6-71341098efea}*SharedItemsImports = 13
-		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{d8bf2d0e-8867-4db5-a6db-22342a534dfc}*SharedItemsImports = 4
-		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{f68fef1b-c874-4ef7-8c5c-e3e32e613141}*SharedItemsImports = 4
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
@@ -153,14 +145,6 @@ Global
 		{C7B78E2C-4674-4ADD-B631-20536F8BDE0D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C7B78E2C-4674-4ADD-B631-20536F8BDE0D}.Release|x86.ActiveCfg = Release|Any CPU
 		{C7B78E2C-4674-4ADD-B631-20536F8BDE0D}.Release|x86.Build.0 = Release|Any CPU
-		{660BA451-88FB-4504-8170-4118F74467BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{660BA451-88FB-4504-8170-4118F74467BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{660BA451-88FB-4504-8170-4118F74467BA}.Debug|x86.ActiveCfg = Debug|x86
-		{660BA451-88FB-4504-8170-4118F74467BA}.Debug|x86.Build.0 = Debug|x86
-		{660BA451-88FB-4504-8170-4118F74467BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{660BA451-88FB-4504-8170-4118F74467BA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{660BA451-88FB-4504-8170-4118F74467BA}.Release|x86.ActiveCfg = Release|x86
-		{660BA451-88FB-4504-8170-4118F74467BA}.Release|x86.Build.0 = Release|x86
 		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47233C8D-0BAE-43CC-95C7-3C9FB73F103B}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -187,5 +171,10 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F80AB22A-52F6-46F7-A186-E650C75D076F}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{bbecca08-2098-4a52-aeb6-71341098efea}*SharedItemsImports = 13
+		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{d8bf2d0e-8867-4db5-a6db-22342a534dfc}*SharedItemsImports = 4
+		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{f68fef1b-c874-4ef7-8c5c-e3e32e613141}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal
