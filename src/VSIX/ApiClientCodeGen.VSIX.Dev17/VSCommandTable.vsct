@@ -32,24 +32,24 @@
     </Menus>
 
     <Buttons>
-      <Button guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0100" type="Button">
-        <Strings>
-          <ButtonText>Generate with AutoRest</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="guidPackageCmdSet" id="NSwagCodeGeneratorCustomToolSetter" priority="0x0101" type="Button">
+      <Button guid="guidPackageCmdSet" id="NSwagCodeGeneratorCustomToolSetter" priority="0x0100" type="Button">
         <Strings>
           <ButtonText>Generate with NSwag</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidPackageCmdSet" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0102" type="Button">
-        <Strings>
-          <ButtonText>Generate with Swagger</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="guidPackageCmdSet" id="OpenApiCodeGeneratorCustomToolSetter" priority="0x0103" type="Button">
+      <Button guid="guidPackageCmdSet" id="OpenApiCodeGeneratorCustomToolSetter" priority="0x0101" type="Button">
         <Strings>
           <ButtonText>Generate with OpenAPI</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidPackageCmdSet" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0102" type="Button">
+        <Strings>
+          <ButtonText>Generate with Swagger (Outdated)</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0103" type="Button">
+        <Strings>
+          <ButtonText>Generate with AutoRest (Unstable)</ButtonText>
         </Strings>
       </Button>
 
@@ -61,31 +61,32 @@
         </Strings>
       </Button>
 
-      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithAutoRest" priority="0x0100" type="Button">
-        <Strings>
-          <ButtonText>Generate with AutoRest</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwag" priority="0x0101" type="Button">
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwag" priority="0x0100" type="Button">
         <Strings>
           <ButtonText>Generate with NSwag</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwagStudio" priority="0x0102" type="Button">
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwagStudio" priority="0x0101" type="Button">
         <Strings>
           <ButtonText>Generate with NSwag Studio</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithSwagger" priority="0x0103" type="Button">
-        <Strings>
-          <ButtonText>Generate with Swagger</ButtonText>
-        </Strings>
-      </Button>
-      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithOpenApi" priority="0x0104" type="Button">
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithOpenApi" priority="0x0102" type="Button">
         <Strings>
           <ButtonText>Generate with OpenAPI</ButtonText>
         </Strings>
       </Button>
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithSwagger" priority="0x0103" type="Button">
+        <Strings>
+          <ButtonText>Generate with Swagger (Outdated)</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithAutoRest" priority="0x0104" type="Button">
+        <Strings>
+          <ButtonText>Generate with AutoRest (Unstable)</ButtonText>
+        </Strings>
+      </Button>
+
     </Buttons>
   </Commands>
 
@@ -111,7 +112,7 @@
     <CommandPlacement guid="guidPackageCmdSet" id="OpenApiCodeGeneratorCustomToolSetter" priority="0x0004" >
       <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
     </CommandPlacement>
-    
+
     <CommandPlacement guid="guidNewRestApiClientCmdSet" id="NewSubmenuGroup" priority="0xFFFF">
       <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_PROJECT_ADD_ITEMS"/>
     </CommandPlacement>
