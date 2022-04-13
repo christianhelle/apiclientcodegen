@@ -100,16 +100,16 @@
     <CommandPlacement guid="guidPackageCmdSet" id="CommandsGroup" priority="0x0001">
       <Parent guid="guidPackageCmdSet" id="Submenu"/>
     </CommandPlacement>
-    <CommandPlacement guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0001" >
+    <CommandPlacement guid="guidPackageCmdSet" id="NSwagCodeGeneratorCustomToolSetter" priority="0x0001" >
       <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
     </CommandPlacement>
-    <CommandPlacement guid="guidPackageCmdSet" id="NSwagCodeGeneratorCustomToolSetter" priority="0x0002" >
+    <CommandPlacement guid="guidPackageCmdSet" id="OpenApiCodeGeneratorCustomToolSetter" priority="0x0002" >
       <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
     </CommandPlacement>
     <CommandPlacement guid="guidPackageCmdSet" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0003" >
       <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
     </CommandPlacement>
-    <CommandPlacement guid="guidPackageCmdSet" id="OpenApiCodeGeneratorCustomToolSetter" priority="0x0004" >
+    <CommandPlacement guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0004" >
       <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
     </CommandPlacement>
 
@@ -122,19 +122,19 @@
     <CommandPlacement guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup" priority="0x0001">
       <Parent guid="guidNewRestApiClientCmdSet" id="NewSubmenu"/>
     </CommandPlacement>
-    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithAutoRest" priority="0x0001" >
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwag" priority="0x0001" >
       <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
     </CommandPlacement>
-    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwag" priority="0x0002" >
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwagStudio" priority="0x0002" >
       <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
     </CommandPlacement>
-    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwagStudio" priority="0x0003" >
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithOpenApi" priority="0x0003" >
       <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
     </CommandPlacement>
     <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithSwagger" priority="0x0004" >
       <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
     </CommandPlacement>
-    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithOpenApi" priority="0x0005" >
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithAutoRest" priority="0x0005" >
       <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
     </CommandPlacement>
   </CommandPlacements>
