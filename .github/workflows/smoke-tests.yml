@@ -12,6 +12,8 @@ on:
       - 'README.md'
       - 'src/*.json'
       - 'src/*.ps1'
+      - 'src/VSIX/**'
+      - 'src/VSMac/**'
     branches:
       - '*'
   pull_request:
