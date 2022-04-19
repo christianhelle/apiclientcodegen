@@ -22,38 +22,46 @@
     
     <Extension path="/MonoDevelop/Ide/Commands">
         <!-- Add New REST API Client -->
-        <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.AutoRest"
-                 _label = "Generate with AutoRest"
-                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewAutoRestCommandHandler" />
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.NSwag"
                  _label = "Generate with NSwag"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewNSwagCommandHandler" />
+
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.NSwagStudio"
                  _label = "Generate with NSwag Studio"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewNSwagStudioCommandHandler" />
-        <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Swagger"
-                 _label = "Generate with Swagger Codegen"
-                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewSwaggerCommandHandler" />
+
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.OpenApi"
                  _label = "Generate with OpenAPI Generator"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewOpenApiCommandHandler" />
+
+        <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Swagger"
+                 _label = "Generate with Swagger Codegen (Outdated)"
+                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewSwaggerCommandHandler" />
+
+        <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.AutoRest"
+                 _label = "Generate with AutoRest (Unstable)"
+                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewAutoRestCommandHandler" />
     
         <!-- REST API Client Generator -->
-        <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.AutoRest"
-                 _label = "Generate with AutoRest"
-                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateAutoRestCommandHandler" />
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.NSwag"
                  _label = "Generate with NSwag"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateNSwagCommandHandler" />
+
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.NSwagStudio"
                  _label = "Generate with NSwag Studio"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateNSwagStudioCommandHandler" />
-        <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Swagger"
-                 _label = "Generate with Swagger Codegen"
-                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateSwaggerCommandHandler" />
+
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.OpenApi"
                  _label = "Generate with OpenAPI Generator"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateOpenApiCommandHandler" />
+
+        <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Swagger"
+                 _label = "Generate with Swagger Codegen (Outdated)"
+                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateSwaggerCommandHandler" />
+
+        <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.AutoRest"
+                 _label = "Generate with AutoRest (Unstable)"
+                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateAutoRestCommandHandler" />
     </Extension>
 
     <Extension path = "/MonoDevelop/Ide/CustomTools">
