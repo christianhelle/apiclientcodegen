@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
@@ -69,11 +70,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     "--skip-overwrite " +
                     "--additional-properties " +
                     $"optionalEmitDefaultValues={openApiGeneratorOptions.EmitDefaultValue} " +
-                    $"optionalMethodArgument={openApiGeneratorOptions.MethodArgument} " +
+                    "--additional-properties " +
+                    $"optionalMethodArguments={openApiGeneratorOptions.MethodArgument} " +
+                    "--additional-properties " +
                     $"generatePropertyChanged={openApiGeneratorOptions.GeneratePropertyChanged} " +
+                    "--additional-properties " +
                     $"useCollection={openApiGeneratorOptions.UseCollection} " +
+                    "--additional-properties " +
                     $"useDateTimeOffset={openApiGeneratorOptions.UseDateTimeOffset} " +
-                    $"targetFramework={openApiGeneratorOptions.TargetFramework.ToString().ToLowerInvariant()} ";
+                    "--additional-properties " +
+                    $"targetFramework={openApiGeneratorOptions.TargetFramework.GetDescription()} ";
 
                 processLauncher.Start(
                     javaPathProvider.GetJavaExePath(),
