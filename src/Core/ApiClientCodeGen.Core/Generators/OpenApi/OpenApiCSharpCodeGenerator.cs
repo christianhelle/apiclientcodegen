@@ -67,7 +67,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     $"--package-name \"{defaultNamespace}\" " +
                     "--global-property apiTests=false,modelTests=false " +
                     "--skip-overwrite " +
-                    $"--additional-properties optionalEmitDefaultValues={openApiGeneratorOptions.EmitDefaultValue} ";
+                    "--additional-properties " +
+                    $"optionalEmitDefaultValues={openApiGeneratorOptions.EmitDefaultValue} " +
+                    $"optionalMethodArgument={openApiGeneratorOptions.MethodArgument} " +
+                    $"generatePropertyChanged={openApiGeneratorOptions.GeneratePropertyChanged} " +
+                    $"useCollection={openApiGeneratorOptions.UseCollection} " +
+                    $"useDateTimeOffset={openApiGeneratorOptions.UseDateTimeOffset} " +
+                    $"targetFramework={openApiGeneratorOptions.TargetFramework.ToString().ToLowerInvariant()} ";
 
                 processLauncher.Start(
                     javaPathProvider.GetJavaExePath(),
