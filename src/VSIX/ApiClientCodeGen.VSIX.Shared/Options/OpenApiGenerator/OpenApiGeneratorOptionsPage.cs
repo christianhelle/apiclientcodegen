@@ -40,7 +40,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApi
         public bool UseDateTimeOffset { get; set; } = false;
 
         [Category(Name)]
-        [DisplayName("Use DateTimeOffset")]
+        [DisplayName("Target Framework")]
         [Description("The target .NET framework version")]
         public OpenApiSupportedTargetFramework TargetFramework { get; set; } = OpenApiSupportedTargetFramework.NetStandard21;
     }
