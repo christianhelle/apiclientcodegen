@@ -8,7 +8,7 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="6.0.0" />
-    <PackageReference Include="Sentry" Version="3.16.0" />
+    <PackageReference Include="Sentry" Version="3.17.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />
