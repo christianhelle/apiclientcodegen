@@ -20,6 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApi
                 UseCollection = options.UseCollection;
                 UseDateTimeOffset = options.UseDateTimeOffset;
                 TargetFramework = options.TargetFramework;
+                CustomAdditionalProperties = options.CustomAdditionalProperties;
             }
             catch (Exception e)
             {
@@ -40,5 +41,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApi
         public bool UseCollection { get; set; }
         public bool UseDateTimeOffset { get; set; }
         public OpenApiSupportedTargetFramework TargetFramework { get; set; }
+        public string? CustomAdditionalProperties { get; set; }
     }
 }

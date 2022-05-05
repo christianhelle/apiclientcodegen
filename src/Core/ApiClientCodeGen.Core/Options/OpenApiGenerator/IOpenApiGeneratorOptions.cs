@@ -8,5 +8,6 @@
         bool UseCollection { get; set; }
         bool UseDateTimeOffset { get; set; }
         OpenApiSupportedTargetFramework TargetFramework { get; set; }
+        string? CustomAdditionalProperties { get; set; }
     }
 }

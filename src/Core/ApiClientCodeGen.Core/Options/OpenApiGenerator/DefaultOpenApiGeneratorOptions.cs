@@ -13,5 +13,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Op
         public bool UseDateTimeOffset { get; set; } = false;
 
         public OpenApiSupportedTargetFramework TargetFramework { get; set; }
+        public string? CustomAdditionalProperties { get; set; }
     }
 }

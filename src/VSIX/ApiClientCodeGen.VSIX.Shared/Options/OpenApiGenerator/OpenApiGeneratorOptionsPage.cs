@@ -43,5 +43,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApi
         [DisplayName("Target Framework")]
         [Description("The target .NET framework version")]
         public OpenApiSupportedTargetFramework TargetFramework { get; set; } = OpenApiSupportedTargetFramework.NetStandard21;
+
+        [Category(Name)]
+        [DisplayName("Custom Addition Properties")]
+        [Description("Setting this will override all the other additional properties")]
+        public string? CustomAdditionalProperties { get; set; }
     }
 }
