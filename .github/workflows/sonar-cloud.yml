@@ -90,8 +90,7 @@ jobs:
         working-directory: src
         continue-on-error: true
         run: |
-          ./build.ps1 --target Build-Release
-          ./build.ps1 --target Run-All-Tests
+          ./build.ps1 --target All
           dotnet test Rapicgen.sln --no-build --configuration Release --collect "Code coverage"
 
       - name: Convert Code Coverage
