@@ -91,7 +91,6 @@ jobs:
         continue-on-error: true
         run: |
           ./build.ps1 --target All
-          dotnet test Rapicgen.sln --no-build --configuration Release --collect "Code coverage"
 
       - name: Convert Code Coverage
         working-directory: src
