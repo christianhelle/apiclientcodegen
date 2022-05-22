@@ -88,9 +88,8 @@ jobs:
       - name: Build
         shell: powershell
         working-directory: src
-        continue-on-error: true
         run: |
-          ./build.ps1 --target All
+          ./build.ps1
 
       - name: Convert Code Coverage
         working-directory: src
