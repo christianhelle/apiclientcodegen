@@ -77,6 +77,7 @@ jobs:
 
       - name: Run All Tests
         run: powershell ./build.ps1 --target Run-All-Tests
+        working-directory: src
 
       - name: Run dotnet test
         working-directory: src
