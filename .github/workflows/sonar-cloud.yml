@@ -85,13 +85,17 @@ jobs:
               /d:sonar.cs.vstest.reportsPaths=TestResults/**/*.trx `
               /d:sonar.cs.vscoveragexml.reportsPaths=TestResults/**/*.coveragexml
 
-      - name: Build
-        shell: powershell
+      - name: Build VSIX
+        run: powershell ./build.ps1 --target VSIX
         working-directory: src
-        run: |
-          ./build.ps1 --target VSIX
-          ./build.ps1 --target Rapicgen
-          ./build.ps1 --target Run-All-Tests
+
+      - name: Build Rapicgen
+        run: powershell ./build.ps1 --target Rapicgen
+        working-directory: src
+
+      - name: Run All Tests
+        run: powershell ./build.ps1 --target Run-All-Tests
+        working-directory: src
 
       - name: Convert Code Coverage
         working-directory: src
