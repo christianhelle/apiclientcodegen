@@ -89,7 +89,9 @@ jobs:
         shell: powershell
         working-directory: src
         run: |
-          ./build.ps1
+          ./build.ps1 --target VSIX
+          ./build.ps1 --target Rapicgen
+          ./build.ps1 --target Run-All-Tests
 
       - name: Convert Code Coverage
         working-directory: src
