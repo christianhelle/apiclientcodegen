@@ -85,6 +85,11 @@ jobs:
         run: |
           dotnet test Rapicgen.sln --no-build --configuration Release --collect "Code coverage"
 
+      - name: Setup .NET versions
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+
       - name: Convert Code Coverage
         working-directory: src
         continue-on-error: true
