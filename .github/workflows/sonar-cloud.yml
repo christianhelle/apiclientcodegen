@@ -81,6 +81,7 @@ jobs:
 
       - name: Run dotnet test
         working-directory: src
+        continue-on-error: true
         run: |
           dotnet test Rapicgen.sln --no-build --configuration Release --collect "Code coverage"
 
