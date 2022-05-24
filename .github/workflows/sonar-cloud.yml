@@ -86,7 +86,11 @@ jobs:
 
       - name: Run All Tests
         run: powershell ./build.ps1 --target Run-All-Tests
+
+      - name: Run dotnet test
         working-directory: src
+        run: |
+          dotnet test Rapicgen.sln --no-build --configuration Release --collect "Code coverage"
 
       - name: Convert Code Coverage
         working-directory: src
