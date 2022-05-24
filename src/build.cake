@@ -80,6 +80,20 @@ Task("Build-VSIX")
                     .SetConfiguration("Release"));
     });
 
+Task("Build-Rapicgen")
+    .IsDependentOn("Restore")
+    .Does(() => {
+        Information("Building Rapicgen (.NET Tool)");
+        MSBuild(
+            File("Rapicgen.sln"),
+            settings =>
+                settings.SetPlatformTarget(PlatformTarget.MSIL)
+                    .SetMSBuildPlatform(MSBuildPlatform.x86)
+                    .UseToolVersion(MSBuildToolVersion.VS2019)
+                    .WithTarget("Build")
+                    .SetConfiguration("Release"));
+    });
+
 Task("Run-Unit-Tests")
     .IsDependentOn("Build-Release")
     .Does(() =>
@@ -125,6 +139,9 @@ Task("All")
 
 Task("VSIX")
     .IsDependentOn("Build-VSIX");
+
+Task("Rapicgen")
+    .IsDependentOn("Build-Rapicgen");
 
 Task("Default")
     .IsDependentOn("Run-Unit-Tests");
