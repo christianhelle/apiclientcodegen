@@ -30,6 +30,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApi
                 Trace.WriteLine(Environment.NewLine);
                 Trace.WriteLine("Error reading user options. Reverting to default values");
                 Trace.WriteLine($"EmitDefaultValue = {EmitDefaultValue}");
+                Trace.WriteLine($"MethodArgument = {MethodArgument}");
+                Trace.WriteLine($"GeneratePropertyChanged = {GeneratePropertyChanged}");
+                Trace.WriteLine($"UseCollection = {UseCollection}");
+                Trace.WriteLine($"UseDateTimeOffset = {UseDateTimeOffset}");
+                Trace.WriteLine($"TargetFramework = {TargetFramework}");
+                Trace.WriteLine($"CustomAdditionalProperties = {CustomAdditionalProperties}");
 
                 EmitDefaultValue = true;
             }
