@@ -37,7 +37,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
                 value,
                 JsonSettings);
 
-        public static bool EndsWithAny(this string text, params string[] words) 
+        public static bool EndsWithAny(this string text, params string[] words)
             => EndsWithAny(text, words, StringComparison.CurrentCultureIgnoreCase);
 
         public static bool EndsWithAny(
@@ -64,31 +64,29 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
             return stringBuilder.ToString();
         }
 
-        public static string GetDescription<T>(this T e) where T : IConvertible
+        public static string GetDescription<T>(this T e) where T : Enum, IConvertible
         {
-            if (e is Enum)
+            var type = e.GetType();
+            var values = Enum.GetValues(type);
+
+            foreach (int val in values)
             {
-                Type type = e.GetType();
-                Array values = System.Enum.GetValues(type);
-
-                foreach (int val in values)
+                if (val == e.ToInt32(CultureInfo.InvariantCulture))
                 {
-                    if (val == e.ToInt32(CultureInfo.InvariantCulture))
-                    {
-                        var memInfo = type.GetMember(type.GetEnumName(val));
-                        var descriptionAttribute = memInfo[0]
-                            .GetCustomAttributes(typeof(DescriptionAttribute), false)
-                            .FirstOrDefault() as DescriptionAttribute;
+                    var memInfo = type.GetMember(type.GetEnumName(val));
+                    var descriptionAttribute = memInfo[0]
+                        .GetCustomAttributes(typeof(DescriptionAttribute), false)
+                        .FirstOrDefault() as DescriptionAttribute;
 
-                        if (descriptionAttribute != null)
-                        {
-                            return descriptionAttribute.Description;
-                        }
+                    if (descriptionAttribute != null)
+                    {
+                        return descriptionAttribute.Description;
                     }
                 }
             }
 
-            return null; // could also return string.Empty
+            throw new InvalidEnumArgumentException(
+                $"{e} is not a valid value for enum {type.Name}");
         }
     }
 }
