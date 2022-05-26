@@ -1,5 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator
 {
+    [ExcludeFromCodeCoverage]
     public class DefaultOpenApiGeneratorOptions : IOpenApiGeneratorOptions
     {
         public bool EmitDefaultValue { get; set; } = true;
@@ -13,6 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Op
         public bool UseDateTimeOffset { get; set; } = false;
 
         public OpenApiSupportedTargetFramework TargetFramework { get; set; }
+
         public string? CustomAdditionalProperties { get; set; }
     }
 }
