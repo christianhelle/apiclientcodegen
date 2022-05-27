@@ -24,6 +24,7 @@
     <TieredCompilation>true</TieredCompilation>
     <PackageReadmeFile>CLI.md</PackageReadmeFile>
     <RootNamespace>ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI</RootNamespace>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
