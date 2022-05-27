@@ -35,7 +35,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         }
 
         [Option(
-            LongName = "optionalEmitDefaultValues",
+            ShortName = "optionalEmitDefaultValues",
             Description =
                 "Set to true if the default value for a member should be generated in the serialization stream. " +
                 "Setting the EmitDefaultValue property to false is not a recommended practice. " +
@@ -48,7 +48,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         }
 
         [Option(
-            LongName = "optionalMethodArguments",
+            ShortName = "optionalMethodArguments",
             Description = "C# Optional method argument, e.g. void square(int x=10) (.net 4.0+ only).")]
         public bool MethodArgument
         {
@@ -56,7 +56,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
             set => openApiGeneratorOptions.MethodArgument = value;
         }
 
-        [Option(LongName = "generatePropertyChanged")]
+        [Option(ShortName = "generatePropertyChanged")]
         public bool GeneratePropertyChanged
         {
             get => openApiGeneratorOptions.GeneratePropertyChanged;
@@ -64,7 +64,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         }
 
         [Option(
-            LongName = "useCollection",
+            ShortName = "useCollection",
             Description = "Deserialize array types to Collection<T> instead of List<T>.")]
         public bool UseCollection
         {
@@ -73,7 +73,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         }
 
         [Option(
-            LongName = "useDateTimeOffset",
+            ShortName = "useDateTimeOffset",
             Description = "Use DateTimeOffset to model date-time properties")]
         public bool UseDateTimeOffset
         {
@@ -82,7 +82,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         }
 
         [Option(
-            LongName = "targetFramework",
+            ShortName = "targetFramework",
             Description = "The target .NET Standard / Core / Framework version")]
         public OpenApiSupportedTargetFramework TargetFramework
         {
@@ -91,7 +91,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         }
 
         [Option(
-            LongName = "customAdditionalProperties",
+            ShortName = "customAdditionalProperties",
             Description = "Setting this will override all the other additional properties")]
         public string? CustomAdditionalProperties
         {
