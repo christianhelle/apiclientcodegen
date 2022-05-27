@@ -8,6 +8,8 @@
     <UseCodebase>true</UseCodebase>
     <TargetFrameworkProfile />
     <RuntimeIdentifier>win</RuntimeIdentifier>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

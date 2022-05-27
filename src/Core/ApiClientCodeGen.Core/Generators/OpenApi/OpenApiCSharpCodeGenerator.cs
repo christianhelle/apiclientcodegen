@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
@@ -66,8 +67,29 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     $"--output \"{output}\" " +
                     $"--package-name \"{defaultNamespace}\" " +
                     "--global-property apiTests=false,modelTests=false " +
-                    "--skip-overwrite " +
-                    $"--additional-properties optionalEmitDefaultValues={openApiGeneratorOptions.EmitDefaultValue} ";
+                    "--skip-overwrite ";
+
+                if (string.IsNullOrWhiteSpace(openApiGeneratorOptions.CustomAdditionalProperties))
+                {
+                    arguments +=
+                        "--additional-properties " +
+                        $"optionalEmitDefaultValues={openApiGeneratorOptions.EmitDefaultValue} " +
+                        "--additional-properties " +
+                        $"optionalMethodArguments={openApiGeneratorOptions.MethodArgument} " +
+                        "--additional-properties " +
+                        $"generatePropertyChanged={openApiGeneratorOptions.GeneratePropertyChanged} " +
+                        "--additional-properties " +
+                        $"useCollection={openApiGeneratorOptions.UseCollection} " +
+                        "--additional-properties " +
+                        $"useDateTimeOffset={openApiGeneratorOptions.UseDateTimeOffset} " +
+                        "--additional-properties " +
+                        $"targetFramework={openApiGeneratorOptions.TargetFramework.GetDescription()} ";
+                }
+                else
+                {
+                    arguments += openApiGeneratorOptions.CustomAdditionalProperties;
+                }
+
 
                 processLauncher.Start(
                     javaPathProvider.GetJavaExePath(),

@@ -61,7 +61,7 @@ function Build-GeneratedCode {
     
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("All", "AutoRest-V2", "AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
+        [ValidateSet("All", "NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3")]
         [string]
         $ToolName,
 
@@ -163,7 +163,7 @@ function Generate-Code {
     
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("AutoRest-V2", "AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
+        [ValidateSet("NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3")]
         [string]
         $ToolName,
 
@@ -308,7 +308,7 @@ function Generate-CodeThenBuild {
     
     param (
         [Parameter(Mandatory=$false)]
-        [ValidateSet("All", "AutoRest-V2", "AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")]
+        [ValidateSet("All", "NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3")]
         [string]
         $ToolName = "All",
 
@@ -338,9 +338,9 @@ function Generate-CodeThenBuild {
             Build-GeneratedCode -ToolName $ToolName
         } else {
             if ($Version -eq "V2") {
-                $tools = @("AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
+                $tools = @("NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2")
             } else {
-                $tools = @("AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
+                $tools = @("NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V3")
             }  
             $tools | ForEach-Object {
                 Generate-CodeThenBuild `

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
@@ -35,7 +37,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
                 value,
                 JsonSettings);
 
-        public static bool EndsWithAny(this string text, params string[] words) 
+        public static bool EndsWithAny(this string text, params string[] words)
             => EndsWithAny(text, words, StringComparison.CurrentCultureIgnoreCase);
 
         public static bool EndsWithAny(
@@ -60,6 +62,31 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
                     stringBuilder.Append(b.ToString("x2"));
             }
             return stringBuilder.ToString();
+        }
+
+        public static string GetDescription<T>(this T e) where T : Enum, IConvertible
+        {
+            var type = e.GetType();
+            var values = Enum.GetValues(type);
+
+            foreach (int val in values)
+            {
+                if (val == e.ToInt32(CultureInfo.InvariantCulture))
+                {
+                    var memInfo = type.GetMember(type.GetEnumName(val));
+                    var descriptionAttribute = memInfo[0]
+                        .GetCustomAttributes(typeof(DescriptionAttribute), false)
+                        .FirstOrDefault() as DescriptionAttribute;
+
+                    if (descriptionAttribute != null)
+                    {
+                        return descriptionAttribute.Description;
+                    }
+                }
+            }
+
+            throw new InvalidEnumArgumentException(
+                $"{e} is not a valid value for enum {type.Name}");
         }
     }
 }

@@ -82,8 +82,7 @@ jobs:
       - name: Run dotnet test
         working-directory: src
         continue-on-error: true
-        run: |
-          dotnet test Rapicgen.sln --no-build --configuration Release --collect "Code coverage"
+        run: dotnet test Rapicgen.sln -f netcoreapp3.1 --collect "Code coverage"
 
       - name: Setup .NET versions
         uses: actions/setup-dotnet@v1
