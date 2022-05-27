@@ -35,7 +35,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         }
 
         [Option(
-            LongName = "emit-default-value",
+            LongName = "optionalEmitDefaultValues",
             Description =
                 "Set to true if the default value for a member should be generated in the serialization stream. " +
                 "Setting the EmitDefaultValue property to false is not a recommended practice. " +
@@ -48,7 +48,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         }
 
         [Option(
-            LongName = "optional-method-arguments",
+            LongName = "optionalMethodArguments",
             Description = "C# Optional method argument, e.g. void square(int x=10) (.net 4.0+ only).")]
         public bool MethodArgument
         {
