@@ -10,7 +10,7 @@ using McMaster.Extensions.CommandLineUtils;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
     [Command("openapi", Description = "Generate Swagger / Open API client using OpenAPI Generator")]
-    public class OpenApiGeneratorCommand : CodeGeneratorCommand
+    public class OpenApiGeneratorCommand : CodeGeneratorCommand, IOpenApiGeneratorOptions
     {
         private readonly IGeneralOptions options;
         private readonly IOpenApiGeneratorOptions openApiGeneratorOptions;
@@ -35,7 +35,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         }
 
         [Option(
-            
             LongName = "emit-default-value",
             Description =
                 "Set to true if the default value for a member should be generated in the serialization stream. " +
@@ -46,6 +45,58 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         {
             get => openApiGeneratorOptions.EmitDefaultValue;
             set => openApiGeneratorOptions.EmitDefaultValue = value;
+        }
+
+        [Option(
+            LongName = "optional-method-arguments",
+            Description = "C# Optional method argument, e.g. void square(int x=10) (.net 4.0+ only).")]
+        public bool MethodArgument
+        {
+            get => openApiGeneratorOptions.MethodArgument;
+            set => openApiGeneratorOptions.MethodArgument = value;
+        }
+
+        [Option(LongName = "generatePropertyChanged")]
+        public bool GeneratePropertyChanged
+        {
+            get => openApiGeneratorOptions.GeneratePropertyChanged;
+            set => openApiGeneratorOptions.GeneratePropertyChanged = value;
+        }
+
+        [Option(
+            LongName = "useCollection",
+            Description = "Deserialize array types to Collection<T> instead of List<T>.")]
+        public bool UseCollection
+        {
+            get => openApiGeneratorOptions.UseCollection;
+            set => openApiGeneratorOptions.UseCollection = value;
+        }
+
+        [Option(
+            LongName = "useDateTimeOffset",
+            Description = "Use DateTimeOffset to model date-time properties")]
+        public bool UseDateTimeOffset
+        {
+            get => openApiGeneratorOptions.UseDateTimeOffset;
+            set => openApiGeneratorOptions.UseDateTimeOffset = value;
+        }
+
+        [Option(
+            LongName = "targetFramework",
+            Description = "The target .NET Standard / Core / Framework version")]
+        public OpenApiSupportedTargetFramework TargetFramework
+        {
+            get => openApiGeneratorOptions.TargetFramework;
+            set => openApiGeneratorOptions.TargetFramework = value;
+        }
+
+        [Option(
+            LongName = "customAdditionalProperties",
+            Description = "Setting this will override all the other additional properties")]
+        public string? CustomAdditionalProperties
+        {
+            get => openApiGeneratorOptions.CustomAdditionalProperties;
+            set => openApiGeneratorOptions.CustomAdditionalProperties = value;
         }
 
         public override ICodeGenerator CreateGenerator()
