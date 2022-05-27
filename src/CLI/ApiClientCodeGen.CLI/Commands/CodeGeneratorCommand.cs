@@ -42,10 +42,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 
         public int OnExecute()
         {
+            var codeGeneratorName = this.GetCodeGeneratorName();
             if (!SkipLogging)
+            {
                 Logger.Instance.TrackFeatureUsage(
-                    this.GetCodeGeneratorName(),
+                    codeGeneratorName,
                     "CLI");
+            }
             else
             {
                 Logger.Instance.Disable();
