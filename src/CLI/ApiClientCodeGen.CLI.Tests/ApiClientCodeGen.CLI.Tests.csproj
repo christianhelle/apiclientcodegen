@@ -4,7 +4,6 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <RootNamespace>ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Tests</RootNamespace>
         <IsPackable>false</IsPackable>
-        <OutputType>Library</OutputType>
     </PropertyGroup>
 
     <ItemGroup>
