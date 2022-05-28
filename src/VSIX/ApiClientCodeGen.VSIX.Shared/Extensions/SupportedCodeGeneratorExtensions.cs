@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.NSwag;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.OpenApi;
@@ -11,9 +9,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
 {
     public static class SupportedCodeGeneratorExtensions
     {
-        public static string GetCustomToolName(this SupportedCodeGenerator generator)
+        public static string? GetCustomToolName(this SupportedCodeGenerator generator)
         {
-            string customTool = null;
+            string? customTool = null;
             switch (generator)
             {
                 case SupportedCodeGenerator.NSwag:
