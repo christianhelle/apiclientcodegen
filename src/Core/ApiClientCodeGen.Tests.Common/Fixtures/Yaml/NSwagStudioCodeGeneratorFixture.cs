@@ -47,7 +47,7 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.Yaml
                         new FileDownloader(new WebDownloader())))
                 .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
-                .BeNull();
+                .BeEmpty();
 
             Code = File.ReadAllText(
                 Path.Combine(
