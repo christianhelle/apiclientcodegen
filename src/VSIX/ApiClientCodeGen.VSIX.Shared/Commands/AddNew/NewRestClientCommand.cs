@@ -60,6 +60,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
                 return;
 
             var selectedItem = ProjectExtensions.GetSelectedItem();
+            if (selectedItem == null)
+            {
+                Trace.WriteLine("Nothing is selected");
+                return;
+            }
+            
             var folder = FindFolder(selectedItem, dte);
             if (string.IsNullOrWhiteSpace(folder))
             {
@@ -72,7 +78,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
             if (CodeGenerator == SupportedCodeGenerator.NSwagStudio)
             {
-                var outputNamespace = dte.GetActiveProject().GetTopLevelNamespace();
+                var outputNamespace = dte.GetActiveProject()?.GetTopLevelNamespace();
                 contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
                     result,
                     new NSwagStudioOptions(),
@@ -84,33 +90,37 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             File.WriteAllText(filePath, contents);
 
             var fileInfo = new FileInfo(filePath);
-            var project = ProjectExtensions.GetActiveProject(dte);
-            var projectItem = project.AddFileToProject(dte, fileInfo, "None");
-            projectItem.Properties.Item("BuildAction").Value = prjBuildAction.prjBuildActionNone;
-
-            if (CodeGenerator != SupportedCodeGenerator.NSwagStudio)
+            var project = dte.GetActiveProject();
+            var projectItem = project?.AddFileToProject(dte, fileInfo, "None");
+            if (projectItem != null)
             {
-                var customTool = CodeGenerator.GetCustomToolName();
-                projectItem.Properties.Item("CustomTool").Value = customTool;
+                projectItem.Properties.Item("BuildAction").Value = prjBuildAction.prjBuildActionNone;
+
+                if (CodeGenerator != SupportedCodeGenerator.NSwagStudio)
+                {
+                    var customTool = CodeGenerator.GetCustomToolName();
+                    projectItem.Properties.Item("CustomTool").Value = customTool;
+                }
+                else
+                {
+                    var generator = new NSwagStudioCodeGenerator(
+                        filePath,
+                        new CustomPathOptions(),
+                        new ProcessLauncher(),
+                        new DependencyInstaller(
+                            new NpmInstaller(new ProcessLauncher()),
+                            new FileDownloader(new WebDownloader())));
+
+                    generator.GenerateCode(null!);
+
+                    dynamic nswag = JsonConvert.DeserializeObject(contents)!;
+                    var nswagOutput = nswag.codeGenerators.swaggerToCSharpClient.output.ToString();
+                    project!.AddFileToProject(dte, new FileInfo(Path.Combine(folder, nswagOutput)));
+                }
             }
-            else
-            {
-                var generator = new NSwagStudioCodeGenerator(
-                    filePath,
-                    new CustomPathOptions(),
-                    new ProcessLauncher(),
-                    new DependencyInstaller(
-                        new NpmInstaller(new ProcessLauncher()),
-                        new FileDownloader(new WebDownloader())));
 
-                generator.GenerateCode(null!);
-
-                dynamic nswag = JsonConvert.DeserializeObject(contents)!;
-                var nswagOutput = nswag.codeGenerators.swaggerToCSharpClient.output.ToString();
-                project.AddFileToProject(dte, new FileInfo(Path.Combine(folder, nswagOutput)));
-            }
-
-            await OnInstallPackagesAsync(package, project, result);
+            if (project != null)
+                await OnInstallPackagesAsync(package, project, result);
         }
 
         protected virtual async Task OnInstallPackagesAsync(
