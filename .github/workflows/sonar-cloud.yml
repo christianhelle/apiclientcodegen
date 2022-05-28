@@ -75,17 +75,14 @@ jobs:
         run: powershell ./build.ps1 --target Rapicgen
         working-directory: src
 
-      - name: Run Tests
-        uses: microsoft-approved-actions/vstest@master
-        with:
-          runSettingsFile: src/Tests.runsettings
-          runInParallel: true
-          codeCoverageEnabled: true
-          platform: 'Any CPU'
-          configuration: 'Release'
-          diagnosticsEnabled: true
-          rerunFailedTests: true
-          rerunMaxAttempts: 3
+      - name: Run All Tests
+        run: powershell ./build.ps1 --target Run-All-Tests
+        working-directory: src
+
+      - name: Run dotnet test
+        working-directory: src
+        continue-on-error: true
+        run: dotnet test Rapicgen.sln -f netcoreapp3.1 --collect "Code coverage"
 
       - name: Setup .NET versions
         uses: actions/setup-dotnet@v1
