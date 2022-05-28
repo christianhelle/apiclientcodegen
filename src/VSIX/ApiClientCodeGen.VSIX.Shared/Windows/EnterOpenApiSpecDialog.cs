@@ -21,10 +21,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             InitializeComponent();
         }
 
-        public static EnterOpenApiSpecDialogResult GetResult()
+        public static EnterOpenApiSpecDialogResult? GetResult()
         {
             DialogResult dialogResult;
-            EnterOpenApiSpecDialogResult result;
+            EnterOpenApiSpecDialogResult? result;
             using (var form = new EnterOpenApiSpecDialog())
             {
                 dialogResult = form.ShowDialog();
@@ -34,7 +34,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             return dialogResult == DialogResult.OK ? result : null;
         }
 
-        public EnterOpenApiSpecDialogResult Result { get; private set; }
+        public EnterOpenApiSpecDialogResult? Result { get; private set; }
 
         private void EnterOpenApiSpecDialog_Load(object sender, EventArgs e)
             => NativeMethods.SendMessage(
