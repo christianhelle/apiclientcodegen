@@ -95,47 +95,45 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             string? workingDirectory = null)
         {
             var processInfo = new ProcessStartInfo(command, arguments);
-            using (var process = new Process {StartInfo = processInfo})
+            using var process = new Process { StartInfo = processInfo };
+            var outputData = new StringBuilder();
+            process.OutputDataReceived += (s, e) =>
             {
-                var outputData = new StringBuilder();
-                process.OutputDataReceived += (s, e) =>
-                {
-                    outputData.AppendLine(e.Data);
-                    onOutputData?.Invoke(e.Data);
-                };
+                outputData.AppendLine(e.Data);
+                onOutputData?.Invoke(e.Data);
+            };
 
-                var errorData = new StringBuilder();
-                process.ErrorDataReceived += (s, e) =>
-                {
-                    errorData.AppendLine(e.Data);
-                    onErrorData?.Invoke(e.Data);
-                };
+            var errorData = new StringBuilder();
+            process.ErrorDataReceived += (s, e) =>
+            {
+                errorData.AppendLine(e.Data);
+                onErrorData?.Invoke(e.Data);
+            };
 
-                process.StartInfo.RedirectStandardOutput = true;
-                process.StartInfo.RedirectStandardError = true;
-                process.StartInfo.RedirectStandardInput = true;
-                process.StartInfo.UseShellExecute = false;
-                process.StartInfo.CreateNoWindow = true;
-                process.StartInfo.EnvironmentVariables["CORECLR_ENABLE_PROFILING"] = "0";
-                process.StartInfo.EnvironmentVariables["COR_ENABLE_PROFILING"] = "0";
+            process.StartInfo.RedirectStandardOutput = true;
+            process.StartInfo.RedirectStandardError = true;
+            process.StartInfo.RedirectStandardInput = true;
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.CreateNoWindow = true;
+            process.StartInfo.EnvironmentVariables["CORECLR_ENABLE_PROFILING"] = "0";
+            process.StartInfo.EnvironmentVariables["COR_ENABLE_PROFILING"] = "0";
 
-                if (workingDirectory != null)
-                    process.StartInfo.WorkingDirectory = workingDirectory;
+            if (workingDirectory != null)
+                process.StartInfo.WorkingDirectory = workingDirectory;
 
-                process.Start();
-                process.BeginOutputReadLine();
-                process.BeginErrorReadLine();
-                process.WaitForExit();
+            process.Start();
+            process.BeginOutputReadLine();
+            process.BeginErrorReadLine();
+            process.WaitForExit();
 
-                var output = outputData.ToString();
-                if (process.ExitCode != 0 && !output.Contains("Done."))
-                    throw new ProcessLaunchException(
-                        command,
-                        arguments,
-                        workingDirectory,
-                        output,
-                        errorData.ToString());
-            }
+            var output = outputData.ToString();
+            if (process.ExitCode != 0 && !output.Contains("Done."))
+                throw new ProcessLaunchException(
+                    command,
+                    arguments,
+                    workingDirectory,
+                    output,
+                    errorData.ToString());
         }
     }
 }
