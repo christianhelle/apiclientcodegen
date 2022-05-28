@@ -14,15 +14,15 @@ dotnet tool update dotnet-sonarscanner --tool-path .tools\scanner
     /o:"christianhelle-github" `
     /d:sonar.login=$sonar `
     /d:sonar.host.url="https://sonarcloud.io" `
-    /d:sonar.cs.vstest.reportsPaths=TestResults/**/*.trx `
-    /d:sonar.cs.vscoveragexml.reportsPaths=TestResults/**/*.coveragexml
+    /d:sonar.cs.vstest.reportsPaths=**/*.trx `
+    /d:sonar.cs.vscoveragexml.reportsPaths=**/*.coveragexml
 
 # Build and Run Tests
 .\build.ps1 --target All
 
 # Convert .coverage files to XML format
 dotnet tool update dotnet-coverageconverter --tool-path .tools\coverage
-.\.tools\coverage\dotnet-coverageconverter.exe --CoverageFilesFolder "TestResults"
+.\.tools\coverage\dotnet-coverageconverter.exe --CoverageFilesFolder . --ProcessAllFiles
 
 # Publish results to SonarCloud
 .\.tools\scanner\dotnet-sonarscanner end /d:sonar.login=$sonar
