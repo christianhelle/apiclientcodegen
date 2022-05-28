@@ -32,15 +32,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 
         private void OpenFileDialog(Control output)
         {
-            using (var dialog = new OpenFileDialog())
-            {
-                var result = dialog.ShowDialog(this);
-                if (result != DialogResult.OK)
-                    return;
+            using var dialog = new OpenFileDialog();
+            var result = dialog.ShowDialog(this);
+            if (result != DialogResult.OK)
+                return;
 
-                if (File.Exists(dialog.FileName))
-                    output.Text = dialog.FileName;
-            }
+            if (File.Exists(dialog.FileName))
+                output.Text = dialog.FileName;
         }
 
         private void TbJavaPath_TextChanged(object sender, EventArgs e)
