@@ -26,7 +26,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
     [ExcludeFromCodeCoverage]
     public static class ProjectExtensions
     {
-        public static string GetRootFolder(this Project project, DTE Dte)
+        public static string? GetRootFolder(this Project project, DTE Dte)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
@@ -39,7 +39,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             if (string.IsNullOrEmpty(project.FullName))
                 return null;
 
-            string fullPath;
+            string? fullPath;
 
             try
             {

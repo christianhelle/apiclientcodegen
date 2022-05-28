@@ -72,7 +72,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
 
             if (CodeGenerator == SupportedCodeGenerator.NSwagStudio)
             {
-                var outputNamespace = ProjectExtensions.GetActiveProject(dte)?.GetTopLevelNamespace();
+                var outputNamespace = dte.GetActiveProject().GetTopLevelNamespace();
                 contents = await NSwagStudioFileHelper.CreateNSwagStudioFileAsync(
                     result,
                     new NSwagStudioOptions(),
@@ -103,9 +103,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
                         new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader())));
 
-                generator.GenerateCode(null);
+                generator.GenerateCode(null!);
 
-                dynamic nswag = JsonConvert.DeserializeObject(contents);
+                dynamic nswag = JsonConvert.DeserializeObject(contents)!;
                 var nswagOutput = nswag.codeGenerators.swaggerToCSharpClient.output.ToString();
                 project.AddFileToProject(dte, new FileInfo(Path.Combine(folder, nswagOutput)));
             }
@@ -121,16 +121,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             await project.InstallMissingPackagesAsync(package, CodeGenerator);
         }
 
-        private static string FindFolder(object item, DTE dte)
+        private static string? FindFolder(object item, DTE dte)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
             switch (item)
             {
                 case ProjectItem projectItem:
-                    return File.Exists(projectItem.FileNames[1])
+                    return (File.Exists(projectItem.FileNames[1])
                         ? Path.GetDirectoryName(projectItem.FileNames[1])
-                        : projectItem.FileNames[1];
+                        : projectItem.FileNames[1])!;
 
                 case Project project:
                     return project.GetRootFolder(dte);
