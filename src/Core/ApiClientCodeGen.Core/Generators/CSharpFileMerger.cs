@@ -78,7 +78,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 foreach (var subDir in Directory.GetDirectories(path))
                     queue.Enqueue(subDir);
 
-                foreach (var file in files?.Where(Predicate())) yield return file;
+                foreach (var file in files.Where(Predicate())) yield return file;
             }
         }
 
