@@ -17,7 +17,7 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
     public class NSwagStudioCodeGeneratorLegacyTests : TestWithResources
     {
         [Theory, AutoMoqData]
-        public void NSwagStudio_GenerateCode_Returns_Null(
+        public void NSwagStudio_GenerateCode_Returns_Empty(
             IProcessLauncher process,
             IGeneralOptions options,
             IProgressReporter progressReporter,
@@ -30,7 +30,7 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
                     dependencyInstaller)
                 .GenerateCode(progressReporter)
                 .Should()
-                .BeNull();
+                .BeEmpty();
         }
 
         [Theory, AutoMoqData]
