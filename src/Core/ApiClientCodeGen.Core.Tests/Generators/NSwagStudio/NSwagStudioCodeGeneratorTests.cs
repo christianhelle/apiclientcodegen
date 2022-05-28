@@ -16,13 +16,13 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
     public class NSwagStudioCodeGeneratorTests : TestWithResources
     {
         [Theory, AutoMoqData]
-        public void NSwagStudio_GenerateCode_Returns_Null(
+        public void NSwagStudio_GenerateCode_Returns_Empty_String(
             IProgressReporter progressReporter,
             NSwagStudioCodeGenerator sut)
         {
             sut.GenerateCode(progressReporter)
                 .Should()
-                .BeNull();
+                .BeEmpty();
         }
 
         [Theory, AutoMoqData]
