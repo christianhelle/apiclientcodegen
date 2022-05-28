@@ -14,7 +14,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
     {
         private readonly IConsoleOutput console;
         private readonly IProgressReporter progressReporter;
-        private string outputFile;
+        private string? outputFile;
 
         protected CodeGeneratorCommand(IConsoleOutput console, IProgressReporter progressReporter)
         {
@@ -25,13 +25,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         [Required]
         [FileExists]
         [Argument(0, "swaggerFile", "Path to the Swagger / Open API specification file")]
-        public string SwaggerFile { get; set; }
+        public string? SwaggerFile { get; set; }
 
         [Argument(1, "namespace", "Default namespace to in the generated code")]
         public string DefaultNamespace { get; set; } = "GeneratedCode";
 
         [Argument(2, "outputFile", "Output filename to write the generated code to. Default is the swaggerFile .cs")]
-        public string OutputFile
+        public string? OutputFile
         {
             get => outputFile ?? Path.GetFileNameWithoutExtension(SwaggerFile) + ".cs";
             set => outputFile = value;

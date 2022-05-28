@@ -8,10 +8,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     {
         private readonly IOpenApiDocumentFactory documentFactory;
         private readonly INSwagCodeGeneratorSettingsFactory generatorSettingsFactory;
-        private readonly string swaggerFile;
+        private readonly string? swaggerFile;
 
         public NSwagCSharpCodeGenerator(
-            string swaggerFile,
+            string? swaggerFile,
             IOpenApiDocumentFactory documentFactory,
             INSwagCodeGeneratorSettingsFactory generatorSettingsFactory)
         {

@@ -8,7 +8,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
     public interface ISwaggerCodegenFactory
     {
         ICodeGenerator Create(
-            string swaggerFile,
+            string? swaggerFile,
             string defaultNamespace,
             IGeneralOptions options,
             IProcessLauncher processLauncher,
@@ -18,7 +18,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
     public class SwaggerCodegenFactory : ISwaggerCodegenFactory
     {
         public ICodeGenerator Create(
-            string swaggerFile,
+            string? swaggerFile,
             string defaultNamespace,
             IGeneralOptions options,
             IProcessLauncher processLauncher,

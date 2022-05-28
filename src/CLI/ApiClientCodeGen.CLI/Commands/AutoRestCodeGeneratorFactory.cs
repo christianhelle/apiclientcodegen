@@ -9,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
     public interface IAutoRestCodeGeneratorFactory
     {
         ICodeGenerator Create(
-            string swaggerFile,
+            string? swaggerFile,
             string defaultNamespace,
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
@@ -20,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
     public class AutoRestCodeGeneratorFactory : IAutoRestCodeGeneratorFactory
     {
         public ICodeGenerator Create(
-            string swaggerFile,
+            string? swaggerFile,
             string defaultNamespace,
             IAutoRestOptions options,
             IProcessLauncher processLauncher,

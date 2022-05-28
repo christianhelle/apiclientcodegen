@@ -5,8 +5,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
     public interface IAutoRestArgumentProvider
     {
-        string GetArguments(string outputFolder, string swaggerFile, string defaultNamespace);
-        string GetLegacyArguments(string outputFile, string swaggerFile, string defaultNamespace);
+        string GetArguments(string outputFolder, string? swaggerFile, string defaultNamespace);
+        string GetLegacyArguments(string outputFile, string? swaggerFile, string defaultNamespace);
     }
 
     public class AutoRestArgumentProvider : IAutoRestArgumentProvider
@@ -20,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
         public string GetArguments(
             string outputFolder,
-            string swaggerFile,
+            string? swaggerFile,
             string defaultNamespace)
         {
             return AppendCommonArguments(
@@ -33,7 +33,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
         public string GetLegacyArguments(
             string outputFile,
-            string swaggerFile,
+            string? swaggerFile,
             string defaultNamespace)
         {
             return AppendCommonArguments(
@@ -45,7 +45,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         }
 
         private string AppendCommonArguments(
-            string swaggerFile,
+            string? swaggerFile,
             string arguments)
         {
             arguments += "--verbose --debug ";

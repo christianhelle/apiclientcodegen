@@ -6,7 +6,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
     public interface INSwagCodeGeneratorFactory
     {
-        ICodeGenerator Create(string swaggerFile,
+        ICodeGenerator Create(string? swaggerFile,
             string defaultNamespace,
             INSwagOptions options,
             IOpenApiDocumentFactory documentFactory);
@@ -15,7 +15,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
     public class NSwagCodeGeneratorFactory : INSwagCodeGeneratorFactory
     {
         public ICodeGenerator Create(
-            string swaggerFile,
+            string? swaggerFile,
             string defaultNamespace,
             INSwagOptions options,
             IOpenApiDocumentFactory documentFactory)

@@ -9,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
     public interface IOpenApiGeneratorFactory
     {
         ICodeGenerator Create(
-            string swaggerFile,
+            string? swaggerFile,
             string defaultNamespace,
             IGeneralOptions options,
             IOpenApiGeneratorOptions openApiGeneratorOptions,
@@ -20,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
     public class OpenApiGeneratorFactory : IOpenApiGeneratorFactory
     {
         public ICodeGenerator Create(
-            string swaggerFile,
+            string? swaggerFile,
             string defaultNamespace,
             IGeneralOptions options,
             IOpenApiGeneratorOptions openApiGeneratorOptions,

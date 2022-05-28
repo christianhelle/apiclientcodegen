@@ -5,6 +5,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
     public interface IOpenApiDocumentFactory
     {
-        Task<OpenApiDocument> GetDocumentAsync(string swaggerFile);
+        Task<OpenApiDocument> GetDocumentAsync(string? swaggerFile);
     }
 }

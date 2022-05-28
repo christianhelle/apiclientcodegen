@@ -19,7 +19,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly string swaggerFile;
 
         public OpenApiCSharpCodeGenerator(
-            string swaggerFile,
+            string? swaggerFile,
             string defaultNamespace,
             IGeneralOptions generatlOptions,
             IOpenApiGeneratorOptions openApiGeneratorOptions,
