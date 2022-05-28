@@ -41,7 +41,7 @@ namespace ApiClientCodeGen.Core.Tests.Options
                     Environment.OSVersion.Platform == PlatformID.MacOSX ||
                     Environment.OSVersion.Platform == PlatformID.Unix
                         ? "npm"
-                        : null);
+                        : string.Empty);
         }
 
         [Xunit.Fact]

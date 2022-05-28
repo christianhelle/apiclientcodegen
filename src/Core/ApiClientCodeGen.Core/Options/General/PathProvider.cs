@@ -26,8 +26,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
         }
 
         public static string GetNpmPath(
-            string programFiles = null,
-            string programFiles64 = null,
+            string? programFiles = null,
+            string? programFiles64 = null,
             bool withoutPath = false)
         {
             if (Environment.OSVersion.Platform == PlatformID.MacOSX ||
@@ -39,13 +39,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
                 programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
 
             if (string.IsNullOrWhiteSpace(programFiles64))
-                programFiles64 = programFiles.Replace(" (x86)", string.Empty);
+                programFiles64 = programFiles!.Replace(" (x86)", string.Empty);
 
             var npmCommand = Path.Combine(programFiles, "nodejs\\npm.cmd");
             if (!File.Exists(npmCommand))
                 npmCommand = Path.Combine(programFiles64, "nodejs\\npm.cmd");
             
-            return File.Exists(npmCommand) ? npmCommand : null;
+            return File.Exists(npmCommand) ? npmCommand : string.Empty;
         }
 
         public static string GetNSwagStudioPath()
