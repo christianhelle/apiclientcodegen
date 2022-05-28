@@ -16,11 +16,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly IAutoRestArgumentProvider argumentProvider;
         private static readonly object SyncLock = new();
 
-        public string? SwaggerFile { get; }
+        public string SwaggerFile { get; }
         public string DefaultNamespace { get; }
 
         public AutoRestCSharpCodeGenerator(
-            string? swaggerFile,
+            string swaggerFile,
             string defaultNamespace,
             IAutoRestOptions options,
             IProcessLauncher processLauncher,

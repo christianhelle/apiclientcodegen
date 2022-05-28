@@ -16,7 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly string swaggerFile;
 
         public SwaggerCSharpCodeGenerator(
-            string? swaggerFile,
+            string swaggerFile,
             string defaultNamespace,
             IGeneralOptions options,
             IProcessLauncher processLauncher,
