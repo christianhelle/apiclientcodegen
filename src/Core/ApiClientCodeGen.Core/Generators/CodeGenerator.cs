@@ -6,7 +6,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
     public interface ICodeGenerator
     {
-        string GenerateCode(IProgressReporter pGenerateProgress);
+        string GenerateCode(IProgressReporter? pGenerateProgress);
     }
 
     public abstract class CodeGenerator : ICodeGenerator
@@ -22,7 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
         }
 
-        public virtual string GenerateCode(IProgressReporter pGenerateProgress)
+        public virtual string GenerateCode(IProgressReporter? pGenerateProgress)
         {
             try
             {

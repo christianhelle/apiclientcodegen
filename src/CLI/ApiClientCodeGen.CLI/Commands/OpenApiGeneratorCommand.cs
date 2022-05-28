@@ -20,7 +20,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 
         public OpenApiGeneratorCommand(
             IConsoleOutput console,
-            IProgressReporter progressReporter,
+            IProgressReporter? progressReporter,
             IGeneralOptions options,
             IOpenApiGeneratorOptions openApiGeneratorOptions,
             IProcessLauncher processLauncher,

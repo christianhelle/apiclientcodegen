@@ -18,7 +18,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 
         public SwaggerCodegenCommand(
             IConsoleOutput console,
-            IProgressReporter progressReporter,
+            IProgressReporter? progressReporter,
             IGeneralOptions options,
             IProcessLauncher processLauncher,
             ISwaggerCodegenFactory factory,

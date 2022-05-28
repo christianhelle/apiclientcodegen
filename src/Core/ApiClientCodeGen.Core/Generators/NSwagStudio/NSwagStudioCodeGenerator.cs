@@ -31,7 +31,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             this.forceDownload = forceDownload;
         }
 
-        public string GenerateCode(IProgressReporter pGenerateProgress)
+        public string GenerateCode(IProgressReporter? pGenerateProgress)
         {
             Logger.Instance.TrackFeatureUsage("Generate NSwag Studio output");
             

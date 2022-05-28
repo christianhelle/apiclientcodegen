@@ -13,10 +13,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
     public abstract class CodeGeneratorCommand
     {
         private readonly IConsoleOutput console;
-        private readonly IProgressReporter progressReporter;
+        private readonly IProgressReporter? progressReporter;
         private string? outputFile;
 
-        protected CodeGeneratorCommand(IConsoleOutput console, IProgressReporter progressReporter)
+        protected CodeGeneratorCommand(IConsoleOutput console, IProgressReporter? progressReporter)
         {
             this.console = console ?? throw new ArgumentNullException(nameof(console));
             this.progressReporter = progressReporter ?? throw new ArgumentNullException(nameof(progressReporter));

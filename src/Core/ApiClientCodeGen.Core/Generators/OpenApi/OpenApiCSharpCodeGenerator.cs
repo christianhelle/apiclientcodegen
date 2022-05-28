@@ -37,7 +37,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             javaPathProvider = new JavaPathProvider(options, processLauncher);
         }
 
-        public string GenerateCode(IProgressReporter pGenerateProgress)
+        public string GenerateCode(IProgressReporter? pGenerateProgress)
         {
             try
             {

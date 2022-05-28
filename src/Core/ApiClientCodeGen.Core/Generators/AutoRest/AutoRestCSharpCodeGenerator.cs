@@ -36,7 +36,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             this.argumentProvider = argumentProvider ?? new AutoRestArgumentProvider(options);
         }
 
-        public string GenerateCode(IProgressReporter pGenerateProgress)
+        public string GenerateCode(IProgressReporter? pGenerateProgress)
         {
             lock (SyncLock)
                 return OnGenerateCode(pGenerateProgress);
@@ -46,7 +46,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             "Usage",
             "VSTHRD002:Avoid problematic synchronous waits",
             Justification = "This is code is called from an old pre-TPL interface")]
-        private string OnGenerateCode(IProgressReporter pGenerateProgress)
+        private string OnGenerateCode(IProgressReporter? pGenerateProgress)
         {
             try
             {

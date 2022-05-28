@@ -22,7 +22,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
             IConsoleOutput console,
             IAutoRestOptions options,
             IProcessLauncher processLauncher,
-            IProgressReporter progressReporter,
+            IProgressReporter? progressReporter,
             IAutoRestCodeGeneratorFactory factory,
             IOpenApiDocumentFactory documentFactory,
             IDependencyInstaller dependencyInstaller) : base(console, progressReporter)

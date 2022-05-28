@@ -17,7 +17,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 
         public NSwagCommand(
             IConsoleOutput console,
-            IProgressReporter progressReporter,
+            IProgressReporter? progressReporter,
             IOpenApiDocumentFactory openApiDocumentFactory,
             INSwagOptions options,
             INSwagCodeGeneratorFactory codeGeneratorFactory) 
