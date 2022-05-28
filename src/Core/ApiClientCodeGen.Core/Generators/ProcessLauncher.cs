@@ -10,25 +10,25 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         void Start(
             string command,
             string arguments,
-            string workingDirectory = null);
+            string? workingDirectory = null);
 
         void Start(
             string command,
             string arguments,
             Action<string> onOutputData,
             Action<string> onErrorData,
-            string workingDirectory = null);
+            string? workingDirectory = null);
     }
 
     [ExcludeFromCodeCoverage]
     public class ProcessLauncher : IProcessLauncher
     {
-        private static readonly object SyncLock = new object();
+        private static readonly object SyncLock = new();
 
         public void Start(
             string command,
             string arguments,
-            string workingDirectory = null)
+            string? workingDirectory = null)
             => Start(
                 command,
                 arguments,
@@ -41,7 +41,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             string arguments,
             Action<string> onOutputData,
             Action<string> onErrorData,
-            string workingDirectory = null)
+            string? workingDirectory = null)
         {
             Trace.WriteLine("Executing:");
             Trace.WriteLine($"{command} {arguments}");
@@ -77,7 +77,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             string arguments,
             Action<string> onOutputData,
             Action<string> onErrorData,
-            string workingDirectory)
+            string? workingDirectory)
         {
             StartInternal(
                 command,
@@ -92,7 +92,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             string arguments,
             Action<string> onOutputData,
             Action<string> onErrorData,
-            string workingDirectory = null)
+            string? workingDirectory = null)
         {
             var processInfo = new ProcessStartInfo(command, arguments);
             using (var process = new Process {StartInfo = processInfo})

@@ -10,11 +10,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     {
         public string Command { get; } = null!;
         public string Arguments { get; } = null!;
-        public string WorkingDirectory { get; } = null!;
+        public string? WorkingDirectory { get; } = null!;
         public string OutputData { get; } = null!;
         public string ErrorData { get; } = null!;
 
-        public ProcessLaunchException(string command, string arguments, string workingDirectory, string outputData, string errorData)
+        public ProcessLaunchException(string command, string arguments, string? workingDirectory, string outputData, string errorData)
             : base($"{command} failed!{Environment.NewLine}Output:{Environment.NewLine}{outputData}{Environment.NewLine}Error:{Environment.NewLine}{errorData}")
         {
             Command = command;
