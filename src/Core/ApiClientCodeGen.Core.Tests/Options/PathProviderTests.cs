@@ -38,8 +38,7 @@ namespace ApiClientCodeGen.Core.Tests.Options
 
             path.Should()
                 .Be(
-                    Environment.OSVersion.Platform == PlatformID.MacOSX ||
-                    Environment.OSVersion.Platform == PlatformID.Unix
+                    Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix
                         ? "npm"
                         : string.Empty);
         }

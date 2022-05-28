@@ -30,9 +30,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
             string? programFiles64 = null,
             bool withoutPath = false)
         {
-            if (Environment.OSVersion.Platform == PlatformID.MacOSX ||
-                Environment.OSVersion.Platform == PlatformID.Unix ||
-                withoutPath)
+            if (Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix || withoutPath)
                 return "npm";
             
             if (string.IsNullOrWhiteSpace(programFiles))
@@ -55,9 +53,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
 
         public static string GetNSwagPath(bool withoutPath = false)
         {
-            if (Environment.OSVersion.Platform == PlatformID.MacOSX ||
-                Environment.OSVersion.Platform == PlatformID.Unix ||
-                withoutPath)
+            if (Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix || withoutPath)
                 return "nswag";
 
             return Path.Combine(
@@ -67,9 +63,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Ge
 
         public static string GetAutoRestPath(bool withoutPath = false)
         {
-            if (Environment.OSVersion.Platform == PlatformID.MacOSX ||
-                Environment.OSVersion.Platform == PlatformID.Unix ||
-                withoutPath)
+            if (Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix || withoutPath)
                 return "autorest";
 
             return Path.Combine(
