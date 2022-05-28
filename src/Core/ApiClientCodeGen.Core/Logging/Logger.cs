@@ -5,8 +5,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
     [ExcludeFromCodeCoverage]
     public static class Logger
     {
-        private static readonly object SyncLock = new object();
-        private static RemoteLogger remoteLogger;
+        private static readonly object SyncLock = new();
+        private static RemoteLogger? remoteLogger;
 
         public static IRemoteLogger Instance
         {
@@ -14,8 +14,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             {
                 lock (SyncLock)
                 {
-                    if (remoteLogger == null)
-                        remoteLogger = new RemoteLogger();
+                    remoteLogger ??= new RemoteLogger();
                 }
 
                 return remoteLogger;
