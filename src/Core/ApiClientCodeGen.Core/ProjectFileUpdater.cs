@@ -7,7 +7,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     public class ProjectFileUpdater
     {
-        private readonly string file;
+        private readonly string? file;
         private readonly XDocument xml;
 
         public ProjectFileUpdater(string projectFile)
