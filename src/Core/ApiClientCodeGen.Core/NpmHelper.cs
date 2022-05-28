@@ -9,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     public static class NpmHelper
     {
-        private static string GetNpmPath(bool withoutPath = false)
+        public static string GetNpmPath(bool withoutPath = false)
             => PathProvider.GetNpmPath(withoutPath: withoutPath);
 
         public static string GetPrefixPath()
