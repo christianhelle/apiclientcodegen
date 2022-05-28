@@ -11,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Swag
     {
         protected SwaggerCodeGenerator(
             SupportedLanguage language, 
-            ILanguageConverter converter = null)
+            ILanguageConverter? converter = null)
             : base(SupportedCodeGenerator.Swagger, language)
         {
         }

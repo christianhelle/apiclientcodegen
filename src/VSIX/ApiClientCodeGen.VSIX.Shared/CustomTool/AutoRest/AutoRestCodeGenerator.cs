@@ -9,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Auto
     [ComVisible(true)]
     public abstract class AutoRestCodeGenerator : SingleFileCodeGenerator
     {
-        protected AutoRestCodeGenerator(SupportedLanguage language, ILanguageConverter languageConverter = null)
+        protected AutoRestCodeGenerator(SupportedLanguage language, ILanguageConverter? languageConverter = null)
             : base(SupportedCodeGenerator.AutoRest, language, languageConverter)
         {
         }

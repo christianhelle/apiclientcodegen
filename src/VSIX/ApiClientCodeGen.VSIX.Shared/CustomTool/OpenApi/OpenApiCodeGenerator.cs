@@ -11,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Open
     {
         protected OpenApiCodeGenerator(
             SupportedLanguage language, 
-            ILanguageConverter languageConverter = null)
+            ILanguageConverter? languageConverter = null)
             : base(SupportedCodeGenerator.OpenApi, language)
         {
         }

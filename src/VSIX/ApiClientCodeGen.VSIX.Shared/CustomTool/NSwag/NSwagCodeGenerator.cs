@@ -11,7 +11,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.NSwa
     {
         protected NSwagCodeGenerator(
             SupportedLanguage language,
-            ILanguageConverter converter = null)
+            ILanguageConverter? converter = null)
             : base(SupportedCodeGenerator.NSwag, language, converter)
         {
         }

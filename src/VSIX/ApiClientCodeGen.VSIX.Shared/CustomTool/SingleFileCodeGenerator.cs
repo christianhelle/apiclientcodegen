@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-using System.Runtime.Serialization;
 using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Converters;
@@ -21,14 +20,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
     public abstract class SingleFileCodeGenerator : IVsSingleFileGenerator
     {
         private readonly SupportedLanguage supportedLanguage;
-        private readonly ILanguageConverter converter;
+        private readonly ILanguageConverter? converter;
 
         public SupportedCodeGenerator CodeGenerator { get; }
 
         protected SingleFileCodeGenerator(
             SupportedCodeGenerator supportedCodeGenerator,
             SupportedLanguage supportedLanguage = SupportedLanguage.CSharp,
-            ILanguageConverter converter = null)
+            ILanguageConverter? converter = null)
         {
             this.CodeGenerator = supportedCodeGenerator;
             this.supportedLanguage = supportedLanguage;
