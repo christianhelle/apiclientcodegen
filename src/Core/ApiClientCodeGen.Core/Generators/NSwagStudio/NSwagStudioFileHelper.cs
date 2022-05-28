@@ -10,8 +10,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     {
         public static async Task<string> CreateNSwagStudioFileAsync(
             EnterOpenApiSpecDialogResult enterOpenApiSpecDialogResult,
-            INSwagStudioOptions options = null,
-            string outputNamespace = null)
+            INSwagStudioOptions? options = null,
+            string? outputNamespace = null)
         {
             var specifications = enterOpenApiSpecDialogResult.OpenApiSpecification;
             var outputFilename = enterOpenApiSpecDialogResult.OutputFilename;
