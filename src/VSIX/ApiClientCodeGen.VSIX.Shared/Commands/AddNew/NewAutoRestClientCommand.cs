@@ -29,7 +29,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
                 ? await OpenApiYamlDocument.FromYamlAsync(dialogResult.OpenApiSpecification)
                 : await OpenApiDocument.FromJsonAsync(dialogResult.OpenApiSpecification);
 
-            var codeGenerator = GetSupportedCodeGenerator(document);
+            var codeGenerator = GetSupportedCodeGenerator(document.OpenApi);
             await project.InstallMissingPackagesAsync(package, codeGenerator);
 
             if (codeGenerator == SupportedCodeGenerator.AutoRestV3)
@@ -41,9 +41,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
             }
         }
 
-        private static SupportedCodeGenerator GetSupportedCodeGenerator(OpenApiDocument document)
-            => !string.IsNullOrEmpty(document.OpenApi) &&
-               Version.TryParse(document.OpenApi, out var openApiVersion) &&
+        private static SupportedCodeGenerator GetSupportedCodeGenerator(string openApiSpecVersion)
+            => !string.IsNullOrEmpty(openApiSpecVersion) &&
+               Version.TryParse(openApiSpecVersion, out var openApiVersion) &&
                openApiVersion > Version.Parse("3.0.0")
                 ? SupportedCodeGenerator.AutoRestV3
                 : SupportedCodeGenerator.AutoRest;
