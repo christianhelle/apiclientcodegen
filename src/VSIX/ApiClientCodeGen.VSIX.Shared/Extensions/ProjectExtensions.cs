@@ -30,9 +30,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
-            if (project == null)
-                return null;
-
             if (project.IsKind("{66A26720-8FB5-11D2-AA7E-00C04F688DDE}")) //ProjectKinds.vsProjectKindSolutionFolder
                 return Path.GetDirectoryName(Dte.Solution.FullName);
 
@@ -71,7 +68,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             return null;
         }
 
-        public static ProjectItem AddFileToProject(this Project project, DTE Dte, FileInfo file, string itemType = null)
+        public static ProjectItem? AddFileToProject(this Project project, DTE Dte, FileInfo file, string? itemType = null)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 
@@ -88,13 +85,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             return item;
         }
 
-        public static void SetItemType(this ProjectItem item, string itemType)
+        private static void SetItemType(this ProjectItem item, string? itemType)
         {
             try
             {
                 ThreadHelper.ThrowIfNotOnUIThread();
 
-                if (item == null || item.ContainingProject == null)
+                if (item.ContainingProject == null)
                     return;
 
                 if (string.IsNullOrEmpty(itemType) ||
@@ -118,13 +115,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 return project.Kind.Equals(guid, StringComparison.OrdinalIgnoreCase);
             });
 
-        public static Project GetActiveProject(this DTE Dte)
+        public static Project? GetActiveProject(this DTE Dte)
         {
             try
             {
                 ThreadHelper.ThrowIfNotOnUIThread();
 
-                if (Dte.ActiveSolutionProjects is Array activeSolutionProjects && activeSolutionProjects.Length > 0)
+                if (Dte.ActiveSolutionProjects is Array { Length: > 0 } activeSolutionProjects)
                     return activeSolutionProjects.GetValue(0) as Project;
 
                 var doc = Dte.ActiveDocument;
@@ -155,10 +152,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             return activeView;
         }
 
-        public static object GetSelectedItem()
+        public static object? GetSelectedItem()
         {
             ThreadHelper.ThrowIfNotOnUIThread();
-            object selectedObject = null;
+            object? selectedObject = null;
 
             var monitorSelection = (IVsMonitorSelection)Package.GetGlobalService(typeof(SVsShellMonitorSelection));
 
@@ -167,7 +164,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 monitorSelection.GetCurrentSelection(
                     out var hierarchyPointer,
                     out var itemId,
-                    out var multiItemSelect,
+                    out _,
                     out var selectionContainerPointer);
 
 
@@ -210,8 +207,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             Assumes.Present(componentModel);
 
             var packageInstaller = componentModel.GetService<IVsPackageInstaller>();
+#pragma warning disable CS0618
             var installedServices = componentModel.GetService<IVsPackageInstallerServices>();
             var installedPackages = installedServices.GetInstalledPackages(project)?.ToList() ?? new List<IVsPackageMetadata>();
+#pragma warning restore CS0618
 
             var requiredPackages = codeGenerator.GetDependencies();
             foreach (var packageDependency in requiredPackages)
@@ -269,7 +268,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
         }
 
-        public static string GetTopLevelNamespace(this Project item)
+        public static string? GetTopLevelNamespace(this Project item)
         {
             try
             {
@@ -293,7 +292,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             return null;
         }
 
-        public static bool IsNetStandardLibrary(this Project project)
+        private static bool IsNetStandardLibrary(this Project project)
         {
             try
             {
