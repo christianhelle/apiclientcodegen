@@ -5,13 +5,12 @@ using FluentAssertions;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
 {
-    
     public class FileHelperTests
     {
         [Xunit.Fact]
         public void ReadThenDelete_Reads_File_Contents()
         {
-            var tempFile = Path.GetTempFileName();
+            var tempFile = Path.GetRandomFileName();
             var contents = new Fixture().Create<string>();
             File.WriteAllText(tempFile, contents);
             FileHelper.ReadThenDelete(tempFile)
@@ -22,7 +21,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
         [Xunit.Fact]
         public void ReadThenDelete_Removes_File()
         {
-            var tempFile = Path.GetTempFileName();
+            var tempFile = Path.GetRandomFileName();
             File.WriteAllText(tempFile, new Fixture().Create<string>());
             FileHelper.ReadThenDelete(tempFile);
             File.Exists(tempFile).Should().BeFalse();
@@ -31,7 +30,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
         [Xunit.Fact]
         public void CalculateChecksum_Always_Returns_Same_Hash()
         {
-            var tempFile = Path.GetTempFileName();
+            var tempFile = Path.GetRandomFileName();
             File.WriteAllText(tempFile, new Fixture().Create<string>());
             
             FileHelper.CalculateChecksum(tempFile)
