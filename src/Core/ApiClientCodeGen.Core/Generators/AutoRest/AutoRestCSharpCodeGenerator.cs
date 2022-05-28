@@ -14,7 +14,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly IOpenApiDocumentFactory documentFactory;
         private readonly IDependencyInstaller dependencyInstaller;
         private readonly IAutoRestArgumentProvider argumentProvider;
-        private static readonly object SyncLock = new object();
+        private static readonly object SyncLock = new();
 
         public string? SwaggerFile { get; }
         public string DefaultNamespace { get; }
@@ -26,7 +26,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             IProcessLauncher processLauncher,
             IOpenApiDocumentFactory documentFactory,
             IDependencyInstaller dependencyInstaller,
-            IAutoRestArgumentProvider argumentProvider = null)
+            IAutoRestArgumentProvider? argumentProvider = null)
         {
             SwaggerFile = swaggerFile;
             DefaultNamespace = defaultNamespace;
