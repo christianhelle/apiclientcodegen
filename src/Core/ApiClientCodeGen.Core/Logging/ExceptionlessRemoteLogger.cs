@@ -27,9 +27,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 #if DEBUG
             return false;
 #endif
-            if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
-                return false;
-            return true;
+#pragma warning disable CS0162
+            return !TestingUtility.IsRunningFromUnitTest && !Debugger.IsAttached;
+#pragma warning restore CS0162
         }
 
         private void EnableAnonymousUserTracking()
