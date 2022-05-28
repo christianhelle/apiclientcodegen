@@ -34,7 +34,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         {
             try
             {
-                pGenerateProgress.Progress(10);
+                pGenerateProgress?.Progress(10);
 
                 var jarFile = options.SwaggerCodegenPath;
                 if (!File.Exists(jarFile))
@@ -43,7 +43,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     jarFile = dependencyInstaller.InstallSwaggerCodegen();
                 }
 
-                pGenerateProgress.Progress(30);
+                pGenerateProgress?.Progress(30);
 
                 var output = Path.Combine(
                     Path.GetDirectoryName(swaggerFile) ?? throw new InvalidOperationException(),
@@ -51,7 +51,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     "TempApiClient");
 
                 Directory.CreateDirectory(output);
-                pGenerateProgress.Progress(40);
+                pGenerateProgress?.Progress(40);
 
                 var arguments =
                     $"-jar \"{jarFile}\" generate " +
@@ -62,13 +62,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     $"-DpackageName={defaultNamespace} ";
 
                 processLauncher.Start(javaPathProvider.GetJavaExePath(), arguments);
-                pGenerateProgress.Progress(80);
+                pGenerateProgress?.Progress(80);
 
                 return CSharpFileMerger.MergeFilesAndDeleteSource(output);
             }
             finally
             {
-                pGenerateProgress.Progress(90);
+                pGenerateProgress?.Progress(90);
             }
         }
     }

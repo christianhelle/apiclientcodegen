@@ -120,7 +120,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
         {
             Logger.Instance.TrackError(e);
             rgbOutputFileContents[0] = string.Empty.ConvertToIntPtr(out pcbOutput);
-            pGenerateProgress.GeneratorError(e);
+            pGenerateProgress?.GeneratorError(e);
 
             Trace.WriteLine("Unable to generate code");
             Trace.WriteLine(e);

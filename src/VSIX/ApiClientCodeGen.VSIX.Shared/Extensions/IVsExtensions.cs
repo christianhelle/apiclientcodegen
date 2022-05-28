@@ -20,14 +20,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                     async () =>
                     {
                         await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                        pGenerateProgress.Progress(complete, 100);
+                        pGenerateProgress?.Progress(complete, 100);
                     });
             }
             catch
             {
                 if (!TestingUtility.IsRunningFromUnitTest)
                     ThreadHelper.ThrowIfNotOnUIThread();
-                pGenerateProgress.Progress(complete, 100);
+                pGenerateProgress?.Progress(complete, 100);
             }
         }
 

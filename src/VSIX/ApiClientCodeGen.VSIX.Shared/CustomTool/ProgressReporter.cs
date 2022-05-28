@@ -17,7 +17,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
         public void Progress(uint progress, uint total = 100)
         {
             ThrowIfNotOnUIThread();
-            pGenerateProgress.Progress(progress, total);
+            pGenerateProgress?.Progress(progress, total);
         }
 
         [ExcludeFromCodeCoverage]

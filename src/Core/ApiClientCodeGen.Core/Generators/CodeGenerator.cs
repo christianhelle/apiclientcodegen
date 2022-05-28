@@ -26,15 +26,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         {
             try
             {
-                pGenerateProgress.Progress(10);
+                pGenerateProgress?.Progress(10);
                 var outputFile = FileHelper.CreateRandomFile();
 
                 var command = GetCommand();
                 var arguments = GetArguments(outputFile);
-                pGenerateProgress.Progress(30);
+                pGenerateProgress?.Progress(30);
 
                 processLauncher.Start(command, arguments, Path.GetDirectoryName(SwaggerFile));
-                pGenerateProgress.Progress(80);
+                pGenerateProgress?.Progress(80);
 
                 return FileHelper.ReadThenDelete(outputFile);
             }
@@ -44,7 +44,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             }
             finally
             {
-                pGenerateProgress.Progress(90);
+                pGenerateProgress?.Progress(90);
             }
         }
 

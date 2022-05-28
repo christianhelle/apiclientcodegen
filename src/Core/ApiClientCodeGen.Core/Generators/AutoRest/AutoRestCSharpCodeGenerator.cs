@@ -50,13 +50,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         {
             try
             {
-                pGenerateProgress.Progress(10);
+                pGenerateProgress?.Progress(10);
 
                 var command = PathProvider.GetAutoRestPath();
-                pGenerateProgress.Progress(30);
+                pGenerateProgress?.Progress(30);
 
                 dependencyInstaller.InstallAutoRest();
-                pGenerateProgress.Progress(50);
+                pGenerateProgress?.Progress(50);
 
                 var document = documentFactory.GetDocumentAsync(SwaggerFile).GetAwaiter().GetResult();
                 if (!string.IsNullOrEmpty(document.OpenApi) &&
@@ -79,7 +79,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                             DefaultNamespace),
                         Path.GetDirectoryName(SwaggerFile));
 
-                    pGenerateProgress.Progress(80);
+                    pGenerateProgress?.Progress(80);
 
                     return CSharpFileMerger.MergeFilesAndDeleteSource(outputFolder);
                 }
@@ -107,7 +107,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     }
                     finally
                     {
-                        pGenerateProgress.Progress(80);
+                        pGenerateProgress?.Progress(80);
                     }
 
                     return FileHelper.ReadThenDelete(outputFile);
@@ -115,7 +115,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             }
             finally
             {
-                pGenerateProgress.Progress(90);
+                pGenerateProgress?.Progress(90);
             }
         }
     }
