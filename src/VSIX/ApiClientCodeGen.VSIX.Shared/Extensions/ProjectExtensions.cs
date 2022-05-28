@@ -81,23 +81,18 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 return null;
 
             var item = project.ProjectItems.AddFromFile(file.FullName);
-            item.SetItemType(itemType);
-            return item;
-        }
-
-        private static void SetItemType(this ProjectItem item, string? itemType)
-        {
+            
             try
             {
                 ThreadHelper.ThrowIfNotOnUIThread();
 
                 if (item.ContainingProject == null)
-                    return;
+                    return item;
 
                 if (string.IsNullOrEmpty(itemType) ||
                     item.ContainingProject.IsKind(ProjectTypes.WEBSITE_PROJECT) ||
                     item.ContainingProject.IsKind(ProjectTypes.UNIVERSAL_APP))
-                    return;
+                    return item;
 
                 item.Properties.Item("ItemType").Value = itemType;
             }
@@ -106,6 +101,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 Logger.Instance.TrackError(ex);
                 Trace.WriteLine(ex);
             }
+
+            return item;
         }
 
         private static bool IsKind(this Project project, params string[] kindGuids) 
