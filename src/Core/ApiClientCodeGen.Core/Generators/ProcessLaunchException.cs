@@ -8,11 +8,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
     [ExcludeFromCodeCoverage]
     public class ProcessLaunchException : Exception
     {
-        public string Command { get; }
-        public string Arguments { get; }
-        public string WorkingDirectory { get; }
-        public string OutputData { get; }
-        public string ErrorData { get; }
+        public string Command { get; } = null!;
+        public string Arguments { get; } = null!;
+        public string WorkingDirectory { get; } = null!;
+        public string OutputData { get; } = null!;
+        public string ErrorData { get; } = null!;
 
         public ProcessLaunchException(string command, string arguments, string workingDirectory, string outputData, string errorData)
             : base($"{command} failed!{Environment.NewLine}Output:{Environment.NewLine}{outputData}{Environment.NewLine}Error:{Environment.NewLine}{errorData}")
