@@ -11,7 +11,7 @@ namespace ApiClientCodeGen.Core.IntegrationTests
     public class DependencyInstallerTests : TestWithResources
     {
         [Fact]
-        public void InstallOpenApiGenerator_Returns_Path_Async()
+        public void InstallOpenApiGenerator_Returns_Path()
             => (new DependencyInstaller(
                         new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader()))
@@ -20,7 +20,7 @@ namespace ApiClientCodeGen.Core.IntegrationTests
                 .NotBeNullOrWhiteSpace();
 
         [Fact]
-        public void InstallSwaggerCodegen_Returns_Path_Async()
+        public void InstallSwaggerCodegen_Returns_Path()
             => (new DependencyInstaller(
                         new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader()))
@@ -29,7 +29,7 @@ namespace ApiClientCodeGen.Core.IntegrationTests
                 .NotBeNullOrWhiteSpace();
 
         [Fact]
-        public void InstallAutoRest_Returns_Path_Async()
+        public void InstallAutoRest_Returns_Path()
         {
             new Action(
                     () => new DependencyInstaller(
@@ -40,7 +40,7 @@ namespace ApiClientCodeGen.Core.IntegrationTests
         }
 
         [SkippableFact(typeof(ProcessLaunchException))]
-        public void InstallNSwag_Returns_Path_Async()
+        public void InstallNSwag_Returns_Path()
         {
             new Action(
                     () => new DependencyInstaller(
