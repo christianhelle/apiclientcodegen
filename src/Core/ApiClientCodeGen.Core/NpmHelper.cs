@@ -9,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
 {
     public static class NpmHelper
     {
-        public static string GetNpmPath(bool withoutPath = false)
+        private static string GetNpmPath(bool withoutPath = false)
             => PathProvider.GetNpmPath(withoutPath: withoutPath);
 
         public static string GetPrefixPath()
@@ -18,12 +18,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                    "npm");
 
-        public static string TryGetNpmPrefixPathFromNpmConfig(IProcessLauncher processLauncher = null)
+        public static string? TryGetNpmPrefixPathFromNpmConfig(IProcessLauncher? processLauncher = null)
         {
             try
             {
                 var npm = GetNpmPath();
-                string prefix = null;
+                string prefix = null!;
                 (processLauncher ?? new ProcessLauncher()).Start(
                     npm,
                     "config get prefix",
