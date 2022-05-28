@@ -32,11 +32,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
         private readonly IOptionsFactory optionsFactory;
 
         public CodeGeneratorFactory(
-            IOptionsFactory optionsFactory = null,
-            IProcessLauncher processLauncher = null,
-            IOpenApiDocumentFactory documentFactory = null,
-            IRemoteLogger remoteLogger = null,
-            IDependencyInstaller dependencyInstaller = null)
+            IOptionsFactory? optionsFactory = null,
+            IProcessLauncher? processLauncher = null,
+            IOpenApiDocumentFactory? documentFactory = null,
+            IRemoteLogger? remoteLogger = null,
+            IDependencyInstaller? dependencyInstaller = null)
         {
             this.remoteLogger = remoteLogger ?? Logger.Instance;
             this.optionsFactory = optionsFactory ?? new OptionsFactory();
