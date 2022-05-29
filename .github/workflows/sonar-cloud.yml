@@ -68,16 +68,10 @@ jobs:
               /d:sonar.cs.vscoveragexml.reportsPaths=**/*.coveragexml
 
       - name: Build VSIX
-        run: powershell ./build.ps1 --target VSIX
+        shell: powershell
         working-directory: src
-
-      - name: Build Rapicgen
-        run: powershell ./build.ps1 --target Rapicgen
-        working-directory: src
-
-      - name: Run All Tests
-        run: powershell ./build.ps1 --target Run-All-Tests
-        working-directory: src
+        run: |
+          .\build.ps1 --target VSIX
 
       - name: Run dotnet test
         working-directory: src
