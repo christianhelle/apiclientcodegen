@@ -17,8 +17,13 @@ dotnet tool update dotnet-sonarscanner --tool-path .tools\scanner
     /d:sonar.cs.vstest.reportsPaths=**/*.trx `
     /d:sonar.cs.vscoveragexml.reportsPaths=**/*.coveragexml
 
-# Build and Run Tests
-.\build.ps1 --target All
+# Build
+.\build.ps1 --target VSIX
+
+# Test
+dotnet test CLI/ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj --collect "Code coverage"
+dotnet test Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj --collect "Code coverage"
+dotnet test Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj --collect "Code coverage"
 
 # Convert .coverage files to XML format
 dotnet tool update dotnet-coverageconverter --tool-path .tools\coverage
