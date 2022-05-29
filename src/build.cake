@@ -120,6 +120,32 @@ Task("Run-Integration-Tests")
            }.WithVisualStudioLogger());
 });
 
+Task("Run-VSIX-Unit-Tests")
+    .IsDependentOn("Build-Release")
+    .Does(() =>
+{
+    VSTest("./VSIX/**/bin/**/*.Tests.dll",
+           new VSTestSettings 
+           { 
+               Parallel = true, 
+               EnableCodeCoverage = true,
+               SettingsFile = File("./Tests.runsettings")
+           }.WithVisualStudioLogger());
+});
+
+Task("Run-VSIX-Integration-Tests")
+    .IsDependentOn("Build-Release")
+    .Does(() =>
+{
+    VSTest("./VSIX/**/bin/**/*.IntegrationTests.dll",
+           new VSTestSettings 
+           { 
+               Parallel = true, 
+               EnableCodeCoverage = true,
+               SettingsFile = File("./Tests.runsettings")
+           }.WithVisualStudioLogger());
+});
+
 Task("Run-All-Tests")
     .Does(() =>
 {
