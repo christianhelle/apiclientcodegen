@@ -164,7 +164,9 @@ Task("All")
     .IsDependentOn("Run-All-Tests");
 
 Task("VSIX")
-    .IsDependentOn("Build-VSIX");
+    .IsDependentOn("Build-VSIX")
+    .IsDependentOn("Run-VSIX-Unit-Tests")
+    .IsDependentOn("Run-VSIX-Integration-Tests");
 
 Task("Rapicgen")
     .IsDependentOn("Build-Rapicgen");
