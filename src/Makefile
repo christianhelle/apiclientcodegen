@@ -6,7 +6,7 @@ restore-packages:
 	dotnet restore ./Mac.sln
 
 debug: restore-packages
-	msbuild /p:Configuration="Debug" /t:"Rebuild" Mac.sln
+	msbuild /p:Configuration="Debug" /t:"Rebuild" ./Mac.sln
 
 release: restore-packages
 	/Applications/Visual\ Studio.app/Contents/MacOS/vstool build --configuration:Release ./Mac.sln
