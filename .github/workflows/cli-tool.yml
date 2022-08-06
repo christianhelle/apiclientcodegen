@@ -6,9 +6,8 @@ on:
     paths-ignore:
       - '**/*'
       - '!.github/workflows/cli-tool.yml'
-      - '!src/CLI/*.csproj'
+      - '!src/CLI/**/*.csproj'
       - '!src/CLI/**/*.cs'
-      - '!src/CLI/*.cs'
 
     branches:
       - '*'

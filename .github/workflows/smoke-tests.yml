@@ -4,16 +4,10 @@ on:
   workflow_dispatch:
   push:
     paths-ignore:
-      - '.github/workflows/**'
+      - '**/*'
       - '!.github/workflows/smoke-tests.yml'
-      - 'docs/**'
-      - 'build/**'
-      - 'images/**'
-      - 'README.md'
-      - 'src/*.json'
-      - 'src/*.ps1'
-      - 'src/VSIX/**'
-      - 'src/VSMac/**'
+      - '!src/**/*.csproj'
+      - '!src/**/*.cs'
     branches:
       - '*'
   pull_request:

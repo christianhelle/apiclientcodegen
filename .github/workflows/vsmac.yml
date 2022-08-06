@@ -4,19 +4,10 @@ on:
   workflow_dispatch:
   push:
     paths-ignore:
-      - '.github/workflows/**'
+      - '**/*'
       - '!.github/workflows/vsmac.yml'
-      - 'docs/**'
-      - 'test/**'
-      - 'build/**'
-      - 'images/**'
-      - 'README.md'
-      - 'src/CLI/ApiClientCodeGen.CLI*/**'
-      - 'src/VSIX/ApiClientCodeGen.VSIX*/**'
-      - 'src/VSIX/ApiClientCodeGen.Tests/**'
-      - 'src/VSIX/ApiClientCodeGen.IntegrationTests/**'
-      - 'src/*.json'
-      - 'src/*.ps1'
+      - '!src/VSMac/**/*.csproj'
+      - '!src/VSMac/**/*.cs'
     branches:
       - '*'
   pull_request:
