@@ -43,7 +43,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
         public string SwaggerFile { get; set; } = null!;
 
-        [Argument(1, "outputPath", "Output folder to write the generated code to. Default is the 'jmeter'")]
+        [Argument(1, "outputPath", "Output folder to write the generated code to")]
         public string OutputPath
         {
             get => outputPath ?? "JMeter";
