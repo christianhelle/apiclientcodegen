@@ -9,7 +9,7 @@ using McMaster.Extensions.CommandLineUtils;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
-    [Command("openapi", Description = "Generate C# client using OpenAPI Generator")]
+    [Command("openapi", Description = "Generate C# API client using OpenAPI Generator")]
     public class OpenApiGeneratorCommand : CodeGeneratorCommand, IOpenApiGeneratorOptions
     {
         private readonly IGeneralOptions options;
