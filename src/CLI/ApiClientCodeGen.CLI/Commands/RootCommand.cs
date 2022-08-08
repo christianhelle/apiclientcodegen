@@ -7,7 +7,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
     [ExcludeFromCodeCoverage]
     [Command]
     [Subcommand(
-        typeof(CSharpCommand),
+        typeof(AutoRestCommand),
+        typeof(NSwagCommand),
+        typeof(SwaggerCodegenCommand),
+        typeof(OpenApiGeneratorCommand),
         typeof(JMeterCommand))]
     public class RootCommand
     {
