@@ -13,14 +13,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly IProcessLauncher processLauncher;
         private readonly IDependencyInstaller dependencyInstaller;
         private readonly string swaggerFile;
+        private readonly string outputPath;
 
         public OpenApiJMeterCodeGenerator(
             string swaggerFile,
+            string outputPath,
             IGeneralOptions options,
             IProcessLauncher processLauncher,
             IDependencyInstaller dependencyInstaller)
         {
             this.swaggerFile = swaggerFile;
+            this.outputPath = outputPath ?? throw new ArgumentNullException(nameof(outputPath));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
             this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
@@ -44,7 +47,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                 var output = Path.Combine(
                     Path.GetDirectoryName(swaggerFile) ?? throw new InvalidOperationException(),
-                    "JMeter");
+                    outputPath);
 
                 Directory.CreateDirectory(output);
                 pGenerateProgress?.Progress(40);

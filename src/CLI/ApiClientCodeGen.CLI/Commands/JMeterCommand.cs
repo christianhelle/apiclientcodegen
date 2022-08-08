@@ -43,25 +43,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
         public string SwaggerFile { get; set; } = null!;
 
-        [Argument(1, "namespace", "Default namespace to in the generated code")]
-        public string DefaultNamespace { get; set; } = "GeneratedCode";
-
-        [Argument(2, "outputPath", "Output folder to write the generated code to. Default is the 'jmeter'")]
+        [Argument(1, "outputPath", "Output folder to write the generated code to. Default is the 'jmeter'")]
         public string OutputPath
         {
-            get => outputPath ?? "jmeter";
+            get => outputPath ?? "JMeter";
             set => outputPath = value;
         }
 
         [Option(ShortName = "nl", LongName = "no-logging", Description = "Disables Analytics and Error Reporting")]
         public bool SkipLogging { get; set; }
-
-        public ICodeGenerator CreateGenerator()
-            => new OpenApiJMeterCodeGenerator(
-                SwaggerFile,
-                options,
-                processLauncher,
-                dependencyInstaller);
 
         public int OnExecute()
         {
@@ -79,6 +69,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 
             new OpenApiJMeterCodeGenerator(
                     SwaggerFile,
+                    OutputPath,
                     options,
                     processLauncher,
                     dependencyInstaller)
