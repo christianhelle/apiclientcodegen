@@ -9,7 +9,7 @@ using McMaster.Extensions.CommandLineUtils;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
-    [Command("autorest", Description = "Generate Swagger / Open API client using AutoRest")]
+    [Command("autorest", Description = "Generate C# API client using AutoRest")]
     public class AutoRestCommand : CodeGeneratorCommand
     {
         private readonly IAutoRestOptions options;
