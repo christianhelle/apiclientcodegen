@@ -19,6 +19,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         private readonly IProgressReporter? progressReporter;
         private readonly IGeneralOptions options;
         private readonly IProcessLauncher processLauncher;
+        private readonly IJMeterCodeGeneratorFactory factory;
         private readonly IDependencyInstaller dependencyInstaller;
 
         private string? outputPath;
@@ -28,12 +29,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
             IProgressReporter progressReporter,
             IGeneralOptions options,
             IProcessLauncher processLauncher,
+            IJMeterCodeGeneratorFactory factory,
             IDependencyInstaller dependencyInstaller)
         {
             this.console = console ?? throw new ArgumentNullException(nameof(console));
             this.progressReporter = progressReporter ?? throw new ArgumentNullException(nameof(progressReporter));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
+            this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
             this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
@@ -67,12 +70,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
                 console.WriteLine("NOTE: Feature usage tracking and error Logging is disabled");
             }
 
-            new OpenApiJMeterCodeGenerator(
-                    SwaggerFile,
-                    OutputPath,
-                    options,
-                    processLauncher,
-                    dependencyInstaller)
+            factory
+                .Create(SwaggerFile, OutputPath, options, processLauncher, dependencyInstaller)
                 .GenerateCode(progressReporter);
 
             var directoryInfo = new DirectoryInfo(OutputPath);
