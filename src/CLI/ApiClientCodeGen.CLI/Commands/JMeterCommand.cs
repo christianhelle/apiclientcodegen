@@ -4,7 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
@@ -12,7 +11,7 @@ using McMaster.Extensions.CommandLineUtils;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
-    [Command("apache-jmeter", Description = "Generate Apache JMeter script using OpenAPI Generator")]
+    [Command("apache-jmeter", Description = "Generate Apache JMeter test plans")]
     public class JMeterCommand
     {
         private readonly IConsoleOutput console;
