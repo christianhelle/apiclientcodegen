@@ -25,7 +25,7 @@ Options:
   -?|-h|--help   Show help information.
 
 Commands:
-  apache-jmeter  Generate Apache JMeter script using OpenAPI Generator
+  apache-jmeter  Generate Apache JMeter test plans
   autorest       Generate C# API client using AutoRest
   nswag          Generate C# API client using NSwag
   openapi        Generate C# API client using OpenAPI Generator
