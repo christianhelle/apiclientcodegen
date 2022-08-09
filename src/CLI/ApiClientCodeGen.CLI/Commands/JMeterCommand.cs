@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
@@ -79,14 +80,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
             {
                 console.WriteLine($"Output folder name: {OutputPath}");
                 console.WriteLine($"Output files: {fileCount}");
-                console.WriteLine(Environment.NewLine);
-                console.WriteLine("###################################################################");
-                console.WriteLine("#  Do you find this tool useful?                                  #");
-                console.WriteLine("#  https://www.buymeacoffee.com/christianhelle                    #");
-                console.WriteLine("#                                                                 #");
-                console.WriteLine("#  Does this tool not work or does it lack something you need?    #");
-                console.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues      #");
-                console.WriteLine("###################################################################");
+                console.WriteSignature();
             }
             else
             {

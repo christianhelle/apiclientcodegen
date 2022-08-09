@@ -73,14 +73,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
             {
                 console.WriteLine($"Output file name: {OutputFile}");
                 console.WriteLine($"Output file size: {fileInfo.Length}");
-                console.WriteLine(Environment.NewLine);
-                console.WriteLine("###################################################################");
-                console.WriteLine("#  Do you find this tool useful?                                  #");
-                console.WriteLine("#  https://www.buymeacoffee.com/christianhelle                    #");
-                console.WriteLine("#                                                                 #");
-                console.WriteLine("#  Does this tool not work or does it lack something you need?    #");
-                console.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues      #");
-                console.WriteLine("###################################################################");
+                console.WriteSignature();
             }
             else
             {

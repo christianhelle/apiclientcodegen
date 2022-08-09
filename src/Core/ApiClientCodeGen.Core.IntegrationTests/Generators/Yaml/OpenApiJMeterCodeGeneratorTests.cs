@@ -1,6 +1,5 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Fixtures.Yaml;
-using FluentAssertions;
 using Moq;
 using Xunit;
 
