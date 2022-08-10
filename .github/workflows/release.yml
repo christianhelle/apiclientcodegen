@@ -193,7 +193,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: ./artifacts/Visual\ Studio\ Extension/ApiClientCodeGenerator-${{ env.VERSION }}.vsix
+        asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-${{ env.VERSION }}.vsix
         asset_name: ApiClientCodeGenerator-${{ env.VERSION }}.vsix
         asset_content_type: application/zip
     - name: Upload VSIX for VS2022 asset
@@ -202,7 +202,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: ./artifacts/Visual\ Studio\ Extension/ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
+        asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
         asset_name: ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
         asset_content_type: application/zip
     - name: Upload VSMac asset
@@ -211,6 +211,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: ./artifacts/Visual\ Studio\ for\ Mac\ Extension/src/ApiClientCodeGenerator-${{ env.VERSION }}.mpack
+        asset_path: artifacts/Visual Studio for Mac Extension/src/ApiClientCodeGenerator-${{ env.VERSION }}.mpack
         asset_name: ApiClientCodeGenerator-${{ env.VERSION }}.mpack
         asset_content_type: application/zip
