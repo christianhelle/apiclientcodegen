@@ -159,7 +159,7 @@ jobs:
           $run.Dispose()
         }
 
-  Release:
+  Tag:
     needs: [VSIX, CLI, VSMac]
     runs-on: ubuntu-latest
     steps:
