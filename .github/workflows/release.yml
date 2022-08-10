@@ -159,7 +159,7 @@ jobs:
           $run.Dispose()
         }
 
-  Tag:
+  Release:
     needs: [VSIX, CLI, VSMac]
     runs-on: ubuntu-latest
     steps:
@@ -174,3 +174,32 @@ jobs:
             ref: "refs/tags/${{ env.VERSION }}",
             sha: context.sha
           })
+    - name: Create release
+      id: create-release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: v${{ github.ref }}
+        draft: true
+        prerelease: false
+    - uses: actions/download-artifact@v3
+      with:
+        path: artifacts
+    - name: Upload VSIX assets
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-new.outputs.upload_url }}
+        asset_path: *.vsix
+        asset_content_type: application/zip
+    - name: Upload VSMac assets
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-new.outputs.upload_url }}
+        asset_path: *.mpack
+        asset_content_type: application/zip
