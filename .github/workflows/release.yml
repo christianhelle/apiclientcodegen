@@ -186,14 +186,31 @@ jobs:
         prerelease: false
     - uses: actions/download-artifact@v3
       with:
-        path: artifacts 
-    - run: zip -r artifacts.zip artifacts/
-    - name: Upload release assets
+        path: artifacts
+    - name: Upload VSIX asset
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: ./artifacts.zip
-        asset_name: Artifacts
+        asset_path: ./artifacts/Visual\ Studio\ Extension/ApiClientCodeGenerator-${{ env.VERSION }}.vsix
+        asset_name: ApiClientCodeGenerator-${{ env.VERSION }}.vsix
+        asset_content_type: application/zip
+    - name: Upload VSIX for VS2022 asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-release.outputs.upload_url }}
+        asset_path: ./artifacts/Visual\ Studio\ Extension/ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
+        asset_name: ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
+        asset_content_type: application/zip
+    - name: Upload VSMac asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-release.outputs.upload_url }}
+        asset_path: ./artifacts/Visual\ Studio\ for\ Mac\ Extension/src/ApiClientCodeGenerator-${{ env.VERSION }}.mpack
+        asset_name: ApiClientCodeGenerator-${{ env.VERSION }}.mpack
         asset_content_type: application/zip
