@@ -180,8 +180,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: v${{ github.ref }}
+        tag_name: ${{ env.VERSION }}
+        release_name: v${{ env.VERSION }}
         draft: true
         prerelease: false
     - uses: actions/download-artifact@v3
