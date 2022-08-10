@@ -159,7 +159,7 @@ jobs:
           $run.Dispose()
         }
 
-  Tag:
+  Release:
     needs: [VSIX, CLI, VSMac]
     runs-on: ubuntu-latest
     steps:
@@ -193,7 +193,15 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-new.outputs.upload_url }}
-        asset_path: *.vsix
+        asset_path: ApiClientCodeGenerator-${{ env.VERSION }}.vsix
+        asset_content_type: application/zip
+    - name: Upload VSIX for VS 2022 assets
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-new.outputs.upload_url }}
+        asset_path: ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
         asset_content_type: application/zip
     - name: Upload VSMac assets
       uses: actions/upload-release-asset@v1
@@ -201,5 +209,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-new.outputs.upload_url }}
-        asset_path: *.mpack
+        asset_path: ApiClientCodeGenerator-${{ env.VERSION }}.mpack
         asset_content_type: application/zip
