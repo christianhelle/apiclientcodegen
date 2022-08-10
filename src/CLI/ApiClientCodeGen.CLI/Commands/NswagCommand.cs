@@ -8,7 +8,7 @@ using McMaster.Extensions.CommandLineUtils;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
-    [Command("nswag", Description = "Generate Swagger / Open API client using NSwag")]
+    [Command("nswag", Description = "Generate C# API client using NSwag")]
     public class NSwagCommand : CodeGeneratorCommand
     {
         private readonly IOpenApiDocumentFactory openApiDocumentFactory;

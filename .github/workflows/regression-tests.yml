@@ -58,6 +58,12 @@ jobs:
       run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
       working-directory: test
 
+    - name: Generate JMeter
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v apache-jmeter ./OpenApi.${{ matrix.format }} --no-logging
+      working-directory: test
+      continue-on-error: true
+
     - name: Generate code with AutoRest
       run: |
         dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v autorest ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs --no-logging

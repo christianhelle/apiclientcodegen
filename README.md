@@ -217,19 +217,20 @@ Since the tool is published as a .NET Core Tool, it can be launched from anywher
 The help information is displayed when not specifying any arguments to **rapicgen**
 
 ```
-Usage: run [options] [command]
+Usage: rapicgen [command] [options]
 
 Options:
-  -v|--verbose  Show verbose output
-  -?|-h|--help  Show help information
+  -v|--verbose   Show verbose output
+  -?|-h|--help   Show help information.
 
 Commands:
-  autorest      Generate Swagger / Open API client using AutoRest
-  nswag         Generate Swagger / Open API client using NSwag
-  openapi       Generate Swagger / Open API client using OpenAPI Generator
-  swagger       Generate Swagger / Open API client using Swagger Codegen CLI
+  apache-jmeter  Generate Apache JMeter test plans
+  autorest       Generate C# API client using AutoRest
+  nswag          Generate C# API client using NSwag
+  openapi        Generate C# API client using OpenAPI Generator
+  swagger        Generate C# API client using Swagger Codegen CLI
 
-Run 'run [command] --help' for more information about a command.
+Run 'rapicgen [command] -?|-h|--help' for more information about a command.
 ```
 
 Some help information is also provided per command and can be launched by 

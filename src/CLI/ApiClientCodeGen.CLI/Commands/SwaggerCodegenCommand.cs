@@ -8,7 +8,7 @@ using McMaster.Extensions.CommandLineUtils;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
-    [Command("swagger", Description = "Generate Swagger / Open API client using Swagger Codegen CLI")]
+    [Command("swagger", Description = "Generate C# API client using Swagger Codegen CLI")]
     public class SwaggerCodegenCommand : CodeGeneratorCommand
     {
         private readonly IGeneralOptions options;

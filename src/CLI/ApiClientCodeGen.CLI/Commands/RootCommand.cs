@@ -1,17 +1,17 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using McMaster.Extensions.CommandLineUtils;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
     [ExcludeFromCodeCoverage]
-    [Command(Name = "run", OptionsComparison = StringComparison.InvariantCultureIgnoreCase)]
+    [Command]
     [Subcommand(
         typeof(AutoRestCommand),
         typeof(NSwagCommand),
         typeof(SwaggerCodegenCommand),
-        typeof(OpenApiGeneratorCommand))]
+        typeof(OpenApiGeneratorCommand),
+        typeof(JMeterCommand))]
     public class RootCommand
     {
         [Option(VerboseOption.Template, CommandOptionType.NoValue, Description = VerboseOption.Description)]

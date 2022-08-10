@@ -283,3 +283,4 @@ src/.sonar/
 src/.sonarqube/
 src/.tools/
 dependencies/
+test/OpenAPI/V3/JMeter
