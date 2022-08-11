@@ -14,7 +14,7 @@ using McMaster.Extensions.CommandLineUtils;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
     [ExcludeFromCodeCoverage]
-    [Command("typescript", Description = "Generate TypeScript client library")]
+    [Command("typescript", Description = "Generate TypeScript API client")]
     public class TypeScriptCommand
     {
         private readonly IConsoleOutput console;
@@ -56,7 +56,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         [Argument(2, "outputPath", "Output folder to write the generated code to")]
         public string OutputPath
         {
-            get => outputPath ?? "JMeter";
+            get => outputPath ?? "typescript-generated-code";
             set => outputPath = value;
         }
 
