@@ -6,7 +6,7 @@ using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.Yaml
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.CSharp.Yaml
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class NSwagCodeGeneratorYamlTests : IClassFixture<NSwagCodeGeneratorFixture>

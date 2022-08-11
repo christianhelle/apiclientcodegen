@@ -6,24 +6,24 @@ using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.Yaml
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.CSharp.Yaml
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
-    public class OpenApiCodeGeneratorYamlTests : IClassFixture<OpenApiCodeGeneratorFixture>
+    public class SwaggerCodeGeneratorYamlTests : IClassFixture<SwaggerCodeGeneratorFixture>
     {
-        private readonly OpenApiCodeGeneratorFixture fixture;
+        private readonly SwaggerCodeGeneratorFixture fixture;
 
-        public OpenApiCodeGeneratorYamlTests(OpenApiCodeGeneratorFixture fixture)
+        public SwaggerCodeGeneratorYamlTests(SwaggerCodeGeneratorFixture fixture)
         {
             this.fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
         }
 
         [Fact]
-        public void OpenApi_Generated_Code_NotNullOrWhitespace()
+        public void Swagger_Generated_Code_NotNullOrWhitespace()
             => fixture.Code.Should().NotBeNullOrWhiteSpace();
 
         [Fact]
-        public void OpenApi_Reports_Progres()
+        public void Swagger_Reports_Progres()
             => fixture.ProgressReporterMock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()),
                 Times.AtLeastOnce);
@@ -37,7 +37,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             => BuildHelper.BuildCSharp(
                     ProjectTypes.DotNetCoreApp,
                     fixture.Code,
-                    SupportedCodeGenerator.OpenApi)
+                    SupportedCodeGenerator.Swagger)
                 .Should()
                 .BeTrue();
 
@@ -46,7 +46,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTest
             => BuildHelper.BuildCSharp(
                     ProjectTypes.DotNetStandardLibrary,
                     fixture.Code,
-                    SupportedCodeGenerator.OpenApi)
+                    SupportedCodeGenerator.Swagger)
                 .Should()
                 .BeTrue();
     }
