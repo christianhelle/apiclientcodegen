@@ -229,8 +229,10 @@ Commands:
   nswag          Generate C# API client using NSwag
   openapi        Generate C# API client using OpenAPI Generator
   swagger        Generate C# API client using Swagger Codegen CLI
+  typescript     Generate TypeScript API client
 
 Run 'rapicgen [command] -?|-h|--help' for more information about a command.
+
 ```
 
 Some help information is also provided per command and can be launched by 
@@ -259,6 +261,33 @@ Arguments:
 
 Options:
   -?|-h|--help  Show help information
+```
+
+or 
+
+```
+$ rapicgen typescript -?
+```
+
+will output this:
+
+```
+Generate TypeScript API client
+
+Usage: rapicgen typescript [options] <generator> <swaggerFile> <outputPath>
+
+Arguments:
+  generator         The tech stack to use for the generated client library
+                    Allowed values are: Angular, Aurelia, Axios, Fetch, Inversify, JQuery, NestJS, Node, ReduxQuery,
+                    Rxjs.
+                    Default value is: Angular.
+  swaggerFile       Path to the Swagger / Open API specification file
+  outputPath        Output folder to write the generated code to
+                    Default value is: typescript-generated-code.
+
+Options:
+  -nl|--no-logging  Disables Analytics and Error Reporting
+  -?|-h|--help      Show help information.
 ```
 
 ## Usage Examples:
@@ -295,10 +324,22 @@ Here's an example of how to generate code using **Swagger Codegen CLI**
 rapicgen swagger Swagger.json GeneratedCode ./SwaggerOutput.cs
 ```
 
-And last but but not the least, here's an example of how to generate code using **OpenAPI Generator**
+Here's an example of how to generate code using **OpenAPI Generator**
 
 ```
 rapicgen openapi Swagger.json GeneratedCode ./OpenApiOutput.cs
+```
+
+Here's an example of how to generate code JMeter test plans
+
+```
+rapicgen apache-jmeter Swagger.json
+```
+
+Here's an example of how to generate code for TypeScript
+
+```
+rapicgen typescript Angular Swagger.json
 ```
 
 #
