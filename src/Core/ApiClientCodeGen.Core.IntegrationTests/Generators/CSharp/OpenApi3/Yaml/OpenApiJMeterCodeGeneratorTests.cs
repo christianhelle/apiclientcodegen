@@ -1,10 +1,9 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3.Yaml;
-using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3.Yaml
+namespace ApiClientCodeGen.Core.IntegrationTests.Generators.CSharp.OpenApi3.Yaml
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class OpenApiJMeterCodeGeneratorTests : IClassFixture<OpenApiJMeterCodeGeneratorFixture>

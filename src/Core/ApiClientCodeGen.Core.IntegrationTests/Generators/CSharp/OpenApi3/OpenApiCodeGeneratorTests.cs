@@ -6,7 +6,7 @@ using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3
+namespace ApiClientCodeGen.Core.IntegrationTests.Generators.CSharp.OpenApi3
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class OpenApiCodeGeneratorTests : IClassFixture<OpenApiCodeGeneratorFixture>

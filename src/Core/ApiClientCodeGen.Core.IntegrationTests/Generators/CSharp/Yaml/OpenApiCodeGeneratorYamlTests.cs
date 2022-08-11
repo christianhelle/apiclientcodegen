@@ -1,29 +1,29 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Build;
-using ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3;
+using ApiClientCodeGen.Tests.Common.Fixtures.Yaml;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3
+namespace ApiClientCodeGen.Core.IntegrationTests.Generators.CSharp.Yaml
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
-    public class SwaggerCodeGeneratorTests : IClassFixture<SwaggerCodeGeneratorFixture>
+    public class OpenApiCodeGeneratorYamlTests : IClassFixture<OpenApiCodeGeneratorFixture>
     {
-        private readonly SwaggerCodeGeneratorFixture fixture;
+        private readonly OpenApiCodeGeneratorFixture fixture;
 
-        public SwaggerCodeGeneratorTests(SwaggerCodeGeneratorFixture fixture)
+        public OpenApiCodeGeneratorYamlTests(OpenApiCodeGeneratorFixture fixture)
         {
             this.fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
         }
 
         [SkippableFact(typeof(NotSupportedException))]
-        public void Swagger_Generated_Code_NotNullOrWhitespace()
+        public void OpenApi_Generated_Code_NotNullOrWhitespace()
             => fixture.Code.Should().NotBeNullOrWhiteSpace();
 
         [SkippableFact(typeof(NotSupportedException))]
-        public void Swagger_Reports_Progres()
+        public void OpenApi_Reports_Progres()
             => fixture.ProgressReporterMock.Verify(
                 c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()),
                 Times.AtLeastOnce);
@@ -37,7 +37,7 @@ namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3
             => BuildHelper.BuildCSharp(
                     ProjectTypes.DotNetCoreApp,
                     fixture.Code,
-                    SupportedCodeGenerator.Swagger)
+                    SupportedCodeGenerator.OpenApi)
                 .Should()
                 .BeTrue();
 
@@ -46,7 +46,7 @@ namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3
             => BuildHelper.BuildCSharp(
                     ProjectTypes.DotNetStandardLibrary,
                     fixture.Code,
-                    SupportedCodeGenerator.Swagger)
+                    SupportedCodeGenerator.OpenApi)
                 .Should()
                 .BeTrue();
     }

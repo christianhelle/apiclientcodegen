@@ -1,20 +1,20 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Build;
-using ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3;
+using ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3.Yaml;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3
+namespace ApiClientCodeGen.Core.IntegrationTests.Generators.CSharp.OpenApi3.Yaml
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
-    public class AutoRestCodeGeneratorTests : IClassFixture<AutoRestCodeGeneratorFixture>
+    public class AutoRestCodeGeneratorYamlTests : IClassFixture<AutoRestCodeGeneratorFixture>
     {
         private readonly AutoRestCodeGeneratorFixture fixture;
 
-        public AutoRestCodeGeneratorTests(AutoRestCodeGeneratorFixture fixture)
+        public AutoRestCodeGeneratorYamlTests(AutoRestCodeGeneratorFixture fixture)
         {
             this.fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
         }

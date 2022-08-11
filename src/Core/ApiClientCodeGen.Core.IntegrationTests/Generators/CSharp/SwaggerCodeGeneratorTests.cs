@@ -1,19 +1,19 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Build;
-using ApiClientCodeGen.Tests.Common.Fixtures.Yaml;
+using ApiClientCodeGen.Tests.Common.Fixtures;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ApiClientCodeGen.Core.IntegrationTests.Generators.Yaml
+namespace ApiClientCodeGen.Core.IntegrationTests.Generators.CSharp
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
-    public class SwaggerCodeGeneratorYamlTests : IClassFixture<SwaggerCodeGeneratorFixture>
+    public class SwaggerCodeGeneratorTests : IClassFixture<SwaggerCodeGeneratorFixture>
     {
         private readonly SwaggerCodeGeneratorFixture fixture;
 
-        public SwaggerCodeGeneratorYamlTests(SwaggerCodeGeneratorFixture fixture)
+        public SwaggerCodeGeneratorTests(SwaggerCodeGeneratorFixture fixture)
         {
             this.fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
         }

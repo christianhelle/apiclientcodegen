@@ -1,11 +1,11 @@
 ﻿using ApiClientCodeGen.Tests.Common.Build;
-using ApiClientCodeGen.Tests.Common.Fixtures.Yaml;
+using ApiClientCodeGen.Tests.Common.Fixtures;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
 using Xunit;
 
-namespace ApiClientCodeGen.Core.IntegrationTests.Generators.Yaml
+namespace ApiClientCodeGen.Core.IntegrationTests.Generators.CSharp
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class NSwagStudioCodeGeneratorTests : IClassFixture<NSwagStudioCodeGeneratorFixture>

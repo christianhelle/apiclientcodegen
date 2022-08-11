@@ -5,7 +5,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using FluentAssertions;
 using Xunit;
 
-namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3.Yaml
+namespace ApiClientCodeGen.Core.IntegrationTests.Generators.CSharp.OpenApi3.Yaml
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class NSwagStudioCodeGeneratorTests : IClassFixture<NSwagStudioCodeGeneratorFixture>

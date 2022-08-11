@@ -1,19 +1,19 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Build;
-using ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3;
+using ApiClientCodeGen.Tests.Common.Fixtures.Yaml;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ApiClientCodeGen.Core.IntegrationTests.Generators.OpenApi3
+namespace ApiClientCodeGen.Core.IntegrationTests.Generators.CSharp.Yaml
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
-    public class NSwagCodeGeneratorTests : IClassFixture<NSwagCodeGeneratorFixture>
+    public class NSwagCodeGeneratorYamlTests : IClassFixture<NSwagCodeGeneratorFixture>
     {
         private readonly NSwagCodeGeneratorFixture fixture;
 
-        public NSwagCodeGeneratorTests(NSwagCodeGeneratorFixture fixture)
+        public NSwagCodeGeneratorYamlTests(NSwagCodeGeneratorFixture fixture)
         {
             this.fixture = fixture ?? throw new ArgumentNullException(nameof(fixture));
         }
