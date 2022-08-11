@@ -61,9 +61,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 
         public void TrackError(Exception exception)
         {
-            if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
-                return;
-            exception.ToExceptionless().Submit();
+            // if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
+            //     return;
+            // exception.ToExceptionless().Submit();
         }
 
         public void Disable()
@@ -76,11 +76,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         {
             public void Run(EventPluginContext context)
             {
-                if (!context.ContextData.IsUnhandledError || !context.Event.IsError() || !context.ContextData.HasException())
-                    return;
-
-                var exception = context.ContextData.GetException();
-                context.Cancel = exception?.GetType()?.IsAssignableFrom(typeof(RapicgenException)) != true;
+                return;
+                // if (!context.ContextData.IsUnhandledError || !context.Event.IsError() || !context.ContextData.HasException())
+                //     return;
+                //
+                // var exception = context.ContextData.GetException();
+                // context.Cancel = exception?.GetType()?.IsAssignableFrom(typeof(RapicgenException)) != true;
             }
         }
     }
