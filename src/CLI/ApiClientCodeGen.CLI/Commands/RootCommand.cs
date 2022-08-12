@@ -11,7 +11,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         typeof(NSwagCommand),
         typeof(SwaggerCodegenCommand),
         typeof(OpenApiGeneratorCommand),
-        typeof(JMeterCommand))]
+        typeof(JMeterCommand),
+        typeof(TypeScriptCommand))]
     public class RootCommand
     {
         [Option(VerboseOption.Template, CommandOptionType.NoValue, Description = VerboseOption.Description)]

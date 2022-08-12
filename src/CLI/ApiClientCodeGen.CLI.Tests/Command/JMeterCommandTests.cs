@@ -28,11 +28,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Tests.Comma
             => sut.OutputPath.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void OnExecuteAsync_Should_NotThrow(
-            [Frozen] IProgressReporter progressReporter,
-            [Frozen] IJMeterCodeGeneratorFactory factory,
-            JMeterCommand sut,
-            string code)
+        public void OnExecuteAsync_Should_NotThrow(JMeterCommand sut)
         {
             sut.OutputPath = Directory.GetCurrentDirectory();
             new Func<int>(sut.OnExecute).Should().NotThrow();

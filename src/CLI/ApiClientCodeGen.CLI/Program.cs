@@ -66,6 +66,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI
             services.AddSingleton<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();
             services.AddSingleton<IProcessLauncher, ProcessLauncher>();
             services.AddSingleton<IJMeterCodeGeneratorFactory, JMeterCodeGeneratorFactory>();
+            services.AddSingleton<ITypeScriptCodeGeneratorFactory, TypeScriptCodeGeneratorFactory>();
             services.AddSingleton<IAutoRestCodeGeneratorFactory, AutoRestCodeGeneratorFactory>();
             services.AddSingleton<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
             services.AddSingleton<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
