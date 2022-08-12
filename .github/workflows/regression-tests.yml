@@ -324,8 +324,7 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ ubuntu-18.04, ubuntu-20.04, macos-10.15, macos-11.0, windows-2016, windows-2019, windows-2022 ]
-        generator: [ Angular, Aurelia, Axios, Fetch, Inversify, JQuery, NestJS, Node, ReduxQuery, Rxjs ]
+        os: [ macos-10.15, windows-2019, ubuntu-20.04 ]
 
     name: TypeScript
     runs-on: ${{ matrix.os }}
@@ -353,7 +352,52 @@ jobs:
       run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
       working-directory: test
 
-    - name: Generate TypeScript
+    - name: Generate TypeScript (Angular)
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript ${{ matrix.generator }} ./OpenApi.${{ matrix.format }} ${{ matrix.generator }} --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Angular ./OpenApi.${{ matrix.format }} Angular --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (Aurelia)
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Aurelia ./OpenApi.${{ matrix.format }} Aurelia --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (Axios)
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Axios ./OpenApi.${{ matrix.format }} Axios --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (Fetch)
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Fetch ./OpenApi.${{ matrix.format }} Fetch --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (Inversify)
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Inversify ./OpenApi.${{ matrix.format }} Inversify --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (JQuery)
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript JQuery ./OpenApi.${{ matrix.format }} JQuery --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (NestJS)
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript NestJS ./OpenApi.${{ matrix.format }} NestJS --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (Node)
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Node ./OpenApi.${{ matrix.format }} Node --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (ReduxQuery)
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript ReduxQuery ./OpenApi.${{ matrix.format }} ReduxQuery --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (Rxjs)
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Rxjs ./OpenApi.${{ matrix.format }} Rxjs --no-logging
       working-directory: test
