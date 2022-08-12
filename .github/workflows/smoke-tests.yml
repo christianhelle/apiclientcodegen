@@ -27,7 +27,7 @@ jobs:
         version: [ V2, V3 ]
         os: [ macos-10.15, windows-2019, ubuntu-20.04 ]
 
-    name: Swagger Petstore
+    name: C#
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
 
@@ -289,7 +289,7 @@ jobs:
         version: [ V2, V3 ]
         os: [ macos-10.15, windows-2019, ubuntu-20.04 ]
 
-    name: Swagger Petstore
+    name: JMeter
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
 
@@ -330,7 +330,7 @@ jobs:
         os: [ macos-10.15, windows-2019, ubuntu-20.04 ]
         generator: [ Angular, Aurelia, Axios, Fetch, Inversify, JQuery, NestJS, Node, ReduxQuery, Rxjs ]
 
-    name: Swagger Petstore
+    name: TypeScript
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
 
