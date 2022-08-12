@@ -15,9 +15,9 @@ on:
 
 jobs:
 
-  Petstore:
+  CSharp:
 
-    name: Swagger Petstore
+    name: C#
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.os == 'macos-11.0' || contains(matrix.os, 'ubuntu') }}
     strategy:
@@ -26,15 +26,7 @@ jobs:
         node: [12, 14, 15, 16]
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [
-          ubuntu-18.04,
-          ubuntu-20.04,
-          macos-10.15,
-          macos-11.0,
-          windows-2016,
-          windows-2019,
-          windows-2022
-        ]
+        os: [ ubuntu-18.04, ubuntu-20.04, macos-10.15, macos-11.0, windows-2016, windows-2019, windows-2022 ]
 
     steps:
     - uses: actions/checkout@v2
@@ -57,12 +49,6 @@ jobs:
     - name: Prepare Swagger Petstore OpenAPI Spec
       run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
       working-directory: test
-
-    - name: Generate JMeter
-      run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v apache-jmeter ./OpenApi.${{ matrix.format }} --no-logging
-      working-directory: test
-      continue-on-error: true
 
     - name: Generate code with AutoRest
       run: |
@@ -289,4 +275,85 @@ jobs:
 
     - name: Build .NET Standard 2.0 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20/NetStandard20.csproj
+      working-directory: test
+
+  JMeter:
+
+    strategy:
+      fail-fast: false
+      matrix:
+        format: [ json, yaml ]
+        version: [ V2, V3 ]
+        os: [ ubuntu-18.04, ubuntu-20.04, macos-10.15, macos-11.0, windows-2016, windows-2019, windows-2022 ]
+
+    name: JMeter
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 14
+
+    - name: Setup .NET versions
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: |
+          2.1.x
+          3.1.x
+          5.0.x
+          6.0.x
+          7.0.x
+        include-prerelease: true
+
+    - name: Prepare Swagger Petstore OpenAPI Spec
+      run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
+      working-directory: test
+
+    - name: Generate JMeter
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v apache-jmeter ./OpenApi.${{ matrix.format }} --no-logging
+      working-directory: test
+
+  TypeScript:
+
+    strategy:
+      fail-fast: false
+      matrix:
+        format: [ json, yaml ]
+        version: [ V2, V3 ]
+        os: [ ubuntu-18.04, ubuntu-20.04, macos-10.15, macos-11.0, windows-2016, windows-2019, windows-2022 ]
+        generator: [ Angular, Aurelia, Axios, Fetch, Inversify, JQuery, NestJS, Node, ReduxQuery, Rxjs ]
+
+    name: TypeScript
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 14
+
+    - name: Setup .NET versions
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: |
+          2.1.x
+          3.1.x
+          5.0.x
+          6.0.x
+          7.0.x
+        include-prerelease: true
+
+    - name: Prepare Swagger Petstore OpenAPI Spec
+      run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
+      working-directory: test
+
+    - name: Generate TypeScript
+      run: |
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript ${{ matrix.generator }} ./OpenApi.${{ matrix.format }} ${{ matrix.generator }} --no-logging
       working-directory: test
