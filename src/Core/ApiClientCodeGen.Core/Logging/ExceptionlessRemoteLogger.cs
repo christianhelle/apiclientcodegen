@@ -76,7 +76,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         {
             public void Run(EventPluginContext context)
             {
-                return;
+                context.Cancel = true;
                 // if (!context.ContextData.IsUnhandledError || !context.Event.IsError() || !context.ContextData.HasException())
                 //     return;
                 //
