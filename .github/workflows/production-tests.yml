@@ -12,9 +12,9 @@ on:
 
 jobs:
 
-  Petstore:
+  CSharp:
 
-    name: Swagger Petstore
+    name: C#
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.os == 'macos-11.0' || matrix.node == 10 }}
     strategy:
@@ -41,6 +41,11 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node }}
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.11
 
     - name: Setup .NET versions
       uses: actions/setup-dotnet@v1
@@ -285,4 +290,131 @@ jobs:
 
     - name: Build .NET Standard 2.0 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20/NetStandard20.csproj
+      working-directory: test
+
+  JMeter:
+
+    strategy:
+      fail-fast: false
+      matrix:
+        format: [ json, yaml ]
+        version: [ V2, V3 ]
+        os: [ ubuntu-18.04, ubuntu-20.04, macos-10.15, macos-11.0, windows-2016, windows-2019, windows-2022 ]
+
+    name: JMeter
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.11
+
+    - name: Setup .NET versions
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: |
+          2.1.x
+          3.1.x
+          5.0.x
+          6.0.x
+          7.0.x
+        include-prerelease: true
+
+    - name: Prepare Swagger Petstore OpenAPI Spec
+      run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
+      working-directory: test
+
+    - name: Generate JMeter
+      run: |
+        rapicgen -v apache-jmeter ./OpenApi.${{ matrix.format }} --no-logging
+      working-directory: test
+
+  TypeScript:
+
+    strategy:
+      fail-fast: false
+      matrix:
+        format: [ json, yaml ]
+        version: [ V2, V3 ]
+        os: [ macos-10.15, windows-2019, ubuntu-20.04 ]
+
+    name: TypeScript
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.11
+
+    - name: Setup .NET versions
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: |
+          2.1.x
+          3.1.x
+          5.0.x
+          6.0.x
+          7.0.x
+        include-prerelease: true
+
+    - name: Prepare Swagger Petstore OpenAPI Spec
+      run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
+      working-directory: test
+
+    - name: Generate TypeScript (Angular)
+      run: |
+        rapicgen -v typescript Angular ./OpenApi.${{ matrix.format }} Angular --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (Aurelia)
+      run: |
+        rapicgen -v typescript Aurelia ./OpenApi.${{ matrix.format }} Aurelia --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (Axios)
+      run: |
+        rapicgen -v typescript Axios ./OpenApi.${{ matrix.format }} Axios --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (Fetch)
+      run: |
+        rapicgen -v typescript Fetch ./OpenApi.${{ matrix.format }} Fetch --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (Inversify)
+      run: |
+        rapicgen -v typescript Inversify ./OpenApi.${{ matrix.format }} Inversify --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (JQuery)
+      run: |
+        rapicgen -v typescript JQuery ./OpenApi.${{ matrix.format }} JQuery --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (NestJS)
+      run: |
+        rapicgen -v typescript NestJS ./OpenApi.${{ matrix.format }} NestJS --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (Node)
+      run: |
+        rapicgen -v typescript Node ./OpenApi.${{ matrix.format }} Node --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (ReduxQuery)
+      run: |
+        rapicgen -v typescript ReduxQuery ./OpenApi.${{ matrix.format }} ReduxQuery --no-logging
+      working-directory: test
+
+    - name: Generate TypeScript (Rxjs)
+      run: |
+        rapicgen -v typescript Rxjs ./OpenApi.${{ matrix.format }} Rxjs --no-logging
       working-directory: test
