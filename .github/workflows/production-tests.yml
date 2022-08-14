@@ -324,6 +324,9 @@ jobs:
           7.0.x
         include-prerelease: true
 
+    - name: Install rapicgen
+      run: dotnet tool install --global rapicgen
+
     - name: Prepare Swagger Petstore OpenAPI Spec
       run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
       working-directory: test
@@ -364,6 +367,9 @@ jobs:
           6.0.x
           7.0.x
         include-prerelease: true
+
+    - name: Install rapicgen
+      run: dotnet tool install --global rapicgen
 
     - name: Prepare Swagger Petstore OpenAPI Spec
       run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
