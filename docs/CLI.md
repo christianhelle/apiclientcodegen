@@ -39,13 +39,13 @@ Run 'rapicgen [command] -?|-h|--help' for more information about a command.
 Some help information is also provided per command and can be launched by 
 
 ```
-$ rapicgen [command name] -?
+rapicgen [command name] -?
 ```
 
 For example:
 
 ```
-$ rapicgen autorest -?
+rapicgen autorest -?
 ```
 
 will output this:
@@ -67,7 +67,7 @@ Options:
 or 
 
 ```
-$ rapicgen typescript -?
+rapicgen typescript -?
 ```
 
 will output this:
@@ -110,19 +110,19 @@ dotnet tool install --global rapicgen
 Here's an example of how to generate code using **AutoRest**
 
 ```
-$ rapicgen autorest Swagger.json GeneratedCode ./AutoRestOutput.cs
+rapicgen autorest Swagger.json GeneratedCode ./AutoRestOutput.cs
 ```
 
 Here's an example of how to generate code using **NSwag**
 
 ```
-$ rapicgen nswag Swagger.json GeneratedCode ./NSwagOutput.cs
+rapicgen nswag Swagger.json GeneratedCode ./NSwagOutput.cs
 ```
 
 Here's an example of how to generate code using **Swagger Codegen CLI**
 
 ```
-$ rapicgen swagger Swagger.json GeneratedCode ./SwaggerOutput.cs
+rapicgen swagger Swagger.json GeneratedCode ./SwaggerOutput.cs
 ```
 
 Here's an example of how to generate code using **OpenAPI Generator**

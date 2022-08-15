@@ -238,13 +238,13 @@ Run 'rapicgen [command] -?|-h|--help' for more information about a command.
 Some help information is also provided per command and can be launched by 
 
 ```
-$ rapicgen [command name] -?
+rapicgen [command name] -?
 ```
 
 For example:
 
 ```
-$ rapicgen autorest -?
+rapicgen autorest -?
 ```
 
 will output this:
@@ -266,7 +266,7 @@ Options:
 or 
 
 ```
-$ rapicgen typescript -?
+rapicgen typescript -?
 ```
 
 will output this:
