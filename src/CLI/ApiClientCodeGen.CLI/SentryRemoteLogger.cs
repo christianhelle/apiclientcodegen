@@ -20,10 +20,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI
 
         private static void ConfigureScope(Scope scope)
         {
+            scope.SetTag("Platform", "CLI");
+            scope.SetTag("SupportKey", SupportInformation.GetSupportKey());
+            scope.SetExtra("SupportKey", SupportInformation.GetSupportKey());
             scope.User = new User
             {
                 Id = SupportInformation.GetAnonymousIdentity(),
-                Username = SupportInformation.GetSupportKey()
+                Username = SupportInformation.GetSupportKey(),
             };
         }
 
