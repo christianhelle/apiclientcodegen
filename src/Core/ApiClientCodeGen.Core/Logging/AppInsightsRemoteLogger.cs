@@ -23,6 +23,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             telemetryClient.Context.User.Id = SupportInformation.GetSupportKey();
             telemetryClient.Context.Session.Id = Guid.NewGuid().ToString();
             telemetryClient.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
+            telemetryClient.Context.Component.Version = GetType().Assembly.GetName().Version.ToString();
             telemetryClient.TelemetryConfiguration.TelemetryInitializers.Add(new SupportKeyInitializer());
         }
 
