@@ -39,12 +39,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
         [Category("File Paths")]
         [DisplayName("Swagger Codegen CLI Path")]
         [Description("Full path to Swagger Codegen JAR file")]
-        public string SwaggerCodegenPath { get; set; }
-        
+        public string SwaggerCodegenPath { get; set; } = null!;
+
         [Category("File Paths")]
         [DisplayName("OpenAPI Generator Path")]
         [Description("Full path OpenAPI Generator JAR file")]
-        public string OpenApiGeneratorPath { get; set; }
+        public string OpenApiGeneratorPath { get; set; } = null!;
 
         [Category("NuGet Options")]
         [DisplayName("Install Required Packages")]
