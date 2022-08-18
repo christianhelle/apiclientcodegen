@@ -23,7 +23,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.Custom
         {
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-            var project = ProjectExtensions.GetActiveProject(dte);
+            var project = dte.GetActiveProject()!;
 
             var type = typeof(AutoRestCodeGenerator);
             var item = dte.SelectedItems.Item(1).ProjectItem;
