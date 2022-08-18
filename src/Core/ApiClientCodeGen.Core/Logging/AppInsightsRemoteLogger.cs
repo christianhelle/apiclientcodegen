@@ -47,7 +47,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             telemetryClient.TelemetryConfiguration.DisableTelemetry = true;
         }
 
-        private class SupportKeyInitializer : ITelemetryInitializer
+        private sealed class SupportKeyInitializer : ITelemetryInitializer
         {
             public void Initialize(ITelemetry telemetry)
             {
