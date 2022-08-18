@@ -47,14 +47,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             telemetryClient.TelemetryConfiguration.DisableTelemetry = true;
         }
 
-        public class SupportKeyInitializer : ITelemetryInitializer
+        private class SupportKeyInitializer : ITelemetryInitializer
         {
             public void Initialize(ITelemetry telemetry)
             {
-                if (!(telemetry is ISupportProperties supportProperties))
+                if (telemetry is not ISupportProperties supportProperties)
                     return;
-
-                supportProperties.Properties["identity"] = SupportInformation.GetAnonymousIdentity();
                 supportProperties.Properties["support-key"] = SupportInformation.GetSupportKey();
             }
         }
