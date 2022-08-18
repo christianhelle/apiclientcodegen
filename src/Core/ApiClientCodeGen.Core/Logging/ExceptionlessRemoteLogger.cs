@@ -76,8 +76,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         {
             public void Run(EventPluginContext context)
             {
-                if (!context.ContextData.IsUnhandledError || !context.Event.IsError() || !context.ContextData.HasException())
+                if (!context.ContextData.IsUnhandledError ||
+                    !context.Event.IsError() ||
+                    !context.ContextData.HasException())
+                {
+                    context.Cancel = true;
                     return;
+                }
                 
                 var exception = context.ContextData.GetException();
                 context.Cancel = exception?.GetType()?.IsAssignableFrom(typeof(RapicgenException)) != true;
