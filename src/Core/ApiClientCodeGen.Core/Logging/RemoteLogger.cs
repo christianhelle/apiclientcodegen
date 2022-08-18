@@ -6,16 +6,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 {
     public class RemoteLogger : IRemoteLogger
     {
-        public List<IRemoteLogger> Loggers { get; } = new List<IRemoteLogger>();
+        public List<IRemoteLogger> Loggers { get; } = new();
 
-        public List<string> DefaultTags { get; } = new List<string>();
+        public List<string> DefaultTags { get; } = new();
 
         public RemoteLogger(params IRemoteLogger[] remoteLoggers)
         {
             Loggers.AddRange(
                 new IRemoteLogger[]
                 {
-                    new ExceptionlessRemoteLogger()
+                    new ExceptionlessRemoteLogger(),
+                    new AppInsightsRemoteLogger(),
                 });
 
             if (remoteLoggers.Any())
