@@ -68,7 +68,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
             if (!SkipLogging)
             {
                 Logger.Instance.TrackFeatureUsage(
-                    "JMeter",
+                    "TypeScript",
                     "CLI");
             }
             else
