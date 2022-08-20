@@ -5,7 +5,7 @@ using McMaster.Extensions.CommandLineUtils;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
     [ExcludeFromCodeCoverage]
-    [Command("csharp", Description = "Generate C# API clients")]
+    [Command("csharp", Description = "Generate C# API client")]
     [Subcommand(
         typeof(AutoRestCommand),
         typeof(NSwagCommand),
