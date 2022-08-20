@@ -5,16 +5,14 @@ using McMaster.Extensions.CommandLineUtils;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
     [ExcludeFromCodeCoverage]
-    [Command]
+    [Command("csharp", Description = "Generate C# API client")]
     [Subcommand(
-        typeof(CSharpCommand),
-        typeof(JMeterCommand),
-        typeof(TypeScriptCommand))]
-    public class RootCommand
+        typeof(AutoRestCommand),
+        typeof(NSwagCommand),
+        typeof(SwaggerCodegenCommand),
+        typeof(OpenApiGeneratorCommand))]
+    public class CSharpCommand
     {
-        [Option(VerboseOption.Template, CommandOptionType.NoValue, Description = VerboseOption.Description)]
-        public bool Verbose { get; set; }
-
         public int OnExecute(CommandLineApplication app)
         {
             app.ShowHelp(false);

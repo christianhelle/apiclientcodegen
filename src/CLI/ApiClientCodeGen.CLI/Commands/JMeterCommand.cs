@@ -12,7 +12,7 @@ using McMaster.Extensions.CommandLineUtils;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
-    [Command("apache-jmeter", Description = "Generate Apache JMeter test plans")]
+    [Command("jmeter", Description = "Generate Apache JMeter test plans")]
     public class JMeterCommand
     {
         private readonly IConsoleOutput console;

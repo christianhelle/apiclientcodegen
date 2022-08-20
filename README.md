@@ -123,11 +123,11 @@ This extension collects errors and tracks feature usages to a service called [Ex
 ![NSwag Studio Context Menu](images/vsmac-nswag-studio.png)
 
 
-## Installation
+# Installation
 
 The Visual Studio extension can be installed directly from Visual Studio 2017 or 2019 via the **Extensions Dialog Box**. The process is best described in the official Microsoft documentation for [Managing extensions for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/ide/finding-and-using-visual-studio-extensions?view=vs-2019)
 
-### Visual Studio for Mac
+## Visual Studio for Mac
 
 This installation process for **Visual Studio for Mac** is currently a bit troublesome as the MonoDevelop Addin Repository is currently not accepting new users so I can't really register and setup my extension.
 
@@ -197,7 +197,7 @@ Here's what you need to do:
 ![Manually uninstall Add-in](images/vsmac-extensions-uninstall.png)
 
 
-## Cross Platform Command Line Tool
+# Cross Platform Command Line Tool
 All custom tools mentioned above are also implemented in a cross platform command line application
 
 #### Requirements
@@ -220,19 +220,15 @@ The help information is displayed when not specifying any arguments to **rapicge
 Usage: rapicgen [command] [options]
 
 Options:
-  -v|--verbose   Show verbose output
-  -?|-h|--help   Show help information.
+  -v|--verbose  Show verbose output
+  -?|-h|--help  Show help information.
 
 Commands:
-  apache-jmeter  Generate Apache JMeter test plans
-  autorest       Generate C# API client using AutoRest
-  nswag          Generate C# API client using NSwag
-  openapi        Generate C# API client using OpenAPI Generator
-  swagger        Generate C# API client using Swagger Codegen CLI
-  typescript     Generate TypeScript API client
+  csharp        Generate C# API client
+  jmeter        Generate Apache JMeter test plans
+  typescript    Generate TypeScript API client
 
 Run 'rapicgen [command] -?|-h|--help' for more information about a command.
-
 ```
 
 Some help information is also provided per command and can be launched by 
@@ -241,10 +237,41 @@ Some help information is also provided per command and can be launched by
 rapicgen [command name] -?
 ```
 
+or
+
+```
+rapicgen [command name] [sub command name] -?
+```
+
 For example:
 
 ```
-rapicgen autorest -?
+rapicgen csharp -?
+``` 
+
+will output this:
+
+```
+Generate C# API client
+
+Usage: rapicgen csharp [command] [options]
+
+Options:
+  -?|-h|--help  Show help information.
+
+Commands:
+  autorest      Generate C# API client using AutoRest
+  nswag         Generate C# API client using NSwag
+  openapi       Generate C# API client using OpenAPI Generator
+  swagger       Generate C# API client using Swagger Codegen CLI
+
+Run 'csharp [command] -?|-h|--help' for more information about a command.
+```
+
+and
+
+```
+rapicgen csharp autorest -?
 ```
 
 will output this:
@@ -309,34 +336,34 @@ dotnet tool install --global rapicgen
 Here's an example of how to generate code using **AutoRest**
 
 ```
-rapicgen autorest Swagger.json GeneratedCode ./AutoRestOutput.cs
+rapicgen csharp autorest Swagger.json GeneratedCode ./AutoRestOutput.cs
 ```
 
 Here's an example of how to generate code using **NSwag**
 
 ```
-rapicgen nswag Swagger.json GeneratedCode ./NSwagOutput.cs
+rapicgen csharp nswag Swagger.json GeneratedCode ./NSwagOutput.cs
 ```
 
 Here's an example of how to generate code using **Swagger Codegen CLI**
 
 ```
-rapicgen swagger Swagger.json GeneratedCode ./SwaggerOutput.cs
+rapicgen csharp swagger Swagger.json GeneratedCode ./SwaggerOutput.cs
 ```
 
 Here's an example of how to generate code using **OpenAPI Generator**
 
 ```
-rapicgen openapi Swagger.json GeneratedCode ./OpenApiOutput.cs
+rapicgen csharp openapi Swagger.json GeneratedCode ./OpenApiOutput.cs
 ```
 
-Here's an example of how to generate code JMeter test plans
+Here's an example of how to generate code **JMeter** test plans
 
 ```
-rapicgen apache-jmeter Swagger.json
+rapicgen jmeter Swagger.json
 ```
 
-Here's an example of how to generate code for TypeScript
+Here's an example of how to generate code for **TypeScript**
 
 ```
 rapicgen typescript Angular Swagger.json

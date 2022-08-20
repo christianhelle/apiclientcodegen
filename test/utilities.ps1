@@ -185,19 +185,19 @@ function Generate-Code {
 
     switch ($ToolName) {
         "SwaggerCodegen" {
-            $command = "swagger"
+            $command = "csharp swagger"
         }
         "OpenApiGenerator" { 
-            $command = "openapi"
+            $command = "csharp openapi"
         }
         "AutoRest-V2" {
-            $command = "autorest"
+            $command = "csharp autorest"
         } 
         "AutoRest-V3" {
-            $command = "autorest"
+            $command = "csharp autorest"
         }
         "NSwag" {
-            $command = "nswag"
+            $command = "csharp nswag"
         }
     }
 
@@ -256,10 +256,10 @@ function Generate-CodeParallel {
     "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
         switch ($_) {
             "SwaggerCodegen" {
-                $command = "swagger"
+                $command = "csharp swagger"
             }
             "OpenApiGenerator" { 
-                $command = "openapi"
+                $command = "csharp openapi"
             }
             Default {
                 $command = $_.ToLower()
