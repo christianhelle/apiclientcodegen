@@ -122,6 +122,7 @@
     <PackageReference Include="StreamJsonRpc">
       <Version>1.5.68</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.VSSDK.Vsixsigntool" Version="16.2.29116.78" />
   </ItemGroup>
   <Import Project="..\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
