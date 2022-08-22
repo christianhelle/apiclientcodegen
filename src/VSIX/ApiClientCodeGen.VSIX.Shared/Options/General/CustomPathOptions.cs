@@ -12,9 +12,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
         {
             try
             {
-                if (options == null)
-                    options = GetFromDialogPage();
-
+                options ??= GetFromDialogPage();
                 JavaPath = options.JavaPath;
                 NpmPath = options.NpmPath;
                 NSwagPath = options.NSwagPath;
