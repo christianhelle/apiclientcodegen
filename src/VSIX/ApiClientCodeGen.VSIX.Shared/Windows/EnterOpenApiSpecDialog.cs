@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
+using Microsoft.VisualStudio.Threading;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 {
@@ -43,7 +44,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
                 0,
                 "Enter OpenAPI Specification URL (e.g. https://petstore.swagger.io/v2/swagger.json)");
 
-        private async void BtnOK_Click(object sender, EventArgs e)
+        private void BtnOK_Click(object sender, EventArgs e)
+        {
+            OnButtonClick().Forget();
+        }
+
+        private async Task OnButtonClick()
         {
             var url = tbUrl.Text;
             if (string.IsNullOrWhiteSpace(url))
@@ -58,7 +64,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             try
             {
                 lblStatus.Text = "Downloading...";
-                
+
                 var openApiSpecification = await DownloadOpenApiSpecAsync();
                 if (string.IsNullOrWhiteSpace(openApiSpecification))
                 {
