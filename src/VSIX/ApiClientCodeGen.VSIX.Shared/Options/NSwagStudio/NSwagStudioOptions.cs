@@ -13,9 +13,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagSt
         {
             try
             {
-                if (options == null)
-                    options = GetFromDialogPage();
-
+                options ??= GetFromDialogPage();
                 GenerateResponseClasses = options.GenerateResponseClasses;
                 GenerateJsonMethods = options.GenerateJsonMethods;
                 RequiredPropertiesMustBeDefined = options.RequiredPropertiesMustBeDefined;
