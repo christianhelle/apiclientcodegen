@@ -39,7 +39,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 return;
 
             var menuCommand = new MenuCommand(
-                (sender, e_) => InvokeAsync(package, func, dte).Forget(), 
+                (_, _) => InvokeAsync(package, func, dte).Forget(), 
                 new CommandID(commandSet, commandId));
 
             commandService.AddCommand(menuCommand);
