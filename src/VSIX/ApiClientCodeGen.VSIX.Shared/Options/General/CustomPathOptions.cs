@@ -8,7 +8,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
     public class CustomPathOptions 
         : OptionsBase<IGeneralOptions, GeneralOptionPage>, IGeneralOptions
     {
-        public CustomPathOptions(IGeneralOptions options = null)
+        public CustomPathOptions(IGeneralOptions? options = null)
         {
             try
             {
