@@ -12,11 +12,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
     [ExcludeFromCodeCoverage]
     public static class OutputWindow
     {
-        private static string name;
-        private static IVsOutputWindowPane pane;
-        private static IVsOutputWindow output;
+        private static string? name;
+        private static IVsOutputWindowPane? pane;
+        private static IVsOutputWindow? output;
 
-        public static void Initialize(IServiceProvider provider, string outputSource)
+        public static void Initialize(IServiceProvider provider, string? outputSource)
         {
             if (output != null)
                 return;
@@ -34,7 +34,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             try
             {
                 if (EnsurePane()) 
-                    pane.OutputString($"{DateTime.Now}: {message}{Environment.NewLine}");
+                    pane?.OutputString($"{DateTime.Now}: {message}{Environment.NewLine}");
             }
             catch
             {
@@ -48,8 +48,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
                 return true;
 
             var guid = Guid.NewGuid();
-            output.CreatePane(ref guid, name, 1, 1);
-            output.GetPane(ref guid, out pane);
+            output?.CreatePane(ref guid, name, 1, 1);
+            output?.GetPane(ref guid, out pane);
             return pane != null;
         }
     }
