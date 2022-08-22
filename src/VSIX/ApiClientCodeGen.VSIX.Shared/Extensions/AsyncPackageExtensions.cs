@@ -27,7 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             var dteTask = package.GetServiceAsync(typeof(DTE));
             if (dteTask == null)
                 return;
-            var dte = await dteTask as DTE;
+            var dte = (DTE)await dteTask;
             
             var commandServiceTask = package.GetServiceAsync((typeof(IMenuCommandService)));
             if (commandServiceTask == null)
