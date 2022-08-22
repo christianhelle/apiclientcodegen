@@ -6,6 +6,7 @@ using System.Threading;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
+using Microsoft.VisualStudio.Threading;
 using Task = System.Threading.Tasks.Task;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
@@ -38,7 +39,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
                 return;
 
             var menuCommand = new MenuCommand(
-                async (sender, e) => await InvokeAsync(package, func, dte), 
+                (sender, e_) => InvokeAsync(package, func, dte).Forget(), 
                 new CommandID(commandSet, commandId));
 
             commandService.AddCommand(menuCommand);
