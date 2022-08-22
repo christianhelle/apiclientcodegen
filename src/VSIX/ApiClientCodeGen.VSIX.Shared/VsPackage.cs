@@ -97,7 +97,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
             new NewNSwagStudioClientCommand()
         };
 
-        public static AsyncPackage Instance { get; private set; }
+        public static AsyncPackage Instance { get; private set; } = null!;
 
         protected override async Task InitializeAsync(
             CancellationToken cancellationToken,
