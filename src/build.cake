@@ -1,5 +1,5 @@
 #tool "nuget:?package=Microsoft.TestPlatform&version=16.5.0"
-#tool nuget:?package=Microsoft.VSSDK.Vsixsigntool&version=16.2.29116.78
+#tool "nuget:?package=Microsoft.VSSDK.Vsixsigntool&version=16.2.29116.78"
 
 var target = Argument("target", "Default");
 
