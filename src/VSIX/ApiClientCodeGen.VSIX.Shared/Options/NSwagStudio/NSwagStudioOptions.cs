@@ -9,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagSt
     public class NSwagStudioOptions
         : OptionsBase<INSwagStudioOptions, NSwagStudioOptionsPage>, INSwagStudioOptions
     {
-        public NSwagStudioOptions(INSwagStudioOptions options = null)
+        public NSwagStudioOptions(INSwagStudioOptions? options = null)
         {
             try
             {
