@@ -2,7 +2,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Windows.Forms;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
@@ -10,7 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
     [ExcludeFromCodeCoverage]
     public partial class GeneralOptionsPageCustom : UserControl
     {
-        private readonly GeneralOptionPage options;
+        private readonly GeneralOptionPage options = null!;
 
         public GeneralOptionsPageCustom()
         {
