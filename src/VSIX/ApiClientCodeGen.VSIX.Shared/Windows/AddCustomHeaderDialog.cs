@@ -23,11 +23,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 
             foreach (var keyValuePair in existingHeaders)
                 bindingList.Add(
-                    new CustomHeader
-                    {
-                        Key = keyValuePair.Key,
-                        Value = keyValuePair.Value
-                    });
+                    new CustomHeader(keyValuePair.Key,keyValuePair.Value));
         }
 
         public IReadOnlyDictionary<string, string> CustomHeaders
@@ -35,10 +31,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
                 .Where(c => !string.IsNullOrWhiteSpace(c.Key) && !string.IsNullOrWhiteSpace(c.Value))
                 .ToDictionary(k => k.Key, v => v.Value);
 
-        private sealed class CustomHeader
+        private sealed record CustomHeader(string Key, string Value)
         {
-            public string Key { get; set; }
-            public string Value { get; set; }
+            public string Key { get; } = Key;
+            public string Value { get; } = Value;
         }
     }
 }
