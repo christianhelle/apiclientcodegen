@@ -13,7 +13,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             = new BindingList<CustomHeader>();
 
         public AddCustomHeaderDialog(
-            IReadOnlyDictionary<string, string> existingHeaders = null)
+            IReadOnlyDictionary<string, string>? existingHeaders = null)
         {
             InitializeComponent();
             dataGridView.DataSource = bindingList;
