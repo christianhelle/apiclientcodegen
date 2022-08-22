@@ -46,10 +46,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
 
         private void BtnOK_Click(object sender, EventArgs e)
         {
-            OnButtonClick().Forget();
+            OnButtonClickAsync().Forget();
         }
 
-        private async Task OnButtonClick()
+        private async Task OnButtonClickAsync()
         {
             var url = tbUrl.Text;
             if (string.IsNullOrWhiteSpace(url))
