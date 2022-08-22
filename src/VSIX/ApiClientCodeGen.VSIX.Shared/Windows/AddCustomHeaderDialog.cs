@@ -9,8 +9,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
     [ExcludeFromCodeCoverage]
     public partial class AddCustomHeaderDialog : Form
     {
-        private readonly BindingList<CustomHeader> bindingList 
-            = new BindingList<CustomHeader>();
+        private readonly BindingList<CustomHeader> bindingList = new();
 
         public AddCustomHeaderDialog(
             IReadOnlyDictionary<string, string>? existingHeaders = null)
