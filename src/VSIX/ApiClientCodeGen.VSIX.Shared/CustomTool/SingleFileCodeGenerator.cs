@@ -11,6 +11,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
@@ -38,6 +39,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
 
         public ICodeGeneratorFactory Factory { get; set; } = new CodeGeneratorFactory(null);
 
+        [SuppressMessage(
+            "Usage", "VSTHRD108:Assert thread affinity unconditionally",
+            Justification = "ThrowIfNotOnUIThread() causes unit tests to fail")]
         public int Generate(
             string wszInputFilePath,
             string bstrInputFileContents,
@@ -46,9 +50,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
             out uint pcbOutput,
             IVsGeneratorProgress pGenerateProgress)
         {
+            if (!TestingUtility.IsRunningFromUnitTest)
+                ThreadHelper.ThrowIfNotOnUIThread();
+
             pcbOutput = 0;
             var progressReporter = new ProgressReporter(pGenerateProgress);
-            
+
             try
             {
                 progressReporter.Progress(5);
@@ -81,10 +88,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
                 }
 
                 rgbOutputFileContents[0] = code.ConvertToIntPtr(out pcbOutput);
-                
+
                 Trace.WriteLine(Environment.NewLine);
                 Trace.WriteLine($"Output file size: {pcbOutput}");
-                
+
                 Trace.WriteLine(Environment.NewLine);
                 Trace.WriteLine("###################################################################");
                 Trace.WriteLine("#  Do you find this tool useful?                                  #");
@@ -112,12 +119,18 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
             return 0;
         }
 
+        [SuppressMessage(
+            "Usage", "VSTHRD108:Assert thread affinity unconditionally",
+            Justification = "ThrowIfNotOnUIThread() causes unit tests to fail")]
         private static void LogException(
             Exception e,
             IVsGeneratorProgress pGenerateProgress,
             IntPtr[] rgbOutputFileContents,
             out uint pcbOutput)
         {
+            if (!TestingUtility.IsRunningFromUnitTest)
+                ThreadHelper.ThrowIfNotOnUIThread();
+
             Logger.Instance.TrackError(e);
             rgbOutputFileContents[0] = string.Empty.ConvertToIntPtr(out pcbOutput);
             pGenerateProgress?.GeneratorError(e);
