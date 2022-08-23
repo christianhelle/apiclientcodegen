@@ -34,7 +34,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
             try
             {
                 if (EnsurePane()) 
-                    pane?.OutputString($"{DateTime.Now}: {message}{Environment.NewLine}");
+                    pane?.OutputStringThreadSafe($"{DateTime.Now}: {message}{Environment.NewLine}");
             }
             catch
             {
