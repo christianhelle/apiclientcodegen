@@ -14,6 +14,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
             this.pGenerateProgress = pGenerateProgress;
         }
 
+        [SuppressMessage(
+            "Usage", "VSTHRD010:Invoke single-threaded types on Main thread",
+            Justification = "ThrowIfNotOnUIThread() causes unit tests to fail")]
         public void Progress(uint progress, uint total = 100)
         {
             ThrowIfNotOnUIThread();
@@ -21,6 +24,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
         }
 
         [ExcludeFromCodeCoverage]
+        [SuppressMessage(
+            "Usage", "VSTHRD108:Assert thread affinity unconditionally",
+            Justification = "ThrowIfNotOnUIThread() causes unit tests to fail")]
         private static void ThrowIfNotOnUIThread()
         {
             if (!TestingUtility.IsRunningFromUnitTest)
