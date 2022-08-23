@@ -10,6 +10,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
     [ExcludeFromCodeCoverage]
     public static class IVsExtensions
     {
+        [SuppressMessage(
+            "Usage", "VSTHRD108:Assert thread affinity unconditionally",
+            Justification = "ThrowIfNotOnUIThread() causes unit tests to fail")]
         public static void Progress(
             this IVsGeneratorProgress pGenerateProgress,
             uint complete)
@@ -50,6 +53,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
             }
         }
 
+        [SuppressMessage(
+            "Usage", "VSTHRD108:Assert thread affinity unconditionally",
+            Justification = "ThrowIfNotOnUIThread() causes unit tests to fail")]
         private static void GenerateErrorInternal(IVsGeneratorProgress pGenerateProgress, Exception exception)
         {
             if (!TestingUtility.IsRunningFromUnitTest)
