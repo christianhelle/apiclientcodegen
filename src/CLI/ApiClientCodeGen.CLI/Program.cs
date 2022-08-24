@@ -69,7 +69,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI
             services.AddSingleton<ITypeScriptCodeGeneratorFactory, TypeScriptCodeGeneratorFactory>();
             services.AddSingleton<IAutoRestCodeGeneratorFactory, AutoRestCodeGeneratorFactory>();
             services.AddSingleton<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
-            services.AddSingleton<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
+            services.AddSingleton<IOpenApiCSharpGeneratorFactory, OpenApiCSharpGeneratorFactory>();
             services.AddSingleton<ISwaggerCodegenFactory, SwaggerCodegenFactory>();
             services.AddSingleton<IDependencyInstaller, DependencyInstaller>();
             services.AddSingleton<INpmInstaller, NpmInstaller>();

@@ -10,7 +10,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         typeof(AutoRestCommand),
         typeof(NSwagCommand),
         typeof(SwaggerCodegenCommand),
-        typeof(OpenApiGeneratorCommand))]
+        typeof(OpenApiCSharpGeneratorCommand))]
     public class CSharpCommand
     {
         public int OnExecute(CommandLineApplication app)

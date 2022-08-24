@@ -13,7 +13,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Tests.Comma
     {
         [Theory, AutoMoqData]
         public void Create_Should_Return_NotNull(
-            OpenApiGeneratorFactory sut,
+            OpenApiCSharpGeneratorFactory sut,
             string swaggerFile,
             string defaultNamespace,
             IGeneralOptions options,

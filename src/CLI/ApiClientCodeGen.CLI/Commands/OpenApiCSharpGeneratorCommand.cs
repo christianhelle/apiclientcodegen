@@ -10,27 +10,27 @@ using McMaster.Extensions.CommandLineUtils;
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
     [Command("openapi", Description = "Generate C# API client using OpenAPI Generator")]
-    public class OpenApiGeneratorCommand : CodeGeneratorCommand, IOpenApiGeneratorOptions
+    public class OpenApiCSharpGeneratorCommand : CodeGeneratorCommand, IOpenApiGeneratorOptions
     {
         private readonly IGeneralOptions options;
         private readonly IOpenApiGeneratorOptions openApiGeneratorOptions;
         private readonly IProcessLauncher processLauncher;
-        private readonly IOpenApiGeneratorFactory generatorFactory;
+        private readonly IOpenApiCSharpGeneratorFactory cSharpGeneratorFactory;
         private readonly IDependencyInstaller dependencyInstaller;
 
-        public OpenApiGeneratorCommand(
+        public OpenApiCSharpGeneratorCommand(
             IConsoleOutput console,
             IProgressReporter? progressReporter,
             IGeneralOptions options,
             IOpenApiGeneratorOptions openApiGeneratorOptions,
             IProcessLauncher processLauncher,
-            IOpenApiGeneratorFactory generatorFactory,
+            IOpenApiCSharpGeneratorFactory cSharpGeneratorFactory,
             IDependencyInstaller dependencyInstaller) : base(console, progressReporter)
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.openApiGeneratorOptions = openApiGeneratorOptions;
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
-            this.generatorFactory = generatorFactory ?? throw new ArgumentNullException(nameof(generatorFactory));
+            this.cSharpGeneratorFactory = cSharpGeneratorFactory ?? throw new ArgumentNullException(nameof(cSharpGeneratorFactory));
             this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
@@ -108,7 +108,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
         }
 
         public override ICodeGenerator CreateGenerator()
-            => generatorFactory.Create(
+            => cSharpGeneratorFactory.Create(
                 SwaggerFile,
                 DefaultNamespace,
                 options,

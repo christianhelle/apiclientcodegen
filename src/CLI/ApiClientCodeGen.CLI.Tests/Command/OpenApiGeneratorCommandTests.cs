@@ -13,26 +13,26 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Tests.Comma
     public class OpenApiGeneratorCommandTests
     {   
         [Theory, AutoMoqData]
-        public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(OpenApiGeneratorCommand sut)
+        public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(OpenApiCSharpGeneratorCommand sut)
             => sut.DefaultNamespace.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void SwaggerFile_Should_NotBeNullOrWhiteSpace(OpenApiGeneratorCommand sut)
+        public void SwaggerFile_Should_NotBeNullOrWhiteSpace(OpenApiCSharpGeneratorCommand sut)
             => sut.SwaggerFile.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void OutputFile_Should_NotBeNullOrWhiteSpace(OpenApiGeneratorCommand sut)
+        public void OutputFile_Should_NotBeNullOrWhiteSpace(OpenApiCSharpGeneratorCommand sut)
             => sut.OutputFile.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void CreateGenerator_Should_NotNull(OpenApiGeneratorCommand sut)
+        public void CreateGenerator_Should_NotNull(OpenApiCSharpGeneratorCommand sut)
             => sut.CreateGenerator().Should().NotBeNull();
 
         [Theory, AutoMoqData]
         public void OnExecuteAsync_Should_NotThrow(
             [Frozen] IProgressReporter progressReporter,
             [Frozen] ICodeGenerator generator,
-            OpenApiGeneratorCommand sut,
+            OpenApiCSharpGeneratorCommand sut,
             string code)
         {
             Mock.Get(generator)

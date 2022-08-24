@@ -6,7 +6,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenAp
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
-    public interface IOpenApiGeneratorFactory
+    public interface IOpenApiCSharpGeneratorFactory
     {
         ICodeGenerator Create(
             string swaggerFile,
@@ -17,7 +17,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
             IDependencyInstaller dependencyInstaller);
     }
 
-    public class OpenApiGeneratorFactory : IOpenApiGeneratorFactory
+    public class OpenApiCSharpGeneratorFactory : IOpenApiCSharpGeneratorFactory
     {
         public ICodeGenerator Create(
             string swaggerFile,
