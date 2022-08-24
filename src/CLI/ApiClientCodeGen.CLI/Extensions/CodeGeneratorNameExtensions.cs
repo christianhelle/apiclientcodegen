@@ -10,7 +10,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Extensions
         {
             var type = generator.GetType();
             
-            if (type == typeof(OpenApiGeneratorCommand))
+            if (type == typeof(OpenApiCSharpGeneratorCommand))
                 return SupportedCodeGenerator.OpenApi.GetName();
             
             if (type == typeof(SwaggerCodegenCommand))
