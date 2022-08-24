@@ -6,7 +6,7 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.Genera
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi
 {
-    public abstract class OpenApiCodeGenerator : ICodeGenerator
+    public class OpenApiCodeGenerator : ICodeGenerator
     {
         private readonly JavaPathProvider javaPathProvider;
         private readonly IGeneralOptions options;
@@ -16,7 +16,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         private readonly string outputPath;
         private readonly string generator;
 
-        protected OpenApiCodeGenerator(
+        public OpenApiCodeGenerator(
             string swaggerFile,
             string outputPath,
             string generator,
