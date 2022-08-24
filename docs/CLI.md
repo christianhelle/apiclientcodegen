@@ -21,13 +21,15 @@ The help information is displayed when not specifying any arguments to **rapicge
 Usage: rapicgen [command] [options]
 
 Options:
-  -v|--verbose  Show verbose output
-  -?|-h|--help  Show help information.
+  -v|--verbose       Show verbose output
+  -?|-h|--help       Show help information.
 
 Commands:
-  csharp        Generate C# API client
-  jmeter        Generate Apache JMeter test plans
-  typescript    Generate TypeScript API client
+  csharp             Generate C# API client
+  jmeter             Generate Apache JMeter test plans
+  openapi-generator  Generate code using OpenAPI Generator.
+                     See supported generators at https://openapi-generator.tech/docs/generators/
+  typescript         Generate TypeScript API client
 
 Run 'rapicgen [command] -?|-h|--help' for more information about a command.
 ```
