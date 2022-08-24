@@ -10,7 +10,7 @@ using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Tests.Command
 {
-    public class OpenApiGeneratorCommandTests
+    public class OpenApiCSharpGeneratorCommandTests
     {   
         [Theory, AutoMoqData]
         public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(OpenApiCSharpGeneratorCommand sut)

@@ -9,7 +9,7 @@ using Xunit;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Tests.Command
 {
-    public class OpenApiGeneratorFactoryTests
+    public class OpenApiCSharpGeneratorFactoryTests
     {
         [Theory, AutoMoqData]
         public void Create_Should_Return_NotNull(
