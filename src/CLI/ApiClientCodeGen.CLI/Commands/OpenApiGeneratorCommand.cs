@@ -12,7 +12,6 @@ using McMaster.Extensions.CommandLineUtils;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
 {
-    [ExcludeFromCodeCoverage]
     [Command(
         "openapi-generator", 
         Description = 
