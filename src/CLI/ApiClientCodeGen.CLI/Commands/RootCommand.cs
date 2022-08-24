@@ -9,7 +9,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
     [Subcommand(
         typeof(CSharpCommand),
         typeof(JMeterCommand),
-        typeof(TypeScriptCommand))]
+        typeof(TypeScriptCommand),
+        typeof(OpenApiGeneratorCommand))]
     public class RootCommand
     {
         [Option(VerboseOption.Template, CommandOptionType.NoValue, Description = VerboseOption.Description)]
