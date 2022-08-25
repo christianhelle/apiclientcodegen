@@ -66,6 +66,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             exception.ToExceptionless().Submit();
         }
 
+        public void TrackDependencyFailure(string dependencyName)
+        {
+            // Not implemented
+        }
+
         public void Disable()
         {
             ExceptionlessClient.Default.Configuration.Enabled = false;
