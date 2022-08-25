@@ -43,6 +43,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             telemetryClient.Flush();
         }
 
+        public void TrackDependencyFailure(string dependencyName)
+        {
+            if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
+                return;
+            telemetryClient.TrackDependency(new DependencyTelemetry { Name = dependencyName });
+            telemetryClient.Flush();
+        }
+
         public void Disable()
         {
             telemetryClient.TelemetryConfiguration.DisableTelemetry = true;
