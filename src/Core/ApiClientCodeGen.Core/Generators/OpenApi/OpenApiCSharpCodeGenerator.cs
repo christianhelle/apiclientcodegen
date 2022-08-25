@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
 
@@ -99,6 +100,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 pGenerateProgress?.Progress(80);
 
                 return CSharpFileMerger.MergeFilesAndDeleteSource(output);
+            }
+            catch
+            {
+                Logger.Instance.TrackDependencyFailure("OpenAPI Generator");
+                throw;
             }
             finally
             {
