@@ -46,7 +46,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 pGenerateProgress?.Progress(50);
 
                 var arguments = $"run \"{nswagStudioFile}\"";
-                processLauncher.Start(command, arguments, Path.GetDirectoryName(nswagStudioFile)!); 
+
+                try
+                {
+                    processLauncher.Start(command, arguments, Path.GetDirectoryName(nswagStudioFile)!); 
+                }
+                catch
+                {
+                    Logger.Instance.TrackDependencyFailure("NSwag Studio");
+                    throw;
+                }
             }
             
             pGenerateProgress?.Progress(100);
