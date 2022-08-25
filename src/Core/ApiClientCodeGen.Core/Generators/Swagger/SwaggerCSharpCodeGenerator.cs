@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger
@@ -65,6 +66,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 pGenerateProgress?.Progress(80);
 
                 return CSharpFileMerger.MergeFilesAndDeleteSource(output);
+            }
+            catch
+            {
+                Logger.Instance.TrackDependencyFailure("Swagger Codegen CLI");
+                throw;
             }
             finally
             {
