@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using NSwag.CodeGeneration.CSharp;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag
@@ -33,6 +34,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 pGenerateProgress?.Progress(50);
                 var generator = new CSharpClientGenerator(document, settings);
                 return generator.GenerateFile();
+            }
+            catch
+            {
+                Logger.Instance.TrackDependencyFailure("NSwag");
+                throw;
             }
             finally
             {
