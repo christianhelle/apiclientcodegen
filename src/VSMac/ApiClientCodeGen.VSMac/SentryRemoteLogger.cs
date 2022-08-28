@@ -36,5 +36,10 @@ namespace ApiClientCodeGen.VSMac
         {
             SentrySdk.Close();
         }
+
+        public void TrackDependencyFailure(string dependencyName)
+        {
+            // Not implemented
+        }
     }
 }
