@@ -53,7 +53,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 }
                 catch
                 {
-                    Logger.Instance.TrackDependencyFailure("NSwag Studio");
+                    Logger.Instance.TrackDependencyFailure("NSwag Studio", arguments);
                     throw;
                 }
             }
