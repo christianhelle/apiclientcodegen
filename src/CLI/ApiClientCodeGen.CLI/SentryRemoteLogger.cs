@@ -44,7 +44,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI
             SentrySdk.CaptureException(exception);
         }
 
-        public void TrackDependencyFailure(string dependencyName)
+        public void TrackDependencyFailure(string dependencyName, string? data = null)
         {
             // Not implemented
         }

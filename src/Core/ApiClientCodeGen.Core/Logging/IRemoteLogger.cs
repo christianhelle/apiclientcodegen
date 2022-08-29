@@ -6,7 +6,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
     {
         void TrackFeatureUsage(string featureName, params string[] tags);
         void TrackError(Exception exception);
-        void TrackDependencyFailure(string dependencyName);
+        void TrackDependencyFailure(string dependencyName, string? data = null);
         void Disable();
     }
 }

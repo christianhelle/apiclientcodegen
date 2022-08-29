@@ -32,6 +32,11 @@ namespace ApiClientCodeGen.VSMac
             SentrySdk.CaptureException(exception);
         }
 
+        public void TrackDependencyFailure(string dependencyName, string? data = null)
+        {
+            // Not implemented
+        }
+
         public void Disable()
         {
             SentrySdk.Close();
