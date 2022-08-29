@@ -29,7 +29,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
             }
             catch
             {
-                Logger.Instance.TrackDependencyFailure($"npm install -g {packageName}");
+                Logger.Instance.TrackDependencyFailure("npm", $"install -g {packageName}");
                 throw;
             }
         }
