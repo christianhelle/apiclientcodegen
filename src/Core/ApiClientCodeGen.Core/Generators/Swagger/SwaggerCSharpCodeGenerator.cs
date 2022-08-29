@@ -33,6 +33,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
         public string GenerateCode(IProgressReporter? pGenerateProgress)
         {
+            string arguments = null!;
             try
             {
                 pGenerateProgress?.Progress(10);
@@ -54,13 +55,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 Directory.CreateDirectory(output);
                 pGenerateProgress?.Progress(40);
 
-                var arguments =
-                    $"-jar \"{jarFile}\" generate " +
-                    "-l csharp " +
-                    $"--input-spec \"{swaggerFile}\" " +
-                    $"--output \"{output}\" " +
-                    "-DapiTests=false -DmodelTests=false " +
-                    $"-DpackageName={defaultNamespace} ";
+                arguments = $"-jar \"{jarFile}\" generate " +
+                            "-l csharp " +
+                            $"--input-spec \"{swaggerFile}\" " +
+                            $"--output \"{output}\" " +
+                            "-DapiTests=false -DmodelTests=false " +
+                            $"-DpackageName={defaultNamespace} ";
 
                 processLauncher.Start(javaPathProvider.GetJavaExePath(), arguments);
                 pGenerateProgress?.Progress(80);
@@ -69,7 +69,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             }
             catch
             {
-                Logger.Instance.TrackDependencyFailure("Swagger Codegen CLI");
+                Logger.Instance.TrackDependencyFailure("Swagger Codegen CLI", arguments);
                 throw;
             }
             finally
