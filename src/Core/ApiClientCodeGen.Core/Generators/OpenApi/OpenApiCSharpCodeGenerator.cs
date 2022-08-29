@@ -40,6 +40,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
         public string GenerateCode(IProgressReporter? pGenerateProgress)
         {
+            string arguments = null!;
             try
             {
                 pGenerateProgress?.Progress(10);
@@ -61,14 +62,13 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 Directory.CreateDirectory(output);
                 pGenerateProgress?.Progress(40);
 
-                var arguments =
-                    $"-jar \"{jarFile}\" generate " +
-                    "--generator-name csharp-netcore " +
-                    $"--input-spec \"{Path.GetFileName(swaggerFile)}\" " +
-                    $"--output \"{output}\" " +
-                    $"--package-name \"{defaultNamespace}\" " +
-                    "--global-property apiTests=false,modelTests=false " +
-                    "--skip-overwrite ";
+                arguments = $"-jar \"{jarFile}\" generate " +
+                            "--generator-name csharp-netcore " +
+                            $"--input-spec \"{Path.GetFileName(swaggerFile)}\" " +
+                            $"--output \"{output}\" " +
+                            $"--package-name \"{defaultNamespace}\" " +
+                            "--global-property apiTests=false,modelTests=false " +
+                            "--skip-overwrite ";
 
                 if (string.IsNullOrWhiteSpace(openApiGeneratorOptions.CustomAdditionalProperties))
                 {
@@ -103,7 +103,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             }
             catch
             {
-                Logger.Instance.TrackDependencyFailure("OpenAPI Generator");
+                Logger.Instance.TrackDependencyFailure("OpenAPI Generator", arguments);
                 throw;
             }
             finally
