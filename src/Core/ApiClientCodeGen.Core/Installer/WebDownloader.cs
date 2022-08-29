@@ -22,8 +22,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
             
                 mutex.ReleaseMutex();
             }
-            catch
+            catch (Exception e)
             {
+                Logger.Instance.TrackError(e);
                 Logger.Instance.TrackDependencyFailure($"GET {address}");
             }
         }
