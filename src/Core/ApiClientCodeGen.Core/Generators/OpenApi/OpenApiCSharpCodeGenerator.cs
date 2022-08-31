@@ -91,20 +91,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     arguments += openApiGeneratorOptions.CustomAdditionalProperties;
                 }
 
-
+                using var context = new DependencyContext("OpenAPI Generator", arguments);
                 processLauncher.Start(
                     javaPathProvider.GetJavaExePath(),
                     arguments,
                     Path.GetDirectoryName(swaggerFile));
+                context.Succeeded();
 
                 pGenerateProgress?.Progress(80);
 
                 return CSharpFileMerger.MergeFilesAndDeleteSource(output);
-            }
-            catch
-            {
-                Logger.Instance.TrackDependency("OpenAPI Generator", arguments);
-                throw;
             }
             finally
             {
