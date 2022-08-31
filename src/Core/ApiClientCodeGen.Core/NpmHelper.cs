@@ -24,17 +24,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
             {
                 var npm = GetNpmPath();
                 string prefix = null!;
+
+                using var context = new DependencyContext("npm config get prefix");
                 (processLauncher ?? new ProcessLauncher()).Start(
                     npm,
                     "config get prefix",
                     o => prefix += o,
                     e => Trace.WriteLine(e));
+                context.Succeeded();
                 return prefix;
             }
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Logger.Instance.TrackDependency("npm", "config get prefix");
                 Trace.TraceError(e.ToString());
                 return null;
             }
