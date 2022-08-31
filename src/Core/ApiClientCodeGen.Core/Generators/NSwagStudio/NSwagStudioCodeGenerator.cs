@@ -27,14 +27,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             this.nswagStudioFile = nswagStudioFile ?? throw new ArgumentNullException(nameof(nswagStudioFile));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
-            this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
+            this.dependencyInstaller =
+                dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
             this.forceDownload = forceDownload;
         }
 
         public string GenerateCode(IProgressReporter? pGenerateProgress)
         {
             Logger.Instance.TrackFeatureUsage("Generate NSwag Studio output");
-            
+
             pGenerateProgress?.Progress(10);
 
             lock (SyncLock)
@@ -47,17 +48,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                 var arguments = $"run \"{nswagStudioFile}\"";
 
-                try
-                {
-                    processLauncher.Start(command, arguments, Path.GetDirectoryName(nswagStudioFile)!); 
-                }
-                catch
-                {
-                    Logger.Instance.TrackDependency("NSwag Studio", arguments);
-                    throw;
-                }
+                using var context = new DependencyContext("NSwag Studio");
+                processLauncher.Start(command, arguments, Path.GetDirectoryName(nswagStudioFile)!);
+                context.Succeeded();
             }
-            
+
             pGenerateProgress?.Progress(100);
             return string.Empty;
         }
@@ -87,7 +82,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 var json = File.ReadAllText(nswagFile);
                 dynamic obj = JsonConvert.DeserializeObject(json);
 
-                if (obj?.swaggerGenerator?.fromSwagger?.json == null && 
+                if (obj?.swaggerGenerator?.fromSwagger?.json == null &&
                     obj?.documentGenerator?.fromDocument?.json == null)
                     return;
 
