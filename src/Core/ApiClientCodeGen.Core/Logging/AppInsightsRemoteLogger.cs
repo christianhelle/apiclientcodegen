@@ -43,7 +43,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             telemetryClient.Flush();
         }
 
-        public void TrackDependencyFailure(
+        public void TrackDependency(
             string dependencyName,
             string? data = null,
             DateTimeOffset startTime = default,

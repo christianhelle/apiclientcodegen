@@ -25,7 +25,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Logger.Instance.TrackDependencyFailure($"GET {address}");
+                Logger.Instance.TrackDependency($"GET {address}");
             }
         }
     }

@@ -69,7 +69,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             }
             catch
             {
-                Logger.Instance.TrackDependencyFailure("Swagger Codegen CLI", arguments);
+                Logger.Instance.TrackDependency("Swagger Codegen CLI", arguments);
                 throw;
             }
             finally

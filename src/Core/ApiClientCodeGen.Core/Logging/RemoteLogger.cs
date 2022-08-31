@@ -37,7 +37,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
                 logger.TrackError(exception);
         }
 
-        public void TrackDependencyFailure(
+        public void TrackDependency(
             string dependencyName,
             string? data = null,
             DateTimeOffset startTime = default,
@@ -45,7 +45,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             bool success = false)
         {
             foreach (var logger in Loggers)
-                logger.TrackDependencyFailure(
+                logger.TrackDependency(
                     dependencyName,
                     data,
                     startTime,

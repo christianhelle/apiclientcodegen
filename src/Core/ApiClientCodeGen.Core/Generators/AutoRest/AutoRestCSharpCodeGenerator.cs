@@ -116,7 +116,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             }
             catch
             {
-                Logger.Instance.TrackDependencyFailure("AutoRest");
+                Logger.Instance.TrackDependency("AutoRest");
                 throw;
             }
             finally

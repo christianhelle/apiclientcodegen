@@ -7,7 +7,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         void TrackFeatureUsage(string featureName, params string[] tags);
         void TrackError(Exception exception);
 
-        void TrackDependencyFailure(
+        void TrackDependency(
             string dependencyName,
             string? data = null,
             DateTimeOffset startTime = default,

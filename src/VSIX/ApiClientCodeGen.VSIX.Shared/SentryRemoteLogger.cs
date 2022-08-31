@@ -44,7 +44,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
             SentrySdk.CaptureException(exception);
         }
 
-        public void TrackDependencyFailure(
+        public void TrackDependency(
             string dependencyName,
             string? data = null,
             DateTimeOffset startTime = default,

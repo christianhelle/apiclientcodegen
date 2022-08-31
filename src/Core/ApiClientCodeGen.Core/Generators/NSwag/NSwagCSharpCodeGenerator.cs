@@ -37,7 +37,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             }
             catch
             {
-                Logger.Instance.TrackDependencyFailure("NSwag");
+                Logger.Instance.TrackDependency("NSwag");
                 throw;
             }
             finally

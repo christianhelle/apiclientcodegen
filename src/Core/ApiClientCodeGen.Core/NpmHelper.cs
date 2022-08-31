@@ -34,7 +34,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Logger.Instance.TrackDependencyFailure("npm", "config get prefix");
+                Logger.Instance.TrackDependency("npm", "config get prefix");
                 Trace.TraceError(e.ToString());
                 return null;
             }

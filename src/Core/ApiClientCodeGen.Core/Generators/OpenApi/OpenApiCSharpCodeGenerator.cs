@@ -103,7 +103,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             }
             catch
             {
-                Logger.Instance.TrackDependencyFailure("OpenAPI Generator", arguments);
+                Logger.Instance.TrackDependency("OpenAPI Generator", arguments);
                 throw;
             }
             finally
