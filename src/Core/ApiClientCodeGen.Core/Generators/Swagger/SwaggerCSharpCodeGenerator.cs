@@ -67,11 +67,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                 return CSharpFileMerger.MergeFilesAndDeleteSource(output);
             }
-            catch
-            {
-                Logger.Instance.TrackDependency("Swagger Codegen CLI", arguments);
-                throw;
-            }
             finally
             {
                 pGenerateProgress?.Progress(90);

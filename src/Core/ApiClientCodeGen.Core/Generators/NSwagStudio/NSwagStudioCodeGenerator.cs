@@ -46,23 +46,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                 pGenerateProgress?.Progress(50);
 
                 var arguments = $"run \"{nswagStudioFile}\"";
-
-                try
-                {
-                    processLauncher.Start(command, arguments, Path.GetDirectoryName(nswagStudioFile)!); 
-                }
-                catch
-                {
-                    Logger.Instance.TrackDependency("NSwag Studio", arguments);
-                    throw;
-                }
+                processLauncher.Start(command, arguments, Path.GetDirectoryName(nswagStudioFile)!);
             }
             
             pGenerateProgress?.Progress(100);
             return string.Empty;
         }
 
-        public string GetNSwagPath()
+        private string GetNSwagPath()
         {
             var command = options.NSwagPath;
             if (!string.IsNullOrWhiteSpace(command) && File.Exists(command) && !forceDownload)
