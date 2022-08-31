@@ -11,10 +11,11 @@ public sealed class DependencyContext : IDisposable
     private readonly DateTimeOffset timestamp;
     private bool success;
 
-    public DependencyContext(string dependencyName, string? data = null)
+    public DependencyContext(string dependencyName, string? data = null, bool success = false)
     {
         this.dependencyName = dependencyName;
         this.data = data;
+        this.success = success;
         timestamp = DateTimeOffset.UtcNow;
         stopwatch = Stopwatch.StartNew();
     }
