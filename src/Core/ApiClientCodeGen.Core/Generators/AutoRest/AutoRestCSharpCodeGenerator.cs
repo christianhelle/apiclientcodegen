@@ -71,14 +71,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                     if (!Directory.Exists(outputFolder))
                         Directory.CreateDirectory(outputFolder);
-
-                    processLauncher.Start(
-                        command,
-                        argumentProvider.GetArguments(
-                            outputFolder,
-                            SwaggerFile,
-                            DefaultNamespace),
-                        Path.GetDirectoryName(SwaggerFile));
+                    
+                    var arguments = argumentProvider.GetArguments(
+                        outputFolder,
+                        SwaggerFile,
+                        DefaultNamespace);
+                    
+                    using var context = new DependencyContext("AutoRest", arguments);
+                    processLauncher.Start(command, arguments, Path.GetDirectoryName(SwaggerFile));
+                    context.Succeeded();
 
                     pGenerateProgress?.Progress(80);
 
@@ -94,17 +95,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                     try
                     {
-                        processLauncher.Start(
-                            command,
-                            arguments,
-                            Path.GetDirectoryName(SwaggerFile));
+                        using var context = new DependencyContext("AutoRest", arguments);
+                        processLauncher.Start(command, arguments, Path.GetDirectoryName(SwaggerFile));
+                        context.Succeeded();
                     }
                     catch (ProcessLaunchException)
                     {
-                        processLauncher.Start(
-                            command,
-                            arguments.Replace("--version=", "--version "),
-                            Path.GetDirectoryName(SwaggerFile));
+                        arguments = arguments.Replace("--version=", "--version ");
+                        using var context = new DependencyContext("AutoRest", arguments);
+                        processLauncher.Start(command, arguments, Path.GetDirectoryName(SwaggerFile));
+                        context.Succeeded();
                     }
                     finally
                     {
@@ -113,11 +113,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                     return FileHelper.ReadThenDelete(outputFile);
                 }
-            }
-            catch
-            {
-                Logger.Instance.TrackDependency("AutoRest");
-                throw;
             }
             finally
             {
