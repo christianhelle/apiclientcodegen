@@ -43,7 +43,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             telemetryClient.Flush();
         }
 
-        public void TrackDependencyFailure(string dependencyName, string? data = null)
+        public void TrackDependencyFailure(
+            string dependencyName,
+            string? data = null,
+            DateTimeOffset startTime = default,
+            TimeSpan duration = default,
+            bool success = false)
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
                 return;
@@ -51,8 +56,10 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
                 new DependencyTelemetry
                 {
                     Name = dependencyName,
-                    Success = false,
-                    Data = data
+                    Success = success,
+                    Data = data,
+                    Timestamp = startTime == default ? DateTimeOffset.UtcNow : startTime,
+                    Duration = duration == default ? TimeSpan.Zero : duration 
                 });
             telemetryClient.Flush();
         }
