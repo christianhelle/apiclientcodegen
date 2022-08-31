@@ -19,19 +19,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
         {
             Trace.WriteLine($"Attempting to install {packageName} through NPM");
 
-            try
-            {
-                processLauncher.Start(
-                    PathProvider.GetNpmPath(),
-                    $"install -g {packageName}");
+            using var context = new DependencyContext($"npm install -g {packageName}");
+            processLauncher.Start(PathProvider.GetNpmPath(), $"install -g {packageName}");
+            context.Succeeded();
 
-                Trace.WriteLine($"{packageName} installed successfully through NPM");
-            }
-            catch
-            {
-                Logger.Instance.TrackDependency("npm", $"install -g {packageName}");
-                throw;
-            }
+            Trace.WriteLine($"{packageName} installed successfully through NPM");
         }
     }
 }
