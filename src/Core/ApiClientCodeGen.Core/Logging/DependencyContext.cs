@@ -1,48 +1,49 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-
-public sealed class DependencyContext : IDisposable
+namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 {
-    private readonly string dependencyName;
-    private readonly string? data;
-    private readonly Stopwatch stopwatch;
-    private readonly DateTimeOffset timestamp;
-    private bool success;
-
-    public DependencyContext(string dependencyName, string? data = null, bool success = false)
+    public sealed class DependencyContext : IDisposable
     {
-        this.dependencyName = dependencyName;
-        this.data = data;
-        this.success = success;
-        timestamp = DateTimeOffset.UtcNow;
-        stopwatch = Stopwatch.StartNew();
-    }
+        private readonly string dependencyName;
+        private readonly string? data;
+        private readonly Stopwatch stopwatch;
+        private readonly DateTimeOffset timestamp;
+        private bool success;
 
-    public void Succeeded() => success = true;
-
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    ~DependencyContext()
-    {
-        Dispose(false);
-    }
-
-    private void Dispose(bool disposing)
-    {
-        if (disposing)
+        public DependencyContext(string dependencyName, string? data = null, bool success = false)
         {
-            Logger.Instance.TrackDependency(
-                dependencyName,
-                data,
-                timestamp,
-                stopwatch.Elapsed,
-                success);
+            this.dependencyName = dependencyName;
+            this.data = data;
+            this.success = success;
+            timestamp = DateTimeOffset.UtcNow;
+            stopwatch = Stopwatch.StartNew();
+        }
+
+        public void Succeeded() => success = true;
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~DependencyContext()
+        {
+            Dispose(false);
+        }
+
+        private void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Logger.Instance.TrackDependency(
+                    dependencyName,
+                    data,
+                    timestamp,
+                    stopwatch.Elapsed,
+                    success);
+            }
         }
     }
 }
