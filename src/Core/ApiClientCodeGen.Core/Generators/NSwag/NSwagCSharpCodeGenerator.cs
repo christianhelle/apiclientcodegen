@@ -22,7 +22,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                                             throw new ArgumentNullException(nameof(generatorSettingsFactory));
         }
 
-        [SuppressMessage("Usage", "VSTHRD002:Avoid problematic synchronous waits", Justification = "This is code is called from an old pre-TPL interface")]
         public string GenerateCode(IProgressReporter? pGenerateProgress)
         {
             try
@@ -38,6 +37,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             }
         }
 
+        [SuppressMessage("Usage", "VSTHRD002:Avoid problematic synchronous waits", Justification = "This is code is called from an old pre-TPL interface")]
         private string OnGenerateCode(IProgressReporter? pGenerateProgress)
         {
             pGenerateProgress?.Progress(10);
