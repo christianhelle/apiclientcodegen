@@ -91,11 +91,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     arguments += openApiGeneratorOptions.CustomAdditionalProperties;
                 }
 
-                using var context = new DependencyContext("OpenAPI Generator", arguments);
-                processLauncher.Start(
-                    javaPathProvider.GetJavaExePath(),
-                    arguments,
-                    Path.GetDirectoryName(swaggerFile));
+                var java = javaPathProvider.GetJavaExePath();
+                using var context = new DependencyContext("OpenAPI Generator", $"{java} {arguments}");
+                processLauncher.Start(java, arguments, Path.GetDirectoryName(swaggerFile));
                 context.Succeeded();
 
                 pGenerateProgress?.Progress(80);

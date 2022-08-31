@@ -77,7 +77,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                         SwaggerFile,
                         DefaultNamespace);
                     
-                    using var context = new DependencyContext("AutoRest", arguments);
+                    using var context = new DependencyContext("AutoRest", $"{command} {arguments}");
                     processLauncher.Start(command, arguments, Path.GetDirectoryName(SwaggerFile));
                     context.Succeeded();
 
@@ -95,14 +95,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                     try
                     {
-                        using var context = new DependencyContext("AutoRest", arguments);
+                        using var context = new DependencyContext("AutoRest", $"{command} {arguments}");
                         processLauncher.Start(command, arguments, Path.GetDirectoryName(SwaggerFile));
                         context.Succeeded();
                     }
                     catch (ProcessLaunchException)
                     {
                         arguments = arguments.Replace("--version=", "--version ");
-                        using var context = new DependencyContext("AutoRest", arguments);
+                        using var context = new DependencyContext("AutoRest", $"{command} {arguments}");
                         processLauncher.Start(command, arguments, Path.GetDirectoryName(SwaggerFile));
                         context.Succeeded();
                     }

@@ -48,7 +48,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                 var arguments = $"run \"{nswagStudioFile}\"";
 
-                using var context = new DependencyContext("NSwag Studio");
+                using var context = new DependencyContext("NSwag Studio", $"{command} {arguments}");
                 processLauncher.Start(command, arguments, Path.GetDirectoryName(nswagStudioFile)!);
                 context.Succeeded();
             }

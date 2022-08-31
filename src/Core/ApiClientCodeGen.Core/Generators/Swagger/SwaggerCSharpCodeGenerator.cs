@@ -62,8 +62,9 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                             "-DapiTests=false -DmodelTests=false " +
                             $"-DpackageName={defaultNamespace} ";
 
-                using var context = new DependencyContext("Swagger Codegen CLI", arguments);
-                processLauncher.Start(javaPathProvider.GetJavaExePath(), arguments);
+                var java = javaPathProvider.GetJavaExePath();
+                using var context = new DependencyContext("Swagger Codegen CLI", $"{java} {arguments}");
+                processLauncher.Start(java, arguments);
                 context.Succeeded();
                 
                 pGenerateProgress?.Progress(80);
