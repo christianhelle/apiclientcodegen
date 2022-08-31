@@ -27,26 +27,23 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
         {
             try
             {
-                using var context = new DependencyContext("NSwag");
-                var code = OnGenerateCode(pGenerateProgress);
-                context.Succeeded();
-                return code;
+                pGenerateProgress?.Progress(10);
+                var document = documentFactory.GetDocumentAsync(swaggerFile).GetAwaiter().GetResult();
+                pGenerateProgress?.Progress(20);
+                var settings = generatorSettingsFactory.GetGeneratorSettings(document);
+                pGenerateProgress?.Progress(50);
+                var generator = new CSharpClientGenerator(document, settings);
+                return generator.GenerateFile();
+            }
+            catch
+            {
+                Logger.Instance.TrackDependency("NSwag");
+                throw;
             }
             finally
             {
                 pGenerateProgress?.Progress(90);
             }
-        }
-
-        private string OnGenerateCode(IProgressReporter? pGenerateProgress)
-        {
-            pGenerateProgress?.Progress(10);
-            var document = documentFactory.GetDocumentAsync(swaggerFile).GetAwaiter().GetResult();
-            pGenerateProgress?.Progress(20);
-            var settings = generatorSettingsFactory.GetGeneratorSettings(document);
-            pGenerateProgress?.Progress(50);
-            var generator = new CSharpClientGenerator(document, settings);
-            return generator.GenerateFile();
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
@@ -18,9 +19,19 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
         {
             Trace.WriteLine($"Attempting to install {packageName} through NPM");
 
-            processLauncher.Start(PathProvider.GetNpmPath(), $"install -g {packageName}");
+            try
+            {
+                processLauncher.Start(
+                    PathProvider.GetNpmPath(),
+                    $"install -g {packageName}");
 
-            Trace.WriteLine($"{packageName} installed successfully through NPM");
+                Trace.WriteLine($"{packageName} installed successfully through NPM");
+            }
+            catch
+            {
+                Logger.Instance.TrackDependency("npm", $"install -g {packageName}");
+                throw;
+            }
         }
     }
 }

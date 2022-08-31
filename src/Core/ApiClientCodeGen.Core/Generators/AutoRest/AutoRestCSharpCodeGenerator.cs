@@ -114,6 +114,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     return FileHelper.ReadThenDelete(outputFile);
                 }
             }
+            catch
+            {
+                Logger.Instance.TrackDependency("AutoRest");
+                throw;
+            }
             finally
             {
                 pGenerateProgress?.Progress(90);

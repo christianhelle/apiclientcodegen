@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 {
@@ -44,8 +43,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
             Action<string> onErrorData,
             string? workingDirectory = null)
         {
-            using var context = new DependencyContext(command, arguments);
-            
             Trace.WriteLine("Executing:");
             Trace.WriteLine($"{command} {arguments}");
 
@@ -73,8 +70,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                     onErrorData,
                     workingDirectory);
             }
-            
-            context.Succeeded();
         }
 
         private static void StartWithRetryPolicy(

@@ -13,7 +13,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
         {
             try
             {
-                using var context = new DependencyContext($"GET {address}");
                 using var mutex = new Mutex(false, nameof(WebDownloader));
                 if (!mutex.WaitOne(TimeSpan.FromMinutes(2)))
                     throw new TimeoutException();
@@ -22,12 +21,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
                 client.DownloadFile(address, filename);
             
                 mutex.ReleaseMutex();
-                context.Succeeded();
             }
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                throw;
+                Logger.Instance.TrackDependency($"GET {address}");
             }
         }
     }

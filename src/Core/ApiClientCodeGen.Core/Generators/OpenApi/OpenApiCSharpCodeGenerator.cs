@@ -101,6 +101,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
                 return CSharpFileMerger.MergeFilesAndDeleteSource(output);
             }
+            catch
+            {
+                Logger.Instance.TrackDependency("OpenAPI Generator", arguments);
+                throw;
+            }
             finally
             {
                 pGenerateProgress?.Progress(90);
