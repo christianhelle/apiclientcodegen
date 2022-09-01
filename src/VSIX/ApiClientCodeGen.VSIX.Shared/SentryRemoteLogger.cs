@@ -44,12 +44,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
             SentrySdk.CaptureException(exception);
         }
 
-        public void TrackDependencyFailure(string dependencyName, string? data = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void TrackDependencyFailure(string dependencyName)
+        public void TrackDependency(
+            string dependencyName,
+            string? data = null,
+            DateTimeOffset startTime = default,
+            TimeSpan duration = default,
+            bool success = false)
         {
             // Not implemented
         }

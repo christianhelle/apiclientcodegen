@@ -22,28 +22,31 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
                                             throw new ArgumentNullException(nameof(generatorSettingsFactory));
         }
 
-        [SuppressMessage("Usage", "VSTHRD002:Avoid problematic synchronous waits", Justification = "This is code is called from an old pre-TPL interface")]
         public string GenerateCode(IProgressReporter? pGenerateProgress)
         {
             try
             {
-                pGenerateProgress?.Progress(10);
-                var document = documentFactory.GetDocumentAsync(swaggerFile).GetAwaiter().GetResult();
-                pGenerateProgress?.Progress(20);
-                var settings = generatorSettingsFactory.GetGeneratorSettings(document);
-                pGenerateProgress?.Progress(50);
-                var generator = new CSharpClientGenerator(document, settings);
-                return generator.GenerateFile();
-            }
-            catch
-            {
-                Logger.Instance.TrackDependencyFailure("NSwag");
-                throw;
+                using var context = new DependencyContext("NSwag");
+                var code = OnGenerateCode(pGenerateProgress);
+                context.Succeeded();
+                return code;
             }
             finally
             {
                 pGenerateProgress?.Progress(90);
             }
+        }
+
+        [SuppressMessage("Usage", "VSTHRD002:Avoid problematic synchronous waits", Justification = "This is code is called from an old pre-TPL interface")]
+        private string OnGenerateCode(IProgressReporter? pGenerateProgress)
+        {
+            pGenerateProgress?.Progress(10);
+            var document = documentFactory.GetDocumentAsync(swaggerFile).GetAwaiter().GetResult();
+            pGenerateProgress?.Progress(20);
+            var settings = generatorSettingsFactory.GetGeneratorSettings(document);
+            pGenerateProgress?.Progress(50);
+            var generator = new CSharpClientGenerator(document, settings);
+            return generator.GenerateFile();
         }
     }
 }

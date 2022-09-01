@@ -66,7 +66,12 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             exception.ToExceptionless().Submit();
         }
 
-        public void TrackDependencyFailure(string dependencyName, string? data = null)
+        public void TrackDependency(
+            string dependencyName,
+            string? data = null,
+            DateTimeOffset startTime = default,
+            TimeSpan duration = default,
+            bool success = false)
         {
             // Not implemented
         }

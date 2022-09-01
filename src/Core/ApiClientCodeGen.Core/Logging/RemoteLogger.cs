@@ -37,13 +37,23 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
                 logger.TrackError(exception);
         }
 
-        public void TrackDependencyFailure(string dependencyName, string? data = null)
+        public void TrackDependency(
+            string dependencyName,
+            string? data = null,
+            DateTimeOffset startTime = default,
+            TimeSpan duration = default,
+            bool success = false)
         {
             foreach (var logger in Loggers)
-                logger.TrackDependencyFailure(dependencyName, data);
+                logger.TrackDependency(
+                    dependencyName,
+                    data,
+                    startTime,
+                    duration,
+                    success);
         }
 
-        public void Disable() 
-            => Loggers.ForEach(c=>c.Disable());
+        public void Disable()
+            => Loggers.ForEach(c => c.Disable());
     }
 }
