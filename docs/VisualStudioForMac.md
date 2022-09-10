@@ -83,7 +83,7 @@ Here's what you need to do:
 
 ![Manage Repositories](../images/vsmac-extensions-repositories.png)
 
-- Register an online repository at **https://christianhelle.com/vsmac/main.mrep**
+- Register an online repository at **https://christianhelle.github.io/vsmac/main.mrep**
 - Click **OK**
 
 ![Add Repository](../images/vsmac-extensions-add-repository.png)
