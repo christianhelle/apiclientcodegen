@@ -87,7 +87,7 @@ This extension collects errors and tracks feature usages to a service called [Ex
 ![Options - Analytics](https://github.com/christianhelle/apiclientcodegen/raw/master/images/support-key.png)
 
 
-For tips and tricks on software development, check out [my blog](https://christianhelle.github.io)
+For tips and tricks on software development, check out [my blog](https://christianhelle.com)
 
 If you find this useful and feel a bit generous then feel free to [buy me a coffee](https://www.buymeacoffee.com/christianhelle) :)
 
