@@ -10,10 +10,13 @@ namespace Rapicgen.Core.Logging
     [ExcludeFromCodeCoverage]
     public class AppInsightsRemoteLogger : IRemoteLogger
     {
-        private readonly TelemetryClient telemetryClient;
+        private readonly TelemetryClient telemetryClient = null!;
 
         public AppInsightsRemoteLogger()
         {
+            if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
+                return;
+
             var configuration = TelemetryConfiguration.CreateDefault();
             configuration.ConnectionString =
                 "InstrumentationKey=ad35e23f-6e54-40ff-b4d1-de6d684e1a4b;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/";
@@ -61,7 +64,7 @@ namespace Rapicgen.Core.Logging
                     Success = success,
                     Data = data,
                     Timestamp = startTime == default ? DateTimeOffset.UtcNow : startTime,
-                    Duration = duration == default ? TimeSpan.Zero : duration 
+                    Duration = duration == default ? TimeSpan.Zero : duration
                 });
             telemetryClient.Flush();
         }
