@@ -18,7 +18,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
 
         public string DownloadFile(
             string outputFilename,
-            string expectedChecksumMd5,
+            string expectedChecksumSha1,
             string url,
             bool forceDownload = false)
         {
@@ -26,7 +26,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
             if (File.Exists(filePath) &&
                 string.Equals(
                     FileHelper.CalculateChecksum(filePath),
-                    expectedChecksumMd5,
+                    expectedChecksumSha1,
                     StringComparison.OrdinalIgnoreCase) &&
                 !forceDownload)
                 return filePath;

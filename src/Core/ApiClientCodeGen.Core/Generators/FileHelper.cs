@@ -27,7 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
 
         public static string CalculateChecksum(string filename)
         {
-            using (var hashAlgorithm = MD5.Create())
+            using (var hashAlgorithm = SHA1.Create())
             using (var stream = File.OpenRead(filename))
             {
                 return BitConverter

@@ -6,7 +6,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
     {
         string DownloadFile(
             string outputFilename,
-            string expectedChecksumMd5,
+            string expectedChecksumSha1,
             string url,
             bool forceDownload = false);
     }

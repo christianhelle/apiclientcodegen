@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
 {
@@ -28,7 +27,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
         {
             return downloader.DownloadFile(
                 "openapi-generator-cli.jar",
-                Resource.OpenApiGenerator_MD5,
+                Resource.OpenApiGenerator_SHA1,
                 Resource.OpenApiGenerator_DownloadUrl);
         }
 
@@ -36,7 +35,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
         {
             return downloader.DownloadFile(
                 "swagger-codegen-cli.jar",
-                Resource.SwaggerCodegenCli_MD5,
+                Resource.SwaggerCodegenCli_SHA1,
                 Resource.SwaggerCodegenCli_DownloadUrl);
         }
     }

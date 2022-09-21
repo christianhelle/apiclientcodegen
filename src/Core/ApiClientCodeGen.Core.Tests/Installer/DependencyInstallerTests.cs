@@ -60,7 +60,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                 .Verify(
                     c => c.DownloadFile(
                         "openapi-generator-cli.jar",
-                        Resource.OpenApiGenerator_MD5,
+                        Resource.OpenApiGenerator_SHA1,
                         Resource.OpenApiGenerator_DownloadUrl,
                         false));
         }
@@ -75,7 +75,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                 .Verify(
                     c => c.DownloadFile(
                         "swagger-codegen-cli.jar",
-                        Resource.SwaggerCodegenCli_MD5,
+                        Resource.SwaggerCodegenCli_SHA1,
                         Resource.SwaggerCodegenCli_DownloadUrl,
                         false));
         }
