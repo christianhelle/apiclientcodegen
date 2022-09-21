@@ -79,6 +79,15 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to D6A54CB019AE72A79A062BB12A96E93DA4C96E56.
+        /// </summary>
+        public static string OpenApiGenerator_SHA1 {
+            get {
+                return ResourceManager.GetString("OpenApiGenerator_SHA1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.34/swagger-codegen-cli-3.0.34.jar.
         /// </summary>
         public static string SwaggerCodegenCli_DownloadUrl {
