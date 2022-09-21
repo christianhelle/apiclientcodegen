@@ -33,7 +33,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
         public static readonly PackageDependency JsonSubTypesLatest =
             new PackageDependency(
                 "JsonSubTypes",
-                new Version(1, 8, 0, 0));
+                new Version(1, 9, 0, 0));
 
         public static readonly PackageDependency SystemRuntimeSerializationPrimitives =
             new PackageDependency(

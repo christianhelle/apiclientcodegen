@@ -8,7 +8,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include = ""JsonSubTypes"" Version=""1.8.0"" />
+    <PackageReference Include = ""JsonSubTypes"" Version=""1.9.0"" />
     <PackageReference Include = ""RestSharp"" Version=""108.0.1"" />
     <PackageReference Include = ""Polly"" Version=""7.2.3"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
@@ -22,7 +22,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include = ""JsonSubTypes"" Version=""1.8.0"" />
+    <PackageReference Include = ""JsonSubTypes"" Version=""1.9.0"" />
     <PackageReference Include = ""RestSharp"" Version=""108.0.1"" />
     <PackageReference Include = ""Polly"" Version=""7.2.3"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
@@ -48,7 +48,7 @@
     <Reference Include=""System.Xml"" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include = ""JsonSubTypes"" Version=""1.8.0"" />
+    <PackageReference Include = ""JsonSubTypes"" Version=""1.9.0"" />
     <PackageReference Include = ""RestSharp"" Version=""108.0.1"" />
     <PackageReference Include = ""Polly"" Version=""7.2.3"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
