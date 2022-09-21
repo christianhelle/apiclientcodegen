@@ -104,5 +104,14 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
                 return ResourceManager.GetString("SwaggerCodegenCli_MD5", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 54EB5F2561C77D23AF3FA2E4CEA8A100BA8F71C8.
+        /// </summary>
+        public static string SwaggerCodegenCli_SHA1 {
+            get {
+                return ResourceManager.GetString("SwaggerCodegenCli_SHA1", resourceCulture);
+            }
+        }
     }
 }
