@@ -28,7 +28,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
         public static readonly PackageDependency RestSharpLatest =
             new PackageDependency(
                 "RestSharp",
-                new Version(106, 12, 0, 0));
+                new Version(108, 0, 1, 0));
 
         public static readonly PackageDependency JsonSubTypesLatest =
             new PackageDependency(
