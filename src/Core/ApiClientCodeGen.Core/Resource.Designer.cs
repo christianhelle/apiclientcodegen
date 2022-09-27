@@ -78,7 +78,7 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to D6A54CB019AE72A79A062BB12A96E93DA4C96E56.
+        ///   Looks up a localized string similar to E8BBB16EE4494227E4B2352EA61E94B0EDD0F092.
         /// </summary>
         public static string OpenApiGenerator_SHA1 {
             get {
