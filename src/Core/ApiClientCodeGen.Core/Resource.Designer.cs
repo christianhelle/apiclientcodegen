@@ -60,6 +60,24 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/6.0.1/openapi-generator-cli-6.0.1.jar.
+        /// </summary>
+        public static string LegacyOpenApiGenerator_DownloadUrl {
+            get {
+                return ResourceManager.GetString("LegacyOpenApiGenerator_DownloadUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ACE9D0D6F89AFED9EED414DCB3736DFABC911B77.
+        /// </summary>
+        public static string LegacyOpenApiGenerator_SHA1 {
+            get {
+                return ResourceManager.GetString("LegacyOpenApiGenerator_SHA1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/6.2.0/openapi-generator-cli-6.2.0.jar.
         /// </summary>
         public static string OpenApiGenerator_DownloadUrl {
