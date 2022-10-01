@@ -28,6 +28,8 @@ jobs:
         $path = ((Invoke-WebRequest -Uri $marketplace).Links | Where class -eq 'install-button-container').Href
         $downloadUri = "https://marketplace.visualstudio.com$path"
         Invoke-WebRequest $downloadUri -OutFile "vs2019.vsix"
+    - name: Install VSIX
+      run: Start-Process -FilePath 'C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\VSIXInstaller.exe' -ArgumentList '/q vs2019.vsix' -Wait
 
   VSIX2022:
     runs-on: windows-2022
@@ -45,3 +47,5 @@ jobs:
         $path = ((Invoke-WebRequest -Uri $marketplace).Links | Where class -eq 'install-button-container').Href
         $downloadUri = "https://marketplace.visualstudio.com$path"
         Invoke-WebRequest $downloadUri -OutFile "vs2022.vsix"
+    - name: Install VSIX
+      run: Start-Process -FilePath 'C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\VSIXInstaller.exe' -ArgumentList '/q vs2019.vsix' -Wait
