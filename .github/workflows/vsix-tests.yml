@@ -48,4 +48,4 @@ jobs:
         $downloadUri = "https://marketplace.visualstudio.com$path"
         Invoke-WebRequest $downloadUri -OutFile "vs2022.vsix"
     - name: Install VSIX
-      run: Start-Process -FilePath 'C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\VSIXInstaller.exe' -ArgumentList '/q vs2019.vsix' -Wait
+      run: Start-Process -FilePath 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\VSIXInstaller.exe' -ArgumentList '/q vs2019.vsix' -Wait
