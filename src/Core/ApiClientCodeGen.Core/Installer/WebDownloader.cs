@@ -18,11 +18,17 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
                 if (!mutex.WaitOne(TimeSpan.FromMinutes(2)))
                     throw new TimeoutException();
 
-                using var client = new WebClient();
-                client.DownloadFile(address, filename);
+                try
+                {
+                    using var client = new WebClient();
+                    client.DownloadFile(address, filename);
+                    context.Succeeded();
+                }
+                finally
+                {
+                    mutex.ReleaseMutex();
+                }
             
-                mutex.ReleaseMutex();
-                context.Succeeded();
             }
             catch (Exception e)
             {
