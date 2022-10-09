@@ -36,6 +36,12 @@ jobs:
         cat ./AddinInfo.cs
       working-directory: src/VSMac/ApiClientCodeGen.VSMac/Properties
 
+    - name: Verify Visual Studio version
+      run: /usr/libexec/PlistBuddy -c 'Print CFBundleVersion' '/Applications/Visual Studio.app/Contents/Info.plist'
+
+    - name: Verify Visual Studio Extensions Setup
+      run: /Applications/Visual\ Studio.app/Contents/MacOS/vstool setup list
+
     - name: Build
       run: make release
       working-directory: src
