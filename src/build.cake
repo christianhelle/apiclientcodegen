@@ -22,7 +22,7 @@ Task("Restore")
         if (solution.ToString().Contains("Mac.sln"))
             continue;
         Information("Restoring {0}", solution);
-        DotNetCoreRestore(solution.ToString());
+        DotNetRestore(solution.ToString());
     }
 });
 
