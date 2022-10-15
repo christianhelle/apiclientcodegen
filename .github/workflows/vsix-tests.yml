@@ -18,11 +18,11 @@ jobs:
     steps:
     - name: Download VSIX for VS 2019
       run: |
-        Invoke-WebRequest -Uri https://marketplace.visualstudio.com
+        Invoke-WebRequest -Uri 'https://marketplace.visualstudio.com'
         Start-Sleep -Seconds 1.5
-        Invoke-WebRequest -Uri https://marketplace.visualstudio.com/search?term=REST%202022&target=VS
+        Invoke-WebRequest -Uri 'https://marketplace.visualstudio.com/search?term=REST%202022&target=VS'
         Start-Sleep -Seconds 1.5
-        Invoke-WebRequest -Uri https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator
+        Invoke-WebRequest -Uri 'https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator'
         Start-Sleep -Seconds 1.5
         $marketplace = 'https://christianresmahelle.gallery.vsassets.io/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator'
         $path = ((Invoke-WebRequest -Uri $marketplace).Links | Where class -eq 'install-button-container').Href
@@ -37,11 +37,11 @@ jobs:
     steps:
     - name: Download VSIX for VS 2022
       run: |
-        Invoke-WebRequest -Uri https://marketplace.visualstudio.com
+        Invoke-WebRequest -Uri 'https://marketplace.visualstudio.com'
         Start-Sleep -Seconds 1.5
-        Invoke-WebRequest -Uri https://marketplace.visualstudio.com/search?term=REST%202022&target=VS
+        Invoke-WebRequest -Uri 'https://marketplace.visualstudio.com/search?term=REST%202022&target=VS'
         Start-Sleep -Seconds 1.5
-        Invoke-WebRequest -Uri https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator
+        Invoke-WebRequest -Uri 'https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator'
         Start-Sleep -Seconds 1.5
         $marketplace = 'https://christianresmahelle.gallery.vsassets.io/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2022'
         $path = ((Invoke-WebRequest -Uri $marketplace).Links | Where class -eq 'install-button-container').Href
