@@ -7,8 +7,6 @@ on:
     - '.github/workflows/vsix-tests.yml'
     branches: 
     - '*'
-  schedule:
-    - cron: '30 * * * *'
 
 jobs:
 
