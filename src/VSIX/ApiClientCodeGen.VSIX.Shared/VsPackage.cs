@@ -111,6 +111,16 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
 
             foreach (var command in commands)
                 await command.InitializeAsync(this, cancellationToken);
+
+            var shell = (IVsShell)(await GetServiceAsync(typeof(SVsShell)))!;
+            shell.GetProperty((int)__VSSPROPID5.VSSPROPID_ReleaseVersion, out object value);
+            if (value is string raw)
+            {
+                var version = Version.Parse(raw.Split(' ')[0]);
+                Logger.GetLogger<AppInsightsRemoteLogger>()
+                    .AddTelemetryInitializer(
+                        new VisualStudioVersionInitializer(version));
+            }
         }
     }
 }
