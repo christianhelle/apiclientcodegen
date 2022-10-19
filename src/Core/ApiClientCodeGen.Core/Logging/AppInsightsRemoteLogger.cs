@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.Channel;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 
@@ -24,8 +23,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
             telemetryClient.Context.Session.Id = Guid.NewGuid().ToString();
             telemetryClient.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
             telemetryClient.Context.Component.Version = GetType().Assembly.GetName().Version.ToString();
-            telemetryClient.TelemetryConfiguration.TelemetryInitializers.Add(new SupportKeyInitializer());
+            AddTelemetryInitializer(new SupportKeyInitializer());
         }
+        
+        public void AddTelemetryInitializer(ITelemetryInitializer initializer)
+            => telemetryClient.TelemetryConfiguration.TelemetryInitializers.Add(initializer);
 
         public void TrackFeatureUsage(string featureName, params string[] tags)
         {
@@ -67,16 +69,6 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
         public void Disable()
         {
             telemetryClient.TelemetryConfiguration.DisableTelemetry = true;
-        }
-
-        private sealed class SupportKeyInitializer : ITelemetryInitializer
-        {
-            public void Initialize(ITelemetry telemetry)
-            {
-                if (telemetry is not ISupportProperties supportProperties)
-                    return;
-                supportProperties.Properties["support-key"] = SupportInformation.GetSupportKey();
-            }
         }
     }
 }
