@@ -96,7 +96,7 @@ function Build-GeneratedCode {
 
                 if ($_ -notcontains "AutoRest-V3") {
                     $argumentsList += "build ./GeneratedCode/$_/Net462/Net462.csproj"
-                    $argumentsList += "build ./GeneratedCode/$_/Net452/Net452.csproj"
+                    $argumentsList += "build ./GeneratedCode/$_/Net481/Net481.csproj"
                 }
             }
         } else {
@@ -113,7 +113,7 @@ function Build-GeneratedCode {
 
             if ($_ -notcontains "AutoRest-V3") {
                 $argumentsList += "build ./GeneratedCode/$_/Net462/Net462.csproj"
-                $argumentsList += "build ./GeneratedCode/$_/Net452/Net452.csproj"
+                $argumentsList += "build ./GeneratedCode/$_/Net481/Net481.csproj"
             }
         }
         
@@ -139,7 +139,7 @@ function Build-GeneratedCode {
 
                 if ($_ -notcontains "AutoRest-V3") {
                     dotnet build ./GeneratedCode/$_/Net462/Net462.csproj; ThrowOnNativeFailure
-                    dotnet build ./GeneratedCode/$_/Net452/Net452.csproj; ThrowOnNativeFailure
+                    dotnet build ./GeneratedCode/$_/Net481/Net481.csproj; ThrowOnNativeFailure
                 }
             }
         } else {
@@ -153,7 +153,7 @@ function Build-GeneratedCode {
 
             if ($_ -notcontains "AutoRest-V3") {
                 dotnet build ./GeneratedCode/$ToolName/Net462/Net462.csproj; ThrowOnNativeFailure
-                dotnet build ./GeneratedCode/$ToolName/Net452/Net452.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$ToolName/Net481/Net481.csproj; ThrowOnNativeFailure
             }
         }
     }
@@ -231,7 +231,7 @@ function Generate-Code {
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net48/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net472/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net462/Output.cs" -Force
-    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net452/Output.cs" -Force
+    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net481/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/NetCore21/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/NetCore31/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/NetStandard20/Output.cs" -Force
@@ -293,7 +293,7 @@ function Generate-CodeParallel {
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net48/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net472/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net462/Output.cs" -Force
-            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net452/Output.cs" -Force
+            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net481/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/NetCore21/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/NetCore31/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/NetStandard20/Output.cs" -Force
