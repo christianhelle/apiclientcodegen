@@ -25,7 +25,7 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-10.15, windows-2019, ubuntu-20.04 ]
+        os: [ macos-latest, windows-2022, ubuntu-latest ]
 
     name: C#
     runs-on: ${{ matrix.os }}
@@ -292,7 +292,7 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-10.15, windows-2019, ubuntu-20.04 ]
+        os: [ macos-latest, windows-2022, ubuntu-latest ]
 
     name: JMeter
     runs-on: ${{ matrix.os }}
@@ -333,7 +333,7 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-10.15, windows-2019, ubuntu-20.04 ]
+        os: [ macos-latest, windows-2022, ubuntu-latest ]
 
     name: TypeScript
     runs-on: ${{ matrix.os }}
