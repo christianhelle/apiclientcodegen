@@ -99,6 +99,11 @@ jobs:
       run: dotnet build ./GeneratedCode/NSwag/Net7/Net7.csproj
       working-directory: test
 
+    - name: Build .NET 4.8.1 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net481/Net481.csproj
+      if: ${{ matrix.os == 'windows-2022' }}
+      working-directory: test
+
     - name: Build .NET 4.8 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/Net48/Net48.csproj
       working-directory: test
@@ -109,10 +114,6 @@ jobs:
 
     - name: Build .NET 4.6.2 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/Net462/Net462.csproj
-      working-directory: test
-
-    - name: Build .NET 4.8.1 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/Net481/Net481.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 NSwag generated code
@@ -154,6 +155,11 @@ jobs:
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net7/Net7.csproj
       working-directory: test
 
+    - name: Build .NET 4.8.1 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net481/Net481.csproj
+      if: ${{ matrix.os == 'windows-2022' }}
+      working-directory: test
+
     - name: Build .NET 4.8 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net48/Net48.csproj
       working-directory: test
@@ -164,10 +170,6 @@ jobs:
 
     - name: Build .NET 4.6.2 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net462/Net462.csproj
-      working-directory: test
-
-    - name: Build .NET 4.8.1 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net481/Net481.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 OpenAPI Generator generated code
@@ -209,6 +211,11 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net7/Net7.csproj
       working-directory: test
 
+    - name: Build .NET 4.8.1 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net481/Net481.csproj
+      if: ${{ matrix.os == 'windows-2022' }}
+      working-directory: test
+
     - name: Build .NET 4.8 Swagger Codegen CLI generated code
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net48/Net48.csproj
       working-directory: test
@@ -219,10 +226,6 @@ jobs:
 
     - name: Build .NET 4.6.2 Swagger Codegen CLI generated code
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net462/Net462.csproj
-      working-directory: test
-
-    - name: Build .NET 4.8.1 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net481/Net481.csproj
       working-directory: test
 
     - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
@@ -257,6 +260,10 @@ jobs:
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/NetCore31/NetCore31.csproj
       working-directory: test
 
+    - name: Build .NET 5 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net5/Net5.csproj
+      working-directory: test
+
     - name: Build .NET 6 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net6/Net6.csproj
       working-directory: test
@@ -265,8 +272,9 @@ jobs:
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net7/Net7.csproj
       working-directory: test
 
-    - name: Build .NET 5 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net5/Net5.csproj
+    - name: Build .NET 4.8.1 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net481/Net481.csproj
+      if: ${{ matrix.version == 'V2' && matrix.os == 'windows-2022' }}
       working-directory: test
 
     - name: Build .NET 4.8 AutoRest generated code
@@ -279,11 +287,6 @@ jobs:
 
     - name: Build .NET 4.6.2 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net462/Net462.csproj
-      if: ${{ matrix.version == 'V2' }}
-      working-directory: test
-
-    - name: Build .NET 4.8.1 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net481/Net481.csproj
       if: ${{ matrix.version == 'V2' }}
       working-directory: test
 
