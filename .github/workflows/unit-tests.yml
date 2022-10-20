@@ -54,7 +54,7 @@ jobs:
   vsmac:
 
     name: VS Mac Extension
-    runs-on: macos-10.15
+    runs-on: macos-latest
     timeout-minutes: 20
 
     steps:
