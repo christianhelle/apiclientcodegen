@@ -6,7 +6,7 @@ on:
     paths: 
     - '.github/workflows/production-tests.yml'
     branches: 
-    - '*'
+    - 'main'
   schedule:
     - cron: '0 8 * * *'
 
