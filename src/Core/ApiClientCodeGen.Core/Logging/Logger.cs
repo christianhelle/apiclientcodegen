@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 {
@@ -19,6 +20,11 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 
                 return remoteLogger;
             }
+        }
+
+        public static T GetLogger<T>() where T : IRemoteLogger
+        {
+            return ((RemoteLogger)Instance).Loggers.OfType<T>().First();
         }
 
         public static RemoteLogger Setup(params IRemoteLogger[] loggers)

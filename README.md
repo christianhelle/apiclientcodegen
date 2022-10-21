@@ -109,7 +109,7 @@ Supports customising how OpenAPI Generator generates code using the additional o
 
 ![Options - OpenAPI Generator](images/options-openapigenerator.png)
 
-This extension collects errors and tracks feature usages to a service called [Exceptionless](https://exceptionless.com). This is done anonymously using a support key and a generated anonymous identity based on a secure hash of username@host
+This extension collects errors and tracks feature usages to a service called [Exceptionless](https://exceptionless.com) and [Azure Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview?WT.mc_id=DT-MVP-5004822). This is done anonymously using a support key and a generated anonymous identity based on a secure hash of username@host
 
 ![Options - Analytics](images/support-key.png)
 
@@ -127,7 +127,7 @@ This extension collects errors and tracks feature usages to a service called [Ex
 
 # Installation
 
-The Visual Studio extension can be installed directly from Visual Studio 2017 or 2019 via the **Extensions Dialog Box**. The process is best described in the official Microsoft documentation for [Managing extensions for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/ide/finding-and-using-visual-studio-extensions?view=vs-2019)
+The Visual Studio extension can be installed directly from Visual Studio 2017 or 2019 via the **Extensions Dialog Box**. The process is best described in the official Microsoft documentation for [Managing extensions for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/ide/finding-and-using-visual-studio-extensions?view=vs-2019&WT.mc_id=DT-MVP-5004822)
 
 ## Visual Studio for Mac
 
