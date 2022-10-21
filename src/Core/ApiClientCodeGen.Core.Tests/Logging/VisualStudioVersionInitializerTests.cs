@@ -3,16 +3,17 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using FluentAssertions;
 using Xunit;
 
-namespace ApiClientCodeGen.Core.Tests.Logging;
-
-public class VisualStudioVersionInitializerTests
+namespace ApiClientCodeGen.Core.Tests.Logging
 {
-    [Theory, AutoMoqData]
-    public void Should_Add_VisualStudioVersion(
-        VisualStudioVersionInitializer sut,
-        FakeTelemetry telemetry)
+    public class VisualStudioVersionInitializerTests
     {
-        sut.Initialize(telemetry);
-        telemetry.Properties.Should().ContainKey("visual-studio-version");
+        [Theory, AutoMoqData]
+        public void Should_Add_VisualStudioVersion(
+            VisualStudioVersionInitializer sut,
+            FakeTelemetry telemetry)
+        {
+            sut.Initialize(telemetry);
+            telemetry.Properties.Should().ContainKey("visual-studio-version");
+        }
     }
 }

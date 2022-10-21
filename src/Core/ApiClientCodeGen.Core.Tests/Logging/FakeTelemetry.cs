@@ -4,26 +4,27 @@ using Microsoft.ApplicationInsights.Channel;
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 
-namespace ApiClientCodeGen.Core.Tests.Logging;
-
-public class FakeTelemetry : ISupportProperties, ITelemetry
+namespace ApiClientCodeGen.Core.Tests.Logging
 {
-    public IDictionary<string, string> Properties { get; } = new Dictionary<string, string>();
-
-    public ITelemetry DeepClone() { return this; }
-
-    public void Sanitize()
+    public class FakeTelemetry : ISupportProperties, ITelemetry
     {
-        // Ignore
-    }
+        public IDictionary<string, string> Properties { get; } = new Dictionary<string, string>();
 
-    public void SerializeData(ISerializationWriter serializationWriter)
-    {
-        // Ignore
-    }
+        public ITelemetry DeepClone() { return this; }
 
-    public DateTimeOffset Timestamp { get; set; }
-    public TelemetryContext Context { get; } = new();
-    public IExtension Extension { get; set; }
-    public string Sequence { get; set; }
+        public void Sanitize()
+        {
+            // Ignore
+        }
+
+        public void SerializeData(ISerializationWriter serializationWriter)
+        {
+            // Ignore
+        }
+
+        public DateTimeOffset Timestamp { get; set; }
+        public TelemetryContext Context { get; } = new();
+        public IExtension Extension { get; set; }
+        public string Sequence { get; set; }
+    }
 }

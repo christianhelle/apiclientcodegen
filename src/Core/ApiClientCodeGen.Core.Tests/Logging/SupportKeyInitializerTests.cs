@@ -3,16 +3,17 @@ using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
 using FluentAssertions;
 using Xunit;
 
-namespace ApiClientCodeGen.Core.Tests.Logging;
-
-public class SupportKeyInitializerTests
+namespace ApiClientCodeGen.Core.Tests.Logging
 {
-    [Theory, AutoMoqData]
-    public void Should_Add_SupportKey(
-        SupportKeyInitializer sut,
-        FakeTelemetry telemetry)
+    public class SupportKeyInitializerTests
     {
-        sut.Initialize(telemetry);
-        telemetry.Properties.Should().ContainKey("support-key");
+        [Theory, AutoMoqData]
+        public void Should_Add_SupportKey(
+            SupportKeyInitializer sut,
+            FakeTelemetry telemetry)
+        {
+            sut.Initialize(telemetry);
+            telemetry.Properties.Should().ContainKey("support-key");
+        }
     }
 }
