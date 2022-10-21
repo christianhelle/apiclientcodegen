@@ -8,9 +8,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
     {
         public void Initialize(ITelemetry telemetry)
         {
-            if (telemetry is not ISupportProperties supportProperties)
-                return;
-            supportProperties.Properties["support-key"] = SupportInformation.GetSupportKey();
+            if (telemetry is ISupportProperties supportProperties)
+                supportProperties.Properties["support-key"] = SupportInformation.GetSupportKey();
         }
     }
 }

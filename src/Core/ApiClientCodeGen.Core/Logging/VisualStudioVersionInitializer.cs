@@ -16,9 +16,8 @@ namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
 
         public void Initialize(ITelemetry telemetry)
         {
-            if (telemetry is not ISupportProperties supportProperties)
-                return;
-            supportProperties.Properties["visual-studio-version"] = visualStudioVersion.ToString();
+            if (telemetry is ISupportProperties supportProperties)
+                supportProperties.Properties["visual-studio-version"] = visualStudioVersion.ToString();
         }
     }
 }
