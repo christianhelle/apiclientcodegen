@@ -5,11 +5,11 @@
         public const string NetCoreApp =
             @"<Project Sdk=""Microsoft.NET.Sdk"">
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>net60</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include = ""JsonSubTypes"" Version=""1.8.0"" />
-    <PackageReference Include = ""RestSharp"" Version=""106.12.0"" />
+    <PackageReference Include = ""JsonSubTypes"" Version=""1.9.0"" />
+    <PackageReference Include = ""RestSharp"" Version=""108.0.2"" />
     <PackageReference Include = ""Polly"" Version=""7.2.3"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
@@ -22,8 +22,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include = ""JsonSubTypes"" Version=""1.8.0"" />
-    <PackageReference Include = ""RestSharp"" Version=""106.12.0"" />
+    <PackageReference Include = ""JsonSubTypes"" Version=""1.9.0"" />
+    <PackageReference Include = ""RestSharp"" Version=""108.0.2"" />
     <PackageReference Include = ""Polly"" Version=""7.2.3"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
@@ -33,7 +33,7 @@
         public const string NetFrameworkApp =
             @"<Project Sdk=""Microsoft.NET.Sdk"">
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>net481</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include=""System"" />
@@ -48,8 +48,8 @@
     <Reference Include=""System.Xml"" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include = ""JsonSubTypes"" Version=""1.8.0"" />
-    <PackageReference Include = ""RestSharp"" Version=""106.12.0"" />
+    <PackageReference Include = ""JsonSubTypes"" Version=""1.9.0"" />
+    <PackageReference Include = ""RestSharp"" Version=""108.0.2"" />
     <PackageReference Include = ""Polly"" Version=""7.2.3"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />

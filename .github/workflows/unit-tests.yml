@@ -41,20 +41,25 @@ jobs:
       with:
         dotnet-version: '5.0.104'
 
+    - name: Setup .NET 6.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
     - name: Build with dotnet
       run: dotnet build Rapicgen.sln
       working-directory: src
 
     - name: Core test project
-      run: dotnet test src/Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj
+      run: dotnet test src/Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj -f netcoreapp3.1
 
     - name: Core Integration Test project
-      run: dotnet test src/Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj
+      run: dotnet test src/Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj -f netcoreapp3.1
 
   vsmac:
 
     name: VS Mac Extension
-    runs-on: macos-10.15
+    runs-on: macos-latest
     timeout-minutes: 20
 
     steps:
@@ -64,10 +69,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1
-
-    - name: Build
-      run: make release
-      working-directory: src
 
     - name: Core Test project
       run: dotnet test src/Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj -f netcoreapp3.1
