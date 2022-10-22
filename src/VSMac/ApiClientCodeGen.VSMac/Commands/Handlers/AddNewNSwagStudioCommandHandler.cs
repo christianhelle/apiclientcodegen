@@ -1,7 +1,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using ApiClientCodeGen.VSMac.Commands.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using Rapicgen.Core;
 using MonoDevelop.Ide;
 using MonoDevelop.Projects;
 
