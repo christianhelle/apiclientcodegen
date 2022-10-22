@@ -1,13 +1,13 @@
 ﻿using ApiClientCodeGen.Tests.Common;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators.OpenApi;
+using Rapicgen.Core.Options.General;
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.OpenApi
+namespace Rapicgen.Tests.Generators.OpenApi
 {
     public class OpenApiCSharpCodeGeneratorTests : TestWithResources
     {
