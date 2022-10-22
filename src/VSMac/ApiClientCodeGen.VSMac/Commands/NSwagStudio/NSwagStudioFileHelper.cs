@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
+using Rapicgen.Core.Extensions;
+using Rapicgen.Core.Options.NSwagStudio;
 using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
 
