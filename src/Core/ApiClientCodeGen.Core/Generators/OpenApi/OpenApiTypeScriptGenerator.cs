@@ -1,4 +1,4 @@
-﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi
+﻿namespace Rapicgen.Core.Generators.OpenApi
 {
     public enum OpenApiTypeScriptGenerator
     {
