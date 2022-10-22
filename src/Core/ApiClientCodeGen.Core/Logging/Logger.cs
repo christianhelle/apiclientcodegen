@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
+namespace Rapicgen.Core.Logging
 {
     [ExcludeFromCodeCoverage]
     public static class Logger
