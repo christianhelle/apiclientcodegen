@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
+using Rapicgen.Core.Options.AutoRest;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest
+namespace Rapicgen.Core.Generators.AutoRest
 {
     public interface IAutoRestArgumentProvider
     {
