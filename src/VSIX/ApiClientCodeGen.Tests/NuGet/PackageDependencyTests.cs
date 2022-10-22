@@ -1,8 +1,8 @@
 ﻿using AutoFixture;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
+using Rapicgen.Core.NuGet;
 using FluentAssertions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
+namespace Rapicgen.Tests.NuGet
 {
     public class PackageDependencyTests
     {
