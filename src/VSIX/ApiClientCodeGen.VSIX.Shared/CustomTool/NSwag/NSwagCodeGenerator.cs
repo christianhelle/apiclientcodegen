@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Converters;
+using Rapicgen.Core;
+using Rapicgen.Core.Converters;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.NSwag
+namespace Rapicgen.CustomTool.NSwag
 {
     [ExcludeFromCodeCoverage]
     [ComVisible(true)]
