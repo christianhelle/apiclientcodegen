@@ -5,11 +5,11 @@ using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
+using Rapicgen.Core.Generators.NSwagStudio;
+using Rapicgen.Core.Logging;
 using Microsoft.VisualStudio.Threading;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
+namespace Rapicgen.Windows
 {
     [ExcludeFromCodeCoverage]
     public partial class EnterOpenApiSpecDialog : Form
