@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
+using Rapicgen.Windows;
 using Microsoft.VisualStudio.Shell;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.Analytics
+namespace Rapicgen.Options.Analytics
 {
     [ExcludeFromCodeCoverage]
     [ComVisible(true)]
