@@ -2,9 +2,9 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Threading;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
+using Rapicgen.Core.Logging;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
+namespace Rapicgen.Core.Installer
 {
     [ExcludeFromCodeCoverage]
     public class WebDownloader : IWebDownloader
