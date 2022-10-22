@@ -3,24 +3,24 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Threading;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
+using Rapicgen.Core;
+using Rapicgen.Core.Exceptions;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.NSwagStudio;
+using Rapicgen.Core.Logging;
+using Rapicgen.Extensions;
+using Rapicgen.Core.Extensions;
+using Rapicgen.Core.Installer;
+using Rapicgen.Options.General;
+using Rapicgen.Options.NSwagStudio;
+using Rapicgen.Windows;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Newtonsoft.Json;
 using VSLangProj;
 using Task = System.Threading.Tasks.Task;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
+namespace Rapicgen.Commands.AddNew
 {
     [ExcludeFromCodeCoverage]
     public abstract class NewRestClientCommand : ICommandInitializer
