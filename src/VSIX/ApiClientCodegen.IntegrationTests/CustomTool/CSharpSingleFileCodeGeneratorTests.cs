@@ -1,25 +1,25 @@
 ﻿using System;
 using System.IO;
 using ApiClientCodeGen.Tests.Common;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApiGenerator;
+using Rapicgen.Core;
+using Rapicgen.Core.Exceptions;
+using Rapicgen.Core.Options;
+using Rapicgen.Core.Options.AutoRest;
+using Rapicgen.Core.Options.General;
+using Rapicgen.Core.Options.NSwag;
+using Rapicgen.Core.Options.OpenApiGenerator;
+using Rapicgen.Generators;
+using Rapicgen.Options.AutoRest;
+using Rapicgen.Options.General;
+using Rapicgen.Options.NSwag;
+using Rapicgen.Options.OpenApiGenerator;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Moq;
 using NJsonSchema.CodeGeneration.CSharp;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.CustomTool
+namespace Rapicgen.IntegrationTests.CustomTool
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class CSharpSingleFileCodeGeneratorTests : TestWithResources
