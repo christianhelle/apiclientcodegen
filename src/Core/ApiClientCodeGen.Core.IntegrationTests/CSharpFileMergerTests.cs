@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using Rapicgen.Core.Generators;
 using FluentAssertions;
 using Xunit;
 
