@@ -1,9 +1,9 @@
 ﻿using System.Linq;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
+using Rapicgen.Core;
+using Rapicgen.Core.NuGet;
 using FluentAssertions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.NuGet
+namespace Rapicgen.Tests.NuGet
 {
     
     public class PackageDependencyListProviderTests
