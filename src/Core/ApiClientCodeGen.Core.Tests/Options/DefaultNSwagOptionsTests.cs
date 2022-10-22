@@ -1,4 +1,4 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
+﻿using Rapicgen.Core.Options.NSwag;
 using FluentAssertions;
 using NJsonSchema.CodeGeneration.CSharp;
 
