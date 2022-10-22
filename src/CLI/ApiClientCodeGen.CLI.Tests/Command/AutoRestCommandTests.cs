@@ -1,18 +1,18 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
+using Rapicgen.CLI.Commands;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options.AutoRest;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Tests.Command
+namespace Rapicgen.CLI.Tests.Command
 {
     public class AutoRestCommandTests
     {
