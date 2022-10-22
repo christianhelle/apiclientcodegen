@@ -1,13 +1,13 @@
 ﻿using ApiClientCodeGen.Tests.Common;
 using AutoFixture;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using Rapicgen.Core;
+using Rapicgen.Core.Extensions;
+using Rapicgen.Core.Generators;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators
+namespace Rapicgen.Tests.Generators
 {
     public class CodeGeneratorTests : TestWithResources
     {
