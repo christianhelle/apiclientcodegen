@@ -17,8 +17,9 @@ namespace Rapicgen.Core.Options.OpenApiGenerator
 
         public OpenApiSupportedTargetFramework TargetFramework { get; set; }
 
-        public string CustomAdditionalProperties { get; set; } = null!;
+        public string CustomAdditionalProperties { get; set; }
+        public bool SkipFormModel { get; set; }
 
-        public bool SkipFormModel { get; set; } = true;
+        public string TemplatesPath { get; set; }
     }
 }

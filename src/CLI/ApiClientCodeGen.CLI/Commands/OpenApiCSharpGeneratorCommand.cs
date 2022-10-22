@@ -116,6 +116,8 @@ namespace Rapicgen.CLI.Commands
             set => openApiGeneratorOptions.SkipFormModel = value;
         }
 
+        public string TemplatesPath { get; set; }
+
         public override ICodeGenerator CreateGenerator()
             => cSharpGeneratorFactory.Create(
                 SwaggerFile,

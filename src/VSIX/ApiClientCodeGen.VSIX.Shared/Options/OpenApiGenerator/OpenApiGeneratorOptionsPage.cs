@@ -53,5 +53,10 @@ namespace Rapicgen.Options.OpenApiGenerator
         [DisplayName("Skip Form Model")]
         [Description("To skip models defined as the form parameters in 'requestBody'")]
         public bool SkipFormModel { get; set; } = true;
+
+        [Category(Name)]
+        [DisplayName("Templates Path")]
+        [Description("Path to the folder containing the custom Mustache templates")]
+        public string TemplatesPath { get; set; }
     }
 }

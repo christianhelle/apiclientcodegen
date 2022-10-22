@@ -7,11 +7,12 @@ namespace Rapicgen.Options.OpenApiGenerator
 {
     public class OpenApiGeneratorOptions : OptionsBase<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage>, IOpenApiGeneratorOptions
     {
-        public OpenApiGeneratorOptions(IOpenApiGeneratorOptions? options)
+        public OpenApiGeneratorOptions(IOpenApiGeneratorOptions options)
         {
             try
             {
-                options ??= GetFromDialogPage();
+                if (options == null)
+                    options = GetFromDialogPage();
 
                 EmitDefaultValue = options.EmitDefaultValue;
                 MethodArgument = options.MethodArgument;
@@ -21,6 +22,7 @@ namespace Rapicgen.Options.OpenApiGenerator
                 TargetFramework = options.TargetFramework;
                 CustomAdditionalProperties = options.CustomAdditionalProperties;
                 SkipFormModel = options.SkipFormModel;
+                TemplatesPath = options.TemplatesPath;
             }
             catch (Exception e)
             {
@@ -37,6 +39,7 @@ namespace Rapicgen.Options.OpenApiGenerator
                 Trace.WriteLine($"TargetFramework = {TargetFramework}");
                 Trace.WriteLine($"CustomAdditionalProperties = {CustomAdditionalProperties}");
                 Trace.WriteLine($"SkipFormModel = {SkipFormModel}");
+                Trace.WriteLine($"TemplatesPath = {TemplatesPath}");
 
                 EmitDefaultValue = true;
             }
@@ -48,7 +51,8 @@ namespace Rapicgen.Options.OpenApiGenerator
         public bool UseCollection { get; set; }
         public bool UseDateTimeOffset { get; set; }
         public OpenApiSupportedTargetFramework TargetFramework { get; set; }
-        public string CustomAdditionalProperties { get; set; }
+        public string? CustomAdditionalProperties { get; set; }
         public bool SkipFormModel { get; set; }
+        public string TemplatesPath { get; set; }
     }
 }
