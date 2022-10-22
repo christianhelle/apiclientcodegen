@@ -5,12 +5,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using Rapicgen.Core;
+using Rapicgen.Core.Extensions;
+using Rapicgen.Core.Logging;
+using Rapicgen.Core.NuGet;
+using Rapicgen.Core.Options.General;
+using Rapicgen.Options.General;
 using EnvDTE;
 using Microsoft;
 using Microsoft.VisualStudio;
@@ -21,7 +21,7 @@ using Microsoft.VisualStudio.TextManager.Interop;
 using NuGet.VisualStudio;
 using Task = System.Threading.Tasks.Task;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
+namespace Rapicgen.Extensions
 {
     [ExcludeFromCodeCoverage]
     public static class ProjectExtensions
