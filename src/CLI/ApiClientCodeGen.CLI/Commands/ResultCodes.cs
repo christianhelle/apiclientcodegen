@@ -1,4 +1,4 @@
-﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
+﻿namespace Rapicgen.CLI.Commands
 {
     public static class ResultCodes
     {
