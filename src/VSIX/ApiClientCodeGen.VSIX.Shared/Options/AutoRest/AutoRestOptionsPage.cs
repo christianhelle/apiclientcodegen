@@ -1,10 +1,10 @@
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
+using Rapicgen.Core.Options.AutoRest;
 using Microsoft.VisualStudio.Shell;
 using System.Runtime.InteropServices;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest
+namespace Rapicgen.Options.AutoRest
 {
     [ExcludeFromCodeCoverage]
     [ComVisible(true)]
