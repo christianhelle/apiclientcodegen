@@ -1,13 +1,13 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Build;
 using ApiClientCodeGen.Tests.Common.Fixtures;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.CSharp
+namespace Rapicgen.IntegrationTests.Generators.CSharp
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class AutoRestCodeGeneratorTests : IClassFixture<AutoRestCodeGeneratorFixture>
