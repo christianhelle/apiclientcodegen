@@ -6,6 +6,6 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Usage", "VSTHRD010:Use VS services from UI thread", Justification = "<Pending>", Scope = "member", Target = "~M:ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.CodeGeneratorTests.GenerateCode_ReportsProgress")]
-[assembly: SuppressMessage("Usage", "VSTHRD010:Use VS services from UI thread", Justification = "<Pending>", Scope = "member", Target = "~M:ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.CustomTool.SingleFileCodeGeneratorTests.Generate_Test(ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.SupportedCodeGenerator)")]
+[assembly: SuppressMessage("Usage", "VSTHRD010:Use VS services from UI thread", Justification = "<Pending>", Scope = "member", Target = "~M:Rapicgen.Tests.Generators.CodeGeneratorTests.GenerateCode_ReportsProgress")]
+[assembly: SuppressMessage("Usage", "VSTHRD010:Use VS services from UI thread", Justification = "<Pending>", Scope = "member", Target = "~M:Rapicgen.Tests.CustomTool.SingleFileCodeGeneratorTests.Generate_Test(Rapicgen.Core.SupportedCodeGenerator)")]
 
