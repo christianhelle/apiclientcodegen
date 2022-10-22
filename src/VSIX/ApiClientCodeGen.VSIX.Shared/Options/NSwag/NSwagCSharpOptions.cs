@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
+using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options.NSwag;
 using NJsonSchema.CodeGeneration.CSharp;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag
+namespace Rapicgen.Options.NSwag
 {
     public class NSwagCSharpOptions 
         : OptionsBase<INSwagOptions, NSwagOptionsPage>, INSwagOptions
