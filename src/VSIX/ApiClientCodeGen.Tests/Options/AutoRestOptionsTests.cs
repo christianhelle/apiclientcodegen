@@ -1,13 +1,13 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
+using Rapicgen.Core.Options.AutoRest;
+using Rapicgen.Options.AutoRest;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
+namespace Rapicgen.Tests.Options
 {
     public class AutoRestOptionsTests
     {
