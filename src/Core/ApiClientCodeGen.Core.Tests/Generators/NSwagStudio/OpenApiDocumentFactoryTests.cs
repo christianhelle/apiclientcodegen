@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using Rapicgen.Core;
 using FluentAssertions;
 using Xunit;
 
