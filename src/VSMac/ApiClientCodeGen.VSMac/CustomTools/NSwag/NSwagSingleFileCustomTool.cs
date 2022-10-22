@@ -1,7 +1,7 @@
 using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Options.NSwag;
 
 namespace ApiClientCodeGen.VSMac.CustomTools.NSwag
 {
