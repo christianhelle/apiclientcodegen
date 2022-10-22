@@ -1,7 +1,7 @@
 ﻿using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
+using Rapicgen.Core.Generators.AutoRest;
+using Rapicgen.Core.Options.AutoRest;
 using Moq;
 using Xunit;
 
