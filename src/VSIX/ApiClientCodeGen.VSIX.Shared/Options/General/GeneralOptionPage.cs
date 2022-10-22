@@ -2,11 +2,11 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
+using Rapicgen.Core.Options.General;
+using Rapicgen.Windows;
 using Microsoft.VisualStudio.Shell;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General
+namespace Rapicgen.Options.General
 {
     [ExcludeFromCodeCoverage]
     [ComVisible(true)]
