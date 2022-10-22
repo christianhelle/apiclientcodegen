@@ -1,4 +1,4 @@
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
+namespace Rapicgen.Core.Extensions
 {
     public static class CodeGeneratorNameExtensions
     {
