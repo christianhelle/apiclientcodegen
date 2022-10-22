@@ -3,8 +3,8 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using ApiClientCodeGen.Tests.Common.Build.Projects;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
 
 namespace ApiClientCodeGen.Tests.Common.Build
 {
