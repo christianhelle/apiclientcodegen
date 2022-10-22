@@ -1,4 +1,4 @@
-﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
+﻿namespace Rapicgen.Core.Generators
 {
     public interface ICodeGeneratorFactory
     {
