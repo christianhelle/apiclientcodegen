@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators.AutoRest;
+using Rapicgen.Core.Generators.NSwagStudio;
+using Rapicgen.Extensions;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using NSwag;
 using Task = System.Threading.Tasks.Task;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew
+namespace Rapicgen.Commands.AddNew
 {
     [ExcludeFromCodeCoverage]
     public class NewAutoRestClientCommand : NewRestClientCommand
