@@ -1,7 +1,7 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
 using FluentAssertions;
 using Moq;
 using Xunit;
