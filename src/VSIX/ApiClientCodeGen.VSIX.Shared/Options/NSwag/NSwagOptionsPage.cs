@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
+using Rapicgen.Core.Options.NSwag;
 using Microsoft.VisualStudio.Shell;
 using NJsonSchema.CodeGeneration.CSharp;
 using System.Runtime.InteropServices;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag
+namespace Rapicgen.Options.NSwag
 {
     [ExcludeFromCodeCoverage]
     [ComVisible(true)]
