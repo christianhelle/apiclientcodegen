@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using Rapicgen.Core;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
+namespace Rapicgen.Extensions
 {
     [ExcludeFromCodeCoverage]
     public static class IVsExtensions
