@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator
+namespace Rapicgen.Core.Options.OpenApiGenerator
 {
     public enum OpenApiSupportedTargetFramework
     {
