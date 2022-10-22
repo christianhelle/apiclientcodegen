@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
+namespace Rapicgen.Commands.CustomTool
 {
     [ExcludeFromCodeCoverage]
     public static class CustomToolSetterCommand
