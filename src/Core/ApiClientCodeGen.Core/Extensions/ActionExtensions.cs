@@ -1,8 +1,8 @@
 using System;
 using System.Diagnostics;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
+using Rapicgen.Core.Logging;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
+namespace Rapicgen.Core.Extensions
 {
     public static class ActionExtensions
     {
