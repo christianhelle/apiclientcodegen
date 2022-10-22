@@ -4,11 +4,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
+using Rapicgen.Core;
+using Rapicgen.Core.Extensions;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Logging;
+using Rapicgen.Core.NuGet;
 using Microsoft.VisualStudio.Threading;
 using Mono.Addins;
 using MonoDevelop.Components.Commands;
@@ -16,7 +16,7 @@ using MonoDevelop.Core;
 using MonoDevelop.Ide;
 using MonoDevelop.Ide.Gui.Pads.ProjectPad;
 using MonoDevelop.Projects;
-using PackageDependency = ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet.PackageDependency;
+using PackageDependency = Rapicgen.Core.NuGet.PackageDependency;
 
 namespace ApiClientCodeGen.VSMac.Commands.Handlers
 {
