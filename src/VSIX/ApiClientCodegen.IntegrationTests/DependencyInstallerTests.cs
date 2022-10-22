@@ -1,11 +1,11 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Installer;
 using FluentAssertions;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests
+namespace Rapicgen.IntegrationTests
 {
     public class DependencyInstallerTests : TestWithResources
     {
