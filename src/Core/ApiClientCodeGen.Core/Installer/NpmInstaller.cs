@@ -1,10 +1,10 @@
 using System;
 using System.Diagnostics;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options.General;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
+namespace Rapicgen.Core.Installer
 {
     public class NpmInstaller : INpmInstaller
     {
