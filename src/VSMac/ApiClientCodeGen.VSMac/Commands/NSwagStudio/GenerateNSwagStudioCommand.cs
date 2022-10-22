@@ -1,5 +1,5 @@
 using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
+using Rapicgen.Core.Logging;
 
 namespace ApiClientCodeGen.VSMac.Commands.NSwagStudio
 {
