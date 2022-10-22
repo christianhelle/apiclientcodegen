@@ -1,5 +1,5 @@
 using ApiClientCodeGen.Tests.Common.Infrastructure;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
+using Rapicgen.Core.Logging;
 using FluentAssertions;
 using Moq;
 using Xunit;
