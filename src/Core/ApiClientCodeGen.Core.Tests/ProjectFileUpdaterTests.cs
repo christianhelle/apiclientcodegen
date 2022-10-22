@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Xml.Linq;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators.AutoRest;
 using FluentAssertions;
 using Xunit;
 
