@@ -1,14 +1,14 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using Rapicgen.Generators.NSwag;
+using Rapicgen.Options;
 using FluentAssertions;
 using ICSharpCode.CodeConverter;
 using Microsoft.VisualStudio.Shell.Interop;
 
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.VisualBasic
+namespace Rapicgen.IntegrationTests.VisualBasic
 {
     
     [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
