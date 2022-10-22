@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using Rapicgen.Core;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.TextTemplating.VSHost;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.NSwag
+namespace Rapicgen.CustomTool.NSwag
 {
     [ExcludeFromCodeCoverage]
     [Guid("0A31911A-4D1B-47CB-8F89-B93731A1FA31")]
