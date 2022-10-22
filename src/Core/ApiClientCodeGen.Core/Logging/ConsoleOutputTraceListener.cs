@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
+namespace Rapicgen.Core.Logging
 {
     [ExcludeFromCodeCoverage]
     public class ConsoleOutputTraceListener : TraceListener
