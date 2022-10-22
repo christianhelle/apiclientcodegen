@@ -48,7 +48,7 @@ namespace Rapicgen.Options.OpenApiGenerator
         public bool UseCollection { get; set; }
         public bool UseDateTimeOffset { get; set; }
         public OpenApiSupportedTargetFramework TargetFramework { get; set; }
-        public string? CustomAdditionalProperties { get; set; }
+        public string CustomAdditionalProperties { get; set; }
         public bool SkipFormModel { get; set; }
     }
 }

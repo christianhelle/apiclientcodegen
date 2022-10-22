@@ -101,7 +101,7 @@ namespace Rapicgen.CLI.Commands
             ShortName = "custom-props",
             LongName = "custom-additional-properties",
             Description = "Setting this will override all the other additional properties")]
-        public string? CustomAdditionalProperties
+        public string CustomAdditionalProperties
         {
             get => openApiGeneratorOptions.CustomAdditionalProperties;
             set => openApiGeneratorOptions.CustomAdditionalProperties = value;

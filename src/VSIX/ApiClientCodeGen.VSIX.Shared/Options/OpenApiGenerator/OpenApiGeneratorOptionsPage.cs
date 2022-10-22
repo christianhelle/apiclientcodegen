@@ -47,7 +47,7 @@ namespace Rapicgen.Options.OpenApiGenerator
         [Category(Name)]
         [DisplayName("Custom Addition Properties")]
         [Description("Setting this will override all the other additional properties")]
-        public string? CustomAdditionalProperties { get; set; }
+        public string CustomAdditionalProperties { get; set; } = null!;
 
         [Category(Name)]
         [DisplayName("Skip Form Model")]
