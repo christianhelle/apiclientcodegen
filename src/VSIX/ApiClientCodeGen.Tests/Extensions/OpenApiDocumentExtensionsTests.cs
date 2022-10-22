@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using Rapicgen.Core.Extensions;
 using FluentAssertions;
 using NSwag;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extensions
+namespace Rapicgen.Tests.Extensions
 {
     public class OpenApiDocumentExtensionsTests : TestWithResources
     {
