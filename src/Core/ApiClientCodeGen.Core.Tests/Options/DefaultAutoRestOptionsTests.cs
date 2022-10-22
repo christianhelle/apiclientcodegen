@@ -1,4 +1,4 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
+﻿using Rapicgen.Core.Options.AutoRest;
 using FluentAssertions;
 
 namespace ApiClientCodeGen.Core.Tests.Options
