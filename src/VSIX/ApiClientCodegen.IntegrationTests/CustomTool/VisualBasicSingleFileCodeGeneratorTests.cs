@@ -1,15 +1,15 @@
 ﻿using System;
 using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
+using Rapicgen.Core;
+using Rapicgen.Generators;
+using Rapicgen.Options;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 
 using Moq;
 using NJsonSchema.CodeGeneration.CSharp;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.CustomTool
+namespace Rapicgen.IntegrationTests.CustomTool
 {
     
     [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
