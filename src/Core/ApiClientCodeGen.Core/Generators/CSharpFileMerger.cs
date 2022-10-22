@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using Rapicgen.Core.Extensions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
+namespace Rapicgen.Core.Generators
 {
     public static class CSharpFileMerger
     {
