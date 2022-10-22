@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.NSwag;
+using Rapicgen.CustomTool.NSwag;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
+namespace Rapicgen.Commands.CustomTool
 {
     [ExcludeFromCodeCoverage]
     public class NSwagCodeGeneratorCustomToolSetter
