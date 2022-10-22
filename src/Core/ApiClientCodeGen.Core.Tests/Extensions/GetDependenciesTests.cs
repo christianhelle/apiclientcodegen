@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using Rapicgen.Core;
+using Rapicgen.Core.Extensions;
 using FluentAssertions;
 
 namespace ApiClientCodeGen.Core.Tests.Extensions
