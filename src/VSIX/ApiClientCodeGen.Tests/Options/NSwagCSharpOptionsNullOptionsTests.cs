@@ -1,8 +1,8 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
+﻿using Rapicgen.Options.NSwag;
 using FluentAssertions;
 using NJsonSchema.CodeGeneration.CSharp;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Options
+namespace Rapicgen.Tests.Options
 {
     
     public class NSwagCSharpOptionsNullOptionsTests
