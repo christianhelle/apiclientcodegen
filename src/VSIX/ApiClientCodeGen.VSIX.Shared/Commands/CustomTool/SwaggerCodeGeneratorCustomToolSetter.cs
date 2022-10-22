@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Swagger;
+using Rapicgen.CustomTool.Swagger;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
+namespace Rapicgen.Commands.CustomTool
 {
     [ExcludeFromCodeCoverage]
     public class SwaggerCodeGeneratorCustomToolSetter
