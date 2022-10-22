@@ -1,12 +1,12 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.Swagger;
+using Rapicgen.Core.Installer;
 using FluentAssertions;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.Swagger
+namespace Rapicgen.Tests.Generators.Swagger
 {
     public class SwaggerCSharpCodeGeneratorExceptionTests
     {
