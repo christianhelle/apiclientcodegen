@@ -7,7 +7,7 @@ namespace Rapicgen.Options.OpenApiGenerator
 {
     public class OpenApiGeneratorOptions : OptionsBase<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage>, IOpenApiGeneratorOptions
     {
-        public OpenApiGeneratorOptions(IOpenApiGeneratorOptions options)
+        public OpenApiGeneratorOptions(IOpenApiGeneratorOptions? options)
         {
             try
             {
