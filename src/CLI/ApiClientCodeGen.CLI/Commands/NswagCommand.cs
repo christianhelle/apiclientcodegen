@@ -1,12 +1,12 @@
 ﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options.NSwag;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
+namespace Rapicgen.CLI.Commands
 {
     [Command("nswag", Description = "Generate C# API client using NSwag")]
     public class NSwagCommand : CodeGeneratorCommand
