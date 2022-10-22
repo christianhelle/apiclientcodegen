@@ -1,11 +1,11 @@
 using ApiClientCodeGen.Tests.Common.Infrastructure;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
+using Rapicgen.CLI.Commands;
+using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Options.NSwag;
 using FluentAssertions;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Tests.Command
+namespace Rapicgen.CLI.Tests.Command
 {
     public class NSwagCodeGeneratorFactoryTests
     {
