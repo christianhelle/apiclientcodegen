@@ -2,14 +2,14 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using Rapicgen.Core.Exceptions;
+using Rapicgen.CustomTool;
+using Rapicgen.Extensions;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
+namespace Rapicgen.Commands.CustomTool
 {
     [ExcludeFromCodeCoverage]
     public abstract class CustomToolSetter<T>
