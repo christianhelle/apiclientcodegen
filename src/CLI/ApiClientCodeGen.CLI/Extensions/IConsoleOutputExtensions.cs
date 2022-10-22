@@ -1,7 +1,7 @@
 ﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
+using Rapicgen.Core.Logging;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Extensions
+namespace Rapicgen.CLI.Extensions
 {
     public static class IConsoleOutputExtensions
     {
