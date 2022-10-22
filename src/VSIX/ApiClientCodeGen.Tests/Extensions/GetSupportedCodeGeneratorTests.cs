@@ -1,13 +1,13 @@
 ﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.OpenApi;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Swagger;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using Rapicgen.Core;
+using Rapicgen.CustomTool.AutoRest;
+using Rapicgen.CustomTool.NSwag;
+using Rapicgen.CustomTool.OpenApi;
+using Rapicgen.CustomTool.Swagger;
+using Rapicgen.Extensions;
 using FluentAssertions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extensions
+namespace Rapicgen.Tests.Extensions
 {
     
     public class GetSupportedCodeGeneratorTests
