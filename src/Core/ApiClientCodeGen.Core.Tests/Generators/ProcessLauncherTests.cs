@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using ApiClientCodeGen.Tests.Common;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using Rapicgen.Core.Generators;
 using FluentAssertions;
 
 namespace ApiClientCodeGen.Core.Tests.Generators
