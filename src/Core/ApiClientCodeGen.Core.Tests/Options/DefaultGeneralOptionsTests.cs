@@ -1,4 +1,4 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+﻿using Rapicgen.Core.Options.General;
 using FluentAssertions;
 
 namespace ApiClientCodeGen.Core.Tests.Options
