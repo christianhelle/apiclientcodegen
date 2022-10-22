@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.Shell;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
+namespace Rapicgen.Options
 {
     [ExcludeFromCodeCoverage]
     public abstract class OptionsBase<TOptionsInterface, TOptionsPage>
