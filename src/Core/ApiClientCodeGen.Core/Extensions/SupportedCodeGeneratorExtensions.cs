@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
+using Rapicgen.Core.NuGet;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions
+namespace Rapicgen.Core.Extensions
 {
     public static class SupportedCodeGeneratorExtensions
     {
