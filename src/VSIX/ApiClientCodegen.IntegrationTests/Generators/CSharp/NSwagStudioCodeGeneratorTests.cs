@@ -1,10 +1,10 @@
 ﻿using ApiClientCodeGen.Tests.Common.Build;
 using ApiClientCodeGen.Tests.Common.Fixtures;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using Rapicgen.Core;
 using FluentAssertions;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.CSharp
+namespace Rapicgen.IntegrationTests.Generators.CSharp
 {
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class NSwagStudioCodeGeneratorTests : IClassFixture<NSwagStudioCodeGeneratorFixture>
