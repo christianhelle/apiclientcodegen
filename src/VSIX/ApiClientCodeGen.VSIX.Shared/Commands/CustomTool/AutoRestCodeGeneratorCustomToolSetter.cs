@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators.AutoRest;
+using Rapicgen.CustomTool.AutoRest;
+using Rapicgen.Extensions;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Task = System.Threading.Tasks.Task;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool
+namespace Rapicgen.Commands.CustomTool
 {
     [ExcludeFromCodeCoverage]
     public class AutoRestCodeGeneratorCustomToolSetter
