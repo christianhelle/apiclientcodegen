@@ -1,4 +1,4 @@
-﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
+﻿namespace Rapicgen.Windows
 {
     partial class AddCustomHeaderDialog
     {
