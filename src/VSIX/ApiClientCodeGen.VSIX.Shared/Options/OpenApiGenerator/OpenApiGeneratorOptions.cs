@@ -11,8 +11,7 @@ namespace Rapicgen.Options.OpenApiGenerator
         {
             try
             {
-                if (options == null)
-                    options = GetFromDialogPage();
+                options ??= GetFromDialogPage();
 
                 EmitDefaultValue = options.EmitDefaultValue;
                 MethodArgument = options.MethodArgument;
@@ -21,6 +20,7 @@ namespace Rapicgen.Options.OpenApiGenerator
                 UseDateTimeOffset = options.UseDateTimeOffset;
                 TargetFramework = options.TargetFramework;
                 CustomAdditionalProperties = options.CustomAdditionalProperties;
+                SkipFormModel = options.SkipFormModel;
             }
             catch (Exception e)
             {
@@ -36,6 +36,7 @@ namespace Rapicgen.Options.OpenApiGenerator
                 Trace.WriteLine($"UseDateTimeOffset = {UseDateTimeOffset}");
                 Trace.WriteLine($"TargetFramework = {TargetFramework}");
                 Trace.WriteLine($"CustomAdditionalProperties = {CustomAdditionalProperties}");
+                Trace.WriteLine($"SkipFormModel = {SkipFormModel}");
 
                 EmitDefaultValue = true;
             }
@@ -48,5 +49,6 @@ namespace Rapicgen.Options.OpenApiGenerator
         public bool UseDateTimeOffset { get; set; }
         public OpenApiSupportedTargetFramework TargetFramework { get; set; }
         public string? CustomAdditionalProperties { get; set; }
+        public bool SkipFormModel { get; set; }
     }
 }

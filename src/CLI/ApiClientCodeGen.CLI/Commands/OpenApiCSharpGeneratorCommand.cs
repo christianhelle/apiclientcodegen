@@ -107,6 +107,15 @@ namespace Rapicgen.CLI.Commands
             set => openApiGeneratorOptions.CustomAdditionalProperties = value;
         }
 
+        [Option(
+            LongName = "skipFormModel",
+            Description = "To skip models defined as the form parameters in 'requestBody'")]
+        public bool SkipFormModel
+        {
+            get => openApiGeneratorOptions.SkipFormModel;
+            set => openApiGeneratorOptions.SkipFormModel = value;
+        }
+
         public override ICodeGenerator CreateGenerator()
             => cSharpGeneratorFactory.Create(
                 SwaggerFile,
