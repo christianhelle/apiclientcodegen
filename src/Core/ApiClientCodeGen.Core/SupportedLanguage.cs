@@ -1,4 +1,4 @@
-﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
+﻿namespace Rapicgen.Core
 {
     public enum SupportedLanguage
     {
