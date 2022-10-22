@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest
+namespace Rapicgen.Core.Generators.AutoRest
 {
     public static class AutoRestConstants
     {
