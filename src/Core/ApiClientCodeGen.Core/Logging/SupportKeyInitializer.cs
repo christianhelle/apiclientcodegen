@@ -2,7 +2,7 @@
 using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.ApplicationInsights.Extensibility;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
+namespace Rapicgen.Core.Logging
 {
     public sealed class SupportKeyInitializer : ITelemetryInitializer
     {
