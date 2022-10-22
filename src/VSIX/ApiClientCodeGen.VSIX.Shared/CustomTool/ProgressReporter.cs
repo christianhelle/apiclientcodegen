@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using Rapicgen.Core;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
+namespace Rapicgen.CustomTool
 {
     public class ProgressReporter : IProgressReporter
     {
