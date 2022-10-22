@@ -1,4 +1,4 @@
-﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General
+﻿namespace Rapicgen.Core.Options.General
 {
     public class DefaultGeneralOptions : IGeneralOptions
     {
