@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
+namespace Rapicgen.Core.Installer
 {
     public interface IFileDownloader
     {
