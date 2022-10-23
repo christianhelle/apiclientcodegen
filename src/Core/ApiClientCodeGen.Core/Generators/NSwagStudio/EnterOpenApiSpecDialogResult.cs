@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio
+namespace Rapicgen.Core.Generators.NSwagStudio
 {
     [ExcludeFromCodeCoverage]
     public class EnterOpenApiSpecDialogResult
