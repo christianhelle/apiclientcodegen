@@ -96,7 +96,6 @@ function Build-GeneratedCode {
 
                 if ($_ -notcontains "AutoRest-V3") {
                     $argumentsList += "build ./GeneratedCode/$_/Net462/Net462.csproj"
-                    $argumentsList += "build ./GeneratedCode/$_/Net481/Net481.csproj"
                 }
             }
         } else {
@@ -113,7 +112,6 @@ function Build-GeneratedCode {
 
             if ($_ -notcontains "AutoRest-V3") {
                 $argumentsList += "build ./GeneratedCode/$_/Net462/Net462.csproj"
-                $argumentsList += "build ./GeneratedCode/$_/Net452/Net452.csproj"
             }
         }
         
