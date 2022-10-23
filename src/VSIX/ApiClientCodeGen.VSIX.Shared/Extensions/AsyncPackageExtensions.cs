@@ -3,13 +3,13 @@ using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
+using Rapicgen.Core.Logging;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Threading;
 using Task = System.Threading.Tasks.Task;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions
+namespace Rapicgen.Extensions
 {
     [ExcludeFromCodeCoverage]
     public static class AsyncPackageExtensions
