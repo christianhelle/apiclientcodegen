@@ -1,6 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using Rapicgen.Core;
 using MonoDevelop.Core;
 
 namespace ApiClientCodeGen.VSMac.Logging
