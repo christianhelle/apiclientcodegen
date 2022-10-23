@@ -2,7 +2,7 @@
 using System.IO;
 using System.Security.Cryptography;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
+namespace Rapicgen.Core.Generators
 {
     public static class FileHelper
     {
