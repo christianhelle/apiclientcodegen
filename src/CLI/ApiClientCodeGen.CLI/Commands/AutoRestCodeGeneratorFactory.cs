@@ -1,10 +1,10 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
+﻿using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.AutoRest;
+using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.Options.AutoRest;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
+namespace Rapicgen.CLI.Commands
 {
     public interface IAutoRestCodeGeneratorFactory
     {
