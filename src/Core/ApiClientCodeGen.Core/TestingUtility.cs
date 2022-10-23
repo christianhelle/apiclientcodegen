@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
+namespace Rapicgen.Core
 {
     [ExcludeFromCodeCoverage]
     public static class TestingUtility
