@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
+namespace Rapicgen.Core.Logging
 {
     public class ProgressReporter : IProgressReporter
     {
