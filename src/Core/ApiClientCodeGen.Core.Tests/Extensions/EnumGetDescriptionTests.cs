@@ -1,5 +1,5 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
+﻿using Rapicgen.Core.Extensions;
+using Rapicgen.Core.Options.OpenApiGenerator;
 using FluentAssertions;
 using System;
 using System.ComponentModel;
