@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
+namespace Rapicgen.Windows
 {
     [ExcludeFromCodeCoverage]
     public partial class AddCustomHeaderDialog : Form
