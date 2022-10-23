@@ -1,6 +1,6 @@
 using System;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer
+namespace Rapicgen.Core.Installer
 {
     public class DependencyInstaller : IDependencyInstaller
     {
