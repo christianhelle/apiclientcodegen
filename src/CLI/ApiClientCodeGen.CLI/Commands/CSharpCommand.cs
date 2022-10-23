@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
+using Rapicgen.Core.Logging;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
+namespace Rapicgen.CLI.Commands
 {
     [ExcludeFromCodeCoverage]
     [Command("csharp", Description = "Generate C# API client")]
