@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
+using Rapicgen.Core.Extensions;
+using Rapicgen.Core.Options.NSwagStudio;
 using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio
+namespace Rapicgen.Core.Generators.NSwagStudio
 {
     public static class NSwagStudioFileHelper
     {
