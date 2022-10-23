@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
+using Rapicgen.Core.Generators.NSwagStudio;
+using Rapicgen.Core.Options.NSwagStudio;
 using Moq;
 
 namespace ApiClientCodeGen.Core.Tests.Generators.NSwagStudio
