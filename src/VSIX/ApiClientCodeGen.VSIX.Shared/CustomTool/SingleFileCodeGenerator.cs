@@ -3,18 +3,18 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Converters;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
+using Rapicgen.Core;
+using Rapicgen.Core.Converters;
+using Rapicgen.Core.Exceptions;
+using Rapicgen.Core.Extensions;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Logging;
+using Rapicgen.Extensions;
+using Rapicgen.Generators;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool
+namespace Rapicgen.CustomTool
 {
     [ExcludeFromCodeCoverage]
     [ComVisible(true)]
