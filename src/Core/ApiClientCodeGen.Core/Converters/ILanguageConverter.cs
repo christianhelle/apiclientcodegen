@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Converters
+namespace Rapicgen.Core.Converters
 {
     public interface ILanguageConverter
     {
