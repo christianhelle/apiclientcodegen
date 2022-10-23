@@ -1,9 +1,9 @@
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using Rapicgen.Core;
+using Rapicgen.Core.Extensions;
 using FluentAssertions;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Tests.Extensions
+namespace Rapicgen.CLI.Tests.Extensions
 {
     public class SupportedCodeGeneratorNameTests
     {
