@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using ApiClientCodeGen.VSMac.CustomTools.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using Rapicgen.Core;
 using MonoDevelop.Projects;
 
 namespace ApiClientCodeGen.VSMac.Commands.Handlers
