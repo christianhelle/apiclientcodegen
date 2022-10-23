@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet
+namespace Rapicgen.Core.NuGet
 {
     public class PackageDependencyListProvider
     {
