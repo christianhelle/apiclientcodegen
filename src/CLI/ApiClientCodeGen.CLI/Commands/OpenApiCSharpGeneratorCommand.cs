@@ -115,8 +115,15 @@ namespace Rapicgen.CLI.Commands
             get => openApiGeneratorOptions.SkipFormModel;
             set => openApiGeneratorOptions.SkipFormModel = value;
         }
-
-        public string TemplatesPath { get; set; }
+        [Option(
+            ShortName = "t",
+            LongName = "templates",
+            Description = "Path to the folder containing the custom Mustache templates")]
+        public string TemplatesPath
+        {
+            get => openApiGeneratorOptions.TemplatesPath;
+            set => openApiGeneratorOptions.TemplatesPath = value;
+        }
 
         public override ICodeGenerator CreateGenerator()
             => cSharpGeneratorFactory.Create(
