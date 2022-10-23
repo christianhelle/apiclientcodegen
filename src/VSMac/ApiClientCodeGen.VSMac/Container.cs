@@ -7,16 +7,16 @@ using ApiClientCodeGen.VSMac.CustomTools.NSwag;
 using ApiClientCodeGen.VSMac.CustomTools.OpenApi;
 using ApiClientCodeGen.VSMac.CustomTools.Swagger;
 using ApiClientCodeGen.VSMac.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.NuGet;
+using Rapicgen.Core.Options.AutoRest;
+using Rapicgen.Core.Options.General;
+using Rapicgen.Core.Options.NSwag;
+using Rapicgen.Core.Options.NSwagStudio;
+using Rapicgen.Core.Options.OpenApiGenerator;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ApiClientCodeGen.VSMac
