@@ -69,7 +69,6 @@ jobs:
         dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/NetCore21/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/NetCore31/Output.cs
-        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net5/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net6/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net7/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net48/Output.cs
@@ -85,10 +84,6 @@ jobs:
 
     - name: Build .NET Core 3.1 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/NetCore31/NetCore31.csproj
-      working-directory: test
-
-    - name: Build .NET 5 NSwag generated code
-      run: dotnet build ./GeneratedCode/NSwag/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 6 NSwag generated code
@@ -125,7 +120,6 @@ jobs:
         dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp openapi ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/NetCore21/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/NetCore31/Output.cs
-        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net5/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net6/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net7/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net48/Output.cs
@@ -141,10 +135,6 @@ jobs:
 
     - name: Build .NET Core 3.1 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/NetCore31/NetCore31.csproj
-      working-directory: test
-
-    - name: Build .NET 5 OpenAPI Generator generated code
-      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 6 OpenAPI Generator generated code
@@ -181,7 +171,6 @@ jobs:
         dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp swagger ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/NetCore21/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/NetCore31/Output.cs
-        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net5/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net6/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net7/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net48/Output.cs
@@ -197,10 +186,6 @@ jobs:
 
     - name: Build .NET Core 3.1 Swagger Codegen CLI generated code
       run: dotnet build ./GeneratedCode/SwaggerCodegen/NetCore31/NetCore31.csproj
-      working-directory: test
-
-    - name: Build .NET 5 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 6 Swagger Codegen CLI generated code
@@ -241,7 +226,6 @@ jobs:
         dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp autorest ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs --no-logging
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/NetCore21/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/NetCore31/Output.cs
-        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net5/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net6/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net7/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net48/Output.cs
@@ -258,10 +242,6 @@ jobs:
 
     - name: Build .NET Core 3.1 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/NetCore31/NetCore31.csproj
-      working-directory: test
-
-    - name: Build .NET 5 AutoRest generated code
-      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net5/Net5.csproj
       working-directory: test
 
     - name: Build .NET 6 AutoRest generated code
