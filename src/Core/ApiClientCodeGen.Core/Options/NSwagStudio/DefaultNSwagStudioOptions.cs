@@ -1,6 +1,6 @@
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
+using Rapicgen.Core.Options.NSwag;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwagStudio
+namespace Rapicgen.Core.Options.NSwagStudio
 {
     public class DefaultNSwagStudioOptions : DefaultNSwagOptions, INSwagStudioOptions
     {
