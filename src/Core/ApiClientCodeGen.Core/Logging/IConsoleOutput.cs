@@ -1,4 +1,4 @@
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
+namespace Rapicgen.Core.Logging
 {
     public interface IConsoleOutput
     {
