@@ -2,7 +2,7 @@
 using ApiClientCodeGen.Tests.Common;
 using FluentAssertions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
+namespace Rapicgen.Tests
 {
     public class DeploymentItemTests : TestWithResources
     {        
