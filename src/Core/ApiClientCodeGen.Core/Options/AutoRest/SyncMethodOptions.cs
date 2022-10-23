@@ -1,4 +1,4 @@
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest
+namespace Rapicgen.Core.Options.AutoRest
 {
     public enum SyncMethodOptions
     {
