@@ -1,7 +1,7 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+﻿using Rapicgen.Core;
 using FluentAssertions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
+namespace Rapicgen.Tests
 {
        
     public class TestingUtilityTests
