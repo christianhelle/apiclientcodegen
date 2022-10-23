@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Options.NSwag;
 using Moq;
 using NJsonSchema.CodeGeneration.CSharp;
 
