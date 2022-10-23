@@ -1,13 +1,13 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.OpenApi;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.Options.OpenApiGenerator;
 using FluentAssertions;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.OpenApi
+namespace Rapicgen.Tests.Generators.OpenApi
 {
     public class OpenApiCSharpCodeGeneratorExceptionTests
     {
