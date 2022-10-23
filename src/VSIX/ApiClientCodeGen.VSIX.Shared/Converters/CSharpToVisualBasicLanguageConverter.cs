@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Converters;
+using Rapicgen.Core.Converters;
 using ICSharpCode.CodeConverter;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters
+namespace Rapicgen.Converters
 {
     [ExcludeFromCodeCoverage]
     public class CSharpToVisualBasicLanguageConverter : ILanguageConverter
