@@ -1,4 +1,4 @@
-﻿namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options
+﻿namespace Rapicgen.Core.Options
 {
     public interface IOptionsFactory
     {
