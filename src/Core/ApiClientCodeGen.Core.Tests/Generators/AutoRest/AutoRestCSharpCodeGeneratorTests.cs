@@ -1,10 +1,10 @@
 using ApiClientCodeGen.Tests.Common;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.AutoRest;
+using Rapicgen.Core.Generators.NSwag;
 using Moq;
 using NSwag;
 using Xunit;
