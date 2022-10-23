@@ -95,7 +95,12 @@ namespace Rapicgen.Core.Generators.OpenApi
 
                 if (!string.IsNullOrWhiteSpace(openApiGeneratorOptions.TemplatesPath))
                 {
-                    arguments += $"-t \"{openApiGeneratorOptions.TemplatesPath}\" ";
+                    var templatesPath = openApiGeneratorOptions.TemplatesPath;
+                    if (!Directory.Exists(templatesPath))
+                    {
+                        templatesPath = Path.Combine(Path.GetDirectoryName(swaggerFile)!, templatesPath);
+                    }
+                    arguments += $"-t \"{templatesPath}\" ";
                 }
 
                 var java = javaPathProvider.GetJavaExePath();
