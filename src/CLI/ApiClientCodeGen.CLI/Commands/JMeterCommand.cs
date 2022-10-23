@@ -2,15 +2,15 @@
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using Rapicgen.CLI.Extensions;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options.General;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands
+namespace Rapicgen.CLI.Commands
 {
     [Command("jmeter", Description = "Generate Apache JMeter test plans")]
     public class JMeterCommand
