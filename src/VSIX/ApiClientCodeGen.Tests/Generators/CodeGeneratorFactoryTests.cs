@@ -1,24 +1,24 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApiGenerator;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators.AutoRest;
+using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Generators.OpenApi;
+using Rapicgen.Core.Generators.Swagger;
+using Rapicgen.Core.Options;
+using Rapicgen.Core.Options.AutoRest;
+using Rapicgen.Core.Options.General;
+using Rapicgen.Core.Options.NSwag;
+using Rapicgen.Core.Options.OpenApiGenerator;
+using Rapicgen.Generators;
+using Rapicgen.Options.AutoRest;
+using Rapicgen.Options.General;
+using Rapicgen.Options.NSwag;
+using Rapicgen.Options.OpenApiGenerator;
 using FluentAssertions;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators
+namespace Rapicgen.Tests.Generators
 {
     
     public class CodeGeneratorFactoryTests
