@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
+namespace Rapicgen.Core.Generators
 {
     public interface IProcessLauncher
     {
