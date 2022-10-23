@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
+using Rapicgen.Core.Exceptions;
 using Exceptionless;
 using Exceptionless.Plugins;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
+namespace Rapicgen.Core.Logging
 {
     [ExcludeFromCodeCoverage]
     public class ExceptionlessRemoteLogger : IRemoteLogger
