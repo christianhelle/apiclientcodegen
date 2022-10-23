@@ -1,14 +1,14 @@
 ﻿using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators.NSwag;
 using FluentAssertions;
 using Moq;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.NSwag
+namespace Rapicgen.Tests.Generators.NSwag
 {
     public class NSwagCSharpCodeGeneratorTests : TestWithResources
     {
