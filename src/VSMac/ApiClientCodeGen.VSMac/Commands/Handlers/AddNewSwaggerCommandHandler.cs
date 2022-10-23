@@ -1,5 +1,5 @@
 using ApiClientCodeGen.VSMac.CustomTools.Swagger;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using Rapicgen.Core;
 
 namespace ApiClientCodeGen.VSMac.Commands.Handlers
 {
