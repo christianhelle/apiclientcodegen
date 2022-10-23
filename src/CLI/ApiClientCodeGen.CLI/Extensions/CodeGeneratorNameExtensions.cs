@@ -1,8 +1,8 @@
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using Rapicgen.CLI.Commands;
+using Rapicgen.Core;
+using Rapicgen.Core.Extensions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Extensions
+namespace Rapicgen.CLI.Extensions
 {
     public static class CodeGeneratorNameExtensions
     {
