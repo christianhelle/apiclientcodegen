@@ -1,8 +1,8 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Extensions;
+﻿using Rapicgen.Core;
+using Rapicgen.Extensions;
 using FluentAssertions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extensions
+namespace Rapicgen.Tests.Extensions
 {
     
     public class GetCustomToolNameTests
