@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 
 #pragma warning disable VSTHRD010 // Invoke single-threaded types on Main thread
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
+namespace Rapicgen.Windows
 {
     [ExcludeFromCodeCoverage]
     public static class OutputWindow
