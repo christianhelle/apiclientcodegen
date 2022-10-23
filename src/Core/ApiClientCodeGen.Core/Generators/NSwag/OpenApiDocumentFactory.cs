@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using NSwag;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag
+namespace Rapicgen.Core.Generators.NSwag
 {
     public interface IOpenApiDocumentFactory
     {
