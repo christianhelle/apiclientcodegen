@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging
+namespace Rapicgen.Core.Logging
 {
     public sealed class DependencyContext : IDisposable
     {
