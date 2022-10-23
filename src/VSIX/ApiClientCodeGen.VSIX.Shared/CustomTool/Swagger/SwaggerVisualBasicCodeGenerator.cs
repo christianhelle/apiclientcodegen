@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
+using Rapicgen.Converters;
+using Rapicgen.Core;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.TextTemplating.VSHost;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool.Swagger
+namespace Rapicgen.CustomTool.Swagger
 {
     [ExcludeFromCodeCoverage]
     [Guid("CE6638E5-E6E3-4EF5-90D7-E80DBA61C933")]
