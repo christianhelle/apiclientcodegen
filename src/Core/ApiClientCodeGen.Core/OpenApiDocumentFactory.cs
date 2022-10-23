@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
+using Rapicgen.Core.Generators.NSwag;
 using NSwag;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core
+namespace Rapicgen.Core
 {
     [ExcludeFromCodeCoverage]
     public class OpenApiDocumentFactory : IOpenApiDocumentFactory
