@@ -1,9 +1,9 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using Rapicgen.Core.Extensions;
 using FluentAssertions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Extensions
+namespace Rapicgen.Tests.Extensions
 {
     public class StringToIntPtrTests
     {
