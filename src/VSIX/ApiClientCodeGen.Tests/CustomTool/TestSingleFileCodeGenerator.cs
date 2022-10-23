@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CustomTool;
+using Rapicgen.Core;
+using Rapicgen.CustomTool;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.CustomTool
+namespace Rapicgen.Tests.CustomTool
 {
     [ExcludeFromCodeCoverage]
     internal class TestSingleFileCodeGenerator : SingleFileCodeGenerator
