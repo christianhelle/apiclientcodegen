@@ -1,5 +1,5 @@
 ﻿using AutoFixture;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.NuGet;
+using Rapicgen.Core.NuGet;
 using FluentAssertions;
 
 namespace ApiClientCodeGen.Core.Tests.NuGet
