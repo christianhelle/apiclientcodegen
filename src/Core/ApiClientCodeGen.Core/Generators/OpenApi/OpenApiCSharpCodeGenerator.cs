@@ -93,6 +93,11 @@ namespace Rapicgen.Core.Generators.OpenApi
                     arguments += openApiGeneratorOptions.CustomAdditionalProperties;
                 }
 
+                if (!string.IsNullOrWhiteSpace(openApiGeneratorOptions.TemplatesPath))
+                {
+                    arguments += $"-t \"{openApiGeneratorOptions.TemplatesPath}\" ";
+                }
+
                 var java = javaPathProvider.GetJavaExePath();
                 using var context = new DependencyContext("OpenAPI Generator", $"{java} {arguments}");
                 processLauncher.Start(java, arguments, Path.GetDirectoryName(swaggerFile));
