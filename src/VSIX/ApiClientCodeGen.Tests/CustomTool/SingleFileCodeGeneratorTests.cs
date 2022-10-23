@@ -1,13 +1,13 @@
 ﻿using System;
 using ApiClientCodeGen.Tests.Common;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.CustomTool
+namespace Rapicgen.Tests.CustomTool
 {
     public class SingleFileCodeGeneratorTests : TestWithResources
     {
