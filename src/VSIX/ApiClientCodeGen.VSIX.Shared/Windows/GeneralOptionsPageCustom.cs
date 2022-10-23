@@ -2,9 +2,9 @@
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Windows.Forms;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
+using Rapicgen.Options.General;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows
+namespace Rapicgen.Windows
 {
     [ExcludeFromCodeCoverage]
     public partial class GeneralOptionsPageCustom : UserControl
