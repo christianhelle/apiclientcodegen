@@ -1,10 +1,10 @@
 ﻿using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.OpenApi;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.Options.General;
+using Rapicgen.Core.Options.OpenApiGenerator;
 using Moq;
 
 namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3.Yaml
