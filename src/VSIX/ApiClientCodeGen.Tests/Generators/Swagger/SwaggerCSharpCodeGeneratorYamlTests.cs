@@ -1,14 +1,14 @@
 ﻿using ApiClientCodeGen.Tests.Common;
 using AutoFixture;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.Swagger;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.Options.General;
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Generators.Swagger
+namespace Rapicgen.Tests.Generators.Swagger
 {
     public class SwaggerCSharpCodeGeneratorYamlTests : TestWithResources
     {
