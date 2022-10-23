@@ -47,7 +47,7 @@ namespace Rapicgen.Options.OpenApiGenerator
         [Category(Name)]
         [DisplayName("Custom Addition Properties")]
         [Description("Setting this will override all the other additional properties")]
-        public string CustomAdditionalProperties { get; set; } = null!;
+        public string? CustomAdditionalProperties { get; set; } = null!;
 
         [Category(Name)]
         [DisplayName("Skip Form Model")]
@@ -58,6 +58,6 @@ namespace Rapicgen.Options.OpenApiGenerator
         [DisplayName("Templates Path")]
         [Description("Path to the folder containing the custom Mustache templates. " +
                      "This should be either an absolute path or a path relative to the swagger file.")]
-        public string TemplatesPath { get; set; } = null!;
+        public string? TemplatesPath { get; set; } = null!;
     }
 }

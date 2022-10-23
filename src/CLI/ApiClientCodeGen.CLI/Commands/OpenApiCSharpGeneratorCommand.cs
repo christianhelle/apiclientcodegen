@@ -101,7 +101,7 @@ namespace Rapicgen.CLI.Commands
             ShortName = "custom-props",
             LongName = "custom-additional-properties",
             Description = "Setting this will override all the other additional properties")]
-        public string CustomAdditionalProperties
+        public string? CustomAdditionalProperties
         {
             get => openApiGeneratorOptions.CustomAdditionalProperties;
             set => openApiGeneratorOptions.CustomAdditionalProperties = value;
@@ -120,7 +120,7 @@ namespace Rapicgen.CLI.Commands
             LongName = "templates",
             Description = "Path to the folder containing the custom Mustache templates. " +
                           "This should be either an absolute path or a path relative to the swagger file.")]
-        public string TemplatesPath
+        public string? TemplatesPath
         {
             get => openApiGeneratorOptions.TemplatesPath;
             set => openApiGeneratorOptions.TemplatesPath = value;
