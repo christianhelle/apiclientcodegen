@@ -88,7 +88,6 @@ function Build-GeneratedCode {
                 $argumentsList += "build ./GeneratedCode/$_/NetStandard20/NetStandard20.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/NetCore21/NetCore21.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/NetCore31/NetCore31.csproj"
-                $argumentsList += "build ./GeneratedCode/$_/Net5/Net5.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net6/Net6.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net7/Net7.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net48/Net48.csproj"
@@ -105,7 +104,6 @@ function Build-GeneratedCode {
                 "build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj",
                 "build ./GeneratedCode/$ToolName/NetCore21/NetCore21.csproj",
                 "build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj",
-                "build ./GeneratedCode/$ToolName/Net5/Net5.csproj",
                 "build ./GeneratedCode/$ToolName/Net6/Net6.csproj",
                 "build ./GeneratedCode/$ToolName/Net7/Net7.csproj",
                 "build ./GeneratedCode/$ToolName/Net48/Net48.csproj",
@@ -135,7 +133,6 @@ function Build-GeneratedCode {
                 dotnet build ./GeneratedCode/$_/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/NetCore21/NetCore21.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/NetCore31/NetCore31.csproj; ThrowOnNativeFailure
-                dotnet build ./GeneratedCode/$_/Net5/Net5.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/Net48/Net48.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/Net481/Net481.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/Net472/Net472.csproj; ThrowOnNativeFailure
@@ -150,7 +147,6 @@ function Build-GeneratedCode {
             dotnet build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/NetCore21/NetCore21.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj; ThrowOnNativeFailure
-            dotnet build ./GeneratedCode/$ToolName/Net5/Net5.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/Net48/Net48.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/Net481/Net481.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/Net472/Net472.csproj; ThrowOnNativeFailure
@@ -231,7 +227,6 @@ function Generate-Code {
 
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net7/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net6/Output.cs" -Force
-    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net5/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net48/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net481/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net472/Output.cs" -Force
@@ -293,7 +288,6 @@ function Generate-CodeParallel {
         if (Test-Path "GeneratedCode/$_/Output.cs" -PathType Leaf) {
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net7/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net6/Output.cs" -Force
-            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net5/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net48/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net481/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net472/Output.cs" -Force
