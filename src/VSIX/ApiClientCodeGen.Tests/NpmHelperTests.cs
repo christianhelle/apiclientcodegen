@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
 using FluentAssertions;
 using Moq;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests
+namespace Rapicgen.Tests
 {
     
     public class NpmHelperTests
