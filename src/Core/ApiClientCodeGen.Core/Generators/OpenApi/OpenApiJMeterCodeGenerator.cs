@@ -1,7 +1,7 @@
-﻿using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+﻿using Rapicgen.Core.Installer;
+using Rapicgen.Core.Options.General;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi
+namespace Rapicgen.Core.Generators.OpenApi
 {
     public class OpenApiJMeterCodeGenerator : OpenApiCodeGenerator
     {
