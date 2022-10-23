@@ -118,7 +118,8 @@ namespace Rapicgen.CLI.Commands
         [Option(
             ShortName = "t",
             LongName = "templates",
-            Description = "Path to the folder containing the custom Mustache templates")]
+            Description = "Path to the folder containing the custom Mustache templates. " +
+                          "This should be either an absolute path or a path relative to the swagger file.")]
         public string TemplatesPath
         {
             get => openApiGeneratorOptions.TemplatesPath;
