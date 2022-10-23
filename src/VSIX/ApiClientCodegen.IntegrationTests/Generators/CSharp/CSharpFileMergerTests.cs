@@ -1,8 +1,8 @@
 ﻿using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using Rapicgen.Core.Generators;
 using FluentAssertions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.IntegrationTests.Generators.CSharp
+namespace Rapicgen.IntegrationTests.Generators.CSharp
 {
     
     [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
