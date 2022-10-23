@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options.General;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger
+namespace Rapicgen.Core.Generators.Swagger
 {
     public class SwaggerCSharpCodeGenerator : ICodeGenerator
     {
