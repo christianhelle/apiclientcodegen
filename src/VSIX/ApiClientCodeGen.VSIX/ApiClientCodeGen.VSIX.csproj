@@ -26,7 +26,7 @@
     <ProjectGuid>{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChristianHelle.DeveloperTools.CodeGenerators.ApiClient</RootNamespace>
+    <RootNamespace>Rapicgen</RootNamespace>
     <AssemblyName>ApiClientCodeGenerator</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
