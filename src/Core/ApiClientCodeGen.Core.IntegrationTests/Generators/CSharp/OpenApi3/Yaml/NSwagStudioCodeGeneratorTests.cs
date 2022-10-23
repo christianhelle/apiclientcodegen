@@ -1,7 +1,7 @@
 ﻿using ApiClientCodeGen.Tests.Common.Build;
 using ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3.Yaml;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
 using FluentAssertions;
 using Xunit;
 
