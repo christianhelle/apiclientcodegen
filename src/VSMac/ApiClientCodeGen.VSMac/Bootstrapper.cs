@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using ApiClientCodeGen.VSMac.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
+using Rapicgen.Core.Logging;
 
 namespace ApiClientCodeGen.VSMac
 {
