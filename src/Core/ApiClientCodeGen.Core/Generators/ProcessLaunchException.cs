@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
+namespace Rapicgen.Core.Generators
 {
     [Serializable]
     [ExcludeFromCodeCoverage]
