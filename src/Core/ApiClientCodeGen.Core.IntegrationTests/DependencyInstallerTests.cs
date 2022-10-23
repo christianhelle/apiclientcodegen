@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Installer;
 using FluentAssertions;
 using Xunit;
 
