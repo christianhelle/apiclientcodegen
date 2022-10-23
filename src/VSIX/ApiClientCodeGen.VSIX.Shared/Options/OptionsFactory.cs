@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options;
+using Rapicgen.Core.Options;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options
+namespace Rapicgen.Options
 {
     [ExcludeFromCodeCoverage]
     public class OptionsFactory : IOptionsFactory
