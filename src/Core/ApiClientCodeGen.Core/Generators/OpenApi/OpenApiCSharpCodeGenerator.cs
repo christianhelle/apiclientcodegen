@@ -67,7 +67,9 @@ namespace Rapicgen.Core.Generators.OpenApi
                             $"--input-spec \"{Path.GetFileName(swaggerFile)}\" " +
                             $"--output \"{output}\" " +
                             $"--package-name \"{defaultNamespace}\" " +
-                            "--global-property apiTests=false,modelTests=false " +
+                            $"--global-property apiTests=false " +
+                            $"--global-property modelTests=false " +
+                            $"--global-property skipFormModel={openApiGeneratorOptions.SkipFormModel} " +
                             "--skip-overwrite ";
 
                 if (string.IsNullOrWhiteSpace(openApiGeneratorOptions.CustomAdditionalProperties))
