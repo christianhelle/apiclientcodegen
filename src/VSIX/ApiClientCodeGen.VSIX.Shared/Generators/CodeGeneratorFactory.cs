@@ -1,27 +1,27 @@
 ﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.OpenApi;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators.Swagger;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApiGenerator;
+using Rapicgen.Core;
+using Rapicgen.Core.Extensions;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.AutoRest;
+using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Generators.OpenApi;
+using Rapicgen.Core.Generators.Swagger;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options;
+using Rapicgen.Core.Options.AutoRest;
+using Rapicgen.Core.Options.General;
+using Rapicgen.Core.Options.NSwag;
+using Rapicgen.Core.Options.OpenApiGenerator;
+using Rapicgen.Options;
+using Rapicgen.Options.AutoRest;
+using Rapicgen.Options.General;
+using Rapicgen.Options.NSwag;
+using Rapicgen.Options.OpenApiGenerator;
 using OpenApiDocumentFactory =
-    ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators.NSwag.OpenApiDocumentFactory;
+    Rapicgen.Generators.NSwag.OpenApiDocumentFactory;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Generators
+namespace Rapicgen.Generators
 {
     public class CodeGeneratorFactory : ICodeGeneratorFactory
     {
