@@ -1,5 +1,5 @@
 ﻿using AutoFixture.Xunit2;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
+using Rapicgen.Core.Logging;
 using FluentAssertions;
 using Xunit;
 
