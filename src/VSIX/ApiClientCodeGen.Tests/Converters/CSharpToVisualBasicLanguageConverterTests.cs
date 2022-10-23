@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Converters;
+using Rapicgen.Converters;
 using FluentAssertions;
 
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Tests.Converters
+namespace Rapicgen.Tests.Converters
 {
     
     public class CSharpToVisualBasicLanguageConverterTests
