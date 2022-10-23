@@ -1,14 +1,14 @@
 using System;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Commands;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
+using Rapicgen.CLI.Commands;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
 using FluentAssertions;
 using Moq;
 using Xunit;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.CLI.Tests.Command
+namespace Rapicgen.CLI.Tests.Command
 {
     public class SwaggerCodegenCommandTests
     {   
