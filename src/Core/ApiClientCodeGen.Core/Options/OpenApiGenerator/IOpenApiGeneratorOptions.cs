@@ -9,5 +9,7 @@
         bool UseDateTimeOffset { get; set; }
         OpenApiSupportedTargetFramework TargetFramework { get; set; }
         string? CustomAdditionalProperties { get; set; }
+        bool SkipFormModel { get; set; }
+        string? TemplatesPath { get; set; }
     }
 }

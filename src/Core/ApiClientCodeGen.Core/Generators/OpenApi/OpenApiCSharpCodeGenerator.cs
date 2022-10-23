@@ -67,7 +67,9 @@ namespace Rapicgen.Core.Generators.OpenApi
                             $"--input-spec \"{Path.GetFileName(swaggerFile)}\" " +
                             $"--output \"{output}\" " +
                             $"--package-name \"{defaultNamespace}\" " +
-                            "--global-property apiTests=false,modelTests=false " +
+                            $"--global-property apiTests=false " +
+                            $"--global-property modelTests=false " +
+                            $"--global-property skipFormModel={openApiGeneratorOptions.SkipFormModel} " +
                             "--skip-overwrite ";
 
                 if (string.IsNullOrWhiteSpace(openApiGeneratorOptions.CustomAdditionalProperties))
@@ -89,6 +91,16 @@ namespace Rapicgen.Core.Generators.OpenApi
                 else
                 {
                     arguments += openApiGeneratorOptions.CustomAdditionalProperties;
+                }
+
+                if (!string.IsNullOrWhiteSpace(openApiGeneratorOptions.TemplatesPath))
+                {
+                    var templatesPath = openApiGeneratorOptions.TemplatesPath;
+                    if (!Directory.Exists(templatesPath))
+                    {
+                        templatesPath = Path.Combine(Path.GetDirectoryName(swaggerFile)!, templatesPath);
+                    }
+                    arguments += $"-t \"{templatesPath}\" ";
                 }
 
                 var java = javaPathProvider.GetJavaExePath();

@@ -107,6 +107,25 @@ namespace Rapicgen.CLI.Commands
             set => openApiGeneratorOptions.CustomAdditionalProperties = value;
         }
 
+        [Option(
+            LongName = "skipFormModel",
+            Description = "To skip models defined as the form parameters in 'requestBody'")]
+        public bool SkipFormModel
+        {
+            get => openApiGeneratorOptions.SkipFormModel;
+            set => openApiGeneratorOptions.SkipFormModel = value;
+        }
+        [Option(
+            ShortName = "t",
+            LongName = "templates",
+            Description = "Path to the folder containing the custom Mustache templates. " +
+                          "This should be either an absolute path or a path relative to the swagger file.")]
+        public string? TemplatesPath
+        {
+            get => openApiGeneratorOptions.TemplatesPath;
+            set => openApiGeneratorOptions.TemplatesPath = value;
+        }
+
         public override ICodeGenerator CreateGenerator()
             => cSharpGeneratorFactory.Create(
                 SwaggerFile,
