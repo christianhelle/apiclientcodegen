@@ -1,5 +1,5 @@
 ﻿using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Extensions;
+using Rapicgen.Core.Extensions;
 using FluentAssertions;
 
 namespace ApiClientCodeGen.Core.Tests.Extensions
