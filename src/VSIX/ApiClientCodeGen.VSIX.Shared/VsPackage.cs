@@ -2,23 +2,23 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.AddNew;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.CustomTool;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Commands.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Logging;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.Analytics;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.AutoRest;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwag;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.NSwagStudio;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Options.OpenApiGenerator;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Windows;
+using Rapicgen.Commands;
+using Rapicgen.Commands.AddNew;
+using Rapicgen.Commands.CustomTool;
+using Rapicgen.Commands.NSwagStudio;
+using Rapicgen.Core.Logging;
+using Rapicgen.Options.Analytics;
+using Rapicgen.Options.AutoRest;
+using Rapicgen.Options.General;
+using Rapicgen.Options.NSwag;
+using Rapicgen.Options.NSwagStudio;
+using Rapicgen.Options.OpenApiGenerator;
+using Rapicgen.Windows;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient
+namespace Rapicgen
 {
     [ExcludeFromCodeCoverage]
     [Guid("47AFE4E1-5A52-4FE1-8CA7-EDB8310BDA4A")]
