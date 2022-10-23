@@ -1,8 +1,8 @@
 using System;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Installer;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.General;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Options.OpenApiGenerator;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.Options.General;
+using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace ApiClientCodeGen.VSMac.CustomTools.OpenApi
 {
