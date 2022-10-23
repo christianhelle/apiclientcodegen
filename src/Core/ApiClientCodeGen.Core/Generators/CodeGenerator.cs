@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Exceptions;
+using Rapicgen.Core.Exceptions;
 
-namespace ChristianHelle.DeveloperTools.CodeGenerators.ApiClient.Core.Generators
+namespace Rapicgen.Core.Generators
 {
     public interface ICodeGenerator
     {
