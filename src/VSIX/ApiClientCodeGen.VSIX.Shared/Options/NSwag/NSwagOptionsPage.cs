@@ -42,5 +42,10 @@ namespace Rapicgen.Options.NSwag
         [DisplayName("Document title as class name")]
         [Description("Set this to TRUE to use the OpenAPI Document Info Title as the generated class name. Set this to FALSE to use the filename")]
         public bool UseDocumentTitle { get; set;  } = true;
+
+        [Category(Name)]
+        [DisplayName("Parameter DateTime format")]
+        [Description("Specifies the format for DateTime type method parameters (default: s)")]
+        public string ParameterDateTimeFormat { get; } = "s";
     }
 }

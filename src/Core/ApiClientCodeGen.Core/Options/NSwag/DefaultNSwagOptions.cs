@@ -9,6 +9,7 @@ namespace Rapicgen.Core.Options.NSwag
         public bool GenerateDtoTypes { get; } = true;
         public CSharpClassStyle ClassStyle { get; } = CSharpClassStyle.Poco;
         public bool UseDocumentTitle { get; } = true;
+        public string ParameterDateTimeFormat { get; }
         public bool UseBaseUrl { get; }
     }
 }

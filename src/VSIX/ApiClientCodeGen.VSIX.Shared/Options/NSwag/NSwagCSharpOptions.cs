@@ -22,6 +22,7 @@ namespace Rapicgen.Options.NSwag
                 UseBaseUrl = options.UseBaseUrl;
                 ClassStyle = options.ClassStyle;
                 UseDocumentTitle = options.UseDocumentTitle;
+                ParameterDateTimeFormat = options.ParameterDateTimeFormat;
             }
             catch (Exception e)
             {
@@ -36,6 +37,7 @@ namespace Rapicgen.Options.NSwag
                 Trace.WriteLine("UseBaseUrl = false");
                 Trace.WriteLine("ClassStyle = CSharpClassStyle.Poco");
                 Trace.WriteLine("UseDocumentTitle = true");
+                Trace.WriteLine("ParameterDateTimeFormat = s");
 
                 InjectHttpClient = true;
                 GenerateClientInterfaces = true;
@@ -43,6 +45,7 @@ namespace Rapicgen.Options.NSwag
                 UseBaseUrl = false;
                 ClassStyle = CSharpClassStyle.Poco;
                 UseDocumentTitle = true;
+                ParameterDateTimeFormat = "s";
             }
         }
 
@@ -52,5 +55,6 @@ namespace Rapicgen.Options.NSwag
         public bool UseBaseUrl { get; }
         public CSharpClassStyle ClassStyle { get; }
         public bool UseDocumentTitle { get; }
+        public string ParameterDateTimeFormat { get; }
     }
 }

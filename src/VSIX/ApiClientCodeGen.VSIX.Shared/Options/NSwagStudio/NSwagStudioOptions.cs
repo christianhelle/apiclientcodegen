@@ -73,5 +73,6 @@ namespace Rapicgen.Options.NSwagStudio
         public bool UseBaseUrl { get; }
         public CSharpClassStyle ClassStyle { get; }
         public bool UseDocumentTitle { get; }
+        public string ParameterDateTimeFormat { get; }
     }
 }
