@@ -46,7 +46,7 @@ namespace Rapicgen.Options.NSwagStudio
         [Category(Name)]
         [DisplayName("Parameter DateTime format")]
         [Description("Specifies the format for DateTime type method parameters (default: s)")]
-        public string ParameterDateTimeFormat { get; } = "s";
+        public string ParameterDateTimeFormat { get; set; } = "s";
 
         [Category(Name)]
         [DisplayName("Generate Response Classes")]
