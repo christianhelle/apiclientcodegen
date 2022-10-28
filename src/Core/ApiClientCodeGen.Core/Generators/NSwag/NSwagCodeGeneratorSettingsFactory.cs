@@ -30,6 +30,7 @@ namespace Rapicgen.Core.Generators.NSwag
                 GenerateClientInterfaces = options.GenerateClientInterfaces,
                 GenerateDtoTypes = options.GenerateDtoTypes,
                 UseBaseUrl = options.UseBaseUrl,
+                ParameterDateTimeFormat = options.ParameterDateTimeFormat,
                 CSharpGeneratorSettings =
                 {
                     Namespace = defaultNamespace,

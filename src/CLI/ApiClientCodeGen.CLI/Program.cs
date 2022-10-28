@@ -57,7 +57,6 @@ namespace Rapicgen.CLI
         {
             services.AddLogging(b => b.AddDebug());
             services.AddSingleton<IConsoleOutput, ConsoleOutput>();
-            services.AddSingleton<INSwagOptions, DefaultNSwagOptions>();
             services.AddSingleton<IGeneralOptions, DefaultGeneralOptions>();
             services.AddSingleton<IAutoRestOptions, DefaultAutoRestOptions>();
             services.AddSingleton<IOpenApiGeneratorOptions, DefaultOpenApiGeneratorOptions>();
