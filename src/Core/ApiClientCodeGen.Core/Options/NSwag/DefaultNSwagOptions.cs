@@ -4,12 +4,12 @@ namespace Rapicgen.Core.Options.NSwag
 {
     public class DefaultNSwagOptions : INSwagOptions
     {
-        public bool InjectHttpClient { get; } = true;
-        public bool GenerateClientInterfaces { get; } = true;
-        public bool GenerateDtoTypes { get; } = true;
-        public CSharpClassStyle ClassStyle { get; } = CSharpClassStyle.Poco;
-        public bool UseDocumentTitle { get; } = true;
-        public string ParameterDateTimeFormat { get; }
-        public bool UseBaseUrl { get; }
+        public bool InjectHttpClient => true;
+        public bool GenerateClientInterfaces => true;
+        public bool GenerateDtoTypes => true;
+        public CSharpClassStyle ClassStyle => CSharpClassStyle.Poco;
+        public bool UseDocumentTitle => true;
+        public string ParameterDateTimeFormat => "s";
+        public bool UseBaseUrl => false;
     }
 }
