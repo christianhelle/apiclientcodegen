@@ -15,25 +15,27 @@ jobs:
     continue-on-error: true
     steps:
     - name: Download VSIX for VS 2019
-      working-directory: test\Playwright
       run: |
+        cd test\Playwright
         dotnet build
         .\bin\Debug\net6.0\playwright.ps1 install
         dotnet test -- NUnit.NumberOfTestWorkers=5
     - name: Install VSIX
-      run: Start-Process -FilePath 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VSIXInstaller.exe' -ArgumentList '\q vs2019.vsix' -Wait
-      working-directory: test\Playwright\bin\Debug\net6.0
+      run: |
+        cd test\Playwright\bin\Debug\net6.0\
+        Start-Process -FilePath 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VSIXInstaller.exe' -ArgumentList '\q vs2019.vsix' -Wait
 
   VSIX2022:
     runs-on: windows-2022
     continue-on-error: true
     steps:
     - name: Download VSIX for VS 2022
-      working-directory: test\Playwright
       run: |
+        cd test\Playwright
         dotnet build
         .\bin\Debug\net6.0\playwright.ps1 install
         dotnet test -- NUnit.NumberOfTestWorkers=5
     - name: Install VSIX
-      run: Start-Process -FilePath 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\VSIXInstaller.exe' -ArgumentList '\q vs2022.vsix' -Wait
-      working-directory: test\Playwright\bin\Debug\net6.0
+      run: |
+        cd test\Playwright\bin\Debug\net6.0\
+        Start-Process -FilePath 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\VSIXInstaller.exe' -ArgumentList '\q vs2022.vsix' -Wait
