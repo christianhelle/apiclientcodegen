@@ -16,7 +16,10 @@ jobs:
     steps:
     - name: Download VSIX for VS 2019
       run: |
-        cd test\Playwright
+        cd test
+        ls
+        cd Playwright
+        ls
         dotnet build
         .\bin\Debug\net6.0\playwright.ps1 install
         dotnet test -- NUnit.NumberOfTestWorkers=5
@@ -31,7 +34,10 @@ jobs:
     steps:
     - name: Download VSIX for VS 2022
       run: |
-        cd test\Playwright
+        cd test
+        ls
+        cd Playwright
+        ls
         dotnet build
         .\bin\Debug\net6.0\playwright.ps1 install
         dotnet test -- NUnit.NumberOfTestWorkers=5
