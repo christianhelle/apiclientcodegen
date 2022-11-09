@@ -13,8 +13,15 @@ on:
 jobs:
 
   VSIX2019:
-    runs-on: windows-2019
+    runs-on: ${{ matrix.os }}
     continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [
+          windows-2019,
+          windows-2022
+        ]
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET versions
@@ -32,8 +39,15 @@ jobs:
       working-directory: test\Playwright\bin\Debug\net6.0
 
   VSIX2022:
-    runs-on: windows-2022
+    runs-on: ${{ matrix.os }}
     continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [
+          windows-2019,
+          windows-2022
+        ]
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET versions
