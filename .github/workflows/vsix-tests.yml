@@ -7,43 +7,51 @@ on:
     - '.github/workflows/vsix-tests.yml'
     branches: 
     - '*'
+  schedule:
+    - cron: '0 */1 * * *'
 
 jobs:
 
-  VSIX2019:
-    runs-on: windows-2019
+  Download:
+    name: "Download and Install (${{ matrix.os }})"
+    runs-on: ${{ matrix.os }}
     continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        format: [ json, yaml ]
+        version: [ V2, V3 ]
+        os: [
+          ubuntu-18.04,
+          ubuntu-20.04,
+          ubuntu-22.04,
+          macos-10.15,
+          macos-11,
+          macos-12,
+          windows-2019,
+          windows-2022
+        ]
+    
     steps:
+    - uses: actions/checkout@v2    
+    - name: Setup .NET versions
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.0.x
+    
     - name: Download VSIX for VS 2019
+      working-directory: test/Playwright
       run: |
-        Invoke-WebRequest -Uri 'https://marketplace.visualstudio.com'
-        Start-Sleep -Seconds 1.5
-        Invoke-WebRequest -Uri 'https://marketplace.visualstudio.com/search?term=REST%202022&target=VS'
-        Start-Sleep -Seconds 1.5
-        Invoke-WebRequest -Uri 'https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator'
-        Start-Sleep -Seconds 1.5
-        $marketplace = 'https://christianresmahelle.gallery.vsassets.io/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator'
-        $path = ((Invoke-WebRequest -Uri $marketplace).Links | Where class -eq 'install-button-container').Href
-        $downloadUri = "https://marketplace.visualstudio.com$path"
-        Invoke-WebRequest $downloadUri -OutFile "vs2019.vsix"
-    - name: Install VSIX
-      run: Start-Process -FilePath 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VSIXInstaller.exe' -ArgumentList '/q vs2019.vsix' -Wait
-
-  VSIX2022:
-    runs-on: windows-2022
-    continue-on-error: true
-    steps:
-    - name: Download VSIX for VS 2022
-      run: |
-        Invoke-WebRequest -Uri 'https://marketplace.visualstudio.com'
-        Start-Sleep -Seconds 1.5
-        Invoke-WebRequest -Uri 'https://marketplace.visualstudio.com/search?term=REST%202022&target=VS'
-        Start-Sleep -Seconds 1.5
-        Invoke-WebRequest -Uri 'https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator'
-        Start-Sleep -Seconds 1.5
-        $marketplace = 'https://christianresmahelle.gallery.vsassets.io/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2022'
-        $path = ((Invoke-WebRequest -Uri $marketplace).Links | Where class -eq 'install-button-container').Href
-        $downloadUri = "https://marketplace.visualstudio.com$path"
-        Invoke-WebRequest $downloadUri -OutFile "vs2022.vsix"
-    - name: Install VSIX
-      run: Start-Process -FilePath 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\VSIXInstaller.exe' -ArgumentList '/q vs2022.vsix' -Wait
+        dotnet build
+        ./bin/Debug/net6.0/playwright.ps1 install
+        dotnet test -- NUnit.NumberOfTestWorkers=5
+    
+    - name: Install VSIX 2019
+      run: Start-Process -FilePath 'C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/Common7/IDE/VSIXInstaller.exe' -ArgumentList '/q vs2019.vsix' -Wait
+      working-directory: test/Playwright/bin/Debug/net6.0
+      if: ${{ matrix.os == 'windows-2019' }}
+      
+    - name: Install VSIX 2022
+      run: Start-Process -FilePath 'C:/Program Files/Microsoft Visual Studio/2022/Enterprise/Common7/IDE/VSIXInstaller.exe' -ArgumentList '/q vs2022.vsix' -Wait
+      working-directory: test/Playwright/bin/Debug/net6.0
+      if: ${{ matrix.os == 'windows-2022' }}
