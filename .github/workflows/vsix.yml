@@ -22,8 +22,7 @@ env:
 jobs:
   build:
 
-    runs-on: windows-2019
-    timeout-minutes: 20
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
