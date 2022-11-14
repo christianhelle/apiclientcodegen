@@ -79,16 +79,26 @@ jobs:
   vsix:
 
     name: VSIX Extension
-    runs-on: windows-2019
-    timeout-minutes: 20
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build VSIX
-      run: powershell ./build.ps1 --target VSIX
+    - name: Restore
+      run: dotnet restore VSIX.sln
       working-directory: src
 
-    - name: Run Tests
-      run: powershell ./build.ps1 --target Run-All-Tests
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: Build
+      run: msbuild VSIX.sln /property:Configuration=Release /t:Rebuild
       working-directory: src
+
+    - name: Run .NET Core Tests
+      working-directory: src
+      continue-on-error: true
+      run: |
+        dotnet test CLI/ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj --collect "Code coverage"
+        dotnet test Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj --collect "Code coverage"
+        dotnet test Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj --collect "Code coverage"
