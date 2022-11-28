@@ -28,12 +28,12 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 #### Download
 
 - **[Visual Studio 2022](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2022)**
-- **[Visual Studio 2019 ~~and 2017~~](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator)**
+- **[Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator)**
 - **[Visual Studio for Mac](https://github.com/christianhelle/apiclientcodegen/releases/latest)**. Follow **[these instructions](#visual-studio-for-mac-1)** for update convenience on Visual Studio for Mac
 
 ## Features
 
-- Supports Visual Studio ~~2017,~~ 2019, 2022, and [Visual Studio for Mac](#visual-studio-for-mac-1)
+- Supports Visual Studio 2019, 2022, and [Visual Studio for Mac](#visual-studio-for-mac-1)
 - Add New REST API Client to a project from an OpenAPI specification URL (e.g https://petstore.swagger.io/v2/swagger.json) using [AutoRest](https://github.com/Azure/autorest), [NSwag](https://github.com/RicoSuter/NSwag), [Swagger Codegen](https://github.com/swagger-api/swagger-codegen), or [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
 - Define custom namespace for the generated file
 - Auto-updating of generated code file when changes are made to the OpenAPI specification JSON or YAML file
@@ -127,7 +127,7 @@ This extension collects errors and tracks feature usages to a service called [Ex
 
 # Installation
 
-The Visual Studio extension can be installed directly from Visual Studio 2017 or 2019 via the **Extensions Dialog Box**. The process is best described in the official Microsoft documentation for [Managing extensions for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/ide/finding-and-using-visual-studio-extensions?view=vs-2019&WT.mc_id=DT-MVP-5004822)
+The Visual Studio extension can be installed directly from Visual Studio 2019 and 2022 via the **Extensions Dialog Box**. The process is best described in the official Microsoft documentation for [Managing extensions for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/ide/finding-and-using-visual-studio-extensions?view=vs-2019&WT.mc_id=DT-MVP-5004822)
 
 ## Visual Studio for Mac
 
