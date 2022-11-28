@@ -56,7 +56,7 @@ jobs:
         & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest-vs2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
 
   CLI:
-    runs-on: windows-2019
+    runs-on: windows-2022
     steps:
     - uses: actions/checkout@v2
     - name: Sets environment variables - branch-name
