@@ -13,10 +13,11 @@ using Rapicgen.Options.General;
 using Rapicgen.Options.NSwag;
 using Rapicgen.Options.NSwagStudio;
 using Rapicgen.Options.OpenApiGenerator;
-using Rapicgen.Windows;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
+using Rapicgen.Windows;
+using System.Diagnostics;
 
 namespace Rapicgen
 {
@@ -30,8 +31,8 @@ namespace Rapicgen
         CustomToolSetterCommand.ContextGuid,
         CustomToolSetterCommand.Name,
         CustomToolSetterCommand.Expression,
-        new [] { CustomToolSetterCommand.TermNameJson, CustomToolSetterCommand.TermNameYaml },
-        new [] { CustomToolSetterCommand.TermValueJson, CustomToolSetterCommand.TermValueYaml })]
+        new[] { CustomToolSetterCommand.TermNameJson, CustomToolSetterCommand.TermNameYaml },
+        new[] { CustomToolSetterCommand.TermValueJson, CustomToolSetterCommand.TermValueYaml })]
     [ProvideUIContextRule(
         NSwagStudioCommand.ContextGuid,
         NSwagStudioCommand.Name,
@@ -103,10 +104,11 @@ namespace Rapicgen
             CancellationToken cancellationToken,
             IProgress<ServiceProgressData> progress)
         {
+            Trace.Listeners.Add(new OutputWindowTraceListener());
             Logger.Setup(new SentryRemoteLogger()).WithDefaultTags("VSIX");
+
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await base.InitializeAsync(cancellationToken, progress);
-            OutputWindow.Initialize(this, VsixName);
             Instance = this;
 
             foreach (var command in commands)

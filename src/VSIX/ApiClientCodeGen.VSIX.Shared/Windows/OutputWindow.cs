@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft;
 using Microsoft.VisualStudio.Shell;
@@ -25,15 +24,15 @@ namespace Rapicgen.Windows
             output = (IVsOutputWindow)provider.GetService(typeof(SVsOutputWindow));
             Assumes.Present(output);
             name = outputSource;
-
-            Trace.Listeners.Add(new OutputWindowTraceListener());
         }
-        
+
         public static void Log(object message)
         {
             try
             {
-                if (EnsurePane()) 
+                Initialize(VsPackage.Instance, VsPackage.VsixName);
+
+                if (EnsurePane())
                     pane?.OutputStringThreadSafe($"{DateTime.Now}: {message}{Environment.NewLine}");
             }
             catch
@@ -41,7 +40,7 @@ namespace Rapicgen.Windows
                 // ignored
             }
         }
-        
+
         private static bool EnsurePane()
         {
             if (pane != null)
