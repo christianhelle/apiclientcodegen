@@ -46,7 +46,7 @@ namespace Rapicgen.Windows
             if (pane != null)
                 return true;
 
-            var guid = Guid.NewGuid();
+            var guid = new Guid("C7783FF4-55A9-422F-A3DD-4EA81E5CB6BB");
             output?.CreatePane(ref guid, name, 1, 1);
             output?.GetPane(ref guid, out pane);
             return pane != null;
