@@ -55,7 +55,7 @@ namespace Rapicgen.Core.Generators.OpenApi
                 pGenerateProgress?.Progress(30);
 
                 var output = Path.Combine(
-                    Path.GetDirectoryName(swaggerFile) ?? throw new InvalidOperationException(),
+                    Path.GetTempPath(),
                     Guid.NewGuid().ToString("N"),
                     "TempApiClient");
 
