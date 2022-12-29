@@ -20,8 +20,6 @@ namespace Rapicgen.Windows
 
             try
             {
-                ThreadHelper.ThrowIfNotOnUIThread();
-
                 var guid = new Guid("C7783FF4-55A9-422F-A3DD-4EA81E5CB6BB");
                 var output = Package.GetGlobalService(typeof(SVsOutputWindow)) as IVsOutputWindow;
                 output.CreatePane(ref guid, VsPackage.VsixName, 1, 1);
