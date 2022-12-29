@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using Microsoft;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 
@@ -11,45 +10,30 @@ namespace Rapicgen.Windows
     [ExcludeFromCodeCoverage]
     public static class OutputWindow
     {
-        private static string? name;
-        private static IVsOutputWindowPane? pane;
-        private static IVsOutputWindow? output;
-
-        public static void Initialize(IServiceProvider provider, string? outputSource)
-        {
-            if (output != null)
-                return;
-
-            ThreadHelper.ThrowIfNotOnUIThread();
-            output = (IVsOutputWindow)provider.GetService(typeof(SVsOutputWindow));
-            Assumes.Present(output);
-            name = outputSource;
-        }
+        private static DateTimeOffset? lastError;
 
         public static void Log(object message)
         {
+            if (lastError.HasValue && DateTimeOffset.Now - lastError.Value < TimeSpan.FromSeconds(5))
+                return;
+
             try
             {
-                Initialize(VsPackage.Instance, VsPackage.VsixName);
+                ThreadHelper.ThrowIfNotOnUIThread();
 
-                if (EnsurePane())
-                    pane?.OutputStringThreadSafe($"{DateTime.Now}: {message}{Environment.NewLine}");
+                var guid = new Guid("C7783FF4-55A9-422F-A3DD-4EA81E5CB6BB");
+                var output = Package.GetGlobalService(typeof(SVsOutputWindow)) as IVsOutputWindow;
+                output.CreatePane(ref guid, VsPackage.VsixName, 1, 1);
+
+                IVsOutputWindowPane pane = null;
+                output?.GetPane(ref guid, out pane);
+                pane?.OutputStringThreadSafe($"{DateTime.Now}: {message}{Environment.NewLine}");
             }
             catch
             {
+                lastError = DateTimeOffset.Now;
                 // ignored
             }
-        }
-
-        private static bool EnsurePane()
-        {
-            if (pane != null)
-                return true;
-
-            var guid = Guid.NewGuid();
-            output?.CreatePane(ref guid, name, 1, 1);
-            output?.GetPane(ref guid, out pane);
-            return pane != null;
         }
     }
 }
