@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Rapicgen.Core.Logging;
 
 #pragma warning disable VSTHRD010 // Invoke single-threaded types on Main thread
 
@@ -29,9 +30,10 @@ namespace Rapicgen.Windows
                 output?.GetPane(ref guid, out pane);
                 pane?.OutputStringThreadSafe($"{DateTime.Now}: {message}{Environment.NewLine}");
             }
-            catch
+            catch (Exception e)
             {
                 lastError = DateTimeOffset.Now;
+                Logger.Instance.TrackError(e);
                 // ignored
             }
         }
