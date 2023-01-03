@@ -117,9 +117,12 @@ namespace Rapicgen
             if (value is string raw)
             {
                 var version = Version.Parse(raw.Split(' ')[0]);
-                Logger.GetLogger<AppInsightsRemoteLogger>()
-                    .AddTelemetryInitializer(
-                        new VisualStudioVersionInitializer(version));
+                if (version.Major >= 16)
+                {
+                    Logger.GetLogger<AppInsightsRemoteLogger>()
+                        .AddTelemetryInitializer(
+                            new VisualStudioVersionInitializer(version));
+                }
             }
         }
     }

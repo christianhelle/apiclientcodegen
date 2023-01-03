@@ -16,7 +16,6 @@ namespace Rapicgen.Core.Logging
                 new IRemoteLogger[]
                 {
                     new ExceptionlessRemoteLogger(),
-                    new AppInsightsRemoteLogger(),
                 });
 
             if (remoteLoggers.Any())
