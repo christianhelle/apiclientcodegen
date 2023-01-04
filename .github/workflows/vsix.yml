@@ -30,9 +30,7 @@ jobs:
     - name: Update Version
       run: |
         ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
-        ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
         ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev15/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev15/source.extension.vsixmanifest
-        ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
       working-directory: src
       shell: pwsh
 
@@ -49,9 +47,7 @@ jobs:
 
     - name: Move build output
       run: |
-        mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-${{ env.VERSION }}.vsix
         mv src/VSIX/ApiClientCodeGen.VSIX.Dev15/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2017-${{ env.VERSION }}.vsix
-        mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
 
     - name: Publish artifacts
       uses: actions/upload-artifact@v2
@@ -66,8 +62,6 @@ jobs:
       run: |
         (new-object Net.WebClient).DownloadString("https://raw.github.com/madskristensen/ExtensionScripts/master/AppVeyor/vsix.ps1") | iex
         Vsix-PushArtifacts
-        Vsix-PublishToGallery -path ApiClientCodeGenerator-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/Marketplace.md
         Vsix-PublishToGallery -path ApiClientCodeGenerator-VS2017-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/Marketplace2017.md
-        Vsix-PublishToGallery -path ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/Marketplace2022.md
       shell: pwsh
       continue-on-error: true
