@@ -145,26 +145,6 @@ jobs:
           src/*.mrep
           src/index.html
           docs/VisualStudioForMac.md
-    - name: Upload files to FTP
-      working-directory: src
-      shell: pwsh
-      run: |
-        $local_files = @("ApiClientCodeGenerator-${{ env.VERSION }}.mpack", "main.mrep", "root.mrep", "index.html")
-        $remote_path = "${{ secrets.FTP_HOSTNAME }}/public_html/vsmac/"
-                
-        ForEach ($local_file in $local_files) {
-          $ftprequest = [System.Net.FtpWebRequest]::Create("$remote_path/$local_file")
-          $ftprequest = [System.Net.FtpWebRequest]$ftprequest
-          $ftprequest.Method = [System.Net.WebRequestMethods+Ftp]::UploadFile
-          $ftprequest.Credentials = new-object System.Net.NetworkCredential("${{ secrets.FTP_USERNAME }}", "${{ secrets.FTP_PASSWORD }}")
-          $ftprequest.UseBinary = $true
-          $ftprequest.UsePassive = $true
-          $filecontent = [System.IO.File]::ReadAllBytes((Get-ChildItem $local_file).FullName)
-          $ftprequest.ContentLength = $filecontent.Length
-          $run = $ftprequest.GetRequestStream()
-          $run.Write($filecontent, 0, $filecontent.Length)
-          $run.Dispose()
-        }
 
   Release:
     needs: [VSIX, CLI, VSMac]
