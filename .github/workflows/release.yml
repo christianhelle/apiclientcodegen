@@ -13,7 +13,7 @@ env:
 jobs:
 
   VSIX:
-    runs-on: windows-2019
+    runs-on: windows-2022
     steps:
     - uses: actions/checkout@v2
     - name: Sets environment variables - branch-name
