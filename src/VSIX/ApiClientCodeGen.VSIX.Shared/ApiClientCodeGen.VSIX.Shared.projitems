@@ -68,7 +68,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Options\OpenApiGenerator\OpenApiGeneratorOptionsPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Options\OptionsBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Options\OptionsFactory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SentryRemoteLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VsPackage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\AddCustomHeaderDialog.cs">
       <SubType>Form</SubType>
