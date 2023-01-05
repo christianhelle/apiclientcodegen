@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33103.201
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSIX", "VSIX\ApiClientCodeGen.VSIX\ApiClientCodeGen.VSIX.csproj", "{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2163CD80-1242-47F5-928B-26898374C4AE}"
 	ProjectSection(SolutionItems) = preProject
 		build.cake = build.cake
@@ -24,8 +22,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiClientCodeGen.Core.Tests
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ApiClientCodeGen.VSIX.Shared", "VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.shproj", "{BBECCA08-2098-4A52-AEB6-71341098EFEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSIX.Dev17", "VSIX\ApiClientCodeGen.VSIX.Dev17\ApiClientCodeGen.VSIX.Dev17.csproj", "{660BA451-88FB-4504-8170-4118F74467BA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiClientCodeGen.VSIX.Dev15", "VSIX\ApiClientCodeGen.VSIX.Dev15\ApiClientCodeGen.VSIX.Dev15.csproj", "{D245E2B4-C1C6-408A-8F5D-83F784B87B87}"
 EndProject
 Global
@@ -38,18 +34,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}.Debug|arm64.ActiveCfg = Debug|arm64
-		{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}.Debug|arm64.Build.0 = Debug|arm64
-		{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}.Debug|x86.ActiveCfg = Debug|x86
-		{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}.Debug|x86.Build.0 = Debug|x86
-		{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}.Release|arm64.ActiveCfg = Release|arm64
-		{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}.Release|arm64.Build.0 = Release|arm64
-		{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}.Release|x86.ActiveCfg = Release|x86
-		{F68FEF1B-C874-4EF7-8C5C-E3E32E613141}.Release|x86.Build.0 = Release|x86
 		{6C7BEBC6-6568-44A3-88EC-2DFC57F87A31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C7BEBC6-6568-44A3-88EC-2DFC57F87A31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C7BEBC6-6568-44A3-88EC-2DFC57F87A31}.Debug|arm64.ActiveCfg = Debug|Any CPU
@@ -110,18 +94,6 @@ Global
 		{DF1744FF-79C4-4F48-9D39-478F64DD7B10}.Release|arm64.Build.0 = Release|Any CPU
 		{DF1744FF-79C4-4F48-9D39-478F64DD7B10}.Release|x86.ActiveCfg = Release|Any CPU
 		{DF1744FF-79C4-4F48-9D39-478F64DD7B10}.Release|x86.Build.0 = Release|Any CPU
-		{660BA451-88FB-4504-8170-4118F74467BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{660BA451-88FB-4504-8170-4118F74467BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{660BA451-88FB-4504-8170-4118F74467BA}.Debug|arm64.ActiveCfg = Debug|arm64
-		{660BA451-88FB-4504-8170-4118F74467BA}.Debug|arm64.Build.0 = Debug|arm64
-		{660BA451-88FB-4504-8170-4118F74467BA}.Debug|x86.ActiveCfg = Debug|x86
-		{660BA451-88FB-4504-8170-4118F74467BA}.Debug|x86.Build.0 = Debug|x86
-		{660BA451-88FB-4504-8170-4118F74467BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{660BA451-88FB-4504-8170-4118F74467BA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{660BA451-88FB-4504-8170-4118F74467BA}.Release|arm64.ActiveCfg = Release|arm64
-		{660BA451-88FB-4504-8170-4118F74467BA}.Release|arm64.Build.0 = Release|arm64
-		{660BA451-88FB-4504-8170-4118F74467BA}.Release|x86.ActiveCfg = Release|x86
-		{660BA451-88FB-4504-8170-4118F74467BA}.Release|x86.Build.0 = Release|x86
 		{D245E2B4-C1C6-408A-8F5D-83F784B87B87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D245E2B4-C1C6-408A-8F5D-83F784B87B87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D245E2B4-C1C6-408A-8F5D-83F784B87B87}.Debug|arm64.ActiveCfg = Debug|arm64
@@ -142,9 +114,7 @@ Global
 		SolutionGuid = {F80AB22A-52F6-46F7-A186-E650C75D076F}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{660ba451-88fb-4504-8170-4118f74467ba}*SharedItemsImports = 4
 		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{bbecca08-2098-4a52-aeb6-71341098efea}*SharedItemsImports = 13
 		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{d245e2b4-c1c6-408a-8f5d-83f784b87b87}*SharedItemsImports = 4
-		VSIX\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems*{f68fef1b-c874-4ef7-8c5c-e3e32e613141}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal
