@@ -48,6 +48,6 @@ jobs:
           docs/Marketplace*.md
     - name: Publish VSIX Packages
       run: |
-        $VsixPublisher = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
+        $VsixPublisher = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
         & $VsixPublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
         & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2017-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest-vs2017.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
