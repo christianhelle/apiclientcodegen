@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="890716f2-d2b2-4673-9c9c-8930a6aa4138" Version="1.0.0" Language="en-US" Publisher="Christian Resma Helle" />
-        <DisplayName>REST API Client Code Generator for VS 2017</DisplayName>
+        <Identity Id="e9fe11ff-e9e2-4ecf-beb8-90f500f1b727" Version="1.0.0" Language="en-US" Publisher="Christian Resma Helle" />
+        <DisplayName>REST API Client Code Generator (Legacy)</DisplayName>
         <Description xml:space="preserve">A collection of Visual Studio custom tools for generating a strongly typed REST API Client from an Open API / Swagger specification file</Description>
-        <MoreInfo>https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2017</MoreInfo>
+        <MoreInfo>https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGeneratorLegacy</MoreInfo>
         <License>License.txt</License>
         <Icon>Resources\Icon.png</Icon>
         <PreviewImage>Resources\Icon.png</PreviewImage>
