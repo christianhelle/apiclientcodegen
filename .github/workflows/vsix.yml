@@ -3,13 +3,6 @@ name: VSIX
 on:
   workflow_dispatch:
   push:
-    paths-ignore:
-      - '**/*'
-      - '!.github/workflows/vsix.yml'
-      - '!src/VSIX/**/*.csproj'
-      - '!src/VSIX/**/*.cs'
-    branches:
-      - '*'
   pull_request:
     branches:
       - '*'
