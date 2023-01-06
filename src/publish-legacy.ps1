@@ -17,6 +17,6 @@ $VsixPublisher = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise
     -publisherName ChristianResmaHelle
 
 & $VsixPublisher publish `
-    -payload "ApiClientCodeGenerator-VS2017-$version.vsix" `
-    -publishManifest publish-manifest-vs2017.json `
+    -payload "ApiClientCodeGenerator-Legacy-$version.vsix" `
+    -publishManifest publish-manifest-legacy.json `
     -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
