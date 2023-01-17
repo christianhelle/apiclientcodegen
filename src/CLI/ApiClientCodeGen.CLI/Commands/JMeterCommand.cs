@@ -74,6 +74,11 @@ namespace Rapicgen.CLI.Commands
                 .Create(SwaggerFile, OutputPath, options, processLauncher, dependencyInstaller)
                 .GenerateCode(progressReporter);
 
+            if (!Directory.Exists(OutputPath))
+            {
+                OutputPath = Path.Combine(Path.GetDirectoryName(SwaggerFile)!, OutputPath);
+            }
+
             var directoryInfo = new DirectoryInfo(OutputPath);
             var fileCount = directoryInfo.GetFiles().Length;
             if (fileCount != 0)
