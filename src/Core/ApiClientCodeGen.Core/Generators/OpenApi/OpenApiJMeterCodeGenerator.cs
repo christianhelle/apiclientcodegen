@@ -14,5 +14,7 @@ namespace Rapicgen.Core.Generators.OpenApi
             : base(swaggerFile, outputPath, "jmeter", options, processLauncher, dependencyInstaller)
         {
         }
+
+        protected override string GetGeneratorArguments() => "--skip-validate-spec";
     }
 }
