@@ -60,7 +60,8 @@ namespace Rapicgen.Core.Generators.OpenApi
                     $"--generator-name {GetGeneratorName()} " +
                     $"--input-spec \"{Path.GetFileName(swaggerFile)}\" " +
                     $"--output \"{output}\" ";
-
+                
+                arguments += GetGeneratorArguments();
 
                 processLauncher.Start(
                     javaPathProvider.GetJavaExePath(),
@@ -76,6 +77,8 @@ namespace Rapicgen.Core.Generators.OpenApi
 
             return string.Empty;
         }
+
+        protected virtual string GetGeneratorArguments() => string.Empty;
 
         protected virtual string GetGeneratorName() => generator;
     }
