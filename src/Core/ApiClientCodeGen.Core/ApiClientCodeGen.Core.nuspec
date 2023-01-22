@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Rapicgen.Core</id>
+    <title>Rapicgen.Core</title>
+    <authors>Christian Resma Helle</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">GPL-3.0-only</license>
+    <projectUrl>https://github.com/christianhelle/apiclientcodegen</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/src/ApiClientCodeGen.VSIX/Resources/Icon.png</iconUrl>
+    <description>REST API Client Code Generator Core Library</description>
+    <dependencies>
+      <dependency id="Exceptionless" version="4.8.0" />
+      <dependency id="ICSharpCode.CodeConverter" version="9.1.2.564" />
+      <dependency id="Microsoft.ApplicationInsights.WindowsServer" version="2.21.0" />
+      <dependency id="NSwag.Core.Yaml" version="13.18.2" />
+      <dependency id="NSwag.CodeGeneration.CSharp" version="13.18.2" />
+      <dependency id="Polly" version="7.2.3" />
+    </dependencies>
+  </metadata>
+</package>
