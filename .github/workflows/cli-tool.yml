@@ -49,7 +49,7 @@ jobs:
     - name: Package
       run: |
         dotnet pack --no-build -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
-        nuget pack src/Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Version="${{ env.VERSION }}"
+        nuget pack src/Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Version ${{ env.VERSION }} -Properties Configuration=Release
 
     - name: Publish artifacts
       uses: actions/upload-artifact@v2
