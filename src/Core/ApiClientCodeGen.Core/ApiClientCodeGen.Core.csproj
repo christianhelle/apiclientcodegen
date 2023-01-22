@@ -21,7 +21,6 @@
     <DebugType>embedded</DebugType>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IsPackable>true</IsPackable>
-    <PackAsTool>true</PackAsTool>
   </PropertyGroup>
 
   <ItemGroup>
