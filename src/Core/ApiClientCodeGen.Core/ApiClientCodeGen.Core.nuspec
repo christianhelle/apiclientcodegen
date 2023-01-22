@@ -2,6 +2,7 @@
 <package>
   <metadata>
     <id>Rapicgen.Core</id>
+    <version>1.0.0</version>
     <title>Rapicgen.Core</title>
     <authors>Christian Resma Helle</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
