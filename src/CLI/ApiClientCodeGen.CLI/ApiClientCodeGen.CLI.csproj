@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>Christian Resma Helle</Authors>
     <Product>REST API Client Code Generator CLI Tool</Product>
-    <PackageId>rapicgen</PackageId>
+    <PackageId>Rapicgen</PackageId>
     <AssemblyName>rapicgen</AssemblyName>
     <Company>Christian Resma Helle</Company>
     <Description>A collection of code generators for Swagger / OpenAPI specification files</Description>
