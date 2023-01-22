@@ -6,7 +6,6 @@ on:
       - '**/*'
       - '!.github/workflows/sonar-cloud.yml'
       - '!src/build.cake'
-      - '!src/**/*.csproj'
       - '!src/**/*.cs'
     branches: 
     - '*'
