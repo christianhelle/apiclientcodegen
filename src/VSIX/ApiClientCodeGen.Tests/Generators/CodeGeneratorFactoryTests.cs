@@ -29,16 +29,16 @@ namespace Rapicgen.Tests.Generators
         {
             var mockFactory = new Mock<IOptionsFactory>();
             mockFactory
-                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
+                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage, DefaultAutoRestOptions>())
                 .Returns(Test.CreateDummy<IAutoRestOptions>());
             mockFactory
-                .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage>())
+                .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage, DefaultNSwagOptions>())
                 .Returns(Test.CreateDummy<INSwagOptions>());
             mockFactory
                 .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage, DefaultGeneralOptions>())
                 .Returns(Test.CreateDummy<IGeneralOptions>());
             mockFactory
-                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
+                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage, DefaultAutoRestOptions>())
                 .Returns(Test.CreateDummy<IAutoRestOptions>());
             mockFactory
                 .Setup(c => c.Create<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage, DefaultOpenApiGeneratorOptions>())

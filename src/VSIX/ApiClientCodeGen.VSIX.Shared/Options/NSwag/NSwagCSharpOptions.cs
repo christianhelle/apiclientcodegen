@@ -7,7 +7,7 @@ using NJsonSchema.CodeGeneration.CSharp;
 namespace Rapicgen.Options.NSwag
 {
     public class NSwagCSharpOptions 
-        : OptionsBase<INSwagOptions, NSwagOptionsPage>, INSwagOptions
+        : OptionsBase<INSwagOptions, NSwagOptionsPage, DefaultNSwagOptions>, INSwagOptions
     {
         public NSwagCSharpOptions(INSwagOptions? options = null)
         {

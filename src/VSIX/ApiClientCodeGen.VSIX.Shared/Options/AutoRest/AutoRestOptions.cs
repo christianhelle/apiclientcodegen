@@ -5,7 +5,7 @@ using Rapicgen.Core.Options.AutoRest;
 
 namespace Rapicgen.Options.AutoRest
 {
-    public class AutoRestOptions : OptionsBase<IAutoRestOptions, AutoRestOptionsPage>, IAutoRestOptions
+    public class AutoRestOptions : OptionsBase<IAutoRestOptions, AutoRestOptionsPage, DefaultAutoRestOptions>, IAutoRestOptions
     {
         public AutoRestOptions(IAutoRestOptions options)
         {

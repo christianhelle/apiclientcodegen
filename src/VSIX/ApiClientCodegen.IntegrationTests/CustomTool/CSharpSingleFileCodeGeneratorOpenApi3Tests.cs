@@ -30,7 +30,7 @@ namespace Rapicgen.IntegrationTests.CustomTool
             var optionsMock = new Mock<IAutoRestOptions>();
             var optionsFactory = new Mock<IOptionsFactory>();
             optionsFactory
-                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
+                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage, DefaultAutoRestOptions>())
                 .Returns(optionsMock.Object);
 
             Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
@@ -49,7 +49,7 @@ namespace Rapicgen.IntegrationTests.CustomTool
 
             var optionsFactory = new Mock<IOptionsFactory>();
             optionsFactory
-                .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage>())
+                .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage, DefaultNSwagOptions>())
                 .Returns(optionsMock.Object);
 
             Assert(SupportedCodeGenerator.NSwag, optionsFactory.Object);
