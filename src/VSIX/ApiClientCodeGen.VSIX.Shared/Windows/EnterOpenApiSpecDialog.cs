@@ -120,5 +120,26 @@ namespace Rapicgen.Windows
                 customHeaders = form.CustomHeaders;
             }
         }
+
+        private void lblMarketplaceLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string url = string.Empty;
+            if (VsPackage.VisualStudioVersion.Major == 17)
+                url = "https://bit.ly/rapicgen-vs2022";
+            if (VsPackage.VisualStudioVersion.Major == 16)
+                url = "https://bit.ly/rapicgen-vs2019";
+            if (VsPackage.VisualStudioVersion.Major == 15)
+                url = "https://bit.ly/rapicgen-vs2017";
+
+            if (string.IsNullOrWhiteSpace(url))
+                return;
+
+            Process.Start(
+                new ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+        }
     }
 }
