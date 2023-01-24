@@ -2,7 +2,8 @@
 {
     public interface IOptionsFactory
     {
-        TOptions Create<TOptions, TDialogPage>()
-            where TOptions : class;
+        TOptions Create<TOptions, TDialogPage, TDefaultOptions>()
+            where TOptions : class
+            where TDefaultOptions : class, TOptions, new();
     }
 }
