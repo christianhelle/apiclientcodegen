@@ -5,7 +5,7 @@ using Rapicgen.Core.Options.AutoRest;
 
 namespace Rapicgen.Options.AutoRest
 {
-    public class AutoRestOptions : OptionsBase<IAutoRestOptions, AutoRestOptionsPage, DefaultAutoRestOptions>, IAutoRestOptions
+    public class AutoRestOptions : OptionsBase<IAutoRestOptions, AutoRestOptionsPage>, IAutoRestOptions
     {
         public AutoRestOptions(IAutoRestOptions options)
         {
@@ -24,7 +24,7 @@ namespace Rapicgen.Options.AutoRest
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                
+
                 Trace.WriteLine(e);
                 Trace.WriteLine(Environment.NewLine);
                 Trace.WriteLine("Error reading user options. Reverting to default values");
