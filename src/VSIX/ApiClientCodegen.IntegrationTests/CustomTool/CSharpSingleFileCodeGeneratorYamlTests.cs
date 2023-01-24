@@ -14,6 +14,7 @@ using Rapicgen.Options.OpenApiGenerator;
 using FluentAssertions;
 using Moq;
 using Xunit;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace Rapicgen.IntegrationTests.CustomTool
 {

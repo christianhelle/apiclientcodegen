@@ -17,6 +17,7 @@ using FluentAssertions;
 using Moq;
 using NJsonSchema.CodeGeneration.CSharp;
 using Xunit;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace Rapicgen.IntegrationTests.CustomTool
 {
