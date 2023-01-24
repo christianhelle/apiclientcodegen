@@ -35,13 +35,13 @@ namespace Rapicgen.Tests.Generators
                 .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage>())
                 .Returns(Test.CreateDummy<INSwagOptions>());
             mockFactory
-                .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage>())
+                .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage, DefaultGeneralOptions>())
                 .Returns(Test.CreateDummy<IGeneralOptions>());
             mockFactory
                 .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
                 .Returns(Test.CreateDummy<IAutoRestOptions>());
             mockFactory
-                .Setup(c => c.Create<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage>())
+                .Setup(c => c.Create<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage, DefaultOpenApiGeneratorOptions>())
                 .Returns(Test.CreateDummy<IOpenApiGeneratorOptions>());
 
             sut = new CodeGeneratorFactory(mockFactory.Object, null);
