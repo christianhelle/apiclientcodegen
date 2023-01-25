@@ -14,10 +14,10 @@ using Rapicgen.Options.General;
 using Rapicgen.Options.NSwag;
 using Rapicgen.Options.OpenApiGenerator;
 using FluentAssertions;
-using Microsoft.VisualStudio.Shell.Interop;
 using Moq;
 using NJsonSchema.CodeGeneration.CSharp;
 using Xunit;
+using Microsoft.VisualStudio.Shell.Interop;
 
 namespace Rapicgen.IntegrationTests.CustomTool
 {
@@ -30,7 +30,7 @@ namespace Rapicgen.IntegrationTests.CustomTool
             var optionsMock = new Mock<IAutoRestOptions>();
             var optionsFactory = new Mock<IOptionsFactory>();
             optionsFactory
-                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage>())
+                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage, DefaultAutoRestOptions>())
                 .Returns(optionsMock.Object);
 
             Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
@@ -49,7 +49,7 @@ namespace Rapicgen.IntegrationTests.CustomTool
 
             var optionsFactory = new Mock<IOptionsFactory>();
             optionsFactory
-                .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage>())
+                .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage, DefaultNSwagOptions>())
                 .Returns(optionsMock.Object);
 
             Assert(SupportedCodeGenerator.NSwag, optionsFactory.Object);
@@ -61,7 +61,7 @@ namespace Rapicgen.IntegrationTests.CustomTool
             var optionsMock = new Mock<IGeneralOptions>();
             var optionsFactory = new Mock<IOptionsFactory>();
             optionsFactory
-                .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage>())
+                .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage, DefaultGeneralOptions>())
                 .Returns(optionsMock.Object);
 
             Assert(SupportedCodeGenerator.Swagger, optionsFactory.Object);
@@ -74,11 +74,11 @@ namespace Rapicgen.IntegrationTests.CustomTool
             var openApiOptionsMock = new Mock<IOpenApiGeneratorOptions>();
             var optionsFactory = new Mock<IOptionsFactory>();
             optionsFactory
-                .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage>())
+                .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage, DefaultGeneralOptions>())
                 .Returns(optionsMock.Object);
-            
+
             optionsFactory
-                .Setup(c => c.Create<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage>())
+                .Setup(c => c.Create<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage, DefaultOpenApiGeneratorOptions>())
                 .Returns(openApiOptionsMock.Object);
 
             Assert(SupportedCodeGenerator.OpenApi, optionsFactory.Object);

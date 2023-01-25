@@ -24,7 +24,7 @@ namespace Rapicgen.Options.AutoRest
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                
+
                 Trace.WriteLine(e);
                 Trace.WriteLine(Environment.NewLine);
                 Trace.WriteLine("Error reading user options. Reverting to default values");

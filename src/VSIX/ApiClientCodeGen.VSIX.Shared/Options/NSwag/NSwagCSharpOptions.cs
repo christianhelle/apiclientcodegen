@@ -6,7 +6,7 @@ using NJsonSchema.CodeGeneration.CSharp;
 
 namespace Rapicgen.Options.NSwag
 {
-    public class NSwagCSharpOptions 
+    public class NSwagCSharpOptions
         : OptionsBase<INSwagOptions, NSwagOptionsPage>, INSwagOptions
     {
         public NSwagCSharpOptions(INSwagOptions? options = null)
@@ -27,7 +27,7 @@ namespace Rapicgen.Options.NSwag
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                
+
                 Trace.WriteLine(e);
                 Trace.WriteLine(Environment.NewLine);
                 Trace.WriteLine("Error reading user options. Reverting to default values");

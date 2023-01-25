@@ -93,13 +93,20 @@ namespace Rapicgen.CustomTool
                 Trace.WriteLine($"Output file size: {pcbOutput}");
 
                 Trace.WriteLine(Environment.NewLine);
-                Trace.WriteLine("###################################################################");
-                Trace.WriteLine("#  Do you find this tool useful?                                  #");
-                Trace.WriteLine("#  https://www.buymeacoffee.com/christianhelle                    #");
-                Trace.WriteLine("#                                                                 #");
-                Trace.WriteLine("#  Does this tool not work or does it lack something you need?    #");
-                Trace.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues      #");
-                Trace.WriteLine("###################################################################");
+                Trace.WriteLine("#######################################################################################");
+                Trace.WriteLine("#                                                                                     #");
+                Trace.WriteLine("#  I would be very grateful for a rating or review on the Visual Studio Marketplace   #");
+                Trace.WriteLine("#  - Visual Studio 2022 - https://bit.ly/rapicgen-vs2022                              #");
+                Trace.WriteLine("#  - Visual Studio 2019 - https://bit.ly/rapicgen-vs2019                              #");
+                Trace.WriteLine("#  - Visual Studio 2017 - https://bit.ly/rapicgen-vs2017                              #");
+                Trace.WriteLine("#                                                                                     #");
+                Trace.WriteLine("#  Does this tool not work or does it lack something you need?                        #");
+                Trace.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues                          #");
+                Trace.WriteLine("#                                                                                     #");
+                Trace.WriteLine("#  Are you feeling generous? Do you find this tool useful?                            #");
+                Trace.WriteLine("#  https://www.buymeacoffee.com/christianhelle                                        #");
+                Trace.WriteLine("#                                                                                     #");
+                Trace.WriteLine("#######################################################################################");
             }
             catch (NotSupportedException e)
             {

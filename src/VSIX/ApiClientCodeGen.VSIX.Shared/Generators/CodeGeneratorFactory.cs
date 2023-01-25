@@ -63,7 +63,7 @@ namespace Rapicgen.Generators
                     return new AutoRestCSharpCodeGenerator(
                         inputFilePath,
                         defaultNamespace,
-                        optionsFactory.Create<IAutoRestOptions, AutoRestOptionsPage>(),
+                        optionsFactory.Create<IAutoRestOptions, AutoRestOptionsPage, DefaultAutoRestOptions>(),
                         processLauncher,
                         documentFactory,
                         dependencyInstaller);
@@ -74,13 +74,13 @@ namespace Rapicgen.Generators
                         new OpenApiDocumentFactory(),
                         new NSwagCodeGeneratorSettingsFactory(
                             defaultNamespace,
-                            optionsFactory.Create<INSwagOptions, NSwagOptionsPage>()));
+                            optionsFactory.Create<INSwagOptions, NSwagOptionsPage, DefaultNSwagOptions>()));
 
                 case SupportedCodeGenerator.Swagger:
                     return new SwaggerCSharpCodeGenerator(
                         inputFilePath,
                         defaultNamespace,
-                        optionsFactory.Create<IGeneralOptions, GeneralOptionPage>(),
+                        optionsFactory.Create<IGeneralOptions, GeneralOptionPage, DefaultGeneralOptions>(),
                         processLauncher,
                         dependencyInstaller);
 
@@ -88,8 +88,8 @@ namespace Rapicgen.Generators
                     return new OpenApiCSharpCodeGenerator(
                         inputFilePath,
                         defaultNamespace,
-                        optionsFactory.Create<IGeneralOptions, GeneralOptionPage>(),
-                        optionsFactory.Create<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage>(),
+                        optionsFactory.Create<IGeneralOptions, GeneralOptionPage, DefaultGeneralOptions>(),
+                        optionsFactory.Create<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage, DefaultOpenApiGeneratorOptions>(),
                         processLauncher,
                         dependencyInstaller);
 

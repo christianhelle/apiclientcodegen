@@ -5,7 +5,7 @@ using Rapicgen.Core.Options.General;
 
 namespace Rapicgen.Options.General
 {
-    public class CustomPathOptions 
+    public class CustomPathOptions
         : OptionsBase<IGeneralOptions, GeneralOptionPage>, IGeneralOptions
     {
         public CustomPathOptions(IGeneralOptions? options = null)
@@ -23,7 +23,7 @@ namespace Rapicgen.Options.General
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                
+
                 JavaPath = PathProvider.GetJavaPath();
                 NpmPath = PathProvider.GetNpmPath();
                 NSwagPath = PathProvider.GetNSwagStudioPath();

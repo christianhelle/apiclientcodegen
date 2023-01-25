@@ -100,6 +100,8 @@ namespace Rapicgen
 
         public static AsyncPackage Instance { get; private set; } = null!;
 
+        public static Version VisualStudioVersion { get; private set; } = null!;
+
         protected override async Task InitializeAsync(
             CancellationToken cancellationToken,
             IProgress<ServiceProgressData> progress)
@@ -118,10 +120,10 @@ namespace Rapicgen
             shell.GetProperty((int)__VSSPROPID5.VSSPROPID_ReleaseVersion, out object value);
             if (value is string raw)
             {
-                var version = Version.Parse(raw.Split(' ')[0]);
+                VisualStudioVersion = Version.Parse(raw.Split(' ')[0]);
                 Logger.GetLogger<AppInsightsRemoteLogger>()
                     .AddTelemetryInitializer(
-                        new VisualStudioVersionInitializer(version));
+                        new VisualStudioVersionInitializer(VisualStudioVersion));
             }
         }
     }

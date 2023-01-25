@@ -32,7 +32,7 @@ namespace Rapicgen.IntegrationTests.CustomTool
 
             var optionsFactory = new Mock<IOptionsFactory>();
             optionsFactory
-                .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage>())
+                .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage, DefaultNSwagOptions>())
                 .Returns(optionsMock.Object);
 
             Assert(SupportedCodeGenerator.NSwag, optionsFactory.Object);
@@ -44,7 +44,7 @@ namespace Rapicgen.IntegrationTests.CustomTool
             var optionsMock = new Mock<IGeneralOptions>();
             var optionsFactory = new Mock<IOptionsFactory>();
             optionsFactory
-                .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage>())
+                .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage, DefaultGeneralOptions>())
                 .Returns(optionsMock.Object);
 
             Assert(SupportedCodeGenerator.Swagger, optionsFactory.Object);
@@ -56,7 +56,7 @@ namespace Rapicgen.IntegrationTests.CustomTool
             var optionsMock = new Mock<IGeneralOptions>();
             var optionsFactory = new Mock<IOptionsFactory>();
             optionsFactory
-                .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage>())
+                .Setup(c => c.Create<IGeneralOptions, GeneralOptionPage, DefaultGeneralOptions>())
                 .Returns(optionsMock.Object);
 
             Assert(SupportedCodeGenerator.OpenApi, optionsFactory.Object);
