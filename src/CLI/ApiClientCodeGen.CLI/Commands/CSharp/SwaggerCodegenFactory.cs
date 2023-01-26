@@ -3,7 +3,7 @@ using Rapicgen.Core.Generators.Swagger;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.General;
 
-namespace Rapicgen.CLI.Commands
+namespace Rapicgen.CLI.Commands.CSharp
 {
     public interface ISwaggerCodegenFactory
     {

@@ -5,6 +5,7 @@ using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.OpenApiGenerator;
 using FluentAssertions;
+using Rapicgen.CLI.Commands.CSharp;
 using Xunit;
 
 namespace Rapicgen.CLI.Tests.Command

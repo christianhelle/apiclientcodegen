@@ -5,6 +5,7 @@ using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.AutoRest;
 using FluentAssertions;
+using Rapicgen.CLI.Commands.CSharp;
 using Xunit;
 
 namespace Rapicgen.CLI.Tests.Command

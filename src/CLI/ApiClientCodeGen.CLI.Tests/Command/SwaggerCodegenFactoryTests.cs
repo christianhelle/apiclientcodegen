@@ -4,6 +4,7 @@ using Rapicgen.Core.Generators;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.General;
 using FluentAssertions;
+using Rapicgen.CLI.Commands.CSharp;
 using Xunit;
 
 namespace Rapicgen.CLI.Tests.Command

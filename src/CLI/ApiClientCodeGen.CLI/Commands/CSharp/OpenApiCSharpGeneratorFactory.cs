@@ -4,7 +4,7 @@ using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.OpenApiGenerator;
 
-namespace Rapicgen.CLI.Commands
+namespace Rapicgen.CLI.Commands.CSharp
 {
     public interface IOpenApiCSharpGeneratorFactory
     {

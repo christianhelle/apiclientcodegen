@@ -4,7 +4,7 @@ using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.AutoRest;
 
-namespace Rapicgen.CLI.Commands
+namespace Rapicgen.CLI.Commands.CSharp
 {
     public interface IAutoRestCodeGeneratorFactory
     {

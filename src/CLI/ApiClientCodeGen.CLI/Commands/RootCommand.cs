@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Rapicgen.Core.Logging;
 using McMaster.Extensions.CommandLineUtils;
+using Rapicgen.CLI.Commands.CSharp;
 
 namespace Rapicgen.CLI.Commands
 {

@@ -1,13 +1,13 @@
 ﻿using System;
+using McMaster.Extensions.CommandLineUtils;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.OpenApiGenerator;
-using McMaster.Extensions.CommandLineUtils;
 
-namespace Rapicgen.CLI.Commands
+namespace Rapicgen.CLI.Commands.CSharp
 {
     [Command("openapi", Description = "Generate C# API client using OpenAPI Generator")]
     public class OpenApiCSharpGeneratorCommand : CodeGeneratorCommand, IOpenApiGeneratorOptions
