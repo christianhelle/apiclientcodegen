@@ -16,7 +16,7 @@ namespace Rapicgen.Core.Logging
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
                 return;
-            
+
             var configuration = TelemetryConfiguration.CreateDefault();
             configuration.ConnectionString =
                 "InstrumentationKey=ad35e23f-6e54-40ff-b4d1-de6d684e1a4b;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/";
@@ -28,9 +28,13 @@ namespace Rapicgen.Core.Logging
             telemetryClient.Context.Component.Version = GetType().Assembly.GetName().Version.ToString();
             AddTelemetryInitializer(new SupportKeyInitializer());
         }
-        
+
         public void AddTelemetryInitializer(ITelemetryInitializer initializer)
-            => telemetryClient.TelemetryConfiguration.TelemetryInitializers.Add(initializer);
+        {
+            if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached || telemetryClient == null)
+                return;
+            telemetryClient.TelemetryConfiguration.TelemetryInitializers.Add(initializer);
+        }
 
         public void TrackFeatureUsage(string featureName, params string[] tags)
         {
@@ -64,14 +68,14 @@ namespace Rapicgen.Core.Logging
                     Success = success,
                     Data = data,
                     Timestamp = startTime == default ? DateTimeOffset.UtcNow : startTime,
-                    Duration = duration == default ? TimeSpan.Zero : duration 
+                    Duration = duration == default ? TimeSpan.Zero : duration
                 });
             telemetryClient.Flush();
         }
 
         public void Disable()
         {
-            if (telemetryClient != null) 
+            if (telemetryClient != null)
                 telemetryClient.TelemetryConfiguration.DisableTelemetry = true;
         }
     }
