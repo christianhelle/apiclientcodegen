@@ -116,14 +116,27 @@ namespace Rapicgen
             foreach (var command in commands)
                 await command.InitializeAsync(this, cancellationToken);
 
-            var shell = (IVsShell)(await GetServiceAsync(typeof(SVsShell)))!;
-            shell.GetProperty((int)__VSSPROPID5.VSSPROPID_ReleaseVersion, out object value);
-            if (value is string raw)
+            await TrySetupVersionTracking();
+        }
+
+        private static async Task TrySetupVersionTracking()
+        {
+            try
             {
-                VisualStudioVersion = Version.Parse(raw.Split(' ')[0]);
-                Logger.GetLogger<AppInsightsRemoteLogger>()
-                    .AddTelemetryInitializer(
-                        new VisualStudioVersionInitializer(VisualStudioVersion));
+                var shell = (IVsShell)(await GetServiceAsync(typeof(SVsShell)))!;
+                shell.GetProperty((int)__VSSPROPID5.VSSPROPID_ReleaseVersion, out object value);
+                if (value is string raw)
+                {
+                    VisualStudioVersion = Version.Parse(raw.Split(' ')[0]);
+                    Logger.GetLogger<AppInsightsRemoteLogger>()
+                        .AddTelemetryInitializer(
+                            new VisualStudioVersionInitializer(VisualStudioVersion));
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine("Failed to setup version tracking");
+                Logger.Instance.TrackError(e);
             }
         }
     }
