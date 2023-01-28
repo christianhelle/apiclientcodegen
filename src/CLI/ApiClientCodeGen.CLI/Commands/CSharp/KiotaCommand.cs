@@ -1,0 +1,33 @@
+﻿using McMaster.Extensions.CommandLineUtils;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.Kiota;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.Logging;
+
+namespace Rapicgen.CLI.Commands.CSharp;
+
+[Command("kiota", Description = "Generate C# API client using Microsoft Kiota")]
+public class KiotaCommand : CodeGeneratorCommand
+{
+    private readonly IProgressReporter? progressReporter;
+    private readonly IProcessLauncher processLauncher;
+    private readonly IDependencyInstaller dependencyInstaller;
+
+    public KiotaCommand(
+        IConsoleOutput console,
+        IProgressReporter? progressReporter,
+        IProcessLauncher processLauncher,
+        IDependencyInstaller dependencyInstaller) : base(console, progressReporter)
+    {
+        this.progressReporter = progressReporter;
+        this.processLauncher = processLauncher;
+        this.dependencyInstaller = dependencyInstaller;
+    }
+
+    public override ICodeGenerator CreateGenerator()
+    {
+        var generator = new KiotaCodeGenerator(SwaggerFile, OutputFile!, processLauncher, dependencyInstaller);
+        generator.GenerateCode(progressReporter);
+    }
+}

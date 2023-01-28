@@ -7,6 +7,7 @@ namespace Rapicgen.CLI.Commands.CSharp
     [Command("csharp", Description = "Generate C# API client")]
     [Subcommand(
         typeof(AutoRestCommand),
+        typeof(KiotaCommand),
         typeof(NSwagCommand),
         typeof(SwaggerCodegenCommand),
         typeof(OpenApiCSharpGeneratorCommand))]

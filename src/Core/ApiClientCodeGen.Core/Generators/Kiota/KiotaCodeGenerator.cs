@@ -1,4 +1,5 @@
-﻿using Rapicgen.Core.Installer;
+﻿using System.IO;
+using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.General;
 
 namespace Rapicgen.Core.Generators.Kiota;
@@ -31,14 +32,15 @@ public class KiotaCodeGenerator : ICodeGenerator
             dependencyInstaller.InstallKiota();
             
             pGenerateProgress?.Progress(30);
-            
+
+            var outputFolder = Path.GetDirectoryName(outputPath)!;
             processLauncher.Start(
                 PathProvider.GetDotNetPath(),
-                $"kiota generate -l CSharp -d {swaggerFile} -o {outputPath}");
+                $"kiota generate -l CSharp -d {swaggerFile} -o {outputFolder}");
             
             pGenerateProgress?.Progress(80);
             
-            return CSharpFileMerger.MergeFilesAndDeleteSource(outputPath);
+            return CSharpFileMerger.MergeFilesAndDeleteSource(outputFolder);
         }
         finally
         {
