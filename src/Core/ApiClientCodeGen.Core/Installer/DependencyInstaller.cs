@@ -48,9 +48,17 @@ namespace Rapicgen.Core.Installer
 
         public void InstallKiota()
         {
-            processLauncher.Start(
-                PathProvider.GetDotNetPath(),
-                "tool install --global --prerelease Microsoft.OpenApi.Kiota");
+            try 
+            {
+                processLauncher.Start(
+                    PathProvider.GetDotNetPath(),
+                    "tool install --global --prerelease Microsoft.OpenApi.Kiota");
+            }
+            catch (ProcessLaunchException e) 
+            {
+                if (e.ErrorData?.Contains("Tool 'microsoft.openapi.kiota' is already installed") != true)
+                    throw e;
+            }
         }
     }
 }
