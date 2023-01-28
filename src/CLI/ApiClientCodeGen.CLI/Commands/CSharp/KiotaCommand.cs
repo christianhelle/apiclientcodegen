@@ -10,7 +10,6 @@ namespace Rapicgen.CLI.Commands.CSharp;
 [Command("kiota", Description = "Generate C# API client using Microsoft Kiota")]
 public class KiotaCommand : CodeGeneratorCommand
 {
-    private readonly IProgressReporter? progressReporter;
     private readonly IProcessLauncher processLauncher;
     private readonly IDependencyInstaller dependencyInstaller;
 
@@ -18,9 +17,9 @@ public class KiotaCommand : CodeGeneratorCommand
         IConsoleOutput console,
         IProgressReporter? progressReporter,
         IProcessLauncher processLauncher,
-        IDependencyInstaller dependencyInstaller) : base(console, progressReporter)
+        IDependencyInstaller dependencyInstaller)
+        : base(console, progressReporter)
     {
-        this.progressReporter = progressReporter;
         this.processLauncher = processLauncher;
         this.dependencyInstaller = dependencyInstaller;
     }
