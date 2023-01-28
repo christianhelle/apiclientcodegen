@@ -60,8 +60,9 @@ namespace Rapicgen.Commands.NSwagStudio
                 new ProcessLauncher(),
                 new DependencyInstaller(
                     new NpmInstaller(new ProcessLauncher()),
-                    new FileDownloader(new WebDownloader())));
-            
+                    new FileDownloader(new WebDownloader()),
+                    new ProcessLauncher()));
+
             codeGenerator.GenerateCode(null);
 
             var project = dte.GetActiveProject()!;

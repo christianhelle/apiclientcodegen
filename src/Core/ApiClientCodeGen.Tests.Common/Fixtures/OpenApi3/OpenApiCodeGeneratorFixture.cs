@@ -29,7 +29,8 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
                 new ProcessLauncher(),
                 new DependencyInstaller(
                     new NpmInstaller(new ProcessLauncher()),
-                    new FileDownloader(new WebDownloader())));
+                    new FileDownloader(new WebDownloader()),
+                    new ProcessLauncher()));
 
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
         }

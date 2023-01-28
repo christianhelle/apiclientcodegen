@@ -1,4 +1,6 @@
 using System;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Options.General;
 
 namespace Rapicgen.Core.Installer
 {
@@ -6,11 +8,16 @@ namespace Rapicgen.Core.Installer
     {
         private readonly INpmInstaller npm;
         private readonly IFileDownloader downloader;
+        private readonly IProcessLauncher processLauncher;
 
-        public DependencyInstaller(INpmInstaller npm, IFileDownloader downloader)
+        public DependencyInstaller(
+            INpmInstaller npm,
+            IFileDownloader downloader,
+            IProcessLauncher processLauncher)
         {
             this.npm = npm ?? throw new ArgumentNullException(nameof(npm));
             this.downloader = downloader ?? throw new ArgumentNullException(nameof(downloader));
+            this.processLauncher = processLauncher;
         }
 
         public void InstallAutoRest()
@@ -37,6 +44,13 @@ namespace Rapicgen.Core.Installer
                 "swagger-codegen-cli.jar",
                 Resource.SwaggerCodegenCli_SHA1,
                 Resource.SwaggerCodegenCli_DownloadUrl);
+        }
+
+        public void InstallKiota()
+        {
+            processLauncher.Start(
+                PathProvider.GetDotNetPath(),
+                "tool install --global --prerelease Microsoft.OpenApi.Kiota");
         }
     }
 }

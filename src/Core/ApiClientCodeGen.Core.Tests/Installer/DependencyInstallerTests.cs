@@ -1,11 +1,11 @@
 using System;
-using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
 using Rapicgen.Core;
 using Rapicgen.Core.Installer;
 using FluentAssertions;
 using Moq;
+using Rapicgen.Core.Generators;
 using Xunit;
 
 namespace ApiClientCodeGen.Core.Tests.Installer
@@ -20,13 +20,13 @@ namespace ApiClientCodeGen.Core.Tests.Installer
 
         [Theory, AutoMoqData]
         public void Requires_INpmInstaller(IFileDownloader downloader)
-            => new Action(() => new DependencyInstaller(null, downloader))
+            => new Action(() => new DependencyInstaller(null, downloader, new ProcessLauncher()))
                 .Should()
                 .Throw<ArgumentNullException>();
 
         [Theory, AutoMoqData]
         public void Requires_IFileDownloader(INpmInstaller npm)
-            => new Action(() => new DependencyInstaller(npm, null))
+            => new Action(() => new DependencyInstaller(npm, null, new ProcessLauncher()))
                 .Should()
                 .Throw<ArgumentNullException>();
 

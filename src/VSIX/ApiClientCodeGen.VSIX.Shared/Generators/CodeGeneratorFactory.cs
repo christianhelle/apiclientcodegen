@@ -45,7 +45,8 @@ namespace Rapicgen.Generators
             this.dependencyInstaller = dependencyInstaller ??
                                        new DependencyInstaller(
                                            new NpmInstaller(this.processLauncher),
-                                           new FileDownloader(new WebDownloader()));
+                                           new FileDownloader(new WebDownloader()),
+                                           new ProcessLauncher());
         }
 
         public ICodeGenerator Create(

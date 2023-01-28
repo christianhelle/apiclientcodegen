@@ -8,5 +8,6 @@ namespace Rapicgen.Core.Installer
         void InstallNSwag();
         string InstallOpenApiGenerator();
         string InstallSwaggerCodegen();
+        void InstallKiota();
     }
 }
