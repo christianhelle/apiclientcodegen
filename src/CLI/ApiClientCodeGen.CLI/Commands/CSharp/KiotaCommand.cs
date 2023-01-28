@@ -25,9 +25,10 @@ public class KiotaCommand : CodeGeneratorCommand
         this.dependencyInstaller = dependencyInstaller;
     }
 
-    public override ICodeGenerator CreateGenerator()
-    {
-        var generator = new KiotaCodeGenerator(SwaggerFile, OutputFile!, processLauncher, dependencyInstaller);
-        generator.GenerateCode(progressReporter);
-    }
+    public override ICodeGenerator CreateGenerator() =>
+        new KiotaCodeGenerator(
+            SwaggerFile,
+            OutputFile!,
+            processLauncher,
+            dependencyInstaller);
 }
