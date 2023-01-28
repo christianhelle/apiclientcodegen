@@ -119,7 +119,7 @@ namespace Rapicgen
             await TrySetupVersionTracking();
         }
 
-        private static async Task TrySetupVersionTracking()
+        private async Task TrySetupVersionTracking()
         {
             try
             {
