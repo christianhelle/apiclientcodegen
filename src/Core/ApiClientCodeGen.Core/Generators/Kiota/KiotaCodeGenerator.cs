@@ -29,27 +29,14 @@ public class KiotaCodeGenerator : ICodeGenerator
         try
         {
             pGenerateProgress?.Progress(10);
-
             dependencyInstaller.InstallKiota();
             
             pGenerateProgress?.Progress(30);
-
-            var outputFolder = Path.GetDirectoryName(outputPath)!;
-            if (string.IsNullOrWhiteSpace(outputFolder))
-            {
-                outputFolder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-            }
-
-            processLauncher.Start(
-                "kiota",
-                $" generate -l CSharp -d {swaggerFile} -o {outputFolder}");
+            var outputFolder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            processLauncher.Start("kiota", $" generate -l CSharp -d {swaggerFile} -o {outputFolder}");
             
-            pGenerateProgress?.Progress(80);
-            
-            if (outputFolder.Contains(Path.GetTempPath()))
-                return CSharpFileMerger.MergeFiles(outputFolder);
-            else
-                return CSharpFileMerger.MergeFilesAndDeleteSource(outputFolder);
+            pGenerateProgress?.Progress(80);            
+            return CSharpFileMerger.MergeFiles(outputFolder);
         }
         finally
         {
