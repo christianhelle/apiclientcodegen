@@ -21,7 +21,10 @@ namespace Rapicgen.Core.Generators
             }
             
             var namespaces = GetUniqueNamespaces(filesToParse);
-            return GenerateCombinedSource(namespaces, filesToParse);
+            var result = GenerateCombinedSource(namespaces, filesToParse);
+            
+            Trace.WriteLine($"Merged source code size: {result.Length}");
+            return result;
         }
 
         public static string MergeFilesAndDeleteSource(string output)
