@@ -1,25 +1,21 @@
 ﻿using System;
 using System.IO;
 using Rapicgen.Core.Installer;
-using Rapicgen.Core.Options.General;
 
 namespace Rapicgen.Core.Generators.Kiota;
 
 public class KiotaCodeGenerator : ICodeGenerator
 {
     private readonly string swaggerFile;
-    private readonly string outputPath;
     private readonly IProcessLauncher processLauncher;
     private readonly IDependencyInstaller dependencyInstaller;
 
     public KiotaCodeGenerator(
         string swaggerFile,
-        string outputPath,
         IProcessLauncher processLauncher,
         IDependencyInstaller dependencyInstaller)
     {
         this.swaggerFile = swaggerFile;
-        this.outputPath = outputPath;
         this.processLauncher = processLauncher;
         this.dependencyInstaller = dependencyInstaller;
     }

@@ -27,7 +27,6 @@ public class KiotaCommand : CodeGeneratorCommand
     public override ICodeGenerator CreateGenerator() =>
         new KiotaCodeGenerator(
             SwaggerFile,
-            OutputFile!,
             processLauncher,
             dependencyInstaller);
 }
