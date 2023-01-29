@@ -229,7 +229,7 @@ jobs:
 
     - name: Generate code with Kiota
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp kiota ./OpenApi.${{ matrix.format }} ./GeneratedCode ./GeneratedCode/Kiota/Output.cs --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp kiota ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Kiota/Output.cs --no-logging
         cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/Net6/Output.cs
         cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/Net7/Output.cs
         cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/Net48/Output.cs
