@@ -58,8 +58,7 @@ namespace Rapicgen.CLI.Commands
 
             var generator = CreateGenerator();
             var code = generator.GenerateCode(progressReporter);
-            Directory.CreateDirectory(Path.GetDirectoryName(OutputFile)!);
-            File.WriteAllText(OutputFile!, code);
+            File.WriteAllText(OutputFile, code);
 
             var fileInfo = new FileInfo(OutputFile);
             LogOutput(fileInfo);
