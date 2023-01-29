@@ -52,7 +52,7 @@ namespace Rapicgen.Core.Installer
             {
                 processLauncher.Start(
                     PathProvider.GetDotNetPath(),
-                    "tool install --global --prerelease Microsoft.OpenApi.Kiota");
+                    "tool install --global Microsoft.OpenApi.Kiota --version 0.10.0-preview");
             }
             catch (ProcessLaunchException e) 
             {
