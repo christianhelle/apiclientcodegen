@@ -266,6 +266,7 @@ Options:
 
 Commands:
   autorest      Generate C# API client using AutoRest
+  kiota         Generate C# API client using Kiota
   nswag         Generate C# API client using NSwag
   openapi       Generate C# API client using OpenAPI Generator
   swagger       Generate C# API client using Swagger Codegen CLI
@@ -342,6 +343,12 @@ Here's an example of how to generate code using **AutoRest**
 
 ```
 rapicgen csharp autorest Swagger.json GeneratedCode ./AutoRestOutput.cs
+```
+
+Here's an example of how to generate code using **Kiota**
+
+```
+rapicgen csharp kiota Swagger.json GeneratedCode ./OpenApiOutput.cs
 ```
 
 Here's an example of how to generate code using **NSwag**
