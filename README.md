@@ -329,7 +329,7 @@ Let's say we have a OpenAPI Specifications document called **Swagger.json**
 For starters, we can use the Swagger Petstore spec. Here's an example powershell script for downloading it
 
 ```
-Invoke-WebRequest -Uri https://petstore.swagger.io/v2/swagger.json -OutFile Swagger.json
+Invoke-WebRequest -Uri https://petstore.swagger.io/v3/swagger.json -OutFile Swagger.json
 ```
 
 In case you don't have the CLI tool installed you can install it by
