@@ -33,9 +33,12 @@ public class KiotaCodeGenerator : ICodeGenerator
             
             pGenerateProgress?.Progress(30);
             var outputFolder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            Directory.CreateDirectory(outputFolder);
+            
+            pGenerateProgress?.Progress(40);
             processLauncher.Start("kiota", $" generate -l CSharp -d {swaggerFile} -o {outputFolder}");
             
-            pGenerateProgress?.Progress(80);            
+            pGenerateProgress?.Progress(80);
             return CSharpFileMerger.MergeFiles(outputFolder);
         }
         finally
