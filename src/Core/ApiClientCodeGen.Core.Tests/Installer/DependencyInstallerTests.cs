@@ -79,5 +79,54 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                         Resource.SwaggerCodegenCli_DownloadUrl,
                         false));
         }
+        
+        [Theory, AutoMoqData]
+        public void InstallKiota_Invokes_ProcessLauncher(
+            [Frozen] IProcessLauncher processLauncher,
+            DependencyInstaller sut)
+        {
+            sut.InstallKiota();
+            Mock.Get(processLauncher)
+                .Verify(
+                    c => c.Start(
+                        It.IsAny<string>(),
+                        "tool install --global Microsoft.OpenApi.Kiota --version 0.10.0-preview", 
+                        null));
+        }
+        
+        [Theory, AutoMoqData]
+        public void InstallKiota_Ignores_ProcessLauncherException_For_Already_Installed(
+            [Frozen] IProcessLauncher processLauncher,
+            DependencyInstaller sut)
+        {
+            Mock.Get(processLauncher)
+                .Setup(c => c.Start(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Throws(
+                    new ProcessLaunchException(
+                        "dotnet",
+                        "tool install --global Microsoft.OpenApi.Kiota --version 0.10.0-preview",
+                        null,
+                        string.Empty,
+                        "Tool 'microsoft.openapi.kiota' is already installed."));
+
+            new Action(sut.InstallKiota)
+                .Should()
+                .NotThrow();
+        }
+        
+        [Theory, AutoMoqData]
+        public void InstallKiota_Throw_ProcessLauncherException(
+            [Frozen] IProcessLauncher processLauncher,
+            DependencyInstaller sut,
+            ProcessLaunchException exception)
+        {
+            Mock.Get(processLauncher)
+                .Setup(c => c.Start(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Throws(exception);
+
+            new Action(sut.InstallKiota)
+                .Should()
+                .ThrowExactly<ProcessLaunchException>();
+        }
     }
 }
