@@ -6,8 +6,6 @@ on:
     paths-ignore:
       - '**/*'
       - '!.github/workflows/regression-tests.yml'
-      - '!src/**/*.csproj'
-      - '!src/**/*.cs'
     branches:
       - 'master'
   schedule:
@@ -74,6 +72,7 @@ jobs:
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net462/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net481/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/NetStandard20/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/NetStandard21/Output.cs
       working-directory: test
 
     - name: Build .NET 6 NSwag generated code
@@ -105,6 +104,10 @@ jobs:
       run: dotnet build ./GeneratedCode/NSwag/NetStandard20/NetStandard20.csproj
       working-directory: test
 
+    - name: Build .NET Standard 2.1 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/NetStandard21/NetStandard21.csproj
+      working-directory: test
+
     - name: Generate code with OpenAPI Generator
       run: |
         dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp openapi ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
@@ -115,6 +118,7 @@ jobs:
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net462/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net481/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/NetStandard20/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/NetStandard21/Output.cs
       working-directory: test
 
     - name: Build .NET 6 OpenAPI Generator generated code
@@ -146,6 +150,10 @@ jobs:
       run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20/NetStandard20.csproj
       working-directory: test
 
+    - name: Build .NET Standard 2.1 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard21/NetStandard21.csproj
+      working-directory: test
+
     - name: Generate code with Swagger Codegen CLI
       run: |
         dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp swagger ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
@@ -156,6 +164,7 @@ jobs:
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net462/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net481/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/NetStandard20/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/NetStandard21/Output.cs
       working-directory: test
 
     - name: Build .NET 6 Swagger Codegen CLI generated code
@@ -187,8 +196,8 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20/NetStandard20.csproj
       working-directory: test
 
-    - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20/NetStandard20.csproj
+    - name: Build .NET Standard 2.1 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard21/NetStandard21.csproj
       working-directory: test
 
     - name: Generate code with AutoRest
@@ -201,6 +210,7 @@ jobs:
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net462/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net481/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/NetStandard20/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/NetStandard21/Output.cs
       working-directory: test
       continue-on-error: true
 
@@ -234,6 +244,10 @@ jobs:
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/NetStandard20/NetStandard20.csproj
       working-directory: test
 
+    - name: Build .NET Standard 2.1 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/NetStandard21/NetStandard21.csproj
+      working-directory: test
+
     - name: Generate code with Kiota
       run: |
         dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp kiota ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Kiota/Output.cs --no-logging
@@ -244,6 +258,7 @@ jobs:
         cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/Net462/Output.cs
         cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/Net481/Output.cs
         cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/NetStandard20/Output.cs
+        cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/NetStandard21/Output.cs
       working-directory: test
 
     - name: Build .NET 6 Kiota generated code
@@ -270,8 +285,13 @@ jobs:
     - name: Build .NET 4.6.2 Kiota generated code
       run: dotnet build ./GeneratedCode/Kiota/Net462/Net462.csproj
       working-directory: test
+
     - name: Build .NET Standard 2.0 Kiota generated code
       run: dotnet build ./GeneratedCode/Kiota/NetStandard20/NetStandard20.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.1 Kiota generated code
+      run: dotnet build ./GeneratedCode/Kiota/NetStandard21/NetStandard21.csproj
       working-directory: test
 
   JMeter:
