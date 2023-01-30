@@ -21,7 +21,7 @@ jobs:
   rapicgen:
 
     name: CLI Tool
-    runs-on: windows-2019
+    runs-on: windows-latest
     timeout-minutes: 20
 
     steps:
