@@ -8,6 +8,8 @@ on:
       - '!.github/workflows/smoke-tests.yml'
       - '!src/**/*.csproj'
       - '!src/**/*.cs'
+      - '!test/GeneratedCode/**/*.csproj'
+      - '!test/OpenAPI/**/Swagger.*'
     branches:
       - '*'
   pull_request:
