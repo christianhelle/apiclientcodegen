@@ -65,7 +65,7 @@ namespace Rapicgen.Commands.AddNew
                 Trace.WriteLine("Nothing is selected");
                 return;
             }
-            
+
             var folder = FindFolder(selectedItem, dte);
             if (string.IsNullOrWhiteSpace(folder))
             {
@@ -109,7 +109,8 @@ namespace Rapicgen.Commands.AddNew
                         new ProcessLauncher(),
                         new DependencyInstaller(
                             new NpmInstaller(new ProcessLauncher()),
-                            new FileDownloader(new WebDownloader())));
+                            new FileDownloader(new WebDownloader()),
+                            new ProcessLauncher()));
 
                     generator.GenerateCode(null!);
 

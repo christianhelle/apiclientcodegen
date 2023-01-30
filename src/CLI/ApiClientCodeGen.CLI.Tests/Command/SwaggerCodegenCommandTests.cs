@@ -6,6 +6,7 @@ using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using FluentAssertions;
 using Moq;
+using Rapicgen.CLI.Commands.CSharp;
 using Xunit;
 
 namespace Rapicgen.CLI.Tests.Command

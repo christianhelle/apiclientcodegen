@@ -1,36 +1,32 @@
 ﻿using System;
+using McMaster.Extensions.CommandLineUtils;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
-using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
-using Rapicgen.Core.Options.AutoRest;
-using McMaster.Extensions.CommandLineUtils;
+using Rapicgen.Core.Options.General;
 
-namespace Rapicgen.CLI.Commands
+namespace Rapicgen.CLI.Commands.CSharp
 {
-    [Command("autorest", Description = "Generate C# API client using AutoRest")]
-    public class AutoRestCommand : CodeGeneratorCommand
+    [Command("swagger", Description = "Generate C# API client using Swagger Codegen CLI")]
+    public class SwaggerCodegenCommand : CodeGeneratorCommand
     {
-        private readonly IAutoRestOptions options;
+        private readonly IGeneralOptions options;
         private readonly IProcessLauncher processLauncher;
-        private readonly IAutoRestCodeGeneratorFactory factory;
-        private readonly IOpenApiDocumentFactory documentFactory;
+        private readonly ISwaggerCodegenFactory factory;
         private readonly IDependencyInstaller dependencyInstaller;
 
-        public AutoRestCommand(
+        public SwaggerCodegenCommand(
             IConsoleOutput console,
-            IAutoRestOptions options,
-            IProcessLauncher processLauncher,
             IProgressReporter? progressReporter,
-            IAutoRestCodeGeneratorFactory factory,
-            IOpenApiDocumentFactory documentFactory,
+            IGeneralOptions options,
+            IProcessLauncher processLauncher,
+            ISwaggerCodegenFactory factory,
             IDependencyInstaller dependencyInstaller) : base(console, progressReporter)
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
-            this.documentFactory = documentFactory ?? throw new ArgumentNullException(nameof(documentFactory));
             this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
@@ -40,7 +36,6 @@ namespace Rapicgen.CLI.Commands
                 DefaultNamespace,
                 options,
                 processLauncher,
-                documentFactory,
                 dependencyInstaller);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,18 @@ namespace Rapicgen.Core.Generators
         public static string MergeFiles(string folder)
         {
             var filesToParse = GetSourceFileNames(folder).ToList();
+            
+            Trace.WriteLine($"Found {filesToParse.Count} files to merge");
+            foreach (var file in filesToParse)
+            {
+                Trace.WriteLine($" - {file}");
+            }
+            
             var namespaces = GetUniqueNamespaces(filesToParse);
-            return GenerateCombinedSource(namespaces, filesToParse);
+            var result = GenerateCombinedSource(namespaces, filesToParse);
+            
+            Trace.WriteLine($"Merged source code size: {result.Length}");
+            return result;
         }
 
         public static string MergeFilesAndDeleteSource(string output)

@@ -1,36 +1,32 @@
 using Rapicgen.Core.Generators;
-using Rapicgen.Core.Generators.OpenApi;
+using Rapicgen.Core.Generators.Swagger;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.General;
-using Rapicgen.Core.Options.OpenApiGenerator;
 
-namespace Rapicgen.CLI.Commands
+namespace Rapicgen.CLI.Commands.CSharp
 {
-    public interface IOpenApiCSharpGeneratorFactory
+    public interface ISwaggerCodegenFactory
     {
         ICodeGenerator Create(
             string swaggerFile,
             string defaultNamespace,
             IGeneralOptions options,
-            IOpenApiGeneratorOptions openApiGeneratorOptions,
             IProcessLauncher processLauncher,
             IDependencyInstaller dependencyInstaller);
     }
 
-    public class OpenApiCSharpGeneratorFactory : IOpenApiCSharpGeneratorFactory
+    public class SwaggerCodegenFactory : ISwaggerCodegenFactory
     {
         public ICodeGenerator Create(
             string swaggerFile,
             string defaultNamespace,
             IGeneralOptions options,
-            IOpenApiGeneratorOptions openApiGeneratorOptions,
             IProcessLauncher processLauncher,
             IDependencyInstaller dependencyInstaller)
-            => new OpenApiCSharpCodeGenerator(
+            => new SwaggerCSharpCodeGenerator(
                 swaggerFile,
                 defaultNamespace,
                 options,
-                openApiGeneratorOptions,
                 processLauncher,
                 dependencyInstaller);
     }

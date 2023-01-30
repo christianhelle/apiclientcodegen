@@ -16,6 +16,7 @@ using Rapicgen.Core.Options.OpenApiGenerator;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Rapicgen.CLI.Commands.CSharp;
 
 namespace Rapicgen.CLI
 {

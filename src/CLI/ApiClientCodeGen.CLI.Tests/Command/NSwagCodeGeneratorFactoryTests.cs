@@ -3,6 +3,7 @@ using Rapicgen.CLI.Commands;
 using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Options.NSwag;
 using FluentAssertions;
+using Rapicgen.CLI.Commands.CSharp;
 using Xunit;
 
 namespace Rapicgen.CLI.Tests.Command

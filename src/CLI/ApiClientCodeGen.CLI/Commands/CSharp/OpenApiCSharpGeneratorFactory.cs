@@ -1,37 +1,37 @@
-﻿using Rapicgen.Core.Generators;
-using Rapicgen.Core.Generators.AutoRest;
-using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.OpenApi;
 using Rapicgen.Core.Installer;
-using Rapicgen.Core.Options.AutoRest;
+using Rapicgen.Core.Options.General;
+using Rapicgen.Core.Options.OpenApiGenerator;
 
-namespace Rapicgen.CLI.Commands
+namespace Rapicgen.CLI.Commands.CSharp
 {
-    public interface IAutoRestCodeGeneratorFactory
+    public interface IOpenApiCSharpGeneratorFactory
     {
         ICodeGenerator Create(
             string swaggerFile,
             string defaultNamespace,
-            IAutoRestOptions options,
+            IGeneralOptions options,
+            IOpenApiGeneratorOptions openApiGeneratorOptions,
             IProcessLauncher processLauncher,
-            IOpenApiDocumentFactory documentFactory,
             IDependencyInstaller dependencyInstaller);
     }
 
-    public class AutoRestCodeGeneratorFactory : IAutoRestCodeGeneratorFactory
+    public class OpenApiCSharpGeneratorFactory : IOpenApiCSharpGeneratorFactory
     {
         public ICodeGenerator Create(
             string swaggerFile,
             string defaultNamespace,
-            IAutoRestOptions options,
+            IGeneralOptions options,
+            IOpenApiGeneratorOptions openApiGeneratorOptions,
             IProcessLauncher processLauncher,
-            IOpenApiDocumentFactory documentFactory,
             IDependencyInstaller dependencyInstaller)
-            => new AutoRestCSharpCodeGenerator(
+            => new OpenApiCSharpCodeGenerator(
                 swaggerFile,
                 defaultNamespace,
                 options,
+                openApiGeneratorOptions,
                 processLauncher,
-                documentFactory,
                 dependencyInstaller);
     }
 }

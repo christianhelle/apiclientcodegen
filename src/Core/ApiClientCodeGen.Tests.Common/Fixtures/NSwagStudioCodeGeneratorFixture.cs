@@ -46,7 +46,8 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures
                     new ProcessLauncher(),
                     new DependencyInstaller(
                         new NpmInstaller(new ProcessLauncher()),
-                        new FileDownloader(new WebDownloader())))
+                        new FileDownloader(new WebDownloader()),
+                        new ProcessLauncher()))
                 .GenerateCode(new Mock<IProgressReporter>().Object)
                 .Should()
                 .BeEmpty();

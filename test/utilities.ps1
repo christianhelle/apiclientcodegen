@@ -61,7 +61,7 @@ function Build-GeneratedCode {
     
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("All", "NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3")]
+        [ValidateSet("All", "NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3", "Kiota")]
         [string]
         $ToolName,
 
@@ -76,9 +76,9 @@ function Build-GeneratedCode {
     )
 
     if ($Version -eq "V2") {
-        $tools = @("AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
+        $tools = @("AutoRest-V2", "NSwag", "Kiota", "SwaggerCodegen", "OpenApiGenerator")
     } else {
-        $tools = @("AutoRest-V3", "NSwag", "SwaggerCodegen", "OpenApiGenerator")
+        $tools = @("AutoRest-V3", "NSwag", "Kiota", "SwaggerCodegen", "OpenApiGenerator")
     }  
 
     if ($Parallel) {
@@ -86,8 +86,6 @@ function Build-GeneratedCode {
         if ($ToolName -eq "All") {
             $tools | ForEach-Object {
                 $argumentsList += "build ./GeneratedCode/$_/NetStandard20/NetStandard20.csproj"
-                $argumentsList += "build ./GeneratedCode/$_/NetCore21/NetCore21.csproj"
-                $argumentsList += "build ./GeneratedCode/$_/NetCore31/NetCore31.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net6/Net6.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net7/Net7.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net48/Net48.csproj"
@@ -101,8 +99,6 @@ function Build-GeneratedCode {
         } else {
             $argumentsList = @(
                 "build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj",
-                "build ./GeneratedCode/$ToolName/NetCore21/NetCore21.csproj",
-                "build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj",
                 "build ./GeneratedCode/$ToolName/Net6/Net6.csproj",
                 "build ./GeneratedCode/$ToolName/Net7/Net7.csproj",
                 "build ./GeneratedCode/$ToolName/Net48/Net48.csproj",
@@ -129,8 +125,6 @@ function Build-GeneratedCode {
             $tools | ForEach-Object {
                 Write-Host "`r`nBuilding $_`r`n"
                 dotnet build ./GeneratedCode/$_/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
-                dotnet build ./GeneratedCode/$_/NetCore21/NetCore21.csproj; ThrowOnNativeFailure
-                dotnet build ./GeneratedCode/$_/NetCore31/NetCore31.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/Net48/Net48.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/Net481/Net481.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/Net472/Net472.csproj; ThrowOnNativeFailure
@@ -143,8 +137,6 @@ function Build-GeneratedCode {
         } else {
             Write-Host "`r`nBuilding $ToolName`r`n"
             dotnet build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
-            dotnet build ./GeneratedCode/$ToolName/NetCore21/NetCore21.csproj; ThrowOnNativeFailure
-            dotnet build ./GeneratedCode/$ToolName/NetCore31/NetCore31.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/Net48/Net48.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/Net481/Net481.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/Net472/Net472.csproj; ThrowOnNativeFailure
@@ -161,7 +153,7 @@ function Generate-Code {
     
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3")]
+        [ValidateSet("NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3", "Kiota")]
         [string]
         $ToolName,
 
@@ -197,6 +189,9 @@ function Generate-Code {
         "NSwag" {
             $command = "csharp nswag"
         }
+        "Kiota" {
+            $command = "csharp kiota"
+        }
     }
 
     if ($Version -eq "V3" -and $ToolName -eq "AutoRest-V2") {
@@ -229,8 +224,6 @@ function Generate-Code {
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net481/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net472/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net462/Output.cs" -Force
-    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/NetCore21/Output.cs" -Force
-    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/NetCore31/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/NetStandard20/Output.cs" -Force
     Remove-Item "GeneratedCode/$ToolName/Output.cs" -Force
 }
@@ -250,7 +243,7 @@ function Generate-CodeParallel {
     )
 
     $processes = @()
-    "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+    "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator", "Kiota" | ForEach-Object {
         switch ($_) {
             "SwaggerCodegen" {
                 $command = "csharp swagger"
@@ -282,7 +275,7 @@ function Generate-CodeParallel {
         $process.WaitForExit()
     }
 
-    "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator" | ForEach-Object {
+    "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator", "Kiota" | ForEach-Object {
         if (Test-Path "GeneratedCode/$_/Output.cs" -PathType Leaf) {
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net7/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net6/Output.cs" -Force
@@ -290,8 +283,6 @@ function Generate-CodeParallel {
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net481/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net472/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net462/Output.cs" -Force
-            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/NetCore21/Output.cs" -Force
-            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/NetCore31/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/NetStandard20/Output.cs" -Force
             Remove-Item "GeneratedCode/$_/Output.cs" -Force
         } else {            
@@ -304,7 +295,7 @@ function Generate-CodeThenBuild {
     
     param (
         [Parameter(Mandatory=$false)]
-        [ValidateSet("All", "NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3")]
+        [ValidateSet("All", "NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3", "Kiota")]
         [string]
         $ToolName = "All",
 
@@ -334,9 +325,9 @@ function Generate-CodeThenBuild {
             Build-GeneratedCode -ToolName $ToolName
         } else {
             if ($Version -eq "V2") {
-                $tools = @("NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2")
+                $tools = @("NSwag", "Kiota", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2")
             } else {
-                $tools = @("NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V3")
+                $tools = @("NSwag", "Kiota", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V3")
             }  
             $tools | ForEach-Object {
                 Generate-CodeThenBuild `

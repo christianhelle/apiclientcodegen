@@ -1,4 +1,5 @@
 using Rapicgen.CLI.Commands;
+using Rapicgen.CLI.Commands.CSharp;
 using Rapicgen.Core;
 using Rapicgen.Core.Extensions;
 

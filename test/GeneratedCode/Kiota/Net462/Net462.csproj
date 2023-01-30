@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net462</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.8.1" />
+    <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.0.0-rc.6" />
+    <PackageReference Include="Microsoft.Kiota.Authentication.Azure" Version="1.0.0-rc.3" />
+    <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.0.0-rc.5" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.0.0-rc.3" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.0.0-rc.3" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.0.0-rc.3" />
+  </ItemGroup>
+</Project>

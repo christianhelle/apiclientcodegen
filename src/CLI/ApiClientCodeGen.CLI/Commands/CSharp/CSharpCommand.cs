@@ -1,13 +1,13 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Rapicgen.Core.Logging;
 using McMaster.Extensions.CommandLineUtils;
 
-namespace Rapicgen.CLI.Commands
+namespace Rapicgen.CLI.Commands.CSharp
 {
     [ExcludeFromCodeCoverage]
     [Command("csharp", Description = "Generate C# API client")]
     [Subcommand(
         typeof(AutoRestCommand),
+        typeof(KiotaCommand),
         typeof(NSwagCommand),
         typeof(SwaggerCodegenCommand),
         typeof(OpenApiCSharpGeneratorCommand))]

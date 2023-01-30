@@ -1,13 +1,13 @@
 ﻿using System;
+using McMaster.Extensions.CommandLineUtils;
+using NJsonSchema.CodeGeneration.CSharp;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.NSwag;
-using McMaster.Extensions.CommandLineUtils;
-using NJsonSchema.CodeGeneration.CSharp;
 
-namespace Rapicgen.CLI.Commands
+namespace Rapicgen.CLI.Commands.CSharp
 {
     [Command("nswag", Description = "Generate C# API client using NSwag")]
     public class NSwagCommand : CodeGeneratorCommand, INSwagOptions

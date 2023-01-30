@@ -80,5 +80,19 @@ namespace Rapicgen.Core.Options.General
             => Path.Combine(
                 Path.GetTempPath(),
                 "openapi-generator-cli.jar");
+        
+        public static string GetDotNetPath()
+        {
+            var programFiles = Environment.Is64BitOperatingSystem
+                ? Environment.SpecialFolder.ProgramFiles
+                : Environment.SpecialFolder.ProgramFilesX86;
+
+            return Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix
+                ? "dotnet"
+                : Path.Combine(
+                    Environment.GetFolderPath(programFiles),
+                    "dotnet",
+                    "dotnet.exe");
+        }
     }
 }

@@ -32,7 +32,8 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.Yaml
                 new OpenApiDocumentFactory(),
                 new DependencyInstaller(
                     new NpmInstaller(new ProcessLauncher()),
-                    new FileDownloader(new WebDownloader())));
+                    new FileDownloader(new WebDownloader()),
+                    new ProcessLauncher()));
 
             OptionsMock.Setup(c => c.OverrideClientName).Returns(true);
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
