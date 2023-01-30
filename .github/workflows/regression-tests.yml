@@ -6,8 +6,6 @@ on:
     paths-ignore:
       - '**/*'
       - '!.github/workflows/regression-tests.yml'
-      - '!src/**/*.csproj'
-      - '!src/**/*.cs'
     branches:
       - 'master'
   schedule:
