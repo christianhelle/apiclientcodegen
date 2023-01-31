@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewAutoRestClientCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewNSwagClientCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewNSwagStudioClientCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewKiotaClientCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewOpenApiClientCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewRestClientCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewSwaggerClientCommand.cs" />
@@ -19,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\CustomToolSetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\CustomToolSetterCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\NSwagCodeGeneratorCustomToolSetter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\KiotaCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\OpenApiCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\SwaggerCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\ICommandInitializer.cs" />

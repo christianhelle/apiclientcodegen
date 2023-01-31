@@ -4,6 +4,7 @@ using Rapicgen.CustomTool.AutoRest;
 using Rapicgen.CustomTool.NSwag;
 using Rapicgen.CustomTool.OpenApi;
 using Rapicgen.CustomTool.Swagger;
+using Rapicgen.CustomTool.Kiota;
 
 namespace Rapicgen.Extensions
 {
@@ -26,6 +27,9 @@ namespace Rapicgen.Extensions
                 case SupportedCodeGenerator.OpenApi:
                     customTool = nameof(OpenApiCodeGenerator);
                     break;
+                case SupportedCodeGenerator.Kiota:
+                    customTool = nameof(KiotaCodeGenerator);
+                    break;
             }
 
             return customTool;
@@ -44,6 +48,9 @@ namespace Rapicgen.Extensions
 
             if (type.IsAssignableFrom(typeof(OpenApiCodeGenerator)))
                 return SupportedCodeGenerator.OpenApi;
+
+            if (type.IsAssignableFrom(typeof(KiotaCodeGenerator)))
+                return SupportedCodeGenerator.Kiota;
 
             throw new NotSupportedException();
         }
