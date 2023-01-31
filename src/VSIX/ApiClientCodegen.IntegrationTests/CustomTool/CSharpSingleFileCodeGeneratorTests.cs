@@ -84,6 +84,12 @@ namespace Rapicgen.IntegrationTests.CustomTool
             Assert(SupportedCodeGenerator.OpenApi, optionsFactory.Object);
         }
 
+        [Fact]
+        public void Kiota_CSharp_Test()
+        {
+            Assert(SupportedCodeGenerator.Kiota);
+        }
+
         private void Assert(
             SupportedCodeGenerator generator,
             IOptionsFactory optionsFactory = null)
