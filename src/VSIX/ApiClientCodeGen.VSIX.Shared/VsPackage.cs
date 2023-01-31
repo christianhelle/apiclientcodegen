@@ -116,10 +116,10 @@ namespace Rapicgen
             foreach (var command in commands)
                 await command.InitializeAsync(this, cancellationToken);
 
-            await TrySetupVersionTracking();
+            await TrySetupVersionTrackingAsync();
         }
 
-        private async Task TrySetupVersionTracking()
+        private async Task TrySetupVersionTrackingAsync()
         {
             try
             {
