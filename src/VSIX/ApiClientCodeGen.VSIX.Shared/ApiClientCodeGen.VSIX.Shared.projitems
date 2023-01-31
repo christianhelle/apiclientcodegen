@@ -27,6 +27,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestCSharpCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestVisualBasicCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\Kiota\KiotaCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\Kiota\KiotaCSharpCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\NSwag\NSwagCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\NSwag\NSwagCSharpCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\NSwag\NSwagVisualBasicCodeGenerator.cs" />
