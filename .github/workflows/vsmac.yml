@@ -30,6 +30,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Set VS2019 
+      run: |
+            mv "/Applications/Visual Studio.app" "/Applications/Visual Studio 2022.app"
+            mv "/Applications/Visual Studio 2019.app" "/Applications/Visual Studio.app"
+            /usr/libexec/PlistBuddy -c 'Print CFBundleVersion' '/Applications/Visual Studio.app/Contents/Info.plist'
+
     - name: Update Extension Version Info
       run: |
         sed -i -e 's/1.0/1.0.${{ github.run_number }}/g' ./AddinInfo.cs
