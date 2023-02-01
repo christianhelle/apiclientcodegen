@@ -47,13 +47,13 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 The resulting file is the equivalent of using the AutoRest CLI tool with:
 ` --csharp --input-file=[swaggerFile] --output-file=[outputFile] --namespace=[namespace] --add-credentials`
 
-- ***NSwagCodeGenerator*** - Generates a single file C# REST API Client using the [NSwag.CodeGeneration.CSharp](https://github.com/RSuter/NSwag/wiki/SwaggerToCSharpClientGenerator) [nuget package](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) **v13.18.2**
+- ***NSwagCodeGenerator*** - Generates a single file C# REST API Client using the [NSwag.CodeGeneration.CSharp](https://github.com/RSuter/NSwag/wiki/CSharpClientGenerator) [nuget package](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) **v13.18.2**
 
 - ***SwaggerCodeGenerator*** - Generates a single file C# REST API Client using **Swagger Codegen CLI v3.0.34**.
 The output file is the result of merging all the files generated using the Swagger Codegen CLI tool with:
 ` generate -l csharp --input-spec [swaggerFile] --output [output] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite`
 
-- ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **OpenAPI Generator v6.2.1**.
+- ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **[OpenAPI Generator v6.3.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v6.3.0)**.
 The output file is the result of merging all the files generated using the OpenAPI Generator tool with:
 ` generate -g csharp --input-spec [swaggerFile] --output [output] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite`
 
