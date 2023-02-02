@@ -43,19 +43,23 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 
 ### Custom Tools
 
-- ***AutoRestCodeGenerator*** - Generates a single file C# REST API Client using **AutoRest**. 
-The resulting file is the equivalent of using the AutoRest CLI tool with:
-` --csharp --input-file=[swaggerFile] --output-file=[outputFile] --namespace=[namespace] --add-credentials`
-
 - ***NSwagCodeGenerator*** - Generates a single file C# REST API Client using the [NSwag.CodeGeneration.CSharp](https://github.com/RSuter/NSwag/wiki/CSharpClientGenerator) [nuget package](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) **v13.18.2**
-
-- ***SwaggerCodeGenerator*** - Generates a single file C# REST API Client using **Swagger Codegen CLI v3.0.34**.
-The output file is the result of merging all the files generated using the Swagger Codegen CLI tool with:
-` generate -l csharp --input-spec [swaggerFile] --output [output] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite`
 
 - ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **[OpenAPI Generator v6.3.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v6.3.0)**.
 The output file is the result of merging all the files generated using the OpenAPI Generator tool with:
-` generate -g csharp --input-spec [swaggerFile] --output [output] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite`
+` generate -g csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[default namespace] --skip-overwrite`
+
+- ***KiotaCodeGenerator*** - Generates a single file C# REST API Client using the Microsoft project **[Kiota](https://microsoft.github.io/kiota)** generator. 
+The output file is the result of merging all the files generated using the Kiota dotnet tool with:
+` generate -l CSharp -d [swagger file] -o [output file] -n [default namespace]`
+
+- ***SwaggerCodeGenerator*** - Generates a single file C# REST API Client using **Swagger Codegen CLI v3.0.34**.
+The output file is the result of merging all the files generated using the Swagger Codegen CLI tool with:
+` generate -l csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[default namespace] --skip-overwrite`
+
+- ***AutoRestCodeGenerator*** - Generates a single file C# REST API Client using **AutoRest**. 
+The resulting file is the equivalent of using the AutoRest CLI tool with:
+` --csharp --input-file=[swagger file] --output-file=[output file] --namespace=[default namespace] --add-credentials`
 
 
 ### Dependencies
