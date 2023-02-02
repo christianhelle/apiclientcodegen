@@ -90,12 +90,14 @@ namespace Rapicgen
             new NSwagCodeGeneratorCustomToolSetter(),
             new SwaggerCodeGeneratorCustomToolSetter(),
             new OpenApiCodeGeneratorCustomToolSetter(),
+            new KiotaCodeGeneratorCustomToolSetter(),
             new NSwagStudioCommand(),
             new NewAutoRestClientCommand(),
             new NewNSwagClientCommand(),
             new NewSwaggerClientCommand(),
             new NewOpenApiClientCommand(),
-            new NewNSwagStudioClientCommand()
+            new NewNSwagStudioClientCommand(),
+            new NewKiotaClientCommand()
         };
 
         public static AsyncPackage Instance { get; private set; } = null!;
@@ -116,10 +118,10 @@ namespace Rapicgen
             foreach (var command in commands)
                 await command.InitializeAsync(this, cancellationToken);
 
-            await TrySetupVersionTracking();
+            await TrySetupVersionTrackingAsync();
         }
 
-        private async Task TrySetupVersionTracking()
+        private async Task TrySetupVersionTrackingAsync()
         {
             try
             {

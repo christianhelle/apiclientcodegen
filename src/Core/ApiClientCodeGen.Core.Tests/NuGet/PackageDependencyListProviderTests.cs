@@ -4,39 +4,44 @@ using FluentAssertions;
 
 namespace ApiClientCodeGen.Core.Tests.NuGet
 {
-    
     public class PackageDependencyListProviderTests
     {
         private readonly PackageDependencyListProvider sut
             = new PackageDependencyListProvider();
 
         [Xunit.Fact]
-        public void GetDependencies_NSwag_Returns_NotEmpty() 
+        public void GetDependencies_NSwag_Returns_NotEmpty()
             => sut.GetDependencies(SupportedCodeGenerator.NSwag)
                 .Should()
                 .NotBeNullOrEmpty();
 
         [Xunit.Fact]
-        public void GetDependencies_NSwagStudio_Returns_NotEmpty() 
+        public void GetDependencies_NSwagStudio_Returns_NotEmpty()
             => sut.GetDependencies(SupportedCodeGenerator.NSwagStudio)
                 .Should()
                 .NotBeNullOrEmpty();
 
         [Xunit.Fact]
-        public void GetDependencies_AutoRest_Returns_NotEmpty() 
+        public void GetDependencies_AutoRest_Returns_NotEmpty()
             => sut.GetDependencies(SupportedCodeGenerator.AutoRest)
                 .Should()
                 .NotBeNullOrEmpty();
 
         [Xunit.Fact]
-        public void GetDependencies_Swagger_Returns_NotEmpty() 
+        public void GetDependencies_Swagger_Returns_NotEmpty()
             => sut.GetDependencies(SupportedCodeGenerator.Swagger)
                 .Should()
                 .NotBeNullOrEmpty();
 
         [Xunit.Fact]
-        public void GetDependencies_OpenApi_Returns_NotEmpty() 
+        public void GetDependencies_OpenApi_Returns_NotEmpty()
             => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
+                .Should()
+                .NotBeNullOrEmpty();
+
+        [Xunit.Fact]
+        public void GetDependencies_Kiota_Returns_NotEmpty()
+            => sut.GetDependencies(SupportedCodeGenerator.Kiota)
                 .Should()
                 .NotBeNullOrEmpty();
 
@@ -171,5 +176,47 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
             => sut.GetDependencies(SupportedCodeGenerator.AutoRestV3)
                 .Should()
                 .Contain(PackageDependencies.AzureCore);
+
+        [Xunit.Fact]
+        public void GetDependencies_Kiota_Contains_AzureIdentity()
+            => sut.GetDependencies(SupportedCodeGenerator.Kiota)
+                .Should()
+                .Contain(PackageDependencies.AzureIdentity);
+
+        [Xunit.Fact]
+        public void GetDependencies_Kiota_Contains_MicrosoftKiotaAbstractions()
+            => sut.GetDependencies(SupportedCodeGenerator.Kiota)
+                .Should()
+                .Contain(PackageDependencies.MicrosoftKiotaAbstractions);
+
+        [Xunit.Fact]
+        public void GetDependencies_Kiota_Contains_MicrosoftKiotaAuthenticationAzure()
+            => sut.GetDependencies(SupportedCodeGenerator.Kiota)
+                .Should()
+                .Contain(PackageDependencies.MicrosoftKiotaAuthenticationAzure);
+
+        [Xunit.Fact]
+        public void GetDependencies_Kiota_Contains_MicrosoftKiotaHttpClientLibrary()
+            => sut.GetDependencies(SupportedCodeGenerator.Kiota)
+                .Should()
+                .Contain(PackageDependencies.MicrosoftKiotaHttpClientLibrary);
+
+        [Xunit.Fact]
+        public void GetDependencies_Kiota_Contains_MicrosoftKiotaSerializationForm()
+            => sut.GetDependencies(SupportedCodeGenerator.Kiota)
+                .Should()
+                .Contain(PackageDependencies.MicrosoftKiotaSerializationForm);
+
+        [Xunit.Fact]
+        public void GetDependencies_Kiota_Contains_MicrosoftKiotaSerializationJson()
+            => sut.GetDependencies(SupportedCodeGenerator.Kiota)
+                .Should()
+                .Contain(PackageDependencies.MicrosoftKiotaSerializationForm);
+
+        [Xunit.Fact]
+        public void GetDependencies_Kiota_Contains_MicrosoftKiotaSerializationText()
+            => sut.GetDependencies(SupportedCodeGenerator.Kiota)
+                .Should()
+                .Contain(PackageDependencies.MicrosoftKiotaSerializationText);
     }
 }

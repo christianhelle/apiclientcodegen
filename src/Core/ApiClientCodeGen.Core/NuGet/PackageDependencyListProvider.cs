@@ -62,6 +62,19 @@ namespace Rapicgen.Core.NuGet
                         PackageDependencies.MicrosoftCSharp
                     });
                     break;
+
+                case SupportedCodeGenerator.Kiota:
+                    list.AddRange(new[]
+                    {
+                        PackageDependencies.AzureIdentity,
+                        PackageDependencies.MicrosoftKiotaAbstractions,
+                        PackageDependencies.MicrosoftKiotaAuthenticationAzure,
+                        PackageDependencies.MicrosoftKiotaHttpClientLibrary,
+                        PackageDependencies.MicrosoftKiotaSerializationForm,
+                        PackageDependencies.MicrosoftKiotaSerializationJson,
+                        PackageDependencies.MicrosoftKiotaSerializationText
+                    });
+                    break;
             }
             return list;
         }

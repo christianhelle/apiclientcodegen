@@ -3,6 +3,7 @@ using Rapicgen.Core;
 using Rapicgen.Core.Extensions;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.AutoRest;
+using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Generators.OpenApi;
 using Rapicgen.Core.Generators.Swagger;
@@ -18,8 +19,7 @@ using Rapicgen.Options.AutoRest;
 using Rapicgen.Options.General;
 using Rapicgen.Options.NSwag;
 using Rapicgen.Options.OpenApiGenerator;
-using OpenApiDocumentFactory =
-    Rapicgen.Generators.NSwag.OpenApiDocumentFactory;
+using OpenApiDocumentFactory = Rapicgen.Generators.NSwag.OpenApiDocumentFactory;
 
 namespace Rapicgen.Generators
 {
@@ -91,6 +91,13 @@ namespace Rapicgen.Generators
                         defaultNamespace,
                         optionsFactory.Create<IGeneralOptions, GeneralOptionPage, DefaultGeneralOptions>(),
                         optionsFactory.Create<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage, DefaultOpenApiGeneratorOptions>(),
+                        processLauncher,
+                        dependencyInstaller);
+
+                case SupportedCodeGenerator.Kiota:
+                    return new KiotaCodeGenerator(
+                        inputFilePath,
+                        defaultNamespace,
                         processLauncher,
                         dependencyInstaller);
 

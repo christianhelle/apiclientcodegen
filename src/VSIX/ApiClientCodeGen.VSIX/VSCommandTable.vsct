@@ -9,7 +9,7 @@
     <Groups>
       <Group guid="guidPackageCmdSet" id="SubmenuGroup" />
       <Group guid="guidPackageCmdSet" id="CommandsGroup" />
-
+      
       <Group guid="guidNewRestApiClientCmdSet" id="NewSubmenuGroup" />
       <Group guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup" />
     </Groups>
@@ -42,12 +42,17 @@
           <ButtonText>Generate with OpenAPI Generator</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidPackageCmdSet" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0102" type="Button">
+      <Button guid="guidPackageCmdSet" id="KiotaCodeGeneratorCustomToolSetter" priority="0x0102" type="Button">
+        <Strings>
+          <ButtonText>Generate with Kiota</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidPackageCmdSet" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0103" type="Button">
         <Strings>
           <ButtonText>Generate with Swagger (Outdated)</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0103" type="Button">
+      <Button guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0104" type="Button">
         <Strings>
           <ButtonText>Generate with AutoRest (Unstable)</ButtonText>
         </Strings>
@@ -76,12 +81,17 @@
           <ButtonText>Generate with OpenAPI Generator</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithSwagger" priority="0x0103" type="Button">
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithKiota" priority="0x0103" type="Button">
+        <Strings>
+          <ButtonText>Generate with Kiota</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithSwagger" priority="0x0104" type="Button">
         <Strings>
           <ButtonText>Generate with Swagger (Outdated)</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithAutoRest" priority="0x0104" type="Button">
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithAutoRest" priority="0x0105" type="Button">
         <Strings>
           <ButtonText>Generate with AutoRest (Unstable)</ButtonText>
         </Strings>
@@ -106,10 +116,13 @@
     <CommandPlacement guid="guidPackageCmdSet" id="OpenApiCodeGeneratorCustomToolSetter" priority="0x0002" >
       <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
     </CommandPlacement>
-    <CommandPlacement guid="guidPackageCmdSet" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0003" >
+    <CommandPlacement guid="guidPackageCmdSet" id="KiotaCodeGeneratorCustomToolSetter" priority="0x0003" >
       <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
     </CommandPlacement>
-    <CommandPlacement guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0004" >
+    <CommandPlacement guid="guidPackageCmdSet" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0004" >
+      <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0005" >
       <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
     </CommandPlacement>
 
@@ -131,10 +144,13 @@
     <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithOpenApi" priority="0x0003" >
       <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
     </CommandPlacement>
-    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithSwagger" priority="0x0004" >
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithKiota" priority="0x0004" >
       <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
     </CommandPlacement>
-    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithAutoRest" priority="0x0005" >
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithSwagger" priority="0x0005" >
+      <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithAutoRest" priority="0x0006" >
       <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
     </CommandPlacement>
   </CommandPlacements>
@@ -156,6 +172,7 @@
       <IDSymbol name="NSwagCodeGeneratorCustomToolSetter" value="0x0300" />
       <IDSymbol name="SwaggerCodeGeneratorCustomToolSetter" value="0x0400" />
       <IDSymbol name="OpenApiCodeGeneratorCustomToolSetter" value="0x0500" />
+      <IDSymbol name="KiotaCodeGeneratorCustomToolSetter" value="0x0600" />
     </GuidSymbol>
 
     <GuidSymbol name="guidNSwagStudioContext" value="{65B3A74F-CD47-476A-A992-0C3DE31455FD}" />
@@ -173,6 +190,7 @@
       <IDSymbol name="GenerateWithSwagger" value="0x0400" />
       <IDSymbol name="GenerateWithOpenApi" value="0x0500" />
       <IDSymbol name="GenerateWithNSwagStudio" value="0x0600" />
+      <IDSymbol name="GenerateWithKiota" value="0x0700" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>

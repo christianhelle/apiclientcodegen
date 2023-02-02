@@ -7,6 +7,7 @@
         AutoRestV3,
         Swagger,
         OpenApi,
-        NSwagStudio
+        NSwagStudio,
+        Kiota
     }
 }
