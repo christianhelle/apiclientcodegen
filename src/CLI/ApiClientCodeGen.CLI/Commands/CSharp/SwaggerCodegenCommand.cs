@@ -8,7 +8,7 @@ using Rapicgen.Core.Options.General;
 
 namespace Rapicgen.CLI.Commands.CSharp
 {
-    [Command("swagger", Description = "Generate C# API client using Swagger Codegen CLI")]
+    [Command("swagger", Description = "Swagger Codegen CLI (v3.0.34)")]
     public class SwaggerCodegenCommand : CodeGeneratorCommand
     {
         private readonly IGeneralOptions options;
