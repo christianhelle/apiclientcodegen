@@ -14,7 +14,7 @@ using McMaster.Extensions.CommandLineUtils;
 namespace Rapicgen.CLI.Commands
 {
     [ExcludeFromCodeCoverage]
-    [Command("typescript", Description = "Generate TypeScript API client")]
+    [Command("typescript", Description = "Generate TypeScript API clients")]
     public class TypeScriptCommand
     {
         private readonly IConsoleOutput console;
