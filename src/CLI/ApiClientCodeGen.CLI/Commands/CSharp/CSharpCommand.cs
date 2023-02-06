@@ -4,7 +4,7 @@ using McMaster.Extensions.CommandLineUtils;
 namespace Rapicgen.CLI.Commands.CSharp
 {
     [ExcludeFromCodeCoverage]
-    [Command("csharp", Description = "Generate C# API client")]
+    [Command("csharp", Description = "Generate C# API clients")]
     [Subcommand(
         typeof(AutoRestCommand),
         typeof(KiotaCommand),

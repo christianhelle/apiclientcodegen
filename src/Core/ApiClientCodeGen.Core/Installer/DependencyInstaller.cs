@@ -1,5 +1,6 @@
 using System;
 using Rapicgen.Core.Generators;
+using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.General;
 
 namespace Rapicgen.Core.Installer
@@ -48,13 +49,15 @@ namespace Rapicgen.Core.Installer
 
         public void InstallKiota()
         {
-            try 
+            try
             {
-                processLauncher.Start(
-                    PathProvider.GetDotNetPath(),
-                    "tool install --global Microsoft.OpenApi.Kiota --version 0.10.0-preview");
+                var command = PathProvider.GetDotNetPath();
+                const string arguments = "tool install --global Microsoft.OpenApi.Kiota --version 0.10.0-preview";
+                using var context = new DependencyContext(command, $"{command} {arguments}");
+                processLauncher.Start(command, arguments);
+                context.Succeeded();
             }
-            catch (ProcessLaunchException e) 
+            catch (ProcessLaunchException e)
             {
                 if (e.ErrorData?.Contains("Tool 'microsoft.openapi.kiota' is already installed") != true)
                     throw;
