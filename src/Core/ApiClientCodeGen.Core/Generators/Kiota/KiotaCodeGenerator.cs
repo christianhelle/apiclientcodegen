@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Rapicgen.Core.Installer;
+using Rapicgen.Core.Logging;
 
 namespace Rapicgen.Core.Generators.Kiota;
 
@@ -33,7 +34,10 @@ public class KiotaCodeGenerator : ICodeGenerator
         Directory.CreateDirectory(outputFolder);
 
         pGenerateProgress?.Progress(40);
-        processLauncher.Start("kiota", $" generate -l CSharp -d {swaggerFile} -o {outputFolder} -n {defaultNamespace}");
+        const string command = "kiota";
+        var arguments = $" generate -l CSharp -d {swaggerFile} -o {outputFolder} -n {defaultNamespace}";
+        using var context = new DependencyContext("Kiota", $"{command} {arguments}");
+        processLauncher.Start(command, arguments);
 
         pGenerateProgress?.Progress(80);
         var output = CSharpFileMerger.MergeFiles(outputFolder);
