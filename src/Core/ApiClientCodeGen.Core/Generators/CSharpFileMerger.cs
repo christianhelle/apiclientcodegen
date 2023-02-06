@@ -71,6 +71,8 @@ namespace Rapicgen.Core.Generators
                     if (!isUsingDir)
                         sb.AppendLine(sourceLine);
                 }
+
+                sb.AppendLine();
             }
 
             var sourceCode = sb.ToString();
