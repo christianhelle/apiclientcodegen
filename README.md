@@ -57,7 +57,7 @@ The output file is the result of merging all the files generated using the Kiota
 The output file is the result of merging all the files generated using the Swagger Codegen CLI tool with:
 ` generate -l csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[default namespace] --skip-overwrite`
 
-- ***AutoRestCodeGenerator*** - Generates a single file C# REST API Client using **AutoRest**. 
+- ***AutoRestCodeGenerator*** - Generates a single file C# REST API Client using **AutoRest v3.0.0-beta.20210504.2** for OpenAPI v3 and **AutoRest v2.0.4417** for OpenAPI v2. 
 The resulting file is the equivalent of using the AutoRest CLI tool with:
 ` --csharp --input-file=[swagger file] --output-file=[output file] --namespace=[default namespace] --add-credentials`
 
