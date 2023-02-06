@@ -55,8 +55,9 @@ namespace Rapicgen.Core.Installer
                 const string arguments = "tool install --global Microsoft.OpenApi.Kiota --version 0.10.0-preview";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
                 processLauncher.Start(command, arguments);
+                context.Succeeded();
             }
-            catch (ProcessLaunchException e) 
+            catch (ProcessLaunchException e)
             {
                 if (e.ErrorData?.Contains("Tool 'microsoft.openapi.kiota' is already installed") != true)
                     throw;
