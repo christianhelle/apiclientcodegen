@@ -38,6 +38,7 @@ public class KiotaCodeGenerator : ICodeGenerator
         var arguments = $" generate -l CSharp -d {swaggerFile} -o {outputFolder} -n {defaultNamespace}";
         using var context = new DependencyContext("Kiota", $"{command} {arguments}");
         processLauncher.Start(command, arguments);
+        context.Succeeded();
 
         pGenerateProgress?.Progress(80);
         var output = CSharpFileMerger.MergeFiles(outputFolder);
