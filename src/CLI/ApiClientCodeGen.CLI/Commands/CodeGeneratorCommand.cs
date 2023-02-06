@@ -32,7 +32,7 @@ namespace Rapicgen.CLI.Commands
         public string DefaultNamespace { get; set; } = "GeneratedCode";
 
         [Argument(2, "outputFile", "Output filename to write the generated code to. Default is the swaggerFile .cs")]
-        public string? OutputFile
+        public string OutputFile
         {
             get => outputFile ?? Path.GetFileNameWithoutExtension(SwaggerFile) + ".cs";
             set => outputFile = value;
