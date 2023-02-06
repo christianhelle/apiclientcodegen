@@ -6,6 +6,8 @@ on:
     paths-ignore:
       - '**/*'
       - '!.github/workflows/vsix.yml'
+      - '!src/Core/**/*.csproj'
+      - '!src/Core/**/*.cs'
       - '!src/VSIX/**/*.csproj'
       - '!src/VSIX/**/*.cs'
     branches:
