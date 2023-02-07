@@ -53,6 +53,7 @@ namespace Rapicgen.Core.Generators
             var sb = new StringBuilder();
             foreach (var ns in namespaces.Where(c => !c.Contains("NUnit")).OrderBy(s => s))
                 sb.AppendLine("using " + ns + ";");
+            sb.AppendLine();
 
             const string openingTag = "using ";
             foreach (var file in files.Where(c => !c.EndsWith("tests.cs", StringComparison.OrdinalIgnoreCase)))
