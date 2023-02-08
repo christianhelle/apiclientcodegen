@@ -39,15 +39,15 @@ namespace Rapicgen.Core.Options.General
         {
             try
             {
-                Trace.WriteLine("Checking Java version");
+                Logger.Instance.WriteLine("Checking Java version");
                 processLauncher.Start(javaPath, "-version");
                 return true;
             }
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.WriteLine($"Unable to start Java from path: {javaPath}");
-                Trace.WriteLine(e);
+                Logger.Instance.WriteLine($"Unable to start Java from path: {javaPath}");
+                
             }
 
             return false;
