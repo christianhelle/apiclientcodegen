@@ -58,7 +58,8 @@ namespace Rapicgen.Core.Logging
 
         public void WriteLine(object data)
         {
-            // Method intentionally left empty.
+            foreach (var logger in Loggers)
+                logger.WriteLine(data);
         }
     }
 }
