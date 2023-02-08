@@ -99,7 +99,7 @@ namespace Rapicgen.Extensions
             catch (Exception ex)
             {
                 Logger.Instance.TrackError(ex);
-                Trace.WriteLine(ex);
+                Logger.Instance.WriteLine(ex);
             }
 
             return item;
@@ -134,7 +134,7 @@ namespace Rapicgen.Extensions
             catch (Exception ex)
             {
                 Logger.Instance.TrackError(ex);
-                Trace.WriteLine("Error getting the active project" + ex);
+                Logger.Instance.WriteLine("Error getting the active project" + ex);
             }
 
             return null;
@@ -194,11 +194,11 @@ namespace Rapicgen.Extensions
             var options = VsPackage.Instance.GetDialogPage(typeof(GeneralOptionPage)) as IGeneralOptions;
             if (options?.InstallMissingPackages == false)
             {
-                Trace.WriteLine("Skipping automatic depedency package installation");
+                Logger.Instance.WriteLine("Skipping automatic depedency package installation");
                 return;
             }
 
-            Trace.WriteLine("Checking required dependencies");
+            Logger.Instance.WriteLine("Checking required dependencies");
 
             var componentModel = (IComponentModel)await package.GetServiceAsync(typeof(SComponentModel));
             Assumes.Present(componentModel);
@@ -229,22 +229,22 @@ namespace Rapicgen.Extensions
             if (installedPackages.Any(c => string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase)) &&
                (installedPackages.Any(c => c.VersionString == version) || !packageDependency.ForceUpdate))
             {
-                Trace.WriteLine($"{packageDependency.Name} is already installed");
+                Logger.Instance.WriteLine($"{packageDependency.Name} is already installed");
                 return;
             }
 
             ThreadHelper.ThrowIfNotOnUIThread();
             if (packageDependency.IsSystemLibrary)
             {
-                Trace.WriteLine("Package is a system library");
+                Logger.Instance.WriteLine("Package is a system library");
                 if (!project.IsNetStandardLibrary())
                 {
-                    Trace.WriteLine("Skipping package installation");
+                    Logger.Instance.WriteLine("Skipping package installation");
                     return;
                 }
             }
 
-            Trace.WriteLine($"Installing {packageId} version {version}");
+            Logger.Instance.WriteLine($"Installing {packageId} version {version}");
 
             try
             {
@@ -255,13 +255,13 @@ namespace Rapicgen.Extensions
                         version,
                         true);
 
-                Trace.WriteLine($"Successfully installed {packageId} version {version}");
+                Logger.Instance.WriteLine($"Successfully installed {packageId} version {version}");
             }
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.WriteLine($"Unable to install {packageId} version {version}");
-                Trace.WriteLine(e);
+                Logger.Instance.WriteLine($"Unable to install {packageId} version {version}");
+                
             }
         }
 
@@ -283,8 +283,8 @@ namespace Rapicgen.Extensions
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.WriteLine("Unable to read top level namespace from Project");
-                Trace.WriteLine(e);
+                Logger.Instance.WriteLine("Unable to read top level namespace from Project");
+                
             }
             return null;
         }
@@ -296,7 +296,7 @@ namespace Rapicgen.Extensions
                 ThreadHelper.ThrowIfNotOnUIThread();
 
                 var fileName = project.FileName;
-                Trace.WriteLine("Project filename = " + fileName);
+                Logger.Instance.WriteLine("Project filename = " + fileName);
                 var contents = File.ReadAllText(fileName);
                 var result = contents.Contains("<TargetFramework>netstandard");
                 return result;
@@ -304,8 +304,8 @@ namespace Rapicgen.Extensions
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.WriteLine("Unable to read project file contents");
-                Trace.WriteLine(e);
+                Logger.Instance.WriteLine("Unable to read project file contents");
+                
             }
 
             return false;

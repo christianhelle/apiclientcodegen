@@ -79,5 +79,10 @@ namespace Rapicgen.Core.Logging
             if (telemetryClient != null)
                 telemetryClient.TelemetryConfiguration.DisableTelemetry = true;
         }
+
+        public void WriteLine(object data)
+        {
+            // Method intentionally left empty.
+        }
     }
 }

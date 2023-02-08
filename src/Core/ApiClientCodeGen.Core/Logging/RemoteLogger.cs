@@ -55,5 +55,11 @@ namespace Rapicgen.Core.Logging
 
         public void Disable()
             => Loggers.ForEach(c => c.Disable());
+
+        public void WriteLine(object data)
+        {
+            foreach (var logger in Loggers)
+                logger.WriteLine(data);
+        }
     }
 }

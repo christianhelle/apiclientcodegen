@@ -16,7 +16,6 @@ using Rapicgen.Options.OpenApiGenerator;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
-using Rapicgen.Windows;
 using System.Diagnostics;
 
 namespace Rapicgen
@@ -108,8 +107,9 @@ namespace Rapicgen
             CancellationToken cancellationToken,
             IProgress<ServiceProgressData> progress)
         {
-            Trace.Listeners.Add(new OutputWindowTraceListener());
-            Logger.Setup(new SentryRemoteLogger()).WithDefaultTags("VSIX");
+            Logger
+                .Setup(new SentryRemoteLogger(), new OutputWindowRemoteLogger())
+                .WithDefaultTags("VSIX");
 
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await base.InitializeAsync(cancellationToken, progress);
@@ -137,7 +137,7 @@ namespace Rapicgen
             }
             catch (Exception e)
             {
-                Trace.WriteLine("Failed to setup version tracking");
+                Logger.Instance.WriteLine("Failed to setup version tracking");
                 Logger.Instance.TrackError(e);
             }
         }

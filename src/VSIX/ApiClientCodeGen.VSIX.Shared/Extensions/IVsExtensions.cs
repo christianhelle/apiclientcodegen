@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using Rapicgen.Core;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Rapicgen.Core.Logging;
 
 namespace Rapicgen.Extensions
 {
@@ -61,7 +62,7 @@ namespace Rapicgen.Extensions
             if (!TestingUtility.IsRunningFromUnitTest)
                 ThreadHelper.ThrowIfNotOnUIThread();
             pGenerateProgress?.GeneratorError(0, 0, exception.Message, 0, 0);
-            Trace.WriteLine(exception);
+            Logger.Instance.WriteLine(exception);
         }
     }
 }

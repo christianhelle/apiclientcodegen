@@ -81,6 +81,11 @@ namespace Rapicgen.Core.Logging
             ExceptionlessClient.Default.Configuration.Enabled = false;
         }
 
+        public void WriteLine(object data)
+        {
+            // Method intentionally left empty.
+        }
+
         [Priority(30)]
         private sealed class IgnoreNonProjectReletedExceptionsPlugin : IEventPlugin
         {

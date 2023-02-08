@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Rapicgen.Core.Extensions;
+using Rapicgen.Core.Logging;
 
 namespace Rapicgen.Core.Generators
 {
@@ -14,16 +15,16 @@ namespace Rapicgen.Core.Generators
         {
             var filesToParse = GetSourceFileNames(folder).ToList();
             
-            Trace.WriteLine($"Found {filesToParse.Count} files to merge");
+            Logger.Instance.WriteLine($"Found {filesToParse.Count} files to merge");
             foreach (var file in filesToParse)
             {
-                Trace.WriteLine($" - {file}");
+                Logger.Instance.WriteLine($" - {file}");
             }
             
             var namespaces = GetUniqueNamespaces(filesToParse);
             var result = GenerateCombinedSource(namespaces, filesToParse);
             
-            Trace.WriteLine($"Merged source code size: {result.Length}");
+            Logger.Instance.WriteLine($"Merged source code size: {result.Length}");
             return result;
         }
 

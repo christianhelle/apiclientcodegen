@@ -50,17 +50,17 @@ namespace ApiClientCodeGen.VSMac.CustomTools
             var contents = await Task.Run(() => generator.GenerateCode(progressReporter));
             await Task.Run(() => File.WriteAllText(outputFile, contents));            
                 
-            Trace.WriteLine(Environment.NewLine);
-            Trace.WriteLine($"Output file size: {new FileInfo(outputFile).Length}");
+            Logger.WriteLine(Environment.NewLine);
+            Logger.WriteLine($"Output file size: {new FileInfo(outputFile).Length}");
             
-            Trace.WriteLine(Environment.NewLine);
-            Trace.WriteLine("###################################################################");
-            Trace.WriteLine("#  Do you find this tool useful?                                  #");
-            Trace.WriteLine("#  https://www.buymeacoffee.com/christianhelle                    #");
-            Trace.WriteLine("#                                                                 #");
-            Trace.WriteLine("#  Does this tool not work or does it lack something you need?    #");
-            Trace.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues      #");
-            Trace.WriteLine("###################################################################");
+            Logger.WriteLine(Environment.NewLine);
+            Logger.WriteLine("###################################################################");
+            Logger.WriteLine("#  Do you find this tool useful?                                  #");
+            Logger.WriteLine("#  https://www.buymeacoffee.com/christianhelle                    #");
+            Logger.WriteLine("#                                                                 #");
+            Logger.WriteLine("#  Does this tool not work or does it lack something you need?    #");
+            Logger.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues      #");
+            Logger.WriteLine("###################################################################");
         }
 
         protected abstract ICodeGenerator GetCodeGenerator(

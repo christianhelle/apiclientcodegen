@@ -31,12 +31,12 @@ namespace Rapicgen.Core.Installer
                 !forceDownload)
                 return filePath;
 
-            Trace.WriteLine($"{outputFilename} not found. Attempting to download {outputFilename}");
+            Logger.Instance.WriteLine($"{outputFilename} not found. Attempting to download {outputFilename}");
 
             var tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.jar");
             downloader.DownloadFile(url, tempFile);
 
-            Trace.WriteLine($"{outputFilename} downloaded successfully");
+            Logger.Instance.WriteLine($"{outputFilename} downloaded successfully");
 
             MoveFile(filePath, tempFile);
 
@@ -55,7 +55,7 @@ namespace Rapicgen.Core.Installer
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.WriteLine(e);
+                
             }
         }
     }

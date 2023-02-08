@@ -23,8 +23,7 @@ namespace Rapicgen.Core.Extensions
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Trace.WriteLine("Unable to extract class name from document path: " + document.DocumentPath);
-                Trace.WriteLine(e);
+                Logger.Instance.WriteLine("Unable to extract class name from document path: " + document.DocumentPath);
             }
 
             return string.IsNullOrWhiteSpace(document.Info?.Title)

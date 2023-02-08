@@ -31,15 +31,15 @@ namespace Rapicgen.Options.General
                 OpenApiGeneratorPath = PathProvider.GetOpenApiGeneratorPath();
                 InstallMissingPackages = true;
 
-                Trace.WriteLine(e);
-                Trace.WriteLine(Environment.NewLine);
-                Trace.WriteLine("Error reading user options. Reverting to default values");
-                Trace.WriteLine($"JavaPath = {JavaPath}");
-                Trace.WriteLine($"NpmPath = {NpmPath}");
-                Trace.WriteLine($"NSwagPath = {NSwagPath}");
-                Trace.WriteLine($"SwaggerCodegenPath = {SwaggerCodegenPath}");
-                Trace.WriteLine($"OpenApiGeneratorPath = {OpenApiGeneratorPath}");
-                Trace.WriteLine($"InstallMissingPackages = {InstallMissingPackages}");
+                
+                Logger.Instance.WriteLine(Environment.NewLine);
+                Logger.Instance.WriteLine("Error reading user options. Reverting to default values");
+                Logger.Instance.WriteLine($"JavaPath = {JavaPath}");
+                Logger.Instance.WriteLine($"NpmPath = {NpmPath}");
+                Logger.Instance.WriteLine($"NSwagPath = {NSwagPath}");
+                Logger.Instance.WriteLine($"SwaggerCodegenPath = {SwaggerCodegenPath}");
+                Logger.Instance.WriteLine($"OpenApiGeneratorPath = {OpenApiGeneratorPath}");
+                Logger.Instance.WriteLine($"InstallMissingPackages = {InstallMissingPackages}");
             }
         }
 
