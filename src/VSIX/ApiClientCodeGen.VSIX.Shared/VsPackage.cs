@@ -107,7 +107,9 @@ namespace Rapicgen
             CancellationToken cancellationToken,
             IProgress<ServiceProgressData> progress)
         {
-            Logger.Setup(new SentryRemoteLogger()).WithDefaultTags("VSIX");
+            Logger
+                .Setup(new SentryRemoteLogger(), new OutputWindowRemoteLogger())
+                .WithDefaultTags("VSIX");
 
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
             await base.InitializeAsync(cancellationToken, progress);
