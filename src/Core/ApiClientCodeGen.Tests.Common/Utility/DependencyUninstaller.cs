@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Rapicgen.Core.Generators;
+using Rapicgen.Core.Logging;
 
 namespace ApiClientCodeGen.Tests.Common.Utility
 {
@@ -23,7 +24,7 @@ namespace ApiClientCodeGen.Tests.Common.Utility
             }
 
             new ProcessLauncher().Start(npmCommand, "uninstall -g autorest");
-            Trace.WriteLine("AutoRest uninstalled successfully through NPM");
+            Logger.Instance.WriteLine("AutoRest uninstalled successfully through NPM");
         }
 
         public static void UninstallOpenApiGenerator() 
