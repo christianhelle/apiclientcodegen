@@ -25,15 +25,15 @@ namespace Rapicgen.Options.AutoRest
             {
                 Logger.Instance.TrackError(e);
 
-                Trace.WriteLine(e);
-                Trace.WriteLine(Environment.NewLine);
-                Trace.WriteLine("Error reading user options. Reverting to default values");
-                Trace.WriteLine($"AddCredentials = {AddCredentials}");
-                Trace.WriteLine($"OverrideClientName = {OverrideClientName}");
-                Trace.WriteLine($"UseInternalConstructors = {UseInternalConstructors}");
-                Trace.WriteLine($"SyncMethods = {SyncMethods}");
-                Trace.WriteLine($"UseDateTimeOffset = {UseDateTimeOffset}");
-                Trace.WriteLine($"UseDateTimeOClientSideValidationffset = {ClientSideValidation}");
+                
+                Logger.Instance.WriteLine(Environment.NewLine);
+                Logger.Instance.WriteLine("Error reading user options. Reverting to default values");
+                Logger.Instance.WriteLine($"AddCredentials = {AddCredentials}");
+                Logger.Instance.WriteLine($"OverrideClientName = {OverrideClientName}");
+                Logger.Instance.WriteLine($"UseInternalConstructors = {UseInternalConstructors}");
+                Logger.Instance.WriteLine($"SyncMethods = {SyncMethods}");
+                Logger.Instance.WriteLine($"UseDateTimeOffset = {UseDateTimeOffset}");
+                Logger.Instance.WriteLine($"UseDateTimeOClientSideValidationffset = {ClientSideValidation}");
 
                 AddCredentials = false;
                 OverrideClientName = false;
