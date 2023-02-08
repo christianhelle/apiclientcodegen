@@ -28,18 +28,18 @@ namespace Rapicgen.Options.OpenApiGenerator
             {
                 Logger.Instance.TrackError(e);
 
-                Trace.WriteLine(e);
-                Trace.WriteLine(Environment.NewLine);
-                Trace.WriteLine("Error reading user options. Reverting to default values");
-                Trace.WriteLine($"EmitDefaultValue = {EmitDefaultValue}");
-                Trace.WriteLine($"MethodArgument = {MethodArgument}");
-                Trace.WriteLine($"GeneratePropertyChanged = {GeneratePropertyChanged}");
-                Trace.WriteLine($"UseCollection = {UseCollection}");
-                Trace.WriteLine($"UseDateTimeOffset = {UseDateTimeOffset}");
-                Trace.WriteLine($"TargetFramework = {TargetFramework}");
-                Trace.WriteLine($"CustomAdditionalProperties = {CustomAdditionalProperties}");
-                Trace.WriteLine($"SkipFormModel = {SkipFormModel}");
-                Trace.WriteLine($"TemplatesPath = {TemplatesPath}");
+                
+                Logger.Instance.WriteLine(Environment.NewLine);
+                Logger.Instance.WriteLine("Error reading user options. Reverting to default values");
+                Logger.Instance.WriteLine($"EmitDefaultValue = {EmitDefaultValue}");
+                Logger.Instance.WriteLine($"MethodArgument = {MethodArgument}");
+                Logger.Instance.WriteLine($"GeneratePropertyChanged = {GeneratePropertyChanged}");
+                Logger.Instance.WriteLine($"UseCollection = {UseCollection}");
+                Logger.Instance.WriteLine($"UseDateTimeOffset = {UseDateTimeOffset}");
+                Logger.Instance.WriteLine($"TargetFramework = {TargetFramework}");
+                Logger.Instance.WriteLine($"CustomAdditionalProperties = {CustomAdditionalProperties}");
+                Logger.Instance.WriteLine($"SkipFormModel = {SkipFormModel}");
+                Logger.Instance.WriteLine($"TemplatesPath = {TemplatesPath}");
 
                 EmitDefaultValue = true;
             }
