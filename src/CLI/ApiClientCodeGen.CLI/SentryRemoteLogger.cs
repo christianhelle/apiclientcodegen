@@ -58,5 +58,10 @@ namespace Rapicgen.CLI
         {
             SentrySdk.Close();
         }
+
+        public void WriteLine(object data)
+        {
+            // Method intentionally left empty.
+        }
     }
 }

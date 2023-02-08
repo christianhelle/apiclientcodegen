@@ -55,5 +55,10 @@ namespace Rapicgen.Core.Logging
 
         public void Disable()
             => Loggers.ForEach(c => c.Disable());
+
+        public void WriteLine(object data)
+        {
+            // Method intentionally left empty.
+        }
     }
 }
