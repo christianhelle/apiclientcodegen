@@ -7,6 +7,7 @@ using Rapicgen.CustomTool;
 using Rapicgen.Extensions;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
+using Rapicgen.Core.Logging;
 using Task = System.Threading.Tasks.Task;
 
 namespace Rapicgen.Commands.CustomTool
@@ -48,7 +49,7 @@ namespace Rapicgen.Commands.CustomTool
             item.Properties.Item("CustomTool").Value = typeof(T).Name;
 
             var name = typeof(T).Name.Replace("CodeGenerator", string.Empty);
-            Trace.WriteLine($"Generating code using {name}");
+            Logger.Instance.WriteLine($"Generating code using {name}");
 
             var project = dte.GetActiveProject();
             if (project != null)
