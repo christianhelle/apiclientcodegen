@@ -75,11 +75,11 @@ namespace Rapicgen.CustomTool
 
                 if (supportedLanguage == SupportedLanguage.VisualBasic && converter != null)
                 {
-                    Trace.WriteLine(Environment.NewLine);
-                    Trace.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                    Trace.WriteLine("!!! EXPERIMENTAL - Attempting to convert C# code to Visual Basic !!!");
-                    Trace.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                    Trace.WriteLine(Environment.NewLine);
+                    Logger.Instance.WriteLine(Environment.NewLine);
+                    Logger.Instance.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    Logger.Instance.WriteLine("!!! EXPERIMENTAL - Attempting to convert C# code to Visual Basic !!!");
+                    Logger.Instance.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    Logger.Instance.WriteLine(Environment.NewLine);
 
                     code = converter
                         .ConvertAsync(code)
@@ -89,24 +89,24 @@ namespace Rapicgen.CustomTool
 
                 rgbOutputFileContents[0] = code.ConvertToIntPtr(out pcbOutput);
 
-                Trace.WriteLine(Environment.NewLine);
-                Trace.WriteLine($"Output file size: {pcbOutput}");
+                Logger.Instance.WriteLine(Environment.NewLine);
+                Logger.Instance.WriteLine($"Output file size: {pcbOutput}");
 
-                Trace.WriteLine(Environment.NewLine);
-                Trace.WriteLine("#######################################################################################");
-                Trace.WriteLine("#                                                                                     #");
-                Trace.WriteLine("#  I would be very grateful for a rating or review on the Visual Studio Marketplace   #");
-                Trace.WriteLine("#  - Visual Studio 2022 - https://bit.ly/rapicgen-vs2022                              #");
-                Trace.WriteLine("#  - Visual Studio 2019 - https://bit.ly/rapicgen-vs2019                              #");
-                Trace.WriteLine("#  - Visual Studio 2017 - https://bit.ly/rapicgen-vs2017                              #");
-                Trace.WriteLine("#                                                                                     #");
-                Trace.WriteLine("#  Does this tool not work or does it lack something you need?                        #");
-                Trace.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues                          #");
-                Trace.WriteLine("#                                                                                     #");
-                Trace.WriteLine("#  Are you feeling generous? Do you find this tool useful?                            #");
-                Trace.WriteLine("#  https://www.buymeacoffee.com/christianhelle                                        #");
-                Trace.WriteLine("#                                                                                     #");
-                Trace.WriteLine("#######################################################################################");
+                Logger.Instance.WriteLine(Environment.NewLine);
+                Logger.Instance.WriteLine("#######################################################################################");
+                Logger.Instance.WriteLine("#                                                                                     #");
+                Logger.Instance.WriteLine("#  I would be very grateful for a rating or review on the Visual Studio Marketplace   #");
+                Logger.Instance.WriteLine("#  - Visual Studio 2022 - https://bit.ly/rapicgen-vs2022                              #");
+                Logger.Instance.WriteLine("#  - Visual Studio 2019 - https://bit.ly/rapicgen-vs2019                              #");
+                Logger.Instance.WriteLine("#  - Visual Studio 2017 - https://bit.ly/rapicgen-vs2017                              #");
+                Logger.Instance.WriteLine("#                                                                                     #");
+                Logger.Instance.WriteLine("#  Does this tool not work or does it lack something you need?                        #");
+                Logger.Instance.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues                          #");
+                Logger.Instance.WriteLine("#                                                                                     #");
+                Logger.Instance.WriteLine("#  Are you feeling generous? Do you find this tool useful?                            #");
+                Logger.Instance.WriteLine("#  https://www.buymeacoffee.com/christianhelle                                        #");
+                Logger.Instance.WriteLine("#                                                                                     #");
+                Logger.Instance.WriteLine("#######################################################################################");
             }
             catch (NotSupportedException e)
             {
@@ -142,14 +142,14 @@ namespace Rapicgen.CustomTool
             rgbOutputFileContents[0] = string.Empty.ConvertToIntPtr(out pcbOutput);
             pGenerateProgress?.GeneratorError(e);
 
-            Trace.WriteLine("Unable to generate code");
-            Trace.WriteLine(e);
+            Logger.Instance.WriteLine("Unable to generate code");
+            
 
-            Trace.WriteLine(Environment.NewLine);
-            Trace.WriteLine("######################################################################################");
-            Trace.WriteLine("# Create a Github Issue at https://github.com/christianhelle/apiclientcodegen/issues #");
-            Trace.WriteLine("######################################################################################");
-            Trace.WriteLine(Environment.NewLine);
+            Logger.Instance.WriteLine(Environment.NewLine);
+            Logger.Instance.WriteLine("######################################################################################");
+            Logger.Instance.WriteLine("# Create a Github Issue at https://github.com/christianhelle/apiclientcodegen/issues #");
+            Logger.Instance.WriteLine("######################################################################################");
+            Logger.Instance.WriteLine(Environment.NewLine);
         }
     }
 }
