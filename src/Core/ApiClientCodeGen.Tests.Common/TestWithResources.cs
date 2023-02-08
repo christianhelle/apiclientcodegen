@@ -6,6 +6,7 @@ using System.Net;
 using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common.Resources;
 using Polly;
+using Rapicgen.Core.Logging;
 using Xunit;
 
 namespace ApiClientCodeGen.Tests.Common
@@ -90,7 +91,7 @@ namespace ApiClientCodeGen.Tests.Common
             TimeSpan SleepDurationProvider(int retryAttempt)
             {
                 var duration = TimeSpan.FromSeconds(Math.Pow(2, retryAttempt));
-                Trace.WriteLine($"Operation failed! Retrying in {duration}");
+                Logger.Instance.WriteLine($"Operation failed! Retrying in {duration}");
                 return duration;
             }
             
