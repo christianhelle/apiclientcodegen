@@ -90,7 +90,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                 .Verify(
                     c => c.Start(
                         It.IsAny<string>(),
-                        "tool install --global Microsoft.OpenApi.Kiota --version 0.10.0-preview", 
+                        "tool install --global Microsoft.OpenApi.Kiota --version 0.11.0-preview", 
                         null));
         }
         
@@ -104,7 +104,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                 .Throws(
                     new ProcessLaunchException(
                         "dotnet",
-                        "tool install --global Microsoft.OpenApi.Kiota --version 0.10.0-preview",
+                        "tool install --global Microsoft.OpenApi.Kiota --version 0.11.0-preview",
                         null,
                         string.Empty,
                         "Tool 'microsoft.openapi.kiota' is already installed."));
