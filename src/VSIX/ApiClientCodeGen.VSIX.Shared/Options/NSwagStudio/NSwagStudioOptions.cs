@@ -31,20 +31,20 @@ namespace Rapicgen.Options.NSwagStudio
             {
                 Logger.Instance.TrackError(e);
                 
-                Trace.WriteLine(e);
-                Trace.WriteLine(Environment.NewLine);
-                Trace.WriteLine("Error reading user options. Reverting to default values");
-                Trace.WriteLine("GenerateResponseClasses = true");
-                Trace.WriteLine("GenerateJsonMethods = true");
-                Trace.WriteLine("RequiredPropertiesMustBeDefined = true");
-                Trace.WriteLine("GenerateDefaultValues = true");
-                Trace.WriteLine("GenerateDataAnnotations = true");
-                Trace.WriteLine("InjectHttpClient = true");
-                Trace.WriteLine("GenerateClientInterfaces = true");
-                Trace.WriteLine("GenerateDtoTypes = true");
-                Trace.WriteLine("UseBaseUrl = false");
-                Trace.WriteLine("ClassStyle = CSharpClassStyle.Poco");
-                Trace.WriteLine("UseDocumentTitle = true");
+                
+                Logger.Instance.WriteLine(Environment.NewLine);
+                Logger.Instance.WriteLine("Error reading user options. Reverting to default values");
+                Logger.Instance.WriteLine("GenerateResponseClasses = true");
+                Logger.Instance.WriteLine("GenerateJsonMethods = true");
+                Logger.Instance.WriteLine("RequiredPropertiesMustBeDefined = true");
+                Logger.Instance.WriteLine("GenerateDefaultValues = true");
+                Logger.Instance.WriteLine("GenerateDataAnnotations = true");
+                Logger.Instance.WriteLine("InjectHttpClient = true");
+                Logger.Instance.WriteLine("GenerateClientInterfaces = true");
+                Logger.Instance.WriteLine("GenerateDtoTypes = true");
+                Logger.Instance.WriteLine("UseBaseUrl = false");
+                Logger.Instance.WriteLine("ClassStyle = CSharpClassStyle.Poco");
+                Logger.Instance.WriteLine("UseDocumentTitle = true");
 
                 GenerateResponseClasses = true;
                 GenerateJsonMethods = true;
