@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using Rapicgen.Core.Installer;
+using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.General;
 
 namespace Rapicgen.Core.Generators.OpenApi
@@ -42,7 +43,7 @@ namespace Rapicgen.Core.Generators.OpenApi
                 var jarFile = options.OpenApiGeneratorPath;
                 if (!File.Exists(jarFile))
                 {
-                    Trace.WriteLine(jarFile + " does not exist");
+                    Logger.Instance.WriteLine(jarFile + " does not exist");
                     jarFile = dependencyInstaller.InstallOpenApiGenerator();
                 }
 
