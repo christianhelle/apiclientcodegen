@@ -30,7 +30,7 @@ namespace Rapicgen.Core
                     npm,
                     "config get prefix",
                     o => prefix += o,
-                    e => Trace.WriteLine(e));
+                    e => Logger.Instance.WriteLine(e));
                 context.Succeeded();
                 return prefix;
             }
