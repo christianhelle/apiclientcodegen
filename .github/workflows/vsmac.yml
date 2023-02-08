@@ -10,11 +10,11 @@ on:
       - '!src/VSMac/**/*.cs'
     branches:
       - '*'
-  pull_request:
-    branches:
-      - '*'
-  schedule:
-    - cron:  '0 8 * * *'
+  # pull_request:
+  #   branches:
+  #     - '*'
+  # schedule:
+  #   - cron:  '0 8 * * *'
 
 jobs:
   build:
