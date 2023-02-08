@@ -5,6 +5,7 @@ using System.IO;
 using ApiClientCodeGen.Tests.Common.Build.Projects;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
+using Rapicgen.Core.Logging;
 
 namespace ApiClientCodeGen.Tests.Common.Build
 {
@@ -22,7 +23,7 @@ namespace ApiClientCodeGen.Tests.Common.Build
                 Directory.CreateDirectory(path);
                 var projectFile = Path.Combine(path, "Project.csproj");
                 var projectContents = GetProjectContents(projecType, generator);
-                Trace.WriteLine(projectContents);
+                Logger.Instance.WriteLine(projectContents);
                 File.WriteAllText(projectFile, projectContents);
                 File.WriteAllText(Path.Combine(path, "Generated.cs"), generatedCode);
                 new ProcessLauncher().Start(GetDotNetCli(), $"build \"{projectFile}\"");
