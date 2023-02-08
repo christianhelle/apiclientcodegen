@@ -41,7 +41,7 @@ namespace Rapicgen.Core.Generators.Swagger
                 var jarFile = options.SwaggerCodegenPath;
                 if (!File.Exists(jarFile))
                 {
-                    Trace.WriteLine(jarFile + " does not exist");
+                    Logger.Instance.WriteLine(jarFile + " does not exist");
                     jarFile = dependencyInstaller.InstallSwaggerCodegen();
                 }
 
