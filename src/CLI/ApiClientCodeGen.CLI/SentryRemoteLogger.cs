@@ -61,7 +61,7 @@ namespace Rapicgen.CLI
 
         public void WriteLine(object data)
         {
-            // Method intentionally left empty.
+            Console.Out.WriteLine(data);
         }
     }
 }
