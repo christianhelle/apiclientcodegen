@@ -69,12 +69,12 @@ namespace Rapicgen.Windows
                 if (string.IsNullOrWhiteSpace(openApiSpecification))
                 {
                     lblStatus.Text = "No content!";
-                    Trace.WriteLine($"Unable to download OpenAPI specification file from {url}");
+                    Logger.Instance.WriteLine($"Unable to download OpenAPI specification file from {url}");
                     return;
                 }
 
-                Trace.WriteLine("OpenAPI Specifications:");
-                Trace.WriteLine(openApiSpecification);
+                Logger.Instance.WriteLine("OpenAPI Specifications:");
+                Logger.Instance.WriteLine(openApiSpecification);
 
                 Result = new EnterOpenApiSpecDialogResult(
                     openApiSpecification,
@@ -89,14 +89,14 @@ namespace Rapicgen.Windows
                 Logger.Instance.TrackError(ex);
                 const string message = "Invalid URL";
                 lblStatus.Text = message;
-                Trace.WriteLine(message);
-                Trace.WriteLine(ex);
+                Logger.Instance.WriteLine(message);
+                Logger.Instance.WriteLine(ex);
             }
             catch (Exception ex)
             {
                 Logger.Instance.TrackError(ex);
-                Trace.WriteLine($"Unable to download OpenAPI specification file from {url}");
-                Trace.WriteLine(ex);
+                Logger.Instance.WriteLine($"Unable to download OpenAPI specification file from {url}");
+                Logger.Instance.WriteLine(ex);
             }
         }
 
