@@ -16,7 +16,6 @@ using Rapicgen.Options.OpenApiGenerator;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
-using Rapicgen.Windows;
 using System.Diagnostics;
 
 namespace Rapicgen
@@ -108,7 +107,6 @@ namespace Rapicgen
             CancellationToken cancellationToken,
             IProgress<ServiceProgressData> progress)
         {
-            Trace.Listeners.Add(new OutputWindowTraceListener());
             Logger.Setup(new SentryRemoteLogger()).WithDefaultTags("VSIX");
 
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
