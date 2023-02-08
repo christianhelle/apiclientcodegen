@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using Rapicgen.Core.Logging;
 
 namespace Rapicgen.Core.Generators
 {
@@ -32,8 +33,8 @@ namespace Rapicgen.Core.Generators
             => Start(
                 command,
                 arguments,
-                o => Trace.WriteLine(o),
-                e => Trace.WriteLine(e),
+                o => Logger.Instance.WriteLine(o),
+                e => Logger.Instance.WriteLine(e),
                 workingDirectory);
 
         public void Start(
@@ -43,11 +44,11 @@ namespace Rapicgen.Core.Generators
             Action<string> onErrorData,
             string? workingDirectory = null)
         {
-            Trace.WriteLine("Executing:");
-            Trace.WriteLine($"{command} {arguments}");
+            Logger.Instance.WriteLine("Executing:");
+            Logger.Instance.WriteLine($"{command} {arguments}");
 
             if (!string.IsNullOrWhiteSpace(workingDirectory)) 
-                Trace.WriteLine($"Working directory: {workingDirectory}");
+                Logger.Instance.WriteLine($"Working directory: {workingDirectory}");
 
             if (command.Contains("npm"))
             {
