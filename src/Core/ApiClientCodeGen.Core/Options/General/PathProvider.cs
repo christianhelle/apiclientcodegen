@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using Rapicgen.Core.Logging;
 
@@ -31,7 +30,7 @@ namespace Rapicgen.Core.Options.General
         {
             if (Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix || withoutPath)
                 return "npm";
-            
+
             if (string.IsNullOrWhiteSpace(programFiles))
                 programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
 
@@ -41,7 +40,7 @@ namespace Rapicgen.Core.Options.General
             var npmCommand = Path.Combine(programFiles, "nodejs\\npm.cmd");
             if (!File.Exists(npmCommand))
                 npmCommand = Path.Combine(programFiles64, "nodejs\\npm.cmd");
-            
+
             return File.Exists(npmCommand) ? npmCommand : string.Empty;
         }
 
@@ -79,19 +78,24 @@ namespace Rapicgen.Core.Options.General
             => Path.Combine(
                 Path.GetTempPath(),
                 "openapi-generator-cli.jar");
-        
+
         public static string GetDotNetPath()
         {
             var programFiles = Environment.Is64BitOperatingSystem
-                ? Environment.SpecialFolder.ProgramFiles
-                : Environment.SpecialFolder.ProgramFilesX86;
+                ? GetProgramFiles64bitPath()
+                : Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
 
             return Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix
                 ? "dotnet"
-                : Path.Combine(
-                    Environment.GetFolderPath(programFiles),
-                    "dotnet",
-                    "dotnet.exe");
+                : Path.Combine(programFiles, "dotnet", "dotnet.exe");
+        }
+
+        private static string GetProgramFiles64bitPath()
+        {
+            var programFiles = Environment.GetEnvironmentVariable("ProgramW6432");
+            return string.IsNullOrWhiteSpace(programFiles)
+                ? Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles)
+                : programFiles;
         }
     }
 }
