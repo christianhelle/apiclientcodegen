@@ -63,7 +63,7 @@ namespace Rapicgen.Core.Generators.NSwagStudio
             if (!string.IsNullOrWhiteSpace(command) && File.Exists(command) && !forceDownload)
                 return command;
 
-            Trace.WriteLine(
+            Logger.Instance.WriteLine(
                 forceDownload
                     ? "Downloading NSwag using NPM"
                     : $"{command} could not be found in specified path! Retrying with default NSwag.exe path");
