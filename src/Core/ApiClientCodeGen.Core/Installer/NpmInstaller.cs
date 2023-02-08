@@ -17,13 +17,13 @@ namespace Rapicgen.Core.Installer
 
         public void InstallNpmPackage(string packageName)
         {
-            Trace.WriteLine($"Attempting to install {packageName} through NPM");
+            Logger.Instance.WriteLine($"Attempting to install {packageName} through NPM");
 
             using var context = new DependencyContext($"npm install -g {packageName}");
             processLauncher.Start(PathProvider.GetNpmPath(), $"install -g {packageName}");
             context.Succeeded();
 
-            Trace.WriteLine($"{packageName} installed successfully through NPM");
+            Logger.Instance.WriteLine($"{packageName} installed successfully through NPM");
         }
     }
 }
