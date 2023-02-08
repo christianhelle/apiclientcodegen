@@ -7,6 +7,7 @@ using Rapicgen.CustomTool.AutoRest;
 using Rapicgen.Extensions;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
+using Rapicgen.Core.Logging;
 using Task = System.Threading.Tasks.Task;
 
 namespace Rapicgen.Commands.CustomTool
@@ -30,7 +31,7 @@ namespace Rapicgen.Commands.CustomTool
             item.Properties.Item("CustomTool").Value = type.Name;
 
             var name = type.Name.Replace("CodeGenerator", string.Empty);
-            Trace.WriteLine($"Generating code using {name}");
+            Logger.Instance.WriteLine($"Generating code using {name}");
 
             var documentFactory = new OpenApiDocumentFactory();
             var swaggerFile = item.FileNames[0];
