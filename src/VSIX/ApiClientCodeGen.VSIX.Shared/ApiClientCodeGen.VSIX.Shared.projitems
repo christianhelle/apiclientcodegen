@@ -100,7 +100,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Windows\NativeMethods.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Windows\OutputWindow.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Windows\OutputWindowTraceListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Resources\Icon.png">
