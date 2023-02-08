@@ -6,8 +6,8 @@ on:
     paths-ignore:
       - '**/*'
       - '!.github/workflows/vsmac.yml'
-      - '!src/VSMac/**/*.csproj'
-      - '!src/VSMac/**/*.cs'
+      - '!src/VSMac/**/*'
+      - '!src/Core/**/*'
     branches:
       - '*'
   # pull_request:
