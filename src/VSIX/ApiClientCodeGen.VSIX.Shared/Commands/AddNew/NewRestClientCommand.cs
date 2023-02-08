@@ -62,14 +62,14 @@ namespace Rapicgen.Commands.AddNew
             var selectedItem = ProjectExtensions.GetSelectedItem();
             if (selectedItem == null)
             {
-                Trace.WriteLine("Nothing is selected");
+                Logger.Instance.WriteLine("Nothing is selected");
                 return;
             }
 
             var folder = FindFolder(selectedItem, dte);
             if (string.IsNullOrWhiteSpace(folder))
             {
-                Trace.WriteLine("Unable to get folder name");
+                Logger.Instance.WriteLine("Unable to get folder name");
                 return;
             }
 
