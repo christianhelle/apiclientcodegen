@@ -137,7 +137,7 @@ namespace Rapicgen
             }
             catch (Exception e)
             {
-                Trace.WriteLine("Failed to setup version tracking");
+                Logger.Instance.WriteLine("Failed to setup version tracking");
                 Logger.Instance.TrackError(e);
             }
         }
