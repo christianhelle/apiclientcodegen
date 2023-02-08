@@ -28,16 +28,16 @@ namespace Rapicgen.Options.NSwag
             {
                 Logger.Instance.TrackError(e);
 
-                Trace.WriteLine(e);
-                Trace.WriteLine(Environment.NewLine);
-                Trace.WriteLine("Error reading user options. Reverting to default values");
-                Trace.WriteLine("InjectHttpClient = true");
-                Trace.WriteLine("GenerateClientInterfaces = true");
-                Trace.WriteLine("GenerateDtoTypes = true");
-                Trace.WriteLine("UseBaseUrl = false");
-                Trace.WriteLine("ClassStyle = CSharpClassStyle.Poco");
-                Trace.WriteLine("UseDocumentTitle = true");
-                Trace.WriteLine("ParameterDateTimeFormat = s");
+                
+                Logger.Instance.WriteLine(Environment.NewLine);
+                Logger.Instance.WriteLine("Error reading user options. Reverting to default values");
+                Logger.Instance.WriteLine("InjectHttpClient = true");
+                Logger.Instance.WriteLine("GenerateClientInterfaces = true");
+                Logger.Instance.WriteLine("GenerateDtoTypes = true");
+                Logger.Instance.WriteLine("UseBaseUrl = false");
+                Logger.Instance.WriteLine("ClassStyle = CSharpClassStyle.Poco");
+                Logger.Instance.WriteLine("UseDocumentTitle = true");
+                Logger.Instance.WriteLine("ParameterDateTimeFormat = s");
 
                 InjectHttpClient = true;
                 GenerateClientInterfaces = true;
