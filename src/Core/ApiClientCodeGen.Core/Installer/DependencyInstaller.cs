@@ -59,7 +59,7 @@ namespace Rapicgen.Core.Installer
             }
             catch (ProcessLaunchException e)
             {
-                if (e.ErrorData?.Contains("Tool 'microsoft.openapi.kiota' is already installed") != true)
+                if (e.ErrorData?.Contains("'microsoft.openapi.kiota'") != true)
                     throw;
             }
         }
