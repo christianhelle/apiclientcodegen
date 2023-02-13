@@ -52,14 +52,14 @@ namespace Rapicgen.Core.Installer
             try
             {
                 var command = PathProvider.GetDotNetPath();
-                const string arguments = "tool install --global Microsoft.OpenApi.Kiota --version 0.11.0-preview";
+                const string arguments = "tool install --global Microsoft.OpenApi.Kiota --version 0.11.1-preview";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
                 processLauncher.Start(command, arguments);
                 context.Succeeded();
             }
             catch (ProcessLaunchException e)
             {
-                if (e.ErrorData?.Contains("Tool 'microsoft.openapi.kiota' is already installed") != true)
+                if (e.ErrorData?.Contains("'microsoft.openapi.kiota'") != true)
                     throw;
             }
         }
