@@ -7,24 +7,6 @@ updates:
     time: "04:00"
   open-pull-requests-limit: 10
   ignore:
-  - dependency-name: Microsoft.VisualStudio.ComponentModelHost
-    versions:
-    - ">= 16.a, < 17"
-  - dependency-name: Microsoft.VisualStudio.Text.Data
-    versions:
-    - ">= 16.a, < 17"
-  - dependency-name: Microsoft.VisualStudio.TextTemplating.VSHost.15.0
-    versions:
-    - ">= 16.a, < 17"
-  - dependency-name: Microsoft.VisualStudio.Threading
-    versions:
-    - ">= 16.a, < 17"
-  - dependency-name: Microsoft.VisualStudio.Threading.Analyzers
-    versions:
-    - "> 16.7.56, < 17"
-  - dependency-name: Microsoft.VisualStudio.Validation
-    versions:
-    - ">= 16.a, < 17"
   - dependency-name: Newtonsoft.Json
     versions:
     - ">= 10.a, < 11"
@@ -49,18 +31,3 @@ updates:
   - dependency-name: StreamJsonRpc
     versions:
     - ">= 2.a, < 3"
-  - dependency-name: VSLangProj
-    versions:
-    - ">= 16.a, < 17"
-  - dependency-name: NSwag.CodeGeneration.CSharp
-    versions:
-    - 13.10.3
-  - dependency-name: NSwag.Core.Yaml
-    versions:
-    - 13.10.3
-  - dependency-name: Sentry
-    versions:
-    - 3.0.6
-  - dependency-name: Microsoft.VSSDK.BuildTools
-    versions:
-    - 16.10.7
