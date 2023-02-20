@@ -122,9 +122,6 @@
     <PackageReference Include="Sentry">
       <Version>3.28.1</Version>
     </PackageReference>
-    <PackageReference Include="StreamJsonRpc">
-      <Version>1.5.68</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="..\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
