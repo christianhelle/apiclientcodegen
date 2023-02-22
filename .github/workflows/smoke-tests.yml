@@ -6,9 +6,9 @@ on:
     paths-ignore:
       - '**/*'
       - '!.github/workflows/smoke-tests.yml'
-      - 'src/CLI/ApiClientCodeGen.CLI/**/*'
-      - 'src/Core/ApiClientCodeGen.Core/**/*'
-      - 'src/VSIX/ApiClientCodeGen.Vsix.Shared/**/*'
+      - '!src/CLI/ApiClientCodeGen.CLI/**/*'
+      - '!src/Core/ApiClientCodeGen.Core/**/*'
+      - '!src/VSIX/ApiClientCodeGen.Vsix.Shared/**/*'
       - '!test/GeneratedCode/**/*.csproj'
       - '!test/OpenAPI/**/Swagger.*'
     branches:
