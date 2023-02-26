@@ -25,11 +25,11 @@ Options:
   -?|-h|--help       Show help information.
 
 Commands:
-  csharp             Generate C# API client
+  csharp             Generate C# API clients
   jmeter             Generate Apache JMeter test plans
-  openapi-generator  Generate code using OpenAPI Generator.
+  openapi-generator  Generate code using OpenAPI Generator (v6.4.0).
                      See supported generators at https://openapi-generator.tech/docs/generators/
-  typescript         Generate TypeScript API client
+  typescript         Generate TypeScript API clients
 
 Run 'rapicgen [command] -?|-h|--help' for more information about a command.
 ```
@@ -55,7 +55,7 @@ rapicgen csharp -?
 will output this:
 
 ```
-Generate C# API client
+Generate C# API clients
 
 Usage: rapicgen csharp [command] [options]
 
@@ -63,11 +63,12 @@ Options:
   -?|-h|--help  Show help information.
 
 Commands:
-  autorest      Generate C# API client using AutoRest
-  kiota         Generate C# API client using Kiota
-  nswag         Generate C# API client using NSwag
-  openapi       Generate C# API client using OpenAPI Generator
-  swagger       Generate C# API client using Swagger Codegen CLI
+  autorest      AutoRest (v3.0.0-beta.20210504.2)
+  kiota         Microsoft project Kiota (v0.11.1)
+  nswag         NSwag (v13.18.2)
+  openapi       OpenAPI Generator (v6.4.0)
+  refitter      Refitter (v0.2.2-alpha)
+  swagger       Swagger Codegen CLI (v3.0.34)
 
 Run 'csharp [command] -?|-h|--help' for more information about a command.
 ```
