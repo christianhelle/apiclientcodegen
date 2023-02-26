@@ -16,7 +16,6 @@ using Rapicgen.Options.OpenApiGenerator;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
-using System.Diagnostics;
 
 namespace Rapicgen
 {
@@ -90,13 +89,15 @@ namespace Rapicgen
             new SwaggerCodeGeneratorCustomToolSetter(),
             new OpenApiCodeGeneratorCustomToolSetter(),
             new KiotaCodeGeneratorCustomToolSetter(),
+            new RefitterCodeGeneratorCustomToolSetter(),
             new NSwagStudioCommand(),
             new NewAutoRestClientCommand(),
             new NewNSwagClientCommand(),
             new NewSwaggerClientCommand(),
             new NewOpenApiClientCommand(),
             new NewNSwagStudioClientCommand(),
-            new NewKiotaClientCommand()
+            new NewKiotaClientCommand(),
+            new NewRefitterClientCommand()
         };
 
         public static AsyncPackage Instance { get; private set; } = null!;
