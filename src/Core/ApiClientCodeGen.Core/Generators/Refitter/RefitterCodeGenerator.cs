@@ -1,13 +1,13 @@
 ﻿using Refitter.Core;
 
-namespace Rapicgen.Core.Generators.Refit;
+namespace Rapicgen.Core.Generators.Refitter;
 
-public class RefitCodeGenerator : ICodeGenerator
+public class RefitterCodeGenerator : ICodeGenerator
 {
     private readonly string swaggerFile;
     private readonly string defaultNamespace;
 
-    public RefitCodeGenerator(
+    public RefitterCodeGenerator(
         string swaggerFile,
         string defaultNamespace)
     {

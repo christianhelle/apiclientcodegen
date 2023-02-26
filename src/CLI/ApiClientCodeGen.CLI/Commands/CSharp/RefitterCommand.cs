@@ -1,7 +1,7 @@
 ﻿using McMaster.Extensions.CommandLineUtils;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
-using Rapicgen.Core.Generators.Refit;
+using Rapicgen.Core.Generators.Refitter;
 using Rapicgen.Core.Logging;
 
 namespace Rapicgen.CLI.Commands.CSharp;
@@ -17,5 +17,5 @@ public class RefitterCommand : CodeGeneratorCommand
     }
 
     public override ICodeGenerator CreateGenerator() =>
-        new RefitCodeGenerator(SwaggerFile, DefaultNamespace);
+        new RefitterCodeGenerator(SwaggerFile, DefaultNamespace);
 }

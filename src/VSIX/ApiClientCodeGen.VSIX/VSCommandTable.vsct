@@ -54,7 +54,7 @@
       </Button>
       <Button guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0104" type="Button">
         <Strings>
-          <ButtonText>Generate with AutoRest (v3.0.0-beta - Unstable)</ButtonText>
+          <ButtonText>Generate with AutoRest (v3.0.0-beta - Outdated)</ButtonText>
         </Strings>
       </Button>
 
@@ -93,7 +93,7 @@
       </Button>
       <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithAutoRest" priority="0x0105" type="Button">
         <Strings>
-          <ButtonText>Generate with AutoRest (v3.0.0-beta - Unstable)</ButtonText>
+          <ButtonText>Generate with AutoRest (v3.0.0-beta - Outdated)</ButtonText>
         </Strings>
       </Button>
 
