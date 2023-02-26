@@ -57,6 +57,11 @@
           <ButtonText>Generate with AutoRest (v3.0.0-beta - Outdated)</ButtonText>
         </Strings>
       </Button>
+      <Button guid="guidPackageCmdSet" id="RefitterCodeGeneratorCustomToolSetter" priority="0x0105" type="Button">
+        <Strings>
+          <ButtonText>Generate with Rifitter (v0.2.2-alpha)</ButtonText>
+        </Strings>
+      </Button>
 
       <Button guid="guidPackageNSwagStudioCmdSet" id="NSwagStudioCommand" priority="0x0001">
         <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE" />
@@ -96,6 +101,11 @@
           <ButtonText>Generate with AutoRest (v3.0.0-beta - Outdated)</ButtonText>
         </Strings>
       </Button>
+      <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithRefitter" priority="0x0106" type="Button">
+        <Strings>
+          <ButtonText>Generate with Refitter (v0.2.2-alpha)</ButtonText>
+        </Strings>
+      </Button>
 
     </Buttons>
   </Commands>
@@ -123,6 +133,9 @@
       <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
     </CommandPlacement>
     <CommandPlacement guid="guidPackageCmdSet" id="AutoRestCodeGeneratorCustomToolSetter" priority="0x0005" >
+      <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
+    </CommandPlacement>
+    <CommandPlacement guid="guidPackageCmdSet" id="RefitterCodeGeneratorCustomToolSetter" priority="0x0006" >
       <Parent guid="guidPackageCmdSet" id="CommandsGroup"/>
     </CommandPlacement>
 
@@ -153,6 +166,9 @@
     <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithAutoRest" priority="0x0006" >
       <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
     </CommandPlacement>
+    <CommandPlacement guid="guidNewRestApiClientCmdSet" id="GenerateWithRefitter" priority="0x0007" >
+      <Parent guid="guidNewRestApiClientCmdSet" id="NewCommandsGroup"/>
+    </CommandPlacement>
   </CommandPlacements>
 
   <VisibilityConstraints>
@@ -173,6 +189,7 @@
       <IDSymbol name="SwaggerCodeGeneratorCustomToolSetter" value="0x0400" />
       <IDSymbol name="OpenApiCodeGeneratorCustomToolSetter" value="0x0500" />
       <IDSymbol name="KiotaCodeGeneratorCustomToolSetter" value="0x0600" />
+      <IDSymbol name="RefitterCodeGeneratorCustomToolSetter" value="0x0700" />
     </GuidSymbol>
 
     <GuidSymbol name="guidNSwagStudioContext" value="{65B3A74F-CD47-476A-A992-0C3DE31455FD}" />
@@ -191,6 +208,7 @@
       <IDSymbol name="GenerateWithOpenApi" value="0x0500" />
       <IDSymbol name="GenerateWithNSwagStudio" value="0x0600" />
       <IDSymbol name="GenerateWithKiota" value="0x0700" />
+      <IDSymbol name="GenerateWithRefitter" value="0x0800" />
     </GuidSymbol>
   </Symbols>
 </CommandTable>
