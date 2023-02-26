@@ -8,6 +8,7 @@
         Swagger,
         OpenApi,
         NSwagStudio,
-        Kiota
+        Kiota,
+        Refitter
     }
 }
