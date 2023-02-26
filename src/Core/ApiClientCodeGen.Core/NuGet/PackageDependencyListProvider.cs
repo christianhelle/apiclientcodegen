@@ -75,6 +75,15 @@ namespace Rapicgen.Core.NuGet
                         PackageDependencies.MicrosoftKiotaSerializationText
                     });
                     break;
+                
+                case SupportedCodeGenerator.Refitter:
+                    list.AddRange(new[]
+                    {
+                        PackageDependencies.Refit,
+                        PackageDependencies.SystemRuntimeSerializationPrimitives,
+                        PackageDependencies.SystemComponentModelAnnotations
+                    });
+                    break;
             }
             return list;
         }

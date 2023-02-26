@@ -218,5 +218,11 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
             => sut.GetDependencies(SupportedCodeGenerator.Kiota)
                 .Should()
                 .Contain(PackageDependencies.MicrosoftKiotaSerializationText);
+
+        [Xunit.Fact]
+        public void GetDependencies_Refitter_Contains_Refit()
+            => sut.GetDependencies(SupportedCodeGenerator.Refitter)
+                .Should()
+                .Contain(PackageDependencies.Refit);
     }
 }

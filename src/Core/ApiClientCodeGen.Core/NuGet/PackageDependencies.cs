@@ -102,5 +102,10 @@ namespace Rapicgen.Core.NuGet
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Text",
                 "1.0.0-rc.3");
+
+        public static readonly PackageDependency Refit =
+            new PackageDependency(
+                "Refit",
+                new Version(6, 3, 2));
     }
 }
