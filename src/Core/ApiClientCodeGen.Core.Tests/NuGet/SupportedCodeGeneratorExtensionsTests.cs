@@ -90,5 +90,19 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
                 .GetDependencies()
                 .Should()
                 .Contain(c => c.Name == "JsonSubTypes");
+        
+        [Xunit.Fact]
+        public void GetDependencies_Refitter_Returns_NotEmpty()
+            => SupportedCodeGenerator.Refitter
+                .GetDependencies()
+                .Should()
+                .NotBeNullOrEmpty();
+        
+        [Xunit.Fact]
+        public void GetDependencies_Refitter_Contains_Refit()
+            => SupportedCodeGenerator.Refitter
+                .GetDependencies()
+                .Should()
+                .Contain(c => c.Name == "Refit");
     }
 }

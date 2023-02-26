@@ -9,7 +9,7 @@ using Rapicgen.Core.Options.AutoRest;
 
 namespace Rapicgen.CLI.Commands.CSharp
 {
-    [Command("autorest", Description = "AutoRest (Latest)")]
+    [Command("autorest", Description = "AutoRest (v3.0.0-beta.20210504.2)")]
     public class AutoRestCommand : CodeGeneratorCommand
     {
         private readonly IAutoRestOptions options;

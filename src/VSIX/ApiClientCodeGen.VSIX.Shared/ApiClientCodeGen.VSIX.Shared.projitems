@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewAutoRestClientCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewRefitterClientCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewNSwagClientCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewNSwagStudioClientCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewKiotaClientCommand.cs" />
@@ -19,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\AutoRestCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\CustomToolSetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\CustomToolSetterCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\RefitterCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\NSwagCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\KiotaCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\OpenApiCodeGeneratorCustomToolSetter.cs" />
@@ -29,6 +31,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestCSharpCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestVisualBasicCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\Refitter\RefitterCodeGenerator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\Refitter\RefitterCSharpCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\Kiota\KiotaCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\Kiota\KiotaCSharpCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\NSwag\NSwagCodeGenerator.cs" />

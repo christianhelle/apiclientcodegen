@@ -61,7 +61,7 @@ function Build-GeneratedCode {
     
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("All", "NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3", "Kiota")]
+        [ValidateSet("All", "NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3", "Kiota", "Refitter")]
         [string]
         $ToolName,
 
@@ -76,9 +76,9 @@ function Build-GeneratedCode {
     )
 
     if ($Version -eq "V2") {
-        $tools = @("AutoRest-V2", "NSwag", "Kiota", "SwaggerCodegen", "OpenApiGenerator")
+        $tools = @("AutoRest-V2", "NSwag", "Kiota", "Refitter", "SwaggerCodegen", "OpenApiGenerator")
     } else {
-        $tools = @("AutoRest-V3", "NSwag", "Kiota", "SwaggerCodegen", "OpenApiGenerator")
+        $tools = @("AutoRest-V3", "NSwag", "Kiota", "Refitter", "SwaggerCodegen", "OpenApiGenerator")
     }  
 
     if ($Parallel) {
@@ -157,7 +157,7 @@ function Generate-Code {
     
     param (
         [Parameter(Mandatory=$true)]
-        [ValidateSet("NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3", "Kiota")]
+        [ValidateSet("NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3", "Kiota", "Refitter")]
         [string]
         $ToolName,
 
@@ -195,6 +195,9 @@ function Generate-Code {
         }
         "Kiota" {
             $command = "csharp kiota"
+        }
+        "Refitter" {
+            $command = "csharp refitter"
         }
     }
 
@@ -248,7 +251,7 @@ function Generate-CodeParallel {
     )
 
     $processes = @()
-    "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator", "Kiota" | ForEach-Object {
+    "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator", "Kiota", "Refitter" | ForEach-Object {
         switch ($_) {
             "SwaggerCodegen" {
                 $command = "csharp swagger"
@@ -280,7 +283,7 @@ function Generate-CodeParallel {
         $process.WaitForExit()
     }
 
-    "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator", "Kiota" | ForEach-Object {
+    "AutoRest-V2", "NSwag", "SwaggerCodegen", "OpenApiGenerator", "Kiota", "Refitter" | ForEach-Object {
         if (Test-Path "GeneratedCode/$_/Output.cs" -PathType Leaf) {
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net7/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net6/Output.cs" -Force
@@ -301,7 +304,7 @@ function Generate-CodeThenBuild {
     
     param (
         [Parameter(Mandatory=$false)]
-        [ValidateSet("All", "NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3", "Kiota")]
+        [ValidateSet("All", "NSwag", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2", "AutoRest-V3", "Kiota", "Refitter")]
         [string]
         $ToolName = "All",
 
@@ -331,9 +334,9 @@ function Generate-CodeThenBuild {
             Build-GeneratedCode -ToolName $ToolName
         } else {
             if ($Version -eq "V2") {
-                $tools = @("NSwag", "Kiota", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2")
+                $tools = @("NSwag", "Kiota", "Refitter", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V2")
             } else {
-                $tools = @("NSwag", "Kiota", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V3")
+                $tools = @("NSwag", "Kiota", "Refitter", "OpenApiGenerator", "SwaggerCodegen", "AutoRest-V3")
             }  
             $tools | ForEach-Object {
                 Generate-CodeThenBuild `
