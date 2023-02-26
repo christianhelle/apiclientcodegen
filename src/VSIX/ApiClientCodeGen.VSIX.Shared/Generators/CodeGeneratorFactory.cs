@@ -6,6 +6,7 @@ using Rapicgen.Core.Generators.AutoRest;
 using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Generators.OpenApi;
+using Rapicgen.Core.Generators.Refit;
 using Rapicgen.Core.Generators.Swagger;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
@@ -100,6 +101,9 @@ namespace Rapicgen.Generators
                         defaultNamespace,
                         processLauncher,
                         dependencyInstaller);
+                
+                case SupportedCodeGenerator.Refitter:
+                    return new RefitCodeGenerator(inputFilePath, defaultNamespace);
 
                 default:
                     throw new NotSupportedException();
