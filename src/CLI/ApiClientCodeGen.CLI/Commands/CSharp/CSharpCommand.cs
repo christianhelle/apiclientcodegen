@@ -9,6 +9,7 @@ namespace Rapicgen.CLI.Commands.CSharp
         typeof(AutoRestCommand),
         typeof(KiotaCommand),
         typeof(NSwagCommand),
+        typeof(RefitterCommand),
         typeof(SwaggerCodegenCommand),
         typeof(OpenApiCSharpGeneratorCommand))]
     public class CSharpCommand
