@@ -23,7 +23,7 @@ public class RefitterCodeGenerator : ICodeGenerator
     public string GenerateCode(IProgressReporter? pGenerateProgress)
     {
         pGenerateProgress?.Progress(10);
-        var generator = RefitGenerator.Create(
+        var generator = RefitGenerator.CreateAsync(
             new RefitGeneratorSettings
             {
                 OpenApiPath = swaggerFile,
