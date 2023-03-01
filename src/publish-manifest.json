@@ -3,7 +3,7 @@
     "categories": [ "Coding" ],
     "identity": {
         "internalName": "ApiClientCodeGenerator",
-        "tags": [ "OpenAPI", "Swagger", "NSwag", "AutoRest", "REST API", "Code Generator" ]
+        "tags": [ "OpenAPI", "Swagger", "NSwag", "AutoRest", "Refit", "REST API", "Code Generator" ]
     },
     "overview": "../docs/Marketplace.md",
     "priceCategory": "free",
