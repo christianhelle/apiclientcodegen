@@ -11,11 +11,6 @@
     <PackageReference Include="Sentry" Version="3.28.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\" />
-    <Folder Include="Commands\Handlers\" />
-    <Folder Include="CustomTools\" />
-  </ItemGroup>
-  <ItemGroup>
    <ProjectReference Include="..\..\Core\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
   </ItemGroup>
 </Project>
