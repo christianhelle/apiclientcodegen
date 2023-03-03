@@ -35,20 +35,8 @@ jobs:
         cat ./AddinInfo.cs
       working-directory: src/VSMac/ApiClientCodeGen.VSMac/Properties
 
-    - name: Restore
-      run: dotnet restore ./Mac.sln
-      working-directory: src
-
     - name: Build
-      run: dotnet build -c Release ApiClientCodeGen.VSMac.csproj -f net6.0
-      working-directory: src/VSMac/ApiClientCodeGen.VSMac
-
-    - name: Package
-      run: /Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack $PWD/VSMac/ApiClientCodeGen.VSMac/bin/Release/net6.0/ApiClientCodeGen.VSMac.dll -d:$PWD
-      working-directory: src
-
-    - name: Publish
-      run: /Applications/Visual\ Studio.app/Contents/MacOS/vstool setup rep-build $PWD
+      run: make release
       working-directory: src
 
     - name: Archive binaries
