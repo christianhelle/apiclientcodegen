@@ -46,5 +46,9 @@ namespace ApiClientCodeGen.VSMac
         {
             SentrySdk.Close();
         }
+
+        public void WriteLine(object data)
+        {
+        }
     }
 }
