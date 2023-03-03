@@ -50,17 +50,17 @@ namespace ApiClientCodeGen.VSMac.CustomTools
             var contents = await Task.Run(() => generator.GenerateCode(progressReporter));
             await Task.Run(() => File.WriteAllText(outputFile, contents));            
                 
-            Logger.WriteLine(Environment.NewLine);
-            Logger.WriteLine($"Output file size: {new FileInfo(outputFile).Length}");
+            Logger.Instance.WriteLine(Environment.NewLine);
+            Logger.Instance.WriteLine($"Output file size: {new FileInfo(outputFile).Length}");
             
-            Logger.WriteLine(Environment.NewLine);
-            Logger.WriteLine("###################################################################");
-            Logger.WriteLine("#  Do you find this tool useful?                                  #");
-            Logger.WriteLine("#  https://www.buymeacoffee.com/christianhelle                    #");
-            Logger.WriteLine("#                                                                 #");
-            Logger.WriteLine("#  Does this tool not work or does it lack something you need?    #");
-            Logger.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues      #");
-            Logger.WriteLine("###################################################################");
+            Logger.Instance.WriteLine(Environment.NewLine);
+            Logger.Instance.WriteLine("###################################################################");
+            Logger.Instance.WriteLine("#  Do you find this tool useful?                                  #");
+            Logger.Instance.WriteLine("#  https://www.buymeacoffee.com/christianhelle                    #");
+            Logger.Instance.WriteLine("#                                                                 #");
+            Logger.Instance.WriteLine("#  Does this tool not work or does it lack something you need?    #");
+            Logger.Instance.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues      #");
+            Logger.Instance.WriteLine("###################################################################");
         }
 
         protected abstract ICodeGenerator GetCodeGenerator(
