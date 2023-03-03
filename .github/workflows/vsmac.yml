@@ -21,7 +21,6 @@ jobs:
 
     strategy:
       matrix:
-        #os: [macos-11.0, macos-10.15] TODO: Fix failing builds on Visual Studio 2022 for Mac
         os: [macos-latest]
 
     runs-on: ${{ matrix.os }}
@@ -30,28 +29,18 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Set VS2019 
-      run: |
-            mv "/Applications/Visual Studio.app" "/Applications/Visual Studio 2022.app"
-            mv "/Applications/Visual Studio 2019.app" "/Applications/Visual Studio.app"
-            /usr/libexec/PlistBuddy -c 'Print CFBundleVersion' '/Applications/Visual Studio.app/Contents/Info.plist'
-
     - name: Update Extension Version Info
       run: |
         sed -i -e 's/1.0/1.0.${{ github.run_number }}/g' ./AddinInfo.cs
         cat ./AddinInfo.cs
       working-directory: src/VSMac/ApiClientCodeGen.VSMac/Properties
 
-    - name: Verify Visual Studio version
-      run: /usr/libexec/PlistBuddy -c 'Print CFBundleVersion' '/Applications/Visual Studio.app/Contents/Info.plist'
-
-    - name: Verify Visual Studio Extensions Setup
-      run: /Applications/Visual\ Studio.app/Contents/MacOS/vstool setup list
-
     - name: Setup .NET versions
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: |
+          6.0.x
+          7.0.x
 
     - name: Build
       run: make release
