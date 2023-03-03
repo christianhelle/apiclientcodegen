@@ -9,6 +9,7 @@ on:
       - '!src/VSMac/**/*'
       - '!src/Core/**/*'
       - '!src/Makefile'
+      - '!src/global.json'
     branches:
       - '*'
   # pull_request:
