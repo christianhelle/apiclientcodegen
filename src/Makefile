@@ -6,16 +6,16 @@ restore-packages:
 	dotnet restore ./Mac.sln
 
 debug: restore-packages
-	msbuild /p:Configuration="Debug" /t:"Rebuild" ./Mac.sln
+	dotnet build ./VSMac/ApiClientCodeGen.VSMac/ApiClientCodeGen.VSMac.csproj
 
 release: restore-packages
-	/Applications/Visual\ Studio.app/Contents/MacOS/vstool build --configuration:Release ./Mac.sln
+	dotnet build -c Release ./VSMac/ApiClientCodeGen.VSMac/ApiClientCodeGen.VSMac.csproj
 
 package:
-	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack ./VSMac/ApiClientCodeGen.VSMac/bin/Release/**/ApiClientCodeGen.VSMac.dll
+	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack $PWD/VSMac/ApiClientCodeGen.VSMac/bin/Release/net6.0/ApiClientCodeGen.VSMac.dll -d:$PWD
 
 publish:
-	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup rep-build .
+	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup rep-build $PWD
 
 test:
 	dotnet test ./Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj -f net6.0
