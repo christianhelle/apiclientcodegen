@@ -8,6 +8,7 @@ on:
       - '!.github/workflows/vsmac.yml'
       - '!src/VSMac/**/*'
       - '!src/Core/**/*'
+      - '!src/Makefile'
     branches:
       - '*'
   # pull_request:
