@@ -1,6 +1,6 @@
 .PHONY: restore-packages debug release
 
-all: debug release package publish
+all: release package publish
 	
 restore-packages: 
 	dotnet restore ./Mac.sln
