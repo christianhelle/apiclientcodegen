@@ -1,22 +1,22 @@
 .PHONY: restore-packages debug release
 
-all: debug release package publish
+all: release package publish
 	
 restore-packages: 
 	dotnet restore ./Mac.sln
 
 debug: restore-packages
-	msbuild /p:Configuration="Debug" /t:"Rebuild" ./Mac.sln
+	dotnet build ./VSMac/ApiClientCodeGen.VSMac/ApiClientCodeGen.VSMac.csproj
 
 release: restore-packages
-	/Applications/Visual\ Studio.app/Contents/MacOS/vstool build --configuration:Release ./Mac.sln
+	/Applications/Visual\ Studio.app/Contents/MacOS/vstool build --configuration:Release $(shell pwd)/Mac.sln
 
 package:
-	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack ./VSMac/ApiClientCodeGen.VSMac/bin/Release/**/ApiClientCodeGen.VSMac.dll
+	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack $(shell pwd)/VSMac/ApiClientCodeGen.VSMac/bin/Release/net7.0/ApiClientCodeGen.VSMac.dll -d:$(shell pwd)
 
 publish:
-	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup rep-build .
+	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup rep-build $(shell pwd)
 
 test:
-	dotnet test ./Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj -f net6.0
-	dotnet test ./Core/ApiClientCodeGen.Core.IntegrationTests/ApiClientCodeGen.Core.IntegrationTests.csproj -f net6.0
+	dotnet test ./Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj
+	dotnet test ./Core/ApiClientCodeGen.Core.IntegrationTests/ApiClientCodeGen.Core.IntegrationTests.csproj

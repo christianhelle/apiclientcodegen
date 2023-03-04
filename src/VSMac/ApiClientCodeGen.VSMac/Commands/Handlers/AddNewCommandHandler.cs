@@ -17,6 +17,7 @@ using MonoDevelop.Ide;
 using MonoDevelop.Ide.Gui.Pads.ProjectPad;
 using MonoDevelop.Projects;
 using PackageDependency = Rapicgen.Core.NuGet.PackageDependency;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ApiClientCodeGen.VSMac.Commands.Handlers
 {
@@ -43,18 +44,38 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 
         protected abstract string GeneratorName { get; }
 
-        protected override void Run()
-            => AddNewSwaggerFile().Forget();
+        [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "<Pending>")]
+        protected override async void Run()
+        {
+            try
+            {
+                await AddNewSwaggerFileAsync();
+            }
+            catch
+            {
+                // Ignore
+            }
+        }
 
-        protected override void Run(object dataItem)
-            => AddNewSwaggerFile().Forget();
+        [SuppressMessage("Usage", "VSTHRD100:Avoid async void methods", Justification = "<Pending>")]
+        protected override async void Run(object dataItem)
+        {
+            try
+            {
+                await AddNewSwaggerFileAsync();
+            }
+            catch
+            {
+                // Ignore
+            }
+        }
 
         protected override void Update(CommandInfo info)
             => info.Visible =
                 IdeApp.ProjectOperations.CurrentSelectedItem is Project ||
                 IdeApp.ProjectOperations.CurrentSelectedItem is ProjectFolder;
 
-        private async ValueTask AddNewSwaggerFile()
+        private async Task AddNewSwaggerFileAsync()
         {
             Logger.Instance.TrackFeatureUsage("New REST API Client", "VSMac");
 

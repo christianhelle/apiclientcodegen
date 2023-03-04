@@ -8,6 +8,8 @@ on:
       - '!.github/workflows/vsmac.yml'
       - '!src/VSMac/**/*'
       - '!src/Core/**/*'
+      - '!src/Makefile'
+      - '!src/global.json'
     branches:
       - '*'
   # pull_request:
@@ -21,20 +23,13 @@ jobs:
 
     strategy:
       matrix:
-        #os: [macos-11.0, macos-10.15] TODO: Fix failing builds on Visual Studio 2022 for Mac
         os: [macos-latest]
 
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 10
+    timeout-minutes: 20
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Set VS2019 
-      run: |
-            mv "/Applications/Visual Studio.app" "/Applications/Visual Studio 2022.app"
-            mv "/Applications/Visual Studio 2019.app" "/Applications/Visual Studio.app"
-            /usr/libexec/PlistBuddy -c 'Print CFBundleVersion' '/Applications/Visual Studio.app/Contents/Info.plist'
 
     - name: Update Extension Version Info
       run: |
@@ -42,41 +37,28 @@ jobs:
         cat ./AddinInfo.cs
       working-directory: src/VSMac/ApiClientCodeGen.VSMac/Properties
 
-    - name: Verify Visual Studio version
-      run: /usr/libexec/PlistBuddy -c 'Print CFBundleVersion' '/Applications/Visual Studio.app/Contents/Info.plist'
-
-    - name: Verify Visual Studio Extensions Setup
-      run: /Applications/Visual\ Studio.app/Contents/MacOS/vstool setup list
-
     - name: Setup .NET versions
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+        global-json-file: src/global.json
 
     - name: Build
-      run: make release
+      run: make
       working-directory: src
 
     - name: Archive binaries
       run: zip -r VSMac-Binaries.zip .
-      working-directory: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net472/
+      working-directory: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net7.0/
 
     - name: Publish binaries
       uses: actions/upload-artifact@v2
       with:
         name: Binaries
-        path: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net472/VSMac-Binaries.zip
-
-    - name: Create mpack file
-      run: make package
-      working-directory: src
+        path: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net7.0/VSMac-Binaries.zip
 
     - name: Rename build output
       run: mv *.mpack ApiClientCodeGenerator-1.0.${{ github.run_number }}.mpack
-      working-directory: src
-
-    - name: Create MonoDevelop Extension repository files
-      run: make publish
       working-directory: src
 
     - name: Publish artifacts
