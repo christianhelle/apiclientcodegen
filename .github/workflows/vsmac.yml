@@ -60,7 +60,6 @@ jobs:
     - name: Rename build output
       run: mv *.mpack ApiClientCodeGenerator-1.0.${{ github.run_number }}.mpack
       working-directory: src
-      continue-on-error: true
 
     - name: Publish artifacts
       uses: actions/upload-artifact@v2
