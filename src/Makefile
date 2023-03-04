@@ -9,7 +9,7 @@ debug: restore-packages
 	dotnet build ./VSMac/ApiClientCodeGen.VSMac/ApiClientCodeGen.VSMac.csproj
 
 release: restore-packages
-	dotnet build -c Release ./VSMac/ApiClientCodeGen.VSMac/ApiClientCodeGen.VSMac.csproj
+	/Applications/Visual\ Studio.app/Contents/MacOS/vstool build --configuration:Release $(shell pwd)/Mac.sln
 
 package:
 	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack $(shell pwd)/VSMac/ApiClientCodeGen.VSMac/bin/Release/net7.0/ApiClientCodeGen.VSMac.dll -d:$(shell pwd)
