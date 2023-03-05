@@ -3,6 +3,12 @@
     <TargetFramework>net7.0</TargetFramework>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <StartAction>Program</StartAction>
+    <StartProgram>\Applications\Visual Studio.app\Contents\MacOS\VisualStudio</StartProgram>
+    <StartArguments>--no-redirect</StartArguments>
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudioMac.Sdk" Version="17.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
