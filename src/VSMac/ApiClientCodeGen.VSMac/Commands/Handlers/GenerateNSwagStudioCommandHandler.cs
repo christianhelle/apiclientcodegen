@@ -1,5 +1,8 @@
 using System;
 using ApiClientCodeGen.VSMac.Commands.NSwagStudio;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.Options.General;
 
 namespace ApiClientCodeGen.VSMac.Commands.Handlers
 {
@@ -9,7 +12,15 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 
         public GenerateNSwagStudioCommandHandler()
         {
-            command = Container.Instance.Resolve<GenerateNSwagStudioCommand>();
+            var processLauncher = new ProcessLauncher();
+            command = new GenerateNSwagStudioCommand(
+                new NSwagStudioCodeGeneratorFactory(
+                    new DefaultGeneralOptions(),
+                    processLauncher,
+                    new DependencyInstaller(
+                        new NpmInstaller(processLauncher),
+                        new FileDownloader(new WebDownloader()),
+                        processLauncher)));
         }
 
         protected override string GeneratorName

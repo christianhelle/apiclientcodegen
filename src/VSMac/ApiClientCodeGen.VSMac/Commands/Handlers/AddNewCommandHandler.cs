@@ -9,7 +9,6 @@ using Rapicgen.Core.Extensions;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.NuGet;
-using Microsoft.VisualStudio.Threading;
 using Mono.Addins;
 using MonoDevelop.Components.Commands;
 using MonoDevelop.Core;
@@ -28,8 +27,8 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
 
         protected AddNewCommandHandler()
             : this(
-                Container.Instance.Resolve<IProcessLauncher>(),
-                Container.Instance.Resolve<PackageDependencyListProvider>())
+                new ProcessLauncher(),
+                new PackageDependencyListProvider())
         {
         }
 
