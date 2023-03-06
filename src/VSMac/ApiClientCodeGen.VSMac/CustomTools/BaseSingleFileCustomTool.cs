@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using ApiClientCodeGen.VSMac.CustomTools.OpenApi;
@@ -28,7 +27,7 @@ namespace ApiClientCodeGen.VSMac.CustomTools
                 generatorName = "Swagger Codegen CLI";
             else
                 generatorName = GetType().Name.Replace("SingleFileCustomTool", string.Empty);
-                
+
             Logger.Instance.TrackFeatureUsage(generatorName, "VSMac");
 
             Bootstrapper.Initialize();
@@ -48,11 +47,12 @@ namespace ApiClientCodeGen.VSMac.CustomTools
             var generator = GetCodeGenerator(swaggerFile, customToolNamespace);
             var progressReporter = new ProgressReporter(monitor);
             var contents = await Task.Run(() => generator.GenerateCode(progressReporter));
-            await Task.Run(() => File.WriteAllText(outputFile, contents));            
-                
-            Logger.Instance.WriteLine(Environment.NewLine);
-            Logger.Instance.WriteLine($"Output file size: {new FileInfo(outputFile).Length}");
-            
+            await File.WriteAllTextAsync(outputFile, contents).ConfigureAwait(false);
+
+            var fileInfo = new FileInfo(outputFile.FullPath);
+            var length = fileInfo.Length.ToString();
+            Logger.Instance.WriteLine($"{Environment.NewLine}Output file size: {length}");
+
             Logger.Instance.WriteLine(Environment.NewLine);
             Logger.Instance.WriteLine("###################################################################");
             Logger.Instance.WriteLine("#  Do you find this tool useful?                                  #");

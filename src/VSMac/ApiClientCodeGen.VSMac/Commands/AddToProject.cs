@@ -6,6 +6,8 @@
         NSwag,
         NSwagStudio,
         Swagger,
-        OpenApi
+        OpenApi,
+        Kiota,
+        Refitter
     }
 }
