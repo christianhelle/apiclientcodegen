@@ -12,9 +12,9 @@ on:
       - '!src/global.json'
     branches:
       - '*'
-  # pull_request:
-  #   branches:
-  #     - '*'
+  pull_request:
+    branches:
+      - '*'
   # schedule:
   #   - cron:  '0 8 * * *'
 
