@@ -21,6 +21,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ApiClientCodeGen.VSMac
 {
+    [Obsolete("This is broken", true)]
     public class Container
     {
         private readonly IServiceProvider serviceProvider;
