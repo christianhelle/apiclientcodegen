@@ -1,6 +1,6 @@
 .PHONY: restore-packages debug release
 
-all: release package publish
+all: release pack publish
 	
 restore-packages: 
 	dotnet restore ./Mac.sln
@@ -11,10 +11,10 @@ debug: restore-packages
 release: restore-packages
 	/Applications/Visual\ Studio.app/Contents/MacOS/vstool build --configuration:Release $(shell pwd)/Mac.sln
 
-package:
-	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack $(shell pwd)/VSMac/ApiClientCodeGen.VSMac/bin/Release/net7.0/ApiClientCodeGen.VSMac.dll -d:$(shell pwd)
+pack: release
+	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack $(shell pwd)/VSMac/ApiClientCodeGen.VSMac/bin/Release/ApiClientCodeGen.VSMac.dll -d:$(shell pwd)
 
-publish:
+publish: pack
 	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup rep-build $(shell pwd)
 
 test:
