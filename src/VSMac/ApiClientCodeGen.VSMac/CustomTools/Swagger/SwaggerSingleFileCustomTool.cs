@@ -12,18 +12,20 @@ namespace ApiClientCodeGen.VSMac.CustomTools.Swagger
     public class SwaggerSingleFileCustomTool : BaseSingleFileCustomTool
     {
         public const string GeneratorName = "SwaggerCodeGenerator";
-        
+
         private readonly IGeneralOptions options;
         private readonly IProcessLauncher processLauncher;
         private readonly ISwaggerCodegenFactory factory;
         private readonly IDependencyInstaller dependencyInstaller;
 
         public SwaggerSingleFileCustomTool()
-        :this(
-            Container.Instance.Resolve<IGeneralOptions>(),
-            Container.Instance.Resolve<IProcessLauncher>(),
-            Container.Instance.Resolve<ISwaggerCodegenFactory>(),
-            Container.Instance.Resolve<IDependencyInstaller>())
+            : this(new DefaultGeneralOptions(),
+                new ProcessLauncher(),
+                new SwaggerCodegenFactory(),
+                new DependencyInstaller(
+                    new NpmInstaller(new ProcessLauncher()),
+                    new FileDownloader(new WebDownloader()),
+                    new ProcessLauncher()))
         {
         }
 
@@ -36,11 +38,12 @@ namespace ApiClientCodeGen.VSMac.CustomTools.Swagger
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
-            this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
+            this.dependencyInstaller =
+                dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
         protected override ICodeGenerator GetCodeGenerator(
-            string swaggerFile, 
+            string swaggerFile,
             string customToolNamespace)
             => factory.Create(
                 swaggerFile,

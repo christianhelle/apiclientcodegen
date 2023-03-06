@@ -8,6 +8,7 @@ using Rapicgen.Core.Options.AutoRest;
 using MonoDevelop.Core;
 using MonoDevelop.Ide.CustomTools;
 using MonoDevelop.Projects;
+using Rapicgen.Core;
 
 namespace ApiClientCodeGen.VSMac.CustomTools.AutoRest
 {
@@ -23,11 +24,14 @@ namespace ApiClientCodeGen.VSMac.CustomTools.AutoRest
 
         public AutoRestSingleFileCustomTool()
             : this(
-                Container.Instance.Resolve<IAutoRestCodeGeneratorFactory>(),
-                Container.Instance.Resolve<IAutoRestOptions>(),
-                Container.Instance.Resolve<IProcessLauncher>(),
-                Container.Instance.Resolve<IOpenApiDocumentFactory>(),
-                Container.Instance.Resolve<IDependencyInstaller>())
+                new AutoRestCodeGeneratorFactory(),
+                new DefaultAutoRestOptions(),
+                new ProcessLauncher(),
+                new OpenApiDocumentFactory(),
+                new DependencyInstaller(
+                    new NpmInstaller(new ProcessLauncher()),
+                    new FileDownloader(new WebDownloader()),
+                    new ProcessLauncher()))
         {
         }
 
