@@ -22,14 +22,11 @@ env:
   VERSION: 1.7.${{ github.run_number }}
 
 jobs:
+
   build:
 
-    strategy:
-      matrix:
-        os: [macos-latest]
-
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 20
+    runs-on: macos-latest
+    timeout-minutes: 10
 
     steps:
     - uses: actions/checkout@v2
@@ -73,3 +70,34 @@ jobs:
           src/*.mrep
           src/index.html
           docs/VisualStudioForMac.md
+
+  deploy:
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: build
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        repository: christianhelle/apiclientcodegen-vsmac
+        ref: 'main'
+        token:  ${{ secrets.ACTIONS_GITHUB_TOKEN }}
+
+    - uses: actions/download-artifact@v3
+      with:
+        path: artifacts
+
+    - name: Move artifact to beta folder
+      run: |
+        mv artifacts/Extension/src/ApiClientCodeGenerator-${{ env.VERSION }}.mpack beta/
+        rm -rf artifacts
+    
+    - name: Git Commit Build Artifacts
+      if: github.ref == 'refs/heads/master'
+      run: |
+        git config --global user.name "Continuous Integration"
+        git config --global user.email "username@users.noreply.github.com"        
+        git add beta/ApiClientCodeGenerator-${{ env.VERSION }}.mpack
+        git commit -m "Add ApiClientCodeGenerator-${{ env.VERSION }}.mpack"
+        git push

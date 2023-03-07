@@ -45,11 +45,11 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
         {
             var extensions = SupportedFileExtension.Split(';');
             return extensions?.Length > 1
-                ? extensions.Any(ext => IsSupported1(projectFile, ext))
-                : IsSupported1(projectFile, SupportedFileExtension);
+                ? extensions.Any(ext => IsSupported(projectFile, ext))
+                : IsSupported(projectFile, SupportedFileExtension);
         }
 
-        private static bool IsSupported1(ProjectFile projectFile, string extension)
+        private static bool IsSupported(ProjectFile projectFile, string extension)
         {
             return projectFile?.Name?.EndsWith(
                 extension,
