@@ -39,7 +39,7 @@ jobs:
       working-directory: src
     - name: Move build output
       run: |
-        mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-${{ env.VERSION }}.vsix
+        mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
         mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
     - name: Publish artifacts
       uses: actions/upload-artifact@v2
@@ -52,7 +52,7 @@ jobs:
       run: |
         $VsixPublisher = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
         & $VsixPublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
-        & $VsixPublisher publish -payload ApiClientCodeGenerator-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
+        & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
         & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest-vs2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
 
   CLI:
@@ -183,8 +183,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-${{ env.VERSION }}.vsix
-        asset_name: ApiClientCodeGenerator-${{ env.VERSION }}.vsix
+        asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
+        asset_name: ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
         asset_content_type: application/zip
     - name: Upload VSIX for VS2022 asset
       uses: actions/upload-release-asset@v1
