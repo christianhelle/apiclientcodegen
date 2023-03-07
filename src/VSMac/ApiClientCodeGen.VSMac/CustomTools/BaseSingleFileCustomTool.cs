@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using ApiClientCodeGen.VSMac.CustomTools.OpenApi;
@@ -20,6 +21,31 @@ namespace ApiClientCodeGen.VSMac.CustomTools
             ProjectFile file,
             SingleFileCustomToolResult result)
         {
+            var generatorName = GetGeneratorName();
+            Logger.Instance.TrackFeatureUsage(generatorName, "VSMac");
+            Bootstrapper.Initialize();
+
+            using var traceListener = new DisposableTraceListener(
+                new LoggingServiceTraceListener(
+                    new ProgressMonitorLoggingService(
+                        monitor, 
+                        "Generating code...")));
+
+            var outputFile = await GenerateCodeAsync(monitor, file, result);
+            TryLogOutputFileSize(outputFile);
+
+            Trace.WriteLine(Environment.NewLine);
+            Trace.WriteLine("###################################################################");
+            Trace.WriteLine("#  Do you find this tool useful?                                  #");
+            Trace.WriteLine("#  https://www.buymeacoffee.com/christianhelle                    #");
+            Trace.WriteLine("#                                                                 #");
+            Trace.WriteLine("#  Does this tool not work or does it lack something you need?    #");
+            Trace.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues      #");
+            Trace.WriteLine("###################################################################");
+        }
+
+        private string GetGeneratorName()
+        {
             string generatorName;
             if (GetType() == typeof(OpenApiSingleFileCustomTool))
                 generatorName = "OpenAPI Generator";
@@ -27,18 +53,17 @@ namespace ApiClientCodeGen.VSMac.CustomTools
                 generatorName = "Swagger Codegen CLI";
             else
                 generatorName = GetType().Name.Replace("SingleFileCustomTool", string.Empty);
+            return generatorName;
+        }
 
-            Logger.Instance.TrackFeatureUsage(generatorName, "VSMac");
-
-            Bootstrapper.Initialize();
-
+        private async Task<FilePath> GenerateCodeAsync(
+            ProgressMonitor monitor,
+            ProjectFile file,
+            SingleFileCustomToolResult result)
+        {
             var swaggerFile = file.FilePath;
             var outputFile = swaggerFile.ChangeExtension(".cs");
             result.GeneratedFilePath = outputFile;
-
-            using var traceListener = new DisposableTraceListener(
-                new LoggingServiceTraceListener(
-                    new ProgressMonitorLoggingService(monitor, "Generating code...")));
 
             var customToolNamespace = file.CustomToolNamespace;
             if (string.IsNullOrWhiteSpace(customToolNamespace))
@@ -47,20 +72,22 @@ namespace ApiClientCodeGen.VSMac.CustomTools
             var generator = GetCodeGenerator(swaggerFile, customToolNamespace);
             var progressReporter = new ProgressReporter(monitor);
             var contents = await Task.Run(() => generator.GenerateCode(progressReporter));
-            await File.WriteAllTextAsync(outputFile, contents).ConfigureAwait(false);
+            await File.WriteAllTextAsync(outputFile, contents);
+            return outputFile;
+        }
 
-            var fileInfo = new FileInfo(outputFile.FullPath);
-            var length = fileInfo.Length.ToString();
-            Logger.Instance.WriteLine($"{Environment.NewLine}Output file size: {length}");
-
-            Logger.Instance.WriteLine(Environment.NewLine);
-            Logger.Instance.WriteLine("###################################################################");
-            Logger.Instance.WriteLine("#  Do you find this tool useful?                                  #");
-            Logger.Instance.WriteLine("#  https://www.buymeacoffee.com/christianhelle                    #");
-            Logger.Instance.WriteLine("#                                                                 #");
-            Logger.Instance.WriteLine("#  Does this tool not work or does it lack something you need?    #");
-            Logger.Instance.WriteLine("#  https://github.com/christianhelle/apiclientcodegen/issues      #");
-            Logger.Instance.WriteLine("###################################################################");
+        private static void TryLogOutputFileSize(FilePath outputFile)
+        {
+            try
+            {
+                var fileInfo = new FileInfo(outputFile.FullPath);
+                var length = fileInfo.Length.ToString();
+                Trace.WriteLine($"{Environment.NewLine}Output file size: {length}");
+            }
+            catch
+            {
+                // Ignore
+            }
         }
 
         protected abstract ICodeGenerator GetCodeGenerator(
