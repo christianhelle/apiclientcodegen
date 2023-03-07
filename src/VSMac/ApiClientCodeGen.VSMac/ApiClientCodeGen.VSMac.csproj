@@ -14,7 +14,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudioMac.Sdk" Version="17.0.0" />
-    <PackageReference Include="Sentry" Version="3.28.1" />
+    <PackageReference Include="Sentry" Version="3.29.0" />
   </ItemGroup>
   <ItemGroup>
    <ProjectReference Include="..\..\Core\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
