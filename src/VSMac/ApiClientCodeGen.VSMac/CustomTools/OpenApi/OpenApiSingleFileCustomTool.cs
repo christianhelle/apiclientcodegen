@@ -18,11 +18,14 @@ namespace ApiClientCodeGen.VSMac.CustomTools.OpenApi
 
         public OpenApiSingleFileCustomTool()
             : this(
-                Container.Instance.Resolve<IGeneralOptions>(),
-                Container.Instance.Resolve<IOpenApiGeneratorOptions>(),
-                Container.Instance.Resolve<IProcessLauncher>(),
-                Container.Instance.Resolve<IOpenApiGeneratorFactory>(),
-                Container.Instance.Resolve<IDependencyInstaller>())
+                new DefaultGeneralOptions(),
+                new DefaultOpenApiGeneratorOptions(),
+                new ProcessLauncher(),
+                new OpenApiGeneratorFactory(),
+                new DependencyInstaller(
+                    new NpmInstaller(new ProcessLauncher()),
+                    new FileDownloader(new WebDownloader()),
+                    new ProcessLauncher()))
         {
         }
 

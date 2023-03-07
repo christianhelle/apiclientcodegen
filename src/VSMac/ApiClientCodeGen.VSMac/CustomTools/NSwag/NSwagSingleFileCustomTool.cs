@@ -1,4 +1,5 @@
 using System;
+using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Options.NSwag;
@@ -15,9 +16,9 @@ namespace ApiClientCodeGen.VSMac.CustomTools.NSwag
 
         public NSwagSingleFileCustomTool()
             : this(
-                Container.Instance.Resolve<INSwagCodeGeneratorFactory>(),
-                Container.Instance.Resolve<IOpenApiDocumentFactory>(),
-                Container.Instance.Resolve<INSwagOptions>())
+                new NSwagCodeGeneratorFactory(),
+                new OpenApiDocumentFactory(),
+                new DefaultNSwagOptions())
         {
         }
 

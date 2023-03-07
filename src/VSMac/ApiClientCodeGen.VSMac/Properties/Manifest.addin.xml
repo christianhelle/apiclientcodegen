@@ -9,13 +9,17 @@
                 <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.NSwagStudio" />
                 <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Swagger" />
                 <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.OpenApi" />
+                <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Kiota" />
+                <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Refitter" />
             </ItemSet>
         </ItemSet>
         <ItemSet id = "GenerateApiClient" _label = "REST API Client Generator" autohide="True">
             <CommandItem id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.AutoRest" />
             <CommandItem id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.NSwag" />
             <CommandItem id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Swagger" />
-            <CommandItem id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.OpenApi" />            
+            <CommandItem id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.OpenApi" />
+            <CommandItem id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Kiota" />
+            <CommandItem id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Refitter" />
         </ItemSet>
         <CommandItem id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.NSwagStudio" />
     </Extension>
@@ -23,7 +27,7 @@
     <Extension path="/MonoDevelop/Ide/Commands">
         <!-- Add New REST API Client -->
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.NSwag"
-                 _label = "Generate with NSwag"
+                 _label = "Generate with NSwag (v13.18.2)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewNSwagCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.NSwagStudio"
@@ -31,20 +35,28 @@
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewNSwagStudioCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.OpenApi"
-                 _label = "Generate with OpenAPI Generator"
+                 _label = "Generate with OpenAPI Generator (v6.4.0)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewOpenApiCommandHandler" />
 
+        <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Kiota"
+                 _label = "Generate with Kiota (v0.11.1)"
+                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewKiotaCommandHandler" />
+
+        <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Refitter"
+                _label = "Generate with Refitter (v0.2.4-alpha)"
+                defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewRefitterCommandHandler" />
+
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Swagger"
-                 _label = "Generate with Swagger Codegen (Outdated)"
+                 _label = "Generate with Swagger Codegen (v3.0.34 - Outdated)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewSwaggerCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.AutoRest"
-                 _label = "Generate with AutoRest (Unstable)"
+                 _label = "Generate with AutoRest (v3.0.0-beta.20210504.2 - Outdated)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewAutoRestCommandHandler" />
     
         <!-- REST API Client Generator -->
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.NSwag"
-                 _label = "Generate with NSwag"
+                 _label = "Generate with NSwag (v13.18.2)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateNSwagCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.NSwagStudio"
@@ -52,15 +64,23 @@
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateNSwagStudioCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.OpenApi"
-                 _label = "Generate with OpenAPI Generator"
+                 _label = "Generate with OpenAPI Generator (v6.4.0)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateOpenApiCommandHandler" />
 
+        <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Kiota"
+                _label = "Generate with Kiota (v0.11.1)"
+                defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateKiotaCommandHandler" />
+
+        <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Refitter"
+                _label = "Generate with Refitter (v0.2.4-alpha)"
+                defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateRefitterCommandHandler" />
+
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Swagger"
-                 _label = "Generate with Swagger Codegen (Outdated)"
+                 _label = "Generate with Swagger Codegen (v3.0.34 - Outdated)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateSwaggerCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.AutoRest"
-                 _label = "Generate with AutoRest (Unstable)"
+                 _label = "Generate with AutoRest (v3.0.0-beta.20210504.2 - Outdated)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateAutoRestCommandHandler" />
     </Extension>
 
@@ -73,6 +93,10 @@
               type="ApiClientCodeGen.VSMac.CustomTools.Swagger.SwaggerSingleFileCustomTool"/>
         <Tool name="OpenApiCodeGenerator"
               type="ApiClientCodeGen.VSMac.CustomTools.OpenApi.OpenApiSingleFileCustomTool"/>
+        <Tool name="KiotaCodeGenerator"
+              type="ApiClientCodeGen.VSMac.CustomTools.Kiota.KiotaSingleFileCustomTool"/>
+        <Tool name="RefitterCodeGenerator"
+              type="ApiClientCodeGen.VSMac.CustomTools.Refitter.RefitterSingleFileCustomTool"/>
     </Extension>
     
 </ExtensionModel>

@@ -49,13 +49,13 @@ jobs:
 
     - name: Archive binaries
       run: zip -r VSMac-Binaries.zip .
-      working-directory: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net7.0/
+      working-directory: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/
 
     - name: Publish binaries
       uses: actions/upload-artifact@v2
       with:
         name: Binaries
-        path: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/net7.0/VSMac-Binaries.zip
+        path: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/VSMac-Binaries.zip
 
     - name: Rename build output
       run: mv *.mpack ApiClientCodeGenerator-1.0.${{ github.run_number }}.mpack

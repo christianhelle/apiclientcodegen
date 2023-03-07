@@ -6,16 +6,16 @@ namespace ApiClientCodeGen.VSMac
 {
     public static class Bootstrapper
     {
-        private static readonly object syncLock = new object();
-        private static volatile bool isRegistered = false;
+        private static readonly object SyncLock = new();
+        private static volatile bool isRegistered;
         
         public static void Initialize()
         {
-            lock (syncLock)
+            lock (SyncLock)
             {
                 if (isRegistered)
                     return;
-                var listener = Container.Instance.Resolve<LoggingServiceTraceListener>();
+                var listener = new LoggingServiceTraceListener(new MonoDevelopLoggingService());
                 Trace.Listeners.Add(listener);
                 Logger.Setup(new SentryRemoteLogger()).WithDefaultTags("VSMac");
                 isRegistered = true;

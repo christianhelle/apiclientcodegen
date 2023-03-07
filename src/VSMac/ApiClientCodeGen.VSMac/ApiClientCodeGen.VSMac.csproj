@@ -2,12 +2,18 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <LangVersion>latest</LangVersion>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <ProduceReferenceAssemblyInOutDir>true</ProduceReferenceAssemblyInOutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <StartAction>Program</StartAction>
+    <StartProgram>\Applications\Visual Studio.app\Contents\MacOS\VisualStudio</StartProgram>
+    <StartArguments>--no-redirect</StartArguments>
+    <ExternalConsole>true</ExternalConsole>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudioMac.Sdk" Version="17.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
     <PackageReference Include="Sentry" Version="3.28.1" />
   </ItemGroup>
   <ItemGroup>
