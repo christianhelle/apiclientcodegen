@@ -48,7 +48,7 @@ jobs:
 
     - name: Move build output
       run: |
-        mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-${{ env.VERSION }}.vsix
+        mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
         mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
 
     - name: Publish artifacts
@@ -64,7 +64,7 @@ jobs:
       run: |
         (new-object Net.WebClient).DownloadString("https://raw.github.com/madskristensen/ExtensionScripts/master/AppVeyor/vsix.ps1") | iex
         Vsix-PushArtifacts
-        Vsix-PublishToGallery -path ApiClientCodeGenerator-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/Marketplace.md
+        Vsix-PublishToGallery -path ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/Marketplace.md
         Vsix-PublishToGallery -path ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/Marketplace2022.md
       shell: pwsh
       continue-on-error: true
