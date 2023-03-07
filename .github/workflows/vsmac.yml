@@ -18,6 +18,9 @@ on:
   schedule:
     - cron:  '0 8 * * *'
 
+env:
+  VERSION: 1.7.${{ github.run_number }}
+
 jobs:
   build:
 
@@ -33,7 +36,7 @@ jobs:
 
     - name: Update Extension Version Info
       run: |
-        sed -i -e 's/1.0/1.0.${{ github.run_number }}/g' ./AddinInfo.cs
+        sed -i -e 's/1.0/${{ env.VERSION }}/g' ./AddinInfo.cs
         cat ./AddinInfo.cs
       working-directory: src/VSMac/ApiClientCodeGen.VSMac/Properties
 
@@ -58,7 +61,7 @@ jobs:
         path: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/VSMac-Binaries.zip
 
     - name: Rename build output
-      run: mv *.mpack ApiClientCodeGenerator-1.0.${{ github.run_number }}.mpack
+      run: mv *.mpack ApiClientCodeGenerator-${{ env.VERSION }}.mpack
       working-directory: src
 
     - name: Publish artifacts
