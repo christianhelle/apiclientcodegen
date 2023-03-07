@@ -110,7 +110,7 @@ jobs:
       run: zip -r VSMac-Binaries.zip .
       working-directory: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/
     - name: Rename build output
-      run: mv *.mpack ApiClientCodeGenerator-${{ env.VERSION }}.mpack
+      run: mv *.mpack ApiClientCodeGenerator-VSMac2022-${{ env.VERSION }}.mpack
       working-directory: src
     - name: Update .mrep files
       run: |
@@ -201,8 +201,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: artifacts/Visual Studio for Mac Extension/src/ApiClientCodeGenerator-${{ env.VERSION }}.mpack
-        asset_name: ApiClientCodeGenerator-${{ env.VERSION }}.mpack
+        asset_path: artifacts/Visual Studio for Mac Extension/src/ApiClientCodeGenerator-VSMac2022-${{ env.VERSION }}.mpack
+        asset_name: ApiClientCodeGenerator-VSMac2022-${{ env.VERSION }}.mpack
         asset_content_type: application/zip
     - uses: actions/checkout@v3
       with:
@@ -215,13 +215,13 @@ jobs:
     - name: Move artifact to stable folder
       run: |
         mkdir -p stable
-        mv artifacts/Visual\ Studio\ for\ Mac\ Extension/src/ApiClientCodeGenerator-${{ env.VERSION }}.mpack stable/
+        mv artifacts/Visual\ Studio\ for\ Mac\ Extension/src/ApiClientCodeGenerator-VSMac2022-${{ env.VERSION }}.mpack stable/
         rm -rf artifacts
     - name: Git Commit Build Artifacts
       if: github.ref == 'refs/heads/master'
       run: |
         git config --global user.name "Continuous Integration"
         git config --global user.email "username@users.noreply.github.com"        
-        git add stable/ApiClientCodeGenerator-${{ env.VERSION }}.mpack
-        git commit -m "Add ApiClientCodeGenerator-${{ env.VERSION }}.mpack"
+        git add stable/ApiClientCodeGenerator-VSMac2022-${{ env.VERSION }}.mpack
+        git commit -m "Add ApiClientCodeGenerator-VSMac2022-${{ env.VERSION }}.mpack"
         git push
