@@ -7,7 +7,7 @@ using Rapicgen.Core.Logging;
 
 namespace Rapicgen.CLI.Commands.CSharp;
 
-[Command("kiota", Description = "Microsoft project Kiota (v0.11.1)")]
+[Command("kiota", Description = "Microsoft project Kiota (v1.0.1)")]
 public class KiotaCommand : CodeGeneratorCommand
 {
     private readonly IProcessLauncher processLauncher;
