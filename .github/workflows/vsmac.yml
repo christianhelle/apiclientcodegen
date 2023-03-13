@@ -80,7 +80,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        repository: christianhelle/apiclientcodegen-vsmac
+        repository: christianhelle/vsmac-extensions-repo
         ref: 'main'
         token:  ${{ secrets.ACTIONS_GITHUB_TOKEN }}
 
