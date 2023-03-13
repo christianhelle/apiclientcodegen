@@ -109,7 +109,7 @@ namespace Rapicgen
             IProgress<ServiceProgressData> progress)
         {
             Logger
-                .Setup(new SentryRemoteLogger(), new OutputWindowRemoteLogger())
+                .Setup(new OutputWindowRemoteLogger())
                 .WithDefaultTags("VSIX");
 
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
