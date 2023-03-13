@@ -17,7 +17,7 @@ namespace ApiClientCodeGen.VSMac
                     return;
                 var listener = new LoggingServiceTraceListener(new MonoDevelopLoggingService());
                 Trace.Listeners.Add(listener);
-                Logger.Setup(new SentryRemoteLogger()).WithDefaultTags("VSMac");
+                Logger.Setup().WithDefaultTags("VSMac");
                 isRegistered = true;
             }
         }
