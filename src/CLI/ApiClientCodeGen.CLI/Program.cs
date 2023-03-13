@@ -34,7 +34,7 @@ namespace Rapicgen.CLI
             if (verboseOptions.Enabled)
                 builder.ConfigureLogging(b => b.AddConsole());
 
-            Logger.Setup(new SentryRemoteLogger()).WithDefaultTags("CLI");
+            Logger.Setup().WithDefaultTags("CLI");
 
             try
             {
