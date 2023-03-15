@@ -76,6 +76,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     needs: build
+    if: github.ref == 'refs/heads/master'
 
     steps:
     - uses: actions/checkout@v3
@@ -93,8 +94,7 @@ jobs:
         mv artifacts/Extension/src/ApiClientCodeGenerator-${{ env.VERSION }}.mpack beta/ApiClientCodeGenerator.mpack
         rm -rf artifacts
     
-    - name: Git Commit Build Artifacts
-      if: github.ref == 'refs/heads/master'
+    - name: Git Commit Build Artifacts      
       run: |
         git config --global user.name "Continuous Integration"
         git config --global user.email "username@users.noreply.github.com"
