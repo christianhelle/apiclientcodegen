@@ -47,7 +47,7 @@ jobs:
         java-version: 1.11
 
     - name: Setup .NET versions
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: |
           2.1.x
@@ -361,7 +361,7 @@ jobs:
         java-version: 1.11
 
     - name: Setup .NET versions
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: |
           2.1.x
@@ -402,7 +402,7 @@ jobs:
         java-version: 1.11
 
     - name: Setup .NET versions
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: |
           2.1.x
