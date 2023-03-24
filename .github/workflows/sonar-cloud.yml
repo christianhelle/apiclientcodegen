@@ -85,11 +85,6 @@ jobs:
           dotnet test Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj --collect "Code coverage"
           dotnet test Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj --collect "Code coverage"
 
-      - name: Setup .NET versions
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 6.0.x
-
       - name: Convert Code Coverage
         working-directory: src
         continue-on-error: true
