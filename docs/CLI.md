@@ -67,7 +67,7 @@ Commands:
   kiota         Microsoft project Kiota (v1.0.1)
   nswag         NSwag (v13.18.2)
   openapi       OpenAPI Generator (v6.4.0)
-  refitter      Refitter (v0.3.16)
+  refitter      Refitter (v0.4.0)
   swagger       Swagger Codegen CLI (v3.0.34)
 
 Run 'csharp [command] -?|-h|--help' for more information about a command.
