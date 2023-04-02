@@ -24,8 +24,7 @@ jobs:
         node: [12, 14, 15, 16]
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [
-          ubuntu-18.04,
+        os: [          
           ubuntu-20.04,
           ubuntu-22.04,
           macos-10.15,
@@ -347,8 +346,7 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [
-          ubuntu-18.04,
+        os: [          
           ubuntu-20.04,
           ubuntu-22.04,
           macos-10.15,
@@ -397,8 +395,7 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [
-          ubuntu-18.04,
+        os: [          
           ubuntu-20.04,
           ubuntu-22.04,
           macos-10.15,
