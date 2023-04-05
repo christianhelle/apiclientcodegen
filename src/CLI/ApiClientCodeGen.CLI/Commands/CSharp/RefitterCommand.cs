@@ -6,7 +6,7 @@ using Rapicgen.Core.Logging;
 
 namespace Rapicgen.CLI.Commands.CSharp;
 
-[Command("refitter", Description = "Refitter (v0.4.0)")]
+[Command("refitter", Description = "Refitter (v0.4.1)")]
 public class RefitterCommand : CodeGeneratorCommand
 {
     public RefitterCommand(
