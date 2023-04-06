@@ -44,7 +44,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency SystemComponentModelAnnotations =
             new PackageDependency(
                 "System.ComponentModel.Annotations",
-                new Version(4, 5, 0),
+                new Version(5, 0, 0),
                 isSystemLibrary: true);
 
         public static readonly PackageDependency MicrosoftCSharp =
