@@ -73,15 +73,15 @@ The **Swagger Codegen CLI** and **OpenAPI Generator** are distributed as JAR fil
 
 **NSwagStudio** is stand alone UI tool for editing a **.nswag** specification file for generating code. This tool is optional to install and official installation instructions are available on the [NSwag Wiki on Github](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio). If **NSwagStudio** is not installed on the machine then the Visual Studio Extension will install the **NSwag CLI** via [NPM](https://www.npmjs.com/get-npm) as a global tool using the latest available version. 
 
-The **NSwag** code generator produces code that depends on the [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/13.0.1) NuGet package
+The **NSwag** code generator produces code that depends on the [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/13.0.3) NuGet package
 
 The **Refitter** code generator produces code that depends on the [Refit](https://www.nuget.org/packages/Refit/6.3.2) NuGet package
 
 The **OpenAPI Generator** code generator produces code that depends on the following NuGet packages:
 - [RestSharp](https://www.nuget.org/packages/RestSharp/108.0.2)
-- [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/1.2.0)
+- [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/2.0.1)
 - [Polly](https://www.nuget.org/packages/Polly/7.2.3)
-- [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/13.0.1)
+- [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/13.0.3)
 
 The project **Kiota** code generator produces code that depends on the following NuGet packages
 - [Microsoft.Kiota.Abstractions](https://www.nuget.org/packages/Microsoft.Kiota.Abstractions/1.1.0)
@@ -94,7 +94,7 @@ The project **Kiota** code generator produces code that depends on the following
 
 The **Swagger Codegen CLI** code generator produces code that depends on the [RestSharp](https://www.nuget.org/packages/RestSharp/105.1.0) and [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/1.2.0) NuGet packages
 
-The **AutoRest** code generator produces code that depends on the [Microsoft.Rest.ClientRuntime](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime/2.3.21) and [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/13.0.1) NuGet packages
+The **AutoRest** code generator produces code that depends on the [Microsoft.Rest.ClientRuntime](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime/2.3.24) and [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/13.0.3) NuGet packages
 
 This Visual Studio Extension will automatically add the required NuGet packages that the generated code depends on
 
