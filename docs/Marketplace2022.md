@@ -58,13 +58,13 @@ The **OpenAPI Generator** code generator produces code that depends on the follo
 - [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/13.0.1)
 
 The project **Kiota** code generator produces code that depends on the following NuGet packages
-- [Microsoft.Kiota.Abstractions](https://www.nuget.org/packages/Microsoft.Kiota.Abstractions/1.0.0-rc.6)
-- [Microsoft.Kiota.Http.HttpClientLibrary](https://www.nuget.org/packages/Microsoft.Kiota.Http.HttpClientLibrary/1.0.0-rc.5)
-- [Microsoft.Kiota.Serialization.Form](https://www.nuget.org/packages/Microsoft.Kiota.Serialization.Form/1.0.0-rc.3)
-- [Microsoft.Kiota.Serialization.Json](https://www.nuget.org/packages/Microsoft.Kiota.Serialization.Json/1.0.0-rc.3)
-- [Microsoft.Kiota.Serialization.Text](https://www.nuget.org/packages/Microsoft.Kiota.Serialization.Text/1.0.0-rc.3)
-- [Microsoft.Kiota.Authentication.Azure](https://www.nuget.org/packages/Microsoft.Kiota.Authentication.Azure/1.0.0-rc.3)
-- [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/1.8.1)
+- [Microsoft.Kiota.Abstractions](https://www.nuget.org/packages/Microsoft.Kiota.Abstractions/1.1.0)
+- [Microsoft.Kiota.Http.HttpClientLibrary](https://www.nuget.org/packages/Microsoft.Kiota.Http.HttpClientLibrary/1.0.1)
+- [Microsoft.Kiota.Serialization.Form](https://www.nuget.org/packages/Microsoft.Kiota.Serialization.Form/1.0.1)
+- [Microsoft.Kiota.Serialization.Text](https://www.nuget.org/packages/Microsoft.Kiota.Serialization.Text/1.0.1)
+- [Microsoft.Kiota.Serialization.Json](https://www.nuget.org/packages/Microsoft.Kiota.Serialization.Json/1.0.5)
+- [Microsoft.Kiota.Authentication.Azure](https://www.nuget.org/packages/Microsoft.Kiota.Authentication.Azure/1.0.2)
+- [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/1.8.2)
 
 The **Swagger Codegen CLI** code generator produces code that depends on the [RestSharp](https://www.nuget.org/packages/RestSharp/105.1.0) and [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/1.2.0) NuGet packages
 
