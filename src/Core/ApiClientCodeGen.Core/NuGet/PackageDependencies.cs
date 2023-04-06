@@ -71,37 +71,37 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency AzureIdentity =
             new PackageDependency(
                 "Azure.Identity",
-                new Version(1, 8, 1));
+                new Version(1, 8, 2));
 
         public static readonly PackageDependency MicrosoftKiotaAbstractions =
             new PackageDependency(
                 "Microsoft.Kiota.Abstractions",
-                "1.0.0-rc.6");
+                new Version(1, 1, 0));
 
         public static readonly PackageDependency MicrosoftKiotaAuthenticationAzure =
             new PackageDependency(
                 "Microsoft.Kiota.Authentication.Azure",
-                "1.0.0-rc.3");
+                "1.0.2");
 
         public static readonly PackageDependency MicrosoftKiotaHttpClientLibrary =
             new PackageDependency(
                 "Microsoft.Kiota.Http.HttpClientLibrary",
-                "1.0.0-rc.5");
+                "1.0.1");
 
         public static readonly PackageDependency MicrosoftKiotaSerializationForm =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Form",
-                "1.0.0-rc.3");
+                "1.0.1");
 
         public static readonly PackageDependency MicrosoftKiotaSerializationJson =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Json",
-                "1.0.0-rc.3");
+                "1.0.5");
 
         public static readonly PackageDependency MicrosoftKiotaSerializationText =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Text",
-                "1.0.0-rc.3");
+                "1.0.1");
 
         public static readonly PackageDependency Refit =
             new PackageDependency(
