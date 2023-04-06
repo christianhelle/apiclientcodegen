@@ -7,7 +7,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency NewtonsoftJson =
             new PackageDependency(
                 "Newtonsoft.Json",
-                new Version(13, 0, 1, 0),
+                new Version(13, 0, 3, 0),
                 false);
 
         public static readonly PackageDependency MicrosoftRestClientRuntime =
