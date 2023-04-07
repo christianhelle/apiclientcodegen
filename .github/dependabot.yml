@@ -28,6 +28,3 @@ updates:
   - dependency-name: NuGet.VisualStudio
     versions:
     - ">= 5.a, < 6"
-  - dependency-name: StreamJsonRpc
-    versions:
-    - ">= 2.a, < 3"
