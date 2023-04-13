@@ -106,6 +106,6 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency Refit =
             new PackageDependency(
                 "Refit",
-                new Version(6, 3, 2));
+                new Version(6, 5, 1));
     }
 }
