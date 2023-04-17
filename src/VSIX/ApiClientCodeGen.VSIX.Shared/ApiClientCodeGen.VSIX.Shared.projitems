@@ -128,4 +128,7 @@
       <DependentUpon>GeneralOptionsPageCustom.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Options\Refitter\" />
+  </ItemGroup>
 </Project>
