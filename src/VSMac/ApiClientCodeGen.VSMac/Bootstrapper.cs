@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using ApiClientCodeGen.VSMac.Logging;
 using Rapicgen.Core.Logging;
@@ -17,7 +18,11 @@ namespace ApiClientCodeGen.VSMac
                     return;
                 var listener = new LoggingServiceTraceListener(new MonoDevelopLoggingService());
                 Trace.Listeners.Add(listener);
-                Logger.Setup().WithDefaultTags("VSMac");
+                Logger.Setup(new SentryRemoteLogger()).WithDefaultTags("VSMac");
+                Logger.GetLogger<AppInsightsRemoteLogger>()
+                    .AddTelemetryInitializer(
+                        new VisualStudioVersionInitializer(
+                            new Version(MonoDevelop.BuildInfo.FullVersion)));
                 isRegistered = true;
             }
         }
