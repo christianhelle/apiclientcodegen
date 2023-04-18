@@ -17,7 +17,10 @@ namespace Rapicgen.Core.Logging
         public void Initialize(ITelemetry telemetry)
         {
             if (telemetry is ISupportProperties supportProperties)
+            {
                 supportProperties.Properties["visual-studio-version"] = visualStudioVersion.ToString();
+                supportProperties.Properties["operating-system"] = Environment.OSVersion.Platform.ToString();
+            }
         }
     }
 }
