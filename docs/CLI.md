@@ -2,7 +2,7 @@
 All custom tools mentioned above are also implemented in a cross platform command line application
 
 #### Requirements
-- .NET Core 3.1 runtime
+- .NET 6.0 runtime
 - Java Runtime Environment
 - NPM
 
