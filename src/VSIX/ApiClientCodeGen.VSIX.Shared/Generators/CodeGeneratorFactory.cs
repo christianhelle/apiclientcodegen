@@ -21,6 +21,7 @@ using Rapicgen.Options.AutoRest;
 using Rapicgen.Options.General;
 using Rapicgen.Options.NSwag;
 using Rapicgen.Options.OpenApiGenerator;
+using Rapicgen.Options.Refitter;
 using OpenApiDocumentFactory = Rapicgen.Generators.NSwag.OpenApiDocumentFactory;
 
 namespace Rapicgen.Generators
@@ -102,9 +103,12 @@ namespace Rapicgen.Generators
                         defaultNamespace,
                         processLauncher,
                         dependencyInstaller);
-                
+
                 case SupportedCodeGenerator.Refitter:
-                    return new RefitterCodeGenerator(inputFilePath, defaultNamespace, new DefaultRefitterOptions());
+                    return new RefitterCodeGenerator(
+                        inputFilePath,
+                        defaultNamespace,
+                        optionsFactory.Create<IRefitterOptions, RefitterOptionsPage, DefaultRefitterOptions>());
 
                 default:
                     throw new NotSupportedException();
