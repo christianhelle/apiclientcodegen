@@ -52,9 +52,8 @@ public class RefitterCommand : CodeGeneratorCommand, IRefitterOptions
     }
 
     [Option(
-        ShortName = "c",
-        LongName = "generateContracts",
-        Description = "Set this to FALSE to skip generating the contract types (default: TRUE)")]
+        LongName = "returnApiResponse",
+        Description = "Set this to TRUE to wrap the returned the contract types in IApiResponse<T> (default: FALSE)")]
     public bool ReturnIApiResponse
     {
         get => options.ReturnIApiResponse;
