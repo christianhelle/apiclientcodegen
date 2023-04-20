@@ -4,10 +4,10 @@ using Rapicgen.Core.Options.Refitter;
 
 namespace Rapicgen.Options.Refitter
 {
-    public class RefitterCSharpOptions
+    public class RefitterOptions
         : OptionsBase<IRefitterOptions, RefitterOptionsPage>, IRefitterOptions
     {
-        public RefitterCSharpOptions(IRefitterOptions? options = null)
+        public RefitterOptions(IRefitterOptions? options = null)
         {
             try
             {
