@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Rapicgen.CLI.Commands.CSharp;
+using Rapicgen.Core.Options.Refitter;
 
 namespace Rapicgen.CLI
 {
@@ -61,6 +62,7 @@ namespace Rapicgen.CLI
             services.AddSingleton<IGeneralOptions, DefaultGeneralOptions>();
             services.AddSingleton<IAutoRestOptions, DefaultAutoRestOptions>();
             services.AddSingleton<IOpenApiGeneratorOptions, DefaultOpenApiGeneratorOptions>();
+            services.AddSingleton<IRefitterOptions, DefaultRefitterOptions>();
             services.AddSingleton<IProgressReporter, ProgressReporter>();
             services.AddSingleton<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
             services.AddSingleton<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();
@@ -72,6 +74,7 @@ namespace Rapicgen.CLI
             services.AddSingleton<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
             services.AddSingleton<IOpenApiCSharpGeneratorFactory, OpenApiCSharpGeneratorFactory>();
             services.AddSingleton<ISwaggerCodegenFactory, SwaggerCodegenFactory>();
+            services.AddSingleton<IRefitterCodeGeneratorFactory, RefitterCodeGeneratorFactory>();
             services.AddSingleton<IDependencyInstaller, DependencyInstaller>();
             services.AddSingleton<INpmInstaller, NpmInstaller>();
             services.AddSingleton<IFileDownloader, FileDownloader>();

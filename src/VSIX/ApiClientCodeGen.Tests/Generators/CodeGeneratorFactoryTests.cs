@@ -17,6 +17,7 @@ using Rapicgen.Options.NSwag;
 using Rapicgen.Options.OpenApiGenerator;
 using FluentAssertions;
 using Moq;
+using Rapicgen.Core.Generators.Refitter;
 
 namespace Rapicgen.Tests.Generators
 {
@@ -90,6 +91,17 @@ namespace Rapicgen.Tests.Generators
                     SupportedCodeGenerator.OpenApi)
                 .Should()
                 .BeOfType<OpenApiCSharpCodeGenerator>();
+
+        [Xunit.Fact]
+        public void Can_Create_RefitterCodeGenerator()
+            => sut.Create(
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    SupportedLanguage.CSharp,
+                    SupportedCodeGenerator.Refitter)
+                .Should()
+                .BeOfType<RefitterCodeGenerator>();
 
         [Xunit.Fact]
         public void Create_NSwagStudio_Throws_NotSupported()
