@@ -16,6 +16,7 @@ using Rapicgen.Options.OpenApiGenerator;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
+using Rapicgen.Options.Refitter;
 
 namespace Rapicgen
 {
@@ -76,6 +77,13 @@ namespace Rapicgen
         typeof(OpenApiGeneratorOptionsPage),
         VsixName,
         OpenApiGeneratorOptionsPage.Name,
+        0,
+        0,
+        true)]
+    [ProvideOptionPage(
+        typeof(RefitterOptionsPage),
+        VsixName,
+        RefitterOptionsPage.Name,
         0,
         0,
         true)]
