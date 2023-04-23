@@ -74,6 +74,7 @@ namespace Rapicgen.CLI
             services.AddSingleton<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
             services.AddSingleton<IOpenApiCSharpGeneratorFactory, OpenApiCSharpGeneratorFactory>();
             services.AddSingleton<ISwaggerCodegenFactory, SwaggerCodegenFactory>();
+            services.AddSingleton<IRefitterCodeGeneratorFactory, RefitterCodeGeneratorFactory>();
             services.AddSingleton<IDependencyInstaller, DependencyInstaller>();
             services.AddSingleton<INpmInstaller, NpmInstaller>();
             services.AddSingleton<IFileDownloader, FileDownloader>();
