@@ -45,6 +45,7 @@ public class RefitterCommand : CodeGeneratorCommand
     }
 
     [Option(
+        ShortName = "apiresponse",
         LongName = "returnApiResponse",
         Description = "Set this to wrap the returned the contract types in IApiResponse<T> (default: Disabled)")]
     public bool ReturnIApiResponse
