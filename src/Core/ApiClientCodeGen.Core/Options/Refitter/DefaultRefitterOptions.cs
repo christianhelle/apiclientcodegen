@@ -1,5 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Rapicgen.Core.Options.Refitter;
 
+[ExcludeFromCodeCoverage]
 public class DefaultRefitterOptions : IRefitterOptions
 {
     public bool GenerateContracts { get; set; } = true;
