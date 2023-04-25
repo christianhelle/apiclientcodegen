@@ -6,7 +6,7 @@ using Rapicgen.Core.Options.Refitter;
 
 namespace Rapicgen.CLI.Commands.CSharp;
 
-[Command("refitter", Description = "Refitter (v0.4.1)")]
+[Command("refitter", Description = "Refitter (v0.4.2)")]
 public class RefitterCommand : CodeGeneratorCommand
 {
     private readonly IRefitterCodeGeneratorFactory factory;
@@ -28,7 +28,7 @@ public class RefitterCommand : CodeGeneratorCommand
 
     [Option(
         ShortName = "nocontracts",
-        LongName = "skipGenerateContracts",
+        LongName = "skip-generate-contracts",
         Description = "Set this to skip generating the contract types (default: Enabled)")]
     public bool GenerateContracts
     {
@@ -38,7 +38,7 @@ public class RefitterCommand : CodeGeneratorCommand
 
     [Option(
         ShortName = "noxml",
-        LongName = "skipGenerateXmlDocCodeComments",
+        LongName = "skip-generate-xml-doc-code-comments",
         Description = "Set this to skip generating XML doc style code comments (default: Enabled)")]
     public bool GenerateXmlDocCodeComments
     {
@@ -48,11 +48,22 @@ public class RefitterCommand : CodeGeneratorCommand
 
     [Option(
         ShortName = "apiresponse",
-        LongName = "returnApiResponse",
+        LongName = "return-api-response",
         Description = "Set this to wrap the returned the contract types in IApiResponse<T> (default: Disabled)")]
     public bool ReturnIApiResponse
     {
         get => options.ReturnIApiResponse;
         set => options.ReturnIApiResponse = value;
+    }
+
+    [Option(
+        ShortName = "internal",
+        LongName = "generate-internal-types",
+        Description =
+            "Set this to generate the API interface and contract types using the internal accessbility modifier (default modifier: public)")]
+    public bool GenerateInternalTypes
+    {
+        get => options.GenerateInternalTypes;
+        set => options.GenerateInternalTypes = value;
     }
 }
