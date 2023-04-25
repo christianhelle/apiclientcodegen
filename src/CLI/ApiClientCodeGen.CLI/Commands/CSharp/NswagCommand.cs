@@ -37,31 +37,31 @@ namespace Rapicgen.CLI.Commands.CSharp
 
         [Option(
             ShortName = "ihc",
-            LongName = "injectHttpClient",
+            LongName = "inject-http-client",
             Description = "Set this to TRUE to generate the constructor that accepts HttpClient (default: TRUE)")]
         public bool InjectHttpClient { get; set; } = true;
 
         [Option(
             ShortName = "gi",
-            LongName = "generateInterfaces",
+            LongName = "generate-interfaces",
             Description = "Set this to TRUE to generate client interfaces (default: TRUE)")]
         public bool GenerateClientInterfaces { get; set; } = true;
 
         [Option(
             ShortName = "dto",
-            LongName = "generateDtoTypes",
+            LongName = "generate-dto-types",
             Description = "Set this to TRUE to generate DTO types (default: TRUE)")]
         public bool GenerateDtoTypes { get; set; } = true;
 
         [Option(
             ShortName = "baseUrl",
-            LongName = "useBaseUrl",
+            LongName = "use-base-url",
             Description = "Set this to TRUE to include a base URL for every HTTP request (default: FALSE)")]
         public bool UseBaseUrl { get; set; } = false;
 
         [Option(
             ShortName = "style",
-            LongName = "classStyle",
+            LongName = "class-style",
             Description =
                 @"C# Class Style. 
 POCO (Plain Old C# Objects), 
@@ -72,7 +72,7 @@ Records (readonly POCO)")]
 
         [Option(
             ShortName = "useTitle",
-            LongName = "documentTitleAsClassName",
+            LongName = "document-title-as-class-name",
             Description =
                 @"Set this to TRUE to use the OpenAPI Document Info Title as the generated class name. 
 Set this to FALSE to use the filename (default: TRUE)")]
@@ -80,7 +80,7 @@ Set this to FALSE to use the filename (default: TRUE)")]
         
         [Option(
             ShortName = "pdtf",
-            LongName = "parameterDateTimeFormat",
+            LongName = "parameter-date-time-format",
             Description = "Specifies the format for DateTime type method parameters")]
         public string ParameterDateTimeFormat { get; set; } = "s";
     }

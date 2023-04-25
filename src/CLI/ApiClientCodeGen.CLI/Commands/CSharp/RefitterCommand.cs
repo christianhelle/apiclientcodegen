@@ -28,7 +28,7 @@ public class RefitterCommand : CodeGeneratorCommand
 
     [Option(
         ShortName = "nocontracts",
-        LongName = "skipGenerateContracts",
+        LongName = "skip-generate-contracts",
         Description = "Set this to skip generating the contract types (default: Enabled)")]
     public bool GenerateContracts
     {
@@ -38,7 +38,7 @@ public class RefitterCommand : CodeGeneratorCommand
 
     [Option(
         ShortName = "noxml",
-        LongName = "skipGenerateXmlDocCodeComments",
+        LongName = "skip-generate-xml-doc-code-comments",
         Description = "Set this to skip generating XML doc style code comments (default: Enabled)")]
     public bool GenerateXmlDocCodeComments
     {
@@ -48,7 +48,7 @@ public class RefitterCommand : CodeGeneratorCommand
 
     [Option(
         ShortName = "apiresponse",
-        LongName = "returnApiResponse",
+        LongName = "return-api-response",
         Description = "Set this to wrap the returned the contract types in IApiResponse<T> (default: Disabled)")]
     public bool ReturnIApiResponse
     {
