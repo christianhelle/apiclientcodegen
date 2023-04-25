@@ -55,4 +55,15 @@ public class RefitterCommand : CodeGeneratorCommand
         get => options.ReturnIApiResponse;
         set => options.ReturnIApiResponse = value;
     }
+
+    [Option(
+        ShortName = "internal",
+        LongName = "generate-internal-types",
+        Description =
+            "Set this to generate the API interface and contract types using the internal accessbility modifier (default modifier: public)")]
+    public bool GenerateInternalTypes
+    {
+        get => options.GenerateInternalTypes;
+        set => options.GenerateInternalTypes = value;
+    }
 }
