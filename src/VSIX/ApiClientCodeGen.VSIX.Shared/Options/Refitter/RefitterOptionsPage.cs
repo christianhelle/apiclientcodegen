@@ -31,5 +31,10 @@ namespace Rapicgen.Options.Refitter
         [DisplayName("Return IApiResponse<T>")]
         [Description("Set this to TRUE to wrap the returned the contract types in IApiResponse<T> (default: FALSE)")]
         public bool ReturnIApiResponse { get; set; }
+
+        [Category(Name)]
+        [DisplayName("Generate internal types")]
+        [Description("Set this to TRUE to generate the API interface and contract types using the internal accessbility modifier (default: FALSE)")]
+        public bool GenerateInternalTypes { get; set; }
     }
 }
