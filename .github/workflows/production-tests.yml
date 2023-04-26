@@ -16,11 +16,11 @@ jobs:
 
     name: C#
     runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ matrix.os == 'macos-11.0' || matrix.node == 10 }}
+    continue-on-error: ${{ matrix.os == 'macos-10.15' || matrix.os == 'macos-11' || matrix.node == 12 }}
     strategy:
       fail-fast: false
       matrix:
-        node: [12, 14, 15, 16, 18, 19]
+        node: [12, 14, 15, 16, 18, 20]
         format: [ json, yaml ]
         version: [ V2, V3 ]
         os: [          
@@ -29,7 +29,10 @@ jobs:
           macos-10.15,
           macos-11,
           macos-12,
-          # windows-2019,
+          macos-13,
+          macos-12-xl,
+          macos-13-xl,
+          windows-2019,
           windows-2022
         ]
 
