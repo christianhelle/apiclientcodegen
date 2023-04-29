@@ -66,4 +66,15 @@ public class RefitterCommand : CodeGeneratorCommand
         get => options.GenerateInternalTypes;
         set => options.GenerateInternalTypes = value;
     }
+
+    [Option(
+        ShortName = "ct",
+        LongName = "cancellation-tokens",
+        Description =
+            "Set this to generate the API interface with Cancellation Tokens (default: FALSE)")]
+    public bool UseCancellationTokens
+    {
+        get => options.UseCancellationTokens;
+        set => options.UseCancellationTokens = value;
+    }
 }
