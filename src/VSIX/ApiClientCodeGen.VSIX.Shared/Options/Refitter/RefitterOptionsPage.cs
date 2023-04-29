@@ -36,5 +36,7 @@ namespace Rapicgen.Options.Refitter
         [DisplayName("Generate internal types")]
         [Description("Set this to TRUE to generate the API interface and contract types using the internal accessbility modifier (default: FALSE)")]
         public bool GenerateInternalTypes { get; set; }
+
+        public bool UseCancellationTokens { get; set; }
     }
 }
