@@ -6,7 +6,7 @@ using Rapicgen.Core.Options.Refitter;
 
 namespace Rapicgen.CLI.Commands.CSharp;
 
-[Command("refitter", Description = "Refitter (v0.4.2)")]
+[Command("refitter", Description = "Refitter (v0.5.0)")]
 public class RefitterCommand : CodeGeneratorCommand
 {
     private readonly IRefitterCodeGeneratorFactory factory;
@@ -65,5 +65,16 @@ public class RefitterCommand : CodeGeneratorCommand
     {
         get => options.GenerateInternalTypes;
         set => options.GenerateInternalTypes = value;
+    }
+
+    [Option(
+        ShortName = "ct",
+        LongName = "cancellation-tokens",
+        Description =
+            "Set this to generate the API interface with Cancellation Tokens (default: FALSE)")]
+    public bool UseCancellationTokens
+    {
+        get => options.UseCancellationTokens;
+        set => options.UseCancellationTokens = value;
     }
 }
