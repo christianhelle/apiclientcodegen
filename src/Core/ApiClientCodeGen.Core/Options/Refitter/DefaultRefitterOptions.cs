@@ -11,4 +11,5 @@ public class DefaultRefitterOptions : IRefitterOptions
     public bool ReturnIApiResponse { get; set; }
     public bool GenerateInternalTypes { get; set; }
     public bool UseCancellationTokens { get; set; }
+    public bool GenerateHeaderParameters { get; set; } = true;
 }

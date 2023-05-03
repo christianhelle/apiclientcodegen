@@ -8,5 +8,6 @@
         bool ReturnIApiResponse { get; set; }
         bool GenerateInternalTypes { get; set; }
         bool UseCancellationTokens { get; set; }
+        bool GenerateHeaderParameters { get; set; }
     }
 }
