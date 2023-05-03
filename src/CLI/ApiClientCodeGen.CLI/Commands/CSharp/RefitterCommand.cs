@@ -70,11 +70,20 @@ public class RefitterCommand : CodeGeneratorCommand
     [Option(
         ShortName = "ct",
         LongName = "cancellation-tokens",
-        Description =
-            "Set this to generate the API interface with Cancellation Tokens (default: FALSE)")]
+        Description = "Set this to generate the API interface with Cancellation Tokens")]
     public bool UseCancellationTokens
     {
         get => options.UseCancellationTokens;
         set => options.UseCancellationTokens = value;
+    }
+
+    [Option(
+        ShortName = "noheaders",
+        LongName = "no-operation-headers",
+        Description = "Don't generate operation headers")]
+    public bool NoOperationHeaders 
+    {
+        get => !options.GenerateHeaderParameters;
+        set => options.GenerateHeaderParameters = !value;
     }
 }
