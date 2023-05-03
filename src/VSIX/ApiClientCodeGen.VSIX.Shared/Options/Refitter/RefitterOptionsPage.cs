@@ -41,5 +41,10 @@ namespace Rapicgen.Options.Refitter
         [DisplayName("Use Cancellation Tokens")]
         [Description("Set this to TRUE to generate the API interface with Cancellation Tokens (default: FALSE)")]
         public bool UseCancellationTokens { get; set; }
+
+        [Category(Name)]
+        [DisplayName("Generate Header Parameters")]
+        [Description("Set this to TRUE to generate [Header] parameters (default: TRUE)")]
+        public bool GenerateHeaderParameters { get; set; } = true;
     }
 }

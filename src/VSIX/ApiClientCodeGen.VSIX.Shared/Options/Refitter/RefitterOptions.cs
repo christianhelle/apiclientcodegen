@@ -21,6 +21,7 @@ namespace Rapicgen.Options.Refitter
                 ReturnIApiResponse = options.ReturnIApiResponse;
                 GenerateInternalTypes = options.GenerateInternalTypes;
                 UseCancellationTokens = options.UseCancellationTokens;
+                GenerateHeaderParameters = options.GenerateHeaderParameters;
             }
             catch (Exception e)
             {
@@ -28,6 +29,7 @@ namespace Rapicgen.Options.Refitter
 
                 GenerateContracts = true;
                 GenerateXmlDocCodeComments = true;
+                GenerateHeaderParameters = true;
             }
         }
 
@@ -37,5 +39,6 @@ namespace Rapicgen.Options.Refitter
         public bool ReturnIApiResponse { get; set; }
         public bool GenerateInternalTypes { get; set; }
         public bool UseCancellationTokens { get; set; }
+        public bool GenerateHeaderParameters { get; set; }
     }
 }
