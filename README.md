@@ -49,7 +49,7 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 The output file is the result of merging all the files generated using the OpenAPI Generator tool with:
 ` generate -g csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[default namespace] --skip-overwrite`
 
-- ***KiotaCodeGenerator*** - Generates a single file C# REST API Client using the Microsoft project **[Kiota v1.1.3](https://microsoft.github.io/kiota)** generator. 
+- ***KiotaCodeGenerator*** - Generates a single file C# REST API Client using the Microsoft project **[Kiota v1.2.0](https://microsoft.github.io/kiota)** generator. 
 The output file is the result of merging all the files generated using the Kiota dotnet tool with:
 ` generate -l CSharp -d [swagger file] -o [output file] -n [default namespace]`
 
@@ -292,7 +292,7 @@ Options:
 
 Commands:
   autorest      AutoRest (v3.0.0-beta.20210504.2)
-  kiota         Microsoft project Kiota (v1.1.3)
+  kiota         Microsoft project Kiota (v1.2.0)
   nswag         NSwag (v13.18.2)
   openapi       OpenAPI Generator (v6.5.0)
   refitter      Refitter (v0.5.2)
