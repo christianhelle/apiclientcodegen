@@ -45,7 +45,7 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 
 - ***NSwagCodeGenerator*** - Generates a single file C# REST API Client using the [NSwag.CodeGeneration.CSharp](https://github.com/RSuter/NSwag/wiki/CSharpClientGenerator) [nuget package](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) **v13.18.2**
 
-- ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **[OpenAPI Generator v6.5.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v6.5.0)**.
+- ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **[OpenAPI Generator v6.6.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v6.6.0)**.
 The output file is the result of merging all the files generated using the OpenAPI Generator tool with:
 ` generate -g csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[default namespace] --skip-overwrite`
 
@@ -255,7 +255,7 @@ Options:
 Commands:
   csharp             Generate C# API clients
   jmeter             Generate Apache JMeter test plans
-  openapi-generator  Generate code using OpenAPI Generator (v6.5.0).
+  openapi-generator  Generate code using OpenAPI Generator (v6.6.0).
                      See supported generators at https://openapi-generator.tech/docs/generators/
   typescript         Generate TypeScript API clients
 
@@ -294,7 +294,7 @@ Commands:
   autorest      AutoRest (v3.0.0-beta.20210504.2)
   kiota         Microsoft project Kiota (v1.2.0)
   nswag         NSwag (v13.18.2)
-  openapi       OpenAPI Generator (v6.5.0)
+  openapi       OpenAPI Generator (v6.6.0)
   refitter      Refitter (v0.5.3)
   swagger       Swagger Codegen CLI (v3.0.34)
 
