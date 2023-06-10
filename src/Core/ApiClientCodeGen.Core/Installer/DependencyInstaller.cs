@@ -52,7 +52,7 @@ namespace Rapicgen.Core.Installer
             try
             {
                 var command = PathProvider.GetDotNetPath();
-                const string arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.2.1";
+                const string arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.3.0";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
                 processLauncher.Start(command, arguments);
                 context.Succeeded();
