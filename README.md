@@ -12,10 +12,11 @@
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=christianhelle_apiclientcodegen)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=coverage)](https://sonarcloud.io/summary/new_code?id=christianhelle_apiclientcodegen)
 
-[![Version](https://vsmarketplacebadges.dev/version/ChristianResmaHelle.APIClientCodeGenerator.svg)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator) 
-[![Rating](https://vsmarketplacebadges.dev/rating-star/ChristianResmaHelle.APIClientCodeGenerator.svg)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)
-[![Installs](https://vsmarketplacebadges.dev/downloads-short/ChristianResmaHelle.APIClientCodeGenerator.svg)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)
-[![Installs](https://vsmarketplacebadges.dev/downloads-short/ChristianResmaHelle.APIClientCodeGenerator2022.svg)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2022) 
+[![Version](https://img.shields.io/visual-studio-marketplace/v/ChristianResmaHelle.ApiClientCodeGenerator?label=Marketplace)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator) 
+[![Rating](https://img.shields.io/visual-studio-marketplace/stars/ChristianResmaHelle.ApiClientCodeGenerator?label=VS%202019)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)
+[![Downloads](https://img.shields.io/visual-studio-marketplace/d/ChristianResmaHelle.ApiClientCodeGenerator?label=VS%202019)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)
+[![Rating](https://img.shields.io/visual-studio-marketplace/stars/ChristianResmaHelle.ApiClientCodeGenerator?label=VS%202022)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)
+[![Downloads](https://img.shields.io/visual-studio-marketplace/d/ChristianResmaHelle.APIClientCodeGenerator2022?label=VS%202022)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2022) 
 [![NuGet](https://img.shields.io/nuget/v/rapicgen.svg?style=flat-square)](http://www.nuget.org/packages/rapicgen)
 [![NuGet](https://img.shields.io/nuget/dt/rapicgen.svg?style=flat-square)](http://www.nuget.org/packages/rapicgen)
 
