@@ -45,7 +45,7 @@ The **Refitter** code generator produces code that depends on the [Refit](https:
 The **OpenAPI Generator** code generator produces code that depends on the following NuGet packages:
 - [RestSharp](https://www.nuget.org/packages/RestSharp/108.0.2)
 - [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/2.0.1)
-- [Polly](https://www.nuget.org/packages/Polly/7.2.3)
+- [Polly](https://www.nuget.org/packages/Polly/7.2.4)
 - [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/13.0.3)
 
 The project **Kiota** code generator produces code that depends on the following NuGet packages
