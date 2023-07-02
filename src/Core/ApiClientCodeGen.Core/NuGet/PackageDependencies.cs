@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Rapicgen.Core.NuGet
 {
@@ -86,7 +86,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency MicrosoftKiotaHttpClientLibrary =
             new PackageDependency(
                 "Microsoft.Kiota.Http.HttpClientLibrary",
-                "1.0.4");
+                "1.0.5");
 
         public static readonly PackageDependency MicrosoftKiotaSerializationForm =
             new PackageDependency(
