@@ -76,7 +76,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency MicrosoftKiotaAbstractions =
             new PackageDependency(
                 "Microsoft.Kiota.Abstractions",
-                new Version(1, 2, 0));
+                "1.2.1");
 
         public static readonly PackageDependency MicrosoftKiotaAuthenticationAzure =
             new PackageDependency(
