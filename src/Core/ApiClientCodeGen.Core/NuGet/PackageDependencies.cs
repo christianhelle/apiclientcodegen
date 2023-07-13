@@ -66,7 +66,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency AzureCore =
             new PackageDependency(
                 "Azure.Core",
-                new Version(1, 31, 0));
+                new Version(1, 34, 0));
 
         public static readonly PackageDependency AzureIdentity =
             new PackageDependency(
