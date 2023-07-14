@@ -27,7 +27,6 @@ jobs:
         os: [          
           ubuntu-20.04,
           ubuntu-22.04,
-          macos-10.15,
           macos-11,
           macos-12,
           macos-13,
@@ -352,7 +351,6 @@ jobs:
         os: [          
           ubuntu-20.04,
           ubuntu-22.04,
-          macos-10.15,
           macos-11,
           macos-12,
           windows-2019,
@@ -401,7 +399,6 @@ jobs:
         os: [          
           ubuntu-20.04,
           ubuntu-22.04,
-          macos-10.15,
           macos-11,
           macos-12,
           windows-2019,
