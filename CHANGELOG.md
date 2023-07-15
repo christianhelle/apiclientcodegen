@@ -4,8 +4,20 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.7.17...HEAD)
 
+**Implemented enhancements:**
+
+- OpenAPI Generator v7.0.0-beta [\#588](https://github.com/christianhelle/apiclientcodegen/pull/588) ([christianhelle](https://github.com/christianhelle))
+- Add support for Microsoft Kiota v1.4.0 [\#583](https://github.com/christianhelle/apiclientcodegen/pull/583) ([christianhelle](https://github.com/christianhelle))
+
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Serialization.Json from 1.0.7 to 1.0.8 [\#587](https://github.com/christianhelle/apiclientcodegen/pull/587) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Text from 1.0.1 to 1.0.3 [\#586](https://github.com/christianhelle/apiclientcodegen/pull/586) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Azure.Core from 1.33.0 to 1.34.0 [\#584](https://github.com/christianhelle/apiclientcodegen/pull/584) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Http.HttpClientLibrary from 1.0.5 to 1.0.6 [\#582](https://github.com/christianhelle/apiclientcodegen/pull/582) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump xunit.runner.visualstudio from 2.4.5 to 2.5.0 [\#581](https://github.com/christianhelle/apiclientcodegen/pull/581) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump xunit from 2.4.2 to 2.5.0 [\#580](https://github.com/christianhelle/apiclientcodegen/pull/580) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Abstractions from 1.2.0 to 1.2.1 [\#579](https://github.com/christianhelle/apiclientcodegen/pull/579) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Abstractions from 1.1.4 to 1.2.0 [\#578](https://github.com/christianhelle/apiclientcodegen/pull/578) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Http.HttpClientLibrary from 1.0.4 to 1.0.5 [\#577](https://github.com/christianhelle/apiclientcodegen/pull/577) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Json from 1.0.6 to 1.0.7 [\#576](https://github.com/christianhelle/apiclientcodegen/pull/576) ([dependabot[bot]](https://github.com/apps/dependabot))
