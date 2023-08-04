@@ -103,6 +103,11 @@ namespace Rapicgen.Core.NuGet
                 "Microsoft.Kiota.Serialization.Text",
                 "1.0.3");
 
+        public static readonly PackageDependency MicrosoftKiotaSerializationMultipart =
+            new PackageDependency(
+                "Microsoft.Kiota.Serialization.Multipart",
+                "1.0.0");
+
         public static readonly PackageDependency Refit =
             new PackageDependency(
                 "Refit",

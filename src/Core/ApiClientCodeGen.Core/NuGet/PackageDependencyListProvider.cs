@@ -72,7 +72,8 @@ namespace Rapicgen.Core.NuGet
                         PackageDependencies.MicrosoftKiotaHttpClientLibrary,
                         PackageDependencies.MicrosoftKiotaSerializationForm,
                         PackageDependencies.MicrosoftKiotaSerializationJson,
-                        PackageDependencies.MicrosoftKiotaSerializationText
+                        PackageDependencies.MicrosoftKiotaSerializationText,
+                        PackageDependencies.MicrosoftKiotaSerializationMultipart,
                     });
                     break;
                 
