@@ -109,7 +109,7 @@ Supports customising how OpenAPI Generator generates code using the additional o
 
 Supports customising how Refitter generates the Refit interface. This allows you to configure whether to return the type directly or wrap it inside an `IApiResponse<T>`. You can also disable generating contracts or XML doc style comments
 
-![Options - Refitter](images/refitter-options.png)
+![Options - Refitter](https://github.com/christianhelle/apiclientcodegen/raw/master/images/refitter-options.png)
 
 This extension collects errors and tracks feature usages to a service called [Exceptionless](https://exceptionless.com) and [Azure Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview?WT.mc_id=DT-MVP-5004822). This is done anonymously using a support key and a generated anonymous identity based on a secure hash of username@host
 
