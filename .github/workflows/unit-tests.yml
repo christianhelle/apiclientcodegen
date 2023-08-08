@@ -40,7 +40,6 @@ jobs:
           5.0.x
           6.0.x
           7.0.x
-        include-prerelease: true
 
     - name: Build with dotnet
       run: dotnet build Rapicgen.sln

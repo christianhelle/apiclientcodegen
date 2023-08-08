@@ -54,7 +54,6 @@ jobs:
           5.0.x
           6.0.x
           7.0.x
-        include-prerelease: true
 
     - name: Install rapicgen
       run: dotnet tool install --global rapicgen
@@ -310,7 +309,6 @@ jobs:
           5.0.x
           6.0.x
           7.0.x
-        include-prerelease: true
 
     - name: Install rapicgen
       run: dotnet tool install --global rapicgen
@@ -361,7 +359,6 @@ jobs:
           5.0.x
           6.0.x
           7.0.x
-        include-prerelease: true
 
     - name: Install rapicgen
       run: dotnet tool install --global rapicgen

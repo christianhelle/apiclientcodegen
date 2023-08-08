@@ -55,7 +55,6 @@ jobs:
           5.0.x
           6.0.x
           7.0.x
-        include-prerelease: true
 
     - name: Prepare Swagger Petstore OpenAPI Spec
       run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
@@ -376,7 +375,6 @@ jobs:
           5.0.x
           6.0.x
           7.0.x
-        include-prerelease: true
 
     - name: Prepare Swagger Petstore OpenAPI Spec
       run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
@@ -424,7 +422,6 @@ jobs:
           5.0.x
           6.0.x
           7.0.x
-        include-prerelease: true
 
     - name: Prepare Swagger Petstore OpenAPI Spec
       run: cp ./OpenAPI/${{ matrix.version }}/Swagger.${{ matrix.format }} ./OpenApi.${{ matrix.format }}
