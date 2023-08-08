@@ -45,6 +45,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: 17
+        distribution: 'zulu'
 
     - name: Setup .NET versions
       uses: actions/setup-dotnet@v3
@@ -358,6 +359,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: 17
+        distribution: 'zulu'
 
     - name: Setup .NET versions
       uses: actions/setup-dotnet@v3
@@ -398,6 +400,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: 17
+        distribution: 'zulu'
 
     - name: Setup .NET versions
       uses: actions/setup-dotnet@v3
