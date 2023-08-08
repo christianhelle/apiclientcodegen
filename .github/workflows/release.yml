@@ -15,9 +15,9 @@ jobs:
   VSIX:
     runs-on: windows-2022
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Sets environment variables - branch-name
-      uses: nelonoel/branch-name@v1.0.1
+      uses: christianhelle/branch-name@master
     - name: Sets environment variables - Nerdbank.GitVersioning
       uses: dotnet/nbgv@master
       with:
@@ -42,7 +42,7 @@ jobs:
         mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
         mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
     - name: Publish artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: Visual Studio Extension
         path: |
@@ -58,9 +58,9 @@ jobs:
   CLI:
     runs-on: windows-2022
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Sets environment variables - branch-name
-      uses: nelonoel/branch-name@v1.0.1
+      uses: christianhelle/branch-name@master
     - name: Sets environment variables - Nerdbank.GitVersioning
       uses: dotnet/nbgv@master
       with:
@@ -76,7 +76,7 @@ jobs:
       run: dotnet nuget push **/*.nupkg -k ${{ secrets.NUGET_KEY }} -s ${{ env.NUGET_REPO_URL }} --no-symbols true
       continue-on-error: true
     - name: Publish artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: CLI Tool
         path: |
@@ -87,7 +87,7 @@ jobs:
     runs-on: macos-latest
     timeout-minutes: 10
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Update Extension Version Info
       run: |
         sed -i -e 's/1.0/${{ env.VERSION }}/g' ./AddinInfo.cs
@@ -107,7 +107,7 @@ jobs:
       run: mv *.mpack ApiClientCodeGenerator-VSMac2022-${{ env.VERSION }}.mpack
       working-directory: src
     - name: Publish artifacts
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: Visual Studio for Mac Extension
         path: |
