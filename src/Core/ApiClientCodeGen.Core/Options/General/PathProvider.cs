@@ -11,8 +11,9 @@ namespace Rapicgen.Core.Options.General
             try
             {
                 var javaHome = Environment.GetEnvironmentVariable(environmentVariable);
-                var javaExe = Path.Combine(javaHome ?? throw new InvalidOperationException(), "bin\\java.exe");
-                return javaExe;
+                return string.IsNullOrWhiteSpace(javaHome)
+                    ? "java"
+                    : Path.Combine(javaHome, "bin\\java.exe");
             }
             catch (Exception e)
             {
