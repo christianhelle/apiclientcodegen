@@ -44,7 +44,7 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 
 ### Custom Tools
 
-- ***NSwagCodeGenerator*** - Generates a single file C# REST API Client using the [NSwag.CodeGeneration.CSharp](https://github.com/RSuter/NSwag/wiki/CSharpClientGenerator) [nuget package](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) **v13.19.0**
+- ***NSwagCodeGenerator*** - Generates a single file C# REST API Client using the [NSwag.CodeGeneration.CSharp](https://github.com/RSuter/NSwag/wiki/CSharpClientGenerator) [nuget package](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) **v13.20.0**
 
 - ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **[OpenAPI Generator v7.0.0-beta](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.0.0-beta)**.
 The output file is the result of merging all the files generated using the OpenAPI Generator tool with:
@@ -295,7 +295,7 @@ Options:
 Commands:
   autorest      AutoRest (v3.0.0-beta.20210504.2)
   kiota         Microsoft Kiota (v1.5.1)
-  nswag         NSwag (v13.19.0)
+  nswag         NSwag (v13.20.0)
   openapi       OpenAPI Generator (v7.0.0-beta)
   refitter      Refitter (v0.7.2)
   swagger       Swagger Codegen CLI (v3.0.34)
