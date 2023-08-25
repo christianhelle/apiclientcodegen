@@ -63,7 +63,7 @@ namespace Rapicgen.Core.Generators.OpenApi
                 pGenerateProgress?.Progress(40);
 
                 arguments = $"-jar \"{jarFile}\" generate " +
-                            "--generator-name csharp-netcore " +
+                            "--generator-name csharp " +
                             $"--input-spec \"{Path.GetFileName(swaggerFile)}\" " +
                             $"--output \"{output}\" " +
                             $"--package-name \"{defaultNamespace}\" " +
