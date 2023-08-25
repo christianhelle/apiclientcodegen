@@ -46,7 +46,7 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 
 - ***NSwagCodeGenerator*** - Generates a single file C# REST API Client using the [NSwag.CodeGeneration.CSharp](https://github.com/RSuter/NSwag/wiki/CSharpClientGenerator) [nuget package](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) **v13.20.0**
 
-- ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **[OpenAPI Generator v7.0.0-beta](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.0.0-beta)**.
+- ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **[OpenAPI Generator v7.0.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.0.0)**.
 The output file is the result of merging all the files generated using the OpenAPI Generator tool with:
 ` generate -g csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[default namespace] --skip-overwrite`
 
@@ -79,7 +79,7 @@ The **NSwag** code generator produces code that depends on the [Newtonsoft.Json]
 The **Refitter** code generator produces code that depends on the [Refit](https://www.nuget.org/packages/Refit/7.0.0) NuGet package
 
 The **OpenAPI Generator** code generator produces code that depends on the following NuGet packages:
-- [RestSharp](https://www.nuget.org/packages/RestSharp/108.0.2)
+- [RestSharp](https://www.nuget.org/packages/RestSharp/110.2.0)
 - [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/2.0.1)
 - [Polly](https://www.nuget.org/packages/Polly/7.2.4)
 - [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/13.0.3)
@@ -257,7 +257,7 @@ Options:
 Commands:
   csharp             Generate C# API clients
   jmeter             Generate Apache JMeter test plans
-  openapi-generator  Generate code using OpenAPI Generator (v7.0.0-beta).
+  openapi-generator  Generate code using OpenAPI Generator (v7.0.0).
                      See supported generators at https://openapi-generator.tech/docs/generators/
   typescript         Generate TypeScript API clients
 
@@ -296,7 +296,7 @@ Commands:
   autorest      AutoRest (v3.0.0-beta.20210504.2)
   kiota         Microsoft Kiota (v1.5.1)
   nswag         NSwag (v13.20.0)
-  openapi       OpenAPI Generator (v7.0.0-beta)
+  openapi       OpenAPI Generator (v7.0.0)
   refitter      Refitter (v0.7.2)
   swagger       Swagger Codegen CLI (v3.0.34)
 
