@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Rapicgen.Core.Generators.NSwagStudio;
 using Rapicgen.Core.Logging;
 using Microsoft.VisualStudio.Threading;
+using System.Net.Http;
 
 namespace Rapicgen.Windows
 {
@@ -102,14 +103,14 @@ namespace Rapicgen.Windows
 
         private async Task<string> DownloadOpenApiSpecAsync()
         {
-            using (var client = new WebClient())
-            {
-                foreach (var header in customHeaders)
-                    client.Headers.Add(header.Key, header.Value);
+            var httpMessageHandler = new HttpClientHandler();
+            httpMessageHandler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+            using var client = new HttpClient(httpMessageHandler);
 
-                return await client.DownloadStringTaskAsync(
-                    new Uri(tbUrl.Text));
-            }
+            foreach (var header in customHeaders)
+                client.DefaultRequestHeaders.Add(header.Key, header.Value);
+
+            return await client.GetStringAsync(new Uri(tbUrl.Text));
         }
 
         private void btnAddCustomHeaders_Click(object sender, EventArgs e)
