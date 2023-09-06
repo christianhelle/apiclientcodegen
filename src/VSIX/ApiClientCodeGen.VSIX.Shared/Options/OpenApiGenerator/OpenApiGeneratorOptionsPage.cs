@@ -63,6 +63,6 @@ namespace Rapicgen.Options.OpenApiGenerator
         [Category(Name)]
         [DisplayName("Use Configuration File")]
         [Description("Use the configuration file if present.")]
-        public bool UseConfigurationFile { get; set; }
+        public bool UseConfigurationFile { get; set; } = true;
     }
 }
