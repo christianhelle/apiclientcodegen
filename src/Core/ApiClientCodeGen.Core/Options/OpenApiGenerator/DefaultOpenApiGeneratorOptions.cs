@@ -21,5 +21,7 @@ namespace Rapicgen.Core.Options.OpenApiGenerator
         public bool SkipFormModel { get; set; }
 
         public string? TemplatesPath { get; set; }
+
+        public bool UseConfigurationFile { get; set; } = true;
     }
 }

@@ -23,6 +23,7 @@ namespace Rapicgen.Options.OpenApiGenerator
                 CustomAdditionalProperties = options.CustomAdditionalProperties;
                 SkipFormModel = options.SkipFormModel;
                 TemplatesPath = options.TemplatesPath;
+                UseConfigurationFile = options.UseConfigurationFile;
             }
             catch (Exception e)
             {
@@ -40,6 +41,7 @@ namespace Rapicgen.Options.OpenApiGenerator
                 Logger.Instance.WriteLine($"CustomAdditionalProperties = {CustomAdditionalProperties}");
                 Logger.Instance.WriteLine($"SkipFormModel = {SkipFormModel}");
                 Logger.Instance.WriteLine($"TemplatesPath = {TemplatesPath}");
+                Logger.Instance.WriteLine($"UseConfigurationFile = {UseConfigurationFile}");
 
                 EmitDefaultValue = true;
             }
@@ -54,5 +56,6 @@ namespace Rapicgen.Options.OpenApiGenerator
         public string? CustomAdditionalProperties { get; set; }
         public bool SkipFormModel { get; set; }
         public string? TemplatesPath { get; set; }
+        public bool UseConfigurationFile { get; set; }
     }
 }

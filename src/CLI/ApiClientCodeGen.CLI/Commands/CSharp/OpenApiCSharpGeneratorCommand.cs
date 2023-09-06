@@ -115,6 +115,7 @@ namespace Rapicgen.CLI.Commands.CSharp
             get => openApiGeneratorOptions.SkipFormModel;
             set => openApiGeneratorOptions.SkipFormModel = value;
         }
+
         [Option(
             ShortName = "t",
             LongName = "templates",
@@ -125,6 +126,12 @@ namespace Rapicgen.CLI.Commands.CSharp
             get => openApiGeneratorOptions.TemplatesPath;
             set => openApiGeneratorOptions.TemplatesPath = value;
         }
+
+        [Option(
+            ShortName = "config",
+            LongName = "use-configuration-file",
+            Description = "Use the configuration file if present.")]
+        public bool UseConfigurationFile { get; set; }
 
         public override ICodeGenerator CreateGenerator()
             => cSharpGeneratorFactory.Create(
