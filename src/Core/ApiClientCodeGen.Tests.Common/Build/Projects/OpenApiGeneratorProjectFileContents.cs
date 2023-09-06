@@ -19,6 +19,7 @@
         public const string NetStandardLibrary =
             @"<Project Sdk=""Microsoft.NET.Sdk"">
   <PropertyGroup>
+    <LangVersion>latest</LangVersion>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>

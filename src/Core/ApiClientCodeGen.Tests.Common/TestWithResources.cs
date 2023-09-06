@@ -18,6 +18,8 @@ namespace ApiClientCodeGen.Tests.Common
 
         public const string SwaggerJson = "Swagger.json";
         public const string SwaggerYaml = "Swagger.yaml";
+        public const string SwaggerConfigJson = "Swagger.config.json";
+        public const string SwaggerConfigYaml = "Swagger.config.yaml";
         public const string SwaggerNswag = "Swagger.nswag";
         public const string SwaggerLegacyNswag = "Swagger.legacy.nswag";
         public const string SwaggerV3Json = "Swagger_v3.json";
@@ -40,6 +42,8 @@ namespace ApiClientCodeGen.Tests.Common
             {
                 CreateFileFromEmbeddedResource(SwaggerJson);
                 CreateFileFromEmbeddedResource(SwaggerYaml);
+                CreateFileFromEmbeddedResource(SwaggerConfigJson);
+                CreateFileFromEmbeddedResource(SwaggerConfigYaml);
                 CreateFileFromEmbeddedResource(SwaggerNswag);
                 CreateFileFromEmbeddedResource(SwaggerLegacyNswag);
                 CreateFileFromEmbeddedResource(SwaggerV3Json);
@@ -49,6 +53,8 @@ namespace ApiClientCodeGen.Tests.Common
 
                 CreateFileFromEmbeddedResource(SwaggerJson, SwaggerJsonFilename);
                 CreateFileFromEmbeddedResource(SwaggerYaml, SwaggerYamlFilename);
+                CreateFileFromEmbeddedResource(SwaggerConfigJson, SwaggerJsonFilename.Replace(".json", ".config.json"));
+                CreateFileFromEmbeddedResource(SwaggerConfigYaml, SwaggerYamlFilename.Replace(".yaml", ".config.yaml"));
                 CreateFileFromEmbeddedResource(SwaggerNswag, SwaggerNSwagFilename);
                 CreateFileFromEmbeddedResource(SwaggerLegacyNswag, SwaggerLegacyNSwagFilename);
                 CreateFileFromEmbeddedResource(SwaggerV3Json, SwaggerV3JsonFilename);
