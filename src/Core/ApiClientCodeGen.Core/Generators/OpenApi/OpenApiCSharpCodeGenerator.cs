@@ -72,7 +72,21 @@ namespace Rapicgen.Core.Generators.OpenApi
                             $"--global-property skipFormModel={openApiGeneratorOptions.SkipFormModel} " +
                             "--skip-overwrite ";
 
-                if (string.IsNullOrWhiteSpace(openApiGeneratorOptions.CustomAdditionalProperties))
+                if (openApiGeneratorOptions.UseConfigurationFile)
+                {
+                    var configFilename = swaggerFile
+                        .Replace(
+                            Path.GetExtension(swaggerFile),
+                            $".config{Path.GetExtension(swaggerFile)}");
+
+                    if (File.Exists(configFilename))
+                    {
+                        arguments += $"-c {configFilename}";
+                    }
+                }
+
+                if (!arguments.Contains("-c ") &&
+                    string.IsNullOrWhiteSpace(openApiGeneratorOptions.CustomAdditionalProperties))
                 {
                     arguments +=
                         "--additional-properties " +
