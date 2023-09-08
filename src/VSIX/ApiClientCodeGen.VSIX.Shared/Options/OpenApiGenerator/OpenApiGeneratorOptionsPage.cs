@@ -59,5 +59,10 @@ namespace Rapicgen.Options.OpenApiGenerator
         [Description("Path to the folder containing the custom Mustache templates. " +
                      "This should be either an absolute path or a path relative to the swagger file.")]
         public string? TemplatesPath { get; set; } = null!;
+
+        [Category(Name)]
+        [DisplayName("Use Configuration File")]
+        [Description("Use the configuration file if present.")]
+        public bool UseConfigurationFile { get; set; } = true;
     }
 }

@@ -1,0 +1,6 @@
+{
+  "useDateTimeOffset": true,
+  "useCollection": true,
+  "returnICollection": true,
+  "interfacePrefix": "IPetstore"
+}

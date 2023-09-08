@@ -40,6 +40,8 @@
     <EmbeddedResource Include="Resources\Swagger_v3.yaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Swagger.config.json" />
+    <EmbeddedResource Include="Resources\Swagger.config.yaml" />
   </ItemGroup>
 
   <ItemGroup>

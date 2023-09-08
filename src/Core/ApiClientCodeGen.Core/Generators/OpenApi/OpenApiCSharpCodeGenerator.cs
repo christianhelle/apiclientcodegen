@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using Rapicgen.Core.Extensions;
 using Rapicgen.Core.Installer;
@@ -67,12 +66,28 @@ namespace Rapicgen.Core.Generators.OpenApi
                             $"--input-spec \"{Path.GetFileName(swaggerFile)}\" " +
                             $"--output \"{output}\" " +
                             $"--package-name \"{defaultNamespace}\" " +
-                            $"--global-property apiTests=false " +
-                            $"--global-property modelTests=false " +
+                            "--global-property apiTests=false " +
+                            "--global-property modelTests=false " +
                             $"--global-property skipFormModel={openApiGeneratorOptions.SkipFormModel} " +
                             "--skip-overwrite ";
 
-                if (string.IsNullOrWhiteSpace(openApiGeneratorOptions.CustomAdditionalProperties))
+                if (openApiGeneratorOptions.UseConfigurationFile)
+                {
+                    var extension = Path.GetExtension(swaggerFile);
+                    var configFilename = swaggerFile.Replace(extension, $".config{extension}");
+                    var jsonConfigFilename = swaggerFile.Replace(extension, ".config.json");
+                    var yamlConfigFilename = swaggerFile.Replace(extension, ".config.yaml");
+                    
+                    var configFilenames = new[] {configFilename, jsonConfigFilename, yamlConfigFilename};
+                    var configFile = Array.Find(configFilenames, File.Exists);
+                    if (configFile != null)
+                    {
+                        arguments += $"-c {configFile}";
+                    }
+                }
+
+                if (!arguments.Contains("-c ") &&
+                    string.IsNullOrWhiteSpace(openApiGeneratorOptions.CustomAdditionalProperties))
                 {
                     arguments +=
                         "--additional-properties " +
