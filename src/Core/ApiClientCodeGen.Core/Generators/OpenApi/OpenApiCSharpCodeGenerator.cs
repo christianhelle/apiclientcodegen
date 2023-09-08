@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using Rapicgen.Core.Extensions;
 using Rapicgen.Core.Installer;
@@ -74,14 +73,16 @@ namespace Rapicgen.Core.Generators.OpenApi
 
                 if (openApiGeneratorOptions.UseConfigurationFile)
                 {
-                    var configFilename = swaggerFile
-                        .Replace(
-                            Path.GetExtension(swaggerFile),
-                            $".config{Path.GetExtension(swaggerFile)}");
-
-                    if (File.Exists(configFilename))
+                    var extension = Path.GetExtension(swaggerFile);
+                    var configFilename = swaggerFile.Replace(extension, $".config{extension}");
+                    var jsonConfigFilename = swaggerFile.Replace(extension, ".config.json");
+                    var yamlConfigFilename = swaggerFile.Replace(extension, ".config.yaml");
+                    
+                    var configFilenames = new[] {configFilename, jsonConfigFilename, yamlConfigFilename};
+                    var configFile = Array.Find(configFilenames, File.Exists);
+                    if (configFile != null)
                     {
-                        arguments += $"-c {configFilename}";
+                        arguments += $"-c {configFile}";
                     }
                 }
 
