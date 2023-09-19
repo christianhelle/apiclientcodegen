@@ -32,6 +32,7 @@
             this.lblSupportKey = new System.Windows.Forms.Label();
             this.lblAnalyticsInfo = new System.Windows.Forms.Label();
             this.btnSupportKey = new System.Windows.Forms.Button();
+            this.cbEnableTelemetry = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblSupportKey
@@ -51,14 +52,14 @@
             this.lblAnalyticsInfo.AutoSize = true;
             this.lblAnalyticsInfo.Location = new System.Drawing.Point(16, 43);
             this.lblAnalyticsInfo.Name = "lblAnalyticsInfo";
-            this.lblAnalyticsInfo.Size = new System.Drawing.Size(354, 195);
+            this.lblAnalyticsInfo.Size = new System.Drawing.Size(351, 208);
             this.lblAnalyticsInfo.TabIndex = 20;
             this.lblAnalyticsInfo.Text = resources.GetString("lblAnalyticsInfo.Text");
             // 
             // btnSupportKey
             // 
             this.btnSupportKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSupportKey.Location = new System.Drawing.Point(295, 7);
+            this.btnSupportKey.Location = new System.Drawing.Point(288, 7);
             this.btnSupportKey.Name = "btnSupportKey";
             this.btnSupportKey.Size = new System.Drawing.Size(75, 23);
             this.btnSupportKey.TabIndex = 21;
@@ -66,16 +67,29 @@
             this.btnSupportKey.UseVisualStyleBackColor = true;
             this.btnSupportKey.Click += new System.EventHandler(this.btnSupportKey_Click);
             // 
+            // cbEnableTelemetry
+            // 
+            this.cbEnableTelemetry.AutoSize = true;
+            this.cbEnableTelemetry.Checked = true;
+            this.cbEnableTelemetry.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbEnableTelemetry.Location = new System.Drawing.Point(19, 264);
+            this.cbEnableTelemetry.Name = "cbEnableTelemetry";
+            this.cbEnableTelemetry.Size = new System.Drawing.Size(234, 17);
+            this.cbEnableTelemetry.TabIndex = 22;
+            this.cbEnableTelemetry.Text = "Enable error logging and telemetry collection";
+            this.cbEnableTelemetry.UseVisualStyleBackColor = true;
+            // 
             // AnalyticsOptionsPageCustom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this.cbEnableTelemetry);
             this.Controls.Add(this.btnSupportKey);
             this.Controls.Add(this.lblAnalyticsInfo);
             this.Controls.Add(this.lblSupportKey);
             this.Name = "AnalyticsOptionsPageCustom";
-            this.Size = new System.Drawing.Size(390, 258);
+            this.Size = new System.Drawing.Size(383, 297);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -85,5 +99,6 @@
         private System.Windows.Forms.Label lblSupportKey;
         private System.Windows.Forms.Label lblAnalyticsInfo;
         private System.Windows.Forms.Button btnSupportKey;
+        private System.Windows.Forms.CheckBox cbEnableTelemetry;
     }
 }
