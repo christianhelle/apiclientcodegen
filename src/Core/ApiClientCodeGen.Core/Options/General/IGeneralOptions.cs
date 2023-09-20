@@ -8,5 +8,6 @@
         string SwaggerCodegenPath { get; }
         string OpenApiGeneratorPath { get; }
         bool? InstallMissingPackages { get; }
+        bool DisableTelemetry { get; }
     }
 }

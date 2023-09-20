@@ -8,5 +8,6 @@
         public string SwaggerCodegenPath => PathProvider.GetSwaggerCodegenPath();
         public string OpenApiGeneratorPath => PathProvider.GetOpenApiGeneratorPath();
         public bool? InstallMissingPackages => true;
+        public bool DisableTelemetry { get; }
     }
 }

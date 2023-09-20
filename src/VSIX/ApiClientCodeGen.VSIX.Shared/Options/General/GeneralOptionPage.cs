@@ -14,28 +14,21 @@ namespace Rapicgen.Options.General
     {
         public const string Name = "General";
 
-        public GeneralOptionPage()
-        {
-            JavaPath = PathProvider.GetJavaPath();
-            NpmPath = PathProvider.GetNpmPath();
-            NSwagPath = PathProvider.GetNSwagStudioPath();
-        }
-
         [Category("File Paths")]
         [DisplayName("Java Path")]
         [Description("Full path to java.exe. Leave empty to get path from JAVA_HOME")]
-        public string JavaPath { get; set; }
+        public string JavaPath { get; set; } = PathProvider.GetJavaPath();
 
         [Category("File Paths")]
         [DisplayName("NPM Path")]
         [Description("Full path to npm.cmd")]
-        public string NpmPath { get; set; }
+        public string NpmPath { get; set; } = PathProvider.GetNpmPath();
 
         [Category("File Paths")]
         [DisplayName("NSwag Path")]
         [Description("Full path to NSwag.exe (Installs from NPM if not found)")]
-        public string NSwagPath { get; set; }
-        
+        public string NSwagPath { get; set; } = PathProvider.GetNSwagStudioPath();
+
         [Category("File Paths")]
         [DisplayName("Swagger Codegen CLI Path")]
         [Description("Full path to Swagger Codegen JAR file")]
@@ -50,6 +43,11 @@ namespace Rapicgen.Options.General
         [DisplayName("Install Required Packages")]
         [Description("Automatically install required NuGet packages")]
         public bool? InstallMissingPackages { get; set; } = true;
+
+        [Category("Telemetry")]
+        [DisplayName("Disable Telemetry")]
+        [Description("Disable telemetry collection")]
+        public bool DisableTelemetry { get; }
 
         protected override IWin32Window Window
             => new GeneralOptionsPageCustom(this);

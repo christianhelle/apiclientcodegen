@@ -19,6 +19,7 @@ namespace Rapicgen.Options.General
                 SwaggerCodegenPath = options.SwaggerCodegenPath;
                 OpenApiGeneratorPath = options.OpenApiGeneratorPath;
                 InstallMissingPackages = options.InstallMissingPackages;
+                DisableTelemetry = options.DisableTelemetry;
             }
             catch (Exception e)
             {
@@ -30,7 +31,6 @@ namespace Rapicgen.Options.General
                 SwaggerCodegenPath = PathProvider.GetSwaggerCodegenPath();
                 OpenApiGeneratorPath = PathProvider.GetOpenApiGeneratorPath();
                 InstallMissingPackages = true;
-
                 
                 Logger.Instance.WriteLine(Environment.NewLine);
                 Logger.Instance.WriteLine("Error reading user options. Reverting to default values");
@@ -49,5 +49,6 @@ namespace Rapicgen.Options.General
         public string SwaggerCodegenPath { get; set; }
         public string OpenApiGeneratorPath { get; set; }
         public bool? InstallMissingPackages { get; }
+        public bool DisableTelemetry { get; set; }
     }
 }
