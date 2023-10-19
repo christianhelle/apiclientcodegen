@@ -60,7 +60,7 @@ The project **Kiota** code generator produces code that depends on the following
 - [Microsoft.Kiota.Serialization.Json](https://www.nuget.org/packages/Microsoft.Kiota.Serialization.Json/1.0.8)
 - [Microsoft.Kiota.Serialization.Multipart](https://www.nuget.org/packages/Microsoft.Kiota.Serialization.Multipart/1.0.0)
 - [Microsoft.Kiota.Authentication.Azure](https://www.nuget.org/packages/Microsoft.Kiota.Authentication.Azure/1.0.3)
-- [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/1.10.2)
+- [Azure.Identity](https://www.nuget.org/packages/Azure.Identity/1.10.3)
 
 The **Swagger Codegen CLI** code generator produces code that depends on the [RestSharp](https://www.nuget.org/packages/RestSharp/105.1.0) and [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/1.2.0) NuGet packages
 
