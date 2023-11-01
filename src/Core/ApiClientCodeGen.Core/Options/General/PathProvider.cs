@@ -11,12 +11,16 @@ namespace Rapicgen.Core.Options.General
             try
             {
                 var javaHome = Environment.GetEnvironmentVariable(environmentVariable);
-                var javaExe = Path.Combine(javaHome ?? throw new InvalidOperationException(), "bin\\java.exe");
-                return javaExe;
+                if (!string.IsNullOrWhiteSpace(javaHome)) 
+                    return Path.Combine(javaHome, "bin\\java.exe");
+
+                Logger.Instance.WriteLine("Unable to read JAVA_HOME environment variable");
+                return "java";
+
             }
             catch (Exception e)
             {
-                Logger.Instance.WriteLine("Unable to find JAVA_HOME environment variable");
+                Logger.Instance.TrackError(e);
                 return "java";
             }
         }
