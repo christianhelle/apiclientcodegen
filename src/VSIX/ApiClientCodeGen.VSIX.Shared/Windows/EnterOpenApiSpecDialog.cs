@@ -95,6 +95,7 @@ namespace Rapicgen.Windows
             }
             catch (Exception ex)
             {
+                lblStatus.Text = ex.Message;
                 Logger.Instance.TrackError(ex);
                 Logger.Instance.WriteLine($"Unable to download OpenAPI specification file from {url}");
                 Logger.Instance.WriteLine(ex);
