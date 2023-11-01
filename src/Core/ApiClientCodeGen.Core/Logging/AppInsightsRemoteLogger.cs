@@ -82,7 +82,10 @@ namespace Rapicgen.Core.Logging
 
         public void WriteLine(object data)
         {
-            // Method intentionally left empty.
+            if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached || telemetryClient == null)
+                return;
+            telemetryClient.TrackTrace(data.ToString());
+            telemetryClient.Flush();
         }
     }
 }
