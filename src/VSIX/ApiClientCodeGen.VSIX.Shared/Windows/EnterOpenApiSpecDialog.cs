@@ -9,6 +9,7 @@ using Rapicgen.Core.Generators.NSwagStudio;
 using Rapicgen.Core.Logging;
 using Microsoft.VisualStudio.Threading;
 using System.Net.Http;
+using System.Net.Sockets;
 
 namespace Rapicgen.Windows
 {
