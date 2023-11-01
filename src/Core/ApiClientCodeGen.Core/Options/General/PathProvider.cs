@@ -16,8 +16,6 @@ namespace Rapicgen.Core.Options.General
             }
             catch (Exception e)
             {
-                Logger.Instance.TrackError(e);
-                Logger.Instance.WriteLine(Environment.NewLine);
                 Logger.Instance.WriteLine("Unable to find JAVA_HOME environment variable");
                 return "java";
             }
