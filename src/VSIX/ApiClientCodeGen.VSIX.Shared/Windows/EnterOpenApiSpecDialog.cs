@@ -87,7 +87,6 @@ namespace Rapicgen.Windows
             }
             catch (UriFormatException ex)
             {
-                Logger.Instance.TrackError(ex);
                 const string message = "Invalid URL";
                 lblStatus.Text = message;
                 Logger.Instance.WriteLine(message);
