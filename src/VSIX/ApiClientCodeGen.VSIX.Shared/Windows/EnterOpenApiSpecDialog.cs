@@ -110,7 +110,7 @@ namespace Rapicgen.Windows
             foreach (var header in customHeaders)
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
 
-            return await client.GetStringAsync(new Uri(tbUrl.Text));
+            return await client.GetStringAsync(tbUrl.Text);
         }
 
         private void btnAddCustomHeaders_Click(object sender, EventArgs e)
