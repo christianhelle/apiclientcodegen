@@ -93,6 +93,18 @@ namespace Rapicgen.Windows
                 Logger.Instance.WriteLine(message);
                 Logger.Instance.WriteLine(ex);
             }
+            catch (HttpRequestException ex)
+            {
+                lblStatus.Text = ex.Message;
+                Logger.Instance.WriteLine(ex.Message);
+                Logger.Instance.WriteLine(ex);
+            }
+            catch (SocketException ex) 
+            {
+                lblStatus.Text = ex.Message;
+                Logger.Instance.WriteLine(ex.Message);
+                Logger.Instance.WriteLine(ex);
+            }
             catch (Exception ex)
             {
                 lblStatus.Text = ex.Message;
