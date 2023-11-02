@@ -84,7 +84,10 @@ namespace Rapicgen.Core.Logging
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached || telemetryClient == null)
                 return;
-            telemetryClient.TrackTrace(data.ToString());
+            var message = data?.ToString();
+            if (string.IsNullOrWhiteSpace(message))
+                return;
+            telemetryClient.TrackTrace(message);
             telemetryClient.Flush();
         }
     }
