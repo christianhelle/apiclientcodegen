@@ -9,6 +9,7 @@ using Rapicgen.Core.Generators.NSwagStudio;
 using Rapicgen.Core.Logging;
 using Microsoft.VisualStudio.Threading;
 using System.Net.Http;
+using System.Net.Sockets;
 
 namespace Rapicgen.Windows
 {
@@ -87,14 +88,26 @@ namespace Rapicgen.Windows
             }
             catch (UriFormatException ex)
             {
-                Logger.Instance.TrackError(ex);
                 const string message = "Invalid URL";
                 lblStatus.Text = message;
                 Logger.Instance.WriteLine(message);
                 Logger.Instance.WriteLine(ex);
             }
+            catch (HttpRequestException ex)
+            {
+                lblStatus.Text = ex.Message;
+                Logger.Instance.WriteLine(ex.Message);
+                Logger.Instance.WriteLine(ex);
+            }
+            catch (SocketException ex) 
+            {
+                lblStatus.Text = ex.Message;
+                Logger.Instance.WriteLine(ex.Message);
+                Logger.Instance.WriteLine(ex);
+            }
             catch (Exception ex)
             {
+                lblStatus.Text = $@"{ex.GetType().Name}: {ex.Message}";
                 Logger.Instance.TrackError(ex);
                 Logger.Instance.WriteLine($"Unable to download OpenAPI specification file from {url}");
                 Logger.Instance.WriteLine(ex);
@@ -110,7 +123,7 @@ namespace Rapicgen.Windows
             foreach (var header in customHeaders)
                 client.DefaultRequestHeaders.Add(header.Key, header.Value);
 
-            return await client.GetStringAsync(new Uri(tbUrl.Text));
+            return await client.GetStringAsync(tbUrl.Text);
         }
 
         private void btnAddCustomHeaders_Click(object sender, EventArgs e)
