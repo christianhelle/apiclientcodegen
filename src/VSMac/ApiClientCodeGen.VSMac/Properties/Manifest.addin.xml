@@ -35,7 +35,7 @@
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewNSwagStudioCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.OpenApi"
-                 _label = "Generate with OpenAPI Generator (v7.0.1)"
+                 _label = "Generate with OpenAPI Generator (v7.1.0)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewOpenApiCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Kiota"
@@ -64,7 +64,7 @@
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateNSwagStudioCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.OpenApi"
-                 _label = "Generate with OpenAPI Generator (v7.0.1)"
+                 _label = "Generate with OpenAPI Generator (v7.1.0)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateOpenApiCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Kiota"
