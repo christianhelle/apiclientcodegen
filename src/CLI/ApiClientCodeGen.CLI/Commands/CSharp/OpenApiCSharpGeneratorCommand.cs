@@ -9,7 +9,7 @@ using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace Rapicgen.CLI.Commands.CSharp
 {
-    [Command("openapi", Description = "OpenAPI Generator (v7.0.1)")]
+    [Command("openapi", Description = "OpenAPI Generator (v7.1.0)")]
     public class OpenApiCSharpGeneratorCommand : CodeGeneratorCommand, IOpenApiGeneratorOptions
     {
         private readonly IGeneralOptions options;
