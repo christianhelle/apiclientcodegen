@@ -81,7 +81,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency MicrosoftKiotaAuthenticationAzure =
             new PackageDependency(
                 "Microsoft.Kiota.Authentication.Azure",
-                "1.1.1");
+                "1.1.2");
 
         public static readonly PackageDependency MicrosoftKiotaHttpClientLibrary =
             new PackageDependency(
