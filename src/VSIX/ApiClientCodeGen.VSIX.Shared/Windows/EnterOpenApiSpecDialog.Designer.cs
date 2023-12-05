@@ -60,7 +60,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(289, 76);
+            this.btnOK.Location = new System.Drawing.Point(289, 67);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 3;
@@ -72,7 +72,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(370, 76);
+            this.btnCancel.Location = new System.Drawing.Point(370, 67);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
@@ -102,7 +102,7 @@
             // 
             this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(12, 91);
+            this.lblStatus.Location = new System.Drawing.Point(12, 101);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 13);
             this.lblStatus.TabIndex = 8;
@@ -111,7 +111,7 @@
             // 
             this.btnAddCustomHeaders.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddCustomHeaders.AutoSize = true;
-            this.btnAddCustomHeaders.Location = new System.Drawing.Point(451, 76);
+            this.btnAddCustomHeaders.Location = new System.Drawing.Point(451, 67);
             this.btnAddCustomHeaders.Name = "btnAddCustomHeaders";
             this.btnAddCustomHeaders.Size = new System.Drawing.Size(89, 23);
             this.btnAddCustomHeaders.TabIndex = 9;
@@ -123,7 +123,7 @@
             // 
             this.lblMarketplaceLink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMarketplaceLink.AutoSize = true;
-            this.lblMarketplaceLink.Location = new System.Drawing.Point(5, 95);
+            this.lblMarketplaceLink.Location = new System.Drawing.Point(5, 105);
             this.lblMarketplaceLink.Name = "lblMarketplaceLink";
             this.lblMarketplaceLink.Size = new System.Drawing.Size(265, 13);
             this.lblMarketplaceLink.TabIndex = 10;
@@ -138,7 +138,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(552, 113);
+            this.ClientSize = new System.Drawing.Size(552, 123);
             this.Controls.Add(this.lblMarketplaceLink);
             this.Controls.Add(this.btnAddCustomHeaders);
             this.Controls.Add(this.lblStatus);
