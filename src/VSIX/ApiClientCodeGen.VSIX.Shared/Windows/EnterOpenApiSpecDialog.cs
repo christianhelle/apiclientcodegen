@@ -56,7 +56,7 @@ namespace Rapicgen.Windows
             var url = tbUrl.Text;
             if (string.IsNullOrWhiteSpace(url))
             {
-                lblStatus.Text = @"Please enter the URL";
+                ShowStatusMessage(@"Please enter the URL");
                 return;
             }
 
@@ -65,12 +65,12 @@ namespace Rapicgen.Windows
 
             try
             {
-                lblStatus.Text = "Downloading...";
+                ShowStatusMessage("Downloading...");
 
                 var openApiSpecification = await DownloadOpenApiSpecAsync();
                 if (string.IsNullOrWhiteSpace(openApiSpecification))
                 {
-                    lblStatus.Text = "No content!";
+                    ShowStatusMessage("No content!");
                     Logger.Instance.WriteLine($"Unable to download OpenAPI specification file from {url}");
                     return;
                 }
@@ -89,29 +89,35 @@ namespace Rapicgen.Windows
             catch (UriFormatException ex)
             {
                 const string message = "Invalid URL";
-                lblStatus.Text = message;
+                ShowStatusMessage(message);
                 Logger.Instance.WriteLine(message);
                 Logger.Instance.WriteLine(ex);
             }
             catch (HttpRequestException ex)
             {
-                lblStatus.Text = ex.Message;
+                ShowStatusMessage(ex.Message);
                 Logger.Instance.WriteLine(ex.Message);
                 Logger.Instance.WriteLine(ex);
             }
-            catch (SocketException ex) 
+            catch (SocketException ex)
             {
-                lblStatus.Text = ex.Message;
+                ShowStatusMessage(ex.Message);
                 Logger.Instance.WriteLine(ex.Message);
                 Logger.Instance.WriteLine(ex);
             }
             catch (Exception ex)
             {
-                lblStatus.Text = $@"{ex.GetType().Name}: {ex.Message}";
+                ShowStatusMessage($@"{ex.GetType().Name}: {ex.Message}");
                 Logger.Instance.TrackError(ex);
                 Logger.Instance.WriteLine($"Unable to download OpenAPI specification file from {url}");
                 Logger.Instance.WriteLine(ex);
             }
+        }
+
+        private void ShowStatusMessage(string message)
+        {
+            lblMarketplaceLink.Visible = false;
+            lblStatus.Text = message;
         }
 
         private async Task<string> DownloadOpenApiSpecAsync()
