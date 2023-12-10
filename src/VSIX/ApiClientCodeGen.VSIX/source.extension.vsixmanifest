@@ -2,7 +2,7 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
         <Identity Id="18316dd0-2bbc-49b0-bd7c-c355031fade2" Version="1.0.0" Language="en-US" Publisher="Christian Resma Helle" />
-        <DisplayName>REST API Client Code Generator</DisplayName>
+        <DisplayName>REST API Client Code Generator for VS 2019</DisplayName>
         <Description xml:space="preserve">A collection of Visual Studio custom tools for generating a strongly typed REST API Client from an Open API / Swagger specification file</Description>
         <MoreInfo>https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator</MoreInfo>
         <License>License.txt</License>
