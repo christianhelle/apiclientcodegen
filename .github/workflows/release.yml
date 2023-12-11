@@ -49,6 +49,7 @@ jobs:
           *.vsix
           docs/Marketplace*.md
     - name: Publish VSIX Packages
+      continue-on-error: true
       run: |
         $VsixPublisher = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
         & $VsixPublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
