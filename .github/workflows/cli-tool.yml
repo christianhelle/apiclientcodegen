@@ -27,7 +27,7 @@ jobs:
     runs-on: windows-2019
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Sets environment variables - branch-name
       uses: christianhelle/branch-name@master
     - name: Sets environment variables - Nerdbank.GitVersioning
