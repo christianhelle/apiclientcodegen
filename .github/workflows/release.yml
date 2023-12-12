@@ -15,7 +15,7 @@ jobs:
   VSIX:
     runs-on: windows-2022
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Sets environment variables - branch-name
       uses: christianhelle/branch-name@master
     - name: Sets environment variables - Nerdbank.GitVersioning
@@ -59,7 +59,7 @@ jobs:
   CLI:
     runs-on: windows-2022
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Sets environment variables - branch-name
       uses: christianhelle/branch-name@master
     - name: Sets environment variables - Nerdbank.GitVersioning
@@ -88,7 +88,7 @@ jobs:
     runs-on: macos-latest
     timeout-minutes: 10
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Update Extension Version Info
       run: |
         sed -i -e 's/1.0/${{ env.VERSION }}/g' ./AddinInfo.cs
@@ -176,7 +176,7 @@ jobs:
         asset_path: artifacts/Visual Studio for Mac Extension/src/ApiClientCodeGenerator-VSMac2022-${{ env.VERSION }}.mpack
         asset_name: ApiClientCodeGenerator-VSMac2022-${{ env.VERSION }}.mpack
         asset_content_type: application/zip
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:
         repository: christianhelle/vsmac-extensions-repo
         ref: 'main'
