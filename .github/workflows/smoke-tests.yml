@@ -33,7 +33,6 @@ jobs:
     name: C#
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
-    continue-on-error: ${{ matrix.os == 'macos-latest' }}
 
     steps:
     - uses: actions/checkout@v4
@@ -260,6 +259,7 @@ jobs:
         cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/NetStandard20/Output.cs
         cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/NetStandard21/Output.cs
       working-directory: test
+      continue-on-error: ${{ matrix.os == 'macos-latest' }}
 
     - name: Build .NET 6 Kiota generated code
       run: dotnet build ./GeneratedCode/Kiota/Net6/Net6.csproj
