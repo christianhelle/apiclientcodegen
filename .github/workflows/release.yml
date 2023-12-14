@@ -146,7 +146,7 @@ jobs:
         release_name: v${{ env.VERSION }}
         draft: true
         prerelease: false
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         path: artifacts
     - name: Upload VSIX asset
@@ -181,7 +181,7 @@ jobs:
         repository: christianhelle/vsmac-extensions-repo
         ref: 'main'
         token:  ${{ secrets.ACTIONS_GITHUB_TOKEN }}
-    - uses: actions/download-artifact@v3
+    - uses: actions/download-artifact@v4
       with:
         path: artifacts
     - name: Move artifact to stable folder
