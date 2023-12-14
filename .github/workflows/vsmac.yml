@@ -46,7 +46,7 @@ jobs:
       working-directory: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/
 
     - name: Publish binaries
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Binaries
         path: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/VSMac-Binaries.zip
@@ -56,7 +56,7 @@ jobs:
       working-directory: src
 
     - name: Publish artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Extension
         path: |
