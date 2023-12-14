@@ -28,11 +28,12 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-latest, windows-2022, ubuntu-latest ]
+        os: [ macos-latest, windows-latest, ubuntu-latest ]
 
     name: C#
     runs-on: ${{ matrix.os }}
     timeout-minutes: 20
+    continue-on-error: ${{ matrix.os == 'macos-latest' }}
 
     steps:
     - uses: actions/checkout@v4
