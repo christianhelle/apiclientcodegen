@@ -1,5 +1,6 @@
 version: 2
 updates:
+
 - package-ecosystem: nuget
   directory: "/"
   schedule:
@@ -28,3 +29,10 @@ updates:
   - dependency-name: NuGet.VisualStudio
     versions:
     - ">= 5.a, < 6"
+
+- package-ecosystem: github-actions
+  directory: "/"
+  open-pull-requests-limit: 10
+  rebase-strategy: auto
+  schedule:
+    interval: "daily"
