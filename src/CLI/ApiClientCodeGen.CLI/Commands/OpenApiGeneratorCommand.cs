@@ -15,7 +15,7 @@ namespace Rapicgen.CLI.Commands
     [Command(
         "openapi-generator", 
         Description = 
-            @"Generate code using OpenAPI Generator (v7.1.0). 
+            @"Generate code using OpenAPI Generator (v7.2.0). 
 See supported generators at https://openapi-generator.tech/docs/generators/")]
     public class OpenApiGeneratorCommand
     {

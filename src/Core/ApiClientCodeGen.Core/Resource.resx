@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="OpenApiGenerator_DownloadUrl" xml:space="preserve">
-    <value>https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.1.0/openapi-generator-cli-7.1.0.jar</value>
+    <value>https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.2.0/openapi-generator-cli-7.2.0.jar</value>
   </data>
   <data name="OpenApiGenerator_MD5" xml:space="preserve">
-    <value>9612450034d12fece632bb635c3913b2</value>
+    <value>d26a3df8b552c9857e153c927375bfec</value>
   </data>
   <data name="OpenApiGenerator_SHA1" xml:space="preserve">
-    <value>7d9b3a162b5b5fddf28a995d330131cfff886333</value>
+    <value>75a917658f61608a96c4824f6b2aa82ee9281956</value>
   </data>
   <data name="SwaggerCodegenCli_DownloadUrl" xml:space="preserve">
     <value>https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.34/swagger-codegen-cli-3.0.34.jar</value>
