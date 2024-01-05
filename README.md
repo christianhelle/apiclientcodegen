@@ -232,7 +232,7 @@ Here's what you need to do:
 All custom tools mentioned above are also implemented in a cross platform command line application
 
 #### Requirements
-- .NET 6.0 runtime
+- .NET 8.0 runtime
 - Java Runtime Environment
 - NPM
 
