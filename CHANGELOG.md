@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.2...HEAD)
 
+**Implemented enhancements:**
+
+- Fix Refitter v0.9.0 crashes Visual Studio [\#747](https://github.com/christianhelle/apiclientcodegen/pull/747) ([christianhelle](https://github.com/christianhelle))
+
 **Merged pull requests:**
 
 - Update VSIX build workflows to disable extension deployment [\#745](https://github.com/christianhelle/apiclientcodegen/pull/745) ([christianhelle](https://github.com/christianhelle))
