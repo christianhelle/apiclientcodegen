@@ -18,10 +18,10 @@
     <PackageReference Include="Exceptionless" Version="6.0.3" />
     <PackageReference Include="ICSharpCode.CodeConverter" Version="9.2.4.657" />
     <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer" Version="2.22.0" />
-    <PackageReference Include="NSwag.Core.Yaml" Version="13.20.0" />
-    <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="13.20.0" />
+    <PackageReference Include="NSwag.Core.Yaml" Version="14.0.0" />
+    <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.0.0" />
     <PackageReference Include="Polly" Version="8.2.0" />
-    <PackageReference Include="Refitter.Core" Version="0.8.7" />
+    <PackageReference Include="Refitter.Core" Version="0.9.0" />
   </ItemGroup>
 
   <ItemGroup>
