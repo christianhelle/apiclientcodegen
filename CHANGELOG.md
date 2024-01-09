@@ -1,5 +1,301 @@
 # Changelog
 
+## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.2...HEAD)
+
+**Merged pull requests:**
+
+- Update VSIX build workflows to disable extension deployment [\#745](https://github.com/christianhelle/apiclientcodegen/pull/745) ([christianhelle](https://github.com/christianhelle))
+- Bump Polly from 8.2.0 to 8.2.1 [\#743](https://github.com/christianhelle/apiclientcodegen/pull/743) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update nuget monorepo [\#742](https://github.com/christianhelle/apiclientcodegen/pull/742) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency xunit to v2.6.5 [\#740](https://github.com/christianhelle/apiclientcodegen/pull/740) ([renovate[bot]](https://github.com/apps/renovate))
+- Update nswag monorepo to v14 \(major\) [\#739](https://github.com/christianhelle/apiclientcodegen/pull/739) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.9.2](https://github.com/christianhelle/apiclientcodegen/tree/1.9.2) (2023-12-24)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.1...1.9.2)
+
+**Implemented enhancements:**
+
+- Upgrade OpenAPI Generator to v7.2.0 [\#738](https://github.com/christianhelle/apiclientcodegen/pull/738) ([christianhelle](https://github.com/christianhelle))
+
+**Closed issues:**
+
+- \[Readme\] Mention refitter and kiota in feature summary [\#735](https://github.com/christianhelle/apiclientcodegen/issues/735)
+
+**Merged pull requests:**
+
+- Update xunit-dotnet monorepo [\#737](https://github.com/christianhelle/apiclientcodegen/pull/737) ([renovate[bot]](https://github.com/apps/renovate))
+- Add Refitter and Kiota to feature list [\#736](https://github.com/christianhelle/apiclientcodegen/pull/736) ([christianhelle](https://github.com/christianhelle))
+- Bump Refitter.Core from 0.8.6 to 0.8.7 [\#733](https://github.com/christianhelle/apiclientcodegen/pull/733) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update actions/upload-artifact action to v4 [\#731](https://github.com/christianhelle/apiclientcodegen/pull/731) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/download-artifact action to v4 - autoclosed [\#730](https://github.com/christianhelle/apiclientcodegen/pull/730) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.9.1](https://github.com/christianhelle/apiclientcodegen/tree/1.9.1) (2023-12-14)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.0...1.9.1)
+
+**Implemented enhancements:**
+
+- Upgrade Microsoft Kiota to v1.9.1 [\#729](https://github.com/christianhelle/apiclientcodegen/pull/729) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update dependency windows to v2022 [\#725](https://github.com/christianhelle/apiclientcodegen/pull/725) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency cake.tool to v4 [\#723](https://github.com/christianhelle/apiclientcodegen/pull/723) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Microsoft.TestPlatform to v17 [\#719](https://github.com/christianhelle/apiclientcodegen/pull/719) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/setup-node action to v4 [\#718](https://github.com/christianhelle/apiclientcodegen/pull/718) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/setup-java action to v4 [\#717](https://github.com/christianhelle/apiclientcodegen/pull/717) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/setup-dotnet action to v4 [\#716](https://github.com/christianhelle/apiclientcodegen/pull/716) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/github-script action to v7 [\#715](https://github.com/christianhelle/apiclientcodegen/pull/715) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/checkout action to v4 [\#714](https://github.com/christianhelle/apiclientcodegen/pull/714) ([renovate[bot]](https://github.com/apps/renovate))
+- Update microsoft/setup-msbuild action to v1.3 [\#712](https://github.com/christianhelle/apiclientcodegen/pull/712) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency cake.tool to v3.2.0 [\#711](https://github.com/christianhelle/apiclientcodegen/pull/711) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Moq to v4.20.70 [\#710](https://github.com/christianhelle/apiclientcodegen/pull/710) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump ICSharpCode.CodeConverter from 9.2.3.621 to 9.2.4.657 [\#709](https://github.com/christianhelle/apiclientcodegen/pull/709) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update dependency Microsoft.VSSDK.BuildTools to v17.8.2365 [\#708](https://github.com/christianhelle/apiclientcodegen/pull/708) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Microsoft.TestPlatform to v16.11.0 [\#707](https://github.com/christianhelle/apiclientcodegen/pull/707) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency dotnet-sdk to v6.0.417 [\#705](https://github.com/christianhelle/apiclientcodegen/pull/705) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Refitter.Core to v0.8.6 [\#704](https://github.com/christianhelle/apiclientcodegen/pull/704) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.9.0](https://github.com/christianhelle/apiclientcodegen/tree/1.9.0) (2023-12-11)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.8.10...1.9.0)
+
+**Implemented enhancements:**
+
+- Upgrade Microsoft Kiota to v1.9.0 [\#697](https://github.com/christianhelle/apiclientcodegen/pull/697) ([christianhelle](https://github.com/christianhelle))
+- Ensure that the marketplace review link does not block status messages [\#695](https://github.com/christianhelle/apiclientcodegen/pull/695) ([christianhelle](https://github.com/christianhelle))
+
+**Fixed bugs:**
+
+- Marketplace Review link in the Add New REST API Client dialog blocks status messages [\#696](https://github.com/christianhelle/apiclientcodegen/issues/696)
+
+**Merged pull requests:**
+
+- Configure Renovate [\#700](https://github.com/christianhelle/apiclientcodegen/pull/700) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump xunit.runner.visualstudio from 2.5.4 to 2.5.5 [\#699](https://github.com/christianhelle/apiclientcodegen/pull/699) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump xunit from 2.6.2 to 2.6.3 [\#698](https://github.com/christianhelle/apiclientcodegen/pull/698) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.ApplicationInsights.WindowsServer from 2.21.0 to 2.22.0 [\#694](https://github.com/christianhelle/apiclientcodegen/pull/694) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Abstractions from 1.7.2 to 1.7.3 [\#693](https://github.com/christianhelle/apiclientcodegen/pull/693) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump AutoFixture.AutoMoq and AutoFixture [\#692](https://github.com/christianhelle/apiclientcodegen/pull/692) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump AutoFixture from 4.18.0 to 4.18.1 [\#691](https://github.com/christianhelle/apiclientcodegen/pull/691) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump AutoFixture.Xunit2 and AutoFixture [\#690](https://github.com/christianhelle/apiclientcodegen/pull/690) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Http.HttpClientLibrary from 1.3.2 to 1.3.3 [\#689](https://github.com/christianhelle/apiclientcodegen/pull/689) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Refitter.Core from 0.8.4 to 0.8.5 [\#688](https://github.com/christianhelle/apiclientcodegen/pull/688) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump xunit.runner.visualstudio from 2.5.3 to 2.5.4 [\#687](https://github.com/christianhelle/apiclientcodegen/pull/687) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump xunit from 2.6.1 to 2.6.2 [\#686](https://github.com/christianhelle/apiclientcodegen/pull/686) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Form from 1.1.0 to 1.1.1 [\#685](https://github.com/christianhelle/apiclientcodegen/pull/685) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Http.HttpClientLibrary from 1.3.1 to 1.3.2 [\#684](https://github.com/christianhelle/apiclientcodegen/pull/684) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Text from 1.1.0 to 1.1.1 [\#683](https://github.com/christianhelle/apiclientcodegen/pull/683) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Authentication.Azure from 1.1.1 to 1.1.2 [\#682](https://github.com/christianhelle/apiclientcodegen/pull/682) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Abstractions from 1.7.1 to 1.7.2 [\#681](https://github.com/christianhelle/apiclientcodegen/pull/681) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Multipart from 1.1.0 to 1.1.1 [\#680](https://github.com/christianhelle/apiclientcodegen/pull/680) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Json from 1.1.1 to 1.1.2 [\#679](https://github.com/christianhelle/apiclientcodegen/pull/679) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Abstractions from 1.7.0 to 1.7.1 [\#678](https://github.com/christianhelle/apiclientcodegen/pull/678) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Polly from 8.1.0 to 8.2.0 [\#677](https://github.com/christianhelle/apiclientcodegen/pull/677) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Http.HttpClientLibrary from 1.3.0 to 1.3.1 [\#676](https://github.com/christianhelle/apiclientcodegen/pull/676) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Extensions.Logging.Debug from 7.0.0 to 8.0.0 [\#675](https://github.com/christianhelle/apiclientcodegen/pull/675) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Extensions.Logging.Console from 7.0.0 to 8.0.0 [\#674](https://github.com/christianhelle/apiclientcodegen/pull/674) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Extensions.Hosting from 7.0.1 to 8.0.0 [\#673](https://github.com/christianhelle/apiclientcodegen/pull/673) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Azure.Identity from 1.10.3 to 1.10.4 [\#672](https://github.com/christianhelle/apiclientcodegen/pull/672) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [1.8.10](https://github.com/christianhelle/apiclientcodegen/tree/1.8.10) (2023-11-13)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.8.9...1.8.10)
+
+**Implemented enhancements:**
+
+- OpenAPI Generator v7.1.0 [\#671](https://github.com/christianhelle/apiclientcodegen/pull/671) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Bump Azure.Core from 1.35.0 to 1.36.0 [\#670](https://github.com/christianhelle/apiclientcodegen/pull/670) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [1.8.9](https://github.com/christianhelle/apiclientcodegen/tree/1.8.9) (2023-11-10)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.8.8...1.8.9)
+
+**Implemented enhancements:**
+
+- Upgrade Microsoft Kiota to v1.8.2 [\#667](https://github.com/christianhelle/apiclientcodegen/pull/667) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Bump Microsoft.Kiota.Abstractions from 1.6.1 to 1.7.0 [\#669](https://github.com/christianhelle/apiclientcodegen/pull/669) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NET.Test.Sdk from 17.7.2 to 17.8.0 [\#668](https://github.com/christianhelle/apiclientcodegen/pull/668) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Refitter.Core from 0.8.3 to 0.8.4 [\#666](https://github.com/christianhelle/apiclientcodegen/pull/666) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Authentication.Azure from 1.1.0 to 1.1.1 [\#665](https://github.com/christianhelle/apiclientcodegen/pull/665) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [1.8.8](https://github.com/christianhelle/apiclientcodegen/tree/1.8.8) (2023-11-05)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.8.7...1.8.8)
+
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.8.1 [\#661](https://github.com/christianhelle/apiclientcodegen/pull/661) ([christianhelle](https://github.com/christianhelle))
+- Microsoft Kiota v1.8.0 [\#660](https://github.com/christianhelle/apiclientcodegen/pull/660) ([christianhelle](https://github.com/christianhelle))
+- Improve Exception handling [\#659](https://github.com/christianhelle/apiclientcodegen/pull/659) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Bump Microsoft.Kiota.Abstractions from 1.6.0 to 1.6.1 [\#664](https://github.com/christianhelle/apiclientcodegen/pull/664) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump xunit from 2.6.0 to 2.6.1 [\#663](https://github.com/christianhelle/apiclientcodegen/pull/663) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Http.HttpClientLibrary from 1.2.0 to 1.3.0 [\#662](https://github.com/christianhelle/apiclientcodegen/pull/662) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Abstractions from 1.5.0 to 1.6.0 [\#658](https://github.com/christianhelle/apiclientcodegen/pull/658) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Refitter.Core from 0.8.2 to 0.8.3 [\#657](https://github.com/christianhelle/apiclientcodegen/pull/657) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump xunit from 2.5.3 to 2.6.0 [\#656](https://github.com/christianhelle/apiclientcodegen/pull/656) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Polly from 8.0.0 to 8.1.0 [\#655](https://github.com/christianhelle/apiclientcodegen/pull/655) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Fix Microsoft Kiota dependencies in package dependency installer [\#654](https://github.com/christianhelle/apiclientcodegen/pull/654) ([christianhelle](https://github.com/christianhelle))
+- Bump Microsoft.Kiota.Serialization.Form from 1.0.1 to 1.1.0 [\#653](https://github.com/christianhelle/apiclientcodegen/pull/653) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Json from 1.0.8 to 1.1.1 [\#652](https://github.com/christianhelle/apiclientcodegen/pull/652) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Text from 1.0.3 to 1.1.0 [\#651](https://github.com/christianhelle/apiclientcodegen/pull/651) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Abstractions from 1.4.0 to 1.5.0 [\#650](https://github.com/christianhelle/apiclientcodegen/pull/650) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Authentication.Azure from 1.0.3 to 1.1.0 [\#649](https://github.com/christianhelle/apiclientcodegen/pull/649) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Multipart from 1.0.0 to 1.1.0 [\#648](https://github.com/christianhelle/apiclientcodegen/pull/648) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Http.HttpClientLibrary from 1.1.1 to 1.2.0 [\#647](https://github.com/christianhelle/apiclientcodegen/pull/647) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Azure.Identity from 1.10.2 to 1.10.3 [\#646](https://github.com/christianhelle/apiclientcodegen/pull/646) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump xunit from 2.5.2 to 2.5.3 [\#645](https://github.com/christianhelle/apiclientcodegen/pull/645) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump xunit from 2.5.1 to 2.5.2 [\#644](https://github.com/christianhelle/apiclientcodegen/pull/644) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump xunit.runner.visualstudio from 2.5.1 to 2.5.3 [\#643](https://github.com/christianhelle/apiclientcodegen/pull/643) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Exceptionless from 6.0.2 to 6.0.3 [\#642](https://github.com/christianhelle/apiclientcodegen/pull/642) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Abstractions from 1.3.5 to 1.4.0 [\#641](https://github.com/christianhelle/apiclientcodegen/pull/641) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Azure.Identity from 1.10.1 to 1.10.2 [\#640](https://github.com/christianhelle/apiclientcodegen/pull/640) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Refitter.Core from 0.8.1 to 0.8.2 [\#639](https://github.com/christianhelle/apiclientcodegen/pull/639) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [1.8.7](https://github.com/christianhelle/apiclientcodegen/tree/1.8.7) (2023-10-06)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.8.6...1.8.7)
+
+**Implemented enhancements:**
+
+- Upgrade Microsoft Kiota to v1.7.0 [\#637](https://github.com/christianhelle/apiclientcodegen/pull/637) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Bump Microsoft.Kiota.Abstractions from 1.3.4 to 1.3.5 [\#638](https://github.com/christianhelle/apiclientcodegen/pull/638) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Refitter.Core from 0.8.0 to 0.8.1 [\#636](https://github.com/christianhelle/apiclientcodegen/pull/636) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Abstractions from 1.3.3 to 1.3.4 [\#635](https://github.com/christianhelle/apiclientcodegen/pull/635) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Polly from 7.2.4 to 8.0.0 [\#634](https://github.com/christianhelle/apiclientcodegen/pull/634) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Abstractions from 1.3.2 to 1.3.3 [\#633](https://github.com/christianhelle/apiclientcodegen/pull/633) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Refitter.Core from 0.7.5 to 0.8.0 [\#632](https://github.com/christianhelle/apiclientcodegen/pull/632) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [1.8.6](https://github.com/christianhelle/apiclientcodegen/tree/1.8.6) (2023-09-22)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.8.5...1.8.6)
+
+**Implemented enhancements:**
+
+- Update OpenAPI Generator to v7.0.1 [\#630](https://github.com/christianhelle/apiclientcodegen/pull/630) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Bump Microsoft.Kiota.Abstractions from 1.3.1 to 1.3.2 [\#631](https://github.com/christianhelle/apiclientcodegen/pull/631) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump xunit.runner.visualstudio from 2.5.0 to 2.5.1 [\#629](https://github.com/christianhelle/apiclientcodegen/pull/629) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump xunit from 2.5.0 to 2.5.1 [\#628](https://github.com/christianhelle/apiclientcodegen/pull/628) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Azure.Identity from 1.10.0 to 1.10.1 [\#627](https://github.com/christianhelle/apiclientcodegen/pull/627) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [1.8.5](https://github.com/christianhelle/apiclientcodegen/tree/1.8.5) (2023-09-11)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.8.4...1.8.5)
+
+**Implemented enhancements:**
+
+- Update Microsoft Kiota to v1.6.1 [\#626](https://github.com/christianhelle/apiclientcodegen/pull/626) ([christianhelle](https://github.com/christianhelle))
+
+## [1.8.4](https://github.com/christianhelle/apiclientcodegen/tree/1.8.4) (2023-09-09)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.8.3...1.8.4)
+
+**Implemented enhancements:**
+
+- Automatically add -c command option for OpenApiGenerator [\#610](https://github.com/christianhelle/apiclientcodegen/issues/610)
+- Add support for OpenAPI Generator configuration files [\#622](https://github.com/christianhelle/apiclientcodegen/pull/622) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Bump Azure.Core from 1.34.0 to 1.35.0 [\#625](https://github.com/christianhelle/apiclientcodegen/pull/625) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Refitter.Core from 0.7.3 to 0.7.5 [\#624](https://github.com/christianhelle/apiclientcodegen/pull/624) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [1.8.3](https://github.com/christianhelle/apiclientcodegen/tree/1.8.3) (2023-09-04)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.8.2...1.8.3)
+
+**Implemented enhancements:**
+
+- Fix issue when downloading an OpenAPI spec from a URL that returns a GZIP stream [\#621](https://github.com/christianhelle/apiclientcodegen/pull/621) ([christianhelle](https://github.com/christianhelle))
+
+**Fixed bugs:**
+
+- Getting garbled/binary content when attempting to download JSON definition file \(publicly available URL\) [\#620](https://github.com/christianhelle/apiclientcodegen/issues/620)
+
+**Merged pull requests:**
+
+- Bump Microsoft.VSSDK.BuildTools from 17.6.2164 to 17.7.2196 [\#619](https://github.com/christianhelle/apiclientcodegen/pull/619) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NET.Test.Sdk from 17.7.1 to 17.7.2 [\#618](https://github.com/christianhelle/apiclientcodegen/pull/618) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Http.HttpClientLibrary from 1.1.0 to 1.1.1 [\#617](https://github.com/christianhelle/apiclientcodegen/pull/617) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Polly from 7.2.3 to 7.2.4 [\#616](https://github.com/christianhelle/apiclientcodegen/pull/616) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump McMaster.Extensions.Hosting.CommandLine from 4.0.2 to 4.1.0 [\#615](https://github.com/christianhelle/apiclientcodegen/pull/615) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [1.8.2](https://github.com/christianhelle/apiclientcodegen/tree/1.8.2) (2023-08-26)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.8.1...1.8.2)
+
+**Implemented enhancements:**
+
+- Add support for Refitter v0.7.3 [\#614](https://github.com/christianhelle/apiclientcodegen/pull/614) ([christianhelle](https://github.com/christianhelle))
+- Add support for OpenAPI Generator v7.0.0 [\#613](https://github.com/christianhelle/apiclientcodegen/pull/613) ([christianhelle](https://github.com/christianhelle))
+- Add support for Codespaces using devcontainers [\#612](https://github.com/christianhelle/apiclientcodegen/pull/612) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Bump FluentAssertions from 6.11.0 to 6.12.0 [\#611](https://github.com/christianhelle/apiclientcodegen/pull/611) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NET.Test.Sdk from 17.7.0 to 17.7.1 [\#609](https://github.com/christianhelle/apiclientcodegen/pull/609) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Azure.Identity from 1.9.0 to 1.10.0 [\#608](https://github.com/christianhelle/apiclientcodegen/pull/608) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Http.HttpClientLibrary from 1.0.6 to 1.1.0 [\#607](https://github.com/christianhelle/apiclientcodegen/pull/607) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump NSwag.CodeGeneration.CSharp from 13.19.0 to 13.20.0 [\#606](https://github.com/christianhelle/apiclientcodegen/pull/606) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump NSwag.Core.Yaml from 13.19.0 to 13.20.0 [\#605](https://github.com/christianhelle/apiclientcodegen/pull/605) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [1.8.1](https://github.com/christianhelle/apiclientcodegen/tree/1.8.1) (2023-08-09)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.8.0...1.8.1)
+
+**Implemented enhancements:**
+
+- Update Kiota to v1.5.1 [\#603](https://github.com/christianhelle/apiclientcodegen/pull/603) ([christianhelle](https://github.com/christianhelle))
+- Resolve GitHub Action warnings [\#599](https://github.com/christianhelle/apiclientcodegen/pull/599) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Downgrade Moq to 4.18.4 for privacy reasons [\#602](https://github.com/christianhelle/apiclientcodegen/pull/602) ([christianhelle](https://github.com/christianhelle))
+- Bump Microsoft.Kiota.Abstractions from 1.3.0 to 1.3.1 [\#601](https://github.com/christianhelle/apiclientcodegen/pull/601) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Moq from 4.20.0 to 4.20.1 [\#600](https://github.com/christianhelle/apiclientcodegen/pull/600) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Moq from 4.18.4 to 4.20.0 [\#598](https://github.com/christianhelle/apiclientcodegen/pull/598) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Refitter.Core from 0.7.1 to 0.7.2 [\#597](https://github.com/christianhelle/apiclientcodegen/pull/597) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.NET.Test.Sdk from 17.6.3 to 17.7.0 [\#596](https://github.com/christianhelle/apiclientcodegen/pull/596) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [1.8.0](https://github.com/christianhelle/apiclientcodegen/tree/1.8.0) (2023-08-04)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.7.18...1.8.0)
+
+**Implemented enhancements:**
+
+- Update Kiota to v1.5.0 [\#595](https://github.com/christianhelle/apiclientcodegen/pull/595) ([christianhelle](https://github.com/christianhelle))
+- Fix Microsoft Kiota naming and links to official MS Learn in docs [\#590](https://github.com/christianhelle/apiclientcodegen/pull/590) ([christianhelle](https://github.com/christianhelle))
+
+**Fixed bugs:**
+
+- OpenAPI FormUrlEncodedContent [\#585](https://github.com/christianhelle/apiclientcodegen/issues/585)
+
+**Merged pull requests:**
+
+- Bump Refitter.Core from 0.7.0 to 0.7.1 [\#594](https://github.com/christianhelle/apiclientcodegen/pull/594) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Abstractions from 1.2.1 to 1.3.0 [\#593](https://github.com/christianhelle/apiclientcodegen/pull/593) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Refitter.Core from 0.6.2 to 0.7.0 [\#592](https://github.com/christianhelle/apiclientcodegen/pull/592) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Add docs for generating code using Microsoft Kiota [\#591](https://github.com/christianhelle/apiclientcodegen/pull/591) ([christianhelle](https://github.com/christianhelle))
+- Bump Microsoft.VSSDK.BuildTools from 17.5.4074 to 17.6.2164 [\#550](https://github.com/christianhelle/apiclientcodegen/pull/550) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [1.7.18](https://github.com/christianhelle/apiclientcodegen/tree/1.7.18) (2023-07-15)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.7.17...1.7.18)
