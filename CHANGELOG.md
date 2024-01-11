@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.3...HEAD)
 
+**Implemented enhancements:**
+
+- Update Microsoft Kiota to v1.10.0 [\#758](https://github.com/christianhelle/apiclientcodegen/pull/758) ([christianhelle](https://github.com/christianhelle))
+
 **Merged pull requests:**
 
 - Bump Microsoft.Kiota.Abstractions from 1.7.3 to 1.7.4 [\#755](https://github.com/christianhelle/apiclientcodegen/pull/755) ([dependabot[bot]](https://github.com/apps/dependabot))
