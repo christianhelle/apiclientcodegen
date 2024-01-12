@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Upgrade Microsoft Kiota to v1.10.1 [\#761](https://github.com/christianhelle/apiclientcodegen/pull/761) ([christianhelle](https://github.com/christianhelle))
 - Bump Microsoft.Kiota.Abstractions from 1.7.4 to 1.7.5 [\#760](https://github.com/christianhelle/apiclientcodegen/pull/760) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Abstractions from 1.7.3 to 1.7.4 [\#755](https://github.com/christianhelle/apiclientcodegen/pull/755) ([dependabot[bot]](https://github.com/apps/dependabot))
 - chore\(deps\): update dependency refitter.core to v0.9.4 [\#744](https://github.com/christianhelle/apiclientcodegen/pull/744) ([renovate[bot]](https://github.com/apps/renovate))
