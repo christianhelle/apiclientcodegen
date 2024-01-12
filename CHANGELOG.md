@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Abstractions from 1.7.4 to 1.7.5 [\#760](https://github.com/christianhelle/apiclientcodegen/pull/760) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Abstractions from 1.7.3 to 1.7.4 [\#755](https://github.com/christianhelle/apiclientcodegen/pull/755) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [1.9.3](https://github.com/christianhelle/apiclientcodegen/tree/1.9.3) (2024-01-10)
