@@ -6,7 +6,9 @@
 
 **Merged pull requests:**
 
+- chore\(deps\): update dependency refitter.core to v0.9.5 [\#764](https://github.com/christianhelle/apiclientcodegen/pull/764) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency xunit to v2.6.6 [\#763](https://github.com/christianhelle/apiclientcodegen/pull/763) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update nswag monorepo to v14.0.1 [\#759](https://github.com/christianhelle/apiclientcodegen/pull/759) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.9.4](https://github.com/christianhelle/apiclientcodegen/tree/1.9.4) (2024-01-13)
 
