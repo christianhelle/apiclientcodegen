@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.3...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.4...HEAD)
+
+**Merged pull requests:**
+
+- chore\(deps\): update dependency xunit to v2.6.6 [\#763](https://github.com/christianhelle/apiclientcodegen/pull/763) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.9.4](https://github.com/christianhelle/apiclientcodegen/tree/1.9.4) (2024-01-13)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.3...1.9.4)
 
 **Implemented enhancements:**
 
