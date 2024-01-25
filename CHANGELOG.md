@@ -6,6 +6,8 @@
 
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Abstractions from 1.7.5 to 1.7.6 [\#768](https://github.com/christianhelle/apiclientcodegen/pull/768) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): update actions/cache action to v4 [\#766](https://github.com/christianhelle/apiclientcodegen/pull/766) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update nswag monorepo to v14.0.2 [\#765](https://github.com/christianhelle/apiclientcodegen/pull/765) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency refitter.core to v0.9.5 [\#764](https://github.com/christianhelle/apiclientcodegen/pull/764) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency xunit to v2.6.6 [\#763](https://github.com/christianhelle/apiclientcodegen/pull/763) ([renovate[bot]](https://github.com/apps/renovate))
