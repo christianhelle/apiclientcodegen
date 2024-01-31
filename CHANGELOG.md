@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- chore\(deps\): update dependency icsharpcode.codeconverter to v9.2.5.694 [\#771](https://github.com/christianhelle/apiclientcodegen/pull/771) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency refitter.core to v0.9.6 [\#769](https://github.com/christianhelle/apiclientcodegen/pull/769) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Microsoft.Kiota.Abstractions from 1.7.5 to 1.7.6 [\#768](https://github.com/christianhelle/apiclientcodegen/pull/768) ([dependabot[bot]](https://github.com/apps/dependabot))
 - chore\(deps\): update actions/cache action to v4 [\#766](https://github.com/christianhelle/apiclientcodegen/pull/766) ([renovate[bot]](https://github.com/apps/renovate))
