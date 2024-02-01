@@ -6,6 +6,8 @@
 
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Serialization.Form from 1.1.1 to 1.1.2 [\#773](https://github.com/christianhelle/apiclientcodegen/pull/773) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Text from 1.1.1 to 1.1.2 [\#772](https://github.com/christianhelle/apiclientcodegen/pull/772) ([dependabot[bot]](https://github.com/apps/dependabot))
 - chore\(deps\): update dependency icsharpcode.codeconverter to v9.2.5.694 [\#771](https://github.com/christianhelle/apiclientcodegen/pull/771) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency refitter.core to v0.9.6 [\#769](https://github.com/christianhelle/apiclientcodegen/pull/769) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Microsoft.Kiota.Abstractions from 1.7.5 to 1.7.6 [\#768](https://github.com/christianhelle/apiclientcodegen/pull/768) ([dependabot[bot]](https://github.com/apps/dependabot))
