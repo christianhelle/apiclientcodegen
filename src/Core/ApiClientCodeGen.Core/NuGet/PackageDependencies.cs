@@ -91,7 +91,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency MicrosoftKiotaSerializationForm =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Form",
-                "1.1.1");
+                "1.1.2");
 
         public static readonly PackageDependency MicrosoftKiotaSerializationJson =
             new PackageDependency(
@@ -101,12 +101,12 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency MicrosoftKiotaSerializationText =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Text",
-                "1.1.1");
+                "1.1.2");
 
         public static readonly PackageDependency MicrosoftKiotaSerializationMultipart =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Multipart",
-                "1.1.1");
+                "1.1.2");
 
         public static readonly PackageDependency Refit =
             new PackageDependency(
