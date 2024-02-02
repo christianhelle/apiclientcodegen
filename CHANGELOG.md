@@ -4,8 +4,13 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.4...HEAD)
 
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.11.0 [\#778](https://github.com/christianhelle/apiclientcodegen/pull/778) ([christianhelle](https://github.com/christianhelle))
+
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Abstractions from 1.7.6 to 1.7.7 [\#777](https://github.com/christianhelle/apiclientcodegen/pull/777) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Form from 1.1.1 to 1.1.2 [\#773](https://github.com/christianhelle/apiclientcodegen/pull/773) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Text from 1.1.1 to 1.1.2 [\#772](https://github.com/christianhelle/apiclientcodegen/pull/772) ([dependabot[bot]](https://github.com/apps/dependabot))
 - chore\(deps\): update dependency icsharpcode.codeconverter to v9.2.5.694 [\#771](https://github.com/christianhelle/apiclientcodegen/pull/771) ([renovate[bot]](https://github.com/apps/renovate))
