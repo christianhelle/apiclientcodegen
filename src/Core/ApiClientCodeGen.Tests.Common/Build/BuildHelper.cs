@@ -55,10 +55,8 @@ namespace ApiClientCodeGen.Tests.Common.Build
                     switch (projecType)
                     {
                         case ProjectTypes.DotNetCoreApp:
-                            return NSwagProjectFileContents.NetCoreApp;
-
                         case ProjectTypes.DotNetStandardLibrary:
-                            return NSwagProjectFileContents.NetStandardLibrary;
+                            return NSwagProjectFileContents.NetCoreApp;
 
                         default:
                             throw new ArgumentOutOfRangeException(nameof(projecType), projecType, null);
