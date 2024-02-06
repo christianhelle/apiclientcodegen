@@ -4,13 +4,22 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.5...HEAD)
 
+**Implemented enhancements:**
+
+- NSwag v14.0.3 [\#779](https://github.com/christianhelle/apiclientcodegen/pull/779) ([renovate[bot]](https://github.com/apps/renovate))
+
 **Closed issues:**
 
 - Visual Studio freezes when generating client api  [\#776](https://github.com/christianhelle/apiclientcodegen/issues/776)
 
 **Merged pull requests:**
 
+- Update vstest monorepo to v17.9.0 [\#792](https://github.com/christianhelle/apiclientcodegen/pull/792) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump Microsoft.Kiota.Serialization.Multipart from 1.1.1 to 1.1.2 [\#791](https://github.com/christianhelle/apiclientcodegen/pull/791) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Json, System.Text.Json and System.Text.Encodings.Web [\#790](https://github.com/christianhelle/apiclientcodegen/pull/790) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Http.HttpClientLibrary, System.Text.Json and System.Text.Encodings.Web [\#789](https://github.com/christianhelle/apiclientcodegen/pull/789) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Abstractions from 1.7.7 to 1.7.9 [\#787](https://github.com/christianhelle/apiclientcodegen/pull/787) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Multipart and Microsoft.Kiota.Abstractions [\#785](https://github.com/christianhelle/apiclientcodegen/pull/785) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Polly from 8.2.1 to 8.3.0 [\#784](https://github.com/christianhelle/apiclientcodegen/pull/784) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Authentication.Azure and Azure.Core [\#783](https://github.com/christianhelle/apiclientcodegen/pull/783) ([dependabot[bot]](https://github.com/apps/dependabot))
 
