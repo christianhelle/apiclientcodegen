@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Microsoft Kiota v1.11.1 [\#793](https://github.com/christianhelle/apiclientcodegen/pull/793) ([christianhelle](https://github.com/christianhelle))
 - NSwag v14.0.3 [\#779](https://github.com/christianhelle/apiclientcodegen/pull/779) ([renovate[bot]](https://github.com/apps/renovate))
 
 **Closed issues:**
