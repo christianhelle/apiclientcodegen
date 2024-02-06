@@ -10,7 +10,9 @@
 
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Abstractions from 1.7.7 to 1.7.9 [\#787](https://github.com/christianhelle/apiclientcodegen/pull/787) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Polly from 8.2.1 to 8.3.0 [\#784](https://github.com/christianhelle/apiclientcodegen/pull/784) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Authentication.Azure and Azure.Core [\#783](https://github.com/christianhelle/apiclientcodegen/pull/783) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [1.9.5](https://github.com/christianhelle/apiclientcodegen/tree/1.9.5) (2024-02-02)
 
