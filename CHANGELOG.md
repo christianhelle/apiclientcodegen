@@ -16,6 +16,7 @@
 
 **Merged pull requests:**
 
+- Update dependency Microsoft.VSSDK.BuildTools to v17.9.3168 [\#797](https://github.com/christianhelle/apiclientcodegen/pull/797) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Microsoft.Kiota.Serialization.Form from 1.1.2 to 1.1.3 [\#794](https://github.com/christianhelle/apiclientcodegen/pull/794) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update vstest monorepo to v17.9.0 [\#792](https://github.com/christianhelle/apiclientcodegen/pull/792) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Microsoft.Kiota.Serialization.Multipart from 1.1.1 to 1.1.2 [\#791](https://github.com/christianhelle/apiclientcodegen/pull/791) ([dependabot[bot]](https://github.com/apps/dependabot))
