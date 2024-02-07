@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Refitter v0.9.7 [\#796](https://github.com/christianhelle/apiclientcodegen/pull/796) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.11.1 [\#793](https://github.com/christianhelle/apiclientcodegen/pull/793) ([christianhelle](https://github.com/christianhelle))
 - NSwag v14.0.3 [\#779](https://github.com/christianhelle/apiclientcodegen/pull/779) ([renovate[bot]](https://github.com/apps/renovate))
 
@@ -15,6 +16,7 @@
 
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Serialization.Form from 1.1.2 to 1.1.3 [\#794](https://github.com/christianhelle/apiclientcodegen/pull/794) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update vstest monorepo to v17.9.0 [\#792](https://github.com/christianhelle/apiclientcodegen/pull/792) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Microsoft.Kiota.Serialization.Multipart from 1.1.1 to 1.1.2 [\#791](https://github.com/christianhelle/apiclientcodegen/pull/791) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Json, System.Text.Json and System.Text.Encodings.Web [\#790](https://github.com/christianhelle/apiclientcodegen/pull/790) ([dependabot[bot]](https://github.com/apps/dependabot))
@@ -23,6 +25,7 @@
 - Bump Microsoft.Kiota.Serialization.Multipart and Microsoft.Kiota.Abstractions [\#785](https://github.com/christianhelle/apiclientcodegen/pull/785) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Polly from 8.2.1 to 8.3.0 [\#784](https://github.com/christianhelle/apiclientcodegen/pull/784) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Authentication.Azure and Azure.Core [\#783](https://github.com/christianhelle/apiclientcodegen/pull/783) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update dependency dotnet-sdk to v6.0.418 [\#752](https://github.com/christianhelle/apiclientcodegen/pull/752) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.9.5](https://github.com/christianhelle/apiclientcodegen/tree/1.9.5) (2024-02-02)
 
