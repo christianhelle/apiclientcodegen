@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- OpenAPI Generator v7.3.0 [\#799](https://github.com/christianhelle/apiclientcodegen/pull/799) ([christianhelle](https://github.com/christianhelle))
 - Refitter v0.9.7 [\#796](https://github.com/christianhelle/apiclientcodegen/pull/796) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.11.1 [\#793](https://github.com/christianhelle/apiclientcodegen/pull/793) ([christianhelle](https://github.com/christianhelle))
 - NSwag v14.0.3 [\#779](https://github.com/christianhelle/apiclientcodegen/pull/779) ([renovate[bot]](https://github.com/apps/renovate))
