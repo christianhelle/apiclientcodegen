@@ -2,7 +2,16 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.5...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.6...HEAD)
+
+**Merged pull requests:**
+
+- Update xunit-dotnet monorepo [\#803](https://github.com/christianhelle/apiclientcodegen/pull/803) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency dotnet-sdk to v6.0.419 [\#802](https://github.com/christianhelle/apiclientcodegen/pull/802) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.9.6](https://github.com/christianhelle/apiclientcodegen/tree/1.9.6) (2024-02-08)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.5...1.9.6)
 
 **Implemented enhancements:**
 
