@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update dependency McMaster.Extensions.Hosting.CommandLine to v4.1.1 [\#805](https://github.com/christianhelle/apiclientcodegen/pull/805) ([renovate[bot]](https://github.com/apps/renovate))
 - Update xunit-dotnet monorepo [\#803](https://github.com/christianhelle/apiclientcodegen/pull/803) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency dotnet-sdk to v6.0.419 [\#802](https://github.com/christianhelle/apiclientcodegen/pull/802) ([renovate[bot]](https://github.com/apps/renovate))
 
