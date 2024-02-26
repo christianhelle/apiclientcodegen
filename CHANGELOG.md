@@ -6,6 +6,10 @@
 
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Serialization.Form from 1.1.3 to 1.1.4 [\#814](https://github.com/christianhelle/apiclientcodegen/pull/814) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Text from 1.1.2 to 1.1.3 [\#813](https://github.com/christianhelle/apiclientcodegen/pull/813) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Authentication.Azure and Azure.Core [\#812](https://github.com/christianhelle/apiclientcodegen/pull/812) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Json, Microsoft.Kiota.Abstractions, System.Text.Json and System.Text.Encodings.Web [\#808](https://github.com/christianhelle/apiclientcodegen/pull/808) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update dependency coverlet.collector to v6.0.1 [\#806](https://github.com/christianhelle/apiclientcodegen/pull/806) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency McMaster.Extensions.Hosting.CommandLine to v4.1.1 [\#805](https://github.com/christianhelle/apiclientcodegen/pull/805) ([renovate[bot]](https://github.com/apps/renovate))
 - Update xunit-dotnet monorepo [\#803](https://github.com/christianhelle/apiclientcodegen/pull/803) ([renovate[bot]](https://github.com/apps/renovate))
