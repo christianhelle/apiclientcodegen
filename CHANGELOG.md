@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Http.HttpClientLibrary, System.Text.Json and System.Text.Encodings.Web [\#817](https://github.com/christianhelle/apiclientcodegen/pull/817) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Abstractions from 1.7.10 to 1.7.11 [\#815](https://github.com/christianhelle/apiclientcodegen/pull/815) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Form from 1.1.3 to 1.1.4 [\#814](https://github.com/christianhelle/apiclientcodegen/pull/814) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Text from 1.1.2 to 1.1.3 [\#813](https://github.com/christianhelle/apiclientcodegen/pull/813) ([dependabot[bot]](https://github.com/apps/dependabot))
