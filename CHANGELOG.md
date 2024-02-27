@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update dependency Refitter.Core to v0.9.8 [\#818](https://github.com/christianhelle/apiclientcodegen/pull/818) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Microsoft.Kiota.Http.HttpClientLibrary, System.Text.Json and System.Text.Encodings.Web [\#817](https://github.com/christianhelle/apiclientcodegen/pull/817) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Multipart from 1.1.2 to 1.1.3 [\#816](https://github.com/christianhelle/apiclientcodegen/pull/816) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Abstractions from 1.7.10 to 1.7.11 [\#815](https://github.com/christianhelle/apiclientcodegen/pull/815) ([dependabot[bot]](https://github.com/apps/dependabot))
