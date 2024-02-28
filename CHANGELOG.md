@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Serialization.Json, System.Text.Json and System.Text.Encodings.Web [\#821](https://github.com/christianhelle/apiclientcodegen/pull/821) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Text from 1.1.3 to 1.1.4 [\#820](https://github.com/christianhelle/apiclientcodegen/pull/820) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Form from 1.1.4 to 1.1.5 [\#819](https://github.com/christianhelle/apiclientcodegen/pull/819) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update dependency Refitter.Core to v0.9.8 [\#818](https://github.com/christianhelle/apiclientcodegen/pull/818) ([renovate[bot]](https://github.com/apps/renovate))
