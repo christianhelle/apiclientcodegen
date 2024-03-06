@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update dependency Polly to v8.3.1 [\#822](https://github.com/christianhelle/apiclientcodegen/pull/822) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Microsoft.Kiota.Serialization.Json, System.Text.Json and System.Text.Encodings.Web [\#821](https://github.com/christianhelle/apiclientcodegen/pull/821) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Text from 1.1.3 to 1.1.4 [\#820](https://github.com/christianhelle/apiclientcodegen/pull/820) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Form from 1.1.4 to 1.1.5 [\#819](https://github.com/christianhelle/apiclientcodegen/pull/819) ([dependabot[bot]](https://github.com/apps/dependabot))
