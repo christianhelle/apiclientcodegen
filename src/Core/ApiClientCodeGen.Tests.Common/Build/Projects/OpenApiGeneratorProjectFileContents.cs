@@ -10,7 +10,7 @@
   <ItemGroup>
     <PackageReference Include = ""JsonSubTypes"" Version=""2.0.1"" />
     <PackageReference Include = ""RestSharp"" Version=""110.2.0"" />
-    <PackageReference Include = ""Polly"" Version=""8.3.0"" />
+    <PackageReference Include = ""Polly"" Version=""8.3.1"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
   </ItemGroup>
@@ -25,7 +25,7 @@
   <ItemGroup>
     <PackageReference Include = ""JsonSubTypes"" Version=""2.0.1"" />
     <PackageReference Include = ""RestSharp"" Version=""110.2.0"" />
-    <PackageReference Include = ""Polly"" Version=""8.3.0"" />
+    <PackageReference Include = ""Polly"" Version=""8.3.1"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
   </ItemGroup>
@@ -51,7 +51,7 @@
   <ItemGroup>
     <PackageReference Include = ""JsonSubTypes"" Version=""2.0.1"" />
     <PackageReference Include = ""RestSharp"" Version=""110.2.0"" />
-    <PackageReference Include = ""Polly"" Version=""8.3.0"" />
+    <PackageReference Include = ""Polly"" Version=""8.3.1"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
   </ItemGroup>
