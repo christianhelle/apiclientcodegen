@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.6...HEAD)
 
+**Implemented enhancements:**
+
+- Update Microsoft Kiota to v1.12.0 [\#824](https://github.com/christianhelle/apiclientcodegen/pull/824) ([christianhelle](https://github.com/christianhelle))
+
 **Merged pull requests:**
 
 - Update dependency Refitter.Core to v0.9.9 [\#823](https://github.com/christianhelle/apiclientcodegen/pull/823) ([renovate[bot]](https://github.com/apps/renovate))
