@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.7...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.8...HEAD)
+
+**Merged pull requests:**
+
+- Bump coverlet.collector from 6.0.1 to 6.0.2 [\#828](https://github.com/christianhelle/apiclientcodegen/pull/828) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+## [1.9.8](https://github.com/christianhelle/apiclientcodegen/tree/1.9.8) (2024-03-11)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.7...1.9.8)
 
 **Implemented enhancements:**
 
