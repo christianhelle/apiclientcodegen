@@ -6,7 +6,10 @@
 
 **Merged pull requests:**
 
+- Update dependency Microsoft.VSSDK.BuildTools to v17.9.3174 [\#830](https://github.com/christianhelle/apiclientcodegen/pull/830) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency dotnet-sdk to v6.0.420 [\#829](https://github.com/christianhelle/apiclientcodegen/pull/829) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump coverlet.collector from 6.0.1 to 6.0.2 [\#828](https://github.com/christianhelle/apiclientcodegen/pull/828) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Abstractions from 1.7.11 to 1.7.12 [\#826](https://github.com/christianhelle/apiclientcodegen/pull/826) ([dependabot[bot]](https://github.com/apps/dependabot))
 
 ## [1.9.8](https://github.com/christianhelle/apiclientcodegen/tree/1.9.8) (2024-03-11)
 
