@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
 using Rapicgen.Core;
@@ -85,13 +86,21 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             [Frozen] IProcessLauncher processLauncher,
             DependencyInstaller sut)
         {
-            sut.InstallKiota();
-            Mock.Get(processLauncher)
-                .Verify(
+            var mock = Mock.Get(processLauncher);
+            mock.Setup(
                     c => c.Start(
-                        It.IsAny<string>(),
-                        "tool install --global Microsoft.OpenApi.Kiota --version 1.12.0", 
-                        null));
+                        "kiota",
+                        "--version",
+                        It.IsAny<Action<string>>(),
+                        It.IsAny<Action<string>>(),
+                        default))
+                .Throws(new Win32Exception());
+            sut.InstallKiota();
+            mock.Verify(
+                c => c.Start(
+                    It.IsAny<string>(),
+                    "tool install --global Microsoft.OpenApi.Kiota --version 1.12.0",
+                    null));
         }
         
         [Theory, AutoMoqData]
@@ -120,6 +129,16 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             DependencyInstaller sut,
             ProcessLaunchException exception)
         {
+            var mock = Mock.Get(processLauncher);
+            mock.Setup(
+                    c => c.Start(
+                        "kiota",
+                        "--version",
+                        It.IsAny<Action<string>>(),
+                        It.IsAny<Action<string>>(),
+                        default))
+                .Throws(new Win32Exception());
+
             Mock.Get(processLauncher)
                 .Setup(c => c.Start(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
                 .Throws(exception);

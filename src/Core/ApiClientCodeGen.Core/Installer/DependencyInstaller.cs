@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.General;
@@ -49,19 +50,41 @@ namespace Rapicgen.Core.Installer
 
         public void InstallKiota()
         {
+            var command = "kiota";
+            string arguments = "--version";
+            string kiotaVersion = "";
             try
             {
-                var command = PathProvider.GetDotNetPath();
-                const string arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.12.0";
+                processLauncher.Start(command, arguments, output =>
+                {
+                    if (output != null)
+                    {
+                        kiotaVersion = output ?? kiotaVersion;
+
+                        Logger.Instance.WriteLine(output);
+                    }
+                }, error =>
+                {
+                    if (error != null)
+                    {
+                        Logger.Instance.WriteLine(error);
+                    }
+                });
+                if (!kiotaVersion.StartsWith("1.12.0")) 
+                { 
+                    //older or newer? i guess this should be handled.
+                }
+            }
+            catch(Win32Exception e)
+            {
+                //if command doesn't exist Win32Exception is thrown.
+                command = PathProvider.GetDotNetPath();
+                arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.12.0";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
                 processLauncher.Start(command, arguments);
                 context.Succeeded();
             }
-            catch (ProcessLaunchException e)
-            {
-                if (e.ErrorData?.Contains("'microsoft.openapi.kiota'") != true)
-                    throw;
-            }
+            
         }
     }
 }
