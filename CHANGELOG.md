@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.8...HEAD)
 
+**Implemented enhancements:**
+
+- Added kiota version detection and its installation if it's not installed [\#832](https://github.com/christianhelle/apiclientcodegen/pull/832) ([Hiller](https://github.com/Hiller))
+
 **Merged pull requests:**
 
 - Update dependency Microsoft.VSSDK.BuildTools to v17.9.3174 [\#830](https://github.com/christianhelle/apiclientcodegen/pull/830) ([renovate[bot]](https://github.com/apps/renovate))
