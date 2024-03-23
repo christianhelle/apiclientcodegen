@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Update nswag monorepo to v14.0.4 [\#833](https://github.com/christianhelle/apiclientcodegen/pull/833) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Microsoft.VSSDK.BuildTools to v17.9.3174 [\#830](https://github.com/christianhelle/apiclientcodegen/pull/830) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency dotnet-sdk to v6.0.420 [\#829](https://github.com/christianhelle/apiclientcodegen/pull/829) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump coverlet.collector from 6.0.1 to 6.0.2 [\#828](https://github.com/christianhelle/apiclientcodegen/pull/828) ([dependabot[bot]](https://github.com/apps/dependabot))
