@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Update dependency Exceptionless to v6.0.4 [\#837](https://github.com/christianhelle/apiclientcodegen/pull/837) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nswag monorepo to v14.0.7 [\#834](https://github.com/christianhelle/apiclientcodegen/pull/834) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nswag monorepo to v14.0.4 [\#833](https://github.com/christianhelle/apiclientcodegen/pull/833) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Microsoft.VSSDK.BuildTools to v17.9.3174 [\#830](https://github.com/christianhelle/apiclientcodegen/pull/830) ([renovate[bot]](https://github.com/apps/renovate))
