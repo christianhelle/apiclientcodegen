@@ -107,6 +107,19 @@ namespace ApiClientCodeGen.Tests.Common.Build
                             throw new ArgumentOutOfRangeException(nameof(projecType), projecType, null);
                     }
 
+                case SupportedCodeGenerator.Kiota:
+                    switch (projecType)
+                    {
+                        case ProjectTypes.DotNetCoreApp:
+                            return KiotaProjectFileContents.NetCoreApp;
+
+                        case ProjectTypes.DotNetStandardLibrary:
+                            return KiotaProjectFileContents.NetStandardLibrary;
+
+                        default:
+                            throw new ArgumentOutOfRangeException(nameof(projecType), projecType, null);
+                    }
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(generator), generator, null);
             }
