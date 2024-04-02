@@ -35,7 +35,7 @@ public class KiotaCodeGenerator : ICodeGenerator
 
         pGenerateProgress?.Progress(40);
         const string command = "kiota";
-        var arguments = $" generate -l CSharp -d {swaggerFile} -o {outputFolder} -n {defaultNamespace}";
+        var arguments = $" generate -l CSharp -d \"{swaggerFile}\" -o \"{outputFolder}\" -n {defaultNamespace}";
         using var context = new DependencyContext("Kiota", $"{command} {arguments}");
         processLauncher.Start(command, arguments);
         context.Succeeded();
