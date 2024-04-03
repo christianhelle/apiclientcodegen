@@ -89,7 +89,7 @@ namespace Rapicgen.Core.Generators
             while (queue.Count > 0)
             {
                 path = queue.Dequeue();
-                var files = Directory.GetFiles(path);
+                var files = Directory.GetFiles(Path.GetFullPath(path));
                 foreach (var subDir in Directory.GetDirectories(path))
                     queue.Enqueue(subDir);
 
