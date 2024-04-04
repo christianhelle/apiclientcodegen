@@ -6,6 +6,7 @@ using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.OpenApiGenerator;
 using Moq;
+using Rapicgen.Core.External;
 
 namespace ApiClientCodeGen.Tests.Common.Fixtures
 {

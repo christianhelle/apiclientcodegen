@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using Rapicgen.Core.External;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.General;
 

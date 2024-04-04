@@ -1,4 +1,6 @@
-﻿namespace Rapicgen.Core.Options.General
+﻿using Rapicgen.Core.External;
+
+namespace Rapicgen.Core.Options.General
 {
     public class DefaultGeneralOptions : IGeneralOptions
     {

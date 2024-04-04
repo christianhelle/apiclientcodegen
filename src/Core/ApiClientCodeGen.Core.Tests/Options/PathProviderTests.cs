@@ -3,6 +3,7 @@ using System.IO;
 using ApiClientCodeGen.Tests.Common;
 using Rapicgen.Core.Options.General;
 using FluentAssertions;
+using Rapicgen.Core.External;
 
 namespace ApiClientCodeGen.Core.Tests.Options
 {

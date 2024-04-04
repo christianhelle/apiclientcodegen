@@ -1,6 +1,7 @@
 ﻿using Rapicgen.Core.Options.General;
 using Rapicgen.Options.General;
 using FluentAssertions;
+using Rapicgen.Core.External;
 
 namespace Rapicgen.Tests.Options
 {

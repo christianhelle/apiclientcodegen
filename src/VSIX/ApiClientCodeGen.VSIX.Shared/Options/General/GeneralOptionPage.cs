@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Rapicgen.Core.Options.General;
 using Rapicgen.Windows;
 using Microsoft.VisualStudio.Shell;
+using Rapicgen.Core.External;
 
 namespace Rapicgen.Options.General
 {

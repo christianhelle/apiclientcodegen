@@ -9,6 +9,7 @@ using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.NSwagStudio;
 using FluentAssertions;
 using Moq;
+using Rapicgen.Core.External;
 
 namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
 {

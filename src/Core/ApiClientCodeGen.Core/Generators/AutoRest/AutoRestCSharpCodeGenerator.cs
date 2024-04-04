@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using Rapicgen.Core.External;
 using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;

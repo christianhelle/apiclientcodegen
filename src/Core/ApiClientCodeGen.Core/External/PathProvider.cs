@@ -2,7 +2,7 @@
 using System.IO;
 using Rapicgen.Core.Logging;
 
-namespace Rapicgen.Core.Options.General
+namespace Rapicgen.Core.External
 {
     public static class PathProvider
     {
