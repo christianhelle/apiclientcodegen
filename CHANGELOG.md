@@ -6,10 +6,11 @@
 
 **Implemented enhancements:**
 
+- Show error message when unable to find java.exe [\#841](https://github.com/christianhelle/apiclientcodegen/pull/841) ([christianhelle](https://github.com/christianhelle))
 - Fix issues regarding whitespaces in file paths [\#838](https://github.com/christianhelle/apiclientcodegen/pull/838) ([christianhelle](https://github.com/christianhelle))
 - Added kiota version detection and its installation if it's not installed [\#832](https://github.com/christianhelle/apiclientcodegen/pull/832) ([Hiller](https://github.com/Hiller))
 
-**Closed issues:**
+**Fixed bugs:**
 
 - Half of the provided client generators don't work but show an error [\#836](https://github.com/christianhelle/apiclientcodegen/issues/836)
 
