@@ -5,6 +5,7 @@ using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.General;
 using Newtonsoft.Json;
+using Rapicgen.Core.External;
 
 namespace Rapicgen.Core.Generators.NSwagStudio
 {

@@ -4,6 +4,7 @@ using Rapicgen.Core.Generators;
 using Rapicgen.Core.Options.General;
 using FluentAssertions;
 using Moq;
+using Rapicgen.Core.External;
 
 namespace Rapicgen.Tests.Options
 {

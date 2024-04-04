@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using Rapicgen.Core.Exceptions;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options.General;
 
-namespace Rapicgen.Core.Options.General
+namespace Rapicgen.Core.External
 {
     public class JavaPathProvider
     {
@@ -31,7 +32,10 @@ namespace Rapicgen.Core.Options.General
             if (string.IsNullOrWhiteSpace(options.JavaPath))
                 javaPath = PathProvider.GetJavaPath();
 
-            return javaPath;
+            if (CheckJavaVersion(javaPath))
+                return javaPath;
+            
+            throw new MissingJavaRuntimeException("Unable to find Java executable");
         }
 
         [ExcludeFromCodeCoverage]
@@ -47,7 +51,6 @@ namespace Rapicgen.Core.Options.General
             {
                 Logger.Instance.TrackError(e);
                 Logger.Instance.WriteLine($"Unable to start Java from path: {javaPath}");
-                
             }
 
             return false;
