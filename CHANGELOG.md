@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Update Kiota version to v1.13.0 [\#842](https://github.com/christianhelle/apiclientcodegen/pull/842) ([christianhelle](https://github.com/christianhelle))
 - Show error message when unable to find java.exe [\#841](https://github.com/christianhelle/apiclientcodegen/pull/841) ([christianhelle](https://github.com/christianhelle))
 - Fix issues regarding whitespaces in file paths [\#838](https://github.com/christianhelle/apiclientcodegen/pull/838) ([christianhelle](https://github.com/christianhelle))
 - Added kiota version detection and its installation if it's not installed [\#832](https://github.com/christianhelle/apiclientcodegen/pull/832) ([Hiller](https://github.com/Hiller))
