@@ -17,6 +17,8 @@
 
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Http.HttpClientLibrary, System.Text.Json and System.Text.Encodings.Web [\#840](https://github.com/christianhelle/apiclientcodegen/pull/840) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Json, System.Text.Json and System.Text.Encodings.Web [\#839](https://github.com/christianhelle/apiclientcodegen/pull/839) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update dependency Exceptionless to v6.0.4 [\#837](https://github.com/christianhelle/apiclientcodegen/pull/837) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Microsoft.Kiota.Abstractions from 1.7.12 to 1.8.1 [\#835](https://github.com/christianhelle/apiclientcodegen/pull/835) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update nswag monorepo to v14.0.7 [\#834](https://github.com/christianhelle/apiclientcodegen/pull/834) ([renovate[bot]](https://github.com/apps/renovate))
