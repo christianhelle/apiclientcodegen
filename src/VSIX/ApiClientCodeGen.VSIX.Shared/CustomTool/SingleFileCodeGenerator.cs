@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -37,7 +36,7 @@ namespace Rapicgen.CustomTool
 
         public abstract int DefaultExtension(out string pbstrDefaultExtension);
 
-        public ICodeGeneratorFactory Factory { get; set; } = new CodeGeneratorFactory(null);
+        public ICodeGeneratorFactory Factory { get; set; } = new CodeGeneratorFactory();
 
         [SuppressMessage(
             "Usage", "VSTHRD108:Assert thread affinity unconditionally",
