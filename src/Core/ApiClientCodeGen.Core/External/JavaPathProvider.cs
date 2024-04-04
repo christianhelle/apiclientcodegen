@@ -4,8 +4,9 @@ using System.IO;
 using Rapicgen.Core.Exceptions;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options.General;
 
-namespace Rapicgen.Core.Options.General
+namespace Rapicgen.Core.External
 {
     public class JavaPathProvider
     {
