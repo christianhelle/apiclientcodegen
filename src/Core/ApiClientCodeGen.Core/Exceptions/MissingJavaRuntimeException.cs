@@ -1,5 +1,7 @@
 ﻿using System;
 
+namespace Rapicgen.Core.Exceptions;
+
 public class MissingJavaRuntimeException : Exception
 {
     public MissingJavaRuntimeException() { }
