@@ -71,7 +71,7 @@ namespace Rapicgen.Core.Installer
                         Logger.Instance.WriteLine(error);
                     }
                 });
-                if (!kiotaVersion.StartsWith("1.12.0")) 
+                if (!kiotaVersion.StartsWith("1.13.0")) 
                 { 
                     //older or newer? i guess this should be handled.
                 }
@@ -80,7 +80,7 @@ namespace Rapicgen.Core.Installer
             {
                 //if command doesn't exist Win32Exception is thrown.
                 command = PathProvider.GetDotNetPath();
-                arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.12.0";
+                arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.13.0";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
                 processLauncher.Start(command, arguments);
                 context.Succeeded();
