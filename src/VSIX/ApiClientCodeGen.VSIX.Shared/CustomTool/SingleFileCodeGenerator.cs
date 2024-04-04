@@ -110,7 +110,12 @@ namespace Rapicgen.CustomTool
             }
             catch (NotSupportedException e)
             {
-                MessageBox.Show(e.Message, "Not Supported");
+                MessageBox.Show(e.Message, @"Not Supported");
+                LogException(e, pGenerateProgress, rgbOutputFileContents, out pcbOutput);
+            }
+            catch (MissingJavaRuntimeException e)
+            {
+                MessageBox.Show(e.Message, @"Unable to find Java executable");
                 LogException(e, pGenerateProgress, rgbOutputFileContents, out pcbOutput);
             }
             catch (Exception e)
