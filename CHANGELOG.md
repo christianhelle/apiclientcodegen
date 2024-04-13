@@ -17,6 +17,8 @@
 
 **Merged pull requests:**
 
+- Update xunit-dotnet monorepo [\#847](https://github.com/christianhelle/apiclientcodegen/pull/847) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency dotnet-sdk to v6.0.421 [\#846](https://github.com/christianhelle/apiclientcodegen/pull/846) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Azure.Identity and Azure.Core [\#843](https://github.com/christianhelle/apiclientcodegen/pull/843) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Http.HttpClientLibrary, System.Text.Json and System.Text.Encodings.Web [\#840](https://github.com/christianhelle/apiclientcodegen/pull/840) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Json, System.Text.Json and System.Text.Encodings.Web [\#839](https://github.com/christianhelle/apiclientcodegen/pull/839) ([dependabot[bot]](https://github.com/apps/dependabot))
