@@ -59,7 +59,7 @@
       </Button>
       <Button guid="guidPackageCmdSet" id="RefitterCodeGeneratorCustomToolSetter" priority="0x0105" type="Button">
         <Strings>
-          <ButtonText>Generate with Rifitter (v0.9.9)</ButtonText>
+          <ButtonText>Generate with Refitter (v0.9.9)</ButtonText>
         </Strings>
       </Button>
 
