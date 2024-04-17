@@ -20,6 +20,7 @@
 **Merged pull requests:**
 
 - OpenAPI Generator v7.5.0 [\#853](https://github.com/christianhelle/apiclientcodegen/pull/853) ([christianhelle](https://github.com/christianhelle))
+- Bump Azure.Identity and Azure.Core [\#852](https://github.com/christianhelle/apiclientcodegen/pull/852) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump microsoft/setup-msbuild from 1.3 to 2 [\#848](https://github.com/christianhelle/apiclientcodegen/pull/848) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update xunit-dotnet monorepo [\#847](https://github.com/christianhelle/apiclientcodegen/pull/847) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency dotnet-sdk to v6.0.421 [\#846](https://github.com/christianhelle/apiclientcodegen/pull/846) ([renovate[bot]](https://github.com/apps/renovate))
