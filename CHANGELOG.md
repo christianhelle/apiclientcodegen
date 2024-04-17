@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Fix typo "Rifitter" in Visual Studio context menus [\#851](https://github.com/christianhelle/apiclientcodegen/pull/851) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.13.0 [\#842](https://github.com/christianhelle/apiclientcodegen/pull/842) ([christianhelle](https://github.com/christianhelle))
 - Show error message when unable to find java.exe [\#841](https://github.com/christianhelle/apiclientcodegen/pull/841) ([christianhelle](https://github.com/christianhelle))
 - Fix issues regarding whitespaces in file paths [\#838](https://github.com/christianhelle/apiclientcodegen/pull/838) ([christianhelle](https://github.com/christianhelle))
@@ -13,10 +14,13 @@
 
 **Fixed bugs:**
 
+- Rifitter =\> Refitter typo [\#844](https://github.com/christianhelle/apiclientcodegen/issues/844)
 - Half of the provided client generators don't work but show an error [\#836](https://github.com/christianhelle/apiclientcodegen/issues/836)
 
 **Merged pull requests:**
 
+- OpenAPI Generator v7.5.0 [\#853](https://github.com/christianhelle/apiclientcodegen/pull/853) ([christianhelle](https://github.com/christianhelle))
+- Bump microsoft/setup-msbuild from 1.3 to 2 [\#848](https://github.com/christianhelle/apiclientcodegen/pull/848) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update xunit-dotnet monorepo [\#847](https://github.com/christianhelle/apiclientcodegen/pull/847) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency dotnet-sdk to v6.0.421 [\#846](https://github.com/christianhelle/apiclientcodegen/pull/846) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Azure.Identity and Azure.Core [\#843](https://github.com/christianhelle/apiclientcodegen/pull/843) ([dependabot[bot]](https://github.com/apps/dependabot))
