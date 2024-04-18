@@ -12,7 +12,7 @@
     <PackageReference Include=""Azure.Identity"" Version=""1.11.1"" />
     <PackageReference Include=""Microsoft.Kiota.Abstractions"" Version=""1.8.0"" />
     <PackageReference Include=""Microsoft.Kiota.Authentication.Azure"" Version=""1.1.4"" />
-    <PackageReference Include=""Microsoft.Kiota.Http.HttpClientLibrary"" Version=""1.3.8"" />
+    <PackageReference Include=""Microsoft.Kiota.Http.HttpClientLibrary"" Version=""1.3.9"" />
     <PackageReference Include=""Microsoft.Kiota.Serialization.Form"" Version=""1.1.5"" />
     <PackageReference Include=""Microsoft.Kiota.Serialization.Json"" Version=""1.2.0"" />
     <PackageReference Include=""Microsoft.Kiota.Serialization.Text"" Version=""1.1.4"" />
@@ -30,7 +30,7 @@
     <PackageReference Include=""Azure.Identity"" Version=""1.11.1"" />
     <PackageReference Include=""Microsoft.Kiota.Abstractions"" Version=""1.8.0"" />
     <PackageReference Include=""Microsoft.Kiota.Authentication.Azure"" Version=""1.1.4"" />
-    <PackageReference Include=""Microsoft.Kiota.Http.HttpClientLibrary"" Version=""1.3.8"" />
+    <PackageReference Include=""Microsoft.Kiota.Http.HttpClientLibrary"" Version=""1.3.9"" />
     <PackageReference Include=""Microsoft.Kiota.Serialization.Form"" Version=""1.1.5"" />
     <PackageReference Include=""Microsoft.Kiota.Serialization.Json"" Version=""1.2.0"" />
     <PackageReference Include=""Microsoft.Kiota.Serialization.Text"" Version=""1.1.4"" />
