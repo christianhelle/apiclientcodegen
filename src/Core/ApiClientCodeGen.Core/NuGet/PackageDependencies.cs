@@ -71,7 +71,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency AzureIdentity =
             new PackageDependency(
                 "Azure.Identity",
-                "1.11.1");
+                "1.11.2");
 
         public static readonly PackageDependency MicrosoftKiotaAbstractions =
             new PackageDependency(
