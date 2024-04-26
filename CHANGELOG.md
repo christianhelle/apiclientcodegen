@@ -20,6 +20,7 @@
 **Merged pull requests:**
 
 - Bump Azure.Identity and Azure.Core [\#857](https://github.com/christianhelle/apiclientcodegen/pull/857) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Abstractions from 1.8.1 to 1.8.4 [\#856](https://github.com/christianhelle/apiclientcodegen/pull/856) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Http.HttpClientLibrary, System.Text.Json and System.Text.Encodings.Web [\#854](https://github.com/christianhelle/apiclientcodegen/pull/854) ([dependabot[bot]](https://github.com/apps/dependabot))
 - OpenAPI Generator v7.5.0 [\#853](https://github.com/christianhelle/apiclientcodegen/pull/853) ([christianhelle](https://github.com/christianhelle))
 - Bump Azure.Identity and Azure.Core [\#852](https://github.com/christianhelle/apiclientcodegen/pull/852) ([dependabot[bot]](https://github.com/apps/dependabot))
