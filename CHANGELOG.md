@@ -19,6 +19,7 @@
 
 **Merged pull requests:**
 
+- Update xunit-dotnet monorepo to v2.8.0 [\#860](https://github.com/christianhelle/apiclientcodegen/pull/860) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Microsoft.VSSDK.BuildTools to v17.9.3184 [\#858](https://github.com/christianhelle/apiclientcodegen/pull/858) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Azure.Identity and Azure.Core [\#857](https://github.com/christianhelle/apiclientcodegen/pull/857) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Abstractions from 1.8.1 to 1.8.4 [\#856](https://github.com/christianhelle/apiclientcodegen/pull/856) ([dependabot[bot]](https://github.com/apps/dependabot))
