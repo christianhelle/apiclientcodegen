@@ -19,6 +19,13 @@
 
 **Merged pull requests:**
 
+- Update GitHub workflows to use MacOS 12 [\#870](https://github.com/christianhelle/apiclientcodegen/pull/870) ([christianhelle](https://github.com/christianhelle))
+- Update Kiota dependencies [\#869](https://github.com/christianhelle/apiclientcodegen/pull/869) ([christianhelle](https://github.com/christianhelle))
+- Bump Microsoft.Kiota.Serialization.Text from 1.1.4 to 1.1.5 [\#868](https://github.com/christianhelle/apiclientcodegen/pull/868) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Http.HttpClientLibrary, System.Text.Json and System.Text.Encodings.Web [\#867](https://github.com/christianhelle/apiclientcodegen/pull/867) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Authentication.Azure and Azure.Core [\#866](https://github.com/christianhelle/apiclientcodegen/pull/866) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Form from 1.1.5 to 1.1.6 [\#865](https://github.com/christianhelle/apiclientcodegen/pull/865) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump Microsoft.Kiota.Serialization.Multipart from 1.1.3 to 1.1.4 [\#864](https://github.com/christianhelle/apiclientcodegen/pull/864) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Json, System.Text.Json and System.Text.Encodings.Web [\#863](https://github.com/christianhelle/apiclientcodegen/pull/863) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update xunit-dotnet monorepo to v2.8.0 [\#860](https://github.com/christianhelle/apiclientcodegen/pull/860) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Microsoft.VSSDK.BuildTools to v17.9.3184 [\#858](https://github.com/christianhelle/apiclientcodegen/pull/858) ([renovate[bot]](https://github.com/apps/renovate))
