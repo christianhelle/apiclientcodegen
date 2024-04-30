@@ -19,6 +19,7 @@
 
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Serialization.Json, System.Text.Json and System.Text.Encodings.Web [\#863](https://github.com/christianhelle/apiclientcodegen/pull/863) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update xunit-dotnet monorepo to v2.8.0 [\#860](https://github.com/christianhelle/apiclientcodegen/pull/860) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Microsoft.VSSDK.BuildTools to v17.9.3184 [\#858](https://github.com/christianhelle/apiclientcodegen/pull/858) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Azure.Identity and Azure.Core [\#857](https://github.com/christianhelle/apiclientcodegen/pull/857) ([dependabot[bot]](https://github.com/apps/dependabot))
