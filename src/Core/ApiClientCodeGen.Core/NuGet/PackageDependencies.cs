@@ -106,7 +106,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency MicrosoftKiotaSerializationMultipart =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Multipart",
-                "1.1.5");
+                "1.1.4");
 
         public static readonly PackageDependency Refit =
             new PackageDependency(
