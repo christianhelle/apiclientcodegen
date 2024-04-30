@@ -28,7 +28,7 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-latest, windows-latest, ubuntu-latest ]
+        os: [ macos-12, windows-latest, ubuntu-latest ]
 
     name: C#
     runs-on: ${{ matrix.os }}
@@ -38,8 +38,6 @@ jobs:
     - uses: actions/checkout@v4
 
     - uses: actions/setup-node@v4
-      with:
-        node-version: 14
 
     - name: Set up JDK 17
       uses: actions/setup-java@v4
@@ -259,7 +257,7 @@ jobs:
         cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/NetStandard20/Output.cs
         cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/NetStandard21/Output.cs
       working-directory: test
-      continue-on-error: ${{ matrix.os == 'macos-latest' }}
+      continue-on-error: ${{ matrix.os == 'macos-12' }}
 
     - name: Build .NET 6 Kiota generated code
       run: dotnet build ./GeneratedCode/Kiota/Net6/Net6.csproj
@@ -347,7 +345,7 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-latest, windows-2022, ubuntu-latest ]
+        os: [ macos-12, windows-2022, ubuntu-latest ]
 
     name: JMeter
     runs-on: ${{ matrix.os }}
@@ -388,7 +386,7 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-latest, windows-2022, ubuntu-latest ]
+        os: [ macos-12, windows-2022, ubuntu-latest ]
 
     name: TypeScript
     runs-on: ${{ matrix.os }}
