@@ -86,7 +86,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency MicrosoftKiotaHttpClientLibrary =
             new PackageDependency(
                 "Microsoft.Kiota.Http.HttpClientLibrary",
-                "1.3.9");
+                "1.4.0");
 
         public static readonly PackageDependency MicrosoftKiotaSerializationForm =
             new PackageDependency(
