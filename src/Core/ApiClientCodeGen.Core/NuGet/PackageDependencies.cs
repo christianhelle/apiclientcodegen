@@ -91,7 +91,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency MicrosoftKiotaSerializationForm =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Form",
-                "1.1.5");
+                "1.1.6");
 
         public static readonly PackageDependency MicrosoftKiotaSerializationJson =
             new PackageDependency(
