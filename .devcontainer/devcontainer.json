@@ -1,6 +1,6 @@
 {
   "name": "C# (.NET)",
-	"image": "mcr.microsoft.com/devcontainers/dotnet:0-6.0",
+	"image": "mcr.microsoft.com/devcontainers/dotnet:1-6.0",
   "features": {
     "ghcr.io/devcontainers/features/dotnet:1": {},
     "ghcr.io/devcontainers/features/node:1": {},
