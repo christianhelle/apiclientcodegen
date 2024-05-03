@@ -16,6 +16,11 @@ namespace Rapicgen.Options.Analytics
         {
         }
 
+        [Category("Telemetry")]
+        [DisplayName("Opt-out")]
+        [Description("Set to true to opt-out of telemetry. Default is false.")]
+        public bool TelemetryOptOut { get; set; }
+
         protected override IWin32Window Window
             => new AnalyticsOptionsPageCustom();
     }
