@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Microsoft Kiota v1.14.0 [\#874](https://github.com/christianhelle/apiclientcodegen/pull/874) ([christianhelle](https://github.com/christianhelle))
 - Fix typo "Rifitter" in Visual Studio context menus [\#851](https://github.com/christianhelle/apiclientcodegen/pull/851) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.13.0 [\#842](https://github.com/christianhelle/apiclientcodegen/pull/842) ([christianhelle](https://github.com/christianhelle))
 - Show error message when unable to find java.exe [\#841](https://github.com/christianhelle/apiclientcodegen/pull/841) ([christianhelle](https://github.com/christianhelle))
@@ -19,6 +20,8 @@
 
 **Merged pull requests:**
 
+- Update mcr.microsoft.com/devcontainers/dotnet Docker tag to v1 [\#873](https://github.com/christianhelle/apiclientcodegen/pull/873) ([renovate[bot]](https://github.com/apps/renovate))
+- Update ghcr.io/devcontainers/features/dotnet Docker tag to v2 [\#872](https://github.com/christianhelle/apiclientcodegen/pull/872) ([renovate[bot]](https://github.com/apps/renovate))
 - Update GitHub workflows to use MacOS 12 [\#870](https://github.com/christianhelle/apiclientcodegen/pull/870) ([christianhelle](https://github.com/christianhelle))
 - Update Kiota dependencies [\#869](https://github.com/christianhelle/apiclientcodegen/pull/869) ([christianhelle](https://github.com/christianhelle))
 - Bump Microsoft.Kiota.Serialization.Text from 1.1.4 to 1.1.5 [\#868](https://github.com/christianhelle/apiclientcodegen/pull/868) ([dependabot[bot]](https://github.com/apps/dependabot))
