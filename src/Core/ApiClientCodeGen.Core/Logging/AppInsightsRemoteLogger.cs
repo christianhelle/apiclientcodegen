@@ -80,6 +80,12 @@ namespace Rapicgen.Core.Logging
                 telemetryClient.TelemetryConfiguration.DisableTelemetry = true;
         }
 
+        public void Enable()
+        {
+            if (telemetryClient != null)
+                telemetryClient.TelemetryConfiguration.DisableTelemetry = false;
+        }
+
         public void WriteLine(object data)
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached || telemetryClient == null)

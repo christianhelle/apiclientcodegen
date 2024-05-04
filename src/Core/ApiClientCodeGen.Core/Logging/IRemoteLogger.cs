@@ -16,6 +16,8 @@ namespace Rapicgen.Core.Logging
 
         void Disable();
 
+        void Enable();
+
         void WriteLine(object data);
     }
 }
