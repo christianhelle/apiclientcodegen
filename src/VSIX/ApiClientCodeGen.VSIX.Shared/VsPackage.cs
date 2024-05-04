@@ -127,7 +127,11 @@ namespace Rapicgen
             foreach (var command in commands)
                 await command.InitializeAsync(this, cancellationToken);
 
-            await TrySetupVersionTrackingAsync();
+            var telemetryOptions = GetDialogPage(typeof(AnalyticsOptionPage)) as ITelemetryOptions;
+            if (telemetryOptions?.TelemetryOptOut == true)
+                Logger.Instance.Disable();
+            else
+                await TrySetupVersionTrackingAsync();
         }
 
         private async Task TrySetupVersionTrackingAsync()

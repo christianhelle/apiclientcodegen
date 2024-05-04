@@ -1,8 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Rapicgen.Core.Exceptions;
 using Exceptionless;
 using Exceptionless.Plugins;
@@ -53,6 +51,10 @@ namespace Rapicgen.Core.Logging
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
                 return;
+
+            if (!ExceptionlessClient.Default.Configuration.Enabled)
+                return;
+
             ExceptionlessClient.Default
                 .CreateFeatureUsage(featureName)
                 .AddTags(tags)
@@ -63,6 +65,10 @@ namespace Rapicgen.Core.Logging
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
                 return;
+
+            if (!ExceptionlessClient.Default.Configuration.Enabled)
+                return;
+
             exception.ToExceptionless().Submit();
         }
 
@@ -79,6 +85,11 @@ namespace Rapicgen.Core.Logging
         public void Disable()
         {
             ExceptionlessClient.Default.Configuration.Enabled = false;
+        }
+
+        public void Enable()
+        {
+            ExceptionlessClient.Default.Configuration.Enabled = true;
         }
 
         public void WriteLine(object data)
@@ -98,7 +109,7 @@ namespace Rapicgen.Core.Logging
                     context.Cancel = true;
                     return;
                 }
-                
+
                 var exception = context.ContextData.GetException();
                 context.Cancel = exception?.GetType()?.IsAssignableFrom(typeof(RapicgenException)) != true;
             }
