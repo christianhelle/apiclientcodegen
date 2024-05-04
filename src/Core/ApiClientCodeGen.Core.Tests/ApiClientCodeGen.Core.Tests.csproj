@@ -6,7 +6,7 @@
 
         <LangVersion>latest</LangVersion>
 
-        <TargetFrameworks>net6.0</TargetFrameworks>
+        <TargetFramework>net8.0</TargetFramework>
     </PropertyGroup>
 
     <ItemGroup>
