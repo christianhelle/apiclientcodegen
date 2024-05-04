@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Update "New REST API Client" dialog title to include YAML in text [\#877](https://github.com/christianhelle/apiclientcodegen/pull/877) ([christianhelle](https://github.com/christianhelle))
 - Add option to disable telemetry collection [\#876](https://github.com/christianhelle/apiclientcodegen/pull/876) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.0.0 [\#875](https://github.com/christianhelle/apiclientcodegen/pull/875) ([renovate[bot]](https://github.com/apps/renovate))
 - Microsoft Kiota v1.14.0 [\#874](https://github.com/christianhelle/apiclientcodegen/pull/874) ([christianhelle](https://github.com/christianhelle))
