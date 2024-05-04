@@ -118,7 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lblAnalyticsInfo.Text" xml:space="preserve">
-    <value>This extension collects errors and tracks features usages to Exceptionless and Azure Application Insights
+    <value>This extension collects errors and tracks features usages to 
+Exceptionless and Azure Application Insights by default and you may
+opt-out of telemetry collection at any time.
 
 User tracking is done anonymously using the Support Key shown above 
 and a generated anonymous identity based on a secure hash algorithm 

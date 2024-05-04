@@ -22,6 +22,6 @@ namespace Rapicgen.Options.Analytics
         public bool TelemetryOptOut { get; set; }
 
         protected override IWin32Window Window
-            => new AnalyticsOptionsPageCustom();
+            => new AnalyticsOptionsPageCustom(this);
     }
 }
