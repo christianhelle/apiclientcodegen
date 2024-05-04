@@ -24,7 +24,7 @@ jobs:
         setAllVars: true
     - name: Update Version
       run: |
-        ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
+        ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
         ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
         ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
       working-directory: src
@@ -67,7 +67,7 @@ jobs:
       with:
         setAllVars: true
     - name: Update Version
-      run: ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
+      run: ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
       working-directory: src
     - name: Build
       run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.sln -p:PackageVersion="${{ env.VERSION }}"
