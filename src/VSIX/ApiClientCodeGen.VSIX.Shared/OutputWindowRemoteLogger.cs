@@ -13,6 +13,11 @@ namespace Rapicgen
             // Method intentionally left empty.
         }
 
+        public void Enable()
+        {
+            // Method intentionally left empty.
+        }
+
         public void TrackDependency(
             string dependencyName,
             string data = null,

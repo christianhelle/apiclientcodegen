@@ -1,14 +1,16 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using Microsoft.VisualStudio.Shell;
+using Rapicgen.Core.Logging;
+using Rapicgen.Windows;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Rapicgen.Windows;
-using Microsoft.VisualStudio.Shell;
 
 namespace Rapicgen.Options.Analytics
 {
     [ExcludeFromCodeCoverage]
     [ComVisible(true)]
-    public class AnalyticsOptionPage : DialogPage
+    public class AnalyticsOptionPage : DialogPage, ITelemetryOptions
     {
         public const string Name = "Analytics";
 

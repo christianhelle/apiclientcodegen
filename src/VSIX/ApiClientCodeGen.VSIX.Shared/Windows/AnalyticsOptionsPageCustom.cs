@@ -34,6 +34,11 @@ namespace Rapicgen.Windows
         private void chkDisableTelemetry_CheckedChanged(object sender, EventArgs e)
         {
             analyticsOptionPage.TelemetryOptOut = chkDisableTelemetry.Checked;
+
+            if (chkDisableTelemetry.Checked)
+                Logger.Instance.Disable();
+            else
+                Logger.Instance.Enable();
         }
     }
 }
