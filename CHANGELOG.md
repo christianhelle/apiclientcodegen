@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Refitter v1.0.0 [\#875](https://github.com/christianhelle/apiclientcodegen/pull/875) ([renovate[bot]](https://github.com/apps/renovate))
 - Microsoft Kiota v1.14.0 [\#874](https://github.com/christianhelle/apiclientcodegen/pull/874) ([christianhelle](https://github.com/christianhelle))
 - Fix typo "Rifitter" in Visual Studio context menus [\#851](https://github.com/christianhelle/apiclientcodegen/pull/851) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.13.0 [\#842](https://github.com/christianhelle/apiclientcodegen/pull/842) ([christianhelle](https://github.com/christianhelle))
