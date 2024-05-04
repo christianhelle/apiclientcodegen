@@ -24,7 +24,7 @@ env:
 
 jobs:
   build:
-    runs-on: windows-2022
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
@@ -37,11 +37,15 @@ jobs:
       run: ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
       working-directory: src
 
-    - name: Build with dotnet
+    - name: Restore
+      run: dotnet restore Rapicgen.sln
+      working-directory: src
+
+    - name: Build (Debug)
       run: dotnet build Rapicgen.sln
       working-directory: src
     
-    - name: Build
+    - name: Build (Release)
       run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.sln -p:PackageVersion="${{ env.VERSION }}"
 
     - name: Core test project
