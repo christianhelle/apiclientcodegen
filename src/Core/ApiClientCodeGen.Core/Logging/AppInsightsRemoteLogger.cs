@@ -34,6 +34,10 @@ namespace Rapicgen.Core.Logging
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached || telemetryClient == null)
                 return;
+
+            if (telemetryClient.TelemetryConfiguration.DisableTelemetry)
+                return;
+
             telemetryClient.TelemetryConfiguration.TelemetryInitializers.Add(initializer);
         }
 
@@ -41,6 +45,10 @@ namespace Rapicgen.Core.Logging
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached || telemetryClient == null)
                 return;
+
+            if (telemetryClient.TelemetryConfiguration.DisableTelemetry)
+                return;
+
             telemetryClient.TrackEvent(featureName);
             telemetryClient.Flush();
         }
@@ -49,6 +57,10 @@ namespace Rapicgen.Core.Logging
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached || telemetryClient == null)
                 return;
+
+            if (telemetryClient.TelemetryConfiguration.DisableTelemetry)
+                return;
+
             telemetryClient.TrackException(exception);
             telemetryClient.Flush();
         }
@@ -62,6 +74,10 @@ namespace Rapicgen.Core.Logging
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached || telemetryClient == null)
                 return;
+
+            if (telemetryClient.TelemetryConfiguration.DisableTelemetry)
+                return;
+
             telemetryClient.TrackDependency(
                 new DependencyTelemetry
                 {
@@ -90,9 +106,14 @@ namespace Rapicgen.Core.Logging
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached || telemetryClient == null)
                 return;
+
+            if (telemetryClient.TelemetryConfiguration.DisableTelemetry)
+                return;
+
             var message = data?.ToString();
             if (string.IsNullOrWhiteSpace(message))
                 return;
+
             telemetryClient.TrackTrace(message);
             telemetryClient.Flush();
         }

@@ -51,6 +51,10 @@ namespace Rapicgen.Core.Logging
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
                 return;
+
+            if (!ExceptionlessClient.Default.Configuration.Enabled)
+                return;
+
             ExceptionlessClient.Default
                 .CreateFeatureUsage(featureName)
                 .AddTags(tags)
@@ -61,6 +65,10 @@ namespace Rapicgen.Core.Logging
         {
             if (TestingUtility.IsRunningFromUnitTest || Debugger.IsAttached)
                 return;
+
+            if (!ExceptionlessClient.Default.Configuration.Enabled)
+                return;
+
             exception.ToExceptionless().Submit();
         }
 
