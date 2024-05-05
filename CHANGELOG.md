@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.8...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.0...HEAD)
+
+**Implemented enhancements:**
+
+- Add missing feature tracking for Refitter [\#878](https://github.com/christianhelle/apiclientcodegen/pull/878) ([christianhelle](https://github.com/christianhelle))
+
+## [1.10.0](https://github.com/christianhelle/apiclientcodegen/tree/1.10.0) (2024-05-04)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.8...1.10.0)
 
 **Implemented enhancements:**
 
