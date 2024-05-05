@@ -6,6 +6,8 @@
 
 **Implemented enhancements:**
 
+- Implement a Refitter Settings File as part of generation process [\#845](https://github.com/christianhelle/apiclientcodegen/issues/845)
+- Add support for .refitter files [\#879](https://github.com/christianhelle/apiclientcodegen/pull/879) ([christianhelle](https://github.com/christianhelle))
 - Add missing feature tracking for Refitter [\#878](https://github.com/christianhelle/apiclientcodegen/pull/878) ([christianhelle](https://github.com/christianhelle))
 
 ## [1.10.0](https://github.com/christianhelle/apiclientcodegen/tree/1.10.0) (2024-05-04)
