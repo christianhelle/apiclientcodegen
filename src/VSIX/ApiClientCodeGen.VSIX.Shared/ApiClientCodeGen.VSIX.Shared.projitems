@@ -27,6 +27,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\SwaggerCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\ICommandInitializer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\NSwagStudio\NSwagStudioCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\Refitter\RefitterCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CSharpToVisualBasicLanguageConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestCSharpCodeGenerator.cs" />
