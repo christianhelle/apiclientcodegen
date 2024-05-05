@@ -71,6 +71,14 @@
         </Strings>
       </Button>
 
+      <Button guid="guidPackageRefitterCmdSet" id="RefitterCommand" priority="0x0002">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE" />
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Generate Refitter output</ButtonText>
+        </Strings>
+      </Button>
+
       <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwag" priority="0x0100" type="Button">
         <Strings>
           <ButtonText>Generate with NSwag (v14.0.3)</ButtonText>
@@ -174,6 +182,7 @@
   <VisibilityConstraints>
     <VisibilityItem guid="guidPackageCmdSet" id="Submenu" context="guidUIContext"/>
     <VisibilityItem guid="guidPackageNSwagStudioCmdSet" id="NSwagStudioCommand" context="guidNSwagStudioContext"/>
+    <VisibilityItem guid="guidPackageRefitterCmdSet" id="RefitterCommand" context="guidRefitterContext"/>
   </VisibilityConstraints>
 
   <Symbols>
@@ -195,6 +204,10 @@
     <GuidSymbol name="guidNSwagStudioContext" value="{65B3A74F-CD47-476A-A992-0C3DE31455FD}" />
     <GuidSymbol name="guidPackageNSwagStudioCmdSet" value="{F76783DA-7AE3-4EDB-BDF4-B580CAB1BA90}">
       <IDSymbol name="NSwagStudioCommand" value="0x0100" />
+    </GuidSymbol>
+    <GuidSymbol name="guidRefitterContext" value="{2A5A0DB6-FC9C-48AB-98E5-C69D7157CEF5}" />
+    <GuidSymbol name="guidPackageRefitterCmdSet" value="{E00623E7-31F9-40E9-BDEE-9D7829D09184}">
+      <IDSymbol name="RefitterCommand" value="0x0200"/>
     </GuidSymbol>
 
     <GuidSymbol name="guidNewRestApiClientContext" value="{7CEC8679-C1B8-48BF-9FA4-5FAA38CBE0FA}" />

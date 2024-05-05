@@ -17,6 +17,7 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
 using Rapicgen.Options.Refitter;
+using Rapicgen.Commands.Refitter;
 
 namespace Rapicgen
 {
@@ -38,6 +39,12 @@ namespace Rapicgen
         NSwagStudioCommand.Expression,
         new[] { NSwagStudioCommand.Expression },
         new[] { NSwagStudioCommand.TermValue })]
+    [ProvideUIContextRule(
+        RefitterCommand.ContextGuid,
+        RefitterCommand.Name,
+        RefitterCommand.Expression,
+        new[] { RefitterCommand.Expression },
+        new[] { RefitterCommand.TermValue })]
     [ProvideOptionPage(
         typeof(GeneralOptionPage),
         VsixName,
@@ -99,6 +106,7 @@ namespace Rapicgen
             new KiotaCodeGeneratorCustomToolSetter(),
             new RefitterCodeGeneratorCustomToolSetter(),
             new NSwagStudioCommand(),
+            new RefitterCommand(),
             new NewAutoRestClientCommand(),
             new NewNSwagClientCommand(),
             new NewSwaggerClientCommand(),
@@ -131,13 +139,14 @@ namespace Rapicgen
             if (telemetryOptions?.TelemetryOptOut == true)
                 Logger.Instance.Disable();
             else
-                await TrySetupVersionTrackingAsync();
+                await TrySetupVersionTrackingAsync(cancellationToken);
         }
 
-        private async Task TrySetupVersionTrackingAsync()
+        private async Task TrySetupVersionTrackingAsync(CancellationToken cancellationToken)
         {
             try
             {
+                await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
                 var shell = (IVsShell)(await GetServiceAsync(typeof(SVsShell)))!;
                 shell.GetProperty((int)__VSSPROPID5.VSSPROPID_ReleaseVersion, out object value);
                 if (value is string raw)
