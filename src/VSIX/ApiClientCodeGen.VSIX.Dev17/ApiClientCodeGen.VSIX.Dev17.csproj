@@ -60,6 +60,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\server\jvm.dll">
+      <Link>JRE\bin\server\jvm.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\classlist">
       <Link>JRE\lib\classlist</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -112,6 +117,16 @@
     </Content>
     <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\tzmappings">
       <Link>JRE\lib\tzmappings</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\server\classes.jsa">
+      <Link>JRE\bin\server\classes.jsa</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\server\classes_nocoops.jsa">
+      <Link>JRE\bin\server\classes_nocoops.jsa</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
