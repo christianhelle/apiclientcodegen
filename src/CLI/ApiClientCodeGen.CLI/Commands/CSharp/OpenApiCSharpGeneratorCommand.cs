@@ -133,6 +133,16 @@ namespace Rapicgen.CLI.Commands.CSharp
             Description = "Use the configuration file if present.")]
         public bool UseConfigurationFile { get; set; }
 
+        [Option(
+            ShortName = "m",
+            LongName = "generate-multiple-files",
+            Description = "Generate multiple files.")]
+        public bool GenerateMultipleFiles 
+        {
+            get => openApiGeneratorOptions.GenerateMultipleFiles;
+            set => openApiGeneratorOptions.GenerateMultipleFiles = value;
+        }
+
         public override ICodeGenerator CreateGenerator()
             => cSharpGeneratorFactory.Create(
                 SwaggerFile,
