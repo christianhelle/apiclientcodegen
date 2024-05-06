@@ -60,6 +60,61 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\classlist">
+      <Link>JRE\lib\classlist</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\fontconfig.bfc">
+      <Link>JRE\lib\fontconfig.bfc</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\fontconfig.properties.src">
+      <Link>JRE\lib\fontconfig.properties.src</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\jawt.lib">
+      <Link>JRE\lib\jawt.lib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\jvm.cfg">
+      <Link>JRE\lib\jvm.cfg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\jvm.lib">
+      <Link>JRE\lib\jvm.lib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\modules">
+      <Link>JRE\lib\modules</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\psfont.properties.ja">
+      <Link>JRE\lib\psfont.properties.ja</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\psfontj2d.properties">
+      <Link>JRE\lib\psfontj2d.properties</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\tzdb.dat">
+      <Link>JRE\lib\tzdb.dat</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\tzmappings">
+      <Link>JRE\lib\tzmappings</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="app.config" />
     <None Include="Key.snk" />
     <None Include="source.extension.vsixmanifest">
@@ -557,6 +612,11 @@
     </Content>
     <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\zip.dll">
       <Link>JRE\bin\zip.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\jrt-fs.jar">
+      <Link>JRE\lib\jrt-fs.jar</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
