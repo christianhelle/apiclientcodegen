@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -14,16 +13,16 @@ namespace Rapicgen.Core.Generators
         public static string MergeFiles(string folder)
         {
             var filesToParse = GetSourceFileNames(folder).ToList();
-            
+
             Logger.Instance.WriteLine($"Found {filesToParse.Count} files to merge");
             foreach (var file in filesToParse)
             {
                 Logger.Instance.WriteLine($" - {file}");
             }
-            
+
             var namespaces = GetUniqueNamespaces(filesToParse);
             var result = GenerateCombinedSource(namespaces, filesToParse);
-            
+
             Logger.Instance.WriteLine($"Merged source code size: {result.Length}");
             return result;
         }
@@ -38,8 +37,45 @@ namespace Rapicgen.Core.Generators
             {
                 ActionExtensions.SafeInvoke(
                     () => Directory.Delete(
-                        Directory.GetParent(output).FullName,
+                        Directory.GetParent(output)!.FullName,
                         true));
+            }
+        }
+
+        public static void CopyFilesAndDeleteSource(string input, string output)
+        {
+            try
+            {
+                CopyFolder(input, output);
+            }
+            finally
+            {
+                ActionExtensions.SafeInvoke(
+                    () => Directory.Delete(
+                        Directory.GetParent(input)!.FullName,
+                        true));
+            }
+        }
+
+        private static void CopyFolder(string srcFolder, string destFolder)
+        {
+            if (!Directory.Exists(destFolder))
+                Directory.CreateDirectory(destFolder);
+
+            var files = Directory.GetFiles(srcFolder);
+            foreach (var file in files)
+            {
+                var name = Path.GetFileName(file);
+                var dest = Path.Combine(destFolder, name);
+                File.Copy(file, dest, true);
+            }
+
+            var folders = Directory.GetDirectories(srcFolder);
+            foreach (var folder in folders)
+            {
+                var name = Path.GetFileName(folder);
+                var dest = Path.Combine(destFolder, name);
+                CopyFolder(folder, dest);
             }
         }
 
