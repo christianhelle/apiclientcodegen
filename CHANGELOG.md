@@ -7,6 +7,8 @@
 **Implemented enhancements:**
 
 - Implement a Refitter Settings File as part of generation process [\#845](https://github.com/christianhelle/apiclientcodegen/issues/845)
+- Implement option for generating multiple files [\#175](https://github.com/christianhelle/apiclientcodegen/issues/175)
+- Add support for generating multiple files with OpenAPI Generator [\#886](https://github.com/christianhelle/apiclientcodegen/pull/886) ([christianhelle](https://github.com/christianhelle))
 - Add support for .refitter files [\#879](https://github.com/christianhelle/apiclientcodegen/pull/879) ([christianhelle](https://github.com/christianhelle))
 - Add missing feature tracking for Refitter [\#878](https://github.com/christianhelle/apiclientcodegen/pull/878) ([christianhelle](https://github.com/christianhelle))
 
