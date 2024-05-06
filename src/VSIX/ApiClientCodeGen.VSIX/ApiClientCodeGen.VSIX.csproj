@@ -130,6 +130,36 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\jfr\default.jfc">
+      <Link>JRE\lib\jfr\default.jfc</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\jfr\profile.jfc">
+      <Link>JRE\lib\jfr\profile.jfc</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\security\blocked.certs">
+      <Link>JRE\lib\security\blocked.certs</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\security\cacerts">
+      <Link>JRE\lib\security\cacerts</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\security\default.policy">
+      <Link>JRE\lib\security\default.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\security\public_suffix_list.dat">
+      <Link>JRE\lib\security\public_suffix_list.dat</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <None Include="app.config" />
     <None Include="Key.snk" />
     <None Include="source.extension.vsixmanifest">
