@@ -17,7 +17,7 @@ namespace Rapicgen.Options.General
 
         public GeneralOptionPage()
         {
-            JavaPath = PathProvider.GetJavaPath();
+            JavaPath = PathProvider.GetInstalledJavaPath();
             NpmPath = PathProvider.GetNpmPath();
             NSwagPath = PathProvider.GetNSwagStudioPath();
         }

@@ -12,14 +12,14 @@ namespace ApiClientCodeGen.Core.Tests.Options
         [Xunit.Fact]
         public void GetJavaPath_Exists()
         {
-            var path = PathProvider.GetJavaPath();
+            var path = PathProvider.GetInstalledJavaPath();
             path.Should().NotBeNullOrWhiteSpace();
         }
 
         [Xunit.Fact]
         public void GetJavaPath_Returns_No_Path_For_Bad_EnvironmentVariableName()
         {
-            var path = PathProvider.GetJavaPath(Test.CreateAnnonymous<string>());
+            var path = PathProvider.GetInstalledJavaPath(Test.CreateAnnonymous<string>());
             path.Should().Be("java");
         }
 

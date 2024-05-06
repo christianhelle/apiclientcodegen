@@ -28,8 +28,12 @@ namespace Rapicgen.Core.External
                 return javaPath;
 
             if (string.IsNullOrWhiteSpace(options.JavaPath))
-                javaPath = PathProvider.GetJavaPath();
+                javaPath = PathProvider.GetIncludedJavaPath();
 
+            if (CheckJavaVersion(javaPath))
+                return javaPath;
+
+            javaPath = PathProvider.GetInstalledJavaPath();
             if (CheckJavaVersion(javaPath))
                 return javaPath;
 

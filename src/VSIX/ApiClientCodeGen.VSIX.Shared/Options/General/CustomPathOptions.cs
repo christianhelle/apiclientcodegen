@@ -25,7 +25,7 @@ namespace Rapicgen.Options.General
             {
                 Logger.Instance.TrackError(e);
 
-                JavaPath = PathProvider.GetJavaPath();
+                JavaPath = PathProvider.GetInstalledJavaPath();
                 NpmPath = PathProvider.GetNpmPath();
                 NSwagPath = PathProvider.GetNSwagStudioPath();
                 SwaggerCodegenPath = PathProvider.GetSwaggerCodegenPath();

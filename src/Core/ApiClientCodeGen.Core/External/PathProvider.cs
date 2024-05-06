@@ -6,24 +6,33 @@ namespace Rapicgen.Core.External
 {
     public static class PathProvider
     {
-        public static string GetJavaPath(string environmentVariable = "JAVA_HOME")
+        public static string GetInstalledJavaPath(string environmentVariable = "JAVA_HOME")
+        {
+            try
+            {
+                var javaHome = Environment.GetEnvironmentVariable(environmentVariable);
+                if (!string.IsNullOrWhiteSpace(javaHome))
+                    return Path.Combine(javaHome, "bin\\java.exe");
+
+                Logger.Instance.WriteLine("Unable to read JAVA_HOME environment variable");
+                return "java";
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.TrackError(e);
+                return "java";
+            }
+        }
+
+        public static string GetIncludedJavaPath()
         {
             try
             {
                 string codeBase = typeof(PathProvider).Assembly.CodeBase;
                 UriBuilder uri = new UriBuilder(codeBase);
                 string path = Uri.UnescapeDataString(uri.Path);
-                var javaHome = Path.Combine(Path.GetDirectoryName(path), "JRE");
-
-                if (!string.IsNullOrWhiteSpace(javaHome))
-                    return Path.Combine(javaHome, "bin\\java.exe");
-
-                javaHome = Environment.GetEnvironmentVariable(environmentVariable);
-                if (!string.IsNullOrWhiteSpace(javaHome))
-                    return Path.Combine(javaHome, "bin\\java.exe");
-
-                Logger.Instance.WriteLine("Unable to read JAVA_HOME environment variable");
-                return "java";
+                var jrePath = Path.Combine(Path.GetDirectoryName(path), "JRE");
+                return Path.Combine(jrePath, "bin\\java.exe");
             }
             catch (Exception e)
             {
