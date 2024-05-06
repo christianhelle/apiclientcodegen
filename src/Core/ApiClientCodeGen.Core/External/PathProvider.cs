@@ -10,13 +10,20 @@ namespace Rapicgen.Core.External
         {
             try
             {
-                var javaHome = Environment.GetEnvironmentVariable(environmentVariable);
-                if (!string.IsNullOrWhiteSpace(javaHome)) 
+                string codeBase = typeof(PathProvider).Assembly.CodeBase;
+                UriBuilder uri = new UriBuilder(codeBase);
+                string path = Uri.UnescapeDataString(uri.Path);
+                var javaHome = Path.Combine(Path.GetDirectoryName(path), "JRE");
+
+                if (!string.IsNullOrWhiteSpace(javaHome))
+                    return Path.Combine(javaHome, "bin\\java.exe");
+
+                javaHome = Environment.GetEnvironmentVariable(environmentVariable);
+                if (!string.IsNullOrWhiteSpace(javaHome))
                     return Path.Combine(javaHome, "bin\\java.exe");
 
                 Logger.Instance.WriteLine("Unable to read JAVA_HOME environment variable");
                 return "java";
-
             }
             catch (Exception e)
             {
