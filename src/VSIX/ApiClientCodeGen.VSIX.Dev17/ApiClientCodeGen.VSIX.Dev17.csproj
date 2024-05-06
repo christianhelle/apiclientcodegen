@@ -65,6 +65,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\policy\README.txt">
+      <Link>JRE\conf\security\policy\README.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\classlist">
       <Link>JRE\lib\classlist</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -160,6 +165,68 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
+    <None Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\jaxp.properties">
+      <Link>JRE\conf\jaxp.properties</Link>
+    </None>
+    <None Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\logging.properties">
+      <Link>JRE\conf\logging.properties</Link>
+    </None>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\management\jmxremote.access">
+      <Link>JRE\conf\management\jmxremote.access</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\management\jmxremote.password.template">
+      <Link>JRE\conf\management\jmxremote.password.template</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\management\management.properties">
+      <Link>JRE\conf\management\management.properties</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\net.properties">
+      <Link>JRE\conf\net.properties</Link>
+    </None>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\java.policy">
+      <Link>JRE\conf\security\java.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\java.security">
+      <Link>JRE\conf\security\java.security</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\policy\limited\default_local.policy">
+      <Link>JRE\conf\security\policy\limited\default_local.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\policy\limited\default_US_export.policy">
+      <Link>JRE\conf\security\policy\limited\default_US_export.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\policy\limited\exempt_local.policy">
+      <Link>JRE\conf\security\policy\limited\exempt_local.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\policy\unlimited\default_local.policy">
+      <Link>JRE\conf\security\policy\unlimited\default_local.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\policy\unlimited\default_US_export.policy">
+      <Link>JRE\conf\security\policy\unlimited\default_US_export.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\sound.properties">
+      <Link>JRE\conf\sound.properties</Link>
+    </None>
     <None Include="app.config" />
     <None Include="Key.snk" />
     <None Include="source.extension.vsixmanifest">
