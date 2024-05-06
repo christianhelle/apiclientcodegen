@@ -12,5 +12,6 @@
         bool SkipFormModel { get; set; }
         string? TemplatesPath { get; set; }
         bool UseConfigurationFile { get; set; }
+        bool GenerateMultipleFiles { get; set; }
     }
 }

@@ -64,5 +64,10 @@ namespace Rapicgen.Options.OpenApiGenerator
         [DisplayName("Use Configuration File")]
         [Description("Use the configuration file if present.")]
         public bool UseConfigurationFile { get; set; } = true;
+
+        [Category(Name)]
+        [DisplayName("Generate Multiple Files")]
+        [Description("Generate multiple files for each operation. This only works for SDK style projects")]
+        public bool GenerateMultipleFiles { get; set; }
     }
 }

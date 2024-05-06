@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.OpenApiGenerator;
 
@@ -24,12 +23,12 @@ namespace Rapicgen.Options.OpenApiGenerator
                 SkipFormModel = options.SkipFormModel;
                 TemplatesPath = options.TemplatesPath;
                 UseConfigurationFile = options.UseConfigurationFile;
+                GenerateMultipleFiles = options.GenerateMultipleFiles;
             }
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
 
-                
                 Logger.Instance.WriteLine(Environment.NewLine);
                 Logger.Instance.WriteLine("Error reading user options. Reverting to default values");
                 Logger.Instance.WriteLine($"EmitDefaultValue = {EmitDefaultValue}");
@@ -42,6 +41,7 @@ namespace Rapicgen.Options.OpenApiGenerator
                 Logger.Instance.WriteLine($"SkipFormModel = {SkipFormModel}");
                 Logger.Instance.WriteLine($"TemplatesPath = {TemplatesPath}");
                 Logger.Instance.WriteLine($"UseConfigurationFile = {UseConfigurationFile}");
+                Logger.Instance.WriteLine($"GenerateMultipleFiles = {GenerateMultipleFiles}");
 
                 EmitDefaultValue = true;
             }
@@ -57,5 +57,6 @@ namespace Rapicgen.Options.OpenApiGenerator
         public bool SkipFormModel { get; set; }
         public string? TemplatesPath { get; set; }
         public bool UseConfigurationFile { get; set; }
+        public bool GenerateMultipleFiles { get; set; }
     }
 }
