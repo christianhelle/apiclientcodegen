@@ -12,6 +12,11 @@
 - Add support for .refitter files [\#879](https://github.com/christianhelle/apiclientcodegen/pull/879) ([christianhelle](https://github.com/christianhelle))
 - Add missing feature tracking for Refitter [\#878](https://github.com/christianhelle/apiclientcodegen/pull/878) ([christianhelle](https://github.com/christianhelle))
 
+**Merged pull requests:**
+
+- chore\(deps\): update dependency nuget.visualstudio to v17.9.1 [\#881](https://github.com/christianhelle/apiclientcodegen/pull/881) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency newtonsoft.json to v10.0.3 [\#880](https://github.com/christianhelle/apiclientcodegen/pull/880) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.10.0](https://github.com/christianhelle/apiclientcodegen/tree/1.10.0) (2024-05-04)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.9.8...1.10.0)
