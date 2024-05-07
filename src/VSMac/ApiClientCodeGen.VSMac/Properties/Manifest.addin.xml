@@ -27,7 +27,7 @@
     <Extension path="/MonoDevelop/Ide/Commands">
         <!-- Add New REST API Client -->
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.NSwag"
-                 _label = "Generate with NSwag (v14.0.3)"
+                 _label = "Generate with NSwag (v14.0.7)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewNSwagCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.NSwagStudio"
@@ -56,7 +56,7 @@
     
         <!-- REST API Client Generator -->
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.NSwag"
-                 _label = "Generate with NSwag (v14.0.3)"
+                 _label = "Generate with NSwag (v14.0.7)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateNSwagCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.NSwagStudio"
