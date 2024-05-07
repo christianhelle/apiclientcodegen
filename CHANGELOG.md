@@ -1,13 +1,14 @@
 # Changelog
 
-## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+## [1.10.1](https://github.com/christianhelle/apiclientcodegen/tree/1.10.1) (2024-05-07)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.0...1.10.1)
 
 **Implemented enhancements:**
 
 - Implement a Refitter Settings File as part of generation process [\#845](https://github.com/christianhelle/apiclientcodegen/issues/845)
 - Implement option for generating multiple files [\#175](https://github.com/christianhelle/apiclientcodegen/issues/175)
+- Align NSwag version throughout repo [\#890](https://github.com/christianhelle/apiclientcodegen/pull/890) ([christianhelle](https://github.com/christianhelle))
 - Add support for generating multiple files with OpenAPI Generator [\#886](https://github.com/christianhelle/apiclientcodegen/pull/886) ([christianhelle](https://github.com/christianhelle))
 - Add support for .refitter files [\#879](https://github.com/christianhelle/apiclientcodegen/pull/879) ([christianhelle](https://github.com/christianhelle))
 - Add missing feature tracking for Refitter [\#878](https://github.com/christianhelle/apiclientcodegen/pull/878) ([christianhelle](https://github.com/christianhelle))
