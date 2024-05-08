@@ -1,5 +1,18 @@
 # Changelog
 
+## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.1...HEAD)
+
+**Implemented enhancements:**
+
+- Add support for generating multiples using Microsoft Kiota [\#893](https://github.com/christianhelle/apiclientcodegen/pull/893) ([christianhelle](https://github.com/christianhelle))
+
+**Fixed bugs:**
+
+- .refitter VS Integration is not appearing [\#889](https://github.com/christianhelle/apiclientcodegen/issues/889)
+- Bad kiota installation detection [\#775](https://github.com/christianhelle/apiclientcodegen/issues/775)
+
 ## [1.10.1](https://github.com/christianhelle/apiclientcodegen/tree/1.10.1) (2024-05-07)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.0...1.10.1)
