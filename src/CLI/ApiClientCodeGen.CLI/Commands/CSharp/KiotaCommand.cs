@@ -4,11 +4,12 @@ using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options.Kiota;
 
 namespace Rapicgen.CLI.Commands.CSharp;
 
 [Command("kiota", Description = "Microsoft Kiota (v1.14.0)")]
-public class KiotaCommand : CodeGeneratorCommand
+public class KiotaCommand : CodeGeneratorCommand, IKiotaOptions
 {
     private readonly IProcessLauncher processLauncher;
     private readonly IDependencyInstaller dependencyInstaller;
@@ -29,5 +30,12 @@ public class KiotaCommand : CodeGeneratorCommand
             SwaggerFile,
             DefaultNamespace,
             processLauncher,
-            dependencyInstaller);
+            dependencyInstaller,
+            this);
+
+    [Option(
+        ShortName = "m",
+        LongName = "generate-multiple-files",
+        Description = "Set this to TRUE to generate multiple files (default: FALSE)")]
+    public bool GenerateMultipleFiles { get; set; }
 }

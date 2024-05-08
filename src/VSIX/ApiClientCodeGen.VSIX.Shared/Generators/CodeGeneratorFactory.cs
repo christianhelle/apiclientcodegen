@@ -13,12 +13,14 @@ using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options;
 using Rapicgen.Core.Options.AutoRest;
 using Rapicgen.Core.Options.General;
+using Rapicgen.Core.Options.Kiota;
 using Rapicgen.Core.Options.NSwag;
 using Rapicgen.Core.Options.OpenApiGenerator;
 using Rapicgen.Core.Options.Refitter;
 using Rapicgen.Options;
 using Rapicgen.Options.AutoRest;
 using Rapicgen.Options.General;
+using Rapicgen.Options.Kiota;
 using Rapicgen.Options.NSwag;
 using Rapicgen.Options.OpenApiGenerator;
 using Rapicgen.Options.Refitter;
@@ -102,7 +104,8 @@ namespace Rapicgen.Generators
                         inputFilePath,
                         defaultNamespace,
                         processLauncher,
-                        dependencyInstaller);
+                        dependencyInstaller,
+                        optionsFactory.Create<IKiotaOptions, KiotaOptionsPage, DefaultKiotaOptions>());
 
                 case SupportedCodeGenerator.Refitter:
                     return new RefitterCodeGenerator(
