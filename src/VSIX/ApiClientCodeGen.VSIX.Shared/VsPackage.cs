@@ -18,6 +18,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
 using Rapicgen.Options.Refitter;
 using Rapicgen.Commands.Refitter;
+using Rapicgen.Options.Kiota;
 
 namespace Rapicgen
 {
@@ -91,6 +92,13 @@ namespace Rapicgen
         typeof(RefitterOptionsPage),
         VsixName,
         RefitterOptionsPage.Name,
+        0,
+        0,
+        true)]
+    [ProvideOptionPage(
+        typeof(KiotaOptionsPage),
+        VsixName,
+        KiotaOptionsPage.Name,
         0,
         0,
         true)]

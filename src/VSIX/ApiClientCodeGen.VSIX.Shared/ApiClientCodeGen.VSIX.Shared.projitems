@@ -65,6 +65,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Options\General\GeneralOptionPage.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Options\Kiota\KiotaOptions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Options\Kiota\KiotaOptionsPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Options\NSwagStudio\NSwagStudioOptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Options\NSwagStudio\NSwagStudioOptionsPage.cs">
       <SubType>Component</SubType>

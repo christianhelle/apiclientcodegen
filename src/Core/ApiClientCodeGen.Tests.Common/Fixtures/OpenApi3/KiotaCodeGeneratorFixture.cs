@@ -5,6 +5,7 @@ using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Installer;
+using Rapicgen.Core.Options.Kiota;
 using Xunit;
 
 namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
@@ -16,7 +17,7 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
 
         public string Code { get; private set; }
 
-        protected override async Task OnInitializeAsync()
+        protected override Task OnInitializeAsync()
         {
             const string defaultNamespace = "GeneratedCode";
             var codeGenerator = new KiotaCodeGenerator(
@@ -26,9 +27,11 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
                 new DependencyInstaller(
                     new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
-                    new ProcessLauncher()));
+                    new ProcessLauncher()),
+                new DefaultKiotaOptions());
 
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
+            return Task.CompletedTask;
         }
     }
 }

@@ -5,6 +5,7 @@ using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Installer;
+using Rapicgen.Core.Options.Kiota;
 using Xunit;
 
 namespace ApiClientCodeGen.Tests.Common.Fixtures
@@ -26,7 +27,8 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures
                 new DependencyInstaller(
                     new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
-                    new ProcessLauncher()));
+                    new ProcessLauncher()),
+                new DefaultKiotaOptions());
 
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
         }
