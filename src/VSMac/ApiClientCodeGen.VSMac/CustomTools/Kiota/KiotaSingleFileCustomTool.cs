@@ -1,6 +1,7 @@
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Installer;
+using Rapicgen.Core.Options.Kiota;
 
 namespace ApiClientCodeGen.VSMac.CustomTools.Kiota
 {
@@ -18,6 +19,7 @@ namespace ApiClientCodeGen.VSMac.CustomTools.Kiota
                 new DependencyInstaller(
                     new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
-                    new ProcessLauncher()));
+                    new ProcessLauncher()),
+                new DefaultKiotaOptions());
     }
 }
