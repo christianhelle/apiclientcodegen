@@ -13,6 +13,8 @@ public class KiotaCodeGenerator(
     IDependencyInstaller dependencyInstaller,
     IKiotaOptions options) : ICodeGenerator
 {
+    private const string KiotaLockFile = "kiota-lock.json";
+
     public string GenerateCode(IProgressReporter? pGenerateProgress)
     {
         pGenerateProgress?.Progress(10);
@@ -33,12 +35,36 @@ public class KiotaCodeGenerator(
         processLauncher.Start(command, arguments);
         context.Succeeded();
 
+        if (!options.GenerateMultipleFiles &&
+            File.Exists(Path.Combine(Path.GetDirectoryName(swaggerFile)!, KiotaLockFile)))
+        {
+            File.Copy(
+                Path.Combine(Path.GetDirectoryName(swaggerFile)!, KiotaLockFile),
+                Path.Combine(outputFolder, KiotaLockFile),
+                true);
+
+            pGenerateProgress?.Progress(60);
+            arguments = $" update -o \"{outputFolder}\"";
+            using var updateContext = new DependencyContext("Kiota", $"{command} {arguments}");
+            processLauncher.Start(command, arguments);
+            updateContext.Succeeded();
+        }
+
         pGenerateProgress?.Progress(80);
         string output = string.Empty;
 
         if (!options.GenerateMultipleFiles)
         {
             output = CSharpFileMerger.MergeFiles(outputFolder);
+
+            var kiotaConfigFile = Path.Combine(outputFolder, KiotaLockFile);
+            if (File.Exists(kiotaConfigFile))
+            {
+                File.Copy(
+                    kiotaConfigFile,
+                    Path.Combine(Path.GetDirectoryName(swaggerFile)!, KiotaLockFile),
+                    true);
+            }
         }
 
         pGenerateProgress?.Progress(100);
