@@ -19,8 +19,12 @@ public class KiotaCodeGenerator(
         dependencyInstaller.InstallKiota();
 
         pGenerateProgress?.Progress(30);
-        var outputFolder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-        Directory.CreateDirectory(outputFolder);
+        string outputFolder = options.GenerateMultipleFiles
+            ? Path.GetDirectoryName(swaggerFile)
+            : Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+
+        if (!Directory.Exists(outputFolder))
+            Directory.CreateDirectory(outputFolder);
 
         pGenerateProgress?.Progress(40);
         const string command = "kiota";
@@ -32,13 +36,7 @@ public class KiotaCodeGenerator(
         pGenerateProgress?.Progress(80);
         string output = string.Empty;
 
-        if (options.GenerateMultipleFiles)
-        {
-            CSharpFileMerger.CopyFilesAndDeleteSource(
-                outputFolder,
-                Path.GetDirectoryName(swaggerFile)!);
-        }
-        else
+        if (!options.GenerateMultipleFiles)
         {
             output = CSharpFileMerger.MergeFiles(outputFolder);
         }
