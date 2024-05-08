@@ -79,6 +79,14 @@
         </Strings>
       </Button>
 
+      <Button guid="guidPackageKiotaCmdSet" id="KiotaCommand" priority="0x0003">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_CTXT_ITEM_INCLUDEEXCLUDE" />
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <Strings>
+          <ButtonText>Generate Kiota output</ButtonText>
+        </Strings>
+      </Button>
+
       <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwag" priority="0x0100" type="Button">
         <Strings>
           <ButtonText>Generate with NSwag (v14.0.7)</ButtonText>
@@ -183,6 +191,7 @@
     <VisibilityItem guid="guidPackageCmdSet" id="Submenu" context="guidUIContext"/>
     <VisibilityItem guid="guidPackageNSwagStudioCmdSet" id="NSwagStudioCommand" context="guidNSwagStudioContext"/>
     <VisibilityItem guid="guidPackageRefitterCmdSet" id="RefitterCommand" context="guidRefitterContext"/>
+    <VisibilityItem guid="guidPackageKiotaCmdSet" id="KiotaCommand" context="guidKiotaContext"/>
   </VisibilityConstraints>
 
   <Symbols>
@@ -208,6 +217,10 @@
     <GuidSymbol name="guidRefitterContext" value="{2A5A0DB6-FC9C-48AB-98E5-C69D7157CEF5}" />
     <GuidSymbol name="guidPackageRefitterCmdSet" value="{E00623E7-31F9-40E9-BDEE-9D7829D09184}">
       <IDSymbol name="RefitterCommand" value="0x0200"/>
+    </GuidSymbol>
+    <GuidSymbol name="guidKiotaContext" value="{9FA75FC4-9B4D-4A81-855E-DF85C929A453}" />
+    <GuidSymbol name="guidPackageKiotaCmdSet" value="{80A6CDF2-29A2-4941-AD88-8CF36223F9A5}">
+      <IDSymbol name="KiotaCommand" value="0x0300"/>
     </GuidSymbol>
 
     <GuidSymbol name="guidNewRestApiClientContext" value="{7CEC8679-C1B8-48BF-9FA4-5FAA38CBE0FA}" />
