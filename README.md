@@ -149,6 +149,10 @@ Supports customising how Refitter generates the Refit interface. This allows you
 
 ![Options - Refitter](images/refitter-options.png)
 
+Supports allowing Kiota to generate multiple files
+
+![Options - Kiota](images/options-kiota.png)
+
 This extension collects errors and tracks feature usages to a service called [Exceptionless](https://exceptionless.com) and [Azure Application Insights](https://learn.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview?WT.mc_id=DT-MVP-5004822). This is done anonymously using a support key and a generated anonymous identity based on a secure hash of username@host
 
 ![Options - Analytics](images/support-key.png)
