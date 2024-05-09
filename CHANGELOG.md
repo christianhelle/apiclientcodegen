@@ -6,6 +6,8 @@
 
 **Implemented enhancements:**
 
+- Support class name parameter in KiotaCodeGenerator [\#798](https://github.com/christianhelle/apiclientcodegen/issues/798)
+- Add support for Kiota configuration files [\#894](https://github.com/christianhelle/apiclientcodegen/pull/894) ([christianhelle](https://github.com/christianhelle))
 - Add support for generating multiples using Microsoft Kiota [\#893](https://github.com/christianhelle/apiclientcodegen/pull/893) ([christianhelle](https://github.com/christianhelle))
 
 **Fixed bugs:**
