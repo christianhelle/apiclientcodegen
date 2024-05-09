@@ -19,6 +19,7 @@ using Task = System.Threading.Tasks.Task;
 using Rapicgen.Options.Refitter;
 using Rapicgen.Commands.Refitter;
 using Rapicgen.Options.Kiota;
+using Rapicgen.Commands.Kiota;
 
 namespace Rapicgen
 {
@@ -46,6 +47,12 @@ namespace Rapicgen
         RefitterCommand.Expression,
         new[] { RefitterCommand.Expression },
         new[] { RefitterCommand.TermValue })]
+    [ProvideUIContextRule(
+        KiotaCommand.ContextGuid,
+        KiotaCommand.Name,
+        KiotaCommand.Expression,
+        new[] { KiotaCommand.Expression },
+        new[] { KiotaCommand.TermValue })]
     [ProvideOptionPage(
         typeof(GeneralOptionPage),
         VsixName,
@@ -115,6 +122,7 @@ namespace Rapicgen
             new RefitterCodeGeneratorCustomToolSetter(),
             new NSwagStudioCommand(),
             new RefitterCommand(),
+            new KiotaCommand(),
             new NewAutoRestClientCommand(),
             new NewNSwagClientCommand(),
             new NewSwaggerClientCommand(),

@@ -2,6 +2,6 @@
 {
     public class DefaultKiotaOptions : IKiotaOptions
     {
-        public bool GenerateMultipleFiles => false;
+        public bool GenerateMultipleFiles { get; set; } = false;
     }
 }
