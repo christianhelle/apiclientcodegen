@@ -1,23 +1,29 @@
 # Cross Platform Command Line Tool
+
 All custom tools mentioned above are also implemented in a cross platform command line application
 
-#### Requirements
+## Requirements
+
 - .NET 6.0 runtime
 - Java Runtime Environment
 - NPM
 
-### Installation
+## Installation
+
 The tool can be installed as a .NET Core global tool that you can call from the shell / command line
-```
+
+```sh
 dotnet tool install --global rapicgen
 ```
+
 or by following the instructions [here](https://www.nuget.org/packages/rapicgen) to install a specific version of tool
 
-### Usage
+## Usage
+
 Since the tool is published as a .NET Core Tool, it can be launched from anywhere using any command line interface by calling **rapicgen**.
 The help information is displayed when not specifying any arguments to **rapicgen**
 
-```
+```sh
 Usage: rapicgen [command] [options]
 
 Options:
@@ -36,25 +42,25 @@ Run 'rapicgen [command] -?|-h|--help' for more information about a command.
 
 Some help information is also provided per command and can be launched by 
 
-```
+```sh
 rapicgen [command name] -?
 ```
 
 or
 
-```
+```sh
 rapicgen [command name] [sub command name] -?
 ```
 
 For example:
 
-```
+```sh
 rapicgen csharp -?
-``` 
+```
 
 will output this:
 
-```
+```sh
 Generate C# API clients
 
 Usage: rapicgen csharp [command] [options]
@@ -75,13 +81,13 @@ Run 'csharp [command] -?|-h|--help' for more information about a command.
 
 and
 
-```
+```sh
 rapicgen csharp autorest -?
 ```
 
 will output this:
 
-```
+```sh
 Generate Swagger / Open API client using AutoRest
 
 Usage: run autorest [options] <swaggerFile> <namespace> <outputFile>
@@ -95,15 +101,15 @@ Options:
   -?|-h|--help  Show help information
 ```
 
-or 
+or
 
-```
+```sh
 rapicgen typescript -?
 ```
 
 will output this:
 
-```
+```sh
 Generate TypeScript API client
 
 Usage: rapicgen typescript [options] <generator> <swaggerFile> <outputPath>
@@ -122,60 +128,60 @@ Options:
   -?|-h|--help      Show help information.
 ```
 
-## Usage Examples:
+## Usage Examples
 
 Let's say we have a OpenAPI Specifications document called **Swagger.json**
 
 For starters, we can use the Swagger Petstore spec. Here's an example powershell script for downloading it
 
-```
+```sh
 Invoke-WebRequest -Uri https://petstore.swagger.io/v3/swagger.json -OutFile Swagger.json
 ```
 
 In case you don't have the CLI tool installed you can install it by
 
-```
+```sh
 dotnet tool install --global rapicgen
 ```
 
 Here's an example of how to generate code using **AutoRest**
 
-```
+```sh
 rapicgen csharp autorest Swagger.json GeneratedCode ./AutoRestOutput.cs
 ```
 
 Here's an example of how to generate code using **Kiota**
 
-```
+```sh
 rapicgen csharp kiota Swagger.json GeneratedCode ./OpenApiOutput.cs
 ```
 
 Here's an example of how to generate code using **NSwag**
 
-```
+```sh
 rapicgen csharp nswag Swagger.json GeneratedCode ./NSwagOutput.cs
 ```
 
 Here's an example of how to generate code using **Swagger Codegen CLI**
 
-```
+```sh
 rapicgen csharp swagger Swagger.json GeneratedCode ./SwaggerOutput.cs
 ```
 
 Here's an example of how to generate code using **OpenAPI Generator**
 
-```
+```sh
 rapicgen csharp openapi Swagger.json GeneratedCode ./OpenApiOutput.cs
 ```
 
 Here's an example of how to generate code **JMeter** test plans
 
-```
+```sh
 rapicgen jmeter Swagger.json
 ```
 
 Here's an example of how to generate code for **TypeScript**
 
-```
+```sh
 rapicgen typescript Angular Swagger.json
 ```

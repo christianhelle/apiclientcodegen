@@ -4,15 +4,25 @@
 There is a separate VSIX installer available for **[Visual Studio 2022](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2022)** and **[Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2017)**
 
 # REST API Client Code Generator
+
 A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files
 
 ## Features
 
-- Supports Visual Studio 2019
-- Add New REST API Client to a project from an OpenAPI specification URL (e.g https://petstore.swagger.io/v2/swagger.json) using [NSwag](https://github.com/RicoSuter/NSwag), [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator), [Swagger Codegen](https://github.com/swagger-api/swagger-codegen), [Refitter](https://github.com/christianhelle/refitter), [Microsoft Kiota](https://github.com/microsoft/kiota), or  [AutoRest](https://github.com/Azure/autorest)
+- Supports Visual Studio 2017, 2019, 2022, and [Visual Studio for Mac](#visual-studio-for-mac)
+- Add New REST API Client to a project from an OpenAPI specification URL (e.g <https://petstore.swagger.io/v2/swagger.json>) using the following code generators:
+  - [NSwag](https://github.com/RicoSuter/NSwag)
+  - [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
+  - [Swagger Codegen](https://github.com/swagger-api/swagger-codegen)
+  - [Refitter](https://github.com/christianhelle/refitter)
+  - [Microsoft Kiota](https://github.com/microsoft/kiota)
+  - [AutoRest](https://github.com/Azure/autorest)
+- Define custom namespace for the generated file
 - Auto-updating of generated code file when changes are made to the OpenAPI specification JSON or YAML file
-- Generate code using an [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) specification file by including it in the project and using the **Generate with NSwag** context menu
-
+- Generate code using a configuration files using the following:
+  - `.nswag` configuration files from [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) by including it in the project and using the **Generate NSwag Studio output** context menu
+  - `.refitter` settings files from [Refitter](https://github.com/christianhelle/refitter) by including it in the project and using the **Generate Refitter output** context menu
+  - `kiota-lock.json` configuration files from [Microsoft Kiota](https://github.com/microsoft/kiota) by including it in the project and using the **Generate Kiota output** context menu
 
 ### Custom Tools
 
@@ -20,27 +30,23 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 
 - ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **[OpenAPI Generator v7.5.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.5.0)**.
 The output file is the result of merging all the files generated using the OpenAPI Generator tool with:
-` generate -g csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[default namespace] --skip-overwrite`
+`generate -g csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[default namespace] --skip-overwrite`. It is possible to configure the OpenAPI Generator to generate multiple files which will be placed at the same path as the OpenAPI specifications document that was used to generate code, this is done under Tools -> REST API Client Code Generator -> OpenAPI Generator and setting **Generate Multiple Files** to **true**
 
-- ***KiotaCodeGenerator*** - Generates a single file C# REST API Client using the Microsoft project **[Kiota v1.14.0](https://learn.microsoft.com/en-us/openapi/kiota/)** generator. 
-The output file is the result of merging all the files generated using the Kiota dotnet tool with:
-` generate -l CSharp -d [swagger file] -o [output file] -n [default namespace]`
+- ***KiotaCodeGenerator*** - Generates a single file C# REST API Client using the Microsoft project **[Kiota v1.14.0](https://learn.microsoft.com/en-us/openapi/kiota/)** generator. The output file is the result of merging all the files generated using the Kiota dotnet tool with: `generate -l CSharp -d [swagger file] -o [output file] -n [default namespace]`. It is possible to configure the OpenAPI Generator to generate multiple files which will be placed at the same path as the OpenAPI specifications document that was used to generate code, this is done under Tools -> REST API Client Code Generator -> Kiota and setting **Generate Multiple Files** to **true**
 
 - ***SwaggerCodeGenerator*** - Generates a single file C# REST API Client using **Swagger Codegen CLI v3.0.34**.
 The output file is the result of merging all the files generated using the Swagger Codegen CLI tool with:
-` generate -l csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[default namespace] --skip-overwrite`
+`generate -l csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[default namespace] --skip-overwrite`
 
-- ***AutoRestCodeGenerator*** - Generates a single file C# REST API Client using **AutoRest v3.0.0-beta.20210504.2** for OpenAPI v3 and **AutoRest v2.0.4417** for OpenAPI v2. 
-The resulting file is the equivalent of using the AutoRest CLI tool with:
-` --csharp --input-file=[swagger file] --output-file=[output file] --namespace=[default namespace] --add-credentials`
+- ***AutoRestCodeGenerator*** - Generates a single file C# REST API Client using **AutoRest v3.0.0-beta.20210504.2** for OpenAPI v3 and **AutoRest v2.0.4417** for OpenAPI v2. The resulting file is the equivalent of using the AutoRest CLI tool with:
+ `--csharp --input-file=[swagger file] --output-file=[output file] --namespace=[default namespace] --add-credentials`
 
 - ***RefitterCodeGenerator*** - Generates a single file C# REST API Client inteface for [Refit](https://github.com/reactiveui/refit) using [Refitter.Core](https://github.com/christianhelle/refitter) [nuget package](https://www.nuget.org/packages/Refitter.Core/) **v1.0.0**.
 The output file contains a Refit interface generated by [Refitter](https://github.com/christianhelle/refitter) and contracts generated using [NSwag.CodeGeneration.CSharp](https://github.com/RSuter/NSwag/wiki/CSharpClientGenerator) [nuget package](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/)
 
-
 ### Dependencies
 
-The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest**, **NSwag**, **OpenAPI Generator**, **Microsoft Kiota**, **Refitter**, and **Swagger Codegen CLI**. These tools require [NPM](https://www.npmjs.com/get-npm) and the [Java Runtime Environment](https://java.com/en/download/manual.jsp) to be installed on the developers machine. Alternative Java SDK implementations such as the [OpenJDK](https://adoptopenjdk.net) works fine with this extension. By default, the path to **java.exe** is read from the **JAVA_HOME** environment variable, but is also configurable in the Settings screen
+The custom tool code generators piggy back on top of well known Open API client code generators like **AutoRest**, **NSwag**, **OpenAPI Generator**, **Microsoft Kiota**, **Refitter**, and **Swagger Codegen CLI**. These tools require [NPM](https://www.npmjs.com/get-npm) and the [Java Runtime Environment](https://java.com/en/download/manual.jsp) to be installed on the developers machine. Alternative Java SDK implementations such as the [OpenJDK](https://adoptopenjdk.net) works fine with this extension. By default, the path to **java.exe** is read from the **JAVA_HOME** environment variable, but is also configurable in the Settings screen. Future versions of the extension will include the [OpenJDK](https://adoptopenjdk.net) in the VSIX package
 
 The **Swagger Codegen CLI** and **OpenAPI Generator** are distributed as JAR files and are downloaded on demand but requires the Java SDK to be installed on the machine. **AutoRest** is installed on-demand via [NPM](https://www.npmjs.com/get-npm) as a global tool and uses the latest available version. **Microsoft Kiota** is installed on-demand as a .NET Tool and requires .NET 7.0. This means that using these custom tools have an initial delay upon first time use. 
 
@@ -51,12 +57,14 @@ The **NSwag** code generator produces code that depends on the [Newtonsoft.Json]
 The **Refitter** code generator produces code that depends on the [Refit](https://www.nuget.org/packages/Refit/7.0.0) NuGet package
 
 The **OpenAPI Generator** code generator produces code that depends on the following NuGet packages:
+
 - [RestSharp](https://www.nuget.org/packages/RestSharp/110.2.0)
 - [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/2.0.1)
 - [Polly](https://www.nuget.org/packages/Polly/8.3.1)
 - [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/13.0.3)
 
 The project **Kiota** code generator produces code that depends on the following NuGet packages
+
 - [Microsoft.Kiota.Abstractions](https://www.nuget.org/packages/Microsoft.Kiota.Abstractions)
 - [Microsoft.Kiota.Http.HttpClientLibrary](https://www.nuget.org/packages/Microsoft.Kiota.Http.HttpClientLibrary)
 - [Microsoft.Kiota.Serialization.Form](https://www.nuget.org/packages/Microsoft.Kiota.Serialization.Form)
@@ -72,7 +80,6 @@ The **AutoRest** code generator produces code that depends on the [Microsoft.Res
 
 This Visual Studio Extension will automatically add the required NuGet packages that the generated code depends on
 
-
 ## Screenshots
 
 ![Add - API Client from OpenAPI Specification](https://github.com/christianhelle/apiclientcodegen/raw/master/images/add-new-menu.png)
@@ -83,6 +90,9 @@ This Visual Studio Extension will automatically add the required NuGet packages 
 
 ![NSwag Studio Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/nswagstudio-context-menu.jpg)
 
+![Refitter Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/refitter-command.png)
+
+![Kiota Context Menu](https://github.com/christianhelle/apiclientcodegen/raw/master/images/generate-kiota-output.png)
 
 ### Settings
 
