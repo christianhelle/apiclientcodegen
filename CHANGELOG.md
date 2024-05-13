@@ -17,6 +17,7 @@
 
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Abstractions from 1.8.4 to 1.9.1 [\#898](https://github.com/christianhelle/apiclientcodegen/pull/898) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Polly from 8.3.1 to 8.4.0 [\#897](https://github.com/christianhelle/apiclientcodegen/pull/897) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update documentation [\#895](https://github.com/christianhelle/apiclientcodegen/pull/895) ([christianhelle](https://github.com/christianhelle))
 
