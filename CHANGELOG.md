@@ -15,6 +15,11 @@
 - .refitter VS Integration is not appearing [\#889](https://github.com/christianhelle/apiclientcodegen/issues/889)
 - Bad kiota installation detection [\#775](https://github.com/christianhelle/apiclientcodegen/issues/775)
 
+**Merged pull requests:**
+
+- Bump Polly from 8.3.1 to 8.4.0 [\#897](https://github.com/christianhelle/apiclientcodegen/pull/897) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update documentation [\#895](https://github.com/christianhelle/apiclientcodegen/pull/895) ([christianhelle](https://github.com/christianhelle))
+
 ## [1.10.1](https://github.com/christianhelle/apiclientcodegen/tree/1.10.1) (2024-05-07)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.0...1.10.1)
