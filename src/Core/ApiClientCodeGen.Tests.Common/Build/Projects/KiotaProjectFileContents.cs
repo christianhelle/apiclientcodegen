@@ -9,7 +9,7 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include=""Azure.Identity"" Version=""1.11.2"" />
+    <PackageReference Include=""Azure.Identity"" Version=""1.11.3"" />
     <PackageReference Include=""Microsoft.Kiota.Abstractions"" Version=""1.9.1"" />
     <PackageReference Include=""Microsoft.Kiota.Authentication.Azure"" Version=""1.1.5"" />
     <PackageReference Include=""Microsoft.Kiota.Http.HttpClientLibrary"" Version=""1.4.0"" />
@@ -27,7 +27,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include=""Azure.Identity"" Version=""1.11.2"" />
+    <PackageReference Include=""Azure.Identity"" Version=""1.11.3"" />
     <PackageReference Include=""Microsoft.Kiota.Abstractions"" Version=""1.9.1"" />
     <PackageReference Include=""Microsoft.Kiota.Authentication.Azure"" Version=""1.1.5"" />
     <PackageReference Include=""Microsoft.Kiota.Http.HttpClientLibrary"" Version=""1.4.0"" />
