@@ -21,7 +21,8 @@ public class KiotaCodeGenerator(
         pGenerateProgress?.Progress(10);
         dependencyInstaller.InstallKiota();
 
-        if (new FileInfo(swaggerFile).Name == KiotaLockFile)
+        string swaggerFilename = new FileInfo(swaggerFile).Name;
+        if (swaggerFilename == KiotaLockFile)
         {
             pGenerateProgress?.Progress(40);
             RunKiotaUpdate();
@@ -48,12 +49,21 @@ public class KiotaCodeGenerator(
             File.Exists(Path.Combine(Path.GetDirectoryName(swaggerFile)!, KiotaLockFile)))
         {
             File.Copy(
+                swaggerFile,
+                Path.Combine(outputFolder, swaggerFilename),
+                true);
+
+            File.Copy(
                 Path.Combine(Path.GetDirectoryName(swaggerFile)!, KiotaLockFile),
                 Path.Combine(outputFolder, KiotaLockFile),
                 true);
 
             pGenerateProgress?.Progress(60);
-            RunKiotaUpdate();
+
+            var arguments = $" update -o \"{outputFolder}\"";
+            using var context = new DependencyContext("Kiota", $"{Command} {arguments}");
+            processLauncher.Start(Command, arguments, outputFolder);
+            context.Succeeded();
         }
 
         pGenerateProgress?.Progress(80);
