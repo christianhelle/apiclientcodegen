@@ -7,16 +7,19 @@
 **Implemented enhancements:**
 
 - Support class name parameter in KiotaCodeGenerator [\#798](https://github.com/christianhelle/apiclientcodegen/issues/798)
+- Ensure Kiota custom tool respects the Generate Multiple Files option [\#904](https://github.com/christianhelle/apiclientcodegen/pull/904) ([christianhelle](https://github.com/christianhelle))
 - Add support for Kiota configuration files [\#894](https://github.com/christianhelle/apiclientcodegen/pull/894) ([christianhelle](https://github.com/christianhelle))
 - Add support for generating multiples using Microsoft Kiota [\#893](https://github.com/christianhelle/apiclientcodegen/pull/893) ([christianhelle](https://github.com/christianhelle))
 
 **Fixed bugs:**
 
+- Kiota generates multiple files even configured not to [\#905](https://github.com/christianhelle/apiclientcodegen/issues/905)
 - .refitter VS Integration is not appearing [\#889](https://github.com/christianhelle/apiclientcodegen/issues/889)
 - Bad kiota installation detection [\#775](https://github.com/christianhelle/apiclientcodegen/issues/775)
 
 **Merged pull requests:**
 
+- Update dependency dotnet-sdk to v6.0.422 [\#903](https://github.com/christianhelle/apiclientcodegen/pull/903) ([renovate[bot]](https://github.com/apps/renovate))
 - Update Microsoft.Kiota.Serialization.Form, Microsoft.Kiota.Serialization.Json, and Microsoft.Kiota.Serialization dependencies [\#902](https://github.com/christianhelle/apiclientcodegen/pull/902) ([christianhelle](https://github.com/christianhelle))
 - Bump Microsoft.Kiota.Abstractions from 1.8.4 to 1.9.1 [\#898](https://github.com/christianhelle/apiclientcodegen/pull/898) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Polly from 8.3.1 to 8.4.0 [\#897](https://github.com/christianhelle/apiclientcodegen/pull/897) ([dependabot[bot]](https://github.com/apps/dependabot))
