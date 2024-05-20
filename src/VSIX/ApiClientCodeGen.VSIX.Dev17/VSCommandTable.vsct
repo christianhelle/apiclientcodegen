@@ -39,7 +39,7 @@
       </Button>
       <Button guid="guidPackageCmdSet" id="OpenApiCodeGeneratorCustomToolSetter" priority="0x0101" type="Button">
         <Strings>
-          <ButtonText>Generate with OpenAPI Generator (v7.5.0)</ButtonText>
+          <ButtonText>Generate with OpenAPI Generator (v7.6.0)</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidPackageCmdSet" id="KiotaCodeGeneratorCustomToolSetter" priority="0x0102" type="Button">
@@ -99,7 +99,7 @@
       </Button>
       <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithOpenApi" priority="0x0102" type="Button">
         <Strings>
-          <ButtonText>Generate with OpenAPI Generator (v7.5.0)</ButtonText>
+          <ButtonText>Generate with OpenAPI Generator (v7.6.0)</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithKiota" priority="0x0103" type="Button">
