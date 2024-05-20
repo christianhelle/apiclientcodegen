@@ -7,6 +7,7 @@
 **Implemented enhancements:**
 
 - Support class name parameter in KiotaCodeGenerator [\#798](https://github.com/christianhelle/apiclientcodegen/issues/798)
+- OpenAPI Generator v7.6.0 [\#908](https://github.com/christianhelle/apiclientcodegen/pull/908) ([christianhelle](https://github.com/christianhelle))
 - Ensure Kiota custom tool respects the Generate Multiple Files option [\#904](https://github.com/christianhelle/apiclientcodegen/pull/904) ([christianhelle](https://github.com/christianhelle))
 - Add support for Kiota configuration files [\#894](https://github.com/christianhelle/apiclientcodegen/pull/894) ([christianhelle](https://github.com/christianhelle))
 - Add support for generating multiples using Microsoft Kiota [\#893](https://github.com/christianhelle/apiclientcodegen/pull/893) ([christianhelle](https://github.com/christianhelle))
