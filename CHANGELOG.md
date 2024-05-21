@@ -7,6 +7,7 @@
 **Implemented enhancements:**
 
 - Support class name parameter in KiotaCodeGenerator [\#798](https://github.com/christianhelle/apiclientcodegen/issues/798)
+- Re-use existing .refitter file if it already exists [\#909](https://github.com/christianhelle/apiclientcodegen/pull/909) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.6.0 [\#908](https://github.com/christianhelle/apiclientcodegen/pull/908) ([christianhelle](https://github.com/christianhelle))
 - Ensure Kiota custom tool respects the Generate Multiple Files option [\#904](https://github.com/christianhelle/apiclientcodegen/pull/904) ([christianhelle](https://github.com/christianhelle))
 - Add support for Kiota configuration files [\#894](https://github.com/christianhelle/apiclientcodegen/pull/894) ([christianhelle](https://github.com/christianhelle))
@@ -14,6 +15,8 @@
 
 **Fixed bugs:**
 
+- Refitter file gets overwritten [\#907](https://github.com/christianhelle/apiclientcodegen/issues/907)
+- Generated .refitter file formatting issue [\#906](https://github.com/christianhelle/apiclientcodegen/issues/906)
 - Kiota generates multiple files even configured not to [\#905](https://github.com/christianhelle/apiclientcodegen/issues/905)
 - .refitter VS Integration is not appearing [\#889](https://github.com/christianhelle/apiclientcodegen/issues/889)
 - Bad kiota installation detection [\#775](https://github.com/christianhelle/apiclientcodegen/issues/775)
