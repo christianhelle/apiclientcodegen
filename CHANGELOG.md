@@ -24,6 +24,7 @@
 **Merged pull requests:**
 
 - chore\(deps\): bump Microsoft.Kiota.Serialization.Form from 1.2.0 to 1.2.1 [\#911](https://github.com/christianhelle/apiclientcodegen/pull/911) ([dependabot[bot]](https://github.com/apps/dependabot))
+- chore\(deps\): bump Microsoft.Kiota.Serialization.Json, System.Text.Json and System.Text.Encodings.Web [\#910](https://github.com/christianhelle/apiclientcodegen/pull/910) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update dependency dotnet-sdk to v6.0.422 [\#903](https://github.com/christianhelle/apiclientcodegen/pull/903) ([renovate[bot]](https://github.com/apps/renovate))
 - Update Microsoft.Kiota.Serialization.Form, Microsoft.Kiota.Serialization.Json, and Microsoft.Kiota.Serialization dependencies [\#902](https://github.com/christianhelle/apiclientcodegen/pull/902) ([christianhelle](https://github.com/christianhelle))
 - Bump Microsoft.Kiota.Abstractions from 1.8.4 to 1.9.1 [\#898](https://github.com/christianhelle/apiclientcodegen/pull/898) ([dependabot[bot]](https://github.com/apps/dependabot))
