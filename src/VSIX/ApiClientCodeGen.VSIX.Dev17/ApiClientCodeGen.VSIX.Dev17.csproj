@@ -117,7 +117,7 @@
       <Version>10.0.3</Version>
     </PackageReference>
     <PackageReference Include="NuGet.VisualStudio">
-      <Version>17.9.1</Version>
+      <Version>17.10.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="..\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems" Label="Shared" />
