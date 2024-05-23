@@ -23,6 +23,7 @@
 
 **Merged pull requests:**
 
+- Update vstest monorepo to v17.10.0 [\#919](https://github.com/christianhelle/apiclientcodegen/pull/919) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency NuGet.VisualStudio to v17.10.0 [\#915](https://github.com/christianhelle/apiclientcodegen/pull/915) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Microsoft.VSSDK.BuildTools to v17.10.2179 [\#914](https://github.com/christianhelle/apiclientcodegen/pull/914) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): bump Microsoft.Kiota.Serialization.Form from 1.2.0 to 1.2.1 [\#911](https://github.com/christianhelle/apiclientcodegen/pull/911) ([dependabot[bot]](https://github.com/apps/dependabot))
