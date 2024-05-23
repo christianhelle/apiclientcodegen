@@ -6,7 +6,9 @@
 
 **Implemented enhancements:**
 
+- Refitter tracks local specification file rather than remote service specification [\#912](https://github.com/christianhelle/apiclientcodegen/issues/912)
 - Support class name parameter in KiotaCodeGenerator [\#798](https://github.com/christianhelle/apiclientcodegen/issues/798)
+- Use Remote URL by default in .refitter file [\#922](https://github.com/christianhelle/apiclientcodegen/pull/922) ([christianhelle](https://github.com/christianhelle))
 - Re-use existing .refitter file if it already exists [\#909](https://github.com/christianhelle/apiclientcodegen/pull/909) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.6.0 [\#908](https://github.com/christianhelle/apiclientcodegen/pull/908) ([christianhelle](https://github.com/christianhelle))
 - Ensure Kiota custom tool respects the Generate Multiple Files option [\#904](https://github.com/christianhelle/apiclientcodegen/pull/904) ([christianhelle](https://github.com/christianhelle))
