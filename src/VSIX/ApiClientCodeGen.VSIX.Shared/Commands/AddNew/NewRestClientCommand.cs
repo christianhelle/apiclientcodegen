@@ -81,6 +81,8 @@ namespace Rapicgen.Commands.AddNew
             var contents = result.OpenApiSpecification;
             var filename = $"{result.OutputFilename}{Path.GetExtension(result.Url).ToLowerInvariant()}";
             var outputNamespace = dte.GetActiveProject()?.GetTopLevelNamespace();
+            var filePath = Path.Combine(folder, filename);
+            File.WriteAllText(filePath, contents);
 
             if (CodeGenerator == SupportedCodeGenerator.NSwagStudio)
             {
@@ -103,7 +105,7 @@ namespace Rapicgen.Commands.AddNew
                                    .Replace(".yml", ".refitter");
             }
 
-            var filePath = Path.Combine(folder, filename);
+            filePath = Path.Combine(folder, filename);
             File.WriteAllText(filePath, contents);
 
             var project = dte.GetActiveProject();
