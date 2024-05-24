@@ -25,6 +25,7 @@
 
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Serialization.Json, System.Text.Json and System.Text.Encodings.Web [\#923](https://github.com/christianhelle/apiclientcodegen/pull/923) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update vstest monorepo to v17.10.0 [\#919](https://github.com/christianhelle/apiclientcodegen/pull/919) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency NuGet.VisualStudio to v17.10.0 [\#915](https://github.com/christianhelle/apiclientcodegen/pull/915) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Microsoft.VSSDK.BuildTools to v17.10.2179 [\#914](https://github.com/christianhelle/apiclientcodegen/pull/914) ([renovate[bot]](https://github.com/apps/renovate))
