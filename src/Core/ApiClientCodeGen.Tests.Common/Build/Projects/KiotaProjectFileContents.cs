@@ -16,7 +16,7 @@
     <PackageReference Include=""Microsoft.Kiota.Serialization.Form"" Version=""1.2.1"" />
     <PackageReference Include=""Microsoft.Kiota.Serialization.Json"" Version=""1.3.1"" />
     <PackageReference Include=""Microsoft.Kiota.Serialization.Text"" Version=""1.2.0"" />
-    <PackageReference Include=""Microsoft.Kiota.Serialization.Multipart"" Version=""1.1.4"" />
+    <PackageReference Include=""Microsoft.Kiota.Serialization.Multipart"" Version=""1.1.5"" />
   </ItemGroup>
 </Project>";
 
@@ -34,7 +34,7 @@
     <PackageReference Include=""Microsoft.Kiota.Serialization.Form"" Version=""1.2.1"" />
     <PackageReference Include=""Microsoft.Kiota.Serialization.Json"" Version=""1.3.1"" />
     <PackageReference Include=""Microsoft.Kiota.Serialization.Text"" Version=""1.2.0"" />
-    <PackageReference Include=""Microsoft.Kiota.Serialization.Multipart"" Version=""1.1.4"" />
+    <PackageReference Include=""Microsoft.Kiota.Serialization.Multipart"" Version=""1.1.5"" />
   </ItemGroup>
 </Project>";
     }
