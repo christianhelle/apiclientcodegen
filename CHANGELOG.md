@@ -25,6 +25,7 @@
 
 **Merged pull requests:**
 
+- Bump Microsoft.Kiota.Serialization.Form from 1.2.1 to 1.2.3 [\#927](https://github.com/christianhelle/apiclientcodegen/pull/927) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Multipart from 1.1.4 to 1.1.5 [\#924](https://github.com/christianhelle/apiclientcodegen/pull/924) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Serialization.Json, System.Text.Json and System.Text.Encodings.Web [\#923](https://github.com/christianhelle/apiclientcodegen/pull/923) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.Kiota.Http.HttpClientLibrary, System.Text.Json and System.Text.Encodings.Web [\#921](https://github.com/christianhelle/apiclientcodegen/pull/921) ([dependabot[bot]](https://github.com/apps/dependabot))
