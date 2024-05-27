@@ -17,11 +17,13 @@
 
 **Fixed bugs:**
 
+- Unable to load VSIX package after Microsoft.VSSDK.BuildTools v17.10.2179 update [\#930](https://github.com/christianhelle/apiclientcodegen/issues/930)
 - Refitter file gets overwritten [\#907](https://github.com/christianhelle/apiclientcodegen/issues/907)
 - Generated .refitter file formatting issue [\#906](https://github.com/christianhelle/apiclientcodegen/issues/906)
 - Kiota generates multiple files even configured not to [\#905](https://github.com/christianhelle/apiclientcodegen/issues/905)
 - .refitter VS Integration is not appearing [\#889](https://github.com/christianhelle/apiclientcodegen/issues/889)
 - Bad kiota installation detection [\#775](https://github.com/christianhelle/apiclientcodegen/issues/775)
+- Revert "Update dependency Microsoft.VSSDK.BuildTools to v17.10.2179" [\#929](https://github.com/christianhelle/apiclientcodegen/pull/929) ([christianhelle](https://github.com/christianhelle))
 
 **Merged pull requests:**
 
