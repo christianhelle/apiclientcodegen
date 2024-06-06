@@ -2,7 +2,19 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.1...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.2...HEAD)
+
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.15.0 [\#933](https://github.com/christianhelle/apiclientcodegen/pull/933) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update dependency dotnet-sdk to v6.0.423 [\#932](https://github.com/christianhelle/apiclientcodegen/pull/932) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.10.2](https://github.com/christianhelle/apiclientcodegen/tree/1.10.2) (2024-05-27)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.1...1.10.2)
 
 **Implemented enhancements:**
 
