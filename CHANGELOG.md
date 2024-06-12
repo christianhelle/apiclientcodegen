@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Bump Azure.Identity from 1.11.3 to 1.11.4 in /test/GeneratedCode/Kiota/Net481 [\#936](https://github.com/christianhelle/apiclientcodegen/pull/936) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update dependency Microsoft.VSSDK.BuildTools to v17.10.2185 [\#935](https://github.com/christianhelle/apiclientcodegen/pull/935) ([renovate[bot]](https://github.com/apps/renovate))
 - Refitter v1.0.1 [\#934](https://github.com/christianhelle/apiclientcodegen/pull/934) ([renovate[bot]](https://github.com/apps/renovate))
 
