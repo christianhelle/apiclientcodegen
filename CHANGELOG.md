@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update dependency Microsoft.VSSDK.BuildTools to v17.10.2185 [\#935](https://github.com/christianhelle/apiclientcodegen/pull/935) ([renovate[bot]](https://github.com/apps/renovate))
 - Refitter v1.0.1 [\#934](https://github.com/christianhelle/apiclientcodegen/pull/934) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.10.3](https://github.com/christianhelle/apiclientcodegen/tree/1.10.3) (2024-06-07)
