@@ -118,7 +118,7 @@ public class RefitterCodeGenerator : ICodeGenerator
     {
         return JsonSerializer.Serialize(
             settings,
-            new()
+            new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true,
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
