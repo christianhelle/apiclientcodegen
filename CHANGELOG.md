@@ -7,6 +7,7 @@
 **Merged pull requests:**
 
 - Update dependency Refitter.Core to v1.0.2 [\#939](https://github.com/christianhelle/apiclientcodegen/pull/939) ([renovate[bot]](https://github.com/apps/renovate))
+- Update nswag monorepo to v14.0.8 [\#938](https://github.com/christianhelle/apiclientcodegen/pull/938) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump Azure.Identity from 1.11.3 to 1.11.4 in /test/GeneratedCode/Kiota/Net481 [\#936](https://github.com/christianhelle/apiclientcodegen/pull/936) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Update dependency Microsoft.VSSDK.BuildTools to v17.10.2185 [\#935](https://github.com/christianhelle/apiclientcodegen/pull/935) ([renovate[bot]](https://github.com/apps/renovate))
 - Refitter v1.0.1 [\#934](https://github.com/christianhelle/apiclientcodegen/pull/934) ([renovate[bot]](https://github.com/apps/renovate))
