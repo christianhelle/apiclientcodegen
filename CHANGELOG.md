@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Revert "Update dependency Microsoft.VSSDK.BuildTools to v17.10.2185" [\#942](https://github.com/christianhelle/apiclientcodegen/pull/942) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.0.2 [\#940](https://github.com/christianhelle/apiclientcodegen/pull/940) ([christianhelle](https://github.com/christianhelle))
 - Update dependency Refitter.Core to v1.0.2 [\#939](https://github.com/christianhelle/apiclientcodegen/pull/939) ([renovate[bot]](https://github.com/apps/renovate))
 - Update nswag monorepo to v14.0.8 [\#938](https://github.com/christianhelle/apiclientcodegen/pull/938) ([renovate[bot]](https://github.com/apps/renovate))
