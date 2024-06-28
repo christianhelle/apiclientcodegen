@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.3...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.4...HEAD)
+
+**Merged pull requests:**
+
+- Update dependency NuGet.VisualStudio to v17.10.1 [\#944](https://github.com/christianhelle/apiclientcodegen/pull/944) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.10.4](https://github.com/christianhelle/apiclientcodegen/tree/1.10.4) (2024-06-25)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.3...1.10.4)
 
 **Merged pull requests:**
 
