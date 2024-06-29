@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update dependency Polly to v8.4.1 [\#945](https://github.com/christianhelle/apiclientcodegen/pull/945) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency NuGet.VisualStudio to v17.10.1 [\#944](https://github.com/christianhelle/apiclientcodegen/pull/944) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.10.4](https://github.com/christianhelle/apiclientcodegen/tree/1.10.4) (2024-06-25)
