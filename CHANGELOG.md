@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- NSwag v14.0.8 [\#947](https://github.com/christianhelle/apiclientcodegen/pull/947) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.7.0 [\#946](https://github.com/christianhelle/apiclientcodegen/pull/946) ([christianhelle](https://github.com/christianhelle))
 
 **Merged pull requests:**
