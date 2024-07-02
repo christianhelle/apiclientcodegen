@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.4...HEAD)
 
+**Implemented enhancements:**
+
+- OpenAPI Generator v7.7.0 [\#946](https://github.com/christianhelle/apiclientcodegen/pull/946) ([christianhelle](https://github.com/christianhelle))
+
 **Merged pull requests:**
 
 - Update dependency Polly to v8.4.1 [\#945](https://github.com/christianhelle/apiclientcodegen/pull/945) ([renovate[bot]](https://github.com/apps/renovate))
