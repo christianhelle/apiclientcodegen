@@ -2,7 +2,19 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.4...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.5...HEAD)
+
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.16.0 [\#948](https://github.com/christianhelle/apiclientcodegen/pull/948) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Refitter v1.1.1 [\#949](https://github.com/christianhelle/apiclientcodegen/pull/949) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.10.5](https://github.com/christianhelle/apiclientcodegen/tree/1.10.5) (2024-07-02)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.4...1.10.5)
 
 **Implemented enhancements:**
 
