@@ -4,7 +4,7 @@
     {
         public const string NetCoreApp =
             """
-            <Project Sdk=""Microsoft.NET.Sdk"">
+            <Project Sdk="Microsoft.NET.Sdk">
               <PropertyGroup>
                 <TargetFramework>net8.0</TargetFramework>
               </PropertyGroup>
@@ -21,7 +21,7 @@
 
         public const string NetStandardLibrary =
             """
-            <Project Sdk=""Microsoft.NET.Sdk"">
+            <Project Sdk="Microsoft.NET.Sdk">
               <PropertyGroup>
                 <TargetFramework>netstandard2.1</TargetFramework>
               </PropertyGroup>
