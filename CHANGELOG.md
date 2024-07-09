@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update dependency ICSharpCode.CodeConverter to v9.2.6.717 [\#951](https://github.com/christianhelle/apiclientcodegen/pull/951) ([renovate[bot]](https://github.com/apps/renovate))
 - Update xunit-dotnet monorepo [\#950](https://github.com/christianhelle/apiclientcodegen/pull/950) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.10.6](https://github.com/christianhelle/apiclientcodegen/tree/1.10.6) (2024-07-07)
