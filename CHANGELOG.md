@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.5...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.6...HEAD)
+
+**Merged pull requests:**
+
+- Update xunit-dotnet monorepo [\#950](https://github.com/christianhelle/apiclientcodegen/pull/950) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.10.6](https://github.com/christianhelle/apiclientcodegen/tree/1.10.6) (2024-07-07)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.5...1.10.6)
 
 **Implemented enhancements:**
 
