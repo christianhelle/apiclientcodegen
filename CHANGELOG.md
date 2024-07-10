@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update dependency System.Text.Json to v8 \[SECURITY\] [\#953](https://github.com/christianhelle/apiclientcodegen/pull/953) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency ICSharpCode.CodeConverter to v9.2.6.717 [\#951](https://github.com/christianhelle/apiclientcodegen/pull/951) ([renovate[bot]](https://github.com/apps/renovate))
 - Update xunit-dotnet monorepo [\#950](https://github.com/christianhelle/apiclientcodegen/pull/950) ([renovate[bot]](https://github.com/apps/renovate))
 
