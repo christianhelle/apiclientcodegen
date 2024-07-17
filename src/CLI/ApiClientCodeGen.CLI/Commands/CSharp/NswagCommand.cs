@@ -9,7 +9,7 @@ using Rapicgen.Core.Options.NSwag;
 
 namespace Rapicgen.CLI.Commands.CSharp
 {
-    [Command("nswag", Description = "NSwag (v14.0.8)")]
+    [Command("nswag", Description = "NSwag (v14.1.0)")]
     public class NSwagCommand : CodeGeneratorCommand, INSwagOptions
     {
         private readonly IOpenApiDocumentFactory openApiDocumentFactory;
