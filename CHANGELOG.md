@@ -6,7 +6,8 @@
 
 **Implemented enhancements:**
 
-- Update nswag monorepo to v14.1.0 [\#957](https://github.com/christianhelle/apiclientcodegen/pull/957) ([renovate[bot]](https://github.com/apps/renovate))
+- Refitter v1.1.2 [\#958](https://github.com/christianhelle/apiclientcodegen/pull/958) ([renovate[bot]](https://github.com/apps/renovate))
+- NSwag v14.1.0 [\#957](https://github.com/christianhelle/apiclientcodegen/pull/957) ([renovate[bot]](https://github.com/apps/renovate))
 
 **Merged pull requests:**
 
