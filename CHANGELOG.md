@@ -2,12 +2,24 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.6...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.7...HEAD)
+
+**Implemented enhancements:**
+
+- Refitter v1.1.3 [\#959](https://github.com/christianhelle/apiclientcodegen/pull/959) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.10.7](https://github.com/christianhelle/apiclientcodegen/tree/1.10.7) (2024-07-19)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.6...1.10.7)
 
 **Implemented enhancements:**
 
 - Refitter v1.1.2 [\#958](https://github.com/christianhelle/apiclientcodegen/pull/958) ([renovate[bot]](https://github.com/apps/renovate))
 - NSwag v14.1.0 [\#957](https://github.com/christianhelle/apiclientcodegen/pull/957) ([renovate[bot]](https://github.com/apps/renovate))
+
+**Closed issues:**
+
+- Kiota sdk gen output  [\#956](https://github.com/christianhelle/apiclientcodegen/issues/956)
 
 **Merged pull requests:**
 
