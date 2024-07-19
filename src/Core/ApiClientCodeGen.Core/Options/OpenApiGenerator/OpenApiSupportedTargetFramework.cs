@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 
 namespace Rapicgen.Core.Options.OpenApiGenerator
 {
@@ -16,8 +16,6 @@ namespace Rapicgen.Core.Options.OpenApiGenerator
         NetStandard14,
         [Description("netstandard1.3")]
         NetStandard13,
-        [Description("netcoreapp3.1")]
-        NetCoreApp31,
         [Description("net47")]
         Net47,
         [Description("net5.0")]
