@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace Rapicgen.Core.Options.OpenApiGenerator
 {
@@ -18,8 +18,8 @@ namespace Rapicgen.Core.Options.OpenApiGenerator
         NetStandard13,
         [Description("net47")]
         Net47,
-        [Description("net5.0")]
-        Net50,
+        [Description("net48")]
+        Net48,
         [Description("net6.0")]
         Net60,
         [Description("net7.0")]
