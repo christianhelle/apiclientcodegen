@@ -16,13 +16,15 @@ namespace Rapicgen.Core.Options.OpenApiGenerator
         NetStandard14,
         [Description("netstandard1.3")]
         NetStandard13,
-        [Description("netcoreapp3.1")]
-        NetCoreApp31,
         [Description("net47")]
         Net47,
-        [Description("net5.0")]
-        Net50,
+        [Description("net48")]
+        Net48,
         [Description("net6.0")]
         Net60,
+        [Description("net7.0")]
+        Net70,
+        [Description("net8.0")]
+        Net80,
     }
 }
