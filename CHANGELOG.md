@@ -6,7 +6,12 @@
 
 **Implemented enhancements:**
 
+- Add support for .NET 8.0 to the OpenAPI Generator target framework options [\#961](https://github.com/christianhelle/apiclientcodegen/pull/961) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.1.3 [\#959](https://github.com/christianhelle/apiclientcodegen/pull/959) ([renovate[bot]](https://github.com/apps/renovate))
+
+**Fixed bugs:**
+
+- OpenAPI - default Target Framework NET8.0 missing [\#960](https://github.com/christianhelle/apiclientcodegen/issues/960)
 
 ## [1.10.7](https://github.com/christianhelle/apiclientcodegen/tree/1.10.7) (2024-07-19)
 
