@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Microsoft Kiota v1.17.0 [\#962](https://github.com/christianhelle/apiclientcodegen/pull/962) ([christianhelle](https://github.com/christianhelle))
 - Add support for .NET 8.0 to the OpenAPI Generator target framework options [\#961](https://github.com/christianhelle/apiclientcodegen/pull/961) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.1.3 [\#959](https://github.com/christianhelle/apiclientcodegen/pull/959) ([renovate[bot]](https://github.com/apps/renovate))
 
