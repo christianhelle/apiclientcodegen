@@ -1,4 +1,4 @@
-#tool "nuget:?package=Microsoft.TestPlatform&version=17.10.0"
+#tool "nuget:?package=Microsoft.TestPlatform&version=17.11.0"
 
 var target = Argument("target", "Default");
 
