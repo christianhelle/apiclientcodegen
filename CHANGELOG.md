@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.8...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.9...HEAD)
+
+**Merged pull requests:**
+
+- Update vstest monorepo to v17.11.0 [\#969](https://github.com/christianhelle/apiclientcodegen/pull/969) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.10.9](https://github.com/christianhelle/apiclientcodegen/tree/1.10.9) (2024-08-19)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.8...1.10.9)
 
 **Implemented enhancements:**
 
