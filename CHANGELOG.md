@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update dependency Moq to 4.20.71 [\#972](https://github.com/christianhelle/apiclientcodegen/pull/972) ([renovate[bot]](https://github.com/apps/renovate))
 - Update vstest monorepo to v17.11.0 [\#969](https://github.com/christianhelle/apiclientcodegen/pull/969) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.10.9](https://github.com/christianhelle/apiclientcodegen/tree/1.10.9) (2024-08-19)
