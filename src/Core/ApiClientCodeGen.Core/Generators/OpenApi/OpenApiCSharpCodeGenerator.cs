@@ -83,7 +83,7 @@ namespace Rapicgen.Core.Generators.OpenApi
                     var configFile = Array.Find(configFilenames, File.Exists);
                     if (configFile != null)
                     {
-                        arguments += $"-c \"{configFile}\"";
+                        arguments += $"-c \"{configFile}\" ";
                     }
                 }
 
