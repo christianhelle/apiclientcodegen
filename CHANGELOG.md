@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.9...HEAD)
 
+**Implemented enhancements:**
+
+- Using config file and addl parameters causes a command error [\#973](https://github.com/christianhelle/apiclientcodegen/pull/973) ([BryanAldrich](https://github.com/BryanAldrich))
+
 **Merged pull requests:**
 
 - Update dependency Moq to 4.20.71 [\#972](https://github.com/christianhelle/apiclientcodegen/pull/972) ([renovate[bot]](https://github.com/apps/renovate))
