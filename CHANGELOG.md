@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Update Kiota package dependencies for v1.18.0  compatibility [\#976](https://github.com/christianhelle/apiclientcodegen/pull/976) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.18.0 [\#975](https://github.com/christianhelle/apiclientcodegen/pull/975) ([christianhelle](https://github.com/christianhelle))
 - Using config file and addl parameters causes a command error [\#973](https://github.com/christianhelle/apiclientcodegen/pull/973) ([BryanAldrich](https://github.com/BryanAldrich))
 
