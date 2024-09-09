@@ -2,13 +2,21 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.9...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.11.0...HEAD)
+
+**Merged pull requests:**
+
+- Update dependency FluentAssertions to 6.12.1 [\#977](https://github.com/christianhelle/apiclientcodegen/pull/977) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.11.0](https://github.com/christianhelle/apiclientcodegen/tree/1.11.0) (2024-09-05)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.9...1.11.0)
 
 **Implemented enhancements:**
 
 - Update Kiota package dependencies for v1.18.0  compatibility [\#976](https://github.com/christianhelle/apiclientcodegen/pull/976) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.18.0 [\#975](https://github.com/christianhelle/apiclientcodegen/pull/975) ([christianhelle](https://github.com/christianhelle))
-- Using config file and addl parameters causes a command error [\#973](https://github.com/christianhelle/apiclientcodegen/pull/973) ([BryanAldrich](https://github.com/BryanAldrich))
+- Using config file and add parameters causes a command error [\#973](https://github.com/christianhelle/apiclientcodegen/pull/973) ([BryanAldrich](https://github.com/BryanAldrich))
 
 **Merged pull requests:**
 
