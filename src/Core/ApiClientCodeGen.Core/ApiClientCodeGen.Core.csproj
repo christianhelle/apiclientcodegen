@@ -21,7 +21,7 @@
     <PackageReference Include="NSwag.Core.Yaml" Version="14.1.0" />
     <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.1.0" />
     <PackageReference Include="Polly" Version="8.4.1" />
-    <PackageReference Include="Refitter.Core" Version="1.2.0" />
+    <PackageReference Include="Refitter.Core" Version="1.3.0" />
   </ItemGroup>
 
   <ItemGroup>
