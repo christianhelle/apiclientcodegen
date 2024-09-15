@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update dependency Refitter.Core to 1.3.0 [\#979](https://github.com/christianhelle/apiclientcodegen/pull/979) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency FluentAssertions to 6.12.1 [\#977](https://github.com/christianhelle/apiclientcodegen/pull/977) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.11.0](https://github.com/christianhelle/apiclientcodegen/tree/1.11.0) (2024-09-05)
