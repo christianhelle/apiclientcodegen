@@ -15,7 +15,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="JsonSubTypes" Version="1.2.0" />
+    <PackageReference Include="JsonSubTypes" Version="1.9.0" />
     <PackageReference Include="RestSharp" Version="105.1.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
