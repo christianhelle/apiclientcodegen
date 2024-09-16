@@ -60,7 +60,7 @@ The **OpenAPI Generator** code generator produces code that depends on the follo
 
 - [RestSharp](https://www.nuget.org/packages/RestSharp/110.2.0)
 - [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/2.0.1)
-- [Polly](https://www.nuget.org/packages/Polly/8.4.0)
+- [Polly](https://www.nuget.org/packages/Polly/8.4.1)
 - [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/13.0.3)
 
 The project **Kiota** code generator produces code that depends on the following NuGet packages
