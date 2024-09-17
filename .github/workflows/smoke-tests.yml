@@ -260,7 +260,11 @@ jobs:
       working-directory: test
       continue-on-error: ${{ matrix.os == 'macos-12' }}
 
-    - name: Build .NET 6 Kiota generated code
+    - name: Restore Kiota packages
+      run: dotnet restore ./GeneratedCode/Kiota/Kiota.sln
+      working-directory: test
+
+    - name: Build Kiota generated code
       run: dotnet build ./GeneratedCode/Kiota/Net6/Net6.csproj
       working-directory: test
 
