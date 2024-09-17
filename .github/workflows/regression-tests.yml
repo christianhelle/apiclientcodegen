@@ -249,49 +249,11 @@ jobs:
       working-directory: test
 
     - name: Generate code with Kiota
-      run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp kiota ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Kiota/Output.cs --no-logging
-        cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/Net6/Output.cs
-        cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/Net7/Output.cs
-        cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/Net48/Output.cs
-        cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/Net472/Output.cs
-        cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/Net462/Output.cs
-        cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/Net481/Output.cs
-        cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/NetStandard20/Output.cs
-        cp ./GeneratedCode/Kiota/Output.cs ./GeneratedCode/Kiota/NetStandard21/Output.cs
+      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp kiota ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Kiota/Output.cs --no-logging
       working-directory: test
 
-    - name: Build .NET 6 Kiota generated code
-      run: dotnet build ./GeneratedCode/Kiota/Net6/Net6.csproj
-      working-directory: test
-
-    - name: Build .NET 7 Kiota generated code
-      run: dotnet build ./GeneratedCode/Kiota/Net7/Net7.csproj
-      working-directory: test
-
-    - name: Build .NET 4.8.1 Kiota generated code
-      run: dotnet build ./GeneratedCode/Kiota/Net481/Net481.csproj
-      if: ${{ matrix.os == 'windows-2022' }}
-      working-directory: test
-
-    - name: Build .NET 4.8 Kiota generated code
-      run: dotnet build ./GeneratedCode/Kiota/Net48/Net48.csproj
-      working-directory: test
-
-    - name: Build .NET 4.7.2 Kiota generated code
-      run: dotnet build ./GeneratedCode/Kiota/Net472/Net472.csproj
-      working-directory: test
-
-    - name: Build .NET 4.6.2 Kiota generated code
-      run: dotnet build ./GeneratedCode/Kiota/Net462/Net462.csproj
-      working-directory: test
-
-    - name: Build .NET Standard 2.0 Kiota generated code
-      run: dotnet build ./GeneratedCode/Kiota/NetStandard20/NetStandard20.csproj
-      working-directory: test
-
-    - name: Build .NET Standard 2.1 Kiota generated code
-      run: dotnet build ./GeneratedCode/Kiota/NetStandard21/NetStandard21.csproj
+    - name: Build Kiota generated code
+      run: dotnet build ./GeneratedCode/Kiota/Kiota.sln
       working-directory: test
 
     - name: Generate code with Refitter
