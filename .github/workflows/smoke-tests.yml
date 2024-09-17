@@ -248,8 +248,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with Kiota
-      run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp kiota ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Kiota/Output.cs --no-logging
+      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp kiota ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Kiota/Output.cs --no-logging
       working-directory: test
       continue-on-error: ${{ matrix.os == 'macos-12' }}
 
