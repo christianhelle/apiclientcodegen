@@ -4,6 +4,11 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.11.0...HEAD)
 
+**Implemented enhancements:**
+
+- Update Kiota package references to version 1.12.4 in smoke tests [\#989](https://github.com/christianhelle/apiclientcodegen/pull/989) ([christianhelle](https://github.com/christianhelle))
+- Update dependency RestSharp to v112 \[SECURITY\] [\#980](https://github.com/christianhelle/apiclientcodegen/pull/980) ([renovate[bot]](https://github.com/apps/renovate))
+
 **Merged pull requests:**
 
 - Update dependency Polly to 8.4.1 [\#981](https://github.com/christianhelle/apiclientcodegen/pull/981) ([renovate[bot]](https://github.com/apps/renovate))
