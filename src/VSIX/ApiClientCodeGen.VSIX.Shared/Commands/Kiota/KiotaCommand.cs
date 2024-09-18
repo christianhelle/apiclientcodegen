@@ -12,6 +12,8 @@ using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.Kiota;
 using Rapicgen.Core.Generators;
+using Rapicgen.Options;
+using Rapicgen.Options.Kiota;
 
 namespace Rapicgen.Commands.Kiota
 {
@@ -62,7 +64,7 @@ namespace Rapicgen.Commands.Kiota
                     new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()),
-                new DefaultKiotaOptions { GenerateMultipleFiles = true });
+                new OptionsFactory().Create<IKiotaOptions, KiotaOptionsPage, DefaultKiotaOptions>());
             codeGenerator.GenerateCode(null);
 
             var project = dte.GetActiveProject()!;
