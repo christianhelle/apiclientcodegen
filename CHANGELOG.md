@@ -11,6 +11,9 @@
 
 **Merged pull requests:**
 
+- Update dependency Refit to 7.2.1 [\#994](https://github.com/christianhelle/apiclientcodegen/pull/994) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Refit to 7.2.0 [\#990](https://github.com/christianhelle/apiclientcodegen/pull/990) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency JsonSubTypes to 1.9.0 [\#983](https://github.com/christianhelle/apiclientcodegen/pull/983) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Polly to 8.4.1 [\#981](https://github.com/christianhelle/apiclientcodegen/pull/981) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Refitter.Core to 1.3.0 [\#979](https://github.com/christianhelle/apiclientcodegen/pull/979) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency FluentAssertions to 6.12.1 [\#977](https://github.com/christianhelle/apiclientcodegen/pull/977) ([renovate[bot]](https://github.com/apps/renovate))
