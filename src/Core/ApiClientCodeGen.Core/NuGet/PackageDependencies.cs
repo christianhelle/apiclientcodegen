@@ -23,7 +23,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency JsonSubTypes =
             new PackageDependency(
                 "JsonSubTypes",
-                "1.8.0");
+                "1.9.0");
 
         public static readonly PackageDependency RestSharpLatest =
             new PackageDependency(
