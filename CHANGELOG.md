@@ -11,6 +11,7 @@
 
 **Merged pull requests:**
 
+- Update dependency xunit to 2.9.1 [\#996](https://github.com/christianhelle/apiclientcodegen/pull/996) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Refit to 7.2.1 [\#994](https://github.com/christianhelle/apiclientcodegen/pull/994) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Refit to 7.2.0 [\#990](https://github.com/christianhelle/apiclientcodegen/pull/990) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency JsonSubTypes to 1.9.0 [\#983](https://github.com/christianhelle/apiclientcodegen/pull/983) ([renovate[bot]](https://github.com/apps/renovate))
