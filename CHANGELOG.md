@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Update Kiota dependencies to v1.13.0 [\#1001](https://github.com/christianhelle/apiclientcodegen/pull/1001) ([christianhelle](https://github.com/christianhelle))
 - Update Kiota package references to version 1.12.4 in smoke tests [\#989](https://github.com/christianhelle/apiclientcodegen/pull/989) ([christianhelle](https://github.com/christianhelle))
 - Update dependency RestSharp to v112 \[SECURITY\] [\#980](https://github.com/christianhelle/apiclientcodegen/pull/980) ([renovate[bot]](https://github.com/apps/renovate))
 
