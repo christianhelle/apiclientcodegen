@@ -12,6 +12,8 @@
 
 **Merged pull requests:**
 
+- Update dependency xunit to 2.9.2 [\#1005](https://github.com/christianhelle/apiclientcodegen/pull/1005) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.4.2 [\#1004](https://github.com/christianhelle/apiclientcodegen/pull/1004) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency xunit to 2.9.1 [\#996](https://github.com/christianhelle/apiclientcodegen/pull/996) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Refit to 7.2.1 [\#994](https://github.com/christianhelle/apiclientcodegen/pull/994) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Refit to 7.2.0 [\#990](https://github.com/christianhelle/apiclientcodegen/pull/990) ([renovate[bot]](https://github.com/apps/renovate))
