@@ -56,7 +56,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency Polly =
             new PackageDependency(
                 "Polly",
-                "8.4.1");
+                "8.4.2");
 
         public static readonly PackageDependency AutoRestCSharp =
             new PackageDependency(
