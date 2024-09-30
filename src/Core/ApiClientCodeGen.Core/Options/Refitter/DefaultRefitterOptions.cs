@@ -12,4 +12,5 @@ public class DefaultRefitterOptions : IRefitterOptions
     public bool GenerateInternalTypes { get; set; }
     public bool UseCancellationTokens { get; set; }
     public bool GenerateHeaderParameters { get; set; } = true;
+    public bool GenerateMultipleFiles { get; set; }
 }

@@ -46,5 +46,10 @@ namespace Rapicgen.Options.Refitter
         [DisplayName("Generate Header Parameters")]
         [Description("Set this to TRUE to generate [Header] parameters (default: TRUE)")]
         public bool GenerateHeaderParameters { get; set; } = true;
+
+        [Category(Name)]
+        [DisplayName("Generate Multiple Files")]
+        [Description("Set this to TRUE to generate multiple files (default: FALSE)")]
+        public bool GenerateMultipleFiles { get; set; }
     }
 }
