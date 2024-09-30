@@ -22,6 +22,7 @@ namespace Rapicgen.Options.Refitter
                 GenerateInternalTypes = options.GenerateInternalTypes;
                 UseCancellationTokens = options.UseCancellationTokens;
                 GenerateHeaderParameters = options.GenerateHeaderParameters;
+                GenerateMultipleFiles = options.GenerateMultipleFiles;
             }
             catch (Exception e)
             {
@@ -40,5 +41,6 @@ namespace Rapicgen.Options.Refitter
         public bool GenerateInternalTypes { get; set; }
         public bool UseCancellationTokens { get; set; }
         public bool GenerateHeaderParameters { get; set; }
+        public bool GenerateMultipleFiles { get; set; }
     }
 }

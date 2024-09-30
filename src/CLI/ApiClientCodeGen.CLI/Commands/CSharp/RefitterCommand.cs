@@ -6,7 +6,7 @@ using Rapicgen.Core.Options.Refitter;
 
 namespace Rapicgen.CLI.Commands.CSharp;
 
-[Command("refitter", Description = "Refitter (v1.3.0)")]
+[Command("refitter", Description = "Refitter (v1.3.2)")]
 public class RefitterCommand : CodeGeneratorCommand
 {
     private readonly IRefitterCodeGeneratorFactory factory;
@@ -85,5 +85,12 @@ public class RefitterCommand : CodeGeneratorCommand
     {
         get => !options.GenerateHeaderParameters;
         set => options.GenerateHeaderParameters = !value;
+    }
+
+    [Option(ShortName = "mf", LongName = "multiple-files", Description = "Generate multiple files")]
+    public bool GenerateMultipleFiles
+    {
+        get => options.GenerateMultipleFiles;
+        set => options.GenerateMultipleFiles = value;
     }
 }
