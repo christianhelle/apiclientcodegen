@@ -58,6 +58,12 @@ namespace Rapicgen.CLI.Commands
 
             var generator = CreateGenerator();
             var code = generator.GenerateCode(progressReporter);
+            if (string.IsNullOrWhiteSpace(code))
+            {
+                console.WriteSignature();
+                return ResultCodes.Success;
+            }
+
             File.WriteAllText(OutputFile, code);
 
             var fileInfo = new FileInfo(OutputFile);
