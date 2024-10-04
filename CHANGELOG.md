@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Microsoft Kiota v1.19.0 [\#1008](https://github.com/christianhelle/apiclientcodegen/pull/1008) ([christianhelle](https://github.com/christianhelle))
 - use correct framework [\#1007](https://github.com/christianhelle/apiclientcodegen/pull/1007) ([kasperk81](https://github.com/kasperk81))
 - Update Kiota dependencies to v1.13.0 [\#1001](https://github.com/christianhelle/apiclientcodegen/pull/1001) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.3.2 [\#995](https://github.com/christianhelle/apiclientcodegen/pull/995) ([renovate[bot]](https://github.com/apps/renovate))
