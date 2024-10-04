@@ -1,4 +1,5 @@
 ﻿using System;
+using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.Kiota;
 
@@ -13,6 +14,7 @@ namespace Rapicgen.Options.Kiota
             {
                 options ??= GetFromDialogPage();
                 GenerateMultipleFiles = options.GenerateMultipleFiles;
+                TypeAccessModifier = options.TypeAccessModifier;
             }
             catch (Exception e)
             {
@@ -23,9 +25,11 @@ namespace Rapicgen.Options.Kiota
                 Logger.Instance.WriteLine("GenerateMultipleFiles = false");
 
                 GenerateMultipleFiles = false;
+                TypeAccessModifier = TypeAccessModifier.Public;
             }
         }
 
         public bool GenerateMultipleFiles { get; }
+        public TypeAccessModifier TypeAccessModifier { get; }
     }
 }

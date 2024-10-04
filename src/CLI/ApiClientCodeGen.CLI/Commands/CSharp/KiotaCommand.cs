@@ -38,4 +38,10 @@ public class KiotaCommand : CodeGeneratorCommand, IKiotaOptions
         LongName = "generate-multiple-files",
         Description = "Set this to TRUE to generate multiple files (default: FALSE)")]
     public bool GenerateMultipleFiles { get; set; }
+
+    [Option(
+        ShortName = "tam",
+        LongName = "type-access-modifier",
+        Description = "Set the access modifier for the generated types (default: public)")]
+    public TypeAccessModifier TypeAccessModifier { get; }
 }

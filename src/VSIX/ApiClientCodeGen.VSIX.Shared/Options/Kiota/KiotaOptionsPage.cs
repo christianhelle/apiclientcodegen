@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using Rapicgen.Core.Options.Kiota;
 using Microsoft.VisualStudio.Shell;
 using System.Runtime.InteropServices;
+using Rapicgen.Core.Generators.Kiota;
 
 namespace Rapicgen.Options.Kiota
 {
@@ -16,5 +17,10 @@ namespace Rapicgen.Options.Kiota
         [DisplayName("Generate Multiple Files")]
         [Description("Generate multiple files for each operation. This only works for SDK style projects")]
         public bool GenerateMultipleFiles { get; set; }
+
+        [Category(Name)]
+        [DisplayName("Type Access Modifier")]
+        [Description("The access modifier for the generated types")]
+        public TypeAccessModifier TypeAccessModifier { get; set; }
     }
 }

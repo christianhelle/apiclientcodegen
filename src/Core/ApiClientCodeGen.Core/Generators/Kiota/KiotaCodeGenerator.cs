@@ -92,7 +92,13 @@ public class KiotaCodeGenerator(
 
     private void RunKiotaGenerate(string outputFolder)
     {
-        var arguments = $" generate -l CSharp -d \"{swaggerFile}\" -o \"{outputFolder}\" -n {defaultNamespace}";
+        var arguments = $" generate " +
+                        $"-l CSharp " +
+                        $"-d \"{swaggerFile}\" " +
+                        $"-o \"{outputFolder}\" " +
+                        $"-n {defaultNamespace} " +
+                        $"--type-access-modifier {options.TypeAccessModifier}";
+
         using var context = new DependencyContext("Kiota", $"{Command} {arguments}");
         processLauncher.Start(Command, arguments);
         context.Succeeded();
