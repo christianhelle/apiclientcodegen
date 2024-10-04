@@ -21,6 +21,6 @@ namespace Rapicgen.Options.Kiota
         [Category(Name)]
         [DisplayName("Type Access Modifier")]
         [Description("The access modifier for the generated types")]
-        public TypeAccessModifier TypeAccessModifier { get; }
+        public TypeAccessModifier TypeAccessModifier { get; set; }
     }
 }
