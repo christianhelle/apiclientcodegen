@@ -20,7 +20,7 @@ on:
     - cron:  '0 8 * * *'
 
 env:
-  VERSION: 1.10.${{ github.run_number }}
+  VERSION: 1.12.${{ github.run_number }}
 
 jobs:
   build:
