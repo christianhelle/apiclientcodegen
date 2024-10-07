@@ -41,7 +41,6 @@ jobs:
           docs/CLI.md
 
   VSIX:
-    needs: [ CLI ]
     runs-on: windows-2022
     steps:
     - uses: actions/checkout@v4
@@ -86,7 +85,6 @@ jobs:
         & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest-vs2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
   
   VSMac:
-    needs: [ CLI ]
     runs-on: macos-12
     timeout-minutes: 10
     steps:
