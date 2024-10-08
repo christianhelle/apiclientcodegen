@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.11.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.14.0...HEAD)
+
+**Implemented enhancements:**
+
+- OpenAPI Generator v7.9.0 [\#1011](https://github.com/christianhelle/apiclientcodegen/pull/1011) ([christianhelle](https://github.com/christianhelle))
+
+## [1.14.0](https://github.com/christianhelle/apiclientcodegen/tree/1.14.0) (2024-10-07)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.11.0...1.14.0)
 
 **Implemented enhancements:**
 
