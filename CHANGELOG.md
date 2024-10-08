@@ -8,6 +8,10 @@
 
 - OpenAPI Generator v7.9.0 [\#1011](https://github.com/christianhelle/apiclientcodegen/pull/1011) ([christianhelle](https://github.com/christianhelle))
 
+**Merged pull requests:**
+
+- Update dotnet monorepo [\#1012](https://github.com/christianhelle/apiclientcodegen/pull/1012) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.14.0](https://github.com/christianhelle/apiclientcodegen/tree/1.14.0) (2024-10-07)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.11.0...1.14.0)
@@ -20,7 +24,6 @@
 - Update Kiota dependencies to v1.13.0 [\#1001](https://github.com/christianhelle/apiclientcodegen/pull/1001) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.3.2 [\#995](https://github.com/christianhelle/apiclientcodegen/pull/995) ([renovate[bot]](https://github.com/apps/renovate))
 - Update Kiota package references to version 1.12.4 in smoke tests [\#989](https://github.com/christianhelle/apiclientcodegen/pull/989) ([christianhelle](https://github.com/christianhelle))
-- Update dependency RestSharp to v112 \[SECURITY\] [\#980](https://github.com/christianhelle/apiclientcodegen/pull/980) ([renovate[bot]](https://github.com/apps/renovate))
 
 **Merged pull requests:**
 
@@ -31,6 +34,7 @@
 - Update dependency Refit to 7.2.0 [\#990](https://github.com/christianhelle/apiclientcodegen/pull/990) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency JsonSubTypes to 1.9.0 [\#983](https://github.com/christianhelle/apiclientcodegen/pull/983) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Polly to 8.4.1 [\#981](https://github.com/christianhelle/apiclientcodegen/pull/981) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency RestSharp to v112 \[SECURITY\] [\#980](https://github.com/christianhelle/apiclientcodegen/pull/980) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Refitter.Core to 1.3.0 [\#979](https://github.com/christianhelle/apiclientcodegen/pull/979) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency FluentAssertions to 6.12.1 [\#977](https://github.com/christianhelle/apiclientcodegen/pull/977) ([renovate[bot]](https://github.com/apps/renovate))
 
