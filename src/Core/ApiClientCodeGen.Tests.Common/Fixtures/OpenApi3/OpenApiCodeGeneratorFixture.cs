@@ -20,7 +20,7 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
         {
             ThrowNotSupportedOnUnix();
 
-            OptionsMock.Setup(c => c.JavaPath).Returns(PathProvider.GetJavaPath());
+            OptionsMock.Setup(c => c.JavaPath).Returns(PathProvider.GetInstalledJavaPath());
             
             var codeGenerator = new OpenApiCSharpCodeGenerator(
                 Path.GetFullPath(SwaggerV3JsonFilename),
