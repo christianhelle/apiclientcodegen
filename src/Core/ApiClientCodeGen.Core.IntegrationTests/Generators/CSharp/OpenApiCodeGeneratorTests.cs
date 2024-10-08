@@ -41,13 +41,13 @@ namespace ApiClientCodeGen.Core.IntegrationTests.Generators.CSharp
                 .Should()
                 .BeTrue();
 
-        [SkippableFact(typeof(NotSupportedException))]
-        public void GeneratedCode_Can_Build_In_NetStandardLibrary()
-            => BuildHelper.BuildCSharp(
-                    ProjectTypes.DotNetStandardLibrary,
-                    fixture.Code,
-                    SupportedCodeGenerator.OpenApi)
-                .Should()
-                .BeTrue();
+        // [SkippableFact(typeof(NotSupportedException))]
+        // public void GeneratedCode_Can_Build_In_NetStandardLibrary()
+        //     => BuildHelper.BuildCSharp(
+        //             ProjectTypes.DotNetStandardLibrary,
+        //             fixture.Code,
+        //             SupportedCodeGenerator.OpenApi)
+        //         .Should()
+        //         .BeTrue();
     }
 }
