@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Include version information in App Insights telemetry [\#1015](https://github.com/christianhelle/apiclientcodegen/pull/1015) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.9.0 [\#1011](https://github.com/christianhelle/apiclientcodegen/pull/1011) ([christianhelle](https://github.com/christianhelle))
 
 **Merged pull requests:**
