@@ -5,15 +5,24 @@ using Xunit;
 
 namespace ApiClientCodeGen.Core.Tests.Logging
 {
-    public class SupportKeyInitializerTests
+    public class SupportInformationInitializerTests
     {
         [Theory, AutoMoqData]
         public void Should_Add_SupportKey(
-            SupportKeyInitializer sut,
+            SupportInformationInitializer sut,
             FakeTelemetry telemetry)
         {
             sut.Initialize(telemetry);
             telemetry.Properties.Should().ContainKey("support-key");
+        }
+
+        [Theory, AutoMoqData]
+        public void Should_Add_Version(
+            SupportInformationInitializer sut,
+            FakeTelemetry telemetry)
+        {
+            sut.Initialize(telemetry);
+            telemetry.Properties.Should().ContainKey("version");
         }
     }
 }

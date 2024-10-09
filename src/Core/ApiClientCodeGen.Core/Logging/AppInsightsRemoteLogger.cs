@@ -27,7 +27,7 @@ namespace Rapicgen.Core.Logging
             telemetryClient.Context.Operation.Id = Guid.NewGuid().ToString();
             telemetryClient.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
             telemetryClient.Context.Component.Version = GetType().Assembly.GetName().Version.ToString();
-            AddTelemetryInitializer(new SupportKeyInitializer());
+            AddTelemetryInitializer(new SupportInformationInitializer());
         }
 
         public void AddTelemetryInitializer(ITelemetryInitializer initializer)
