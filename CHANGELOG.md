@@ -12,6 +12,7 @@
 **Merged pull requests:**
 
 - Update dotnet monorepo [\#1012](https://github.com/christianhelle/apiclientcodegen/pull/1012) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Azure.Core to 1.44.1 [\#982](https://github.com/christianhelle/apiclientcodegen/pull/982) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.14.0](https://github.com/christianhelle/apiclientcodegen/tree/1.14.0) (2024-10-07)
 
