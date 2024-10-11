@@ -6,8 +6,13 @@
 
 **Implemented enhancements:**
 
+- Microsoft Kiota v1.19.1 [\#1023](https://github.com/christianhelle/apiclientcodegen/pull/1023) ([christianhelle](https://github.com/christianhelle))
 - Include version information in App Insights telemetry [\#1015](https://github.com/christianhelle/apiclientcodegen/pull/1015) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.9.0 [\#1011](https://github.com/christianhelle/apiclientcodegen/pull/1011) ([christianhelle](https://github.com/christianhelle))
+
+**Closed issues:**
+
+- VS 2022, Unrecognized command or argument '--type-access-modifier'  'public. [\#1016](https://github.com/christianhelle/apiclientcodegen/issues/1016)
 
 **Merged pull requests:**
 
