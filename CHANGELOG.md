@@ -1,8 +1,8 @@
 # Changelog
 
-## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+## [1.15.0](https://github.com/christianhelle/apiclientcodegen/tree/1.15.0) (2024-10-11)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.14.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.14.0...1.15.0)
 
 **Implemented enhancements:**
 
