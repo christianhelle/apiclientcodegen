@@ -81,7 +81,7 @@ namespace Rapicgen.Extensions
                 return null;
 
             var item = project.ProjectItems.AddFromFile(file.FullName);
-            
+
             try
             {
                 ThreadHelper.ThrowIfNotOnUIThread();
@@ -105,7 +105,7 @@ namespace Rapicgen.Extensions
             return item;
         }
 
-        private static bool IsKind(this Project project, params string[] kindGuids) 
+        private static bool IsKind(this Project project, params string[] kindGuids)
             => kindGuids.Any(guid =>
             {
                 ThreadHelper.ThrowIfNotOnUIThread();
@@ -229,14 +229,14 @@ namespace Rapicgen.Extensions
             if (installedPackages.Any(c => string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase)) &&
                (installedPackages.Any(c => c.VersionString == version) || !packageDependency.ForceUpdate))
             {
-                Logger.Instance.WriteLine($"{packageDependency.Name} is already installed");
+                Logger.Instance.WriteLine($"{packageId} is already installed");
                 return;
             }
 
             ThreadHelper.ThrowIfNotOnUIThread();
             if (packageDependency.IsSystemLibrary)
             {
-                Logger.Instance.WriteLine("Package is a system library");
+                Logger.Instance.WriteLine($"{packageId} is a system library");
                 if (!project.IsNetStandardLibrary())
                 {
                     Logger.Instance.WriteLine("Skipping package installation");
@@ -261,7 +261,6 @@ namespace Rapicgen.Extensions
             {
                 Logger.Instance.TrackError(e);
                 Logger.Instance.WriteLine($"Unable to install {packageId} version {version}");
-                
             }
         }
 
@@ -284,7 +283,7 @@ namespace Rapicgen.Extensions
             {
                 Logger.Instance.TrackError(e);
                 Logger.Instance.WriteLine("Unable to read top level namespace from Project");
-                
+
             }
             return null;
         }
@@ -305,7 +304,7 @@ namespace Rapicgen.Extensions
             {
                 Logger.Instance.TrackError(e);
                 Logger.Instance.WriteLine("Unable to read project file contents");
-                
+
             }
 
             return false;
