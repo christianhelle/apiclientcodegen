@@ -42,7 +42,7 @@ The **Swagger Codegen CLI** and **OpenAPI Generator** are distributed as JAR fil
 
 The **NSwag** code generator produces code that depends on the [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/13.0.3) NuGet package
 
-The **Refitter** code generator produces code that depends on the [Refit](https://www.nuget.org/packages/Refit/7.0.0) NuGet package
+The **Refitter** code generator produces code that depends on the [Refit](https://www.nuget.org/packages/Refit/8.0.0) NuGet package
 
 The **OpenAPI Generator** code generator produces code that depends on the following NuGet packages:
 
