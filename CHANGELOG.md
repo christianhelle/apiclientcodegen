@@ -1,5 +1,18 @@
 # Changelog
 
+## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.15.0...HEAD)
+
+**Implemented enhancements:**
+
+- Update dependency Refitter.Core to 1.4.0 [\#1024](https://github.com/christianhelle/apiclientcodegen/pull/1024) ([renovate[bot]](https://github.com/apps/renovate))
+
+**Merged pull requests:**
+
+- Update dependency Refit to v8 [\#1032](https://github.com/christianhelle/apiclientcodegen/pull/1032) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency cake.tool to 4.2.0 [\#1025](https://github.com/christianhelle/apiclientcodegen/pull/1025) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.15.0](https://github.com/christianhelle/apiclientcodegen/tree/1.15.0) (2024-10-11)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.14.0...1.15.0)
