@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Update Kiota dependencies to v1.14.0 [\#1033](https://github.com/christianhelle/apiclientcodegen/pull/1033) ([christianhelle](https://github.com/christianhelle))
 - Update dependency Refitter.Core to 1.4.0 [\#1024](https://github.com/christianhelle/apiclientcodegen/pull/1024) ([renovate[bot]](https://github.com/apps/renovate))
 
 **Merged pull requests:**
