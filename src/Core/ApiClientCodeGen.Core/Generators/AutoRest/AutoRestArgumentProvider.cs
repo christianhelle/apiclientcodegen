@@ -38,7 +38,7 @@ namespace Rapicgen.Core.Generators.AutoRest
         {
             return AppendCommonArguments(
                 swaggerFile,
-                "--version=2.0.4417 --csharp " +
+                "--csharp " +
                 $"--input-file=\"{swaggerFile}\" " +
                 $"--output-file=\"{outputFile}\" " +
                 $"--namespace=\"{defaultNamespace}\" ");
