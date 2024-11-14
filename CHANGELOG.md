@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.15.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.16.0...HEAD)
+
+**Merged pull requests:**
+
+- Update AutoRestArgumentProvider.cs [\#1040](https://github.com/christianhelle/apiclientcodegen/pull/1040) ([tiagffborges](https://github.com/tiagffborges))
+
+## [1.16.0](https://github.com/christianhelle/apiclientcodegen/tree/1.16.0) (2024-11-07)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.15.0...1.16.0)
 
 **Implemented enhancements:**
 
