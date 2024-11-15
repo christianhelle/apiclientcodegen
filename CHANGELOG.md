@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update Microsoft Kiota dependencies to v1.15.2 [\#1041](https://github.com/christianhelle/apiclientcodegen/pull/1041) ([christianhelle](https://github.com/christianhelle))
 - Update AutoRestArgumentProvider.cs [\#1040](https://github.com/christianhelle/apiclientcodegen/pull/1040) ([tiagffborges](https://github.com/tiagffborges))
 - Update dependency cake.tool to v5 [\#1039](https://github.com/christianhelle/apiclientcodegen/pull/1039) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Polly to 8.5.0 [\#1037](https://github.com/christianhelle/apiclientcodegen/pull/1037) ([renovate[bot]](https://github.com/apps/renovate))
