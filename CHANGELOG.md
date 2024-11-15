@@ -7,6 +7,8 @@
 **Merged pull requests:**
 
 - Update AutoRestArgumentProvider.cs [\#1040](https://github.com/christianhelle/apiclientcodegen/pull/1040) ([tiagffborges](https://github.com/tiagffborges))
+- Update dependency cake.tool to v5 [\#1039](https://github.com/christianhelle/apiclientcodegen/pull/1039) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.5.0 [\#1037](https://github.com/christianhelle/apiclientcodegen/pull/1037) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.16.0](https://github.com/christianhelle/apiclientcodegen/tree/1.16.0) (2024-11-07)
 
