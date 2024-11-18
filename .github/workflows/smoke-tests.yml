@@ -28,7 +28,7 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-12, windows-latest, ubuntu-latest ]
+        os: [ macos-latest, windows-latest, ubuntu-latest ]
 
     name: C#
     runs-on: ${{ matrix.os }}
@@ -250,7 +250,7 @@ jobs:
     - name: Generate code with Kiota
       run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp kiota ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Kiota/Output.cs --no-logging
       working-directory: test
-      continue-on-error: ${{ matrix.os == 'macos-12' }}
+      continue-on-error: ${{ matrix.os == 'macos-latest' }}
 
     - name: Build Kiota generated code
       run: dotnet build ./GeneratedCode/Kiota/Kiota.sln
@@ -309,7 +309,7 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-12, windows-2022, ubuntu-latest ]
+        os: [ macos-latest, windows-2022, ubuntu-latest ]
 
     name: JMeter
     runs-on: ${{ matrix.os }}
@@ -351,7 +351,7 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-12, windows-2022, ubuntu-latest ]
+        os: [ macos-latest, windows-2022, ubuntu-latest ]
 
     name: TypeScript
     runs-on: ${{ matrix.os }}

@@ -25,7 +25,7 @@ jobs:
 
   build:
 
-    runs-on: macos-12
+    runs-on: macos-latest
     timeout-minutes: 10
 
     steps:
