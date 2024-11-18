@@ -16,7 +16,7 @@ namespace Rapicgen.Tests.Options
 
         [Xunit.Fact]
         public void JavaPath_Reads_From_Options()
-            => sut.JavaPath.Should().Be(PathProvider.GetJavaPath());
+            => sut.JavaPath.Should().Be(PathProvider.GetInstalledJavaPath());
 
         [Xunit.Fact]
         public void NpmPath_NotNullOrWhiteSpace()
