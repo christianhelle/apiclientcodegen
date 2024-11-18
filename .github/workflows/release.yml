@@ -85,7 +85,7 @@ jobs:
         & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest-vs2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
   
   VSMac:
-    runs-on: macos-12
+    runs-on: macos-latest
     timeout-minutes: 10
     steps:
     - uses: actions/checkout@v4

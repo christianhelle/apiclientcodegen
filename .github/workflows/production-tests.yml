@@ -16,7 +16,7 @@ jobs:
 
     name: C#
     runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ matrix.os == 'macos-10.15' || matrix.os == 'macos-11' || matrix.node == 12 }}
+    continue-on-error: ${{ matrix.os == 'macos-10.15' || matrix.os == 'macos-12' || matrix.node == 12 }}
     strategy:
       fail-fast: false
       matrix:
@@ -26,9 +26,9 @@ jobs:
         os: [          
           ubuntu-20.04,
           ubuntu-22.04,
-          macos-11,
           macos-12,
           macos-13,
+          macos-latest,
           windows-2019,
           windows-2022
         ]
@@ -252,8 +252,8 @@ jobs:
         os: [          
           ubuntu-20.04,
           ubuntu-22.04,
-          macos-11,
           macos-12,
+          macos-latest,
           windows-2019,
           windows-2022
         ]
@@ -304,8 +304,8 @@ jobs:
         os: [          
           ubuntu-20.04,
           ubuntu-22.04,
-          macos-11,
           macos-12,
+          macos-latest,
           windows-2019,
           windows-2022
         ]
