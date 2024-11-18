@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.16.0...HEAD)
 
+**Implemented enhancements:**
+
+- OpenAPI Generator v7.10.0 [\#1044](https://github.com/christianhelle/apiclientcodegen/pull/1044) ([christianhelle](https://github.com/christianhelle))
+
 **Merged pull requests:**
 
 - Update Microsoft Kiota dependencies to v1.15.2 [\#1041](https://github.com/christianhelle/apiclientcodegen/pull/1041) ([christianhelle](https://github.com/christianhelle))
