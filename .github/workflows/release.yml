@@ -82,46 +82,12 @@ jobs:
         $VsixPublisher = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
         & $VsixPublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
         & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
-        & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest-vs2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
-  
-  VSMac:
-    runs-on: macos-latest
-    timeout-minutes: 10
-    steps:
-    - uses: actions/checkout@v4
-    - name: Update Extension Version Info
-      run: |
-        sed -i -e 's/1.0/${{ env.VERSION }}/g' ./AddinInfo.cs
-        cat ./AddinInfo.cs
-      working-directory: src/VSMac/ApiClientCodeGen.VSMac/Properties
-    - name: Setup .NET versions
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 6.0.x
-    - name: Build
-      run: make
-      working-directory: src
-    - name: Archive binaries
-      run: zip -r VSMac-Binaries.zip .
-      working-directory: src/VSMac/ApiClientCodeGen.VSMac/bin/Release/
-    - name: Rename build output
-      run: mv *.mpack ApiClientCodeGenerator-VSMac2022-${{ env.VERSION }}.mpack
-      working-directory: src
-    - name: Publish artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: Visual Studio for Mac Extension
-        path: |
-          src/VSMac/ApiClientCodeGen.VSMac/bin/Release/VSMac-Binaries.zip
-          src/*.mpack
-          docs/VisualStudioForMac.md
-    
+        & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest-vs2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02' 
 
   Release:
     needs: [
       VSIX, 
-      CLI, 
-      VSMac
+      CLI
     ]
     runs-on: ubuntu-latest
     steps:
@@ -167,28 +133,9 @@ jobs:
         asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
         asset_name: ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
         asset_content_type: application/zip
-    - name: Upload VSMac asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: artifacts/Visual Studio for Mac Extension/src/ApiClientCodeGenerator-VSMac2022-${{ env.VERSION }}.mpack
-        asset_name: ApiClientCodeGenerator-VSMac2022-${{ env.VERSION }}.mpack
-        asset_content_type: application/zip
-    - uses: actions/checkout@v4
-      with:
-        repository: christianhelle/vsmac-extensions-repo
-        ref: 'main'
-        token:  ${{ secrets.ACTIONS_GITHUB_TOKEN }}
     - uses: actions/download-artifact@v4
       with:
         path: artifacts
-    - name: Move artifact to stable folder
-      run: |
-        mkdir -p stable
-        mv artifacts/Visual\ Studio\ for\ Mac\ Extension/src/ApiClientCodeGenerator-VSMac2022-${{ env.VERSION }}.mpack stable/ApiClientCodeGenerator.mpack
-        rm -rf artifacts
     - name: Git Commit Build Artifacts
       if: github.ref == 'refs/heads/master'
       run: |
