@@ -58,26 +58,6 @@ jobs:
     - name: Core Integration Test project
       run: dotnet test src/Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj -f net8.0
 
-  vsmac:
-
-    name: VS Mac Extension
-    runs-on: macos-latest
-    timeout-minutes: 30
-
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 3.1
-
-    - name: Core Test project
-      run: dotnet test src/Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj -f net8.0
-
-    - name: Core Integration Test project
-      run: dotnet test src/Core/ApiClientCodeGen.Core.IntegrationTests/ApiClientCodeGen.Core.IntegrationTests.csproj -f net8.0
-
   vsix:
 
     name: VSIX Extension
