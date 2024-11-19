@@ -6,10 +6,13 @@
 
 **Implemented enhancements:**
 
+- NSwag v14.2.0 [\#1048](https://github.com/christianhelle/apiclientcodegen/pull/1048) ([renovate[bot]](https://github.com/apps/renovate))
+- Remove Visual Studio for Mac support from Github Workflows [\#1046](https://github.com/christianhelle/apiclientcodegen/pull/1046) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.10.0 [\#1044](https://github.com/christianhelle/apiclientcodegen/pull/1044) ([christianhelle](https://github.com/christianhelle))
 
 **Merged pull requests:**
 
+- Update MacOS runner [\#1045](https://github.com/christianhelle/apiclientcodegen/pull/1045) ([christianhelle](https://github.com/christianhelle))
 - Update Microsoft Kiota dependencies to v1.15.2 [\#1041](https://github.com/christianhelle/apiclientcodegen/pull/1041) ([christianhelle](https://github.com/christianhelle))
 - Update AutoRestArgumentProvider.cs [\#1040](https://github.com/christianhelle/apiclientcodegen/pull/1040) ([tiagffborges](https://github.com/tiagffborges))
 - Update dependency cake.tool to v5 [\#1039](https://github.com/christianhelle/apiclientcodegen/pull/1039) ([renovate[bot]](https://github.com/apps/renovate))
