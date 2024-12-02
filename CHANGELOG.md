@@ -13,6 +13,7 @@
 
 **Merged pull requests:**
 
+- Update dependency FluentAssertions to v7 [\#1053](https://github.com/christianhelle/apiclientcodegen/pull/1053) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Xunit.SkippableFact to 1.5.23 [\#1052](https://github.com/christianhelle/apiclientcodegen/pull/1052) ([renovate[bot]](https://github.com/apps/renovate))
 - Update NSwag packages to v14.2.0 [\#1048](https://github.com/christianhelle/apiclientcodegen/pull/1048) ([renovate[bot]](https://github.com/apps/renovate))
 - Update vstest monorepo to 17.12.0 [\#1047](https://github.com/christianhelle/apiclientcodegen/pull/1047) ([renovate[bot]](https://github.com/apps/renovate))
