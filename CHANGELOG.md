@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Microsoft Kiota v1.21.0 [\#1054](https://github.com/christianhelle/apiclientcodegen/pull/1054) ([christianhelle](https://github.com/christianhelle))
 - NSwag v14.2.0 [\#1051](https://github.com/christianhelle/apiclientcodegen/pull/1051) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.4.1 [\#1050](https://github.com/christianhelle/apiclientcodegen/pull/1050) ([renovate[bot]](https://github.com/apps/renovate))
 - Remove Visual Studio for Mac support from Github Workflows [\#1046](https://github.com/christianhelle/apiclientcodegen/pull/1046) ([christianhelle](https://github.com/christianhelle))
