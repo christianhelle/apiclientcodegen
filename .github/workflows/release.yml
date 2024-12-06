@@ -136,11 +136,3 @@ jobs:
     - uses: actions/download-artifact@v4
       with:
         path: artifacts
-    - name: Git Commit Build Artifacts
-      if: github.ref == 'refs/heads/master'
-      run: |
-        git config --global user.name "Continuous Integration"
-        git config --global user.email "username@users.noreply.github.com"
-        git add stable/ApiClientCodeGenerator.mpack
-        git commit -m "Update stable .mpack file to version ${{ env.VERSION }}"
-        git push
