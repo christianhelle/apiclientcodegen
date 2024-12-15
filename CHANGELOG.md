@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.17.0...HEAD)
+
+**Implemented enhancements:**
+
+- Update Microsoft Kiota dependencies to v1.16.0 [\#1062](https://github.com/christianhelle/apiclientcodegen/pull/1062) ([christianhelle](https://github.com/christianhelle))
+
 ## [1.17.0](https://github.com/christianhelle/apiclientcodegen/tree/1.17.0) (2024-12-06)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.16.0...1.17.0)
