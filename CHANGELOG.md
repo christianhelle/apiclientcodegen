@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Update Kiota dependencies to v1.16.1 [\#1064](https://github.com/christianhelle/apiclientcodegen/pull/1064) ([christianhelle](https://github.com/christianhelle))
 - Update Microsoft Kiota dependencies to v1.16.0 [\#1062](https://github.com/christianhelle/apiclientcodegen/pull/1062) ([christianhelle](https://github.com/christianhelle))
 
 ## [1.17.0](https://github.com/christianhelle/apiclientcodegen/tree/1.17.0) (2024-12-06)
