@@ -9,6 +9,10 @@
 - Update Kiota dependencies to v1.16.1 [\#1064](https://github.com/christianhelle/apiclientcodegen/pull/1064) ([christianhelle](https://github.com/christianhelle))
 - Update Microsoft Kiota dependencies to v1.16.0 [\#1062](https://github.com/christianhelle/apiclientcodegen/pull/1062) ([christianhelle](https://github.com/christianhelle))
 
+**Merged pull requests:**
+
+- Update dependency coverlet.collector to 6.0.3 [\#1065](https://github.com/christianhelle/apiclientcodegen/pull/1065) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.17.0](https://github.com/christianhelle/apiclientcodegen/tree/1.17.0) (2024-12-06)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.16.0...1.17.0)
