@@ -12,6 +12,7 @@
 **Merged pull requests:**
 
 - Update dependency coverlet.collector to 6.0.3 [\#1065](https://github.com/christianhelle/apiclientcodegen/pull/1065) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency xunit.runner.visualstudio to v3 [\#1063](https://github.com/christianhelle/apiclientcodegen/pull/1063) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.17.0](https://github.com/christianhelle/apiclientcodegen/tree/1.17.0) (2024-12-06)
 
