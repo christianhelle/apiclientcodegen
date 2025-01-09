@@ -19,7 +19,6 @@
 [![NuGet](https://img.shields.io/nuget/dt/rapicgen.svg?style=flat-square&label=nuget)](http://www.nuget.org/packages/rapicgen)
 
 [![buymeacoffee](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://www.buymeacoffee.com/christianhelle)
-[![Join the chat at https://gitter.im/apiclientcodegen/community](https://badges.gitter.im/apiclientcodegen/community.svg)](https://gitter.im/apiclientcodegen/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # REST API Client Code Generator
 
