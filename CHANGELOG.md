@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- Update xunit-dotnet monorepo [\#1072](https://github.com/christianhelle/apiclientcodegen/pull/1072) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency coverlet.collector to 6.0.3 [\#1065](https://github.com/christianhelle/apiclientcodegen/pull/1065) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency xunit.runner.visualstudio to v3 [\#1063](https://github.com/christianhelle/apiclientcodegen/pull/1063) ([renovate[bot]](https://github.com/apps/renovate))
 
