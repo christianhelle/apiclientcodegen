@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.17.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.18.0...HEAD)
+
+**Merged pull requests:**
+
+- Update Kiota dependencies to v1.16.4 [\#1076](https://github.com/christianhelle/apiclientcodegen/pull/1076) ([christianhelle](https://github.com/christianhelle))
+
+## [1.18.0](https://github.com/christianhelle/apiclientcodegen/tree/1.18.0) (2025-01-10)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.17.0...1.18.0)
 
 **Implemented enhancements:**
 
