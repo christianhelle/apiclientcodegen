@@ -1,4 +1,4 @@
-﻿namespace ApiClientCodeGen.Tests.Common.Build.Projects
+namespace ApiClientCodeGen.Tests.Common.Build.Projects
 {
     public static class KiotaProjectFileContents
     {
@@ -9,12 +9,12 @@
                 <TargetFramework>net8.0</TargetFramework>
               </PropertyGroup>
               <ItemGroup>
-                <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.16.3" />
-                <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.16.3" />
-                <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.16.3" />
-                <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.16.3" />
-                <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.16.3" />
-                <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.16.3" />
+                <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.16.4" />
+                <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.16.4" />
+                <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.16.4" />
+                <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.16.4" />
+                <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.16.4" />
+                <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.16.4" />
               </ItemGroup>
             </Project>
             """;
@@ -26,12 +26,12 @@
                 <TargetFramework>netstandard2.1</TargetFramework>
               </PropertyGroup>
               <ItemGroup>
-                <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.16.3" />
-                <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.16.3" />
-                <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.16.3" />
-                <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.16.3" />
-                <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.16.3" />
-                <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.16.3" />
+                <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.16.4" />
+                <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.16.4" />
+                <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.16.4" />
+                <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.16.4" />
+                <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.16.4" />
+                <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.16.4" />
               </ItemGroup>
             </Project>
             """;
