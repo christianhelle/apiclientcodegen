@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.18.0...HEAD)
 
+**Implemented enhancements:**
+
+- Refitter v1.5.0 [\#1078](https://github.com/christianhelle/apiclientcodegen/pull/1078) ([renovate[bot]](https://github.com/apps/renovate))
+
 **Merged pull requests:**
 
 - Update dependency coverlet.collector to 6.0.4 [\#1079](https://github.com/christianhelle/apiclientcodegen/pull/1079) ([renovate[bot]](https://github.com/apps/renovate))
