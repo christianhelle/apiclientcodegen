@@ -7,6 +7,7 @@
 **Merged pull requests:**
 
 - Update dependency coverlet.collector to 6.0.4 [\#1079](https://github.com/christianhelle/apiclientcodegen/pull/1079) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency FluentAssertions to 7.1.0 [\#1077](https://github.com/christianhelle/apiclientcodegen/pull/1077) ([renovate[bot]](https://github.com/apps/renovate))
 - Update Kiota dependencies to v1.16.4 [\#1076](https://github.com/christianhelle/apiclientcodegen/pull/1076) ([christianhelle](https://github.com/christianhelle))
 
 ## [1.18.0](https://github.com/christianhelle/apiclientcodegen/tree/1.18.0) (2025-01-10)
