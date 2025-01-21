@@ -23,7 +23,11 @@ namespace Rapicgen.Windows
 
             foreach (var keyValuePair in existingHeaders)
                 bindingList.Add(
-                    new CustomHeader(keyValuePair.Key,keyValuePair.Value));
+                    new CustomHeader
+                    {
+                        Key = keyValuePair.Key,
+                        Value = keyValuePair.Value
+                    });
         }
 
         public IReadOnlyDictionary<string, string> CustomHeaders
@@ -31,10 +35,10 @@ namespace Rapicgen.Windows
                 .Where(c => !string.IsNullOrWhiteSpace(c.Key) && !string.IsNullOrWhiteSpace(c.Value))
                 .ToDictionary(k => k.Key, v => v.Value);
 
-        private sealed record CustomHeader(string Key, string Value)
+        private sealed class CustomHeader
         {
-            public string Key { get; } = Key;
-            public string Value { get; } = Value;
+            public string Key { get; set; }
+            public string Value { get; set; }
         }
     }
 }
