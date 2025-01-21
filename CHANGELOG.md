@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- OpenAPI Generator v7.11.0 [\#1080](https://github.com/christianhelle/apiclientcodegen/pull/1080) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.5.0 [\#1078](https://github.com/christianhelle/apiclientcodegen/pull/1078) ([renovate[bot]](https://github.com/apps/renovate))
 
 **Merged pull requests:**
