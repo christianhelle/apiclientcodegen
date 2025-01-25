@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Refitter v1.5.1 [\#1083](https://github.com/christianhelle/apiclientcodegen/pull/1083) ([christianhelle](https://github.com/christianhelle))
 - Fix non-editable HTTP headers Grid [\#1081](https://github.com/christianhelle/apiclientcodegen/pull/1081) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.11.0 [\#1080](https://github.com/christianhelle/apiclientcodegen/pull/1080) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.5.0 [\#1078](https://github.com/christianhelle/apiclientcodegen/pull/1078) ([renovate[bot]](https://github.com/apps/renovate))
