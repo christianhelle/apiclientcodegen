@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.18.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.19.0...HEAD)
+
+**Implemented enhancements:**
+
+- Refitter v1.5.2 [\#1085](https://github.com/christianhelle/apiclientcodegen/pull/1085) ([christianhelle](https://github.com/christianhelle))
+
+## [1.19.0](https://github.com/christianhelle/apiclientcodegen/tree/1.19.0) (2025-01-25)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.18.0...1.19.0)
 
 **Implemented enhancements:**
 
