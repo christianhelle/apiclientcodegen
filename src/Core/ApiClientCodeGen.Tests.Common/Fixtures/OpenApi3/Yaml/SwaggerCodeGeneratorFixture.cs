@@ -19,7 +19,7 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3.Yaml
         {
             ThrowNotSupportedOnUnix();
 
-            OptionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetJavaPath());
+            OptionsMock.Setup(c => c.NSwagPath).Returns(PathProvider.GetInstalledJavaPath());
 
             var codeGenerator = new SwaggerCSharpCodeGenerator(
                 Path.GetFullPath(SwaggerV3YamlFilename),
