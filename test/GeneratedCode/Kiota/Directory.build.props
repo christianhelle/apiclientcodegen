@@ -4,7 +4,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.16.4" />
-    <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.16.4" />
+    <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.17.1" />
     <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.16.4" />
     <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.16.4" />
     <PackageReference Include="Microsoft.Kiota.Serialization.Multipart" Version="1.16.4" />
