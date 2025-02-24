@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Microsoft Kiota v1.23.0 [\#1093](https://github.com/christianhelle/apiclientcodegen/pull/1093) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.5.2 [\#1085](https://github.com/christianhelle/apiclientcodegen/pull/1085) ([christianhelle](https://github.com/christianhelle))
 
 ## [1.19.0](https://github.com/christianhelle/apiclientcodegen/tree/1.19.0) (2025-01-25)
