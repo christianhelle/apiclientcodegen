@@ -9,6 +9,11 @@
 - Microsoft Kiota v1.23.0 [\#1093](https://github.com/christianhelle/apiclientcodegen/pull/1093) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.5.2 [\#1085](https://github.com/christianhelle/apiclientcodegen/pull/1085) ([christianhelle](https://github.com/christianhelle))
 
+**Merged pull requests:**
+
+- Update dependency FluentAssertions to 7.2.0 [\#1097](https://github.com/christianhelle/apiclientcodegen/pull/1097) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency xunit.runner.visualstudio to 3.0.2 [\#1095](https://github.com/christianhelle/apiclientcodegen/pull/1095) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.19.0](https://github.com/christianhelle/apiclientcodegen/tree/1.19.0) (2025-01-25)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.18.0...1.19.0)
