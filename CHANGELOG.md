@@ -12,6 +12,7 @@
 **Merged pull requests:**
 
 - Update vstest monorepo to 17.13.0 [\#1100](https://github.com/christianhelle/apiclientcodegen/pull/1100) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Microsoft.ApplicationInsights.WindowsServer to 2.23.0 [\#1098](https://github.com/christianhelle/apiclientcodegen/pull/1098) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency FluentAssertions to 7.2.0 [\#1097](https://github.com/christianhelle/apiclientcodegen/pull/1097) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Azure.Core to 1.45.0 [\#1096](https://github.com/christianhelle/apiclientcodegen/pull/1096) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency xunit.runner.visualstudio to 3.0.2 [\#1095](https://github.com/christianhelle/apiclientcodegen/pull/1095) ([renovate[bot]](https://github.com/apps/renovate))
