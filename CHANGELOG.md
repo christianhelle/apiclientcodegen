@@ -17,6 +17,7 @@
 - Update dependency Azure.Core to 1.45.0 [\#1096](https://github.com/christianhelle/apiclientcodegen/pull/1096) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency xunit.runner.visualstudio to 3.0.2 [\#1095](https://github.com/christianhelle/apiclientcodegen/pull/1095) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency ICSharpCode.CodeConverter to 9.2.7.792 [\#1094](https://github.com/christianhelle/apiclientcodegen/pull/1094) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.5.2 [\#1086](https://github.com/christianhelle/apiclientcodegen/pull/1086) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency dotnet-sdk to v6.0.428 [\#1042](https://github.com/christianhelle/apiclientcodegen/pull/1042) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency NuGet.VisualStudio to 17.13.1 [\#964](https://github.com/christianhelle/apiclientcodegen/pull/964) ([renovate[bot]](https://github.com/apps/renovate))
 
