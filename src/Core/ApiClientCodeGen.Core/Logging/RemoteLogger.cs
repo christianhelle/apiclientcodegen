@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -29,12 +30,14 @@ namespace Rapicgen.Core.Logging
         {
             foreach (var logger in Loggers)
                 logger.TrackFeatureUsage(featureName, DefaultTags.Union(tags).ToArray());
+            Trace.WriteLine($"Feature: {featureName}");
         }
 
         public void TrackError(Exception exception)
         {
             foreach (var logger in Loggers)
                 logger.TrackError(exception);
+            Trace.WriteLine($"Error: {exception.Message}");
         }
 
         public void TrackDependency(
@@ -45,12 +48,8 @@ namespace Rapicgen.Core.Logging
             bool success = false)
         {
             foreach (var logger in Loggers)
-                logger.TrackDependency(
-                    dependencyName,
-                    data,
-                    startTime,
-                    duration,
-                    success);
+                logger.TrackDependency(dependencyName, data, startTime, duration, success);
+            Trace.WriteLine($"Dependency: {dependencyName}");
         }
 
         public void Disable()
@@ -63,6 +62,7 @@ namespace Rapicgen.Core.Logging
         {
             foreach (var logger in Loggers)
                 logger.WriteLine(data);
+            Trace.WriteLine(data);
         }
     }
 }
