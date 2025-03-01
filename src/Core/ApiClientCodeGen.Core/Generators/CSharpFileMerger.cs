@@ -79,20 +79,23 @@ namespace Rapicgen.Core.Generators
             }
         }
 
-        private static string GenerateCombinedSource(IEnumerable<string> namespaces, IEnumerable<string> files)
+        private static string GenerateCombinedSource(
+            IEnumerable<string> namespaces,
+            IEnumerable<string> files)
         {
+            const string usingTag = "using ";
+            const string assemblyTag = "[assembly: ";
+
             //
             // NOTE:
             // Swagger Codegen CLI 3.0.14 has a bug where the -DapiTests=false and -DmodelTests=false are not respected
             // Because of this we need to exclude the generated unit test files and the NUnit.* namespaces
             //
-
             var sb = new StringBuilder();
             foreach (var ns in namespaces.Where(c => !c.Contains("NUnit")).OrderBy(s => s))
-                sb.AppendLine("using " + ns + ";");
+                sb.AppendLine(usingTag + ns + ";");
             sb.AppendLine();
 
-            const string openingTag = "using ";
             foreach (var file in files.Where(c => !c.EndsWith("tests.cs", StringComparison.OrdinalIgnoreCase)))
             {
                 var sourceLines = File.ReadAllLines(file);
@@ -102,11 +105,12 @@ namespace Rapicgen.Core.Generators
                         continue;
 
                     var trimmedLine = sourceLine.Trim().Replace("  ", " ");
-                    var isUsingDir = trimmedLine.StartsWith(openingTag) &&
+                    var writeLine = trimmedLine.StartsWith(usingTag) &&
                                      !trimmedLine.Contains(" var ") &&
-                                     trimmedLine.EndsWith(";");
+                                     trimmedLine.EndsWith(";") ||
+                                     trimmedLine.StartsWith(assemblyTag);
 
-                    if (!isUsingDir)
+                    if (!writeLine)
                         sb.AppendLine(sourceLine);
                 }
 
@@ -157,6 +161,31 @@ namespace Rapicgen.Core.Generators
                         continue;
 
                     var name = line.Substring(namespaceStartIndex, line.Length - namespaceStartIndex - 1);
+                    if (!names.Contains(name))
+                        names.Add(name);
+                }
+            }
+
+            return names;
+        }
+
+        private static IEnumerable<string> GetAssemblyAttributes(IEnumerable<string> files)
+        {
+            var names = new List<string>();
+            const string openingTag = "[assembly: ";
+            const int assemblyStartIndex = 11;
+
+            foreach (var file in files)
+            {
+                IEnumerable<string> sourceLines = File.ReadAllLines(file);
+
+                foreach (var sourceLine in sourceLines)
+                {
+                    var line = sourceLine.Trim().Replace("  ", " ");
+                    if (!line.StartsWith(openingTag))
+                        continue;
+
+                    var name = line.Substring(assemblyStartIndex, line.Length - assemblyStartIndex - 1);
                     if (!names.Contains(name))
                         names.Add(name);
                 }
