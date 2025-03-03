@@ -12,7 +12,7 @@
     <PackageReference Include = ""Microsoft.Extensions.Hosting"" Version=""5.0.0"" />
     <PackageReference Include = ""Microsoft.Extensions.Http.Polly"" Version=""5.0.1"" />
     <PackageReference Include = ""System.Threading.Channels"" Version=""8.0.0"" />
-    <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
+    <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""5.0.0"" />
   </ItemGroup>
 </Project>";
 
@@ -27,7 +27,7 @@
     <PackageReference Include = ""Microsoft.Extensions.Hosting"" Version=""5.0.0"" />
     <PackageReference Include = ""Microsoft.Extensions.Http.Polly"" Version=""5.0.1"" />
     <PackageReference Include = ""System.Threading.Channels"" Version=""8.0.0"" />
-    <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
+    <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""5.0.0"" />
   </ItemGroup>
 </Project>";
 
@@ -54,7 +54,7 @@
     <PackageReference Include = ""Microsoft.Extensions.Hosting"" Version=""5.0.0"" />
     <PackageReference Include = ""Microsoft.Extensions.Http.Polly"" Version=""5.0.1"" />
     <PackageReference Include = ""System.Threading.Channels"" Version=""8.0.0"" />
-    <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
+    <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""5.0.0"" />
   </ItemGroup>
 </Project>";
     }
