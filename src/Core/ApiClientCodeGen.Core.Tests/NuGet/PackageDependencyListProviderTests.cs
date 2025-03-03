@@ -119,27 +119,27 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
 
         [Xunit.Fact]
         public void GetDependencies_Swagger_Contains_MicrosoftCSharp()
-            => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
+            => sut.GetDependencies(SupportedCodeGenerator.Swagger)
                 .Should()
                 .Contain(PackageDependencies.MicrosoftCSharp);
 
         [Xunit.Fact]
-        public void GetDependencies_OpenApi_Contains_RestSharpLatest()
+        public void GetDependencies_OpenApi_Contains_MicrosoftExtensionsHttp()
             => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
                 .Should()
-                .Contain(PackageDependencies.RestSharpLatest);
+                .Contain(PackageDependencies.MicrosoftExtensionsHttp);
 
         [Xunit.Fact]
-        public void GetDependencies_OpenApi_Contains_JsonSubTypesLatest()
+        public void GetDependencies_OpenApi_Contains_MicrosoftExtensionsHosting()
             => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
                 .Should()
-                .Contain(PackageDependencies.JsonSubTypesLatest);
+                .Contain(PackageDependencies.MicrosoftExtensionsHosting);
 
         [Xunit.Fact]
-        public void GetDependencies_OpenApi_Contains_SystemRuntimeSerializationPrimitives()
+        public void GetDependencies_OpenApi_Contains_MicrosoftExtensionsHttpPolly()
             => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
                 .Should()
-                .Contain(PackageDependencies.SystemRuntimeSerializationPrimitives);
+                .Contain(PackageDependencies.MicrosoftExtensionsHttpPolly);
 
         [Xunit.Fact]
         public void GetDependencies_OpenApi_Contains_SystemComponentModelAnnotations()
@@ -148,10 +148,10 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
                 .Contain(PackageDependencies.SystemComponentModelAnnotations);
 
         [Xunit.Fact]
-        public void GetDependencies_OpenApi_Contains_MicrosoftCSharp()
+        public void GetDependencies_OpenApi_Contains_SystemThreadingChannels()
             => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
                 .Should()
-                .Contain(PackageDependencies.MicrosoftCSharp);
+                .Contain(PackageDependencies.SystemThreadingChannels);
 
         [Xunit.Fact]
         public void GetDependencies_AutoRestV3_Contains_RestClientRuntime()

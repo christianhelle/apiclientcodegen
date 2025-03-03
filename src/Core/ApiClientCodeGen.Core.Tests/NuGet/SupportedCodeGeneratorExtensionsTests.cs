@@ -78,18 +78,39 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
                 .Contain(c => c.Name == "JsonSubTypes");
 
         [Xunit.Fact]
-        public void GetDependencies_OpenApi_Contains_RestSharp()
+        public void GetDependencies_OpenApi_Contains_MicrosoftExtensionsHosting()
             => SupportedCodeGenerator.OpenApi
                 .GetDependencies()
                 .Should()
-                .Contain(c => c.Name == "RestSharp");
+                .Contain(c => c.Name == "Microsoft.Extensions.Hosting");
 
         [Xunit.Fact]
-        public void GetDependencies_OpenApi_Contains_JsonSubTypes()
+        public void GetDependencies_OpenApi_Contains_MicrosoftExtensionsHttp()
             => SupportedCodeGenerator.OpenApi
                 .GetDependencies()
                 .Should()
-                .Contain(c => c.Name == "JsonSubTypes");
+                .Contain(c => c.Name == "Microsoft.Extensions.Http");
+
+        [Xunit.Fact]
+        public void GetDependencies_OpenApi_Contains_MicrosoftExtensionsHttpPolly()
+            => SupportedCodeGenerator.OpenApi
+                .GetDependencies()
+                .Should()
+                .Contain(c => c.Name == "Microsoft.Extensions.Http.Polly");
+
+        [Xunit.Fact]
+        public void GetDependencies_OpenApi_Contains_SystemThreadingChannels()
+            => SupportedCodeGenerator.OpenApi
+                .GetDependencies()
+                .Should()
+                .Contain(c => c.Name == "System.Threading.Channels");
+
+        [Xunit.Fact]
+        public void GetDependencies_OpenApi_Contains_SystemComponentModelAnnotations()
+            => SupportedCodeGenerator.OpenApi
+                .GetDependencies()
+                .Should()
+                .Contain(c => c.Name == "System.ComponentModel.Annotations");
         
         [Xunit.Fact]
         public void GetDependencies_Refitter_Returns_NotEmpty()
