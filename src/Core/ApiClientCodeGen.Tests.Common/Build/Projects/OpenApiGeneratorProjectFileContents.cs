@@ -47,6 +47,7 @@
     <Reference Include=""System.Data"" />
     <Reference Include=""System.Net.Http"" />
     <Reference Include=""System.Xml"" />
+    <Reference Include=""System.Web"" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include = ""JsonSubTypes"" Version=""2.0.1"" />
@@ -58,3 +59,4 @@
 </Project>";
     }
 }
+
