@@ -131,7 +131,11 @@ namespace Rapicgen.CLI.Commands.CSharp
             ShortName = "config",
             LongName = "use-configuration-file",
             Description = "Use the configuration file if present.")]
-        public bool UseConfigurationFile { get; set; }
+        public bool UseConfigurationFile 
+        {
+            get => openApiGeneratorOptions.UseConfigurationFile;
+            set => openApiGeneratorOptions.UseConfigurationFile = value;
+        }
 
         [Option(
             ShortName = "m",

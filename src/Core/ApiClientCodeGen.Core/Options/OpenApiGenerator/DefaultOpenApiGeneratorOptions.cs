@@ -23,7 +23,7 @@ namespace Rapicgen.Core.Options.OpenApiGenerator
 
         public string? TemplatesPath { get; set; }
 
-        public bool UseConfigurationFile { get; set; } = true;
+        public bool UseConfigurationFile { get; set; } = false;
 
         public bool GenerateMultipleFiles { get; set; }
     }
