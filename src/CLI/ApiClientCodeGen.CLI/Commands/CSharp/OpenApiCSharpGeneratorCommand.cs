@@ -9,7 +9,7 @@ using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace Rapicgen.CLI.Commands.CSharp
 {
-    [Command("openapi", Description = "OpenAPI Generator (v7.11.0)")]
+    [Command("openapi", Description = "OpenAPI Generator (v7.12.0)")]
     public class OpenApiCSharpGeneratorCommand : CodeGeneratorCommand, IOpenApiGeneratorOptions
     {
         private readonly IGeneralOptions options;
@@ -131,7 +131,11 @@ namespace Rapicgen.CLI.Commands.CSharp
             ShortName = "config",
             LongName = "use-configuration-file",
             Description = "Use the configuration file if present.")]
-        public bool UseConfigurationFile { get; set; }
+        public bool UseConfigurationFile 
+        {
+            get => openApiGeneratorOptions.UseConfigurationFile;
+            set => openApiGeneratorOptions.UseConfigurationFile = value;
+        }
 
         [Option(
             ShortName = "m",

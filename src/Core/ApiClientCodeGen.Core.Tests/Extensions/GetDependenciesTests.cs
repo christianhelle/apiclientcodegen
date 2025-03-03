@@ -35,7 +35,7 @@ namespace ApiClientCodeGen.Core.Tests.Extensions
         public void GetDependencies_OpenApi()
             => SupportedCodeGenerator.OpenApi
                 .GetDependencies()
-                .Any(c => c.Name == "RestSharp" || c.Name == "JsonSubTypes")
+                .Any(c => c.Name == "Microsoft.Extensions.Http" || c.Name == "Microsoft.Extensions.Hosting" || c.Name == "Microsoft.Extensions.Http.Polly" || c.Name == "System.Threading.Channels" || c.Name == "System.ComponentModel.Annotations")
                 .Should()
                 .BeTrue();
     }

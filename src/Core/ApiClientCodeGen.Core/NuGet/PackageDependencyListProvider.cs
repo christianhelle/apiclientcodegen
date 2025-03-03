@@ -53,13 +53,11 @@ namespace Rapicgen.Core.NuGet
                 case SupportedCodeGenerator.OpenApi:
                     list.AddRange(new[]
                     {
-                        PackageDependencies.Polly,
-                        PackageDependencies.RestSharpLatest,
-                        PackageDependencies.JsonSubTypesLatest,
-                        PackageDependencies.NewtonsoftJson,
-                        PackageDependencies.SystemRuntimeSerializationPrimitives,
+                        PackageDependencies.MicrosoftExtensionsHttp,
+                        PackageDependencies.MicrosoftExtensionsHosting,
+                        PackageDependencies.MicrosoftExtensionsHttpPolly,
+                        PackageDependencies.SystemThreadingChannels,
                         PackageDependencies.SystemComponentModelAnnotations,
-                        PackageDependencies.MicrosoftCSharp
                     });
                     break;
 

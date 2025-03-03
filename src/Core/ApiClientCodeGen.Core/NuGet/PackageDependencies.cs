@@ -112,5 +112,25 @@ namespace Rapicgen.Core.NuGet
             new PackageDependency(
                 "Refit",
                 "8.0.0");
+        
+        public static readonly PackageDependency MicrosoftExtensionsHttp =
+            new PackageDependency(
+                "Microsoft.Extensions.Http",
+                "5.0.0");
+        
+        public static readonly PackageDependency MicrosoftExtensionsHosting =
+            new PackageDependency(
+                "Microsoft.Extensions.Hosting",
+                "5.0.0");
+        
+        public static readonly PackageDependency MicrosoftExtensionsHttpPolly =
+            new PackageDependency(
+                "Microsoft.Extensions.Http.Polly",
+                "5.0.1");
+        
+        public static readonly PackageDependency SystemThreadingChannels =
+            new PackageDependency(
+                "System.Threading.Channels",
+                "8.0.0");
     }
 }
