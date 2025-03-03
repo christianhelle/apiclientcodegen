@@ -8,11 +8,11 @@
     <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include = ""JsonSubTypes"" Version=""2.0.1"" />
-    <PackageReference Include = ""RestSharp"" Version=""112.0.0"" />
-    <PackageReference Include = ""Polly"" Version=""8.5.2"" />
+    <PackageReference Include = ""Microsoft.Extensions.Http"" Version=""5.0.0"" />
+    <PackageReference Include = ""Microsoft.Extensions.Hosting"" Version=""5.0.0"" />
+    <PackageReference Include = ""Microsoft.Extensions.Http.Polly"" Version=""5.0.1"" />
+    <PackageReference Include = ""System.Threading.Channels"" Version=""8.0.0"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
-    <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
   </ItemGroup>
 </Project>";
 
@@ -23,11 +23,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include = ""JsonSubTypes"" Version=""2.0.1"" />
-    <PackageReference Include = ""RestSharp"" Version=""112.0.0"" />
-    <PackageReference Include = ""Polly"" Version=""8.5.2"" />
+    <PackageReference Include = ""Microsoft.Extensions.Http"" Version=""5.0.0"" />
+    <PackageReference Include = ""Microsoft.Extensions.Hosting"" Version=""5.0.0"" />
+    <PackageReference Include = ""Microsoft.Extensions.Http.Polly"" Version=""5.0.1"" />
+    <PackageReference Include = ""System.Threading.Channels"" Version=""8.0.0"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
-    <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
   </ItemGroup>
 </Project>";
 
@@ -50,11 +50,11 @@
     <Reference Include=""System.Web"" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include = ""JsonSubTypes"" Version=""2.0.1"" />
-    <PackageReference Include = ""RestSharp"" Version=""112.0.0"" />
-    <PackageReference Include = ""Polly"" Version=""8.5.2"" />
+    <PackageReference Include = ""Microsoft.Extensions.Http"" Version=""5.0.0"" />
+    <PackageReference Include = ""Microsoft.Extensions.Hosting"" Version=""5.0.0"" />
+    <PackageReference Include = ""Microsoft.Extensions.Http.Polly"" Version=""5.0.1"" />
+    <PackageReference Include = ""System.Threading.Channels"" Version=""8.0.0"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
-    <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
   </ItemGroup>
 </Project>";
     }
