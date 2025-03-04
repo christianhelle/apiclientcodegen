@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
@@ -60,6 +60,173 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\server\jvm.dll">
+      <Link>JRE\bin\server\jvm.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\policy\README.txt">
+      <Link>JRE\conf\security\policy\README.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\classlist">
+      <Link>JRE\lib\classlist</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\fontconfig.bfc">
+      <Link>JRE\lib\fontconfig.bfc</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\fontconfig.properties.src">
+      <Link>JRE\lib\fontconfig.properties.src</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\jawt.lib">
+      <Link>JRE\lib\jawt.lib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\jvm.cfg">
+      <Link>JRE\lib\jvm.cfg</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\jvm.lib">
+      <Link>JRE\lib\jvm.lib</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\modules">
+      <Link>JRE\lib\modules</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\psfont.properties.ja">
+      <Link>JRE\lib\psfont.properties.ja</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\psfontj2d.properties">
+      <Link>JRE\lib\psfontj2d.properties</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\tzdb.dat">
+      <Link>JRE\lib\tzdb.dat</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\tzmappings">
+      <Link>JRE\lib\tzmappings</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\server\classes.jsa">
+      <Link>JRE\bin\server\classes.jsa</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\server\classes_nocoops.jsa">
+      <Link>JRE\bin\server\classes_nocoops.jsa</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\jfr\default.jfc">
+      <Link>JRE\lib\jfr\default.jfc</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\jfr\profile.jfc">
+      <Link>JRE\lib\jfr\profile.jfc</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\security\blocked.certs">
+      <Link>JRE\lib\security\blocked.certs</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\security\cacerts">
+      <Link>JRE\lib\security\cacerts</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\security\default.policy">
+      <Link>JRE\lib\security\default.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\security\public_suffix_list.dat">
+      <Link>JRE\lib\security\public_suffix_list.dat</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\jaxp.properties">
+      <Link>JRE\conf\jaxp.properties</Link>
+    </None>
+    <None Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\logging.properties">
+      <Link>JRE\conf\logging.properties</Link>
+    </None>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\management\jmxremote.access">
+      <Link>JRE\conf\management\jmxremote.access</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\management\jmxremote.password.template">
+      <Link>JRE\conf\management\jmxremote.password.template</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\management\management.properties">
+      <Link>JRE\conf\management\management.properties</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\net.properties">
+      <Link>JRE\conf\net.properties</Link>
+    </None>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\java.policy">
+      <Link>JRE\conf\security\java.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\java.security">
+      <Link>JRE\conf\security\java.security</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\policy\limited\default_local.policy">
+      <Link>JRE\conf\security\policy\limited\default_local.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\policy\limited\default_US_export.policy">
+      <Link>JRE\conf\security\policy\limited\default_US_export.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\policy\limited\exempt_local.policy">
+      <Link>JRE\conf\security\policy\limited\exempt_local.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\policy\unlimited\default_local.policy">
+      <Link>JRE\conf\security\policy\unlimited\default_local.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\security\policy\unlimited\default_US_export.policy">
+      <Link>JRE\conf\security\policy\unlimited\default_US_export.policy</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <None Include="..\..\..\java\jdk-21.0.3+9-jre-windows\conf\sound.properties">
+      <Link>JRE\conf\sound.properties</Link>
+    </None>
     <None Include="app.config" />
     <None Include="Key.snk" />
     <None Include="source.extension.vsixmanifest">
@@ -85,6 +252,486 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-console-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-console-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-console-l1-2-0.dll">
+      <Link>JRE\bin\api-ms-win-core-console-l1-2-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-datetime-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-datetime-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-debug-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-debug-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-errorhandling-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-errorhandling-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-fibers-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-fibers-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-file-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-file-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-file-l1-2-0.dll">
+      <Link>JRE\bin\api-ms-win-core-file-l1-2-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-file-l2-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-file-l2-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-handle-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-handle-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-heap-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-heap-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-interlocked-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-interlocked-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-libraryloader-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-libraryloader-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-localization-l1-2-0.dll">
+      <Link>JRE\bin\api-ms-win-core-localization-l1-2-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-memory-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-memory-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-namedpipe-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-namedpipe-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-processenvironment-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-processenvironment-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-processthreads-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-processthreads-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-processthreads-l1-1-1.dll">
+      <Link>JRE\bin\api-ms-win-core-processthreads-l1-1-1.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-profile-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-profile-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-rtlsupport-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-rtlsupport-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-string-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-string-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-synch-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-synch-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-synch-l1-2-0.dll">
+      <Link>JRE\bin\api-ms-win-core-synch-l1-2-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-sysinfo-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-sysinfo-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-timezone-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-timezone-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-core-util-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-core-util-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-conio-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-conio-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-convert-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-convert-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-environment-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-environment-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-filesystem-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-filesystem-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-heap-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-heap-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-locale-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-locale-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-math-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-math-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-multibyte-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-multibyte-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-private-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-private-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-process-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-process-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-runtime-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-runtime-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-stdio-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-stdio-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-string-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-string-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-time-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-time-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\api-ms-win-crt-utility-l1-1-0.dll">
+      <Link>JRE\bin\api-ms-win-crt-utility-l1-1-0.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\awt.dll">
+      <Link>JRE\bin\awt.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\dt_socket.dll">
+      <Link>JRE\bin\dt_socket.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\extnet.dll">
+      <Link>JRE\bin\extnet.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\fontmanager.dll">
+      <Link>JRE\bin\fontmanager.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\freetype.dll">
+      <Link>JRE\bin\freetype.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\instrument.dll">
+      <Link>JRE\bin\instrument.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\j2gss.dll">
+      <Link>JRE\bin\j2gss.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\j2pcsc.dll">
+      <Link>JRE\bin\j2pcsc.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\j2pkcs11.dll">
+      <Link>JRE\bin\j2pkcs11.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\jaas.dll">
+      <Link>JRE\bin\jaas.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\jabswitch.exe">
+      <Link>JRE\bin\jabswitch.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\jaccessinspector.exe">
+      <Link>JRE\bin\jaccessinspector.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\jaccesswalker.exe">
+      <Link>JRE\bin\jaccesswalker.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\java.dll">
+      <Link>JRE\bin\java.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\java.exe">
+      <Link>JRE\bin\java.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\javaaccessbridge.dll">
+      <Link>JRE\bin\javaaccessbridge.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\javajpeg.dll">
+      <Link>JRE\bin\javajpeg.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\javaw.exe">
+      <Link>JRE\bin\javaw.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\jawt.dll">
+      <Link>JRE\bin\jawt.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\jdwp.dll">
+      <Link>JRE\bin\jdwp.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\jfr.exe">
+      <Link>JRE\bin\jfr.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\jimage.dll">
+      <Link>JRE\bin\jimage.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\jli.dll">
+      <Link>JRE\bin\jli.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\jrunscript.exe">
+      <Link>JRE\bin\jrunscript.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\jsound.dll">
+      <Link>JRE\bin\jsound.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\jsvml.dll">
+      <Link>JRE\bin\jsvml.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\jwebserver.exe">
+      <Link>JRE\bin\jwebserver.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\keytool.exe">
+      <Link>JRE\bin\keytool.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\kinit.exe">
+      <Link>JRE\bin\kinit.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\klist.exe">
+      <Link>JRE\bin\klist.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\ktab.exe">
+      <Link>JRE\bin\ktab.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\lcms.dll">
+      <Link>JRE\bin\lcms.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\management.dll">
+      <Link>JRE\bin\management.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\management_agent.dll">
+      <Link>JRE\bin\management_agent.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\management_ext.dll">
+      <Link>JRE\bin\management_ext.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\mlib_image.dll">
+      <Link>JRE\bin\mlib_image.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\msvcp140.dll">
+      <Link>JRE\bin\msvcp140.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\net.dll">
+      <Link>JRE\bin\net.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\nio.dll">
+      <Link>JRE\bin\nio.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\prefs.dll">
+      <Link>JRE\bin\prefs.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\rmi.dll">
+      <Link>JRE\bin\rmi.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\rmiregistry.exe">
+      <Link>JRE\bin\rmiregistry.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\splashscreen.dll">
+      <Link>JRE\bin\splashscreen.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\sspi_bridge.dll">
+      <Link>JRE\bin\sspi_bridge.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\sunmscapi.dll">
+      <Link>JRE\bin\sunmscapi.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\syslookup.dll">
+      <Link>JRE\bin\syslookup.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\ucrtbase.dll">
+      <Link>JRE\bin\ucrtbase.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\vcruntime140.dll">
+      <Link>JRE\bin\vcruntime140.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\vcruntime140_1.dll">
+      <Link>JRE\bin\vcruntime140_1.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\verify.dll">
+      <Link>JRE\bin\verify.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\w2k_lsa_auth.dll">
+      <Link>JRE\bin\w2k_lsa_auth.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\windowsaccessbridge-64.dll">
+      <Link>JRE\bin\windowsaccessbridge-64.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\bin\zip.dll">
+      <Link>JRE\bin\zip.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
+    <Content Include="..\..\..\java\jdk-21.0.3+9-jre-windows\lib\jrt-fs.jar">
+      <Link>JRE\lib\jrt-fs.jar</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="License.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
