@@ -2,7 +2,16 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.19.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.20.0...HEAD)
+
+**Implemented enhancements:**
+
+- Fallback to using included OpenJDK if JAVA\_HOME doesn't exist [\#1103](https://github.com/christianhelle/apiclientcodegen/pull/1103) ([christianhelle](https://github.com/christianhelle))
+- Include the OpenJDK Java Runtime in VSIX package [\#887](https://github.com/christianhelle/apiclientcodegen/pull/887) ([christianhelle](https://github.com/christianhelle))
+
+## [1.20.0](https://github.com/christianhelle/apiclientcodegen/tree/1.20.0) (2025-03-03)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.19.0...1.20.0)
 
 **Implemented enhancements:**
 
