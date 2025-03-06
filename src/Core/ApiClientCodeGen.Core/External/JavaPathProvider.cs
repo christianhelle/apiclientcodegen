@@ -40,6 +40,10 @@ namespace Rapicgen.Core.External
             if (CheckJavaVersion("java"))
                 return "java";
 
+            javaPath = PathProvider.GetIncludedJavaPath();
+            if (CheckJavaVersion(javaPath))
+                return javaPath;
+
             throw new MissingJavaRuntimeException("Unable to find Java executable");
         }
 
