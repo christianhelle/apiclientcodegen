@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Microsoft Kiota v1.24.0 [\#1104](https://github.com/christianhelle/apiclientcodegen/pull/1104) ([christianhelle](https://github.com/christianhelle))
 - Fallback to using included OpenJDK if JAVA\_HOME doesn't exist [\#1103](https://github.com/christianhelle/apiclientcodegen/pull/1103) ([christianhelle](https://github.com/christianhelle))
 - Include the OpenJDK Java Runtime in VSIX package [\#887](https://github.com/christianhelle/apiclientcodegen/pull/887) ([christianhelle](https://github.com/christianhelle))
 
