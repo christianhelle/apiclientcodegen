@@ -13,5 +13,6 @@
         string? TemplatesPath { get; set; }
         bool UseConfigurationFile { get; set; }
         bool GenerateMultipleFiles { get; set; }
+        string? HttpUserAgent { get; set; }
     }
 }

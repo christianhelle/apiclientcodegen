@@ -147,6 +147,17 @@ namespace Rapicgen.CLI.Commands.CSharp
             set => openApiGeneratorOptions.GenerateMultipleFiles = value;
         }
 
+        [Option(
+            ShortName = "hta",
+            LongName = "http-user-agent",
+            Description = "HTTP user agent to set in the client code".)]
+        public string? HttpUserAgent
+        {
+            get => openApiGeneratorOptions.HttpUserAgent;
+            set => openApiGeneratorOptions.HttpUserAgent = value;
+        }
+
+
         public override ICodeGenerator CreateGenerator()
             => cSharpGeneratorFactory.Create(
                 SwaggerFile,

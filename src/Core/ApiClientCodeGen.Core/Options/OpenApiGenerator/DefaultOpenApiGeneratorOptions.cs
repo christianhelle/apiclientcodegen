@@ -26,5 +26,8 @@ namespace Rapicgen.Core.Options.OpenApiGenerator
         public bool UseConfigurationFile { get; set; } = false;
 
         public bool GenerateMultipleFiles { get; set; }
+
+        public string? HttpUserAgent { get; set; }
     }
 }
+

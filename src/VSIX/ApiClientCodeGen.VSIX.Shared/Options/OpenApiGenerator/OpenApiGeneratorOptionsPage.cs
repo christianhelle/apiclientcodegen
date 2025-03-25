@@ -69,5 +69,10 @@ namespace Rapicgen.Options.OpenApiGenerator
         [DisplayName("Generate Multiple Files")]
         [Description("Generate multiple files for each operation. This only works for SDK style projects")]
         public bool GenerateMultipleFiles { get; set; }
+
+        [Category(Name)]
+        [DisplayName("Custom HTTP User-Agent")]
+        [Description("Sets the User-Agent header value to be sent in the HTTP request.")]
+        public string? HttpUserAgent { get; set; }
     }
 }
