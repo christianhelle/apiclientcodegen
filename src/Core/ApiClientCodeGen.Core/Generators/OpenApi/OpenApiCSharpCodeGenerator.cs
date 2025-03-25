@@ -75,6 +75,11 @@ namespace Rapicgen.Core.Generators.OpenApi
                             $"--global-property skipFormModel={openApiGeneratorOptions.SkipFormModel} " +
                             "--skip-overwrite ";
 
+                if (!string.IsNullOrWhiteSpace(openApiGeneratorOptions.HttpUserAgent))
+                {
+                    arguments += $"--http-user-agent \"{openApiGeneratorOptions.HttpUserAgent}\" ";
+                }
+
                 if (openApiGeneratorOptions.UseConfigurationFile)
                 {
                     var extension = Path.GetExtension(swaggerFile);
