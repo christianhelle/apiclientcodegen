@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.20.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.21.0...HEAD)
+
+**Merged pull requests:**
+
+- NSwag v14.3.0 [\#1107](https://github.com/christianhelle/apiclientcodegen/pull/1107) ([christianhelle](https://github.com/christianhelle))
+
+## [1.21.0](https://github.com/christianhelle/apiclientcodegen/tree/1.21.0) (2025-03-13)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.20.0...1.21.0)
 
 **Implemented enhancements:**
 
