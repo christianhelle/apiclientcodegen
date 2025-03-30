@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.21.0...HEAD)
 
+**Implemented enhancements:**
+
+- Refitter v1.5.3 [\#1108](https://github.com/christianhelle/apiclientcodegen/pull/1108) ([renovate[bot]](https://github.com/apps/renovate))
+
 **Merged pull requests:**
 
 - NSwag v14.3.0 [\#1107](https://github.com/christianhelle/apiclientcodegen/pull/1107) ([christianhelle](https://github.com/christianhelle))
