@@ -34,7 +34,7 @@
     <Buttons>
       <Button guid="guidPackageCmdSet" id="NSwagCodeGeneratorCustomToolSetter" priority="0x0100" type="Button">
         <Strings>
-          <ButtonText>Generate with NSwag (v14.2.0)</ButtonText>
+          <ButtonText>Generate with NSwag (v14.3.0)</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidPackageCmdSet" id="OpenApiCodeGeneratorCustomToolSetter" priority="0x0101" type="Button">
@@ -89,7 +89,7 @@
 
       <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwag" priority="0x0100" type="Button">
         <Strings>
-          <ButtonText>Generate with NSwag (v14.2.0)</ButtonText>
+          <ButtonText>Generate with NSwag (v14.3.0)</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithNSwagStudio" priority="0x0101" type="Button">
