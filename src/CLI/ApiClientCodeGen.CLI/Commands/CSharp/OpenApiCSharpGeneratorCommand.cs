@@ -147,6 +147,13 @@ namespace Rapicgen.CLI.Commands.CSharp
             set => openApiGeneratorOptions.GenerateMultipleFiles = value;
         }
 
+        [Option(
+            ShortName = "v",
+            LongName = "version",
+            Description = "The version of the generator to use. " +
+                          "This should be either a version number or a version range (e.g. 5.0.0 or >=5.0.0).")]
+        public OpenApiSupportedVersion Version { get; set; }
+
         public override ICodeGenerator CreateGenerator()
             => cSharpGeneratorFactory.Create(
                 SwaggerFile,

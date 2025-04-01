@@ -13,5 +13,6 @@
         string? TemplatesPath { get; set; }
         bool UseConfigurationFile { get; set; }
         bool GenerateMultipleFiles { get; set; }
+        public OpenApiSupportedVersion Version { get; set; }
     }
 }

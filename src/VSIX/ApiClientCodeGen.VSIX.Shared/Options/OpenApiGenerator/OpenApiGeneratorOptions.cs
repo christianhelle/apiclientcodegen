@@ -58,5 +58,6 @@ namespace Rapicgen.Options.OpenApiGenerator
         public string? TemplatesPath { get; set; }
         public bool UseConfigurationFile { get; set; }
         public bool GenerateMultipleFiles { get; set; }
+        public OpenApiSupportedVersion Version { get; set; }
     }
 }
