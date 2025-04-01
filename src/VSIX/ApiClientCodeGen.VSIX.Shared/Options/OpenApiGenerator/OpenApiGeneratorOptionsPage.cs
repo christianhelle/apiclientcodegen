@@ -69,5 +69,11 @@ namespace Rapicgen.Options.OpenApiGenerator
         [DisplayName("Generate Multiple Files")]
         [Description("Generate multiple files for each operation. This only works for SDK style projects")]
         public bool GenerateMultipleFiles { get; set; }
+
+        [Category(Name)]
+        [DisplayName("Version")]
+        [Description("The version of the generator to use. " +
+                     "This should be either a version number or a version range (e.g. 5.0.0 or >=5.0.0).")]
+        public OpenApiSupportedVersion Version { get; set; }
     }
 }
