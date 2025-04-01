@@ -10,13 +10,15 @@ namespace ApiClientCodeGen.Core.IntegrationTests
 {
     public class DependencyInstallerTests : TestWithResources
     {
-        [Fact]
-        public void InstallOpenApiGenerator_Returns_Path()
+        [Theory]
+        [InlineData("7.11.0")]
+        [InlineData("7.12.0")]
+        public void InstallOpenApiGenerator_Returns_Path(string version)
             => (new DependencyInstaller(
                         new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader()),
                         new ProcessLauncher())
-                    .InstallOpenApiGenerator())
+                    .InstallOpenApiGenerator(version))
                 .Should()
                 .NotBeNullOrWhiteSpace();
 
