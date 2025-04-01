@@ -33,12 +33,13 @@ namespace Rapicgen.Core.Installer
             npm.InstallNpmPackage("nswag");
         }
 
-        public string InstallOpenApiGenerator()
+        public string InstallOpenApiGenerator(string? version = null)
         {
+            var openApiGeneratorVersion = OpenApiGeneratorVersions.GetVersion(version);
             return downloader.DownloadFile(
                 "openapi-generator-cli.jar",
-                Resource.OpenApiGenerator_SHA1,
-                Resource.OpenApiGenerator_DownloadUrl);
+                openApiGeneratorVersion.SHA1,
+                openApiGeneratorVersion.DownloadUrl);
         }
 
         public string InstallSwaggerCodegen()
@@ -56,27 +57,31 @@ namespace Rapicgen.Core.Installer
             string kiotaVersion = "";
             try
             {
-                processLauncher.Start(command, arguments, output =>
-                {
-                    if (output != null)
+                processLauncher.Start(
+                    command,
+                    arguments,
+                    output =>
                     {
-                        kiotaVersion = output ?? kiotaVersion;
+                        if (output != null)
+                        {
+                            kiotaVersion = output ?? kiotaVersion;
 
-                        Logger.Instance.WriteLine(output);
-                    }
-                }, error =>
-                {
-                    if (error != null)
+                            Logger.Instance.WriteLine(output);
+                        }
+                    },
+                    error =>
                     {
-                        Logger.Instance.WriteLine(error);
-                    }
-                });
+                        if (error != null)
+                        {
+                            Logger.Instance.WriteLine(error);
+                        }
+                    });
                 if (!kiotaVersion.StartsWith("1.24.3"))
-                { 
+                {
                     //older or newer? i guess this should be handled.
                 }
             }
-            catch(Win32Exception e)
+            catch (Win32Exception e)
             {
                 //if command doesn't exist Win32Exception is thrown.
                 command = PathProvider.GetDotNetPath();
@@ -85,7 +90,6 @@ namespace Rapicgen.Core.Installer
                 processLauncher.Start(command, arguments);
                 context.Succeeded();
             }
-            
         }
     }
 }
