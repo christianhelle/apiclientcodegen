@@ -8,7 +8,7 @@ using Rapicgen.Core.Options.Kiota;
 
 namespace Rapicgen.CLI.Commands.CSharp;
 
-[Command("kiota", Description = "Microsoft Kiota (v1.24.3)")]
+[Command("kiota", Description = "Microsoft Kiota (v1.25.1)")]
 public class KiotaCommand : CodeGeneratorCommand, IKiotaOptions
 {
     private readonly IProcessLauncher processLauncher;
