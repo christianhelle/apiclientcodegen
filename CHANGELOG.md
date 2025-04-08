@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- Update dependency Exceptionless to 6.1.0 [\#1118](https://github.com/christianhelle/apiclientcodegen/pull/1118) ([renovate[bot]](https://github.com/apps/renovate))
 - NSwag v14.3.0 [\#1107](https://github.com/christianhelle/apiclientcodegen/pull/1107) ([christianhelle](https://github.com/christianhelle))
 
 ## [1.21.0](https://github.com/christianhelle/apiclientcodegen/tree/1.21.0) (2025-03-13)
