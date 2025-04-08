@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Exceptionless" Version="6.0.4" />
+    <PackageReference Include="Exceptionless" Version="6.1.0" />
     <PackageReference Include="ICSharpCode.CodeConverter" Version="9.2.7.792" />
     <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer" Version="2.23.0" />
     <PackageReference Include="NSwag.Core.Yaml" Version="14.3.0" />
