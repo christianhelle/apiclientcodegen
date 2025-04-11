@@ -24,7 +24,7 @@ env:
 
 jobs:
   build:
-    runs-on: windows-lateset
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v4
