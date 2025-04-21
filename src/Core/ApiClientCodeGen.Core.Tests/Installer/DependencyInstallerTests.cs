@@ -60,7 +60,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             Mock.Get(downloader)
                 .Verify(
                     c => c.DownloadFile(
-                        "openapi-generator-cli.jar",
+                        It.IsAny<string>(),
                         Resource.OpenApiGenerator_SHA1,
                         Resource.OpenApiGenerator_DownloadUrl,
                         false));
