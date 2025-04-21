@@ -155,7 +155,7 @@ namespace Rapicgen.CLI.Commands.CSharp
         public OpenApiSupportedVersion Version
         {
             get => openApiGeneratorOptions.Version;
-            set => openOapiGeneratorOptions.Version = value;
+            set => openApiGeneratorOptions.Version = value;
         }
 
         public override ICodeGenerator CreateGenerator()
