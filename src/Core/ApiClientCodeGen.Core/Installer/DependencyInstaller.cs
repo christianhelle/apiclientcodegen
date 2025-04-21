@@ -38,7 +38,7 @@ namespace Rapicgen.Core.Installer
         {
             var openApiGeneratorVersion = OpenApiGeneratorVersions.GetVersion(version);
             return downloader.DownloadFile(
-                "openapi-generator-cli.jar",
+                $"openapi-generator-cli-{openApiGeneratorVersion.Version}.jar",
                 openApiGeneratorVersion.SHA1,
                 openApiGeneratorVersion.DownloadUrl);
         }
