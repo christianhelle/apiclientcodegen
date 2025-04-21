@@ -20,6 +20,8 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TextManager.Interop;
 using NuGet.VisualStudio;
 using Task = System.Threading.Tasks.Task;
+using Rapicgen.Options.OpenApiGenerator;
+using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace Rapicgen.Extensions
 {
