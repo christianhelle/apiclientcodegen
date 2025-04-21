@@ -1,9 +1,33 @@
 ﻿using System.Collections.Generic;
+using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace Rapicgen.Core.NuGet
 {
     public class PackageDependencyListProvider
     {
+        public IEnumerable<PackageDependency> GetDependencies(
+            OpenApiSupportedVersion openApiGeneratorVersion)
+        {
+            switch (openApiGeneratorVersion)
+            {
+                case OpenApiSupportedVersion.V7110:
+                case OpenApiSupportedVersion.V7100:
+                    return new[]
+                    {
+                        PackageDependencies.Polly,
+                        PackageDependencies.RestSharpLatest,
+                        PackageDependencies.JsonSubTypesLatest,
+                        PackageDependencies.NewtonsoftJson,
+                        PackageDependencies.SystemRuntimeSerializationPrimitives,
+                        PackageDependencies.SystemComponentModelAnnotations,
+                        PackageDependencies.MicrosoftCSharp
+                    };
+
+                default:
+                    return GetDependencies(SupportedCodeGenerator.OpenApi);
+            }
+        }
+
         public IEnumerable<PackageDependency> GetDependencies(
             SupportedCodeGenerator generator)
         {
