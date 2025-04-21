@@ -4,6 +4,7 @@ using Rapicgen.Core.External;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.General;
+using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace Rapicgen.Core.Installer
 {
@@ -33,7 +34,7 @@ namespace Rapicgen.Core.Installer
             npm.InstallNpmPackage("nswag");
         }
 
-        public string InstallOpenApiGenerator(string? version = null)
+        public string InstallOpenApiGenerator(OpenApiSupportedVersion version = default)
         {
             var openApiGeneratorVersion = OpenApiGeneratorVersions.GetVersion(version);
             return downloader.DownloadFile(

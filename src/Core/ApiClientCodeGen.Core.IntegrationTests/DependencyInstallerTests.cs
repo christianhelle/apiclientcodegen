@@ -1,19 +1,20 @@
 ﻿using System;
-using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Installer;
 using FluentAssertions;
 using Xunit;
+using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace ApiClientCodeGen.Core.IntegrationTests
 {
     public class DependencyInstallerTests : TestWithResources
     {
         [Theory]
-        [InlineData("7.11.0")]
-        [InlineData("7.12.0")]
-        public void InstallOpenApiGenerator_Returns_Path(string version)
+        [InlineData(OpenApiSupportedVersion.V7120)]
+        [InlineData(OpenApiSupportedVersion.V7110)]
+        [InlineData(OpenApiSupportedVersion.V7100)]
+        public void InstallOpenApiGenerator_Returns_Path(OpenApiSupportedVersion version)
             => (new DependencyInstaller(
                         new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader()),

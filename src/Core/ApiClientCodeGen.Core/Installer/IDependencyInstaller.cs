@@ -1,5 +1,4 @@
-using System;
-using System.Threading.Tasks;
+using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace Rapicgen.Core.Installer
 {
@@ -7,7 +6,7 @@ namespace Rapicgen.Core.Installer
     {
         void InstallAutoRest();
         void InstallNSwag();
-        string InstallOpenApiGenerator(string? version = null);
+        string InstallOpenApiGenerator(OpenApiSupportedVersion version = default);
         string InstallSwaggerCodegen();
         void InstallKiota();
     }
