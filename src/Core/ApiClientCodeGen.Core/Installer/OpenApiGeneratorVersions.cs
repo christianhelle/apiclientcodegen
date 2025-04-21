@@ -1,4 +1,6 @@
+using System.ComponentModel;
 using System.Linq;
+using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace Rapicgen.Core.Installer;
 
@@ -27,6 +29,18 @@ public static class OpenApiGeneratorVersions
     public static OpenApiGeneratorVersion GetVersion(string version)
     {
         return Versions.FirstOrDefault(v => v.Version == version) ?? GetLatestVersion();
+    }
+
+    public static OpenApiGeneratorVersion GetVersion(OpenApiSupportedVersion version)
+    {
+        var versionString = version.GetType()
+            .GetField(version.ToString())
+            ?.GetCustomAttributes(typeof(DescriptionAttribute), false)
+            .FirstOrDefault() is DescriptionAttribute descriptionAttribute
+              ? descriptionAttribute.Description
+              : version.ToString();
+
+        return GetVersion(versionString);
     }
 
     public static OpenApiGeneratorVersion GetLatestVersion()
