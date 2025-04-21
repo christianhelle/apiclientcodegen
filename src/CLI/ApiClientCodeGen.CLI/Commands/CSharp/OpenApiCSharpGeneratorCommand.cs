@@ -150,8 +150,13 @@ namespace Rapicgen.CLI.Commands.CSharp
         [Option(
             ShortName = "v",
             LongName = "version",
-            Description = "The version of the generator to use. ")]
-        public OpenApiSupportedVersion Version { get; set; }
+            Description = "The version of the generator to use. "
+        )]
+        public OpenApiSupportedVersion Version
+        {
+            get => openApiGeneratorOptions.Version;
+            set => openOapiGeneratorOptions.Version = value;
+        }
 
         public override ICodeGenerator CreateGenerator()
             => cSharpGeneratorFactory.Create(
