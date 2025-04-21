@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using Rapicgen.Core.NuGet;
+﻿using Rapicgen.Core.NuGet;
+using Rapicgen.Core.Options.OpenApiGenerator;
+using System.Collections.Generic;
 
 namespace Rapicgen.Core.Extensions
 {
@@ -12,5 +13,12 @@ namespace Rapicgen.Core.Extensions
             this SupportedCodeGenerator generator)
             => DependencyListProvider
                 .GetDependencies(generator);
+
+        public static IEnumerable<PackageDependency> GetDependencies(
+            this SupportedCodeGenerator generator,
+            OpenApiSupportedVersion version)
+            => generator == SupportedCodeGenerator.OpenApi
+                ? DependencyListProvider.GetDependencies(version)
+                : DependencyListProvider.GetDependencies(generator);
     }
 }
