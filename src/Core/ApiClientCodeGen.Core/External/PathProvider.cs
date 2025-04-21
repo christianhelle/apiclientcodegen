@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
+using Rapicgen.Core.Extensions;
 using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace Rapicgen.Core.External
 {
@@ -92,10 +94,11 @@ namespace Rapicgen.Core.External
                 Path.GetTempPath(),
                 "swagger-codegen-cli.jar");
 
-        public static string GetOpenApiGeneratorPath()
+        public static string GetOpenApiGeneratorPath(
+            OpenApiSupportedVersion version = default) 
             => Path.Combine(
                 Path.GetTempPath(),
-                "openapi-generator-cli.jar");
+                $"openapi-generator-cli-{version.GetDescription()}.jar");
 
         public static string GetDotNetPath()
         {
