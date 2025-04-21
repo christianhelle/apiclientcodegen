@@ -49,7 +49,8 @@ namespace Rapicgen.Core.Generators.OpenApi
                 if (!File.Exists(jarFile))
                 {
                     Logger.Instance.WriteLine(jarFile + " does not exist");
-                    jarFile = dependencyInstaller.InstallOpenApiGenerator();
+                    var version = openApiGeneratorOptions.Version;
+                    jarFile = dependencyInstaller.InstallOpenApiGenerator(version);
                 }
 
                 pGenerateProgress?.Progress(30);
