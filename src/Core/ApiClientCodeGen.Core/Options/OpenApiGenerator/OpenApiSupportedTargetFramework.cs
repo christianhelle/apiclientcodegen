@@ -26,5 +26,7 @@ namespace Rapicgen.Core.Options.OpenApiGenerator
         Net70,
         [Description("net8.0")]
         Net80,
+        [Description("net9.0")]
+        Net90,
     }
 }
