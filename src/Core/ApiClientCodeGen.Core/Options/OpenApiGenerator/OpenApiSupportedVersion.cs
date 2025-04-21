@@ -8,4 +8,6 @@ public enum OpenApiSupportedVersion
     V7120,
     [Description("7.11.0")]
     V7110,
+    [Description("7.10.0")]
+    V7100,
 }
