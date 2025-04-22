@@ -1,5 +1,17 @@
 # Changelog
 
+## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.22.0...HEAD)
+
+**Implemented enhancements:**
+
+- Multiple OpenAPI Generator version support [\#1121](https://github.com/christianhelle/apiclientcodegen/pull/1121) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update workflows to run on windows-latest [\#1120](https://github.com/christianhelle/apiclientcodegen/pull/1120) ([christianhelle](https://github.com/christianhelle))
+
 ## [1.22.0](https://github.com/christianhelle/apiclientcodegen/tree/1.22.0) (2025-04-08)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.21.0...1.22.0)
