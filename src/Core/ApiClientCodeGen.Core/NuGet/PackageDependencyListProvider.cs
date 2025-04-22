@@ -6,27 +6,21 @@ namespace Rapicgen.Core.NuGet
     public class PackageDependencyListProvider
     {
         public IEnumerable<PackageDependency> GetDependencies(
-            OpenApiSupportedVersion openApiGeneratorVersion)
-        {
-            switch (openApiGeneratorVersion)
+            OpenApiSupportedVersion openApiGeneratorVersion) =>
+            openApiGeneratorVersion switch
             {
-                case OpenApiSupportedVersion.V7110:
-                case OpenApiSupportedVersion.V7100:
-                    return new[]
-                    {
-                        PackageDependencies.Polly,
-                        PackageDependencies.RestSharpLatest,
-                        PackageDependencies.JsonSubTypesLatest,
-                        PackageDependencies.NewtonsoftJson,
-                        PackageDependencies.SystemRuntimeSerializationPrimitives,
-                        PackageDependencies.SystemComponentModelAnnotations,
-                        PackageDependencies.MicrosoftCSharp
-                    };
-
-                default:
-                    return GetDependencies(SupportedCodeGenerator.OpenApi);
-            }
-        }
+                OpenApiSupportedVersion.V7110 =>
+                [
+                    PackageDependencies.Polly,
+                    PackageDependencies.RestSharpLatest,
+                    PackageDependencies.JsonSubTypesLatest, 
+                    PackageDependencies.NewtonsoftJson,
+                    PackageDependencies.SystemRuntimeSerializationPrimitives,
+                    PackageDependencies.SystemComponentModelAnnotations, 
+                    PackageDependencies.MicrosoftCSharp
+                ],
+                _ => GetDependencies(SupportedCodeGenerator.OpenApi)
+            };
 
         public IEnumerable<PackageDependency> GetDependencies(
             SupportedCodeGenerator generator)
@@ -36,78 +30,86 @@ namespace Rapicgen.Core.NuGet
             {
                 case SupportedCodeGenerator.NSwag:
                 case SupportedCodeGenerator.NSwagStudio:
-                    list.AddRange(new[]
-                    {
-                        PackageDependencies.NewtonsoftJson,
-                        PackageDependencies.SystemRuntimeSerializationPrimitives,
-                        PackageDependencies.SystemComponentModelAnnotations
-                    });
+                    list.AddRange(
+                        new[]
+                        {
+                            PackageDependencies.NewtonsoftJson,
+                            PackageDependencies.SystemRuntimeSerializationPrimitives,
+                            PackageDependencies.SystemComponentModelAnnotations
+                        });
                     break;
 
                 case SupportedCodeGenerator.AutoRest:
-                    list.AddRange(new[]
-                    {
-                        PackageDependencies.MicrosoftRestClientRuntime,
-                        PackageDependencies.NewtonsoftJson,
-                    });
+                    list.AddRange(
+                        new[]
+                        {
+                            PackageDependencies.MicrosoftRestClientRuntime,
+                            PackageDependencies.NewtonsoftJson,
+                        });
                     break;
 
                 case SupportedCodeGenerator.AutoRestV3:
-                    list.AddRange(new[]
-                    {
-                        PackageDependencies.MicrosoftRestClientRuntime,
-                        PackageDependencies.NewtonsoftJson,
-                        PackageDependencies.AutoRestCSharp,
-                        PackageDependencies.AzureCore,
-                    });
+                    list.AddRange(
+                        new[]
+                        {
+                            PackageDependencies.MicrosoftRestClientRuntime,
+                            PackageDependencies.NewtonsoftJson,
+                            PackageDependencies.AutoRestCSharp,
+                            PackageDependencies.AzureCore,
+                        });
                     break;
 
                 case SupportedCodeGenerator.Swagger:
-                    list.AddRange(new[]
-                    {
-                        PackageDependencies.RestSharp,
-                        PackageDependencies.JsonSubTypes,
-                        PackageDependencies.NewtonsoftJson,
-                        PackageDependencies.SystemRuntimeSerializationPrimitives,
-                        PackageDependencies.SystemComponentModelAnnotations,
-                        PackageDependencies.MicrosoftCSharp
-                    });
+                    list.AddRange(
+                        new[]
+                        {
+                            PackageDependencies.RestSharp,
+                            PackageDependencies.JsonSubTypes,
+                            PackageDependencies.NewtonsoftJson,
+                            PackageDependencies.SystemRuntimeSerializationPrimitives,
+                            PackageDependencies.SystemComponentModelAnnotations,
+                            PackageDependencies.MicrosoftCSharp
+                        });
                     break;
 
                 case SupportedCodeGenerator.OpenApi:
-                    list.AddRange(new[]
-                    {
-                        PackageDependencies.MicrosoftExtensionsHttp,
-                        PackageDependencies.MicrosoftExtensionsHosting,
-                        PackageDependencies.MicrosoftExtensionsHttpPolly,
-                        PackageDependencies.SystemThreadingChannels,
-                        PackageDependencies.SystemComponentModelAnnotations,
-                    });
+                    list.AddRange(
+                        new[]
+                        {
+                            PackageDependencies.MicrosoftExtensionsHttp,
+                            PackageDependencies.MicrosoftExtensionsHosting,
+                            PackageDependencies.MicrosoftExtensionsHttpPolly,
+                            PackageDependencies.SystemThreadingChannels,
+                            PackageDependencies.SystemComponentModelAnnotations,
+                        });
                     break;
 
                 case SupportedCodeGenerator.Kiota:
-                    list.AddRange(new[]
-                    {
-                        PackageDependencies.AzureIdentity,
-                        PackageDependencies.MicrosoftKiotaAbstractions,
-                        PackageDependencies.MicrosoftKiotaAuthenticationAzure,
-                        PackageDependencies.MicrosoftKiotaHttpClientLibrary,
-                        PackageDependencies.MicrosoftKiotaSerializationForm,
-                        PackageDependencies.MicrosoftKiotaSerializationJson,
-                        PackageDependencies.MicrosoftKiotaSerializationText,
-                        PackageDependencies.MicrosoftKiotaSerializationMultipart,
-                    });
+                    list.AddRange(
+                        new[]
+                        {
+                            PackageDependencies.AzureIdentity,
+                            PackageDependencies.MicrosoftKiotaAbstractions,
+                            PackageDependencies.MicrosoftKiotaAuthenticationAzure,
+                            PackageDependencies.MicrosoftKiotaHttpClientLibrary,
+                            PackageDependencies.MicrosoftKiotaSerializationForm,
+                            PackageDependencies.MicrosoftKiotaSerializationJson,
+                            PackageDependencies.MicrosoftKiotaSerializationText,
+                            PackageDependencies.MicrosoftKiotaSerializationMultipart,
+                        });
                     break;
-                
+
                 case SupportedCodeGenerator.Refitter:
-                    list.AddRange(new[]
-                    {
-                        PackageDependencies.Refit,
-                        PackageDependencies.SystemRuntimeSerializationPrimitives,
-                        PackageDependencies.SystemComponentModelAnnotations
-                    });
+                    list.AddRange(
+                        new[]
+                        {
+                            PackageDependencies.Refit,
+                            PackageDependencies.SystemRuntimeSerializationPrimitives,
+                            PackageDependencies.SystemComponentModelAnnotations
+                        });
                     break;
             }
+
             return list;
         }
     }
