@@ -182,7 +182,7 @@ function Generate-Code {
             $command = "csharp swagger"
         }
         "OpenApiGenerator" { 
-            $command = "csharp openapi"
+            $command = "csharp openapi -v V7110"
         }
         "AutoRest-V2" {
             $command = "csharp autorest"
@@ -257,7 +257,7 @@ function Generate-CodeParallel {
                 $command = "csharp swagger"
             }
             "OpenApiGenerator" { 
-                $command = "csharp openapi"
+                $command = "csharp openapi -v V7110"
             }
             Default {
                 $command = $_.ToLower()

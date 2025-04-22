@@ -4,6 +4,7 @@ using Rapicgen.Core.External;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.General;
+using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace Rapicgen.Core.Installer
 {
@@ -33,12 +34,13 @@ namespace Rapicgen.Core.Installer
             npm.InstallNpmPackage("nswag");
         }
 
-        public string InstallOpenApiGenerator()
+        public string InstallOpenApiGenerator(OpenApiSupportedVersion version = default)
         {
+            var openApiGeneratorVersion = OpenApiGeneratorVersions.GetVersion(version);
             return downloader.DownloadFile(
-                "openapi-generator-cli.jar",
-                Resource.OpenApiGenerator_SHA1,
-                Resource.OpenApiGenerator_DownloadUrl);
+                $"openapi-generator-cli-{openApiGeneratorVersion.Version}.jar",
+                openApiGeneratorVersion.SHA1,
+                openApiGeneratorVersion.DownloadUrl);
         }
 
         public string InstallSwaggerCodegen()
@@ -76,7 +78,7 @@ namespace Rapicgen.Core.Installer
                     //older or newer? i guess this should be handled.
                 }
             }
-            catch(Win32Exception e)
+            catch (Win32Exception e)
             {
                 //if command doesn't exist Win32Exception is thrown.
                 command = PathProvider.GetDotNetPath();
@@ -85,7 +87,6 @@ namespace Rapicgen.Core.Installer
                 processLauncher.Start(command, arguments);
                 context.Succeeded();
             }
-            
         }
     }
 }

@@ -20,6 +20,8 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.VisualStudio.TextManager.Interop;
 using NuGet.VisualStudio;
 using Task = System.Threading.Tasks.Task;
+using Rapicgen.Options.OpenApiGenerator;
+using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace Rapicgen.Extensions
 {
@@ -209,7 +211,10 @@ namespace Rapicgen.Extensions
             var installedPackages = installedServices.GetInstalledPackages(project)?.ToList() ?? new List<IVsPackageMetadata>();
 #pragma warning restore CS0618
 
-            var requiredPackages = codeGenerator.GetDependencies();
+            OpenApiSupportedVersion openApiGeneratorVersion = (VsPackage.Instance.GetDialogPage(typeof(OpenApiGeneratorOptionsPage)) as IOpenApiGeneratorOptions).Version;
+            var requiredPackages = codeGenerator == SupportedCodeGenerator.OpenApi
+                ? codeGenerator.GetDependencies(openApiGeneratorVersion)
+                : codeGenerator.GetDependencies();
             foreach (var packageDependency in requiredPackages)
             {
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();

@@ -4,6 +4,7 @@ using Rapicgen.Core.Generators;
 using Rapicgen.Core.Installer;
 using FluentAssertions;
 using Xunit;
+using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace Rapicgen.IntegrationTests
 {
@@ -14,7 +15,7 @@ namespace Rapicgen.IntegrationTests
             => (new DependencyInstaller(
                         new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader()), new ProcessLauncher())
-                    .InstallOpenApiGenerator())
+                    .InstallOpenApiGenerator(OpenApiSupportedVersion.V7120))
                 .Should()
                 .NotBeNullOrWhiteSpace();
 
