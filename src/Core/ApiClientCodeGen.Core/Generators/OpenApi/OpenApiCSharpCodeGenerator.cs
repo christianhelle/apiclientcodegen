@@ -144,8 +144,8 @@ namespace Rapicgen.Core.Generators.OpenApi
                         "OpenAPI Generator",
                         versionString);
 
-                    // v7.12.0 generates a class that conflicts with System.Net.CookieContainer
-                    if (openApiGeneratorOptions.Version == OpenApiSupportedVersion.V7120)
+                    // v7.12.0 and above generates a class that conflicts with System.Net.CookieContainer
+                    if (openApiGeneratorOptions.Version != OpenApiSupportedVersion.V7110)
                     {
                         generatedCode = generatedCode
                             .Replace("class CookieContainer", "class TokenCookieContainer")
