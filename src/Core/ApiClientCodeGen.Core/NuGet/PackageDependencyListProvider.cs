@@ -6,21 +6,24 @@ namespace Rapicgen.Core.NuGet
     public class PackageDependencyListProvider
     {
         public IEnumerable<PackageDependency> GetDependencies(
-            OpenApiSupportedVersion openApiGeneratorVersion) =>
-            openApiGeneratorVersion switch
+            OpenApiSupportedVersion openApiGeneratorVersion)
+        {
+            if (openApiGeneratorVersion.IsAtLeast(OpenApiSupportedVersion.V7120))
             {
-                OpenApiSupportedVersion.V7110 =>
-                [
-                    PackageDependencies.Polly,
-                    PackageDependencies.RestSharpLatest,
-                    PackageDependencies.JsonSubTypesLatest, 
-                    PackageDependencies.NewtonsoftJson,
-                    PackageDependencies.SystemRuntimeSerializationPrimitives,
-                    PackageDependencies.SystemComponentModelAnnotations, 
-                    PackageDependencies.MicrosoftCSharp
-                ],
-                _ => GetDependencies(SupportedCodeGenerator.OpenApi)
-            };
+                return GetDependencies(SupportedCodeGenerator.OpenApi);
+            }
+
+            return
+            [
+                PackageDependencies.Polly,
+                PackageDependencies.RestSharpLatest,
+                PackageDependencies.JsonSubTypesLatest,
+                PackageDependencies.NewtonsoftJson,
+                PackageDependencies.SystemRuntimeSerializationPrimitives,
+                PackageDependencies.SystemComponentModelAnnotations,
+                PackageDependencies.MicrosoftCSharp
+            ];
+        }
 
         public IEnumerable<PackageDependency> GetDependencies(
             SupportedCodeGenerator generator)
