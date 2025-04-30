@@ -28,6 +28,30 @@ public static class OpenApiGeneratorVersions
             $"{DownloadUrlPrefix}/7.11.0/openapi-generator-cli-7.11.0.jar",
             "9261333ecbfd8738956b09be0beff611b47fbaff",
             "4931bca886d30823b3ba2c7f36607925"
+        ),
+        new(
+            "7.10.0",
+            $"{DownloadUrlPrefix}/7.10.0/openapi-generator-cli-7.10.0.jar",
+            "e9cc6e4cd2dcb77a86b647a1ed4352fd08f187ce",
+            "cebbfd626e0b2e32509a4a34811c4dc6"
+        ),
+        new(
+            "7.9.0",
+            $"{DownloadUrlPrefix}/7.9.0/openapi-generator-cli-7.9.0.jar",
+            "369eafe4a877ad496504c3fd0eebfd3586666d16",
+            "27b7f5e4f233a3981902332c67edb722"
+        ),
+        new(
+            "7.8.0",
+            $"{DownloadUrlPrefix}/7.8.0/openapi-generator-cli-7.8.0.jar",
+            "450160b7a1978b64e784cb730a868019db0aa59c",
+            "33ec880b9f4cf598136d5eb445d3e354"
+        ),
+        new(
+            "7.7.0",
+            $"{DownloadUrlPrefix}/7.7.0/openapi-generator-cli-7.7.0.jar",
+            "41f26774ba0dbed788613a9c3062ddc6b9fcfdad",
+            "6fd37c8e4a83ef8de0bc741c0927c599"
         )
     ];
 
