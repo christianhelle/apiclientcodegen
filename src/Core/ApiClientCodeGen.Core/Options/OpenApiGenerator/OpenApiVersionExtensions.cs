@@ -9,7 +9,7 @@ public static class OpenApiVersionExtensions
     /// <returns>The effective version - the latest version if Default is provided</returns>
     public static OpenApiSupportedVersion ResolveVersion(this OpenApiSupportedVersion version)
     {
-        return version == OpenApiSupportedVersion.Default
+        return version == OpenApiSupportedVersion.Latest
             ? OpenApiSupportedVersionExtensions.Latest 
             : version;
     }
@@ -62,7 +62,7 @@ public static class OpenApiVersionExtensions
     /// <returns>True if current version is the latest supported version</returns>
     public static bool IsLatest(this OpenApiSupportedVersion currentVersion)
     {
-        return currentVersion == OpenApiSupportedVersion.Default || currentVersion == OpenApiSupportedVersionExtensions.Latest;
+        return currentVersion == OpenApiSupportedVersion.Latest || currentVersion == OpenApiSupportedVersionExtensions.Latest;
     }
     
     /// <summary>

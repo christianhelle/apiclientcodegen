@@ -64,7 +64,7 @@ public static class OpenApiGeneratorVersions
     public static OpenApiGeneratorVersion GetVersion(OpenApiSupportedVersion version)
     {
         // If it's the Default value (0), return the latest version directly
-        if (version == OpenApiSupportedVersion.Default)
+        if (version == OpenApiSupportedVersion.Latest)
             return GetLatestVersion();
             
         var versionString = version.GetType()

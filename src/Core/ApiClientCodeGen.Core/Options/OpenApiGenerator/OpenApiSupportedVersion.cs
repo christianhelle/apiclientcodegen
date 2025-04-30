@@ -5,7 +5,7 @@ namespace Rapicgen.Core.Options.OpenApiGenerator;
 public enum OpenApiSupportedVersion
 {
     [Description("Latest")]
-    Default = 0,
+    Latest = 0,
     [Description("7.13.0")]
     V7130 = 7130,
     [Description("7.12.0")]

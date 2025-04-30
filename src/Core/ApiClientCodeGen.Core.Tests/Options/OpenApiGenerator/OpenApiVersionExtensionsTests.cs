@@ -87,7 +87,7 @@ public class OpenApiVersionExtensionsTests
     }
 
     [Theory]
-    [InlineData(OpenApiSupportedVersion.Default, 0)]
+    [InlineData(OpenApiSupportedVersion.Latest, 0)]
     [InlineData(OpenApiSupportedVersion.V7130, 7130)]
     [InlineData(OpenApiSupportedVersion.V7120, 7120)]
     [InlineData(OpenApiSupportedVersion.V7110, 7110)]
@@ -102,7 +102,7 @@ public class OpenApiVersionExtensionsTests
     }
 
     [Theory]
-    [InlineData(OpenApiSupportedVersion.Default, OpenApiSupportedVersion.V7130)]
+    [InlineData(OpenApiSupportedVersion.Latest, OpenApiSupportedVersion.V7130)]
     [InlineData(OpenApiSupportedVersion.V7130, OpenApiSupportedVersion.V7130)]
     [InlineData(OpenApiSupportedVersion.V7120, OpenApiSupportedVersion.V7120)]
     [InlineData(OpenApiSupportedVersion.V7110, OpenApiSupportedVersion.V7110)]
@@ -125,13 +125,13 @@ public class OpenApiVersionExtensionsTests
     public void Default_HasValueOfZero()
     {
         // Act & Assert
-        Assert.Equal(0, (int)OpenApiSupportedVersion.Default);
+        Assert.Equal(0, (int)OpenApiSupportedVersion.Latest);
     }
     
     [Theory]
-    [InlineData(OpenApiSupportedVersion.Default, OpenApiSupportedVersion.V7130, true)]   // Default is Latest
-    [InlineData(OpenApiSupportedVersion.Default, OpenApiSupportedVersion.V7120, true)]   // Default is Latest which is higher than V7120
-    [InlineData(OpenApiSupportedVersion.V7070, OpenApiSupportedVersion.Default, false)]  // V7070 is lower than Default (Latest)
+    [InlineData(OpenApiSupportedVersion.Latest, OpenApiSupportedVersion.V7130, true)]   // Default is Latest
+    [InlineData(OpenApiSupportedVersion.Latest, OpenApiSupportedVersion.V7120, true)]   // Default is Latest which is higher than V7120
+    [InlineData(OpenApiSupportedVersion.V7070, OpenApiSupportedVersion.Latest, false)]  // V7070 is lower than Default (Latest)
     public void IsAtLeast_WithDefault_ReturnsExpectedResult(
         OpenApiSupportedVersion currentVersion,
         OpenApiSupportedVersion compareToVersion,
