@@ -3,6 +3,18 @@ namespace Rapicgen.Core.Options.OpenApiGenerator;
 public static class OpenApiVersionExtensions
 {
     /// <summary>
+    /// Gets the effective version, resolving Default to the actual latest version
+    /// </summary>
+    /// <param name="version">The version to resolve</param>
+    /// <returns>The effective version - the latest version if Default is provided</returns>
+    public static OpenApiSupportedVersion ResolveVersion(this OpenApiSupportedVersion version)
+    {
+        return version == OpenApiSupportedVersion.Default
+            ? OpenApiSupportedVersionExtensions.Latest 
+            : version;
+    }
+
+    /// <summary>
     /// Checks if the current version is greater than or equal to the specified version
     /// </summary>
     /// <param name="currentVersion">The current version being used</param>
@@ -10,7 +22,9 @@ public static class OpenApiVersionExtensions
     /// <returns>True if current version is greater than or equal to the specified version</returns>
     public static bool IsAtLeast(this OpenApiSupportedVersion currentVersion, OpenApiSupportedVersion compareToVersion)
     {
-        return (int)currentVersion >= (int)compareToVersion;
+        var resolvedCurrent = currentVersion.ResolveVersion();
+        var resolvedCompareTo = compareToVersion.ResolveVersion();
+        return (int)resolvedCurrent >= (int)resolvedCompareTo;
     }
     
     /// <summary>
@@ -21,7 +35,9 @@ public static class OpenApiVersionExtensions
     /// <returns>True if current version is less than the specified version</returns>
     public static bool IsLessThan(this OpenApiSupportedVersion currentVersion, OpenApiSupportedVersion compareToVersion)
     {
-        return (int)currentVersion < (int)compareToVersion;
+        var resolvedCurrent = currentVersion.ResolveVersion();
+        var resolvedCompareTo = compareToVersion.ResolveVersion();
+        return (int)resolvedCurrent < (int)resolvedCompareTo;
     }
     
     /// <summary>
@@ -37,5 +53,26 @@ public static class OpenApiVersionExtensions
         OpenApiSupportedVersion maxVersion)
     {
         return currentVersion.IsAtLeast(minVersion) && currentVersion.IsLessThan(maxVersion);
+    }
+
+    /// <summary>
+    /// Checks if the current version is the latest supported version
+    /// </summary>
+    /// <param name="currentVersion">The current version being used</param>
+    /// <returns>True if current version is the latest supported version</returns>
+    public static bool IsLatest(this OpenApiSupportedVersion currentVersion)
+    {
+        return currentVersion == OpenApiSupportedVersion.Default || currentVersion == OpenApiSupportedVersionExtensions.Latest;
+    }
+    
+    /// <summary>
+    /// Checks if the current version is older than the latest supported version
+    /// </summary>
+    /// <param name="currentVersion">The current version being used</param>
+    /// <returns>True if current version is older than the latest supported version</returns>
+    public static bool IsOlderThanLatest(this OpenApiSupportedVersion currentVersion)
+    {
+        var resolvedCurrent = currentVersion.ResolveVersion();
+        return (int)resolvedCurrent < (int)OpenApiSupportedVersionExtensions.Latest;
     }
 }
