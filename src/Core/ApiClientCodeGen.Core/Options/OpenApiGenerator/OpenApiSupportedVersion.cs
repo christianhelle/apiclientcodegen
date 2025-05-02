@@ -1,11 +1,17 @@
 ﻿using System.ComponentModel;
+using Rapicgen.Core.TypeConverters;
 
 namespace Rapicgen.Core.Options.OpenApiGenerator;
 
+[TypeConverter(typeof(EnumDescriptionTypeConverter))]
 public enum OpenApiSupportedVersion
 {
+    /// <summary>
+    /// Default value that represents the latest version (maps to <see cref="V7130"/>)
+    /// </summary>
     [Description("Latest")]
     Latest = 0,
+
     [Description("7.13.0")]
     V7130 = 7130,
     [Description("7.12.0")]
