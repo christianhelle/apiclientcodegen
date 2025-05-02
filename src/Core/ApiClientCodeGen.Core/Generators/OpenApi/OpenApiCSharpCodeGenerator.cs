@@ -47,7 +47,7 @@ namespace Rapicgen.Core.Generators.OpenApi
             {
                 pGenerateProgress?.Progress(10);
 
-                var version = openApiGeneratorOptions.Version;
+                var version = openApiGeneratorOptions.Version.ResolveVersion();
                 var jarFile = PathProvider.GetOpenApiGeneratorPath(version);
                 if (!File.Exists(jarFile))
                 {
@@ -132,9 +132,6 @@ namespace Rapicgen.Core.Generators.OpenApi
 
                 if (!openApiGeneratorOptions.GenerateMultipleFiles)
                 {
-                    if (version == OpenApiSupportedVersion.Latest)
-                        version = OpenApiSupportedVersionExtensions.Latest;
-
                     var versionString = version.GetType()
                         .GetField(version.ToString())
                         ?.GetCustomAttributes(typeof(DescriptionAttribute), false)
