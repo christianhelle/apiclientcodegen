@@ -13,6 +13,7 @@
 
 **Merged pull requests:**
 
+- Update nswag monorepo to 14.4.0 [\#1125](https://github.com/christianhelle/apiclientcodegen/pull/1125) ([renovate[bot]](https://github.com/apps/renovate))
 - Update workflows to run on windows-latest [\#1120](https://github.com/christianhelle/apiclientcodegen/pull/1120) ([christianhelle](https://github.com/christianhelle))
 
 ## [1.22.0](https://github.com/christianhelle/apiclientcodegen/tree/1.22.0) (2025-04-08)
