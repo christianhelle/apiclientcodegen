@@ -150,8 +150,7 @@ namespace Rapicgen.CLI.Commands.CSharp
         [Option(
             ShortName = "v",
             LongName = "version",
-            Description = "The version of the generator to use. "
-        )]
+            Description = "The version of the generator to use")]
         public OpenApiSupportedVersion Version
         {
             get => openApiGeneratorOptions.Version;
@@ -161,13 +160,12 @@ namespace Rapicgen.CLI.Commands.CSharp
         [Option(
             ShortName = "hta",
             LongName = "http-user-agent",
-            Description = "HTTP user agent to set in the client code".)]
+            Description = "HTTP user agent to set in the client code")]
         public string? HttpUserAgent
         {
             get => openApiGeneratorOptions.HttpUserAgent;
             set => openApiGeneratorOptions.HttpUserAgent = value;
         }
-
 
         public override ICodeGenerator CreateGenerator()
             => cSharpGeneratorFactory.Create(
