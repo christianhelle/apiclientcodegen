@@ -6,6 +6,8 @@
 
 **Implemented enhancements:**
 
+- Allow Overriding UserAgent Name [\#1105](https://github.com/christianhelle/apiclientcodegen/issues/1105)
+- Add option for setting HTTP User Agent in OpenAPI Generator [\#1127](https://github.com/christianhelle/apiclientcodegen/pull/1127) ([christianhelle](https://github.com/christianhelle))
 - Add backward support for OpenAPI Generator v7.10.0 to v7.7.0 [\#1126](https://github.com/christianhelle/apiclientcodegen/pull/1126) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.13.0 [\#1124](https://github.com/christianhelle/apiclientcodegen/pull/1124) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.5.4 [\#1123](https://github.com/christianhelle/apiclientcodegen/pull/1123) ([renovate[bot]](https://github.com/apps/renovate))
