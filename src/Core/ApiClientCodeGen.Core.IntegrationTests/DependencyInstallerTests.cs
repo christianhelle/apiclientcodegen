@@ -13,6 +13,10 @@ namespace ApiClientCodeGen.Core.IntegrationTests
         [Theory]
         [InlineData(OpenApiSupportedVersion.V7120)]
         [InlineData(OpenApiSupportedVersion.V7110)]
+        [InlineData(OpenApiSupportedVersion.V7100)]
+        [InlineData(OpenApiSupportedVersion.V7090)]
+        [InlineData(OpenApiSupportedVersion.V7080)]
+        [InlineData(OpenApiSupportedVersion.V7070)]
         public void InstallOpenApiGenerator_Returns_Path(OpenApiSupportedVersion version)
             => (new DependencyInstaller(
                         new NpmInstaller(new ProcessLauncher()),

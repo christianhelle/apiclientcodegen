@@ -257,7 +257,7 @@ function Generate-CodeParallel {
                 $command = "csharp swagger"
             }
             "OpenApiGenerator" { 
-                $command = "csharp openapi -v V7110"
+                $command = "csharp openapi -v V7070"
             }
             Default {
                 $command = $_.ToLower()
