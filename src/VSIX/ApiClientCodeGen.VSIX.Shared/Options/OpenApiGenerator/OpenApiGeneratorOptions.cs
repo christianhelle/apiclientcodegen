@@ -4,7 +4,9 @@ using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace Rapicgen.Options.OpenApiGenerator
 {
-    public class OpenApiGeneratorOptions : OptionsBase<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage>, IOpenApiGeneratorOptions
+    public class OpenApiGeneratorOptions :
+        OptionsBase<IOpenApiGeneratorOptions, OpenApiGeneratorOptionsPage>,
+        IOpenApiGeneratorOptions
     {
         public OpenApiGeneratorOptions(IOpenApiGeneratorOptions options)
         {
@@ -24,6 +26,7 @@ namespace Rapicgen.Options.OpenApiGenerator
                 TemplatesPath = options.TemplatesPath;
                 UseConfigurationFile = options.UseConfigurationFile;
                 GenerateMultipleFiles = options.GenerateMultipleFiles;
+                HttpUserAgent = options.HttpUserAgent;
             }
             catch (Exception e)
             {
@@ -42,6 +45,7 @@ namespace Rapicgen.Options.OpenApiGenerator
                 Logger.Instance.WriteLine($"TemplatesPath = {TemplatesPath}");
                 Logger.Instance.WriteLine($"UseConfigurationFile = {UseConfigurationFile}");
                 Logger.Instance.WriteLine($"GenerateMultipleFiles = {GenerateMultipleFiles}");
+                Logger.Instance.WriteLine($"HttpUserAgent = {HttpUserAgent}");
 
                 EmitDefaultValue = true;
             }
@@ -59,5 +63,6 @@ namespace Rapicgen.Options.OpenApiGenerator
         public bool UseConfigurationFile { get; set; }
         public bool GenerateMultipleFiles { get; set; }
         public OpenApiSupportedVersion Version { get; set; }
+        public string? HttpUserAgent { get; set; }
     }
 }

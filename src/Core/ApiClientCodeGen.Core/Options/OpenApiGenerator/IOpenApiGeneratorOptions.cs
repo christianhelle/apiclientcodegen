@@ -14,5 +14,6 @@
         bool UseConfigurationFile { get; set; }
         bool GenerateMultipleFiles { get; set; }
         public OpenApiSupportedVersion Version { get; set; }
+        string? HttpUserAgent { get; set; }
     }
 }

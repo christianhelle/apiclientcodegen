@@ -28,5 +28,8 @@ namespace Rapicgen.Core.Options.OpenApiGenerator
         public bool GenerateMultipleFiles { get; set; }
 
         public OpenApiSupportedVersion Version { get; set; }
+		
+        public string? HttpUserAgent { get; set; }
     }
 }
+
