@@ -75,6 +75,7 @@ namespace Rapicgen.Options.OpenApiGenerator
         [Description("The version of the generator to use.")]
         public OpenApiSupportedVersion Version { get; set; }
 
+        [Category(Name)]
         [DisplayName("Custom HTTP User-Agent")]
         [Description("Sets the User-Agent header value to be sent in the HTTP request.")]
         public string? HttpUserAgent { get; set; }
