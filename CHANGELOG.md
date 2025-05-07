@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.23.0...HEAD)
 
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.26.0 [\#1131](https://github.com/christianhelle/apiclientcodegen/pull/1131) ([christianhelle](https://github.com/christianhelle))
+
 **Merged pull requests:**
 
 - Update dependency Azure.Core to 1.46.0 [\#1130](https://github.com/christianhelle/apiclientcodegen/pull/1130) ([renovate[bot]](https://github.com/apps/renovate))
