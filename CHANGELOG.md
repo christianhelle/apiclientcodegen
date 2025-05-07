@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.22.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.23.0...HEAD)
+
+**Merged pull requests:**
+
+- Update dependency Azure.Core to 1.46.0 [\#1130](https://github.com/christianhelle/apiclientcodegen/pull/1130) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.23.0](https://github.com/christianhelle/apiclientcodegen/tree/1.23.0) (2025-05-05)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.22.0...1.23.0)
 
 **Implemented enhancements:**
 
