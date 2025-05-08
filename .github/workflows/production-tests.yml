@@ -56,6 +56,7 @@ jobs:
           6.0.x
           7.0.x
           8.0.x
+          9.0.x
 
     - name: Install rapicgen
       run: dotnet tool install --global rapicgen
@@ -69,11 +70,14 @@ jobs:
         rapicgen -v csharp nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net6/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net7/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net8/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net9/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net48/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net472/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net462/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net481/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/NetStandard20/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/NetStandard21/Output.cs
       working-directory: test
 
     - name: Build .NET 6 NSwag generated code
@@ -82,6 +86,14 @@ jobs:
 
     - name: Build .NET 7 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/Net7/Net7.csproj
+      working-directory: test
+
+    - name: Build .NET 8 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net8/Net8.csproj
+      working-directory: test
+      
+    - name: Build .NET 9 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net9/Net9.csproj
       working-directory: test
 
     - name: Build .NET 4.8.1 NSwag generated code
@@ -105,16 +117,23 @@ jobs:
       run: dotnet build ./GeneratedCode/NSwag/NetStandard20/NetStandard20.csproj
       working-directory: test
 
+    - name: Build .NET Standard 2.1 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/NetStandard21/NetStandard21.csproj
+      working-directory: test
+
     - name: Generate code with OpenAPI Generator
       run: |
         rapicgen -v csharp openapi ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net6/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net7/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net8/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net9/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net48/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net472/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net462/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net481/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/NetStandard20/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/NetStandard21/Output.cs
       working-directory: test
 
     - name: Build .NET 6 OpenAPI Generator generated code
@@ -123,6 +142,14 @@ jobs:
 
     - name: Build .NET 7 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net7/Net7.csproj
+      working-directory: test
+
+    - name: Build .NET 8 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net8/Net8.csproj
+      working-directory: test
+
+    - name: Build .NET 9 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net9/Net9.csproj
       working-directory: test
 
     - name: Build .NET 4.8.1 OpenAPI Generator generated code
@@ -146,16 +173,23 @@ jobs:
       run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard20/NetStandard20.csproj
       working-directory: test
 
+    - name: Build .NET Standard 2.1 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/NetStandard21/NetStandard21.csproj
+      working-directory: test
+
     - name: Generate code with Swagger Codegen CLI
       run: |
         rapicgen -v csharp swagger ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net6/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net7/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net8/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net9/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net48/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net472/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net462/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net481/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/NetStandard20/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/NetStandard21/Output.cs
       working-directory: test
 
     - name: Build .NET 6 Swagger Codegen CLI generated code
@@ -164,6 +198,14 @@ jobs:
 
     - name: Build .NET 7 Swagger Codegen CLI generated code
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net7/Net7.csproj
+      working-directory: test
+
+    - name: Build .NET 8 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net8/Net8.csproj
+      working-directory: test
+
+    - name: Build .NET 9 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net9/Net9.csproj
       working-directory: test
 
     - name: Build .NET 4.8.1 Swagger Codegen CLI generated code
@@ -187,8 +229,8 @@ jobs:
       run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20/NetStandard20.csproj
       working-directory: test
 
-    - name: Build .NET Standard 2.0 Swagger Codegen CLI generated code
-      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard20/NetStandard20.csproj
+    - name: Build .NET Standard 2.1 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/NetStandard21/NetStandard21.csproj
       working-directory: test
 
     - name: Generate code with AutoRest
@@ -196,11 +238,14 @@ jobs:
         rapicgen -v csharp autorest ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs --no-logging
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net6/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net7/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net8/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net9/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net48/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net472/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net462/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net481/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/NetStandard20/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/NetStandard21/Output.cs
       working-directory: test
       continue-on-error: true
 
@@ -210,6 +255,14 @@ jobs:
 
     - name: Build .NET 7 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net7/Net7.csproj
+      working-directory: test
+
+    - name: Build .NET 8 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net8/Net8.csproj
+      working-directory: test
+
+    - name: Build .NET 9 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net9/Net9.csproj
       working-directory: test
 
     - name: Build .NET 4.8.1 AutoRest generated code
@@ -232,6 +285,66 @@ jobs:
 
     - name: Build .NET Standard 2.0 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/NetStandard20/NetStandard20.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.1 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/NetStandard21/NetStandard21.csproj
+      working-directory: test
+
+    - name: Generate code with Refitter
+      run: |
+        rapicgen -v csharp refitter ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Refitter/Output.cs --no-logging
+        cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net6/Output.cs
+        cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net7/Output.cs
+        cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net8/Output.cs
+        cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net9/Output.cs
+        cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net48/Output.cs
+        cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net472/Output.cs
+        cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net462/Output.cs
+        cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net481/Output.cs
+        cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/NetStandard20/Output.cs
+        cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/NetStandard21/Output.cs
+      working-directory: test
+
+    - name: Build .NET 6 Refitter generated code
+      run: dotnet build ./GeneratedCode/Refitter/Net6/Net6.csproj
+      working-directory: test
+
+    - name: Build .NET 7 Refitter generated code
+      run: dotnet build ./GeneratedCode/Refitter/Net7/Net7.csproj
+      working-directory: test
+
+    - name: Build .NET 8 Refitter generated code
+      run: dotnet build ./GeneratedCode/Refitter/Net8/Net8.csproj
+      working-directory: test
+      
+    - name: Build .NET 9 Refitter generated code
+      run: dotnet build ./GeneratedCode/Refitter/Net9/Net9.csproj
+      working-directory: test
+
+    - name: Build .NET 4.8.1 Refitter generated code
+      run: dotnet build ./GeneratedCode/Refitter/Net481/Net481.csproj
+      if: ${{ matrix.os == 'windows-2022' }}
+      working-directory: test
+
+    - name: Build .NET 4.8 Refitter generated code
+      run: dotnet build ./GeneratedCode/Refitter/Net48/Net48.csproj
+      working-directory: test
+
+    - name: Build .NET 4.7.2 Refitter generated code
+      run: dotnet build ./GeneratedCode/Refitter/Net472/Net472.csproj
+      working-directory: test
+
+    - name: Build .NET 4.6.2 Refitter generated code
+      run: dotnet build ./GeneratedCode/Refitter/Net462/Net462.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.0 Refitter generated code
+      run: dotnet build ./GeneratedCode/Refitter/NetStandard20/NetStandard20.csproj
+      working-directory: test
+
+    - name: Build .NET Standard 2.1 Refitter generated code
+      run: dotnet build ./GeneratedCode/Refitter/NetStandard21/NetStandard21.csproj
       working-directory: test
 
     - name: Generate code with Kiota
@@ -281,6 +394,7 @@ jobs:
           6.0.x
           7.0.x
           8.0.x
+          9.0.x
 
     - name: Install rapicgen
       run: dotnet tool install --global rapicgen
@@ -333,6 +447,7 @@ jobs:
           6.0.x
           7.0.x
           8.0.x
+          9.0.x
 
     - name: Install rapicgen
       run: dotnet tool install --global rapicgen
