@@ -66,6 +66,8 @@ jobs:
         dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net6/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net7/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net8/Output.cs
+        cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net9/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net48/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net472/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net462/Output.cs
@@ -80,6 +82,14 @@ jobs:
 
     - name: Build .NET 7 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/Net7/Net7.csproj
+      working-directory: test
+
+    - name: Build .NET 8 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net8/Net8.csproj
+      working-directory: test
+
+    - name: Build .NET 9 NSwag generated code
+      run: dotnet build ./GeneratedCode/NSwag/Net9/Net9.csproj
       working-directory: test
 
     - name: Build .NET 4.8.1 NSwag generated code
@@ -112,6 +122,8 @@ jobs:
         dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp openapi ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net6/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net7/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net8/Output.cs
+        cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net9/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net48/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net472/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net462/Output.cs
@@ -126,6 +138,14 @@ jobs:
 
     - name: Build .NET 7 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net7/Net7.csproj
+      working-directory: test
+      
+    - name: Build .NET 8 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net8/Net8.csproj
+      working-directory: test
+      
+    - name: Build .NET 9 OpenAPI Generator generated code
+      run: dotnet build ./GeneratedCode/OpenApiGenerator/Net9/Net9.csproj
       working-directory: test
 
     - name: Build .NET 4.8.1 OpenAPI Generator generated code
@@ -158,6 +178,8 @@ jobs:
         dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp swagger ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net6/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net7/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net8/Output.cs
+        cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net9/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net48/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net472/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net462/Output.cs
@@ -172,6 +194,14 @@ jobs:
 
     - name: Build .NET 7 Swagger Codegen CLI generated code
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net7/Net7.csproj
+      working-directory: test
+      
+    - name: Build .NET 8 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net8/Net8.csproj
+      working-directory: test
+      
+    - name: Build .NET 9 Swagger Codegen CLI generated code
+      run: dotnet build ./GeneratedCode/SwaggerCodegen/Net9/Net9.csproj
       working-directory: test
 
     - name: Build .NET 4.8.1 Swagger Codegen CLI generated code
@@ -204,6 +234,8 @@ jobs:
         dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp autorest ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs --no-logging
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net6/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net7/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net8/Output.cs
+        cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net9/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net48/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net472/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net462/Output.cs
@@ -219,6 +251,14 @@ jobs:
 
     - name: Build .NET 7 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net7/Net7.csproj
+      working-directory: test
+      
+    - name: Build .NET 8 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net8/Net8.csproj
+      working-directory: test
+      
+    - name: Build .NET 9 AutoRest generated code
+      run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net9/Net9.csproj
       working-directory: test
 
     - name: Build .NET 4.8.1 AutoRest generated code
@@ -261,6 +301,8 @@ jobs:
         dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp refitter ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Refitter/Output.cs --no-logging
         cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net6/Output.cs
         cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net7/Output.cs
+        cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net8/Output.cs
+        cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net9/Output.cs
         cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net48/Output.cs
         cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net472/Output.cs
         cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net462/Output.cs
@@ -275,6 +317,14 @@ jobs:
 
     - name: Build .NET 7 Refitter generated code
       run: dotnet build ./GeneratedCode/Refitter/Net7/Net7.csproj
+      working-directory: test
+      
+    - name: Build .NET 8 Refitter generated code
+      run: dotnet build ./GeneratedCode/Refitter/Net8/Net8.csproj
+      working-directory: test
+      
+    - name: Build .NET 9 Refitter generated code
+      run: dotnet build ./GeneratedCode/Refitter/Net9/Net9.csproj
       working-directory: test
 
     - name: Build .NET 4.8.1 Refitter generated code
