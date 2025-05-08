@@ -1,0 +1,1159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <members>
+    <member name="AddPetAsync(RequestContent,ContentType,RequestContext)">
+      <example>
+This sample shows how to call AddPetAsync.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    name = "<name>",
+    photoUrls = new object[]
+    {
+        "<photoUrls>"
+    },
+});
+Response response = await client.AddPetAsync(content, new ContentType("application/json"));
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call AddPetAsync with all parameters and request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    id = 1234L,
+    category = new
+    {
+        id = 1234L,
+        name = "<name>",
+    },
+    name = "<name>",
+    photoUrls = new object[]
+    {
+        "<photoUrls>"
+    },
+    tags = new object[]
+    {
+        new
+        {
+            id = 1234L,
+            name = "<name>",
+        }
+    },
+    status = "available",
+});
+Response response = await client.AddPetAsync(content, new ContentType("application/json"));
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="AddPet(RequestContent,ContentType,RequestContext)">
+      <example>
+This sample shows how to call AddPet.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    name = "<name>",
+    photoUrls = new object[]
+    {
+        "<photoUrls>"
+    },
+});
+Response response = client.AddPet(content, new ContentType("application/json"));
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call AddPet with all parameters and request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    id = 1234L,
+    category = new
+    {
+        id = 1234L,
+        name = "<name>",
+    },
+    name = "<name>",
+    photoUrls = new object[]
+    {
+        "<photoUrls>"
+    },
+    tags = new object[]
+    {
+        new
+        {
+            id = 1234L,
+            name = "<name>",
+        }
+    },
+    status = "available",
+});
+Response response = client.AddPet(content, new ContentType("application/json"));
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="UpdatePetAsync(RequestContent,ContentType,RequestContext)">
+      <example>
+This sample shows how to call UpdatePetAsync.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    name = "<name>",
+    photoUrls = new object[]
+    {
+        "<photoUrls>"
+    },
+});
+Response response = await client.UpdatePetAsync(content, new ContentType("application/json"));
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call UpdatePetAsync with all parameters and request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    id = 1234L,
+    category = new
+    {
+        id = 1234L,
+        name = "<name>",
+    },
+    name = "<name>",
+    photoUrls = new object[]
+    {
+        "<photoUrls>"
+    },
+    tags = new object[]
+    {
+        new
+        {
+            id = 1234L,
+            name = "<name>",
+        }
+    },
+    status = "available",
+});
+Response response = await client.UpdatePetAsync(content, new ContentType("application/json"));
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="UpdatePet(RequestContent,ContentType,RequestContext)">
+      <example>
+This sample shows how to call UpdatePet.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    name = "<name>",
+    photoUrls = new object[]
+    {
+        "<photoUrls>"
+    },
+});
+Response response = client.UpdatePet(content, new ContentType("application/json"));
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call UpdatePet with all parameters and request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    id = 1234L,
+    category = new
+    {
+        id = 1234L,
+        name = "<name>",
+    },
+    name = "<name>",
+    photoUrls = new object[]
+    {
+        "<photoUrls>"
+    },
+    tags = new object[]
+    {
+        new
+        {
+            id = 1234L,
+            name = "<name>",
+        }
+    },
+    status = "available",
+});
+Response response = client.UpdatePet(content, new ContentType("application/json"));
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="FindPetsByStatusAsync(IEnumerable{string},RequestContext)">
+      <example>
+This sample shows how to call FindPetsByStatusAsync and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.FindPetsByStatusAsync(new string[] { "available" }, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result[0].GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("photoUrls")[0].ToString());
+]]></code>
+This sample shows how to call FindPetsByStatusAsync with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.FindPetsByStatusAsync(new string[] { "available" }, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result[0].GetProperty("id").ToString());
+Console.WriteLine(result[0].GetProperty("category").GetProperty("id").ToString());
+Console.WriteLine(result[0].GetProperty("category").GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("photoUrls")[0].ToString());
+Console.WriteLine(result[0].GetProperty("tags")[0].GetProperty("id").ToString());
+Console.WriteLine(result[0].GetProperty("tags")[0].GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("status").ToString());
+]]></code></example>
+    </member>
+    <member name="FindPetsByStatus(IEnumerable{string},RequestContext)">
+      <example>
+This sample shows how to call FindPetsByStatus and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.FindPetsByStatus(new string[] { "available" }, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result[0].GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("photoUrls")[0].ToString());
+]]></code>
+This sample shows how to call FindPetsByStatus with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.FindPetsByStatus(new string[] { "available" }, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result[0].GetProperty("id").ToString());
+Console.WriteLine(result[0].GetProperty("category").GetProperty("id").ToString());
+Console.WriteLine(result[0].GetProperty("category").GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("photoUrls")[0].ToString());
+Console.WriteLine(result[0].GetProperty("tags")[0].GetProperty("id").ToString());
+Console.WriteLine(result[0].GetProperty("tags")[0].GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("status").ToString());
+]]></code></example>
+    </member>
+    <member name="FindPetsByTagsAsync(IEnumerable{string},RequestContext)">
+      <example>
+This sample shows how to call FindPetsByTagsAsync and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.FindPetsByTagsAsync(new string[] { "<tags>" }, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result[0].GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("photoUrls")[0].ToString());
+]]></code>
+This sample shows how to call FindPetsByTagsAsync with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.FindPetsByTagsAsync(new string[] { "<tags>" }, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result[0].GetProperty("id").ToString());
+Console.WriteLine(result[0].GetProperty("category").GetProperty("id").ToString());
+Console.WriteLine(result[0].GetProperty("category").GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("photoUrls")[0].ToString());
+Console.WriteLine(result[0].GetProperty("tags")[0].GetProperty("id").ToString());
+Console.WriteLine(result[0].GetProperty("tags")[0].GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("status").ToString());
+]]></code></example>
+    </member>
+    <member name="FindPetsByTags(IEnumerable{string},RequestContext)">
+      <example>
+This sample shows how to call FindPetsByTags and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.FindPetsByTags(new string[] { "<tags>" }, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result[0].GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("photoUrls")[0].ToString());
+]]></code>
+This sample shows how to call FindPetsByTags with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.FindPetsByTags(new string[] { "<tags>" }, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result[0].GetProperty("id").ToString());
+Console.WriteLine(result[0].GetProperty("category").GetProperty("id").ToString());
+Console.WriteLine(result[0].GetProperty("category").GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("photoUrls")[0].ToString());
+Console.WriteLine(result[0].GetProperty("tags")[0].GetProperty("id").ToString());
+Console.WriteLine(result[0].GetProperty("tags")[0].GetProperty("name").ToString());
+Console.WriteLine(result[0].GetProperty("status").ToString());
+]]></code></example>
+    </member>
+    <member name="GetPetByIdAsync(long,RequestContext)">
+      <example>
+This sample shows how to call GetPetByIdAsync and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.GetPetByIdAsync(1234L, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("name").ToString());
+Console.WriteLine(result.GetProperty("photoUrls")[0].ToString());
+]]></code>
+This sample shows how to call GetPetByIdAsync with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.GetPetByIdAsync(1234L, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("id").ToString());
+Console.WriteLine(result.GetProperty("category").GetProperty("id").ToString());
+Console.WriteLine(result.GetProperty("category").GetProperty("name").ToString());
+Console.WriteLine(result.GetProperty("name").ToString());
+Console.WriteLine(result.GetProperty("photoUrls")[0].ToString());
+Console.WriteLine(result.GetProperty("tags")[0].GetProperty("id").ToString());
+Console.WriteLine(result.GetProperty("tags")[0].GetProperty("name").ToString());
+Console.WriteLine(result.GetProperty("status").ToString());
+]]></code></example>
+    </member>
+    <member name="GetPetById(long,RequestContext)">
+      <example>
+This sample shows how to call GetPetById and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.GetPetById(1234L, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("name").ToString());
+Console.WriteLine(result.GetProperty("photoUrls")[0].ToString());
+]]></code>
+This sample shows how to call GetPetById with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.GetPetById(1234L, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("id").ToString());
+Console.WriteLine(result.GetProperty("category").GetProperty("id").ToString());
+Console.WriteLine(result.GetProperty("category").GetProperty("name").ToString());
+Console.WriteLine(result.GetProperty("name").ToString());
+Console.WriteLine(result.GetProperty("photoUrls")[0].ToString());
+Console.WriteLine(result.GetProperty("tags")[0].GetProperty("id").ToString());
+Console.WriteLine(result.GetProperty("tags")[0].GetProperty("name").ToString());
+Console.WriteLine(result.GetProperty("status").ToString());
+]]></code></example>
+    </member>
+    <member name="UpdatePetWithFormAsync(long,RequestContent,RequestContext)">
+      <example>
+This sample shows how to call UpdatePetWithFormAsync.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = null;
+Response response = await client.UpdatePetWithFormAsync(1234L, content);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call UpdatePetWithFormAsync with all parameters and request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create("<name>");
+Response response = await client.UpdatePetWithFormAsync(1234L, content);
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="UpdatePetWithForm(long,RequestContent,RequestContext)">
+      <example>
+This sample shows how to call UpdatePetWithForm.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = null;
+Response response = client.UpdatePetWithForm(1234L, content);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call UpdatePetWithForm with all parameters and request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create("<name>");
+Response response = client.UpdatePetWithForm(1234L, content);
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="DeletePetAsync(long,string,RequestContext)">
+      <example>
+This sample shows how to call DeletePetAsync.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.DeletePetAsync(1234L);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call DeletePetAsync with all parameters.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.DeletePetAsync(1234L, apiKey: "<apiKey>");
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="DeletePet(long,string,RequestContext)">
+      <example>
+This sample shows how to call DeletePet.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.DeletePet(1234L);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call DeletePet with all parameters.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.DeletePet(1234L, apiKey: "<apiKey>");
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="UploadFileAsync(long,RequestContent,string,RequestContext)">
+      <example>
+This sample shows how to call UploadFileAsync and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = null;
+Response response = await client.UploadFileAsync(1234L, content, "multipart/form-data");
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.ToString());
+]]></code>
+This sample shows how to call UploadFileAsync with all parameters and request content and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create("<additionalMetadata>");
+Response response = await client.UploadFileAsync(1234L, content, "multipart/form-data");
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("code").ToString());
+Console.WriteLine(result.GetProperty("type").ToString());
+Console.WriteLine(result.GetProperty("message").ToString());
+]]></code></example>
+    </member>
+    <member name="UploadFile(long,RequestContent,string,RequestContext)">
+      <example>
+This sample shows how to call UploadFile and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = null;
+Response response = client.UploadFile(1234L, content, "multipart/form-data");
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.ToString());
+]]></code>
+This sample shows how to call UploadFile with all parameters and request content and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create("<additionalMetadata>");
+Response response = client.UploadFile(1234L, content, "multipart/form-data");
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("code").ToString());
+Console.WriteLine(result.GetProperty("type").ToString());
+Console.WriteLine(result.GetProperty("message").ToString());
+]]></code></example>
+    </member>
+    <member name="GetInventoryAsync(RequestContext)">
+      <example>
+This sample shows how to call GetInventoryAsync and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.GetInventoryAsync(null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("<key>").ToString());
+]]></code>
+This sample shows how to call GetInventoryAsync with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.GetInventoryAsync(null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("<key>").ToString());
+]]></code></example>
+    </member>
+    <member name="GetInventory(RequestContext)">
+      <example>
+This sample shows how to call GetInventory and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.GetInventory(null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("<key>").ToString());
+]]></code>
+This sample shows how to call GetInventory with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.GetInventory(null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("<key>").ToString());
+]]></code></example>
+    </member>
+    <member name="PlaceOrderAsync(RequestContent,RequestContext)">
+      <example>
+This sample shows how to call PlaceOrderAsync and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object());
+Response response = await client.PlaceOrderAsync(content);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.ToString());
+]]></code>
+This sample shows how to call PlaceOrderAsync with all request content and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    id = 1234L,
+    petId = 1234L,
+    quantity = 1234,
+    shipDate = "2022-05-10T18:57:31.2311892Z",
+    status = "placed",
+    complete = true,
+});
+Response response = await client.PlaceOrderAsync(content);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("id").ToString());
+Console.WriteLine(result.GetProperty("petId").ToString());
+Console.WriteLine(result.GetProperty("quantity").ToString());
+Console.WriteLine(result.GetProperty("shipDate").ToString());
+Console.WriteLine(result.GetProperty("status").ToString());
+Console.WriteLine(result.GetProperty("complete").ToString());
+]]></code></example>
+    </member>
+    <member name="PlaceOrder(RequestContent,RequestContext)">
+      <example>
+This sample shows how to call PlaceOrder and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object());
+Response response = client.PlaceOrder(content);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.ToString());
+]]></code>
+This sample shows how to call PlaceOrder with all request content and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    id = 1234L,
+    petId = 1234L,
+    quantity = 1234,
+    shipDate = "2022-05-10T18:57:31.2311892Z",
+    status = "placed",
+    complete = true,
+});
+Response response = client.PlaceOrder(content);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("id").ToString());
+Console.WriteLine(result.GetProperty("petId").ToString());
+Console.WriteLine(result.GetProperty("quantity").ToString());
+Console.WriteLine(result.GetProperty("shipDate").ToString());
+Console.WriteLine(result.GetProperty("status").ToString());
+Console.WriteLine(result.GetProperty("complete").ToString());
+]]></code></example>
+    </member>
+    <member name="GetOrderByIdAsync(long,RequestContext)">
+      <example>
+This sample shows how to call GetOrderByIdAsync and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.GetOrderByIdAsync(1234L, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.ToString());
+]]></code>
+This sample shows how to call GetOrderByIdAsync with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.GetOrderByIdAsync(1234L, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("id").ToString());
+Console.WriteLine(result.GetProperty("petId").ToString());
+Console.WriteLine(result.GetProperty("quantity").ToString());
+Console.WriteLine(result.GetProperty("shipDate").ToString());
+Console.WriteLine(result.GetProperty("status").ToString());
+Console.WriteLine(result.GetProperty("complete").ToString());
+]]></code></example>
+    </member>
+    <member name="GetOrderById(long,RequestContext)">
+      <example>
+This sample shows how to call GetOrderById and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.GetOrderById(1234L, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.ToString());
+]]></code>
+This sample shows how to call GetOrderById with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.GetOrderById(1234L, null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("id").ToString());
+Console.WriteLine(result.GetProperty("petId").ToString());
+Console.WriteLine(result.GetProperty("quantity").ToString());
+Console.WriteLine(result.GetProperty("shipDate").ToString());
+Console.WriteLine(result.GetProperty("status").ToString());
+Console.WriteLine(result.GetProperty("complete").ToString());
+]]></code></example>
+    </member>
+    <member name="DeleteOrderAsync(long,RequestContext)">
+      <example>
+This sample shows how to call DeleteOrderAsync.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.DeleteOrderAsync(1234L);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call DeleteOrderAsync with all parameters.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.DeleteOrderAsync(1234L);
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="DeleteOrder(long,RequestContext)">
+      <example>
+This sample shows how to call DeleteOrder.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.DeleteOrder(1234L);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call DeleteOrder with all parameters.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.DeleteOrder(1234L);
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="CreateUserAsync(RequestContent,RequestContext)">
+      <example>
+This sample shows how to call CreateUserAsync.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object());
+Response response = await client.CreateUserAsync(content);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call CreateUserAsync with all request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    id = 1234L,
+    username = "<username>",
+    firstName = "<firstName>",
+    lastName = "<lastName>",
+    email = "<email>",
+    password = "<password>",
+    phone = "<phone>",
+    userStatus = 1234,
+});
+Response response = await client.CreateUserAsync(content);
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="CreateUser(RequestContent,RequestContext)">
+      <example>
+This sample shows how to call CreateUser.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object());
+Response response = client.CreateUser(content);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call CreateUser with all request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    id = 1234L,
+    username = "<username>",
+    firstName = "<firstName>",
+    lastName = "<lastName>",
+    email = "<email>",
+    password = "<password>",
+    phone = "<phone>",
+    userStatus = 1234,
+});
+Response response = client.CreateUser(content);
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="CreateUsersWithArrayInputAsync(RequestContent,RequestContext)">
+      <example>
+This sample shows how to call CreateUsersWithArrayInputAsync.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object[]
+{
+    new object()
+});
+Response response = await client.CreateUsersWithArrayInputAsync(content);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call CreateUsersWithArrayInputAsync with all request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object[]
+{
+    new
+    {
+        id = 1234L,
+        username = "<username>",
+        firstName = "<firstName>",
+        lastName = "<lastName>",
+        email = "<email>",
+        password = "<password>",
+        phone = "<phone>",
+        userStatus = 1234,
+    }
+});
+Response response = await client.CreateUsersWithArrayInputAsync(content);
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="CreateUsersWithArrayInput(RequestContent,RequestContext)">
+      <example>
+This sample shows how to call CreateUsersWithArrayInput.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object[]
+{
+    new object()
+});
+Response response = client.CreateUsersWithArrayInput(content);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call CreateUsersWithArrayInput with all request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object[]
+{
+    new
+    {
+        id = 1234L,
+        username = "<username>",
+        firstName = "<firstName>",
+        lastName = "<lastName>",
+        email = "<email>",
+        password = "<password>",
+        phone = "<phone>",
+        userStatus = 1234,
+    }
+});
+Response response = client.CreateUsersWithArrayInput(content);
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="CreateUsersWithListInputAsync(RequestContent,RequestContext)">
+      <example>
+This sample shows how to call CreateUsersWithListInputAsync.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object[]
+{
+    new object()
+});
+Response response = await client.CreateUsersWithListInputAsync(content);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call CreateUsersWithListInputAsync with all request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object[]
+{
+    new
+    {
+        id = 1234L,
+        username = "<username>",
+        firstName = "<firstName>",
+        lastName = "<lastName>",
+        email = "<email>",
+        password = "<password>",
+        phone = "<phone>",
+        userStatus = 1234,
+    }
+});
+Response response = await client.CreateUsersWithListInputAsync(content);
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="CreateUsersWithListInput(RequestContent,RequestContext)">
+      <example>
+This sample shows how to call CreateUsersWithListInput.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object[]
+{
+    new object()
+});
+Response response = client.CreateUsersWithListInput(content);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call CreateUsersWithListInput with all request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object[]
+{
+    new
+    {
+        id = 1234L,
+        username = "<username>",
+        firstName = "<firstName>",
+        lastName = "<lastName>",
+        email = "<email>",
+        password = "<password>",
+        phone = "<phone>",
+        userStatus = 1234,
+    }
+});
+Response response = client.CreateUsersWithListInput(content);
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="LoginUserAsync(string,string,RequestContext)">
+      <example>
+This sample shows how to call LoginUserAsync and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.LoginUserAsync("<username>", "<password>", null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.ToString());
+]]></code>
+This sample shows how to call LoginUserAsync with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.LoginUserAsync("<username>", "<password>", null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.ToString());
+]]></code></example>
+    </member>
+    <member name="LoginUser(string,string,RequestContext)">
+      <example>
+This sample shows how to call LoginUser and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.LoginUser("<username>", "<password>", null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.ToString());
+]]></code>
+This sample shows how to call LoginUser with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.LoginUser("<username>", "<password>", null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.ToString());
+]]></code></example>
+    </member>
+    <member name="LogoutUserAsync(RequestContext)">
+      <example>
+This sample shows how to call LogoutUserAsync.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.LogoutUserAsync();
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call LogoutUserAsync with all request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.LogoutUserAsync();
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="LogoutUser(RequestContext)">
+      <example>
+This sample shows how to call LogoutUser.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.LogoutUser();
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call LogoutUser with all request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.LogoutUser();
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="GetUserByNameAsync(string,RequestContext)">
+      <example>
+This sample shows how to call GetUserByNameAsync and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.GetUserByNameAsync("<username>", null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.ToString());
+]]></code>
+This sample shows how to call GetUserByNameAsync with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.GetUserByNameAsync("<username>", null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("id").ToString());
+Console.WriteLine(result.GetProperty("username").ToString());
+Console.WriteLine(result.GetProperty("firstName").ToString());
+Console.WriteLine(result.GetProperty("lastName").ToString());
+Console.WriteLine(result.GetProperty("email").ToString());
+Console.WriteLine(result.GetProperty("password").ToString());
+Console.WriteLine(result.GetProperty("phone").ToString());
+Console.WriteLine(result.GetProperty("userStatus").ToString());
+]]></code></example>
+    </member>
+    <member name="GetUserByName(string,RequestContext)">
+      <example>
+This sample shows how to call GetUserByName and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.GetUserByName("<username>", null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.ToString());
+]]></code>
+This sample shows how to call GetUserByName with all parameters and parse the result.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.GetUserByName("<username>", null);
+
+JsonElement result = JsonDocument.Parse(response.ContentStream).RootElement;
+Console.WriteLine(result.GetProperty("id").ToString());
+Console.WriteLine(result.GetProperty("username").ToString());
+Console.WriteLine(result.GetProperty("firstName").ToString());
+Console.WriteLine(result.GetProperty("lastName").ToString());
+Console.WriteLine(result.GetProperty("email").ToString());
+Console.WriteLine(result.GetProperty("password").ToString());
+Console.WriteLine(result.GetProperty("phone").ToString());
+Console.WriteLine(result.GetProperty("userStatus").ToString());
+]]></code></example>
+    </member>
+    <member name="UpdateUserAsync(string,RequestContent,RequestContext)">
+      <example>
+This sample shows how to call UpdateUserAsync.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object());
+Response response = await client.UpdateUserAsync("<username>", content);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call UpdateUserAsync with all parameters and request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    id = 1234L,
+    username = "<username>",
+    firstName = "<firstName>",
+    lastName = "<lastName>",
+    email = "<email>",
+    password = "<password>",
+    phone = "<phone>",
+    userStatus = 1234,
+});
+Response response = await client.UpdateUserAsync("<username>", content);
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="UpdateUser(string,RequestContent,RequestContext)">
+      <example>
+This sample shows how to call UpdateUser.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new object());
+Response response = client.UpdateUser("<username>", content);
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call UpdateUser with all parameters and request content.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+using RequestContent content = RequestContent.Create(new
+{
+    id = 1234L,
+    username = "<username>",
+    firstName = "<firstName>",
+    lastName = "<lastName>",
+    email = "<email>",
+    password = "<password>",
+    phone = "<phone>",
+    userStatus = 1234,
+});
+Response response = client.UpdateUser("<username>", content);
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="DeleteUserAsync(string,RequestContext)">
+      <example>
+This sample shows how to call DeleteUserAsync.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.DeleteUserAsync("<username>");
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call DeleteUserAsync with all parameters.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = await client.DeleteUserAsync("<username>");
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+    <member name="DeleteUser(string,RequestContext)">
+      <example>
+This sample shows how to call DeleteUser.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.DeleteUser("<username>");
+
+Console.WriteLine(response.Status);
+]]></code>
+This sample shows how to call DeleteUser with all parameters.
+<code><![CDATA[
+SwaggerPetstoreClient client = new SwaggerPetstoreClient();
+
+Response response = client.DeleteUser("<username>");
+
+Console.WriteLine(response.Status);
+]]></code></example>
+    </member>
+  </members>
+</doc>

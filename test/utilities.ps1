@@ -17,6 +17,8 @@ function Install-DotNetRuntimes {
     ./dotnet-install.ps1 -Version 5.0.100
     ./dotnet-install.ps1 -Version 6.0.100
     ./dotnet-install.ps1 -Version 7.0.100
+    ./dotnet-install.ps1 -Version 8.0.100
+    ./dotnet-install.ps1 -Version 9.0.100-preview.1.24101.2
 }
 
 function Install-Rapicgen {
@@ -89,6 +91,8 @@ function Build-GeneratedCode {
                 $argumentsList += "build ./GeneratedCode/$_/NetStandard21/NetStandard21.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net6/Net6.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net7/Net7.csproj"
+                $argumentsList += "build ./GeneratedCode/$_/Net8/Net8.csproj"
+                $argumentsList += "build ./GeneratedCode/$_/Net9/Net9.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net48/Net48.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net481/Net481.csproj"
                 $argumentsList += "build ./GeneratedCode/$_/Net472/Net472.csproj"
@@ -103,13 +107,15 @@ function Build-GeneratedCode {
                 "build ./GeneratedCode/$ToolName/NetStandard21/NetStandard21.csproj",
                 "build ./GeneratedCode/$ToolName/Net6/Net6.csproj",
                 "build ./GeneratedCode/$ToolName/Net7/Net7.csproj",
+                "build ./GeneratedCode/$ToolName/Net8/Net8.csproj",
+                "build ./GeneratedCode/$ToolName/Net9/Net9.csproj",
                 "build ./GeneratedCode/$ToolName/Net48/Net48.csproj",
                 "build ./GeneratedCode/$ToolName/Net481/Net481.csproj",
                 "build ./GeneratedCode/$ToolName/Net472/Net472.csproj"
             )
 
-            if ($_ -notcontains "AutoRest-V3") {
-                $argumentsList += "build ./GeneratedCode/$_/Net462/Net462.csproj"
+            if ($ToolName -notcontains "AutoRest-V3") {
+                $argumentsList += "build ./GeneratedCode/$ToolName/Net462/Net462.csproj"
             }
         }
         
@@ -128,6 +134,10 @@ function Build-GeneratedCode {
                 Write-Host "`r`nBuilding $_`r`n"
                 dotnet build ./GeneratedCode/$_/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/NetStandard21/NetStandard21.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$_/Net6/Net6.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$_/Net7/Net7.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$_/Net8/Net8.csproj; ThrowOnNativeFailure
+                dotnet build ./GeneratedCode/$_/Net9/Net9.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/Net48/Net48.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/Net481/Net481.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$_/Net472/Net472.csproj; ThrowOnNativeFailure
@@ -141,11 +151,15 @@ function Build-GeneratedCode {
             Write-Host "`r`nBuilding $ToolName`r`n"
             dotnet build ./GeneratedCode/$ToolName/NetStandard20/NetStandard20.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/NetStandard21/NetStandard21.csproj; ThrowOnNativeFailure
+            dotnet build ./GeneratedCode/$ToolName/Net6/Net6.csproj; ThrowOnNativeFailure
+            dotnet build ./GeneratedCode/$ToolName/Net7/Net7.csproj; ThrowOnNativeFailure
+            dotnet build ./GeneratedCode/$ToolName/Net8/Net8.csproj; ThrowOnNativeFailure
+            dotnet build ./GeneratedCode/$ToolName/Net9/Net9.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/Net48/Net48.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/Net481/Net481.csproj; ThrowOnNativeFailure
             dotnet build ./GeneratedCode/$ToolName/Net472/Net472.csproj; ThrowOnNativeFailure
 
-            if ($_ -notcontains "AutoRest-V3") {
+            if ($ToolName -notcontains "AutoRest-V3") {
                 dotnet build ./GeneratedCode/$ToolName/Net462/Net462.csproj; ThrowOnNativeFailure
                 dotnet build ./GeneratedCode/$ToolName/Net452/Net452.csproj; ThrowOnNativeFailure
             }
@@ -227,6 +241,8 @@ function Generate-Code {
 
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net7/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net6/Output.cs" -Force
+    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net8/Output.cs" -Force
+    Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net9/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net48/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net481/Output.cs" -Force
     Copy-Item "GeneratedCode/$ToolName/Output.cs" "./GeneratedCode/$ToolName/Net472/Output.cs" -Force
@@ -287,6 +303,8 @@ function Generate-CodeParallel {
         if (Test-Path "GeneratedCode/$_/Output.cs" -PathType Leaf) {
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net7/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net6/Output.cs" -Force
+            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net8/Output.cs" -Force
+            Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net9/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net48/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net481/Output.cs" -Force
             Copy-Item "GeneratedCode/$_/Output.cs" "./GeneratedCode/$_/Net472/Output.cs" -Force
