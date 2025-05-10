@@ -2,7 +2,17 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.23.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.24.0...HEAD)
+
+**Merged pull requests:**
+
+- Update dependency Azure.Core to 1.46.1 [\#1136](https://github.com/christianhelle/apiclientcodegen/pull/1136) ([renovate[bot]](https://github.com/apps/renovate))
+- Add support for .NET 8 and 9 to production tests workflow [\#1135](https://github.com/christianhelle/apiclientcodegen/pull/1135) ([christianhelle](https://github.com/christianhelle))
+- Smoke tests [\#1133](https://github.com/christianhelle/apiclientcodegen/pull/1133) ([christianhelle](https://github.com/christianhelle))
+
+## [1.24.0](https://github.com/christianhelle/apiclientcodegen/tree/1.24.0) (2025-05-07)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.23.0...1.24.0)
 
 **Implemented enhancements:**
 
