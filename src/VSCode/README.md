@@ -34,6 +34,10 @@ This extension adds a context menu item **REST API Client Code Generator** when 
 - **Swagger Codegen CLI**: Generates a C# REST API Client using Swagger Codegen CLI
 - **AutoREST**: Generates a C# REST API Client using AutoREST
 
+## Screenshot
+
+![REST API Client Code Generator VS Code Extension](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vscode-context-menu.png)
+
 ## Requirements
 
 - .NET SDK 6.0 or higher
