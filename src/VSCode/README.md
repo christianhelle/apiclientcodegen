@@ -19,7 +19,7 @@ You can install this extension in several ways:
    ```powershell
    git clone https://github.com/christianhelle/apiclientcodegen.git
    cd apiclientcodegen
-   .\build-vscode.ps1
+   ./src/build-vscode.ps1
    ```
    Then install the generated `.vsix` file using the method above.
 
