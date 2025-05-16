@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "watch",
+      "problemMatcher": "$tsc-watch",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "never"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "type": "npm",
+      "script": "compile",
+      "group": "build",
+      "problemMatcher": "$tsc",
+      "label": "npm: compile",
+      "detail": "webpack"
+    },
+    {
+      "type": "npm",
+      "script": "package",
+      "problemMatcher": "$tsc",
+      "label": "npm: package",
+      "detail": "webpack --mode production --devtool hidden-source-map"
+    }
+  ]
+}
