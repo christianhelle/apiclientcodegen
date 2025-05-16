@@ -5,6 +5,20 @@ import { execSync } from 'child_process';
 import { platform } from 'os';
 
 /**
+ * Checks if the .NET SDK is installed and available
+ * @returns true if the .NET SDK is installed, false otherwise
+ */
+function isDotNetSdkInstalled(): boolean {
+  try {
+    execSync('dotnet --version', { encoding: 'utf-8' });
+    return true;
+  } catch (error) {
+    console.error('Error checking .NET SDK:', error);
+    return false;
+  }
+}
+
+/**
  * Checks if the Rapicgen .NET tool is installed globally
  * @returns true if the tool is installed, false otherwise
  */
@@ -32,7 +46,7 @@ async function installRapicgen(): Promise<boolean> {
       location: vscode.ProgressLocation.Notification,
       title: "Installing Rapicgen tool...",
       cancellable: false
-    }, async (progress) => {
+    }, async () => {
       try {
         execSync('dotnet tool install --global rapicgen', { encoding: 'utf-8' });
         return true;
@@ -113,6 +127,14 @@ async function executeRapicgen(generator: string, specificationFilePath: string)
     return;
   }
   
+  // Check if .NET SDK is installed
+  if (!isDotNetSdkInstalled()) {
+    vscode.window.showErrorMessage(
+      '.NET SDK not found. Please install .NET SDK 6.0 or higher to use this extension. Visit https://dotnet.microsoft.com/download/dotnet to download and install.'
+    );
+    return;
+  }
+  
   // Check if the Rapicgen tool is installed
   if (!isRapicgenInstalled()) {
     const shouldInstall = await vscode.window.showInformationMessage(
@@ -147,13 +169,12 @@ async function executeRapicgen(generator: string, specificationFilePath: string)
   
   const command = `rapicgen csharp ${generator} "${specificationFilePath}" "${namespace}" "${outputFile}"`;
   
-  try {
-    // Show progress while generating
+  try {    // Show progress while generating
     await vscode.window.withProgress({
       location: vscode.ProgressLocation.Notification,
       title: `Generating code with ${generator}...`,
       cancellable: false
-    }, async (progress) => {
+    }, async () => {
       try {
         // Run with higher timeout since code generation can take time
         const output = execSync(command, { 
@@ -173,17 +194,17 @@ async function executeRapicgen(generator: string, specificationFilePath: string)
         const document = await vscode.workspace.openTextDocument(outputFile);
         await vscode.window.showTextDocument(document);
         
-        vscode.window.showInformationMessage(`Successfully generated ${generator} client code at ${outputFile}`);
-      } catch (error: any) {
+        vscode.window.showInformationMessage(`Successfully generated ${generator} client code at ${outputFile}`);      } catch (error: unknown) {
         let errorMessage = `Error generating code with ${generator}`;
         
-        if (error.message) {
-          errorMessage += `: ${error.message}`;
+        const err = error as { message?: string; stderr?: string };
+        if (err.message) {
+          errorMessage += `: ${err.message}`;
         }
         
-        if (error.stderr) {
-          errorMessage += `\n${error.stderr}`;
-          console.error('Command stderr:', error.stderr);
+        if (err.stderr) {
+          errorMessage += `\n${err.stderr}`;
+          console.error('Command stderr:', err.stderr);
         }
         
         vscode.window.showErrorMessage(errorMessage);
@@ -251,5 +272,8 @@ export function activate(context: vscode.ExtensionContext) {
 
 /**
  * Deactivates the extension
+ * Nothing to clean up in this extension
  */
-export function deactivate() {}
+export function deactivate(): void {
+  // Nothing to clean up
+}
