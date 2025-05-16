@@ -140,6 +140,18 @@ function getOutputFilePath(specificationFile: string, generator: string): string
 }
 
 /**
+ * Available code generators with their command names and display names
+ */
+const generators = [
+  { command: 'nswag', displayName: 'NSwag' },
+  { command: 'refitter', displayName: 'Refitter' },
+  { command: 'openapi', displayName: 'OpenAPI Generator' },
+  { command: 'kiota', displayName: 'Microsoft Kiota' },
+  { command: 'swagger', displayName: 'Swagger Codegen CLI' },
+  { command: 'autorest', displayName: 'AutoREST' }
+];
+
+/**
  * Executes the Rapicgen tool with the given generator and parameters
  * @param generator The generator to use (nswag, refitter, etc.)
  * @param specificationFilePath The path to the OpenAPI/Swagger specification file
@@ -201,11 +213,11 @@ async function executeRapicgen(generator: string, specificationFilePath: string,
   }
   
   const command = `rapicgen csharp ${generator} "${specificationFilePath}" "${namespace}" "${outputFile}"`;
-  
-  try {    // Show progress while generating
+    try {    // Show progress while generating
+    const generatorDisplayName = generators.find(g => g.command === generator)?.displayName || generator;
     await vscode.window.withProgress({
       location: vscode.ProgressLocation.Notification,
-      title: `Generating code with ${generator}...`,
+      title: `Generating code with ${generatorDisplayName}...`,
       cancellable: false
     }, async () => {
       try {
@@ -222,13 +234,13 @@ async function executeRapicgen(generator: string, specificationFilePath: string,
           vscode.window.showErrorMessage(`Failed to generate output file: ${outputFile}`);
           return;
         }
-        
-        // Open the generated file
+          // Open the generated file
         const document = await vscode.workspace.openTextDocument(outputFile);
         await vscode.window.showTextDocument(document);
         
-        vscode.window.showInformationMessage(`Successfully generated ${generator} client code at ${outputFile}`);      } catch (error: unknown) {
-        let errorMessage = `Error generating code with ${generator}`;
+        vscode.window.showInformationMessage(`Successfully generated ${generatorDisplayName} client code at ${outputFile}`);      } catch (error: unknown) {
+        let errorMessage = `Error generating code with ${generatorDisplayName}`;
+        
         
         const err = error as { message?: string; stderr?: string };
         if (err.message) {
@@ -257,15 +269,6 @@ export function activate(context: vscode.ExtensionContext) {
   console.log('Rest API Client Code Generator extension is now active');
 
   // Register commands for each generator
-  const generators = [
-    { command: 'nswag', displayName: 'NSwag' },
-    { command: 'refitter', displayName: 'Refitter' },
-    { command: 'openapi', displayName: 'OpenAPI Generator' },
-    { command: 'kiota', displayName: 'Microsoft Kiota' },
-    { command: 'swagger', displayName: 'Swagger Codegen CLI' },
-    { command: 'autorest', displayName: 'AutoREST' }
-  ];
-
   for (const generator of generators) {
     const disposable = vscode.commands.registerCommand(
       `restApiClientCodeGenerator.${generator.command}`, 
