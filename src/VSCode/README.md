@@ -19,7 +19,7 @@ You can install this extension in several ways:
    ```powershell
    git clone https://github.com/christianhelle/apiclientcodegen.git
    cd apiclientcodegen
-   .\build-vscode.ps1
+   ./src/build-vscode.ps1
    ```
    Then install the generated `.vsix` file using the method above.
 
@@ -33,6 +33,10 @@ This extension adds a context menu item **REST API Client Code Generator** when 
 - **Microsoft Kiota**: Generates a C# REST API Client using Microsoft Kiota
 - **Swagger Codegen CLI**: Generates a C# REST API Client using Swagger Codegen CLI
 - **AutoREST**: Generates a C# REST API Client using AutoREST
+
+## Screenshot
+
+![REST API Client Code Generator VS Code Extension](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vscode-context-menu.png)
 
 ## Requirements
 
