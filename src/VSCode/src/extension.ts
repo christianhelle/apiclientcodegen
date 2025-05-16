@@ -5,6 +5,25 @@ import { execSync } from 'child_process';
 import { platform } from 'os';
 
 /**
+ * Gets the extension version from package.json
+ * @param context The extension context
+ * @returns The version string or undefined if not found
+ */
+function getExtensionVersion(context: vscode.ExtensionContext): string | undefined {
+  try {
+    // Get the extension's package.json path
+    const packageJsonPath = path.join(context.extensionPath, 'package.json');
+    if (fs.existsSync(packageJsonPath)) {
+      const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+      return packageJson.version;
+    }
+  } catch (error) {
+    console.error('Error reading extension version:', error);
+  }
+  return undefined;
+}
+
+/**
  * Checks if the .NET SDK is installed and available
  * @returns true if the .NET SDK is installed, false otherwise
  */
@@ -38,9 +57,10 @@ function isRapicgenInstalled(): boolean {
 
 /**
  * Installs the Rapicgen .NET tool globally
+ * @param context The extension context
  * @returns true if installation was successful
  */
-async function installRapicgen(): Promise<boolean> {
+async function installRapicgen(context: vscode.ExtensionContext): Promise<boolean> {
   try {
     const installResult = await vscode.window.withProgress({
       location: vscode.ProgressLocation.Notification,
@@ -48,7 +68,19 @@ async function installRapicgen(): Promise<boolean> {
       cancellable: false
     }, async () => {
       try {
-        execSync('dotnet tool install --global rapicgen', { encoding: 'utf-8' });
+        // Get the extension version to match the tool version
+        const version = getExtensionVersion(context);
+        
+        // Build the installation command
+        let command = 'dotnet tool install --global rapicgen';
+        
+        // Only specify version if we're in a release build (detected by version from package.json)
+        // Local development builds won't specify a version
+        if (version && version !== '0.1.0') {
+          command += ` --version ${version}`;
+        }
+        
+        execSync(command, { encoding: 'utf-8' });
         return true;
       } catch (error) {
         console.error('Failed to install rapicgen tool:', error);
@@ -111,8 +143,9 @@ function getOutputFilePath(specificationFile: string, generator: string): string
  * Executes the Rapicgen tool with the given generator and parameters
  * @param generator The generator to use (nswag, refitter, etc.)
  * @param specificationFilePath The path to the OpenAPI/Swagger specification file
+ * @param context The extension context
  */
-async function executeRapicgen(generator: string, specificationFilePath: string): Promise<void> {
+async function executeRapicgen(generator: string, specificationFilePath: string, context: vscode.ExtensionContext): Promise<void> {
   // Validate that the file exists
   if (!fs.existsSync(specificationFilePath)) {
     vscode.window.showErrorMessage(`File not found: ${specificationFilePath}`);
@@ -143,7 +176,7 @@ async function executeRapicgen(generator: string, specificationFilePath: string)
     );
     
     if (shouldInstall === 'Yes') {
-      const installSuccess = await installRapicgen();
+      const installSuccess = await installRapicgen(context);
       if (!installSuccess) {
         vscode.window.showErrorMessage('Failed to install the Rapicgen .NET tool. Please install it manually with "dotnet tool install --global rapicgen".');
         return;
@@ -257,12 +290,10 @@ export function activate(context: vscode.ExtensionContext) {
 
           if (!selectedFile) {
             return;
-          }
-
-          fileUri = vscode.Uri.file(selectedFile.path);
+          }          fileUri = vscode.Uri.file(selectedFile.path);
         }
 
-        executeRapicgen(generator.command, fileUri.fsPath);
+        executeRapicgen(generator.command, fileUri.fsPath, context);
       }
     );
 
