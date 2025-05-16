@@ -43,7 +43,7 @@ if (Test-Path $swaggerYamlSource) {
 # If no sample files found, download the Petstore OpenAPI specs (both JSON and YAML)
 if (!(Test-Path (Join-Path $samplesFolder "*.json")) -and !(Test-Path (Join-Path $samplesFolder "*.yaml"))) {
     Write-Step "No sample files found. Downloading the Petstore OpenAPI specs..."
-    $petstoreJsonUrl = "https://petstore.swagger.io/v2/swagger.json"
+    $petstoreJsonUrl = "https://petstore3.swagger.io/api/v3/openapi.json"
     $petstoreJsonOutput = Join-Path $samplesFolder "petstore.json"
     $petstoreYamlUrl = "https://petstore3.swagger.io/api/v3/openapi.yaml"
     $petstoreYamlOutput = Join-Path $samplesFolder "petstore.yaml"
