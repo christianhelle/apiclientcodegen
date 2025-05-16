@@ -155,6 +155,20 @@ This extension collects errors and tracks feature usages to a service called [Ex
 
 ![Options - Analytics](images/support-key.png)
 
+### Visual Studio Code
+
+![VS Code](images/vscode-context-menu.png)
+
+### MacOS
+
+![Add - API Client from OpenAPI Specification](images/vsmac-add-new-menu.png)
+
+![Enter URL to OpenAPI Specification](images/vsmac-add-new-dialog.png)
+
+![Solution Explorer Context Menus](images/vsmac-generate-code.png)
+
+![NSwag Studio Context Menu](images/vsmac-nswag-studio.png)
+
 ## Visual Studio Code
 
 The VS Code extension provides similar functionality through a context menu on JSON and YAML files in the explorer. It executes the `rapicgen` .NET tool to generate code, so you will need to have the .NET SDK installed.
@@ -179,16 +193,6 @@ Download the VSIX file from the [GitHub releases](https://github.com/christianhe
 2. Select "REST API Client Code Generator" in the context menu
 3. Choose one of the available code generators
 4. The generated code will open in the editor
-
-### MacOS
-
-![Add - API Client from OpenAPI Specification](images/vsmac-add-new-menu.png)
-
-![Enter URL to OpenAPI Specification](images/vsmac-add-new-dialog.png)
-
-![Solution Explorer Context Menus](images/vsmac-generate-code.png)
-
-![NSwag Studio Context Menu](images/vsmac-nswag-studio.png)
 
 # Installation
 
