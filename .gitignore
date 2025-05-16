@@ -284,3 +284,4 @@ src/.sonarqube/
 src/.tools/
 dependencies/
 test/OpenAPI/V3/JMeter
+src/VSCode/*.vsix
