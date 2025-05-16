@@ -8,7 +8,8 @@ on:
     tags:
       - 'vscode-v*'
   pull_request:
-    branches: [main]
+    branches:
+      - '*'
     paths:
       - 'src/VSCode/**'
   workflow_dispatch:
