@@ -4,6 +4,14 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.24.0...HEAD)
 
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.26.1 [\#1140](https://github.com/christianhelle/apiclientcodegen/pull/1140) ([christianhelle](https://github.com/christianhelle))
+
+**Closed issues:**
+
+- System.MissingMethodException: Method not found: 'System.ReadOnlySpan`1\<Char\> System.Text.ValueStringBuilder.AsSpan\(\)'. [\#1132](https://github.com/christianhelle/apiclientcodegen/issues/1132)
+
 **Merged pull requests:**
 
 - Update dependency Azure.Core to 1.46.1 [\#1136](https://github.com/christianhelle/apiclientcodegen/pull/1136) ([renovate[bot]](https://github.com/apps/renovate))
