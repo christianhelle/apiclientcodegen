@@ -1,5 +1,3 @@
-![REST API Client Code Generator VS Code Extension](./images/vscode-context-menu.png)
-
 This VS Code extension is a cross-platform alternative to the Visual Studio extension for generating C# REST API clients from OpenAPI/Swagger specifications.
 
 ## Features
@@ -15,6 +13,10 @@ This VS Code extension is a cross-platform alternative to the Visual Studio exte
   - AutoREST
 - Configuration options for namespace and output directory
 - Cross-platform support (Windows, macOS, Linux)
+
+## Screenshot
+
+![REST API Client Code Generator VS Code Extension](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vscode-context-menu.png)
 
 ## Requirements
 
