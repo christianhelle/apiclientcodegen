@@ -5,7 +5,8 @@
   "version": "0.1.0",
   "engines": {
     "vscode": "^1.85.0"
-  },  "icon": "images/icon.png",
+  },
+  "icon": "images/icon.png",
   "publisher": "ChristianResmaHelle",
   "repository": {
     "type": "git",
@@ -34,7 +35,7 @@
         "title": "Generate Refitter Client"
       },
       {
-        "command": "restApiClientCodeGenerator.openApiGenerator",
+        "command": "restApiClientCodeGenerator.openapi",
         "title": "Generate OpenAPI Generator Client"
       },
       {
@@ -42,7 +43,7 @@
         "title": "Generate Microsoft Kiota Client"
       },
       {
-        "command": "restApiClientCodeGenerator.swaggerCodegenCli",
+        "command": "restApiClientCodeGenerator.swagger",
         "title": "Generate Swagger Codegen CLI Client"
       },
       {
@@ -68,7 +69,7 @@
           "group": "1_generators"
         },
         {
-          "command": "restApiClientCodeGenerator.openApiGenerator",
+          "command": "restApiClientCodeGenerator.openapi",
           "group": "1_generators"
         },
         {
@@ -76,7 +77,7 @@
           "group": "1_generators"
         },
         {
-          "command": "restApiClientCodeGenerator.swaggerCodegenCli",
+          "command": "restApiClientCodeGenerator.swagger",
           "group": "1_generators"
         },
         {
@@ -106,7 +107,8 @@
         }
       }
     }
-  },  "scripts": {
+  },
+  "scripts": {
     "vscode:prepublish": "npm run package",
     "compile": "webpack",
     "watch": "webpack --watch",

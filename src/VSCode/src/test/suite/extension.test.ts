@@ -17,9 +17,9 @@ suite('Extension Test Suite', () => {
     // Check if our commands are registered
     assert.strictEqual(commands.includes('restApiClientCodeGenerator.nswag'), true);
     assert.strictEqual(commands.includes('restApiClientCodeGenerator.refitter'), true);
-    assert.strictEqual(commands.includes('restApiClientCodeGenerator.openApiGenerator'), true);
+    assert.strictEqual(commands.includes('restApiClientCodeGenerator.openapi'), true);
     assert.strictEqual(commands.includes('restApiClientCodeGenerator.kiota'), true);
-    assert.strictEqual(commands.includes('restApiClientCodeGenerator.swaggerCodegenCli'), true);
+    assert.strictEqual(commands.includes('restApiClientCodeGenerator.swagger'), true);
     assert.strictEqual(commands.includes('restApiClientCodeGenerator.autoRest'), true);
   });
 });
