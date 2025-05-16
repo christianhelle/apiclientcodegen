@@ -24,7 +24,8 @@
     "api client"
   ],
   "main": "./dist/extension.js",
-  "contributes": {    "commands": [
+  "contributes": {
+    "commands": [
       {
         "command": "restApiClientCodeGenerator.nswag",
         "title": "Generate with NSwag (v14.4.0)"
@@ -61,30 +62,31 @@
       "restApiClientCodeGenerator.submenu": [
         {
           "command": "restApiClientCodeGenerator.nswag",
-          "group": "1_generators"
+          "group": "1_generators@1"
         },
         {
           "command": "restApiClientCodeGenerator.refitter",
-          "group": "1_generators"
+          "group": "1_generators@2"
         },
         {
           "command": "restApiClientCodeGenerator.openapi",
-          "group": "1_generators"
+          "group": "1_generators@3"
         },
         {
           "command": "restApiClientCodeGenerator.kiota",
-          "group": "1_generators"
+          "group": "1_generators@4"
         },
         {
           "command": "restApiClientCodeGenerator.swagger",
-          "group": "1_generators"
+          "group": "1_generators@5"
         },
         {
           "command": "restApiClientCodeGenerator.autoRest",
-          "group": "1_generators"
+          "group": "1_generators@6"
         }
       ]
-    },    "submenus": [
+    },
+    "submenus": [
       {
         "id": "restApiClientCodeGenerator.submenu",
         "label": "REST API Client Generator"
