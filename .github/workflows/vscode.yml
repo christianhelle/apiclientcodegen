@@ -13,12 +13,20 @@ on:
       - 'src/VSCode/**'
   workflow_dispatch:
 
+env:
+  VERSION: 1.24.${{ github.run_number }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
+    
+    - name: Update Version
+      working-directory: 
+      run: |
+        sed -i "s/\"version\": \"[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"version\": \"${{ env.VERSION }}\"/" package.json
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
