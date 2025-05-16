@@ -8,7 +8,7 @@ function Write-Step {
 }
 
 # Set up a test folder with sample OpenAPI files
-$testFolder = Join-Path $PSScriptRoot "VSCode-Test"
+$testFolder = Join-Path (Split-Path $PSScriptRoot -Parent) "test\VSCode-Test"
 $samplesFolder = Join-Path $testFolder "samples"
 
 # Create test directories if they don't exist
@@ -40,18 +40,35 @@ if (Test-Path $swaggerYamlSource) {
     Write-Host "Warning: Swagger.yaml not found at $swaggerYamlSource" -ForegroundColor Yellow
 }
 
-# If no sample files found, download the Petstore OpenAPI spec
+# If no sample files found, download the Petstore OpenAPI specs (both JSON and YAML)
 if (!(Test-Path (Join-Path $samplesFolder "*.json")) -and !(Test-Path (Join-Path $samplesFolder "*.yaml"))) {
-    Write-Step "No sample files found. Downloading the Petstore OpenAPI spec..."
-    $petstoreUrl = "https://petstore.swagger.io/v2/swagger.json"
-    $petstoreOutput = Join-Path $samplesFolder "petstore.json"
+    Write-Step "No sample files found. Downloading the Petstore OpenAPI specs..."
+    $petstoreJsonUrl = "https://petstore.swagger.io/v2/swagger.json"
+    $petstoreJsonOutput = Join-Path $samplesFolder "petstore.json"
+    $petstoreYamlUrl = "https://petstore3.swagger.io/api/v3/openapi.yaml"
+    $petstoreYamlOutput = Join-Path $samplesFolder "petstore.yaml"
     
+    # Download JSON version
+    Write-Host "Downloading JSON version of Petstore OpenAPI spec..." -ForegroundColor Cyan
     try {
-        Invoke-WebRequest -Uri $petstoreUrl -OutFile $petstoreOutput
-        Write-Host "Downloaded Petstore OpenAPI spec to $petstoreOutput" -ForegroundColor Green
+        Invoke-WebRequest -Uri $petstoreJsonUrl -OutFile $petstoreJsonOutput
+        Write-Host "Downloaded Petstore OpenAPI JSON spec to $petstoreJsonOutput" -ForegroundColor Green
     } catch {
-        Write-Host "Error downloading Petstore OpenAPI spec: $_" -ForegroundColor Red
-        Write-Host "Please manually add a sample OpenAPI spec file to $samplesFolder" -ForegroundColor Yellow
+        Write-Host "Error downloading Petstore OpenAPI JSON spec: $_" -ForegroundColor Red
+    }
+    
+    # Download YAML version
+    Write-Host "Downloading YAML version of Petstore OpenAPI spec..." -ForegroundColor Cyan
+    try {
+        Invoke-WebRequest -Uri $petstoreYamlUrl -OutFile $petstoreYamlOutput
+        Write-Host "Downloaded Petstore OpenAPI YAML spec to $petstoreYamlOutput" -ForegroundColor Green
+    } catch {
+        Write-Host "Error downloading Petstore OpenAPI YAML spec: $_" -ForegroundColor Red
+    }
+    
+    # Check if any downloads succeeded
+    if (!(Test-Path $petstoreJsonOutput) -and !(Test-Path $petstoreYamlOutput)) {
+        Write-Host "Failed to download any OpenAPI specs. Please manually add sample OpenAPI spec files to $samplesFolder" -ForegroundColor Yellow
     }
 }
 
@@ -80,11 +97,12 @@ if ($vsixFile) {
     Write-Host "Executing: $command" -ForegroundColor Gray
     
     Invoke-Expression $command
-    
-    Write-Host ""
+      Write-Host ""
     Write-Host "VS Code has been launched with the extension in development mode." -ForegroundColor Green
     Write-Host "Use the following steps to test the extension:" -ForegroundColor Green
     Write-Host "1. Open a sample OpenAPI file from the 'samples' folder" -ForegroundColor Green
+    Write-Host "   - JSON sample: petstore.json" -ForegroundColor Green
+    Write-Host "   - YAML sample: petstore.yaml" -ForegroundColor Green
     Write-Host "2. Right-click on the file in the Explorer view" -ForegroundColor Green
     Write-Host "3. Select 'REST API Client Code Generator' from the context menu" -ForegroundColor Green
     Write-Host "4. Choose one of the code generators" -ForegroundColor Green
