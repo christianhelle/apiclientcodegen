@@ -29,11 +29,12 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 - **[Visual Studio 2022](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2022)**
 - **[Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator)**
 - **[Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2017)**
+- **[Visual Studio Code](https://github.com/christianhelle/apiclientcodegen/releases/latest)**. Download the VSIX file from releases
 - **[Visual Studio for Mac](https://github.com/christianhelle/apiclientcodegen/releases/latest)**. Follow **[these instructions](#visual-studio-for-mac)** for update convenience on Visual Studio for Mac
 
 ## Features
 
-- Supports Visual Studio 2017, 2019, 2022, and [Visual Studio for Mac](#visual-studio-for-mac)
+- Supports Visual Studio 2017, 2019, 2022, [Visual Studio Code](#visual-studio-code), and [Visual Studio for Mac](#visual-studio-for-mac)
 - Add New REST API Client to a project from an OpenAPI specification URL (e.g <https://petstore.swagger.io/v2/swagger.json>) using the following code generators:
   - [NSwag](https://github.com/RicoSuter/NSwag)
   - [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
@@ -154,6 +155,10 @@ This extension collects errors and tracks feature usages to a service called [Ex
 
 ![Options - Analytics](images/support-key.png)
 
+### Visual Studio Code
+
+![VS Code](images/vscode-context-menu.png)
+
 ### MacOS
 
 ![Add - API Client from OpenAPI Specification](images/vsmac-add-new-menu.png)
@@ -163,6 +168,31 @@ This extension collects errors and tracks feature usages to a service called [Ex
 ![Solution Explorer Context Menus](images/vsmac-generate-code.png)
 
 ![NSwag Studio Context Menu](images/vsmac-nswag-studio.png)
+
+## Visual Studio Code
+
+The VS Code extension provides similar functionality through a context menu on JSON and YAML files in the explorer. It executes the `rapicgen` .NET tool to generate code, so you will need to have the .NET SDK installed.
+
+### Installation
+
+Download the VSIX file from the [GitHub releases](https://github.com/christianhelle/apiclientcodegen/releases/latest) page, then in VS Code:
+1. Go to Extensions view (Ctrl+Shift+X)
+2. Click on the "..." menu in the top right corner
+3. Select "Install from VSIX..."
+4. Select the downloaded .vsix file
+
+### Features
+
+- Context menu on JSON and YAML files for generating code with various generators
+- Supports all code generators: NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, and AutoREST
+- Configuration options for namespace and output directory
+
+### Usage
+
+1. Right-click on a Swagger/OpenAPI specification file (JSON or YAML) in the VS Code explorer
+2. Select "REST API Client Code Generator" in the context menu
+3. Choose one of the available code generators
+4. The generated code will open in the editor
 
 # Installation
 

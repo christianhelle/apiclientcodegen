@@ -84,10 +84,59 @@ jobs:
         & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
         & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/publish-manifest-vs2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02' 
 
+  VSCode:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Bump VSCode extension version
+      run: |
+        sed -i "s/\"version\": \".*\"/\"version\": \"${{ env.VERSION }}\"/" src/VSCode/package.json
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '6.0.x'
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: 'src/VSCode/package-lock.json'
+    
+    - name: Install dependencies
+      run: |
+        cd src/VSCode
+        npm ci
+    
+    - name: Lint
+      run: |
+        cd src/VSCode
+        npm run lint
+    
+    - name: Build
+      run: |
+        cd src/VSCode
+        npm run compile
+    
+    - name: Package Extension
+      run: |
+        cd src/VSCode
+        npm run package
+        npm run vsix
+    
+    - name: Upload VSIX
+      uses: actions/upload-artifact@v4
+      with:
+        name: VSCode-Extension
+        path: src/VSCode/*.vsix
+
   Release:
     needs: [
       VSIX, 
-      CLI
+      CLI,
+      VSCode
     ]
     runs-on: ubuntu-latest
     steps:
@@ -133,6 +182,12 @@ jobs:
         asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
         asset_name: ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
         asset_content_type: application/zip
-    - uses: actions/download-artifact@v4
+    - name: Upload VSCode asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        path: artifacts
+        upload_url: ${{ steps.create-release.outputs.upload_url }}
+        asset_path: artifacts/VSCode-Extension/rest-api-client-code-generator-${{ env.VERSION }}.vsix
+        asset_name: rest-api-client-code-generator-${{ env.VERSION }}.vsix
+        asset_content_type: application/zip

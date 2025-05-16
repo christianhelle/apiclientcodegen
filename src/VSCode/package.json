@@ -1,0 +1,139 @@
+{
+  "name": "rest-api-client-code-generator",
+  "displayName": "REST API Client Code Generator",
+  "description": "Generate REST API client code from OpenAPI/Swagger specifications",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "icon": "images/icon.png",
+  "publisher": "ChristianResmaHelle",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christianhelle/apiclientcodegen"
+  },
+  "categories": [
+    "Other",
+    "Snippets",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "swagger",
+    "openapi",
+    "code generator",
+    "api client"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "restApiClientCodeGenerator.nswag",
+        "title": "Generate with NSwag (v14.4.0)"
+      },
+      {
+        "command": "restApiClientCodeGenerator.refitter",
+        "title": "Generate with Refitter (v1.5.5)"
+      },
+      {
+        "command": "restApiClientCodeGenerator.openapi",
+        "title": "Generate with OpenAPI Generator (v7.13.0)"
+      },
+      {
+        "command": "restApiClientCodeGenerator.kiota",
+        "title": "Generate with Microsoft Kiota (v1.26.1)"
+      },
+      {
+        "command": "restApiClientCodeGenerator.swagger",
+        "title": "Generate with Swagger (v3.0.34 - Outdated)"
+      },
+      {
+        "command": "restApiClientCodeGenerator.autoRest",
+        "title": "Generate with AutoRest (v3.0.0-beta - Outdated)"
+      }
+    ],    "menus": {
+      "explorer/context": [
+        {
+          "submenu": "restApiClientCodeGenerator.submenu",
+          "when": "resourceExtname == .json || resourceExtname == .yaml || resourceExtname == .yml",
+          "group": "z_commands"
+        }
+      ],
+      "restApiClientCodeGenerator.submenu": [
+        {
+          "command": "restApiClientCodeGenerator.nswag",
+          "group": "1_generators@1"
+        },
+        {
+          "command": "restApiClientCodeGenerator.refitter",
+          "group": "1_generators@2"
+        },
+        {
+          "command": "restApiClientCodeGenerator.openapi",
+          "group": "1_generators@3"
+        },
+        {
+          "command": "restApiClientCodeGenerator.kiota",
+          "group": "1_generators@4"
+        },
+        {
+          "command": "restApiClientCodeGenerator.swagger",
+          "group": "1_generators@5"
+        },
+        {
+          "command": "restApiClientCodeGenerator.autoRest",
+          "group": "1_generators@6"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "restApiClientCodeGenerator.submenu",
+        "label": "REST API Client Generator"
+      }
+    ],
+    "configuration": {
+      "title": "REST API Client Code Generator",
+      "properties": {
+        "restApiClientCodeGenerator.namespace": {
+          "type": "string",
+          "default": "GeneratedCode",
+          "description": "Default namespace to use in the generated code"
+        },
+        "restApiClientCodeGenerator.outputDirectory": {
+          "type": "string",
+          "default": "",
+          "description": "Output directory relative to the workspace folder. If empty, the code will be generated in the same directory as the specification file"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "vsix": "vsce package",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "20.2.5",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "@vscode/test-electron": "^2.3.8",
+    "@vscode/vsce": "^3.4.0",
+    "eslint": "^8.41.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "ts-loader": "^9.4.3",
+    "typescript": "^5.1.3",
+    "webpack": "^5.85.0",
+    "webpack-cli": "^5.1.1"
+  }
+}

@@ -1,0 +1,68 @@
+name: VS Code
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/VSCode/**'
+    tags:
+      - 'vscode-v*'
+  pull_request:
+    branches:
+      - '*'
+    paths:
+      - 'src/VSCode/**'
+  workflow_dispatch:
+
+env:
+  VERSION: 1.24.${{ github.run_number }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Bump VSCode extension version
+      run: |
+        sed -i "s/\"version\": \".*\"/\"version\": \"${{ env.VERSION }}\"/" src/VSCode/package.json
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0.x'
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: 'src/VSCode/package-lock.json'
+    
+    - name: Install dependencies
+      run: |
+        cd src/VSCode
+        npm ci
+    
+    - name: Lint
+      run: |
+        cd src/VSCode
+        npm run lint
+    
+    - name: Build
+      run: |
+        cd src/VSCode
+        npm run compile
+    
+    - name: Package Extension
+      run: |
+        cd src/VSCode
+        npm run package
+        npm run vsix
+    
+    - name: Upload VSIX
+      uses: actions/upload-artifact@v4
+      with:
+        name: VSCode-Extension
+        path: src/VSCode/*.vsix
