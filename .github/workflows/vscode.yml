@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
 
 env:
-  VERSION: 1.24.${{ github.run_number }}
+  VERSION: 1.25.${{ github.run_number }}
 
 jobs:
   build:
