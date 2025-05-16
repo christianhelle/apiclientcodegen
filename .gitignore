@@ -285,3 +285,5 @@ src/.tools/
 dependencies/
 test/OpenAPI/V3/JMeter
 src/VSCode/*.vsix
+src/VSCode/dist
+src/VSCode-Test/samples/petstore.*.cs
