@@ -1,4 +1,4 @@
-name: VS Code Extension CI
+name: VS Code
 
 on:
   push:
@@ -43,5 +43,5 @@ jobs:
     - name: Upload VSIX
       uses: actions/upload-artifact@v3
       with:
-        name: extension
+        name: VSCode-Extension
         path: src/VSCode/*.vsix
