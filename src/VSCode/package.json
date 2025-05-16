@@ -39,7 +39,7 @@
       },
       {
         "command": "restApiClientCodeGenerator.kiota",
-        "title": "Generate with Microsoft Kiota (v1.26.0)"
+        "title": "Generate with Microsoft Kiota (v1.26.1)"
       },
       {
         "command": "restApiClientCodeGenerator.swagger",
