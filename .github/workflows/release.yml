@@ -88,11 +88,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    
-    - name: Update Version
-      working-directory: src/VSCode
-      run: |
-        sed -i "s/\"version\": \"[0-9]\+\.[0-9]\+\.[0-9]\+\"/\"version\": \"${{ env.VERSION }}\"/" package.json
+
+    - name: Bump VSCode extension version
+      run: sed -i "s/\"version\": \".*\"/\"version\": \"${{ env.VERSION }}\"/" src/VSCode/package.json
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
