@@ -287,3 +287,4 @@ test/OpenAPI/V3/JMeter
 src/VSCode/*.vsix
 src/VSCode/dist
 src/VSCode-Test/samples/petstore.*.cs
+test/VSCode-Test/samples
