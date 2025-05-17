@@ -61,13 +61,13 @@ This extension adds a context menu item **REST API Client Code Generator** when 
 
 ## Requirements
 
-For C# code generation:
+### For C# code generation
 
 - .NET SDK 6.0 or higher
 - Java Runtime Environment (for OpenAPI Generator and Swagger Codegen CLI)
 - NPM (for AutoREST and NSwag)
 
-For TypeScript code generation:
+### For TypeScript code generation
 
 - Node.js and NPM
 - OpenAPI Generator
