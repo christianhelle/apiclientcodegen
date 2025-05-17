@@ -38,6 +38,54 @@ function isDotNetSdkInstalled(): boolean {
 }
 
 /**
+ * Gets the installed Rapicgen .NET tool version
+ * @returns The installed version as a string, or null if not installed or version cannot be determined
+ */
+function getInstalledRapicgenVersion(): string | null {
+  try {
+    // Different command for Windows vs. Unix platforms
+    const command = platform() === 'win32'
+      ? 'dotnet tool list --global | findstr rapicgen'
+      : 'dotnet tool list --global | grep rapicgen';
+      
+    const output = execSync(command, { encoding: 'utf-8' });
+    
+    // Parse the version from the command output
+    // The output format is usually: package-id  version  commands
+    const match = output.match(/rapicgen\s+(\d+\.\d+\.\d+)/i);
+    return match && match[1] ? match[1] : null;
+  } catch (error) {
+    console.error('Error getting Rapicgen version:', error);
+    return null;
+  }
+}
+
+/**
+ * Compares two version strings
+ * @param version1 First version string
+ * @param version2 Second version string
+ * @returns 1 if version1 > version2, -1 if version1 < version2, 0 if equal
+ */
+function compareVersions(version1: string, version2: string): number {
+  const parts1 = version1.split('.').map(Number);
+  const parts2 = version2.split('.').map(Number);
+  
+  for (let i = 0; i < Math.max(parts1.length, parts2.length); i++) {
+    const p1 = i < parts1.length ? parts1[i] : 0;
+    const p2 = i < parts2.length ? parts2[i] : 0;
+    
+    if (p1 > p2) {
+      return 1;
+    }
+    if (p1 < p2) {
+      return -1;
+    }
+  }
+  
+  return 0;
+}
+
+/**
  * Checks if the Rapicgen .NET tool is installed globally
  * @returns true if the tool is installed, false otherwise
  */
@@ -56,23 +104,71 @@ function isRapicgenInstalled(): boolean {
 }
 
 /**
- * Installs the Rapicgen .NET tool globally
+ * Checks if the Rapicgen tool needs to be updated based on extension version
  * @param context The extension context
- * @returns true if installation was successful
+ * @returns An object indicating if update is needed and current/target versions
+ */
+function checkRapicgenVersionStatus(context: vscode.ExtensionContext): { 
+  needsUpdate: boolean; 
+  currentVersion: string | null;
+  targetVersion: string | null;
+} {
+  const extensionVersion = getExtensionVersion(context);
+  const installedVersion = getInstalledRapicgenVersion();
+  
+  // Default result
+  const result = {
+    needsUpdate: false,
+    currentVersion: installedVersion,
+    targetVersion: extensionVersion || null
+  };
+  
+  // If extension is dev version (0.1.0) or we can't get versions, no update needed
+  if (!extensionVersion || extensionVersion === '0.1.0' || !installedVersion) {
+    return result;
+  }
+  
+  // Compare versions and determine if update is needed
+  const comparison = compareVersions(installedVersion, extensionVersion);
+  
+  // Only update if the installed version is older (comparison < 0)
+  result.needsUpdate = comparison < 0;
+  
+  return result;
+}
+
+/**
+ * Installs or updates the Rapicgen .NET tool globally
+ * @param context The extension context
+ * @returns true if installation/update was successful
  */
 async function installRapicgen(context: vscode.ExtensionContext): Promise<boolean> {
   try {
+    const version = getExtensionVersion(context);
+    const isUpdate = isRapicgenInstalled();
+    const versionStatus = isUpdate ? checkRapicgenVersionStatus(context) : null;
+    
+    // If tool is already installed and up-to-date (or newer), no need to update
+    if (isUpdate && versionStatus && !versionStatus.needsUpdate) {
+      console.log(`Rapicgen is already installed with version ${versionStatus.currentVersion}, which is greater than or equal to extension version ${versionStatus.targetVersion}. No update needed.`);
+      return true;
+    }
+    
+    // Set the appropriate title for the progress notification
+    const title = isUpdate && versionStatus?.needsUpdate
+      ? `Updating Rapicgen tool from v${versionStatus.currentVersion} to v${versionStatus.targetVersion}...`
+      : "Installing Rapicgen tool...";
+    
     const installResult = await vscode.window.withProgress({
       location: vscode.ProgressLocation.Notification,
-      title: "Installing Rapicgen tool...",
+      title: title,
       cancellable: false
     }, async () => {
       try {
-        // Get the extension version to match the tool version
-        const version = getExtensionVersion(context);
-        
         // Build the installation command
-        let command = 'dotnet tool install --global rapicgen';
+        let command = isUpdate && versionStatus?.needsUpdate
+          ? 'dotnet tool update --global rapicgen'
+          : 'dotnet tool install --global rapicgen';
         
         // Only specify version if we're in a release build (detected by version from package.json)
         // Local development builds won't specify a version
@@ -83,7 +179,7 @@ async function installRapicgen(context: vscode.ExtensionContext): Promise<boolea
         execSync(command, { encoding: 'utf-8' });
         return true;
       } catch (error) {
-        console.error('Failed to install rapicgen tool:', error);
+        console.error('Failed to install/update rapicgen tool:', error);
         return false;
       }
     });
@@ -215,6 +311,22 @@ async function executeRapicgen(generator: string, specificationFilePath: string,
     } else {
       return;
     }
+  } else {
+    // Check if update is needed
+    const versionStatus = checkRapicgenVersionStatus(context);
+    if (versionStatus.needsUpdate) {
+      const shouldUpdate = await vscode.window.showInformationMessage(
+        `A newer version of the Rapicgen tool is available (current: v${versionStatus.currentVersion}, available: v${versionStatus.targetVersion}). Would you like to update?`,
+        'Yes', 'No'
+      );
+      
+      if (shouldUpdate === 'Yes') {
+        const updateSuccess = await installRapicgen(context);
+        if (!updateSuccess) {
+          vscode.window.showWarningMessage(`Failed to update the Rapicgen tool. Continuing with existing version ${versionStatus.currentVersion}.`);
+        }
+      }
+    }
   }
 
   const namespace = getNamespace();
@@ -318,6 +430,22 @@ async function executeRapicgenTypeScript(generator: string, specificationFilePat
       }
     } else {
       return;
+    }
+  } else {
+    // Check if update is needed
+    const versionStatus = checkRapicgenVersionStatus(context);
+    if (versionStatus.needsUpdate) {
+      const shouldUpdate = await vscode.window.showInformationMessage(
+        `A newer version of the Rapicgen tool is available (current: v${versionStatus.currentVersion}, available: v${versionStatus.targetVersion}). Would you like to update?`,
+        'Yes', 'No'
+      );
+      
+      if (shouldUpdate === 'Yes') {
+        const updateSuccess = await installRapicgen(context);
+        if (!updateSuccess) {
+          vscode.window.showWarningMessage(`Failed to update the Rapicgen tool. Continuing with existing version ${versionStatus.currentVersion}.`);
+        }
+      }
     }
   }
 
