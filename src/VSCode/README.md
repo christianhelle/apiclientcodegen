@@ -34,6 +34,19 @@ This extension adds a context menu item **REST API Client Code Generator** when 
 - **Swagger Codegen CLI**: Generates a C# REST API Client using Swagger Codegen CLI
 - **AutoREST**: Generates a C# REST API Client using AutoREST
 
+### TypeScript Generators
+
+- **Angular**: Generates a TypeScript REST API Client for Angular
+- **Aurelia**: Generates a TypeScript REST API Client for Aurelia
+- **Axios**: Generates a TypeScript REST API Client for Axios
+- **Fetch**: Generates a TypeScript REST API Client for Fetch
+- **Inversify**: Generates a TypeScript REST API Client for Inversify
+- **jQuery**: Generates a TypeScript REST API Client for jQuery
+- **NestJS**: Generates a TypeScript REST API Client for NestJS
+- **Node**: Generates a TypeScript REST API Client for Node
+- **Redux Query**: Generates a TypeScript REST API Client for Redux Query
+- **RxJS**: Generates a TypeScript REST API Client for RxJS
+
 ## Screenshot
 
 ![Command Palette](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vscode-command-palette.png)
