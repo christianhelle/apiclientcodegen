@@ -192,6 +192,49 @@ async function installRapicgen(context: vscode.ExtensionContext): Promise<boolea
 }
 
 /**
+ * Ensures that the Rapicgen tool is installed and up-to-date
+ * @param context The extension context
+ * @returns true if the tool is available and ready to use, false otherwise
+ */
+async function ensureRapicgenToolAvailable(context: vscode.ExtensionContext): Promise<boolean> {
+  // Check if the Rapicgen tool is installed
+  if (!isRapicgenInstalled()) {
+    const shouldInstall = await vscode.window.showInformationMessage(
+      'The Rapicgen .NET tool is not installed. Would you like to install it?',
+      'Yes', 'No'
+    );
+    
+    if (shouldInstall === 'Yes') {
+      const installSuccess = await installRapicgen(context);
+      if (!installSuccess) {
+        vscode.window.showErrorMessage('Failed to install the Rapicgen .NET tool. Please install it manually with "dotnet tool install --global rapicgen".');
+        return false;
+      }
+      return true;
+    } else {
+      return false;
+    }
+  } else {
+    // Check if update is needed
+    const versionStatus = checkRapicgenVersionStatus(context);
+    if (versionStatus.needsUpdate) {
+      const shouldUpdate = await vscode.window.showInformationMessage(
+        `A newer version of the Rapicgen tool is available (current: v${versionStatus.currentVersion}, available: v${versionStatus.targetVersion}). Would you like to update?`,
+        'Yes', 'No'
+      );
+      
+      if (shouldUpdate === 'Yes') {
+        const updateSuccess = await installRapicgen(context);
+        if (!updateSuccess) {
+          vscode.window.showWarningMessage(`Failed to update the Rapicgen tool. Continuing with existing version ${versionStatus.currentVersion}.`);
+        }
+      }
+    }
+    return true;
+  }
+}
+
+/**
  * Gets the namespace to use for generated code
  * @returns The namespace from configuration or a default value
  */
@@ -295,38 +338,10 @@ async function executeRapicgen(generator: string, specificationFilePath: string,
     return;
   }
   
-  // Check if the Rapicgen tool is installed
-  if (!isRapicgenInstalled()) {
-    const shouldInstall = await vscode.window.showInformationMessage(
-      'The Rapicgen .NET tool is not installed. Would you like to install it?',
-      'Yes', 'No'
-    );
-    
-    if (shouldInstall === 'Yes') {
-      const installSuccess = await installRapicgen(context);
-      if (!installSuccess) {
-        vscode.window.showErrorMessage('Failed to install the Rapicgen .NET tool. Please install it manually with "dotnet tool install --global rapicgen".');
-        return;
-      }
-    } else {
-      return;
-    }
-  } else {
-    // Check if update is needed
-    const versionStatus = checkRapicgenVersionStatus(context);
-    if (versionStatus.needsUpdate) {
-      const shouldUpdate = await vscode.window.showInformationMessage(
-        `A newer version of the Rapicgen tool is available (current: v${versionStatus.currentVersion}, available: v${versionStatus.targetVersion}). Would you like to update?`,
-        'Yes', 'No'
-      );
-      
-      if (shouldUpdate === 'Yes') {
-        const updateSuccess = await installRapicgen(context);
-        if (!updateSuccess) {
-          vscode.window.showWarningMessage(`Failed to update the Rapicgen tool. Continuing with existing version ${versionStatus.currentVersion}.`);
-        }
-      }
-    }
+  // Ensure the Rapicgen tool is installed and up-to-date
+  const rapicgenAvailable = await ensureRapicgenToolAvailable(context);
+  if (!rapicgenAvailable) {
+    return;
   }
 
   const namespace = getNamespace();
@@ -415,38 +430,10 @@ async function executeRapicgenTypeScript(generator: string, specificationFilePat
     return;
   }
   
-  // Check if the Rapicgen tool is installed
-  if (!isRapicgenInstalled()) {
-    const shouldInstall = await vscode.window.showInformationMessage(
-      'The Rapicgen .NET tool is not installed. Would you like to install it?',
-      'Yes', 'No'
-    );
-    
-    if (shouldInstall === 'Yes') {
-      const installSuccess = await installRapicgen(context);
-      if (!installSuccess) {
-        vscode.window.showErrorMessage('Failed to install the Rapicgen .NET tool. Please install it manually with "dotnet tool install --global rapicgen".');
-        return;
-      }
-    } else {
-      return;
-    }
-  } else {
-    // Check if update is needed
-    const versionStatus = checkRapicgenVersionStatus(context);
-    if (versionStatus.needsUpdate) {
-      const shouldUpdate = await vscode.window.showInformationMessage(
-        `A newer version of the Rapicgen tool is available (current: v${versionStatus.currentVersion}, available: v${versionStatus.targetVersion}). Would you like to update?`,
-        'Yes', 'No'
-      );
-      
-      if (shouldUpdate === 'Yes') {
-        const updateSuccess = await installRapicgen(context);
-        if (!updateSuccess) {
-          vscode.window.showWarningMessage(`Failed to update the Rapicgen tool. Continuing with existing version ${versionStatus.currentVersion}.`);
-        }
-      }
-    }
+  // Ensure the Rapicgen tool is installed and up-to-date
+  const rapicgenAvailable = await ensureRapicgenToolAvailable(context);
+  if (!rapicgenAvailable) {
+    return;
   }
 
   // For TypeScript, we get an output directory rather than a single file
