@@ -111,7 +111,7 @@ The TypeScript code generated depends on the framework chosen:
 - **Fetch**: Uses the browser's native fetch API
 - **jQuery**: Depends on jquery
 - **RxJS**: Depends on rxjs
-- Other frameworks have their specific dependencies
+- For other frameworks, please refer to their official documentation or the [OpenAPI Generator documentation](https://openapi-generator.tech/docs/generators) for detailed dependency information.
 
 ## Related
 
