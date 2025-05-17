@@ -28,67 +28,67 @@
     "commands": [
       {
         "command": "restApiClientCodeGenerator.nswag",
-        "title": "Generate C# with NSwag (v14.4.0)"
+        "title": "Generate C# Client with NSwag (v14.4.0)"
       },
       {
         "command": "restApiClientCodeGenerator.refitter",
-        "title": "Generate C# with Refitter (v1.5.5)"
+        "title": "Generate C# Client with Refitter (v1.5.5)"
       },
       {
         "command": "restApiClientCodeGenerator.openapi",
-        "title": "Generate C# with OpenAPI Generator (v7.13.0)"
+        "title": "Generate C# Client with OpenAPI Generator (v7.13.0)"
       },
       {
         "command": "restApiClientCodeGenerator.kiota",
-        "title": "Generate C# with Microsoft Kiota (v1.26.1)"
+        "title": "Generate C# Client with Microsoft Kiota (v1.26.1)"
       },
       {
         "command": "restApiClientCodeGenerator.swagger",
-        "title": "Generate C# with Swagger (v3.0.34 - Outdated)"
+        "title": "Generate C# Client with Swagger (v3.0.34 - Outdated)"
       },
       {
         "command": "restApiClientCodeGenerator.autoRest",
-        "title": "Generate C# with AutoRest (v3.0.0-beta - Outdated)"
+        "title": "Generate C# Client with AutoRest (v3.0.0-beta - Outdated)"
       },
       {
         "command": "restApiClientCodeGenerator.typescript.angular",
-        "title": "Generate TypeScript with Angular"
+        "title": "Generate TypeScript Client for Angular"
       },
       {
         "command": "restApiClientCodeGenerator.typescript.aurelia",
-        "title": "Generate TypeScript with Aurelia"
+        "title": "Generate TypeScript Client for Aurelia"
       },
       {
         "command": "restApiClientCodeGenerator.typescript.axios",
-        "title": "Generate TypeScript with Axios"
+        "title": "Generate TypeScript Client for Axios"
       },
       {
         "command": "restApiClientCodeGenerator.typescript.fetch",
-        "title": "Generate TypeScript with Fetch"
+        "title": "Generate TypeScript Client for Fetch"
       },
       {
         "command": "restApiClientCodeGenerator.typescript.inversify",
-        "title": "Generate TypeScript with Inversify"
+        "title": "Generate TypeScript Client for Inversify"
       },
       {
         "command": "restApiClientCodeGenerator.typescript.jquery",
-        "title": "Generate TypeScript with JQuery"
+        "title": "Generate TypeScript Client for JQuery"
       },
       {
         "command": "restApiClientCodeGenerator.typescript.nestjs",
-        "title": "Generate TypeScript with NestJS"
+        "title": "Generate TypeScript Client for NestJS"
       },
       {
         "command": "restApiClientCodeGenerator.typescript.node",
-        "title": "Generate TypeScript with Node"
+        "title": "Generate TypeScript Client for Node"
       },
       {
         "command": "restApiClientCodeGenerator.typescript.reduxquery",
-        "title": "Generate TypeScript with Redux Query"
+        "title": "Generate TypeScript Client for Redux Query"
       },
       {
         "command": "restApiClientCodeGenerator.typescript.rxjs",
-        "title": "Generate TypeScript with RxJS"
+        "title": "Generate TypeScript Client for RxJS"
       }
     ],
     "menus": {
