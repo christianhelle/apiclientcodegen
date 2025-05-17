@@ -50,7 +50,8 @@
         "command": "restApiClientCodeGenerator.autoRest",
         "title": "Generate with AutoRest (v3.0.0-beta - Outdated)"
       }
-    ],    "menus": {
+    ],
+    "menus": {
       "explorer/context": [
         {
           "submenu": "restApiClientCodeGenerator.submenu",
@@ -59,6 +60,12 @@
         }
       ],
       "restApiClientCodeGenerator.submenu": [
+        {
+          "submenu": "restApiClientCodeGenerator.csharpSubmenu",
+          "group": "1_languages@1"
+        }
+      ],
+      "restApiClientCodeGenerator.csharpSubmenu": [
         {
           "command": "restApiClientCodeGenerator.nswag",
           "group": "1_generators@1"
@@ -89,6 +96,10 @@
       {
         "id": "restApiClientCodeGenerator.submenu",
         "label": "REST API Client Generator"
+      },
+      {
+        "id": "restApiClientCodeGenerator.csharpSubmenu",
+        "label": "C#"
       }
     ],
     "configuration": {
