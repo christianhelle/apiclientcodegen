@@ -186,17 +186,8 @@ const typescriptGenerators = [
  * @param context The extension context
  */
 async function executeRapicgen(generator: string, specificationFilePath: string, context: vscode.ExtensionContext): Promise<void> {
-  // Validate that the file exists
-  if (!fs.existsSync(specificationFilePath)) {
-    vscode.window.showErrorMessage(`File not found: ${specificationFilePath}`);
-    return;
-  }
-  
-  // Validate that the file is readable
-  try {
-    fs.accessSync(specificationFilePath, fs.constants.R_OK);
-  } catch (err) {
-    vscode.window.showErrorMessage(`Cannot read file: ${specificationFilePath}`);
+  // Validate the specification file
+  if (!validateSpecificationFile(specificationFilePath)) {
     return;
   }
   
@@ -299,17 +290,8 @@ async function executeRapicgen(generator: string, specificationFilePath: string,
  * @param context The extension context
  */
 async function executeRapicgenTypeScript(generator: string, specificationFilePath: string, context: vscode.ExtensionContext): Promise<void> {
-  // Validate that the file exists
-  if (!fs.existsSync(specificationFilePath)) {
-    vscode.window.showErrorMessage(`File not found: ${specificationFilePath}`);
-    return;
-  }
-  
-  // Validate that the file is readable
-  try {
-    fs.accessSync(specificationFilePath, fs.constants.R_OK);
-  } catch (err) {
-    vscode.window.showErrorMessage(`Cannot read file: ${specificationFilePath}`);
+  // Validate the specification file
+  if (!validateSpecificationFile(specificationFilePath)) {
     return;
   }
   
@@ -400,6 +382,28 @@ async function executeRapicgenTypeScript(generator: string, specificationFilePat
     });
   } catch (error) {
     console.error('Error during TypeScript code generation process:', error);
+  }
+}
+
+/**
+ * Validates that a specification file exists and is readable
+ * @param specificationFilePath The path to the OpenAPI/Swagger specification file
+ * @returns true if file is valid, false otherwise
+ */
+function validateSpecificationFile(specificationFilePath: string): boolean {
+  // Validate that the file exists
+  if (!fs.existsSync(specificationFilePath)) {
+    vscode.window.showErrorMessage(`File not found: ${specificationFilePath}`);
+    return false;
+  }
+  
+  // Validate that the file is readable
+  try {
+    fs.accessSync(specificationFilePath, fs.constants.R_OK);
+    return true;
+  } catch (err) {
+    vscode.window.showErrorMessage(`Cannot read file: ${specificationFilePath}`);
+    return false;
   }
 }
 
