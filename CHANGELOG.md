@@ -2,10 +2,26 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.24.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.25.0...HEAD)
 
 **Implemented enhancements:**
 
+- Add TypeScript support to Visual Studio Code extension [\#1154](https://github.com/christianhelle/apiclientcodegen/pull/1154) ([christianhelle](https://github.com/christianhelle))
+- Group C\# Code Generators in Visual Studio Code [\#1153](https://github.com/christianhelle/apiclientcodegen/pull/1153) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update dependency webpack-cli to v6 [\#1151](https://github.com/christianhelle/apiclientcodegen/pull/1151) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency node to v22 [\#1150](https://github.com/christianhelle/apiclientcodegen/pull/1150) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency mocha to v11 [\#1149](https://github.com/christianhelle/apiclientcodegen/pull/1149) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.25.0](https://github.com/christianhelle/apiclientcodegen/tree/1.25.0) (2025-05-16)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.24.0...1.25.0)
+
+**Implemented enhancements:**
+
+- Visual Studio Code Extension [\#1141](https://github.com/christianhelle/apiclientcodegen/pull/1141) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.26.1 [\#1140](https://github.com/christianhelle/apiclientcodegen/pull/1140) ([christianhelle](https://github.com/christianhelle))
 
 **Closed issues:**
@@ -14,6 +30,11 @@
 
 **Merged pull requests:**
 
+- Improve VS Code README [\#1146](https://github.com/christianhelle/apiclientcodegen/pull/1146) ([christianhelle](https://github.com/christianhelle))
+- Update actions/setup-node action to v4 [\#1145](https://github.com/christianhelle/apiclientcodegen/pull/1145) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/setup-dotnet action to v4 [\#1144](https://github.com/christianhelle/apiclientcodegen/pull/1144) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/checkout action to v4 [\#1143](https://github.com/christianhelle/apiclientcodegen/pull/1143) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v20.17.47 [\#1142](https://github.com/christianhelle/apiclientcodegen/pull/1142) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Azure.Core to 1.46.1 [\#1136](https://github.com/christianhelle/apiclientcodegen/pull/1136) ([renovate[bot]](https://github.com/apps/renovate))
 - Add support for .NET 8 and 9 to production tests workflow [\#1135](https://github.com/christianhelle/apiclientcodegen/pull/1135) ([christianhelle](https://github.com/christianhelle))
 - Smoke tests [\#1133](https://github.com/christianhelle/apiclientcodegen/pull/1133) ([christianhelle](https://github.com/christianhelle))
