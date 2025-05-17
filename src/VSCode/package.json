@@ -28,27 +28,27 @@
     "commands": [
       {
         "command": "restApiClientCodeGenerator.nswag",
-        "title": "Generate with NSwag (v14.4.0)"
+        "title": "Generate C# with NSwag (v14.4.0)"
       },
       {
         "command": "restApiClientCodeGenerator.refitter",
-        "title": "Generate with Refitter (v1.5.5)"
+        "title": "Generate C# with Refitter (v1.5.5)"
       },
       {
         "command": "restApiClientCodeGenerator.openapi",
-        "title": "Generate with OpenAPI Generator (v7.13.0)"
+        "title": "Generate C# with OpenAPI Generator (v7.13.0)"
       },
       {
         "command": "restApiClientCodeGenerator.kiota",
-        "title": "Generate with Microsoft Kiota (v1.26.1)"
+        "title": "Generate C# with Microsoft Kiota (v1.26.1)"
       },
       {
         "command": "restApiClientCodeGenerator.swagger",
-        "title": "Generate with Swagger (v3.0.34 - Outdated)"
+        "title": "Generate C# with Swagger (v3.0.34 - Outdated)"
       },
       {
         "command": "restApiClientCodeGenerator.autoRest",
-        "title": "Generate with AutoRest (v3.0.0-beta - Outdated)"
+        "title": "Generate C# with AutoRest (v3.0.0-beta - Outdated)"
       }
     ],
     "menus": {
