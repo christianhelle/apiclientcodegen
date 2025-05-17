@@ -11,6 +11,7 @@
 
 **Merged pull requests:**
 
+- Update VS Code docs [\#1155](https://github.com/christianhelle/apiclientcodegen/pull/1155) ([christianhelle](https://github.com/christianhelle))
 - Update dependency webpack-cli to v6 [\#1151](https://github.com/christianhelle/apiclientcodegen/pull/1151) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency node to v22 [\#1150](https://github.com/christianhelle/apiclientcodegen/pull/1150) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency mocha to v11 [\#1149](https://github.com/christianhelle/apiclientcodegen/pull/1149) ([renovate[bot]](https://github.com/apps/renovate))
