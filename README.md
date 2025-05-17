@@ -1,6 +1,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/gb2doe3tgwjt47cn/branch/master?svg=true)](https://ci.appveyor.com/project/christianhelle/apiclientcodegen/branch/master)
 ![CLI Tool](https://github.com/christianhelle/apiclientcodegen/workflows/CLI%20Tool/badge.svg)
 ![VSIX](https://github.com/christianhelle/apiclientcodegen/workflows/VSIX/badge.svg)
+[![VS Code](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vscode.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vscode.yml)
 ![Smoke Tests](https://github.com/christianhelle/apiclientcodegen/workflows/Smoke%20Tests/badge.svg)
 
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
