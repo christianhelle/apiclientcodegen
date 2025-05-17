@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <RootNamespace>Rapicgen.Rider</RootNamespace>
+    <AssemblyName>Rapicgen.Rider</AssemblyName>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <Copyright>Christian Resma Helle</Copyright>
+    <PackageTags>swagger;openapi;code-generator;rider</PackageTags>
+    <Authors>Christian Resma Helle</Authors>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup><ItemGroup>
+    <PackageReference Include="JetBrains.Rider.SDK" Version="2023.1.0" />
+    <PackageReference Include="Microsoft.Win32.Registry" Version="5.0.0" />
+    <PackageReference Include="System.Reflection" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Actions\RestApiClientCodeGeneratorAction.cs" />
+    <Compile Include="Actions\CodeGeneratorActionBase.cs" />
+    <Compile Include="Actions\OpenApiGeneratorAction.cs" />
+    <Compile Include="Actions\NSwagAction.cs" />
+    <Compile Include="Actions\RefitterAction.cs" />
+    <Compile Include="Actions\KiotaAction.cs" />
+    <Compile Include="Actions\SwaggerCodegenAction.cs" />
+    <Compile Include="Actions\AutoRestAction.cs" />
+    <Compile Include="Generators\RapicgenToolRunner.cs" />
+    <Compile Include="Plugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Actions\Resources\icon.png" />
+    <EmbeddedResource Include="META-INF\plugin.xml" />
+  </ItemGroup>
+
+</Project>

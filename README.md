@@ -31,11 +31,12 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 - **[Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator)**
 - **[Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2017)**
 - **[Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.rest-api-client-code-generator)**
+- **[JetBrains Rider](https://github.com/christianhelle/apiclientcodegen/releases/latest)**
 - **[Visual Studio for Mac](https://github.com/christianhelle/apiclientcodegen/releases/latest)**. Follow **[these instructions](#visual-studio-for-mac)** for update convenience on Visual Studio for Mac
 
 ## Features
 
-- Supports Visual Studio 2017, 2019, 2022, [Visual Studio Code](#visual-studio-code), and [Visual Studio for Mac](#visual-studio-for-mac)
+- Supports Visual Studio 2017, 2019, 2022, [Visual Studio Code](#visual-studio-code), [JetBrains Rider](#jetbrains-rider), and [Visual Studio for Mac](#visual-studio-for-mac)
 - Add New REST API Client to a project from an OpenAPI specification URL (e.g <https://petstore.swagger.io/v2/swagger.json>) using the following code generators:
   - [NSwag](https://github.com/RicoSuter/NSwag)
   - [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
@@ -192,273 +193,36 @@ Download the VSIX file from the [GitHub releases](https://github.com/christianhe
 - Supports all code generators: NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, and AutoREST
 - Configuration options for namespace and output directory
 
-### Usage
+### Usage in VS Code
 
 1. Right-click on a Swagger/OpenAPI specification file (JSON or YAML) in the VS Code explorer
 2. Select "REST API Client Code Generator" in the context menu
 3. Choose one of the available code generators
 4. The generated code will open in the editor
 
-# Installation
+## JetBrains Rider
 
-The Visual Studio extension can be installed directly from Visual Studio 2019 and 2022 via the **Extensions Dialog Box**. The process is best described in the official Microsoft documentation for [Managing extensions for Visual Studio](https://docs.microsoft.com/en-us/visualstudio/ide/finding-and-using-visual-studio-extensions?view=vs-2019&WT.mc_id=DT-MVP-5004822)
+The JetBrains Rider extension provides similar functionality through a context menu on JSON and YAML files in the explorer. It executes the `rapicgen` .NET tool to generate code, so you will need to have the .NET SDK installed.
 
-## Visual Studio for Mac
+### Installation in Rider
 
-This installation process for **Visual Studio for Mac** is currently a bit troublesome as the MonoDevelop Addin Repository is currently not accepting new users so I can't really register and setup my extension.
+Download the plugin from the [GitHub releases](https://github.com/christianhelle/apiclientcodegen/releases/latest) page, then in Rider:
 
-There are 2 ways of installing my extension on Visual Studio for Mac: Adding a custom extension repository or Installing the **.mpack** file directly from the Extensions Manager
+1. Go to Settings > Plugins
+2. Click the gear icon and select "Install Plugin from Disk..."
+3. Select the downloaded ZIP file
 
-### Adding a new extension repository
+### Rider Features
 
-Here's what you need to do:
+- Context menu on JSON and YAML files for generating code with various generators
+- Supports all code generators: NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, and AutoREST
+- Automatic detection of project namespace
+- Integration with Rider's solution explorer
 
-- Open the Visual Studio for Mac **Extension Manager**
-- You can do this from the menu **Visual Studio** -> **Extentions**
+### Usage in Rider
 
-![Open Extensions Dialog Box](images/vsmac-extensions-menu.png)
-
-- Select the **Gallery** Tab
-- Expand the Repository drop down box and select **Manage Repositories**
-
-![Manage Repositories](images/vsmac-extensions-manage-repositories.png)
-
-- Press on the **Add** button to add a new custom extension repository
-
-![Manage Repositories](images/vsmac-extensions-repositories.png)
-
-- Register an online repository at **https://christianhelle.com/vsmac/main.mrep**
-- Click **OK**
-
-![Add Repository](images/vsmac-extensions-add-repository.png)
-
-- Now my extension repository is added to the list
-- Make sure that this is enabled (indicated by a check box)
-
-![Add Repository Dialog](images/vsmac-extensions-added-repository.png)
-
-- You should now be able to see my extensions from the **Gallery** tab
-
-![Added Repository](images/vsmac-extensions-gallery.png)
-
-- By adding my extension repository you will be able to conveniently update my extension using the Visual Studio for Mac Extension Manager
-
-![Add Repository](images/vsmac-updates.png)
-
-![Add Repository](images/vsmac-update-install.png)
-
-![Add Repository](images/vsmac-update-install-progress.png)
-
-### Installing the **.mpack** file directly
-
-Here's what you need to do:
-- Download the latest **.mpack file** from the [Latest Github Release](https://github.com/christianhelle/apiclientcodegen/releases/latest)
-- Now from within Visual Studio for Mac you need to launch the **Extensions Dialog Box**. You can do this from the menu **Visual Studio** -> **Extentions**
-
-![Open Extensions Dialog Box](images/vsmac-extensions-menu.png)
-
-- Click on the **Install from File** button
-
-![Manually install .mpack file](images/vsmac-extensions-install.png)
-
-- Browse to the .mpack file and select it. You will be prompted with a confirmation dialog
-
-![Confirm .mpack file install](images/vsmac-extensions-install-confirm.png)
-
-- Click **Install** and restart Visual Studio for Mac
-- To Verify that the Add-in was installed you can re-open the Extensions Dialog Box, select the **Installed** tab and expand the **IDE Extensions**. You should be able to see the **REST API Client Code Generator**.
-
-- Uninstalling the Add-in is done in this same dialog box by clicking the **Uninstall** button
-
-![Manually uninstall Add-in](images/vsmac-extensions-uninstall.png)
-
-
-# Cross Platform Command Line Tool
-All custom tools mentioned above are also implemented in a cross platform command line application
-
-#### Requirements
-- .NET 6.0 runtime
-- Java Runtime Environment
-- NPM
-
-### Installation
-The tool can be installed as a .NET Core global tool that you can call from the shell / command line
-```
-dotnet tool install --global rapicgen
-```
-or by following the instructions [here](https://www.nuget.org/packages/rapicgen) to install a specific version of tool
-
-### Usage
-Since the tool is published as a .NET Core Tool, it can be launched from anywhere using any command line interface by calling **rapicgen**.
-The help information is displayed when not specifying any arguments to **rapicgen**
-
-```
-Usage: rapicgen [command] [options]
-
-Options:
-  -v|--verbose       Show verbose output
-  -?|-h|--help       Show help information.
-
-Commands:
-  csharp             Generate C# API clients
-  jmeter             Generate Apache JMeter test plans
-  openapi-generator  Generate code using OpenAPI Generator (v7.13.0).
-                     See supported generators at https://openapi-generator.tech/docs/generators/
-  typescript         Generate TypeScript API clients
-
-Run 'rapicgen [command] -?|-h|--help' for more information about a command.
-```
-
-Some help information is also provided per command and can be launched by 
-
-```
-rapicgen [command name] -?
-```
-
-or
-
-```
-rapicgen [command name] [sub command name] -?
-```
-
-For example:
-
-```
-rapicgen csharp -?
-``` 
-
-will output this:
-
-```
-Generate C# API clients
-
-Usage: rapicgen csharp [command] [options]
-
-Options:
-  -?|-h|--help  Show help information.
-
-Commands:
-  autorest      AutoRest (v3.0.0-beta.20210504.2)
-  kiota         Microsoft Kiota (v1.26.1)
-  nswag         NSwag (v14.4.0)
-  openapi       OpenAPI Generator (v7.13.0)
-  refitter      Refitter (v1.5.5)
-  swagger       Swagger Codegen CLI (v3.0.34)
-
-Run 'csharp [command] -?|-h|--help' for more information about a command.
-
-```
-
-and
-
-```
-rapicgen csharp autorest -?
-```
-
-will output this:
-
-```
-Generate Swagger / Open API client using AutoRest
-
-Usage: run autorest [options] <swaggerFile> <namespace> <outputFile>
-
-Arguments:
-  swaggerFile   Path to the Swagger / Open API specification file
-  namespace     Default namespace to in the generated code
-  outputFile    Output filename to write the generated code to. Default is the swaggerFile .cs
-
-Options:
-  -?|-h|--help  Show help information
-```
-
-or 
-
-```
-rapicgen typescript -?
-```
-
-will output this:
-
-```
-Generate TypeScript API client
-
-Usage: rapicgen typescript [options] <generator> <swaggerFile> <outputPath>
-
-Arguments:
-  generator         The tech stack to use for the generated client library
-                    Allowed values are: Angular, Aurelia, Axios, Fetch, Inversify, JQuery, NestJS, Node, ReduxQuery,
-                    Rxjs.
-                    Default value is: Angular.
-  swaggerFile       Path to the Swagger / Open API specification file
-  outputPath        Output folder to write the generated code to
-                    Default value is: typescript-generated-code.
-
-Options:
-  -nl|--no-logging  Disables Analytics and Error Reporting
-  -?|-h|--help      Show help information.
-```
-
-## Usage Examples:
-
-Let's say we have a OpenAPI Specifications document called **Swagger.json**
-
-For starters, we can use the Swagger Petstore spec. Here's an example powershell script for downloading it
-
-```
-Invoke-WebRequest -Uri https://petstore.swagger.io/v3/swagger.json -OutFile Swagger.json
-```
-
-In case you don't have the CLI tool installed you can install it by
-
-```
-dotnet tool install --global rapicgen
-```
-
-Here's an example of how to generate code using **AutoRest**
-
-```
-rapicgen csharp autorest Swagger.json GeneratedCode ./AutoRestOutput.cs
-```
-
-Here's an example of how to generate code using **Kiota**
-
-```
-rapicgen csharp kiota Swagger.json GeneratedCode ./OpenApiOutput.cs
-```
-
-Here's an example of how to generate code using **NSwag**
-
-```
-rapicgen csharp nswag Swagger.json GeneratedCode ./NSwagOutput.cs
-```
-
-Here's an example of how to generate code using **Swagger Codegen CLI**
-
-```
-rapicgen csharp swagger Swagger.json GeneratedCode ./SwaggerOutput.cs
-```
-
-Here's an example of how to generate code using **OpenAPI Generator**
-
-```
-rapicgen csharp openapi Swagger.json GeneratedCode ./OpenApiOutput.cs
-```
-
-Here's an example of how to generate code **JMeter** test plans
-
-```
-rapicgen jmeter Swagger.json
-```
-
-Here's an example of how to generate code for **TypeScript**
-
-```
-rapicgen typescript Angular Swagger.json
-```
-
-#
-
-For tips and tricks on software development, check out [my blog](https://christianhelle.com)
-
-If you find this useful and feel a bit generous then feel free to [buy me a coffee ☕](https://www.buymeacoffee.com/christianhelle)
+1. Right-click on a Swagger/OpenAPI specification file (JSON or YAML) in the Rider solution explorer
+2. Select "REST API Client Code Generator" in the context menu
+3. Choose one of the available code generators
+4. The generated code will be automatically added to your project and opened in the editor
 

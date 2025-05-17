@@ -1,0 +1,8 @@
+# Rider context menu screenshot
+
+This would be a placeholder for an actual screenshot showing the context menu in JetBrains Rider. In a real implementation, a PNG image capturing the context menu would be created here.
+
+The screenshot would show:
+1. The solution explorer with a file like swagger.json selected
+2. The context menu showing "REST API Client Code Generator" as a menu option
+3. The submenu showing all the code generator options: NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, and AutoREST

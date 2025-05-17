@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<idea-plugin>
+  <id>com.christianhelle.apiclientcodegen.rider</id>
+  <name>REST API Client Code Generator</name>
+  <version>1.0.0</version>
+  <vendor url="https://christianhelle.com">Christian Resma Helle</vendor>
+  <description>
+    A JetBrains Rider extension for generating REST API clients from OpenAPI/Swagger specifications.
+    This extension provides context menu options to generate client code using various generators:
+    - NSwag
+    - Refitter
+    - OpenAPI Generator
+    - Microsoft Kiota
+    - Swagger Codegen CLI
+    - AutoREST
+  </description>
+  <change-notes>
+    Initial release of the REST API Client Code Generator for JetBrains Rider.
+  </change-notes>
+  <idea-version since-build="231" />
+  <depends>com.intellij.modules.rider</depends>
+  
+  <extensions defaultExtensionNs="com.intellij">
+    <rider.plugin main-class="Rapicgen.Rider.RestApiClientCodeGeneratorZoneActivator"/>
+  </extensions>
+</idea-plugin>

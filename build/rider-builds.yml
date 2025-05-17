@@ -1,0 +1,44 @@
+name: Rider Plugin
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - 'src/Rider/**'
+      - 'build/rider-builds.yml'
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'src/Rider/**'
+      - 'build/rider-builds.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0.x'
+    
+    - name: Restore dependencies
+      run: dotnet restore src/Rider/Rider.sln
+    
+    - name: Build
+      run: dotnet build src/Rider/Rider.sln --configuration Release --no-restore
+    
+    - name: Run PowerShell build script
+      run: |
+        cd src/Rider
+        ./build-rider.ps1 -Release
+    
+    - name: Upload plugin artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: rider-plugin
+        path: src/Rider/bin/Release/REST.API.Client.Code.Generator-*.zip
+        if-no-files-found: error
