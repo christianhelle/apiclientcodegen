@@ -140,6 +140,18 @@ function getOutputFilePath(specificationFile: string, generator: string): string
 }
 
 /**
+ * Gets the output directory for generated TypeScript code
+ * @param specificationFile The path to the specification file
+ * @param generator The generator name (for the directory name)
+ * @returns The full path for the output directory
+ */
+function getTypeScriptOutputDirectory(specificationFile: string, generator: string): string {
+  const baseOutputDir = getOutputDirectory(specificationFile);
+  const fileName = path.basename(specificationFile, path.extname(specificationFile));
+  return path.join(baseOutputDir, `${fileName}-${generator}-typescript`);
+}
+
+/**
  * Available code generators with their command names and display names
  */
 const generators = [
@@ -149,6 +161,22 @@ const generators = [
   { command: 'kiota', displayName: 'Microsoft Kiota' },
   { command: 'swagger', displayName: 'Swagger Codegen CLI' },
   { command: 'autorest', displayName: 'AutoREST' }
+];
+
+/**
+ * Available TypeScript generators with their command names and display names
+ */
+const typescriptGenerators = [
+  { command: 'angular', displayName: 'Angular' },
+  { command: 'aurelia', displayName: 'Aurelia' },
+  { command: 'axios', displayName: 'Axios' },
+  { command: 'fetch', displayName: 'Fetch' },
+  { command: 'inversify', displayName: 'Inversify' },
+  { command: 'jquery', displayName: 'JQuery' },
+  { command: 'nestjs', displayName: 'NestJS' },
+  { command: 'node', displayName: 'Node' },
+  { command: 'reduxquery', displayName: 'Redux Query' },
+  { command: 'rxjs', displayName: 'RxJS' }
 ];
 
 /**
@@ -213,7 +241,9 @@ async function executeRapicgen(generator: string, specificationFilePath: string,
   }
   
   const command = `rapicgen csharp ${generator} "${specificationFilePath}" "${namespace}" "${outputFile}"`;
-    try {    // Show progress while generating
+  
+  try {
+    // Show progress while generating
     const generatorDisplayName = generators.find(g => g.command === generator)?.displayName || generator;
     await vscode.window.withProgress({
       location: vscode.ProgressLocation.Notification,
@@ -234,13 +264,14 @@ async function executeRapicgen(generator: string, specificationFilePath: string,
           vscode.window.showErrorMessage(`Failed to generate output file: ${outputFile}`);
           return;
         }
-          // Open the generated file
+        
+        // Open the generated file
         const document = await vscode.workspace.openTextDocument(outputFile);
         await vscode.window.showTextDocument(document);
         
-        vscode.window.showInformationMessage(`Successfully generated ${generatorDisplayName} client code at ${outputFile}`);      } catch (error: unknown) {
+        vscode.window.showInformationMessage(`Successfully generated ${generatorDisplayName} client code at ${outputFile}`);
+      } catch (error: unknown) {
         let errorMessage = `Error generating code with ${generatorDisplayName}`;
-        
         
         const err = error as { message?: string; stderr?: string };
         if (err.message) {
@@ -262,13 +293,124 @@ async function executeRapicgen(generator: string, specificationFilePath: string,
 }
 
 /**
+ * Executes the Rapicgen tool to generate TypeScript client code
+ * @param generator The TypeScript generator to use (angular, axios, etc.)
+ * @param specificationFilePath The path to the OpenAPI/Swagger specification file
+ * @param context The extension context
+ */
+async function executeRapicgenTypeScript(generator: string, specificationFilePath: string, context: vscode.ExtensionContext): Promise<void> {
+  // Validate that the file exists
+  if (!fs.existsSync(specificationFilePath)) {
+    vscode.window.showErrorMessage(`File not found: ${specificationFilePath}`);
+    return;
+  }
+  
+  // Validate that the file is readable
+  try {
+    fs.accessSync(specificationFilePath, fs.constants.R_OK);
+  } catch (err) {
+    vscode.window.showErrorMessage(`Cannot read file: ${specificationFilePath}`);
+    return;
+  }
+  
+  // Check if .NET SDK is installed
+  if (!isDotNetSdkInstalled()) {
+    vscode.window.showErrorMessage(
+      '.NET SDK not found. Please install .NET SDK 6.0 or higher to use this extension. Visit https://dotnet.microsoft.com/download/dotnet to download and install.'
+    );
+    return;
+  }
+  
+  // Check if the Rapicgen tool is installed
+  if (!isRapicgenInstalled()) {
+    const shouldInstall = await vscode.window.showInformationMessage(
+      'The Rapicgen .NET tool is not installed. Would you like to install it?',
+      'Yes', 'No'
+    );
+    
+    if (shouldInstall === 'Yes') {
+      const installSuccess = await installRapicgen(context);
+      if (!installSuccess) {
+        vscode.window.showErrorMessage('Failed to install the Rapicgen .NET tool. Please install it manually with "dotnet tool install --global rapicgen".');
+        return;
+      }
+    } else {
+      return;
+    }
+  }
+
+  // For TypeScript, we get an output directory rather than a single file
+  const outputDir = getTypeScriptOutputDirectory(specificationFilePath, generator);
+  
+  // Ensure output directory exists
+  if (!fs.existsSync(outputDir)) {
+    try {
+      fs.mkdirSync(outputDir, { recursive: true });
+    } catch (err) {
+      vscode.window.showErrorMessage(`Failed to create output directory: ${outputDir}`);
+      return;
+    }
+  }
+  
+  const command = `rapicgen typescript ${generator} "${specificationFilePath}" "${outputDir}"`;
+  
+  try {
+    // Show progress while generating
+    const generatorDisplayName = typescriptGenerators.find(g => g.command === generator)?.displayName || generator;
+    await vscode.window.withProgress({
+      location: vscode.ProgressLocation.Notification,
+      title: `Generating TypeScript code with ${generatorDisplayName}...`,
+      cancellable: false
+    }, async () => {
+      try {
+        // Run with higher timeout since code generation can take time
+        const output = execSync(command, { 
+          encoding: 'utf-8',
+          timeout: 120000 // 2 minute timeout
+        });
+        
+        // Log output for debugging
+        console.log(`Rapicgen TypeScript output: ${output}`);
+        
+        if (!fs.existsSync(outputDir) || fs.readdirSync(outputDir).length === 0) {
+          vscode.window.showErrorMessage(`Failed to generate output in directory: ${outputDir}`);
+          return;
+        }
+        
+        // Open the output directory in Explorer
+        vscode.commands.executeCommand('revealFileInOS', vscode.Uri.file(outputDir));
+        
+        vscode.window.showInformationMessage(`Successfully generated ${generatorDisplayName} TypeScript code in ${outputDir}`);
+      } catch (error: unknown) {
+        let errorMessage = `Error generating TypeScript code with ${generatorDisplayName}`;
+        
+        const err = error as { message?: string; stderr?: string };
+        if (err.message) {
+          errorMessage += `: ${err.message}`;
+        }
+        
+        if (err.stderr) {
+          errorMessage += `\n${err.stderr}`;
+          console.error('Command stderr:', err.stderr);
+        }
+        
+        vscode.window.showErrorMessage(errorMessage);
+        console.error('Command execution error:', error);
+      }
+    });
+  } catch (error) {
+    console.error('Error during TypeScript code generation process:', error);
+  }
+}
+
+/**
  * Activates the extension
  * @param context The extension context
  */
 export function activate(context: vscode.ExtensionContext) {
   console.log('Rest API Client Code Generator extension is now active');
 
-  // Register commands for each generator
+  // Register commands for each C# generator
   for (const generator of generators) {
     const disposable = vscode.commands.registerCommand(
       `restApiClientCodeGenerator.${generator.command}`, 
@@ -293,10 +435,47 @@ export function activate(context: vscode.ExtensionContext) {
 
           if (!selectedFile) {
             return;
-          }          fileUri = vscode.Uri.file(selectedFile.path);
+          }
+          fileUri = vscode.Uri.file(selectedFile.path);
         }
 
         executeRapicgen(generator.command, fileUri.fsPath, context);
+      }
+    );
+
+    context.subscriptions.push(disposable);
+  }
+  
+  // Register commands for each TypeScript generator
+  for (const generator of typescriptGenerators) {
+    const disposable = vscode.commands.registerCommand(
+      `restApiClientCodeGenerator.typescript.${generator.command}`, 
+      async (fileUri: vscode.Uri) => {
+        if (!fileUri) {
+          // If command was triggered from command palette, ask for file
+          const files = await vscode.workspace.findFiles('**/*.{json,yaml,yml}');
+          if (files.length === 0) {
+            vscode.window.showErrorMessage('No Swagger/OpenAPI specification files found in the workspace');
+            return;
+          }
+
+          const fileItems = files.map(file => ({
+            label: path.basename(file.fsPath),
+            description: vscode.workspace.asRelativePath(file),
+            path: file.fsPath
+          }));
+
+          const selectedFile = await vscode.window.showQuickPick(fileItems, {
+            placeHolder: 'Select a Swagger/OpenAPI specification file'
+          });
+
+          if (!selectedFile) {
+            return;
+          }
+          fileUri = vscode.Uri.file(selectedFile.path);
+        }
+
+        executeRapicgenTypeScript(generator.command, fileUri.fsPath, context);
       }
     );
 
@@ -306,8 +485,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 /**
  * Deactivates the extension
- * Nothing to clean up in this extension
  */
-export function deactivate(): void {
-  // Nothing to clean up
+export function deactivate() {
+  // Nothing to do here
 }
