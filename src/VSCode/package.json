@@ -47,7 +47,7 @@
         "title": "Generate C# Client with Swagger (v3.0.34 - Outdated)"
       },
       {
-        "command": "restApiClientCodeGenerator.autoRest",
+        "command": "restApiClientCodeGenerator.autorest",
         "title": "Generate C# Client with AutoRest (v3.0.0-beta - Outdated)"
       },
       {
@@ -131,7 +131,7 @@
           "group": "1_generators@5"
         },
         {
-          "command": "restApiClientCodeGenerator.autoRest",
+          "command": "restApiClientCodeGenerator.autorest",
           "group": "1_generators@6"
         }
       ],
