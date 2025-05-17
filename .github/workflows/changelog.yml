@@ -8,6 +8,7 @@ on:
       - '!.github/workflows/changelog.yml'
       - '!src/**/*.csproj'
       - '!src/**/*.cs'
+      - '!src/VSCode/**'
     branches:
       - 'master' 
 
