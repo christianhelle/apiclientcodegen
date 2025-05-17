@@ -359,9 +359,6 @@ async function executeRapicgenTypeScript(generator: string, specificationFilePat
           return;
         }
         
-        // Open the output directory in Explorer
-        vscode.commands.executeCommand('revealFileInOS', vscode.Uri.file(outputDir));
-        
         vscode.window.showInformationMessage(`Successfully generated ${generatorDisplayName} TypeScript code in ${outputDir}`);
       } catch (error: unknown) {
         let errorMessage = `Error generating TypeScript code with ${generatorDisplayName}`;
