@@ -16,7 +16,9 @@ This VS Code extension is a cross-platform alternative to the Visual Studio exte
 
 ## Screenshot
 
-![REST API Client Code Generator VS Code Extension](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vscode-context-menu.png)
+![C#](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vscode-context-menu.png)
+
+![TypeScript](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vscode-context-menu-typescript.png)
 
 ## Requirements
 

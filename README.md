@@ -157,7 +157,9 @@ This extension collects errors and tracks feature usages to a service called [Ex
 
 ### Visual Studio Code
 
-![VS Code](images/vscode-context-menu.png)
+![VS Code - C#](images/vscode-context-menu.png)
+
+![VS Code - TypeScript](images/vscode-context-menu-typescript.png)
 
 ### MacOS
 
