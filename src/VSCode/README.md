@@ -61,6 +61,11 @@ This extension adds a context menu item **REST API Client Code Generator** when 
 - Java Runtime Environment (for OpenAPI Generator and Swagger Codegen CLI)
 - NPM (for AutoREST and NSwag)
 
+For TypeScript code generation:
+
+- Node.js and NPM
+- OpenAPI Generator
+
 The extension uses the `rapicgen` .NET tool to generate the code. If not already installed, you will be prompted to install it when first attempting to generate code.
 
 ## Extension Settings
