@@ -36,7 +36,11 @@ This extension adds a context menu item **REST API Client Code Generator** when 
 
 ## Screenshot
 
-![REST API Client Code Generator VS Code Extension](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vscode-context-menu.png)
+![Command Palette](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vscode-command-palette.png)
+
+![C#](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vscode-context-menu.png)
+
+![TypeScript](https://github.com/christianhelle/apiclientcodegen/raw/master/images/vscode-context-menu-typescript.png)
 
 ## Requirements
 

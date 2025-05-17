@@ -28,27 +28,67 @@
     "commands": [
       {
         "command": "restApiClientCodeGenerator.nswag",
-        "title": "Generate C# with NSwag (v14.4.0)"
+        "title": "Generate C# Client with NSwag (v14.4.0)"
       },
       {
         "command": "restApiClientCodeGenerator.refitter",
-        "title": "Generate C# with Refitter (v1.5.5)"
+        "title": "Generate C# Client with Refitter (v1.5.5)"
       },
       {
         "command": "restApiClientCodeGenerator.openapi",
-        "title": "Generate C# with OpenAPI Generator (v7.13.0)"
+        "title": "Generate C# Client with OpenAPI Generator (v7.13.0)"
       },
       {
         "command": "restApiClientCodeGenerator.kiota",
-        "title": "Generate C# with Microsoft Kiota (v1.26.1)"
+        "title": "Generate C# Client with Microsoft Kiota (v1.26.1)"
       },
       {
         "command": "restApiClientCodeGenerator.swagger",
-        "title": "Generate C# with Swagger (v3.0.34 - Outdated)"
+        "title": "Generate C# Client with Swagger (v3.0.34 - Outdated)"
       },
       {
-        "command": "restApiClientCodeGenerator.autoRest",
-        "title": "Generate C# with AutoRest (v3.0.0-beta - Outdated)"
+        "command": "restApiClientCodeGenerator.autorest",
+        "title": "Generate C# Client with AutoRest (v3.0.0-beta - Outdated)"
+      },
+      {
+        "command": "restApiClientCodeGenerator.typescript.angular",
+        "title": "Generate TypeScript Client for Angular"
+      },
+      {
+        "command": "restApiClientCodeGenerator.typescript.aurelia",
+        "title": "Generate TypeScript Client for Aurelia"
+      },
+      {
+        "command": "restApiClientCodeGenerator.typescript.axios",
+        "title": "Generate TypeScript Client for Axios"
+      },
+      {
+        "command": "restApiClientCodeGenerator.typescript.fetch",
+        "title": "Generate TypeScript Client for Fetch"
+      },
+      {
+        "command": "restApiClientCodeGenerator.typescript.inversify",
+        "title": "Generate TypeScript Client for Inversify"
+      },
+      {
+        "command": "restApiClientCodeGenerator.typescript.jquery",
+        "title": "Generate TypeScript Client for JQuery"
+      },
+      {
+        "command": "restApiClientCodeGenerator.typescript.nestjs",
+        "title": "Generate TypeScript Client for NestJS"
+      },
+      {
+        "command": "restApiClientCodeGenerator.typescript.node",
+        "title": "Generate TypeScript Client for Node"
+      },
+      {
+        "command": "restApiClientCodeGenerator.typescript.reduxquery",
+        "title": "Generate TypeScript Client for Redux Query"
+      },
+      {
+        "command": "restApiClientCodeGenerator.typescript.rxjs",
+        "title": "Generate TypeScript Client for RxJS"
       }
     ],
     "menus": {
@@ -63,6 +103,10 @@
         {
           "submenu": "restApiClientCodeGenerator.csharpSubmenu",
           "group": "1_languages@1"
+        },
+        {
+          "submenu": "restApiClientCodeGenerator.typescriptSubmenu",
+          "group": "1_languages@2"
         }
       ],
       "restApiClientCodeGenerator.csharpSubmenu": [
@@ -87,8 +131,50 @@
           "group": "1_generators@5"
         },
         {
-          "command": "restApiClientCodeGenerator.autoRest",
+          "command": "restApiClientCodeGenerator.autorest",
           "group": "1_generators@6"
+        }
+      ],
+      "restApiClientCodeGenerator.typescriptSubmenu": [
+        {
+          "command": "restApiClientCodeGenerator.typescript.angular",
+          "group": "1_generators@1"
+        },
+        {
+          "command": "restApiClientCodeGenerator.typescript.aurelia",
+          "group": "1_generators@2"
+        },
+        {
+          "command": "restApiClientCodeGenerator.typescript.axios",
+          "group": "1_generators@3"
+        },
+        {
+          "command": "restApiClientCodeGenerator.typescript.fetch",
+          "group": "1_generators@4"
+        },
+        {
+          "command": "restApiClientCodeGenerator.typescript.inversify",
+          "group": "1_generators@5"
+        },
+        {
+          "command": "restApiClientCodeGenerator.typescript.jquery",
+          "group": "1_generators@6"
+        },
+        {
+          "command": "restApiClientCodeGenerator.typescript.nestjs",
+          "group": "1_generators@7"
+        },
+        {
+          "command": "restApiClientCodeGenerator.typescript.node",
+          "group": "1_generators@8"
+        },
+        {
+          "command": "restApiClientCodeGenerator.typescript.reduxquery",
+          "group": "1_generators@9"
+        },
+        {
+          "command": "restApiClientCodeGenerator.typescript.rxjs",
+          "group": "1_generators@10"
         }
       ]
     },
@@ -100,6 +186,10 @@
       {
         "id": "restApiClientCodeGenerator.csharpSubmenu",
         "label": "C#"
+      },
+      {
+        "id": "restApiClientCodeGenerator.typescriptSubmenu",
+        "label": "TypeScript"
       }
     ],
     "configuration": {
