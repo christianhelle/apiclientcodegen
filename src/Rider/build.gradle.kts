@@ -5,8 +5,9 @@ plugins {
 
 intellij {
     type = "RD"
-    version = "2025.1"
-    plugins = listOf()
+    version = "2023.3"
+    
+    // No plugin XML configuration here, moved to patchPluginXml task
 }
 
 group = "com.christianhelle.apiclientcodegen"
@@ -16,12 +17,19 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation(kotlin("stdlib"))
-}
-
 tasks {
     patchPluginXml {
-        changeNotes = "Initial version. Adds REST API Client Generator context menu."
+        changeNotes.set("Initial version. Adds REST API Client Generator context menu.")
+        version.set(project.version.toString())
+        pluginDescription.set("""
+            <idea-plugin>
+                <extensions defaultExtensionNs="com.intellij">
+                    <rider.excludeFromHostAssemblies>
+                        <assembly>JetBrains.Platform.UIInteractive.Shell.Common</assembly>
+                        <assembly>System.ValueTuple</assembly>
+                    </rider.excludeFromHostAssemblies>
+                </extensions>
+            </idea-plugin>
+        """.trimIndent())
     }
 }
