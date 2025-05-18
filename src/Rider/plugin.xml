@@ -1,0 +1,19 @@
+<idea-plugin>
+    <id>com.christianhelle.apiclientcodegen.rider</id>
+    <name>REST API Client Code Generator</name>
+    <vendor>Christian Resma Helle</vendor>
+    <description>Generate C# REST API clients from OpenAPI/Swagger specifications using Rapicgen.</description>
+    <version>1.0.0</version>
+    <depends>com.jetbrains.rider</depends>
+    <idea-version since-build="241.0" until-build="242.*"/>
+
+    <actions>
+        <action id="RestApiClientGeneratorGroup" class="com.christianhelle.apiclientcodegen.RestApiClientGeneratorGroup" text="REST API Client Generator"/>
+        <action id="RestApiClientGenerator.NSwag" class="com.christianhelle.apiclientcodegen.NSwagGeneratorAction" text="NSwag"/>
+        <action id="RestApiClientGenerator.Refitter" class="com.christianhelle.apiclientcodegen.RefitterGeneratorAction" text="Refitter"/>
+        <action id="RestApiClientGenerator.OpenApi" class="com.christianhelle.apiclientcodegen.OpenApiGeneratorAction" text="OpenAPI Generator"/>
+        <action id="RestApiClientGenerator.Kiota" class="com.christianhelle.apiclientcodegen.KiotaGeneratorAction" text="Microsoft Kiota"/>
+        <action id="RestApiClientGenerator.Swagger" class="com.christianhelle.apiclientcodegen.SwaggerGeneratorAction" text="Swagger Codegen CLI"/>
+        <action id="RestApiClientGenerator.AutoRest" class="com.christianhelle.apiclientcodegen.AutoRestGeneratorAction" text="AutoREST"/>
+    </actions>
+</idea-plugin>
