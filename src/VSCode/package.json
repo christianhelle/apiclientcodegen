@@ -1,6 +1,6 @@
 {
-  "name": "rest-api-client-code-generator",
-  "displayName": "REST API Client Code Generator",
+  "name": "apiclientcodegen",
+  "displayName": "REST API Client Code Generator for VS Code",
   "description": "Generate REST API client code from OpenAPI/Swagger specifications",
   "version": "0.1.0",
   "engines": {
