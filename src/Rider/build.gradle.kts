@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("org.jetbrains.intellij") version "1.17.3"
-    kotlin("jvm") version "1.9.22"
+    kotlin("jvm") version "2.1.0"
 }
 
 java {
@@ -16,7 +16,7 @@ tasks.withType<KotlinCompile> {
 
 intellij {
     type = "RD"
-    version = "2023.3"
+    version = "2025.1"
     
     // No plugin XML configuration here, moved to patchPluginXml task
 }
@@ -29,6 +29,9 @@ repositories {
 }
 
 tasks {
+    buildSearchableOptions {
+        enabled = false
+    }
     patchPluginXml {
         changeNotes.set("Initial version. Adds REST API Client Generator context menu.")
         version.set(project.version.toString())

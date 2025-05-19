@@ -9,7 +9,7 @@ Push-Location $PSScriptRoot
 if (-not (Test-Path "$PSScriptRoot/gradlew")) {
     & gradle wrapper
 }
-& $GradleCmd build
+& $GradleCmd buildPlugin
 Pop-Location
 
 Write-Host "Build complete. Plugin artifact is in src/Rider/build/distributions/"
