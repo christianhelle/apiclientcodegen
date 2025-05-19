@@ -77,7 +77,7 @@ namespace Rapicgen.Core.Generators
                         FileAccess.Read, 
                         FileShare.Read, 
                         4096, 
-                        FileOptions.SequentialScan | FileOptions.OpenNoBuffering))
+                        FileOptions.SequentialScan))
                     using (var reader = new StreamReader(fileStream, Encoding.UTF8, true))
                     {
                         return reader.ReadToEnd().Replace("\r\n", "\n").Split('\n');
