@@ -26,6 +26,12 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x src/Rider/gradlew
 
+      - name: Ensure gradle wrapper exists
+        run: |
+          if [ ! -f src/Rider/gradle/wrapper/gradle-wrapper.jar ]; then
+            cd src/Rider && gradle wrapper && cd -
+          fi
+
       - name: Build Rider plugin
         shell: pwsh
         run: ./src/Rider/build-rider.ps1
