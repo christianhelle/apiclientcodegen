@@ -11,6 +11,8 @@
 
 **Merged pull requests:**
 
+- Update dependency @vscode/vsce to v3.4.1 [\#1159](https://github.com/christianhelle/apiclientcodegen/pull/1159) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.15.19 [\#1158](https://github.com/christianhelle/apiclientcodegen/pull/1158) ([renovate[bot]](https://github.com/apps/renovate))
 - Enhance rapicgen tool management and rename package [\#1156](https://github.com/christianhelle/apiclientcodegen/pull/1156) ([christianhelle](https://github.com/christianhelle))
 - Update VS Code docs [\#1155](https://github.com/christianhelle/apiclientcodegen/pull/1155) ([christianhelle](https://github.com/christianhelle))
 - Update dependency webpack-cli to v6 [\#1151](https://github.com/christianhelle/apiclientcodegen/pull/1151) ([renovate[bot]](https://github.com/apps/renovate))
