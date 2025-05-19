@@ -11,6 +11,7 @@
 
 **Merged pull requests:**
 
+- Add links to other versions of the extension on the Marketplace [\#1160](https://github.com/christianhelle/apiclientcodegen/pull/1160) ([christianhelle](https://github.com/christianhelle))
 - Update dependency @vscode/vsce to v3.4.1 [\#1159](https://github.com/christianhelle/apiclientcodegen/pull/1159) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v22.15.19 [\#1158](https://github.com/christianhelle/apiclientcodegen/pull/1158) ([renovate[bot]](https://github.com/apps/renovate))
 - Enhance rapicgen tool management and rename package [\#1156](https://github.com/christianhelle/apiclientcodegen/pull/1156) ([christianhelle](https://github.com/christianhelle))
