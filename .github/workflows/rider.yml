@@ -1,0 +1,37 @@
+name: Rider
+
+on:
+  push:
+    paths:
+      - 'src/Rider/**'
+      - '.github/workflows/rider.yml'
+  pull_request:
+    paths:
+      - 'src/Rider/**'
+      - '.github/workflows/rider.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Make gradlew executable
+        run: chmod +x src/Rider/gradlew
+
+      - name: Build Rider plugin
+        shell: pwsh
+        run: ./src/Rider/build-rider.ps1
+
+      - name: Upload Rider Plugin artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Rider-Plugin
+          path: src/Rider/build/distributions/
