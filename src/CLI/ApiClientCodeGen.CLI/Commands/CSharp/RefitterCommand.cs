@@ -22,9 +22,15 @@ public class RefitterCommand : CodeGeneratorCommand
         this.factory = factory;
         this.options = options;
     }
+    
+    [Option(
+        ShortName = "sf",
+        LongName = "settings-file",
+        Description = "Path to a .refitter settings file to use for code generation")]
+    public string? SettingsFile { get; set; }
 
     public override ICodeGenerator CreateGenerator() =>
-        factory.Create(SwaggerFile, DefaultNamespace, options);
+        factory.Create(SettingsFile ?? SwaggerFile, DefaultNamespace, options);
 
     [Option(
         ShortName = "nocontracts",
