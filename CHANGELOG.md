@@ -13,6 +13,7 @@
 
 - Update dependency @types/node to v22.15.21 [\#1167](https://github.com/christianhelle/apiclientcodegen/pull/1167) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency webpack to v5.99.9 [\#1166](https://github.com/christianhelle/apiclientcodegen/pull/1166) ([renovate[bot]](https://github.com/apps/renovate))
+- Update vstest monorepo to 17.14.0 [\#1165](https://github.com/christianhelle/apiclientcodegen/pull/1165) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency mocha to v11.4.0 [\#1162](https://github.com/christianhelle/apiclientcodegen/pull/1162) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Moq to 4.20.72 [\#1161](https://github.com/christianhelle/apiclientcodegen/pull/1161) ([renovate[bot]](https://github.com/apps/renovate))
 - Add links to other versions of the extension on the Marketplace [\#1160](https://github.com/christianhelle/apiclientcodegen/pull/1160) ([christianhelle](https://github.com/christianhelle))
