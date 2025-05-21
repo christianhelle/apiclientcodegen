@@ -3,6 +3,9 @@ using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.Refitter;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 namespace Rapicgen.CLI.Commands.CSharp;
 
@@ -27,10 +30,30 @@ public class RefitterCommand : CodeGeneratorCommand
         ShortName = "sf",
         LongName = "settings-file",
         Description = "Path to a .refitter settings file to use for code generation")]
+    [FileExists]
     public string? SettingsFile { get; set; }
 
     public override ICodeGenerator CreateGenerator() =>
         factory.Create(SettingsFile ?? SwaggerFile, DefaultNamespace, options);
+        
+    // Override the base OnExecute method to handle the case when SettingsFile is specified
+    public new int OnExecute()
+    {
+        // If a settings file is specified, validate it exists
+        if (!string.IsNullOrEmpty(SettingsFile))
+        {
+            if (!File.Exists(SettingsFile))
+            {
+                throw new ValidationException($"The settings file '{SettingsFile}' does not exist.");
+            }
+            
+            // Use settings file as the SwaggerFile
+            SwaggerFile = SettingsFile;
+        }
+        
+        // Call the base implementation
+        return base.OnExecute();
+    }
 
     [Option(
         ShortName = "nocontracts",
