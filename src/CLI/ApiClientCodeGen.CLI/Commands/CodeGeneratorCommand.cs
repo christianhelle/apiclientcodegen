@@ -22,7 +22,6 @@ namespace Rapicgen.CLI.Commands
             this.progressReporter = progressReporter ?? throw new ArgumentNullException(nameof(progressReporter));
         }
 
-        [Required]
         [FileExists]
         [Argument(0, "swaggerFile", "Path to the Swagger / Open API specification file")]
         [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
