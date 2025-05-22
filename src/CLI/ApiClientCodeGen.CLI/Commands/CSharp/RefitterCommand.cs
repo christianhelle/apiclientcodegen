@@ -37,7 +37,7 @@ public class RefitterCommand : CodeGeneratorCommand
         factory.Create(SettingsFile ?? SwaggerFile, DefaultNamespace, options);
         
     // Override the base OnExecute method to handle the case when SettingsFile is specified
-    public new int OnExecute()
+    public override int OnExecute()
     {
         // If a settings file is specified, validate it exists
         if (!string.IsNullOrEmpty(SettingsFile))
