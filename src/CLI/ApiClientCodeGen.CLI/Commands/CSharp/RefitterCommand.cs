@@ -42,11 +42,6 @@ public class RefitterCommand : CodeGeneratorCommand
         // If a settings file is specified, validate it exists
         if (!string.IsNullOrEmpty(SettingsFile))
         {
-            if (!File.Exists(SettingsFile))
-            {
-                throw new ValidationException($"The settings file '{SettingsFile}' does not exist.");
-            }
-            
             // Use settings file as the SwaggerFile
             SwaggerFile = SettingsFile;
         }
