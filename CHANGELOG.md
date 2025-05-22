@@ -6,6 +6,8 @@
 
 **Implemented enhancements:**
 
+- Use .refitter file from CLI Tool [\#1168](https://github.com/christianhelle/apiclientcodegen/issues/1168)
+- Add support for using `.refitter` settings files from CLI [\#1169](https://github.com/christianhelle/apiclientcodegen/pull/1169) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Add TypeScript support to Visual Studio Code extension [\#1154](https://github.com/christianhelle/apiclientcodegen/pull/1154) ([christianhelle](https://github.com/christianhelle))
 - Group C\# Code Generators in Visual Studio Code [\#1153](https://github.com/christianhelle/apiclientcodegen/pull/1153) ([christianhelle](https://github.com/christianhelle))
 
