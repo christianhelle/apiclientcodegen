@@ -20,9 +20,9 @@
   "generateDeprecatedOperations": true,
   "operationNameTemplate": "{operationName}Async",
   "optionalParameters": false,
-  "outputFolder": "../Generated",
+  "outputFolder": "./GeneratedCode",
   "generateMultipleFiles": true,
-  "contractsOutputFolder": "../Generated/Models",
+  "contractsOutputFolder": "./GeneratedCode/Models",
   "includeTags": [
     "pet",
     "store",
