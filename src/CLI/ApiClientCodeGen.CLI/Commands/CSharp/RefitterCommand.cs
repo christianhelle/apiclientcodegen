@@ -25,18 +25,10 @@ public class RefitterCommand : CodeGeneratorCommand
         this.factory = factory;
         this.options = options;
     }
-    
-    [Option(
-        ShortName = "sf",
-        LongName = "settings-file",
-        Description = "Path to a .refitter settings file to use for code generation")]
-    [FileExists]
-    public string? SettingsFile { get; set; }
 
     public override ICodeGenerator CreateGenerator() =>
         factory.Create(SettingsFile ?? SwaggerFile, DefaultNamespace, options);
-        
-    // Use 'new' instead of 'override' since the base method is not marked as virtual
+
     public new int OnExecute()
     {
         // If a settings file is specified, validate it exists
@@ -45,7 +37,7 @@ public class RefitterCommand : CodeGeneratorCommand
             // Use settings file as the SwaggerFile
             SwaggerFile = SettingsFile;
         }
-        
+
         // Call the base implementation
         return base.OnExecute();
     }
@@ -117,4 +109,11 @@ public class RefitterCommand : CodeGeneratorCommand
         get => options.GenerateMultipleFiles;
         set => options.GenerateMultipleFiles = value;
     }
+    
+    [Option(
+        ShortName = "sf",
+        LongName = "settings-file",
+        Description = "Path to a .refitter settings file to use for code generation")]
+    [FileExists]
+    public string? SettingsFile { get; set; }
 }
