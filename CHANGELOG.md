@@ -14,6 +14,8 @@
 
 **Merged pull requests:**
 
+- Update Microsoft Kiota package dependencies to version v1.17.3 [\#1178](https://github.com/christianhelle/apiclientcodegen/pull/1178) ([christianhelle](https://github.com/christianhelle))
+- Update dependency @vscode/vsce to v3.4.2 [\#1170](https://github.com/christianhelle/apiclientcodegen/pull/1170) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v22.15.21 [\#1167](https://github.com/christianhelle/apiclientcodegen/pull/1167) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency webpack to v5.99.9 [\#1166](https://github.com/christianhelle/apiclientcodegen/pull/1166) ([renovate[bot]](https://github.com/apps/renovate))
 - Update vstest monorepo to 17.14.0 [\#1165](https://github.com/christianhelle/apiclientcodegen/pull/1165) ([renovate[bot]](https://github.com/apps/renovate))
