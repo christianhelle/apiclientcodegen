@@ -19,16 +19,6 @@ You can install this extension in several ways:
    - Select "Install from VSIX..."
    - Locate and select the downloaded `.vsix` file
 
-3. **Build from Source**:
-
-   ```powershell
-   git clone https://github.com/christianhelle/apiclientcodegen.git
-   cd apiclientcodegen
-   ./src/build-vscode.ps1
-   ```
-
-   Then install the generated `.vsix` file using the method above.
-
 ## Features
 
 This extension adds a context menu item **REST API Client Code Generator** when right-clicking on JSON or YAML files in the VS Code explorer. The context menu provides the following code generation options:
