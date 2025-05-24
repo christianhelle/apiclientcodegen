@@ -38,6 +38,20 @@ function isDotNetSdkInstalled(): boolean {
 }
 
 /**
+ * Checks if Java runtime is installed and available
+ * @returns true if Java is installed, false otherwise
+ */
+function isJavaRuntimeInstalled(): boolean {
+  try {
+    execSync('java -version', { encoding: 'utf-8' });
+    return true;
+  } catch (error) {
+    console.error('Error checking Java runtime:', error);
+    return false;
+  }
+}
+
+/**
  * Gets the installed Rapicgen .NET tool version
  * @returns The installed version as a string, or null if not installed or version cannot be determined
  */
@@ -294,29 +308,45 @@ function getTypeScriptOutputDirectory(specificationFile: string, generator: stri
  * Available code generators with their command names and display names
  */
 const generators = [
-  { command: 'nswag', displayName: 'NSwag' },
-  { command: 'refitter', displayName: 'Refitter' },
-  { command: 'openapi', displayName: 'OpenAPI Generator' },
-  { command: 'kiota', displayName: 'Microsoft Kiota' },
-  { command: 'swagger', displayName: 'Swagger Codegen CLI' },
-  { command: 'autorest', displayName: 'AutoREST' }
+  { command: 'nswag', displayName: 'NSwag', requiresJava: false },
+  { command: 'refitter', displayName: 'Refitter', requiresJava: false },
+  { command: 'openapi', displayName: 'OpenAPI Generator', requiresJava: true },
+  { command: 'kiota', displayName: 'Microsoft Kiota', requiresJava: false },
+  { command: 'swagger', displayName: 'Swagger Codegen CLI', requiresJava: true },
+  { command: 'autorest', displayName: 'AutoREST', requiresJava: false }
 ];
 
 /**
  * Available TypeScript generators with their command names and display names
  */
 const typescriptGenerators = [
-  { command: 'angular', displayName: 'Angular' },
-  { command: 'aurelia', displayName: 'Aurelia' },
-  { command: 'axios', displayName: 'Axios' },
-  { command: 'fetch', displayName: 'Fetch' },
-  { command: 'inversify', displayName: 'Inversify' },
-  { command: 'jquery', displayName: 'JQuery' },
-  { command: 'nestjs', displayName: 'NestJS' },
-  { command: 'node', displayName: 'Node' },
-  { command: 'reduxquery', displayName: 'Redux Query' },
-  { command: 'rxjs', displayName: 'RxJS' }
+  { command: 'angular', displayName: 'Angular', requiresJava: true },
+  { command: 'aurelia', displayName: 'Aurelia', requiresJava: true },
+  { command: 'axios', displayName: 'Axios', requiresJava: true },
+  { command: 'fetch', displayName: 'Fetch', requiresJava: true },
+  { command: 'inversify', displayName: 'Inversify', requiresJava: true },
+  { command: 'jquery', displayName: 'JQuery', requiresJava: true },
+  { command: 'nestjs', displayName: 'NestJS', requiresJava: true },
+  { command: 'node', displayName: 'Node', requiresJava: true },
+  { command: 'reduxquery', displayName: 'Redux Query', requiresJava: true },
+  { command: 'rxjs', displayName: 'RxJS', requiresJava: true }
 ];
+
+/**
+ * Checks if a generator requires Java runtime
+ * @param generator The generator command name
+ * @param isTypeScript Whether the generator is for TypeScript
+ * @returns true if the generator requires Java, false otherwise
+ */
+function generatorRequiresJava(generator: string, isTypeScript = false): boolean {
+  if (isTypeScript) {
+    const typescriptGenerator = typescriptGenerators.find(g => g.command === generator);
+    return typescriptGenerator?.requiresJava ?? false;
+  } else {
+    const csharpGenerator = generators.find(g => g.command === generator);
+    return csharpGenerator?.requiresJava ?? false;
+  }
+}
 
 /**
  * Executes the Rapicgen tool with the given generator and parameters
@@ -334,6 +364,15 @@ async function executeRapicgen(generator: string, specificationFilePath: string,
   if (!isDotNetSdkInstalled()) {
     vscode.window.showErrorMessage(
       '.NET SDK not found. Please install .NET SDK 6.0 or higher to use this extension. Visit https://dotnet.microsoft.com/download/dotnet to download and install.'
+    );
+    return;
+  }
+  
+  // Check if Java is required and installed
+  if (generatorRequiresJava(generator) && !isJavaRuntimeInstalled()) {
+    vscode.window.showErrorMessage(
+      'Java Runtime Environment (JRE) not found. The selected generator requires Java to be installed. ' + 
+      'Please install the latest version of Java from https://adoptium.net/ or https://www.oracle.com/java/technologies/downloads/'
     );
     return;
   }
@@ -426,6 +465,15 @@ async function executeRapicgenTypeScript(generator: string, specificationFilePat
   if (!isDotNetSdkInstalled()) {
     vscode.window.showErrorMessage(
       '.NET SDK not found. Please install .NET SDK 6.0 or higher to use this extension. Visit https://dotnet.microsoft.com/download/dotnet to download and install.'
+    );
+    return;
+  }
+  
+  // Check if Java is required and installed
+  if (generatorRequiresJava(generator, true) && !isJavaRuntimeInstalled()) {
+    vscode.window.showErrorMessage(
+      'Java Runtime Environment (JRE) not found. The selected generator requires Java to be installed. ' + 
+      'Please install the latest version of Java from https://adoptium.net/ or https://www.oracle.com/java/technologies/downloads/'
     );
     return;
   }
