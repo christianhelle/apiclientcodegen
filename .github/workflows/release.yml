@@ -30,6 +30,7 @@ jobs:
     - name: Package CLI Tool
       run: dotnet pack --no-build -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
     - name: Push packages to NuGet
+      if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
       run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
       continue-on-error: true
     - name: Publish artifacts
@@ -77,6 +78,7 @@ jobs:
           *.vsix
           docs/Marketplace*.md
     - name: Publish VSIX Packages
+      if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
       continue-on-error: true
       run: |
         $VsixPublisher = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
@@ -131,6 +133,13 @@ jobs:
       with:
         name: VSCode-Extension
         path: src/VSCode/*.vsix
+        
+    - name: Publish to VS Code Marketplace
+      if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
+      continue-on-error: true
+      run: |
+        cd src/VSCode
+        npx vsce publish -p ${{ secrets.MARKETPLACE_PAT }}
 
   Release:
     needs: [
@@ -142,6 +151,7 @@ jobs:
     steps:
     - name: Create tag
       uses: actions/github-script@v7
+      if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
       with:
         github-token: ${{ github.token }}
         script: |
@@ -188,6 +198,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: artifacts/VSCode-Extension/rest-api-client-code-generator-${{ env.VERSION }}.vsix
-        asset_name: rest-api-client-code-generator-${{ env.VERSION }}.vsix
+        asset_path: artifacts/VSCode-Extension/apiclientcodegen-${{ env.VERSION }}.vsix
+        asset_name: apiclientcodegen-${{ env.VERSION }}.vsix
         asset_content_type: application/zip
