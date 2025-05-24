@@ -338,7 +338,7 @@ const typescriptGenerators = [
  * @param isTypeScript Whether the generator is for TypeScript
  * @returns true if the generator requires Java, false otherwise
  */
-function generatorRequiresJava(generator: string, isTypeScript: boolean = false): boolean {
+function generatorRequiresJava(generator: string, isTypeScript = false): boolean {
   if (isTypeScript) {
     const typescriptGenerator = typescriptGenerators.find(g => g.command === generator);
     return typescriptGenerator?.requiresJava ?? false;
