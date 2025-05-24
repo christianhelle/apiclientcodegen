@@ -89,6 +89,10 @@
       {
         "command": "restApiClientCodeGenerator.typescript.rxjs",
         "title": "Generate TypeScript Client for RxJS"
+      },
+      {
+        "command": "restApiClientCodeGenerator.refitterSettings",
+        "title": "Generate Refitter Output"
       }
     ],
     "menus": {
@@ -96,6 +100,11 @@
         {
           "submenu": "restApiClientCodeGenerator.submenu",
           "when": "resourceExtname == .json || resourceExtname == .yaml || resourceExtname == .yml",
+          "group": "z_commands"
+        },
+        {
+          "command": "restApiClientCodeGenerator.refitterSettings",
+          "when": "resourceExtname == .refitter",
           "group": "z_commands"
         }
       ],
