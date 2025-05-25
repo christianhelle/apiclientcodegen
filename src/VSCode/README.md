@@ -21,7 +21,7 @@ You can install this extension in several ways:
 
 ## Features
 
-This extension adds a context menu item **REST API Client Code Generator** when right-clicking on JSON or YAML files in the VS Code explorer. The context menu provides the following code generation options:
+This extension adds a context menu item **REST API Client Code Generator** when right-clicking on JSON or YAML files in the VS Code explorer. Additionally, it provides a **Generate Refitter Output** command when right-clicking on `.refitter` settings files. The context menu provides the following code generation options:
 
 ### C# Generators
 
@@ -44,6 +44,10 @@ This extension adds a context menu item **REST API Client Code Generator** when 
 - **Node**: Generates a TypeScript REST API Client for Node
 - **Redux Query**: Generates a TypeScript REST API Client for Redux Query
 - **RxJS**: Generates a TypeScript REST API Client for RxJS
+
+### Refitter Settings Support
+
+- **Generate Refitter Output**: When right-clicking on a `.refitter` settings file, you can generate C# Refit interfaces using Refitter with custom configuration. This allows for advanced Refitter configurations including custom settings for authentication, serialization, and other Refitter-specific options.
 
 ## Screenshot
 
@@ -77,11 +81,48 @@ The extension includes configurable settings:
 
 ## How to Use
 
+### For OpenAPI/Swagger Specifications
+
 1. Right-click on a Swagger/OpenAPI specification file (JSON or YAML) in the VS Code explorer
 2. Select "REST API Client Generator" in the context menu
 3. Choose your desired language (C# or TypeScript)
 4. Select one of the available generators for that language
 5. The generated code will be saved in the configured output directory and opened in the editor
+
+### For Refitter Settings Files
+
+1. Create a `.refitter` settings file with your Refitter configuration
+2. Right-click on the `.refitter` file in the VS Code explorer
+3. Select "Generate Refitter Output" from the context menu
+4. The generated C# Refit interfaces will be created according to your settings file configuration
+
+## Refitter Settings Files
+
+The extension supports Refitter settings files (`.refitter`) which allow you to configure advanced options for generating C# Refit interfaces. A typical `.refitter` settings file includes:
+
+- **OpenAPI specification URL or file path**
+- **Namespace configuration**
+- **Output file paths**
+- **Authentication settings**
+- **Serialization options**
+- **Custom type mappings**
+- **And many other Refitter-specific options**
+
+Example `.refitter` file:
+
+```json
+{
+  "openApiSpecUrl": "https://petstore.swagger.io/v2/swagger.json",
+  "namespace": "PetStore.Api",
+  "outputFolder": "./Generated",
+  "outputFilename": "PetStoreApi.cs",
+  "clientName": "PetStoreClient",
+  "generateContracts": true,
+  "generateXmlDocCodeComments": true
+}
+```
+
+For more information about Refitter settings, visit the [Refitter documentation](https://github.com/christianhelle/refitter).
 
 ## Dependencies
 

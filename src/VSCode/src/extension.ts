@@ -546,6 +546,73 @@ async function executeRapicgenTypeScript(generator: string, specificationFilePat
 }
 
 /**
+ * Executes the Rapicgen tool with Refitter using a settings file
+ * @param settingsFilePath The path to the .refitter settings file
+ * @param context The extension context
+ */
+async function executeRapicgenRefitterSettings(settingsFilePath: string, context: vscode.ExtensionContext): Promise<void> {
+  // Validate the settings file
+  if (!validateSpecificationFile(settingsFilePath)) {
+    return;
+  }
+  
+  // Check if .NET SDK is installed
+  if (!isDotNetSdkInstalled()) {
+    vscode.window.showErrorMessage(
+      '.NET SDK not found. Please install .NET SDK 6.0 or higher to use this extension. Visit https://dotnet.microsoft.com/download/dotnet to download and install.'
+    );
+    return;
+  }
+  
+  // Ensure the Rapicgen tool is installed and up-to-date
+  const rapicgenAvailable = await ensureRapicgenToolAvailable(context);
+  if (!rapicgenAvailable) {
+    return;
+  }
+
+  const command = `rapicgen csharp refitter --settings-file "${settingsFilePath}"`;
+  
+  try {
+    // Show progress while generating
+    await vscode.window.withProgress({
+      location: vscode.ProgressLocation.Notification,
+      title: 'Generating Refitter output from settings file...',
+      cancellable: false
+    }, async () => {
+      try {
+        // Run with higher timeout since code generation can take time
+        const output = execSync(command, { 
+          encoding: 'utf-8',
+          timeout: 120000 // 2 minute timeout
+        });
+        
+        // Log output for debugging
+        console.log(`Rapicgen Refitter settings output: ${output}`);
+        
+        vscode.window.showInformationMessage('Successfully generated Refitter output from settings file');
+      } catch (error: unknown) {
+        let errorMessage = 'Error generating Refitter output from settings file';
+        
+        const err = error as { message?: string; stderr?: string };
+        if (err.message) {
+          errorMessage += `: ${err.message}`;
+        }
+        
+        if (err.stderr) {
+          errorMessage += `\n${err.stderr}`;
+          console.error('Command stderr:', err.stderr);
+        }
+        
+        vscode.window.showErrorMessage(errorMessage);
+        console.error('Command execution error:', error);
+      }
+    });
+  } catch (error) {
+    console.error('Error during Refitter settings code generation process:', error);
+  }
+}
+
+/**
  * Validates that a specification file exists and is readable
  * @param specificationFilePath The path to the OpenAPI/Swagger specification file
  * @returns true if file is valid, false otherwise
@@ -641,10 +708,42 @@ export function activate(context: vscode.ExtensionContext) {
 
         executeRapicgenTypeScript(generator.command, fileUri.fsPath, context);
       }
-    );
-
-    context.subscriptions.push(disposable);
+    );    context.subscriptions.push(disposable);
   }
+  
+  // Register command for Refitter settings
+  const refitterSettingsDisposable = vscode.commands.registerCommand(
+    'restApiClientCodeGenerator.refitterSettings',
+    async (fileUri: vscode.Uri) => {
+      if (!fileUri) {
+        // If command was triggered from command palette, ask for file
+        const files = await vscode.workspace.findFiles('**/*.refitter');
+        if (files.length === 0) {
+          vscode.window.showErrorMessage('No .refitter settings files found in the workspace');
+          return;
+        }
+
+        const fileItems = files.map(file => ({
+          label: path.basename(file.fsPath),
+          description: vscode.workspace.asRelativePath(file),
+          path: file.fsPath
+        }));
+
+        const selectedFile = await vscode.window.showQuickPick(fileItems, {
+          placeHolder: 'Select a .refitter settings file'
+        });
+
+        if (!selectedFile) {
+          return;
+        }
+        fileUri = vscode.Uri.file(selectedFile.path);
+      }
+
+      executeRapicgenRefitterSettings(fileUri.fsPath, context);
+    }
+  );
+
+  context.subscriptions.push(refitterSettingsDisposable);
 }
 
 /**
