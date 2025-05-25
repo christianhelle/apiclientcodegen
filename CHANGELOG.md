@@ -4,6 +4,10 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.26.0...HEAD)
 
+**Implemented enhancements:**
+
+- Implement "Generate Refitter Output" in VS Code extension [\#1184](https://github.com/christianhelle/apiclientcodegen/pull/1184) ([christianhelle](https://github.com/christianhelle))
+
 **Fixed bugs:**
 
 - Release workflow fails to upload VSCode asset [\#1182](https://github.com/christianhelle/apiclientcodegen/issues/1182)
