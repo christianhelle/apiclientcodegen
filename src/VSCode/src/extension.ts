@@ -655,15 +655,16 @@ export function activate(context: vscode.ExtensionContext) {
       async (fileUri: vscode.Uri) => {
         if (!fileUri) {
           // If command was triggered from command palette, ask for file
-          fileUri = await promptForFile(
+          const selectedFileUri = await promptForFile(
             '**/*.{json,yaml,yml}',
             'Select a Swagger/OpenAPI specification file',
             'No Swagger/OpenAPI specification files found in the workspace'
           );
           
-          if (!fileUri) {
+          if (!selectedFileUri) {
             return;
           }
+          fileUri = selectedFileUri;
         }
 
         executeRapicgen(generator.command, fileUri.fsPath, context);
@@ -680,15 +681,16 @@ export function activate(context: vscode.ExtensionContext) {
       async (fileUri: vscode.Uri) => {
         if (!fileUri) {
           // If command was triggered from command palette, ask for file
-          fileUri = await promptForFile(
+          const selectedFileUri = await promptForFile(
             '**/*.{json,yaml,yml}',
             'Select a Swagger/OpenAPI specification file',
             'No Swagger/OpenAPI specification files found in the workspace'
           );
           
-          if (!fileUri) {
+          if (!selectedFileUri) {
             return;
           }
+          fileUri = selectedFileUri;
         }
 
         executeRapicgenTypeScript(generator.command, fileUri.fsPath, context);
@@ -704,15 +706,16 @@ export function activate(context: vscode.ExtensionContext) {
     async (fileUri: vscode.Uri) => {
       if (!fileUri) {
         // If command was triggered from command palette, ask for file
-        fileUri = await promptForFile(
+        const selectedFileUri = await promptForFile(
           '**/*.refitter',
           'Select a .refitter settings file',
           'No .refitter settings files found in the workspace'
         );
         
-        if (!fileUri) {
+        if (!selectedFileUri) {
           return;
         }
+        fileUri = selectedFileUri;
       }
 
       executeRapicgenRefitterSettings(fileUri.fsPath, context);
