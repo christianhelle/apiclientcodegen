@@ -55,6 +55,11 @@ jobs:
         cd src/VSCode
         npm run compile
     
+    - name: Test
+      run: |
+        cd src/VSCode
+        npm run test
+    
     - name: Package Extension
       run: |
         cd src/VSCode
