@@ -5,6 +5,98 @@ import { execSync } from 'child_process';
 import { platform } from 'os';
 
 /**
+ * Interface representing a file item in quick pick menu
+ */
+interface IFileQuickPickItem extends vscode.QuickPickItem {
+  path: string;
+}
+
+/**
+ * Prompt the user to select a file from the workspace
+ * @param filePattern The glob pattern to search for files
+ * @param placeHolder The placeholder text for the quick pick menu
+ * @param errorMessage The error message to show if no files are found
+ * @returns The selected file URI or undefined if canceled
+ */
+async function promptForFile(
+  filePattern: string, 
+  placeHolder: string,
+  errorMessage: string
+): Promise<vscode.Uri | undefined> {
+  const files = await vscode.workspace.findFiles(filePattern);
+  if (files.length === 0) {
+    vscode.window.showErrorMessage(errorMessage);
+    return undefined;
+  }
+
+  const fileItems: IFileQuickPickItem[] = files.map(file => ({
+    label: path.basename(file.fsPath),
+    description: vscode.workspace.asRelativePath(file),
+    path: file.fsPath
+  }));
+
+  const selectedFile = await vscode.window.showQuickPick(fileItems, {
+    placeHolder: placeHolder
+  });
+
+  if (!selectedFile) {
+    return undefined;
+  }
+  
+  return vscode.Uri.file(selectedFile.path);
+}
+
+/**
+ * Validates required dependencies for a generator
+ * @param generator The generator command name
+ * @param isTypeScript Whether the generator is for TypeScript
+ * @returns true if all requirements are met, false otherwise
+ */
+function validateDependencies(generator: string, isTypeScript = false): boolean {
+  // Check if .NET SDK is installed
+  if (!isDotNetSdkInstalled()) {
+    vscode.window.showErrorMessage(
+      '.NET SDK not found. Please install .NET SDK 6.0 or higher to use this extension. Visit https://dotnet.microsoft.com/download/dotnet to download and install.'
+    );
+    return false;
+  }
+  
+  // Check if Java is required and installed
+  if (generatorRequiresJava(generator, isTypeScript) && !isJavaRuntimeInstalled()) {
+    vscode.window.showErrorMessage(
+      'Java Runtime Environment (JRE) not found. The selected generator requires Java to be installed. ' + 
+      'Please install the latest version of Java from https://adoptium.net/ or https://www.oracle.com/java/technologies/downloads/'
+    );
+    return false;
+  }
+  
+  return true;
+}
+
+/**
+ * Handles command execution errors
+ * @param error The error that occurred
+ * @param generatorName The name of the generator that failed
+ * @param isTypeScript Whether the generator is for TypeScript 
+ */
+function handleExecutionError(error: unknown, generatorName: string, isTypeScript = false): void {
+  let errorMessage = `Error generating ${isTypeScript ? 'TypeScript ' : ''}code with ${generatorName}`;
+  
+  const err = error as { message?: string; stderr?: string };
+  if (err.message) {
+    errorMessage += `: ${err.message}`;
+  }
+  
+  if (err.stderr) {
+    errorMessage += `\n${err.stderr}`;
+    console.error('Command stderr:', err.stderr);
+  }
+  
+  vscode.window.showErrorMessage(errorMessage);
+  console.error('Command execution error:', error);
+}
+
+/**
  * Gets the extension version from package.json
  * @param context The extension context
  * @returns The version string or undefined if not found
@@ -349,31 +441,86 @@ function generatorRequiresJava(generator: string, isTypeScript = false): boolean
 }
 
 /**
- * Executes the Rapicgen tool with the given generator and parameters
- * @param generator The generator to use (nswag, refitter, etc.)
- * @param specificationFilePath The path to the OpenAPI/Swagger specification file
- * @param context The extension context
+ * Executes the Rapicgen tool with specified parameters
+ * @param command The full command to execute
+ * @param generatorName Display name of the generator
+ * @param outputPath Path to the output file or directory
+ * @param isTypeScript Whether this is a TypeScript generator
+ * @param isRefitterSettings Whether this is a Refitter settings execution
  */
+async function executeRapicgenCommand(
+  command: string,
+  generatorName: string,
+  outputPath: string,
+  isTypeScript = false,
+  isRefitterSettings = false
+): Promise<void> {
+  try {
+    // Determine the progress notification title
+    let title: string;
+    if (isRefitterSettings) {
+      title = 'Generating Refitter output from settings file...';
+    } else if (isTypeScript) {
+      title = `Generating TypeScript code with ${generatorName}...`;
+    } else {
+      title = `Generating code with ${generatorName}...`;
+    }
+      
+    await vscode.window.withProgress({
+      location: vscode.ProgressLocation.Notification,
+      title: title,
+      cancellable: false
+    }, async () => {
+      try {
+        // Run with higher timeout since code generation can take time
+        const output = execSync(command, { 
+          encoding: 'utf-8',
+          timeout: 120000 // 2 minute timeout
+        });
+        
+        // Log output for debugging
+        console.log(`Rapicgen${isTypeScript ? ' TypeScript' : ''}${isRefitterSettings ? ' Refitter settings' : ''} output: ${output}`);
+        
+        // Handle success based on the generator type
+        if (isRefitterSettings) {
+          vscode.window.showInformationMessage('Successfully generated Refitter output from settings file');
+          return;
+        }
+        
+        if (isTypeScript) {
+          if (!fs.existsSync(outputPath) || fs.readdirSync(outputPath).length === 0) {
+            vscode.window.showErrorMessage(`Failed to generate output in directory: ${outputPath}`);
+            return;
+          }
+          vscode.window.showInformationMessage(`Successfully generated ${generatorName} TypeScript code in ${outputPath}`);
+        } else {
+          if (!fs.existsSync(outputPath)) {
+            vscode.window.showErrorMessage(`Failed to generate output file: ${outputPath}`);
+            return;
+          }
+          
+          // Open the generated file for non-TypeScript outputs
+          const document = await vscode.workspace.openTextDocument(outputPath);
+          await vscode.window.showTextDocument(document);
+          
+          vscode.window.showInformationMessage(`Successfully generated ${generatorName} client code at ${outputPath}`);
+        }
+      } catch (error) {
+        handleExecutionError(error, generatorName, isTypeScript);
+      }
+    });
+  } catch (error) {
+    console.error(`Error during ${isTypeScript ? 'TypeScript ' : ''}${isRefitterSettings ? 'Refitter settings ' : ''}code generation process:`, error);
+  }
+}
 async function executeRapicgen(generator: string, specificationFilePath: string, context: vscode.ExtensionContext): Promise<void> {
   // Validate the specification file
   if (!validateSpecificationFile(specificationFilePath)) {
     return;
   }
   
-  // Check if .NET SDK is installed
-  if (!isDotNetSdkInstalled()) {
-    vscode.window.showErrorMessage(
-      '.NET SDK not found. Please install .NET SDK 6.0 or higher to use this extension. Visit https://dotnet.microsoft.com/download/dotnet to download and install.'
-    );
-    return;
-  }
-  
-  // Check if Java is required and installed
-  if (generatorRequiresJava(generator) && !isJavaRuntimeInstalled()) {
-    vscode.window.showErrorMessage(
-      'Java Runtime Environment (JRE) not found. The selected generator requires Java to be installed. ' + 
-      'Please install the latest version of Java from https://adoptium.net/ or https://www.oracle.com/java/technologies/downloads/'
-    );
+  // Validate dependencies
+  if (!validateDependencies(generator)) {
     return;
   }
   
@@ -398,55 +545,9 @@ async function executeRapicgen(generator: string, specificationFilePath: string,
   }
   
   const command = `rapicgen csharp ${generator} "${specificationFilePath}" "${namespace}" "${outputFile}"`;
+  const generatorDisplayName = generators.find(g => g.command === generator)?.displayName || generator;
   
-  try {
-    // Show progress while generating
-    const generatorDisplayName = generators.find(g => g.command === generator)?.displayName || generator;
-    await vscode.window.withProgress({
-      location: vscode.ProgressLocation.Notification,
-      title: `Generating code with ${generatorDisplayName}...`,
-      cancellable: false
-    }, async () => {
-      try {
-        // Run with higher timeout since code generation can take time
-        const output = execSync(command, { 
-          encoding: 'utf-8',
-          timeout: 120000 // 2 minute timeout
-        });
-        
-        // Log output for debugging
-        console.log(`Rapicgen output: ${output}`);
-        
-        if (!fs.existsSync(outputFile)) {
-          vscode.window.showErrorMessage(`Failed to generate output file: ${outputFile}`);
-          return;
-        }
-        
-        // Open the generated file
-        const document = await vscode.workspace.openTextDocument(outputFile);
-        await vscode.window.showTextDocument(document);
-        
-        vscode.window.showInformationMessage(`Successfully generated ${generatorDisplayName} client code at ${outputFile}`);
-      } catch (error: unknown) {
-        let errorMessage = `Error generating code with ${generatorDisplayName}`;
-        
-        const err = error as { message?: string; stderr?: string };
-        if (err.message) {
-          errorMessage += `: ${err.message}`;
-        }
-        
-        if (err.stderr) {
-          errorMessage += `\n${err.stderr}`;
-          console.error('Command stderr:', err.stderr);
-        }
-        
-        vscode.window.showErrorMessage(errorMessage);
-        console.error('Command execution error:', error);
-      }
-    });
-  } catch (error) {
-    console.error('Error during code generation process:', error);
-  }
+  await executeRapicgenCommand(command, generatorDisplayName, outputFile);
 }
 
 /**
@@ -461,20 +562,8 @@ async function executeRapicgenTypeScript(generator: string, specificationFilePat
     return;
   }
   
-  // Check if .NET SDK is installed
-  if (!isDotNetSdkInstalled()) {
-    vscode.window.showErrorMessage(
-      '.NET SDK not found. Please install .NET SDK 6.0 or higher to use this extension. Visit https://dotnet.microsoft.com/download/dotnet to download and install.'
-    );
-    return;
-  }
-  
-  // Check if Java is required and installed
-  if (generatorRequiresJava(generator, true) && !isJavaRuntimeInstalled()) {
-    vscode.window.showErrorMessage(
-      'Java Runtime Environment (JRE) not found. The selected generator requires Java to be installed. ' + 
-      'Please install the latest version of Java from https://adoptium.net/ or https://www.oracle.com/java/technologies/downloads/'
-    );
+  // Validate dependencies
+  if (!validateDependencies(generator, true)) {
     return;
   }
   
@@ -498,51 +587,9 @@ async function executeRapicgenTypeScript(generator: string, specificationFilePat
   }
   
   const command = `rapicgen typescript ${generator} "${specificationFilePath}" "${outputDir}"`;
+  const generatorDisplayName = typescriptGenerators.find(g => g.command === generator)?.displayName || generator;
   
-  try {
-    // Show progress while generating
-    const generatorDisplayName = typescriptGenerators.find(g => g.command === generator)?.displayName || generator;
-    await vscode.window.withProgress({
-      location: vscode.ProgressLocation.Notification,
-      title: `Generating TypeScript code with ${generatorDisplayName}...`,
-      cancellable: false
-    }, async () => {
-      try {
-        // Run with higher timeout since code generation can take time
-        const output = execSync(command, { 
-          encoding: 'utf-8',
-          timeout: 120000 // 2 minute timeout
-        });
-        
-        // Log output for debugging
-        console.log(`Rapicgen TypeScript output: ${output}`);
-        
-        if (!fs.existsSync(outputDir) || fs.readdirSync(outputDir).length === 0) {
-          vscode.window.showErrorMessage(`Failed to generate output in directory: ${outputDir}`);
-          return;
-        }
-        
-        vscode.window.showInformationMessage(`Successfully generated ${generatorDisplayName} TypeScript code in ${outputDir}`);
-      } catch (error: unknown) {
-        let errorMessage = `Error generating TypeScript code with ${generatorDisplayName}`;
-        
-        const err = error as { message?: string; stderr?: string };
-        if (err.message) {
-          errorMessage += `: ${err.message}`;
-        }
-        
-        if (err.stderr) {
-          errorMessage += `\n${err.stderr}`;
-          console.error('Command stderr:', err.stderr);
-        }
-        
-        vscode.window.showErrorMessage(errorMessage);
-        console.error('Command execution error:', error);
-      }
-    });
-  } catch (error) {
-    console.error('Error during TypeScript code generation process:', error);
-  }
+  await executeRapicgenCommand(command, generatorDisplayName, outputDir, true);
 }
 
 /**
@@ -556,11 +603,8 @@ async function executeRapicgenRefitterSettings(settingsFilePath: string, context
     return;
   }
   
-  // Check if .NET SDK is installed
-  if (!isDotNetSdkInstalled()) {
-    vscode.window.showErrorMessage(
-      '.NET SDK not found. Please install .NET SDK 6.0 or higher to use this extension. Visit https://dotnet.microsoft.com/download/dotnet to download and install.'
-    );
+  // Validate dependencies
+  if (!validateDependencies('refitter')) {
     return;
   }
   
@@ -572,44 +616,7 @@ async function executeRapicgenRefitterSettings(settingsFilePath: string, context
 
   const command = `rapicgen csharp refitter --settings-file "${settingsFilePath}"`;
   
-  try {
-    // Show progress while generating
-    await vscode.window.withProgress({
-      location: vscode.ProgressLocation.Notification,
-      title: 'Generating Refitter output from settings file...',
-      cancellable: false
-    }, async () => {
-      try {
-        // Run with higher timeout since code generation can take time
-        const output = execSync(command, { 
-          encoding: 'utf-8',
-          timeout: 120000 // 2 minute timeout
-        });
-        
-        // Log output for debugging
-        console.log(`Rapicgen Refitter settings output: ${output}`);
-        
-        vscode.window.showInformationMessage('Successfully generated Refitter output from settings file');
-      } catch (error: unknown) {
-        let errorMessage = 'Error generating Refitter output from settings file';
-        
-        const err = error as { message?: string; stderr?: string };
-        if (err.message) {
-          errorMessage += `: ${err.message}`;
-        }
-        
-        if (err.stderr) {
-          errorMessage += `\n${err.stderr}`;
-          console.error('Command stderr:', err.stderr);
-        }
-        
-        vscode.window.showErrorMessage(errorMessage);
-        console.error('Command execution error:', error);
-      }
-    });
-  } catch (error) {
-    console.error('Error during Refitter settings code generation process:', error);
-  }
+  await executeRapicgenCommand(command, 'Refitter', settingsFilePath, false, true);
 }
 
 /**
@@ -648,26 +655,15 @@ export function activate(context: vscode.ExtensionContext) {
       async (fileUri: vscode.Uri) => {
         if (!fileUri) {
           // If command was triggered from command palette, ask for file
-          const files = await vscode.workspace.findFiles('**/*.{json,yaml,yml}');
-          if (files.length === 0) {
-            vscode.window.showErrorMessage('No Swagger/OpenAPI specification files found in the workspace');
+          fileUri = await promptForFile(
+            '**/*.{json,yaml,yml}',
+            'Select a Swagger/OpenAPI specification file',
+            'No Swagger/OpenAPI specification files found in the workspace'
+          );
+          
+          if (!fileUri) {
             return;
           }
-
-          const fileItems = files.map(file => ({
-            label: path.basename(file.fsPath),
-            description: vscode.workspace.asRelativePath(file),
-            path: file.fsPath
-          }));
-
-          const selectedFile = await vscode.window.showQuickPick(fileItems, {
-            placeHolder: 'Select a Swagger/OpenAPI specification file'
-          });
-
-          if (!selectedFile) {
-            return;
-          }
-          fileUri = vscode.Uri.file(selectedFile.path);
         }
 
         executeRapicgen(generator.command, fileUri.fsPath, context);
@@ -684,31 +680,22 @@ export function activate(context: vscode.ExtensionContext) {
       async (fileUri: vscode.Uri) => {
         if (!fileUri) {
           // If command was triggered from command palette, ask for file
-          const files = await vscode.workspace.findFiles('**/*.{json,yaml,yml}');
-          if (files.length === 0) {
-            vscode.window.showErrorMessage('No Swagger/OpenAPI specification files found in the workspace');
+          fileUri = await promptForFile(
+            '**/*.{json,yaml,yml}',
+            'Select a Swagger/OpenAPI specification file',
+            'No Swagger/OpenAPI specification files found in the workspace'
+          );
+          
+          if (!fileUri) {
             return;
           }
-
-          const fileItems = files.map(file => ({
-            label: path.basename(file.fsPath),
-            description: vscode.workspace.asRelativePath(file),
-            path: file.fsPath
-          }));
-
-          const selectedFile = await vscode.window.showQuickPick(fileItems, {
-            placeHolder: 'Select a Swagger/OpenAPI specification file'
-          });
-
-          if (!selectedFile) {
-            return;
-          }
-          fileUri = vscode.Uri.file(selectedFile.path);
         }
 
         executeRapicgenTypeScript(generator.command, fileUri.fsPath, context);
       }
-    );    context.subscriptions.push(disposable);
+    );
+    
+    context.subscriptions.push(disposable);
   }
   
   // Register command for Refitter settings
@@ -717,26 +704,15 @@ export function activate(context: vscode.ExtensionContext) {
     async (fileUri: vscode.Uri) => {
       if (!fileUri) {
         // If command was triggered from command palette, ask for file
-        const files = await vscode.workspace.findFiles('**/*.refitter');
-        if (files.length === 0) {
-          vscode.window.showErrorMessage('No .refitter settings files found in the workspace');
+        fileUri = await promptForFile(
+          '**/*.refitter',
+          'Select a .refitter settings file',
+          'No .refitter settings files found in the workspace'
+        );
+        
+        if (!fileUri) {
           return;
         }
-
-        const fileItems = files.map(file => ({
-          label: path.basename(file.fsPath),
-          description: vscode.workspace.asRelativePath(file),
-          path: file.fsPath
-        }));
-
-        const selectedFile = await vscode.window.showQuickPick(fileItems, {
-          placeHolder: 'Select a .refitter settings file'
-        });
-
-        if (!selectedFile) {
-          return;
-        }
-        fileUri = vscode.Uri.file(selectedFile.path);
       }
 
       executeRapicgenRefitterSettings(fileUri.fsPath, context);
