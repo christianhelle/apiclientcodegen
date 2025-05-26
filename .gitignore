@@ -288,3 +288,5 @@ src/VSCode/*.vsix
 src/VSCode/dist
 src/VSCode-Test/samples/petstore.*.cs
 test/VSCode-Test/samples
+src/VSCode/out
+src/VSCode/.vscode-test
