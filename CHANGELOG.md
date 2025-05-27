@@ -19,6 +19,7 @@
 
 **Merged pull requests:**
 
+- Update dependency @types/node to v22.15.23 [\#1187](https://github.com/christianhelle/apiclientcodegen/pull/1187) ([renovate[bot]](https://github.com/apps/renovate))
 - Reduce Code Duplication in VSCode Extension and Fix Linting Issue [\#1186](https://github.com/christianhelle/apiclientcodegen/pull/1186) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Fix VSCode extension asset path in release workflow [\#1183](https://github.com/christianhelle/apiclientcodegen/pull/1183) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Add Java Runtime Check for OpenAPI Generator in VS Code Extension [\#1181](https://github.com/christianhelle/apiclientcodegen/pull/1181) ([Copilot](https://github.com/apps/copilot-swe-agent))
