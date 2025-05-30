@@ -185,27 +185,6 @@ Fixes #123, Closes #456
 
 ## Build and Development Workflow
 
-### Build System
-The project uses **Cake Build** for automation:
-
-```bash
-# Build everything
-cd src
-./build.ps1
-
-# Run specific tasks
-./build.ps1 -Target "Run-Unit-Tests"
-./build.ps1 -Target "Build-Release"
-```
-
-### Available Build Targets
-- `Clean` - Clean build artifacts
-- `Restore` - Restore NuGet packages
-- `Build-Release` / `Build-Debug` - Build solutions
-- `Run-Unit-Tests` - Execute unit tests
-- `Run-Integration-Tests` - Execute integration tests
-- `All` - Complete build and test cycle
-
 ### VS Code Extension Development
 See [`src/VSCode/CONTRIBUTING.md`](src/VSCode/CONTRIBUTING.md) for specific VS Code extension development guidelines.
 
