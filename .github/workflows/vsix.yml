@@ -39,12 +39,39 @@ jobs:
       run: dotnet restore VSIX.sln
       working-directory: src
 
-    - name: Setup MSBuild.exe
+    - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
 
+    - name: Setup Visual Studio Environment
+      run: |
+        # Find Visual Studio installation
+        $vsWhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
+        if (Test-Path $vsWhere) {
+          $installPath = & $vsWhere -latest -property installationPath
+          Write-Host "Visual Studio found at: $installPath"
+          
+          # Set VSToolsPath for VSSDK
+          $vsToolsPath = "$installPath\MSBuild\Microsoft\VisualStudio\v17.0"
+          echo "VSToolsPath=$vsToolsPath" >> $env:GITHUB_ENV
+          Write-Host "VSToolsPath set to: $vsToolsPath"
+          
+          # Verify VSSDK targets exist
+          $vssdkTargets = "$vsToolsPath\VSSDK\Microsoft.VsSDK.targets"
+          if (Test-Path $vssdkTargets) {
+            Write-Host "VSSDK targets found at: $vssdkTargets"
+          } else {
+            Write-Host "Warning: VSSDK targets not found at: $vssdkTargets"
+            # Try alternative path
+            $altPath = "$installPath\MSBuild\Microsoft\VisualStudio\v17.0"
+            echo "VSToolsPath=$altPath" >> $env:GITHUB_ENV
+          }
+        }
+      shell: powershell
+
     - name: Build
-      run: msbuild VSIX.sln /property:Configuration=Release /p:DeployExtension=false
+      run: msbuild VSIX.sln /property:Configuration=Release /p:DeployExtension=false /p:VSToolsPath="$env:VSToolsPath"
       working-directory: src
+      shell: powershell
 
     - name: Move build output
       run: |
