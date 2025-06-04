@@ -39,14 +39,10 @@ jobs:
       run: dotnet restore VSIX.sln
       working-directory: src
 
-    - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v2
-
-    - name: Setup Visual Studio Developer Environment
-      uses: seanmiddleditch/gha-setup-vsdevenv@v4
+    - name: Setup MSBuild and Visual Studio Developer Environment  
+      uses: ilammy/msvc-dev-cmd@v1
 
     - name: Build
-      shell: cmd
       run: msbuild VSIX.sln /property:Configuration=Release /p:DeployExtension=false
       working-directory: src
 
