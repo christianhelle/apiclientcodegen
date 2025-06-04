@@ -44,32 +44,36 @@ jobs:
 
     - name: Setup Visual Studio Environment
       run: |
-        # Find Visual Studio installation
+        # Use vswhere to find VS installation and set environment variables
         $vsWhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
-        if (Test-Path $vsWhere) {
-          $installPath = & $vsWhere -latest -property installationPath
-          Write-Host "Visual Studio found at: $installPath"
-          
-          # Set VSToolsPath for VSSDK
-          $vsToolsPath = "$installPath\MSBuild\Microsoft\VisualStudio\v17.0"
-          echo "VSToolsPath=$vsToolsPath" >> $env:GITHUB_ENV
-          Write-Host "VSToolsPath set to: $vsToolsPath"
-          
-          # Verify VSSDK targets exist
-          $vssdkTargets = "$vsToolsPath\VSSDK\Microsoft.VsSDK.targets"
-          if (Test-Path $vssdkTargets) {
-            Write-Host "VSSDK targets found at: $vssdkTargets"
-          } else {
-            Write-Host "Warning: VSSDK targets not found at: $vssdkTargets"
-            # Try alternative path
-            $altPath = "$installPath\MSBuild\Microsoft\VisualStudio\v17.0"
-            echo "VSToolsPath=$altPath" >> $env:GITHUB_ENV
-          }
+        $installPath = & $vsWhere -latest -property installationPath
+        $vsVersion = & $vsWhere -latest -property catalog_productLineVersion
+        
+        Write-Host "Visual Studio found at: $installPath"
+        Write-Host "Visual Studio version: $vsVersion"
+        
+        # Set environment variables that MSBuild expects
+        echo "VSINSTALLDIR=$installPath" >> $env:GITHUB_ENV
+        echo "VSToolsPath=$installPath\MSBuild\Microsoft\VisualStudio\v17.0" >> $env:GITHUB_ENV
+        echo "VsSDKInstall=$installPath\VSSDK" >> $env:GITHUB_ENV
+        
+        # Also try legacy paths that might be expected
+        echo "VSSDKToolsPath=$installPath\VSSDK\VisualStudioIntegration\Tools\Bin" >> $env:GITHUB_ENV
+        
+        # Check for VSSDK targets file
+        $vssdkTargets = "$installPath\MSBuild\Microsoft\VisualStudio\v17.0\VSSDK\Microsoft.VsSDK.targets"
+        if (Test-Path $vssdkTargets) {
+          Write-Host "✓ VSSDK targets found at: $vssdkTargets"
+        } else {
+          Write-Host "✗ VSSDK targets not found at: $vssdkTargets"
+          Write-Host "Available paths in MSBuild directory:"
+          Get-ChildItem "$installPath\MSBuild\Microsoft\VisualStudio\v17.0" -Recurse -Directory | Select-Object FullName
         }
       shell: powershell
 
     - name: Build
-      run: msbuild VSIX.sln /property:Configuration=Release /p:DeployExtension=false /p:VSToolsPath="$env:VSToolsPath"
+      run: |
+        msbuild VSIX.sln /property:Configuration=Release /p:DeployExtension=false /p:VSToolsPath="$env:VSToolsPath"
       working-directory: src
       shell: powershell
 
