@@ -42,10 +42,11 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2
 
-    - name: Setup dev env
+    - name: Setup Visual Studio Developer Environment
       uses: seanmiddleditch/gha-setup-vsdevenv@v4
 
     - name: Build
+      shell: cmd
       run: msbuild VSIX.sln /property:Configuration=Release /p:DeployExtension=false
       working-directory: src
 
