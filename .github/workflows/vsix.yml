@@ -39,43 +39,15 @@ jobs:
       run: dotnet restore VSIX.sln
       working-directory: src
 
-    - name: Setup MSBuild
+    - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2
 
-    - name: Setup Visual Studio Environment
-      run: |
-        # Use vswhere to find VS installation and set environment variables
-        $vsWhere = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe"
-        $installPath = & $vsWhere -latest -property installationPath
-        $vsVersion = & $vsWhere -latest -property catalog_productLineVersion
-        
-        Write-Host "Visual Studio found at: $installPath"
-        Write-Host "Visual Studio version: $vsVersion"
-        
-        # Set environment variables that MSBuild expects
-        echo "VSINSTALLDIR=$installPath" >> $env:GITHUB_ENV
-        echo "VSToolsPath=$installPath\MSBuild\Microsoft\VisualStudio\v17.0" >> $env:GITHUB_ENV
-        echo "VsSDKInstall=$installPath\VSSDK" >> $env:GITHUB_ENV
-        
-        # Also try legacy paths that might be expected
-        echo "VSSDKToolsPath=$installPath\VSSDK\VisualStudioIntegration\Tools\Bin" >> $env:GITHUB_ENV
-        
-        # Check for VSSDK targets file
-        $vssdkTargets = "$installPath\MSBuild\Microsoft\VisualStudio\v17.0\VSSDK\Microsoft.VsSDK.targets"
-        if (Test-Path $vssdkTargets) {
-          Write-Host "✓ VSSDK targets found at: $vssdkTargets"
-        } else {
-          Write-Host "✗ VSSDK targets not found at: $vssdkTargets"
-          Write-Host "Available paths in MSBuild directory:"
-          Get-ChildItem "$installPath\MSBuild\Microsoft\VisualStudio\v17.0" -Recurse -Directory | Select-Object FullName
-        }
-      shell: powershell
+    - name: Setup dev env
+      uses: seanmiddleditch/gha-setup-vsdevenv@v4
 
     - name: Build
-      run: |
-        msbuild VSIX.sln /property:Configuration=Release /p:DeployExtension=false /p:VSToolsPath="$env:VSToolsPath"
+      run: msbuild VSIX.sln /property:Configuration=Release /p:DeployExtension=false
       working-directory: src
-      shell: powershell
 
     - name: Move build output
       run: |
