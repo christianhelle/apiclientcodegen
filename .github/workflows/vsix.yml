@@ -39,6 +39,17 @@ jobs:
       run: dotnet restore VSIX.sln
       working-directory: src
 
+    - name: Setup .NET Framework
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: |
+          8.0.x
+
+    - name: Install .NET Framework 4.7.2 Targeting Pack
+      run: |
+        choco install netfx-4.7.2-devpack -y
+      shell: pwsh
+
     - name: Setup MSBuild and Visual Studio Developer Environment  
       uses: ilammy/msvc-dev-cmd@v1
 
