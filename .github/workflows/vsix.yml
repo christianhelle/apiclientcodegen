@@ -55,7 +55,7 @@ jobs:
         choco install netfx-4.7.2-devpack -y
       shell: pwsh
 
-    - name: Setup MSBuild 
+    - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
 
     - name: Setup Visual Studio Developer Environment
