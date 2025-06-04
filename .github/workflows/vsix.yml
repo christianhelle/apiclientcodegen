@@ -45,13 +45,23 @@ jobs:
         dotnet-version: |
           8.0.x
 
+    - name: Install Visual Studio Build Tools with VSIX Workload
+      run: |
+        choco install visualstudio2022buildtools --package-parameters "--add Microsoft.VisualStudio.Workload.MSBuildTools --add Microsoft.VisualStudio.Workload.VCTools --add Microsoft.VisualStudio.Workload.VisualStudioExtensionBuildTools" -y
+      shell: pwsh
+
     - name: Install .NET Framework 4.7.2 Targeting Pack
       run: |
         choco install netfx-4.7.2-devpack -y
       shell: pwsh
 
-    - name: Setup MSBuild and Visual Studio Developer Environment  
+    - name: Setup MSBuild 
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Setup Visual Studio Developer Environment
       uses: ilammy/msvc-dev-cmd@v1
+      with:
+        vsversion: 2022
 
     - name: Build
       run: msbuild VSIX.sln /property:Configuration=Release /p:DeployExtension=false
