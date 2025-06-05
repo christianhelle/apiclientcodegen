@@ -39,7 +39,7 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Restore
-      run: dotnet restore VSIX.sln
+      run: msbuild VSIX.sln -t:Restore
       working-directory: src
 
     - name: Build VS 2022 Extension
