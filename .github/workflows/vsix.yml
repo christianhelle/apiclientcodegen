@@ -35,11 +35,6 @@ jobs:
       working-directory: src
       shell: pwsh
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '9.0.x'
-
     - name: Restore
       run: dotnet restore VSIX.sln
       working-directory: src
