@@ -43,7 +43,11 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Build
-      run: msbuild VSIX.sln /property:Configuration=Release /p:DeployExtension=false
+      run: msbuild VSIX/ApiClientCodeGen.VSIX.Dev17/ApiClientCodeGen.VSIX.Dev17.csproj /property:Configuration=Release /p:DeployExtension=false
+      working-directory: src
+
+    - name: Build
+      run: msbuild VSIX/ApiClientCodeGen.VSIX/ApiClientCodeGen.VSIX.csproj /property:Configuration=Release /p:DeployExtension=false
       working-directory: src
 
     - name: Move build output
