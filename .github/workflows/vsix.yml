@@ -42,12 +42,8 @@ jobs:
       run: msbuild VSIX.sln -t:Restore
       working-directory: src
 
-    - name: Build VS 2022 Extension
-      run: msbuild VSIX/ApiClientCodeGen.VSIX.Dev17/ApiClientCodeGen.VSIX.Dev17.csproj /property:Configuration=Release /p:DeployExtension=false
-      working-directory: src
-
-    - name: Build VS 2019 Extension
-      run: msbuild VSIX/ApiClientCodeGen.VSIX/ApiClientCodeGen.VSIX.csproj /property:Configuration=Release /p:DeployExtension=false
+    - name: Build
+      run: msbuild VSIX.sln /property:Configuration=Release /p:DeployExtension=false
       working-directory: src
 
     - name: Move build output
