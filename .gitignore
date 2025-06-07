@@ -288,3 +288,11 @@ src/VSCode/*.vsix
 src/VSCode/dist
 src/VSCode-Test/samples/petstore.*.cs
 test/VSCode-Test/samples
+
+# IntelliJ Plugin
+src/IntelliJ/.gradle/
+src/IntelliJ/build/
+src/IntelliJ/out/
+src/IntelliJ/*.iml
+src/IntelliJ/*.ipr
+src/IntelliJ/*.iws
