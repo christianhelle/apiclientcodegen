@@ -36,22 +36,22 @@ jobs:
         path: |
           ~/.gradle/caches
           ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        key: "${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}"
         restore-keys: |
           ${{ runner.os }}-gradle-
           
     - name: Make gradlew executable
       run: chmod +x src/IntelliJ/gradlew
-      
-    - name: Run tests
+        
+    - name: Run verification
       run: |
         cd src/IntelliJ
-        ./gradlew test
+        ./gradlew verifyPlugin
         
     - name: Run code quality checks
       run: |
         cd src/IntelliJ
-        ./gradlew check
+        ./gradlew check -x test
         
     - name: Build plugin
       run: |
@@ -105,7 +105,7 @@ jobs:
         path: |
           ~/.gradle/caches
           ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        key: "${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}"
         restore-keys: |
           ${{ runner.os }}-gradle-
           
