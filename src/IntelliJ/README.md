@@ -1,6 +1,6 @@
-# REST API Client Code Generator for IntelliJ/JetBrains Rider
+# REST API Client Code Generator for JetBrains IDEs
 
-A plugin for generating C# and TypeScript REST API clients from OpenAPI/Swagger specifications directly in JetBrains Rider and other IntelliJ-based IDEs.
+A plugin for generating C# and TypeScript REST API clients from OpenAPI/Swagger specifications directly in JetBrains IDEs (IntelliJ IDEA, Rider, WebStorm, etc.).
 
 ## Features
 
@@ -36,21 +36,21 @@ This plugin provides context menu integration for generating REST API client cod
 
 ### From JetBrains Marketplace (Recommended)
 
-1. Open JetBrains Rider
+1. Open your JetBrains IDE (IntelliJ IDEA, Rider, WebStorm, etc.)
 2. Go to **File** → **Settings** → **Plugins**
 3. Click on **Marketplace** tab
 4. Search for "REST API Client Code Generator"
 5. Click **Install**
-6. Restart JetBrains Rider
+6. Restart your IDE
 
 ### From Plugin File
 
 1. Download the plugin `.zip` file from the [releases page](https://github.com/christianhelle/apiclientcodegen/releases)
-2. Open JetBrains Rider
+2. Open your JetBrains IDE (IntelliJ IDEA, Rider, WebStorm, etc.)
 3. Go to **File** → **Settings** → **Plugins**
 4. Click on **⚙️** icon → **Install Plugin from Disk...**
 5. Select the downloaded `.zip` file
-6. Restart JetBrains Rider
+6. Restart your IDE
 
 ## Usage
 

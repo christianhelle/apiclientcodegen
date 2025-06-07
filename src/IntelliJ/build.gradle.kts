@@ -11,11 +11,11 @@ repositories {
 }
 
 intellij {
-    version.set("2025.1.2")
-    type.set("RD") // Rider
+    version.set("2023.2")
+    type.set("IC") // IntelliJ Community Edition
     
     plugins.set(listOf(
-        // Required for Rider compatibility
+        // No additional plugins needed for basic functionality
     ))
 }
 
@@ -30,8 +30,8 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("251")
-        untilBuild.set("252.*")
+        sinceBuild.set("232")
+        untilBuild.set("251.*")
         
         changeNotes.set("""
             <![CDATA[

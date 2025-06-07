@@ -4,10 +4,10 @@
     <vendor email="christian.helle@outlook.com" url="https://christianhelle.com">Christian Helle</vendor>
 
     <description><![CDATA[
-        <p>Generate REST API client code from OpenAPI/Swagger specifications directly in JetBrains Rider.</p>
+        <p>Generate REST API client code from OpenAPI/Swagger specifications directly in JetBrains IDEs.</p>
         
         <p>This plugin provides context menu integration for generating C# and TypeScript REST API clients 
-        from OpenAPI/Swagger specification files (JSON/YAML).</p>
+        from OpenAPI/Swagger specification files (JSON/YAML). Compatible with IntelliJ IDEA, JetBrains Rider, and other JetBrains IDEs.</p>
         
         <h3>Features:</h3>
         <ul>

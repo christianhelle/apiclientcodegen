@@ -31,12 +31,12 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 - **[Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator)**
 - **[Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2017)**
 - **[Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.rest-api-client-code-generator)**
-- **[JetBrains Rider/IntelliJ](https://github.com/christianhelle/apiclientcodegen/releases/latest)** - Available for JetBrains Rider 2025.1.2 and later
+- **[JetBrains IDEs](https://github.com/christianhelle/apiclientcodegen/releases/latest)** - Available for IntelliJ IDEA, JetBrains Rider, WebStorm, and other JetBrains IDEs 2023.2 and later
 - **[Visual Studio for Mac](https://github.com/christianhelle/apiclientcodegen/releases/latest)**. Follow **[these instructions](#visual-studio-for-mac)** for update convenience on Visual Studio for Mac
 
 ## Features
 
-- Supports Visual Studio 2017, 2019, 2022, [Visual Studio Code](#visual-studio-code), [JetBrains Rider](#jetbrains-rider), and [Visual Studio for Mac](#visual-studio-for-mac)
+- Supports Visual Studio 2017, 2019, 2022, [Visual Studio Code](#visual-studio-code), [JetBrains IDEs](#jetbrains-ides), and [Visual Studio for Mac](#visual-studio-for-mac)
 - Add New REST API Client to a project from an OpenAPI specification URL (e.g <https://petstore.swagger.io/v2/swagger.json>) using the following code generators:
   - [NSwag](https://github.com/RicoSuter/NSwag)
   - [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
@@ -200,28 +200,30 @@ Download the VSIX file from the [GitHub releases](https://github.com/christianhe
 3. Choose one of the available code generators
 4. The generated code will open in the editor
 
-## JetBrains Rider
+## JetBrains IDEs
 
-The JetBrains Rider plugin provides the same functionality as the VS Code extension through context menu integration. It executes the `rapicgen` .NET tool to generate code, so you will need to have the .NET SDK installed.
+The JetBrains plugin provides the same functionality as the VS Code extension through context menu integration. It executes the `rapicgen` .NET tool to generate code, so you will need to have the .NET SDK installed.
+
+Compatible with IntelliJ IDEA, JetBrains Rider, WebStorm, and other JetBrains IDEs.
 
 ### Installation
 
 #### From JetBrains Marketplace (Coming Soon)
 
-1. Open JetBrains Rider
+1. Open your JetBrains IDE (IntelliJ IDEA, Rider, WebStorm, etc.)
 2. Go to **File** → **Settings** → **Plugins**
 3. Click on **Marketplace** tab
 4. Search for "REST API Client Code Generator"
 5. Click **Install**
-6. Restart JetBrains Rider
+6. Restart your IDE
 
 #### From GitHub Releases
 
-Download the plugin `.zip` file from the [GitHub releases](https://github.com/christianhelle/apiclientcodegen/releases/latest) page, then in JetBrains Rider:
+Download the plugin `.zip` file from the [GitHub releases](https://github.com/christianhelle/apiclientcodegen/releases/latest) page, then in your JetBrains IDE:
 1. Go to **File** → **Settings** → **Plugins**
 2. Click on **⚙️** icon → **Install Plugin from Disk...**
 3. Select the downloaded `.zip` file
-4. Restart JetBrains Rider
+4. Restart your IDE
 
 ### Features
 
