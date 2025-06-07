@@ -14,6 +14,9 @@
 @rem limitations under the License.
 @rem
 
+@rem Force set JAVA_HOME to our JDK
+set JAVA_HOME=c:\projects\christianhelle\apiclientcodegen\java\jdk21
+
 @if "%DEBUG%" == "" @echo off
 @rem ##########################################################################
 @rem
@@ -52,7 +55,7 @@ goto fail
 
 :findJavaFromJavaHome
 set JAVA_HOME=%JAVA_HOME:"=%
-set JAVA_EXE=%JAVA_HOME%/bin/java.exe
+set JAVA_EXE=%JAVA_HOME%\bin\java.exe
 
 if exist "%JAVA_EXE%" goto execute
 

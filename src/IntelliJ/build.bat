@@ -5,7 +5,7 @@ REM This script builds the plugin and runs basic validation
 echo Building REST API Client Code Generator IntelliJ Plugin...
 
 REM Set up Java environment
-set JAVA_HOME=c:\projects\christianhelle\apiclientcodegen\java\jdk-21.0.3+9-jre-windows
+set JAVA_HOME=c:\projects\christianhelle\apiclientcodegen\java\jdk-21.0.3+9
 set PATH=%JAVA_HOME%\bin;%PATH%
 
 REM Check if Java is available

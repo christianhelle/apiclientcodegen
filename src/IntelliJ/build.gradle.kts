@@ -1,6 +1,6 @@
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.9.10"
+    id("org.jetbrains.kotlin.jvm") version "2.1.0"
     id("org.jetbrains.intellij") version "1.17.3"
 }
 
@@ -22,7 +22,6 @@ intellij {
     type.set("RD") // Rider
     
     plugins.set(listOf(
-        "com.intellij.platform.debug",
         "org.jetbrains.plugins.terminal"
     ))
 }
@@ -37,6 +36,10 @@ tasks {
         kotlinOptions.jvmTarget = "17"
     }
 
+    buildSearchableOptions {
+        enabled = false
+    }
+    
     patchPluginXml {
         sinceBuild.set("251")
         untilBuild.set("251.*")

@@ -38,16 +38,14 @@ object GeneratorService {
         Generator("reduxquery", "Redux Query", true),
         Generator("rxjs", "RxJS", true)
     )
-    
-    fun isRapicgenInstalled(): Boolean {
+      fun isRapicgenInstalled(): Boolean {
         return try {
-            val command = if (SystemInfo.isWindows) {
-                "cmd /c dotnet tool list --global | findstr rapicgen"
+            val commandLine = if (SystemInfo.isWindows) {
+                GeneralCommandLine("cmd", "/c", "dotnet", "tool", "list", "--global")
             } else {
-                "dotnet tool list --global | grep rapicgen"
+                GeneralCommandLine("dotnet", "tool", "list", "--global")
             }
             
-            val commandLine = GeneralCommandLine.createFromCommand(command)
             val processHandler = CapturingProcessHandler(commandLine)
             val output = processHandler.runProcess(10000)
             
