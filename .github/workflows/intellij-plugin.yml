@@ -11,6 +11,7 @@ on:
     paths:
       - 'src/IntelliJ/**'
       - '.github/workflows/intellij-plugin.yml'
+  workflow_dispatch:
 
 jobs:
   build:
