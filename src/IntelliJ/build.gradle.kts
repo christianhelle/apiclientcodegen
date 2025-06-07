@@ -39,10 +39,9 @@ tasks {
     buildSearchableOptions {
         enabled = false
     }
-    
-    patchPluginXml {
+      patchPluginXml {
         sinceBuild.set("251")
-        untilBuild.set("251.*")
+        untilBuild.set("253.*")
         
         changeNotes.set("""
             <h3>1.0.0</h3>

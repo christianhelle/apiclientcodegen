@@ -59,10 +59,8 @@
             <li>Context menu integration for .json, .yaml, .yml, and .refitter files</li>
             <li>Configurable namespace and output directory settings</li>
         </ul>
-    ]]></change-notes>
-
-    <!-- Requires Rider 2025.1.2 or later -->
-    <idea-version since-build="251" until-build="251.*"/>
+    ]]></change-notes>    <!-- Requires Rider 2025.1.2 or later -->
+    <idea-version since-build="251" until-build="253.*"/>
 
     <!-- Product and plugin compatibility requirements -->
     <depends>com.intellij.modules.platform</depends>
