@@ -15,6 +15,7 @@ import com.intellij.openapi.progress.Task
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.LocalFileSystem
 import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.openapi.vfs.VirtualFileManager
 import com.christianhelle.apiclientcodegen.services.GeneratorService
 import com.christianhelle.apiclientcodegen.utils.FileUtils
 import com.christianhelle.apiclientcodegen.utils.SystemUtils
@@ -101,9 +102,8 @@ class RefitterSettingsAction : AnAction() {
                         if (result.exitCode == 0) {
                             showSuccessNotification(project, "Code Generation Complete", 
                                 "Code generated successfully using Refitter settings")
-                            
-                            // Try to refresh the project view to show generated files
-                            project.baseDir?.refresh(false, true)
+                              // Try to refresh the project view to show generated files
+                            VirtualFileManager.getInstance().asyncRefresh(null)
                         } else {
                             LOG.warn("Code generation failed with exit code ${result.exitCode}")
                             LOG.warn("STDOUT: ${result.stdout}")
