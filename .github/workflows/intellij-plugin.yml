@@ -1,4 +1,4 @@
-name: IntelliJ Plugin CI
+name: IntelliJ Plugin
 
 on:
   push:
