@@ -1,0 +1,125 @@
+name: IntelliJ Plugin CI
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'src/IntelliJ/**'
+      - '.github/workflows/intellij-plugin.yml'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'src/IntelliJ/**'
+      - '.github/workflows/intellij-plugin.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        java-version: [17, 21]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK ${{ matrix.java-version }}
+      uses: actions/setup-java@v4
+      with:
+        java-version: ${{ matrix.java-version }}
+        distribution: 'temurin'
+        
+    - name: Cache Gradle packages
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+          
+    - name: Make gradlew executable
+      run: chmod +x src/IntelliJ/gradlew
+      
+    - name: Run tests
+      run: |
+        cd src/IntelliJ
+        ./gradlew test
+        
+    - name: Run code quality checks
+      run: |
+        cd src/IntelliJ
+        ./gradlew check
+        
+    - name: Build plugin
+      run: |
+        cd src/IntelliJ
+        ./gradlew buildPlugin
+        
+    - name: Verify plugin
+      run: |
+        cd src/IntelliJ
+        ./gradlew verifyPlugin
+        
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: test-results-java-${{ matrix.java-version }}
+        path: src/IntelliJ/build/reports/tests/
+        
+    - name: Upload plugin artifact
+      uses: actions/upload-artifact@v4
+      if: matrix.java-version == '17'
+      with:
+        name: plugin-distribution
+        path: src/IntelliJ/build/distributions/
+        
+    - name: Upload plugin for IntelliJ verification
+      uses: actions/upload-artifact@v4
+      if: matrix.java-version == '17'
+      with:
+        name: plugin-verifier-results
+        path: src/IntelliJ/build/reports/pluginVerifier/
+
+  publish:
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: 17
+        distribution: 'temurin'
+        
+    - name: Cache Gradle packages
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+          
+    - name: Make gradlew executable
+      run: chmod +x src/IntelliJ/gradlew
+      
+    - name: Publish plugin to JetBrains Marketplace
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      env:
+        PUBLISH_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_TOKEN }}
+      run: |
+        cd src/IntelliJ
+        if [ -n "$PUBLISH_TOKEN" ]; then
+          ./gradlew publishPlugin
+        else
+          echo "JETBRAINS_MARKETPLACE_TOKEN not set, skipping publish"
+        fi
