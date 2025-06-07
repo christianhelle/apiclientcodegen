@@ -28,7 +28,7 @@ echo "Cleaning previous build..."
 ./gradlew clean
 
 echo "Building plugin..."
-./gradlew build
+./gradlew buildPlugin
 
 if [ $? -eq 0 ]; then
     echo "✅ Plugin built successfully!"

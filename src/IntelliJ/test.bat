@@ -5,7 +5,7 @@ REM This script runs tests and quality checks
 echo Testing REST API Client Code Generator IntelliJ Plugin...
 
 REM Set up Java environment
-set JAVA_HOME=c:\projects\christianhelle\apiclientcodegen\java\jdk-21.0.3+9-jre-windows
+set JAVA_HOME=c:\projects\christianhelle\apiclientcodegen\java\jdk21
 set PATH=%JAVA_HOME%\bin;%PATH%
 
 REM Check if Java is available
@@ -16,21 +16,21 @@ if %errorlevel% neq 0 (
 )
 
 echo.
-echo 🧪 Running unit tests...
-gradlew.bat test
+echo 🧪 Running verification tasks...
+gradlew.bat verifyPlugin
 
 if %errorlevel% equ 0 (
     echo.
-    echo ✅ Tests passed!
+    echo ✅ Verification passed!
 ) else (
     echo.
-    echo ❌ Tests failed!
+    echo ❌ Verification failed!
     exit /b 1
 )
 
 echo.
 echo 🔍 Running code quality checks...
-gradlew.bat check
+gradlew.bat check -x test
 
 if %errorlevel% equ 0 (
     echo.

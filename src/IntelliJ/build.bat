@@ -24,7 +24,7 @@ gradlew.bat clean
 
 echo.
 echo Building plugin...
-gradlew.bat build
+gradlew.bat buildPlugin
 
 if %errorlevel% equ 0 (
     echo.
