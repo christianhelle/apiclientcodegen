@@ -31,11 +31,12 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 - **[Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator)**
 - **[Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2017)**
 - **[Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.rest-api-client-code-generator)**
+- **[JetBrains IDEs](src/IntelliJ)** - IntelliJ Plugin for JetBrains Rider, IntelliJ IDEA, WebStorm, and other JetBrains IDEs
 - **[Visual Studio for Mac](https://github.com/christianhelle/apiclientcodegen/releases/latest)**. Follow **[these instructions](#visual-studio-for-mac)** for update convenience on Visual Studio for Mac
 
 ## Features
 
-- Supports Visual Studio 2017, 2019, 2022, [Visual Studio Code](#visual-studio-code), and [Visual Studio for Mac](#visual-studio-for-mac)
+- Supports Visual Studio 2017, 2019, 2022, [Visual Studio Code](#visual-studio-code), [JetBrains IDEs](#jetbrains-ides), and [Visual Studio for Mac](#visual-studio-for-mac)
 - Add New REST API Client to a project from an OpenAPI specification URL (e.g <https://petstore.swagger.io/v2/swagger.json>) using the following code generators:
   - [NSwag](https://github.com/RicoSuter/NSwag)
   - [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
@@ -198,6 +199,36 @@ Download the VSIX file from the [GitHub releases](https://github.com/christianhe
 2. Select "REST API Client Code Generator" in the context menu
 3. Choose one of the available code generators
 4. The generated code will open in the editor
+
+## JetBrains IDEs
+
+The IntelliJ plugin provides REST API client code generation capabilities for JetBrains IDEs including IntelliJ IDEA, Rider, WebStorm, and other JetBrains products. It supports the same code generators as the other extensions.
+
+### Features
+
+- **C# Code Generators**: NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, AutoREST
+- **TypeScript Code Generators**: Angular, Aurelia, Axios, Fetch API, Inversify, jQuery, NestJS, Node.js, Redux Query, RxJS
+- **Refitter Settings Support**: Create and manage `.refitter` configuration files
+- **Global Configuration**: Set custom namespace and output directory
+- **Context Menu Integration**: Right-click on `.json`, `.yaml`, `.yml`, and `.refitter` files
+
+### Installation
+
+The plugin can be installed from the JetBrains Marketplace or manually from the releases:
+
+1. Open your JetBrains IDE
+2. Go to **File** → **Settings** → **Plugins**
+3. Search for "REST API Client Code Generator"
+4. Click **Install** and restart your IDE
+
+### Usage
+
+1. Right-click on any OpenAPI specification file (`.json`, `.yaml`, `.yml`) in the project tree
+2. Select **Generate API Client Code** from the context menu
+3. Choose your desired generator (C# or TypeScript)
+4. The generated code will be saved to your configured output directory
+
+For detailed documentation, see [src/IntelliJ/README.md](src/IntelliJ/README.md).
 
 # Installation
 
