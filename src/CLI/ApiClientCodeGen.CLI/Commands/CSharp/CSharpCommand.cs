@@ -1,22 +1,15 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using McMaster.Extensions.CommandLineUtils;
+using System.Threading.Tasks;
+using Spectre.Console.Cli;
 
 namespace Rapicgen.CLI.Commands.CSharp
 {
     [ExcludeFromCodeCoverage]
-    [Command("csharp", Description = "Generate C# API clients")]
-    [Subcommand(
-        typeof(AutoRestCommand),
-        typeof(KiotaCommand),
-        typeof(NSwagCommand),
-        typeof(RefitterCommand),
-        typeof(SwaggerCodegenCommand),
-        typeof(OpenApiCSharpGeneratorCommand))]
-    public class CSharpCommand
+    public class CSharpCommand : AsyncCommand<BaseCommandSettings>
     {
-        public int OnExecute(CommandLineApplication app)
+        public override async Task<int> ExecuteAsync(CommandContext context, BaseCommandSettings settings)
         {
-            app.ShowHelp(false);
+            // This is a parent command, show help
             return 0;
         }
     }

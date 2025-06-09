@@ -2,16 +2,16 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Rapicgen.Core.Logging;
-using McMaster.Extensions.CommandLineUtils;
+using Spectre.Console;
 
 namespace Rapicgen.CLI
 {
     [ExcludeFromCodeCoverage]
     public class ConsoleOutput : IConsoleOutput
     {
-        private readonly IConsole console;
+        private readonly IAnsiConsole console;
 
-        public ConsoleOutput(IConsole console, IVerboseOptions verboseOptions)
+        public ConsoleOutput(IAnsiConsole console, IVerboseOptions verboseOptions)
         {
             this.console = console ?? throw new ArgumentNullException(nameof(console));
 
@@ -20,6 +20,12 @@ namespace Rapicgen.CLI
         }
 
         public void WriteLine(string value)
-            => console.Out.WriteLine(value);
+            => console.WriteLine(value);
+
+        public void WriteMarkup(string markup)
+            => console.MarkupLine(markup);
+
+        public void Write(string value)
+            => console.Write(value);
     }
 }

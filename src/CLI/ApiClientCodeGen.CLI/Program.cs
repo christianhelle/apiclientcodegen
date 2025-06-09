@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 using System.Threading.Tasks;
 using Rapicgen.CLI.Commands;
 using Rapicgen.Core;
@@ -14,10 +13,11 @@ using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.NSwag;
 using Rapicgen.Core.Options.OpenApiGenerator;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Rapicgen.CLI.Commands.CSharp;
 using Rapicgen.Core.Options.Refitter;
+using Spectre.Console;
+using Spectre.Console.Cli;
 
 namespace Rapicgen.CLI
 {
@@ -28,29 +28,35 @@ namespace Rapicgen.CLI
         {
             var verboseOptions = new VerboseOption(args);
 
-            var builder = new HostBuilder()
-                .ConfigureServices(s => s.AddSingleton<IVerboseOptions>(verboseOptions))
-                .ConfigureServices(ConfigureServices);
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddSingleton<IVerboseOptions>(verboseOptions);
+            ConfigureServices(serviceCollection);
             
             if (verboseOptions.Enabled)
-                builder.ConfigureLogging(b => b.AddConsole());
+                serviceCollection.AddLogging(b => b.AddConsole());
 
             Logger.Setup().WithDefaultTags("CLI");
 
+            var app = new CommandApp(new TypeRegistrar(serviceCollection));
+            
+            app.Configure(config =>
+            {
+                config.AddBranch<BaseCommandSettings>("csharp", csharp =>
+                {
+                    csharp.SetDescription("Generate C# API clients");
+                    csharp.AddCommand<RefitterCommandSpectre>("refitter")
+                        .WithDescription("Refitter (v1.5.5)");
+                });
+            });
+
             try
             {
-                return await builder.RunCommandLineApplicationAsync<RootCommand>(args);
-            }
-            catch (TargetInvocationException ex) when (ex.InnerException != null)
-            {
-                Logger.Instance.TrackError(new CommandLineException(ex.Message, ex));
-                Console.WriteLine($@"Error: {ex.InnerException.Message}");
-                return ResultCodes.Error;
+                return await app.RunAsync(args);
             }
             catch (Exception ex)
             {
                 Logger.Instance.TrackError(new CommandLineException(ex.Message, ex));
-                Console.WriteLine($@"Error: {ex.Message}");
+                AnsiConsole.MarkupLine($"[red]Error: {ex.Message}[/]");
                 return ResultCodes.Error;
             }
         }
@@ -58,6 +64,7 @@ namespace Rapicgen.CLI
         private static void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging(b => b.AddDebug());
+            services.AddSingleton<IAnsiConsole>(AnsiConsole.Console);
             services.AddSingleton<IConsoleOutput, ConsoleOutput>();
             services.AddSingleton<IGeneralOptions, DefaultGeneralOptions>();
             services.AddSingleton<IAutoRestOptions, DefaultAutoRestOptions>();
