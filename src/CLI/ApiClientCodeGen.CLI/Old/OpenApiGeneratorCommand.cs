@@ -1,113 +1,79 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
+using System;
+using System.ComponentModel;
 using System.IO;
+using System.Threading.Tasks;
 using Rapicgen.CLI.Extensions;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
-using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
-using Rapicgen.Core.Options.General;
-using McMaster.Extensions.CommandLineUtils;
+using Rapicgen.Core.Options.OpenApiGenerator;
+using Spectre.Console;
+using Spectre.Console.Cli;
 
 namespace Rapicgen.CLI.Commands
 {
-    [Command(
-        "openapi-generator", 
-        Description = 
-            @"Generate code using OpenAPI Generator (v7.13.0). 
-See supported generators at https://openapi-generator.tech/docs/generators/")]
-    public class OpenApiGeneratorCommand
+    public class OpenApiGeneratorSettings : BaseCommandSettings
+    {
+        [CommandArgument(0, "<SWAGGER_FILE>")]
+        [Description("Path to the Swagger / Open API specification file")]
+        public string SwaggerFile { get; set; } = null!;
+
+        [CommandArgument(1, "<GENERATOR>")]
+        [Description("Language/generator to use")]
+        public string Generator { get; set; } = null!;
+
+        [CommandArgument(2, "[OUTPUT_PATH]")]
+        [Description("Output folder to write the generated code to")]
+        public string OutputPath { get; set; } = "Generated";
+    }
+
+    public class OpenApiGeneratorCommand : AsyncCommand<OpenApiGeneratorSettings>
     {
         private readonly IConsoleOutput console;
         private readonly IProgressReporter? progressReporter;
-        private readonly IGeneralOptions options;
         private readonly IOpenApiGeneratorFactory factory;
-        private readonly IProcessLauncher processLauncher;
-        private readonly IDependencyInstaller dependencyInstaller;
-
-        private string? outputPath;
+        private readonly IOpenApiGeneratorOptions options;
 
         public OpenApiGeneratorCommand(
             IConsoleOutput console,
-            IProgressReporter progressReporter,
-            IGeneralOptions options,
+            IProgressReporter? progressReporter,
             IOpenApiGeneratorFactory factory,
-            IProcessLauncher processLauncher,
-            IDependencyInstaller dependencyInstaller)
+            IOpenApiGeneratorOptions options)
         {
             this.console = console ?? throw new ArgumentNullException(nameof(console));
             this.progressReporter = progressReporter ?? throw new ArgumentNullException(nameof(progressReporter));
+            this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
             this.options = options ?? throw new ArgumentNullException(nameof(options));
-            this.factory = factory;
-            this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
-            this.dependencyInstaller =
-                dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
-        [Required]
-        [Argument(
-            0,
-            "generator",
-            Description = 
-                @"The tech stack to use for generating code.
-See supported generators at https://openapi-generator.tech/docs/generators/")] 
-        public string Generator { get; set; } = null!;
-
-        [Required]
-        [FileExists]
-        [Argument(1, "swaggerFile", "Path to the Swagger / Open API specification file")]
-        [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
-        public string SwaggerFile { get; set; } = null!;
-
-        [Argument(2, "outputPath", "Output folder to write the generated code to")]
-        public string OutputPath
+        public override async Task<int> ExecuteAsync(CommandContext context, OpenApiGeneratorSettings settings)
         {
-            get => outputPath ?? $"{Generator}-generated-code";
-            set => outputPath = value;
-        }
+            AnsiConsole.MarkupLine($"[bold green]🚀 Generating {settings.Generator} code using OpenAPI Generator[/]");
 
-        [Option(ShortName = "nl", LongName = "no-logging", Description = "Disables Analytics and Error Reporting")]
-        public bool SkipLogging { get; set; }
-
-        public int OnExecute()
-        {
-            if (!SkipLogging)
+            if (!settings.SkipLogging)
             {
-                Logger.Instance.TrackFeatureUsage(
-                    $"openapi-generator {Generator}",
-                    "CLI");
+                Logger.Instance.TrackFeatureUsage("OpenApiGenerator", "CLI");
             }
             else
             {
                 Logger.Instance.Disable();
-                console.WriteLine("NOTE: Feature usage tracking and error Logging is disabled");
+                console.WriteMarkup("[yellow]NOTE: Feature usage tracking and error Logging is disabled[/]");
+                console.WriteLine("");
             }
 
+            var generator = factory.Create(
+                settings.SwaggerFile,
+                settings.Generator,
+                settings.OutputPath,
+                options);
 
-            factory
-                .Create(Generator, SwaggerFile, OutputPath, options, processLauncher, dependencyInstaller)
-                .GenerateCode(progressReporter);
+            await Task.Run(() => generator.GenerateCode(progressReporter));
 
-            var directoryInfo = new DirectoryInfo(OutputPath);
-            var fileCount = directoryInfo.GetFiles().Length;
-            if (fileCount != 0)
-            {
-                console.WriteLine($"Output folder name: {OutputPath}");
-                console.WriteLine($"Output files: {fileCount}");
-                console.WriteSignature();
-            }
-            else
-            {
-                const string errorMessage = "ERROR!! Output folder is empty :(";
-                console.WriteLine(errorMessage);
-                console.WriteLine(string.Empty);
+            console.WriteMarkup($"[green]✅ {settings.Generator} code generated in:[/] {settings.OutputPath}");
+            console.WriteLine("");
+            console.WriteSignature();
 
-                if (!SkipLogging)
-                    Logger.Instance.TrackError(new Exception(errorMessage));
-            }
-
-            return fileCount != 0 ? ResultCodes.Success : ResultCodes.Error;
+            return ResultCodes.Success;
         }
     }
 }

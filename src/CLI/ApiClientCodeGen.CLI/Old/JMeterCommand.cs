@@ -1,19 +1,30 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
+using System;
+using System.ComponentModel;
 using System.IO;
+using System.Threading.Tasks;
 using Rapicgen.CLI.Extensions;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.General;
-using McMaster.Extensions.CommandLineUtils;
+using Spectre.Console;
+using Spectre.Console.Cli;
 
 namespace Rapicgen.CLI.Commands
 {
-    [Command("jmeter", Description = "Generate Apache JMeter test plans")]
-    public class JMeterCommand
+    public class JMeterSettings : BaseCommandSettings
+    {
+        [CommandArgument(0, "<SWAGGER_FILE>")]
+        [Description("Path to the Swagger / Open API specification file")]
+        public string SwaggerFile { get; set; } = null!;
+
+        [CommandArgument(1, "[OUTPUT_PATH]")]
+        [Description("Output folder to write the generated code to")]
+        public string OutputPath { get; set; } = "JMeter";
+    }
+
+    public class JMeterCommand : AsyncCommand<JMeterSettings>
     {
         private readonly IConsoleOutput console;
         private readonly IProgressReporter? progressReporter;
@@ -21,8 +32,6 @@ namespace Rapicgen.CLI.Commands
         private readonly IProcessLauncher processLauncher;
         private readonly IJMeterCodeGeneratorFactory factory;
         private readonly IDependencyInstaller dependencyInstaller;
-
-        private string? outputPath;
 
         public JMeterCommand(
             IConsoleOutput console,
@@ -40,64 +49,35 @@ namespace Rapicgen.CLI.Commands
             this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
-        [Required]
-        [FileExists]
-        [Argument(0, "swaggerFile", "Path to the Swagger / Open API specification file")]
-        [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
-        public string SwaggerFile { get; set; } = null!;
-
-        [Argument(1, "outputPath", "Output folder to write the generated code to")]
-        public string OutputPath
+        public override async Task<int> ExecuteAsync(CommandContext context, JMeterSettings settings)
         {
-            get => outputPath ?? "JMeter";
-            set => outputPath = value;
-        }
+            AnsiConsole.MarkupLine("[bold green]🚀 Generating JMeter test plans[/]");
 
-        [Option(ShortName = "nl", LongName = "no-logging", Description = "Disables Analytics and Error Reporting")]
-        public bool SkipLogging { get; set; }
-
-        public int OnExecute()
-        {
-            if (!SkipLogging)
+            if (!settings.SkipLogging)
             {
-                Logger.Instance.TrackFeatureUsage(
-                    "JMeter",
-                    "CLI");
+                Logger.Instance.TrackFeatureUsage("JMeter", "CLI");
             }
             else
             {
                 Logger.Instance.Disable();
-                console.WriteLine("NOTE: Feature usage tracking and error Logging is disabled");
+                console.WriteMarkup("[yellow]NOTE: Feature usage tracking and error Logging is disabled[/]");
+                console.WriteLine("");
             }
 
-            factory
-                .Create(SwaggerFile, OutputPath, options, processLauncher, dependencyInstaller)
-                .GenerateCode(progressReporter);
+            var generator = factory.Create(
+                settings.SwaggerFile,
+                settings.OutputPath,
+                options,
+                processLauncher,
+                dependencyInstaller);
 
-            if (!Directory.Exists(OutputPath))
-            {
-                OutputPath = Path.Combine(Path.GetDirectoryName(SwaggerFile)!, OutputPath);
-            }
+            await Task.Run(() => generator.GenerateCode(progressReporter));
 
-            var directoryInfo = new DirectoryInfo(OutputPath);
-            var fileCount = directoryInfo.GetFiles().Length;
-            if (fileCount != 0)
-            {
-                console.WriteLine($"Output folder name: {OutputPath}");
-                console.WriteLine($"Output files: {fileCount}");
-                console.WriteSignature();
-            }
-            else
-            {
-                const string errorMessage = "ERROR!! Output folder is empty :(";
-                console.WriteLine(errorMessage);
-                console.WriteLine(string.Empty);
+            console.WriteMarkup($"[green]✅ JMeter test plans generated in:[/] {settings.OutputPath}");
+            console.WriteLine("");
+            console.WriteSignature();
 
-                if (!SkipLogging)
-                    Logger.Instance.TrackError(new Exception(errorMessage));
-            }
-
-            return fileCount != 0 ? ResultCodes.Success : ResultCodes.Error;
+            return ResultCodes.Success;
         }
     }
 }

@@ -46,7 +46,10 @@ namespace Rapicgen.CLI
                     csharp.SetDescription("Generate C# API clients");
                     csharp.AddCommand<RefitterCommandSpectre>("refitter")
                         .WithDescription("Refitter (v1.5.5)");
+                    // More commands will be added as they are migrated
                 });
+                
+                // More top-level commands will be added as they are migrated
             });
 
             try

@@ -5,24 +5,24 @@ using Rapicgen.CLI.Extensions;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Logging;
-using Rapicgen.Core.Options.General;
+using Rapicgen.Core.Options.NSwag;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
 namespace Rapicgen.CLI.Commands.CSharp
 {
-    public class SwaggerCodegenCommand : AsyncCommand<CodeGeneratorSettings>
+    public class NSwagCommand : AsyncCommand<CodeGeneratorSettings>
     {
         private readonly IConsoleOutput console;
         private readonly IProgressReporter? progressReporter;
-        private readonly ISwaggerCodegenFactory factory;
-        private readonly IGeneralOptions options;
+        private readonly INSwagCodeGeneratorFactory factory;
+        private readonly INSwagOptions options;
 
-        public SwaggerCodegenCommand(
+        public NSwagCommand(
             IConsoleOutput console,
             IProgressReporter? progressReporter,
-            ISwaggerCodegenFactory factory,
-            IGeneralOptions options)
+            INSwagCodeGeneratorFactory factory,
+            INSwagOptions options)
         {
             this.console = console ?? throw new ArgumentNullException(nameof(console));
             this.progressReporter = progressReporter ?? throw new ArgumentNullException(nameof(progressReporter));
@@ -32,11 +32,11 @@ namespace Rapicgen.CLI.Commands.CSharp
 
         public override async Task<int> ExecuteAsync(CommandContext context, CodeGeneratorSettings settings)
         {
-            AnsiConsole.MarkupLine("[bold green]🚀 Generating C# code using Swagger Codegen[/]");
+            AnsiConsole.MarkupLine("[bold green]🚀 Generating C# code using NSwag[/]");
             
             var outputFile = settings.OutputFile ?? Path.GetFileNameWithoutExtension(settings.SwaggerFile) + ".cs";
 
-            var codeGeneratorName = "Swagger";
+            var codeGeneratorName = "NSwag";
             if (!settings.SkipLogging)
             {
                 Logger.Instance.TrackFeatureUsage(codeGeneratorName, "CLI");
