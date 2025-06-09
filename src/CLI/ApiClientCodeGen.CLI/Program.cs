@@ -44,6 +44,8 @@ namespace Rapicgen.CLI
                 config.AddBranch<BaseCommandSettings>("csharp", csharp =>
                 {
                     csharp.SetDescription("Generate C# API clients");
+                    csharp.AddCommand<AutoRestCommand>("autorest")
+                        .WithDescription("AutoRest (v3.0.0-beta.20210504.2)");
                     csharp.AddCommand<RefitterCommandSpectre>("refitter")
                         .WithDescription("Refitter (v1.5.5)");
                     // More commands will be added as they are migrated
