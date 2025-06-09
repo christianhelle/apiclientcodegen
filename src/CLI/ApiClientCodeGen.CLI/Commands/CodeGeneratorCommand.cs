@@ -6,7 +6,6 @@ using Rapicgen.CLI.Extensions;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Logging;
-using McMaster.Extensions.CommandLineUtils;
 
 namespace Rapicgen.CLI.Commands
 {
@@ -22,22 +21,17 @@ namespace Rapicgen.CLI.Commands
             this.progressReporter = progressReporter ?? throw new ArgumentNullException(nameof(progressReporter));
         }
 
-        [FileExists]
-        [Argument(0, "swaggerFile", "Path to the Swagger / Open API specification file")]
         [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
         public string SwaggerFile { get; set; } = null!;
 
-        [Argument(1, "namespace", "Default namespace to in the generated code")]
         public string DefaultNamespace { get; set; } = "GeneratedCode";
 
-        [Argument(2, "outputFile", "Output filename to write the generated code to. Default is the swaggerFile .cs")]
         public string OutputFile
         {
             get => outputFile ?? Path.GetFileNameWithoutExtension(SwaggerFile) + ".cs";
             set => outputFile = value;
         }
 
-        [Option(ShortName = "nl", LongName = "no-logging", Description = "Disables Analytics and Error Reporting")]
         public bool SkipLogging { get; set; }
 
         public int OnExecute()
