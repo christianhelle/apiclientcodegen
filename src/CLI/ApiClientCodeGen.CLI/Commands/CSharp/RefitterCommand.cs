@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
+using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.Refitter;
 
 namespace Rapicgen.CLI.Commands.CSharp

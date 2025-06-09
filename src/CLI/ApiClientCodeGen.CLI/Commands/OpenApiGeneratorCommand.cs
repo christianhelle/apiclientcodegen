@@ -6,18 +6,18 @@ using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.OpenApiGenerator;
 
-namespace Rapicgen.CLI.Commands.CSharp
+namespace Rapicgen.CLI.Commands
 {
-    public class OpenApiCSharpGeneratorCommand : CodeGeneratorCommand, IGeneralOptions, IOpenApiGeneratorOptions
+    public class OpenApiGeneratorCommand : CodeGeneratorCommand, IGeneralOptions, IOpenApiGeneratorOptions
     {
-        private readonly IOpenApiCSharpGeneratorFactory codeGeneratorFactory;
+        private readonly IOpenApiGeneratorFactory codeGeneratorFactory;
         private readonly IProcessLauncher processLauncher;
         private readonly IDependencyInstaller dependencyInstaller;
 
-        public OpenApiCSharpGeneratorCommand(
+        public OpenApiGeneratorCommand(
             IConsoleOutput console,
             IProgressReporter? progressReporter,
-            IOpenApiCSharpGeneratorFactory codeGeneratorFactory,
+            IOpenApiGeneratorFactory codeGeneratorFactory,
             IProcessLauncher processLauncher,
             IDependencyInstaller dependencyInstaller)
             : base(console, progressReporter)
@@ -29,9 +29,9 @@ namespace Rapicgen.CLI.Commands.CSharp
 
         public override ICodeGenerator CreateGenerator()
             => codeGeneratorFactory.Create(
+                "csharp",
                 SwaggerFile,
                 DefaultNamespace,
-                this,
                 this,
                 processLauncher,
                 dependencyInstaller);

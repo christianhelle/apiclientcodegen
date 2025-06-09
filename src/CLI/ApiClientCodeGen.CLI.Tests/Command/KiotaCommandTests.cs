@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using FluentAssertions;
-using McMaster.Extensions.CommandLineUtils;
 using Rapicgen.CLI.Commands.CSharp;
 using Rapicgen.Core.Generators.Kiota;
 using Xunit;

@@ -4,20 +4,19 @@ using Rapicgen.Core.Generators;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.General;
-using Rapicgen.Core.Options.OpenApiGenerator;
 
-namespace Rapicgen.CLI.Commands.CSharp
+namespace Rapicgen.CLI.Commands
 {
-    public class OpenApiCSharpGeneratorCommand : CodeGeneratorCommand, IGeneralOptions, IOpenApiGeneratorOptions
+    public class JMeterCommand : CodeGeneratorCommand, IGeneralOptions
     {
-        private readonly IOpenApiCSharpGeneratorFactory codeGeneratorFactory;
+        private readonly IJMeterCodeGeneratorFactory codeGeneratorFactory;
         private readonly IProcessLauncher processLauncher;
         private readonly IDependencyInstaller dependencyInstaller;
 
-        public OpenApiCSharpGeneratorCommand(
+        public JMeterCommand(
             IConsoleOutput console,
             IProgressReporter? progressReporter,
-            IOpenApiCSharpGeneratorFactory codeGeneratorFactory,
+            IJMeterCodeGeneratorFactory codeGeneratorFactory,
             IProcessLauncher processLauncher,
             IDependencyInstaller dependencyInstaller)
             : base(console, progressReporter)
@@ -30,8 +29,7 @@ namespace Rapicgen.CLI.Commands.CSharp
         public override ICodeGenerator CreateGenerator()
             => codeGeneratorFactory.Create(
                 SwaggerFile,
-                DefaultNamespace,
-                this,
+                OutputFile,
                 this,
                 processLauncher,
                 dependencyInstaller);
@@ -44,19 +42,5 @@ namespace Rapicgen.CLI.Commands.CSharp
         public string SwaggerCodegenPath { get; set; } = "swagger-codegen";
         public string OpenApiGeneratorPath { get; set; } = "openapi-generator";
         public bool? InstallMissingPackages { get; set; } = true;
-
-        // IOpenApiGeneratorOptions implementation
-        public bool EmitDefaultValue { get; set; } = true;
-        public bool MethodArgument { get; set; } = false;
-        public bool GeneratePropertyChanged { get; set; } = false;
-        public bool UseCollection { get; set; } = true;
-        public bool UseDateTimeOffset { get; set; } = true;
-        public OpenApiSupportedTargetFramework TargetFramework { get; set; } = OpenApiSupportedTargetFramework.Net80;
-        public string? CustomAdditionalProperties { get; set; } = string.Empty;
-        public bool SkipFormModel { get; set; } = false;
-        public string? TemplatesPath { get; set; } = string.Empty;
-        public bool UseConfigurationFile { get; set; } = false;
-        public OpenApiSupportedVersion Version { get; set; } = OpenApiSupportedVersion.Latest;
-        public string? HttpUserAgent { get; set; } = string.Empty;
     }
 }
