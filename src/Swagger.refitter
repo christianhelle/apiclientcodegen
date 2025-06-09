@@ -1,6 +1,6 @@
 {
   "openApiPath": "/home/runner/work/apiclientcodegen/apiclientcodegen/src/Swagger.json",
-  "namespace": "MyApi",
+  "namespace": "MyGeneratedCode",
   "contractsNamespace": null,
   "naming": {
     "useOpenApiTitle": true,
