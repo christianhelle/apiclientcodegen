@@ -1,5 +1,5 @@
 ﻿using System;
-using McMaster.Extensions.CommandLineUtils;
+using Spectre.Console.Cli;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.NSwag;
@@ -8,15 +8,17 @@ using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.AutoRest;
 
 namespace Rapicgen.CLI.Commands.CSharp
-{
-    [Command("autorest", Description = "AutoRest (v3.0.0-beta.20210504.2)")]
-    public class AutoRestCommand : CodeGeneratorCommand
+{    public class AutoRestCommand : CodeGeneratorCommand<AutoRestCommand.AutoRestSettings>
     {
         private readonly IAutoRestOptions options;
         private readonly IProcessLauncher processLauncher;
         private readonly IAutoRestCodeGeneratorFactory factory;
         private readonly IOpenApiDocumentFactory documentFactory;
         private readonly IDependencyInstaller dependencyInstaller;
+
+        public class AutoRestSettings : CodeGeneratorCommand<AutoRestCommand.AutoRestSettings>.Settings
+        {
+        }
 
         public AutoRestCommand(
             IConsoleOutput console,
@@ -32,12 +34,10 @@ namespace Rapicgen.CLI.Commands.CSharp
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
             this.documentFactory = documentFactory ?? throw new ArgumentNullException(nameof(documentFactory));
             this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
-        }
-
-        public override ICodeGenerator CreateGenerator()
+        }        public override ICodeGenerator CreateGenerator(AutoRestSettings settings)
             => factory.Create(
-                SwaggerFile,
-                DefaultNamespace,
+                settings.SwaggerFile,
+                settings.DefaultNamespace,
                 options,
                 processLauncher,
                 documentFactory,

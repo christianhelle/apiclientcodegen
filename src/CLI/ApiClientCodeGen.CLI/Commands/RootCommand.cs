@@ -1,25 +1,22 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Rapicgen.Core.Logging;
-using McMaster.Extensions.CommandLineUtils;
-using Rapicgen.CLI.Commands.CSharp;
+﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using Spectre.Console.Cli;
 
 namespace Rapicgen.CLI.Commands
 {
     [ExcludeFromCodeCoverage]
-    [Command]
-    [Subcommand(
-        typeof(CSharpCommand),
-        typeof(JMeterCommand),
-        typeof(TypeScriptCommand),
-        typeof(OpenApiGeneratorCommand))]
-    public class RootCommand
+    public class RootCommand : Command<RootCommand.Settings>
     {
-        [Option(VerboseOption.Template, CommandOptionType.NoValue, Description = VerboseOption.Description)]
-        public bool Verbose { get; set; }
-
-        public int OnExecute(CommandLineApplication app)
+        public class Settings : CommandSettings
         {
-            app.ShowHelp(false);
+            [CommandOption("-v|--verbose")]
+            [Description("Show verbose output")]
+            public bool Verbose { get; set; }
+        }
+
+        public override int Execute(CommandContext context, Settings settings)
+        {
+            // Show help when no subcommand is specified
             return 0;
         }
     }

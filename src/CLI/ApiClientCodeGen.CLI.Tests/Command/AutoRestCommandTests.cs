@@ -18,25 +18,25 @@ namespace Rapicgen.CLI.Tests.Command
     public class AutoRestCommandTests
     {
         [Theory, AutoMoqData]
-        public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(AutoRestCommand sut)
-            => sut.DefaultNamespace.Should().NotBeNullOrWhiteSpace();
+        public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(AutoRestCommand.AutoRestSettings settings)
+            => settings.DefaultNamespace.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void SwaggerFile_Should_NotBeNullOrWhiteSpace(AutoRestCommand sut)
-            => sut.SwaggerFile.Should().NotBeNullOrWhiteSpace();
+        public void SwaggerFile_Should_NotBeNullOrWhiteSpace(AutoRestCommand.AutoRestSettings settings)
+            => settings.SwaggerFile.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void OutputFile_Should_NotBeNullOrWhiteSpace(AutoRestCommand sut)
-            => sut.OutputFile.Should().NotBeNullOrWhiteSpace();
+        public void OutputFile_Should_NotBeNullOrWhiteSpace(AutoRestCommand.AutoRestSettings settings)
+            => settings.OutputFile.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void CreateGenerator_Should_NotNull(AutoRestCommand sut)
-            => sut.CreateGenerator().Should().NotBeNull();
+        public void CreateGenerator_Should_NotNull(AutoRestCommand sut, AutoRestCommand.AutoRestSettings settings)
+            => sut.CreateGenerator(settings).Should().NotBeNull();
 
         [Theory, AutoMoqData]
-        public void OnExecuteAsync_Should_NotThrow(AutoRestCommand sut)
+        public void Execute_Should_NotThrow(AutoRestCommand sut, AutoRestCommand.AutoRestSettings settings)
         {
-            new Func<int>(sut.OnExecute).Should().NotThrow();
+            new Func<int>(() => sut.Execute(null, settings)).Should().NotThrow();
         }
 
         [Theory, AutoMoqData]
@@ -117,20 +117,19 @@ namespace Rapicgen.CLI.Tests.Command
                         null,
                         dependencyInstaller))
                 .Should()
-                .ThrowExactly<ArgumentNullException>();
-
-        [Theory, AutoMoqData]
+                .ThrowExactly<ArgumentNullException>();        [Theory, AutoMoqData]
         public void OnExecute_Should_Create_Generator(
             [Frozen] IAutoRestCodeGeneratorFactory factory,
-            AutoRestCommand sut)
+            AutoRestCommand sut,
+            AutoRestCommand.AutoRestSettings settings)
         {
-            sut.OnExecute();
+            sut.Execute(null, settings);
 
             Mock.Get(factory)
                 .Verify(
                     c => c.Create(
-                        sut.SwaggerFile,
-                        sut.DefaultNamespace,
+                        settings.SwaggerFile,
+                        settings.DefaultNamespace,
                         It.IsAny<IAutoRestOptions>(),
                         It.IsAny<IProcessLauncher>(),
                         It.IsAny<IOpenApiDocumentFactory>(),

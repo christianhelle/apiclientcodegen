@@ -14,33 +14,32 @@ namespace Rapicgen.CLI.Tests.Command
     public class OpenApiCSharpGeneratorCommandTests
     {   
         [Theory, AutoMoqData]
-        public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(OpenApiCSharpGeneratorCommand sut)
-            => sut.DefaultNamespace.Should().NotBeNullOrWhiteSpace();
+        public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(OpenApiCSharpGeneratorCommandSettings settings)
+            => settings.DefaultNamespace.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void SwaggerFile_Should_NotBeNullOrWhiteSpace(OpenApiCSharpGeneratorCommand sut)
-            => sut.SwaggerFile.Should().NotBeNullOrWhiteSpace();
+        public void SwaggerFile_Should_NotBeNullOrWhiteSpace(OpenApiCSharpGeneratorCommandSettings settings)
+            => settings.SwaggerFile.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void OutputFile_Should_NotBeNullOrWhiteSpace(OpenApiCSharpGeneratorCommand sut)
-            => sut.OutputFile.Should().NotBeNullOrWhiteSpace();
+        public void OutputFile_Should_NotBeNullOrWhiteSpace(OpenApiCSharpGeneratorCommandSettings settings)
+            => settings.OutputFile.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void CreateGenerator_Should_NotNull(OpenApiCSharpGeneratorCommand sut)
-            => sut.CreateGenerator().Should().NotBeNull();
-
-        [Theory, AutoMoqData]
-        public void OnExecuteAsync_Should_NotThrow(
+        public void CreateGenerator_Should_NotNull(OpenApiCSharpGeneratorCommand sut, OpenApiCSharpGeneratorCommandSettings settings)
+            => sut.CreateGenerator(settings).Should().NotBeNull();        [Theory, AutoMoqData]
+        public void Execute_Should_NotThrow(
             [Frozen] IProgressReporter progressReporter,
             [Frozen] ICodeGenerator generator,
             OpenApiCSharpGeneratorCommand sut,
+            OpenApiCSharpGeneratorCommandSettings settings,
             string code)
         {
             Mock.Get(generator)
                 .Setup(c => c.GenerateCode(progressReporter))
                 .Returns(code);
             
-            new Func<int>(sut.OnExecute).Should().NotThrow();
+            new Func<int>(() => sut.Execute(null, settings)).Should().NotThrow();
         }
     }
 }

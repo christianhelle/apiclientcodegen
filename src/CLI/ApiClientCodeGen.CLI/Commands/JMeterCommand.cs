@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Rapicgen.CLI.Extensions;
@@ -8,12 +8,11 @@ using Rapicgen.Core.Generators;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.General;
-using McMaster.Extensions.CommandLineUtils;
+using Spectre.Console.Cli;
 
 namespace Rapicgen.CLI.Commands
 {
-    [Command("jmeter", Description = "Generate Apache JMeter test plans")]
-    public class JMeterCommand
+    public class JMeterCommand : Command<JMeterCommand.Settings>
     {
         private readonly IConsoleOutput console;
         private readonly IProgressReporter? progressReporter;
@@ -22,7 +21,20 @@ namespace Rapicgen.CLI.Commands
         private readonly IJMeterCodeGeneratorFactory factory;
         private readonly IDependencyInstaller dependencyInstaller;
 
-        private string? outputPath;
+        public class Settings : CommandSettings
+        {
+            [CommandArgument(0, "<swaggerFile>")]
+            [Description("Path to the Swagger / Open API specification file")]
+            public string SwaggerFile { get; set; } = null!;
+
+            [CommandArgument(1, "[outputPath]")]
+            [Description("Output folder to write the generated code to")]
+            public string OutputPath { get; set; } = "JMeter";
+
+            [CommandOption("--no-logging")]
+            [Description("Disables Analytics and Error Reporting")]
+            public bool SkipLogging { get; set; }
+        }
 
         public JMeterCommand(
             IConsoleOutput console,
@@ -38,27 +50,9 @@ namespace Rapicgen.CLI.Commands
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
             this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
-        }
-
-        [Required]
-        [FileExists]
-        [Argument(0, "swaggerFile", "Path to the Swagger / Open API specification file")]
-        [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
-        public string SwaggerFile { get; set; } = null!;
-
-        [Argument(1, "outputPath", "Output folder to write the generated code to")]
-        public string OutputPath
+        }        public override int Execute(CommandContext context, Settings settings)
         {
-            get => outputPath ?? "JMeter";
-            set => outputPath = value;
-        }
-
-        [Option(ShortName = "nl", LongName = "no-logging", Description = "Disables Analytics and Error Reporting")]
-        public bool SkipLogging { get; set; }
-
-        public int OnExecute()
-        {
-            if (!SkipLogging)
+            if (!settings.SkipLogging)
             {
                 Logger.Instance.TrackFeatureUsage(
                     "JMeter",
@@ -71,19 +65,20 @@ namespace Rapicgen.CLI.Commands
             }
 
             factory
-                .Create(SwaggerFile, OutputPath, options, processLauncher, dependencyInstaller)
+                .Create(settings.SwaggerFile, settings.OutputPath, options, processLauncher, dependencyInstaller)
                 .GenerateCode(progressReporter);
 
-            if (!Directory.Exists(OutputPath))
+            var outputPath = settings.OutputPath;
+            if (!Directory.Exists(outputPath))
             {
-                OutputPath = Path.Combine(Path.GetDirectoryName(SwaggerFile)!, OutputPath);
+                outputPath = Path.Combine(Path.GetDirectoryName(settings.SwaggerFile)!, settings.OutputPath);
             }
 
-            var directoryInfo = new DirectoryInfo(OutputPath);
+            var directoryInfo = new DirectoryInfo(outputPath);
             var fileCount = directoryInfo.GetFiles().Length;
             if (fileCount != 0)
             {
-                console.WriteLine($"Output folder name: {OutputPath}");
+                console.WriteLine($"Output folder name: {outputPath}");
                 console.WriteLine($"Output files: {fileCount}");
                 console.WriteSignature();
             }
@@ -93,7 +88,7 @@ namespace Rapicgen.CLI.Commands
                 console.WriteLine(errorMessage);
                 console.WriteLine(string.Empty);
 
-                if (!SkipLogging)
+                if (!settings.SkipLogging)
                     Logger.Instance.TrackError(new Exception(errorMessage));
             }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
 using System.Threading.Tasks;
 using Rapicgen.CLI.Commands;
 using Rapicgen.Core;
@@ -11,41 +10,76 @@ using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.AutoRest;
 using Rapicgen.Core.Options.General;
-using Rapicgen.Core.Options.NSwag;
 using Rapicgen.Core.Options.OpenApiGenerator;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Rapicgen.CLI.Commands.CSharp;
 using Rapicgen.Core.Options.Refitter;
+using Spectre.Console.Cli;
 
 namespace Rapicgen.CLI
 {
     [ExcludeFromCodeCoverage]
     internal static class Program
     {
-        public static async Task<int> Main(string[] args)
+        public static int Main(string[] args)
         {
-            var verboseOptions = new VerboseOption(args);
-
-            var builder = new HostBuilder()
-                .ConfigureServices(s => s.AddSingleton<IVerboseOptions>(verboseOptions))
-                .ConfigureServices(ConfigureServices);
-            
-            if (verboseOptions.Enabled)
-                builder.ConfigureLogging(b => b.AddConsole());
-
             Logger.Setup().WithDefaultTags("CLI");
 
             try
             {
-                return await builder.RunCommandLineApplicationAsync<RootCommand>(args);
-            }
-            catch (TargetInvocationException ex) when (ex.InnerException != null)
-            {
-                Logger.Instance.TrackError(new CommandLineException(ex.Message, ex));
-                Console.WriteLine($@"Error: {ex.InnerException.Message}");
-                return ResultCodes.Error;
+                var services = new ServiceCollection();
+                ConfigureServices(services);
+
+                var app = new CommandApp(new TypeRegistrar(services));
+                app.Configure(config =>
+                {
+                    config.CaseSensitivity(CaseSensitivity.None);
+                    config.SetApplicationName("rapicgen");
+                    config.AddBranch("csharp", cs =>
+                    {
+                        cs.SetDescription("Generate C# API clients using various generators");
+
+                        // Individual commands (no subcommands structure for now)
+                        cs.AddCommand<AutoRestCommand>("autorest")
+                            .WithDescription("Generate C# code using AutoRest")
+                            .WithExample(new[] { "autorest", "petstore.json", "GeneratedCode", "Output.cs" });
+
+                        cs.AddCommand<KiotaCommand>("kiota")
+                            .WithDescription("Generate C# code using Microsoft Kiota")
+                            .WithExample(new[] { "kiota", "petstore.json", "GeneratedCode", "Output.cs" });
+
+                        cs.AddCommand<NSwagCommand>("nswag")
+                            .WithDescription("Generate C# code using NSwag")
+                            .WithExample(new[] { "nswag", "petstore.json", "GeneratedCode", "Output.cs" });
+
+                        cs.AddCommand<RefitterCommand>("refitter")
+                            .WithDescription("Generate C# code using Refitter")
+                            .WithExample(new[] { "refitter", "petstore.json", "GeneratedCode", "Output.cs" });
+
+                        cs.AddCommand<SwaggerCodegenCommand>("swagger")
+                            .WithDescription("Generate C# code using Swagger Codegen")
+                            .WithExample(new[] { "swagger", "petstore.json", "GeneratedCode", "Output.cs" });
+
+                        cs.AddCommand<OpenApiCSharpGeneratorCommand>("openapi")
+                            .WithDescription("Generate C# code using OpenAPI Generator")
+                            .WithExample(new[] { "openapi", "petstore.json", "GeneratedCode", "Output.cs" });
+                    });
+
+                    config.AddCommand<TypeScriptCommand>("typescript")
+                        .WithDescription("Generate TypeScript API clients")
+                        .WithExample(new[] { "typescript", "petstore.json", "typescript-generated-code" });
+
+                    config.AddCommand<JMeterCommand>("jmeter")
+                        .WithDescription("Generate Apache JMeter test plans")
+                        .WithExample(new[] { "jmeter", "petstore.json", "JMeter" });
+
+                    config.AddCommand<OpenApiGeneratorCommand>("openapi-generator")
+                        .WithDescription("Generate code using OpenAPI Generator")
+                        .WithExample(new[] { "openapi-generator", "csharp", "petstore.json", "GeneratedCode" });
+                });
+
+                return app.Run(args);
             }
             catch (Exception ex)
             {

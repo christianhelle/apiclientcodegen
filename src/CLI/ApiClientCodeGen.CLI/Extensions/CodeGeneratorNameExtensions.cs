@@ -7,7 +7,7 @@ namespace Rapicgen.CLI.Extensions
 {
     public static class CodeGeneratorNameExtensions
     {
-        public static string GetCodeGeneratorName(this CodeGeneratorCommand generator)
+        public static string GetCodeGeneratorName(this object generator)
         {
             var type = generator.GetType();
             
