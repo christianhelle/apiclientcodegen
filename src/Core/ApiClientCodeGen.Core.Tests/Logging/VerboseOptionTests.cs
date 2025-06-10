@@ -1,6 +1,4 @@
 ﻿using AutoFixture.Xunit2;
-using Rapicgen.Core.Logging;
-using FluentAssertions;
 using Xunit;
 
 namespace ApiClientCodeGen.Core.Tests.Logging
