@@ -167,6 +167,6 @@ namespace Rapicgen.Core.Generators.OpenApi
         }
 
         private static string Sanitize(string code) =>
-            code.Replace("using System.Net.Mime;", "");
+            code.Replace("using System.Net.Mime;", string.Empty);
     }
 }
