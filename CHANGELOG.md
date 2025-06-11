@@ -12,18 +12,24 @@
 
 - Release workflow fails to upload VSCode asset [\#1182](https://github.com/christianhelle/apiclientcodegen/issues/1182)
 - OpenAPI Generator fails in VS Code without error details if the JRE/JDK is not installed [\#1180](https://github.com/christianhelle/apiclientcodegen/issues/1180)
+- Argument null exception [\#1157](https://github.com/christianhelle/apiclientcodegen/issues/1157)
 
 **Closed issues:**
 
+- VSIX workflow stopped working [\#1198](https://github.com/christianhelle/apiclientcodegen/issues/1198)
+- Contribution Guidelines [\#1189](https://github.com/christianhelle/apiclientcodegen/issues/1189)
 - Reduce Code Duplication in Visual Studio Code Extension [\#1185](https://github.com/christianhelle/apiclientcodegen/issues/1185)
 
 **Merged pull requests:**
 
+- Fix VSIX Builds [\#1200](https://github.com/christianhelle/apiclientcodegen/pull/1200) ([christianhelle](https://github.com/christianhelle))
+- Add comprehensive CONTRIBUTING.md with code patterns and PR guidelines [\#1190](https://github.com/christianhelle/apiclientcodegen/pull/1190) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Update dependency @types/node to v22.15.23 [\#1187](https://github.com/christianhelle/apiclientcodegen/pull/1187) ([renovate[bot]](https://github.com/apps/renovate))
 - Reduce Code Duplication in VSCode Extension and Fix Linting Issue [\#1186](https://github.com/christianhelle/apiclientcodegen/pull/1186) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Fix VSCode extension asset path in release workflow [\#1183](https://github.com/christianhelle/apiclientcodegen/pull/1183) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Add Java Runtime Check for OpenAPI Generator in VS Code Extension [\#1181](https://github.com/christianhelle/apiclientcodegen/pull/1181) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Update dependency mocha to v11.5.0 [\#1179](https://github.com/christianhelle/apiclientcodegen/pull/1179) ([renovate[bot]](https://github.com/apps/renovate))
+- Fix ArgumentException in OpenApiCSharpCodeGenerator.Sanitize method [\#1163](https://github.com/christianhelle/apiclientcodegen/pull/1163) ([Copilot](https://github.com/apps/copilot-swe-agent))
 
 ## [1.26.0](https://github.com/christianhelle/apiclientcodegen/tree/1.26.0) (2025-05-23)
 
