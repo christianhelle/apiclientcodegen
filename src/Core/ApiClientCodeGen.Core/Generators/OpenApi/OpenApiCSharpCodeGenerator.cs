@@ -81,15 +81,18 @@ namespace Rapicgen.Core.Generators.OpenApi
                 if (openApiGeneratorOptions.UseConfigurationFile)
                 {
                     var extension = Path.GetExtension(swaggerFile);
-                    var configFilename = swaggerFile.Replace(extension, $".config{extension}");
-                    var jsonConfigFilename = swaggerFile.Replace(extension, ".config.json");
-                    var yamlConfigFilename = swaggerFile.Replace(extension, ".config.yaml");
-
-                    var configFilenames = new[] { configFilename, jsonConfigFilename, yamlConfigFilename };
-                    var configFile = Array.Find(configFilenames, File.Exists);
-                    if (configFile != null)
+                    if (extension != null)
                     {
-                        arguments += $"-c \"{configFile}\" ";
+                        var configFilename = swaggerFile.Replace(extension, $".config{extension}");
+                        var jsonConfigFilename = swaggerFile.Replace(extension, ".config.json");
+                        var yamlConfigFilename = swaggerFile.Replace(extension, ".config.yaml");
+
+                        var configFilenames = new[] { configFilename, jsonConfigFilename, yamlConfigFilename };
+                        var configFile = Array.Find(configFilenames, File.Exists);
+                        if (configFile != null)
+                        {
+                            arguments += $"-c \"{configFile}\" ";
+                        }
                     }
                 }
 
@@ -167,6 +170,6 @@ namespace Rapicgen.Core.Generators.OpenApi
         }
 
         private static string Sanitize(string code) =>
-            code.Replace("using System.Net.Mime;", null);
+            code.Replace("using System.Net.Mime;", string.Empty);
     }
 }
