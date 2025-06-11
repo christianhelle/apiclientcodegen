@@ -20,7 +20,7 @@ namespace ApiClientCodeGen.Core.Tests.Logging
             IConsoleOutput console,
             uint progress)
         {
-            var output = $"PROGRESS: {progress}%";
+            var output = $"{Environment.NewLine}PROGRESS: {progress}%";
             new ProgressReporter(console).Progress(progress);
             Mock.Get(console)
                 .Verify(expression: c => c.WriteLine(output));
@@ -32,7 +32,7 @@ namespace ApiClientCodeGen.Core.Tests.Logging
             uint progress,
             uint total)
         {
-            var output = $"PROGRESS: {progress} / {total}";
+            var output = $"{Environment.NewLine}PROGRESS: {progress} / {total}";
             new ProgressReporter(console).Progress(progress, total);
             Mock.Get(console)
                 .Verify(expression: c => c.WriteLine(output));
