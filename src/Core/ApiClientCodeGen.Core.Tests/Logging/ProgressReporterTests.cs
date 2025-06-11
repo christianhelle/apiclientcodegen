@@ -9,7 +9,7 @@ namespace ApiClientCodeGen.Core.Tests.Logging
 {
     public class ProgressReporterTests
     {
-        [Fact, AutoMoqData]
+        [Fact]
         public void Requires_IConsoleOutput()
             => new Action(() => new ProgressReporter(null!))
                 .Should()
