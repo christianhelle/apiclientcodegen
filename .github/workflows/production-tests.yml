@@ -67,7 +67,7 @@ jobs:
 
     - name: Generate code with NSwag
       run: |
-        rapicgen -v csharp nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
+        rapicgen csharp nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net6/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net7/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net8/Output.cs
@@ -123,7 +123,7 @@ jobs:
 
     - name: Generate code with OpenAPI Generator
       run: |
-        rapicgen -v csharp openapi ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
+        rapicgen csharp openapi ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net6/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net7/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net8/Output.cs
@@ -179,7 +179,7 @@ jobs:
 
     - name: Generate code with Swagger Codegen CLI
       run: |
-        rapicgen -v csharp swagger ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
+        rapicgen csharp swagger ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net6/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net7/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net8/Output.cs
@@ -235,7 +235,7 @@ jobs:
 
     - name: Generate code with AutoRest
       run: |
-        rapicgen -v csharp autorest ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs --no-logging
+        rapicgen csharp autorest ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs --no-logging
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net6/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net7/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net8/Output.cs
@@ -293,7 +293,7 @@ jobs:
 
     - name: Generate code with Refitter
       run: |
-        rapicgen -v csharp refitter ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Refitter/Output.cs --no-logging
+        rapicgen csharp refitter ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Refitter/Output.cs --no-logging
         cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net6/Output.cs
         cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net7/Output.cs
         cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net8/Output.cs
@@ -348,7 +348,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with Kiota
-      run: rapicgen -v csharp kiota ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Kiota/Output.cs --no-logging
+      run: rapicgen csharp kiota ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Kiota/Output.cs --no-logging
       working-directory: test
 
     - name: Build Kiota generated code
@@ -405,7 +405,7 @@ jobs:
 
     - name: Generate JMeter
       run: |
-        rapicgen -v jmeter ./OpenApi.${{ matrix.format }} --no-logging
+        rapicgen jmeter ./OpenApi.${{ matrix.format }} --no-logging
       working-directory: test
 
   TypeScript:
@@ -458,50 +458,50 @@ jobs:
 
     - name: Generate TypeScript (Angular)
       run: |
-        rapicgen -v typescript Angular ./OpenApi.${{ matrix.format }} Angular --no-logging
+        rapicgen typescript Angular ./OpenApi.${{ matrix.format }} Angular --no-logging
       working-directory: test
 
     - name: Generate TypeScript (Aurelia)
       run: |
-        rapicgen -v typescript Aurelia ./OpenApi.${{ matrix.format }} Aurelia --no-logging
+        rapicgen typescript Aurelia ./OpenApi.${{ matrix.format }} Aurelia --no-logging
       working-directory: test
 
     - name: Generate TypeScript (Axios)
       run: |
-        rapicgen -v typescript Axios ./OpenApi.${{ matrix.format }} Axios --no-logging
+        rapicgen typescript Axios ./OpenApi.${{ matrix.format }} Axios --no-logging
       working-directory: test
 
     - name: Generate TypeScript (Fetch)
       run: |
-        rapicgen -v typescript Fetch ./OpenApi.${{ matrix.format }} Fetch --no-logging
+        rapicgen typescript Fetch ./OpenApi.${{ matrix.format }} Fetch --no-logging
       working-directory: test
 
     - name: Generate TypeScript (Inversify)
       run: |
-        rapicgen -v typescript Inversify ./OpenApi.${{ matrix.format }} Inversify --no-logging
+        rapicgen typescript Inversify ./OpenApi.${{ matrix.format }} Inversify --no-logging
       working-directory: test
 
     - name: Generate TypeScript (JQuery)
       run: |
-        rapicgen -v typescript JQuery ./OpenApi.${{ matrix.format }} JQuery --no-logging
+        rapicgen typescript JQuery ./OpenApi.${{ matrix.format }} JQuery --no-logging
       working-directory: test
 
     - name: Generate TypeScript (NestJS)
       run: |
-        rapicgen -v typescript NestJS ./OpenApi.${{ matrix.format }} NestJS --no-logging
+        rapicgen typescript NestJS ./OpenApi.${{ matrix.format }} NestJS --no-logging
       working-directory: test
 
     - name: Generate TypeScript (Node)
       run: |
-        rapicgen -v typescript Node ./OpenApi.${{ matrix.format }} Node --no-logging
+        rapicgen typescript Node ./OpenApi.${{ matrix.format }} Node --no-logging
       working-directory: test
 
     - name: Generate TypeScript (ReduxQuery)
       run: |
-        rapicgen -v typescript ReduxQuery ./OpenApi.${{ matrix.format }} ReduxQuery --no-logging
+        rapicgen typescript ReduxQuery ./OpenApi.${{ matrix.format }} ReduxQuery --no-logging
       working-directory: test
 
     - name: Generate TypeScript (Rxjs)
       run: |
-        rapicgen -v typescript Rxjs ./OpenApi.${{ matrix.format }} Rxjs --no-logging
+        rapicgen typescript Rxjs ./OpenApi.${{ matrix.format }} Rxjs --no-logging
       working-directory: test
