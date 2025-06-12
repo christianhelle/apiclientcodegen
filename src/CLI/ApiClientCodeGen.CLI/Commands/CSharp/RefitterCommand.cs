@@ -29,7 +29,7 @@ public class RefitterCommandSettings : CodeGeneratorCommand<RefitterCommandSetti
 
     [CommandOption("--generate-internal-types")]
     [Description(
-        "Set this to generate the API interface and contract types using the internal accessbility modifier (default modifier: public)")]
+        "Set this to generate the API interface and contract types using the internal accessibility modifier (default modifier: public)")]
     public bool GenerateInternalTypes { get; set; }
 
     [CommandOption("--cancellation-tokens")]
