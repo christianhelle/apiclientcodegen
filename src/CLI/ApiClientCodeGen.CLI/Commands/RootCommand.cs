@@ -17,6 +17,11 @@ namespace Rapicgen.CLI.Commands
         public override int Execute(CommandContext context, Settings settings)
         {
             // Show help when no subcommand is specified
+            if (context.Name == null)
+            {
+                context.Help();
+                return 0;
+            }
             return 0;
         }
     }
