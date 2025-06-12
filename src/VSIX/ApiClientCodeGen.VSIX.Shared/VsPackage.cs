@@ -158,26 +158,26 @@ namespace Rapicgen
                 await TrySetupVersionTrackingAsync(cancellationToken);
         }
 
-private async Task TrySetupVersionTrackingAsync(CancellationToken cancellationToken)
-{
-    try
-    {
-        await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-        var shell = (IVsShell)(await GetServiceAsync(typeof(SVsShell)))!;
-        shell.GetProperty((int)__VSSPROPID5.VSSPROPID_ReleaseVersion, out object value);
-        if (value is string raw)
+        private async Task TrySetupVersionTrackingAsync(CancellationToken cancellationToken)
         {
-            VisualStudioVersion = Version.Parse(raw.Split(' ')[0]);
-            Logger.GetLogger<AppInsightsRemoteLogger>()
-                .AddTelemetryInitializer(
-                    new VisualStudioVersionInitializer(VisualStudioVersion));
-        }
-    }
-    catch (Exception e)
-    {
-        Logger.Instance.WriteLine("Failed to setup version tracking");
-        Logger.Instance.TrackError(e);
-    }
+            try
+            {
+                await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
+                var shell = (IVsShell)(await GetServiceAsync(typeof(SVsShell)))!;
+                shell.GetProperty((int)__VSSPROPID5.VSSPROPID_ReleaseVersion, out object value);
+                if (value is string raw)
+                {
+                    VisualStudioVersion = Version.Parse(raw.Split(' ')[0]);
+                    Logger.GetLogger<AppInsightsRemoteLogger>()
+                        .AddTelemetryInitializer(
+                            new VisualStudioVersionInitializer(VisualStudioVersion));
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.WriteLine("Failed to setup version tracking");
+                Logger.Instance.TrackError(e);
+            }
         }
     }
 }
