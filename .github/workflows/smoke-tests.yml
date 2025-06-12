@@ -63,7 +63,7 @@ jobs:
 
     - name: Generate code with NSwag
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- csharp nswag ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/NSwag/Output.cs --no-logging
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net6/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net7/Output.cs
         cp ./GeneratedCode/NSwag/Output.cs ./GeneratedCode/NSwag/Net8/Output.cs
@@ -119,7 +119,7 @@ jobs:
 
     - name: Generate code with OpenAPI Generator
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp openapi ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- csharp openapi ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/OpenApiGenerator/Output.cs --no-logging
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net6/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net7/Output.cs
         cp ./GeneratedCode/OpenApiGenerator/Output.cs ./GeneratedCode/OpenApiGenerator/Net8/Output.cs
@@ -175,7 +175,7 @@ jobs:
 
     - name: Generate code with Swagger Codegen CLI
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp swagger ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- csharp swagger ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/SwaggerCodegen/Output.cs --no-logging
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net6/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net7/Output.cs
         cp ./GeneratedCode/SwaggerCodegen/Output.cs ./GeneratedCode/SwaggerCodegen/Net8/Output.cs
@@ -231,7 +231,7 @@ jobs:
 
     - name: Generate code with AutoRest
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp autorest ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- csharp autorest ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs --no-logging
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net6/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net7/Output.cs
         cp ./GeneratedCode/AutoRest-${{ matrix.version }}/Output.cs ./GeneratedCode/AutoRest-${{ matrix.version }}/Net8/Output.cs
@@ -288,7 +288,7 @@ jobs:
       working-directory: test
 
     - name: Generate code with Kiota
-      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp kiota ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Kiota/Output.cs --no-logging
+      run: dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- csharp kiota ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Kiota/Output.cs --no-logging
       working-directory: test
       continue-on-error: ${{ matrix.os == 'macos-latest' }}
 
@@ -298,7 +298,7 @@ jobs:
 
     - name: Generate code with Refitter
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v csharp refitter ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Refitter/Output.cs --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- csharp refitter ./OpenApi.${{ matrix.format }} GeneratedCode ./GeneratedCode/Refitter/Output.cs --no-logging
         cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net6/Output.cs
         cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net7/Output.cs
         cp ./GeneratedCode/Refitter/Output.cs ./GeneratedCode/Refitter/Net8/Output.cs
@@ -391,7 +391,7 @@ jobs:
 
     - name: Generate JMeter
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v jmeter ./OpenApi.${{ matrix.format }} --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- jmeter ./OpenApi.${{ matrix.format }} --no-logging
       working-directory: test
 
   TypeScript:
@@ -433,50 +433,50 @@ jobs:
 
     - name: Generate TypeScript (Angular)
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Angular ./OpenApi.${{ matrix.format }} Angular --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- typescript Angular ./OpenApi.${{ matrix.format }} Angular --no-logging
       working-directory: test
 
     - name: Generate TypeScript (Aurelia)
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Aurelia ./OpenApi.${{ matrix.format }} Aurelia --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- typescript Aurelia ./OpenApi.${{ matrix.format }} Aurelia --no-logging
       working-directory: test
 
     - name: Generate TypeScript (Axios)
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Axios ./OpenApi.${{ matrix.format }} Axios --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- typescript Axios ./OpenApi.${{ matrix.format }} Axios --no-logging
       working-directory: test
 
     - name: Generate TypeScript (Fetch)
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Fetch ./OpenApi.${{ matrix.format }} Fetch --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- typescript Fetch ./OpenApi.${{ matrix.format }} Fetch --no-logging
       working-directory: test
 
     - name: Generate TypeScript (Inversify)
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Inversify ./OpenApi.${{ matrix.format }} Inversify --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- typescript Inversify ./OpenApi.${{ matrix.format }} Inversify --no-logging
       working-directory: test
 
     - name: Generate TypeScript (JQuery)
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript JQuery ./OpenApi.${{ matrix.format }} JQuery --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- typescript JQuery ./OpenApi.${{ matrix.format }} JQuery --no-logging
       working-directory: test
 
     - name: Generate TypeScript (NestJS)
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript NestJS ./OpenApi.${{ matrix.format }} NestJS --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- typescript NestJS ./OpenApi.${{ matrix.format }} NestJS --no-logging
       working-directory: test
 
     - name: Generate TypeScript (Node)
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Node ./OpenApi.${{ matrix.format }} Node --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- typescript Node ./OpenApi.${{ matrix.format }} Node --no-logging
       working-directory: test
 
     - name: Generate TypeScript (ReduxQuery)
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript ReduxQuery ./OpenApi.${{ matrix.format }} ReduxQuery --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- typescript ReduxQuery ./OpenApi.${{ matrix.format }} ReduxQuery --no-logging
       working-directory: test
 
     - name: Generate TypeScript (Rxjs)
       run: |
-        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- -v typescript Rxjs ./OpenApi.${{ matrix.format }} Rxjs --no-logging
+        dotnet run --project ../src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- typescript Rxjs ./OpenApi.${{ matrix.format }} Rxjs --no-logging
       working-directory: test
