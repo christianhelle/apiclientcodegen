@@ -40,29 +40,28 @@ namespace Rapicgen.CLI
                     {
                         cs.SetDescription("Generate C# API clients using various generators");
 
-                        // Individual commands (no subcommands structure for now)
                         cs.AddCommand<AutoRestCommand>("autorest")
-                            .WithDescription("Generate C# code using AutoRest")
+                            .WithDescription("AutoRest (v3.0.0-beta.20210504.2)")
                             .WithExample(new[] { "autorest", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<KiotaCommand>("kiota")
-                            .WithDescription("Generate C# code using Microsoft Kiota")
+                            .WithDescription("Microsoft Kiota (v1.27.0)")
                             .WithExample(new[] { "kiota", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<NSwagCommand>("nswag")
-                            .WithDescription("Generate C# code using NSwag")
+                            .WithDescription("NSwag (v14.4.0)")
                             .WithExample(new[] { "nswag", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<RefitterCommand>("refitter")
-                            .WithDescription("Generate C# code using Refitter")
+                            .WithDescription("Refitter (v1.5.5)")
                             .WithExample(new[] { "refitter", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<SwaggerCodegenCommand>("swagger")
-                            .WithDescription("Generate C# code using Swagger Codegen")
+                            .WithDescription("Swagger Codegen CLI (v3.0.34)")
                             .WithExample(new[] { "swagger", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<OpenApiCSharpGeneratorCommand>("openapi")
-                            .WithDescription("Generate C# code using OpenAPI Generator")
+                            .WithDescription("OpenAPI Generator (v7.13.0)")
                             .WithExample(new[] { "openapi", "petstore.json", "GeneratedCode", "Output.cs" });
                     });
 
