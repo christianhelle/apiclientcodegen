@@ -27,7 +27,7 @@ namespace Rapicgen.CLI.Commands.CSharp
 
         [CommandOption("--generate-dto-types")]
         [Description("Set this to TRUE to generate DTO types (default: TRUE)")]
-        [DefaultValue(true)]        
+        [DefaultValue(true)]
         public bool GenerateDtoTypes { get; set; } = true;
 
         [CommandOption("--use-base-url")]
@@ -50,7 +50,7 @@ Records (readonly POCO)")]
 Set this to FALSE to use the filename (default: TRUE)")]
         [DefaultValue(true)]
         public bool UseDocumentTitle { get; set; } = true;
-        
+
         [CommandOption("--parameter-date-time-format")]
         [Description("Specifies the format for DateTime type method parameters")]
         [DefaultValue("s")]

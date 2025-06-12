@@ -47,15 +47,14 @@ namespace Rapicgen.CLI.Tests.Command
             IAutoRestCodeGeneratorFactory factory,
             IOpenApiDocumentFactory documentFactory,
             IDependencyInstaller dependencyInstaller)
-            => new Action(
-                    () => new AutoRestCommand(
-                        console,
-                        null,
-                        processLauncher,
-                        progressReporter,
-                        factory,
-                        documentFactory,
-                        dependencyInstaller))
+            => new Action(() => new AutoRestCommand(
+                    console,
+                    null,
+                    processLauncher,
+                    progressReporter,
+                    factory,
+                    documentFactory,
+                    dependencyInstaller))
                 .Should()
                 .ThrowExactly<ArgumentNullException>();
 
@@ -67,15 +66,14 @@ namespace Rapicgen.CLI.Tests.Command
             IAutoRestCodeGeneratorFactory factory,
             IOpenApiDocumentFactory documentFactory,
             IDependencyInstaller dependencyInstaller)
-            => new Action(
-                    () => new AutoRestCommand(
-                        console,
-                        options,
-                        null,
-                        progressReporter,
-                        factory,
-                        documentFactory,
-                        dependencyInstaller))
+            => new Action(() => new AutoRestCommand(
+                    console,
+                    options,
+                    null,
+                    progressReporter,
+                    factory,
+                    documentFactory,
+                    dependencyInstaller))
                 .Should()
                 .ThrowExactly<ArgumentNullException>();
 
@@ -87,15 +85,14 @@ namespace Rapicgen.CLI.Tests.Command
             IProgressReporter progressReporter,
             IOpenApiDocumentFactory documentFactory,
             IDependencyInstaller dependencyInstaller)
-            => new Action(
-                    () => new AutoRestCommand(
-                        console,
-                        options,
-                        processLauncher,
-                        progressReporter,
-                        null,
-                        documentFactory,
-                        dependencyInstaller))
+            => new Action(() => new AutoRestCommand(
+                    console,
+                    options,
+                    processLauncher,
+                    progressReporter,
+                    null,
+                    documentFactory,
+                    dependencyInstaller))
                 .Should()
                 .ThrowExactly<ArgumentNullException>();
 
@@ -107,17 +104,18 @@ namespace Rapicgen.CLI.Tests.Command
             IProgressReporter progressReporter,
             IAutoRestCodeGeneratorFactory factory,
             IDependencyInstaller dependencyInstaller)
-            => new Action(
-                    () => new AutoRestCommand(
-                        console,
-                        options,
-                        processLauncher,
-                        progressReporter,
-                        factory,
-                        null,
-                        dependencyInstaller))
+            => new Action(() => new AutoRestCommand(
+                    console,
+                    options,
+                    processLauncher,
+                    progressReporter,
+                    factory,
+                    null,
+                    dependencyInstaller))
                 .Should()
-                .ThrowExactly<ArgumentNullException>();        [Theory, AutoMoqData]
+                .ThrowExactly<ArgumentNullException>();
+
+        [Theory, AutoMoqData]
         public void OnExecute_Should_Create_Generator(
             [Frozen] IAutoRestCodeGeneratorFactory factory,
             AutoRestCommand sut,
@@ -126,14 +124,13 @@ namespace Rapicgen.CLI.Tests.Command
             sut.Execute(null, settings);
 
             Mock.Get(factory)
-                .Verify(
-                    c => c.Create(
-                        settings.SwaggerFile,
-                        settings.DefaultNamespace,
-                        It.IsAny<IAutoRestOptions>(),
-                        It.IsAny<IProcessLauncher>(),
-                        It.IsAny<IOpenApiDocumentFactory>(),
-                        It.IsAny<IDependencyInstaller>()));
+                .Verify(c => c.Create(
+                    settings.SwaggerFile,
+                    settings.DefaultNamespace,
+                    It.IsAny<IAutoRestOptions>(),
+                    It.IsAny<IProcessLauncher>(),
+                    It.IsAny<IOpenApiDocumentFactory>(),
+                    It.IsAny<IDependencyInstaller>()));
         }
     }
 }

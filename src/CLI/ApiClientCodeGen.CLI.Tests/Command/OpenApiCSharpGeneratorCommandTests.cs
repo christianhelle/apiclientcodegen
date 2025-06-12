@@ -12,7 +12,7 @@ using Xunit;
 namespace Rapicgen.CLI.Tests.Command
 {
     public class OpenApiCSharpGeneratorCommandTests
-    {   
+    {
         [Theory, AutoMoqData]
         public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(OpenApiCSharpGeneratorCommandSettings settings)
             => settings.DefaultNamespace.Should().NotBeNullOrWhiteSpace();
@@ -26,8 +26,11 @@ namespace Rapicgen.CLI.Tests.Command
             => settings.OutputFile.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void CreateGenerator_Should_NotNull(OpenApiCSharpGeneratorCommand sut, OpenApiCSharpGeneratorCommandSettings settings)
-            => sut.CreateGenerator(settings).Should().NotBeNull();        [Theory, AutoMoqData]
+        public void CreateGenerator_Should_NotNull(OpenApiCSharpGeneratorCommand sut,
+            OpenApiCSharpGeneratorCommandSettings settings)
+            => sut.CreateGenerator(settings).Should().NotBeNull();
+
+        [Theory, AutoMoqData]
         public void Execute_Should_NotThrow(
             [Frozen] IProgressReporter progressReporter,
             [Frozen] ICodeGenerator generator,
@@ -38,7 +41,7 @@ namespace Rapicgen.CLI.Tests.Command
             Mock.Get(generator)
                 .Setup(c => c.GenerateCode(progressReporter))
                 .Returns(code);
-            
+
             new Func<int>(() => sut.Execute(null, settings)).Should().NotThrow();
         }
     }

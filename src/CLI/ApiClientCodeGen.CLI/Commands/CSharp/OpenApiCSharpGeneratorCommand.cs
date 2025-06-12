@@ -11,8 +11,10 @@ using Rapicgen.Core.Options.OpenApiGenerator;
 using Spectre.Console.Cli;
 
 namespace Rapicgen.CLI.Commands.CSharp
-{    [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
-    public class OpenApiCSharpGeneratorCommandSettings : CodeGeneratorCommand<OpenApiCSharpGeneratorCommandSettings>.Settings, IOpenApiGeneratorOptions
+{
+    [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
+    public class OpenApiCSharpGeneratorCommandSettings :
+        CodeGeneratorCommand<OpenApiCSharpGeneratorCommandSettings>.Settings, IOpenApiGeneratorOptions
     {
         [CommandOption("--emit-default-value")]
         [Description(
@@ -40,7 +42,8 @@ namespace Rapicgen.CLI.Commands.CSharp
 
         [CommandOption("--target-framework")]
         [Description("The target .NET Standard / Core / Framework version")]
-        public OpenApiSupportedTargetFramework TargetFramework { get; set; } = OpenApiSupportedTargetFramework.NetStandard21;
+        public OpenApiSupportedTargetFramework TargetFramework { get; set; } =
+            OpenApiSupportedTargetFramework.NetStandard21;
 
         [CommandOption("--custom-additional-properties-props")]
         [Description("Setting this will override all the other additional properties")]
@@ -88,8 +91,10 @@ namespace Rapicgen.CLI.Commands.CSharp
         {
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
-            this.cSharpGeneratorFactory = cSharpGeneratorFactory ?? throw new ArgumentNullException(nameof(cSharpGeneratorFactory));
-            this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
+            this.cSharpGeneratorFactory = cSharpGeneratorFactory ??
+                                          throw new ArgumentNullException(nameof(cSharpGeneratorFactory));
+            this.dependencyInstaller =
+                dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
         public override ICodeGenerator CreateGenerator(OpenApiCSharpGeneratorCommandSettings settings)

@@ -10,13 +10,13 @@ namespace Rapicgen.CLI.Extensions
         public static string GetCodeGeneratorName(this object generator)
         {
             var type = generator.GetType();
-            
+
             if (type == typeof(OpenApiCSharpGeneratorCommand))
                 return SupportedCodeGenerator.OpenApi.GetName();
-            
+
             if (type == typeof(SwaggerCodegenCommand))
                 return SupportedCodeGenerator.Swagger.GetName();
-            
+
             return type.Name.Replace("Command", string.Empty);
         }
     }

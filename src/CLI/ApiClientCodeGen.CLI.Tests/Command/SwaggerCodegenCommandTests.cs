@@ -12,7 +12,7 @@ using Xunit;
 namespace Rapicgen.CLI.Tests.Command
 {
     public class SwaggerCodegenCommandTests
-    {   
+    {
         [Theory, AutoMoqData]
         public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(SwaggerCodegenCommandSettings settings)
             => settings.DefaultNamespace.Should().NotBeNullOrWhiteSpace();
@@ -27,7 +27,9 @@ namespace Rapicgen.CLI.Tests.Command
 
         [Theory, AutoMoqData]
         public void CreateGenerator_Should_NotNull(SwaggerCodegenCommand sut, SwaggerCodegenCommandSettings settings)
-            => sut.CreateGenerator(settings).Should().NotBeNull();        [Theory, AutoMoqData]
+            => sut.CreateGenerator(settings).Should().NotBeNull();
+
+        [Theory, AutoMoqData]
         public void Execute_Should_NotThrow(
             [Frozen] IProgressReporter progressReporter,
             [Frozen] ICodeGenerator generator,
@@ -38,7 +40,7 @@ namespace Rapicgen.CLI.Tests.Command
             Mock.Get(generator)
                 .Setup(c => c.GenerateCode(progressReporter))
                 .Returns(code);
-            
+
             new Func<int>(() => sut.Execute(null, settings)).Should().NotThrow();
         }
     }

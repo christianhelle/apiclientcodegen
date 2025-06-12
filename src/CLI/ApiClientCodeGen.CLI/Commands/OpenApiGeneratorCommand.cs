@@ -80,7 +80,8 @@ See supported generators at https://openapi-generator.tech/docs/generators/")]
             }
 
             factory
-                .Create(settings.Generator, settings.SwaggerFile, outputPath, options, processLauncher, dependencyInstaller)
+                .Create(settings.Generator, settings.SwaggerFile, outputPath, options, processLauncher,
+                    dependencyInstaller)
                 .GenerateCode(progressReporter);
 
             var directoryInfo = new DirectoryInfo(outputPath);

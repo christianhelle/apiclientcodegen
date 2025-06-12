@@ -43,7 +43,7 @@ public class RefitterCommandSettings : CodeGeneratorCommand<RefitterCommandSetti
     [CommandOption("--multiple-files")]
     [Description("Generate multiple files")]
     public bool GenerateMultipleFiles { get; set; }
-    
+
     [CommandOption("--settings-file")]
     [Description("Path to a .refitter settings file to use for code generation")]
     public string? SettingsFile { get; set; }
@@ -71,7 +71,8 @@ public class RefitterCommand : CodeGeneratorCommand<RefitterCommandSettings>
         options.GenerateContracts = !settings.SkipGenerateContracts;
         options.GenerateXmlDocCodeComments = !settings.SkipGenerateXmlDocCodeComments;
         options.ReturnIApiResponse = settings.ReturnIApiResponse;
-        options.GenerateInternalTypes = settings.GenerateInternalTypes;        options.UseCancellationTokens = settings.UseCancellationTokens;
+        options.GenerateInternalTypes = settings.GenerateInternalTypes;
+        options.UseCancellationTokens = settings.UseCancellationTokens;
         options.GenerateHeaderParameters = !settings.NoOperationHeaders;
         options.GenerateMultipleFiles = settings.GenerateMultipleFiles;
 

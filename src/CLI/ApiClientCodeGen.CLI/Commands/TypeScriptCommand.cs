@@ -57,7 +57,9 @@ namespace Rapicgen.CLI.Commands
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
             this.dependencyInstaller =
                 dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
-        }        public override int Execute(CommandContext context, Settings settings)
+        }
+
+        public override int Execute(CommandContext context, Settings settings)
         {
             if (!settings.SkipLogging)
             {
@@ -72,7 +74,8 @@ namespace Rapicgen.CLI.Commands
             }
 
             factory
-                .Create(settings.Generator, settings.SwaggerFile, settings.OutputPath, options, processLauncher, dependencyInstaller)
+                .Create(settings.Generator, settings.SwaggerFile, settings.OutputPath, options, processLauncher,
+                    dependencyInstaller)
                 .GenerateCode(progressReporter);
 
             var directoryInfo = new DirectoryInfo(settings.OutputPath);

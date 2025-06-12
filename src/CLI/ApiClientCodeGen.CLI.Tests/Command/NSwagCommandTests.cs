@@ -12,7 +12,7 @@ using Xunit;
 namespace Rapicgen.CLI.Tests.Command
 {
     public class NSwagCommandTests
-    {   
+    {
         [Theory, AutoMoqData]
         public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(NSwagCommandSettings settings)
             => settings.DefaultNamespace.Should().NotBeNullOrWhiteSpace();
@@ -40,7 +40,7 @@ namespace Rapicgen.CLI.Tests.Command
             Mock.Get(generator)
                 .Setup(c => c.GenerateCode(progressReporter))
                 .Returns(code);
-            
+
             new Func<int>(() => sut.Execute(null, settings)).Should().NotThrow();
         }
     }

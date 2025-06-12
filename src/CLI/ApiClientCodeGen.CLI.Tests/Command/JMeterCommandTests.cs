@@ -25,7 +25,9 @@ namespace Rapicgen.CLI.Tests.Command
 
         [Theory, AutoMoqData]
         public void OutputFile_Should_NotBeNullOrWhiteSpace(JMeterCommand.Settings settings)
-            => settings.OutputPath.Should().NotBeNullOrWhiteSpace();        [Theory, AutoMoqData]
+            => settings.OutputPath.Should().NotBeNullOrWhiteSpace();
+
+        [Theory, AutoMoqData]
         public void Execute_Should_NotThrow(JMeterCommand sut, JMeterCommand.Settings settings)
         {
             settings.OutputPath = Directory.GetCurrentDirectory();
@@ -42,13 +44,12 @@ namespace Rapicgen.CLI.Tests.Command
             sut.Execute(null, settings);
 
             Mock.Get(factory)
-                .Verify(
-                    c => c.Create(
-                        settings.SwaggerFile,
-                        settings.OutputPath,
-                        It.IsAny<IGeneralOptions>(),
-                        It.IsAny<IProcessLauncher>(),
-                        It.IsAny<IDependencyInstaller>()));
+                .Verify(c => c.Create(
+                    settings.SwaggerFile,
+                    settings.OutputPath,
+                    It.IsAny<IGeneralOptions>(),
+                    It.IsAny<IProcessLauncher>(),
+                    It.IsAny<IDependencyInstaller>()));
         }
 
         [Theory, AutoMoqData]
@@ -67,13 +68,12 @@ namespace Rapicgen.CLI.Tests.Command
             sut.Execute(null, settings);
 
             Mock.Get(factory)
-                .Verify(
-                    c => c.Create(
-                        settings.SwaggerFile,
-                        settings.OutputPath,
-                        It.IsAny<IGeneralOptions>(),
-                        It.IsAny<IProcessLauncher>(),
-                        It.IsAny<IDependencyInstaller>()));
+                .Verify(c => c.Create(
+                    settings.SwaggerFile,
+                    settings.OutputPath,
+                    It.IsAny<IGeneralOptions>(),
+                    It.IsAny<IProcessLauncher>(),
+                    It.IsAny<IDependencyInstaller>()));
         }
     }
 }

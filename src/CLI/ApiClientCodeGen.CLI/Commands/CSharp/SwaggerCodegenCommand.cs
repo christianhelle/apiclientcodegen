@@ -32,7 +32,8 @@ namespace Rapicgen.CLI.Commands.CSharp
             this.options = options ?? throw new ArgumentNullException(nameof(options));
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
-            this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
+            this.dependencyInstaller =
+                dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
         public override ICodeGenerator CreateGenerator(SwaggerCodegenCommandSettings settings)

@@ -23,35 +23,34 @@ public class RefitterCommandTests
         settings.SettingsFile = null;
         sut.Execute(null, settings);
         Mock.Get(factory)
-            .Verify(
-                f => f.Create(
-                    settings.SwaggerFile,
-                    settings.DefaultNamespace,
-                    options));
+            .Verify(f => f.Create(
+                settings.SwaggerFile,
+                settings.DefaultNamespace,
+                options));
     }
-    
+
     [Theory, AutoMoqData]
     public void Should_Create_From_Factory_With_Settings_File(
         [Frozen] IRefitterOptions options,
         [Frozen] IRefitterCodeGeneratorFactory factory,
         RefitterCommand sut,
-        RefitterCommandSettings settings)    {
+        RefitterCommandSettings settings)
+    {
         // Create a temporary file to use as settings file
         var tempFile = Path.GetTempFileName();
         try
         {
             settings.SettingsFile = tempFile;
             sut.Execute(null, settings);
-            
+
             // Verify that SwaggerFile was updated to match SettingsFile
             Assert.Equal(tempFile, settings.SwaggerFile);
-            
+
             Mock.Get(factory)
-                .Verify(
-                    f => f.Create(
-                        tempFile,
-                        settings.DefaultNamespace,
-                        options));
+                .Verify(f => f.Create(
+                    tempFile,
+                    settings.DefaultNamespace,
+                    options));
         }
         finally
         {

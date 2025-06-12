@@ -43,13 +43,12 @@ namespace Rapicgen.CLI.Tests.Command
             sut.Execute(null, settings);
 
             Mock.Get(factory)
-                .Verify(
-                    c => c.Create(
-                        settings.Generator,
-                        settings.SwaggerFile,
-                        settings.OutputPath,
-                        It.IsAny<IGeneralOptions>(),                        It.IsAny<IProcessLauncher>(),
-                        It.IsAny<IDependencyInstaller>()));
+                .Verify(c => c.Create(
+                    settings.Generator,
+                    settings.SwaggerFile,
+                    settings.OutputPath,
+                    It.IsAny<IGeneralOptions>(), It.IsAny<IProcessLauncher>(),
+                    It.IsAny<IDependencyInstaller>()));
         }
 
         [Theory, AutoMoqData]
@@ -68,14 +67,13 @@ namespace Rapicgen.CLI.Tests.Command
             sut.Execute(null, settings);
 
             Mock.Get(factory)
-                .Verify(
-                    c => c.Create(
-                        settings.Generator,
-                        settings.SwaggerFile,
-                        settings.OutputPath,
-                        It.IsAny<IGeneralOptions>(),
-                        It.IsAny<IProcessLauncher>(),
-                        It.IsAny<IDependencyInstaller>()));
+                .Verify(c => c.Create(
+                    settings.Generator,
+                    settings.SwaggerFile,
+                    settings.OutputPath,
+                    It.IsAny<IGeneralOptions>(),
+                    It.IsAny<IProcessLauncher>(),
+                    It.IsAny<IDependencyInstaller>()));
         }
     }
 }

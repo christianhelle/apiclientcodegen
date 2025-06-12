@@ -8,7 +8,8 @@ using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.AutoRest;
 
 namespace Rapicgen.CLI.Commands.CSharp
-{    public class AutoRestCommand : CodeGeneratorCommand<AutoRestCommand.AutoRestSettings>
+{
+    public class AutoRestCommand : CodeGeneratorCommand<AutoRestCommand.AutoRestSettings>
     {
         private readonly IAutoRestOptions options;
         private readonly IProcessLauncher processLauncher;
@@ -33,8 +34,11 @@ namespace Rapicgen.CLI.Commands.CSharp
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
             this.factory = factory ?? throw new ArgumentNullException(nameof(factory));
             this.documentFactory = documentFactory ?? throw new ArgumentNullException(nameof(documentFactory));
-            this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
-        }        public override ICodeGenerator CreateGenerator(AutoRestSettings settings)
+            this.dependencyInstaller =
+                dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
+        }
+
+        public override ICodeGenerator CreateGenerator(AutoRestSettings settings)
             => factory.Create(
                 settings.SwaggerFile,
                 settings.DefaultNamespace,
