@@ -12,35 +12,36 @@ using Xunit;
 namespace Rapicgen.CLI.Tests.Command
 {
     public class SwaggerCodegenCommandTests
-    {   
+    {
         [Theory, AutoMoqData]
-        public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(SwaggerCodegenCommand sut)
-            => sut.DefaultNamespace.Should().NotBeNullOrWhiteSpace();
+        public void DefaultNamespace_Should_NotBeNullOrWhiteSpace(SwaggerCodegenCommandSettings settings)
+            => settings.DefaultNamespace.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void SwaggerFile_Should_NotBeNullOrWhiteSpace(SwaggerCodegenCommand sut)
-            => sut.SwaggerFile.Should().NotBeNullOrWhiteSpace();
+        public void SwaggerFile_Should_NotBeNullOrWhiteSpace(SwaggerCodegenCommandSettings settings)
+            => settings.SwaggerFile.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void OutputFile_Should_NotBeNullOrWhiteSpace(SwaggerCodegenCommand sut)
-            => sut.OutputFile.Should().NotBeNullOrWhiteSpace();
+        public void OutputFile_Should_NotBeNullOrWhiteSpace(SwaggerCodegenCommandSettings settings)
+            => settings.OutputFile.Should().NotBeNullOrWhiteSpace();
 
         [Theory, AutoMoqData]
-        public void CreateGenerator_Should_NotNull(SwaggerCodegenCommand sut)
-            => sut.CreateGenerator().Should().NotBeNull();
+        public void CreateGenerator_Should_NotNull(SwaggerCodegenCommand sut, SwaggerCodegenCommandSettings settings)
+            => sut.CreateGenerator(settings).Should().NotBeNull();
 
         [Theory, AutoMoqData]
-        public void OnExecuteAsync_Should_NotThrow(
+        public void Execute_Should_NotThrow(
             [Frozen] IProgressReporter progressReporter,
             [Frozen] ICodeGenerator generator,
             SwaggerCodegenCommand sut,
+            SwaggerCodegenCommandSettings settings,
             string code)
         {
             Mock.Get(generator)
                 .Setup(c => c.GenerateCode(progressReporter))
                 .Returns(code);
-            
-            new Func<int>(sut.OnExecute).Should().NotThrow();
+
+            new Func<int>(() => sut.Execute(null, settings)).Should().NotThrow();
         }
     }
 }

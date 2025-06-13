@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -8,16 +9,35 @@ using Rapicgen.Core.Generators;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.General;
-using McMaster.Extensions.CommandLineUtils;
+using Spectre.Console.Cli;
 
 namespace Rapicgen.CLI.Commands
 {
-    [Command(
-        "openapi-generator", 
-        Description = 
-            @"Generate code using OpenAPI Generator (v7.13.0). 
+    [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
+    public class OpenApiGeneratorCommandSettings : CommandSettings
+    {
+        [Required]
+        [CommandArgument(0, "<generator>")]
+        [Description(
+            @"The tech stack to use for generating code.
 See supported generators at https://openapi-generator.tech/docs/generators/")]
-    public class OpenApiGeneratorCommand
+        public string Generator { get; set; } = null!;
+
+        [Required]
+        [CommandArgument(1, "<swaggerFile>")]
+        [Description("Path to the Swagger / Open API specification file")]
+        public string SwaggerFile { get; set; } = null!;
+
+        [CommandArgument(2, "[outputPath]")]
+        [Description("Output folder to write the generated code to")]
+        public string? OutputPath { get; set; }
+
+        [CommandOption("--no-logging")]
+        [Description("Disables Analytics and Error Reporting")]
+        public bool SkipLogging { get; set; }
+    }
+
+    public class OpenApiGeneratorCommand : Command<OpenApiGeneratorCommandSettings>
     {
         private readonly IConsoleOutput console;
         private readonly IProgressReporter? progressReporter;
@@ -25,8 +45,6 @@ See supported generators at https://openapi-generator.tech/docs/generators/")]
         private readonly IOpenApiGeneratorFactory factory;
         private readonly IProcessLauncher processLauncher;
         private readonly IDependencyInstaller dependencyInstaller;
-
-        private string? outputPath;
 
         public OpenApiGeneratorCommand(
             IConsoleOutput console,
@@ -45,37 +63,14 @@ See supported generators at https://openapi-generator.tech/docs/generators/")]
                 dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
-        [Required]
-        [Argument(
-            0,
-            "generator",
-            Description = 
-                @"The tech stack to use for generating code.
-See supported generators at https://openapi-generator.tech/docs/generators/")] 
-        public string Generator { get; set; } = null!;
-
-        [Required]
-        [FileExists]
-        [Argument(1, "swaggerFile", "Path to the Swagger / Open API specification file")]
-        [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
-        public string SwaggerFile { get; set; } = null!;
-
-        [Argument(2, "outputPath", "Output folder to write the generated code to")]
-        public string OutputPath
+        public override int Execute(CommandContext context, OpenApiGeneratorCommandSettings settings)
         {
-            get => outputPath ?? $"{Generator}-generated-code";
-            set => outputPath = value;
-        }
+            var outputPath = settings.OutputPath ?? $"{settings.Generator}-generated-code";
 
-        [Option(ShortName = "nl", LongName = "no-logging", Description = "Disables Analytics and Error Reporting")]
-        public bool SkipLogging { get; set; }
-
-        public int OnExecute()
-        {
-            if (!SkipLogging)
+            if (!settings.SkipLogging)
             {
                 Logger.Instance.TrackFeatureUsage(
-                    $"openapi-generator {Generator}",
+                    $"openapi-generator {settings.Generator}",
                     "CLI");
             }
             else
@@ -84,16 +79,16 @@ See supported generators at https://openapi-generator.tech/docs/generators/")]
                 console.WriteLine("NOTE: Feature usage tracking and error Logging is disabled");
             }
 
-
             factory
-                .Create(Generator, SwaggerFile, OutputPath, options, processLauncher, dependencyInstaller)
+                .Create(settings.Generator, settings.SwaggerFile, outputPath, options, processLauncher,
+                    dependencyInstaller)
                 .GenerateCode(progressReporter);
 
-            var directoryInfo = new DirectoryInfo(OutputPath);
+            var directoryInfo = new DirectoryInfo(outputPath);
             var fileCount = directoryInfo.GetFiles().Length;
             if (fileCount != 0)
             {
-                console.WriteLine($"Output folder name: {OutputPath}");
+                console.WriteLine($"Output folder name: {outputPath}");
                 console.WriteLine($"Output files: {fileCount}");
                 console.WriteSignature();
             }
@@ -103,7 +98,7 @@ See supported generators at https://openapi-generator.tech/docs/generators/")]
                 console.WriteLine(errorMessage);
                 console.WriteLine(string.Empty);
 
-                if (!SkipLogging)
+                if (!settings.SkipLogging)
                     Logger.Instance.TrackError(new Exception(errorMessage));
             }
 

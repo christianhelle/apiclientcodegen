@@ -1,16 +1,55 @@
-using McMaster.Extensions.CommandLineUtils;
+using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using Rapicgen.CLI.Commands;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.Refitter;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
+using Spectre.Console.Cli;
 
 namespace Rapicgen.CLI.Commands.CSharp;
 
-[Command("refitter", Description = "Refitter (v1.5.5)")]
-public class RefitterCommand : CodeGeneratorCommand
+[SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
+public class RefitterCommandSettings : CodeGeneratorCommand<RefitterCommandSettings>.Settings
+{
+    [CommandOption("--skip-generate-contracts")]
+    [Description("Set this to skip generating the contract types (default: Enabled)")]
+    public bool SkipGenerateContracts { get; set; }
+
+    [CommandOption("--skip-generate-xml-doc-code-comments")]
+    [Description("Set this to skip generating XML doc style code comments (default: Enabled)")]
+    public bool SkipGenerateXmlDocCodeComments { get; set; }
+
+    [CommandOption("--return-api-response")]
+    [Description("Set this to wrap the returned the contract types in IApiResponse<T> (default: Disabled)")]
+    public bool ReturnIApiResponse { get; set; }
+
+    [CommandOption("--generate-internal-types")]
+    [Description(
+        "Set this to generate the API interface and contract types using the internal accessibility modifier (default modifier: public)")]
+    public bool GenerateInternalTypes { get; set; }
+
+    [CommandOption("--cancellation-tokens")]
+    [Description("Set this to generate the API interface with Cancellation Tokens")]
+    public bool UseCancellationTokens { get; set; }
+
+    [CommandOption("--no-operation-headers")]
+    [Description("Don't generate operation headers")]
+    public bool NoOperationHeaders { get; set; }
+
+    [CommandOption("--multiple-files")]
+    [Description("Generate multiple files")]
+    public bool GenerateMultipleFiles { get; set; }
+
+    [CommandOption("--settings-file")]
+    [Description("Path to a .refitter settings file to use for code generation")]
+    public string? SettingsFile { get; set; }
+}
+
+public class RefitterCommand : CodeGeneratorCommand<RefitterCommandSettings>
 {
     private readonly IRefitterCodeGeneratorFactory factory;
     private readonly IRefitterOptions options;
@@ -26,94 +65,28 @@ public class RefitterCommand : CodeGeneratorCommand
         this.options = options;
     }
 
-    public override ICodeGenerator CreateGenerator() =>
-        factory.Create(SettingsFile ?? SwaggerFile, DefaultNamespace, options);
-
-    public new int OnExecute()
+    public override int Execute(CommandContext context, RefitterCommandSettings settings)
     {
-        // If a settings file is specified, validate it exists
-        if (!string.IsNullOrEmpty(SettingsFile))
+        // Map settings to options
+        options.GenerateContracts = !settings.SkipGenerateContracts;
+        options.GenerateXmlDocCodeComments = !settings.SkipGenerateXmlDocCodeComments;
+        options.ReturnIApiResponse = settings.ReturnIApiResponse;
+        options.GenerateInternalTypes = settings.GenerateInternalTypes;
+        options.UseCancellationTokens = settings.UseCancellationTokens;
+        options.GenerateHeaderParameters = !settings.NoOperationHeaders;
+        options.GenerateMultipleFiles = settings.GenerateMultipleFiles;
+
+        // If a settings file is specified, validate it exists and use it
+        if (!string.IsNullOrEmpty(settings.SettingsFile))
         {
             // Use settings file as the SwaggerFile
-            SwaggerFile = SettingsFile;
+            settings.SwaggerFile = settings.SettingsFile;
         }
 
         // Call the base implementation
-        return base.OnExecute();
+        return base.Execute(context, settings);
     }
 
-    [Option(
-        ShortName = "nocontracts",
-        LongName = "skip-generate-contracts",
-        Description = "Set this to skip generating the contract types (default: Enabled)")]
-    public bool GenerateContracts
-    {
-        get => options.GenerateContracts;
-        set => options.GenerateContracts = !value;
-    }
-
-    [Option(
-        ShortName = "noxml",
-        LongName = "skip-generate-xml-doc-code-comments",
-        Description = "Set this to skip generating XML doc style code comments (default: Enabled)")]
-    public bool GenerateXmlDocCodeComments
-    {
-        get => options.GenerateXmlDocCodeComments;
-        set => options.GenerateXmlDocCodeComments = !value;
-    }
-
-    [Option(
-        ShortName = "apiresponse",
-        LongName = "return-api-response",
-        Description = "Set this to wrap the returned the contract types in IApiResponse<T> (default: Disabled)")]
-    public bool ReturnIApiResponse
-    {
-        get => options.ReturnIApiResponse;
-        set => options.ReturnIApiResponse = value;
-    }
-
-    [Option(
-        ShortName = "internal",
-        LongName = "generate-internal-types",
-        Description =
-            "Set this to generate the API interface and contract types using the internal accessbility modifier (default modifier: public)")]
-    public bool GenerateInternalTypes
-    {
-        get => options.GenerateInternalTypes;
-        set => options.GenerateInternalTypes = value;
-    }
-
-    [Option(
-        ShortName = "ct",
-        LongName = "cancellation-tokens",
-        Description = "Set this to generate the API interface with Cancellation Tokens")]
-    public bool UseCancellationTokens
-    {
-        get => options.UseCancellationTokens;
-        set => options.UseCancellationTokens = value;
-    }
-
-    [Option(
-        ShortName = "noheaders",
-        LongName = "no-operation-headers",
-        Description = "Don't generate operation headers")]
-    public bool NoOperationHeaders 
-    {
-        get => !options.GenerateHeaderParameters;
-        set => options.GenerateHeaderParameters = !value;
-    }
-
-    [Option(ShortName = "mf", LongName = "multiple-files", Description = "Generate multiple files")]
-    public bool GenerateMultipleFiles
-    {
-        get => options.GenerateMultipleFiles;
-        set => options.GenerateMultipleFiles = value;
-    }
-    
-    [Option(
-        ShortName = "sf",
-        LongName = "settings-file",
-        Description = "Path to a .refitter settings file to use for code generation")]
-    [FileExists]
-    public string? SettingsFile { get; set; }
+    public override ICodeGenerator CreateGenerator(RefitterCommandSettings settings) =>
+        factory.Create(settings.SettingsFile ?? settings.SwaggerFile, settings.DefaultNamespace, options);
 }

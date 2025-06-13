@@ -1,20 +1,19 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Rapicgen.CLI.Extensions;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Logging;
-using McMaster.Extensions.CommandLineUtils;
+using Spectre.Console.Cli;
 
 namespace Rapicgen.CLI.Commands
 {
-    public abstract class CodeGeneratorCommand
+    public abstract class CodeGeneratorCommand<T> : Command<T> where T : CodeGeneratorCommand<T>.Settings
     {
         private readonly IConsoleOutput console;
         private readonly IProgressReporter? progressReporter;
-        private string? outputFile;
 
         protected CodeGeneratorCommand(IConsoleOutput console, IProgressReporter? progressReporter)
         {
@@ -22,28 +21,34 @@ namespace Rapicgen.CLI.Commands
             this.progressReporter = progressReporter ?? throw new ArgumentNullException(nameof(progressReporter));
         }
 
-        [FileExists]
-        [Argument(0, "swaggerFile", "Path to the Swagger / Open API specification file")]
-        [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global")]
-        public string SwaggerFile { get; set; } = null!;
-
-        [Argument(1, "namespace", "Default namespace to in the generated code")]
-        public string DefaultNamespace { get; set; } = "GeneratedCode";
-
-        [Argument(2, "outputFile", "Output filename to write the generated code to. Default is the swaggerFile .cs")]
-        public string OutputFile
+        public class Settings : CommandSettings
         {
-            get => outputFile ?? Path.GetFileNameWithoutExtension(SwaggerFile) + ".cs";
-            set => outputFile = value;
+            [CommandArgument(0, "<swaggerFile>")]
+            [Description("Path to the Swagger / Open API specification file")]
+            public string SwaggerFile { get; set; } = null!;
+
+            [CommandArgument(1, "[namespace]")]
+            [Description("Default namespace to in the generated code")]
+            public string DefaultNamespace { get; set; } = "GeneratedCode";
+
+            [CommandArgument(2, "[outputFile]")]
+            [Description("Output filename to write the generated code to. Default is the swaggerFile .cs")]
+            public string? OutputFile { get; set; }
+
+            [CommandOption("--no-logging")]
+            [Description("Disables Analytics and Error Reporting")]
+            public bool SkipLogging { get; set; }
+
+            public string GetOutputFile()
+            {
+                return OutputFile ?? Path.GetFileNameWithoutExtension(SwaggerFile) + ".cs";
+            }
         }
 
-        [Option(ShortName = "nl", LongName = "no-logging", Description = "Disables Analytics and Error Reporting")]
-        public bool SkipLogging { get; set; }
-
-        public int OnExecute()
+        public override int Execute(CommandContext context, T settings)
         {
-            var codeGeneratorName = this.GetCodeGeneratorName();
-            if (!SkipLogging)
+            var codeGeneratorName = GetType().Name.Replace("Command", string.Empty);
+            if (!settings.SkipLogging)
             {
                 Logger.Instance.TrackFeatureUsage(
                     codeGeneratorName,
@@ -55,7 +60,7 @@ namespace Rapicgen.CLI.Commands
                 console.WriteLine("NOTE: Feature usage tracking and error Logging is disabled");
             }
 
-            var generator = CreateGenerator();
+            var generator = CreateGenerator(settings);
             var code = generator.GenerateCode(progressReporter);
             if (string.IsNullOrWhiteSpace(code))
             {
@@ -63,9 +68,10 @@ namespace Rapicgen.CLI.Commands
                 return ResultCodes.Success;
             }
 
-            File.WriteAllText(OutputFile, code);
+            var outputFile = settings.GetOutputFile();
+            File.WriteAllText(outputFile, code);
 
-            var fileInfo = new FileInfo(OutputFile);
+            var fileInfo = new FileInfo(outputFile);
             LogOutput(fileInfo);
 
             return fileInfo.Length != 0 ? ResultCodes.Success : ResultCodes.Error;
@@ -76,7 +82,7 @@ namespace Rapicgen.CLI.Commands
         {
             if (fileInfo.Length != 0)
             {
-                console.WriteLine($"Output file name: {OutputFile}");
+                console.WriteLine($"Output file name: {fileInfo.Name}");
                 console.WriteLine($"Output file size: {fileInfo.Length}");
                 console.WriteSignature();
             }
@@ -86,11 +92,10 @@ namespace Rapicgen.CLI.Commands
                 console.WriteLine(errorMessage);
                 console.WriteLine(string.Empty);
 
-                if (!SkipLogging)
-                    Logger.Instance.TrackError(new Exception(errorMessage));
+                Logger.Instance.TrackError(new Exception(errorMessage));
             }
         }
 
-        public abstract ICodeGenerator CreateGenerator();
+        public abstract ICodeGenerator CreateGenerator(T settings);
     }
 }

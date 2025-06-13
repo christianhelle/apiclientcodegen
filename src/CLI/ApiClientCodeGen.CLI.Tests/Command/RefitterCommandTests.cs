@@ -16,41 +16,41 @@ public class RefitterCommandTests
     public void Should_Create_From_Factory(
         [Frozen] IRefitterOptions options,
         [Frozen] IRefitterCodeGeneratorFactory factory,
-        RefitterCommand sut)
+        RefitterCommand sut,
+        RefitterCommandSettings settings)
     {
         // Ensure SettingsFile is null for this test
-        sut.SettingsFile = null;
-        sut.OnExecute();
+        settings.SettingsFile = null;
+        sut.Execute(null, settings);
         Mock.Get(factory)
-            .Verify(
-                f => f.Create(
-                    sut.SwaggerFile,
-                    sut.DefaultNamespace,
-                    options));
+            .Verify(f => f.Create(
+                settings.SwaggerFile,
+                settings.DefaultNamespace,
+                options));
     }
-    
+
     [Theory, AutoMoqData]
     public void Should_Create_From_Factory_With_Settings_File(
         [Frozen] IRefitterOptions options,
         [Frozen] IRefitterCodeGeneratorFactory factory,
-        RefitterCommand sut)
+        RefitterCommand sut,
+        RefitterCommandSettings settings)
     {
         // Create a temporary file to use as settings file
         var tempFile = Path.GetTempFileName();
         try
         {
-            sut.SettingsFile = tempFile;
-            sut.OnExecute();
-            
+            settings.SettingsFile = tempFile;
+            sut.Execute(null, settings);
+
             // Verify that SwaggerFile was updated to match SettingsFile
-            Assert.Equal(tempFile, sut.SwaggerFile);
-            
+            Assert.Equal(tempFile, settings.SwaggerFile);
+
             Mock.Get(factory)
-                .Verify(
-                    f => f.Create(
-                        tempFile,
-                        sut.DefaultNamespace,
-                        options));
+                .Verify(f => f.Create(
+                    tempFile,
+                    settings.DefaultNamespace,
+                    options));
         }
         finally
         {

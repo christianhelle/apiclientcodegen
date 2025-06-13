@@ -1,15 +1,29 @@
-using McMaster.Extensions.CommandLineUtils;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using Rapicgen.CLI.Commands;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.Kiota;
+using Spectre.Console.Cli;
 
 namespace Rapicgen.CLI.Commands.CSharp;
 
-[Command("kiota", Description = "Microsoft Kiota (v1.27.0)")]
-public class KiotaCommand : CodeGeneratorCommand, IKiotaOptions
+[SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global")]
+public class KiotaCommandSettings : CodeGeneratorCommand<KiotaCommandSettings>.Settings, IKiotaOptions
+{
+    [CommandOption("--generate-multiple-files|-m")]
+    [Description("Set this to TRUE to generate multiple files (default: FALSE)")]
+    public bool GenerateMultipleFiles { get; set; }
+
+    [CommandOption("--type-access-modifier")]
+    [Description("Set the access modifier for the generated types (default: public)")]
+    public TypeAccessModifier TypeAccessModifier { get; set; }
+}
+
+public class KiotaCommand : CodeGeneratorCommand<KiotaCommandSettings>
 {
     private readonly IProcessLauncher processLauncher;
     private readonly IDependencyInstaller dependencyInstaller;
@@ -25,23 +39,11 @@ public class KiotaCommand : CodeGeneratorCommand, IKiotaOptions
         this.dependencyInstaller = dependencyInstaller;
     }
 
-    public override ICodeGenerator CreateGenerator() =>
+    public override ICodeGenerator CreateGenerator(KiotaCommandSettings settings) =>
         new KiotaCodeGenerator(
-            SwaggerFile,
-            DefaultNamespace,
+            settings.SwaggerFile,
+            settings.DefaultNamespace,
             processLauncher,
             dependencyInstaller,
-            this);
-
-    [Option(
-        ShortName = "m",
-        LongName = "generate-multiple-files",
-        Description = "Set this to TRUE to generate multiple files (default: FALSE)")]
-    public bool GenerateMultipleFiles { get; set; }
-
-    [Option(
-        ShortName = "tam",
-        LongName = "type-access-modifier",
-        Description = "Set the access modifier for the generated types (default: public)")]
-    public TypeAccessModifier TypeAccessModifier { get; }
+            settings);
 }
