@@ -764,7 +764,7 @@
       <Version>10.0.3</Version>
     </PackageReference>
     <PackageReference Include="NuGet.VisualStudio">
-      <Version>17.13.2</Version>
+      <Version>17.14.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />
