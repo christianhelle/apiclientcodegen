@@ -1142,7 +1142,7 @@
 
 **Merged pull requests:**
 
-- Add support for generating a Refit inteface [\#489](https://github.com/christianhelle/apiclientcodegen/pull/489) ([christianhelle](https://github.com/christianhelle))
+- Add support for generating a Refit interface [\#489](https://github.com/christianhelle/apiclientcodegen/pull/489) ([christianhelle](https://github.com/christianhelle))
 - Bump AutoFixture from 4.17.0 to 4.18.0 [\#488](https://github.com/christianhelle/apiclientcodegen/pull/488) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump AutoFixture.AutoMoq from 4.17.0 to 4.18.0 [\#487](https://github.com/christianhelle/apiclientcodegen/pull/487) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump AutoFixture.Xunit2 from 4.17.0 to 4.18.0 [\#486](https://github.com/christianhelle/apiclientcodegen/pull/486) ([dependabot[bot]](https://github.com/apps/dependabot))
