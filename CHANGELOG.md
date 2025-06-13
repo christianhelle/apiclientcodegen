@@ -7,6 +7,7 @@
 **Implemented enhancements:**
 
 - Microsoft Kiota v1.27.0 [\#1206](https://github.com/christianhelle/apiclientcodegen/pull/1206) ([christianhelle](https://github.com/christianhelle))
+- Update CLI Tool to use Spectre.Console [\#1205](https://github.com/christianhelle/apiclientcodegen/pull/1205) ([christianhelle](https://github.com/christianhelle))
 - Implement "Generate Refitter Output" in VS Code extension [\#1184](https://github.com/christianhelle/apiclientcodegen/pull/1184) ([christianhelle](https://github.com/christianhelle))
 
 **Fixed bugs:**
