@@ -1,6 +1,6 @@
 # Cross Platform Command Line Tool
 
-All custom tools mentioned above are also implemented in a cross platform command line application
+All custom tools mentioned above are also implemented in a cross platform command line application.
 
 ## Requirements
 
@@ -16,7 +16,7 @@ The tool can be installed as a .NET Core global tool that you can call from the 
 dotnet tool install --global rapicgen
 ```
 
-or by following the instructions [here](https://www.nuget.org/packages/rapicgen) to install a specific version of tool
+or by following the instructions [here](https://www.nuget.org/packages/rapicgen) to install a specific version of the tool
 
 ## Usage
 
@@ -94,7 +94,7 @@ Usage: run autorest [options] <swaggerFile> <namespace> <outputFile>
 
 Arguments:
   swaggerFile   Path to the Swagger / Open API specification file
-  namespace     Default namespace to in the generated code
+  namespace     Default namespace in the generated code
   outputFile    Output filename to write the generated code to. Default is the swaggerFile .cs
 
 Options:
@@ -130,7 +130,7 @@ Options:
 
 ## Usage Examples
 
-Let's say we have a OpenAPI Specifications document called **Swagger.json**
+Let's say we have an OpenAPI Specifications document called **Swagger.json**
 
 For starters, we can use the Swagger Petstore spec. Here's an example powershell script for downloading it
 
