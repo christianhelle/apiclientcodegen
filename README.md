@@ -189,7 +189,7 @@ Download the VSIX file from the [GitHub releases](https://github.com/christianhe
 ### Features
 
 - Context menu on JSON and YAML files for generating code with various generators
-- Supports all code generators: NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, and AutoRest
+- Supports all code generators: NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, and AutoREST
 - Configuration options for namespace and output directory
 
 ### Usage
