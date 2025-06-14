@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Improve the CLI experience [\#1203](https://github.com/christianhelle/apiclientcodegen/issues/1203)
 - Microsoft Kiota v1.27.0 [\#1206](https://github.com/christianhelle/apiclientcodegen/pull/1206) ([christianhelle](https://github.com/christianhelle))
 - Update CLI Tool to use Spectre.Console [\#1205](https://github.com/christianhelle/apiclientcodegen/pull/1205) ([christianhelle](https://github.com/christianhelle))
 - Implement "Generate Refitter Output" in VS Code extension [\#1184](https://github.com/christianhelle/apiclientcodegen/pull/1184) ([christianhelle](https://github.com/christianhelle))
@@ -18,12 +19,14 @@
 
 **Closed issues:**
 
+- Fix typos and improve grammar in docs [\#1207](https://github.com/christianhelle/apiclientcodegen/issues/1207)
 - VSIX workflow stopped working [\#1198](https://github.com/christianhelle/apiclientcodegen/issues/1198)
 - Contribution Guidelines [\#1189](https://github.com/christianhelle/apiclientcodegen/issues/1189)
 - Reduce Code Duplication in Visual Studio Code Extension [\#1185](https://github.com/christianhelle/apiclientcodegen/issues/1185)
 
 **Merged pull requests:**
 
+- Fix typos and improve grammar in markdown documentation files [\#1208](https://github.com/christianhelle/apiclientcodegen/pull/1208) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Fix VSIX Builds [\#1200](https://github.com/christianhelle/apiclientcodegen/pull/1200) ([christianhelle](https://github.com/christianhelle))
 - Add comprehensive CONTRIBUTING.md with code patterns and PR guidelines [\#1190](https://github.com/christianhelle/apiclientcodegen/pull/1190) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Update dependency @types/node to v22.15.23 [\#1187](https://github.com/christianhelle/apiclientcodegen/pull/1187) ([renovate[bot]](https://github.com/apps/renovate))
@@ -1142,7 +1145,7 @@
 
 **Merged pull requests:**
 
-- Add support for generating a Refit interface [\#489](https://github.com/christianhelle/apiclientcodegen/pull/489) ([christianhelle](https://github.com/christianhelle))
+- Add support for generating a Refit inteface [\#489](https://github.com/christianhelle/apiclientcodegen/pull/489) ([christianhelle](https://github.com/christianhelle))
 - Bump AutoFixture from 4.17.0 to 4.18.0 [\#488](https://github.com/christianhelle/apiclientcodegen/pull/488) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump AutoFixture.AutoMoq from 4.17.0 to 4.18.0 [\#487](https://github.com/christianhelle/apiclientcodegen/pull/487) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump AutoFixture.Xunit2 from 4.17.0 to 4.18.0 [\#486](https://github.com/christianhelle/apiclientcodegen/pull/486) ([dependabot[bot]](https://github.com/apps/dependabot))
