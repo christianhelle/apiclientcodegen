@@ -6,7 +6,7 @@ suite('Extension Test Suite', () => {
 
   test('Extension should be present', () => {
     assert.strictEqual(
-      vscode.extensions.getExtension('ChristianResmaHelle.rest-api-client-code-generator') !== undefined,
+      vscode.extensions.getExtension('ChristianResmaHelle.apiclientcodegen') !== undefined,
       true
     );
   });

@@ -1,6 +1,6 @@
 [![buymeacoffee](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://www.buymeacoffee.com/christianhelle)
 
-There is a separate VSIX installer available for **[Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)**, **[Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2017)**, and **[Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.rest-api-client-code-generator)**
+There is a separate VSIX installer available for **[Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)**, **[Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2017)**, and **[Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.apiclientcodegen)**
 
 # REST API Client Code Generator
 
