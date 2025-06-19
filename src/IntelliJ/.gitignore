@@ -1,0 +1,16 @@
+# IntelliJ Plugin specific ignores
+.gradle/
+build/
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+*.log
+
+# Gradle wrapper files (we want to keep these)
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# Plugin distribution files (we want to upload these as artifacts)
+!build/distributions/*.zip
