@@ -26,6 +26,7 @@
 
 **Merged pull requests:**
 
+- Update Microsoft Kiota dependencies to version 1.19.0 [\#1209](https://github.com/christianhelle/apiclientcodegen/pull/1209) ([christianhelle](https://github.com/christianhelle))
 - Fix typos and improve grammar in markdown documentation files [\#1208](https://github.com/christianhelle/apiclientcodegen/pull/1208) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Fix VSIX Builds [\#1200](https://github.com/christianhelle/apiclientcodegen/pull/1200) ([christianhelle](https://github.com/christianhelle))
 - Add comprehensive CONTRIBUTING.md with code patterns and PR guidelines [\#1190](https://github.com/christianhelle/apiclientcodegen/pull/1190) ([Copilot](https://github.com/apps/copilot-swe-agent))
