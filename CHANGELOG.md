@@ -8,6 +8,10 @@
 
 - Refitter v1.6.0 [\#1217](https://github.com/christianhelle/apiclientcodegen/pull/1217) ([renovate[bot]](https://github.com/apps/renovate))
 
+**Merged pull requests:**
+
+- Update dependency Spectre.Console.Cli to 0.50.0 [\#1218](https://github.com/christianhelle/apiclientcodegen/pull/1218) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.27.0](https://github.com/christianhelle/apiclientcodegen/tree/1.27.0) (2025-06-19)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.26.0...1.27.0)
