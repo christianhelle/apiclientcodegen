@@ -11,6 +11,10 @@
 **Merged pull requests:**
 
 - Update dependency Spectre.Console.Cli to 0.50.0 [\#1218](https://github.com/christianhelle/apiclientcodegen/pull/1218) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency mocha to v11.7.0 [\#1215](https://github.com/christianhelle/apiclientcodegen/pull/1215) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @vscode/vsce to v3.5.0 [\#1214](https://github.com/christianhelle/apiclientcodegen/pull/1214) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/vscode to v1.101.0 [\#1213](https://github.com/christianhelle/apiclientcodegen/pull/1213) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency xunit.runner.visualstudio to 3.1.1 [\#1212](https://github.com/christianhelle/apiclientcodegen/pull/1212) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.27.0](https://github.com/christianhelle/apiclientcodegen/tree/1.27.0) (2025-06-19)
 
