@@ -196,7 +196,7 @@ function Generate-Code {
             $command = "csharp swagger"
         }
         "OpenApiGenerator" { 
-            $command = "csharp openapi -v V7130"
+            $command = "csharp openapi -v V7140"
         }
         "AutoRest-V2" {
             $command = "csharp autorest"
