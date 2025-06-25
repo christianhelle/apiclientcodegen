@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.27.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.28.0...HEAD)
+
+**Implemented enhancements:**
+
+- OpenAPI Generator v7.14.0 [\#1222](https://github.com/christianhelle/apiclientcodegen/pull/1222) ([christianhelle](https://github.com/christianhelle))
+
+## [1.28.0](https://github.com/christianhelle/apiclientcodegen/tree/1.28.0) (2025-06-22)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.27.0...1.28.0)
 
 **Implemented enhancements:**
 
@@ -15,6 +23,8 @@
 - Update dependency @vscode/vsce to v3.5.0 [\#1214](https://github.com/christianhelle/apiclientcodegen/pull/1214) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/vscode to v1.101.0 [\#1213](https://github.com/christianhelle/apiclientcodegen/pull/1213) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency xunit.runner.visualstudio to 3.1.1 [\#1212](https://github.com/christianhelle/apiclientcodegen/pull/1212) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Azure.Core to 1.46.2 [\#1211](https://github.com/christianhelle/apiclientcodegen/pull/1211) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.15.32 [\#1210](https://github.com/christianhelle/apiclientcodegen/pull/1210) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.27.0](https://github.com/christianhelle/apiclientcodegen/tree/1.27.0) (2025-06-19)
 
