@@ -12,6 +12,7 @@
 
 - Update dependency @vscode/vsce to v3.6.0 [\#1223](https://github.com/christianhelle/apiclientcodegen/pull/1223) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v22.15.33 [\#1221](https://github.com/christianhelle/apiclientcodegen/pull/1221) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency mocha to v11.7.1 [\#1220](https://github.com/christianhelle/apiclientcodegen/pull/1220) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.28.0](https://github.com/christianhelle/apiclientcodegen/tree/1.28.0) (2025-06-22)
 
