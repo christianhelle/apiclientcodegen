@@ -8,6 +8,10 @@
 
 - OpenAPI Generator v7.14.0 [\#1222](https://github.com/christianhelle/apiclientcodegen/pull/1222) ([christianhelle](https://github.com/christianhelle))
 
+**Merged pull requests:**
+
+- Update dependency @vscode/vsce to v3.6.0 [\#1223](https://github.com/christianhelle/apiclientcodegen/pull/1223) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.28.0](https://github.com/christianhelle/apiclientcodegen/tree/1.28.0) (2025-06-22)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.27.0...1.28.0)
