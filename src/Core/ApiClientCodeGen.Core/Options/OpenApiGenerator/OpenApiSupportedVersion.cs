@@ -12,6 +12,8 @@ public enum OpenApiSupportedVersion
     [Description("Latest")]
     Latest = 0,
 
+    [Description("7.14.0")]
+    V7140 = 7140,
     [Description("7.13.0")]
     V7130 = 7130,
     [Description("7.12.0")]
