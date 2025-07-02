@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.28.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.29.0...HEAD)
+
+**Merged pull requests:**
+
+- Update dependency Polly to 8.6.1 [\#1216](https://github.com/christianhelle/apiclientcodegen/pull/1216) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.29.0](https://github.com/christianhelle/apiclientcodegen/tree/1.29.0) (2025-06-25)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.28.0...1.29.0)
 
 **Implemented enhancements:**
 
