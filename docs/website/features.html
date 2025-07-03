@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features - REST API Client Code Generator</title>
+  <meta name="description" content="Discover the powerful features of REST API Client Code Generator">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  
+  <!-- Meta tags -->
+  <meta property="og:title" content="Features - REST API Client Code Generator">
+  <meta property="og:description" content="Discover the powerful features of REST API Client Code Generator">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://christianhelle.github.io/apiclientcodegen/features.html">
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Features - REST API Client Code Generator">
+  <meta name="twitter:description" content="Discover the powerful features of REST API Client Code Generator">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav-brand">
+          <img src="assets/icon.png" class="nav-brand-icon" alt="REST API Client Code Generator">
+          <span class="nav-brand-text">REST API Client Code Generator</span>
+        </a>
+        
+        <div class="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="features.html" class="nav-link">Features</a>
+          <a href="download.html" class="nav-link">Download</a>
+          <a href="cli.html" class="nav-link">CLI Tool</a>
+          <a href="https://github.com/christianhelle/apiclientcodegen" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+          
+          <button class="theme-toggle" aria-label="Toggle dark mode">
+            <span class="theme-toggle-icon">🌙</span>
+          </button>
+        </div>
+        
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="main-content">
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Features</h1>
+        <p class="page-description">Discover the powerful features of REST API Client Code Generator</p>
+      </div>
+    </section>
+
+    <section class="page-content">
+      <div class="container">
+        <h2>Visual Studio Integration</h2>
+
+        <p>REST API Client Code Generator provides seamless integration across all major Visual Studio platforms with consistent functionality and user experience.</p>
+
+        <div class="screenshot">
+          <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/add-new-menu.png" alt="Add new REST API Client menu option" />
+          <p><em>Add a new REST API Client directly from the Visual Studio Add menu</em></p>
+        </div>
+
+        <div class="screenshot">
+          <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/add-new-dialog.png" alt="REST API Client configuration dialog" />
+          <p><em>Configure your OpenAPI specification URL, namespace, and code generator</em></p>
+        </div>
+
+        <h3>Supported Platforms</h3>
+        <ul>
+          <li><strong>Visual Studio 2017, 2019, 2022</strong> - Full integration with all modern Visual Studio versions</li>
+          <li><strong>Visual Studio Code</strong> - Context menu integration for JSON and YAML files</li>
+          <li><strong>Visual Studio for Mac</strong> - Complete feature parity across platforms</li>
+        </ul>
+
+        <div class="screenshot">
+          <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/solution-explorer-context-menu.jpg" alt="Solution Explorer context menu options" />
+          <p><em>Right-click context menu options in Solution Explorer for quick access to code generation</em></p>
+        </div>
+
+        <h2>Code Generators</h2>
+
+        <h3>Custom Tools</h3>
+        <p>Custom tools let you associate a tool with an item in a project and run that tool whenever the file is saved, enabling automatic code regeneration when your OpenAPI specifications change.</p>
+
+        <div class="cards">
+          <div class="card">
+            <h3>NSwagCodeGenerator</h3>
+            <p><strong>Version:</strong> v14.4.0</p>
+            <p>Generates a single file C# REST API Client using the NSwag.CodeGeneration.CSharp NuGet package. Produces clean, strongly-typed code with full async support and comprehensive error handling.</p>
+            <div class="config-section">
+              <h4>Key Features:</h4>
+              <ul>
+                <li>Strongly-typed client generation</li>
+                <li>Full async/await support</li>
+                <li>Comprehensive exception handling</li>
+                <li>Integration with ASP.NET Core</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>OpenApiCodeGenerator</h3>
+            <p><strong>Version:</strong> v7.14.0</p>
+            <p>Generates a single file C# REST API Client using OpenAPI Generator. The output file merges all generated files using the command: <code>generate -g csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite</code></p>
+            <div class="config-section">
+              <h4>Configuration Options:</h4>
+              <ul>
+                <li>Generate Multiple Files support</li>
+                <li>Extensive customization properties</li>
+                <li>Template customization</li>
+                <li>Multiple output formats</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>KiotaCodeGenerator</h3>
+            <p><strong>Version:</strong> v1.27.0</p>
+            <p>Generates a single file C# REST API Client using Microsoft Kiota. The output merges files generated with: <code>generate -l CSharp -d [swagger file] -o [output file] -n [namespace]</code></p>
+            <div class="config-section">
+              <h4>Microsoft Integration:</h4>
+              <ul>
+                <li>Microsoft Graph API support</li>
+                <li>Azure authentication patterns</li>
+                <li>Modern .NET practices</li>
+                <li>Strong typing and validation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>SwaggerCodeGenerator</h3>
+            <p><strong>Version:</strong> v3.0.34</p>
+            <p>Generates a single file C# REST API Client using Swagger Codegen CLI. Uses the command: <code>generate -l csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[namespace] --skip-overwrite</code></p>
+            <div class="config-section">
+              <h4>Proven Reliability:</h4>
+              <ul>
+                <li>Extensive language support</li>
+                <li>Legacy project compatibility</li>
+                <li>Established workflow integration</li>
+                <li>Community-driven templates</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>AutoRestCodeGenerator</h3>
+            <p><strong>Version:</strong> v3.0.0-beta.20210504.2 (v3), v2.0.4417 (v2)</p>
+            <p>Generates a single file C# REST API Client using AutoRest. Equivalent to: <code>--csharp --input-file=[swagger file] --output-file=[output file] --namespace=[namespace] --add-credentials</code></p>
+            <div class="config-section">
+              <h4>Enterprise Features:</h4>
+              <ul>
+                <li>Azure service optimization</li>
+                <li>Advanced authentication</li>
+                <li>Retry policies and timeout configuration</li>
+                <li>Enterprise-grade reliability</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>RefitterCodeGenerator</h3>
+            <p><strong>Version:</strong> v1.6.0</p>
+            <p>Generates a single file C# REST API Client interface for Refit using Refitter.Core. Combines a Refit interface generated by Refitter with contracts generated using NSwag.CodeGeneration.CSharp.</p>
+            <div class="config-section">
+              <h4>Reactive Patterns:</h4>
+              <ul>
+                <li>Refit interface generation</li>
+                <li>Reactive programming support</li>
+                <li>Clean interface design</li>
+                <li>Comprehensive testing capabilities</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <h2>Configuration File Support</h2>
+
+        <div class="screenshot-gallery">
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/nswagstudio-context-menu.jpg" alt="NSwag Studio context menu" />
+            <p><em>Generate code from NSwag Studio .nswag configuration files</em></p>
+          </div>
+
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/refitter-command.png" alt="Refitter configuration" />
+            <p><em>Refitter .refitter settings file integration</em></p>
+          </div>
+
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/generate-kiota-output.png" alt="Kiota code generation" />
+            <p><em>Microsoft Kiota kiota-lock.json configuration support</em></p>
+          </div>
+        </div>
+
+        <p>Generate code using configuration files:</p>
+        <ul>
+          <li><strong><code>.nswag</code></strong> configuration files from NSwagStudio by including it in the project and using the <strong>Generate NSwag Studio output</strong> context menu</li>
+          <li><strong><code>.refitter</code></strong> settings files from Refitter by including it in the project and using the <strong>Generate Refitter output</strong> context menu</li>
+          <li><strong><code>kiota-lock.json</code></strong> configuration files from Microsoft Kiota by including it in the project and using the <strong>Generate Kiota output</strong> context menu</li>
+        </ul>
+
+        <h2>Auto-Generation Features</h2>
+
+        <div class="feature-highlight">
+          <h3>🔄 Automatic Code Regeneration</h3>
+          <p>Custom tools automatically regenerate client code whenever your OpenAPI specification files change, keeping your code always in sync with your API.</p>
+        </div>
+
+        <ul>
+          <li><strong>Auto-updating</strong> of generated code file when changes are made to the OpenAPI specification JSON or YAML file</li>
+          <li><strong>Custom namespace</strong> definition for the generated file</li>
+          <li><strong>Multiple file generation</strong> support for OpenAPI Generator and Kiota (configurable in settings)</li>
+          <li><strong>Context menu integration</strong> for quick access to generation options</li>
+        </ul>
+
+        <h2>Advanced Configuration</h2>
+
+        <h3>Settings and Customization</h3>
+
+        <p>The extension provides extensive configuration options for each code generator, accessible through the Visual Studio Tools menu.</p>
+
+        <div class="screenshot-gallery">
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/options-general.png" alt="General options" />
+            <p><em>General settings for Java, NPM, and tool paths</em></p>
+          </div>
+
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/options-nswag.png" alt="NSwag options" />
+            <p><em>NSwag-specific configuration options</em></p>
+          </div>
+
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/options-openapigenerator.png" alt="OpenAPI Generator options" />
+            <p><em>OpenAPI Generator customization settings</em></p>
+          </div>
+        </div>
+
+        <h3>Customizable Settings</h3>
+
+        <div class="config-section">
+          <h4>Environment Configuration</h4>
+          <ul>
+            <li><strong>Java path configuration</strong> - Specify custom Java installation paths</li>
+            <li><strong>NPM and Node.js paths</strong> - Configure custom Node.js environments</li>
+            <li><strong>JAR file locations</strong> - Use existing Swagger Codegen CLI and OpenAPI Generator JAR files</li>
+          </ul>
+        </div>
+
+        <div class="config-section">
+          <h4>Generator-Specific Options</h4>
+          <ul>
+            <li><strong>AutoRest Customization</strong> - Support for all C# generator settings, custom authentication schemes, retry policies</li>
+            <li><strong>NSwag Customization</strong> - Full access to NSwag package properties, custom serialization settings, advanced type mapping</li>
+            <li><strong>OpenAPI Generator Options</strong> - Access to additional properties, template customization, multiple output formats</li>
+          </ul>
+        </div>
+
+        <div class="screenshot-gallery">
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/options-autorest.png" alt="AutoRest options" />
+            <p><em>AutoRest generator configuration</em></p>
+          </div>
+
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/refitter-options.png" alt="Refitter options" />
+            <p><em>Refitter customization settings</em></p>
+          </div>
+
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/options-kiota.png" alt="Kiota options" />
+            <p><em>Microsoft Kiota configuration options</em></p>
+          </div>
+        </div>
+
+        <h2>Cross-Platform Support</h2>
+
+        <h3>Visual Studio Code Integration</h3>
+
+        <div class="screenshot-gallery">
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/vscode-command-palette.png" alt="VS Code command palette" />
+            <p><em>VS Code command palette integration</em></p>
+          </div>
+
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/vscode-context-menu.png" alt="VS Code context menu" />
+            <p><em>Context menu support for C# generation in VS Code</em></p>
+          </div>
+
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/vscode-context-menu-typescript.png" alt="VS Code TypeScript context menu" />
+            <p><em>TypeScript code generation support in VS Code</em></p>
+          </div>
+        </div>
+
+        <h3>Visual Studio for Mac</h3>
+
+        <div class="screenshot-gallery">
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/vsmac-add-new-menu.png" alt="VS Mac add new menu" />
+            <p><em>Visual Studio for Mac "Add New" menu integration</em></p>
+          </div>
+
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/vsmac-add-new-dialog.png" alt="VS Mac add new dialog" />
+            <p><em>OpenAPI specification configuration dialog on macOS</em></p>
+          </div>
+
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/vsmac-generate-code.png" alt="VS Mac generate code" />
+            <p><em>Code generation context menu in Visual Studio for Mac</em></p>
+          </div>
+        </div>
+
+        <h2>Dependencies and Requirements</h2>
+
+        <h3>Automatic Dependency Management</h3>
+        <p>The Visual Studio Extension automatically adds the required NuGet packages that the generated code depends on:</p>
+
+        <div class="cards">
+          <div class="card">
+            <h3>NSwag Dependencies</h3>
+            <ul>
+              <li><strong>Newtonsoft.Json</strong> - JSON serialization</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>OpenAPI Generator Dependencies</h3>
+            <ul>
+              <li><strong>RestSharp</strong> - HTTP client library</li>
+              <li><strong>JsonSubTypes</strong> - Polymorphic JSON serialization</li>
+              <li><strong>Polly</strong> - Resilience and fault-handling library</li>
+              <li><strong>Newtonsoft.Json</strong> - JSON serialization</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Microsoft Kiota Dependencies</h3>
+            <ul>
+              <li><strong>Microsoft.Kiota.Abstractions</strong></li>
+              <li><strong>Microsoft.Kiota.Http.HttpClientLibrary</strong></li>
+              <li><strong>Microsoft.Kiota.Serialization.*</strong> packages</li>
+              <li><strong>Microsoft.Kiota.Authentication.Azure</strong></li>
+              <li><strong>Azure.Identity</strong></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Refitter Dependencies</h3>
+            <ul>
+              <li><strong>Refit</strong> - REST library for .NET</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Swagger Codegen CLI Dependencies</h3>
+            <ul>
+              <li><strong>RestSharp</strong> - HTTP client library</li>
+              <li><strong>JsonSubTypes</strong> - Polymorphic JSON serialization</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>AutoRest Dependencies</h3>
+            <ul>
+              <li><strong>Microsoft.Rest.ClientRuntime</strong></li>
+              <li><strong>Newtonsoft.Json</strong> - JSON serialization</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Runtime Requirements</h3>
+        <ul>
+          <li><strong>Java Runtime Environment</strong> - Required for Swagger Codegen CLI and OpenAPI Generator</li>
+          <li><strong>NPM</strong> - Required for AutoRest and NSwag CLI installations</li>
+          <li><strong>.NET 7.0</strong> - Required for Microsoft Kiota</li>
+        </ul>
+
+        <div class="feature-highlight">
+          <h3>📦 On-Demand Installation</h3>
+          <p>The Swagger Codegen CLI and OpenAPI Generator are distributed as JAR files and downloaded on demand. AutoRest is installed via NPM as a global tool, and Microsoft Kiota is installed as a .NET Tool - all automatically managed for you.</p>
+        </div>
+
+        <h2>Analytics and Error Reporting</h2>
+
+        <div class="screenshot">
+          <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/support-key.png" alt="Analytics configuration" />
+          <p><em>Analytics and error reporting configuration options</em></p>
+        </div>
+
+        <ul>
+          <li><strong>Anonymous usage tracking</strong> - Helps improve the tool through Exceptionless and Azure Application Insights</li>
+          <li><strong>Error reporting</strong> - Automatic error collection to improve stability and user experience</li>
+          <li><strong>Privacy-focused</strong> - Uses secure hash of username@host for anonymous identification</li>
+          <li><strong>Configurable</strong> - Can be completely disabled through the settings panel</li>
+        </ul>
+
+        <h2>Custom Tool Examples</h2>
+
+        <div class="screenshot-gallery">
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/nswagcodegenerator-custom-tool.jpg" alt="NSwag custom tool" />
+            <p><em>NSwag custom tool configuration in file properties</em></p>
+          </div>
+
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/openapicodegenerator-custom-tool.jpg" alt="OpenAPI Generator custom tool" />
+            <p><em>OpenAPI Generator custom tool setup</em></p>
+          </div>
+
+          <div class="screenshot">
+            <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/swaggercodegenerator-custom-tool.jpg" alt="Swagger Codegen custom tool" />
+            <p><em>Swagger Codegen CLI custom tool configuration</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>REST API Client Code Generator</h3>
+          <p>A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files</p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Links</h3>
+          <ul class="footer-links">
+            <li><a href="https://github.com/christianhelle/apiclientcodegen" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2022" target="_blank" rel="noopener">VS Marketplace</a></li>
+            <li><a href="https://www.nuget.org/packages/rapicgen" target="_blank" rel="noopener">NuGet</a></li>
+            <li><a href="https://christianhelle.com" target="_blank" rel="noopener">Blog</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Support</h3>
+          <p>
+            <a href="https://www.buymeacoffee.com/christianhelle" target="_blank" rel="noopener" class="support-link">
+              ☕ Buy me a coffee
+            </a>
+          </p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Christian Helle. Licensed under MIT.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
