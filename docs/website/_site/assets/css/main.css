@@ -78,7 +78,8 @@ body {
 }
 
 .nav-brand-icon {
-  font-size: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
   margin-right: 0.5rem;
 }
 
@@ -336,13 +337,25 @@ pre code {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.badges a {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.badges a:hover {
+  transform: scale(1.05);
+  text-decoration: none;
 }
 
 .badge {
   display: inline-block;
 }
 
-.badge img {
+.badge img,
+.badges a img {
   height: 20px;
 }
 
