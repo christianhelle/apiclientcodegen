@@ -80,51 +80,124 @@ title: "REST API Client Code Generator"
 
 <section class="page-content">
   <div class="container">
+    <h2>Getting Started</h2>
+    
+    <p>REST API Client Code Generator seamlessly integrates with your development workflow. Here's how to get started:</p>
+    
+    <div class="screenshot">
+      <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/add-new-menu.png" alt="Add New REST API Client menu option" />
+      <p><em>Add a new REST API Client from the Visual Studio context menu</em></p>
+    </div>
+    
+    <div class="screenshot">
+      <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/add-new-dialog.png" alt="OpenAPI specification URL dialog" />
+      <p><em>Enter your OpenAPI specification URL and configure the generator settings</em></p>
+    </div>
+    
     <h2>Supported Code Generators</h2>
     
     <div class="cards">
       <div class="card">
         <h3>NSwag</h3>
-        <p>Generates C# REST API clients using the NSwag.CodeGeneration.CSharp package. Produces clean, strongly-typed code with full async support.</p>
+        <p><strong>Version:</strong> v14.4.0</p>
+        <p>Generates clean, strongly-typed C# REST API clients using the NSwag.CodeGeneration.CSharp package. Features full async support, comprehensive error handling, and excellent integration with ASP.NET Core.</p>
+        <p><strong>Dependencies:</strong> Newtonsoft.Json</p>
       </div>
       
       <div class="card">
         <h3>OpenAPI Generator</h3>
-        <p>Uses OpenAPI Generator v7.14.0 to create comprehensive client libraries with extensive customization options and multiple output formats.</p>
+        <p><strong>Version:</strong> v7.14.0</p>
+        <p>Uses OpenAPI Generator to create comprehensive client libraries with extensive customization options. Supports multiple output formats and advanced configuration through additional properties.</p>
+        <p><strong>Dependencies:</strong> RestSharp, JsonSubTypes, Polly, Newtonsoft.Json</p>
       </div>
       
       <div class="card">
         <h3>Microsoft Kiota</h3>
-        <p>Microsoft's modern API client generator with support for Microsoft Graph and other APIs, featuring strong typing and authentication.</p>
+        <p><strong>Version:</strong> v1.27.0</p>
+        <p>Microsoft's modern API client generator with first-class support for Microsoft Graph and Azure APIs. Features strong typing, authentication patterns, and modern .NET practices.</p>
+        <p><strong>Dependencies:</strong> Microsoft.Kiota.* packages, Azure.Identity</p>
       </div>
       
       <div class="card">
         <h3>Refitter</h3>
-        <p>Generates Refit interfaces for reactive REST clients with RxJava support and comprehensive testing capabilities.</p>
+        <p><strong>Version:</strong> v1.6.0</p>
+        <p>Generates Refit interfaces for reactive REST clients. Perfect for applications using reactive patterns with comprehensive testing capabilities and clean interface design.</p>
+        <p><strong>Dependencies:</strong> Refit</p>
       </div>
       
       <div class="card">
         <h3>Swagger Codegen CLI</h3>
-        <p>Classic Swagger code generation with proven reliability and extensive language support for legacy and modern projects.</p>
+        <p><strong>Version:</strong> v3.0.34</p>
+        <p>The original Swagger code generator with proven reliability and extensive language support. Ideal for legacy projects and established workflows.</p>
+        <p><strong>Dependencies:</strong> RestSharp, JsonSubTypes</p>
       </div>
       
       <div class="card">
         <h3>AutoRest</h3>
-        <p>Microsoft's AutoRest generator for Azure services and general REST APIs with advanced authentication and retry policies.</p>
+        <p><strong>Version:</strong> v3.0.0-beta.20210504.2</p>
+        <p>Microsoft's AutoRest generator optimized for Azure services and general REST APIs. Includes advanced authentication, retry policies, and enterprise-grade reliability.</p>
+        <p><strong>Dependencies:</strong> Microsoft.Rest.ClientRuntime, Newtonsoft.Json</p>
       </div>
     </div>
     
-    <h2>Quick Start</h2>
+    <h2>Visual Studio Integration</h2>
+    
+    <div class="screenshot">
+      <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/solution-explorer-context-menu.jpg" alt="Solution Explorer context menu" />
+      <p><em>Context menu options in Solution Explorer for quick code generation</em></p>
+    </div>
+    
+    <h3>Auto-Update Features</h3>
+    <ul>
+      <li><strong>Custom Tools Integration</strong> - Automatically regenerate client code when OpenAPI specification files change</li>
+      <li><strong>Namespace Configuration</strong> - Define custom namespaces for generated files</li>
+      <li><strong>Multiple File Support</strong> - Generate multiple files for complex APIs (OpenAPI Generator and Kiota)</li>
+      <li><strong>Configuration File Support</strong> - Use .nswag, .refitter, and kiota-lock.json configuration files</li>
+    </ul>
+    
+    <h2>Configuration File Support</h2>
+    
+    <div class="screenshot">
+      <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/nswagstudio-context-menu.jpg" alt="NSwag Studio context menu" />
+      <p><em>Generate code from NSwag Studio configuration files</em></p>
+    </div>
+    
+    <div class="screenshot">
+      <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/refitter-command.png" alt="Refitter configuration" />
+      <p><em>Refitter configuration file integration</em></p>
+    </div>
+    
+    <div class="screenshot">
+      <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/generate-kiota-output.png" alt="Kiota code generation" />
+      <p><em>Microsoft Kiota configuration and code generation</em></p>
+    </div>
+    
+    <h2>Quick Start Guide</h2>
     
     <p>Get started with REST API Client Code Generator in just a few steps:</p>
     
     <ol>
-      <li><strong>Install the extension</strong> from the Visual Studio Marketplace or download the VSIX file</li>
-      <li><strong>Add a new REST API Client</strong> to your project from the Add New Item dialog</li>
+      <li><strong>Install the extension</strong> from the Visual Studio Marketplace for your IDE version</li>
+      <li><strong>Right-click your project</strong> in Solution Explorer and select "Add" → "REST API Client"</li>
       <li><strong>Enter your OpenAPI specification URL</strong> (e.g., https://petstore.swagger.io/v2/swagger.json)</li>
-      <li><strong>Choose your preferred code generator</strong> and configure the namespace</li>
-      <li><strong>Generate your client code</strong> and start making API calls!</li>
+      <li><strong>Choose your preferred code generator</strong> (NSwag, OpenAPI Generator, Kiota, etc.)</li>
+      <li><strong>Configure the namespace</strong> and output filename</li>
+      <li><strong>Click Generate</strong> and start making API calls!</li>
     </ol>
+    
+    <h2>Cross-Platform Support</h2>
+    
+    <h3>Visual Studio Code</h3>
+    <div class="screenshot">
+      <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/vscode-context-menu.png" alt="VS Code context menu" />
+      <p><em>VS Code integration with context menu support for JSON and YAML files</em></p>
+    </div>
+    
+    <h3>Visual Studio for Mac</h3>
+    <div class="screenshot">
+      <img src="https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/images/vsmac-add-new-menu.png" alt="VS Mac add new menu" />
+      <p><em>Visual Studio for Mac integration</em></p>
+    </div>
     
     <h2>Command Line Tool</h2>
     
@@ -141,5 +214,23 @@ rapicgen typescript Angular swagger.json ./typescript-client
 
 # Generate JMeter test plans
 rapicgen jmeter swagger.json</code></pre>
+    
+    <h3>Perfect for CI/CD Pipelines</h3>
+    <ul>
+      <li><strong>GitHub Actions</strong> - Automatically regenerate clients when APIs change</li>
+      <li><strong>Azure DevOps</strong> - Integrate with build pipelines</li>
+      <li><strong>Jenkins</strong> - Add to existing CI workflows</li>
+      <li><strong>Docker</strong> - Use in containerized build environments</li>
+    </ul>
+    
+    <h2>Enterprise Ready</h2>
+    
+    <ul>
+      <li><strong>Dependency Management</strong> - Automatically adds required NuGet packages</li>
+      <li><strong>Error Handling</strong> - Comprehensive error reporting and logging</li>
+      <li><strong>Configuration</strong> - Extensive customization options for each generator</li>
+      <li><strong>Analytics</strong> - Optional usage analytics to help improve the tool</li>
+      <li><strong>Support</strong> - Active community and regular updates</li>
+    </ul>
   </div>
 </section>

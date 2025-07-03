@@ -504,6 +504,158 @@ pre code {
   }
 }
 
+/* Screenshots */
+.screenshot {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+.screenshot img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 0.5rem;
+}
+
+.screenshot p {
+  margin: 0;
+  font-style: italic;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Screenshot gallery for multiple images */
+.screenshot-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.screenshot-gallery .screenshot {
+  margin: 0;
+}
+
+/* Configuration sections */
+.config-section {
+  background-color: var(--code-bg);
+  border-left: 4px solid var(--accent-color);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.config-section h4 {
+  margin-top: 0;
+  color: var(--accent-color);
+}
+
+/* Download buttons */
+.download-section {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.download-section h3 {
+  margin-top: 0;
+  color: var(--text-color);
+}
+
+.download-section .btn {
+  margin: 0.5rem;
+}
+
+/* Feature highlights */
+.feature-highlight {
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+  color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.feature-highlight h3 {
+  margin-top: 0;
+  color: white;
+}
+
+/* Installation steps */
+.installation-steps {
+  counter-reset: step-counter;
+}
+
+.installation-steps li {
+  counter-increment: step-counter;
+  position: relative;
+  padding-left: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.installation-steps li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: var(--accent-color);
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+/* CLI examples */
+.cli-example {
+  background-color: var(--code-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.cli-example h4 {
+  margin-top: 0;
+  color: var(--accent-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+/* Responsive screenshots */
+@media (max-width: 768px) {
+  .screenshot-gallery {
+    grid-template-columns: 1fr;
+  }
+  
+  .screenshot img {
+    max-width: 100%;
+  }
+  
+  .installation-steps li {
+    padding-left: 2.5rem;
+  }
+  
+  .installation-steps li::before {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.75rem;
+  }
+}
+
 /* Dark mode transition */
 * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
