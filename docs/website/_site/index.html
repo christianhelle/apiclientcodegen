@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>REST API Client Code Generator - REST API Client Code Generator</title>
+  <meta name="description" content="A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="/apiclientcodegen/assets/css/main.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  
+  <!-- Meta tags -->
+  <meta property="og:title" content="REST API Client Code Generator - REST API Client Code Generator">
+  <meta property="og:description" content="A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://0.0.0.0:4000/apiclientcodegen/">
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="REST API Client Code Generator - REST API Client Code Generator">
+  <meta name="twitter:description" content="A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files">
+</head>
+<body>
+  <header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="/apiclientcodegen/" class="nav-brand">
+        <span class="nav-brand-icon">⚡</span>
+        <span class="nav-brand-text">REST API Client Code Generator</span>
+      </a>
+      
+      <div class="nav-menu">
+        <a href="/apiclientcodegen/" class="nav-link">Home</a>
+        <a href="/apiclientcodegen/features" class="nav-link">Features</a>
+        <a href="/apiclientcodegen/download" class="nav-link">Download</a>
+        <a href="/apiclientcodegen/cli" class="nav-link">CLI Tool</a>
+        <a href="https://github.com/christianhelle/apiclientcodegen" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+        
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-toggle-icon">🌙</span>
+        </button>
+      </div>
+      
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+  
+  <main class="main-content">
+    <section class="hero">
+  <div class="container">
+    <h1 class="hero-title">REST API Client Code Generator</h1>
+    <p class="hero-description">
+      A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files
+    </p>
+    
+    <div class="badges">
+      <span class="badge">
+        <img src="https://ci.appveyor.com/api/projects/status/gb2doe3tgwjt47cn/branch/master?svg=true" alt="Build status">
+      </span>
+      <span class="badge">
+        <img src="https://github.com/christianhelle/apiclientcodegen/actions/workflows/cli-tool.yml/badge.svg" alt="CLI Tool">
+      </span>
+      <span class="badge">
+        <img src="https://github.com/christianhelle/apiclientcodegen/actions/workflows/vsix.yml/badge.svg" alt="VSIX">
+      </span>
+      <span class="badge">
+        <img src="https://github.com/christianhelle/apiclientcodegen/actions/workflows/vscode.yml/badge.svg" alt="VS Code">
+      </span>
+      <span class="badge">
+        <img src="https://img.shields.io/visual-studio-marketplace/v/ChristianResmaHelle.ApiClientCodeGenerator2022?label=Marketplace" alt="Version">
+      </span>
+      <span class="badge">
+        <img src="https://img.shields.io/nuget/dt/rapicgen.svg?style=flat-square&label=nuget" alt="NuGet">
+      </span>
+    </div>
+    
+    <div class="hero-buttons">
+      <a href="/apiclientcodegen/download" class="btn btn-primary">Download Now</a>
+      <a href="https://github.com/christianhelle/apiclientcodegen" class="btn btn-secondary" target="_blank" rel="noopener">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <div class="feature">
+      <span class="feature-icon">🎯</span>
+      <h3>Multiple Generators</h3>
+      <p>Support for NSwag, OpenAPI Generator, Swagger Codegen, Refitter, Microsoft Kiota, and AutoRest</p>
+    </div>
+    
+    <div class="feature">
+      <span class="feature-icon">🔧</span>
+      <h3>Visual Studio Integration</h3>
+      <p>Seamless integration with Visual Studio 2017, 2019, 2022, VS Code, and Visual Studio for Mac</p>
+    </div>
+    
+    <div class="feature">
+      <span class="feature-icon">⚡</span>
+      <h3>Auto-Update</h3>
+      <p>Automatically regenerate client code when OpenAPI specification files change</p>
+    </div>
+    
+    <div class="feature">
+      <span class="feature-icon">🌐</span>
+      <h3>Cross-Platform CLI</h3>
+      <p>Command-line tool available for all platforms with .NET support</p>
+    </div>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container">
+    <h2>Supported Code Generators</h2>
+    
+    <div class="cards">
+      <div class="card">
+        <h3>NSwag</h3>
+        <p>Generates C# REST API clients using the NSwag.CodeGeneration.CSharp package. Produces clean, strongly-typed code with full async support.</p>
+      </div>
+      
+      <div class="card">
+        <h3>OpenAPI Generator</h3>
+        <p>Uses OpenAPI Generator v7.14.0 to create comprehensive client libraries with extensive customization options and multiple output formats.</p>
+      </div>
+      
+      <div class="card">
+        <h3>Microsoft Kiota</h3>
+        <p>Microsoft's modern API client generator with support for Microsoft Graph and other APIs, featuring strong typing and authentication.</p>
+      </div>
+      
+      <div class="card">
+        <h3>Refitter</h3>
+        <p>Generates Refit interfaces for reactive REST clients with RxJava support and comprehensive testing capabilities.</p>
+      </div>
+      
+      <div class="card">
+        <h3>Swagger Codegen CLI</h3>
+        <p>Classic Swagger code generation with proven reliability and extensive language support for legacy and modern projects.</p>
+      </div>
+      
+      <div class="card">
+        <h3>AutoRest</h3>
+        <p>Microsoft's AutoRest generator for Azure services and general REST APIs with advanced authentication and retry policies.</p>
+      </div>
+    </div>
+    
+    <h2>Quick Start</h2>
+    
+    <p>Get started with REST API Client Code Generator in just a few steps:</p>
+    
+    <ol>
+      <li><strong>Install the extension</strong> from the Visual Studio Marketplace or download the VSIX file</li>
+      <li><strong>Add a new REST API Client</strong> to your project from the Add New Item dialog</li>
+      <li><strong>Enter your OpenAPI specification URL</strong> (e.g., https://petstore.swagger.io/v2/swagger.json)</li>
+      <li><strong>Choose your preferred code generator</strong> and configure the namespace</li>
+      <li><strong>Generate your client code</strong> and start making API calls!</li>
+    </ol>
+    
+    <h2>Command Line Tool</h2>
+    
+    <p>For automation and CI/CD scenarios, use our cross-platform command line tool:</p>
+    
+    <pre><code># Install the global tool
+dotnet tool install --global rapicgen
+
+# Generate C# client using NSwag
+rapicgen csharp nswag swagger.json MyNamespace ./MyClient.cs
+
+# Generate TypeScript client
+rapicgen typescript Angular swagger.json ./typescript-client
+
+# Generate JMeter test plans
+rapicgen jmeter swagger.json</code></pre>
+  </div>
+</section>
+  </main>
+  
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>REST API Client Code Generator</h3>
+        <p>A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Links</h3>
+        <ul class="footer-links">
+          <li><a href="https://github.com/christianhelle/apiclientcodegen" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2022" target="_blank" rel="noopener">VS Marketplace</a></li>
+          <li><a href="https://www.nuget.org/packages/rapicgen" target="_blank" rel="noopener">NuGet</a></li>
+          <li><a href="https://christianhelle.com" target="_blank" rel="noopener">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Support</h3>
+        <p>
+          <a href="https://www.buymeacoffee.com/christianhelle" target="_blank" rel="noopener" class="support-link">
+            ☕ Buy me a coffee
+          </a>
+        </p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Christian Helle. Licensed under MIT.</p>
+    </div>
+  </div>
+</footer>
+  
+  <!-- JavaScript -->
+  <script src="/apiclientcodegen/assets/js/main.js"></script>
+</body>
+</html>

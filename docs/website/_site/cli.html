@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLI Tool - REST API Client Code Generator</title>
+  <meta name="description" content="A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="/apiclientcodegen/assets/css/main.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  
+  <!-- Meta tags -->
+  <meta property="og:title" content="CLI Tool - REST API Client Code Generator">
+  <meta property="og:description" content="A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="http://0.0.0.0:4000/apiclientcodegen/cli.html">
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="CLI Tool - REST API Client Code Generator">
+  <meta name="twitter:description" content="A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files">
+</head>
+<body>
+  <header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="/apiclientcodegen/" class="nav-brand">
+        <span class="nav-brand-icon">⚡</span>
+        <span class="nav-brand-text">REST API Client Code Generator</span>
+      </a>
+      
+      <div class="nav-menu">
+        <a href="/apiclientcodegen/" class="nav-link">Home</a>
+        <a href="/apiclientcodegen/features" class="nav-link">Features</a>
+        <a href="/apiclientcodegen/download" class="nav-link">Download</a>
+        <a href="/apiclientcodegen/cli" class="nav-link">CLI Tool</a>
+        <a href="https://github.com/christianhelle/apiclientcodegen" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+        
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-toggle-icon">🌙</span>
+        </button>
+      </div>
+      
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+  
+  <main class="main-content">
+    <div class="page-header">
+  <div class="container">
+    
+      <h1 class="page-title">CLI Tool</h1>
+    
+    
+      <p class="page-description">Cross-platform command line tool for generating REST API clients</p>
+    
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="container">
+    <p>The REST API Client Code Generator includes a powerful cross-platform command line tool that implements all the features available in the Visual Studio extensions.</p>
+
+<h2 id="installation">Installation</h2>
+
+<p>Install the tool as a .NET global tool:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet tool <span class="nb">install</span> <span class="nt">--global</span> rapicgen
+</code></pre></div></div>
+
+<p>To install a specific version:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet tool <span class="nb">install</span> <span class="nt">--global</span> rapicgen <span class="nt">--version</span> 1.28.0
+</code></pre></div></div>
+
+<h2 id="requirements">Requirements</h2>
+
+<ul>
+  <li><strong>.NET 6.0 runtime</strong> or later</li>
+  <li><strong>Java Runtime Environment</strong> (for Swagger Codegen CLI and OpenAPI Generator)</li>
+  <li><strong>NPM</strong> (for AutoRest and NSwag CLI installations)</li>
+</ul>
+
+<h2 id="basic-usage">Basic Usage</h2>
+
+<p>The tool is launched from any command line interface by calling <code class="language-plaintext highlighter-rouge">rapicgen</code>. When called without arguments, it displays help information:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Usage: rapicgen [command] [options]
+
+Options:
+  -v|--verbose       Show verbose output
+  -?|-h|--help       Show help information.
+
+Commands:
+  csharp             Generate C# API clients
+  jmeter             Generate Apache JMeter test plans
+  openapi-generator  Generate code using OpenAPI Generator (v7.14.0).
+                     See supported generators at https://openapi-generator.tech/docs/generators/
+  typescript         Generate TypeScript API clients
+
+Run 'rapicgen [command] -?|-h|--help' for more information about a command.
+</code></pre></div></div>
+
+<h2 id="c-code-generation">C# Code Generation</h2>
+
+<p>Generate C# API clients using various generators:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen csharp <span class="o">[</span>generator] <span class="o">[</span>options] &lt;swaggerFile&gt; &lt;namespace&gt; &lt;outputFile&gt;
+</code></pre></div></div>
+
+<h3 id="available-c-generators">Available C# Generators</h3>
+
+<p>Get help for C# generators:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen csharp -?
+</code></pre></div></div>
+
+<p>Output:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Generate C# API clients
+
+Usage: rapicgen csharp [command] [options]
+
+Options:
+  -?|-h|--help  Show help information.
+
+Commands:
+  autorest      AutoRest (v3.0.0-beta.20210504.2)
+  kiota         Microsoft Kiota (v1.27.0)
+  nswag         NSwag (v14.4.0)
+  openapi       OpenAPI Generator (v7.14.0)
+  refitter      Refitter (v1.6.0)
+  swagger       Swagger Codegen CLI (v3.0.34)
+</code></pre></div></div>
+
+<h3 id="examples">Examples</h3>
+
+<p><strong>AutoRest:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen csharp autorest swagger.json MyNamespace ./AutoRestOutput.cs
+</code></pre></div></div>
+
+<p><strong>Microsoft Kiota:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen csharp kiota swagger.json MyNamespace ./KiotaOutput.cs
+</code></pre></div></div>
+
+<p><strong>NSwag:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen csharp nswag swagger.json MyNamespace ./NSwagOutput.cs
+</code></pre></div></div>
+
+<p><strong>OpenAPI Generator:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen csharp openapi swagger.json MyNamespace ./OpenApiOutput.cs
+</code></pre></div></div>
+
+<p><strong>Refitter:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen csharp refitter swagger.json MyNamespace ./RefitterOutput.cs
+</code></pre></div></div>
+
+<p><strong>Swagger Codegen CLI:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen csharp swagger swagger.json MyNamespace ./SwaggerOutput.cs
+</code></pre></div></div>
+
+<h2 id="typescript-generation">TypeScript Generation</h2>
+
+<p>Generate TypeScript API clients for various frameworks:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen typescript <span class="o">[</span>generator] &lt;swaggerFile&gt; <span class="o">[</span>outputPath]
+</code></pre></div></div>
+
+<h3 id="available-typescript-generators">Available TypeScript Generators</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen typescript -?
+</code></pre></div></div>
+
+<p>Output:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Generate TypeScript API client
+
+Usage: rapicgen typescript [options] &lt;generator&gt; &lt;swaggerFile&gt; &lt;outputPath&gt;
+
+Arguments:
+  generator         The tech stack to use for the generated client library
+                    Allowed values are: Angular, Aurelia, Axios, Fetch, Inversify, 
+                    JQuery, NestJS, Node, ReduxQuery, Rxjs.
+                    Default value is: Angular.
+  swaggerFile       Path to the Swagger / Open API specification file
+  outputPath        Output folder to write the generated code to
+                    Default value is: typescript-generated-code.
+
+Options:
+  -nl|--no-logging  Disables Analytics and Error Reporting
+  -?|-h|--help      Show help information.
+</code></pre></div></div>
+
+<h3 id="examples-1">Examples</h3>
+
+<p><strong>Angular:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen typescript Angular swagger.json ./angular-client
+</code></pre></div></div>
+
+<p><strong>React with Axios:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen typescript Axios swagger.json ./react-client
+</code></pre></div></div>
+
+<p><strong>Node.js:</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen typescript Node swagger.json ./node-client
+</code></pre></div></div>
+
+<h2 id="jmeter-test-generation">JMeter Test Generation</h2>
+
+<p>Generate Apache JMeter test plans from OpenAPI specifications:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen jmeter swagger.json
+</code></pre></div></div>
+
+<p>This creates a JMeter test plan (.jmx file) that includes:</p>
+<ul>
+  <li>Test scenarios for all API endpoints</li>
+  <li>Parameterized requests</li>
+  <li>Response validation</li>
+  <li>Load testing configuration</li>
+</ul>
+
+<h2 id="openapi-generator-integration">OpenAPI Generator Integration</h2>
+
+<p>Use OpenAPI Generator directly with extended options:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen openapi-generator <span class="o">[</span>generator] <span class="o">[</span>options] &lt;inputSpec&gt; &lt;outputDir&gt;
+</code></pre></div></div>
+
+<p>This provides access to all OpenAPI Generator features and languages. See the <a href="https://openapi-generator.tech/docs/generators/">OpenAPI Generator documentation</a> for all available generators.</p>
+
+<h2 id="examples-with-real-apis">Examples with Real APIs</h2>
+
+<h3 id="swagger-petstore-api">Swagger Petstore API</h3>
+
+<p>Download the Swagger Petstore specification:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># PowerShell</span>
+Invoke-WebRequest <span class="nt">-Uri</span> https://petstore.swagger.io/v3/swagger.json <span class="nt">-OutFile</span> swagger.json
+
+<span class="c"># curl</span>
+curl https://petstore.swagger.io/v3/swagger.json <span class="nt">-o</span> swagger.json
+</code></pre></div></div>
+
+<p>Generate clients:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># C# with NSwag</span>
+rapicgen csharp nswag swagger.json PetStore.Client ./PetStoreClient.cs
+
+<span class="c"># TypeScript for Angular</span>
+rapicgen typescript Angular swagger.json ./petstore-angular
+
+<span class="c"># JMeter test plan</span>
+rapicgen jmeter swagger.json
+</code></pre></div></div>
+
+<h2 id="cicd-integration">CI/CD Integration</h2>
+
+<p>The CLI tool is perfect for CI/CD pipelines:</p>
+
+<h3 id="github-actions-example">GitHub Actions Example</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Generate API Clients</span>
+
+<span class="na">on</span><span class="pi">:</span>
+  <span class="na">push</span><span class="pi">:</span>
+    <span class="na">paths</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s1">'</span><span class="s">api/swagger.json'</span>
+
+<span class="na">jobs</span><span class="pi">:</span>
+  <span class="na">generate</span><span class="pi">:</span>
+    <span class="na">runs-on</span><span class="pi">:</span> <span class="s">ubuntu-latest</span>
+    <span class="na">steps</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v3</span>
+    
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Setup .NET</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/setup-dotnet@v3</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">dotnet-version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">6.0.x'</span>
+        
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install rapicgen</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="s">dotnet tool install --global rapicgen</span>
+      
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Generate C# client</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="s">rapicgen csharp nswag api/swagger.json MyApi.Client src/ApiClient.cs</span>
+      
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Commit generated code</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+        <span class="s">git config --local user.email "action@github.com"</span>
+        <span class="s">git config --local user.name "GitHub Action"</span>
+        <span class="s">git add src/ApiClient.cs</span>
+        <span class="s">git commit -m "Update generated API client" || exit 0</span>
+        <span class="s">git push</span>
+</code></pre></div></div>
+
+<h3 id="azure-devops-example">Azure DevOps Example</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">trigger</span><span class="pi">:</span>
+  <span class="na">paths</span><span class="pi">:</span>
+    <span class="na">include</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">api/swagger.json</span>
+
+<span class="na">pool</span><span class="pi">:</span>
+  <span class="na">vmImage</span><span class="pi">:</span> <span class="s1">'</span><span class="s">ubuntu-latest'</span>
+
+<span class="na">steps</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">UseDotNet@2</span>
+  <span class="na">inputs</span><span class="pi">:</span>
+    <span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">6.0.x'</span>
+
+<span class="pi">-</span> <span class="na">script</span><span class="pi">:</span> <span class="s">dotnet tool install --global rapicgen</span>
+  <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Install</span><span class="nv"> </span><span class="s">rapicgen'</span>
+
+<span class="pi">-</span> <span class="na">script</span><span class="pi">:</span> <span class="s">rapicgen csharp nswag api/swagger.json MyApi.Client src/ApiClient.cs</span>
+  <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Generate</span><span class="nv"> </span><span class="s">API</span><span class="nv"> </span><span class="s">client'</span>
+
+<span class="pi">-</span> <span class="na">script</span><span class="pi">:</span> <span class="pi">|</span>
+    <span class="s">git config user.email "build@company.com"</span>
+    <span class="s">git config user.name "Azure DevOps"</span>
+    <span class="s">git add src/ApiClient.cs</span>
+    <span class="s">git commit -m "Update generated API client"</span>
+    <span class="s">git push origin HEAD:$(Build.SourceBranchName)</span>
+  <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Commit</span><span class="nv"> </span><span class="s">generated</span><span class="nv"> </span><span class="s">code'</span>
+</code></pre></div></div>
+
+<h2 id="options-and-configuration">Options and Configuration</h2>
+
+<h3 id="verbose-output">Verbose Output</h3>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">-v</code> or <code class="language-plaintext highlighter-rouge">--verbose</code> flag for detailed output:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen <span class="nt">-v</span> csharp nswag swagger.json MyNamespace ./output.cs
+</code></pre></div></div>
+
+<h3 id="disable-analytics">Disable Analytics</h3>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">-nl</code> or <code class="language-plaintext highlighter-rouge">--no-logging</code> flag to disable analytics:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen typescript <span class="nt">-nl</span> Angular swagger.json ./output
+</code></pre></div></div>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="common-issues">Common Issues</h3>
+
+<ol>
+  <li><strong>Java not found</strong>: Ensure Java is installed and in your PATH</li>
+  <li><strong>NPM not found</strong>: Install Node.js and NPM</li>
+  <li><strong>Permission errors</strong>: Run with appropriate permissions for file creation</li>
+  <li><strong>Network issues</strong>: Check firewall and proxy settings for dependency downloads</li>
+</ol>
+
+<h3 id="getting-help">Getting Help</h3>
+
+<p>For detailed help on any command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen <span class="o">[</span><span class="nb">command</span><span class="o">]</span> <span class="o">[</span>subcommand] -?
+</code></pre></div></div>
+
+<p>Example:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rapicgen csharp autorest -?
+</code></pre></div></div>
+
+  </div>
+</div>
+  </main>
+  
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>REST API Client Code Generator</h3>
+        <p>A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Links</h3>
+        <ul class="footer-links">
+          <li><a href="https://github.com/christianhelle/apiclientcodegen" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2022" target="_blank" rel="noopener">VS Marketplace</a></li>
+          <li><a href="https://www.nuget.org/packages/rapicgen" target="_blank" rel="noopener">NuGet</a></li>
+          <li><a href="https://christianhelle.com" target="_blank" rel="noopener">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Support</h3>
+        <p>
+          <a href="https://www.buymeacoffee.com/christianhelle" target="_blank" rel="noopener" class="support-link">
+            ☕ Buy me a coffee
+          </a>
+        </p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Christian Helle. Licensed under MIT.</p>
+    </div>
+  </div>
+</footer>
+  
+  <!-- JavaScript -->
+  <script src="/apiclientcodegen/assets/js/main.js"></script>
+</body>
+</html>

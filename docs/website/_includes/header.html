@@ -1,0 +1,28 @@
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a href="{{ '/' | relative_url }}" class="nav-brand">
+        <span class="nav-brand-icon">⚡</span>
+        <span class="nav-brand-text">{{ site.title }}</span>
+      </a>
+      
+      <div class="nav-menu">
+        <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
+        <a href="{{ '/features' | relative_url }}" class="nav-link">Features</a>
+        <a href="{{ '/download' | relative_url }}" class="nav-link">Download</a>
+        <a href="{{ '/cli' | relative_url }}" class="nav-link">CLI Tool</a>
+        <a href="https://github.com/christianhelle/apiclientcodegen" class="nav-link" target="_blank" rel="noopener">GitHub</a>
+        
+        <button class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-toggle-icon">🌙</span>
+        </button>
+      </div>
+      
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+  </div>
+</header>

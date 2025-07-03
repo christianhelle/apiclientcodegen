@@ -1,0 +1,16 @@
+# GitHub Pages configuration
+source: docs/website
+destination: _site
+url: "https://christianhelle.github.io"
+baseurl: "/apiclientcodegen"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# GitHub Pages settings
+github:
+  repository_url: https://github.com/christianhelle/apiclientcodegen

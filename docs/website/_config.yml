@@ -1,0 +1,24 @@
+# Site settings
+title: "REST API Client Code Generator"
+description: "A collection of Visual Studio C# custom tool code generators for Swagger / OpenAPI specification files"
+url: "https://christianhelle.github.io"
+baseurl: "/apiclientcodegen"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
+
+# Theme settings
+theme_color: "#2563eb"
+primary_color: "#1d4ed8"
