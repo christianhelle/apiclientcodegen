@@ -7,5 +7,12 @@
     "ghcr.io/devcontainers/features/java:1": {},
     "ghcr.io/devcontainers/features/ruby:1": {},
     "ghcr.io/devcontainers/features/powershell:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ChristianResmaHelle.apiclientcodegen"
+      ]
+    }
   }
 }
