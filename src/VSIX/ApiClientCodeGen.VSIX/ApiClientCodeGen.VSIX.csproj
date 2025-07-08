@@ -770,7 +770,7 @@
       <Version>5.0.1</Version>
     </PackageReference>
     <PackageReference Include="System.Text.Json">
-      <Version>8.0.5</Version>
+      <Version>8.0.6</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="..\ApiClientCodeGen.VSIX.Shared\ApiClientCodeGen.VSIX.Shared.projitems" Label="Shared" />
