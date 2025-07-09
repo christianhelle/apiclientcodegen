@@ -4,8 +4,15 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.29.0...HEAD)
 
+**Closed issues:**
+
+- Generate and Deploy Static Documentation Website from README [\#1226](https://github.com/christianhelle/apiclientcodegen/issues/1226)
+
 **Merged pull requests:**
 
+- Update dependency webpack to v5.100.0 [\#1231](https://github.com/christianhelle/apiclientcodegen/pull/1231) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/configure-pages action to v5 [\#1228](https://github.com/christianhelle/apiclientcodegen/pull/1228) ([renovate[bot]](https://github.com/apps/renovate))
+- Create Static Documentation Website from README [\#1227](https://github.com/christianhelle/apiclientcodegen/pull/1227) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Update dependency Polly to 8.6.1 [\#1216](https://github.com/christianhelle/apiclientcodegen/pull/1216) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.29.0](https://github.com/christianhelle/apiclientcodegen/tree/1.29.0) (2025-06-25)
