@@ -98,7 +98,7 @@ namespace Rapicgen.Core.Generators
 
             foreach (var file in files.Where(c => !c.EndsWith("tests.cs", StringComparison.OrdinalIgnoreCase)))
             {
-                var sourceLines = File.ReadAllLines(file);
+                var sourceLines = FileHelper.SafeReadAllLines(file);
                 foreach (var sourceLine in sourceLines)
                 {
                     if (string.IsNullOrWhiteSpace(sourceLine))
@@ -152,7 +152,7 @@ namespace Rapicgen.Core.Generators
 
             foreach (var file in files)
             {
-                IEnumerable<string> sourceLines = File.ReadAllLines(file);
+                IEnumerable<string> sourceLines = FileHelper.SafeReadAllLines(file);
 
                 foreach (var sourceLine in sourceLines)
                 {
@@ -177,7 +177,7 @@ namespace Rapicgen.Core.Generators
 
             foreach (var file in files)
             {
-                IEnumerable<string> sourceLines = File.ReadAllLines(file);
+                IEnumerable<string> sourceLines = FileHelper.SafeReadAllLines(file);
 
                 foreach (var sourceLine in sourceLines)
                 {
