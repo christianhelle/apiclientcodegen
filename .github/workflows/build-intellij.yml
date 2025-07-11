@@ -1,0 +1,29 @@
+name: IntelliJ Plugin CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x src/IntelliJ/gradlew
+
+    - name: Build and Test IntelliJ Plugin
+      run: ./gradlew buildPlugin runPluginVerifier
+      working-directory: src/IntelliJ
