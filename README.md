@@ -2,6 +2,7 @@
 [![CLI Tool](https://github.com/christianhelle/apiclientcodegen/actions/workflows/cli-tool.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/cli-tool.yml)
 [![VSIX](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vsix.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vsix.yml)
 [![VS Code](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vscode.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vscode.yml)
+[![IntelliJ Plugin](https://github.com/christianhelle/apiclientcodegen/actions/workflows/build-intellij.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/build-intellij.yml)
 ![Smoke Tests](https://github.com/christianhelle/apiclientcodegen/workflows/Smoke%20Tests/badge.svg)
 
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
@@ -198,6 +199,27 @@ Download the VSIX file from the [GitHub releases](https://github.com/christianhe
 2. Select "REST API Client Code Generator" in the context menu
 3. Choose one of the available code generators
 4. The generated code will open in the editor
+
+## IntelliJ Plugin
+
+The IntelliJ plugin provides similar functionality through a context menu on JSON and YAML files in the explorer. It executes the `rapicgen` .NET tool to generate code, so you will need to have the .NET SDK installed.
+
+### Installation
+
+Install the plugin from the JetBrains Marketplace or build it from source.
+
+### Features
+
+- Context menu on JSON and YAML files for generating code with various generators
+- Supports all code generators: NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, and AutoREST
+- Configuration options for namespace and output directory
+
+### Usage
+
+1. Right-click on a Swagger/OpenAPI specification file (JSON or YAML) in the IntelliJ/Rider explorer
+2. Select "Generate API Client" in the context menu
+3. Choose one of the available code generators
+4. The generated code will be placed in the specified output directory
 
 # Installation
 
