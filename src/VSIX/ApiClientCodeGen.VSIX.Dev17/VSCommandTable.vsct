@@ -44,7 +44,7 @@
       </Button>
       <Button guid="guidPackageCmdSet" id="KiotaCodeGeneratorCustomToolSetter" priority="0x0102" type="Button">
         <Strings>
-          <ButtonText>Generate with Microsoft Kiota (v1.27.0)</ButtonText>
+          <ButtonText>Generate with Microsoft Kiota (v1.28.0)</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidPackageCmdSet" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0103" type="Button">
@@ -104,7 +104,7 @@
       </Button>
       <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithKiota" priority="0x0103" type="Button">
         <Strings>
-          <ButtonText>Generate with Microsoft Kiota (v1.27.0)</ButtonText>
+          <ButtonText>Generate with Microsoft Kiota (v1.28.0)</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithSwagger" priority="0x0104" type="Button">
