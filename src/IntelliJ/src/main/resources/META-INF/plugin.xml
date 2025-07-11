@@ -1,0 +1,48 @@
+
+<idea-plugin>
+    <id>com.christianhelle.apiclientcodegen</id>
+    <name>API Client Code Gen</name>
+    <vendor>Christian Helle</vendor>
+
+    <description><![CDATA[
+    Generate API clients from OpenAPI specifications.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.rider</depends>
+
+    <resource-bundle>messages.MyBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="ApiClientCodeGen.Notifications" displayType="BALLOON"/>
+    </extensions>
+
+    <actions>
+        <group id="restApiClientCodeGenerator.submenu" text="REST API Client Generator" popup="true">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="ProjectViewEditSource"/>
+            <group id="restApiClientCodeGenerator.csharpSubmenu" text="C#" popup="true">
+                <action id="restApiClientCodeGenerator.nswag" class="com.christianhelle.apiclientcodegen.GenerateNSwagAction" text="Generate C# Client with NSwag" description="Generate C# client code using NSwag"/>
+                <action id="restApiClientCodeGenerator.refitter" class="com.christianhelle.apiclientcodegen.GenerateRefitterAction" text="Generate C# Client with Refitter" description="Generate C# client code using Refitter"/>
+                <action id="restApiClientCodeGenerator.openapi" class="com.christianhelle.apiclientcodegen.GenerateOpenApiAction" text="Generate C# Client with OpenAPI Generator" description="Generate C# client code using OpenAPI Generator"/>
+                <action id="restApiClientCodeGenerator.kiota" class="com.christianhelle.apiclientcodegen.GenerateKiotaAction" text="Generate C# Client with Microsoft Kiota" description="Generate C# client code using Microsoft Kiota"/>
+                <action id="restApiClientCodeGenerator.swagger" class="com.christianhelle.apiclientcodegen.GenerateSwaggerAction" text="Generate C# Client with Swagger" description="Generate C# client code using Swagger Codegen CLI"/>
+                <action id="restApiClientCodeGenerator.autorest" class="com.christianhelle.apiclientcodegen.GenerateAutoRestAction" text="Generate C# Client with AutoRest" description="Generate C# client code using AutoRest"/>
+            </group>
+            <group id="restApiClientCodeGenerator.typescriptSubmenu" text="TypeScript" popup="true">
+                <action id="restApiClientCodeGenerator.typescript.angular" class="com.christianhelle.apiclientcodegen.GenerateTypeScriptAction" text="Generate TypeScript Client for Angular" description="Generate TypeScript client code for Angular"/>
+                <action id="restApiClientCodeGenerator.typescript.aurelia" class="com.christianhelle.apiclientcodegen.GenerateTypeScriptAction" text="Generate TypeScript Client for Aurelia" description="Generate TypeScript client code for Aurelia"/>
+                <action id="restApiClientCodeGenerator.typescript.axios" class="com.christianhelle.apiclientcodegen.GenerateTypeScriptAction" text="Generate TypeScript Client for Axios" description="Generate TypeScript client code for Axios"/>
+                <action id="restApiClientCodeGenerator.typescript.fetch" class="com.christianhelle.apiclientcodegen.GenerateTypeScriptAction" text="Generate TypeScript Client for Fetch" description="Generate TypeScript client code for Fetch"/>
+                <action id="restApiClientCodeGenerator.typescript.inversify" class="com.christianhelle.apiclientcodegen.GenerateTypeScriptAction" text="Generate TypeScript Client for Inversify" description="Generate TypeScript client code for Inversify"/>
+                <action id="restApiClientCodeGenerator.typescript.jquery" class="com.christianhelle.apiclientcodegen.GenerateTypeScriptAction" text="Generate TypeScript Client for JQuery" description="Generate TypeScript client code for JQuery"/>
+                <action id="restApiClientCodeGenerator.typescript.nestjs" class="com.christianhelle.apiclientcodegen.GenerateTypeScriptAction" text="Generate TypeScript Client for NestJS" description="Generate TypeScript client code for NestJS"/>
+                <action id="restApiClientCodeGenerator.typescript.node" class="com.christianhelle.apiclientcodegen.GenerateTypeScriptAction" text="Generate TypeScript Client for Node" description="Generate TypeScript client code for Node"/>
+                <action id="restApiClientCodeGenerator.typescript.reduxquery" class="com.christianhelle.apiclientcodegen.GenerateTypeScriptAction" text="Generate TypeScript Client for Redux Query" description="Generate TypeScript client code for Redux Query"/>
+                <action id="restApiClientCodeGenerator.typescript.rxjs" class="com.christianhelle.apiclientcodegen.GenerateTypeScriptAction" text="Generate TypeScript Client for RxJS" description="Generate TypeScript client code for RxJS"/>
+            </group>
+        </group>
+        <action id="restApiClientCodeGenerator.refitterSettings" class="com.christianhelle.apiclientcodegen.GenerateRefitterSettingsAction" text="Generate Refitter Output" description="Generate Refitter output from a .refitter settings file">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="ProjectViewEditSource"/>
+        </action>
+    </actions>
+</idea-plugin>
