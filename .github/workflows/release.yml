@@ -79,7 +79,6 @@ jobs:
           docs/Marketplace*.md
     - name: Publish VSIX Packages
       if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
-      continue-on-error: true
       run: |
         $VsixPublisher = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
         & $VsixPublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
@@ -136,7 +135,6 @@ jobs:
         
     - name: Publish to VS Code Marketplace
       if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
-      continue-on-error: true
       run: |
         cd src/VSCode
         npx vsce publish -p ${{ secrets.MARKETPLACE_PAT }}
