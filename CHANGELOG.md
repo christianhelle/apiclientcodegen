@@ -1,12 +1,31 @@
 # Changelog
 
-## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+## [1.30.0](https://github.com/christianhelle/apiclientcodegen/tree/1.30.0) (2025-07-13)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.29.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.29.0...1.30.0)
+
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.28.0 [\#1237](https://github.com/christianhelle/apiclientcodegen/pull/1237) ([christianhelle](https://github.com/christianhelle))
 
 **Closed issues:**
 
 - Generate and Deploy Static Documentation Website from README [\#1226](https://github.com/christianhelle/apiclientcodegen/issues/1226)
+
+**Merged pull requests:**
+
+- Update dependency webpack to v5.100.1 [\#1236](https://github.com/christianhelle/apiclientcodegen/pull/1236) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.6.2 [\#1235](https://github.com/christianhelle/apiclientcodegen/pull/1235) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/vscode to v1.102.0 [\#1234](https://github.com/christianhelle/apiclientcodegen/pull/1234) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.16.3 [\#1233](https://github.com/christianhelle/apiclientcodegen/pull/1233) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Azure.Core to 1.47.0 [\#1232](https://github.com/christianhelle/apiclientcodegen/pull/1232) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency webpack to v5.100.0 [\#1231](https://github.com/christianhelle/apiclientcodegen/pull/1231) ([renovate[bot]](https://github.com/apps/renovate))
+- Refitter v1.6.1 [\#1229](https://github.com/christianhelle/apiclientcodegen/pull/1229) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/configure-pages action to v5 [\#1228](https://github.com/christianhelle/apiclientcodegen/pull/1228) ([renovate[bot]](https://github.com/apps/renovate))
+- Create Static Documentation Website from README [\#1227](https://github.com/christianhelle/apiclientcodegen/pull/1227) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Update dependency @types/node to v22.16.2 [\#1224](https://github.com/christianhelle/apiclientcodegen/pull/1224) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Microsoft.Rest.ClientRuntime to v3 [\#1219](https://github.com/christianhelle/apiclientcodegen/pull/1219) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.6.1 [\#1216](https://github.com/christianhelle/apiclientcodegen/pull/1216) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.29.0](https://github.com/christianhelle/apiclientcodegen/tree/1.29.0) (2025-06-25)
 
