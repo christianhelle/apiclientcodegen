@@ -169,7 +169,7 @@ jobs:
         release_name: v${{ env.VERSION }}
         draft: true
         prerelease: false
-    - uses: actions/download-artifact@v4
+    - uses: actions/download-artifact@v5
       with:
         path: artifacts
     - name: Upload VSIX asset
