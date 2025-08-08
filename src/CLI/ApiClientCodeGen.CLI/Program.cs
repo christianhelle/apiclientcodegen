@@ -49,7 +49,7 @@ namespace Rapicgen.CLI
                             .WithExample(new[] { "kiota", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<NSwagCommand>("nswag")
-                            .WithDescription("NSwag (v14.4.0)")
+                            .WithDescription("NSwag (v14.5.0)")
                             .WithExample(new[] { "nswag", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<RefitterCommand>("refitter")
