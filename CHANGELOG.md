@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.30.0...HEAD)
+
+**Closed issues:**
+
+- Setup CoPilot Instructions [\#1249](https://github.com/christianhelle/apiclientcodegen/issues/1249)
+
 ## [1.30.0](https://github.com/christianhelle/apiclientcodegen/tree/1.30.0) (2025-07-13)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.29.0...1.30.0)
