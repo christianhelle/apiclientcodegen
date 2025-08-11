@@ -15,7 +15,7 @@ jobs:
   CLI:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Sets environment variables - branch-name
       uses: christianhelle/branch-name@master
     - name: Sets environment variables - Nerdbank.GitVersioning
@@ -44,7 +44,7 @@ jobs:
   VSIX:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Sets environment variables - branch-name
       uses: christianhelle/branch-name@master
     - name: Sets environment variables - Nerdbank.GitVersioning
@@ -88,7 +88,7 @@ jobs:
   VSCode:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - name: Bump VSCode extension version
       run: |
