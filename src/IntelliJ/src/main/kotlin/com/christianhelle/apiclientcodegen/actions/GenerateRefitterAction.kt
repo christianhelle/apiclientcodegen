@@ -19,8 +19,10 @@ class GenerateRefitterAction : AnAction() {
             showError(project, "rapicgen tool not found. Install with: dotnet tool install --global rapicgen")
             return
         }
-        val outputFile = file.nameWithoutExtension + ".cs"
-        val cmd = listOf(rapicgen, "csharp", "refitter", file.path, "GeneratedCode", outputFile)
+    val namespace = prompt(project, "C# Namespace", "Enter namespace", "GeneratedCode") ?: return
+    val suggested = file.nameWithoutExtension + ".cs"
+    val outputFile = prompt(project, "Output Filename", "Enter output filename", suggested) ?: return
+    val cmd = listOf(rapicgen, "csharp", "refitter", file.path, namespace, outputFile)
         val log = StringBuilder()
         val code = runProcess(cmd, java.io.File(file.parent.path), { log.appendLine(it) }, { log.appendLine(it) })
         if (code == 0) {
