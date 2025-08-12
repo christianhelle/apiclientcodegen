@@ -30,7 +30,7 @@ internal fun showInfo(project: Project, message: String) =
     Messages.showInfoMessage(project, message, "REST API Client Code Generator")
 
 internal fun showError(project: Project, message: String) =
-    Messages.showErrorDialog(project, message)
+    Messages.showErrorDialog(project, message, "REST API Client Code Generator")
 
 internal fun VirtualFile.isOpenApiSpec(): Boolean = name.endsWith(".json", true) || name.endsWith(".yaml", true) || name.endsWith(".yml", true)
 internal fun VirtualFile.isRefitterConfig(): Boolean = name.endsWith(".refitter", true)

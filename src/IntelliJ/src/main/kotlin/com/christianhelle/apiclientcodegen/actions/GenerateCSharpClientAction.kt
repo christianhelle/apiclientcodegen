@@ -21,7 +21,14 @@ class GenerateCSharpClientAction : AnAction() {
             return
         }
     val generators = arrayOf("nswag", "refitter", "openapi", "kiota", "swagger", "autorest")
-    val choice = Messages.showChooseDialog(project, "Select C# generator", "C# Generator", generators, generators[0], Messages.getQuestionIcon()) ?: return
+        val choice = Messages.showChooseDialog(
+            project,
+            "Select C# generator",
+            "C# Generator",
+            generators,
+            generators[0],
+            Messages.getQuestionIcon()
+        ) ?: return
     val namespace = prompt(project, "C# Namespace", "Enter namespace", "GeneratedCode") ?: return
     val outputFile = file.nameWithoutExtension + "-${choice}.cs"
     val cmd = listOf(rapicgen, "csharp", choice, file.path, namespace, outputFile)

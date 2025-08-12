@@ -21,8 +21,15 @@ class GenerateTypeScriptClientAction : AnAction() {
             return
         }
     val generators = arrayOf("Angular", "Aurelia", "Axios", "Fetch", "Inversify", "JQuery", "NestJS", "Node", "ReduxQuery", "Rxjs")
-    val choice = Messages.showChooseDialog(project, "Select TypeScript generator", "TypeScript Generator", generators, generators[0], Messages.getQuestionIcon()) ?: return
-    val outputDir = prompt(project, "TypeScript Output", "Enter output directory", "typescript-${choice.toLowerCase()}-client") ?: return
+        val choice = Messages.showChooseDialog(
+            project,
+            "Select TypeScript generator",
+            "TypeScript Generator",
+            generators,
+            generators[0],
+            Messages.getQuestionIcon()
+        ) ?: return
+        val outputDir = prompt(project, "TypeScript Output", "Enter output directory", "typescript-${choice.lowercase()}-client") ?: return
     val cmd = listOf(rapicgen, "typescript", choice, file.path, outputDir)
         val log = StringBuilder()
         val code = runProcess(cmd, java.io.File(file.parent.path), { log.appendLine(it) }, { log.appendLine(it) })
