@@ -4,6 +4,12 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.30.0...HEAD)
 
+**Implemented enhancements:**
+
+- Create IntelliJ plugin matching VSCode extension features [\#1201](https://github.com/christianhelle/apiclientcodegen/issues/1201)
+- Initial IntelliJ plugin implementation with basic features [\#1261](https://github.com/christianhelle/apiclientcodegen/pull/1261) ([christianhelle](https://github.com/christianhelle))
+- NSwag v14.5.0 [\#1246](https://github.com/christianhelle/apiclientcodegen/pull/1246) ([renovate[bot]](https://github.com/apps/renovate))
+
 **Fixed bugs:**
 
 - Could not find a part of the path - AKA Path too long [\#1122](https://github.com/christianhelle/apiclientcodegen/issues/1122)
@@ -11,6 +17,27 @@
 **Closed issues:**
 
 - Setup CoPilot Instructions [\#1249](https://github.com/christianhelle/apiclientcodegen/issues/1249)
+
+**Merged pull requests:**
+
+- chore\(deps\): update vstest monorepo to 17.14.1 [\#1263](https://github.com/christianhelle/apiclientcodegen/pull/1263) ([renovate[bot]](https://github.com/apps/renovate))
+- Update Kiota dependencies to v1.19.1 [\#1262](https://github.com/christianhelle/apiclientcodegen/pull/1262) ([christianhelle](https://github.com/christianhelle))
+- Update dependency webpack to v5.101.1 [\#1260](https://github.com/christianhelle/apiclientcodegen/pull/1260) ([renovate[bot]](https://github.com/apps/renovate))
+- Fix long path issue in CSharpFileMerger for Kiota code generation on Windows [\#1252](https://github.com/christianhelle/apiclientcodegen/pull/1252) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Update actions/checkout action to v5 [\#1251](https://github.com/christianhelle/apiclientcodegen/pull/1251) ([renovate[bot]](https://github.com/apps/renovate))
+- Add comprehensive GitHub Copilot instructions for repository development workflow [\#1250](https://github.com/christianhelle/apiclientcodegen/pull/1250) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Update dependency node to v22 [\#1248](https://github.com/christianhelle/apiclientcodegen/pull/1248) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/download-artifact action to v5 [\#1247](https://github.com/christianhelle/apiclientcodegen/pull/1247) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency typescript to v5.9.2 [\#1245](https://github.com/christianhelle/apiclientcodegen/pull/1245) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.17.0 [\#1244](https://github.com/christianhelle/apiclientcodegen/pull/1244) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency webpack to v5.101.0 [\#1243](https://github.com/christianhelle/apiclientcodegen/pull/1243) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.16.5 [\#1242](https://github.com/christianhelle/apiclientcodegen/pull/1242) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency webpack to v5.100.2 [\#1241](https://github.com/christianhelle/apiclientcodegen/pull/1241) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Azure.Core to 1.47.1 [\#1240](https://github.com/christianhelle/apiclientcodegen/pull/1240) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.16.4 - autoclosed [\#1239](https://github.com/christianhelle/apiclientcodegen/pull/1239) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency xunit.runner.visualstudio to 3.1.3 [\#1238](https://github.com/christianhelle/apiclientcodegen/pull/1238) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency System.Text.Json to 8.0.6 [\#1230](https://github.com/christianhelle/apiclientcodegen/pull/1230) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency NuGet.VisualStudio to 17.14.0 [\#1137](https://github.com/christianhelle/apiclientcodegen/pull/1137) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.30.0](https://github.com/christianhelle/apiclientcodegen/tree/1.30.0) (2025-07-13)
 
