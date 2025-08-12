@@ -1,5 +1,3 @@
-import org.jetbrains.intellij.platform.gradle.tasks.RunIdeTask
-
 plugins {
     id("java")
     id("org.jetbrains.intellij.platform") version "2.0.1"
@@ -17,30 +15,22 @@ val javaVersion: String by project
 group = pluginGroup
 version = pluginVersion
 
-repositories {
-    mavenCentral()
-    intellijPlatform { defaultRepositories() }
-}
-
 intellijPlatform {
-    platform { version.set(platformVersion) }
+    defaultRepositories()
     pluginConfiguration {
         name.set(pluginName)
         version.set(pluginVersion)
         ideaVersion.sinceBuild.set(pluginSinceBuild)
         ideaVersion.untilBuild.set(pluginUntilBuild)
     }
+    dependencies { intellijIdeaCommunity(platformVersion) }
 }
 
-dependencies {
-    intellijPlatform { intellijIdeaCommunity(platformVersion) }
-    implementation(kotlin("stdlib"))
-}
+repositories { mavenCentral() }
+
+dependencies { implementation(kotlin("stdlib")) }
 
 tasks {
     withType<JavaCompile> { sourceCompatibility = javaVersion; targetCompatibility = javaVersion }
-    processResources {
-        from("../../images/icon.png") { rename { "pluginIcon.png" } }
-    }
-    register<RunIdeTask>("runRiderLike") { autoReloadPlugins.set(true) }
+    processResources { from("../../images/icon.png") { rename { "pluginIcon.png" } } }
 }
