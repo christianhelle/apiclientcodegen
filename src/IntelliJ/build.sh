@@ -26,13 +26,26 @@ echo "Java version check passed: Java $java_version"
 
 # Build the plugin
 echo "Running Gradle build..."
-./gradlew clean build
+echo "Note: First build may take several minutes to download dependencies..."
 
-if [ $? -eq 0 ]; then
-    echo "Build successful!"
-    echo "Plugin JAR can be found in build/distributions/"
-    ls -la build/distributions/ 2>/dev/null || echo "Distribution directory not yet created"
+# Try a simple task first to validate the setup
+echo "Validating Gradle setup..."
+if timeout 120 ./gradlew tasks --console=plain > /dev/null 2>&1; then
+    echo "Gradle setup validation successful"
+    
+    echo "Building plugin..."
+    if timeout 300 ./gradlew build --console=plain; then
+        echo "Build successful!"
+        echo "Plugin distribution files:"
+        find build/distributions -name "*.zip" 2>/dev/null || echo "Distribution directory not yet created"
+    else
+        echo "Build failed! Please check the Gradle configuration."
+        echo "You can try running './gradlew build --stacktrace' for detailed error information."
+        exit 1
+    fi
 else
-    echo "Build failed!"
+    echo "Gradle setup validation failed!"
+    echo "Please ensure Java 17+ is properly installed and JAVA_HOME is set correctly."
+    echo "You can try running './gradlew tasks --stacktrace' for detailed error information."
     exit 1
 fi
