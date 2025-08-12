@@ -1,96 +1,451 @@
 # Changelog
 
+## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.30.0...HEAD)
+
+**Fixed bugs:**
+
+- Could not find a part of the path - AKA Path too long [\#1122](https://github.com/christianhelle/apiclientcodegen/issues/1122)
+
+**Closed issues:**
+
+- Setup CoPilot Instructions [\#1249](https://github.com/christianhelle/apiclientcodegen/issues/1249)
+
 ## [1.30.0](https://github.com/christianhelle/apiclientcodegen/tree/1.30.0) (2025-07-13)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.29.0...1.30.0)
+
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.28.0 [\#1237](https://github.com/christianhelle/apiclientcodegen/pull/1237) ([christianhelle](https://github.com/christianhelle))
+
+**Closed issues:**
+
+- Generate and Deploy Static Documentation Website from README [\#1226](https://github.com/christianhelle/apiclientcodegen/issues/1226)
+
+**Merged pull requests:**
+
+- Update dependency webpack to v5.100.1 [\#1236](https://github.com/christianhelle/apiclientcodegen/pull/1236) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.6.2 [\#1235](https://github.com/christianhelle/apiclientcodegen/pull/1235) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/vscode to v1.102.0 [\#1234](https://github.com/christianhelle/apiclientcodegen/pull/1234) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.16.3 [\#1233](https://github.com/christianhelle/apiclientcodegen/pull/1233) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Azure.Core to 1.47.0 [\#1232](https://github.com/christianhelle/apiclientcodegen/pull/1232) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency webpack to v5.100.0 [\#1231](https://github.com/christianhelle/apiclientcodegen/pull/1231) ([renovate[bot]](https://github.com/apps/renovate))
+- Refitter v1.6.1 [\#1229](https://github.com/christianhelle/apiclientcodegen/pull/1229) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/configure-pages action to v5 [\#1228](https://github.com/christianhelle/apiclientcodegen/pull/1228) ([renovate[bot]](https://github.com/apps/renovate))
+- Create Static Documentation Website from README [\#1227](https://github.com/christianhelle/apiclientcodegen/pull/1227) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Update dependency @types/node to v22.16.2 [\#1224](https://github.com/christianhelle/apiclientcodegen/pull/1224) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Microsoft.Rest.ClientRuntime to v3 [\#1219](https://github.com/christianhelle/apiclientcodegen/pull/1219) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.6.1 [\#1216](https://github.com/christianhelle/apiclientcodegen/pull/1216) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.29.0](https://github.com/christianhelle/apiclientcodegen/tree/1.29.0) (2025-06-25)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.28.0...1.29.0)
 
+**Implemented enhancements:**
+
+- OpenAPI Generator v7.14.0 [\#1222](https://github.com/christianhelle/apiclientcodegen/pull/1222) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update dependency @vscode/vsce to v3.6.0 [\#1223](https://github.com/christianhelle/apiclientcodegen/pull/1223) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.15.33 [\#1221](https://github.com/christianhelle/apiclientcodegen/pull/1221) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency mocha to v11.7.1 [\#1220](https://github.com/christianhelle/apiclientcodegen/pull/1220) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.28.0](https://github.com/christianhelle/apiclientcodegen/tree/1.28.0) (2025-06-22)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.27.0...1.28.0)
+
+**Implemented enhancements:**
+
+- Refitter v1.6.0 [\#1217](https://github.com/christianhelle/apiclientcodegen/pull/1217) ([renovate[bot]](https://github.com/apps/renovate))
+
+**Merged pull requests:**
+
+- Update dependency Spectre.Console.Cli to 0.50.0 [\#1218](https://github.com/christianhelle/apiclientcodegen/pull/1218) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency mocha to v11.7.0 [\#1215](https://github.com/christianhelle/apiclientcodegen/pull/1215) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @vscode/vsce to v3.5.0 [\#1214](https://github.com/christianhelle/apiclientcodegen/pull/1214) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/vscode to v1.101.0 [\#1213](https://github.com/christianhelle/apiclientcodegen/pull/1213) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency xunit.runner.visualstudio to 3.1.1 [\#1212](https://github.com/christianhelle/apiclientcodegen/pull/1212) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Azure.Core to 1.46.2 [\#1211](https://github.com/christianhelle/apiclientcodegen/pull/1211) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.15.32 [\#1210](https://github.com/christianhelle/apiclientcodegen/pull/1210) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.27.0](https://github.com/christianhelle/apiclientcodegen/tree/1.27.0) (2025-06-19)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.26.0...1.27.0)
 
+**Implemented enhancements:**
+
+- Improve the CLI experience [\#1203](https://github.com/christianhelle/apiclientcodegen/issues/1203)
+- Microsoft Kiota v1.27.0 [\#1206](https://github.com/christianhelle/apiclientcodegen/pull/1206) ([christianhelle](https://github.com/christianhelle))
+- Update CLI Tool to use Spectre.Console [\#1205](https://github.com/christianhelle/apiclientcodegen/pull/1205) ([christianhelle](https://github.com/christianhelle))
+- Implement "Generate Refitter Output" in VS Code extension [\#1184](https://github.com/christianhelle/apiclientcodegen/pull/1184) ([christianhelle](https://github.com/christianhelle))
+
+**Fixed bugs:**
+
+- Release workflow fails to upload VSCode asset [\#1182](https://github.com/christianhelle/apiclientcodegen/issues/1182)
+- OpenAPI Generator fails in VS Code without error details if the JRE/JDK is not installed [\#1180](https://github.com/christianhelle/apiclientcodegen/issues/1180)
+- Argument null exception [\#1157](https://github.com/christianhelle/apiclientcodegen/issues/1157)
+
+**Closed issues:**
+
+- Fix typos and improve grammar in docs [\#1207](https://github.com/christianhelle/apiclientcodegen/issues/1207)
+- VSIX workflow stopped working [\#1198](https://github.com/christianhelle/apiclientcodegen/issues/1198)
+- Contribution Guidelines [\#1189](https://github.com/christianhelle/apiclientcodegen/issues/1189)
+- Reduce Code Duplication in Visual Studio Code Extension [\#1185](https://github.com/christianhelle/apiclientcodegen/issues/1185)
+
+**Merged pull requests:**
+
+- Update Microsoft Kiota dependencies to version 1.19.0 [\#1209](https://github.com/christianhelle/apiclientcodegen/pull/1209) ([christianhelle](https://github.com/christianhelle))
+- Fix typos and improve grammar in markdown documentation files [\#1208](https://github.com/christianhelle/apiclientcodegen/pull/1208) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Fix VSIX Builds [\#1200](https://github.com/christianhelle/apiclientcodegen/pull/1200) ([christianhelle](https://github.com/christianhelle))
+- Add comprehensive CONTRIBUTING.md with code patterns and PR guidelines [\#1190](https://github.com/christianhelle/apiclientcodegen/pull/1190) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Update dependency @types/node to v22.15.23 [\#1187](https://github.com/christianhelle/apiclientcodegen/pull/1187) ([renovate[bot]](https://github.com/apps/renovate))
+- Reduce Code Duplication in VSCode Extension and Fix Linting Issue [\#1186](https://github.com/christianhelle/apiclientcodegen/pull/1186) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Fix VSCode extension asset path in release workflow [\#1183](https://github.com/christianhelle/apiclientcodegen/pull/1183) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Add Java Runtime Check for OpenAPI Generator in VS Code Extension [\#1181](https://github.com/christianhelle/apiclientcodegen/pull/1181) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Update dependency mocha to v11.5.0 [\#1179](https://github.com/christianhelle/apiclientcodegen/pull/1179) ([renovate[bot]](https://github.com/apps/renovate))
+- Fix ArgumentException in OpenApiCSharpCodeGenerator.Sanitize method [\#1163](https://github.com/christianhelle/apiclientcodegen/pull/1163) ([Copilot](https://github.com/apps/copilot-swe-agent))
+
 ## [1.26.0](https://github.com/christianhelle/apiclientcodegen/tree/1.26.0) (2025-05-23)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.25.0...1.26.0)
+
+**Implemented enhancements:**
+
+- Use .refitter file from CLI Tool [\#1168](https://github.com/christianhelle/apiclientcodegen/issues/1168)
+- Allow input file to be empty when using --settings-file argument in CLI Tool [\#1173](https://github.com/christianhelle/apiclientcodegen/pull/1173) ([christianhelle](https://github.com/christianhelle))
+- Add support for using `.refitter` settings files from CLI [\#1169](https://github.com/christianhelle/apiclientcodegen/pull/1169) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Add TypeScript support to Visual Studio Code extension [\#1154](https://github.com/christianhelle/apiclientcodegen/pull/1154) ([christianhelle](https://github.com/christianhelle))
+- Group C\# Code Generators in Visual Studio Code [\#1153](https://github.com/christianhelle/apiclientcodegen/pull/1153) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update Microsoft Kiota package dependencies to version v1.17.3 [\#1178](https://github.com/christianhelle/apiclientcodegen/pull/1178) ([christianhelle](https://github.com/christianhelle))
+- Update dependency @vscode/vsce to v3.4.2 [\#1170](https://github.com/christianhelle/apiclientcodegen/pull/1170) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.15.21 [\#1167](https://github.com/christianhelle/apiclientcodegen/pull/1167) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency webpack to v5.99.9 [\#1166](https://github.com/christianhelle/apiclientcodegen/pull/1166) ([renovate[bot]](https://github.com/apps/renovate))
+- Update vstest monorepo to 17.14.0 [\#1165](https://github.com/christianhelle/apiclientcodegen/pull/1165) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency mocha to v11.4.0 [\#1162](https://github.com/christianhelle/apiclientcodegen/pull/1162) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Moq to 4.20.72 [\#1161](https://github.com/christianhelle/apiclientcodegen/pull/1161) ([renovate[bot]](https://github.com/apps/renovate))
+- Add links to other versions of the extension on the Marketplace [\#1160](https://github.com/christianhelle/apiclientcodegen/pull/1160) ([christianhelle](https://github.com/christianhelle))
+- Update dependency @vscode/vsce to v3.4.1 [\#1159](https://github.com/christianhelle/apiclientcodegen/pull/1159) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.15.19 [\#1158](https://github.com/christianhelle/apiclientcodegen/pull/1158) ([renovate[bot]](https://github.com/apps/renovate))
+- Enhance rapicgen tool management and rename package [\#1156](https://github.com/christianhelle/apiclientcodegen/pull/1156) ([christianhelle](https://github.com/christianhelle))
+- Update VS Code docs [\#1155](https://github.com/christianhelle/apiclientcodegen/pull/1155) ([christianhelle](https://github.com/christianhelle))
+- Update dependency webpack-cli to v6 [\#1151](https://github.com/christianhelle/apiclientcodegen/pull/1151) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency node to v22 [\#1150](https://github.com/christianhelle/apiclientcodegen/pull/1150) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency mocha to v11 [\#1149](https://github.com/christianhelle/apiclientcodegen/pull/1149) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.25.0](https://github.com/christianhelle/apiclientcodegen/tree/1.25.0) (2025-05-16)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.24.0...1.25.0)
 
+**Implemented enhancements:**
+
+- Visual Studio Code Extension [\#1141](https://github.com/christianhelle/apiclientcodegen/pull/1141) ([christianhelle](https://github.com/christianhelle))
+- Microsoft Kiota v1.26.1 [\#1140](https://github.com/christianhelle/apiclientcodegen/pull/1140) ([christianhelle](https://github.com/christianhelle))
+
+**Closed issues:**
+
+- System.MissingMethodException: Method not found: 'System.ReadOnlySpan`1\<Char\> System.Text.ValueStringBuilder.AsSpan\(\)'. [\#1132](https://github.com/christianhelle/apiclientcodegen/issues/1132)
+
+**Merged pull requests:**
+
+- Improve VS Code README [\#1146](https://github.com/christianhelle/apiclientcodegen/pull/1146) ([christianhelle](https://github.com/christianhelle))
+- Update actions/setup-node action to v4 [\#1145](https://github.com/christianhelle/apiclientcodegen/pull/1145) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/setup-dotnet action to v4 [\#1144](https://github.com/christianhelle/apiclientcodegen/pull/1144) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/checkout action to v4 [\#1143](https://github.com/christianhelle/apiclientcodegen/pull/1143) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v20.17.47 [\#1142](https://github.com/christianhelle/apiclientcodegen/pull/1142) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Azure.Core to 1.46.1 [\#1136](https://github.com/christianhelle/apiclientcodegen/pull/1136) ([renovate[bot]](https://github.com/apps/renovate))
+- Add support for .NET 8 and 9 to production tests workflow [\#1135](https://github.com/christianhelle/apiclientcodegen/pull/1135) ([christianhelle](https://github.com/christianhelle))
+- Smoke tests [\#1133](https://github.com/christianhelle/apiclientcodegen/pull/1133) ([christianhelle](https://github.com/christianhelle))
+
 ## [1.24.0](https://github.com/christianhelle/apiclientcodegen/tree/1.24.0) (2025-05-07)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.23.0...1.24.0)
+
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.26.0 [\#1131](https://github.com/christianhelle/apiclientcodegen/pull/1131) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update dependency Azure.Core to 1.46.0 [\#1130](https://github.com/christianhelle/apiclientcodegen/pull/1130) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.23.0](https://github.com/christianhelle/apiclientcodegen/tree/1.23.0) (2025-05-05)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.22.0...1.23.0)
 
+**Implemented enhancements:**
+
+- Allow Overriding UserAgent Name [\#1105](https://github.com/christianhelle/apiclientcodegen/issues/1105)
+- Refitter v1.5.5 [\#1129](https://github.com/christianhelle/apiclientcodegen/pull/1129) ([renovate[bot]](https://github.com/apps/renovate))
+- Add option for setting HTTP User Agent in OpenAPI Generator [\#1127](https://github.com/christianhelle/apiclientcodegen/pull/1127) ([christianhelle](https://github.com/christianhelle))
+- Add backward support for OpenAPI Generator v7.10.0 to v7.7.0 [\#1126](https://github.com/christianhelle/apiclientcodegen/pull/1126) ([christianhelle](https://github.com/christianhelle))
+- OpenAPI Generator v7.13.0 [\#1124](https://github.com/christianhelle/apiclientcodegen/pull/1124) ([christianhelle](https://github.com/christianhelle))
+- Refitter v1.5.4 [\#1123](https://github.com/christianhelle/apiclientcodegen/pull/1123) ([renovate[bot]](https://github.com/apps/renovate))
+- Multiple OpenAPI Generator version support [\#1121](https://github.com/christianhelle/apiclientcodegen/pull/1121) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update dependency xunit.runner.visualstudio to 3.1.0 [\#1128](https://github.com/christianhelle/apiclientcodegen/pull/1128) ([renovate[bot]](https://github.com/apps/renovate))
+- Update nswag monorepo to 14.4.0 [\#1125](https://github.com/christianhelle/apiclientcodegen/pull/1125) ([renovate[bot]](https://github.com/apps/renovate))
+- Update workflows to run on windows-latest [\#1120](https://github.com/christianhelle/apiclientcodegen/pull/1120) ([christianhelle](https://github.com/christianhelle))
+
 ## [1.22.0](https://github.com/christianhelle/apiclientcodegen/tree/1.22.0) (2025-04-08)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.21.0...1.22.0)
+
+**Implemented enhancements:**
+
+- Update Kiota dependencies to v1.17.2 [\#1116](https://github.com/christianhelle/apiclientcodegen/pull/1116) ([christianhelle](https://github.com/christianhelle))
+- Microsoft Kiota v1.24.3 [\#1109](https://github.com/christianhelle/apiclientcodegen/pull/1109) ([christianhelle](https://github.com/christianhelle))
+- Refitter v1.5.3 [\#1108](https://github.com/christianhelle/apiclientcodegen/pull/1108) ([renovate[bot]](https://github.com/apps/renovate))
+
+**Merged pull requests:**
+
+- Update dependency Exceptionless to 6.1.0 [\#1118](https://github.com/christianhelle/apiclientcodegen/pull/1118) ([renovate[bot]](https://github.com/apps/renovate))
+- NSwag v14.3.0 [\#1107](https://github.com/christianhelle/apiclientcodegen/pull/1107) ([christianhelle](https://github.com/christianhelle))
 
 ## [1.21.0](https://github.com/christianhelle/apiclientcodegen/tree/1.21.0) (2025-03-13)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.20.0...1.21.0)
 
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.24.0 [\#1104](https://github.com/christianhelle/apiclientcodegen/pull/1104) ([christianhelle](https://github.com/christianhelle))
+- Fallback to using included OpenJDK if JAVA\_HOME doesn't exist [\#1103](https://github.com/christianhelle/apiclientcodegen/pull/1103) ([christianhelle](https://github.com/christianhelle))
+
 ## [1.20.0](https://github.com/christianhelle/apiclientcodegen/tree/1.20.0) (2025-03-03)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.19.0...1.20.0)
+
+**Implemented enhancements:**
+
+- OpenAPI Generator v7.12.0 [\#1101](https://github.com/christianhelle/apiclientcodegen/pull/1101) ([christianhelle](https://github.com/christianhelle))
+- Microsoft Kiota v1.23.0 [\#1093](https://github.com/christianhelle/apiclientcodegen/pull/1093) ([christianhelle](https://github.com/christianhelle))
+- Refitter v1.5.2 [\#1085](https://github.com/christianhelle/apiclientcodegen/pull/1085) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update dependency NuGet.VisualStudio to 17.13.2 [\#1102](https://github.com/christianhelle/apiclientcodegen/pull/1102) ([renovate[bot]](https://github.com/apps/renovate))
+- Update vstest monorepo to 17.13.0 [\#1100](https://github.com/christianhelle/apiclientcodegen/pull/1100) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Microsoft.ApplicationInsights.WindowsServer to 2.23.0 [\#1098](https://github.com/christianhelle/apiclientcodegen/pull/1098) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency FluentAssertions to 7.2.0 [\#1097](https://github.com/christianhelle/apiclientcodegen/pull/1097) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Azure.Core to 1.45.0 [\#1096](https://github.com/christianhelle/apiclientcodegen/pull/1096) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency xunit.runner.visualstudio to 3.0.2 [\#1095](https://github.com/christianhelle/apiclientcodegen/pull/1095) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ICSharpCode.CodeConverter to 9.2.7.792 [\#1094](https://github.com/christianhelle/apiclientcodegen/pull/1094) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.5.2 [\#1086](https://github.com/christianhelle/apiclientcodegen/pull/1086) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency dotnet-sdk to v6.0.428 [\#1042](https://github.com/christianhelle/apiclientcodegen/pull/1042) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency NuGet.VisualStudio to 17.13.1 [\#964](https://github.com/christianhelle/apiclientcodegen/pull/964) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.19.0](https://github.com/christianhelle/apiclientcodegen/tree/1.19.0) (2025-01-25)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.18.0...1.19.0)
 
+**Implemented enhancements:**
+
+- Refitter v1.5.1 [\#1083](https://github.com/christianhelle/apiclientcodegen/pull/1083) ([christianhelle](https://github.com/christianhelle))
+- Fix non-editable HTTP headers Grid [\#1081](https://github.com/christianhelle/apiclientcodegen/pull/1081) ([christianhelle](https://github.com/christianhelle))
+- OpenAPI Generator v7.11.0 [\#1080](https://github.com/christianhelle/apiclientcodegen/pull/1080) ([christianhelle](https://github.com/christianhelle))
+- Refitter v1.5.0 [\#1078](https://github.com/christianhelle/apiclientcodegen/pull/1078) ([renovate[bot]](https://github.com/apps/renovate))
+
+**Merged pull requests:**
+
+- Update dependency coverlet.collector to 6.0.4 [\#1079](https://github.com/christianhelle/apiclientcodegen/pull/1079) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency FluentAssertions to 7.1.0 [\#1077](https://github.com/christianhelle/apiclientcodegen/pull/1077) ([renovate[bot]](https://github.com/apps/renovate))
+- Update Kiota dependencies to v1.16.4 [\#1076](https://github.com/christianhelle/apiclientcodegen/pull/1076) ([christianhelle](https://github.com/christianhelle))
+- Update dependency Polly to 8.5.1 [\#1074](https://github.com/christianhelle/apiclientcodegen/pull/1074) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.18.0](https://github.com/christianhelle/apiclientcodegen/tree/1.18.0) (2025-01-10)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.17.0...1.18.0)
+
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.22.0 [\#1073](https://github.com/christianhelle/apiclientcodegen/pull/1073) ([christianhelle](https://github.com/christianhelle))
+- Update Kiota dependencies to v1.16.1 [\#1064](https://github.com/christianhelle/apiclientcodegen/pull/1064) ([christianhelle](https://github.com/christianhelle))
+- Update Microsoft Kiota dependencies to v1.16.0 [\#1062](https://github.com/christianhelle/apiclientcodegen/pull/1062) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update xunit-dotnet monorepo [\#1072](https://github.com/christianhelle/apiclientcodegen/pull/1072) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency coverlet.collector to 6.0.3 [\#1065](https://github.com/christianhelle/apiclientcodegen/pull/1065) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency xunit.runner.visualstudio to v3 [\#1063](https://github.com/christianhelle/apiclientcodegen/pull/1063) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.17.0](https://github.com/christianhelle/apiclientcodegen/tree/1.17.0) (2024-12-06)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.16.0...1.17.0)
 
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.21.0 [\#1054](https://github.com/christianhelle/apiclientcodegen/pull/1054) ([christianhelle](https://github.com/christianhelle))
+- NSwag v14.2.0 [\#1051](https://github.com/christianhelle/apiclientcodegen/pull/1051) ([christianhelle](https://github.com/christianhelle))
+- Refitter v1.4.1 [\#1050](https://github.com/christianhelle/apiclientcodegen/pull/1050) ([renovate[bot]](https://github.com/apps/renovate))
+- Remove Visual Studio for Mac support from Github Workflows [\#1046](https://github.com/christianhelle/apiclientcodegen/pull/1046) ([christianhelle](https://github.com/christianhelle))
+- OpenAPI Generator v7.10.0 [\#1044](https://github.com/christianhelle/apiclientcodegen/pull/1044) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update dependency FluentAssertions to v7 [\#1053](https://github.com/christianhelle/apiclientcodegen/pull/1053) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Xunit.SkippableFact to 1.5.23 [\#1052](https://github.com/christianhelle/apiclientcodegen/pull/1052) ([renovate[bot]](https://github.com/apps/renovate))
+- Update NSwag packages to v14.2.0 [\#1048](https://github.com/christianhelle/apiclientcodegen/pull/1048) ([renovate[bot]](https://github.com/apps/renovate))
+- Update vstest monorepo to 17.12.0 [\#1047](https://github.com/christianhelle/apiclientcodegen/pull/1047) ([renovate[bot]](https://github.com/apps/renovate))
+- Update MacOS runner [\#1045](https://github.com/christianhelle/apiclientcodegen/pull/1045) ([christianhelle](https://github.com/christianhelle))
+- Update Microsoft Kiota dependencies to v1.15.2 [\#1041](https://github.com/christianhelle/apiclientcodegen/pull/1041) ([christianhelle](https://github.com/christianhelle))
+- Update AutoRestArgumentProvider.cs [\#1040](https://github.com/christianhelle/apiclientcodegen/pull/1040) ([tiagffborges](https://github.com/tiagffborges))
+- Update dependency cake.tool to v5 [\#1039](https://github.com/christianhelle/apiclientcodegen/pull/1039) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.5.0 [\#1037](https://github.com/christianhelle/apiclientcodegen/pull/1037) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.16.0](https://github.com/christianhelle/apiclientcodegen/tree/1.16.0) (2024-11-07)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.15.0...1.16.0)
+
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.20.0 [\#1034](https://github.com/christianhelle/apiclientcodegen/pull/1034) ([christianhelle](https://github.com/christianhelle))
+- Update Kiota dependencies to v1.14.0 [\#1033](https://github.com/christianhelle/apiclientcodegen/pull/1033) ([christianhelle](https://github.com/christianhelle))
+- Update dependency Refitter.Core to 1.4.0 [\#1024](https://github.com/christianhelle/apiclientcodegen/pull/1024) ([renovate[bot]](https://github.com/apps/renovate))
+
+**Merged pull requests:**
+
+- Update dependency Refit to v8 [\#1032](https://github.com/christianhelle/apiclientcodegen/pull/1032) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency cake.tool to 4.2.0 [\#1025](https://github.com/christianhelle/apiclientcodegen/pull/1025) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.15.0](https://github.com/christianhelle/apiclientcodegen/tree/1.15.0) (2024-10-11)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.14.0...1.15.0)
 
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.19.1 [\#1023](https://github.com/christianhelle/apiclientcodegen/pull/1023) ([christianhelle](https://github.com/christianhelle))
+- Include version information in App Insights telemetry [\#1015](https://github.com/christianhelle/apiclientcodegen/pull/1015) ([christianhelle](https://github.com/christianhelle))
+- OpenAPI Generator v7.9.0 [\#1011](https://github.com/christianhelle/apiclientcodegen/pull/1011) ([christianhelle](https://github.com/christianhelle))
+
+**Closed issues:**
+
+- VS 2022, Unrecognized command or argument '--type-access-modifier'  'public. [\#1016](https://github.com/christianhelle/apiclientcodegen/issues/1016)
+
+**Merged pull requests:**
+
+- Update dotnet monorepo [\#1012](https://github.com/christianhelle/apiclientcodegen/pull/1012) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Azure.Core to 1.44.1 [\#982](https://github.com/christianhelle/apiclientcodegen/pull/982) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.14.0](https://github.com/christianhelle/apiclientcodegen/tree/1.14.0) (2024-10-07)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.11.0...1.14.0)
+
+**Implemented enhancements:**
+
+- Add support --type-access-modifier option for Microsoft Kiota [\#1010](https://github.com/christianhelle/apiclientcodegen/pull/1010) ([christianhelle](https://github.com/christianhelle))
+- Microsoft Kiota v1.19.0 [\#1008](https://github.com/christianhelle/apiclientcodegen/pull/1008) ([christianhelle](https://github.com/christianhelle))
+- use correct framework [\#1007](https://github.com/christianhelle/apiclientcodegen/pull/1007) ([kasperk81](https://github.com/kasperk81))
+- Update Kiota dependencies to v1.13.0 [\#1001](https://github.com/christianhelle/apiclientcodegen/pull/1001) ([christianhelle](https://github.com/christianhelle))
+- Refitter v1.3.2 [\#995](https://github.com/christianhelle/apiclientcodegen/pull/995) ([renovate[bot]](https://github.com/apps/renovate))
+- Update Kiota package references to version 1.12.4 in smoke tests [\#989](https://github.com/christianhelle/apiclientcodegen/pull/989) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update dependency xunit to 2.9.2 [\#1005](https://github.com/christianhelle/apiclientcodegen/pull/1005) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.4.2 [\#1004](https://github.com/christianhelle/apiclientcodegen/pull/1004) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency xunit to 2.9.1 [\#996](https://github.com/christianhelle/apiclientcodegen/pull/996) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Refit to 7.2.1 [\#994](https://github.com/christianhelle/apiclientcodegen/pull/994) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Refit to 7.2.0 [\#990](https://github.com/christianhelle/apiclientcodegen/pull/990) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency JsonSubTypes to 1.9.0 [\#983](https://github.com/christianhelle/apiclientcodegen/pull/983) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.4.1 [\#981](https://github.com/christianhelle/apiclientcodegen/pull/981) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency RestSharp to v112 \[SECURITY\] [\#980](https://github.com/christianhelle/apiclientcodegen/pull/980) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Refitter.Core to 1.3.0 [\#979](https://github.com/christianhelle/apiclientcodegen/pull/979) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency FluentAssertions to 6.12.1 [\#977](https://github.com/christianhelle/apiclientcodegen/pull/977) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.11.0](https://github.com/christianhelle/apiclientcodegen/tree/1.11.0) (2024-09-05)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.9...1.11.0)
 
+**Implemented enhancements:**
+
+- Update Kiota package dependencies for v1.18.0  compatibility [\#976](https://github.com/christianhelle/apiclientcodegen/pull/976) ([christianhelle](https://github.com/christianhelle))
+- Microsoft Kiota v1.18.0 [\#975](https://github.com/christianhelle/apiclientcodegen/pull/975) ([christianhelle](https://github.com/christianhelle))
+- Using config file and add parameters causes a command error [\#973](https://github.com/christianhelle/apiclientcodegen/pull/973) ([BryanAldrich](https://github.com/BryanAldrich))
+
+**Merged pull requests:**
+
+- Update vstest monorepo to 17.11.1 [\#974](https://github.com/christianhelle/apiclientcodegen/pull/974) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Moq to 4.20.71 [\#972](https://github.com/christianhelle/apiclientcodegen/pull/972) ([renovate[bot]](https://github.com/apps/renovate))
+- Update vstest monorepo to v17.11.0 [\#969](https://github.com/christianhelle/apiclientcodegen/pull/969) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.10.9](https://github.com/christianhelle/apiclientcodegen/tree/1.10.9) (2024-08-19)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.8...1.10.9)
+
+**Implemented enhancements:**
+
+- OpenAPI Generator v7.8.0 [\#968](https://github.com/christianhelle/apiclientcodegen/pull/968) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update dependency dotnet-sdk to v6.0.425 [\#967](https://github.com/christianhelle/apiclientcodegen/pull/967) ([renovate[bot]](https://github.com/apps/renovate))
+- Refitter v1.2.0 [\#963](https://github.com/christianhelle/apiclientcodegen/pull/963) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.10.8](https://github.com/christianhelle/apiclientcodegen/tree/1.10.8) (2024-08-12)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.7...1.10.8)
 
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.17.0 [\#962](https://github.com/christianhelle/apiclientcodegen/pull/962) ([christianhelle](https://github.com/christianhelle))
+- Add support for .NET 8.0 to the OpenAPI Generator target framework options [\#961](https://github.com/christianhelle/apiclientcodegen/pull/961) ([christianhelle](https://github.com/christianhelle))
+- Refitter v1.1.3 [\#959](https://github.com/christianhelle/apiclientcodegen/pull/959) ([renovate[bot]](https://github.com/apps/renovate))
+
+**Fixed bugs:**
+
+- OpenAPI - default Target Framework NET8.0 missing [\#960](https://github.com/christianhelle/apiclientcodegen/issues/960)
+
 ## [1.10.7](https://github.com/christianhelle/apiclientcodegen/tree/1.10.7) (2024-07-19)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.6...1.10.7)
+
+**Implemented enhancements:**
+
+- Refitter v1.1.2 [\#958](https://github.com/christianhelle/apiclientcodegen/pull/958) ([renovate[bot]](https://github.com/apps/renovate))
+- NSwag v14.1.0 [\#957](https://github.com/christianhelle/apiclientcodegen/pull/957) ([renovate[bot]](https://github.com/apps/renovate))
+
+**Closed issues:**
+
+- Kiota sdk gen output  [\#956](https://github.com/christianhelle/apiclientcodegen/issues/956)
+
+**Merged pull requests:**
+
+- Update dependency dotnet-sdk to v6.0.424 [\#955](https://github.com/christianhelle/apiclientcodegen/pull/955) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency System.Text.Json to v8 \[SECURITY\] [\#953](https://github.com/christianhelle/apiclientcodegen/pull/953) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ICSharpCode.CodeConverter to v9.2.6.717 [\#951](https://github.com/christianhelle/apiclientcodegen/pull/951) ([renovate[bot]](https://github.com/apps/renovate))
+- Update xunit-dotnet monorepo [\#950](https://github.com/christianhelle/apiclientcodegen/pull/950) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.10.6](https://github.com/christianhelle/apiclientcodegen/tree/1.10.6) (2024-07-07)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.5...1.10.6)
 
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.16.0 [\#948](https://github.com/christianhelle/apiclientcodegen/pull/948) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Refitter v1.1.1 [\#949](https://github.com/christianhelle/apiclientcodegen/pull/949) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.10.5](https://github.com/christianhelle/apiclientcodegen/tree/1.10.5) (2024-07-02)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.10.4...1.10.5)
+
+**Implemented enhancements:**
+
+- NSwag v14.0.8 [\#947](https://github.com/christianhelle/apiclientcodegen/pull/947) ([christianhelle](https://github.com/christianhelle))
+- OpenAPI Generator v7.7.0 [\#946](https://github.com/christianhelle/apiclientcodegen/pull/946) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update dependency Polly to v8.4.1 [\#945](https://github.com/christianhelle/apiclientcodegen/pull/945) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.10.4](https://github.com/christianhelle/apiclientcodegen/tree/1.10.4) (2024-06-25)
 
