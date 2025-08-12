@@ -15,20 +15,24 @@ val javaVersion: String by project
 group = pluginGroup
 version = pluginVersion
 
+repositories {
+    mavenCentral()
+    intellijPlatform { defaultRepositories() }
+}
+
 intellijPlatform {
-    defaultRepositories()
     pluginConfiguration {
         name.set(pluginName)
         version.set(pluginVersion)
         ideaVersion.sinceBuild.set(pluginSinceBuild)
         ideaVersion.untilBuild.set(pluginUntilBuild)
     }
-    dependencies { intellijIdeaCommunity(platformVersion) }
 }
 
-repositories { mavenCentral() }
-
-dependencies { implementation(kotlin("stdlib")) }
+dependencies {
+    intellijPlatform { intellijIdeaCommunity(platformVersion) }
+    implementation(kotlin("stdlib"))
+}
 
 tasks {
     withType<JavaCompile> { sourceCompatibility = javaVersion; targetCompatibility = javaVersion }
