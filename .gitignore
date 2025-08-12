@@ -289,3 +289,7 @@ src/VSCode/dist
 src/VSCode-Test/samples/petstore.*.cs
 test/VSCode-Test/samples
 docs/website/_site/
+src/IntelliJ/.gradle
+src/IntelliJ/.intellijPlatform
+src/IntelliJ/build
+src/java
