@@ -27,7 +27,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Sets environment variables - branch-name
       uses: christianhelle/branch-name@master
     - name: Sets environment variables - Nerdbank.GitVersioning
