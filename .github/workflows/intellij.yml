@@ -31,7 +31,7 @@ jobs:
         java-version: '17'
 
     - name: Setup Gradle
-      uses: gradle/gradle-build-action@v3
+      uses: gradle/actions/setup-gradle@v3
 
     - name: Update plugin version
       run: |
@@ -41,7 +41,8 @@ jobs:
     - name: Build plugin
       run: |
         cd src/IntelliJ
-        ./gradlew build
+        gradle wrapper --gradle-version 8.2 --distribution-type bin
+        ./gradlew buildPlugin
 
     - name: Verify plugin structure
       run: |
