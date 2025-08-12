@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<idea-plugin>
+    <id>com.christianhelle.apiclientcodegen</id>
+    <name>REST API Client Code Generator</name>
+    <vendor url="https://github.com/christianhelle/apiclientcodegen">Christian Resma Helle</vendor>
+    <description><![CDATA[
+        Generate C# and TypeScript REST API clients from OpenAPI / Swagger specifications using NSwag, Refitter, OpenAPI Generator, Kiota, Swagger Codegen CLI, and AutoRest. Adds project view context menus for spec and .refitter files.
+    ]]></description>
+    <version>${pluginVersion}</version>
+    <idea-version since-build="${pluginSinceBuild}" until-build="${pluginUntilBuild}"/>
+    <depends>com.intellij.modules.platform</depends>
+    <actions>
+        <group id="ApiClientCodeGen.Group" text="REST API Client Code Generator" popup="true">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </group>
+    </actions>
+</idea-plugin>
