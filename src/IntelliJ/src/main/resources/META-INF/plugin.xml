@@ -12,6 +12,9 @@
     <actions>
         <group id="ApiClientCodeGen.Group" text="REST API Client Code Generator" popup="true">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+            <action id="ApiClientCodeGen.CSharp" class="com.christianhelle.apiclientcodegen.actions.GenerateCSharpClientAction" text="Generate C# Client (NSwag)" description="Generate C# REST API Client using NSwag"/>
+            <action id="ApiClientCodeGen.TypeScript" class="com.christianhelle.apiclientcodegen.actions.GenerateTypeScriptClientAction" text="Generate TypeScript Client (Angular)" description="Generate TypeScript REST API Client (Angular)"/>
+            <action id="ApiClientCodeGen.Refitter" class="com.christianhelle.apiclientcodegen.actions.GenerateRefitterAction" text="Generate Refitter Output" description="Generate Refit interfaces from .refitter file"/>
         </group>
     </actions>
 </idea-plugin>

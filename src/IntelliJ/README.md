@@ -2,11 +2,14 @@
 
 Early preview plugin providing similar code generation features as the VS Code extension, inside JetBrains IDEs (target Rider 2025.1.5).
 
-### Features
+### Preview Features Implemented
 
-- (Planned) Context menu on OpenAPI spec files (`.json`, `.yaml`, `.yml`) to generate C# or TypeScript clients
-- (Planned) `.refitter` settings file support to generate Refit interfaces
-- Uses installed `rapicgen` .NET tool; will prompt if missing
+- Context menu on OpenAPI spec files (`.json`, `.yaml`, `.yml`):
+	- Generate C# Client (NSwag)
+	- Generate TypeScript Client (Angular)
+- Context menu on `.refitter` files: Generate Refitter Output (Refit interface + contracts)
+- Prompts for namespace (C#) or output folder (TypeScript)
+- Uses installed `rapicgen` .NET tool; shows guidance if missing
 
 ### Requirements
 
@@ -30,4 +33,4 @@ Early preview plugin providing similar code generation features as the VS Code e
 - `run-intellij.ps1` – run sandbox
 
 ---
-Implementation in progress.
+Implementation in progress – additional generators and options forthcoming.
