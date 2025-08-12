@@ -3,11 +3,14 @@ package com.christianhelle.apiclientcodegen.actions
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
+import com.intellij.openapi.actionSystem.ActionUpdateThread
+import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.vfs.LocalFileSystem
 import com.intellij.openapi.vfs.VfsUtil
 import java.nio.file.Paths
 
-abstract class CSharpGeneratorAction(private val generator: String): AnAction() {
+abstract class CSharpGeneratorAction(private val generator: String): AnAction(), DumbAware {
+    override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
     override fun update(e: AnActionEvent) { e.presentation.isEnabledAndVisible = e.getData(CommonDataKeys.VIRTUAL_FILE)?.isOpenApiSpec() == true }
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
@@ -25,7 +28,8 @@ abstract class CSharpGeneratorAction(private val generator: String): AnAction() 
     }
 }
 
-abstract class TypeScriptGeneratorAction(private val generator: String): AnAction() {
+abstract class TypeScriptGeneratorAction(private val generator: String): AnAction(), DumbAware {
+    override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
     override fun update(e: AnActionEvent) { e.presentation.isEnabledAndVisible = e.getData(CommonDataKeys.VIRTUAL_FILE)?.isOpenApiSpec() == true }
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return

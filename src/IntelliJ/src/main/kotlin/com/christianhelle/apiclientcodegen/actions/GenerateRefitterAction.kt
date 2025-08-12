@@ -3,10 +3,13 @@ package com.christianhelle.apiclientcodegen.actions
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
+import com.intellij.openapi.actionSystem.ActionUpdateThread
+import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.vfs.VfsUtil
 import java.nio.file.Paths
 
-class GenerateRefitterAction : AnAction() {
+class GenerateRefitterAction : AnAction(), DumbAware {
+    override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
     override fun update(e: AnActionEvent) {
         val file = e.getData(CommonDataKeys.VIRTUAL_FILE)
         e.presentation.isEnabledAndVisible = file?.isRefitterConfig() == true
