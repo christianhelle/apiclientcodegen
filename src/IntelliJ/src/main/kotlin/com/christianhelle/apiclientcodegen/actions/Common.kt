@@ -19,12 +19,7 @@ internal fun runProcess(command: List<String>, workingDir: java.io.File, onStdOu
     val pb = ProcessBuilder(command).directory(workingDir).redirectErrorStream(false)
     val process = pb.start()
     BufferedReader(InputStreamReader(process.inputStream)).use { r -> r.lines().forEach(onStdOut) }
-    val stderrThread = Thread {
-        BufferedReader(InputStreamReader(process.errorStream)).use { r -> r.lines().forEach(onStdErr) }
-    }
-    stderrThread.start()
-    BufferedReader(InputStreamReader(process.inputStream)).use { r -> r.lines().forEach(onStdOut) }
-    stderrThread.join()
+    BufferedReader(InputStreamReader(process.errorStream)).use { r -> r.lines().forEach(onStdErr) }
     return process.waitFor()
 }
 
