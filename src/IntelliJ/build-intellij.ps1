@@ -42,17 +42,23 @@ function Get-Jdk21 {
 	$downloadDir = Join-Path $PSScriptRoot '..' | Join-Path -ChildPath 'java'
 	if (-not (Test-Path $downloadDir)) { New-Item -ItemType Directory -Force -Path $downloadDir | Out-Null }
 	$zipPath = Join-Path $downloadDir 'jdk21.zip'
-	$extractPath = Join-Path $downloadDir 'jdk21-extracted'
+	$extractRoot = Join-Path $downloadDir 'jdk21-extracted'
+	$extractPath = Join-Path $extractRoot ([guid]::NewGuid().ToString())
 	try {
 		$jdkUrl = 'https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jdk_x64_windows_hotspot_21.0.3_9.zip'
 		Write-Host "Downloading $jdkUrl" -ForegroundColor Cyan
 		Invoke-WebRequest -Uri $jdkUrl -OutFile $zipPath -UseBasicParsing
 		Write-Host "Extracting JDK..." -ForegroundColor Cyan
 		Add-Type -AssemblyName System.IO.Compression.FileSystem
-		if (Test-Path $extractPath) { Remove-Item -Recurse -Force $extractPath }
+		if (Test-Path $extractRoot) { Get-ChildItem $extractRoot | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue }
 		New-Item -ItemType Directory -Force -Path $extractPath | Out-Null
-		[System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $extractPath)
-		$folder = Get-ChildItem $extractPath | Where-Object { $_.PSIsContainer -and (Test-Path (Join-Path $_.FullName 'bin/javac.exe')) } | Select-Object -First 1
+		try {
+			[System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $extractPath)
+		} catch {
+			Write-Warning "ZipFile extraction failed: $($_.Exception.Message) - retry with Expand-Archive"
+			Expand-Archive -Path $zipPath -DestinationPath $extractPath -Force
+		}
+		$folder = Get-ChildItem $extractPath -Recurse -Directory | Where-Object { Test-Path (Join-Path $_.FullName 'bin/javac.exe') } | Select-Object -First 1
 		if ($folder) {
 			$env:JAVA_HOME = $folder.FullName
 			$env:PATH = "$($env:JAVA_HOME)/bin;" + $env:PATH
