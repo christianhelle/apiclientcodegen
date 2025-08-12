@@ -2,6 +2,7 @@
 [![CLI Tool](https://github.com/christianhelle/apiclientcodegen/actions/workflows/cli-tool.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/cli-tool.yml)
 [![VSIX](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vsix.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vsix.yml)
 [![VS Code](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vscode.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vscode.yml)
+[![IntelliJ Plugin](https://github.com/christianhelle/apiclientcodegen/actions/workflows/intellij.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/intellij.yml)
 ![Smoke Tests](https://github.com/christianhelle/apiclientcodegen/workflows/Smoke%20Tests/badge.svg)
 
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
@@ -31,11 +32,12 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 - **[Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator)**
 - **[Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2017)**
 - **[Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.apiclientcodegen)**
+- **[IntelliJ IDEA / JetBrains Rider](src/IntelliJ/README.md)** - IntelliJ plugin for REST API client code generation
 - **[Visual Studio for Mac](https://github.com/christianhelle/apiclientcodegen/releases/latest)**. Follow **[these instructions](#visual-studio-for-mac)** for update convenience on Visual Studio for Mac
 
 ## Features
 
-- Supports Visual Studio 2017, 2019, 2022, [Visual Studio Code](#visual-studio-code), and [Visual Studio for Mac](#visual-studio-for-mac)
+- Supports Visual Studio 2017, 2019, 2022, [Visual Studio Code](#visual-studio-code), [IntelliJ IDEA / JetBrains Rider](#intellij-idea--jetbrains-rider), and [Visual Studio for Mac](#visual-studio-for-mac)
 - Add New REST API Client to a project from an OpenAPI specification URL (e.g <https://petstore.swagger.io/v2/swagger.json>) using the following code generators:
   - [NSwag](https://github.com/RicoSuter/NSwag)
   - [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
@@ -198,6 +200,43 @@ Download the VSIX file from the [GitHub releases](https://github.com/christianhe
 2. Select "REST API Client Code Generator" in the context menu
 3. Choose one of the available code generators
 4. The generated code will open in the editor
+
+## IntelliJ IDEA / JetBrains Rider
+
+The IntelliJ plugin provides similar functionality for JetBrains IDEs through context menus on JSON and YAML files in the project tree. It executes the `rapicgen` .NET tool to generate code, so you will need to have the .NET SDK installed.
+
+### Installation
+
+#### From JetBrains Marketplace (Coming Soon)
+1. Open IntelliJ IDEA or JetBrains Rider
+2. Go to **File** → **Settings** → **Plugins**
+3. Search for "REST API Client Code Generator"
+4. Click **Install**
+
+#### Manual Installation
+1. Download the plugin `.zip` file from the [GitHub releases](https://github.com/christianhelle/apiclientcodegen/releases/latest) page
+2. Go to **File** → **Settings** → **Plugins**
+3. Click the gear icon ⚙️ and select **Install Plugin from Disk...**
+4. Select the downloaded `.zip` file
+
+### Features
+
+- Context menu on JSON and YAML files for generating code with various generators
+- Supports all C# generators: NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, and AutoREST
+- Supports all TypeScript generators: Angular, Aurelia, Axios, Fetch, Inversify, jQuery, NestJS, Node, Redux Query, RxJS
+- Support for Refitter settings files (.refitter)
+- Configuration options for namespace and output directory
+- Compatible with IntelliJ IDEA 2023.3+ and JetBrains Rider 2023.3+
+
+### Usage
+
+1. Right-click on a Swagger/OpenAPI specification file (JSON or YAML) in the project tree
+2. Select "REST API Client Generator" in the context menu
+3. Choose your desired language (C# or TypeScript)
+4. Select one of the available generators for that language
+5. The generated code will be saved in the configured output directory
+
+For more details, see the [IntelliJ Plugin README](src/IntelliJ/README.md).
 
 # Installation
 

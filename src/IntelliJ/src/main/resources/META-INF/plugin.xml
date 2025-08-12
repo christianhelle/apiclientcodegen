@@ -1,0 +1,161 @@
+<idea-plugin>
+    <id>com.github.christianhelle.apiclientcodegen</id>
+    <name>REST API Client Code Generator</name>
+    <vendor email="christian.helle@outlook.com" url="https://github.com/christianhelle/apiclientcodegen">Christian Helle</vendor>
+    
+    <description><![CDATA[
+    Generate REST API client code from OpenAPI/Swagger specifications.
+    
+    This plugin adds a context menu for REST API Client Code Generator when right-clicking JSON or YAML files.
+    
+    <h3>Features:</h3>
+    <ul>
+        <li><strong>C# Generators:</strong> NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, AutoREST</li>
+        <li><strong>TypeScript Generators:</strong> Angular, Aurelia, Axios, Fetch, Inversify, jQuery, NestJS, Node, Redux Query, RxJS</li>
+        <li><strong>Refitter Settings:</strong> Support for .refitter settings files for advanced C# Refit interface generation</li>
+        <li><strong>Configuration:</strong> Namespace and output directory settings</li>
+    </ul>
+    
+    Uses the rapicgen .NET tool for code generation.
+    ]]></description>
+    
+    <change-notes><![CDATA[
+    <h3>1.0.0</h3>
+    <ul>
+        <li>Initial release</li>
+        <li>Context menu for JSON/YAML files</li>
+        <li>C# and TypeScript code generators</li>
+        <li>Refitter settings file support</li>
+        <li>Configurable namespace and output directory</li>
+    </ul>
+    ]]></change-notes>
+
+    <!-- Product and plugin compatibility requirements -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Application-level settings -->
+        <applicationConfigurable 
+            parentId="tools" 
+            instance="com.github.christianhelle.apiclientcodegen.settings.SettingsConfigurable"
+            id="com.github.christianhelle.apiclientcodegen.settings.SettingsConfigurable"
+            displayName="REST API Client Code Generator"/>
+        <applicationService 
+            serviceImplementation="com.github.christianhelle.apiclientcodegen.settings.SettingsState"/>
+        
+        <!-- Notification group -->
+        <notificationGroup id="REST API Client Code Generator" displayType="BALLOON"/>
+    </extensions>
+
+    <actions>
+        <!-- Main menu group -->
+        <group id="com.github.christianhelle.apiclientcodegen.MainGroup" 
+               text="REST API Client Generator" 
+               description="Generate REST API client code">
+            
+            <!-- C# Subgroup -->
+            <group id="com.github.christianhelle.apiclientcodegen.CSharpGroup" 
+                   text="C#" 
+                   description="C# Code Generators">
+                
+                <action id="com.github.christianhelle.apiclientcodegen.CSharpNSwagAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.CSharpNSwagAction"
+                        text="Generate C# Client with NSwag"
+                        description="Generate C# REST API Client using NSwag"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.CSharpRefitterAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.CSharpRefitterAction"
+                        text="Generate C# Client with Refitter"
+                        description="Generate C# REST API Client using Refitter"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.CSharpOpenApiAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.CSharpOpenApiAction"
+                        text="Generate C# Client with OpenAPI Generator"
+                        description="Generate C# REST API Client using OpenAPI Generator"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.CSharpKiotaAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.CSharpKiotaAction"
+                        text="Generate C# Client with Microsoft Kiota"
+                        description="Generate C# REST API Client using Microsoft Kiota"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.CSharpSwaggerAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.CSharpSwaggerAction"
+                        text="Generate C# Client with Swagger Codegen CLI"
+                        description="Generate C# REST API Client using Swagger Codegen CLI"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.CSharpAutoRestAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.CSharpAutoRestAction"
+                        text="Generate C# Client with AutoREST"
+                        description="Generate C# REST API Client using AutoREST"/>
+            </group>
+            
+            <!-- TypeScript Subgroup -->
+            <group id="com.github.christianhelle.apiclientcodegen.TypeScriptGroup" 
+                   text="TypeScript" 
+                   description="TypeScript Code Generators">
+                
+                <action id="com.github.christianhelle.apiclientcodegen.TypeScriptAngularAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.TypeScriptAngularAction"
+                        text="Generate TypeScript Client for Angular"
+                        description="Generate TypeScript REST API Client for Angular"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.TypeScriptAureliaAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.TypeScriptAureliaAction"
+                        text="Generate TypeScript Client for Aurelia"
+                        description="Generate TypeScript REST API Client for Aurelia"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.TypeScriptAxiosAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.TypeScriptAxiosAction"
+                        text="Generate TypeScript Client for Axios"
+                        description="Generate TypeScript REST API Client for Axios"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.TypeScriptFetchAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.TypeScriptFetchAction"
+                        text="Generate TypeScript Client for Fetch"
+                        description="Generate TypeScript REST API Client for Fetch"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.TypeScriptInversifyAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.TypeScriptInversifyAction"
+                        text="Generate TypeScript Client for Inversify"
+                        description="Generate TypeScript REST API Client for Inversify"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.TypeScriptJQueryAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.TypeScriptJQueryAction"
+                        text="Generate TypeScript Client for jQuery"
+                        description="Generate TypeScript REST API Client for jQuery"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.TypeScriptNestJSAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.TypeScriptNestJSAction"
+                        text="Generate TypeScript Client for NestJS"
+                        description="Generate TypeScript REST API Client for NestJS"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.TypeScriptNodeAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.TypeScriptNodeAction"
+                        text="Generate TypeScript Client for Node"
+                        description="Generate TypeScript REST API Client for Node"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.TypeScriptReduxQueryAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.TypeScriptReduxQueryAction"
+                        text="Generate TypeScript Client for Redux Query"
+                        description="Generate TypeScript REST API Client for Redux Query"/>
+                
+                <action id="com.github.christianhelle.apiclientcodegen.TypeScriptRxJSAction"
+                        class="com.github.christianhelle.apiclientcodegen.actions.TypeScriptRxJSAction"
+                        text="Generate TypeScript Client for RxJS"
+                        description="Generate TypeScript REST API Client for RxJS"/>
+            </group>
+            
+            <!-- Context menu for project tree -->
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="$Cut"/>
+        </group>
+        
+        <!-- Refitter settings action -->
+        <action id="com.github.christianhelle.apiclientcodegen.RefitterSettingsAction"
+                class="com.github.christianhelle.apiclientcodegen.actions.RefitterSettingsAction"
+                text="Generate Refitter Output"
+                description="Generate C# Refit interfaces using Refitter settings">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="$Cut"/>
+        </action>
+    </actions>
+</idea-plugin>

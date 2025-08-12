@@ -1,0 +1,63 @@
+name: IntelliJ Plugin
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/IntelliJ/**'
+    tags:
+      - 'intellij-v*'
+  pull_request:
+    branches:
+      - '*'
+    paths:
+      - 'src/IntelliJ/**'
+  workflow_dispatch:
+
+env:
+  VERSION: 1.0.${{ github.run_number }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v5
+
+    - name: Setup Java
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v3
+
+    - name: Update plugin version
+      run: |
+        cd src/IntelliJ
+        sed -i "s/version = \".*\"/version = \"${{ env.VERSION }}\"/" build.gradle.kts
+
+    - name: Build plugin
+      run: |
+        cd src/IntelliJ
+        ./gradlew build
+
+    - name: Verify plugin structure
+      run: |
+        cd src/IntelliJ
+        ./test.sh
+
+    - name: Upload plugin artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: IntelliJ-Plugin
+        path: src/IntelliJ/build/distributions/*.zip
+
+    - name: Upload plugin to marketplace (on release)
+      if: startsWith(github.ref, 'refs/tags/intellij-v')
+      run: |
+        cd src/IntelliJ
+        ./gradlew publishPlugin
+      env:
+        PUBLISH_TOKEN: ${{ secrets.INTELLIJ_PUBLISH_TOKEN }}
