@@ -45,3 +45,9 @@ tasks {
 kotlin {
     jvmToolchain(javaVersion.toInt())
 }
+
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(javaVersion))
+    }
+}
