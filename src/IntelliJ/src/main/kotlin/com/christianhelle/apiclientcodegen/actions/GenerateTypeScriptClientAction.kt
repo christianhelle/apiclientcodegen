@@ -5,6 +5,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.vfs.LocalFileSystem
 import java.nio.file.Paths
+import com.intellij.openapi.ui.Messages
 
 class GenerateTypeScriptClientAction : AnAction() {
     override fun update(e: AnActionEvent) {
@@ -19,8 +20,10 @@ class GenerateTypeScriptClientAction : AnAction() {
             showError(project, "rapicgen tool not found. Install with: dotnet tool install --global rapicgen")
             return
         }
-        val outputDir = prompt(project, "TypeScript Output", "Enter output directory", "typescript-generated-code") ?: return
-        val cmd = listOf(rapicgen, "typescript", "Angular", file.path, outputDir)
+    val generators = arrayOf("Angular", "Aurelia", "Axios", "Fetch", "Inversify", "JQuery", "NestJS", "Node", "ReduxQuery", "Rxjs")
+    val choice = Messages.showChooseDialog(project, "Select TypeScript generator", "TypeScript Generator", generators, generators[0], Messages.getQuestionIcon()) ?: return
+    val outputDir = prompt(project, "TypeScript Output", "Enter output directory", "typescript-${choice.toLowerCase()}-client") ?: return
+    val cmd = listOf(rapicgen, "typescript", choice, file.path, outputDir)
         val log = StringBuilder()
         val code = runProcess(cmd, java.io.File(file.parent.path), { log.appendLine(it) }, { log.appendLine(it) })
         if (code == 0) {

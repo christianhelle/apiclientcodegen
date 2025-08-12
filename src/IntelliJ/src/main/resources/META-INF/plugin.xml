@@ -4,7 +4,8 @@
     <name>REST API Client Code Generator</name>
     <vendor url="https://github.com/christianhelle/apiclientcodegen">Christian Resma Helle</vendor>
     <description><![CDATA[
-        Generate C# and TypeScript REST API clients from OpenAPI / Swagger specifications using NSwag, Refitter, OpenAPI Generator, Kiota, Swagger Codegen CLI, and AutoRest. Adds project view context menus for spec and .refitter files.
+        <p>Generate C# and TypeScript REST API clients from OpenAPI / Swagger specs using: NSwag, Refitter, OpenAPI Generator, Kiota, Swagger Codegen CLI, AutoRest (preview subset currently exposed).</p>
+        <p>Right-click an OpenAPI file or .refitter settings file in the Project View to invoke generation via the rapicgen .NET tool.</p>
     ]]></description>
     <version>${pluginVersion}</version>
     <idea-version since-build="${pluginSinceBuild}" until-build="${pluginUntilBuild}"/>

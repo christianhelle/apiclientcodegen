@@ -5,6 +5,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.vfs.VfsUtil
 import java.nio.file.Paths
+import com.intellij.openapi.ui.Messages
 
 class GenerateCSharpClientAction : AnAction() {
     override fun update(e: AnActionEvent) {
@@ -19,9 +20,11 @@ class GenerateCSharpClientAction : AnAction() {
             showError(project, "rapicgen tool not found. Install with: dotnet tool install --global rapicgen")
             return
         }
-        val namespace = prompt(project, "C# Namespace", "Enter namespace", "GeneratedCode") ?: return
-        val outputFile = file.nameWithoutExtension + ".cs"
-        val cmd = listOf(rapicgen, "csharp", "nswag", file.path, namespace, outputFile)
+    val generators = arrayOf("nswag", "refitter", "openapi", "kiota", "swagger", "autorest")
+    val choice = Messages.showChooseDialog(project, "Select C# generator", "C# Generator", generators, generators[0], Messages.getQuestionIcon()) ?: return
+    val namespace = prompt(project, "C# Namespace", "Enter namespace", "GeneratedCode") ?: return
+    val outputFile = file.nameWithoutExtension + "-${choice}.cs"
+    val cmd = listOf(rapicgen, "csharp", choice, file.path, namespace, outputFile)
         val log = StringBuilder()
         val code = runProcess(cmd, java.io.File(file.parent.path), { log.appendLine(it) }, { log.appendLine(it) })
         if (code == 0) {
