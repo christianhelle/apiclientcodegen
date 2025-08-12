@@ -216,3 +216,6 @@ src/
 4. Manual validation scenario - Must work end-to-end
 
 The project builds and runs successfully with the above commands. Some tests may fail due to external network dependencies, but the core functionality works correctly.
+
+## Git
+Commit every logical small change with a brief commit description for a detailed history of a changes
