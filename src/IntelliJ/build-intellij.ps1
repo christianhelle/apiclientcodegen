@@ -24,7 +24,7 @@ function Use-Jdk21 {
 	foreach ($p in ($candidatePaths | Where-Object { $_ } | Get-Unique)) {
 		$javaExe = Join-Path $p 'bin/java.exe'
 		$javacExe = Join-Path $p 'bin/javac.exe'
-		if (Test-Path $javaExe -and Test-Path $javacExe) {
+	if ((Test-Path $javaExe) -and (Test-Path $javacExe)) {
 			$major = Get-JavaMajorVersion $p
 			if ($major -ge 21) {
 				Write-Host "Using JDK ${major}: $p" -ForegroundColor Green
@@ -75,4 +75,6 @@ if (-not (Get-Command java -ErrorAction SilentlyContinue)) {
 	exit 1
 }
 
+Write-Host "Gradle using java from: $($env:JAVA_HOME)" -ForegroundColor Yellow
+./gradlew --version
 ./gradlew buildPlugin
