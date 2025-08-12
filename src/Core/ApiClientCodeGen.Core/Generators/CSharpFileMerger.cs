@@ -98,7 +98,7 @@ namespace Rapicgen.Core.Generators
 
             foreach (var file in files.Where(c => !c.EndsWith("tests.cs", StringComparison.OrdinalIgnoreCase)))
             {
-                var sourceLines = File.ReadAllLines(file);
+                var sourceLines = ReadAllLinesWithLongPathSupport(file);
                 foreach (var sourceLine in sourceLines)
                 {
                     if (string.IsNullOrWhiteSpace(sourceLine))
@@ -152,7 +152,7 @@ namespace Rapicgen.Core.Generators
 
             foreach (var file in files)
             {
-                IEnumerable<string> sourceLines = File.ReadAllLines(file);
+                IEnumerable<string> sourceLines = ReadAllLinesWithLongPathSupport(file);
 
                 foreach (var sourceLine in sourceLines)
                 {
@@ -169,6 +169,53 @@ namespace Rapicgen.Core.Generators
             return names;
         }
 
+        /// <summary>
+        /// Reads all lines from a file with support for long paths on Windows.
+        /// Uses FileStream to bypass the 260 character path limitation on older Windows versions.
+        /// </summary>
+        /// <param name="filePath">The file path to read from</param>
+        /// <returns>Array of strings containing all lines from the file</returns>
+        private static string[] ReadAllLinesWithLongPathSupport(string filePath)
+        {
+            try
+            {
+                // Try the standard File.ReadAllLines first (works on .NET Core/.NET 5+ for most cases)
+                return File.ReadAllLines(filePath);
+            }
+            catch (DirectoryNotFoundException) when (filePath.Length > 260)
+            {
+                // On Windows with long paths, fall back to FileStream approach
+                Logger.Instance.WriteLine($"Using long path support for file: {filePath} (length: {filePath.Length})");
+                return ReadFileUsingFileStream(filePath);
+            }
+            catch (PathTooLongException)
+            {
+                // Handle PathTooLongException which might occur on older .NET Framework versions
+                Logger.Instance.WriteLine($"Using long path support for file: {filePath} (length: {filePath.Length})");
+                return ReadFileUsingFileStream(filePath);
+            }
+        }
+
+        /// <summary>
+        /// Reads a file using FileStream to handle long paths
+        /// </summary>
+        /// <param name="filePath">The file path to read from</param>
+        /// <returns>Array of strings containing all lines from the file</returns>
+        private static string[] ReadFileUsingFileStream(string filePath)
+        {
+            using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            using var streamReader = new StreamReader(fileStream);
+            
+            var lines = new List<string>();
+            string? line;
+            while ((line = streamReader.ReadLine()) != null)
+            {
+                lines.Add(line);
+            }
+            
+            return lines.ToArray();
+        }
+
         private static IEnumerable<string> GetAssemblyAttributes(IEnumerable<string> files)
         {
             var names = new List<string>();
@@ -177,7 +224,7 @@ namespace Rapicgen.Core.Generators
 
             foreach (var file in files)
             {
-                IEnumerable<string> sourceLines = File.ReadAllLines(file);
+                IEnumerable<string> sourceLines = ReadAllLinesWithLongPathSupport(file);
 
                 foreach (var sourceLine in sourceLines)
                 {
