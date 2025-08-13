@@ -20,6 +20,10 @@
 
 **Merged pull requests:**
 
+- chore\(deps\): update actions/checkout action to v5 [\#1269](https://github.com/christianhelle/apiclientcodegen/pull/1269) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency azure.core to 1.47.2 - autoclosed [\#1268](https://github.com/christianhelle/apiclientcodegen/pull/1268) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency restsharp to 105.2.3 [\#1266](https://github.com/christianhelle/apiclientcodegen/pull/1266) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency gradle to v8.14.3 [\#1264](https://github.com/christianhelle/apiclientcodegen/pull/1264) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update vstest monorepo to 17.14.1 [\#1263](https://github.com/christianhelle/apiclientcodegen/pull/1263) ([renovate[bot]](https://github.com/apps/renovate))
 - Update Kiota dependencies to v1.19.1 [\#1262](https://github.com/christianhelle/apiclientcodegen/pull/1262) ([christianhelle](https://github.com/christianhelle))
 - Update dependency webpack to v5.101.1 [\#1260](https://github.com/christianhelle/apiclientcodegen/pull/1260) ([renovate[bot]](https://github.com/apps/renovate))
