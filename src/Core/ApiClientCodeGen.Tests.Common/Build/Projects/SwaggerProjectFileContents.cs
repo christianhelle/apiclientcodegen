@@ -9,7 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include = ""JsonSubTypes"" Version=""1.9.0"" />
-    <PackageReference Include = ""RestSharp"" Version=""105.1.0"" />
+    <PackageReference Include = ""RestSharp"" Version=""105.2.3"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
   </ItemGroup>
@@ -22,7 +22,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include = ""JsonSubTypes"" Version=""1.9.0"" />
-    <PackageReference Include = ""RestSharp"" Version=""105.1.0"" />
+    <PackageReference Include = ""RestSharp"" Version=""105.2.3"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
   </ItemGroup>
@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include = ""JsonSubTypes"" Version=""1.9.0"" />
-    <PackageReference Include = ""RestSharp"" Version=""105.1.0"" />
+    <PackageReference Include = ""RestSharp"" Version=""105.2.3"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
   </ItemGroup>
