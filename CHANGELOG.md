@@ -20,6 +20,9 @@
 
 **Merged pull requests:**
 
+- chore\(deps\): update dependency webpack to v5.101.2 [\#1283](https://github.com/christianhelle/apiclientcodegen/pull/1283) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update plugin org.jetbrains.intellij.platform to v2.7.2 [\#1282](https://github.com/christianhelle/apiclientcodegen/pull/1282) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency gradle to v9 [\#1274](https://github.com/christianhelle/apiclientcodegen/pull/1274) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update actions/checkout action to v5 [\#1269](https://github.com/christianhelle/apiclientcodegen/pull/1269) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency azure.core to 1.47.2 - autoclosed [\#1268](https://github.com/christianhelle/apiclientcodegen/pull/1268) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency restsharp to 105.2.3 [\#1266](https://github.com/christianhelle/apiclientcodegen/pull/1266) ([renovate[bot]](https://github.com/apps/renovate))
