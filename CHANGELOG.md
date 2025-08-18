@@ -20,6 +20,8 @@
 
 **Merged pull requests:**
 
+- chore\(deps\): update dependency xunit.runner.visualstudio to 3.1.4 [\#1286](https://github.com/christianhelle/apiclientcodegen/pull/1286) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency @types/vscode to v1.103.0 [\#1285](https://github.com/christianhelle/apiclientcodegen/pull/1285) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency @types/node to v22.17.2 [\#1284](https://github.com/christianhelle/apiclientcodegen/pull/1284) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency webpack to v5.101.2 [\#1283](https://github.com/christianhelle/apiclientcodegen/pull/1283) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update plugin org.jetbrains.intellij.platform to v2.7.2 [\#1282](https://github.com/christianhelle/apiclientcodegen/pull/1282) ([renovate[bot]](https://github.com/apps/renovate))
