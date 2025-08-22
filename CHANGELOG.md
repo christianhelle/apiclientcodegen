@@ -14,6 +14,7 @@
 **Fixed bugs:**
 
 - Could not find a part of the path - AKA Path too long [\#1122](https://github.com/christianhelle/apiclientcodegen/issues/1122)
+- Revert "Refitter v1.6.2" [\#1291](https://github.com/christianhelle/apiclientcodegen/pull/1291) ([christianhelle](https://github.com/christianhelle))
 
 **Closed issues:**
 
@@ -21,6 +22,7 @@
 
 **Merged pull requests:**
 
+- chore\(deps\): update actions/setup-java action to v5 [\#1290](https://github.com/christianhelle/apiclientcodegen/pull/1290) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency webpack to v5.101.3 [\#1287](https://github.com/christianhelle/apiclientcodegen/pull/1287) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency xunit.runner.visualstudio to 3.1.4 [\#1286](https://github.com/christianhelle/apiclientcodegen/pull/1286) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency @types/vscode to v1.103.0 [\#1285](https://github.com/christianhelle/apiclientcodegen/pull/1285) ([renovate[bot]](https://github.com/apps/renovate))
