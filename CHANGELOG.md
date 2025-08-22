@@ -7,6 +7,7 @@
 **Implemented enhancements:**
 
 - Create IntelliJ plugin matching VSCode extension features [\#1201](https://github.com/christianhelle/apiclientcodegen/issues/1201)
+- OpenAPI Generator v7.15.0 [\#1294](https://github.com/christianhelle/apiclientcodegen/pull/1294) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.6.2 [\#1288](https://github.com/christianhelle/apiclientcodegen/pull/1288) ([renovate[bot]](https://github.com/apps/renovate))
 - Initial IntelliJ plugin implementation with basic features [\#1261](https://github.com/christianhelle/apiclientcodegen/pull/1261) ([christianhelle](https://github.com/christianhelle))
 - NSwag v14.5.0 [\#1246](https://github.com/christianhelle/apiclientcodegen/pull/1246) ([renovate[bot]](https://github.com/apps/renovate))
