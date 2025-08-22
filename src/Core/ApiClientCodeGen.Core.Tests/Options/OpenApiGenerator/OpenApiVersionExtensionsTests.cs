@@ -57,7 +57,7 @@ public class OpenApiVersionExtensionsTests
     }
     
     [Theory]
-    [InlineData(OpenApiSupportedVersion.V7140, true)]   // Latest version
+    [InlineData(OpenApiSupportedVersion.V7150, true)]   // Latest version
     [InlineData(OpenApiSupportedVersion.V7120, false)]  // Not latest version
     [InlineData(OpenApiSupportedVersion.V7070, false)]  // Not latest version
     public void IsLatest_ReturnsExpectedResult(
