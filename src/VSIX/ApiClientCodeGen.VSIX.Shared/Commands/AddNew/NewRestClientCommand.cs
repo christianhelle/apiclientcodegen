@@ -173,7 +173,15 @@ namespace Rapicgen.Commands.AddNew
             }
             else if (CodeGenerator == SupportedCodeGenerator.Refitter)
             {
-                var codeGenerator = new RefitterCodeGenerator(filePath, default, default);
+                var codeGenerator = new RefitterCodeGenerator(
+                    filePath, 
+                    default, 
+                    new ProcessLauncher(),
+                    new DependencyInstaller(
+                        new NpmInstaller(new ProcessLauncher()),
+                        new FileDownloader(new WebDownloader()),
+                        new ProcessLauncher()),
+                    new DefaultRefitterOptions());
                 codeGenerator.GenerateCode(null);
             }
             else
