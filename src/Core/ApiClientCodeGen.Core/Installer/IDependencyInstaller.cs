@@ -9,5 +9,6 @@ namespace Rapicgen.Core.Installer
         string InstallOpenApiGenerator(OpenApiSupportedVersion version = default);
         string InstallSwaggerCodegen();
         void InstallKiota();
+        void InstallRefitter();
     }
 }

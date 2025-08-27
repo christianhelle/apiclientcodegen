@@ -1,4 +1,6 @@
 using ApiClientCodeGen.Tests.Common.Infrastructure;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.Refitter;
 using FluentAssertions;
 using Rapicgen.CLI.Commands.CSharp;
@@ -13,10 +15,14 @@ namespace Rapicgen.CLI.Tests.Command
             RefitterCodeGeneratorFactory sut,
             string swaggerFile,
             string defaultNamespace,
+            IProcessLauncher processLauncher,
+            IDependencyInstaller dependencyInstaller,
             IRefitterOptions options)
             => sut.Create(
                     swaggerFile,
                     defaultNamespace,
+                    processLauncher,
+                    dependencyInstaller,
                     options)
                 .Should()
                 .NotBeNull();

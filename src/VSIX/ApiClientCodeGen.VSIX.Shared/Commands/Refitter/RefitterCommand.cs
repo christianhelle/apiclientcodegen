@@ -3,7 +3,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Rapicgen.Core;
 using Rapicgen.Core.Exceptions;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options.Refitter;
 using Rapicgen.Extensions;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
@@ -51,7 +54,15 @@ namespace Rapicgen.Commands.Refitter
             var item = dte.SelectedItems.Item(1).ProjectItem;
             var refitterSettingsFile = item.FileNames[0];
 
-            var codeGenerator = new RefitterCodeGenerator(refitterSettingsFile, default, default);
+            var codeGenerator = new RefitterCodeGenerator(
+                refitterSettingsFile, 
+                default, 
+                new ProcessLauncher(),
+                new DependencyInstaller(
+                    new NpmInstaller(new ProcessLauncher()),
+                    new FileDownloader(new WebDownloader()),
+                    new ProcessLauncher()),
+                new DefaultRefitterOptions());
             codeGenerator.GenerateCode(null);
 
             var project = dte.GetActiveProject()!;

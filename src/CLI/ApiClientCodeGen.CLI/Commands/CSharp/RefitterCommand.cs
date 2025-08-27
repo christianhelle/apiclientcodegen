@@ -6,6 +6,7 @@ using System.IO;
 using Rapicgen.CLI.Commands;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
+using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.Refitter;
 using Spectre.Console.Cli;
@@ -53,16 +54,22 @@ public class RefitterCommand : CodeGeneratorCommand<RefitterCommandSettings>
 {
     private readonly IRefitterCodeGeneratorFactory factory;
     private readonly IRefitterOptions options;
+    private readonly IProcessLauncher processLauncher;
+    private readonly IDependencyInstaller dependencyInstaller;
 
     public RefitterCommand(
         IConsoleOutput console,
         IProgressReporter? progressReporter,
         IRefitterCodeGeneratorFactory factory,
-        IRefitterOptions options)
+        IRefitterOptions options,
+        IProcessLauncher processLauncher,
+        IDependencyInstaller dependencyInstaller)
         : base(console, progressReporter)
     {
         this.factory = factory;
         this.options = options;
+        this.processLauncher = processLauncher;
+        this.dependencyInstaller = dependencyInstaller;
     }
 
     public override int Execute(CommandContext context, RefitterCommandSettings settings)
@@ -79,8 +86,15 @@ public class RefitterCommand : CodeGeneratorCommand<RefitterCommandSettings>
         // If a settings file is specified, validate it exists and use it
         if (!string.IsNullOrEmpty(settings.SettingsFile))
         {
+            if (!File.Exists(settings.SettingsFile))
+                throw new FileNotFoundException($"Settings file '{settings.SettingsFile}' not found.");
+            
             // Use settings file as the SwaggerFile
             settings.SwaggerFile = settings.SettingsFile;
+        }
+        else if (string.IsNullOrEmpty(settings.SwaggerFile))
+        {
+            throw new ArgumentException("Either swaggerFile argument or --settings-file option must be provided.");
         }
 
         // Call the base implementation
@@ -88,5 +102,5 @@ public class RefitterCommand : CodeGeneratorCommand<RefitterCommandSettings>
     }
 
     public override ICodeGenerator CreateGenerator(RefitterCommandSettings settings) =>
-        factory.Create(settings.SettingsFile ?? settings.SwaggerFile, settings.DefaultNamespace, options);
+        factory.Create(settings.SettingsFile ?? settings.SwaggerFile, settings.DefaultNamespace, processLauncher, dependencyInstaller, options);
 }

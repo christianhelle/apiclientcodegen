@@ -88,5 +88,42 @@ namespace Rapicgen.Core.Installer
                 context.Succeeded();
             }
         }
+
+        public void InstallRefitter()
+        {
+            var command = "refitter";
+            string arguments = "--version";
+            string refitterVersion = "";
+            try
+            {
+                processLauncher.Start(command, arguments, output =>
+                {
+                    if (output != null)
+                    {
+                        refitterVersion = output ?? refitterVersion;
+                        Logger.Instance.WriteLine(output);
+                    }
+                }, error =>
+                {
+                    if (error != null)
+                    {
+                        Logger.Instance.WriteLine(error);
+                    }
+                });
+                if (!refitterVersion.StartsWith("1.6."))
+                { 
+                    //older or newer? i guess this should be handled.
+                }
+            }
+            catch (Win32Exception e)
+            {
+                //if command doesn't exist Win32Exception is thrown.
+                command = PathProvider.GetDotNetPath();
+                arguments = "tool install --global refitter --version 1.6.2";
+                using var context = new DependencyContext(command, $"{command} {arguments}");
+                processLauncher.Start(command, arguments);
+                context.Succeeded();
+            }
+        }
     }
 }

@@ -2,6 +2,8 @@
 using AutoFixture.Xunit2;
 using Moq;
 using Rapicgen.CLI.Commands.CSharp;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.Refitter;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -16,6 +18,8 @@ public class RefitterCommandTests
     public void Should_Create_From_Factory(
         [Frozen] IRefitterOptions options,
         [Frozen] IRefitterCodeGeneratorFactory factory,
+        [Frozen] IProcessLauncher processLauncher,
+        [Frozen] IDependencyInstaller dependencyInstaller,
         RefitterCommand sut,
         RefitterCommandSettings settings)
     {
@@ -26,6 +30,8 @@ public class RefitterCommandTests
             .Verify(f => f.Create(
                 settings.SwaggerFile,
                 settings.DefaultNamespace,
+                processLauncher,
+                dependencyInstaller,
                 options));
     }
 
@@ -33,6 +39,8 @@ public class RefitterCommandTests
     public void Should_Create_From_Factory_With_Settings_File(
         [Frozen] IRefitterOptions options,
         [Frozen] IRefitterCodeGeneratorFactory factory,
+        [Frozen] IProcessLauncher processLauncher,
+        [Frozen] IDependencyInstaller dependencyInstaller,
         RefitterCommand sut,
         RefitterCommandSettings settings)
     {
@@ -50,6 +58,8 @@ public class RefitterCommandTests
                 .Verify(f => f.Create(
                     tempFile,
                     settings.DefaultNamespace,
+                    processLauncher,
+                    dependencyInstaller,
                     options));
         }
         finally
