@@ -111,6 +111,8 @@ namespace Rapicgen.Generators
                     return new RefitterCodeGenerator(
                         inputFilePath,
                         defaultNamespace,
+                        processLauncher,
+                        dependencyInstaller,
                         optionsFactory.Create<IRefitterOptions, RefitterOptionsPage, DefaultRefitterOptions>());
 
                 default:
