@@ -9,6 +9,7 @@
 - Create IntelliJ plugin matching VSCode extension features [\#1201](https://github.com/christianhelle/apiclientcodegen/issues/1201)
 - Revert NSwag version back to v14.4.0 [\#1296](https://github.com/christianhelle/apiclientcodegen/pull/1296) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.15.0 [\#1294](https://github.com/christianhelle/apiclientcodegen/pull/1294) ([christianhelle](https://github.com/christianhelle))
+- Revert Refitter back to v1.6.1 [\#1291](https://github.com/christianhelle/apiclientcodegen/pull/1291) ([christianhelle](https://github.com/christianhelle))
 - Refitter v1.6.2 [\#1288](https://github.com/christianhelle/apiclientcodegen/pull/1288) ([renovate[bot]](https://github.com/apps/renovate))
 - Initial IntelliJ plugin implementation with basic features [\#1261](https://github.com/christianhelle/apiclientcodegen/pull/1261) ([christianhelle](https://github.com/christianhelle))
 - NSwag v14.5.0 [\#1246](https://github.com/christianhelle/apiclientcodegen/pull/1246) ([renovate[bot]](https://github.com/apps/renovate))
@@ -16,7 +17,6 @@
 **Fixed bugs:**
 
 - Could not find a part of the path - AKA Path too long [\#1122](https://github.com/christianhelle/apiclientcodegen/issues/1122)
-- Revert "Refitter v1.6.2" [\#1291](https://github.com/christianhelle/apiclientcodegen/pull/1291) ([christianhelle](https://github.com/christianhelle))
 
 **Closed issues:**
 
@@ -24,6 +24,7 @@
 
 **Merged pull requests:**
 
+- Switch from Refitter.Core dependency to Refitter CLI [\#1303](https://github.com/christianhelle/apiclientcodegen/pull/1303) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - chore\(deps\): update actions/setup-java action to v5 [\#1290](https://github.com/christianhelle/apiclientcodegen/pull/1290) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency webpack to v5.101.3 [\#1287](https://github.com/christianhelle/apiclientcodegen/pull/1287) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency xunit.runner.visualstudio to 3.1.4 [\#1286](https://github.com/christianhelle/apiclientcodegen/pull/1286) ([renovate[bot]](https://github.com/apps/renovate))
