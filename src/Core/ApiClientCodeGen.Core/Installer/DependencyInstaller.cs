@@ -110,9 +110,39 @@ namespace Rapicgen.Core.Installer
                         Logger.Instance.WriteLine(error);
                     }
                 });
-                if (!refitterVersion.StartsWith("1.6."))
-                { 
-                    //older or newer? i guess this should be handled.
+                // Parse the version string and compare with required version
+                var requiredVersion = new Version(1, 6, 2);
+                Version installedVersion = null;
+                try
+                {
+                    // Extract version number from output (e.g., "refitter 1.6.2")
+                    var versionString = refitterVersion?.Trim();
+                    if (!string.IsNullOrEmpty(versionString))
+                    {
+                        // Find the first occurrence of a version-like pattern
+                        var parts = versionString.Split(' ');
+                        foreach (var part in parts)
+                        {
+                            if (Version.TryParse(part, out var v))
+                            {
+                                installedVersion = v;
+                                break;
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                    // Ignore parsing errors, will handle as incompatible version below
+                }
+                if (installedVersion == null || installedVersion < requiredVersion)
+                {
+                    // Installed version is too old or could not be determined, install/update required version
+                    var installCommand = PathProvider.GetDotNetPath();
+                    var installArguments = "tool install --global refitter --version 1.6.2";
+                    using var context = new DependencyContext(installCommand, $"{installCommand} {installArguments}");
+                    processLauncher.Start(installCommand, installArguments);
+                    context.Succeeded();
                 }
             }
             catch (Win32Exception e)
