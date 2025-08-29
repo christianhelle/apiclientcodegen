@@ -31,6 +31,7 @@
 - Update actions/upload-pages-artifact action to v4 [\#1295](https://github.com/christianhelle/apiclientcodegen/pull/1295) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Polly to 8.6.3 [\#1292](https://github.com/christianhelle/apiclientcodegen/pull/1292) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update actions/setup-java action to v5 [\#1290](https://github.com/christianhelle/apiclientcodegen/pull/1290) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Azure.Core to 1.47.3 [\#1289](https://github.com/christianhelle/apiclientcodegen/pull/1289) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency webpack to v5.101.3 [\#1287](https://github.com/christianhelle/apiclientcodegen/pull/1287) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency xunit.runner.visualstudio to 3.1.4 [\#1286](https://github.com/christianhelle/apiclientcodegen/pull/1286) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency @types/vscode to v1.103.0 [\#1285](https://github.com/christianhelle/apiclientcodegen/pull/1285) ([renovate[bot]](https://github.com/apps/renovate))
