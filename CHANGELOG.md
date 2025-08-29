@@ -26,6 +26,10 @@
 **Merged pull requests:**
 
 - Switch from Refitter.Core dependency to Refitter CLI [\#1303](https://github.com/christianhelle/apiclientcodegen/pull/1303) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Update dependency @types/node to v22.18.0 [\#1301](https://github.com/christianhelle/apiclientcodegen/pull/1301) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ts-loader to v9.5.4 [\#1300](https://github.com/christianhelle/apiclientcodegen/pull/1300) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/upload-pages-artifact action to v4 [\#1295](https://github.com/christianhelle/apiclientcodegen/pull/1295) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.6.3 [\#1292](https://github.com/christianhelle/apiclientcodegen/pull/1292) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update actions/setup-java action to v5 [\#1290](https://github.com/christianhelle/apiclientcodegen/pull/1290) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency webpack to v5.101.3 [\#1287](https://github.com/christianhelle/apiclientcodegen/pull/1287) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency xunit.runner.visualstudio to 3.1.4 [\#1286](https://github.com/christianhelle/apiclientcodegen/pull/1286) ([renovate[bot]](https://github.com/apps/renovate))
