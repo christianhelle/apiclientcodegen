@@ -46,7 +46,7 @@ jobs:
         distribution: 'zulu'
 
     - name: Setup .NET versions
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: |
           2.1.x
@@ -375,7 +375,7 @@ jobs:
         distribution: 'zulu'
 
     - name: Setup .NET versions
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: |
           2.1.x
@@ -417,7 +417,7 @@ jobs:
         distribution: 'zulu'
 
     - name: Setup .NET versions
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
         dotnet-version: |
           2.1.x
