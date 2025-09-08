@@ -159,9 +159,9 @@ jobs:
       - name: Update Version
         shell: pwsh
         run: |
-          ((Get-Content -Path IntelliJ/gradle.properties -Raw) `
+          ((Get-Content -Path gradle.properties -Raw) `
             -Replace "pluginVersion=\".*\"", "pluginVersion=\"${{ env.VERSION }}\"") `
-            | Set-Content -Path IntelliJ/gradle.properties
+            | Set-Content -Path gradle.properties
       - name: Build IntelliJ Plugin
         working-directory: src/IntelliJ
         run: ./gradlew buildPlugin --no-daemon
