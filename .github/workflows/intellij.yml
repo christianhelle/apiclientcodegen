@@ -35,7 +35,7 @@ jobs:
         shell: pwsh
         run: |
           ((Get-Content -Path gradle.properties -Raw) `
-            -Replace "pluginVersion=\".*\"", "pluginVersion=\"${{ env.VERSION }}\"") `
+            -Replace "pluginVersion=0.1.0", "pluginVersion=${{ env.VERSION }}") `
             | Set-Content -Path gradle.properties
         working-directory: src/IntelliJ
       - name: Build IntelliJ Plugin
