@@ -157,6 +157,7 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle.properties') }}
           restore-keys: ${{ runner.os }}-gradle-
       - name: Update Version
+        working-directory: src/IntelliJ
         shell: pwsh
         run: |
           ((Get-Content -Path gradle.properties -Raw) `
