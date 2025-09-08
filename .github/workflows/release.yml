@@ -226,3 +226,12 @@ jobs:
         asset_path: artifacts/VSCode-Extension/apiclientcodegen-${{ env.VERSION }}.vsix
         asset_name: apiclientcodegen-${{ env.VERSION }}.vsix
         asset_content_type: application/zip
+    - name: Upload IntelliJ Plugin asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-release.outputs.upload_url }}
+        asset_path: artifacts/Intellij-Plugin/apiclientcodegen-*.zip
+        asset_name: apiclientcodegen-intellij-${{ env.VERSION }}.zip
+        asset_content_type: application/zip
