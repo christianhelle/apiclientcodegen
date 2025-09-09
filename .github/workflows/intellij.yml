@@ -10,6 +10,9 @@ on:
       - 'src/IntelliJ/**'
       - '.github/workflows/intellij.yml'
 
+env:
+  VERSION: 1.19.${{ github.run_number }}
+
 jobs:
   build:
     runs-on: windows-latest
@@ -28,6 +31,13 @@ jobs:
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle.properties') }}
           restore-keys: ${{ runner.os }}-gradle-
+      - name: Update Version
+        working-directory: src/IntelliJ
+        shell: pwsh
+        run: |
+          ((Get-Content -Path gradle.properties -Raw) `
+            -Replace "pluginVersion=0.1.0", "pluginVersion=${{ env.VERSION }}") `
+            | Set-Content -Path gradle.properties
       - name: Build IntelliJ Plugin
         working-directory: src/IntelliJ
         run: ./gradlew buildPlugin --no-daemon
