@@ -2,7 +2,19 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.30.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.31.0...HEAD)
+
+**Implemented enhancements:**
+
+- Fix IntelliJ plugin version compatibility [\#1312](https://github.com/christianhelle/apiclientcodegen/pull/1312) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update dependency @types/vscode to v1.104.0 [\#1315](https://github.com/christianhelle/apiclientcodegen/pull/1315) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.31.0](https://github.com/christianhelle/apiclientcodegen/tree/1.31.0) (2025-09-07)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.30.0...1.31.0)
 
 **Implemented enhancements:**
 
@@ -25,6 +37,13 @@
 
 **Merged pull requests:**
 
+- Update actions/setup-node action to v5 [\#1311](https://github.com/christianhelle/apiclientcodegen/pull/1311) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/setup-dotnet action to v5 [\#1310](https://github.com/christianhelle/apiclientcodegen/pull/1310) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/github-script action to v8 [\#1309](https://github.com/christianhelle/apiclientcodegen/pull/1309) ([renovate[bot]](https://github.com/apps/renovate))
+- Update plugin org.jetbrains.intellij.platform to v2.9.0 [\#1308](https://github.com/christianhelle/apiclientcodegen/pull/1308) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Spectre.Console.Cli to 0.51.1 [\#1307](https://github.com/christianhelle/apiclientcodegen/pull/1307) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency mocha to v11.7.2 [\#1306](https://github.com/christianhelle/apiclientcodegen/pull/1306) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.18.1 [\#1305](https://github.com/christianhelle/apiclientcodegen/pull/1305) ([renovate[bot]](https://github.com/apps/renovate))
 - Switch from Refitter.Core dependency to Refitter CLI [\#1303](https://github.com/christianhelle/apiclientcodegen/pull/1303) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Update dependency @types/node to v22.18.0 [\#1301](https://github.com/christianhelle/apiclientcodegen/pull/1301) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency ts-loader to v9.5.4 [\#1300](https://github.com/christianhelle/apiclientcodegen/pull/1300) ([renovate[bot]](https://github.com/apps/renovate))
