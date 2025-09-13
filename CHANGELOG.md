@@ -1,5 +1,21 @@
 # Changelog
 
+## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.31.0...HEAD)
+
+**Implemented enhancements:**
+
+- Fix command syntax for executing Refitter settings from VS Code [\#1317](https://github.com/christianhelle/apiclientcodegen/pull/1317) ([christianhelle](https://github.com/christianhelle))
+- Fix IntelliJ plugin version compatibility [\#1312](https://github.com/christianhelle/apiclientcodegen/pull/1312) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update workflow triggers to ignore unnecessary paths in CLI Tool, Smoke Tests, Unit Tests, VS Code, and VSIX workflows [\#1318](https://github.com/christianhelle/apiclientcodegen/pull/1318) ([christianhelle](https://github.com/christianhelle))
+- Update dependency @types/node to v22.18.3 [\#1316](https://github.com/christianhelle/apiclientcodegen/pull/1316) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/vscode to v1.104.0 [\#1315](https://github.com/christianhelle/apiclientcodegen/pull/1315) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Azure.Core to 1.48.0 [\#1313](https://github.com/christianhelle/apiclientcodegen/pull/1313) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.31.0](https://github.com/christianhelle/apiclientcodegen/tree/1.31.0) (2025-09-07)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.30.0...1.31.0)
