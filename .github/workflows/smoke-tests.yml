@@ -8,14 +8,16 @@ on:
       - '!.github/workflows/smoke-tests.yml'
       - '!src/CLI/ApiClientCodeGen.CLI/**/*'
       - '!src/Core/ApiClientCodeGen.Core/**/*'
-      - '!src/VSIX/ApiClientCodeGen.Vsix.Shared/**/*'
       - '!test/GeneratedCode/**/*.csproj'
       - '!test/OpenAPI/**/Swagger.*'
-    branches:
-      - '*'
   pull_request:
-    branches:
-      - '*'
+    paths-ignore:
+      - '**/*'
+      - '!.github/workflows/smoke-tests.yml'
+      - '!src/CLI/ApiClientCodeGen.CLI/**/*'
+      - '!src/Core/ApiClientCodeGen.Core/**/*'
+      - '!test/GeneratedCode/**/*.csproj'
+      - '!test/OpenAPI/**/Swagger.*'
   schedule:
     - cron:  '0 8 * * *'
 

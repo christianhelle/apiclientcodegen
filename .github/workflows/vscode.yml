@@ -2,16 +2,13 @@ name: VS Code
 
 on:
   push:
-    branches: [main]
     paths:
       - 'src/VSCode/**'
-    tags:
-      - 'vscode-v*'
+      - '.github/workflows/vscode.yml'
   pull_request:
-    branches:
-      - '*'
     paths:
       - 'src/VSCode/**'
+      - '.github/workflows/vscode.yml'
   workflow_dispatch:
 
 env:

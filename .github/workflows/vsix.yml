@@ -8,11 +8,12 @@ on:
       - '!.github/workflows/vsix.yml'
       - '!src/Core/**/*'
       - '!src/VSIX/**/*'
-    branches:
-      - '*'
   pull_request:
-    branches:
-      - '*'
+    paths-ignore:
+      - '**/*'
+      - '!.github/workflows/vsix.yml'
+      - '!src/Core/**/*'
+      - '!src/VSIX/**/*'
   schedule:
     - cron:  '0 8 * * *'
 

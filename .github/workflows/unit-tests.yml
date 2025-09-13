@@ -8,11 +8,12 @@ on:
       - '!.github/workflows/unit-tests.yml'
       - '!src/**/*.csproj'
       - '!src/**/*.cs'
-    branches:
-      - '*'
   pull_request:
-    branches:
-      - '*'
+    paths-ignore:
+      - '**/*'
+      - '!.github/workflows/unit-tests.yml'
+      - '!src/**/*.csproj'
+      - '!src/**/*.cs'
   schedule:
     - cron:  '0 8 * * *'
 
