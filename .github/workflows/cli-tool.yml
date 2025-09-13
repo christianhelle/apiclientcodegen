@@ -10,12 +10,14 @@ on:
       - '!src/Core/**/*.cs'
       - '!src/CLI/**/*.csproj'
       - '!src/CLI/**/*.cs'
-
-    branches:
-      - '*'
   pull_request:
-    branches:
-      - '*'
+    paths-ignore:
+      - '**/*'
+      - '!.github/workflows/cli-tool.yml'
+      - '!src/Core/**/*.csproj'
+      - '!src/Core/**/*.cs'
+      - '!src/CLI/**/*.csproj'
+      - '!src/CLI/**/*.cs'
   schedule:
     - cron:  '0 8 * * *'
 
