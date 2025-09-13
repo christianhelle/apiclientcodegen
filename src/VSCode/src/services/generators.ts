@@ -157,7 +157,7 @@ export async function executeRapicgenRefitterSettings(settingsFilePath: string, 
     return;
   }
 
-  const command = `rapicgen csharp refitter --settings-file "${settingsFilePath}"`;
+  const command = `rapicgen csharp refitter . --settings-file "${settingsFilePath}"`;
   
   await executeRapicgenCommand(command, 'Refitter', settingsFilePath, false, true);
 }
