@@ -1,17 +1,5 @@
 # Changelog
 
-## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
-
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.31.0...HEAD)
-
-**Implemented enhancements:**
-
-- Fix IntelliJ plugin version compatibility [\#1312](https://github.com/christianhelle/apiclientcodegen/pull/1312) ([christianhelle](https://github.com/christianhelle))
-
-**Merged pull requests:**
-
-- Update dependency @types/vscode to v1.104.0 [\#1315](https://github.com/christianhelle/apiclientcodegen/pull/1315) ([renovate[bot]](https://github.com/apps/renovate))
-
 ## [1.31.0](https://github.com/christianhelle/apiclientcodegen/tree/1.31.0) (2025-09-07)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.30.0...1.31.0)
