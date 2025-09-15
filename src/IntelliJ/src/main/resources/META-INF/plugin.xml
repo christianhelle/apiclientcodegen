@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<idea-plugin icon="icon.png">
+<idea-plugin>
     <id>com.christianhelle.apiclientcodegen</id>
     <name>REST API Client Code Generator</name>
     <vendor url="https://github.com/christianhelle/apiclientcodegen">Christian Resma Helle</vendor>
