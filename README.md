@@ -31,8 +31,8 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 - **[Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator)**
 - **[Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2017)**
 - **[Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.apiclientcodegen)**
-- **[Visual Studio for Mac](https://github.com/christianhelle/apiclientcodegen/releases/latest)**. Follow **[these instructions](#visual-studio-for-mac)** for update convenience on Visual Studio for Mac
-- **JetBrains IntelliJ / Rider (Preview)** – See `src/IntelliJ/README.md` for plugin build & usage instructions (early preview, not yet published)
+- **[Visual Studio for Mac](#visual-studio-for-mac)**
+- **[JetBrains IntelliJ / Rider](https://plugins.jetbrains.com/plugin/28472-rest-api-client-code-generator)**
 
 ## Features
 
@@ -273,23 +273,68 @@ Here's what you need to do:
 
 ![Manually uninstall Add-in](images/vsmac-extensions-uninstall.png)
 
+## IntelliJ Plugin
 
-# Cross Platform Command Line Tool
+The IntelliJ plugin provides similar functionality to the VS Code extension through context menus and commands within JetBrains IDEs. It executes the `rapicgen` .NET tool to generate code, so you will need to have the .NET SDK installed.
+
+### IntelliJ Plugin Installation
+
+The plugin is available on the JetBrains Marketplace and can be installed directly from your IDE:
+
+1. Open your JetBrains IDE (IntelliJ IDEA, Rider, WebStorm, etc.)
+2. Go to **File** → **Settings** (or **IntelliJ IDEA** → **Preferences** on macOS)
+3. Navigate to **Plugins**
+4. Search for "REST API Client Code Generator"
+5. Click **Install** and restart your IDE
+
+Alternatively, you can install it from the [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/28472-rest-api-client-code-generator).
+
+### IntelliJ Plugin Features
+
+- Context menu on JSON and YAML files for generating code with various generators
+- Supports all code generators: NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, and AutoREST
+- Multiple language support: C#, TypeScript, and more
+- Configuration options for namespace and output directory
+- Integration with JetBrains project structure
+
+### IntelliJ Plugin Usage
+
+1. Right-click on a Swagger/OpenAPI specification file (JSON or YAML) in the project explorer
+2. Select "Generate REST API Client" from the context menu
+3. Choose your preferred code generator and target language
+4. Configure the namespace and output options
+5. The generated code will be added to your project
+
+### IntelliJ Plugin Screenshots
+
+![Generate C# Client](images/intellij-generate-csharp.png)
+
+![Generate TypeScript Client](images/intellij-generate-typescript.png)
+
+![Generate Refitter Interface](images/intellij-generate-refitter.png)
+
+## Cross Platform Command Line Tool
+
 All custom tools mentioned above are also implemented in a cross platform command line application.
 
-#### Requirements
+### Requirements
+
 - .NET 6.0 runtime
 - Java Runtime Environment
 - NPM
 
-### Installation
+### CLI Installation
+
 The tool can be installed as a .NET Core global tool that you can call from the shell / command line
-```
+
+```bash
 dotnet tool install --global rapicgen
 ```
+
 or by following the instructions [here](https://www.nuget.org/packages/rapicgen) to install a specific version of tool
 
-### Usage
+### CLI Usage
+
 Since the tool is published as a .NET Core Tool, it can be launched from anywhere using any command line interface by calling **rapicgen**.
 The help information is displayed when not specifying any arguments to **rapicgen**
 

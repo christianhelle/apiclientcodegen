@@ -36,7 +36,6 @@ dependencies {
 
 tasks {
     withType<JavaCompile> { sourceCompatibility = javaVersion; targetCompatibility = javaVersion }
-    processResources { from("../../images/icon.png") { rename { "pluginIcon.png" } } }
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions { jvmTarget = javaVersion }
     }

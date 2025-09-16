@@ -4,8 +4,56 @@
     <name>REST API Client Code Generator</name>
     <vendor url="https://github.com/christianhelle/apiclientcodegen">Christian Resma Helle</vendor>
     <description><![CDATA[
-        <p>Generate C# and TypeScript REST API clients from OpenAPI / Swagger specs using: NSwag, Refitter, OpenAPI Generator, Kiota, Swagger Codegen CLI, AutoRest (preview subset currently exposed).</p>
-        <p>Right-click an OpenAPI file or .refitter settings file in the Project View to invoke generation via the rapicgen .NET tool.</p>
+        <h2>🚀 REST API Client Code Generator</h2>
+        
+        <p><strong>Streamline your API integration workflow</strong> by automatically generating type-safe, production-ready REST API clients directly from OpenAPI/Swagger specifications. This plugin brings the power of industry-leading code generators right into your JetBrains IDE.</p>
+        
+        <h3>✨ Key Features</h3>
+        <ul>
+            <li><strong>Multiple Language Support:</strong> Generate C# and TypeScript clients with various framework options</li>
+            <li><strong>Industry-Standard Generators:</strong> Choose from NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, and AutoRest</li>
+            <li><strong>Seamless Integration:</strong> Right-click context menu on OpenAPI files (.json, .yaml, .yml) and Refitter settings files</li>
+            <li><strong>Framework Flexibility:</strong> Support for Angular, React (Axios), Node.js, Refit, and more</li>
+            <li><strong>Configuration Files:</strong> Generate from .refitter settings for advanced customization</li>
+        </ul>
+        
+        <h3>🛠️ Supported Generators</h3>
+        <p><strong>C# Clients:</strong></p>
+        <ul>
+            <li><strong>NSwag</strong> - Feature-rich with extensive customization options</li>
+            <li><strong>Refitter</strong> - Generate Refit interfaces for reactive HTTP clients</li>
+            <li><strong>OpenAPI Generator</strong> - Industry-standard with broad language support</li>
+            <li><strong>Microsoft Kiota</strong> - Microsoft's modern API client generator</li>
+            <li><strong>Swagger Codegen CLI</strong> - Traditional and reliable option</li>
+            <li><strong>AutoRest</strong> - Microsoft's legacy generator (preview)</li>
+        </ul>
+        
+        <p><strong>TypeScript Clients:</strong></p>
+        <ul>
+            <li>Angular, Aurelia, Axios, Fetch API</li>
+            <li>Inversify, jQuery, NestJS, Node.js</li>
+            <li>Redux Query, RxJS</li>
+        </ul>
+        
+        <h3>⚡ Quick Start</h3>
+        <ol>
+            <li>Install the <strong>rapicgen</strong> .NET tool (guidance provided if missing)</li>
+            <li>Right-click any OpenAPI specification file in your project</li>
+            <li>Choose your preferred language and generator</li>
+            <li>Specify namespace/output folder when prompted</li>
+            <li>Generated client code is ready to use!</li>
+        </ol>
+        
+        <h3>📋 Requirements</h3>
+        <ul>
+            <li>.NET 8.0 SDK</li>
+            <li>Java 17+ Runtime</li>
+            <li>Node.js + NPM</li>
+        </ul>
+        
+        <p><em>Part of the comprehensive REST API Client Code Generator suite, trusted by thousands of developers across Visual Studio, VS Code, and JetBrains IDEs.</em></p>
+        
+        <p>🔗 <a href="https://github.com/christianhelle/apiclientcodegen">GitHub Repository</a> | <a href="https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2022">VS Extension</a> | <a href="https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.apiclientcodegen">VS Code Extension</a></p>
     ]]></description>
     <version>${pluginVersion}</version>
     <idea-version since-build="${pluginSinceBuild}" until-build="${pluginUntilBuild}"/>
