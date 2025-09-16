@@ -761,7 +761,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>10.0.3</Version>
+      <Version>13.0.4</Version>
     </PackageReference>
     <PackageReference Include="NuGet.VisualStudio">
       <Version>3.5.0</Version>
