@@ -6,8 +6,15 @@
 
 **Implemented enhancements:**
 
+- Switch from Refitter.Core dependency to Refitter CLI tool due to NSwag and Visual Studio SDK compatibility issues [\#1302](https://github.com/christianhelle/apiclientcodegen/issues/1302)
+- Fix "Generate Refitter Output" command [\#1323](https://github.com/christianhelle/apiclientcodegen/pull/1323) ([christianhelle](https://github.com/christianhelle))
+- Improve IntelliJ Plugin Marketplace experience [\#1322](https://github.com/christianhelle/apiclientcodegen/pull/1322) ([christianhelle](https://github.com/christianhelle))
 - Fix command syntax for executing Refitter settings from VS Code [\#1317](https://github.com/christianhelle/apiclientcodegen/pull/1317) ([christianhelle](https://github.com/christianhelle))
 - Fix IntelliJ plugin version compatibility [\#1312](https://github.com/christianhelle/apiclientcodegen/pull/1312) ([christianhelle](https://github.com/christianhelle))
+
+**Closed issues:**
+
+- .refitter file fails to generate code [\#1321](https://github.com/christianhelle/apiclientcodegen/issues/1321)
 
 **Merged pull requests:**
 
