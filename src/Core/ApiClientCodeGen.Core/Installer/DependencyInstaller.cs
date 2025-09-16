@@ -91,16 +91,19 @@ namespace Rapicgen.Core.Installer
 
         public void InstallRefitter()
         {
-            var command = "refitter";
-            string arguments = "--version";
-            string refitterVersion = "";
+            var command = PathProvider.GetDotNetPath();
+            string arguments = "tool list --global";
+            string toolListOutput = "";
+            Version installedVersion = null;
+            bool refitterInstalled = false;
+            
             try
             {
                 processLauncher.Start(command, arguments, output =>
                 {
                     if (output != null)
                     {
-                        refitterVersion = output ?? refitterVersion;
+                        toolListOutput += output + Environment.NewLine;
                         Logger.Instance.WriteLine(output);
                     }
                 }, error =>
@@ -110,34 +113,38 @@ namespace Rapicgen.Core.Installer
                         Logger.Instance.WriteLine(error);
                     }
                 });
-                // Parse the version string and compare with required version
+                
+                // Parse the tool list output to find Refitter
                 var requiredVersion = new Version(1, 6, 2);
-                Version installedVersion = null;
-                try
+                
+                if (!string.IsNullOrEmpty(toolListOutput))
                 {
-                    // Extract version number from output (e.g., "refitter 1.6.2")
-                    var versionString = refitterVersion?.Trim();
-                    if (!string.IsNullOrEmpty(versionString))
+                    var lines = toolListOutput.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var line in lines)
                     {
-                        // Find the first occurrence of a version-like pattern
-                        var parts = versionString.Split(' ');
-                        foreach (var part in parts)
+                        // Look for a line containing "refitter" (case-insensitive)
+                        if (line.IndexOf("refitter", StringComparison.OrdinalIgnoreCase) >= 0)
                         {
-                            if (Version.TryParse(part, out var v))
+                            refitterInstalled = true;
+                            // Expected format: "refitter    1.6.2    refitter"
+                            // Split by whitespace and look for version
+                            var parts = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+                            foreach (var part in parts)
                             {
-                                installedVersion = v;
-                                break;
+                                if (Version.TryParse(part, out var v))
+                                {
+                                    installedVersion = v;
+                                    break;
+                                }
                             }
+                            break;
                         }
                     }
                 }
-                catch
+                
+                if (!refitterInstalled || installedVersion == null || installedVersion < requiredVersion)
                 {
-                    // Ignore parsing errors, will handle as incompatible version below
-                }
-                if (installedVersion == null || installedVersion < requiredVersion)
-                {
-                    // Installed version is too old or could not be determined, install/update required version
+                    // Refitter is not installed or version is too old, install/update required version
                     var installCommand = PathProvider.GetDotNetPath();
                     var installArguments = "tool install --global refitter --version 1.6.2";
                     using var context = new DependencyContext(installCommand, $"{installCommand} {installArguments}");
@@ -147,7 +154,7 @@ namespace Rapicgen.Core.Installer
             }
             catch (Win32Exception e)
             {
-                //if command doesn't exist Win32Exception is thrown.
+                // If dotnet command doesn't exist or fails, install Refitter
                 command = PathProvider.GetDotNetPath();
                 arguments = "tool install --global refitter --version 1.6.2";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
