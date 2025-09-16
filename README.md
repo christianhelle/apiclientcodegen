@@ -31,8 +31,8 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 - **[Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator)**
 - **[Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2017)**
 - **[Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.apiclientcodegen)**
-- **[Visual Studio for Mac](https://github.com/christianhelle/apiclientcodegen/releases/latest)**. Follow **[these instructions](#visual-studio-for-mac)** for update convenience on Visual Studio for Mac
-- **JetBrains IntelliJ / Rider (Preview)** – See `src/IntelliJ/README.md` for plugin build & usage instructions (early preview, not yet published)
+- **[Visual Studio for Mac](#visual-studio-for-mac)**
+- **[JetBrains IntelliJ / Rider](https://plugins.jetbrains.com/plugin/28472-rest-api-client-code-generator)**
 
 ## Features
 
@@ -272,6 +272,12 @@ Here's what you need to do:
 - Uninstalling the Add-in is done in this same dialog box by clicking the **Uninstall** button
 
 ![Manually uninstall Add-in](images/vsmac-extensions-uninstall.png)
+
+# IntelliJ Plugin
+
+![](images/intellij-generate-csharp.png)
+![](images/intellij-generate-typescript.png)
+![](images/intellij-generate-refitter.png)
 
 
 # Cross Platform Command Line Tool
