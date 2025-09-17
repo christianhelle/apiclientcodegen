@@ -1,6 +1,18 @@
 # Version Bump Scripts
 
-This directory contains PowerShell scripts to automatically bump the VERSION environment variable in GitHub workflow files.
+This directory (`.github/workflows`) contains PowerShell scripts to automatically bump the VERSION environment variable in GitHub workflow files located in this same directory.
+
+## Usage Location
+
+**Important**: These scripts must be run from the `.github/workflows` directory where they are located.
+
+```powershell
+# Navigate to the workflows directory first
+cd .github/workflows
+
+# Then run the scripts
+.\bump-version.ps1 -DryRun
+```
 
 ## Scripts
 
@@ -37,7 +49,7 @@ The comprehensive script that handles all version bumping scenarios with detaile
   - Overrides IncrementType when specified
   - Must be in format `x.y`
 
-- **WorkflowPath**: Path to workflows (default: `".github/workflows"`)
+- **WorkflowPath**: Path to workflows (default: `"."` - current directory)
 
 - **DryRun**: Preview changes without modifying files
 
@@ -60,7 +72,7 @@ A simplified wrapper for common scenarios.
 
 ## What These Scripts Do
 
-The scripts scan all GitHub workflow YAML files in `.github/workflows/` and update the VERSION environment variable from:
+The scripts scan all GitHub workflow YAML files in the current directory (`.github/workflows/`) and update the VERSION environment variable from:
 
 ```yaml
 env:
@@ -95,13 +107,17 @@ The following workflow files contain VERSION environment variables:
 ### Minor Version Bump (Most Common)
 
 ```powershell
+# Navigate to workflows directory
+cd .github/workflows
+
 # Preview the change
 .\bump-version.ps1 -DryRun
 
 # Apply the change
 .\bump-version.ps1
 
-# Review and commit
+# Review and commit (from repository root)
+cd ../..
 git diff
 git add .
 git commit -m "Bump version to 1.33"
@@ -111,13 +127,17 @@ git push
 ### Major Version Bump
 
 ```powershell
+# Navigate to workflows directory
+cd .github/workflows
+
 # Preview the change  
 .\bump-version.ps1 -IncrementType major -DryRun
 
 # Apply the change
 .\bump-version.ps1 -IncrementType major
 
-# Review and commit
+# Review and commit (from repository root)
+cd ../..
 git diff
 git add .
 git commit -m "Bump version to 2.0"
@@ -127,10 +147,14 @@ git push
 ### Setting Specific Version
 
 ```powershell
+# Navigate to workflows directory
+cd .github/workflows
+
 # Set to version 2.5
 .\bump-version.ps1 -NewVersion "2.5"
 
-# Review and commit
+# Review and commit (from repository root)
+cd ../..
 git diff
 git add .  
 git commit -m "Set version to 2.5"
@@ -150,7 +174,7 @@ The scripts include comprehensive error handling for:
 ## Requirements
 
 - PowerShell 5.1 or later
-- Write access to `.github/workflows/` directory
+- Write access to GitHub workflow files (run from `.github/workflows/` directory)
 - Git repository context (for best practices)
 
 ## Best Practices

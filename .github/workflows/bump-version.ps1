@@ -19,7 +19,7 @@
     If provided, this overrides the IncrementType parameter.
 
 .PARAMETER WorkflowPath
-    Path to the .github/workflows directory. Default is ".github/workflows".
+    Path to the directory containing GitHub workflow files. Default is "." (current directory).
 
 .PARAMETER DryRun
     If specified, shows what changes would be made without actually modifying files.
@@ -47,14 +47,14 @@ param(
     
     [string]$NewVersion = $null,
     
-    [string]$WorkflowPath = ".github/workflows",
+    [string]$WorkflowPath = ".",
     
     [switch]$DryRun
 )
 
-# Ensure we're in the repository root
+# Ensure the workflow path exists
 if (-not (Test-Path $WorkflowPath)) {
-    Write-Error "Workflow path '$WorkflowPath' not found. Make sure you're running this script from the repository root."
+    Write-Error "Workflow path '$WorkflowPath' not found. Make sure you're running this script from the correct directory."
     exit 1
 }
 

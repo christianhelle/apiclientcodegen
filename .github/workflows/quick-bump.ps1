@@ -27,7 +27,7 @@ param(
 
 # Check if bump-version.ps1 exists
 if (-not (Test-Path "bump-version.ps1")) {
-    Write-Error "bump-version.ps1 not found in current directory. Make sure you're in the repository root."
+    Write-Error "bump-version.ps1 not found in current directory. Make sure you're in the .github/workflows directory."
     exit 1
 }
 
