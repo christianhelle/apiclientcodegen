@@ -174,7 +174,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool install --global refitter --version 1.6.2",
+                    "tool install --global refitter --version 1.6.3",
                     null),
                 Times.Once);
         }
@@ -205,7 +205,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool install --global refitter --version 1.6.2",
+                    "tool install --global refitter --version 1.6.3",
                     null),
                 Times.Once);
         }
@@ -228,7 +228,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                     (cmd, args, onOutput, onError, workingDir) =>
                     {
                         onOutput?.Invoke("Package Id      Version      Commands");
-                        onOutput?.Invoke("refitter        1.6.2        refitter");
+                        onOutput?.Invoke("refitter        1.6.3        refitter");
                     });
 
             sut.InstallRefitter();
@@ -236,7 +236,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool install --global refitter --version 1.6.2",
+                    "tool install --global refitter --version 1.6.3",
                     null),
                 Times.Never);
         }
@@ -267,7 +267,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool install --global refitter --version 1.6.2",
+                    "tool install --global refitter --version 1.6.3",
                     null),
                 Times.Never);
         }
@@ -293,7 +293,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool install --global refitter --version 1.6.2",
+                    "tool install --global refitter --version 1.6.3",
                     null),
                 Times.Once);
         }
