@@ -18,6 +18,9 @@
 
 **Merged pull requests:**
 
+- Refitter v1.6.3 [\#1326](https://github.com/christianhelle/apiclientcodegen/pull/1326) ([christianhelle](https://github.com/christianhelle))
+- Add version bump scripts to workflows [\#1324](https://github.com/christianhelle/apiclientcodegen/pull/1324) ([christianhelle](https://github.com/christianhelle))
+- Update dependency @types/node to v22.18.5 [\#1319](https://github.com/christianhelle/apiclientcodegen/pull/1319) ([renovate[bot]](https://github.com/apps/renovate))
 - Update workflow triggers to ignore unnecessary paths in CLI Tool, Smoke Tests, Unit Tests, VS Code, and VSIX workflows [\#1318](https://github.com/christianhelle/apiclientcodegen/pull/1318) ([christianhelle](https://github.com/christianhelle))
 - Update dependency @types/node to v22.18.3 [\#1316](https://github.com/christianhelle/apiclientcodegen/pull/1316) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/vscode to v1.104.0 [\#1315](https://github.com/christianhelle/apiclientcodegen/pull/1315) ([renovate[bot]](https://github.com/apps/renovate))
