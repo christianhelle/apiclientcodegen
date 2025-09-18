@@ -156,7 +156,7 @@ namespace Rapicgen.Core.Installer
             {
                 // If dotnet command doesn't exist or fails, install Refitter
                 command = PathProvider.GetDotNetPath();
-                arguments = "tool update --global refitter --version 1.6.3";
+                arguments = "tool install --global refitter --version 1.6.3";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
                 processLauncher.Start(command, arguments);
                 context.Succeeded();
