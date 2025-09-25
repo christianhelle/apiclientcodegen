@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.31.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.32.0...HEAD)
+
+**Merged pull requests:**
+
+- Update dependency @vscode/vsce to v3.6.1 [\#1329](https://github.com/christianhelle/apiclientcodegen/pull/1329) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.32.0](https://github.com/christianhelle/apiclientcodegen/tree/1.32.0) (2025-09-18)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.31.0...1.32.0)
 
 **Implemented enhancements:**
 
