@@ -8,6 +8,6 @@ namespace Rapicgen.Core.Options.Kiota
         
         TypeAccessModifier TypeAccessModifier { get; }
 
-        bool UseBackingStore { get; }
+        bool UsesBackingStore { get; }
     }
 }
