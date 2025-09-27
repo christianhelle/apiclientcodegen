@@ -15,6 +15,7 @@ namespace Rapicgen.Options.Kiota
                 options ??= GetFromDialogPage();
                 GenerateMultipleFiles = options.GenerateMultipleFiles;
                 TypeAccessModifier = options.TypeAccessModifier;
+                UsesBackingStore = options.UsesBackingStore;
             }
             catch (Exception e)
             {
@@ -26,10 +27,12 @@ namespace Rapicgen.Options.Kiota
 
                 GenerateMultipleFiles = false;
                 TypeAccessModifier = TypeAccessModifier.Public;
+                UsesBackingStore = false;
             }
         }
 
         public bool GenerateMultipleFiles { get; }
         public TypeAccessModifier TypeAccessModifier { get; }
+        public UsesBackingStore { get; }
     }
 }
