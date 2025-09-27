@@ -12,6 +12,8 @@ namespace Rapicgen.Core.Extensions
                     return "OpenAPI Generator";
                 case SupportedCodeGenerator.NSwagStudio:
                     return "NSwag Studio";
+                case SupportedCodeGenerator.Kiota:
+                    return "Microsoft Kiota";
                 default:
                     return generator.ToString();
             }
