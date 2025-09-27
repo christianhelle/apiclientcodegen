@@ -24,6 +24,7 @@ namespace Rapicgen.Options.Kiota
                 Logger.Instance.WriteLine(Environment.NewLine);
                 Logger.Instance.WriteLine("Error reading user options. Reverting to default values");
                 Logger.Instance.WriteLine("GenerateMultipleFiles = false");
+                Logger.Instance.WriteLine("UsesBackingStore = false");
 
                 GenerateMultipleFiles = false;
                 TypeAccessModifier = TypeAccessModifier.Public;
