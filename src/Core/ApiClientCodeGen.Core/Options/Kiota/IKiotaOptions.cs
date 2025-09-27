@@ -7,5 +7,7 @@ namespace Rapicgen.Core.Options.Kiota
         bool GenerateMultipleFiles { get; }
         
         TypeAccessModifier TypeAccessModifier { get; }
+
+        bool UseBackingStore { get; }
     }
 }
