@@ -12,6 +12,8 @@ public enum OpenApiSupportedVersion
     [Description("Latest")]
     Latest = 0,
 
+    [Description("7.16.0")]
+    V7160 = 7160,
     [Description("7.15.0")]
     V7150 = 7150,
     [Description("7.14.0")]
@@ -37,5 +39,5 @@ public static class OpenApiSupportedVersionExtensions
     /// <summary>
     /// Gets the latest supported version of OpenAPI Generator
     /// </summary>
-    public static OpenApiSupportedVersion Latest => OpenApiSupportedVersion.V7150;
+    public static OpenApiSupportedVersion Latest => OpenApiSupportedVersion.V7160;
 }
