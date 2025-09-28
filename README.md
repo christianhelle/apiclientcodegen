@@ -57,7 +57,7 @@ Custom tools let you associate a tool with an item in a project and run that too
 
 - ***NSwagCodeGenerator*** - Generates a single file C# REST API Client using the [NSwag.CodeGeneration.CSharp](https://github.com/RSuter/NSwag/wiki/CSharpClientGenerator) [nuget package](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) **v14.4.0**
 
-- ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **[OpenAPI Generator v7.15.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.15.0)**.
+- ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **[OpenAPI Generator v7.16.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.16.0)**.
 The output file is the result of merging all the files generated using the OpenAPI Generator tool with:
 `generate -g csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[default namespace] --skip-overwrite`. It is possible to configure the OpenAPI Generator to generate multiple files which will be placed at the same path as the OpenAPI specifications document that was used to generate code, this is done under Tools -> REST API Client Code Generator -> OpenAPI Generator and setting **Generate Multiple Files** to **true**
 
@@ -348,7 +348,7 @@ Options:
 Commands:
   csharp             Generate C# API clients
   jmeter             Generate Apache JMeter test plans
-  openapi-generator  Generate code using OpenAPI Generator (v7.15.0).
+  openapi-generator  Generate code using OpenAPI Generator (v7.16.0).
                      See supported generators at https://openapi-generator.tech/docs/generators/
   typescript         Generate TypeScript API clients
 
@@ -387,7 +387,7 @@ Commands:
   autorest      AutoRest (v3.0.0-beta.20210504.2)
   kiota         Microsoft Kiota (v1.28.0)
   nswag         NSwag (v14.4.0)
-  openapi       OpenAPI Generator (v7.15.0)
+  openapi       OpenAPI Generator (v7.16.0)
   refitter      Refitter (v1.6.3)
   swagger       Swagger Codegen CLI (v3.0.34)
 
