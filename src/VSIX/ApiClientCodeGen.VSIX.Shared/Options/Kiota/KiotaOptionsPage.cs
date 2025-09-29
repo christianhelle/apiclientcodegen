@@ -25,7 +25,7 @@ namespace Rapicgen.Options.Kiota
 
         [Category(Name)]
         [DisplayName("Generate Backing Store")]
-        [Description("Generate EF backing store code")]
+        [Description("Generate persistance code for Entity Framework")]
         public bool UsesBackingStore {get; set; }
     }
 }

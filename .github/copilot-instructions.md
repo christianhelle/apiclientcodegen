@@ -2,6 +2,27 @@
 
 Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
 
+## Architecture Overview
+
+This is a **multi-platform code generation tool** that wraps external OpenAPI/Swagger code generators:
+- **Core**: Shared .NET libraries implementing `ICodeGenerator` interface pattern
+- **CLI Tool** (`rapicgen`): Cross-platform command-line interface 
+- **IDE Extensions**: Visual Studio (VSIX), VS Code (TypeScript), Visual Studio for Mac, IntelliJ/Rider
+- **External Dependencies**: Wraps NSwag, OpenAPI Generator (Java), Swagger Codegen (Java), AutoRest (NPM), Refitter (.NET), Kiota (.NET)
+
+### Key Design Patterns
+- **Factory Pattern**: `ICodeGeneratorFactory` creates generators based on `SupportedCodeGenerator` enum
+- **Dependency Injection**: External tools installed on-demand via `IDependencyInstaller`
+- **Process Abstraction**: `IProcessLauncher` wraps external CLI tool execution
+- **Multi-file Merging**: Java-based generators output multiple files, then merged into single C# file
+
+### Code Generation Flow
+1. Parse OpenAPI spec via `IOpenApiDocumentFactory`
+2. Create generator via `CodeGeneratorFactory.Create()`  
+3. Install external dependencies if missing (`DependencyInstaller`)
+4. Execute generator with `IProgressReporter` for UI feedback
+5. Merge/process output files for single-file generators
+
 ## Working Effectively
 
 ### Prerequisites and Setup
@@ -208,6 +229,88 @@ src/
 **Expected failures**: Network-dependent tests will fail in isolated environments. This is normal and expected.
 
 **Dependencies**: This tool generates code using external tools (Java-based OpenAPI generators, Node.js-based NSwag CLI) so initial runs download dependencies and take longer.
+
+### External Tool Integration Patterns
+
+**Dependency Installation Strategy** (`DependencyInstaller`):
+- **NPM tools** (AutoRest, NSwag): Install via `npm install -g package-name`  
+- **Java tools** (OpenAPI Generator, Swagger): Download JAR files with SHA verification
+- **.NET tools** (Kiota, Refitter): Install via `dotnet tool install --global`
+- **Version checking**: Parse tool output to determine if updates needed
+
+**Code Generator Implementation Pattern**:
+```csharp
+public class [Tool]CodeGenerator : ICodeGenerator
+{
+    public string GenerateCode(IProgressReporter? progress)
+    {
+        progress?.Progress(10);
+        dependencyInstaller.Install[Tool]();        // Install if missing
+        progress?.Progress(30);  
+        processLauncher.Start(command, arguments);   // Execute external tool
+        progress?.Progress(80);
+        return ProcessOutput();                      // Merge files if needed
+    }
+}
+```
+
+**Multi-platform Extension Strategy**:
+- **VSIX**: COM-visible `IVsSingleFileGenerator` custom tools for Visual Studio
+- **VSCode**: TypeScript extension with command palette + context menu integration
+- **CLI**: Spectre.Console commands with progress reporting and telemetry
+- **VSMac/IntelliJ**: Platform-specific custom tool implementations
+
+### Testing Strategy and Patterns
+
+**Test Categories** (use `[Trait("Category", "...")]`):
+- **Unit tests**: Mock external dependencies, test logic only
+- **Integration tests**: Execute real external tools, expect network failures
+- **`SkipWhenLiveUnitTesting`**: Skip slow tests during development
+
+**Common Test Patterns**:
+```csharp
+[Fact]
+public void GenerateCode_ReportsProgress()
+    => mock.Verify(c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()));
+    
+[SkippableFact(typeof(ProcessLaunchException))]  // Handle network/tool failures
+public void InstallTool_Returns_Path() { ... }
+```
+
+## Validation Scenarios
+
+### Always Test These Scenarios After Making Changes:
+
+1. **Core CLI Functionality:**
+   - Generate code using at least two different generators (NSwag and Refitter)
+   - Verify output files are created and contain valid C# code
+   - Test with both local Swagger.json and Swagger.yaml files
+
+2. **Build Validation:**
+   - Build succeeds without errors (warnings are acceptable)
+   - Core unit tests run (network failures are expected)
+   - Integration tests run for at least 2 minutes
+
+3. **VSCode Extension (if modified):**
+   - npm ci completes successfully
+   - npm run lint passes
+   - npm run compile produces dist/extension.js
+
+### Manual Validation Commands:
+```bash
+# Quick validation script
+cd src
+dotnet build Rapicgen.sln
+dotnet run --project CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- csharp nswag Swagger.json Test /tmp/validation.cs
+ls -la /tmp/validation.cs
+head -10 /tmp/validation.cs
+
+# VSCode extension validation
+cd VSCode
+npm run lint
+npm run compile
+ls -la dist/extension.js
+```
 
 ## Always Run Before Committing:
 1. `dotnet build Rapicgen.sln` - Must succeed
