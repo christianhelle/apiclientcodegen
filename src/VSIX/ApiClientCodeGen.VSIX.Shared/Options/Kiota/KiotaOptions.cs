@@ -34,6 +34,6 @@ namespace Rapicgen.Options.Kiota
 
         public bool GenerateMultipleFiles { get; }
         public TypeAccessModifier TypeAccessModifier { get; }
-        public UsesBackingStore { get; }
+        public bool UsesBackingStore { get; }
     }
 }
