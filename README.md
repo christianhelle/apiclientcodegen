@@ -32,11 +32,11 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 - **[Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2017)**
 - **[Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.apiclientcodegen)**
 - **[Visual Studio for Mac](#visual-studio-for-mac)**
-- **[JetBrains IntelliJ / Rider](https://plugins.jetbrains.com/plugin/28472-rest-api-client-code-generator)**
+- **[JetBrains Rider](https://plugins.jetbrains.com/plugin/28472-rest-api-client-code-generator)**
 
 ## Features
 
-- Supports Visual Studio 2017, 2019, 2022, 2026, [Visual Studio Code](#visual-studio-code), and [Visual Studio for Mac](#visual-studio-for-mac), and JetBrains Rider
+- Supports Visual Studio 2017, 2019, 2022, 2026, [Visual Studio Code](#visual-studio-code), and [Visual Studio for Mac](#visual-studio-for-mac), and [JetBrains Rider](#intellij-plugin)
 - Add New REST API Client to a project from an OpenAPI specification URL (e.g <https://petstore.swagger.io/v2/swagger.json>) using the following code generators:
   - [NSwag](https://github.com/RicoSuter/NSwag)
   - [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
