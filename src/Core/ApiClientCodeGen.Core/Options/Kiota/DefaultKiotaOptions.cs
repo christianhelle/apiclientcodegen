@@ -6,5 +6,6 @@ namespace Rapicgen.Core.Options.Kiota
     {
         public bool GenerateMultipleFiles { get; set; } = false;
         public TypeAccessModifier TypeAccessModifier { get; set; } = TypeAccessModifier.Public;
+        public bool UsesBackingStore { get; set; } = false;
     }
 }
