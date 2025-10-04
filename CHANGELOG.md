@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Update dependency @types/node to v22.18.8 [\#1345](https://github.com/christianhelle/apiclientcodegen/pull/1345) ([renovate[bot]](https://github.com/apps/renovate))
 - Update Microsoft.Kiota package references to v1.20.0 [\#1337](https://github.com/christianhelle/apiclientcodegen/pull/1337) ([christianhelle](https://github.com/christianhelle))
 - Update dependency @vscode/vsce to v3.6.1 [\#1329](https://github.com/christianhelle/apiclientcodegen/pull/1329) ([renovate[bot]](https://github.com/apps/renovate))
 
