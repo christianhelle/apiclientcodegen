@@ -10,11 +10,16 @@
 
 **Merged pull requests:**
 
+- Update dependency typescript to v5.9.3 [\#1352](https://github.com/christianhelle/apiclientcodegen/pull/1352) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency mocha to v11.7.4 [\#1351](https://github.com/christianhelle/apiclientcodegen/pull/1351) ([renovate[bot]](https://github.com/apps/renovate))
+- Update Kiota Dependencies to v1.20.1 [\#1350](https://github.com/christianhelle/apiclientcodegen/pull/1350) ([christianhelle](https://github.com/christianhelle))
 - Update dependency @types/node to v22.18.8 [\#1345](https://github.com/christianhelle/apiclientcodegen/pull/1345) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency xunit.runner.visualstudio to 3.1.5 [\#1342](https://github.com/christianhelle/apiclientcodegen/pull/1342) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @vscode/vsce to v3.6.2 [\#1338](https://github.com/christianhelle/apiclientcodegen/pull/1338) ([renovate[bot]](https://github.com/apps/renovate))
 - Update Microsoft.Kiota package references to v1.20.0 [\#1337](https://github.com/christianhelle/apiclientcodegen/pull/1337) ([christianhelle](https://github.com/christianhelle))
+- Update dependency Azure.Core to 1.49.0 [\#1330](https://github.com/christianhelle/apiclientcodegen/pull/1330) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @vscode/vsce to v3.6.1 [\#1329](https://github.com/christianhelle/apiclientcodegen/pull/1329) ([renovate[bot]](https://github.com/apps/renovate))
+- Update Gradle to v9.1.0 [\#1327](https://github.com/christianhelle/apiclientcodegen/pull/1327) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.32.0](https://github.com/christianhelle/apiclientcodegen/tree/1.32.0) (2025-09-18)
 
