@@ -10,6 +10,7 @@
 
 **Merged pull requests:**
 
+- Update vstest monorepo to v18 \(major\) [\#1356](https://github.com/christianhelle/apiclientcodegen/pull/1356) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency typescript to v5.9.3 [\#1352](https://github.com/christianhelle/apiclientcodegen/pull/1352) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency mocha to v11.7.4 [\#1351](https://github.com/christianhelle/apiclientcodegen/pull/1351) ([renovate[bot]](https://github.com/apps/renovate))
 - Update Kiota Dependencies to v1.20.1 [\#1350](https://github.com/christianhelle/apiclientcodegen/pull/1350) ([christianhelle](https://github.com/christianhelle))
