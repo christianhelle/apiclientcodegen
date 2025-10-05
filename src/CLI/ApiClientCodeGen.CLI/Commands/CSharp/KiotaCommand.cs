@@ -22,9 +22,9 @@ public class KiotaCommandSettings : CodeGeneratorCommand<KiotaCommandSettings>.S
     [Description("Set the access modifier for the generated types (default: public)")]
     public TypeAccessModifier TypeAccessModifier { get; set; }
 
-    [CommandOption("--backing-store|b")]
+    [CommandOption("--backing-store|-b")]
     [Description("Generate EF backing store code in models (default: FALSE)")]
-    public bool UsesBackingStore {get; set; }
+    public bool UsesBackingStore { get; set; }
 }
 
 public class KiotaCommand : CodeGeneratorCommand<KiotaCommandSettings>
