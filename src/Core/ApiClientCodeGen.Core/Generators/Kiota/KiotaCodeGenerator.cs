@@ -99,6 +99,9 @@ public class KiotaCodeGenerator(
                         $"-n {defaultNamespace} " +
                         $"--type-access-modifier {options.TypeAccessModifier}";
 
+        if (options.UsesBackingStore)
+            arguments += " --backing-store";
+
         using var context = new DependencyContext("Kiota", $"{Command} {arguments}");
         processLauncher.Start(Command, arguments);
         context.Succeeded();

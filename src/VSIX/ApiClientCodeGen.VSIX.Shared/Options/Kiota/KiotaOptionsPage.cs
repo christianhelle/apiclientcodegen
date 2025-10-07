@@ -22,5 +22,10 @@ namespace Rapicgen.Options.Kiota
         [DisplayName("Type Access Modifier")]
         [Description("The access modifier for the generated types")]
         public TypeAccessModifier TypeAccessModifier { get; set; }
+
+        [Category(Name)]
+        [DisplayName("Generate Backing Store")]
+        [Description("Generate persistance code for Entity Framework")]
+        public bool UsesBackingStore {get; set; }
     }
 }

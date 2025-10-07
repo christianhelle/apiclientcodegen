@@ -15,6 +15,7 @@ namespace Rapicgen.Options.Kiota
                 options ??= GetFromDialogPage();
                 GenerateMultipleFiles = options.GenerateMultipleFiles;
                 TypeAccessModifier = options.TypeAccessModifier;
+                UsesBackingStore = options.UsesBackingStore;
             }
             catch (Exception e)
             {
@@ -23,13 +24,16 @@ namespace Rapicgen.Options.Kiota
                 Logger.Instance.WriteLine(Environment.NewLine);
                 Logger.Instance.WriteLine("Error reading user options. Reverting to default values");
                 Logger.Instance.WriteLine("GenerateMultipleFiles = false");
+                Logger.Instance.WriteLine("UsesBackingStore = false");
 
                 GenerateMultipleFiles = false;
                 TypeAccessModifier = TypeAccessModifier.Public;
+                UsesBackingStore = false;
             }
         }
 
         public bool GenerateMultipleFiles { get; }
         public TypeAccessModifier TypeAccessModifier { get; }
+        public bool UsesBackingStore { get; }
     }
 }
