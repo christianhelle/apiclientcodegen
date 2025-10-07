@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- PR: Added --backing-store|-b CLI Kiota option to VS extension to generate EF backing store code [\#1344](https://github.com/christianhelle/apiclientcodegen/pull/1344) ([jaypatrick](https://github.com/jaypatrick))
 - OpenAPI Generator v7.16.0 [\#1343](https://github.com/christianhelle/apiclientcodegen/pull/1343) ([christianhelle](https://github.com/christianhelle))
 
 **Merged pull requests:**
