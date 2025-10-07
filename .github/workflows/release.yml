@@ -1,5 +1,16 @@
 name: Release
 
+# This workflow uses NuGet Trusted Publishing for secure package publishing.
+# Setup required on nuget.org (one-time):
+# 1. Log in to nuget.org
+# 2. Navigate to Account Settings -> Trusted Publishing
+# 3. Add a new trusted publishing policy with:
+#    - Repository owner: christianhelle
+#    - Repository name: apiclientcodegen
+#    - Workflow: release.yml
+# Once configured, the workflow will automatically obtain short-lived credentials
+# without requiring API keys stored as secrets.
+
 on:
   workflow_dispatch:
   push:
@@ -8,12 +19,14 @@ on:
 
 env:
   VERSION: '1.32.0'
-  NUGET_REPO_URL: 'https://api.nuget.org/v3/index.json'
 
 jobs:
 
   CLI:
     runs-on: windows-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
     - uses: actions/checkout@v5
     - name: Sets environment variables - branch-name
@@ -29,9 +42,12 @@ jobs:
       run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.sln -p:PackageVersion="${{ env.VERSION }}"
     - name: Package CLI Tool
       run: dotnet pack --no-build -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
-    - name: Push packages to NuGet
+    - name: Push packages to NuGet (Trusted Publishing)
       if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
-      run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
+      uses: azure/publish-nuget@v1
+      with:
+        package-path: '**/*.nupkg'
+        no-symbols: true
       continue-on-error: true
     - name: Publish artifacts
       uses: actions/upload-artifact@v4
