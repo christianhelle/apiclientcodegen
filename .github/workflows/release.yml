@@ -10,6 +10,9 @@ env:
   VERSION: '1.32.0'
   NUGET_REPO_URL: 'https://api.nuget.org/v3/index.json'
 
+permissions:
+  id-token: write
+
 jobs:
 
   CLI:
@@ -29,9 +32,14 @@ jobs:
       run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.sln -p:PackageVersion="${{ env.VERSION }}"
     - name: Package CLI Tool
       run: dotnet pack --no-build -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
+    - name: NuGet login (OIDC → temp API key)
+      uses: NuGet/login@v1
+      id: login
+      with:
+        user: christian.helle
     - name: Push packages to NuGet
       if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
-      run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
+      run: dotnet nuget push **/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
       continue-on-error: true
     - name: Publish artifacts
       uses: actions/upload-artifact@v4
