@@ -151,18 +151,17 @@ public class Program
 ```csharp
 using Microsoft.Rest;
 
-// Basic authentication
-var basicCreds = new BasicAuthenticationCredentials
-{
-    UserName = "username",
-    Password = "password"
-};
-
-// Token-based authentication
+// Token-based authentication (most common)
 var tokenCreds = new TokenCredentials("your-bearer-token");
 
-// API Key authentication
-var apiKeyCreds = new ApiKeyServiceClientCredentials("your-api-key");
+var client = new SwaggerPetstoreClient(new Uri("https://petstore.swagger.io/v2"))
+{
+    Credentials = tokenCreds
+};
+
+// Custom authentication header
+var client2 = new SwaggerPetstoreClient(new Uri("https://api.example.com"));
+client2.HttpClient.DefaultRequestHeaders.Add("X-API-Key", "your-api-key");
 ```
 
 ### Further Reading
@@ -363,6 +362,7 @@ dotnet add package Newtonsoft.Json
 
 ```csharp
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Org.OpenAPITools.Api;
 using Org.OpenAPITools.Client;
@@ -669,6 +669,7 @@ public class PetService
 If Refitter is configured to return `IApiResponse<T>`, you get access to headers and status codes:
 
 ```csharp
+using System.Linq;
 using Refit;
 
 var response = await client.GetPetById(1);
