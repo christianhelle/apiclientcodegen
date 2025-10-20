@@ -128,7 +128,8 @@ namespace Rapicgen.Commands.AddNew
                 generateXmlDocCodeComments = options.GenerateXmlDocCodeComments,
                 returnIApiResponse = options.ReturnIApiResponse,
                 useCancellationTokens = options.UseCancellationTokens,
-                generateOperationHeaders = options.GenerateHeaderParameters
+                generateOperationHeaders = options.GenerateHeaderParameters,
+                generateMultipleFiles = options.GenerateMultipleFiles
             };
 
             return JsonConvert
