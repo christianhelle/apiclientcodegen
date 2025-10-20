@@ -179,12 +179,12 @@ AutoRest v3 generates clients for OpenAPI v3 specifications with improved suppor
 ### Dependencies
 
 The generated code depends on:
-- [Microsoft.Rest.ClientRuntime](https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime/) (v2.3.24 or later)
-- [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) (v13.0.3 or later)
+- [Azure.Core](https://www.nuget.org/packages/Azure.Core/) (v1.0.0 or later)
+- [System.Text.Json](https://www.nuget.org/packages/System.Text.Json/) (v4.7.2 or later)
 
 ```bash
-dotnet add package Microsoft.Rest.ClientRuntime
-dotnet add package Newtonsoft.Json
+dotnet add package Azure.Core
+dotnet add package System.Text.Json
 ```
 
 ### Basic Usage
@@ -192,7 +192,7 @@ dotnet add package Newtonsoft.Json
 ```csharp
 using System;
 using System.Threading.Tasks;
-using Microsoft.Rest;
+using Azure;
 
 public class Program
 {
@@ -220,9 +220,9 @@ public class Program
             var created = await client.Operations.CreateResourceAsync(newResource);
             Console.WriteLine($"Created: {created.Id}");
         }
-        catch (HttpOperationException ex)
+        catch (RequestFailedException ex)
         {
-            Console.WriteLine($"API Error: {ex.Response.StatusCode}");
+            Console.WriteLine($"API Error: {ex.Status} - {ex.Message}");
         }
     }
 }
@@ -273,6 +273,7 @@ dotnet add package JsonSubTypes
 
 ```csharp
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using IO.Swagger.Api;
 using IO.Swagger.Client;
@@ -348,13 +349,11 @@ OpenAPI Generator creates a modern REST client with RestSharp and comprehensive 
 The generated code depends on:
 - [RestSharp](https://www.nuget.org/packages/RestSharp/) (v112.0.0 or later)
 - [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) (v2.0.1 or later)
-- [Polly](https://www.nuget.org/packages/Polly/) (v8.6.4 or later)
 - [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) (v13.0.3 or later)
 
 ```bash
 dotnet add package RestSharp
 dotnet add package JsonSubTypes
-dotnet add package Polly
 dotnet add package Newtonsoft.Json
 ```
 
@@ -413,14 +412,6 @@ public class Program
 
 ```csharp
 using Org.OpenAPITools.Client;
-using Polly;
-using Polly.Extensions.Http;
-
-// Configure retry policy with Polly
-var retryPolicy = HttpPolicyExtensions
-    .HandleTransientHttpError()
-    .WaitAndRetryAsync(3, retryAttempt => 
-        TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
 
 var config = new Configuration
 {
@@ -431,6 +422,41 @@ var config = new Configuration
 
 // Configure OAuth2
 config.AccessToken = "your-oauth-token";
+```
+
+### Advanced Usage: Retry Logic with Polly (Optional)
+
+If you want to add retry logic to your API calls, you can use [Polly](https://www.nuget.org/packages/Polly/) as an optional dependency.
+
+Install Polly:
+
+```bash
+dotnet add package Polly
+```
+
+Example usage:
+
+```csharp
+using Polly;
+using Polly.Extensions.Http;
+using Org.OpenAPITools.Api;
+using Org.OpenAPITools.Client;
+
+// Configure retry policy with Polly
+var retryPolicy = HttpPolicyExtensions
+    .HandleTransientHttpError()
+    .WaitAndRetryAsync(3, retryAttempt => 
+        TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+
+var config = new Configuration
+{
+    BasePath = "https://api.example.com"
+};
+
+var petApi = new PetApi(config);
+
+// Execute API call with retry policy
+var pet = await retryPolicy.ExecuteAsync(() => petApi.GetPetByIdAsync(1));
 ```
 
 ### Further Reading
@@ -633,11 +659,18 @@ public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
+        // Basic registration
         services.AddRefitClient<ISwaggerPetstore>()
             .ConfigureHttpClient(c => 
                 c.BaseAddress = new Uri("https://petstore.swagger.io/v2"));
+    }
+}
 
-        // With authentication
+// Alternative: With authentication
+public class Startup2
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
         services.AddRefitClient<ISwaggerPetstore>()
             .ConfigureHttpClient(c =>
             {
@@ -766,8 +799,19 @@ catch (OperationCanceledException)
 #### Custom HTTP Headers
 
 ```csharp
-// NSwag
-client.AddHeader("Custom-Header", "value");
+// NSwag - Option 1: Add header to all requests via HttpClient
+httpClient.DefaultRequestHeaders.Add("Custom-Header", "value");
+var client = new SwaggerClient(httpClient);
+
+// NSwag - Option 2: Override PrepareRequest partial method for per-request headers
+// Add this to a partial class in your project:
+// partial class SwaggerClient
+// {
+//     partial void PrepareRequest(HttpClient client, HttpRequestMessage request, string url)
+//     {
+//         request.Headers.Add("Custom-Header", "value");
+//     }
+// }
 
 // AutoRest
 client.HttpClient.DefaultRequestHeaders.Add("Custom-Header", "value");
