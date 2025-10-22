@@ -1,5 +1,22 @@
 # Changelog
 
+## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.34.0...HEAD)
+
+**Implemented enhancements:**
+
+- Support other language output [\#392](https://github.com/christianhelle/apiclientcodegen/issues/392)
+- Run command from folder path [\#60](https://github.com/christianhelle/apiclientcodegen/issues/60)
+
+**Fixed bugs:**
+
+- Could not find a part of the path 'C:\MyRepo\MySolution\MyApiClient\45ec2b05c06b4182a172523b42e8b5db\TempApiClient'. [\#225](https://github.com/christianhelle/apiclientcodegen/issues/225)
+
+**Closed issues:**
+
+- Migrate NuGet publishing in release workflows to Trusted Publishing [\#1357](https://github.com/christianhelle/apiclientcodegen/issues/1357)
+
 ## [1.34.0](https://github.com/christianhelle/apiclientcodegen/tree/1.34.0) (2025-10-13)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.32.0...1.34.0)
