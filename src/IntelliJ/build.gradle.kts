@@ -1,7 +1,7 @@
 plugins {
     id("java")
     id("org.jetbrains.intellij.platform") version "2.10.2"
-    kotlin("jvm") version "2.0.0"
+    kotlin("jvm") version "2.2.21"
 }
 
 val pluginGroup: String by project
