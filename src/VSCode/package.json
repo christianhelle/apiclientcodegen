@@ -40,7 +40,7 @@
       },
       {
         "command": "restApiClientCodeGenerator.kiota",
-        "title": "Generate C# Client with Microsoft Kiota (v1.28.0)"
+        "title": "Generate C# Client with Microsoft Kiota (v1.29.0)"
       },
       {
         "command": "restApiClientCodeGenerator.swagger",
