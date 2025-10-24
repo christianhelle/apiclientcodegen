@@ -53,7 +53,7 @@ jobs:
         mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
 
     - name: Publish artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: Artifacts
         path: |
