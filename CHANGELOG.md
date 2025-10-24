@@ -7,6 +7,7 @@
 **Implemented enhancements:**
 
 - Support other language output [\#392](https://github.com/christianhelle/apiclientcodegen/issues/392)
+- Improve documentation regarding generated code usage [\#180](https://github.com/christianhelle/apiclientcodegen/issues/180)
 - Run command from folder path [\#60](https://github.com/christianhelle/apiclientcodegen/issues/60)
 
 **Fixed bugs:**
