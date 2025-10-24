@@ -115,7 +115,7 @@ namespace Rapicgen.Core.Installer
                 });
                 
                 // Parse the tool list output to find Refitter
-                var requiredVersion = new Version(1, 6, 2);
+                var requiredVersion = new Version(1, 6, 3);
                 
                 if (!string.IsNullOrEmpty(toolListOutput))
                 {
