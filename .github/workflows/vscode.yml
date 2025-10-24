@@ -59,7 +59,7 @@ jobs:
         npm run vsix
     
     - name: Upload VSIX
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: VSCode-Extension
         path: src/VSCode/*.vsix
