@@ -32,7 +32,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
