@@ -87,7 +87,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to eff25f7e653b5986786eee6fc4722e47.
+        ///   Looks up a localized string similar to ffae757c04ce558d311964b9ec2321d0.
         /// </summary>
         public static string OpenApiGenerator_MD5 {
             get {
@@ -96,7 +96,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2ca15745dbb9261a43392e7d9a530e5b7473e929.
+        ///   Looks up a localized string similar to 7ddf2ce9a8b745c8c8c01046435b05362d0bee2d.
         /// </summary>
         public static string OpenApiGenerator_SHA1 {
             get {
