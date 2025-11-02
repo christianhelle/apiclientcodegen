@@ -1,14 +1,17 @@
 # Changelog
 
-## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+## [1.35.0](https://github.com/christianhelle/apiclientcodegen/tree/1.35.0) (2025-10-30)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.34.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.34.0...1.35.0)
 
 **Implemented enhancements:**
 
 - Support other language output [\#392](https://github.com/christianhelle/apiclientcodegen/issues/392)
 - Improve documentation regarding generated code usage [\#180](https://github.com/christianhelle/apiclientcodegen/issues/180)
 - Run command from folder path [\#60](https://github.com/christianhelle/apiclientcodegen/issues/60)
+- OpenAPI Generator v7.17 [\#1385](https://github.com/christianhelle/apiclientcodegen/pull/1385) ([christianhelle](https://github.com/christianhelle))
+- Refitter v1.6.5 [\#1375](https://github.com/christianhelle/apiclientcodegen/pull/1375) ([christianhelle](https://github.com/christianhelle))
+- Microsoft Kiota v1.29.0 [\#1372](https://github.com/christianhelle/apiclientcodegen/pull/1372) ([christianhelle](https://github.com/christianhelle))
 
 **Fixed bugs:**
 
@@ -17,6 +20,29 @@
 **Closed issues:**
 
 - Migrate NuGet publishing in release workflows to Trusted Publishing [\#1357](https://github.com/christianhelle/apiclientcodegen/issues/1357)
+
+**Merged pull requests:**
+
+- Update Kiota dependencies to v1.21.0 [\#1386](https://github.com/christianhelle/apiclientcodegen/pull/1386) ([christianhelle](https://github.com/christianhelle))
+- Update Gradle to v9.2.0 [\#1384](https://github.com/christianhelle/apiclientcodegen/pull/1384) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency node to v24 [\#1376](https://github.com/christianhelle/apiclientcodegen/pull/1376) ([renovate[bot]](https://github.com/apps/renovate))
+- Update GitHub Artifact Actions \(major\) [\#1373](https://github.com/christianhelle/apiclientcodegen/pull/1373) ([renovate[bot]](https://github.com/apps/renovate))
+- Update plugin org.jetbrains.intellij.platform to v2.10.2 [\#1370](https://github.com/christianhelle/apiclientcodegen/pull/1370) ([renovate[bot]](https://github.com/apps/renovate))
+- Add README.md to /java folder documenting OpenJDK dependency for code generators [\#1369](https://github.com/christianhelle/apiclientcodegen/pull/1369) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Update dependency @types/node to v22.18.12 [\#1368](https://github.com/christianhelle/apiclientcodegen/pull/1368) ([renovate[bot]](https://github.com/apps/renovate))
+- Add comprehensive usage documentation for generated code from all supported code generators [\#1367](https://github.com/christianhelle/apiclientcodegen/pull/1367) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Update plugin org.jetbrains.intellij.platform to v2.10.1 [\#1366](https://github.com/christianhelle/apiclientcodegen/pull/1366) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.18.11 [\#1365](https://github.com/christianhelle/apiclientcodegen/pull/1365) ([renovate[bot]](https://github.com/apps/renovate))
+- Update plugin org.jetbrains.intellij.platform to v2.10.0 [\#1364](https://github.com/christianhelle/apiclientcodegen/pull/1364) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/setup-node action to v6 [\#1363](https://github.com/christianhelle/apiclientcodegen/pull/1363) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Spectre.Console.Cli to 0.52.0 [\#1362](https://github.com/christianhelle/apiclientcodegen/pull/1362) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/vscode to v1.105.0 - autoclosed [\#1361](https://github.com/christianhelle/apiclientcodegen/pull/1361) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v22.18.10 [\#1360](https://github.com/christianhelle/apiclientcodegen/pull/1360) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ruby to v3.4.7 [\#1359](https://github.com/christianhelle/apiclientcodegen/pull/1359) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency webpack to v5.102.1 [\#1355](https://github.com/christianhelle/apiclientcodegen/pull/1355) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency cake.tool to v5.1.0 [\#1353](https://github.com/christianhelle/apiclientcodegen/pull/1353) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.6.4 [\#1339](https://github.com/christianhelle/apiclientcodegen/pull/1339) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Newtonsoft.Json to v13.0.4 [\#1320](https://github.com/christianhelle/apiclientcodegen/pull/1320) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.34.0](https://github.com/christianhelle/apiclientcodegen/tree/1.34.0) (2025-10-13)
 
