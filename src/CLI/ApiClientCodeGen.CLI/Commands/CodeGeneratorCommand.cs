@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Threading;
 using Rapicgen.CLI.Extensions;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
@@ -45,7 +46,7 @@ namespace Rapicgen.CLI.Commands
             }
         }
 
-        public override int Execute(CommandContext context, T settings)
+        public override int Execute(CommandContext context, T settings, CancellationToken cancellationToken)
         {
             var codeGeneratorName = GetType().Name.Replace("Command", string.Empty);
             if (!settings.SkipLogging)

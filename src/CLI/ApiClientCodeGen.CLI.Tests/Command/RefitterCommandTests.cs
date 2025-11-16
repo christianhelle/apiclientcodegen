@@ -8,6 +8,7 @@ using Rapicgen.Core.Options.Refitter;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Threading;
 using Xunit;
 
 namespace Rapicgen.CLI.Tests.Command;
@@ -25,7 +26,7 @@ public class RefitterCommandTests
     {
         // Ensure SettingsFile is null for this test
         settings.SettingsFile = null;
-        sut.Execute(null, settings);
+        sut.Execute(null, settings, CancellationToken.None);
         Mock.Get(factory)
             .Verify(f => f.Create(
                 settings.SwaggerFile,
@@ -49,7 +50,7 @@ public class RefitterCommandTests
         try
         {
             settings.SettingsFile = tempFile;
-            sut.Execute(null, settings);
+            sut.Execute(null, settings, CancellationToken.None);
 
             // Verify that SwaggerFile was updated to match SettingsFile
             Assert.Equal(tempFile, settings.SwaggerFile);

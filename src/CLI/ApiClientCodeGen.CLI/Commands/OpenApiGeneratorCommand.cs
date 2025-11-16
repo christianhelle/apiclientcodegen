@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Threading;
 using Rapicgen.CLI.Extensions;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
@@ -63,7 +64,7 @@ See supported generators at https://openapi-generator.tech/docs/generators/")]
                 dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
-        public override int Execute(CommandContext context, OpenApiGeneratorCommandSettings settings)
+        public override int Execute(CommandContext context, OpenApiGeneratorCommandSettings settings, CancellationToken cancellationToken)
         {
             var outputPath = settings.OutputPath ?? $"{settings.Generator}-generated-code";
 

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Threading;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
 using Rapicgen.CLI.Commands;
@@ -31,7 +32,7 @@ namespace Rapicgen.CLI.Tests.Command
         public void Execute_Should_NotThrow(JMeterCommand sut, JMeterCommand.Settings settings)
         {
             settings.OutputPath = Directory.GetCurrentDirectory();
-            new Func<int>(() => sut.Execute(null, settings)).Should().NotThrow();
+            new Func<int>(() => sut.Execute(null, settings, CancellationToken.None)).Should().NotThrow();
         }
 
         [Theory, AutoMoqData]
@@ -41,7 +42,7 @@ namespace Rapicgen.CLI.Tests.Command
             JMeterCommand.Settings settings)
         {
             settings.OutputPath = Directory.GetCurrentDirectory();
-            sut.Execute(null, settings);
+            sut.Execute(null, settings, CancellationToken.None);
 
             Mock.Get(factory)
                 .Verify(c => c.Create(
@@ -65,7 +66,7 @@ namespace Rapicgen.CLI.Tests.Command
 
             settings.OutputPath = path.FullName;
             settings.SkipLogging = false;
-            sut.Execute(null, settings);
+            sut.Execute(null, settings, CancellationToken.None);
 
             Mock.Get(factory)
                 .Verify(c => c.Create(
