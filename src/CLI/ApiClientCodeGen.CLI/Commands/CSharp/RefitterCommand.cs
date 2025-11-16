@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Threading;
 using Rapicgen.CLI.Commands;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
@@ -72,7 +73,7 @@ public class RefitterCommand : CodeGeneratorCommand<RefitterCommandSettings>
         this.dependencyInstaller = dependencyInstaller;
     }
 
-    public override int Execute(CommandContext context, RefitterCommandSettings settings)
+    public override int Execute(CommandContext context, RefitterCommandSettings settings, CancellationToken cancellationToken)
     {
         // Map settings to options
         options.GenerateContracts = !settings.SkipGenerateContracts;
@@ -98,7 +99,7 @@ public class RefitterCommand : CodeGeneratorCommand<RefitterCommandSettings>
         }
 
         // Call the base implementation
-        return base.Execute(context, settings);
+        return base.Execute(context, settings, cancellationToken);
     }
 
     public override ICodeGenerator CreateGenerator(RefitterCommandSettings settings) =>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
 using Rapicgen.CLI.Commands;
@@ -36,7 +37,7 @@ namespace Rapicgen.CLI.Tests.Command
         [Theory, AutoMoqData]
         public void Execute_Should_NotThrow(AutoRestCommand sut, AutoRestCommand.AutoRestSettings settings)
         {
-            new Func<int>(() => sut.Execute(null, settings)).Should().NotThrow();
+            new Func<int>(() => sut.Execute(null, settings, CancellationToken.None)).Should().NotThrow();
         }
 
         [Theory, AutoMoqData]
@@ -121,7 +122,7 @@ namespace Rapicgen.CLI.Tests.Command
             AutoRestCommand sut,
             AutoRestCommand.AutoRestSettings settings)
         {
-            sut.Execute(null, settings);
+            sut.Execute(null, settings, CancellationToken.None);
 
             Mock.Get(factory)
                 .Verify(c => c.Create(
