@@ -48,16 +48,17 @@ jobs:
           6.0.x
           7.0.x
           8.0.x
+          10.0.x
 
     - name: Build with dotnet
       run: dotnet build Rapicgen.sln
       working-directory: src
 
     - name: Core test project
-      run: dotnet test src/Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj -f net8.0
+      run: dotnet test src/Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj -f net10.0
 
     - name: Core Integration Test project
-      run: dotnet test src/Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj -f net8.0
+      run: dotnet test src/Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj -f net10.0
 
   vsix:
 
