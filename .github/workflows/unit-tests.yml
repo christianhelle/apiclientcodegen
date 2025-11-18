@@ -48,6 +48,7 @@ jobs:
           6.0.x
           7.0.x
           8.0.x
+          9.0.x
           10.0.x
 
     - name: Build with dotnet
@@ -68,6 +69,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v5
+
+    - name: Setup .NET versions
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: |
+          2.1.x
+          3.1.x
+          5.0.x
+          6.0.x
+          7.0.x
+          8.0.x
+          9.0.x
+          10.0.x
 
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
