@@ -57,6 +57,7 @@ jobs:
           7.0.x
           8.0.x
           9.0.x
+          10.0.x
 
     - name: Install rapicgen
       run: dotnet tool install --global rapicgen
@@ -395,6 +396,7 @@ jobs:
           7.0.x
           8.0.x
           9.0.x
+          10.0.x
 
     - name: Install rapicgen
       run: dotnet tool install --global rapicgen
@@ -448,6 +450,7 @@ jobs:
           7.0.x
           8.0.x
           9.0.x
+          10.0.x
 
     - name: Install rapicgen
       run: dotnet tool install --global rapicgen

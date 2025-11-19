@@ -48,16 +48,18 @@ jobs:
           6.0.x
           7.0.x
           8.0.x
+          9.0.x
+          10.0.x
 
     - name: Build with dotnet
       run: dotnet build Rapicgen.sln
       working-directory: src
 
     - name: Core test project
-      run: dotnet test src/Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj -f net8.0
+      run: dotnet test src/Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj -f net10.0
 
     - name: Core Integration Test project
-      run: dotnet test src/Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj -f net8.0
+      run: dotnet test src/Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj -f net10.0
 
   vsix:
 
@@ -67,6 +69,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v5
+
+    - name: Setup .NET versions
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: |
+          2.1.x
+          3.1.x
+          5.0.x
+          6.0.x
+          7.0.x
+          8.0.x
+          9.0.x
+          10.0.x
 
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2

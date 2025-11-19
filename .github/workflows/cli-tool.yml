@@ -39,6 +39,11 @@ jobs:
       run: ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
       working-directory: src
 
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: '10.0.x'
+
     - name: Build with dotnet
       run: dotnet build Rapicgen.sln
       working-directory: src
