@@ -18,8 +18,8 @@
     <PackageReference Include="Exceptionless" Version="6.1.0" />
     <PackageReference Include="ICSharpCode.CodeConverter" Version="9.2.7.792" />
     <PackageReference Include="Microsoft.ApplicationInsights.WindowsServer" Version="2.23.0" />
-    <PackageReference Include="NSwag.Core.Yaml" Version="14.4.0" />
-    <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.4.0" />
+    <PackageReference Include="NSwag.Core.Yaml" Version="14.6.3" />
+    <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.6.3" />
     <PackageReference Include="Polly" Version="8.6.4" />
   </ItemGroup>
 
