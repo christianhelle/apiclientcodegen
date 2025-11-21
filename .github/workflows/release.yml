@@ -19,7 +19,7 @@ jobs:
   CLI:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - name: Sets environment variables - branch-name
       uses: christianhelle/branch-name@master
     - name: Sets environment variables - Nerdbank.GitVersioning
@@ -53,7 +53,7 @@ jobs:
   VSIX:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - name: Sets environment variables - branch-name
       uses: christianhelle/branch-name@master
     - name: Sets environment variables - Nerdbank.GitVersioning
@@ -97,7 +97,7 @@ jobs:
   VSCode:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
 
     - name: Bump VSCode extension version
       run: |
@@ -151,7 +151,7 @@ jobs:
   IntelliJ:    
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Set up JDK 21
         uses: actions/setup-java@v5
         with:
