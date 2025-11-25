@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.NSwag;
-using NJsonSchema.CodeGeneration.CSharp;
 
 namespace Rapicgen.Options.NSwag
 {

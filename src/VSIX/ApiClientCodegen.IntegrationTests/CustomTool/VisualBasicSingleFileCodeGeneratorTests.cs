@@ -7,7 +7,7 @@ using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 
 using Moq;
-using NJsonSchema.CodeGeneration.CSharp;
+using Rapicgen.Core.Options.NSwag;
 
 namespace Rapicgen.IntegrationTests.CustomTool
 {
