@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using NJsonSchema.CodeGeneration.CSharp;
 using Rapicgen.CLI.Commands;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.NSwag;
 using Spectre.Console.Cli;
@@ -59,18 +59,14 @@ Set this to FALSE to use the filename (default: TRUE)")]
 
     public class NSwagCommand : CodeGeneratorCommand<NSwagCommandSettings>
     {
-        private readonly IOpenApiDocumentFactory openApiDocumentFactory;
         private readonly INSwagCodeGeneratorFactory codeGeneratorFactory;
 
         public NSwagCommand(
             IConsoleOutput console,
             IProgressReporter? progressReporter,
-            IOpenApiDocumentFactory openApiDocumentFactory,
             INSwagCodeGeneratorFactory codeGeneratorFactory)
             : base(console, progressReporter)
         {
-            this.openApiDocumentFactory = openApiDocumentFactory ??
-                                          throw new ArgumentNullException(nameof(openApiDocumentFactory));
             this.codeGeneratorFactory =
                 codeGeneratorFactory ?? throw new ArgumentNullException(nameof(codeGeneratorFactory));
         }
@@ -79,7 +75,6 @@ Set this to FALSE to use the filename (default: TRUE)")]
             => codeGeneratorFactory.Create(
                 settings.SwaggerFile,
                 settings.DefaultNamespace,
-                settings,
-                openApiDocumentFactory);
+                settings);
     }
 }

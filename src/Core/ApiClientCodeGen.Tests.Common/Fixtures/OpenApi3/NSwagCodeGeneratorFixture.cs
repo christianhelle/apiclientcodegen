@@ -1,9 +1,10 @@
 ﻿using System.IO;
 using Rapicgen.Core;
+using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.NSwag;
 using Moq;
-using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
 {
@@ -11,6 +12,8 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
     {
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
         public readonly Mock<INSwagOptions> OptionsMock = new Mock<INSwagOptions>();
+        public readonly Mock<IProcessLauncher> ProcessLauncherMock = new Mock<IProcessLauncher>();
+        public readonly Mock<IDependencyInstaller> DependencyInstallerMock = new Mock<IDependencyInstaller>();
         public string Code;
 
         protected override void OnInitialize()
@@ -25,8 +28,10 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3
             var defaultNamespace = "GeneratedCode";
             var codeGenerator = new NSwagCSharpCodeGenerator(
                 Path.GetFullPath(SwaggerV3JsonFilename),
-                new OpenApiDocumentFactory(),
-                new NSwagCodeGeneratorSettingsFactory(defaultNamespace, OptionsMock.Object));
+                defaultNamespace,
+                ProcessLauncherMock.Object,
+                DependencyInstallerMock.Object,
+                OptionsMock.Object);
 
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
         }

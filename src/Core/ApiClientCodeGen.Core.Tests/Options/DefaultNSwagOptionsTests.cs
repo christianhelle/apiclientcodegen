@@ -1,6 +1,5 @@
 ﻿using Rapicgen.Core.Options.NSwag;
 using FluentAssertions;
-using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ApiClientCodeGen.Core.Tests.Options
 {
