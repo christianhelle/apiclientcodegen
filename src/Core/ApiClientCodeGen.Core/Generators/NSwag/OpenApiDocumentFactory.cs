@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using NSwag;
+using Rapicgen.Core.Models;
 
 namespace Rapicgen.Core.Generators.NSwag
 {
     public interface IOpenApiDocumentFactory
     {
-        Task<OpenApiDocument> GetDocumentAsync(string swaggerFile);
+        Task<SimpleOpenApiDocument> GetDocumentAsync(string swaggerFile);
     }
 }

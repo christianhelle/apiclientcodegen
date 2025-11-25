@@ -1,15 +1,14 @@
-﻿using System;
-using System.Diagnostics;
+using System;
 using System.IO;
 using System.Linq;
 using Rapicgen.Core.Logging;
-using NSwag;
+using Rapicgen.Core.Models;
 
 namespace Rapicgen.Core.Extensions
 {
     public static class OpenApiDocumentExtensions
     {
-        public static string GenerateClassName(this OpenApiDocument document, bool useDocumentTitle = true)
+        public static string GenerateClassName(this SimpleOpenApiDocument document, bool useDocumentTitle = true)
         {
             try
             {
@@ -31,7 +30,7 @@ namespace Rapicgen.Core.Extensions
                 : $"{GetSanitizeTitle(document)}Client";
         }
 
-        private static string GetSanitizeTitle(this OpenApiDocument document)
+        private static string GetSanitizeTitle(this SimpleOpenApiDocument document)
             => RemoveCharacters(
                 document.Info.Title,
                 "Swagger", " ", ".", "-");

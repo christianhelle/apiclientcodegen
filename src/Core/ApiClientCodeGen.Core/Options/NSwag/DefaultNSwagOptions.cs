@@ -1,4 +1,4 @@
-﻿using NJsonSchema.CodeGeneration.CSharp;
+﻿
 
 namespace Rapicgen.Core.Options.NSwag
 {
@@ -7,7 +7,7 @@ namespace Rapicgen.Core.Options.NSwag
         public bool InjectHttpClient => true;
         public bool GenerateClientInterfaces => true;
         public bool GenerateDtoTypes => true;
-        public CSharpClassStyle ClassStyle => CSharpClassStyle.Poco;
+        public string ClassStyle => "Poco";
         public bool UseDocumentTitle => true;
         public string ParameterDateTimeFormat => "s";
         public bool UseBaseUrl => false;
