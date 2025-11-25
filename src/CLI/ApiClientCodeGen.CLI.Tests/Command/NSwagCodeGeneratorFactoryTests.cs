@@ -15,13 +15,11 @@ namespace Rapicgen.CLI.Tests.Command
             NSwagCodeGeneratorFactory sut,
             string swaggerFile,
             string defaultNamespace,
-            INSwagOptions options,
-            IOpenApiDocumentFactory documentFactory)
+            INSwagOptions options)
             => sut.Create(
                     swaggerFile,
                     defaultNamespace,
-                    options,
-                    documentFactory)
+                    options)
                 .Should()
                 .NotBeNull();
     }

@@ -6,7 +6,6 @@ using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.AutoRest;
 using Rapicgen.Core.Generators.NSwag;
 using Moq;
-using NSwag;
 using Xunit;
 
 namespace ApiClientCodeGen.Core.Tests.Generators.AutoRest
@@ -89,11 +88,12 @@ namespace ApiClientCodeGen.Core.Tests.Generators.AutoRest
             IOpenApiDocumentFactory factory,
             string swaggerFile = null)
         {
+            var doc = new Rapicgen.Core.OpenApiDocumentFactory().GetDocumentAsync(swaggerFile ?? SwaggerJsonFilename).Result;
             Mock.Get(factory)
                 .Setup(
                     c => c.GetDocumentAsync(
                         It.IsAny<string>()))
-                .Returns(OpenApiDocument.FromFileAsync(swaggerFile ?? SwaggerJsonFilename));
+                .ReturnsAsync(doc);
         }
     }
 }

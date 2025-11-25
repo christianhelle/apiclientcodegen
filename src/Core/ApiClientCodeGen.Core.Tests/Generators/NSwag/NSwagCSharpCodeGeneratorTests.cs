@@ -1,11 +1,13 @@
-﻿using System.Threading.Tasks;
+using System.IO;
+using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common;
 using Rapicgen.Core;
+using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.Options.NSwag;
 using FluentAssertions;
 using Moq;
-using NSwag;
-using NSwag.CodeGeneration.CSharp;
 using Xunit;
 
 namespace ApiClientCodeGen.Core.Tests.Generators.NSwag
@@ -13,50 +15,36 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwag
     public class NSwagCSharpCodeGeneratorTests : TestWithResources
     {
         private readonly Mock<IProgressReporter> progressMock = new Mock<IProgressReporter>();
-        private readonly Mock<IOpenApiDocumentFactory> documentFactoryMock = new Mock<IOpenApiDocumentFactory>();
-        private readonly Mock<INSwagCodeGeneratorSettingsFactory> settingsMock = new Mock<INSwagCodeGeneratorSettingsFactory>();
-        private OpenApiDocument document;
+        private readonly Mock<IProcessLauncher> processLauncherMock = new Mock<IProcessLauncher>();
+        private readonly Mock<IDependencyInstaller> dependencyInstallerMock = new Mock<IDependencyInstaller>();
+        private readonly Mock<INSwagOptions> optionsMock = new Mock<INSwagOptions>();
         private string code;
 
-        protected override async Task OnInitializeAsync()
+        protected override void OnInitialize()
         {
-            document = await OpenApiDocument.FromFileAsync(SwaggerJsonFilename);
-            documentFactoryMock.Setup(c => c.GetDocumentAsync(It.IsAny<string>()))
-                .ReturnsAsync(document);
-
-            settingsMock.Setup(c => c.GetGeneratorSettings(It.IsAny<OpenApiDocument>()))
-                .Returns(new CSharpClientGeneratorSettings());
-
+            optionsMock.Setup(c => c.ClassStyle).Returns("Poco");
+            
             var sut = new NSwagCSharpCodeGenerator(
                 SwaggerJsonFilename,
-                documentFactoryMock.Object,
-                settingsMock.Object);
+                "GeneratedCode",
+                optionsMock.Object,
+                processLauncherMock.Object,
+                dependencyInstallerMock.Object);
             
             code = sut.GenerateCode(progressMock.Object);
         }
 
         [Fact]
-        public void Updates_Progress()
-            => progressMock.Verify(
-                c => c.Progress(
-                    It.IsAny<uint>(),
-                    It.IsAny<uint>()),
-                Times.Exactly(4));
+        public void Installs_NSwag()
+            => dependencyInstallerMock.Verify(c => c.InstallNSwag(), Times.Once);
 
         [Fact]
-        public void Gets_Document_From_Factory()
-            => documentFactoryMock.Verify(
-                c => c.GetDocumentAsync(SwaggerJsonFilename),
+        public void Starts_Process()
+            => processLauncherMock.Verify(
+                c => c.Start(
+                    "nswag", 
+                    It.IsAny<string>(), 
+                    It.IsAny<string>()), 
                 Times.Once);
-
-        [Fact]
-        public void Gets_GeneratorSettings()
-            => settingsMock.Verify(
-                c => c.GetGeneratorSettings(document),
-                Times.Once);
-
-        [Fact]
-        public void Generated_Code()
-            => code.Should().NotBeNullOrWhiteSpace();
     }
 }

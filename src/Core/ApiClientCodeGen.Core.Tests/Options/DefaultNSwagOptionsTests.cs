@@ -1,6 +1,5 @@
-﻿using Rapicgen.Core.Options.NSwag;
+using Rapicgen.Core.Options.NSwag;
 using FluentAssertions;
-using NJsonSchema.CodeGeneration.CSharp;
 
 namespace ApiClientCodeGen.Core.Tests.Options
 {
@@ -11,7 +10,7 @@ namespace ApiClientCodeGen.Core.Tests.Options
 
         [Xunit.Fact]
         public void ClassStyle_Be_Poco()
-            => sut.ClassStyle.Should().Be(CSharpClassStyle.Poco);
+            => sut.ClassStyle.Should().Be("Poco");
 
         [Xunit.Fact]
         public void GenerateClientInterfaces_Be_True()
