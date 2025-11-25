@@ -71,12 +71,7 @@ namespace Rapicgen.Core.External
 
         public static string GetNSwagPath(bool withoutPath = false)
         {
-            if (Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix || withoutPath)
-                return "nswag";
-
-            return Path.Combine(
-                NpmHelper.GetPrefixPath(),
-                "nswag.cmd");
+            return "nswag";
         }
 
         public static string GetAutoRestPath(bool withoutPath = false)

@@ -31,7 +31,41 @@ namespace Rapicgen.Core.Installer
 
         public void InstallNSwag()
         {
-            npm.InstallNpmPackage("nswag");
+            var command = PathProvider.GetDotNetPath();
+            string arguments = "tool list --global";
+            string toolListOutput = "";
+            bool nswagInstalled = false;
+            
+            try
+            {
+                processLauncher.Start(command, arguments, output =>
+                {
+                    if (output != null)
+                    {
+                        toolListOutput += output + Environment.NewLine;
+                    }
+                }, error => { });
+                
+                if (!string.IsNullOrEmpty(toolListOutput))
+                {
+                    if (toolListOutput.IndexOf("nswag.consolecore", StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        nswagInstalled = true;
+                    }
+                }
+                
+                if (!nswagInstalled)
+                {
+                    var installArguments = "tool install --global NSwag.ConsoleCore";
+                    using var context = new DependencyContext(command, $"{command} {installArguments}");
+                    processLauncher.Start(command, installArguments);
+                    context.Succeeded();
+                }
+            }
+            catch (Exception)
+            {
+                // Fallback or ignore
+            }
         }
 
         public string InstallOpenApiGenerator(OpenApiSupportedVersion version = default)
