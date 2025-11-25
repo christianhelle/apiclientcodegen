@@ -8,7 +8,6 @@ namespace ApiClientCodeGen.VSMac.CustomTools.NSwag
     {
         ICodeGenerator Create(string swaggerFile,
             string defaultNamespace,
-            INSwagOptions options,
-            IOpenApiDocumentFactory documentFactory);
+            INSwagOptions options);
     }
 }

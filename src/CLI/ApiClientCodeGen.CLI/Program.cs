@@ -97,8 +97,7 @@ namespace Rapicgen.CLI
             services.AddSingleton<IOpenApiGeneratorOptions, DefaultOpenApiGeneratorOptions>();
             services.AddSingleton<IRefitterOptions, DefaultRefitterOptions>();
             services.AddSingleton<IProgressReporter, ProgressReporter>();
-            services.AddSingleton<IOpenApiDocumentFactory, OpenApiDocumentFactory>();
-            services.AddSingleton<INSwagCodeGeneratorSettingsFactory, NSwagCodeGeneratorSettingsFactory>();
+
             services.AddSingleton<IProcessLauncher, ProcessLauncher>();
             services.AddSingleton<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
             services.AddSingleton<IJMeterCodeGeneratorFactory, JMeterCodeGeneratorFactory>();

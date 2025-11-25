@@ -77,10 +77,10 @@ namespace Rapicgen.Generators
                 case SupportedCodeGenerator.NSwag:
                     return new NSwagCSharpCodeGenerator(
                         inputFilePath,
-                        new OpenApiDocumentFactory(),
-                        new NSwagCodeGeneratorSettingsFactory(
-                            defaultNamespace,
-                            optionsFactory.Create<INSwagOptions, NSwagOptionsPage, DefaultNSwagOptions>()));
+                        defaultNamespace,
+                        optionsFactory.Create<INSwagOptions, NSwagOptionsPage, DefaultNSwagOptions>(),
+                        processLauncher,
+                        dependencyInstaller);
 
                 case SupportedCodeGenerator.Swagger:
                     return new SwaggerCSharpCodeGenerator(
