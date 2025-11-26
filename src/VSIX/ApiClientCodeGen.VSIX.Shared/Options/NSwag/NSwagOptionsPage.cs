@@ -2,7 +2,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Rapicgen.Core.Options.NSwag;
 using Microsoft.VisualStudio.Shell;
-using NJsonSchema.CodeGeneration.CSharp;
 using System.Runtime.InteropServices;
 
 namespace Rapicgen.Options.NSwag

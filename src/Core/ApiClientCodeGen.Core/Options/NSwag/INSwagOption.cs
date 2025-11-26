@@ -1,5 +1,3 @@
-﻿using NJsonSchema.CodeGeneration.CSharp;
-
 namespace Rapicgen.Core.Options.NSwag
 {
     public interface INSwagOptions

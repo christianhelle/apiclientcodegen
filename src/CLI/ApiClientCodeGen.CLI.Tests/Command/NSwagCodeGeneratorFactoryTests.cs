@@ -1,6 +1,4 @@
 using ApiClientCodeGen.Tests.Common.Infrastructure;
-using Rapicgen.CLI.Commands;
-using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Options.NSwag;
 using FluentAssertions;
 using Rapicgen.CLI.Commands.CSharp;
@@ -15,13 +13,11 @@ namespace Rapicgen.CLI.Tests.Command
             NSwagCodeGeneratorFactory sut,
             string swaggerFile,
             string defaultNamespace,
-            INSwagOptions options,
-            IOpenApiDocumentFactory documentFactory)
+            INSwagOptions options)
             => sut.Create(
                     swaggerFile,
                     defaultNamespace,
-                    options,
-                    documentFactory)
+                    options)
                 .Should()
                 .NotBeNull();
     }

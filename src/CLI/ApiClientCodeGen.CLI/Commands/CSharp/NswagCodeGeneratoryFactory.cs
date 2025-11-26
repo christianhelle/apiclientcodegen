@@ -1,5 +1,6 @@
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.NSwag;
 
 namespace Rapicgen.CLI.Commands.CSharp
@@ -8,20 +9,31 @@ namespace Rapicgen.CLI.Commands.CSharp
     {
         ICodeGenerator Create(string swaggerFile,
             string defaultNamespace,
-            INSwagOptions options,
-            IOpenApiDocumentFactory documentFactory);
+            INSwagOptions options);
     }
 
     public class NSwagCodeGeneratorFactory : INSwagCodeGeneratorFactory
     {
+        private readonly IProcessLauncher processLauncher;
+        private readonly IDependencyInstaller dependencyInstaller;
+
+        public NSwagCodeGeneratorFactory(
+            IProcessLauncher processLauncher,
+            IDependencyInstaller dependencyInstaller)
+        {
+            this.processLauncher = processLauncher;
+            this.dependencyInstaller = dependencyInstaller;
+        }
+
         public ICodeGenerator Create(
             string swaggerFile,
             string defaultNamespace,
-            INSwagOptions options,
-            IOpenApiDocumentFactory documentFactory)
+            INSwagOptions options)
             => new NSwagCSharpCodeGenerator(
                 swaggerFile,
-                documentFactory,
-                new NSwagCodeGeneratorSettingsFactory(defaultNamespace, options));
+                defaultNamespace,
+                processLauncher,
+                dependencyInstaller,
+                options);
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using Rapicgen.Core.Options.NSwag;
 using Rapicgen.Core.Options.NSwagStudio;
 using Microsoft.VisualStudio.Shell;
-using NJsonSchema.CodeGeneration.CSharp;
 using System.Runtime.InteropServices;
 
 namespace Rapicgen.Options.NSwagStudio

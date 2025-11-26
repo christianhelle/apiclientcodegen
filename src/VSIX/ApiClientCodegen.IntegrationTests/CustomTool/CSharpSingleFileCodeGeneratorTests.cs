@@ -15,7 +15,7 @@ using Rapicgen.Options.NSwag;
 using Rapicgen.Options.OpenApiGenerator;
 using FluentAssertions;
 using Moq;
-using NJsonSchema.CodeGeneration.CSharp;
+using Rapicgen.Core.Options.NSwag;
 using Xunit;
 using Microsoft.VisualStudio.Shell.Interop;
 

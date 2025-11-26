@@ -1,7 +1,7 @@
-﻿using Rapicgen.Core.Options.NSwagStudio;
+﻿using Rapicgen.Core.Options.NSwag;
+using Rapicgen.Core.Options.NSwagStudio;
 using Rapicgen.Options.NSwagStudio;
 using FluentAssertions;
-using NJsonSchema.CodeGeneration.CSharp;
 
 namespace Rapicgen.Tests.Options
 {

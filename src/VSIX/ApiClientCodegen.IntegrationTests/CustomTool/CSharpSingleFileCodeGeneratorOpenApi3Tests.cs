@@ -16,7 +16,7 @@ using Rapicgen.Options.OpenApiGenerator;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Moq;
-using NJsonSchema.CodeGeneration.CSharp;
+using Rapicgen.Core.Options.NSwag;
 using Xunit;
 
 namespace Rapicgen.IntegrationTests.CustomTool

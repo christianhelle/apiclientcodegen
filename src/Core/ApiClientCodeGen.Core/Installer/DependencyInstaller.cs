@@ -31,7 +31,54 @@ namespace Rapicgen.Core.Installer
 
         public void InstallNSwag()
         {
-            npm.InstallNpmPackage("nswag");
+            var command = "nswag";
+            string arguments = "version";
+            string nswagVersion = "";
+            try
+            {
+                processLauncher.Start(command, arguments, output =>
+                {
+                    if (output != null)
+                    {
+                        nswagVersion = output ?? nswagVersion;
+                        Logger.Instance.WriteLine(output);
+                    }
+                }, error =>
+                {
+                    if (error != null)
+                    {
+                        Logger.Instance.WriteLine(error);
+                    }
+                });
+                if (!nswagVersion.Contains("14.4.0"))
+                {
+                    // Version mismatch, update to required version
+                    UpdateNSwagTool();
+                }
+            }
+            catch (Win32Exception)
+            {
+                // If command doesn't exist Win32Exception is thrown - install the tool
+                InstallNSwagTool();
+            }
+        }
+
+        private void InstallNSwagTool()
+        {
+            var command = PathProvider.GetDotNetPath();
+            var arguments = "tool install --global NSwag.ConsoleCore --version 14.4.0";
+            using var context = new DependencyContext(command, $"{command} {arguments}");
+            processLauncher.Start(command, arguments);
+            context.Succeeded();
+        }
+
+        private void UpdateNSwagTool()
+        {
+            var command = PathProvider.GetDotNetPath();
+            var arguments = "tool update --global NSwag.ConsoleCore --version 14.4.0";
+            using var context = new DependencyContext(command, $"{command} {arguments}");
+            processLauncher.Start(command, arguments);
+            context.Succeeded();
         }
 
         public string InstallOpenApiGenerator(OpenApiSupportedVersion version = default)
