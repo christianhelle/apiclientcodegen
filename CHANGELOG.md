@@ -11,6 +11,7 @@
 - Update plugin org.jetbrains.intellij.platform to v2.10.5 [\#1409](https://github.com/christianhelle/apiclientcodegen/pull/1409) ([renovate[bot]](https://github.com/apps/renovate))
 - NSwag 14.6.3 [\#1408](https://github.com/christianhelle/apiclientcodegen/pull/1408) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Update dependency @vscode/vsce to v3.7.1 [\#1406](https://github.com/christianhelle/apiclientcodegen/pull/1406) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.6.5 [\#1405](https://github.com/christianhelle/apiclientcodegen/pull/1405) ([renovate[bot]](https://github.com/apps/renovate))
 - Update actions/checkout action to v6 [\#1404](https://github.com/christianhelle/apiclientcodegen/pull/1404) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency webpack to v5.103.0 [\#1403](https://github.com/christianhelle/apiclientcodegen/pull/1403) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/vscode to v1.106.1 [\#1402](https://github.com/christianhelle/apiclientcodegen/pull/1402) ([renovate[bot]](https://github.com/apps/renovate))
