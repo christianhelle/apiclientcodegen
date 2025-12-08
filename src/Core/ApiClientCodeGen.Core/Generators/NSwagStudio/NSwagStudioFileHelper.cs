@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Rapicgen.Core.Extensions;
 using Rapicgen.Core.Options.NSwagStudio;
-using NJsonSchema.CodeGeneration.CSharp;
 using NSwag;
+using NJsonSchemaClassStyle = NJsonSchema.CodeGeneration.CSharp.CSharpClassStyle;
+using CSharpClassStyle = Rapicgen.Core.Options.NSwag.CSharpClassStyle;
 
 namespace Rapicgen.Core.Generators.NSwagStudio
 {
@@ -43,7 +44,7 @@ namespace Rapicgen.Core.Generators.NSwagStudio
                         GenerateResponseClasses = options?.GenerateResponseClasses ?? true,
                         GenerateJsonMethods = options?.GenerateJsonMethods ?? true,
                         RequiredPropertiesMustBeDefined = options?.RequiredPropertiesMustBeDefined ?? true,
-                        ClassStyle = options?.ClassStyle ?? CSharpClassStyle.Poco,
+                        ClassStyle = ConvertClassStyle(options?.ClassStyle ?? CSharpClassStyle.Poco),
                         GenerateDefaultValues = options?.GenerateDefaultValues ?? true,
                         GenerateDataAnnotations = options?.GenerateDataAnnotations ?? true,
                         Namespace = outputNamespace ?? "GeneratedCode",
@@ -53,6 +54,16 @@ namespace Rapicgen.Core.Generators.NSwagStudio
             }
                 .ToJson();
         }
+
+        private static NJsonSchemaClassStyle ConvertClassStyle(CSharpClassStyle classStyle)
+            => classStyle switch
+            {
+                CSharpClassStyle.Poco => NJsonSchemaClassStyle.Poco,
+                CSharpClassStyle.Inpc => NJsonSchemaClassStyle.Inpc,
+                CSharpClassStyle.Prism => NJsonSchemaClassStyle.Prism,
+                CSharpClassStyle.Record => NJsonSchemaClassStyle.Record,
+                _ => NJsonSchemaClassStyle.Poco
+            };
 
         private static object GetFromSwagger(
             EnterOpenApiSpecDialogResult enterOpenApiSpecDialogResult,

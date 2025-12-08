@@ -58,7 +58,7 @@ namespace Rapicgen.Core.Generators.NSwagStudio
             return string.Empty;
         }
 
-        public string GetNSwagPath()
+        private string GetNSwagPath()
         {
             var command = options.NSwagPath;
             if (!string.IsNullOrWhiteSpace(command) && File.Exists(command) && !forceDownload)
@@ -69,9 +69,11 @@ namespace Rapicgen.Core.Generators.NSwagStudio
                     ? "Downloading NSwag using NPM"
                     : $"{command} could not be found in specified path! Retrying with default NSwag.exe path");
 
-            command = PathProvider.GetNSwagPath();
             if (!File.Exists(command) || forceDownload)
+            {
                 dependencyInstaller.InstallNSwag();
+                command = "nswag";
+            }
 
             return command;
         }
@@ -81,7 +83,7 @@ namespace Rapicgen.Core.Generators.NSwagStudio
             try
             {
                 var json = File.ReadAllText(nswagFile);
-                dynamic obj = JsonConvert.DeserializeObject(json);
+                dynamic? obj = JsonConvert.DeserializeObject(json);
 
                 if (obj?.swaggerGenerator?.fromSwagger?.json == null &&
                     obj?.documentGenerator?.fromDocument?.json == null)

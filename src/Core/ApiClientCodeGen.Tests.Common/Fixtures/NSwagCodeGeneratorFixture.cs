@@ -1,12 +1,15 @@
 ﻿using System.IO;
 using Rapicgen.Core;
+using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.NSwag;
 using Moq;
-using NJsonSchema.CodeGeneration.CSharp;
+using Xunit;
 
 namespace ApiClientCodeGen.Tests.Common.Fixtures
 {
+    [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class NSwagCodeGeneratorFixture : TestWithResources
     {
         public readonly Mock<IProgressReporter> ProgressReporterMock = new Mock<IProgressReporter>();
@@ -25,8 +28,13 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures
             var defaultNamespace = "GeneratedCode";
             var codeGenerator = new NSwagCSharpCodeGenerator(
                 Path.GetFullPath(SwaggerJsonFilename),
-                new OpenApiDocumentFactory(),
-                new NSwagCodeGeneratorSettingsFactory(defaultNamespace, OptionsMock.Object));
+                defaultNamespace,
+                new ProcessLauncher(),
+                new DependencyInstaller(
+                    new NpmInstaller(new ProcessLauncher()),
+                    new FileDownloader(new WebDownloader()),
+                    new ProcessLauncher()),
+                OptionsMock.Object);
 
             Code = codeGenerator.GenerateCode(ProgressReporterMock.Object);
         }

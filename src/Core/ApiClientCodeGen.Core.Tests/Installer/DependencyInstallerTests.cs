@@ -42,13 +42,25 @@ namespace ApiClientCodeGen.Core.Tests.Installer
         }
 
         [Theory, AutoMoqData]
-        public void InstallNSwag_Invokes_Npm(
-            [Frozen] INpmInstaller npm,
+        public void InstallNSwag_When_NSwag_Not_Installed_Invokes_ProcessLauncher(
+            [Frozen] IProcessLauncher processLauncher,
             DependencyInstaller sut)
         {
+            var mock = Mock.Get(processLauncher);
+            mock.Setup(
+                    c => c.Start(
+                        "nswag",
+                        "version",
+                        It.IsAny<Action<string>>(),
+                        It.IsAny<Action<string>>(),
+                        default))
+                .Throws(new Win32Exception());
             sut.InstallNSwag();
-            Mock.Get(npm)
-                .Verify(c => c.InstallNpmPackage("nswag"));
+            mock.Verify(
+                c => c.Start(
+                    It.IsAny<string>(),
+                    "tool install --global NSwag.ConsoleCore --version 14.6.3",
+                    null));
         }
 
         [Theory, AutoMoqData]

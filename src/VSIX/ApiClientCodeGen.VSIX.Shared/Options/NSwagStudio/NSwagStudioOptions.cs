@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options.NSwag;
 using Rapicgen.Core.Options.NSwagStudio;
-using NJsonSchema.CodeGeneration.CSharp;
 
 namespace Rapicgen.Options.NSwagStudio
 {
