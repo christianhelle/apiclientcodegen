@@ -392,8 +392,9 @@ function RunTests {
             Remove-Item ./**/*Output.cs -Force
             Prepare-SwaggerPetstore -Version $version -Format $format
             Generate-CodeThenBuild -Version $version -Format $format -Method $Method -Parallel $Parallel
-            Remove-Item Swagger.* -Force
-            Remove-Item ./**/*Output.cs -Force
         }
     }
+
+    Remove-Item Swagger.* -Force
+    Remove-Item ./**/*Output.cs -Force
 }
