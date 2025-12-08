@@ -38,11 +38,9 @@ namespace Rapicgen.Core.Installer
             {
                 processLauncher.Start(command, arguments, output =>
                 {
-                    if (output != null)
-                    {
-                        nswagVersion = output ?? nswagVersion;
-                        Logger.Instance.WriteLine(output);
-                    }
+                    if (output == null) return;
+                    nswagVersion = output;
+                    Logger.Instance.WriteLine(nswagVersion);
                 }, error =>
                 {
                     if (error != null)
@@ -107,12 +105,9 @@ namespace Rapicgen.Core.Installer
             {
                 processLauncher.Start(command, arguments, output =>
                 {
-                    if (output != null)
-                    {
-                        kiotaVersion = output ?? kiotaVersion;
-
-                        Logger.Instance.WriteLine(output);
-                    }
+                    if (output == null) return;
+                    kiotaVersion = output;
+                    Logger.Instance.WriteLine(kiotaVersion);
                 }, error =>
                 {
                     if (error != null)
@@ -125,9 +120,9 @@ namespace Rapicgen.Core.Installer
                     //older or newer? i guess this should be handled.
                 }
             }
-            catch (Win32Exception e)
+            catch (Win32Exception)
             {
-                //if command doesn't exist Win32Exception is thrown.
+                // if command doesn't exist Win32Exception is thrown.
                 command = PathProvider.GetDotNetPath();
                 arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.29.0";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
@@ -141,7 +136,7 @@ namespace Rapicgen.Core.Installer
             var command = PathProvider.GetDotNetPath();
             string arguments = "tool list --global";
             string toolListOutput = "";
-            Version installedVersion = null;
+            Version? installedVersion = null;
             bool refitterInstalled = false;
             
             try
@@ -199,7 +194,7 @@ namespace Rapicgen.Core.Installer
                     context.Succeeded();
                 }
             }
-            catch (Win32Exception e)
+            catch (Win32Exception)
             {
                 // If dotnet command doesn't exist or fails, install Refitter
                 command = PathProvider.GetDotNetPath();
