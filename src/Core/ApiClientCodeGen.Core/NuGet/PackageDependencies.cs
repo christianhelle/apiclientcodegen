@@ -111,7 +111,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency Refit =
             new PackageDependency(
                 "Refit",
-                "8.0.0");
+                "9.0.2");
         
         public static readonly PackageDependency MicrosoftExtensionsHttp =
             new PackageDependency(
