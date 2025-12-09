@@ -6,6 +6,7 @@
 
 **Merged pull requests:**
 
+- Update dependency System.Text.Json to 9.0.11 [\#1413](https://github.com/christianhelle/apiclientcodegen/pull/1413) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Refit to v9 [\#1412](https://github.com/christianhelle/apiclientcodegen/pull/1412) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Spectre.Console.Cli to 0.53.1 [\#1410](https://github.com/christianhelle/apiclientcodegen/pull/1410) ([renovate[bot]](https://github.com/apps/renovate))
 - Update plugin org.jetbrains.intellij.platform to v2.10.5 [\#1409](https://github.com/christianhelle/apiclientcodegen/pull/1409) ([renovate[bot]](https://github.com/apps/renovate))
