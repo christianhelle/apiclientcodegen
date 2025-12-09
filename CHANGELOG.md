@@ -4,13 +4,17 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.35.0...HEAD)
 
+**Implemented enhancements:**
+
+- NSwag 14.6.3 [\#1408](https://github.com/christianhelle/apiclientcodegen/pull/1408) ([Copilot](https://github.com/apps/copilot-swe-agent))
+
 **Merged pull requests:**
 
+- Update dependency @types/node to v24.10.2 [\#1414](https://github.com/christianhelle/apiclientcodegen/pull/1414) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency System.Text.Json to 9.0.11 [\#1413](https://github.com/christianhelle/apiclientcodegen/pull/1413) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Refit to v9 [\#1412](https://github.com/christianhelle/apiclientcodegen/pull/1412) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Spectre.Console.Cli to 0.53.1 [\#1410](https://github.com/christianhelle/apiclientcodegen/pull/1410) ([renovate[bot]](https://github.com/apps/renovate))
 - Update plugin org.jetbrains.intellij.platform to v2.10.5 [\#1409](https://github.com/christianhelle/apiclientcodegen/pull/1409) ([renovate[bot]](https://github.com/apps/renovate))
-- NSwag 14.6.3 [\#1408](https://github.com/christianhelle/apiclientcodegen/pull/1408) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Update dependency @vscode/vsce to v3.7.1 [\#1406](https://github.com/christianhelle/apiclientcodegen/pull/1406) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Polly to 8.6.5 [\#1405](https://github.com/christianhelle/apiclientcodegen/pull/1405) ([renovate[bot]](https://github.com/apps/renovate))
 - Update actions/checkout action to v6 [\#1404](https://github.com/christianhelle/apiclientcodegen/pull/1404) ([renovate[bot]](https://github.com/apps/renovate))
