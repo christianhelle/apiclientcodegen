@@ -10,6 +10,8 @@
 
 **Merged pull requests:**
 
+- Update dependency @types/vscode to v1.107.0 [\#1416](https://github.com/christianhelle/apiclientcodegen/pull/1416) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v24.10.3 [\#1415](https://github.com/christianhelle/apiclientcodegen/pull/1415) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v24.10.2 [\#1414](https://github.com/christianhelle/apiclientcodegen/pull/1414) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency System.Text.Json to 9.0.11 [\#1413](https://github.com/christianhelle/apiclientcodegen/pull/1413) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Refit to v9 [\#1412](https://github.com/christianhelle/apiclientcodegen/pull/1412) ([renovate[bot]](https://github.com/apps/renovate))
