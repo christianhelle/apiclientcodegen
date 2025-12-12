@@ -11,7 +11,7 @@ on:
       - '.github/workflows/intellij.yml'
 
 env:
-  VERSION: 1.35.${{ github.run_number }}
+  VERSION: 1.36.${{ github.run_number }}
 
 jobs:
   build:
