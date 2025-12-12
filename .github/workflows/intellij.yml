@@ -42,7 +42,7 @@ jobs:
         working-directory: src/IntelliJ
         run: ./gradlew buildPlugin --no-daemon
       - name: Archive plugin artifact
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: intellij-plugin
           path: src/IntelliJ/build/distributions/*.zip
