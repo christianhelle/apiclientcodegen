@@ -8,7 +8,7 @@
         <License>License.txt</License>
         <Icon>Resources\Icon.png</Icon>
         <PreviewImage>Resources\Icon.png</PreviewImage>
-        <Tags>OpenAPI; Swagger; NSwag; AutoRest; Refit; REST API; Code Generator</Tags>
+        <Tags>OpenAPI; Swagger; NSwag; AutoRest; Kiota; Refit; REST API; Code Generator</Tags>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,18.0)">
