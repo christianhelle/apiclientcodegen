@@ -10,6 +10,8 @@
 
 **Merged pull requests:**
 
+- Refitter v1.7.1 [\#1423](https://github.com/christianhelle/apiclientcodegen/pull/1423) ([christianhelle](https://github.com/christianhelle))
+- Update actions/cache action to v5 [\#1417](https://github.com/christianhelle/apiclientcodegen/pull/1417) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/vscode to v1.107.0 [\#1416](https://github.com/christianhelle/apiclientcodegen/pull/1416) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v24.10.3 [\#1415](https://github.com/christianhelle/apiclientcodegen/pull/1415) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v24.10.2 [\#1414](https://github.com/christianhelle/apiclientcodegen/pull/1414) ([renovate[bot]](https://github.com/apps/renovate))
