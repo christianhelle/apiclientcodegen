@@ -32,7 +32,7 @@
       },
       {
         "command": "restApiClientCodeGenerator.refitter",
-        "title": "Generate C# Client with Refitter (v1.6.5)"
+        "title": "Generate C# Client with Refitter (v1.7.1)"
       },
       {
         "command": "restApiClientCodeGenerator.openapi",
