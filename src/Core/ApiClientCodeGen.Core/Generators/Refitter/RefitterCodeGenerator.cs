@@ -44,7 +44,15 @@ public class RefitterCodeGenerator : ICodeGenerator
 
         if (inputFile.EndsWith(".refitter"))
         {
-            return GenerateFromSettingsFile(pGenerateProgress);
+            try
+            {
+                return GenerateFromSettingsFile(pGenerateProgress);
+            }
+            catch
+            {
+                // Fall back to swagger generation if settings file processing fails
+                return GenerateFromSwaggerFile(pGenerateProgress);
+            }
         }
         else
         {
