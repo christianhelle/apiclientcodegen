@@ -1,7 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Text.Json;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
@@ -57,10 +56,7 @@ public class RefitterCodeGenerator : ICodeGenerator
     private string GenerateFromSettingsFile(IProgressReporter? pGenerateProgress)
     {
         var settingsContent = File.ReadAllText(inputFile);
-        var settings = JsonSerializer.Deserialize<RefitterSettings>(settingsContent, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        });
+        var settings = DeserializeSettings(settingsContent);
 
         pGenerateProgress?.Progress(40);
 
@@ -208,6 +204,53 @@ public class RefitterCodeGenerator : ICodeGenerator
         }
         
         return Path.Combine(workingDirectory, outputFolder, outputFilename);
+    }
+
+    private static RefitterSettings DeserializeSettings(string json)
+    {
+        var settings = new RefitterSettings();
+        
+        // Simple JSON parser - extract only the properties we need
+        var lines = json.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        
+        foreach (var line in lines)
+        {
+            var trimmed = line.Trim().TrimEnd(',');
+            
+            if (trimmed.Contains("\"generateMultipleFiles\""))
+            {
+                settings.GenerateMultipleFiles = ExtractBoolValue(trimmed);
+            }
+            else if (trimmed.Contains("\"outputFolder\""))
+            {
+                settings.OutputFolder = ExtractStringValue(trimmed);
+            }
+            else if (trimmed.Contains("\"outputFilename\""))
+            {
+                settings.OutputFilename = ExtractStringValue(trimmed);
+            }
+        }
+        
+        return settings;
+    }
+    
+    private static bool ExtractBoolValue(string line)
+    {
+        return line.Contains("true", StringComparison.OrdinalIgnoreCase);
+    }
+    
+    private static string? ExtractStringValue(string line)
+    {
+        var colonIndex = line.IndexOf(':');
+        if (colonIndex < 0) return null;
+        
+        var valueStart = line.IndexOf('"', colonIndex + 1);
+        if (valueStart < 0) return null;
+        
+        var valueEnd = line.IndexOf('"', valueStart + 1);
+        if (valueEnd < 0) return null;
+        
+        return line.Substring(valueStart + 1, valueEnd - valueStart - 1);
     }
 
     private static string SerializeSettings(RefitterSettings settings)
