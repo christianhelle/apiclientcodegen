@@ -76,37 +76,37 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency MicrosoftKiotaAbstractions =
             new PackageDependency(
                 "Microsoft.Kiota.Abstractions",
-                "1.21.0");
+                "1.21.1");
 
         public static readonly PackageDependency MicrosoftKiotaAuthenticationAzure =
             new PackageDependency(
                 "Microsoft.Kiota.Authentication.Azure",
-                "1.21.0");
+                "1.21.1");
 
         public static readonly PackageDependency MicrosoftKiotaHttpClientLibrary =
             new PackageDependency(
                 "Microsoft.Kiota.Http.HttpClientLibrary",
-                "1.21.0");
+                "1.21.1");
 
         public static readonly PackageDependency MicrosoftKiotaSerializationForm =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Form",
-                "1.21.0");
+                "1.21.1");
 
         public static readonly PackageDependency MicrosoftKiotaSerializationJson =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Json",
-                "1.21.0");
+                "1.21.1");
 
         public static readonly PackageDependency MicrosoftKiotaSerializationText =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Text",
-                "1.21.0");
+                "1.21.1");
 
         public static readonly PackageDependency MicrosoftKiotaSerializationMultipart =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Multipart",
-                "1.21.0");
+                "1.21.1");
 
         public static readonly PackageDependency Refit =
             new PackageDependency(
