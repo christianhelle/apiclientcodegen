@@ -7,10 +7,11 @@
 **Implemented enhancements:**
 
 - Refitter v1.7.1 [\#1423](https://github.com/christianhelle/apiclientcodegen/pull/1423) ([christianhelle](https://github.com/christianhelle))
-- NSwag 14.6.3 [\#1408](https://github.com/christianhelle/apiclientcodegen/pull/1408) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- NSwag v14.6.3 [\#1408](https://github.com/christianhelle/apiclientcodegen/pull/1408) ([Copilot](https://github.com/apps/copilot-swe-agent))
 
 **Merged pull requests:**
 
+- Update Kiota Dependencies to v1.21.1 [\#1428](https://github.com/christianhelle/apiclientcodegen/pull/1428) ([christianhelle](https://github.com/christianhelle))
 - Update actions/cache action to v5 [\#1417](https://github.com/christianhelle/apiclientcodegen/pull/1417) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/vscode to v1.107.0 [\#1416](https://github.com/christianhelle/apiclientcodegen/pull/1416) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v24.10.3 [\#1415](https://github.com/christianhelle/apiclientcodegen/pull/1415) ([renovate[bot]](https://github.com/apps/renovate))
