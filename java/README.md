@@ -25,7 +25,7 @@ This project uses Java-based tools for generating REST API client code from Open
 
 **Usage in this project:**
 ```bash
-java -jar openapi-generator-cli-7.17.0.jar generate \
+java -jar openapi-generator-cli-7.18.0.jar generate \
   --generator-name csharp \
   --input-spec [swagger file] \
   --output [output directory] \

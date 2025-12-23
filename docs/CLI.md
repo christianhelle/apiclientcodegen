@@ -33,7 +33,7 @@ Options:
 Commands:
   csharp             Generate C# API clients
   jmeter             Generate Apache JMeter test plans
-  openapi-generator  Generate code using OpenAPI Generator (v7.17.0).
+  openapi-generator  Generate code using OpenAPI Generator (v7.18.0).
                      See supported generators at https://openapi-generator.tech/docs/generators/
   typescript         Generate TypeScript API clients
 
