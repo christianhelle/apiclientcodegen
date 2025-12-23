@@ -61,7 +61,7 @@ namespace Rapicgen.CLI
                             .WithExample(new[] { "swagger", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<OpenApiCSharpGeneratorCommand>("openapi")
-                            .WithDescription("OpenAPI Generator (v7.17.0)")
+                            .WithDescription("OpenAPI Generator (v7.18.0)")
                             .WithExample(new[] { "openapi", "petstore.json", "GeneratedCode", "Output.cs" });
                     });
 
