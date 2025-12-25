@@ -58,6 +58,28 @@ Task("Build-VSIX")
         {
             throw new Exception($"MSBuild failed with exit code {exitCode}");
         }
+
+        // Copy VSIX files to artifacts folder
+        Information("Copying VSIX files to artifacts folder");
+        EnsureDirectoryExists("./artifacts");
+        var vsixFiles = GetFiles($"./VSIX/**/bin/{configuration}/*.vsix");
+        foreach(var vsixFile in vsixFiles)
+        {
+            var projectName = vsixFile.GetDirectory().GetParent().GetParent().GetDirectoryName();
+            var artifactName = $"{projectName}-{configuration}.vsix";
+            var destinationPath = $"./artifacts/{artifactName}";
+            Information($"Copying {vsixFile.GetFilename()} to {destinationPath}");
+            CopyFile(vsixFile, destinationPath);
+        }
+        
+        if (vsixFiles.Count() > 0)
+        {
+            Information($"Successfully copied {vsixFiles.Count()} VSIX file(s) to artifacts folder");
+        }
+        else
+        {
+            Warning("No VSIX files found to copy");
+        }
     });
 
 Task("Build-Rapicgen")
