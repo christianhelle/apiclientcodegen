@@ -191,18 +191,6 @@ public class RefitterCodeGenerator : ICodeGenerator
         return Path.Combine(workingDirectory, outputFolder, outputFilename);
     }
 
-    private static string SerializeSettings(RefitterSettings settings)
-    {
-        return JsonSerializer.Serialize(
-            settings,
-            new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true
-            });
-    }
-
     // Minimal representation of Refitter settings for JSON deserialization
     private class RefitterSettings : DefaultRefitterOptions
     {
