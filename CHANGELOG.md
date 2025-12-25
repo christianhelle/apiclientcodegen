@@ -16,6 +16,7 @@
 
 **Merged pull requests:**
 
+- Fix Cake Build [\#1433](https://github.com/christianhelle/apiclientcodegen/pull/1433) ([christianhelle](https://github.com/christianhelle))
 - Fix .refitter file mess when using New REST API Client [\#1432](https://github.com/christianhelle/apiclientcodegen/pull/1432) ([christianhelle](https://github.com/christianhelle))
 - Update Kiota Dependencies to v1.21.1 [\#1428](https://github.com/christianhelle/apiclientcodegen/pull/1428) ([christianhelle](https://github.com/christianhelle))
 - Update GitHub Artifact Actions \(major\) [\#1418](https://github.com/christianhelle/apiclientcodegen/pull/1418) ([renovate[bot]](https://github.com/apps/renovate))
