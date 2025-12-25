@@ -1,6 +1,5 @@
-#tool "nuget:?package=Microsoft.TestPlatform&version=18.0.1"
-
 var target = Argument("target", "Default");
+var configuration = Argument("configuration", "Release");
 
 Task("Clean")
     .Does(() =>
@@ -29,133 +28,179 @@ Task("Restore")
 Task("Build-Release")
     .IsDependentOn("Restore")
     .Does(() => {
-        Information("Building solutions");
+        Information("Building solutions in Release mode");
         foreach(var solution in GetFiles("./**/*.sln"))
         {
             if (solution.ToString().Contains("Mac.sln"))
                 continue;
             Information("Building {0}", solution);
-            MSBuild(
-                solution, 
-                settings =>
-                    settings.SetPlatformTarget(PlatformTarget.MSIL)
-                        .SetMSBuildPlatform(MSBuildPlatform.x86)
-                        .UseToolVersion(MSBuildToolVersion.VS2019)
-                        .WithTarget("Build")
-                        .SetConfiguration("Release"));
+            DotNetBuild(solution.ToString(), new DotNetBuildSettings
+            {
+                Configuration = "Release",
+                NoRestore = true,
+                MSBuildSettings = new DotNetMSBuildSettings()
+                    .SetMaxCpuCount(0)
+                    .WithProperty("DeployExtension", "false")
+            });
         }
     });
 
 Task("Build-Debug")
     .IsDependentOn("Restore")
     .Does(() => {
-        Information("Building solutions");
+        Information("Building solutions in Debug mode");
         foreach(var solution in GetFiles("./**/*.sln"))
         {
             if (solution.ToString().Contains("Mac.sln"))
                 continue;
             Information("Building {0}", solution);
-            MSBuild(
-                solution, 
-                settings =>
-                    settings.SetPlatformTarget(PlatformTarget.MSIL)
-                        .SetMSBuildPlatform(MSBuildPlatform.x86)
-                        .UseToolVersion(MSBuildToolVersion.VS2019)
-                        .WithTarget("Build")
-                        .SetConfiguration("Debug"));
+            DotNetBuild(solution.ToString(), new DotNetBuildSettings
+            {
+                Configuration = "Debug",
+                NoRestore = true,
+                MSBuildSettings = new DotNetMSBuildSettings()
+                    .SetMaxCpuCount(0)
+                    .WithProperty("DeployExtension", "false")
+            });
         }
     });
 
 Task("Build-VSIX")
     .IsDependentOn("Restore")
     .Does(() => {
-        Information("Building VSIX");
-        MSBuild(
-            File("VSIX.sln"),
-            settings =>
-                settings.SetPlatformTarget(PlatformTarget.MSIL)
-                    .SetMSBuildPlatform(MSBuildPlatform.x86)
-                    .UseToolVersion(MSBuildToolVersion.VS2019)
-                    .WithTarget("Build")
-                    .SetConfiguration("Release"));
+        Information("Building VSIX solution with native MSBuild");
+        var msbuildPath = @"C:\Program Files\Microsoft Visual Studio\18\Insiders\MSBuild\Current\Bin\amd64\MSBuild.exe";
+        if (!FileExists(msbuildPath))
+        {
+            // Fallback to VS2022 path
+            msbuildPath = @"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\MSBuild.exe";
+            if (!FileExists(msbuildPath))
+            {
+                msbuildPath = @"C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Current\Bin\amd64\MSBuild.exe";
+                if (!FileExists(msbuildPath))
+                {
+                    msbuildPath = @"C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\MSBuild.exe";
+                }
+            }
+        }
+        
+        Information($"Using MSBuild from: {msbuildPath}");
+        var exitCode = StartProcess(msbuildPath, new ProcessSettings
+        {
+            Arguments = new ProcessArgumentBuilder()
+                .Append("VSIX.sln")
+                .Append("/t:Rebuild")
+                .Append($"/p:Configuration={configuration}")
+                .Append("/p:DeployExtension=false")
+                .Append("/m")
+        });
+        if (exitCode != 0)
+        {
+            throw new Exception($"MSBuild failed with exit code {exitCode}");
+        }
     });
 
 Task("Build-Rapicgen")
     .IsDependentOn("Restore")
     .Does(() => {
         Information("Building Rapicgen (.NET Tool)");
-        MSBuild(
-            File("Rapicgen.sln"),
-            settings =>
-                settings.SetPlatformTarget(PlatformTarget.MSIL)
-                    .SetMSBuildPlatform(MSBuildPlatform.x86)
-                    .UseToolVersion(MSBuildToolVersion.VS2019)
-                    .WithTarget("Build")
-                    .SetConfiguration("Release"));
+        DotNetBuild("Rapicgen.sln", new DotNetBuildSettings
+        {
+            Configuration = configuration,
+            NoRestore = true,
+            MSBuildSettings = new DotNetMSBuildSettings()
+                .SetMaxCpuCount(0)
+        });
     });
 
 Task("Run-Unit-Tests")
     .IsDependentOn("Build-Release")
     .Does(() =>
 {
-    VSTest("./**/bin/**/*.Tests.dll",
-           new VSTestSettings 
-           { 
-               Parallel = true, 
-               EnableCodeCoverage = true,
-               SettingsFile = File("./Tests.runsettings")
-           }.WithVisualStudioLogger());
+    var testProjects = GetFiles("./**/ApiClientCodeGen.*.Tests.csproj");
+    foreach(var project in testProjects)
+    {
+        Information("Running tests for {0}", project);
+        DotNetTest(project.ToString(), new DotNetTestSettings
+        {
+            Configuration = "Release",
+            NoBuild = true,
+            NoRestore = true,
+            Loggers = new[] { "console;verbosity=minimal" }
+        });
+    }
 });
 
 Task("Run-Integration-Tests")
     .IsDependentOn("Build-Release")
     .Does(() =>
 {
-    VSTest("./**/bin/**/*.IntegrationTests.dll",
-           new VSTestSettings 
-           { 
-               Parallel = true, 
-               EnableCodeCoverage = true,
-               SettingsFile = File("./Tests.runsettings")
-           }.WithVisualStudioLogger());
+    var testProjects = GetFiles("./**/ApiClientCodeGen.*.IntegrationTests.csproj");
+    foreach(var project in testProjects)
+    {
+        Information("Running integration tests for {0}", project);
+        DotNetTest(project.ToString(), new DotNetTestSettings
+        {
+            Configuration = "Release",
+            NoBuild = true,
+            NoRestore = true,
+            Loggers = new[] { "console;verbosity=minimal" }
+        });
+    }
 });
 
 Task("Run-VSIX-Unit-Tests")
     .IsDependentOn("Build-Release")
     .Does(() =>
 {
-    VSTest("./VSIX/**/bin/**/*.Tests.dll",
-           new VSTestSettings 
-           { 
-               Parallel = true, 
-               EnableCodeCoverage = true,
-               SettingsFile = File("./Tests.runsettings")
-           }.WithVisualStudioLogger());
+    var testProjects = GetFiles("./VSIX/**/ApiClientCodeGen.*.Tests.csproj");
+    foreach(var project in testProjects)
+    {
+        Information("Running VSIX tests for {0}", project);
+        DotNetTest(project.ToString(), new DotNetTestSettings
+        {
+            Configuration = "Release",
+            NoBuild = true,
+            NoRestore = true,
+            Loggers = new[] { "console;verbosity=minimal" }
+        });
+    }
 });
 
 Task("Run-VSIX-Integration-Tests")
     .IsDependentOn("Build-Release")
     .Does(() =>
 {
-    VSTest("./VSIX/**/bin/**/*.IntegrationTests.dll",
-           new VSTestSettings 
-           { 
-               Parallel = true, 
-               EnableCodeCoverage = true,
-               SettingsFile = File("./Tests.runsettings")
-           }.WithVisualStudioLogger());
+    var testProjects = GetFiles("./VSIX/**/ApiClientCodeGen.*.IntegrationTests.csproj");
+    foreach(var project in testProjects)
+    {
+        Information("Running VSIX integration tests for {0}", project);
+        DotNetTest(project.ToString(), new DotNetTestSettings
+        {
+            Configuration = "Release",
+            NoBuild = true,
+            NoRestore = true,
+            Loggers = new[] { "console;verbosity=minimal" }
+        });
+    }
 });
 
 Task("Run-All-Tests")
+    .IsDependentOn("Build-Release")
     .Does(() =>
 {
-    VSTest("./**/bin/**/*Tests.dll",
-           new VSTestSettings 
-           { 
-               Parallel = true, 
-               EnableCodeCoverage = true,
-               SettingsFile = File("./Tests.runsettings")
-           }.WithVisualStudioLogger());
+    var testProjects = GetFiles("./**/*Tests.csproj");
+    foreach(var project in testProjects)
+    {
+        Information("Running tests for {0}", project);
+        DotNetTest(project.ToString(), new DotNetTestSettings
+        {
+            Configuration = "Release",
+            NoBuild = true,
+            NoRestore = true,
+            Loggers = new[] { "console;verbosity=minimal" }
+        });
+    }
 });
 
 Task("All")
