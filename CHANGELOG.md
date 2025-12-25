@@ -6,12 +6,19 @@
 
 **Implemented enhancements:**
 
+- OpenAPI Generator v7.18.0 [\#1430](https://github.com/christianhelle/apiclientcodegen/pull/1430) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Refitter v1.7.1 [\#1423](https://github.com/christianhelle/apiclientcodegen/pull/1423) ([christianhelle](https://github.com/christianhelle))
 - NSwag v14.6.3 [\#1408](https://github.com/christianhelle/apiclientcodegen/pull/1408) ([Copilot](https://github.com/apps/copilot-swe-agent))
 
+**Closed issues:**
+
+- Upgrade OpenAPI Generator to v7.18.0 [\#1429](https://github.com/christianhelle/apiclientcodegen/issues/1429)
+
 **Merged pull requests:**
 
+- Fix .refitter file mess when using New REST API Client [\#1432](https://github.com/christianhelle/apiclientcodegen/pull/1432) ([christianhelle](https://github.com/christianhelle))
 - Update Kiota Dependencies to v1.21.1 [\#1428](https://github.com/christianhelle/apiclientcodegen/pull/1428) ([christianhelle](https://github.com/christianhelle))
+- Update GitHub Artifact Actions \(major\) [\#1418](https://github.com/christianhelle/apiclientcodegen/pull/1418) ([renovate[bot]](https://github.com/apps/renovate))
 - Update actions/cache action to v5 [\#1417](https://github.com/christianhelle/apiclientcodegen/pull/1417) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/vscode to v1.107.0 [\#1416](https://github.com/christianhelle/apiclientcodegen/pull/1416) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v24.10.3 [\#1415](https://github.com/christianhelle/apiclientcodegen/pull/1415) ([renovate[bot]](https://github.com/apps/renovate))
@@ -484,7 +491,7 @@
 - Update vstest monorepo to 17.12.0 [\#1047](https://github.com/christianhelle/apiclientcodegen/pull/1047) ([renovate[bot]](https://github.com/apps/renovate))
 - Update MacOS runner [\#1045](https://github.com/christianhelle/apiclientcodegen/pull/1045) ([christianhelle](https://github.com/christianhelle))
 - Update Microsoft Kiota dependencies to v1.15.2 [\#1041](https://github.com/christianhelle/apiclientcodegen/pull/1041) ([christianhelle](https://github.com/christianhelle))
-- Update AutoRestArgumentProvider.cs [\#1040](https://github.com/christianhelle/apiclientcodegen/pull/1040) ([tiagffborges](https://github.com/tiagffborges))
+- Update AutoRestArgumentProvider.cs [\#1040](https://github.com/christianhelle/apiclientcodegen/pull/1040) ([ghost](https://github.com/ghost))
 - Update dependency cake.tool to v5 [\#1039](https://github.com/christianhelle/apiclientcodegen/pull/1039) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Polly to 8.5.0 [\#1037](https://github.com/christianhelle/apiclientcodegen/pull/1037) ([renovate[bot]](https://github.com/apps/renovate))
 
