@@ -102,7 +102,7 @@ public class RefitterCodeGenerator : ICodeGenerator
         {
             var newGenerator = new RefitterCodeGenerator(refitterFile, defaultNamespace, processLauncher, dependencyInstaller, options);
             return newGenerator.GenerateCode(pGenerateProgress);
-        }        
+        }
 
         pGenerateProgress?.Progress(40);
 
