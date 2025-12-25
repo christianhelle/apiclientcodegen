@@ -29,19 +29,88 @@ Task("Build-VSIX")
     .IsDependentOn("Restore")
     .Does(() => {
         Information("Building VSIX solution with native MSBuild");
-        var msbuildPath = @"C:\Program Files\Microsoft Visual Studio\18\Insiders\MSBuild\Current\Bin\amd64\MSBuild.exe";
-        if (!FileExists(msbuildPath))
+        
+        // Try to use Cake's VSWhereLatest to find Visual Studio
+        FilePath msbuildPath = null;
+        DirectoryPath vsInstallPath = null;
+        
+        try
         {
-            // Fallback to VS2022 path
-            msbuildPath = @"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\amd64\MSBuild.exe";
-            if (!FileExists(msbuildPath))
+            Information("Attempting to locate Visual Studio using VSWhereLatest");
+            vsInstallPath = VSWhereLatest(new VSWhereLatestSettings
             {
-                msbuildPath = @"C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Current\Bin\amd64\MSBuild.exe";
-                if (!FileExists(msbuildPath))
+                Requires = "Microsoft.Component.MSBuild"
+            });
+            
+            if (vsInstallPath != null)
+            {
+                Information($"Found Visual Studio at: {vsInstallPath}");
+                
+                // Try amd64 version first
+                var candidatePath = vsInstallPath.CombineWithFilePath("MSBuild/Current/Bin/amd64/MSBuild.exe");
+                if (FileExists(candidatePath))
                 {
-                    msbuildPath = @"C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\MSBuild.exe";
+                    msbuildPath = candidatePath;
+                }
+                else
+                {
+                    // Try x86 version
+                    candidatePath = vsInstallPath.CombineWithFilePath("MSBuild/Current/Bin/MSBuild.exe");
+                    if (FileExists(candidatePath))
+                    {
+                        msbuildPath = candidatePath;
+                    }
                 }
             }
+        }
+        catch (Exception ex)
+        {
+            Warning($"VSWhereLatest failed: {ex.Message}");
+        }
+        
+        // Fallback to searching common paths if VSWhereLatest fails
+        if (msbuildPath == null)
+        {
+            Warning("VSWhereLatest not available or failed, falling back to common paths");
+            var programFiles = Environment.GetEnvironmentVariable("ProgramFiles");
+            var programFilesX86 = Environment.GetEnvironmentVariable("ProgramFiles(x86)");
+            
+            var commonPaths = new List<string>();
+            
+            // Add paths for both Program Files locations
+            // Prioritize full editions over BuildTools
+            var editions = new[] { "Enterprise", "Professional", "Community", "Preview", "Insiders", "BuildTools" };
+            var versions = new[] { "2022", "2019", "18" };  // 18 is for Insiders preview
+            
+            foreach (var baseDir in new[] { programFiles, programFilesX86 })
+            {
+                if (!string.IsNullOrEmpty(baseDir))
+                {
+                    foreach (var version in versions)
+                    {
+                        foreach (var edition in editions)
+                        {
+                            commonPaths.Add(System.IO.Path.Combine(baseDir, "Microsoft Visual Studio", version, edition, "MSBuild", "Current", "Bin", "amd64", "MSBuild.exe"));
+                            commonPaths.Add(System.IO.Path.Combine(baseDir, "Microsoft Visual Studio", version, edition, "MSBuild", "Current", "Bin", "MSBuild.exe"));
+                        }
+                    }
+                }
+            }
+            
+            foreach(var path in commonPaths)
+            {
+                if (FileExists(path))
+                {
+                    msbuildPath = path;
+                    Information($"Found MSBuild at common path: {path}");
+                    break;
+                }
+            }
+        }
+        
+        if (msbuildPath == null)
+        {
+            throw new Exception("Could not find MSBuild.exe. Please ensure Visual Studio 2019 or later is installed with MSBuild component.");
         }
         
         Information($"Using MSBuild from: {msbuildPath}");
