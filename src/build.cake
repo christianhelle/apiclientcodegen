@@ -25,46 +25,6 @@ Task("Restore")
     }
 });
 
-Task("Build-Release")
-    .IsDependentOn("Restore")
-    .Does(() => {
-        Information("Building solutions in Release mode");
-        foreach(var solution in GetFiles("./**/*.sln"))
-        {
-            if (solution.ToString().Contains("Mac.sln"))
-                continue;
-            Information("Building {0}", solution);
-            DotNetBuild(solution.ToString(), new DotNetBuildSettings
-            {
-                Configuration = "Release",
-                NoRestore = true,
-                MSBuildSettings = new DotNetMSBuildSettings()
-                    .SetMaxCpuCount(0)
-                    .WithProperty("DeployExtension", "false")
-            });
-        }
-    });
-
-Task("Build-Debug")
-    .IsDependentOn("Restore")
-    .Does(() => {
-        Information("Building solutions in Debug mode");
-        foreach(var solution in GetFiles("./**/*.sln"))
-        {
-            if (solution.ToString().Contains("Mac.sln"))
-                continue;
-            Information("Building {0}", solution);
-            DotNetBuild(solution.ToString(), new DotNetBuildSettings
-            {
-                Configuration = "Debug",
-                NoRestore = true,
-                MSBuildSettings = new DotNetMSBuildSettings()
-                    .SetMaxCpuCount(0)
-                    .WithProperty("DeployExtension", "false")
-            });
-        }
-    });
-
 Task("Build-VSIX")
     .IsDependentOn("Restore")
     .Does(() => {
@@ -114,7 +74,7 @@ Task("Build-Rapicgen")
     });
 
 Task("Run-Unit-Tests")
-    .IsDependentOn("Build-Release")
+    .IsDependentOn("Build-Rapicgen")
     .Does(() =>
 {
     var testProjects = GetFiles("./**/ApiClientCodeGen.*.Tests.csproj");
@@ -132,7 +92,7 @@ Task("Run-Unit-Tests")
 });
 
 Task("Run-Integration-Tests")
-    .IsDependentOn("Build-Release")
+    .IsDependentOn("Build-Rapicgen")
     .Does(() =>
 {
     var testProjects = GetFiles("./**/ApiClientCodeGen.*.IntegrationTests.csproj");
@@ -150,7 +110,7 @@ Task("Run-Integration-Tests")
 });
 
 Task("Run-VSIX-Unit-Tests")
-    .IsDependentOn("Build-Release")
+    .IsDependentOn("Build-Rapicgen")
     .Does(() =>
 {
     var testProjects = GetFiles("./VSIX/**/ApiClientCodeGen.*.Tests.csproj");
@@ -168,7 +128,7 @@ Task("Run-VSIX-Unit-Tests")
 });
 
 Task("Run-VSIX-Integration-Tests")
-    .IsDependentOn("Build-Release")
+    .IsDependentOn("Build-Rapicgen")
     .Does(() =>
 {
     var testProjects = GetFiles("./VSIX/**/ApiClientCodeGen.*.IntegrationTests.csproj");
@@ -186,7 +146,7 @@ Task("Run-VSIX-Integration-Tests")
 });
 
 Task("Run-All-Tests")
-    .IsDependentOn("Build-Release")
+    .IsDependentOn("Build-Rapicgen")
     .Does(() =>
 {
     var testProjects = GetFiles("./**/*Tests.csproj");
@@ -204,8 +164,7 @@ Task("Run-All-Tests")
 });
 
 Task("All")
-    .IsDependentOn("Build-Debug")
-    .IsDependentOn("Build-Release")
+    .IsDependentOn("Build-VSIX")
     .IsDependentOn("Run-All-Tests");
 
 Task("VSIX")
