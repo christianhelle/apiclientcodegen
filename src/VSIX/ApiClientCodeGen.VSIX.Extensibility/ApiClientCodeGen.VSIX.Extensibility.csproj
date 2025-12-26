@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.VisualStudio.Extensibility.Build" Version="17.14.40608" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
+  </ItemGroup>
+
 </Project>
