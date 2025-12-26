@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj" />
+  <Project Path="VSIX/ApiClientCodeGen.VSIX.Extensibility/ApiClientCodeGen.VSIX.Extensibility.csproj" />
+</Solution>
