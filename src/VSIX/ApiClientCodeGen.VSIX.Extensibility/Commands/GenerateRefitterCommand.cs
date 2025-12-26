@@ -29,7 +29,7 @@ public class GenerateRefitterCommand(TraceSource traceSource) : Command
         if (csharpCode is not null)
         {
             await File.WriteAllTextAsync(
-                inputFile.Replace(new FileInfo(inputFile).Extension, "cs"),
+                inputFile.Replace(new FileInfo(inputFile).Extension, ".cs"),
                 csharpCode,
                 cancellationToken);
         }
