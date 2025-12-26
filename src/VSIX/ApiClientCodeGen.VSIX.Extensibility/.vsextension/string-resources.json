@@ -1,0 +1,10 @@
+{
+  "ApiClientCodeGenerator.GroupDisplayName": "REST API Client Code Generator",
+  "AboutCommand.DisplayName": "About",
+  "RefitterCommand.DisplayName": "Generate Client with Refit",
+  "NSwagCommand.DisplayName": "Generate Client with NSwag",
+  "OpenApiGeneratorCommand.DisplayName": "Generate Client with OpenAPI Generator",
+  "KiotaCommand.DisplayName": "Generate Client with Kiota",
+  "SwaggerCommand.DisplayName": "Generate Client with Swagger Codegen",
+  "AutoRestCommand.DisplayName": "Generate Client with AutoRest"
+}
