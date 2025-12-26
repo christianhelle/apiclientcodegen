@@ -1,9 +1,5 @@
-﻿using System.Diagnostics;
-using Microsoft;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.Extensibility;
+﻿using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
-using Microsoft.VisualStudio.Extensibility.Shell;
 
 namespace ApiClientCodeGen.VSIX.Extensibility
 {
