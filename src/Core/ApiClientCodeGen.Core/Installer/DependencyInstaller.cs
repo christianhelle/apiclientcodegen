@@ -124,7 +124,7 @@ namespace Rapicgen.Core.Installer
             {
                 // if command doesn't exist Win32Exception is thrown.
                 command = PathProvider.GetDotNetPath();
-                arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.29.0";
+                arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.29.0 --framework net8.0";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
                 processLauncher.Start(command, arguments);
                 context.Succeeded();
