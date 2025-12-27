@@ -20,12 +20,14 @@ public class GenerateRefitterCommand(TraceSource traceSource) : Command
         VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml|refitter)")
     };
 
-    public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken)
+    public override async Task ExecuteCommandAsync(
+        IClientContext context, 
+        CancellationToken cancellationToken)
     {
         Logger.Instance.TrackFeatureUsage("Generate Refitter output");
 
-        var inputFile = await GetInputFile(context, cancellationToken);
-        var namespaceName = await GetDefaultNamespace(context, cancellationToken);
+        var inputFile = await GetInputFileAsync(context, cancellationToken);
+        var namespaceName = await GetDefaultNamespaceAsync(context, cancellationToken);
 
         var csharpCode = await Task.Run(() => GenerateCode(inputFile, namespaceName));
         if (csharpCode is not null)
@@ -37,14 +39,18 @@ public class GenerateRefitterCommand(TraceSource traceSource) : Command
         }
     }
 
-    private static async Task<string> GetInputFile(IClientContext context, CancellationToken cancellationToken)
+    private static async Task<string> GetInputFileAsync(
+        IClientContext context, 
+        CancellationToken cancellationToken)
     {
         var item = await context.GetSelectedPathAsync(cancellationToken);
         var inputFile = item.AbsolutePath;
         return inputFile;
     }
 
-    private static async Task<string> GetDefaultNamespace(IClientContext context, CancellationToken cancellationToken)
+    private static async Task<string> GetDefaultNamespaceAsync(
+        IClientContext context, 
+        CancellationToken cancellationToken)
     {
         var project = (await context.GetActiveProjectAsync(cancellationToken))!;
         try
