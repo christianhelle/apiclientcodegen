@@ -30,15 +30,40 @@ namespace ApiClientCodeGen.VSIX.Extensibility
                 GroupChild.Command<Commands.GenerateKiotaCommand>(),
                 GroupChild.Command<Commands.GenerateSwaggerCommand>(),
                 GroupChild.Command<Commands.GenerateAutoRestCommand>(),
-                GroupChild.Command<Commands.AboutCommand>(),
-            }            
+            }
         };
 
         [VisualStudioContribution]
         public static MenuConfiguration MyMenu => new("%ApiClientCodeGenerator.GroupDisplayName%")
         {
-            Placements = [CommandPlacement.KnownPlacements.ExtensionsMenu],
-            Children = [MenuChild.Group(MyGroup)],           
+            Placements = [
+                KnownPlacements.FileInProjectContextMenu,
+                KnownPlacements.ProjectContextMenu,
+                KnownPlacements.SolutionContextMenu,
+            ],
+            Children = [MenuChild.Group(MyGroup)],
         };
     }
+}
+
+public static class KnownPlacements
+{
+    public static readonly CommandPlacement FileInProjectContextMenu 
+        = CommandPlacement.VsctParent(
+            new Guid("{d309f791-903f-11d0-9efc-00a0c911004f}"), 
+            id: 521, 
+            priority: 4);
+
+    public static readonly CommandPlacement ProjectContextMenu 
+        = CommandPlacement.VsctParent(
+            new Guid("{d309f791-903f-11d0-9efc-00a0c911004f}"), 
+            id: 518, 
+            priority: 4);
+
+    public static readonly CommandPlacement SolutionContextMenu 
+        = CommandPlacement.VsctParent(
+            new Guid("{d309f791-903f-11d0-9efc-00a0c911004f}"), 
+            id: 537, 
+            priority: 4);
+
 }
