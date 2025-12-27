@@ -26,6 +26,7 @@ internal class ExtensionEntrypoint : Extension
             GroupChild.Command<Commands.GenerateKiotaCommand>(),
             GroupChild.Command<Commands.GenerateSwaggerCommand>(),
             GroupChild.Command<Commands.GenerateAutoRestCommand>(),
+            GroupChild.Command<Commands.AboutCommand>(),
         }
     };
 
@@ -48,17 +49,17 @@ public static class KnownPlacements
         => CommandPlacement.VsctParent(
             new Guid("{d309f791-903f-11d0-9efc-00a0c911004f}"),
             id: 521,
-            priority: 0);
+            priority: 2049);
 
     public static CommandPlacement ProjectContextMenu
         => CommandPlacement.VsctParent(
             new Guid("{d309f791-903f-11d0-9efc-00a0c911004f}"),
             id: 518,
-            priority: 0);
+            priority: 2049);
 
     public static CommandPlacement SolutionContextMenu
         => CommandPlacement.VsctParent(
             new Guid("{d309f791-903f-11d0-9efc-00a0c911004f}"),
             id: 537,
-            priority: 0);
+            priority: 2049);
 }
