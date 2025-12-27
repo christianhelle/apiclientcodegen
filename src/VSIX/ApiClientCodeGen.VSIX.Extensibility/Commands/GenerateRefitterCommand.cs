@@ -26,8 +26,8 @@ public class GenerateRefitterCommand(TraceSource traceSource) : Command
     {
         Logger.Instance.TrackFeatureUsage("Generate Refitter output");
 
-        var inputFile = await GetInputFileAsync(context, cancellationToken);
-        var namespaceName = await GetDefaultNamespaceAsync(context, cancellationToken);
+        var inputFile = await context.GetInputFileAsync(cancellationToken);
+        var namespaceName = await context.GetDefaultNamespaceAsync(cancellationToken);
 
         var csharpCode = await Task.Run(() => GenerateCode(inputFile, namespaceName));
         if (csharpCode is not null)
@@ -36,38 +36,6 @@ public class GenerateRefitterCommand(TraceSource traceSource) : Command
                 inputFile.Replace(new FileInfo(inputFile).Extension, ".cs"),
                 csharpCode,
                 cancellationToken);
-        }
-    }
-
-    private static async Task<string> GetInputFileAsync(
-        IClientContext context, 
-        CancellationToken cancellationToken)
-    {
-        var item = await context.GetSelectedPathAsync(cancellationToken);
-        var inputFile = item.AbsolutePath;
-        return inputFile;
-    }
-
-    private static async Task<string> GetDefaultNamespaceAsync(
-        IClientContext context, 
-        CancellationToken cancellationToken)
-    {
-        var project = (await context.GetActiveProjectAsync(cancellationToken))!;
-        try
-        {
-            return project.DefaultNamespace!;
-        }
-        catch
-        {
-            try
-            {
-                return project.Name ?? "GeneratedCode";
-            }
-            catch
-            {
-                var fileInfo = new FileInfo(project.Path!);
-                return fileInfo.Name.Replace(fileInfo.Extension, string.Empty);
-            }
         }
     }
 
