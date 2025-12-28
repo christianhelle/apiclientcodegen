@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.Extensibility.Commands;
 
-namespace ApiClientCodeGen.VSIx.Extensibility.CommandPlacements;
+namespace ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
 
 /// <summary>
 /// Based on vsshlids.h

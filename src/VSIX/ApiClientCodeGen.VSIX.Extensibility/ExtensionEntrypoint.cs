@@ -1,4 +1,4 @@
-﻿using ApiClientCodeGen.VSIx.Extensibility.CommandPlacements;
+﻿using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 
