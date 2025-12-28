@@ -18,8 +18,4 @@
     <ProjectReference Include="..\..\Core\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CommandPlacements\" />
-  </ItemGroup>
-
 </Project>
