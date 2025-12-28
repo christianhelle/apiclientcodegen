@@ -1,4 +1,4 @@
-﻿using ApiClientCodeGen.VSIX.Extensibility.CommandPlacements;
+﻿using ApiClientCodeGen.VSIx.Extensibility.CommandPlacements;
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 
@@ -36,9 +36,9 @@ internal class ExtensionEntrypoint : Extension
     {
         Placements =
         [
-            KnownPlacements.FileInProjectContextMenu,
-            KnownPlacements.ProjectContextMenu,
-            KnownPlacements.SolutionContextMenu,
+            KnownPlacements.ItemNode_OpenGroup,
+            KnownPlacements.ProjectNode_BuildGroup,
+            KnownPlacements.SolutionNode_BuildGroup,
         ],
         Children = [MenuChild.Group(MyGroup)],
     };
