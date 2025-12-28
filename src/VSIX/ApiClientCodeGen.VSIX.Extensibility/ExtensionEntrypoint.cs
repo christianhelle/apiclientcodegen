@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.Extensibility;
+﻿using ApiClientCodeGen.VSIX.Extensibility.CommandPlacements;
+using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 
 namespace ApiClientCodeGen.VSIX.Extensibility;
@@ -41,25 +42,4 @@ internal class ExtensionEntrypoint : Extension
         ],
         Children = [MenuChild.Group(MyGroup)],
     };
-}
-
-public static class KnownPlacements
-{
-    public static CommandPlacement FileInProjectContextMenu
-        => CommandPlacement.VsctParent(
-            new Guid("{d309f791-903f-11d0-9efc-00a0c911004f}"),
-            id: 521,
-            priority: 2049);
-
-    public static CommandPlacement ProjectContextMenu
-        => CommandPlacement.VsctParent(
-            new Guid("{d309f791-903f-11d0-9efc-00a0c911004f}"),
-            id: 518,
-            priority: 2049);
-
-    public static CommandPlacement SolutionContextMenu
-        => CommandPlacement.VsctParent(
-            new Guid("{d309f791-903f-11d0-9efc-00a0c911004f}"),
-            id: 537,
-            priority: 2049);
 }
