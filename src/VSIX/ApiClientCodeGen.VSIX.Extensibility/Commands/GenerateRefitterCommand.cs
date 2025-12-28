@@ -1,5 +1,7 @@
-﻿using Microsoft.VisualStudio.Extensibility;
+﻿using ApiClientCodeGen.VSIX.Extensibility.Dialogs;
+using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
+using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.Refitter;
 using Refitter.Core;
@@ -9,22 +11,58 @@ using System.Text.Json;
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
 [VisualStudioContribution]
-public class GenerateRefitterCommand(TraceSource traceSource) : Command
+public class GenerateRefitterCommand(TraceSource traceSource)
+    : GenerateRefitterBaseCommand(traceSource)
 {
-    public override CommandConfiguration CommandConfiguration => new("%RefitterCommand.DisplayName%")
-    {
-        Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
-        VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml|refitter)")
-    };
+    public override CommandConfiguration CommandConfiguration
+        => new("%RefitterCommand.DisplayName%")
+        {
+            Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+            VisibleWhen = ActivationConstraint.ClientContext(
+            ClientContextKey.Shell.ActiveSelectionFileName,
+            ".(json|ya?ml|refitter)")
+        };
+
+    public override async Task ExecuteCommandAsync(
+        IClientContext context,
+        CancellationToken cancellationToken) =>
+        await GenerateCodeAsync(
+            await context.GetInputFileAsync(cancellationToken),
+            await context.GetDefaultNamespaceAsync(cancellationToken),
+            cancellationToken);
+}
+
+[VisualStudioContribution]
+public class GenerateRefitterNewCommand(TraceSource traceSource)
+    : GenerateRefitterBaseCommand(traceSource)
+{
+    public override CommandConfiguration CommandConfiguration
+        => new("%RefitterCommand.DisplayName%")
+        {
+            Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+        };
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
         CancellationToken cancellationToken)
     {
-        Logger.Instance.TrackFeatureUsage("Generate Refitter output");
+        await GenerateCodeAsync(
+            await this.AddNewOpenApiFileAsync(context, cancellationToken),
+            await context.GetDefaultNamespaceAsync(cancellationToken),
+            cancellationToken);
+    }
+}
 
-        var inputFile = await context.GetInputFileAsync(cancellationToken);
-        var defaultNamespace = await context.GetDefaultNamespaceAsync(cancellationToken);
+[VisualStudioContribution]
+public abstract class GenerateRefitterBaseCommand(TraceSource traceSource)
+    : Command
+{
+    public async Task GenerateCodeAsync(
+        string inputFile,
+        string defaultNamespace,
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("Generate Refitter output");
 
         try
         {

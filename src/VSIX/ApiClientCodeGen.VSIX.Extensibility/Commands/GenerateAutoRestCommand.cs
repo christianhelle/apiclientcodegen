@@ -10,31 +10,50 @@ using System.Diagnostics;
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
 [VisualStudioContribution]
-public class GenerateAutoRestCommand(TraceSource traceSource) : Command
+public class GenerateAutoRestCommand(TraceSource traceSource)
+    : GenerateAutoRestBaseCommand(traceSource)
 {
-    public override CommandConfiguration CommandConfiguration => new("%AutoRestCommand.DisplayName%")
-    {
-        Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
-        VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
-    };
+    public override CommandConfiguration CommandConfiguration
+        => new("%AutoRestCommand.DisplayName%")
+        {
+            Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+            VisibleWhen = ActivationConstraint.ClientContext(
+                ClientContextKey.Shell.ActiveSelectionFileName,
+                ".(json|ya?ml)")
+        };
+}
 
+[VisualStudioContribution]
+public class GenerateAutoRestNewCommand(TraceSource traceSource)
+    : GenerateAutoRestBaseCommand(traceSource)
+{
+    public override CommandConfiguration CommandConfiguration
+        => new("%AutoRestCommand.DisplayName%")
+        {
+            Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+        };
+}
+
+public abstract class GenerateAutoRestBaseCommand(TraceSource traceSource) : Command
+{
     public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken)
     {
         try
         {
             var inputFile = await context.GetInputFileAsync(cancellationToken);
             var defaultNamespace = await context.GetDefaultNamespaceAsync(cancellationToken);
+
             var generator = new AutoRestCSharpCodeGenerator(
-                inputFile,
-                defaultNamespace,
-                options: new DefaultAutoRestOptions(),
-                processLauncher: new ProcessLauncher(),
-                documentFactory: new OpenApiDocumentFactory(),
-                dependencyInstaller: new DependencyInstaller(
-                    new NpmInstaller(new ProcessLauncher()),
-                    new FileDownloader(new WebDownloader()),
-                    new ProcessLauncher()),
-                new AutoRestArgumentProvider(new DefaultAutoRestOptions()));
+            inputFile,
+            defaultNamespace,
+            options: new DefaultAutoRestOptions(),
+            processLauncher: new ProcessLauncher(),
+            documentFactory: new OpenApiDocumentFactory(),
+            dependencyInstaller: new DependencyInstaller(
+                new NpmInstaller(new ProcessLauncher()),
+                new FileDownloader(new WebDownloader()),
+                new ProcessLauncher()),
+            new AutoRestArgumentProvider(new DefaultAutoRestOptions()));
 
             var csharpCode = await Task.Run(() => generator.GenerateCode(null));
             if (csharpCode is not null)

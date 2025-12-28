@@ -229,7 +229,7 @@ public static class KnownPlacements
     public static CommandPlacement ProjectNode_AddGroup => CommandPlacement.VsctParent(VSMainMenu, 0x0202, 0);
     public static CommandPlacement ProjectNode_AddGroup_Submenu => CommandPlacement.VsctParent(VSMainMenu, 0x0202, 0);
     public static CommandPlacement ProjectNode_AddGroup_Submenu_FormsGroup => CommandPlacement.VsctParent(VSMainMenu, 0x02A0, 0);
-    public static CommandPlacement ProjectNode_AddGroup_Submenu_ItemsGroup => CommandPlacement.VsctParent(VSMainMenu, 0x0203, 0);
+    public static CommandPlacement ProjectNode_AddGroup_Submenu_ItemsGroup => CommandPlacement.VsctParent(VSMainMenu, 0x0203, 0x0801);
     public static CommandPlacement ProjectNode_AddGroup_Submenu_MiscGroup => CommandPlacement.VsctParent(VSMainMenu, 0x02A1, 0);
     public static CommandPlacement ProjectNode_BuildGroup => CommandPlacement.VsctParent(VSMainMenu, 0x0206, 0x0801);
     public static CommandPlacement ProjectNode_BuildDependenciesGroup => CommandPlacement.VsctParent(VSMainMenu, 0x02E0, 0);

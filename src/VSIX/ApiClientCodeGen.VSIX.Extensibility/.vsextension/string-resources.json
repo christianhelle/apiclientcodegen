@@ -1,7 +1,7 @@
 {
   "ApiClientCodeGenerator.GroupDisplayName": "REST API Client Code Generator",
+  "AddNewCommand.GroupDisplayName": "Add New REST API Client",
   "AboutCommand.DisplayName": "About",
-  "AddNewCommand.DisplayName": "Add New REST API Client",
   "RefitterCommand.DisplayName": "Generate Client with Refit",
   "NSwagCommand.DisplayName": "Generate Client with NSwag",
   "OpenApiGeneratorCommand.DisplayName": "Generate Client with OpenAPI Generator",

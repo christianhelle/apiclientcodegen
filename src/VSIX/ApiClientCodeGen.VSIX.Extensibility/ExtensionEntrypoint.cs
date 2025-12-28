@@ -17,10 +17,10 @@ internal class ExtensionEntrypoint : Extension
             description: "Generate REST API client code from OpenAPI/Swagger specifications"),
     };
 
-    public static CommandGroupConfiguration MyGroup => new()
+    public static CommandGroupConfiguration GenerateFromExistingGroup => new()
     {
-        Children = new[]
-        {
+        Children =
+        [
             GroupChild.Command<Commands.GenerateRefitterCommand>(),
             GroupChild.Command<Commands.GenerateNSwagCommand>(),
             GroupChild.Command<Commands.GenerateOpenApiCommand>(),
@@ -28,19 +28,38 @@ internal class ExtensionEntrypoint : Extension
             GroupChild.Command<Commands.GenerateSwaggerCommand>(),
             GroupChild.Command<Commands.GenerateAutoRestCommand>(),
             GroupChild.Command<Commands.AboutCommand>(),
-            GroupChild.Command<Commands.AddNewCommand>(),
-        }
+        ]
     };
 
     [VisualStudioContribution]
-    public static MenuConfiguration MyMenu => new("%ApiClientCodeGenerator.GroupDisplayName%")
+    public static MenuConfiguration GenerateMenu
+        => new("%ApiClientCodeGenerator.GroupDisplayName%")
+        {
+            Placements =
+            [
+                KnownPlacements.ItemNode_OpenGroup,
+                KnownPlacements.ProjectNode_BuildGroup,
+            ],
+            Children = [MenuChild.Group(GenerateFromExistingGroup)],
+        };
+
+    public static CommandGroupConfiguration GenerateFromNewGroup => new()
     {
-        Placements =
+        Children =
         [
-            KnownPlacements.ItemNode_OpenGroup,
-            KnownPlacements.ProjectNode_BuildGroup,
-            KnownPlacements.SolutionNode_BuildGroup,
-        ],
-        Children = [MenuChild.Group(MyGroup)],
+            GroupChild.Command<Commands.GenerateAutoRestNewCommand>(),
+            GroupChild.Command<Commands.GenerateRefitterNewCommand>(),
+        ]
     };
+
+    [VisualStudioContribution]
+    public static MenuConfiguration AddNewMenu
+        => new("%AddNewCommand.GroupDisplayName%")
+        {
+            Placements =
+            [
+                KnownPlacements.ProjectNode_AddGroup_Submenu_ItemsGroup,
+            ],
+            Children = [MenuChild.Group(GenerateFromNewGroup)],
+        };
 }
