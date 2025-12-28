@@ -12,7 +12,8 @@ using System.Text.Json;
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
 [VisualStudioContribution]
-public class GenerateNSwagCommand(TraceSource traceSource) : Command
+public class GenerateNSwagCommand(TraceSource traceSource)
+    : GenerateNSwagBaseCommand(traceSource)
 {
     public override CommandConfiguration CommandConfiguration => new("%NSwagCommand.DisplayName%")
     {
@@ -20,12 +21,41 @@ public class GenerateNSwagCommand(TraceSource traceSource) : Command
         VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml|nswag)")
     };
 
-    public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken)
+    public override async Task ExecuteCommandAsync(
+        IClientContext context,
+        CancellationToken cancellationToken) =>
+        await GenerateAsync(
+            await context.GetInputFileAsync(cancellationToken),
+            await context.GetDefaultNamespaceAsync(cancellationToken),
+            cancellationToken);
+}
+
+[VisualStudioContribution]
+public class GenerateNSwagNewCommand(TraceSource traceSource)
+    : GenerateNSwagBaseCommand(traceSource)
+{
+    public override CommandConfiguration CommandConfiguration => new("%NSwagCommand.DisplayName%")
+    {
+        Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+    };
+
+    public override async Task ExecuteCommandAsync(
+        IClientContext context,
+        CancellationToken cancellationToken) =>
+        await GenerateAsync(
+            await this.AddNewOpenApiFileAsync(context, cancellationToken),
+            await context.GetDefaultNamespaceAsync(cancellationToken),
+            cancellationToken);
+}
+
+public abstract class GenerateNSwagBaseCommand(TraceSource traceSource) : Command
+{
+    public async Task GenerateAsync(
+        string inputFile,
+        string defaultNamespace,
+        CancellationToken cancellationToken)
     {
         Logger.Instance.TrackFeatureUsage("Generate NSwag output");
-
-        var inputFile = await context.GetInputFileAsync(cancellationToken);
-        var namespaceName = await context.GetDefaultNamespaceAsync(cancellationToken);
 
         using var dependencyContext = new DependencyContext("NSwag");
         try
@@ -34,7 +64,7 @@ public class GenerateNSwagCommand(TraceSource traceSource) : Command
             var document = await documentFactory.GetDocumentAsync(inputFile);
 
             var generatorSettingsFactory = new NSwagCodeGeneratorSettingsFactory(
-                namespaceName,
+                defaultNamespace,
                 new DefaultNSwagOptions());
 
             var generator = new CSharpClientGenerator(

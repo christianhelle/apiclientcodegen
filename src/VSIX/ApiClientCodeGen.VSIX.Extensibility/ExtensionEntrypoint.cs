@@ -17,20 +17,6 @@ internal class ExtensionEntrypoint : Extension
             description: "Generate REST API client code from OpenAPI/Swagger specifications"),
     };
 
-    public static CommandGroupConfiguration GenerateFromExistingGroup => new()
-    {
-        Children =
-        [
-            GroupChild.Command<Commands.GenerateRefitterCommand>(),
-            GroupChild.Command<Commands.GenerateNSwagCommand>(),
-            GroupChild.Command<Commands.GenerateOpenApiCommand>(),
-            GroupChild.Command<Commands.GenerateKiotaCommand>(),
-            GroupChild.Command<Commands.GenerateSwaggerCommand>(),
-            GroupChild.Command<Commands.GenerateAutoRestCommand>(),
-            GroupChild.Command<Commands.AboutCommand>(),
-        ]
-    };
-
     [VisualStudioContribution]
     public static MenuConfiguration GenerateMenu
         => new("%ApiClientCodeGenerator.GroupDisplayName%")
@@ -40,17 +26,23 @@ internal class ExtensionEntrypoint : Extension
                 KnownPlacements.ItemNode_OpenGroup,
                 KnownPlacements.ProjectNode_BuildGroup,
             ],
-            Children = [MenuChild.Group(GenerateFromExistingGroup)],
+            Children =
+            [
+                MenuChild.Group(new CommandGroupConfiguration()
+                {
+                    Children =
+                    [
+                        GroupChild.Command<Commands.GenerateRefitterCommand>(),
+                        GroupChild.Command<Commands.GenerateNSwagCommand>(),
+                        GroupChild.Command<Commands.GenerateOpenApiCommand>(),
+                        GroupChild.Command<Commands.GenerateKiotaCommand>(),
+                        GroupChild.Command<Commands.GenerateSwaggerCommand>(),
+                        GroupChild.Command<Commands.GenerateAutoRestCommand>(),
+                        GroupChild.Command<Commands.AboutCommand>(),
+                    ]
+                })
+            ],
         };
-
-    public static CommandGroupConfiguration GenerateFromNewGroup => new()
-    {
-        Children =
-        [
-            GroupChild.Command<Commands.GenerateAutoRestNewCommand>(),
-            GroupChild.Command<Commands.GenerateRefitterNewCommand>(),
-        ]
-    };
 
     [VisualStudioContribution]
     public static MenuConfiguration AddNewMenu
@@ -60,6 +52,16 @@ internal class ExtensionEntrypoint : Extension
             [
                 KnownPlacements.ProjectNode_AddGroup_Submenu_ItemsGroup,
             ],
-            Children = [MenuChild.Group(GenerateFromNewGroup)],
+            Children =
+            [
+                MenuChild.Group(new CommandGroupConfiguration{
+                    Children =
+                    [
+                        GroupChild.Command<Commands.GenerateAutoRestNewCommand>(),
+                        GroupChild.Command<Commands.GenerateRefitterNewCommand>(),
+                        GroupChild.Command<Commands.GenerateNSwagNewCommand>(),
+                    ]
+                })
+            ],
         };
 }
