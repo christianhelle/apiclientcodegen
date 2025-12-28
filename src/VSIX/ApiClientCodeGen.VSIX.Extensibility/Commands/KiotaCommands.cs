@@ -58,7 +58,7 @@ public abstract class GenerateKiotaBaseCommand(TraceSource traceSource) : Comman
                 defaultNamespace,
                 options: new DefaultKiotaOptions(),
                 processLauncher: new ProcessLauncher(),
-                dependencyInstaller: new DependencyInstaller(
+                dependencyInstaller: new CustomDependencyInstaller(
                     new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()));
