@@ -13,7 +13,7 @@ internal class ExtensionEntrypoint : Extension
             id: "APIClientCodeGenerator2026.c28b8f61-bafa-4dc5-a0cc-44b47f3f1c39",
             version: this.ExtensionAssemblyVersion,
             publisherName: "ChristianResmaHelle",
-            displayName: "REST API Client Code Generator",
+            displayName: "%ApiClientCodeGenerator.GroupDisplayName%",
             description: "Generate REST API client code from OpenAPI/Swagger specifications"),
     };
 
@@ -28,6 +28,7 @@ internal class ExtensionEntrypoint : Extension
             GroupChild.Command<Commands.GenerateSwaggerCommand>(),
             GroupChild.Command<Commands.GenerateAutoRestCommand>(),
             GroupChild.Command<Commands.AboutCommand>(),
+            GroupChild.Command<Commands.AddNewCommand>(),
         }
     };
 

@@ -18,4 +18,8 @@
     <ProjectReference Include="..\..\Core\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="Dialogs\AddNewInputDialog.xaml"/>
+  </ItemGroup>
+
 </Project>

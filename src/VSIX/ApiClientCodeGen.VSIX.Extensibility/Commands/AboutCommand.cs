@@ -3,7 +3,6 @@ using Microsoft.VisualStudio.Extensibility.Commands;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
-
 [VisualStudioContribution]
 public class AboutCommand : Command
 {
@@ -14,6 +13,7 @@ public class AboutCommand : Command
 
     public override Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken)
     {
+        // Show about dialog as a simple prompt
         return Task.CompletedTask;
     }
 }
