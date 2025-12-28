@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
-using Rapicgen.Core.External;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.OpenApi;
 using Rapicgen.Core.Installer;
@@ -11,7 +10,7 @@ using System.Diagnostics;
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
 [VisualStudioContribution]
-public class GenerateOpenApiCommand(TraceSource traceSource) : Command
+public class GenerateOpenApiCommand(TraceSource traceSource) : GenerateOpenApiBaseCommand(traceSource)
 {
     public override CommandConfiguration CommandConfiguration => new("%OpenApiGeneratorCommand.DisplayName%")
     {
@@ -19,12 +18,42 @@ public class GenerateOpenApiCommand(TraceSource traceSource) : Command
         VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
     };
 
-    public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken)
+    public override async Task ExecuteCommandAsync(
+        IClientContext context,
+        CancellationToken cancellationToken) =>
+        await GenerateAsync(
+            await context.GetInputFileAsync(cancellationToken),
+            await context.GetDefaultNamespaceAsync(cancellationToken),
+            cancellationToken);
+}
+
+
+[VisualStudioContribution]
+public class GenerateOpenApiNewCommand(TraceSource traceSource) : GenerateOpenApiBaseCommand(traceSource)
+{
+    public override CommandConfiguration CommandConfiguration => new("%OpenApiGeneratorCommand.DisplayName%")
+    {
+        Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+    };
+
+    public override async Task ExecuteCommandAsync(
+        IClientContext context,
+        CancellationToken cancellationToken) =>
+        await GenerateAsync(
+            await this.AddNewOpenApiFileAsync(context, cancellationToken),
+            await context.GetDefaultNamespaceAsync(cancellationToken),
+            cancellationToken);
+}
+
+public abstract class GenerateOpenApiBaseCommand(TraceSource traceSource) : Command
+{
+    public async Task GenerateAsync(
+        string inputFile,
+        string defaultNamespace,
+        CancellationToken cancellationToken)
     {
         try
         {
-            var inputFile = await context.GetInputFileAsync(cancellationToken);
-            var defaultNamespace = await context.GetDefaultNamespaceAsync(cancellationToken);
             var generator = new OpenApiCSharpCodeGenerator(
                 inputFile,
                 defaultNamespace,
