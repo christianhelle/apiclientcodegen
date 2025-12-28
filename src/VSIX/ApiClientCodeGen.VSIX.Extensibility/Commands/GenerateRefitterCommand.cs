@@ -44,6 +44,10 @@ public class GenerateRefitterCommand(TraceSource traceSource) : Command
                 0,
                 "Error generating Refit client code: {0}",
                 e.Message);
+
+            await this.WriteToOutputWindowAsync(
+                "Error generating Refit client code: " + e.Message,
+                cancellationToken);
         }
     }
 

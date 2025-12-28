@@ -58,7 +58,15 @@ public class GenerateNSwagCommand(TraceSource traceSource) : Command
         }
         catch (Exception e)
         {
-            traceSource.TraceEvent(TraceEventType.Error, 0, $"Error generating NSwag code: {e}");
+            traceSource.TraceEvent(
+                TraceEventType.Error,
+                0,
+                "Error generating NSwag client code: {0}",
+                e.Message);
+
+            await this.WriteToOutputWindowAsync(
+                "Error generating NSwag client code: " + e.Message,
+                cancellationToken);
         }
         finally
         {

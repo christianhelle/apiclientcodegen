@@ -4,11 +4,12 @@ using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.Kiota;
+using System.Diagnostics;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
 [VisualStudioContribution]
-public class GenerateKiotaCommand : Command
+public class GenerateKiotaCommand(TraceSource traceSource) : Command
 {
     public override CommandConfiguration CommandConfiguration => new("%KiotaCommand.DisplayName%")
     {
@@ -18,24 +19,39 @@ public class GenerateKiotaCommand : Command
 
     public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken)
     {
-        var inputFile = await context.GetInputFileAsync(cancellationToken);
-        var defaultNamespace = await context.GetDefaultNamespaceAsync(cancellationToken);
-        var generator = new KiotaCodeGenerator(
-            inputFile,
-            defaultNamespace,
-            options: new DefaultKiotaOptions(),
-            processLauncher: new ProcessLauncher(),
-            dependencyInstaller: new DependencyInstaller(
-                new NpmInstaller(new ProcessLauncher()),
-                new FileDownloader(new WebDownloader()),
-                new ProcessLauncher()));
-
-        var csharpCode = await Task.Run(() => generator.GenerateCode(null));
-        if (csharpCode is not null)
+        try
         {
-            await File.WriteAllTextAsync(
-                OutputFile.GetOutputFilename(inputFile),
-                csharpCode,
+            var inputFile = await context.GetInputFileAsync(cancellationToken);
+            var defaultNamespace = await context.GetDefaultNamespaceAsync(cancellationToken);
+            var generator = new KiotaCodeGenerator(
+                inputFile,
+                defaultNamespace,
+                options: new DefaultKiotaOptions(),
+                processLauncher: new ProcessLauncher(),
+                dependencyInstaller: new DependencyInstaller(
+                    new NpmInstaller(new ProcessLauncher()),
+                    new FileDownloader(new WebDownloader()),
+                    new ProcessLauncher()));
+
+            var csharpCode = await Task.Run(() => generator.GenerateCode(null));
+            if (csharpCode is not null)
+            {
+                await File.WriteAllTextAsync(
+                    OutputFile.GetOutputFilename(inputFile),
+                    csharpCode,
+                    cancellationToken);
+            }
+        }
+        catch (Exception e)
+        {
+            traceSource.TraceEvent(
+                TraceEventType.Error,
+                0,
+                "Error generating Kiota client code: {0}",
+                e.Message);
+
+            await this.WriteToOutputWindowAsync(
+                "Error generating Kiota client code: " + e.Message,
                 cancellationToken);
         }
     }
