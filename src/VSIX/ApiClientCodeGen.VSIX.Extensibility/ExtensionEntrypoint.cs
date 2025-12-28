@@ -10,10 +10,10 @@ internal class ExtensionEntrypoint : Extension
     public override ExtensionConfiguration ExtensionConfiguration => new()
     {
         Metadata = new(
-            id: "Rapicgen",
+            id: "f7530eb1-1ce9-46ac-8fab-165b68cf3d61",
             version: Version.Parse("1.0.0"),
             publisherName: "Christian Resma Helle",
-            displayName: "REST API Client Code Generator",
+            displayName: "REST API Client Code Generator (PREVIEW)",
             description: "Generate REST API client code from OpenAPI/Swagger specifications"),        
     };
 
