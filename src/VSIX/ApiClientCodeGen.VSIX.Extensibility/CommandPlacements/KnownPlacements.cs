@@ -2,6 +2,9 @@
 
 namespace ApiClientCodeGen.VSIx.Extensibility.CommandPlacements;
 
+/// <summary>
+/// Based on vsshlids.h
+/// </summary>
 public static class KnownPlacements
 {
     #region VSEditor (9adf33d0-8aad-11d0-b606-00a0c922e851)
