@@ -62,6 +62,7 @@ internal class ExtensionEntrypoint : Extension
                         GroupChild.Command<Commands.GenerateNSwagNewCommand>(),
                         GroupChild.Command<Commands.GenerateKiotaNewCommand>(),
                         GroupChild.Command<Commands.GenerateOpenApiNewCommand>(),
+                        GroupChild.Command<Commands.GenerateSwaggerNewCommand>(),
                     ]
                 })
             ],
