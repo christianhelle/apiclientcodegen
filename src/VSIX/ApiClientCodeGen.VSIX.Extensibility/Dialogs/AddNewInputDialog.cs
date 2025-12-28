@@ -1,16 +1,21 @@
 ﻿using Microsoft.VisualStudio.Extensibility.UI;
+using System.Runtime.Serialization;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Dialogs;
 
 internal class AddNewInputDialog : RemoteUserControl
 {
-    private readonly AddNewInputDialogViewModel _viewModel;
-
     public AddNewInputDialog()
-        : base(new AddNewInputDialogViewModel())
+        : base(new AddNewInputDialogData())
     {
-        _viewModel = (AddNewInputDialogViewModel)DataContext!;
     }
 
-    public string? Url => _viewModel.Url;
+    public string? Url => ((AddNewInputDialogData)DataContext!).Url;
+
+    [DataContract]
+    internal class AddNewInputDialogData
+    {
+        [DataMember]
+        public string? Url { get; set; }
+    }
 }

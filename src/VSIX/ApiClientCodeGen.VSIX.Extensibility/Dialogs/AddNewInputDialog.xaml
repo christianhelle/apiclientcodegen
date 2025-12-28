@@ -11,6 +11,6 @@
                Text="Example: https://petstore3.swagger.io/api/v3/openapi.json" />
     
     <TextBox MinWidth="450"
-             Text="{Binding Url, UpdateSourceTrigger=PropertyChanged}" />
+             Text="{Binding Url, Mode=TwoWay}" />
   </StackPanel>
 </DataTemplate>
