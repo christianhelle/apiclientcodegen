@@ -51,6 +51,11 @@ public abstract class GenerateKiotaBaseCommand(TraceSource traceSource) : Comman
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
+        if (inputFile == null)
+        {
+            return;
+        }
+
         try
         {
             var generator = new KiotaCodeGenerator(

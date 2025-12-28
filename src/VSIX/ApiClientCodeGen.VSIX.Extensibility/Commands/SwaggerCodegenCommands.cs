@@ -50,6 +50,11 @@ public abstract class GenerateSwaggerBaseCommand(TraceSource traceSource) : Comm
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
+        if (inputFile == null)
+        {
+            return;
+        }
+
         try
         {
             var generator = new SwaggerCSharpCodeGenerator(

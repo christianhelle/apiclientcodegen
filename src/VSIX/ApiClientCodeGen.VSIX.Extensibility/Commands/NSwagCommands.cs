@@ -55,6 +55,11 @@ public abstract class GenerateNSwagBaseCommand(TraceSource traceSource) : Comman
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
+        if (inputFile == null)
+        {
+            return;
+        }
+
         Logger.Instance.TrackFeatureUsage("Generate NSwag output");
 
         using var dependencyContext = new DependencyContext("NSwag");

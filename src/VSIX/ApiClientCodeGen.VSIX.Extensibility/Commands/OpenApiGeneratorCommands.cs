@@ -52,6 +52,11 @@ public abstract class GenerateOpenApiBaseCommand(TraceSource traceSource) : Comm
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
+        if (inputFile == null)
+        {
+            return;
+        }
+
         try
         {
             var generator = new OpenApiCSharpCodeGenerator(

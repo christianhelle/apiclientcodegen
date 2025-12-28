@@ -62,6 +62,11 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource)
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
+        if (inputFile == null) 
+        {
+            return;
+        }
+
         Logger.Instance.TrackFeatureUsage("Generate Refitter output");
 
         try

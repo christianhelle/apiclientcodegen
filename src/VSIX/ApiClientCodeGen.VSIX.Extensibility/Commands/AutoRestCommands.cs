@@ -53,10 +53,15 @@ public class GenerateAutoRestNewCommand(TraceSource traceSource)
 public abstract class GenerateAutoRestBaseCommand(TraceSource traceSource) : Command
 {
     public async Task GenerateAsync(
-        string inputFile, 
-        string defaultNamespace, 
+        string inputFile,
+        string defaultNamespace,
         CancellationToken cancellationToken)
     {
+        if (inputFile == null)
+        {
+            return;
+        }
+
         try
         {
             var generator = new AutoRestCSharpCodeGenerator(
