@@ -60,6 +60,7 @@ internal class ExtensionEntrypoint : Extension
                         GroupChild.Command<Commands.GenerateAutoRestNewCommand>(),
                         GroupChild.Command<Commands.GenerateRefitterNewCommand>(),
                         GroupChild.Command<Commands.GenerateNSwagNewCommand>(),
+                        GroupChild.Command<Commands.GenerateKiotaNewCommand>(),
                     ]
                 })
             ],

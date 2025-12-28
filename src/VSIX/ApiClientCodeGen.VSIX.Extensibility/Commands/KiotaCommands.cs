@@ -9,7 +9,7 @@ using System.Diagnostics;
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
 [VisualStudioContribution]
-public class GenerateKiotaCommand(TraceSource traceSource) : Command
+public class GenerateKiotaCommand(TraceSource traceSource) : GenerateKiotaBaseCommand(traceSource)
 {
     public override CommandConfiguration CommandConfiguration => new("%KiotaCommand.DisplayName%")
     {
@@ -17,12 +17,42 @@ public class GenerateKiotaCommand(TraceSource traceSource) : Command
         VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
     };
 
-    public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken)
+    public override async Task ExecuteCommandAsync(
+        IClientContext context,
+        CancellationToken cancellationToken) =>
+        await GenerateAsync(
+            await context.GetInputFileAsync(cancellationToken),
+            await context.GetDefaultNamespaceAsync(cancellationToken),
+            cancellationToken);
+}
+
+[VisualStudioContribution]
+public class GenerateKiotaNewCommand(TraceSource traceSource) : GenerateKiotaBaseCommand(traceSource)
+{
+    public override CommandConfiguration CommandConfiguration => new("%KiotaCommand.DisplayName%")
+    {
+        Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+    };
+
+    public override async Task ExecuteCommandAsync(
+        IClientContext context,
+        CancellationToken cancellationToken) =>
+        await GenerateAsync(
+            await this.AddNewOpenApiFileAsync(context, cancellationToken),
+            await context.GetDefaultNamespaceAsync(cancellationToken),
+            cancellationToken);
+}
+
+[VisualStudioContribution]
+public abstract class GenerateKiotaBaseCommand(TraceSource traceSource) : Command
+{
+    public async Task GenerateAsync(
+        string inputFile,
+        string defaultNamespace,
+        CancellationToken cancellationToken)
     {
         try
         {
-            var inputFile = await context.GetInputFileAsync(cancellationToken);
-            var defaultNamespace = await context.GetDefaultNamespaceAsync(cancellationToken);
             var generator = new KiotaCodeGenerator(
                 inputFile,
                 defaultNamespace,
