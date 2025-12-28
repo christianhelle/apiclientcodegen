@@ -37,7 +37,7 @@ public class GenerateOpenApiCommand : Command
         if (csharpCode is not null)
         {
             await File.WriteAllTextAsync(
-                inputFile.Replace(new FileInfo(inputFile).Extension, ".cs"),
+                OutputFile.GetOutputFilename(inputFile),
                 csharpCode,
                 cancellationToken);
         }

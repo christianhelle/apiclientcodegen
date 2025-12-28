@@ -1,12 +1,9 @@
 ﻿using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
-using Rapicgen.Core;
-using Rapicgen.Core.Generators;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.Refitter;
 using Refitter.Core;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
@@ -21,67 +18,37 @@ public class GenerateRefitterCommand(TraceSource traceSource) : Command
     };
 
     public override async Task ExecuteCommandAsync(
-        IClientContext context, 
+        IClientContext context,
         CancellationToken cancellationToken)
     {
         Logger.Instance.TrackFeatureUsage("Generate Refitter output");
 
         var inputFile = await context.GetInputFileAsync(cancellationToken);
-        var namespaceName = await context.GetDefaultNamespaceAsync(cancellationToken);
+        var defaultNamespace = await context.GetDefaultNamespaceAsync(cancellationToken);
 
-        var csharpCode = await Task.Run(() => GenerateCode(inputFile, namespaceName));
-        if (csharpCode is not null)
-        {
-            await File.WriteAllTextAsync(
-                inputFile.Replace(new FileInfo(inputFile).Extension, ".cs"),
-                csharpCode,
-                cancellationToken);
-        }
-    }
-
-    private string? GenerateCode(string inputFile, string namespaceName)
-    {
         try
         {
-            var generator = new RefitterCodeGenerator(
-                inputFile,
-                namespaceName,
-                new DefaultRefitterOptions());
-
-            return generator.GenerateCode(null);
+            var csharpCode = await GenerateCodeAsync(inputFile, defaultNamespace);
+            if (csharpCode is not null)
+            {
+                await File.WriteAllTextAsync(
+                    OutputFile.GetOutputFilename(inputFile),
+                    csharpCode,
+                    cancellationToken);
+            }
         }
         catch (Exception e)
         {
-            traceSource.TraceEvent(TraceEventType.Error, 0, $"Error generating Refitter code: {e}");
-            return null;
+            traceSource.TraceEvent(
+                TraceEventType.Error,
+                0,
+                "Error generating Refit client code: {0}",
+                e.Message);
         }
     }
-}
 
-public class RefitterCodeGenerator : ICodeGenerator
-{
-    private readonly string inputFile;
-    private readonly string defaultNamespace;
-    private readonly IRefitterOptions options;
-
-    public RefitterCodeGenerator(
-        string swaggerFile,
-        string defaultNamespace,
-        IRefitterOptions options)
+    public async Task<string> GenerateCodeAsync(string inputFile, string defaultNamespace)
     {
-        this.inputFile = swaggerFile;
-        this.defaultNamespace = defaultNamespace;
-        this.options = options;
-    }
-
-    [SuppressMessage(
-        "Usage",
-        "VSTHRD002:Avoid problematic synchronous waits",
-        Justification = "This is run from a Visual Studio CustomTool")]
-    public string GenerateCode(IProgressReporter? pGenerateProgress)
-    {
-        pGenerateProgress?.Progress(10);
-
         RefitGeneratorSettings settings;
         if (inputFile.EndsWith(".refitter"))
         {
@@ -101,6 +68,7 @@ public class RefitterCodeGenerator : ICodeGenerator
             }
             else
             {
+                var options = new DefaultRefitterOptions();
                 settings = new RefitGeneratorSettings
                 {
                     OpenApiPath = inputFile,
@@ -122,22 +90,15 @@ public class RefitterCodeGenerator : ICodeGenerator
             }
         }
 
-        var generator = Task
-            .Run(() =>
-            {
-                Directory.SetCurrentDirectory(Path.GetDirectoryName(inputFile));
-                return RefitGenerator.CreateAsync(settings);
-            })
-            .GetAwaiter()
-            .GetResult();
+        Directory.SetCurrentDirectory(Path.GetDirectoryName(inputFile)!);
+        var generator = await RefitGenerator.CreateAsync(settings);
 
-        pGenerateProgress?.Progress(50);
         using var context = new DependencyContext("Refitter", Serialize(settings));
 
         if (settings.GenerateMultipleFiles)
         {
             var fileInfo = new FileInfo(inputFile);
-            var outputFolder = fileInfo.Directory.FullName;
+            var outputFolder = fileInfo.Directory!.FullName;
             if (settings.OutputFolder != RefitGeneratorSettings.DefaultOutputFolder)
             {
                 outputFolder = Path.Combine(outputFolder, settings.OutputFolder);
@@ -160,13 +121,12 @@ public class RefitterCodeGenerator : ICodeGenerator
             var code = generator.Generate();
             context.Succeeded();
 
-            pGenerateProgress?.Progress(90);
             var output = Rapicgen.Core.Generators.GeneratedCode.PrefixAutogeneratedCodeHeader(code, "Refitter", "v1.6.1");
 
             if (inputFile.EndsWith(".refitter"))
             {
                 var fileInfo = new FileInfo(inputFile);
-                var outputFolder = fileInfo.Directory.FullName;
+                var outputFolder = fileInfo.Directory!.FullName;
                 if (settings.OutputFolder != RefitGeneratorSettings.DefaultOutputFolder)
                 {
                     outputFolder = Path.Combine(outputFolder, settings.OutputFolder);

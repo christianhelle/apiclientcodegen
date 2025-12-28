@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.Extensibility;
 
-namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
+namespace ApiClientCodeGen.VSIX.Extensibility;
 
 public static class ClientContextExtensions
 {
