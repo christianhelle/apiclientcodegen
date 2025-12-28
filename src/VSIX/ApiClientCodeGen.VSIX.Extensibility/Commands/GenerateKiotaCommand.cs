@@ -2,11 +2,8 @@
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.Kiota;
-using Rapicgen.Core.Generators.OpenApi;
 using Rapicgen.Core.Installer;
-using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.Kiota;
-using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 

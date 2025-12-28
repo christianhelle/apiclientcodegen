@@ -3,11 +3,8 @@ using Microsoft.VisualStudio.Extensibility.Commands;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.AutoRest;
-using Rapicgen.Core.Generators.OpenApi;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.AutoRest;
-using Rapicgen.Core.Options.General;
-using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
