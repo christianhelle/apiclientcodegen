@@ -1,5 +1,13 @@
 ﻿using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
+using Rapicgen.Core.Generators.AutoRest;
+using Rapicgen.Core.Generators.OpenApi;
+using Rapicgen.Core.Installer;
+using Rapicgen.Core.Options.AutoRest;
+using Rapicgen.Core.Options.General;
+using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
@@ -12,8 +20,29 @@ public class GenerateAutoRestCommand : Command
         VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
     };
 
-    public override Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken)
+    public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken)
     {
-        return Task.CompletedTask;
+        var inputFile = await context.GetInputFileAsync(cancellationToken);
+        var defaultNamespace = await context.GetDefaultNamespaceAsync(cancellationToken);
+        var generator = new AutoRestCSharpCodeGenerator(
+            inputFile,
+            defaultNamespace,
+            options: new DefaultAutoRestOptions(),
+            processLauncher: new ProcessLauncher(),
+            documentFactory: new OpenApiDocumentFactory(),
+            dependencyInstaller: new DependencyInstaller(
+                new NpmInstaller(new ProcessLauncher()),
+                new FileDownloader(new WebDownloader()),
+                new ProcessLauncher()),
+            new AutoRestArgumentProvider(new DefaultAutoRestOptions()));
+
+        var csharpCode = await Task.Run(() => generator.GenerateCode(null));
+        if (csharpCode is not null)
+        {
+            await File.WriteAllTextAsync(
+                inputFile.Replace(new FileInfo(inputFile).Extension, ".cs"),
+                csharpCode,
+                cancellationToken);
+        }
     }
 }
