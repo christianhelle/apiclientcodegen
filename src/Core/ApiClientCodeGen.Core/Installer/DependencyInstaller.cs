@@ -124,7 +124,7 @@ namespace Rapicgen.Core.Installer
             {
                 // if command doesn't exist Win32Exception is thrown.
                 command = PathProvider.GetDotNetPath();
-                arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.29.0 --framework net8.0";
+                arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.29.0";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
                 processLauncher.Start(command, arguments);
                 context.Succeeded();
@@ -188,7 +188,7 @@ namespace Rapicgen.Core.Installer
                 {
                     // Refitter is not installed or version is too old, install/update required version
                     var installCommand = PathProvider.GetDotNetPath();
-                    var installArguments = "tool install --global refitter --version 1.7.1 --framework net8.0";
+                    var installArguments = "tool install --global refitter --version 1.7.1";
                     using var context = new DependencyContext(installCommand, $"{installCommand} {installArguments}");
                     processLauncher.Start(installCommand, installArguments);
                     context.Succeeded();
@@ -198,7 +198,7 @@ namespace Rapicgen.Core.Installer
             {
                 // If dotnet command doesn't exist or fails, install Refitter
                 command = PathProvider.GetDotNetPath();
-                arguments = "tool install --global refitter --version 1.7.1 --framework net8.0";
+                arguments = "tool install --global refitter --version 1.7.1";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
                 processLauncher.Start(command, arguments);
                 context.Succeeded();
