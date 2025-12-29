@@ -31,6 +31,7 @@ jobs:
     - name: Update Version
       run: |
         ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
+        ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Extensibility/ApiClientCodeGen.VSIX.Extensibility.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Extensibility/ApiClientCodeGen.VSIX.Extensibility.csproj
         ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
         ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
       working-directory: src
