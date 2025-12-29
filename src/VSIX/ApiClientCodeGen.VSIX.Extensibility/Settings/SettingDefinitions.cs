@@ -24,7 +24,7 @@ internal static class SettingDefinitions
         "javaPath",
         "Java Path",
         GeneralCategory,
-        PathProvider.GetInstalledJavaPath())
+        string.Empty)
     {
         Description = "Full path to java.exe. Leave empty to get path from JAVA_HOME",
     };
@@ -34,7 +34,7 @@ internal static class SettingDefinitions
         "npmPath",
         "NPM Path",
         GeneralCategory,
-        PathProvider.GetNpmPath())
+        string.Empty)
     {
         Description = "Full path to npm.cmd",
     };
@@ -44,7 +44,7 @@ internal static class SettingDefinitions
         "nswagPath",
         "NSwag Path",
         GeneralCategory,
-        PathProvider.GetNSwagStudioPath())
+        string.Empty)
     {
         Description = "Full path to NSwag.exe (installs from NPM if not found)",
     };
@@ -54,7 +54,7 @@ internal static class SettingDefinitions
         "swaggerCodegenPath",
         "Swagger Codegen CLI Path",
         GeneralCategory,
-        PathProvider.GetSwaggerCodegenPath())
+        string.Empty)
     {
         Description = "Full path to Swagger Codegen JAR file",
     };
@@ -64,7 +64,7 @@ internal static class SettingDefinitions
         "openApiGeneratorPath",
         "OpenAPI Generator Path",
         GeneralCategory,
-        PathProvider.GetOpenApiGeneratorPath())
+        string.Empty)
     {
         Description = "Full path to OpenAPI Generator JAR file",
     };
@@ -225,11 +225,11 @@ internal static class SettingDefinitions
     };
 
     [VisualStudioContribution]
-    internal static Setting.FormattedString NSwagParameterDateTimeFormat { get; } = new(
+    internal static Setting.String NSwagParameterDateTimeFormat { get; } = new(
         "parameterDateTimeFormat",
         "Parameter DateTime format",
         NSwagCategory,
-        defaultValue: "s")
+        "s")
     {
         Description = "Specifies the format for DateTime method parameters",
     };
@@ -308,11 +308,11 @@ internal static class SettingDefinitions
     };
 
     [VisualStudioContribution]
-    internal static Setting.FormattedString NSwagStudioParameterDateTimeFormat { get; } = new(
+    internal static Setting.String NSwagStudioParameterDateTimeFormat { get; } = new(
         "parameterDateTimeFormat",
         "Parameter DateTime format",
         NSwagStudioCategory,
-        defaultValue: "s")
+        "s")
     {
         Description = "Specifies the format for DateTime method parameters",
     };
@@ -425,21 +425,32 @@ internal static class SettingDefinitions
         "targetFramework",
         "Target Framework",
         OpenApiGeneratorCategory,
-        Enum.GetValues(typeof(OpenApiSupportedTargetFramework))
-            .Cast<OpenApiSupportedTargetFramework>()
-            .Select(value => new EnumSettingEntry(value.ToString(), value.ToString()))
-            .ToArray(),
-        defaultValue: OpenApiSupportedTargetFramework.NetStandard21.ToString())
+        new[]
+        {
+            new EnumSettingEntry("NetStandard21", "netstandard2.1"),
+            new EnumSettingEntry("NetStandard20", "netstandard2.0"),
+            new EnumSettingEntry("NetStandard16", "netstandard1.6"),
+            new EnumSettingEntry("NetStandard15", "netstandard1.5"),
+            new EnumSettingEntry("NetStandard14", "netstandard1.4"),
+            new EnumSettingEntry("NetStandard13", "netstandard1.3"),
+            new EnumSettingEntry("Net47", "net47"),
+            new EnumSettingEntry("Net48", "net48"),
+            new EnumSettingEntry("Net60", "net6.0"),
+            new EnumSettingEntry("Net70", "net7.0"),
+            new EnumSettingEntry("Net80", "net8.0"),
+            new EnumSettingEntry("Net90", "net9.0"),
+        },
+        defaultValue: "NetStandard21")
     {
         Description = "The target .NET framework version",
     };
 
     [VisualStudioContribution]
-    internal static Setting.FormattedString OpenApiCustomAdditionalProperties { get; } = new(
+    internal static Setting.String OpenApiCustomAdditionalProperties { get; } = new(
         "customAdditionalProperties",
         "Custom Additional Properties",
         OpenApiGeneratorCategory,
-        defaultValue: string.Empty)
+        string.Empty)
     {
         Description = "Overrides all other additional properties",
     };
@@ -455,11 +466,11 @@ internal static class SettingDefinitions
     };
 
     [VisualStudioContribution]
-    internal static Setting.FormattedString OpenApiTemplatesPath { get; } = new(
+    internal static Setting.String OpenApiTemplatesPath { get; } = new(
         "templatesPath",
         "Templates Path",
         OpenApiGeneratorCategory,
-        defaultValue: string.Empty)
+        string.Empty)
     {
         Description = "Path to the folder containing the custom Mustache templates",
     };
@@ -489,21 +500,33 @@ internal static class SettingDefinitions
         "version",
         "Version",
         OpenApiGeneratorCategory,
-        Enum.GetValues(typeof(OpenApiSupportedVersion))
-            .Cast<OpenApiSupportedVersion>()
-            .Select(value => new EnumSettingEntry(value.ToString(), value.ToString()))
-            .ToArray(),
-        defaultValue: OpenApiSupportedVersion.Latest.ToString())
+        new[]
+        {
+            new EnumSettingEntry("Latest", "Latest"),
+            new EnumSettingEntry("V7180", "7.18.0"),
+            new EnumSettingEntry("V7170", "7.17.0"),
+            new EnumSettingEntry("V7160", "7.16.0"),
+            new EnumSettingEntry("V7150", "7.15.0"),
+            new EnumSettingEntry("V7140", "7.14.0"),
+            new EnumSettingEntry("V7130", "7.13.0"),
+            new EnumSettingEntry("V7120", "7.12.0"),
+            new EnumSettingEntry("V7110", "7.11.0"),
+            new EnumSettingEntry("V7100", "7.10.0"),
+            new EnumSettingEntry("V7090", "7.9.0"),
+            new EnumSettingEntry("V7080", "7.8.0"),
+            new EnumSettingEntry("V7070", "7.7.0"),
+        },
+        defaultValue: "Latest")
     {
         Description = "The version of the generator to use",
     };
 
     [VisualStudioContribution]
-    internal static Setting.FormattedString OpenApiHttpUserAgent { get; } = new(
+    internal static Setting.String OpenApiHttpUserAgent { get; } = new(
         "httpUserAgent",
         "HTTP User-Agent",
         OpenApiGeneratorCategory,
-        defaultValue: string.Empty)
+        string.Empty)
     {
         Description = "Sets the User-Agent header value to be sent in the HTTP request",
     };
@@ -600,11 +623,14 @@ internal static class SettingDefinitions
         "typeAccessModifier",
         "Type Access Modifier",
         KiotaCategory,
-        Enum.GetValues(typeof(TypeAccessModifier))
-            .Cast<TypeAccessModifier>()
-            .Select(value => new EnumSettingEntry(value.ToString(), value.ToString()))
-            .ToArray(),
-        defaultValue: TypeAccessModifier.Public.ToString())
+        new[]
+        {
+            new EnumSettingEntry("Public", "Public"),
+            new EnumSettingEntry("Internal", "Internal"),
+            new EnumSettingEntry("Protected", "Protected"),
+            new EnumSettingEntry("Private", "Private"),
+        },
+        defaultValue: "Public")
     {
         Description = "The access modifier for the generated types",
     };

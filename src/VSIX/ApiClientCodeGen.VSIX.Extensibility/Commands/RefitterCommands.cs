@@ -93,7 +93,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
 
         try
         {
-            var csharpCode = await GenerateCodeAsync(inputFile, defaultNamespace, cancellationToken);
+            var csharpCode = await GenerateCodeInternalAsync(inputFile, defaultNamespace, cancellationToken);
             if (csharpCode is not null)
             {
                 await File.WriteAllTextAsync(
@@ -116,7 +116,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
         }
     }
 
-    public async Task<string> GenerateCodeAsync(string inputFile, string defaultNamespace, CancellationToken cancellationToken)
+    public async Task<string> GenerateCodeInternalAsync(string inputFile, string defaultNamespace, CancellationToken cancellationToken)
     {
         RefitGeneratorSettings settings;
         if (inputFile.EndsWith(".refitter"))
