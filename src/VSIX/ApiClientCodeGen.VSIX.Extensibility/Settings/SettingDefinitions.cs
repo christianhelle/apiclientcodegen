@@ -1,12 +1,8 @@
 ﻿#pragma warning disable VSEXTPREVIEW_SETTINGS
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Settings;
-using Rapicgen.Core.External;
-using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Options.AutoRest;
-using Rapicgen.Core.Options.Kiota;
 using Rapicgen.Core.Options.NSwag;
-using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Settings;
 
