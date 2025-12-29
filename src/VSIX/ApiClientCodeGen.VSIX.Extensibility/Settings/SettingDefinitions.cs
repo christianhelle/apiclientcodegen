@@ -13,7 +13,10 @@ namespace ApiClientCodeGen.VSIX.Extensibility.Settings;
 internal static class SettingDefinitions
 {
     [VisualStudioContribution]
-    internal static SettingCategory GeneralCategory { get; } = new("general", "General")
+    internal static SettingCategory RootCategory { get; } = new("restApiClientCodeGenerator", "REST API Client Code Generator");
+
+    [VisualStudioContribution]
+    internal static SettingCategory GeneralCategory { get; } = new("general", "General", RootCategory)
     {
         Description = "General settings for REST API Client Code Generator.",
         GenerateObserverClass = true,
@@ -80,7 +83,7 @@ internal static class SettingDefinitions
     };
 
     [VisualStudioContribution]
-    internal static SettingCategory AutoRestCategory { get; } = new("autorest", "AutoRest")
+    internal static SettingCategory AutoRestCategory { get; } = new("autorest", "AutoRest", RootCategory)
     {
         GenerateObserverClass = true,
     };
@@ -152,7 +155,7 @@ internal static class SettingDefinitions
     };
 
     [VisualStudioContribution]
-    internal static SettingCategory NSwagCategory { get; } = new("nswag", "NSwag")
+    internal static SettingCategory NSwagCategory { get; } = new("nswag", "NSwag", RootCategory)
     {
         GenerateObserverClass = true,
     };
@@ -235,7 +238,7 @@ internal static class SettingDefinitions
     };
 
     [VisualStudioContribution]
-    internal static SettingCategory NSwagStudioCategory { get; } = new("nswagStudio", "NSwag Studio")
+    internal static SettingCategory NSwagStudioCategory { get; } = new("nswagStudio", "NSwag Studio", RootCategory)
     {
         GenerateObserverClass = true,
     };
@@ -368,7 +371,7 @@ internal static class SettingDefinitions
     };
 
     [VisualStudioContribution]
-    internal static SettingCategory OpenApiGeneratorCategory { get; } = new("openApiGenerator", "OpenAPI Generator")
+    internal static SettingCategory OpenApiGeneratorCategory { get; } = new("openApiGenerator", "OpenAPI Generator", RootCategory)
     {
         GenerateObserverClass = true,
     };
@@ -532,7 +535,7 @@ internal static class SettingDefinitions
     };
 
     [VisualStudioContribution]
-    internal static SettingCategory RefitterCategory { get; } = new("refitter", "Refitter")
+    internal static SettingCategory RefitterCategory { get; } = new("refitter", "Refitter", RootCategory)
     {
         GenerateObserverClass = true,
     };
@@ -603,7 +606,7 @@ internal static class SettingDefinitions
         defaultValue: false);
 
     [VisualStudioContribution]
-    internal static SettingCategory KiotaCategory { get; } = new("kiota", "Kiota")
+    internal static SettingCategory KiotaCategory { get; } = new("kiota", "Kiota", RootCategory)
     {
         GenerateObserverClass = true,
     };
@@ -646,7 +649,7 @@ internal static class SettingDefinitions
     };
 
     [VisualStudioContribution]
-    internal static SettingCategory AnalyticsCategory { get; } = new("analytics", "Analytics")
+    internal static SettingCategory AnalyticsCategory { get; } = new("analytics", "Analytics", RootCategory)
     {
         GenerateObserverClass = true,
     };
