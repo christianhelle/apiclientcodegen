@@ -201,8 +201,9 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource)
                     }
                 }
 
+                var targetFilename = Path.ChangeExtension(fileInfo.Name, ".cs");
                 File.WriteAllText(
-                    Path.Combine(outputFolder, fileInfo.Name.Replace(fileInfo.Extension, ".cs")),
+                    Path.Combine(outputFolder, targetFilename),
                     output
                 );
             }
