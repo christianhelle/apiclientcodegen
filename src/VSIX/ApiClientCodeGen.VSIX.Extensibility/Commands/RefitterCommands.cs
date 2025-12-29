@@ -167,7 +167,9 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
         Directory.SetCurrentDirectory(Path.GetDirectoryName(inputFile)!);
         var generator = await RefitGenerator.CreateAsync(settings);
 
-        using var context = new DependencyContext("Refitter", JsonSerializer.Serialize(settings));
+        using var context = new DependencyContext(
+            "Refitter", 
+            JsonSerializer.Serialize(settings, serializerOptions));
 
         if (settings.GenerateMultipleFiles)
         {
