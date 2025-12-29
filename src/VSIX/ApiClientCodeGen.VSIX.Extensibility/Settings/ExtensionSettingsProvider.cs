@@ -1,5 +1,4 @@
 ﻿#pragma warning disable VSEXTPREVIEW_SETTINGS
-using ApiClientCodeGen.VSIX.Extensibility.Settings;
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Settings;
 using Rapicgen.Core.External;
@@ -13,7 +12,7 @@ using Rapicgen.Core.Options.NSwagStudio;
 using Rapicgen.Core.Options.OpenApiGenerator;
 using Rapicgen.Core.Options.Refitter;
 
-namespace ApiClientCodeGen.VSIX.Extensibility;
+namespace ApiClientCodeGen.VSIX.Extensibility.Settings;
 
 public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
 {

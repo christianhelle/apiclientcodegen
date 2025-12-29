@@ -6,6 +6,7 @@ using Rapicgen.Core.Generators.AutoRest;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.AutoRest;
 using System.Diagnostics;
+using ApiClientCodeGen.VSIX.Extensibility.Settings;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 

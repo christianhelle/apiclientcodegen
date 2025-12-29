@@ -5,6 +5,7 @@ using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.Kiota;
 using System.Diagnostics;
+using ApiClientCodeGen.VSIX.Extensibility.Settings;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 

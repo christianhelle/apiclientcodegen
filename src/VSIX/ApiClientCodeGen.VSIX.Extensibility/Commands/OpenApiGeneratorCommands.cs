@@ -6,6 +6,7 @@ using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.OpenApiGenerator;
 using System.Diagnostics;
+using ApiClientCodeGen.VSIX.Extensibility.Settings;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 

@@ -8,6 +8,7 @@ using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.NSwag;
 using System.Diagnostics;
 using System.Text.Json;
+using ApiClientCodeGen.VSIX.Extensibility.Settings;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 

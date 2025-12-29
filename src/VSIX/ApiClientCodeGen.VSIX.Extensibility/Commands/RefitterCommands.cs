@@ -5,6 +5,7 @@ using Rapicgen.Core.Options.Refitter;
 using Refitter.Core;
 using System.Diagnostics;
 using System.Text.Json;
+using ApiClientCodeGen.VSIX.Extensibility.Settings;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
