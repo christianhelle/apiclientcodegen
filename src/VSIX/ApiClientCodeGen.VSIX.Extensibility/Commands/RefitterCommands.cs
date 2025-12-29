@@ -1,0 +1,228 @@
+﻿using Microsoft.VisualStudio.Extensibility;
+using Microsoft.VisualStudio.Extensibility.Commands;
+using Rapicgen.Core.Logging;
+using Rapicgen.Core.Options.Refitter;
+using Refitter.Core;
+using System.Diagnostics;
+using System.Text.Json;
+
+namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
+
+[VisualStudioContribution]
+public class GenerateRefitterCommand(TraceSource traceSource)
+    : GenerateRefitterBaseCommand(traceSource)
+{
+    public override CommandConfiguration CommandConfiguration
+        => new("%RefitterCommand.DisplayName%")
+        {
+            Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+            VisibleWhen = ActivationConstraint.ClientContext(
+            ClientContextKey.Shell.ActiveSelectionFileName,
+            ".(json|ya?ml)")
+        };
+
+    public override async Task ExecuteCommandAsync(
+        IClientContext context,
+        CancellationToken cancellationToken) =>
+        await GenerateCodeAsync(
+            await context.GetInputFileAsync(cancellationToken),
+            await context.GetDefaultNamespaceAsync(cancellationToken),
+            cancellationToken);
+}
+
+[VisualStudioContribution]
+public class GenerateRefitterSettingsCommand(TraceSource traceSource)
+    : GenerateRefitterBaseCommand(traceSource)
+{
+    public override CommandConfiguration CommandConfiguration
+        => new("%RefitterSettingsCommand.DisplayName%")
+        {
+            Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+            VisibleWhen = ActivationConstraint.ClientContext(
+            ClientContextKey.Shell.ActiveSelectionFileName,
+            ".(refitter)")
+        };
+
+    public override async Task ExecuteCommandAsync(
+        IClientContext context,
+        CancellationToken cancellationToken) =>
+        await GenerateCodeAsync(
+            await context.GetInputFileAsync(cancellationToken),
+            await context.GetDefaultNamespaceAsync(cancellationToken),
+            cancellationToken);
+}
+
+[VisualStudioContribution]
+public class GenerateRefitterNewCommand(TraceSource traceSource)
+    : GenerateRefitterBaseCommand(traceSource)
+{
+    public override CommandConfiguration CommandConfiguration
+        => new("%RefitterCommand.DisplayName%")
+        {
+            Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+        };
+
+    public override async Task ExecuteCommandAsync(
+        IClientContext context,
+        CancellationToken cancellationToken)
+    {
+        await GenerateCodeAsync(
+            await this.AddNewOpenApiFileAsync(context, cancellationToken),
+            await context.GetDefaultNamespaceAsync(cancellationToken),
+            cancellationToken);
+    }
+}
+
+[VisualStudioContribution]
+public abstract class GenerateRefitterBaseCommand(TraceSource traceSource)
+    : Command
+{
+    public async Task GenerateCodeAsync(
+        string inputFile,
+        string defaultNamespace,
+        CancellationToken cancellationToken)
+    {
+        if (inputFile == null) 
+        {
+            return;
+        }
+
+        Logger.Instance.TrackFeatureUsage("Generate Refitter output");
+
+        try
+        {
+            var csharpCode = await GenerateCodeAsync(inputFile, defaultNamespace);
+            if (csharpCode is not null)
+            {
+                await File.WriteAllTextAsync(
+                    OutputFile.GetOutputFilename(inputFile),
+                    csharpCode,
+                    cancellationToken);
+            }
+        }
+        catch (Exception e)
+        {
+            traceSource.TraceEvent(
+                TraceEventType.Error,
+                0,
+                "Error generating Refit client code: {0}",
+                e.Message);
+
+            await this.WriteToOutputWindowAsync(
+                "Error generating Refit client code: " + e.Message,
+                cancellationToken);
+        }
+    }
+
+    public async Task<string> GenerateCodeAsync(string inputFile, string defaultNamespace)
+    {
+        RefitGeneratorSettings settings;
+        if (inputFile.EndsWith(".refitter"))
+        {
+            settings = Serializer
+                .Deserialize<RefitGeneratorSettings>(
+                    File.ReadAllText(inputFile));
+        }
+        else
+        {
+            var fileInfo = new FileInfo(inputFile);
+            var refitterFile = fileInfo.Name.Replace(fileInfo.Extension, ".refitter");
+            if (File.Exists(refitterFile))
+            {
+                settings = Serializer.Deserialize<RefitGeneratorSettings>(
+                    File.ReadAllText(refitterFile)
+                );
+            }
+            else
+            {
+                var options = new DefaultRefitterOptions();
+                settings = new RefitGeneratorSettings
+                {
+                    OpenApiPath = inputFile,
+                    Namespace = defaultNamespace,
+                    AddAutoGeneratedHeader = options.AddAutoGeneratedHeader,
+                    GenerateContracts = options.GenerateContracts,
+                    GenerateXmlDocCodeComments = options.GenerateXmlDocCodeComments,
+                    ReturnIApiResponse = options.ReturnIApiResponse,
+                    UseCancellationTokens = options.UseCancellationTokens,
+                    GenerateOperationHeaders = options.GenerateHeaderParameters,
+                    GenerateMultipleFiles = options.GenerateMultipleFiles
+                };
+
+                File.WriteAllText(
+                    Path.ChangeExtension(fileInfo.FullName, ".refitter"),
+                    Serialize(settings));
+            }
+        }
+
+        Directory.SetCurrentDirectory(Path.GetDirectoryName(inputFile)!);
+        var generator = await RefitGenerator.CreateAsync(settings);
+
+        using var context = new DependencyContext("Refitter", Serialize(settings));
+
+        if (settings.GenerateMultipleFiles)
+        {
+            var fileInfo = new FileInfo(inputFile);
+            var outputFolder = fileInfo.Directory!.FullName;
+            if (settings.OutputFolder != RefitGeneratorSettings.DefaultOutputFolder)
+            {
+                outputFolder = Path.Combine(outputFolder, settings.OutputFolder);
+                if (!Directory.Exists(outputFolder))
+                {
+                    Directory.CreateDirectory(outputFolder);
+                }
+            }
+
+            var results = generator.GenerateMultipleFiles();
+            foreach (var file in results.Files)
+            {
+                File.WriteAllText(Path.Combine(outputFolder, file.Filename), file.Content);
+            }
+
+            context.Succeeded();
+
+            return string.Empty;
+        }
+        else
+        {
+            var code = generator.Generate();
+            context.Succeeded();
+
+            var output = Rapicgen.Core.Generators.GeneratedCode.PrefixAutogeneratedCodeHeader(code, "Refitter", "v1.7.1");
+
+            if (inputFile.EndsWith(".refitter"))
+            {
+                var fileInfo = new FileInfo(inputFile);
+                var outputFolder = fileInfo.Directory!.FullName;
+                if (settings.OutputFolder != RefitGeneratorSettings.DefaultOutputFolder)
+                {
+                    outputFolder = Path.Combine(outputFolder, settings.OutputFolder);
+                    if (!Directory.Exists(outputFolder))
+                    {
+                        Directory.CreateDirectory(outputFolder);
+                    }
+                }
+
+                var targetFilename = Path.ChangeExtension(fileInfo.Name, ".cs");
+                File.WriteAllText(
+                    Path.Combine(outputFolder, targetFilename),
+                    output
+                );
+            }
+
+            return output;
+        }
+    }
+
+    private static string Serialize(RefitGeneratorSettings settings)
+    {
+        return JsonSerializer.Serialize(
+            settings,
+            new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true
+            });
+    }
+}

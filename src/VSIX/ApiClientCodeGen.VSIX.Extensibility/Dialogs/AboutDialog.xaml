@@ -1,0 +1,35 @@
+<DataTemplate xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <StackPanel Orientation="Vertical" MinWidth="500" Margin="20">
+    <TextBlock FontSize="18"
+               FontWeight="Bold"
+               Margin="0,0,0,10"
+               Text="{Binding DisplayName}" />
+    
+    <TextBlock FontSize="12"
+               Margin="0,0,0,5"
+               Text="{Binding Description}"
+               TextWrapping="Wrap" />
+    
+    <StackPanel Orientation="Horizontal" Margin="0,10,0,5">
+      <TextBlock FontWeight="SemiBold" Text="Version: " />
+      <TextBlock Text="{Binding Version}" />
+    </StackPanel>
+    
+    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+      <TextBlock FontWeight="SemiBold" Text="Publisher: " />
+      <TextBlock Text="{Binding Publisher}" />
+    </StackPanel>
+    
+    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+      <TextBlock FontWeight="SemiBold" Text="Extension ID: " />
+      <TextBlock Text="{Binding ExtensionId}" />
+    </StackPanel>
+    
+    <TextBlock Margin="0,20,0,5"
+               FontSize="11"
+               Foreground="Gray"
+               Text="Generate REST API client code from OpenAPI/Swagger specifications using various code generators including NSwag, OpenAPI Generator, Swagger Codegen, AutoRest, Refitter, and Kiota."
+               TextWrapping="Wrap" />
+  </StackPanel>
+</DataTemplate>

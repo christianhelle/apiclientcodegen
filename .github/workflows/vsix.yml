@@ -31,6 +31,7 @@ jobs:
     - name: Update Version
       run: |
         ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
+        ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Extensibility/ApiClientCodeGen.VSIX.Extensibility.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Extensibility/ApiClientCodeGen.VSIX.Extensibility.csproj
         ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
         ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
       working-directory: src
@@ -51,6 +52,7 @@ jobs:
       run: |
         mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
         mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
+        mv src/VSIX/ApiClientCodeGen.VSIX.Extensibility/bin/Release/net8.0/ApiClientCodeGen.VSIX.Extensibility.vsix ApiClientCodeGen.VSIX.Extensibility-${{ env.VERSION }}.vsix
 
     - name: Publish artifacts
       uses: actions/upload-artifact@v6
@@ -67,5 +69,6 @@ jobs:
         Vsix-PushArtifacts
         Vsix-PublishToGallery -path ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/Marketplace.md
         Vsix-PublishToGallery -path ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/Marketplace2022.md
+        Vsix-PublishToGallery -path ApiClientCodeGen.VSIX.Extensibility-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/MarketplaceExtensibility.md
       shell: pwsh
       continue-on-error: true
