@@ -5,6 +5,7 @@
   "RefitterCommand.DisplayName": "Generate Client with Refit",
   "RefitterSettingsCommand.DisplayName": "Generate Refitter output",
   "NSwagCommand.DisplayName": "Generate Client with NSwag",
+  "NSwagStudioCommand.DisplayName": "Generate NSwag Studio output",
   "OpenApiGeneratorCommand.DisplayName": "Generate Client with OpenAPI Generator",
   "KiotaCommand.DisplayName": "Generate Client with Kiota",
   "SwaggerCommand.DisplayName": "Generate Client with Swagger Codegen",

@@ -36,7 +36,7 @@ public class GenerateNSwagCommand(TraceSource traceSource)
 public class GenerateNSwagStudioCommand(TraceSource traceSource)
     : GenerateNSwagBaseCommand(traceSource)
 {
-    public override CommandConfiguration CommandConfiguration => new("%NSwagCommand.DisplayName%")
+    public override CommandConfiguration CommandConfiguration => new("%NSwagStudioCommand.DisplayName%")
     {
         Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
         VisibleWhen = ActivationConstraint.ClientContext(
