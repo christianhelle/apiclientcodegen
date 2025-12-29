@@ -52,4 +52,7 @@ internal static class CommandExtensions
 
         return inputFile;
     }
+
+    public static string GetExtensionAssemblyVersion(this Command command)
+        => typeof(CommandExtensions).Assembly.GetName().Version!.ToString();
 }

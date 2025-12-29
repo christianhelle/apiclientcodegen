@@ -18,9 +18,9 @@ public class AboutCommand : Command
         var dialog = new AboutDialog(
             displayName: "REST API Client Code Generator (PREVIEW)",
             description: "Generate REST API client code from OpenAPI/Swagger specifications",
-            version: "1.0.0",
+            version: this.GetExtensionAssemblyVersion(),
             publisher: "Christian Resma Helle",
-            extensionId: "Rapicgen");
+            extensionId: "f7530eb1-1ce9-46ac-8fab-165b68cf3d61");
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
         await Extensibility.Shell().ShowDialogAsync(dialog, cancellationToken);

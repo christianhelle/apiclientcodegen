@@ -11,7 +11,7 @@ internal class ExtensionEntrypoint : Extension
     {
         Metadata = new(
             id: "f7530eb1-1ce9-46ac-8fab-165b68cf3d61",
-            version: Version.Parse("1.0.0"),
+            version: ExtensionAssemblyVersion,
             publisherName: "Christian Resma Helle",
             displayName: "REST API Client Code Generator (PREVIEW)",
             description: "Generate REST API client code from OpenAPI/Swagger specifications"),        
