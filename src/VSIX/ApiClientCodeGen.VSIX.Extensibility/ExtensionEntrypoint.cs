@@ -1,4 +1,5 @@
 ﻿using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 
@@ -16,6 +17,13 @@ internal class ExtensionEntrypoint : Extension
             displayName: "REST API Client Code Generator (PREVIEW)",
             description: "Generate REST API client code from OpenAPI/Swagger specifications"),        
     };
+
+    /// <inheritdoc/>
+    protected override void InitializeServices(IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddSettingsObservers();
+        base.InitializeServices(serviceCollection);
+    }
 
     [VisualStudioContribution]
     public static MenuConfiguration GenerateMenu
