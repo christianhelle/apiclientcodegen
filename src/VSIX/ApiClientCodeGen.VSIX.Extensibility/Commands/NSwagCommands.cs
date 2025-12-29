@@ -12,8 +12,8 @@ using System.Text.Json;
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
 [VisualStudioContribution]
-public class GenerateNSwagCommand(TraceSource traceSource)
-    : GenerateNSwagBaseCommand(traceSource)
+public class GenerateNSwagCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider)
+    : GenerateNSwagBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration => new("%NSwagCommand.DisplayName%")
     {
@@ -33,8 +33,8 @@ public class GenerateNSwagCommand(TraceSource traceSource)
 }
 
 [VisualStudioContribution]
-public class GenerateNSwagStudioCommand(TraceSource traceSource)
-    : GenerateNSwagBaseCommand(traceSource)
+public class GenerateNSwagStudioCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider)
+    : GenerateNSwagBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration => new("%NSwagStudioCommand.DisplayName%")
     {
@@ -54,8 +54,8 @@ public class GenerateNSwagStudioCommand(TraceSource traceSource)
 }
 
 [VisualStudioContribution]
-public class GenerateNSwagNewCommand(TraceSource traceSource)
-    : GenerateNSwagBaseCommand(traceSource)
+public class GenerateNSwagNewCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider)
+    : GenerateNSwagBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration => new("%NSwagCommand.DisplayName%")
     {
@@ -71,8 +71,10 @@ public class GenerateNSwagNewCommand(TraceSource traceSource)
             cancellationToken);
 }
 
-public abstract class GenerateNSwagBaseCommand(TraceSource traceSource) : Command
+public abstract class GenerateNSwagBaseCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : Command
 {
+    private readonly ExtensionSettingsProvider settingsProvider = settingsProvider;
+
     public async Task GenerateAsync(
         string inputFile,
         string defaultNamespace,
@@ -91,9 +93,10 @@ public abstract class GenerateNSwagBaseCommand(TraceSource traceSource) : Comman
             var documentFactory = new OpenApiDocumentFactory();
             var document = await documentFactory.GetDocumentAsync(inputFile);
 
+            var nswagOptions = await settingsProvider.GetNSwagOptionsAsync(cancellationToken);
             var generatorSettingsFactory = new NSwagCodeGeneratorSettingsFactory(
                 defaultNamespace,
-                new DefaultNSwagOptions());
+                nswagOptions);
 
             var generator = new CSharpClientGenerator(
                 document,

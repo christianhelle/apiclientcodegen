@@ -10,7 +10,7 @@ using System.Diagnostics;
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
 [VisualStudioContribution]
-public class GenerateOpenApiCommand(TraceSource traceSource) : GenerateOpenApiBaseCommand(traceSource)
+public class GenerateOpenApiCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : GenerateOpenApiBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration => new("%OpenApiGeneratorCommand.DisplayName%")
     {
@@ -29,7 +29,7 @@ public class GenerateOpenApiCommand(TraceSource traceSource) : GenerateOpenApiBa
 
 
 [VisualStudioContribution]
-public class GenerateOpenApiNewCommand(TraceSource traceSource) : GenerateOpenApiBaseCommand(traceSource)
+public class GenerateOpenApiNewCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : GenerateOpenApiBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration => new("%OpenApiGeneratorCommand.DisplayName%")
     {
@@ -45,8 +45,10 @@ public class GenerateOpenApiNewCommand(TraceSource traceSource) : GenerateOpenAp
             cancellationToken);
 }
 
-public abstract class GenerateOpenApiBaseCommand(TraceSource traceSource) : Command
+public abstract class GenerateOpenApiBaseCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : Command
 {
+    private readonly ExtensionSettingsProvider settingsProvider = settingsProvider;
+
     public async Task GenerateAsync(
         string inputFile,
         string defaultNamespace,
@@ -59,11 +61,13 @@ public abstract class GenerateOpenApiBaseCommand(TraceSource traceSource) : Comm
 
         try
         {
+            var generalOptions = await settingsProvider.GetGeneralOptionsAsync(cancellationToken);
+            var openApiOptions = await settingsProvider.GetOpenApiGeneratorOptionsAsync(cancellationToken);
             var generator = new OpenApiCSharpCodeGenerator(
                 inputFile,
                 defaultNamespace,
-                options: new DefaultGeneralOptions(),
-                openApiGeneratorOptions: new DefaultOpenApiGeneratorOptions(),
+                options: generalOptions,
+                openApiGeneratorOptions: openApiOptions,
                 processLauncher: new ProcessLauncher(),
                 dependencyInstaller: new DependencyInstaller(
                     new NpmInstaller(new ProcessLauncher()),

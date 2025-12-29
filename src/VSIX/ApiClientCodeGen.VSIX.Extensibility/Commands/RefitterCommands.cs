@@ -9,8 +9,8 @@ using System.Text.Json;
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
 [VisualStudioContribution]
-public class GenerateRefitterCommand(TraceSource traceSource)
-    : GenerateRefitterBaseCommand(traceSource)
+public class GenerateRefitterCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider)
+    : GenerateRefitterBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration
         => new("%RefitterCommand.DisplayName%")
@@ -31,8 +31,8 @@ public class GenerateRefitterCommand(TraceSource traceSource)
 }
 
 [VisualStudioContribution]
-public class GenerateRefitterSettingsCommand(TraceSource traceSource)
-    : GenerateRefitterBaseCommand(traceSource)
+public class GenerateRefitterSettingsCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider)
+    : GenerateRefitterBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration
         => new("%RefitterSettingsCommand.DisplayName%")
@@ -53,8 +53,8 @@ public class GenerateRefitterSettingsCommand(TraceSource traceSource)
 }
 
 [VisualStudioContribution]
-public class GenerateRefitterNewCommand(TraceSource traceSource)
-    : GenerateRefitterBaseCommand(traceSource)
+public class GenerateRefitterNewCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider)
+    : GenerateRefitterBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration
         => new("%RefitterCommand.DisplayName%")
@@ -74,9 +74,11 @@ public class GenerateRefitterNewCommand(TraceSource traceSource)
 }
 
 [VisualStudioContribution]
-public abstract class GenerateRefitterBaseCommand(TraceSource traceSource)
+public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider)
     : Command
 {
+    private readonly ExtensionSettingsProvider settingsProvider = settingsProvider;
+
     public async Task GenerateCodeAsync(
         string inputFile,
         string defaultNamespace,
@@ -91,7 +93,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource)
 
         try
         {
-            var csharpCode = await GenerateCodeAsync(inputFile, defaultNamespace);
+            var csharpCode = await GenerateCodeAsync(inputFile, defaultNamespace, cancellationToken);
             if (csharpCode is not null)
             {
                 await File.WriteAllTextAsync(
@@ -114,7 +116,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource)
         }
     }
 
-    public async Task<string> GenerateCodeAsync(string inputFile, string defaultNamespace)
+    public async Task<string> GenerateCodeAsync(string inputFile, string defaultNamespace, CancellationToken cancellationToken)
     {
         RefitGeneratorSettings settings;
         if (inputFile.EndsWith(".refitter"))
@@ -135,7 +137,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource)
             }
             else
             {
-                var options = new DefaultRefitterOptions();
+                var options = await settingsProvider.GetRefitterOptionsAsync(cancellationToken);
                 settings = new RefitGeneratorSettings
                 {
                     OpenApiPath = inputFile,

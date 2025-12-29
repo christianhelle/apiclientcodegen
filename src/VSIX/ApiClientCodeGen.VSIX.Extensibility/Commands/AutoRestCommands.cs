@@ -10,8 +10,8 @@ using System.Diagnostics;
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
 [VisualStudioContribution]
-public class GenerateAutoRestCommand(TraceSource traceSource)
-    : GenerateAutoRestBaseCommand(traceSource)
+public class GenerateAutoRestCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider)
+    : GenerateAutoRestBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration
         => new("%AutoRestCommand.DisplayName%")
@@ -32,8 +32,8 @@ public class GenerateAutoRestCommand(TraceSource traceSource)
 }
 
 [VisualStudioContribution]
-public class GenerateAutoRestNewCommand(TraceSource traceSource)
-    : GenerateAutoRestBaseCommand(traceSource)
+public class GenerateAutoRestNewCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider)
+    : GenerateAutoRestBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration
         => new("%AutoRestCommand.DisplayName%")
@@ -50,8 +50,10 @@ public class GenerateAutoRestNewCommand(TraceSource traceSource)
             cancellationToken);
 }
 
-public abstract class GenerateAutoRestBaseCommand(TraceSource traceSource) : Command
+public abstract class GenerateAutoRestBaseCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : Command
 {
+    private readonly ExtensionSettingsProvider settingsProvider = settingsProvider;
+
     public async Task GenerateAsync(
         string inputFile,
         string defaultNamespace,
@@ -64,17 +66,18 @@ public abstract class GenerateAutoRestBaseCommand(TraceSource traceSource) : Com
 
         try
         {
+            var options = await settingsProvider.GetAutoRestOptionsAsync(cancellationToken);
             var generator = new AutoRestCSharpCodeGenerator(
             inputFile,
             defaultNamespace,
-            options: new DefaultAutoRestOptions(),
+            options: options,
             processLauncher: new ProcessLauncher(),
             documentFactory: new OpenApiDocumentFactory(),
             dependencyInstaller: new DependencyInstaller(
                 new NpmInstaller(new ProcessLauncher()),
                 new FileDownloader(new WebDownloader()),
                 new ProcessLauncher()),
-            new AutoRestArgumentProvider(new DefaultAutoRestOptions()));
+            new AutoRestArgumentProvider(options));
 
             var csharpCode = await Task.Run(() => generator.GenerateCode(null));
             if (csharpCode is not null)
