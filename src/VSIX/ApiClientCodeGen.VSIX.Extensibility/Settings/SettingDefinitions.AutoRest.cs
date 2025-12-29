@@ -5,10 +5,10 @@ using Rapicgen.Core.Options.AutoRest;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Settings;
 
-internal static partial class SettingDefinitions
+internal static class AutoRestSettings
 {
     [VisualStudioContribution]
-    internal static SettingCategory AutoRestCategory { get; } = new("autorest", "%Settings.AutoRest.DisplayName%", RootCategory)
+    internal static SettingCategory AutoRestCategory { get; } = new("autorest", "%Settings.AutoRest.DisplayName%", SettingsRoot.RootCategory)
     {
         GenerateObserverClass = true,
     };

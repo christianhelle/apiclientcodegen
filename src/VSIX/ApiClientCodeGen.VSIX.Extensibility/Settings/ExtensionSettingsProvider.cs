@@ -21,12 +21,12 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
     {
         var values = await ReadAsync(
         [
-            SettingDefinitions.JavaPath,
-            SettingDefinitions.NpmPath,
-            SettingDefinitions.NSwagPath,
-            SettingDefinitions.SwaggerCodegenPath,
-            SettingDefinitions.OpenApiGeneratorPath,
-            SettingDefinitions.InstallMissingPackages
+            GeneralSettings.JavaPath,
+            GeneralSettings.NpmPath,
+            GeneralSettings.NSwagPath,
+            GeneralSettings.SwaggerCodegenPath,
+            GeneralSettings.OpenApiGeneratorPath,
+            GeneralSettings.InstallMissingPackages
         ],
         cancellationToken);
 
@@ -37,12 +37,12 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
     {
         var values = await ReadAsync(
         [
-            SettingDefinitions.AutoRestAddCredentials,
-            SettingDefinitions.AutoRestOverrideClientName,
-            SettingDefinitions.AutoRestUseInternalConstructors,
-            SettingDefinitions.AutoRestSyncMethods,
-            SettingDefinitions.AutoRestUseDateTimeOffset,
-            SettingDefinitions.AutoRestClientSideValidation
+            AutoRestSettings.AutoRestAddCredentials,
+            AutoRestSettings.AutoRestOverrideClientName,
+            AutoRestSettings.AutoRestUseInternalConstructors,
+            AutoRestSettings.AutoRestSyncMethods,
+            AutoRestSettings.AutoRestUseDateTimeOffset,
+            AutoRestSettings.AutoRestClientSideValidation
         ],
         cancellationToken);
 
@@ -53,13 +53,13 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
     {
         var values = await ReadAsync(
         [
-            SettingDefinitions.NSwagInjectHttpClient,
-            SettingDefinitions.NSwagGenerateClientInterfaces,
-            SettingDefinitions.NSwagGenerateDtoTypes,
-            SettingDefinitions.NSwagClassStyle,
-            SettingDefinitions.NSwagUseDocumentTitle,
-            SettingDefinitions.NSwagParameterDateTimeFormat,
-            SettingDefinitions.NSwagUseBaseUrl
+            NSwagSettings.NSwagInjectHttpClient,
+            NSwagSettings.NSwagGenerateClientInterfaces,
+            NSwagSettings.NSwagGenerateDtoTypes,
+            NSwagSettings.NSwagClassStyle,
+            NSwagSettings.NSwagUseDocumentTitle,
+            NSwagSettings.NSwagParameterDateTimeFormat,
+            NSwagSettings.NSwagUseBaseUrl
         ],
         cancellationToken);
 
@@ -70,18 +70,18 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
     {
         var values = await ReadAsync(
         [
-            SettingDefinitions.NSwagStudioInjectHttpClient,
-            SettingDefinitions.NSwagStudioGenerateClientInterfaces,
-            SettingDefinitions.NSwagStudioGenerateDtoTypes,
-            SettingDefinitions.NSwagStudioClassStyle,
-            SettingDefinitions.NSwagStudioUseDocumentTitle,
-            SettingDefinitions.NSwagStudioParameterDateTimeFormat,
-            SettingDefinitions.NSwagStudioUseBaseUrl,
-            SettingDefinitions.NSwagStudioGenerateResponseClasses,
-            SettingDefinitions.NSwagStudioGenerateJsonMethods,
-            SettingDefinitions.NSwagStudioRequiredPropertiesMustBeDefined,
-            SettingDefinitions.NSwagStudioGenerateDefaultValues,
-            SettingDefinitions.NSwagStudioGenerateDataAnnotations
+            NSwagStudioSettings.NSwagStudioInjectHttpClient,
+            NSwagStudioSettings.NSwagStudioGenerateClientInterfaces,
+            NSwagStudioSettings.NSwagStudioGenerateDtoTypes,
+            NSwagStudioSettings.NSwagStudioClassStyle,
+            NSwagStudioSettings.NSwagStudioUseDocumentTitle,
+            NSwagStudioSettings.NSwagStudioParameterDateTimeFormat,
+            NSwagStudioSettings.NSwagStudioUseBaseUrl,
+            NSwagStudioSettings.NSwagStudioGenerateResponseClasses,
+            NSwagStudioSettings.NSwagStudioGenerateJsonMethods,
+            NSwagStudioSettings.NSwagStudioRequiredPropertiesMustBeDefined,
+            NSwagStudioSettings.NSwagStudioGenerateDefaultValues,
+            NSwagStudioSettings.NSwagStudioGenerateDataAnnotations
         ],
         cancellationToken);
 
@@ -92,19 +92,19 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
     {
         var values = await ReadAsync(
         [
-            SettingDefinitions.OpenApiEmitDefaultValue,
-            SettingDefinitions.OpenApiMethodArgument,
-            SettingDefinitions.OpenApiGeneratePropertyChanged,
-            SettingDefinitions.OpenApiUseCollection,
-            SettingDefinitions.OpenApiUseDateTimeOffset,
-            SettingDefinitions.OpenApiTargetFramework,
-            SettingDefinitions.OpenApiCustomAdditionalProperties,
-            SettingDefinitions.OpenApiSkipFormModel,
-            SettingDefinitions.OpenApiTemplatesPath,
-            SettingDefinitions.OpenApiUseConfigurationFile,
-            SettingDefinitions.OpenApiGenerateMultipleFiles,
-            SettingDefinitions.OpenApiVersion,
-            SettingDefinitions.OpenApiHttpUserAgent
+            OpenApiGeneratorSettings.OpenApiEmitDefaultValue,
+            OpenApiGeneratorSettings.OpenApiMethodArgument,
+            OpenApiGeneratorSettings.OpenApiGeneratePropertyChanged,
+            OpenApiGeneratorSettings.OpenApiUseCollection,
+            OpenApiGeneratorSettings.OpenApiUseDateTimeOffset,
+            OpenApiGeneratorSettings.OpenApiTargetFramework,
+            OpenApiGeneratorSettings.OpenApiCustomAdditionalProperties,
+            OpenApiGeneratorSettings.OpenApiSkipFormModel,
+            OpenApiGeneratorSettings.OpenApiTemplatesPath,
+            OpenApiGeneratorSettings.OpenApiUseConfigurationFile,
+            OpenApiGeneratorSettings.OpenApiGenerateMultipleFiles,
+            OpenApiGeneratorSettings.OpenApiVersion,
+            OpenApiGeneratorSettings.OpenApiHttpUserAgent
         ],
         cancellationToken);
 
@@ -115,14 +115,14 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
     {
         var values = await ReadAsync(
         [
-            SettingDefinitions.RefitterGenerateContracts,
-            SettingDefinitions.RefitterGenerateXmlDocCodeComments,
-            SettingDefinitions.RefitterAddAutoGeneratedHeader,
-            SettingDefinitions.RefitterReturnIApiResponse,
-            SettingDefinitions.RefitterGenerateInternalTypes,
-            SettingDefinitions.RefitterUseCancellationTokens,
-            SettingDefinitions.RefitterGenerateHeaderParameters,
-            SettingDefinitions.RefitterGenerateMultipleFiles
+            RefitterSettings.RefitterGenerateContracts,
+            RefitterSettings.RefitterGenerateXmlDocCodeComments,
+            RefitterSettings.RefitterAddAutoGeneratedHeader,
+            RefitterSettings.RefitterReturnIApiResponse,
+            RefitterSettings.RefitterGenerateInternalTypes,
+            RefitterSettings.RefitterUseCancellationTokens,
+            RefitterSettings.RefitterGenerateHeaderParameters,
+            RefitterSettings.RefitterGenerateMultipleFiles
         ],
         cancellationToken);
 
@@ -133,9 +133,9 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
     {
         var values = await ReadAsync(
         [
-            SettingDefinitions.KiotaGenerateMultipleFiles,
-            SettingDefinitions.KiotaTypeAccessModifier,
-            SettingDefinitions.KiotaUsesBackingStore
+            KiotaSettings.KiotaGenerateMultipleFiles,
+            KiotaSettings.KiotaTypeAccessModifier,
+            KiotaSettings.KiotaUsesBackingStore
         ],
         cancellationToken);
 
@@ -146,7 +146,7 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
     {
         var values = await ReadAsync(
         [
-            SettingDefinitions.TelemetryOptOut
+            AnalyticsSettings.TelemetryOptOut
         ],
         cancellationToken);
 
@@ -158,97 +158,97 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
 
     private sealed class GeneralOptions(SettingValues values) : IGeneralOptions
     {
-        public string JavaPath => Resolve(values.ValueOrDefault(SettingDefinitions.JavaPath, string.Empty), PathProvider.GetInstalledJavaPath());
-        public string NpmPath => Resolve(values.ValueOrDefault(SettingDefinitions.NpmPath, string.Empty), PathProvider.GetNpmPath());
-        public string NSwagPath => Resolve(values.ValueOrDefault(SettingDefinitions.NSwagPath, string.Empty), PathProvider.GetNSwagStudioPath());
-        public string SwaggerCodegenPath => Resolve(values.ValueOrDefault(SettingDefinitions.SwaggerCodegenPath, string.Empty), PathProvider.GetSwaggerCodegenPath());
-        public string OpenApiGeneratorPath => Resolve(values.ValueOrDefault(SettingDefinitions.OpenApiGeneratorPath, string.Empty), PathProvider.GetOpenApiGeneratorPath());
-        public bool? InstallMissingPackages => values.ValueOrDefault(SettingDefinitions.InstallMissingPackages, true);
+        public string JavaPath => Resolve(values.ValueOrDefault(GeneralSettings.JavaPath, string.Empty), PathProvider.GetInstalledJavaPath());
+        public string NpmPath => Resolve(values.ValueOrDefault(GeneralSettings.NpmPath, string.Empty), PathProvider.GetNpmPath());
+        public string NSwagPath => Resolve(values.ValueOrDefault(GeneralSettings.NSwagPath, string.Empty), PathProvider.GetNSwagStudioPath());
+        public string SwaggerCodegenPath => Resolve(values.ValueOrDefault(GeneralSettings.SwaggerCodegenPath, string.Empty), PathProvider.GetSwaggerCodegenPath());
+        public string OpenApiGeneratorPath => Resolve(values.ValueOrDefault(GeneralSettings.OpenApiGeneratorPath, string.Empty), PathProvider.GetOpenApiGeneratorPath());
+        public bool? InstallMissingPackages => values.ValueOrDefault(GeneralSettings.InstallMissingPackages, true);
     }
 
     private sealed class AutoRestOptions(SettingValues values) : IAutoRestOptions
     {
-        public bool AddCredentials => values.ValueOrDefault(SettingDefinitions.AutoRestAddCredentials, false);
-        public bool OverrideClientName => values.ValueOrDefault(SettingDefinitions.AutoRestOverrideClientName, false);
-        public bool UseInternalConstructors => values.ValueOrDefault(SettingDefinitions.AutoRestUseInternalConstructors, false);
-        public SyncMethodOptions SyncMethods => ParseEnum(values.ValueOrDefault(SettingDefinitions.AutoRestSyncMethods, SyncMethodOptions.Essential.ToString()), SyncMethodOptions.Essential);
-        public bool UseDateTimeOffset => values.ValueOrDefault(SettingDefinitions.AutoRestUseDateTimeOffset, false);
-        public bool ClientSideValidation => values.ValueOrDefault(SettingDefinitions.AutoRestClientSideValidation, true);
+        public bool AddCredentials => values.ValueOrDefault(AutoRestSettings.AutoRestAddCredentials, false);
+        public bool OverrideClientName => values.ValueOrDefault(AutoRestSettings.AutoRestOverrideClientName, false);
+        public bool UseInternalConstructors => values.ValueOrDefault(AutoRestSettings.AutoRestUseInternalConstructors, false);
+        public SyncMethodOptions SyncMethods => ParseEnum(values.ValueOrDefault(AutoRestSettings.AutoRestSyncMethods, SyncMethodOptions.Essential.ToString()), SyncMethodOptions.Essential);
+        public bool UseDateTimeOffset => values.ValueOrDefault(AutoRestSettings.AutoRestUseDateTimeOffset, false);
+        public bool ClientSideValidation => values.ValueOrDefault(AutoRestSettings.AutoRestClientSideValidation, true);
     }
 
     private sealed class NSwagOptions(SettingValues values) : INSwagOptions
     {
-        public bool InjectHttpClient => values.ValueOrDefault(SettingDefinitions.NSwagInjectHttpClient, true);
-        public bool GenerateClientInterfaces => values.ValueOrDefault(SettingDefinitions.NSwagGenerateClientInterfaces, true);
-        public bool GenerateDtoTypes => values.ValueOrDefault(SettingDefinitions.NSwagGenerateDtoTypes, true);
-        public CSharpClassStyle ClassStyle => ParseEnum(values.ValueOrDefault(SettingDefinitions.NSwagClassStyle, CSharpClassStyle.Poco.ToString()), CSharpClassStyle.Poco);
-        public bool UseDocumentTitle => values.ValueOrDefault(SettingDefinitions.NSwagUseDocumentTitle, true);
-        public string ParameterDateTimeFormat => values.ValueOrDefault(SettingDefinitions.NSwagParameterDateTimeFormat, "s") ?? "s";
-        public bool UseBaseUrl => values.ValueOrDefault(SettingDefinitions.NSwagUseBaseUrl, false);
+        public bool InjectHttpClient => values.ValueOrDefault(NSwagSettings.NSwagInjectHttpClient, true);
+        public bool GenerateClientInterfaces => values.ValueOrDefault(NSwagSettings.NSwagGenerateClientInterfaces, true);
+        public bool GenerateDtoTypes => values.ValueOrDefault(NSwagSettings.NSwagGenerateDtoTypes, true);
+        public CSharpClassStyle ClassStyle => ParseEnum(values.ValueOrDefault(NSwagSettings.NSwagClassStyle, CSharpClassStyle.Poco.ToString()), CSharpClassStyle.Poco);
+        public bool UseDocumentTitle => values.ValueOrDefault(NSwagSettings.NSwagUseDocumentTitle, true);
+        public string ParameterDateTimeFormat => values.ValueOrDefault(NSwagSettings.NSwagParameterDateTimeFormat, "s") ?? "s";
+        public bool UseBaseUrl => values.ValueOrDefault(NSwagSettings.NSwagUseBaseUrl, false);
     }
 
     private sealed class NSwagStudioOptions(SettingValues values) : INSwagStudioOptions
     {
-        public bool InjectHttpClient => values.ValueOrDefault(SettingDefinitions.NSwagStudioInjectHttpClient, true);
-        public bool GenerateClientInterfaces => values.ValueOrDefault(SettingDefinitions.NSwagStudioGenerateClientInterfaces, true);
-        public bool GenerateDtoTypes => values.ValueOrDefault(SettingDefinitions.NSwagStudioGenerateDtoTypes, true);
-        public CSharpClassStyle ClassStyle => ParseEnum(values.ValueOrDefault(SettingDefinitions.NSwagStudioClassStyle, CSharpClassStyle.Poco.ToString()), CSharpClassStyle.Poco);
-        public bool UseDocumentTitle => values.ValueOrDefault(SettingDefinitions.NSwagStudioUseDocumentTitle, true);
-        public string ParameterDateTimeFormat => values.ValueOrDefault(SettingDefinitions.NSwagStudioParameterDateTimeFormat, "s") ?? "s";
-        public bool UseBaseUrl => values.ValueOrDefault(SettingDefinitions.NSwagStudioUseBaseUrl, false);
-        public bool GenerateResponseClasses => values.ValueOrDefault(SettingDefinitions.NSwagStudioGenerateResponseClasses, true);
-        public bool GenerateJsonMethods => values.ValueOrDefault(SettingDefinitions.NSwagStudioGenerateJsonMethods, true);
-        public bool RequiredPropertiesMustBeDefined => values.ValueOrDefault(SettingDefinitions.NSwagStudioRequiredPropertiesMustBeDefined, true);
-        public bool GenerateDefaultValues => values.ValueOrDefault(SettingDefinitions.NSwagStudioGenerateDefaultValues, true);
-        public bool GenerateDataAnnotations => values.ValueOrDefault(SettingDefinitions.NSwagStudioGenerateDataAnnotations, true);
+        public bool InjectHttpClient => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioInjectHttpClient, true);
+        public bool GenerateClientInterfaces => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateClientInterfaces, true);
+        public bool GenerateDtoTypes => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateDtoTypes, true);
+        public CSharpClassStyle ClassStyle => ParseEnum(values.ValueOrDefault(NSwagStudioSettings.NSwagStudioClassStyle, CSharpClassStyle.Poco.ToString()), CSharpClassStyle.Poco);
+        public bool UseDocumentTitle => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioUseDocumentTitle, true);
+        public string ParameterDateTimeFormat => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioParameterDateTimeFormat, "s") ?? "s";
+        public bool UseBaseUrl => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioUseBaseUrl, false);
+        public bool GenerateResponseClasses => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateResponseClasses, true);
+        public bool GenerateJsonMethods => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateJsonMethods, true);
+        public bool RequiredPropertiesMustBeDefined => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioRequiredPropertiesMustBeDefined, true);
+        public bool GenerateDefaultValues => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateDefaultValues, true);
+        public bool GenerateDataAnnotations => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateDataAnnotations, true);
     }
 
     private sealed class OpenApiOptions(SettingValues values) : IOpenApiGeneratorOptions
     {
-        public bool EmitDefaultValue { get; set; } = values.ValueOrDefault(SettingDefinitions.OpenApiEmitDefaultValue, true);
-        public bool MethodArgument { get; set; } = values.ValueOrDefault(SettingDefinitions.OpenApiMethodArgument, true);
-        public bool GeneratePropertyChanged { get; set; } = values.ValueOrDefault(SettingDefinitions.OpenApiGeneratePropertyChanged, false);
-        public bool UseCollection { get; set; } = values.ValueOrDefault(SettingDefinitions.OpenApiUseCollection, false);
-        public bool UseDateTimeOffset { get; set; } = values.ValueOrDefault(SettingDefinitions.OpenApiUseDateTimeOffset, false);
+        public bool EmitDefaultValue { get; set; } = values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiEmitDefaultValue, true);
+        public bool MethodArgument { get; set; } = values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiMethodArgument, true);
+        public bool GeneratePropertyChanged { get; set; } = values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiGeneratePropertyChanged, false);
+        public bool UseCollection { get; set; } = values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiUseCollection, false);
+        public bool UseDateTimeOffset { get; set; } = values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiUseDateTimeOffset, false);
         public OpenApiSupportedTargetFramework TargetFramework { get; set; }
-            = ParseEnum(values.ValueOrDefault(SettingDefinitions.OpenApiTargetFramework, OpenApiSupportedTargetFramework.NetStandard21.ToString()), OpenApiSupportedTargetFramework.NetStandard21);
+            = ParseEnum(values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiTargetFramework, OpenApiSupportedTargetFramework.NetStandard21.ToString()), OpenApiSupportedTargetFramework.NetStandard21);
         public string? CustomAdditionalProperties { get; set; }
-            = NormalizeEmpty(values.ValueOrDefault(SettingDefinitions.OpenApiCustomAdditionalProperties, string.Empty));
-        public bool SkipFormModel { get; set; } = values.ValueOrDefault(SettingDefinitions.OpenApiSkipFormModel, true);
-        public string? TemplatesPath { get; set; } = NormalizeEmpty(values.ValueOrDefault(SettingDefinitions.OpenApiTemplatesPath, string.Empty));
-        public bool UseConfigurationFile { get; set; } = values.ValueOrDefault(SettingDefinitions.OpenApiUseConfigurationFile, true);
-        public bool GenerateMultipleFiles { get; set; } = values.ValueOrDefault(SettingDefinitions.OpenApiGenerateMultipleFiles, false);
+            = NormalizeEmpty(values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiCustomAdditionalProperties, string.Empty));
+        public bool SkipFormModel { get; set; } = values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiSkipFormModel, true);
+        public string? TemplatesPath { get; set; } = NormalizeEmpty(values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiTemplatesPath, string.Empty));
+        public bool UseConfigurationFile { get; set; } = values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiUseConfigurationFile, true);
+        public bool GenerateMultipleFiles { get; set; } = values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiGenerateMultipleFiles, false);
         public OpenApiSupportedVersion Version { get; set; }
-            = ParseEnum(values.ValueOrDefault(SettingDefinitions.OpenApiVersion, OpenApiSupportedVersion.Latest.ToString()), OpenApiSupportedVersion.Latest);
-        public string? HttpUserAgent { get; set; } = NormalizeEmpty(values.ValueOrDefault(SettingDefinitions.OpenApiHttpUserAgent, string.Empty));
+            = ParseEnum(values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiVersion, OpenApiSupportedVersion.Latest.ToString()), OpenApiSupportedVersion.Latest);
+        public string? HttpUserAgent { get; set; } = NormalizeEmpty(values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiHttpUserAgent, string.Empty));
     }
 
     private sealed class RefitterOptions(SettingValues values) : IRefitterOptions
     {
-        public bool GenerateContracts { get; set; } = values.ValueOrDefault(SettingDefinitions.RefitterGenerateContracts, true);
-        public bool GenerateXmlDocCodeComments { get; set; } = values.ValueOrDefault(SettingDefinitions.RefitterGenerateXmlDocCodeComments, true);
-        public bool AddAutoGeneratedHeader { get; set; } = values.ValueOrDefault(SettingDefinitions.RefitterAddAutoGeneratedHeader, false);
-        public bool ReturnIApiResponse { get; set; } = values.ValueOrDefault(SettingDefinitions.RefitterReturnIApiResponse, false);
-        public bool GenerateInternalTypes { get; set; } = values.ValueOrDefault(SettingDefinitions.RefitterGenerateInternalTypes, false);
-        public bool UseCancellationTokens { get; set; } = values.ValueOrDefault(SettingDefinitions.RefitterUseCancellationTokens, false);
-        public bool GenerateHeaderParameters { get; set; } = values.ValueOrDefault(SettingDefinitions.RefitterGenerateHeaderParameters, true);
-        public bool GenerateMultipleFiles { get; set; } = values.ValueOrDefault(SettingDefinitions.RefitterGenerateMultipleFiles, false);
+        public bool GenerateContracts { get; set; } = values.ValueOrDefault(RefitterSettings.RefitterGenerateContracts, true);
+        public bool GenerateXmlDocCodeComments { get; set; } = values.ValueOrDefault(RefitterSettings.RefitterGenerateXmlDocCodeComments, true);
+        public bool AddAutoGeneratedHeader { get; set; } = values.ValueOrDefault(RefitterSettings.RefitterAddAutoGeneratedHeader, false);
+        public bool ReturnIApiResponse { get; set; } = values.ValueOrDefault(RefitterSettings.RefitterReturnIApiResponse, false);
+        public bool GenerateInternalTypes { get; set; } = values.ValueOrDefault(RefitterSettings.RefitterGenerateInternalTypes, false);
+        public bool UseCancellationTokens { get; set; } = values.ValueOrDefault(RefitterSettings.RefitterUseCancellationTokens, false);
+        public bool GenerateHeaderParameters { get; set; } = values.ValueOrDefault(RefitterSettings.RefitterGenerateHeaderParameters, true);
+        public bool GenerateMultipleFiles { get; set; } = values.ValueOrDefault(RefitterSettings.RefitterGenerateMultipleFiles, false);
     }
 
     private sealed class KiotaOptions(SettingValues values) : IKiotaOptions
     {
-        public bool GenerateMultipleFiles => values.ValueOrDefault(SettingDefinitions.KiotaGenerateMultipleFiles, false);
-        public TypeAccessModifier TypeAccessModifier => ParseEnum(values.ValueOrDefault(SettingDefinitions.KiotaTypeAccessModifier, TypeAccessModifier.Public.ToString()), TypeAccessModifier.Public);
-        public bool UsesBackingStore => values.ValueOrDefault(SettingDefinitions.KiotaUsesBackingStore, false);
+        public bool GenerateMultipleFiles => values.ValueOrDefault(KiotaSettings.KiotaGenerateMultipleFiles, false);
+        public TypeAccessModifier TypeAccessModifier => ParseEnum(values.ValueOrDefault(KiotaSettings.KiotaTypeAccessModifier, TypeAccessModifier.Public.ToString()), TypeAccessModifier.Public);
+        public bool UsesBackingStore => values.ValueOrDefault(KiotaSettings.KiotaUsesBackingStore, false);
     }
 
     private sealed class TelemetryOptions(SettingValues values, VisualStudioExtensibility extensibility) : ITelemetryOptions
     {
         public bool TelemetryOptOut
         {
-            get => values.ValueOrDefault(SettingDefinitions.TelemetryOptOut, false);
+            get => values.ValueOrDefault(AnalyticsSettings.TelemetryOptOut, false);
             set => _ = extensibility.Settings().WriteAsync(
-            batch => batch.WriteSetting(SettingDefinitions.TelemetryOptOut, value),
+            batch => batch.WriteSetting(AnalyticsSettings.TelemetryOptOut, value),
             description: "Update telemetry preference",
             CancellationToken.None);
         }

@@ -5,10 +5,10 @@ using Rapicgen.Core.Options.NSwag;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Settings;
 
-internal static partial class SettingDefinitions
+internal static class NSwagStudioSettings
 {
     [VisualStudioContribution]
-    internal static SettingCategory NSwagStudioCategory { get; } = new("nswagStudio", "%Settings.NSwagStudio.DisplayName%", RootCategory)
+    internal static SettingCategory NSwagStudioCategory { get; } = new("nswagStudio", "%Settings.NSwagStudio.DisplayName%", SettingsRoot.RootCategory)
     {
         GenerateObserverClass = true,
     };

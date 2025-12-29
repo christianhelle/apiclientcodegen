@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.Extensibility.Settings;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Settings;
 
-internal static partial class SettingDefinitions
+internal static class SettingsRoot
 {
     [VisualStudioContribution]
     internal static SettingCategory RootCategory { get; } = new("restApiClientCodeGenerator", "%Settings.Root.DisplayName%");

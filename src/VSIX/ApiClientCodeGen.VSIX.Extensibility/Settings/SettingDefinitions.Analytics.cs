@@ -4,10 +4,10 @@ using Microsoft.VisualStudio.Extensibility.Settings;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Settings;
 
-internal static partial class SettingDefinitions
+internal static class AnalyticsSettings
 {
     [VisualStudioContribution]
-    internal static SettingCategory AnalyticsCategory { get; } = new("analytics", "%Settings.Analytics.DisplayName%", RootCategory)
+    internal static SettingCategory AnalyticsCategory { get; } = new("analytics", "%Settings.Analytics.DisplayName%", SettingsRoot.RootCategory)
     {
         GenerateObserverClass = true,
     };

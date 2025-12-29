@@ -4,10 +4,10 @@ using Microsoft.VisualStudio.Extensibility.Settings;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Settings;
 
-internal static partial class SettingDefinitions
+internal static class KiotaSettings
 {
     [VisualStudioContribution]
-    internal static SettingCategory KiotaCategory { get; } = new("kiota", "%Settings.Kiota.DisplayName%", RootCategory)
+    internal static SettingCategory KiotaCategory { get; } = new("kiota", "%Settings.Kiota.DisplayName%", SettingsRoot.RootCategory)
     {
         GenerateObserverClass = true,
     };

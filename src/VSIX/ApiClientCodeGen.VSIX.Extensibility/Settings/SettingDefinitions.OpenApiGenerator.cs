@@ -4,10 +4,10 @@ using Microsoft.VisualStudio.Extensibility.Settings;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Settings;
 
-internal static partial class SettingDefinitions
+internal static class OpenApiGeneratorSettings
 {
     [VisualStudioContribution]
-    internal static SettingCategory OpenApiGeneratorCategory { get; } = new("openApiGenerator", "%Settings.OpenApi.DisplayName%", RootCategory)
+    internal static SettingCategory OpenApiGeneratorCategory { get; } = new("openApiGenerator", "%Settings.OpenApi.DisplayName%", SettingsRoot.RootCategory)
     {
         GenerateObserverClass = true,
     };

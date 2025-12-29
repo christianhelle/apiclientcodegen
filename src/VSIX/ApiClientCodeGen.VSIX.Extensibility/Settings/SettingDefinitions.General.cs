@@ -4,10 +4,10 @@ using Microsoft.VisualStudio.Extensibility.Settings;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Settings;
 
-internal static partial class SettingDefinitions
+internal static class GeneralSettings
 {
     [VisualStudioContribution]
-    internal static SettingCategory GeneralCategory { get; } = new("general", "%Settings.General.DisplayName%", RootCategory)
+    internal static SettingCategory GeneralCategory { get; } = new("general", "%Settings.General.DisplayName%", SettingsRoot.RootCategory)
     {
         Description = "%Settings.General.Description%",
         GenerateObserverClass = true,

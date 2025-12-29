@@ -4,10 +4,10 @@ using Microsoft.VisualStudio.Extensibility.Settings;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Settings;
 
-internal static partial class SettingDefinitions
+internal static class RefitterSettings
 {
     [VisualStudioContribution]
-    internal static SettingCategory RefitterCategory { get; } = new("refitter", "%Settings.Refitter.DisplayName%", RootCategory)
+    internal static SettingCategory RefitterCategory { get; } = new("refitter", "%Settings.Refitter.DisplayName%", SettingsRoot.RootCategory)
     {
         GenerateObserverClass = true,
     };
