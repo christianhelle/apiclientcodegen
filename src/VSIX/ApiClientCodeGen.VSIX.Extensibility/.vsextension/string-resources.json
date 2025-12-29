@@ -3,6 +3,7 @@
   "AddNewCommand.GroupDisplayName": "Add New REST API Client",
   "AboutCommand.DisplayName": "About",
   "RefitterCommand.DisplayName": "Generate Client with Refit",
+  "RefitterSettingsCommand.DisplayName": "Generate Refitter output",
   "NSwagCommand.DisplayName": "Generate Client with NSwag",
   "OpenApiGeneratorCommand.DisplayName": "Generate Client with OpenAPI Generator",
   "KiotaCommand.DisplayName": "Generate Client with Kiota",

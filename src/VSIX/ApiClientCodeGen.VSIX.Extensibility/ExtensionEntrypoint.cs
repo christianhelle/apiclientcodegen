@@ -33,6 +33,7 @@ internal class ExtensionEntrypoint : Extension
                     Children =
                     [
                         GroupChild.Command<Commands.GenerateRefitterCommand>(),
+                        GroupChild.Command<Commands.GenerateRefitterSettingsCommand>(),
                         GroupChild.Command<Commands.GenerateNSwagCommand>(),
                         GroupChild.Command<Commands.GenerateOpenApiCommand>(),
                         GroupChild.Command<Commands.GenerateKiotaCommand>(),

@@ -1,7 +1,5 @@
-﻿using ApiClientCodeGen.VSIX.Extensibility.Dialogs;
-using Microsoft.VisualStudio.Extensibility;
+﻿using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
-using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.Refitter;
 using Refitter.Core;
@@ -21,6 +19,28 @@ public class GenerateRefitterCommand(TraceSource traceSource)
             VisibleWhen = ActivationConstraint.ClientContext(
             ClientContextKey.Shell.ActiveSelectionFileName,
             ".(json|ya?ml|refitter)")
+        };
+
+    public override async Task ExecuteCommandAsync(
+        IClientContext context,
+        CancellationToken cancellationToken) =>
+        await GenerateCodeAsync(
+            await context.GetInputFileAsync(cancellationToken),
+            await context.GetDefaultNamespaceAsync(cancellationToken),
+            cancellationToken);
+}
+
+[VisualStudioContribution]
+public class GenerateRefitterSettingsCommand(TraceSource traceSource)
+    : GenerateRefitterBaseCommand(traceSource)
+{
+    public override CommandConfiguration CommandConfiguration
+        => new("%RefitterSettingsCommand.DisplayName%")
+        {
+            Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+            VisibleWhen = ActivationConstraint.ClientContext(
+            ClientContextKey.Shell.ActiveSelectionFileName,
+            ".(refitter)")
         };
 
     public override async Task ExecuteCommandAsync(
