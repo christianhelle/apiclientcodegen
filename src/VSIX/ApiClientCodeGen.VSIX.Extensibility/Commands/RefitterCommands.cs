@@ -18,7 +18,7 @@ public class GenerateRefitterCommand(TraceSource traceSource)
             Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
             VisibleWhen = ActivationConstraint.ClientContext(
             ClientContextKey.Shell.ActiveSelectionFileName,
-            ".(json|ya?ml|refitter)")
+            ".(json|ya?ml)")
         };
 
     public override async Task ExecuteCommandAsync(
