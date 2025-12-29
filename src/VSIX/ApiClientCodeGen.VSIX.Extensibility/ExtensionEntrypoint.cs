@@ -35,6 +35,7 @@ internal class ExtensionEntrypoint : Extension
                         GroupChild.Command<Commands.GenerateRefitterCommand>(),
                         GroupChild.Command<Commands.GenerateRefitterSettingsCommand>(),
                         GroupChild.Command<Commands.GenerateNSwagCommand>(),
+                        GroupChild.Command<Commands.GenerateNSwagStudioCommand>(),
                         GroupChild.Command<Commands.GenerateOpenApiCommand>(),
                         GroupChild.Command<Commands.GenerateKiotaCommand>(),
                         GroupChild.Command<Commands.GenerateSwaggerCommand>(),

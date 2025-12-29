@@ -18,7 +18,30 @@ public class GenerateNSwagCommand(TraceSource traceSource)
     public override CommandConfiguration CommandConfiguration => new("%NSwagCommand.DisplayName%")
     {
         Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
-        VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml|nswag)")
+        VisibleWhen = ActivationConstraint.ClientContext(
+            ClientContextKey.Shell.ActiveSelectionFileName, 
+            ".(json|ya?ml)")
+    };
+
+    public override async Task ExecuteCommandAsync(
+        IClientContext context,
+        CancellationToken cancellationToken) =>
+        await GenerateAsync(
+            await context.GetInputFileAsync(cancellationToken),
+            await context.GetDefaultNamespaceAsync(cancellationToken),
+            cancellationToken);
+}
+
+[VisualStudioContribution]
+public class GenerateNSwagStudioCommand(TraceSource traceSource)
+    : GenerateNSwagBaseCommand(traceSource)
+{
+    public override CommandConfiguration CommandConfiguration => new("%NSwagCommand.DisplayName%")
+    {
+        Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+        VisibleWhen = ActivationConstraint.ClientContext(
+            ClientContextKey.Shell.ActiveSelectionFileName,
+            ".(nswag)")
     };
 
     public override async Task ExecuteCommandAsync(
