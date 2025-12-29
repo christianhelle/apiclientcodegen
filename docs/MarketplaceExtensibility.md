@@ -14,6 +14,6 @@ A collection of Visual Studio C# code generators for Swagger / OpenAPI specifica
   - [Refitter](https://github.com/christianhelle/refitter)
   - [Microsoft Kiota](https://github.com/microsoft/kiota)
   - [AutoRest](https://github.com/Azure/autorest)
-- Generate code using a configuration files using the following:
+- Generate code using configuration files with the following methods:
   - `.nswag` configuration files from [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) by including it in the project and using the **Generate NSwag Studio output** context menu
   - `.refitter` settings files from [Refitter](https://github.com/christianhelle/refitter) by including it in the project and using the **Generate Refitter output** context menu
