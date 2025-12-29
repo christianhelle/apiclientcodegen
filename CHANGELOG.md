@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- New Visual Studio extension using the new out-of-process extensibility model [\#1435](https://github.com/christianhelle/apiclientcodegen/pull/1435) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.18.0 [\#1430](https://github.com/christianhelle/apiclientcodegen/pull/1430) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Refitter v1.7.1 [\#1423](https://github.com/christianhelle/apiclientcodegen/pull/1423) ([christianhelle](https://github.com/christianhelle))
 - NSwag v14.6.3 [\#1408](https://github.com/christianhelle/apiclientcodegen/pull/1408) ([Copilot](https://github.com/apps/copilot-swe-agent))
