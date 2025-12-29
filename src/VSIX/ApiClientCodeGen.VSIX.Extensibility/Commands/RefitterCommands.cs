@@ -79,13 +79,19 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
     : Command
 {
     private readonly ExtensionSettingsProvider settingsProvider = settingsProvider;
+    private readonly JsonSerializerOptions options = new()
+    {
+        PropertyNameCaseInsensitive = true,
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        WriteIndented = true
+    };
 
     public async Task GenerateCodeAsync(
         string inputFile,
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
-        if (inputFile == null) 
+        if (inputFile == null)
         {
             return;
         }
@@ -217,15 +223,6 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
         }
     }
 
-    private static string Serialize(RefitGeneratorSettings settings)
-    {
-        return JsonSerializer.Serialize(
-            settings,
-            new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true
-            });
-    }
+    private string Serialize(RefitGeneratorSettings settings) 
+        => JsonSerializer.Serialize(settings, options);
 }
