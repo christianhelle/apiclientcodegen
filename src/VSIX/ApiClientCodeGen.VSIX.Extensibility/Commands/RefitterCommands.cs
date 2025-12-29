@@ -150,9 +150,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource)
                 };
 
                 File.WriteAllText(
-                    Path.Combine(
-                        fileInfo.Directory!.FullName,
-                        fileInfo.Name.Replace(fileInfo.Extension, ".refitter")),
+                    Path.ChangeExtension(fileInfo.FullName, ".refitter"),
                     Serialize(settings));
             }
         }
