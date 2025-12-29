@@ -79,7 +79,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
     : Command
 {
     private readonly ExtensionSettingsProvider settingsProvider = settingsProvider;
-    private readonly JsonSerializerOptions options = new()
+    private readonly JsonSerializerOptions serializerOptions = new()
     {
         PropertyNameCaseInsensitive = true,
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -160,14 +160,14 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
 
                 File.WriteAllText(
                     Path.ChangeExtension(fileInfo.FullName, ".refitter"),
-                    Serialize(settings));
+                    JsonSerializer.Serialize(settings, serializerOptions));
             }
         }
 
         Directory.SetCurrentDirectory(Path.GetDirectoryName(inputFile)!);
         var generator = await RefitGenerator.CreateAsync(settings);
 
-        using var context = new DependencyContext("Refitter", Serialize(settings));
+        using var context = new DependencyContext("Refitter", JsonSerializer.Serialize(settings));
 
         if (settings.GenerateMultipleFiles)
         {
@@ -222,7 +222,4 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
             return output;
         }
     }
-
-    private string Serialize(RefitGeneratorSettings settings) 
-        => JsonSerializer.Serialize(settings, options);
 }
