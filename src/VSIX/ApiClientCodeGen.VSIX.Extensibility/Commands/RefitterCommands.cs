@@ -179,6 +179,8 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource)
                 File.WriteAllText(Path.Combine(outputFolder, file.Filename), file.Content);
             }
 
+            context.Succeeded();
+
             return string.Empty;
         }
         else
