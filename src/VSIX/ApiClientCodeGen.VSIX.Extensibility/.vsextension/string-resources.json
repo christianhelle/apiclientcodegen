@@ -9,7 +9,7 @@
   "OpenApiGeneratorCommand.DisplayName": "Generate with OpenAPI Generator (v7.18.0)",
   "KiotaCommand.DisplayName": "Generate with Microsoft Kiota (v1.29.0)",
   "SwaggerCommand.DisplayName": "Generate with Swagger (v3.0.34 - Outdated)",
-  "AutoRestCommand.DisplayName": "Generate with AutoRest (v3.0.0-beta - Outdated)",
+  "AutoRestCommand.DisplayName": "Generate with AutoRest (v3.0.0-beta.20210504.2 - Outdated)",
 
   "Settings.Root.DisplayName": "REST API Client Code Generator",
 
