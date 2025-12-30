@@ -62,12 +62,12 @@
         <group id="ApiClientCodeGen.Group" text="REST API Client Code Generator" popup="true">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
             <group id="ApiClientCodeGen.CSharpGroup" text="C#" popup="true">
-                <action id="ApiClientCodeGen.CSharp.NSwag" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorNSwagAction" text="NSwag" description="Generate C# client with NSwag"/>
-                <action id="ApiClientCodeGen.CSharp.Refitter" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorRefitterAction" text="Refitter" description="Generate C# Refit interfaces with Refitter"/>
-                <action id="ApiClientCodeGen.CSharp.OpenAPI" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorOpenApiAction" text="OpenAPI Generator" description="Generate C# client with OpenAPI Generator"/>
-                <action id="ApiClientCodeGen.CSharp.Kiota" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorKiotaAction" text="Kiota" description="Generate C# client with Microsoft Kiota"/>
-                <action id="ApiClientCodeGen.CSharp.Swagger" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorSwaggerAction" text="Swagger Codegen CLI" description="Generate C# client with Swagger Codegen CLI"/>
-                <action id="ApiClientCodeGen.CSharp.AutoRest" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorAutoRestAction" text="AutoRest" description="Generate C# client with AutoRest"/>
+                <action id="ApiClientCodeGen.CSharp.NSwag" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorNSwagAction" text="Generate C# Client with NSwag (v14.4.0)" description="Generate C# client with NSwag (v14.4.0)"/>
+                <action id="ApiClientCodeGen.CSharp.Refitter" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorRefitterAction" text="Generate C# Client with Refitter (v1.7.1)" description="Generate C# client with Refitter (v1.7.1)"/>
+                <action id="ApiClientCodeGen.CSharp.OpenAPI" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorOpenApiAction" text="Generate C# Client with OpenAPI Generator (v7.18.0)" description="Generate C# client with OpenAPI Generator (v7.18.0)"/>
+                <action id="ApiClientCodeGen.CSharp.Kiota" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorKiotaAction" text="Generate C# Client with Microsoft Kiota (v1.29.0)" description="Generate C# client with Microsoft Kiota (v1.29.0)"/>
+                <action id="ApiClientCodeGen.CSharp.Swagger" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorSwaggerAction" text="Generate C# Client with Swagger (v3.0.34 - Outdated)" description="Generate C# client with Swagger Codegen CLI (v3.0.34 - Outdated)"/>
+                <action id="ApiClientCodeGen.CSharp.AutoRest" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorAutoRestAction" text="Generate C# Client with AutoRest (v3.0.0-beta - Outdated)" description="Generate C# client with AutoRest (v3.0.0-beta - Outdated)"/>
             </group>
             <group id="ApiClientCodeGen.TypeScriptGroup" text="TypeScript" popup="true">
                 <action id="ApiClientCodeGen.TS.Angular" class="com.christianhelle.apiclientcodegen.actions.TypeScriptGeneratorAngularAction" text="Angular" description="Generate Angular TypeScript client"/>
