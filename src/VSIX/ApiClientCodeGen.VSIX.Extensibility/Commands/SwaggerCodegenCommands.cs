@@ -5,11 +5,12 @@ using Rapicgen.Core.Generators.Swagger;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.General;
 using System.Diagnostics;
+using ApiClientCodeGen.VSIX.Extensibility.Settings;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
 [VisualStudioContribution]
-public class GenerateSwaggerCommand(TraceSource traceSource) : GenerateSwaggerBaseCommand(traceSource)
+public class GenerateSwaggerCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : GenerateSwaggerBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration => new("%SwaggerCommand.DisplayName%")
     {
@@ -27,7 +28,7 @@ public class GenerateSwaggerCommand(TraceSource traceSource) : GenerateSwaggerBa
 }
 
 [VisualStudioContribution]
-public class GenerateSwaggerNewCommand(TraceSource traceSource) : GenerateSwaggerBaseCommand(traceSource)
+public class GenerateSwaggerNewCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : GenerateSwaggerBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration => new("%SwaggerCommand.DisplayName%")
     {
@@ -43,8 +44,10 @@ public class GenerateSwaggerNewCommand(TraceSource traceSource) : GenerateSwagge
             cancellationToken);
 }
 
-public abstract class GenerateSwaggerBaseCommand(TraceSource traceSource) : Command
+public abstract class GenerateSwaggerBaseCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : Command
 {
+    private readonly ExtensionSettingsProvider settingsProvider = settingsProvider;
+
     public async Task GenerateAsync(
         string inputFile,
         string defaultNamespace,
@@ -57,10 +60,11 @@ public abstract class GenerateSwaggerBaseCommand(TraceSource traceSource) : Comm
 
         try
         {
+            var generalOptions = await settingsProvider.GetGeneralOptionsAsync(cancellationToken);
             var generator = new SwaggerCSharpCodeGenerator(
                 inputFile,
                 defaultNamespace,
-                options: new DefaultGeneralOptions(),
+                options: generalOptions,
                 processLauncher: new ProcessLauncher(),
                 dependencyInstaller: new DependencyInstaller(
                     new NpmInstaller(new ProcessLauncher()),

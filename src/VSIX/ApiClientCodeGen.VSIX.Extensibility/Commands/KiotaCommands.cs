@@ -5,11 +5,12 @@ using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.Kiota;
 using System.Diagnostics;
+using ApiClientCodeGen.VSIX.Extensibility.Settings;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
 [VisualStudioContribution]
-public class GenerateKiotaCommand(TraceSource traceSource) : GenerateKiotaBaseCommand(traceSource)
+public class GenerateKiotaCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : GenerateKiotaBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration => new("%KiotaCommand.DisplayName%")
     {
@@ -27,7 +28,7 @@ public class GenerateKiotaCommand(TraceSource traceSource) : GenerateKiotaBaseCo
 }
 
 [VisualStudioContribution]
-public class GenerateKiotaNewCommand(TraceSource traceSource) : GenerateKiotaBaseCommand(traceSource)
+public class GenerateKiotaNewCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : GenerateKiotaBaseCommand(traceSource, settingsProvider)
 {
     public override CommandConfiguration CommandConfiguration => new("%KiotaCommand.DisplayName%")
     {
@@ -44,8 +45,10 @@ public class GenerateKiotaNewCommand(TraceSource traceSource) : GenerateKiotaBas
 }
 
 [VisualStudioContribution]
-public abstract class GenerateKiotaBaseCommand(TraceSource traceSource) : Command
+public abstract class GenerateKiotaBaseCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : Command
 {
+    private readonly ExtensionSettingsProvider settingsProvider = settingsProvider;
+
     public async Task GenerateAsync(
         string inputFile,
         string defaultNamespace,
@@ -58,10 +61,11 @@ public abstract class GenerateKiotaBaseCommand(TraceSource traceSource) : Comman
 
         try
         {
+            var kiotaOptions = await settingsProvider.GetKiotaOptionsAsync(cancellationToken);
             var generator = new KiotaCodeGenerator(
                 inputFile,
                 defaultNamespace,
-                options: new DefaultKiotaOptions(),
+                options: kiotaOptions,
                 processLauncher: new ProcessLauncher(),
                 dependencyInstaller: new CustomDependencyInstaller(
                     new NpmInstaller(new ProcessLauncher()),
