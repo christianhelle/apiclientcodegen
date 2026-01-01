@@ -16,7 +16,11 @@ internal class ExtensionEntrypoint : Extension
             version: ExtensionAssemblyVersion,
             publisherName: "Christian Resma Helle",
             displayName: "REST API Client Code Generator (PREVIEW)",
-            description: "Generate REST API client code from OpenAPI/Swagger specifications"),        
+            description: "Generate REST API client code from OpenAPI/Swagger specifications")
+        {
+            Icon = "icon.png",
+            License = "LICENSE.txt",
+        },
     };
 
     [VisualStudioContribution]
