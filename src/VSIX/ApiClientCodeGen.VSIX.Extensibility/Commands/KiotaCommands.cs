@@ -50,7 +50,7 @@ public abstract class GenerateKiotaBaseCommand(TraceSource traceSource, Extensio
     private readonly ExtensionSettingsProvider settingsProvider = settingsProvider;
 
     public async Task GenerateAsync(
-        string inputFile,
+        string? inputFile,
         string defaultNamespace,
         CancellationToken cancellationToken)
     {

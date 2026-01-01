@@ -87,7 +87,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
     };
 
     public async Task GenerateCodeAsync(
-        string inputFile,
+        string? inputFile,
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
