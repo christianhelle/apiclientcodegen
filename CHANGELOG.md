@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Fix missing icon and license in new VSIX setup [\#1440](https://github.com/christianhelle/apiclientcodegen/pull/1440) ([christianhelle](https://github.com/christianhelle))
 - Update NSwag version to v14.6.3 in context menus and docs [\#1439](https://github.com/christianhelle/apiclientcodegen/pull/1439) ([christianhelle](https://github.com/christianhelle))
 - Add missing generator versions to context menus [\#1438](https://github.com/christianhelle/apiclientcodegen/pull/1438) ([christianhelle](https://github.com/christianhelle))
 - Add Settings pages using the new Visual Studio Extensibility model API's [\#1437](https://github.com/christianhelle/apiclientcodegen/pull/1437) ([christianhelle](https://github.com/christianhelle))
