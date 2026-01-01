@@ -47,8 +47,6 @@ internal static class CommandExtensions
         }
 
         var url = inputUrl.Trim();
-
-        // Validate URL first
         if (!Uri.TryCreate(url, UriKind.Absolute, out var uri))
         {
             await command.WriteToOutputWindowAsync($"Invalid URL: {url}", cancellationToken);
@@ -56,8 +54,6 @@ internal static class CommandExtensions
         }
 
         var path = await context.GetSelectedPathAsync(cancellationToken);
-
-        // Safely determine target directory and ensure it exists
         var directory = Path.GetDirectoryName(path.AbsolutePath);
         if (string.IsNullOrEmpty(directory))
         {
@@ -66,8 +62,8 @@ internal static class CommandExtensions
 
         try
         {
-            if (!string.IsNullOrEmpty(directory) && !System.IO.Directory.Exists(directory))
-                System.IO.Directory.CreateDirectory(directory);
+            if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
         }
         catch (Exception dex)
         {
@@ -75,31 +71,28 @@ internal static class CommandExtensions
             return null!;
         }
 
-        // Determine file name from URL path; fallback to a default name
         var fileName = uri.GetComponents(UriComponents.Path, UriFormat.Unescaped)
             .Split('/', StringSplitOptions.RemoveEmptyEntries)
             .LastOrDefault() ?? "openapi.json";
 
         var inputFile = Path.Combine(directory, fileName);
-
         try
         {
             using var cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-            // Apply a reasonable per-request timeout in addition to the provided token
-            cts.CancelAfter(System.TimeSpan.FromSeconds(30));
+            cts.CancelAfter(TimeSpan.FromSeconds(30));
 
             var response = await s_httpClient.GetAsync(uri, cts.Token);
             response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync(cts.Token);
 
-            await System.IO.File.WriteAllTextAsync(inputFile, content, cancellationToken);
+            await File.WriteAllTextAsync(inputFile, content, cancellationToken);
         }
         catch (UriFormatException uex)
         {
             await command.WriteToOutputWindowAsync($"The URL is malformed: {uex.Message}", cancellationToken);
             return null!;
         }
-        catch (System.Net.Http.HttpRequestException hex)
+        catch (HttpRequestException hex)
         {
             await command.WriteToOutputWindowAsync($"Network error while downloading '{url}': {hex.Message}", cancellationToken);
             return null!;
