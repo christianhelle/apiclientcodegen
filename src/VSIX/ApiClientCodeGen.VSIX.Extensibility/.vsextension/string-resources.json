@@ -4,7 +4,7 @@
   "AboutCommand.DisplayName": "About",
   "RefitterCommand.DisplayName": "Generate with Refitter (v1.7.1)",
   "RefitterSettingsCommand.DisplayName": "Generate Refitter output",
-  "NSwagCommand.DisplayName": "Generate with NSwag (v14.4.0)",
+  "NSwagCommand.DisplayName": "Generate with NSwag (v14.6.3)",
   "NSwagStudioCommand.DisplayName": "Generate NSwag Studio output",
   "OpenApiGeneratorCommand.DisplayName": "Generate with OpenAPI Generator (v7.18.0)",
   "KiotaCommand.DisplayName": "Generate with Microsoft Kiota (v1.29.0)",
