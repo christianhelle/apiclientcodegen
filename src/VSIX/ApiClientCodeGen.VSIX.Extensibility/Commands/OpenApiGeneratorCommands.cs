@@ -51,7 +51,7 @@ public abstract class GenerateOpenApiBaseCommand(TraceSource traceSource, Extens
     private readonly ExtensionSettingsProvider settingsProvider = settingsProvider;
 
     public async Task GenerateAsync(
-        string inputFile,
+        string? inputFile,
         string defaultNamespace,
         CancellationToken cancellationToken)
     {

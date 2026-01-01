@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Dialogs\AddNewInputDialog.xaml" />
     <EmbeddedResource Include="Dialogs\AboutDialog.xaml" />
   </ItemGroup>
 
