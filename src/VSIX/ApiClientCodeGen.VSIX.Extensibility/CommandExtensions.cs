@@ -36,7 +36,7 @@ internal static class CommandExtensions
             new InputPromptOptions
             {
                 DefaultText = "Example: https://petstore3.swagger.io/api/v3/openapi.json",
-                Icon = ImageMoniker.KnownValues.Feedback,
+                Icon = ImageMoniker.KnownValues.URLInputBox,
                 Title = "REST API Client Code Generator",
             },
             cancellationToken);
