@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Use built-in Input Prompt when adding new OpenAPI Client [\#1441](https://github.com/christianhelle/apiclientcodegen/pull/1441) ([christianhelle](https://github.com/christianhelle))
 - Fix missing icon and license in new VSIX setup [\#1440](https://github.com/christianhelle/apiclientcodegen/pull/1440) ([christianhelle](https://github.com/christianhelle))
 - Update NSwag version to v14.6.3 in context menus and docs [\#1439](https://github.com/christianhelle/apiclientcodegen/pull/1439) ([christianhelle](https://github.com/christianhelle))
 - Add missing generator versions to context menus [\#1438](https://github.com/christianhelle/apiclientcodegen/pull/1438) ([christianhelle](https://github.com/christianhelle))
