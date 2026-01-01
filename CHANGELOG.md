@@ -6,6 +6,8 @@
 
 **Implemented enhancements:**
 
+- Update NSwag version to v14.6.3 in context menus and docs [\#1439](https://github.com/christianhelle/apiclientcodegen/pull/1439) ([christianhelle](https://github.com/christianhelle))
+- Add missing generator versions to context menus [\#1438](https://github.com/christianhelle/apiclientcodegen/pull/1438) ([christianhelle](https://github.com/christianhelle))
 - Add Settings pages using the new Visual Studio Extensibility model API's [\#1437](https://github.com/christianhelle/apiclientcodegen/pull/1437) ([christianhelle](https://github.com/christianhelle))
 - New Visual Studio extension using the new out-of-process extensibility model [\#1435](https://github.com/christianhelle/apiclientcodegen/pull/1435) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.18.0 [\#1430](https://github.com/christianhelle/apiclientcodegen/pull/1430) ([Copilot](https://github.com/apps/copilot-swe-agent))
