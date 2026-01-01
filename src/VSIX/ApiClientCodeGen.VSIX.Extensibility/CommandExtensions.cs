@@ -31,10 +31,15 @@ internal static class CommandExtensions
         IClientContext context,
         CancellationToken cancellationToken)
     {
-#pragma warning disable CA2000 // Dispose objects before losing scope
-        var dialog = new AddNewInputDialog();
-        await command.Extensibility.Shell().ShowDialogAsync(dialog, cancellationToken);
-#pragma warning restore CA2000 // Dispose objects before losing scope
+        var inputUrl = await command.Extensibility.Shell().ShowPromptAsync(
+            $"Enter URL to OpenAPI Specifications",
+            new InputPromptOptions
+            {
+                DefaultText = "Example: https://petstore3.swagger.io/api/v3/openapi.json",
+                Icon = ImageMoniker.KnownValues.Feedback,
+                Title = "REST API Client Code Generator",
+            },
+            cancellationToken);
 
         string inputFile = null!;
         if (!string.IsNullOrWhiteSpace(dialog.Url))
