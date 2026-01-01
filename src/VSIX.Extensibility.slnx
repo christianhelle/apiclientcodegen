@@ -1,4 +1,10 @@
 <Solution>
+  <Folder Name="/Core/">
+    <Project Path="Core/ApiClientCodeGen.Tests.Common/ApiClientCodeGen.Tests.Common.csproj" />
+  </Folder>
+  <Folder Name="/VSIX/">
+    <Project Path="VSIX/ApiClientCodeGen.VSIX.Extensibility.Tests/ApiClientCodeGen.VSIX.Extensibility.Tests.csproj" />
+  </Folder>
   <Project Path="Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj" />
   <Project Path="VSIX/ApiClientCodeGen.VSIX.Extensibility/ApiClientCodeGen.VSIX.Extensibility.csproj" />
 </Solution>
