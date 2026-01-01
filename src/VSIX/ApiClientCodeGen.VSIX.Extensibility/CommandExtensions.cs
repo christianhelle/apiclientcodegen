@@ -32,7 +32,7 @@ internal static class CommandExtensions
         CancellationToken cancellationToken)
     {
         var inputUrl = await command.Extensibility.Shell().ShowPromptAsync(
-            $"Enter URL to OpenAPI Specifications",
+            "Enter URL to OpenAPI Specifications",
             new InputPromptOptions
             {
                 DefaultText = "Example: https://petstore3.swagger.io/api/v3/openapi.json",
