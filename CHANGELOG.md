@@ -4,52 +4,9 @@
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.35.0...HEAD)
 
-**Implemented enhancements:**
-
-- Use built-in Input Prompt when adding new OpenAPI Client [\#1441](https://github.com/christianhelle/apiclientcodegen/pull/1441) ([christianhelle](https://github.com/christianhelle))
-- Fix missing icon and license in new VSIX setup [\#1440](https://github.com/christianhelle/apiclientcodegen/pull/1440) ([christianhelle](https://github.com/christianhelle))
-- Update NSwag version to v14.6.3 in context menus and docs [\#1439](https://github.com/christianhelle/apiclientcodegen/pull/1439) ([christianhelle](https://github.com/christianhelle))
-- Add missing generator versions to context menus [\#1438](https://github.com/christianhelle/apiclientcodegen/pull/1438) ([christianhelle](https://github.com/christianhelle))
-- Add Settings pages using the new Visual Studio Extensibility model API's [\#1437](https://github.com/christianhelle/apiclientcodegen/pull/1437) ([christianhelle](https://github.com/christianhelle))
-- New Visual Studio extension using the new out-of-process extensibility model [\#1435](https://github.com/christianhelle/apiclientcodegen/pull/1435) ([christianhelle](https://github.com/christianhelle))
-- OpenAPI Generator v7.18.0 [\#1430](https://github.com/christianhelle/apiclientcodegen/pull/1430) ([Copilot](https://github.com/apps/copilot-swe-agent))
-- Refitter v1.7.1 [\#1423](https://github.com/christianhelle/apiclientcodegen/pull/1423) ([christianhelle](https://github.com/christianhelle))
-- NSwag v14.6.3 [\#1408](https://github.com/christianhelle/apiclientcodegen/pull/1408) ([Copilot](https://github.com/apps/copilot-swe-agent))
-
 **Closed issues:**
 
 - Upgrade OpenAPI Generator to v7.18.0 [\#1429](https://github.com/christianhelle/apiclientcodegen/issues/1429)
-
-**Merged pull requests:**
-
-- Fix Cake Build [\#1433](https://github.com/christianhelle/apiclientcodegen/pull/1433) ([christianhelle](https://github.com/christianhelle))
-- Fix .refitter file mess when using New REST API Client [\#1432](https://github.com/christianhelle/apiclientcodegen/pull/1432) ([christianhelle](https://github.com/christianhelle))
-- Update Kiota Dependencies to v1.21.1 [\#1428](https://github.com/christianhelle/apiclientcodegen/pull/1428) ([christianhelle](https://github.com/christianhelle))
-- Update GitHub Artifact Actions \(major\) [\#1418](https://github.com/christianhelle/apiclientcodegen/pull/1418) ([renovate[bot]](https://github.com/apps/renovate))
-- Update actions/cache action to v5 [\#1417](https://github.com/christianhelle/apiclientcodegen/pull/1417) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency @types/vscode to v1.107.0 [\#1416](https://github.com/christianhelle/apiclientcodegen/pull/1416) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency @types/node to v24.10.3 [\#1415](https://github.com/christianhelle/apiclientcodegen/pull/1415) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency @types/node to v24.10.2 [\#1414](https://github.com/christianhelle/apiclientcodegen/pull/1414) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency System.Text.Json to 9.0.11 [\#1413](https://github.com/christianhelle/apiclientcodegen/pull/1413) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency Refit to v9 [\#1412](https://github.com/christianhelle/apiclientcodegen/pull/1412) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency Spectre.Console.Cli to 0.53.1 [\#1410](https://github.com/christianhelle/apiclientcodegen/pull/1410) ([renovate[bot]](https://github.com/apps/renovate))
-- Update plugin org.jetbrains.intellij.platform to v2.10.5 [\#1409](https://github.com/christianhelle/apiclientcodegen/pull/1409) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency @vscode/vsce to v3.7.1 [\#1406](https://github.com/christianhelle/apiclientcodegen/pull/1406) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency Polly to 8.6.5 [\#1405](https://github.com/christianhelle/apiclientcodegen/pull/1405) ([renovate[bot]](https://github.com/apps/renovate))
-- Update actions/checkout action to v6 [\#1404](https://github.com/christianhelle/apiclientcodegen/pull/1404) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency webpack to v5.103.0 [\#1403](https://github.com/christianhelle/apiclientcodegen/pull/1403) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency @types/vscode to v1.106.1 [\#1402](https://github.com/christianhelle/apiclientcodegen/pull/1402) ([renovate[bot]](https://github.com/apps/renovate))
-- Update Gradle to v9.2.1 [\#1400](https://github.com/christianhelle/apiclientcodegen/pull/1400) ([renovate[bot]](https://github.com/apps/renovate))
-- Update Spectre.Console.Cli to 0.53.0 and fix breaking Execute signature [\#1398](https://github.com/christianhelle/apiclientcodegen/pull/1398) ([Copilot](https://github.com/apps/copilot-swe-agent))
-- Update dependency @types/vscode to v1.106.0 [\#1397](https://github.com/christianhelle/apiclientcodegen/pull/1397) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency @types/node to v24.10.1 [\#1396](https://github.com/christianhelle/apiclientcodegen/pull/1396) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency cake.tool to v6 [\#1395](https://github.com/christianhelle/apiclientcodegen/pull/1395) ([renovate[bot]](https://github.com/apps/renovate))
-- Update vstest monorepo to 18.0.1 [\#1393](https://github.com/christianhelle/apiclientcodegen/pull/1393) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency @vscode/vsce to v3.7.0 - autoclosed [\#1392](https://github.com/christianhelle/apiclientcodegen/pull/1392) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency Azure.Core to 1.50.0 [\#1391](https://github.com/christianhelle/apiclientcodegen/pull/1391) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency mocha to v11.7.5 [\#1389](https://github.com/christianhelle/apiclientcodegen/pull/1389) ([renovate[bot]](https://github.com/apps/renovate))
-- Update dependency @types/node to v24.10.0 [\#1388](https://github.com/christianhelle/apiclientcodegen/pull/1388) ([renovate[bot]](https://github.com/apps/renovate))
-- Update plugin org.jetbrains.intellij.platform to v2.10.4 [\#1387](https://github.com/christianhelle/apiclientcodegen/pull/1387) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.35.0](https://github.com/christianhelle/apiclientcodegen/tree/1.35.0) (2025-10-30)
 
