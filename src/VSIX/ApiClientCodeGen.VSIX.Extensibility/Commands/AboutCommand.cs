@@ -15,7 +15,6 @@ public class AboutCommand : Command
 
     public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken)
     {
-#pragma warning disable CA2000 // Dispose objects before losing scope
         var dialog = new AboutDialog(
             extensibility: Extensibility,
             displayName: "REST API Client Code Generator (PREVIEW)",
@@ -24,7 +23,6 @@ public class AboutCommand : Command
             publisher: "Christian Resma Helle",
             extensionId: "f7530eb1-1ce9-46ac-8fab-165b68cf3d61",
             supportKey: SupportInformation.GetSupportKey());
-#pragma warning restore CA2000 // Dispose objects before losing scope
 
         await Extensibility.Shell().ShowDialogAsync(dialog, cancellationToken);
     }

@@ -5,19 +5,28 @@ using TextCopy;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Dialogs;
 
-internal class AboutDialog : RemoteUserControl
+internal class AboutDialog(
+    VisualStudioExtensibility extensibility, 
+    string displayName, 
+    string description, 
+    string version, 
+    string publisher, 
+    string extensionId, 
+    string supportKey) : RemoteUserControl(new AboutDialogData(extensibility, displayName, description, version, publisher, extensionId, supportKey))
 {
-    public AboutDialog(VisualStudioExtensibility extensibility, string displayName, string description, string version, string publisher, string extensionId, string supportKey)
-        : base(new AboutDialogData(extensibility, displayName, description, version, publisher, extensionId, supportKey))
-    {
-    }
-
     [DataContract]
     internal class AboutDialogData : NotifyPropertyChangedObject
     {
         private readonly VisualStudioExtensibility extensibility;
 
-        public AboutDialogData(VisualStudioExtensibility extensibility, string displayName, string description, string version, string publisher, string extensionId, string supportKey)
+        public AboutDialogData(
+            VisualStudioExtensibility extensibility, 
+            string displayName, 
+            string description, 
+            string version, 
+            string publisher, 
+            string extensionId, 
+            string supportKey)
         {
             this.extensibility = extensibility;
             DisplayName = displayName;
@@ -52,7 +61,7 @@ internal class AboutDialog : RemoteUserControl
 
         private async Task CopySupportKeyAsync(object? parameter, CancellationToken cancellationToken)
         {
-            await ClipboardService.SetTextAsync(SupportKey);
+            await ClipboardService.SetTextAsync(SupportKey, cancellationToken);
         }
     }
 }
