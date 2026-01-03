@@ -10,6 +10,7 @@ internal static class OpenApiGeneratorSettings
     internal static SettingCategory OpenApiGeneratorCategory { get; } = new("openApiGenerator", "%Settings.OpenApi.DisplayName%", SettingsRoot.RootCategory)
     {
         GenerateObserverClass = true,
+        Order = 5,
     };
 
     [VisualStudioContribution]

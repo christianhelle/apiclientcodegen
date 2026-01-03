@@ -11,6 +11,7 @@ internal static class NSwagSettings
     internal static SettingCategory NSwagCategory { get; } = new("nswag", "%Settings.NSwag.DisplayName%", SettingsRoot.RootCategory)
     {
         GenerateObserverClass = true,
+        Order = 3,
     };
 
     [VisualStudioContribution]
