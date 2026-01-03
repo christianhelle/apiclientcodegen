@@ -32,7 +32,7 @@ jobs:
         version: [ V2, V3 ]
 
     name: C#
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     timeout-minutes: 20
 
     steps:
@@ -358,7 +358,7 @@ jobs:
         version: [ V2, V3 ]
 
     name: JMeter
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     timeout-minutes: 20
 
     steps:
@@ -399,7 +399,7 @@ jobs:
         version: [ V2, V3 ]
 
     name: TypeScript
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     timeout-minutes: 20
 
     steps:
