@@ -1,26 +1,32 @@
+using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.UI;
 using System.Runtime.Serialization;
+using TextCopy;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Dialogs;
 
 internal class AboutDialog : RemoteUserControl
 {
-    public AboutDialog(string displayName, string description, string version, string publisher, string extensionId, string supportKey)
-        : base(new AboutDialogData(displayName, description, version, publisher, extensionId, supportKey))
+    public AboutDialog(VisualStudioExtensibility extensibility, string displayName, string description, string version, string publisher, string extensionId, string supportKey)
+        : base(new AboutDialogData(extensibility, displayName, description, version, publisher, extensionId, supportKey))
     {
     }
 
     [DataContract]
-    internal class AboutDialogData
+    internal class AboutDialogData : NotifyPropertyChangedObject
     {
-        public AboutDialogData(string displayName, string description, string version, string publisher, string extensionId, string supportKey)
+        private readonly VisualStudioExtensibility extensibility;
+
+        public AboutDialogData(VisualStudioExtensibility extensibility, string displayName, string description, string version, string publisher, string extensionId, string supportKey)
         {
+            this.extensibility = extensibility;
             DisplayName = displayName;
             Description = description;
             Version = version;
             Publisher = publisher;
             ExtensionId = extensionId;
             SupportKey = supportKey;
+            CopySupportKeyCommand = new AsyncCommand(CopySupportKeyAsync);
         }
 
         [DataMember]
@@ -40,5 +46,13 @@ internal class AboutDialog : RemoteUserControl
 
         [DataMember]
         public string SupportKey { get; set; }
+
+        [DataMember]
+        public IAsyncCommand CopySupportKeyCommand { get; }
+
+        private async Task CopySupportKeyAsync(object? parameter, CancellationToken cancellationToken)
+        {
+            await ClipboardService.SetTextAsync(SupportKey);
+        }
     }
 }

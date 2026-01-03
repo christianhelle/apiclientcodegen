@@ -17,6 +17,7 @@ public class AboutCommand : Command
     {
 #pragma warning disable CA2000 // Dispose objects before losing scope
         var dialog = new AboutDialog(
+            extensibility: Extensibility,
             displayName: "REST API Client Code Generator (PREVIEW)",
             description: "Generate REST API client code from OpenAPI/Swagger specifications",
             version: this.GetExtensionAssemblyVersion(),
