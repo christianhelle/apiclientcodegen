@@ -49,12 +49,11 @@ internal static class AutoRestSettings
         "syncMethods",
         "%Settings.AutoRest.SyncMethods.DisplayName%",
         AutoRestCategory,
-        new[]
-        {
+        [
             new EnumSettingEntry(nameof(SyncMethodOptions.Essential), "%Settings.AutoRest.SyncMethods.Essential%"),
             new EnumSettingEntry(nameof(SyncMethodOptions.All), "%Settings.AutoRest.SyncMethods.All%"),
             new EnumSettingEntry(nameof(SyncMethodOptions.None), "%Settings.AutoRest.SyncMethods.None%"),
-        },
+        ],
         defaultValue: nameof(SyncMethodOptions.Essential))
     {
         Description = "%Settings.AutoRest.SyncMethods.Description%",

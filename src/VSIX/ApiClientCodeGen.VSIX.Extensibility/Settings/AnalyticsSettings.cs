@@ -11,6 +11,7 @@ internal static class AnalyticsSettings
     {
         GenerateObserverClass = true,
         Order = 1,
+        Description = "%Settings.Analytics.Description%",
     };
 
     [VisualStudioContribution]
@@ -20,7 +21,7 @@ internal static class AnalyticsSettings
         AnalyticsCategory,
         defaultValue: false)
     {
-        Description = "%Settings.TelemetryOptOut.Description%",
+        Description = "%Settings.Analytics.Description%",
     };
 }
 #pragma warning restore VSEXTPREVIEW_SETTINGS
