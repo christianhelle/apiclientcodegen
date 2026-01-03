@@ -10,6 +10,7 @@ internal static class RefitterSettings
     internal static SettingCategory RefitterCategory { get; } = new("refitter", "%Settings.Refitter.DisplayName%", SettingsRoot.RootCategory)
     {
         GenerateObserverClass = true,
+        Order = 2,
     };
 
     [VisualStudioContribution]

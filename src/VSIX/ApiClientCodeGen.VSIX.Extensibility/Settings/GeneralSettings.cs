@@ -11,6 +11,7 @@ internal static class GeneralSettings
     {
         Description = "%Settings.General.Description%",
         GenerateObserverClass = true,
+        Order = 0
     };
 
     [VisualStudioContribution]

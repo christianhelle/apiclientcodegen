@@ -10,6 +10,7 @@ internal static class AnalyticsSettings
     internal static SettingCategory AnalyticsCategory { get; } = new("analytics", "%Settings.Analytics.DisplayName%", SettingsRoot.RootCategory)
     {
         GenerateObserverClass = true,
+        Order = 1,
     };
 
     [VisualStudioContribution]
