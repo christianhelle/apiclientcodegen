@@ -3,7 +3,7 @@ jobs:
 - job: CliToolJob
   displayName: 'Build CLI Tool'
   pool:
-    vmImage: 'windows-2019'
+    vmImage: 'windows-latest'
 
   steps:
 
