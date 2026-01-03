@@ -21,7 +21,7 @@ internal static class AnalyticsSettings
         AnalyticsCategory,
         defaultValue: false)
     {
-        Description = "%Settings.TelemetryOptOut.Description%",
+        Description = "%Settings.Analytics.Description%",
     };
 }
 #pragma warning restore VSEXTPREVIEW_SETTINGS
