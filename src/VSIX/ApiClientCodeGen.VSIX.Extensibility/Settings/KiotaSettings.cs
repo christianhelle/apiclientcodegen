@@ -10,7 +10,7 @@ internal static class KiotaSettings
     internal static SettingCategory KiotaCategory { get; } = new("kiota", "%Settings.Kiota.DisplayName%", SettingsRoot.RootCategory)
     {
         GenerateObserverClass = true,
-        Order = 5,
+        Order = 6,
     };
 
     [VisualStudioContribution]

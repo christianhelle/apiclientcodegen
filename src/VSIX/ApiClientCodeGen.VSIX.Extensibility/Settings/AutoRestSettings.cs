@@ -11,7 +11,7 @@ internal static class AutoRestSettings
     internal static SettingCategory AutoRestCategory { get; } = new("autorest", "%Settings.AutoRest.DisplayName%", SettingsRoot.RootCategory)
     {
         GenerateObserverClass = true,
-        Order = 6,
+        Order = 7,
     };
 
     [VisualStudioContribution]
