@@ -13,7 +13,7 @@
                 "/property:GenerateFullPaths=true",
                 // Do not generate summary otherwise it leads to duplicate errors in Problems panel
                 "/consoleloggerparameters:NoSummary",
-                "Rapicgen.sln"
+                "Rapicgen.slnx"
             ],
             "options": {
                 "cwd": "src"
