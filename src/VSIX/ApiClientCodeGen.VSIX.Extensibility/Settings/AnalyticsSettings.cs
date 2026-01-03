@@ -11,6 +11,7 @@ internal static class AnalyticsSettings
     {
         GenerateObserverClass = true,
         Order = 1,
+        Description = "%Settings.Analytics.Description%",
     };
 
     [VisualStudioContribution]

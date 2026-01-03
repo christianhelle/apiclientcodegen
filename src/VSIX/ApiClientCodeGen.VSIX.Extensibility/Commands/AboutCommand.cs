@@ -1,6 +1,7 @@
 ﻿using ApiClientCodeGen.VSIX.Extensibility.Dialogs;
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
+using Rapicgen.Core.Logging;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
@@ -20,7 +21,8 @@ public class AboutCommand : Command
             description: "Generate REST API client code from OpenAPI/Swagger specifications",
             version: this.GetExtensionAssemblyVersion(),
             publisher: "Christian Resma Helle",
-            extensionId: "f7530eb1-1ce9-46ac-8fab-165b68cf3d61");
+            extensionId: "f7530eb1-1ce9-46ac-8fab-165b68cf3d61",
+            supportKey: SupportInformation.GetSupportKey());
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
         await Extensibility.Shell().ShowDialogAsync(dialog, cancellationToken);

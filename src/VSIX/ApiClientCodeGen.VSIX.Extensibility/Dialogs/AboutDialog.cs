@@ -5,21 +5,22 @@ namespace ApiClientCodeGen.VSIX.Extensibility.Dialogs;
 
 internal class AboutDialog : RemoteUserControl
 {
-    public AboutDialog(string displayName, string description, string version, string publisher, string extensionId)
-        : base(new AboutDialogData(displayName, description, version, publisher, extensionId))
+    public AboutDialog(string displayName, string description, string version, string publisher, string extensionId, string supportKey)
+        : base(new AboutDialogData(displayName, description, version, publisher, extensionId, supportKey))
     {
     }
 
     [DataContract]
     internal class AboutDialogData
     {
-        public AboutDialogData(string displayName, string description, string version, string publisher, string extensionId)
+        public AboutDialogData(string displayName, string description, string version, string publisher, string extensionId, string supportKey)
         {
             DisplayName = displayName;
             Description = description;
             Version = version;
             Publisher = publisher;
             ExtensionId = extensionId;
+            SupportKey = supportKey;
         }
 
         [DataMember]
@@ -36,5 +37,8 @@ internal class AboutDialog : RemoteUserControl
 
         [DataMember]
         public string ExtensionId { get; set; }
+
+        [DataMember]
+        public string SupportKey { get; set; }
     }
 }

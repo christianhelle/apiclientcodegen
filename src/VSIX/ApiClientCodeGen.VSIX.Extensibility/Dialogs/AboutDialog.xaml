@@ -25,6 +25,11 @@
       <TextBlock FontWeight="SemiBold" Text="Extension ID: " />
       <TextBlock Text="{Binding ExtensionId}" />
     </StackPanel>
+
+    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+      <TextBlock FontWeight="SemiBold" Text="Support Key: " />
+      <TextBlock Text="{Binding SupportKey}" />
+    </StackPanel>
     
     <TextBlock Margin="0,20,0,5"
                FontSize="11"
