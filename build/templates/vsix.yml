@@ -4,7 +4,7 @@ jobs:
   displayName: 'Build VSIX'
   timeoutInMinutes: 120
   pool:
-    vmImage: 'windows-2019'
+    vmImage: 'windows-latest'
     demands:
     - JDK
     - npm
@@ -33,7 +33,7 @@ jobs:
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
     inputs:
-      restoreSolution: 'src/VSIX.sln'
+      restoreSolution: 'src/VSIX.slnx'
 
   - task: SamirBoulema.Vsix-Tools.Vsix-Tools-Update-Version.VsixToolsUpdateVersion@1
     displayName: 'Set Vsix Version'
@@ -55,9 +55,9 @@ jobs:
       InformationalVersion: '$(build.buildnumber)'
 
   - task: VSBuild@1
-    displayName: 'Build solution src/VSIX.sln'
+    displayName: 'Build solution src/VSIX.slnx'
     inputs:
-      solution: src/VSIX.sln
+      solution: src/VSIX.slnx
       platform: 'Any CPU'
       configuration: 'Release'
     timeoutInMinutes: 20

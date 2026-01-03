@@ -49,14 +49,14 @@ Execute these commands in order:
 
 2. **Restore packages (60+ seconds):**
    ```bash
-   dotnet restore Rapicgen.sln
+   dotnet restore Rapicgen.slnx
    ```
    - Takes ~60 seconds on first run
    - May show package warnings - these are normal
 
 3. **Build the solution (15-25 seconds) - NEVER CANCEL:**
    ```bash
-   dotnet build Rapicgen.sln
+   dotnet build Rapicgen.slnx
    ```
    - Takes 15-25 seconds typically
    - May show nullable reference warnings - these are normal
@@ -137,7 +137,7 @@ The CLI tool (rapicgen) is the core component. Test it after building:
 
 1. **Restore packages (45+ seconds) - NEVER CANCEL:**
    ```bash
-   dotnet restore VSIX.sln
+   dotnet restore VSIX.slnx
    ```
    - Takes 45+ seconds
    - Will show many package downgrade warnings - these are expected
@@ -145,7 +145,7 @@ The CLI tool (rapicgen) is the core component. Test it after building:
 
 2. **Build (Windows only):**
    ```bash
-   msbuild VSIX.sln /property:Configuration=Release /t:Rebuild
+   msbuild VSIX.slnx /property:Configuration=Release /t:Rebuild
    ```
 
 ## Validation Scenarios
@@ -171,7 +171,7 @@ The CLI tool (rapicgen) is the core component. Test it after building:
 ```bash
 # Quick validation script
 cd src
-dotnet build Rapicgen.sln
+dotnet build Rapicgen.slnx
 dotnet run --project CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- csharp nswag Swagger.json Test /tmp/validation.cs
 ls -la /tmp/validation.cs
 head -10 /tmp/validation.cs
@@ -194,9 +194,9 @@ ls -la dist/extension.js
 - **CLI code generation**: ~3 seconds (set timeout: 60+ seconds)
 
 ### Key Solution Files:
-- **Rapicgen.sln** - Main solution with CLI and Core projects
-- **VSIX.sln** - Visual Studio extension solution  
-- **All.sln** - Complete solution including all projects
+- **Rapicgen.slnx** - Main solution with CLI and Core projects
+- **VSIX.slnx** - Visual Studio extension solution  
+- **All.slnx** - Complete solution including all projects
 - **VSCode/package.json** - VSCode extension configuration
 
 ### Repository Structure:
@@ -300,7 +300,7 @@ public void InstallTool_Returns_Path() { ... }
 ```bash
 # Quick validation script
 cd src
-dotnet build Rapicgen.sln
+dotnet build Rapicgen.slnx
 dotnet run --project CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -- csharp nswag Swagger.json Test /tmp/validation.cs
 ls -la /tmp/validation.cs
 head -10 /tmp/validation.cs
@@ -313,7 +313,7 @@ ls -la dist/extension.js
 ```
 
 ## Always Run Before Committing:
-1. `dotnet build Rapicgen.sln` - Must succeed
+1. `dotnet build Rapicgen.slnx` - Must succeed
 2. Test CLI tool with local files - Must generate valid code
 3. If VSCode extension modified: `npm run lint && npm run compile` - Must succeed
 4. Manual validation scenario - Must work end-to-end

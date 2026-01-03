@@ -3,7 +3,7 @@ jobs:
 - job: CliToolJob
   displayName: 'Build CLI Tool'
   pool:
-    vmImage: 'windows-2019'
+    vmImage: 'windows-latest'
 
   steps:
 
@@ -18,7 +18,7 @@ jobs:
     displayName: 'dotnet restore'
     inputs:
       command: restore
-      projects: 'src/Rapicgen.sln'
+      projects: 'src/Rapicgen.slnx'
 
   - task: DotNetCoreCLI@2
     displayName: 'Create CLI Tool Package'

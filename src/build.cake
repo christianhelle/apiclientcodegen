@@ -15,10 +15,10 @@ Task("Clean")
 Task("Restore")
     .Does(() =>
 {
-    var solutions = GetFiles("./**/*.sln");
+    var solutions = GetFiles("./**/*.slnx");
     foreach(var solution in solutions)
     {
-        if (solution.ToString().Contains("Mac.sln"))
+        if (solution.ToString().Contains("Mac.slnx"))
             continue;
         Information("Restoring {0}", solution);
         DotNetRestore(solution.ToString());
@@ -117,7 +117,7 @@ Task("Build-VSIX")
         var exitCode = StartProcess(msbuildPath, new ProcessSettings
         {
             Arguments = new ProcessArgumentBuilder()
-                .Append("VSIX.sln")
+                .Append("VSIX.slnx")
                 .Append("/t:Rebuild")
                 .Append($"/p:Configuration={configuration}")
                 .Append("/p:DeployExtension=false")
@@ -155,7 +155,7 @@ Task("Build-Rapicgen")
     .IsDependentOn("Restore")
     .Does(() => {
         Information("Building Rapicgen (.NET Tool)");
-        DotNetBuild("Rapicgen.sln", new DotNetBuildSettings
+        DotNetBuild("Rapicgen.slnx", new DotNetBuildSettings
         {
             Configuration = configuration,
             NoRestore = true,
