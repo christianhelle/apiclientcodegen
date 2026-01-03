@@ -66,7 +66,7 @@ namespace Rapicgen.Core.Generators.NSwagStudio
 
             Logger.Instance.WriteLine(
                 forceDownload
-                    ? "Downloading NSwag using NPM"
+                    ? "Installing NSwag as .NET tool"
                     : $"{command} could not be found in specified path! Retrying with default NSwag.exe path");
 
             if (!File.Exists(command) || forceDownload)

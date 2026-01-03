@@ -34,7 +34,7 @@ namespace Rapicgen.Options.General
 
         [Category("File Paths")]
         [DisplayName("NSwag Path")]
-        [Description("Full path to NSwag.exe (Installs from NPM if not found)")]
+        [Description("Full path to NSwag.exe (Installs as .NET tool if not found)")]
         public string NSwagPath { get; set; }
         
         [Category("File Paths")]
