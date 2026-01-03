@@ -18,7 +18,7 @@ jobs:
     displayName: 'dotnet restore'
     inputs:
       command: restore
-      projects: 'src/Rapicgen.sln'
+      projects: 'src/Rapicgen.slnx'
 
   - task: DotNetCoreCLI@2
     displayName: 'Create CLI Tool Package'

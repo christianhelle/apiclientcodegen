@@ -3,13 +3,13 @@
 all: release pack publish
 	
 restore-packages: 
-	dotnet restore ./Mac.sln
+	dotnet restore ./Mac.slnx
 
 debug: restore-packages
 	dotnet build ./VSMac/ApiClientCodeGen.VSMac/ApiClientCodeGen.VSMac.csproj
 
 release: restore-packages
-	/Applications/Visual\ Studio.app/Contents/MacOS/vstool build --configuration:Release $(shell pwd)/Mac.sln
+	/Applications/Visual\ Studio.app/Contents/MacOS/vstool build --configuration:Release $(shell pwd)/Mac.slnx
 
 pack: release
 	/Applications/Visual\ Studio.app/Contents/MacOS/vstool setup pack $(shell pwd)/VSMac/ApiClientCodeGen.VSMac/bin/Release/ApiClientCodeGen.VSMac.dll -d:$(shell pwd)

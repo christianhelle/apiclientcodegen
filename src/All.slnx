@@ -1,0 +1,138 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="arm64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Azure Pipelines/">
+    <File Path="../build/ci-builds.yml" />
+    <File Path="../build/dev-builds.yml" />
+    <File Path="../build/integration-test.yml" />
+    <File Path="../build/smoke-test.yml" />
+  </Folder>
+  <Folder Name="/Azure Pipelines/Templates/">
+    <File Path="../build/templates/cli-tool.yml" />
+    <File Path="../build/templates/script-test-template.yml" />
+    <File Path="../build/templates/vsix.yml" />
+    <File Path="../build/templates/vsmac.yml" />
+  </Folder>
+  <Folder Name="/Github Actions/">
+    <File Path="../.github/workflows/cli-tool.yml" />
+    <File Path="../.github/workflows/production-tests.yml" />
+    <File Path="../.github/workflows/smoke-tests.yml" />
+    <File Path="../.github/workflows/unit-tests.yml" />
+    <File Path="../.github/workflows/vsix.yml" />
+    <File Path="../.github/workflows/vsmac.yml" />
+  </Folder>
+  <Folder Name="/Scripts/">
+    <File Path="../test/integration-tests.ps1" />
+    <File Path="../test/smoke-tests.ps1" />
+  </Folder>
+  <Folder Name="/Scripts/Deployment/">
+    <File Path="publish-manifest.json" />
+    <File Path="publish-vsmac.ps1" />
+    <File Path="publish.ps1" />
+  </Folder>
+  <Folder Name="/Smoke Tests/" />
+  <Folder Name="/Smoke Tests/AutoRest-v2/">
+    <Project Path="../test/GeneratedCode/AutoRest-V2/Net462/Net462.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V2/Net472/Net472.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V2/Net48/Net48.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V2/Net481/Net481.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V2/Net6/Net6.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V2/Net7/Net7.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V2/NetStandard20/NetStandard20.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V2/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+  <Folder Name="/Smoke Tests/AutoRest-v3/">
+    <Project Path="../test/GeneratedCode/AutoRest-V3/Net462/Net462.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V3/Net472/Net472.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V3/Net48/Net48.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V3/Net481/Net481.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V3/Net6/Net6.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V3/Net7/Net7.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V3/NetStandard20/NetStandard20.csproj" />
+    <Project Path="../test/GeneratedCode/AutoRest-V3/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+  <Folder Name="/Smoke Tests/Kiota/">
+    <Project Path="../test/GeneratedCode/Kiota/Net462/Net462.csproj" />
+    <Project Path="../test/GeneratedCode/Kiota/Net472/Net472.csproj" />
+    <Project Path="../test/GeneratedCode/Kiota/Net48/Net48.csproj" />
+    <Project Path="../test/GeneratedCode/Kiota/Net481/Net481.csproj" />
+    <Project Path="../test/GeneratedCode/Kiota/Net6/Net6.csproj" />
+    <Project Path="../test/GeneratedCode/Kiota/Net7/Net7.csproj" />
+    <Project Path="../test/GeneratedCode/Kiota/NetStandard20/NetStandard20.csproj" />
+    <Project Path="../test/GeneratedCode/Kiota/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+  <Folder Name="/Smoke Tests/NSwag/">
+    <Project Path="../test/GeneratedCode/Nswag/Net462/Net462.csproj" />
+    <Project Path="../test/GeneratedCode/Nswag/Net472/Net472.csproj" />
+    <Project Path="../test/GeneratedCode/Nswag/Net48/Net48.csproj" />
+    <Project Path="../test/GeneratedCode/Nswag/Net481/Net481.csproj" />
+    <Project Path="../test/GeneratedCode/Nswag/Net6/Net6.csproj" />
+    <Project Path="../test/GeneratedCode/Nswag/Net7/Net7.csproj" />
+    <Project Path="../test/GeneratedCode/Nswag/NetStandard20/NetStandard20.csproj" />
+    <Project Path="../test/GeneratedCode/Nswag/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+  <Folder Name="/Smoke Tests/OpenApiGenerator/">
+    <Project Path="../test/GeneratedCode/OpenApiGenerator/Net462/Net462.csproj" />
+    <Project Path="../test/GeneratedCode/OpenApiGenerator/Net472/Net472.csproj" />
+    <Project Path="../test/GeneratedCode/OpenApiGenerator/Net48/Net48.csproj" />
+    <Project Path="../test/GeneratedCode/OpenApiGenerator/Net481/Net481.csproj" />
+    <Project Path="../test/GeneratedCode/OpenApiGenerator/Net6/Net6.csproj" />
+    <Project Path="../test/GeneratedCode/OpenApiGenerator/Net7/Net7.csproj" />
+    <Project Path="../test/GeneratedCode/OpenApiGenerator/NetStandard20/NetStandard20.csproj" />
+    <Project Path="../test/GeneratedCode/OpenApiGenerator/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+  <Folder Name="/Smoke Tests/Refitter/">
+    <Project Path="../test/GeneratedCode/Refitter/Net462/Net462.csproj" />
+    <Project Path="../test/GeneratedCode/Refitter/Net472/Net472.csproj" />
+    <Project Path="../test/GeneratedCode/Refitter/Net48/Net48.csproj" />
+    <Project Path="../test/GeneratedCode/Refitter/Net481/Net481.csproj" />
+    <Project Path="../test/GeneratedCode/Refitter/Net6/Net6.csproj" />
+    <Project Path="../test/GeneratedCode/Refitter/Net7/Net7.csproj" />
+    <Project Path="../test/GeneratedCode/Refitter/NetStandard20/NetStandard20.csproj" />
+    <Project Path="../test/GeneratedCode/Refitter/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+  <Folder Name="/Smoke Tests/SwaggerCodegen/">
+    <Project Path="../test/GeneratedCode/SwaggerCodegen/Net462/Net462.csproj" />
+    <Project Path="../test/GeneratedCode/SwaggerCodegen/Net472/Net472.csproj" />
+    <Project Path="../test/GeneratedCode/SwaggerCodegen/Net48/Net48.csproj" />
+    <Project Path="../test/GeneratedCode/SwaggerCodegen/Net481/Net481.csproj" />
+    <Project Path="../test/GeneratedCode/SwaggerCodegen/Net6/Net6.csproj" />
+    <Project Path="../test/GeneratedCode/SwaggerCodegen/Net7/Net7.csproj" />
+    <Project Path="../test/GeneratedCode/SwaggerCodegen/NetStandard20/NetStandard20.csproj" />
+    <Project Path="../test/GeneratedCode/SwaggerCodegen/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="../.travis.yml" />
+    <File Path="../README.md" />
+    <File Path="build.cake" />
+    <File Path="Makefile" />
+    <File Path="Tests.runsettings" />
+  </Folder>
+  <Folder Name="/Source/" />
+  <Folder Name="/Source/CLI/">
+    <Project Path="CLI/ApiClientCodeGen.CLI.Tests/ApiClientCodeGen.CLI.Tests.csproj" />
+    <Project Path="CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj" />
+  </Folder>
+  <Folder Name="/Source/Core/">
+    <Project Path="Core/ApiClientCodeGen.Core.IntegrationTests/ApiClientCodeGen.Core.IntegrationTests.csproj" />
+    <Project Path="Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj" />
+    <Project Path="Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj" />
+    <Project Path="Core/ApiClientCodeGen.Tests.Common/ApiClientCodeGen.Tests.Common.csproj" />
+    <Project Path="VSIX/ApiClientCodegen.IntegrationTests/ApiClientCodegen.IntegrationTests.csproj" />
+    <Project Path="VSIX/ApiClientCodeGen.Tests/ApiClientCodeGen.Tests.csproj" />
+  </Folder>
+  <Folder Name="/Source/VSIX/">
+    <Project Path="VSIX/ApiClientCodeGen.VSIX.Dev17/ApiClientCodeGen.VSIX.Dev17.csproj">
+      <Platform Solution="*|arm64" Project="arm64" />
+      <Platform Solution="*|x86" Project="x86" />
+    </Project>
+    <Project Path="VSIX/ApiClientCodeGen.VSIX.Shared/ApiClientCodeGen.VSIX.Shared.shproj" />
+    <Project Path="VSIX/ApiClientCodeGen.VSIX/ApiClientCodeGen.VSIX.csproj">
+      <Platform Solution="*|arm64" Project="arm64" />
+      <Platform Solution="*|x86" Project="x86" />
+    </Project>
+  </Folder>
+</Solution>

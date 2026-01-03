@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../README.md" />
+    <File Path="build.cake" />
+    <File Path="Tests.runsettings" />
+  </Folder>
+  <Project Path="Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj" />
+  <Project Path="Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj" />
+  <Project Path="Core/ApiClientCodeGen.Tests.Common/ApiClientCodeGen.Tests.Common.csproj" />
+  <Project Path="VSIX/ApiClientCodegen.IntegrationTests/ApiClientCodegen.IntegrationTests.csproj" />
+  <Project Path="VSIX/ApiClientCodeGen.Tests/ApiClientCodeGen.Tests.csproj" />
+  <Project Path="VSIX/ApiClientCodeGen.VSIX.Dev17/ApiClientCodeGen.VSIX.Dev17.csproj" />
+  <Project Path="VSIX/ApiClientCodeGen.VSIX.Extensibility/ApiClientCodeGen.VSIX.Extensibility.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="VSIX/ApiClientCodeGen.VSIX.Shared/ApiClientCodeGen.VSIX.Shared.shproj" />
+  <Project Path="VSIX/ApiClientCodeGen.VSIX/ApiClientCodeGen.VSIX.csproj" />
+</Solution>

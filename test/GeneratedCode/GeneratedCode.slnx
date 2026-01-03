@@ -1,0 +1,72 @@
+<Solution>
+  <Folder Name="/AutoRest-v2/">
+    <Project Path="AutoRest-V2/Net462/Net462.csproj" />
+    <Project Path="AutoRest-V2/Net472/Net472.csproj" />
+    <Project Path="AutoRest-V2/Net48/Net48.csproj" />
+    <Project Path="AutoRest-V2/Net481/Net481.csproj" />
+    <Project Path="AutoRest-V2/Net6/Net6.csproj" />
+    <Project Path="AutoRest-V2/Net7/Net7.csproj" />
+    <Project Path="AutoRest-V2/NetStandard20/NetStandard20.csproj" />
+    <Project Path="AutoRest-V2/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+  <Folder Name="/AutoRest-v3/">
+    <Project Path="AutoRest-V3/Net462/Net462.csproj" />
+    <Project Path="AutoRest-V3/Net472/Net472.csproj" />
+    <Project Path="AutoRest-V3/Net48/Net48.csproj" />
+    <Project Path="AutoRest-V3/Net481/Net481.csproj" />
+    <Project Path="AutoRest-V3/Net6/Net6.csproj" />
+    <Project Path="AutoRest-V3/Net7/Net7.csproj" />
+    <Project Path="AutoRest-V3/NetStandard20/NetStandard20.csproj" />
+    <Project Path="AutoRest-V3/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+  <Folder Name="/Kiota/">
+    <Project Path="Kiota/Net462/Net462.csproj" />
+    <Project Path="Kiota/Net472/Net472.csproj" />
+    <Project Path="Kiota/Net48/Net48.csproj" />
+    <Project Path="Kiota/Net481/Net481.csproj" />
+    <Project Path="Kiota/Net6/Net6.csproj" />
+    <Project Path="Kiota/Net7/Net7.csproj" />
+    <Project Path="Kiota/NetStandard20/NetStandard20.csproj" />
+    <Project Path="Kiota/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+  <Folder Name="/NSwag/">
+    <Project Path="NSwag/Net462/Net462.csproj" />
+    <Project Path="NSwag/Net472/Net472.csproj" />
+    <Project Path="NSwag/Net48/Net48.csproj" />
+    <Project Path="NSwag/Net481/Net481.csproj" />
+    <Project Path="NSwag/Net6/Net6.csproj" />
+    <Project Path="NSwag/Net7/Net7.csproj" />
+    <Project Path="NSwag/NetStandard20/NetStandard20.csproj" />
+    <Project Path="NSwag/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+  <Folder Name="/OpenApiGenerator/">
+    <Project Path="OpenApiGenerator/Net462/Net462.csproj" />
+    <Project Path="OpenApiGenerator/Net472/Net472.csproj" />
+    <Project Path="OpenApiGenerator/Net48/Net48.csproj" />
+    <Project Path="OpenApiGenerator/Net481/Net481.csproj" />
+    <Project Path="OpenApiGenerator/Net6/Net6.csproj" />
+    <Project Path="OpenApiGenerator/Net7/Net7.csproj" />
+    <Project Path="OpenApiGenerator/NetStandard20/NetStandard20.csproj" />
+    <Project Path="OpenApiGenerator/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+  <Folder Name="/Refitter/">
+    <Project Path="Refitter/Net462/Net462.csproj" />
+    <Project Path="Refitter/Net472/Net472.csproj" />
+    <Project Path="Refitter/Net48/Net48.csproj" />
+    <Project Path="Refitter/Net481/Net481.csproj" />
+    <Project Path="Refitter/Net6/Net6.csproj" />
+    <Project Path="Refitter/Net7/Net7.csproj" />
+    <Project Path="Refitter/NetStandard20/NetStandard20.csproj" />
+    <Project Path="Refitter/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+  <Folder Name="/SwaggerCodegen/">
+    <Project Path="SwaggerCodegen/Net462/Net462.csproj" />
+    <Project Path="SwaggerCodegen/Net472/Net472.csproj" />
+    <Project Path="SwaggerCodegen/Net48/Net48.csproj" />
+    <Project Path="SwaggerCodegen/Net481/Net481.csproj" />
+    <Project Path="SwaggerCodegen/Net6/Net6.csproj" />
+    <Project Path="SwaggerCodegen/Net7/Net7.csproj" />
+    <Project Path="SwaggerCodegen/NetStandard20/NetStandard20.csproj" />
+    <Project Path="SwaggerCodegen/NetStandard21/NetStandard21.csproj" />
+  </Folder>
+</Solution>

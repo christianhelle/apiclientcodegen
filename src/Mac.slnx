@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../README.md" />
+    <File Path="build.cake" />
+  </Folder>
+  <Project Path="Core/ApiClientCodeGen.Core.IntegrationTests/ApiClientCodeGen.Core.IntegrationTests.csproj" />
+  <Project Path="Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj" />
+  <Project Path="Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj" />
+  <Project Path="Core/ApiClientCodeGen.Tests.Common/ApiClientCodeGen.Tests.Common.csproj" />
+  <Project Path="VSMac/ApiClientCodeGen.VSMac/ApiClientCodeGen.VSMac.csproj" />
+</Solution>
