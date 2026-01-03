@@ -352,7 +352,7 @@ jobs:
       working-directory: test
 
     - name: Build Kiota generated code
-      run: dotnet build ./GeneratedCode/Kiota/Kiota.sln
+      run: dotnet build ./GeneratedCode/Kiota/Kiota.slnx
       working-directory: test
 
   JMeter:

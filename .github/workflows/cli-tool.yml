@@ -40,11 +40,11 @@ jobs:
       working-directory: src
 
     - name: Build with dotnet
-      run: dotnet build Rapicgen.sln
+      run: dotnet build Rapicgen.slnx
       working-directory: src
     
     - name: Build
-      run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.sln -p:PackageVersion="${{ env.VERSION }}"
+      run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.slnx -p:PackageVersion="${{ env.VERSION }}"
 
     - name: Core test project
       run: dotnet test --no-build src/Core/ApiClientCodeGen.Core.Tests/ApiClientCodeGen.Core.Tests.csproj

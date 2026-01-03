@@ -50,7 +50,7 @@ jobs:
           8.0.x
 
     - name: Build with dotnet
-      run: dotnet build Rapicgen.sln
+      run: dotnet build Rapicgen.slnx
       working-directory: src
 
     - name: Core test project
@@ -72,11 +72,11 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Restore
-      run: msbuild VSIX.sln -t:Restore
+      run: msbuild VSIX.slnx -t:Restore
       working-directory: src
 
     - name: Build
-      run: msbuild VSIX.sln /property:Configuration=Release /t:Rebuild
+      run: msbuild VSIX.slnx /property:Configuration=Release /t:Rebuild
       working-directory: src
 
     - name: Run .NET Core Tests

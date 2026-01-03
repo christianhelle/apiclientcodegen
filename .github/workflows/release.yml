@@ -30,7 +30,7 @@ jobs:
       run: ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
       working-directory: src
     - name: Build
-      run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.sln -p:PackageVersion="${{ env.VERSION }}"
+      run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.slnx -p:PackageVersion="${{ env.VERSION }}"
     - name: Package CLI Tool
       run: dotnet pack --no-build -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
     - name: NuGet login (OIDC → temp API key)
@@ -70,10 +70,10 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
     - name: Restore
-      run: msbuild VSIX.sln -t:Restore
+      run: msbuild VSIX.slnx -t:Restore
       working-directory: src
     - name: Build
-      run: msbuild VSIX.sln /property:Configuration=Release /p:DeployExtension=false
+      run: msbuild VSIX.slnx /property:Configuration=Release /p:DeployExtension=false
       working-directory: src
     - name: Move build output
       run: |

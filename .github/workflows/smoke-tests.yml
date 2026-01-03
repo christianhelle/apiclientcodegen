@@ -295,7 +295,7 @@ jobs:
       continue-on-error: ${{ matrix.os == 'macos-latest' }}
 
     - name: Build Kiota generated code
-      run: dotnet build ./GeneratedCode/Kiota/Kiota.sln
+      run: dotnet build ./GeneratedCode/Kiota/Kiota.slnx
       working-directory: test
 
     - name: Generate code with Refitter
