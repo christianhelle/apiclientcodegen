@@ -41,5 +41,11 @@
                Foreground="Gray"
                Text="Generate REST API client code from OpenAPI/Swagger specifications using various code generators including NSwag, OpenAPI Generator, Swagger Codegen, AutoRest, Refitter, and Kiota."
                TextWrapping="Wrap" />
+    
+    <TextBlock Margin="0,10,0,5"
+               FontSize="11"
+               Foreground="Gray"
+               Text="{Binding AnalyticsDescription}"
+               TextWrapping="Wrap" />
   </StackPanel>
 </DataTemplate>

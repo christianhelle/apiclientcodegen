@@ -23,7 +23,8 @@ public class AboutCommand : Command
             version: this.GetExtensionAssemblyVersion(),
             publisher: "Christian Resma Helle",
             extensionId: "f7530eb1-1ce9-46ac-8fab-165b68cf3d61",
-            supportKey: SupportInformation.GetSupportKey());
+            supportKey: SupportInformation.GetSupportKey(),
+            analyticsDescription: "%Settings.Analytics.Description%");
 #pragma warning restore CA2000 // Dispose objects before losing scope
 
         await Extensibility.Shell().ShowDialogAsync(dialog, cancellationToken);
