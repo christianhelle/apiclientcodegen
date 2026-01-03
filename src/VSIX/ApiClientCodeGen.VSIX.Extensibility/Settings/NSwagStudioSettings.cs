@@ -59,13 +59,12 @@ internal static class NSwagStudioSettings
         "classStyle",
         "%Settings.NSwagStudio.ClassStyle.DisplayName%",
         NSwagStudioCategory,
-        new[]
-        {
+        [
             new EnumSettingEntry(nameof(CSharpClassStyle.Poco), "%Settings.NSwagStudio.ClassStyle.Poco%"),
             new EnumSettingEntry(nameof(CSharpClassStyle.Inpc), "%Settings.NSwagStudio.ClassStyle.Inpc%"),
             new EnumSettingEntry(nameof(CSharpClassStyle.Prism), "%Settings.NSwagStudio.ClassStyle.Prism%"),
             new EnumSettingEntry(nameof(CSharpClassStyle.Record), "%Settings.NSwagStudio.ClassStyle.Record%"),
-        },
+        ],
         defaultValue: nameof(CSharpClassStyle.Poco))
     {
         Description = "%Settings.NSwagStudio.ClassStyle.Description%",

@@ -28,13 +28,12 @@ internal static class KiotaSettings
         "typeAccessModifier",
         "%Settings.Kiota.TypeAccessModifier.DisplayName%",
         KiotaCategory,
-        new[]
-        {
+        [
             new EnumSettingEntry("Public", "%Settings.Kiota.TypeAccessModifier.Public%"),
             new EnumSettingEntry("Internal", "%Settings.Kiota.TypeAccessModifier.Internal%"),
             new EnumSettingEntry("Protected", "%Settings.Kiota.TypeAccessModifier.Protected%"),
             new EnumSettingEntry("Private", "%Settings.Kiota.TypeAccessModifier.Private%"),
-        },
+        ],
         defaultValue: "Public")
     {
         Description = "%Settings.Kiota.TypeAccessModifier.Description%",

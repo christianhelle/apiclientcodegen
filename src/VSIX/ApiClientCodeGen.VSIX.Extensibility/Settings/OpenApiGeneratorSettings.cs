@@ -65,8 +65,7 @@ internal static class OpenApiGeneratorSettings
         "targetFramework",
         "%Settings.OpenApi.TargetFramework.DisplayName%",
         OpenApiGeneratorCategory,
-        new[]
-        {
+        [
             new EnumSettingEntry("NetStandard21", "%Settings.OpenApi.TargetFramework.NetStandard21%"),
             new EnumSettingEntry("NetStandard20", "%Settings.OpenApi.TargetFramework.NetStandard20%"),
             new EnumSettingEntry("NetStandard16", "%Settings.OpenApi.TargetFramework.NetStandard16%"),
@@ -79,7 +78,7 @@ internal static class OpenApiGeneratorSettings
             new EnumSettingEntry("Net70", "%Settings.OpenApi.TargetFramework.Net70%"),
             new EnumSettingEntry("Net80", "%Settings.OpenApi.TargetFramework.Net80%"),
             new EnumSettingEntry("Net90", "%Settings.OpenApi.TargetFramework.Net90%"),
-        },
+        ],
         defaultValue: "NetStandard21")
     {
         Description = "%Settings.OpenApi.TargetFramework.Description%",
@@ -140,8 +139,7 @@ internal static class OpenApiGeneratorSettings
         "version",
         "%Settings.OpenApi.Version.DisplayName%",
         OpenApiGeneratorCategory,
-        new[]
-        {
+        [
             new EnumSettingEntry("Latest", "%Settings.OpenApi.Version.Latest%"),
             new EnumSettingEntry("V7180", "%Settings.OpenApi.Version.V7180%"),
             new EnumSettingEntry("V7170", "%Settings.OpenApi.Version.V7170%"),
@@ -155,7 +153,7 @@ internal static class OpenApiGeneratorSettings
             new EnumSettingEntry("V7090", "%Settings.OpenApi.Version.V7090%"),
             new EnumSettingEntry("V7080", "%Settings.OpenApi.Version.V7080%"),
             new EnumSettingEntry("V7070", "%Settings.OpenApi.Version.V7070%"),
-        },
+        ],
         defaultValue: "Latest")
     {
         Description = "%Settings.OpenApi.Version.Description%",
