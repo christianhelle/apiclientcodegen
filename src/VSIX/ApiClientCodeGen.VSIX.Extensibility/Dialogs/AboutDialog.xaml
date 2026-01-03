@@ -36,10 +36,75 @@
               Padding="5,2" />
     </StackPanel>
     
-    <TextBlock Margin="0,20,0,5"
-               FontSize="11"
-               Foreground="Gray"
-               Text="Generate REST API client code from OpenAPI/Swagger specifications using various code generators including NSwag, OpenAPI Generator, Swagger Codegen, AutoRest, Refitter, and Kiota."
-               TextWrapping="Wrap" />
+    <!-- Description Section -->
+    <Border BorderBrush="LightGray" 
+            BorderThickness="0,1,0,0" 
+            Margin="0,20,0,0" 
+            Padding="0,15,0,0">
+      <StackPanel>
+        <TextBlock FontSize="11"
+                   Foreground="Gray"
+                   TextWrapping="Wrap">
+          Generate REST API client code from OpenAPI/Swagger specifications using various code generators including 
+          <Run FontWeight="SemiBold">NSwag</Run>, 
+          <Run FontWeight="SemiBold">OpenAPI Generator</Run>, 
+          <Run FontWeight="SemiBold">Swagger Codegen</Run>, 
+          <Run FontWeight="SemiBold">AutoRest</Run>, 
+          <Run FontWeight="SemiBold">Refitter</Run>, and 
+          <Run FontWeight="SemiBold">Kiota</Run>.
+        </TextBlock>
+
+        <!-- Analytics Section -->
+        <TextBlock FontSize="12"
+                   FontWeight="SemiBold"
+                   Margin="0,20,0,8"
+                   Text="Telemetry &amp; Privacy" />
+        
+        <TextBlock FontSize="11"
+                   Foreground="Gray"
+                   Margin="0,0,0,10"
+                   TextWrapping="Wrap">
+          This extension collects errors and tracks feature usages to 
+          <Run FontWeight="SemiBold">Exceptionless</Run> and 
+          <Run FontWeight="SemiBold">Azure Application Insights</Run> by default. 
+          You may opt-out of telemetry collection at any time in the settings.
+        </TextBlock>
+        
+        <TextBlock FontSize="11"
+                   Foreground="Gray"
+                   Margin="0,0,0,10"
+                   TextWrapping="Wrap">
+          <Run FontWeight="SemiBold">User tracking is anonymous:</Run> 
+          Identification uses a Support Key (shown above) and a generated anonymous identity based on a secure hash algorithm of username@host.
+        </TextBlock>
+        
+        <TextBlock FontSize="11"
+                   Foreground="Gray"
+                   Margin="0,0,0,5"
+                   Text="Tracked user actions:" />
+        
+        <TextBlock FontSize="11"
+                   Foreground="Gray"
+                   Margin="15,0,0,5"
+                   Text="• Custom Tool executions" />
+        
+        <TextBlock FontSize="11"
+                   Foreground="Gray"
+                   Margin="15,0,0,5"
+                   Text="• Clicking on &quot;New REST API Client&quot; from the Solution Explorer" />
+        
+        <TextBlock FontSize="11"
+                   Foreground="Gray"
+                   Margin="15,0,0,10"
+                   Text="• Clicking on &quot;Generate NSwag Studio Output&quot; from the Solution Explorer" />
+        
+        <TextBlock FontSize="11"
+                   FontStyle="Italic"
+                   Foreground="Gray"
+                   TextWrapping="Wrap">
+          The purpose of this telemetry is to understand which features to prioritize and to support users who report issues using their support key.
+        </TextBlock>
+      </StackPanel>
+    </Border>
   </StackPanel>
 </DataTemplate>
