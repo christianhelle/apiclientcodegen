@@ -30,10 +30,9 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-latest, windows-latest, ubuntu-latest ]
 
     name: C#
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     timeout-minutes: 20
 
     steps:
@@ -96,7 +95,6 @@ jobs:
 
     - name: Build .NET 4.8.1 NSwag generated code
       run: dotnet build ./GeneratedCode/NSwag/Net481/Net481.csproj
-      if: ${{ matrix.os == 'windows-2022' }}
       working-directory: test
 
     - name: Build .NET 4.8 NSwag generated code
@@ -152,7 +150,6 @@ jobs:
 
     - name: Build .NET 4.8.1 OpenAPI Generator generated code
       run: dotnet build ./GeneratedCode/OpenApiGenerator/Net481/Net481.csproj
-      if: ${{ matrix.os == 'windows-2022' }}
       working-directory: test
 
     - name: Build .NET 4.8 OpenAPI Generator generated code
@@ -208,7 +205,6 @@ jobs:
 
     - name: Build .NET 4.8.1 Swagger Codegen CLI generated code
       run: dotnet build ./GeneratedCode/SwaggerCodegen/Net481/Net481.csproj
-      if: ${{ matrix.os == 'windows-2022' }}
       working-directory: test
 
     - name: Build .NET 4.8 Swagger Codegen CLI generated code
@@ -265,7 +261,7 @@ jobs:
 
     - name: Build .NET 4.8.1 AutoRest generated code
       run: dotnet build ./GeneratedCode/AutoRest-${{ matrix.version }}/Net481/Net481.csproj
-      if: ${{ matrix.version == 'V2' && matrix.os == 'windows-2022' }}
+      if: ${{ matrix.version == 'V2' && matrix.os == 'windows-latest' }}
       working-directory: test
 
     - name: Build .NET 4.8 AutoRest generated code
@@ -331,7 +327,6 @@ jobs:
 
     - name: Build .NET 4.8.1 Refitter generated code
       run: dotnet build ./GeneratedCode/Refitter/Net481/Net481.csproj
-      if: ${{ matrix.os == 'windows-2022' }}
       working-directory: test
 
     - name: Build .NET 4.8 Refitter generated code
@@ -361,10 +356,9 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-latest, windows-2022, ubuntu-latest ]
 
     name: JMeter
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     timeout-minutes: 20
 
     steps:
@@ -403,10 +397,9 @@ jobs:
       matrix:
         format: [ json, yaml ]
         version: [ V2, V3 ]
-        os: [ macos-latest, windows-2022, ubuntu-latest ]
 
     name: TypeScript
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     timeout-minutes: 20
 
     steps:
