@@ -80,6 +80,7 @@ jobs:
       run: |
         mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
         mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix
+        mv src/VSIX/ApiClientCodeGen.VSIX.Extensibility/bin/Release/net8.0/ApiClientCodeGen.VSIX.Extensibility.vsix ApiClientCodeGen.VSIX.Extensibility-${{ env.VERSION }}.vsix
     - name: Publish artifacts
       uses: actions/upload-artifact@v6
       with:
@@ -241,6 +242,15 @@ jobs:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
         asset_path: artifacts/VSCode-Extension/apiclientcodegen-${{ env.VERSION }}.vsix
         asset_name: apiclientcodegen-${{ env.VERSION }}.vsix
+        asset_content_type: application/zip
+    - name: Upload VSIX Extensibility asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-release.outputs.upload_url }}
+        asset_path: artifacts/Visual Studio Extension/ApiClientCodeGen.VSIX.Extensibility-${{ env.VERSION }}.vsix
+        asset_name: ApiClientCodeGen.VSIX.Extensibility-${{ env.VERSION }}.vsix
         asset_content_type: application/zip
     - name: Upload IntelliJ Plugin asset
       uses: actions/upload-release-asset@v1
