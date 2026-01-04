@@ -69,6 +69,6 @@ jobs:
         Vsix-PushArtifacts
         Vsix-PublishToGallery -path ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/Marketplace.md
         Vsix-PublishToGallery -path ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/Marketplace2022.md
-        Vsix-PublishToGallery -path ApiClientCodeGen.VSIX.Extensibility-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/MarketplaceExtensibility.md
+        Vsix-PublishToGallery -path ApiClientCodeGen.VSIX.Extensibility-${{ env.VERSION }}.vsix -readmeUrl https://raw.githubusercontent.com/christianhelle/apiclientcodegen/master/docs/Marketplace2026.md
       shell: pwsh
       continue-on-error: true
