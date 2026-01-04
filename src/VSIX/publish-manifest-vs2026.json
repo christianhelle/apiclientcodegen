@@ -2,10 +2,10 @@
     "$schema": "http://json.schemastore.org/vsix-publish",
     "categories": [ "Coding" ],
     "identity": {
-        "internalName": "ApiClientCodeGenerator2022",
+        "internalName": "Rapicgen",
         "tags": [ "OpenAPI", "Swagger", "NSwag", "AutoRest", "Refit", "REST API", "Code Generator" ]
     },
-    "overview": "../docs/Marketplace2022.md",
+    "overview": "../../docs/Marketplace2026.md",
     "priceCategory": "free",
     "publisher": "ChristianResmaHelle",
     "private": false,

@@ -5,7 +5,7 @@
         "internalName": "ApiClientCodeGenerator",
         "tags": [ "OpenAPI", "Swagger", "NSwag", "AutoRest", "Refit", "REST API", "Code Generator" ]
     },
-    "overview": "../docs/Marketplace.md",
+    "overview": "../../docs/Marketplace.md",
     "priceCategory": "free",
     "publisher": "ChristianResmaHelle",
     "private": false,
