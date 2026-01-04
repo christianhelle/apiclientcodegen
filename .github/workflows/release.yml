@@ -217,7 +217,7 @@ jobs:
     - uses: actions/download-artifact@v7
       with:
         path: artifacts
-    - name: Upload VSIX asset
+    - name: Upload VSIX for VS 2019 asset
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -226,7 +226,16 @@ jobs:
         asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
         asset_name: ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
         asset_content_type: application/zip
-    - name: Upload VSIX for VS2026 asset
+    - name: Upload VSIX for VS 2022 asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create-release.outputs.upload_url }}
+        asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
+        asset_name: ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
+        asset_content_type: application/zip
+    - name: Upload VSIX for VS 2026 asset
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -243,16 +252,7 @@ jobs:
         upload_url: ${{ steps.create-release.outputs.upload_url }}
         asset_path: artifacts/VSCode-Extension/apiclientcodegen-${{ env.VERSION }}.vsix
         asset_name: apiclientcodegen-${{ env.VERSION }}.vsix
-        asset_content_type: application/zip
-    - name: Upload VSIX Extensibility asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: artifacts/Visual Studio Extension/ApiClientCodeGen.VSIX.Extensibility-${{ env.VERSION }}.vsix
-        asset_name: ApiClientCodeGen.VSIX.Extensibility-${{ env.VERSION }}.vsix
-        asset_content_type: application/zip
+        asset_content_type: application/zip    
     - name: Upload IntelliJ Plugin asset
       uses: actions/upload-release-asset@v1
       env:
