@@ -8,11 +8,11 @@ A collection of Visual Studio C# code generators for Swagger / OpenAPI specifica
 
 - Based on the new out-of-process Visual Studio Extensibility model
 - Add New REST API Client to a project from an OpenAPI specification URL (e.g <https://petstore.swagger.io/v2/swagger.json>) using the following code generators:
+  - [Refitter](https://github.com/christianhelle/refitter)
   - [NSwag](https://github.com/RicoSuter/NSwag)
   - [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator)
-  - [Swagger Codegen](https://github.com/swagger-api/swagger-codegen)
-  - [Refitter](https://github.com/christianhelle/refitter)
   - [Microsoft Kiota](https://github.com/microsoft/kiota)
+  - [Swagger Codegen](https://github.com/swagger-api/swagger-codegen)
   - [AutoRest](https://github.com/Azure/autorest)
 - Generate code using configuration files with the following methods:
   - `.nswag` configuration files from [NSwagStudio](https://github.com/RicoSuter/NSwag/wiki/NSwagStudio) by including it in the project and using the **Generate NSwag Studio output** context menu
