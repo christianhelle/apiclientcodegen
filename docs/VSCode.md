@@ -69,7 +69,8 @@ This extension adds a context menu item **REST API Client Code Generator** when 
 
 - .NET SDK 6.0 or higher
 - Java Runtime Environment (for OpenAPI Generator and Swagger Codegen CLI)
-- NPM (for AutoREST and NSwag)
+- .NET SDK (for NSwag, Kiota, and Refitter)
+- NPM (for AutoREST)
 
 ### For TypeScript code generation
 
