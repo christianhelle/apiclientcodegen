@@ -16,7 +16,6 @@ public class GenerateSwaggerCommand(TraceSource traceSource, ExtensionSettingsPr
     public override CommandConfiguration CommandConfiguration => new("%SwaggerCommand.DisplayName%")
     {
         Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
-        Placements = [KnownPlacements.ItemNode],
         VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
     };
 

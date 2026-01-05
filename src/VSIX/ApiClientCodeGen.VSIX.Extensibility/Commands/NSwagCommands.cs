@@ -19,7 +19,6 @@ public class GenerateNSwagCommand(TraceSource traceSource, ExtensionSettingsProv
     public override CommandConfiguration CommandConfiguration => new("%NSwagCommand.DisplayName%")
     {
         Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
-        Placements = [KnownPlacements.ItemNode],
         VisibleWhen = ActivationConstraint.ClientContext(
             ClientContextKey.Shell.ActiveSelectionFileName, 
             ".(json|ya?ml)")
