@@ -7,6 +7,7 @@ using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.AutoRest;
 using System.Diagnostics;
 using ApiClientCodeGen.VSIX.Extensibility.Settings;
+using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
@@ -18,6 +19,7 @@ public class GenerateAutoRestCommand(TraceSource traceSource, ExtensionSettingsP
         => new("%AutoRestCommand.DisplayName%")
         {
             Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+            Placements = [KnownPlacements.ItemNode],
             VisibleWhen = ActivationConstraint.ClientContext(
                 ClientContextKey.Shell.ActiveSelectionFileName,
                 ".(json|ya?ml)")

@@ -17,6 +17,7 @@ public class GenerateRefitterCommand(TraceSource traceSource, ExtensionSettingsP
         => new("%RefitterCommand.DisplayName%")
         {
             Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+            Placements = [KnownPlacements.ItemNode],
             VisibleWhen = ActivationConstraint.ClientContext(
             ClientContextKey.Shell.ActiveSelectionFileName,
             ".(json|ya?ml)")

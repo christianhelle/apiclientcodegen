@@ -6,6 +6,7 @@ using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.Kiota;
 using System.Diagnostics;
 using ApiClientCodeGen.VSIX.Extensibility.Settings;
+using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
@@ -15,6 +16,7 @@ public class GenerateKiotaCommand(TraceSource traceSource, ExtensionSettingsProv
     public override CommandConfiguration CommandConfiguration => new("%KiotaCommand.DisplayName%")
     {
         Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+        Placements = [KnownPlacements.ItemNode],
         VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
     };
 
