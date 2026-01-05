@@ -29,26 +29,19 @@ internal class ExtensionEntrypoint : Extension
         {
             Placements =
             [
-                KnownPlacements.ItemNode_OpenGroup,
-                KnownPlacements.ProjectNode_BuildGroup,
+                KnownPlacements.ItemNode,
+                KnownPlacements.Node_IncludeExcludeGroup
             ],
             Children =
             [
-                MenuChild.Group(new CommandGroupConfiguration()
-                {
-                    Children =
-                    [
-                        GroupChild.Command<Commands.GenerateRefitterCommand>(),
-                        GroupChild.Command<Commands.GenerateRefitterSettingsCommand>(),
-                        GroupChild.Command<Commands.GenerateNSwagCommand>(),
-                        GroupChild.Command<Commands.GenerateNSwagStudioCommand>(),
-                        GroupChild.Command<Commands.GenerateOpenApiCommand>(),
-                        GroupChild.Command<Commands.GenerateKiotaCommand>(),
-                        GroupChild.Command<Commands.GenerateSwaggerCommand>(),
-                        GroupChild.Command<Commands.GenerateAutoRestCommand>(),
-                        GroupChild.Command<Commands.AboutCommand>(),
-                    ]
-                })
+                MenuChild.Command<Commands.GenerateRefitterCommand>(),
+                MenuChild.Command<Commands.GenerateNSwagCommand>(),
+                MenuChild.Command<Commands.GenerateOpenApiCommand>(),
+                MenuChild.Command<Commands.GenerateKiotaCommand>(),
+                MenuChild.Command<Commands.GenerateSwaggerCommand>(),
+                MenuChild.Command<Commands.GenerateAutoRestCommand>(),
+                MenuChild.Separator,
+                MenuChild.Command<Commands.AboutCommand>(),
             ],
         };
 

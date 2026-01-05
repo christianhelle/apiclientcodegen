@@ -3,7 +3,6 @@ using Microsoft.VisualStudio.Extensibility.Commands;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.Swagger;
 using Rapicgen.Core.Installer;
-using Rapicgen.Core.Options.General;
 using System.Diagnostics;
 using ApiClientCodeGen.VSIX.Extensibility.Settings;
 

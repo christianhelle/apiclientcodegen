@@ -5,10 +5,10 @@ using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Logging;
-using Rapicgen.Core.Options.NSwag;
 using System.Diagnostics;
 using System.Text.Json;
 using ApiClientCodeGen.VSIX.Extensibility.Settings;
+using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
@@ -40,6 +40,7 @@ public class GenerateNSwagStudioCommand(TraceSource traceSource, ExtensionSettin
     public override CommandConfiguration CommandConfiguration => new("%NSwagStudioCommand.DisplayName%")
     {
         Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+        Placements = [KnownPlacements.Node_IncludeExcludeGroup],
         VisibleWhen = ActivationConstraint.ClientContext(
             ClientContextKey.Shell.ActiveSelectionFileName,
             ".(nswag)")

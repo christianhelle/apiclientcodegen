@@ -1,11 +1,11 @@
 ﻿using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Rapicgen.Core.Logging;
-using Rapicgen.Core.Options.Refitter;
 using Refitter.Core;
 using System.Diagnostics;
 using System.Text.Json;
 using ApiClientCodeGen.VSIX.Extensibility.Settings;
+using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
@@ -39,9 +39,10 @@ public class GenerateRefitterSettingsCommand(TraceSource traceSource, ExtensionS
         => new("%RefitterSettingsCommand.DisplayName%")
         {
             Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+            Placements = [KnownPlacements.Node_IncludeExcludeGroup],
             VisibleWhen = ActivationConstraint.ClientContext(
-            ClientContextKey.Shell.ActiveSelectionFileName,
-            ".(refitter)")
+                ClientContextKey.Shell.ActiveSelectionFileName,
+                ".(refitter)")
         };
 
     public override async Task ExecuteCommandAsync(
@@ -168,7 +169,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
         var generator = await RefitGenerator.CreateAsync(settings);
 
         using var context = new DependencyContext(
-            "Refitter", 
+            "Refitter",
             JsonSerializer.Serialize(settings, serializerOptions));
 
         if (settings.GenerateMultipleFiles)
