@@ -27,11 +27,11 @@ internal class ExtensionEntrypoint : Extension
     public static MenuConfiguration GenerateMenu
         => new("%ApiClientCodeGenerator.GroupDisplayName%")
         {
-            Placements = 
+            Placements =
             [
                 KnownPlacements.ItemNode,
                 KnownPlacements.Node_IncludeExcludeGroup
-            ],            
+            ],
             Children =
             [
                 MenuChild.Command<Commands.GenerateRefitterCommand>(),
