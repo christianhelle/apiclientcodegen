@@ -40,6 +40,8 @@ internal class ExtensionEntrypoint : Extension
                 MenuChild.Command<Commands.GenerateKiotaCommand>(),
                 MenuChild.Command<Commands.GenerateSwaggerCommand>(),
                 MenuChild.Command<Commands.GenerateAutoRestCommand>(),
+                MenuChild.Separator,
+                MenuChild.Command<Commands.AboutCommand>(),
             ],
         };
 
