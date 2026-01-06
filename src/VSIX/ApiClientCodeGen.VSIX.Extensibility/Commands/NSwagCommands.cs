@@ -56,28 +56,32 @@ public class GenerateNSwagStudioCommand(
     {
         try
         {
+            string inputFile = await context.GetInputFileAsync(cancellationToken);
+            Logger.Instance.WriteLine($"Starting NSwag Studio code generation for: {inputFile}");
+
             var launcher = new ProcessLauncher();
             await Task.Run(async () =>
-                new NSwagStudioCodeGenerator(
-                    await context.GetInputFileAsync(cancellationToken),
+            {
+                return new NSwagStudioCodeGenerator(
+                    inputFile,
                     await settingsProvider.GetGeneralOptionsAsync(cancellationToken),
                     launcher,
                     new DependencyInstaller(
                         new NpmInstaller(launcher),
                         new FileDownloader(new WebDownloader()), launcher))
-                 .GenerateCode(null));
+                    .GenerateCode(null);
+            });
         }
         catch (Exception e)
         {
             traceSource.TraceEvent(
                 TraceEventType.Error,
                 0,
-                "Error generating NSwag client code: {0}",
+                "Error generating code using NSwag Studio: {0}",
                 e.Message);
 
-            await this.WriteToOutputWindowAsync(
-                "Error generating NSwag client code: " + e.Message,
-                cancellationToken);
+            Logger.Instance.WriteLine(
+                "Error generating code using NSwag Studio: " + e.Message);
         }
     }
 }
