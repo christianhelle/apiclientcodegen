@@ -9,13 +9,15 @@ namespace ApiClientCodeGen.VSIX.Extensibility;
 [VisualStudioContribution]
 internal class ExtensionEntrypoint : Extension
 {
+    const string ExtensionName = "REST API Client Code Generator (PREVIEW)";
+
     public override ExtensionConfiguration ExtensionConfiguration => new()
     {
         Metadata = new(
             id: "f7530eb1-1ce9-46ac-8fab-165b68cf3d61",
             version: ExtensionAssemblyVersion,
             publisherName: "Christian Resma Helle",
-            displayName: "REST API Client Code Generator (PREVIEW)",
+            displayName: ExtensionName,
             description: "Generate REST API client code from OpenAPI/Swagger specifications")
         {
             Icon = "icon.png",
