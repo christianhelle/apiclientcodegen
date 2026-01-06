@@ -1,14 +1,16 @@
+﻿using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
+using ApiClientCodeGen.VSIX.Extensibility.Settings;
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using NSwag.CodeGeneration.CSharp;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.NSwag;
+using Rapicgen.Core.Generators.NSwagStudio;
+using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using System.Diagnostics;
 using System.Text.Json;
-using ApiClientCodeGen.VSIX.Extensibility.Settings;
-using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
@@ -34,8 +36,10 @@ public class GenerateNSwagCommand(TraceSource traceSource, ExtensionSettingsProv
 }
 
 [VisualStudioContribution]
-public class GenerateNSwagStudioCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider)
-    : GenerateNSwagBaseCommand(traceSource, settingsProvider)
+public class GenerateNSwagStudioCommand(
+    TraceSource traceSource, 
+    ExtensionSettingsProvider settingsProvider)
+    : Command
 {
     public override CommandConfiguration CommandConfiguration => new("%NSwagStudioCommand.DisplayName%")
     {
@@ -48,11 +52,38 @@ public class GenerateNSwagStudioCommand(TraceSource traceSource, ExtensionSettin
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
-        await GenerateAsync(
-            await context.GetInputFileAsync(cancellationToken),
-            await context.GetDefaultNamespaceAsync(cancellationToken),
-            cancellationToken);
+        CancellationToken cancellationToken)
+    {
+        try
+        {
+            string inputFile = await context.GetInputFileAsync(cancellationToken);
+            Logger.Instance.WriteLine($"Starting NSwag Studio code generation for: {inputFile}");
+
+            var launcher = new ProcessLauncher();
+            await Task.Run(async () =>
+            {
+                return new NSwagStudioCodeGenerator(
+                    inputFile,
+                    await settingsProvider.GetGeneralOptionsAsync(cancellationToken),
+                    launcher,
+                    new DependencyInstaller(
+                        new NpmInstaller(launcher),
+                        new FileDownloader(new WebDownloader()), launcher))
+                    .GenerateCode(null);
+            });
+        }
+        catch (Exception e)
+        {
+            traceSource.TraceEvent(
+                TraceEventType.Error,
+                0,
+                "Error generating code using NSwag Studio: {0}",
+                e.Message);
+
+            Logger.Instance.WriteLine(
+                "Error generating code using NSwag Studio: " + e.Message);
+        }
+    }
 }
 
 [VisualStudioContribution]
