@@ -7,6 +7,8 @@ namespace ApiClientCodeGen.VSIX.Extensibility;
 
 public class OutputWindowRemoteLogger(OutputChannel outputChannel) : IRemoteLogger
 {
+    private readonly object lockObject = new();
+
     public void Disable()
     {
         // Method intentionally left empty.
@@ -39,6 +41,9 @@ public class OutputWindowRemoteLogger(OutputChannel outputChannel) : IRemoteLogg
 
     public void WriteLine(object data)
     {
-        outputChannel.Writer.WriteLine(data);
+        lock (lockObject)
+        {
+            outputChannel.Writer.WriteLine(data);
+        }
     }
 }
