@@ -1,8 +1,9 @@
-﻿using Microsoft.VisualStudio.Extensibility;
+using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.OpenApi;
 using Rapicgen.Core.Installer;
+using Rapicgen.Core.Logging;
 using System.Diagnostics;
 using ApiClientCodeGen.VSIX.Extensibility.Settings;
 
@@ -53,15 +54,21 @@ public abstract class GenerateOpenApiBaseCommand(TraceSource traceSource, Extens
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
+        Logger.Instance.WriteLine($"Starting OpenAPI Generator code generation for: {inputFile}");
+        
         if (inputFile == null)
         {
+            Logger.Instance.WriteLine("No input file specified");
             return;
         }
 
         try
         {
+            Logger.Instance.WriteLine("Loading OpenAPI Generator configuration...");
             var generalOptions = await settingsProvider.GetGeneralOptionsAsync(cancellationToken);
             var openApiOptions = await settingsProvider.GetOpenApiGeneratorOptionsAsync(cancellationToken);
+            
+            Logger.Instance.WriteLine("Initializing OpenAPI Generator code generator...");
             var generator = new OpenApiCSharpCodeGenerator(
                 inputFile,
                 defaultNamespace,
@@ -73,17 +80,22 @@ public abstract class GenerateOpenApiBaseCommand(TraceSource traceSource, Extens
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()));
 
+            Logger.Instance.WriteLine("Generating C# client code...");
             var csharpCode = await Task.Run(() => generator.GenerateCode(null));
             if (csharpCode is not null)
             {
+                var outputFile = OutputFile.GetOutputFilename(inputFile);
+                Logger.Instance.WriteLine($"Writing generated code to: {outputFile}");
                 await File.WriteAllTextAsync(
-                    OutputFile.GetOutputFilename(inputFile),
+                    outputFile,
                     csharpCode,
                     cancellationToken);
+                Logger.Instance.WriteLine("OpenAPI Generator code generation completed successfully");
             }
         }
         catch (Exception e)
         {
+            Logger.Instance.WriteLine($"OpenAPI Generator code generation failed: {e.Message}");
             traceSource.TraceEvent(
                 TraceEventType.Error,
                 0,

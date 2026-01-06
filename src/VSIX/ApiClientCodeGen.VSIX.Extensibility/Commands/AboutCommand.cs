@@ -1,4 +1,4 @@
-﻿using ApiClientCodeGen.VSIX.Extensibility.Dialogs;
+using ApiClientCodeGen.VSIX.Extensibility.Dialogs;
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Rapicgen.Core.Logging;
@@ -16,6 +16,8 @@ public class AboutCommand : Command
 
     public override async Task ExecuteCommandAsync(IClientContext context, CancellationToken cancellationToken)
     {
+        Logger.Instance.WriteLine("Opening About dialog...");
+        
         var dialog = new AboutDialog(
             extensibility: Extensibility,
             displayName: "REST API Client Code Generator (PREVIEW)",
@@ -26,5 +28,6 @@ public class AboutCommand : Command
             supportKey: SupportInformation.GetSupportKey());
 
         await Extensibility.Shell().ShowDialogAsync(dialog, cancellationToken);
+        Logger.Instance.WriteLine("About dialog closed");
     }
 }

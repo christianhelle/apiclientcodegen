@@ -1,8 +1,9 @@
-﻿using Microsoft.VisualStudio.Extensibility;
+using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.Swagger;
 using Rapicgen.Core.Installer;
+using Rapicgen.Core.Logging;
 using System.Diagnostics;
 using ApiClientCodeGen.VSIX.Extensibility.Settings;
 
@@ -52,14 +53,20 @@ public abstract class GenerateSwaggerBaseCommand(TraceSource traceSource, Extens
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
+        Logger.Instance.WriteLine($"Starting Swagger Codegen code generation for: {inputFile}");
+        
         if (inputFile == null)
         {
+            Logger.Instance.WriteLine("No input file specified");
             return;
         }
 
         try
         {
+            Logger.Instance.WriteLine("Loading Swagger Codegen configuration...");
             var generalOptions = await settingsProvider.GetGeneralOptionsAsync(cancellationToken);
+            
+            Logger.Instance.WriteLine("Initializing Swagger Codegen code generator...");
             var generator = new SwaggerCSharpCodeGenerator(
                 inputFile,
                 defaultNamespace,
@@ -70,17 +77,22 @@ public abstract class GenerateSwaggerBaseCommand(TraceSource traceSource, Extens
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()));
 
+            Logger.Instance.WriteLine("Generating C# client code...");
             var csharpCode = await Task.Run(() => generator.GenerateCode(null));
             if (csharpCode is not null)
             {
+                var outputFile = OutputFile.GetOutputFilename(inputFile);
+                Logger.Instance.WriteLine($"Writing generated code to: {outputFile}");
                 await File.WriteAllTextAsync(
-                    OutputFile.GetOutputFilename(inputFile),
+                    outputFile,
                     csharpCode,
                     cancellationToken);
+                Logger.Instance.WriteLine("Swagger Codegen code generation completed successfully");
             }
         }
         catch (Exception e)
         {
+            Logger.Instance.WriteLine($"Swagger Codegen code generation failed: {e.Message}");
             traceSource.TraceEvent(
                 TraceEventType.Error,
                 0,
