@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Microsoft.VisualStudio.Extensibility.Shell;
+using Rapicgen.Core.Logging;
 
 namespace ApiClientCodeGen.VSIX.Extensibility;
 
@@ -13,18 +14,8 @@ internal static class CommandExtensions
     public static async Task WriteToOutputWindowAsync(
         this Command command,
         string message,
-        CancellationToken cancellationToken)
-    {
-        var outputChannel = await command.Extensibility
-            .Views()
-            .Output
-            .CreateOutputChannelAsync(
-                "REST API Client Code Generator",
-                cancellationToken);
-
-        if (outputChannel != null)
-            await outputChannel.WriteLineAsync(message);
-    }
+        CancellationToken cancellationToken) 
+        => Logger.Instance.WriteLine(message);
 
     public static async Task<string?> AddNewOpenApiFileAsync(
         this Command command,
