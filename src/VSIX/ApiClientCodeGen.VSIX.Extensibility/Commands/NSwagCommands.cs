@@ -139,9 +139,7 @@ public abstract class GenerateNSwagBaseCommand(TraceSource traceSource, Extensio
                 "Error generating NSwag client code: {0}",
                 e.Message);
 
-            await this.WriteToOutputWindowAsync(
-                "Error generating NSwag client code: " + e.Message,
-                cancellationToken);
+            Logger.Instance.WriteLine("Error generating NSwag client code: " + e.Message);
         }
         finally
         {

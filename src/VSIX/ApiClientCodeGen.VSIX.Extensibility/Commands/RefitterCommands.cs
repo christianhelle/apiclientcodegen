@@ -125,9 +125,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
                 "Error generating Refit client code: {0}",
                 e.Message);
 
-            await this.WriteToOutputWindowAsync(
-                "Error generating Refit client code: " + e.Message,
-                cancellationToken);
+            Logger.Instance.WriteLine("Error generating Refit client code: " + e.Message);
         }
     }
 

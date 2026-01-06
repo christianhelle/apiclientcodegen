@@ -102,9 +102,7 @@ public abstract class GenerateOpenApiBaseCommand(TraceSource traceSource, Extens
                 "Error generating OpenAPI Generator client code: {0}",
                 e.Message);
 
-            await this.WriteToOutputWindowAsync(
-                "Error generating OpenAPI Generator client code: " + e.Message,
-                cancellationToken);
+            Logger.Instance.WriteLine("Error generating OpenAPI Generator client code: " + e.Message);
         }
     }
 }

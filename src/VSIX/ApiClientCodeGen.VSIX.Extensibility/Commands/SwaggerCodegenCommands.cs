@@ -99,9 +99,7 @@ public abstract class GenerateSwaggerBaseCommand(TraceSource traceSource, Extens
                 "Error generating Swagger Codegen client code: {0}",
                 e.Message);
 
-            await this.WriteToOutputWindowAsync(
-                "Error generating Swagger Codegen client code: " + e.Message,
-                cancellationToken);
+            Logger.Instance.WriteLine("Error generating Swagger Codegen client code: " + e.Message);
         }
     }
 }

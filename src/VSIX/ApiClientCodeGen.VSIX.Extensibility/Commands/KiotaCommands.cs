@@ -100,9 +100,7 @@ public abstract class GenerateKiotaBaseCommand(TraceSource traceSource, Extensio
                 "Error generating Kiota client code: {0}",
                 e.Message);
 
-            await this.WriteToOutputWindowAsync(
-                "Error generating Kiota client code: " + e.Message,
-                cancellationToken);
+            Logger.Instance.WriteLine("Error generating Kiota client code: " + e.Message);
         }
     }
 }

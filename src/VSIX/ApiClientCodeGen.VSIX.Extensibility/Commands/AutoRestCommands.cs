@@ -108,9 +108,7 @@ public abstract class GenerateAutoRestBaseCommand(TraceSource traceSource, Exten
                 "Error generating AutoRest client code: {0}",
                 e.Message);
 
-            await this.WriteToOutputWindowAsync(
-                "Error generating AutoRest client code: " + e.Message,
-                cancellationToken);
+            Logger.Instance.WriteLine("Error generating AutoRest client code: " + e.Message);
         }
     }
 }
