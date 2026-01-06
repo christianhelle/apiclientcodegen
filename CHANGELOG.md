@@ -1,13 +1,5 @@
 # Changelog
 
-## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
-
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.36.0...HEAD)
-
-**Implemented enhancements:**
-
-- Update the positions of the context menus in the out-of-process VS extension [\#1447](https://github.com/christianhelle/apiclientcodegen/pull/1447) ([christianhelle](https://github.com/christianhelle))
-
 ## [1.36.0](https://github.com/christianhelle/apiclientcodegen/tree/1.36.0) (2026-01-04)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.35.0...1.36.0)
