@@ -22,11 +22,14 @@ public class GenerateOpenApiCommand(TraceSource traceSource, ExtensionSettingsPr
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("OpenAPI Generator");
         await GenerateAsync(
             await context.GetInputFileAsync(cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 
@@ -40,11 +43,14 @@ public class GenerateOpenApiNewCommand(TraceSource traceSource, ExtensionSetting
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("New REST API Client (OpenAPI Generator)");
         await GenerateAsync(
             await this.AddNewOpenApiFileAsync(context, cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 public abstract class GenerateOpenApiBaseCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : Command
@@ -56,8 +62,6 @@ public abstract class GenerateOpenApiBaseCommand(TraceSource traceSource, Extens
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
-        Logger.Instance.TrackFeatureUsage("Generate OpenAPI Generator output");
-
         using var progress = await Extensibility
             .Shell()
             .StartProgressReportingAsync(

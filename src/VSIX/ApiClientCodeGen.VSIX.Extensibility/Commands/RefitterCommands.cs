@@ -26,11 +26,14 @@ public class GenerateRefitterCommand(TraceSource traceSource, ExtensionSettingsP
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("Refitter");
         await GenerateCodeAsync(
             await context.GetInputFileAsync(cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 [VisualStudioContribution]
@@ -49,11 +52,14 @@ public class GenerateRefitterSettingsCommand(TraceSource traceSource, ExtensionS
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("Refitter");
         await GenerateCodeAsync(
             await context.GetInputFileAsync(cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 [VisualStudioContribution]
@@ -70,6 +76,7 @@ public class GenerateRefitterNewCommand(TraceSource traceSource, ExtensionSettin
         IClientContext context,
         CancellationToken cancellationToken)
     {
+        Logger.Instance.TrackFeatureUsage("New REST API Client (Refitter)");
         await GenerateCodeAsync(
             await this.AddNewOpenApiFileAsync(context, cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
@@ -96,8 +103,6 @@ public abstract class GenerateRefitterBaseCommand(
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
-        Logger.Instance.TrackFeatureUsage("Generate Refitter output");
-
         using var progress = await Extensibility
             .Shell()
             .StartProgressReportingAsync(

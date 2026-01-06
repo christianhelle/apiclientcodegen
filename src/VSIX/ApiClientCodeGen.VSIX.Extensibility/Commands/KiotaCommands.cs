@@ -22,11 +22,14 @@ public class GenerateKiotaCommand(TraceSource traceSource, ExtensionSettingsProv
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("Kiota");
         await GenerateAsync(
             await context.GetInputFileAsync(cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 [VisualStudioContribution]
@@ -39,11 +42,14 @@ public class GenerateKiotaNewCommand(TraceSource traceSource, ExtensionSettingsP
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("New REST API Client (Kiota)");
         await GenerateAsync(
             await this.AddNewOpenApiFileAsync(context, cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 [VisualStudioContribution]
@@ -56,8 +62,6 @@ public abstract class GenerateKiotaBaseCommand(TraceSource traceSource, Extensio
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
-        Logger.Instance.TrackFeatureUsage("Generate Kiota output");
-
         using var progress = await Extensibility
             .Shell()
             .StartProgressReportingAsync(

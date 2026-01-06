@@ -30,11 +30,14 @@ public class GenerateNSwagCommand(TraceSource traceSource, ExtensionSettingsProv
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("NSwag");
         await GenerateAsync(
             await context.GetInputFileAsync(cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 [VisualStudioContribution]
@@ -56,7 +59,7 @@ public class GenerateNSwagStudioCommand(
         IClientContext context,
         CancellationToken cancellationToken)
     {
-        Logger.Instance.TrackFeatureUsage("Generate NSwag Studio output");
+        Logger.Instance.TrackFeatureUsage("NSwag Studio");
 
         using var progress = await Extensibility
             .Shell()
@@ -125,11 +128,14 @@ public class GenerateNSwagNewCommand(TraceSource traceSource, ExtensionSettingsP
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("New REST API Client (NSwag)");
         await GenerateAsync(
             await this.AddNewOpenApiFileAsync(context, cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 public abstract class GenerateNSwagBaseCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : Command
@@ -141,8 +147,6 @@ public abstract class GenerateNSwagBaseCommand(TraceSource traceSource, Extensio
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
-        Logger.Instance.TrackFeatureUsage("Generate NSwag output");
-
         using var progress = await Extensibility
             .Shell()
             .StartProgressReportingAsync(

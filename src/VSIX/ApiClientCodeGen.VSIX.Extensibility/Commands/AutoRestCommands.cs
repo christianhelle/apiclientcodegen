@@ -27,11 +27,14 @@ public class GenerateAutoRestCommand(TraceSource traceSource, ExtensionSettingsP
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("AutoRest");
         await GenerateAsync(
             await context.GetInputFileAsync(cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 [VisualStudioContribution]
@@ -46,11 +49,14 @@ public class GenerateAutoRestNewCommand(TraceSource traceSource, ExtensionSettin
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("New REST API Client (AutoRest)");
         await GenerateAsync(
             await this.AddNewOpenApiFileAsync(context, cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 public abstract class GenerateAutoRestBaseCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : Command
@@ -62,8 +68,6 @@ public abstract class GenerateAutoRestBaseCommand(TraceSource traceSource, Exten
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
-        Logger.Instance.TrackFeatureUsage("Generate AutoRest output");
-
         using var progress = await Extensibility
             .Shell()
             .StartProgressReportingAsync(

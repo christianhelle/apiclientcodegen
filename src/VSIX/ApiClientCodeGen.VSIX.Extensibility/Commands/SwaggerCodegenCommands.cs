@@ -22,11 +22,14 @@ public class GenerateSwaggerCommand(TraceSource traceSource, ExtensionSettingsPr
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("Swagger Codegen");
         await GenerateAsync(
             await context.GetInputFileAsync(cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 [VisualStudioContribution]
@@ -39,11 +42,14 @@ public class GenerateSwaggerNewCommand(TraceSource traceSource, ExtensionSetting
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("New REST API Client (Swagger Codegen)");
         await GenerateAsync(
             await this.AddNewOpenApiFileAsync(context, cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 public abstract class GenerateSwaggerBaseCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : Command
@@ -55,8 +61,6 @@ public abstract class GenerateSwaggerBaseCommand(TraceSource traceSource, Extens
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
-        Logger.Instance.TrackFeatureUsage("Generate Swagger Codegen output");
-
         using var progress = await Extensibility
             .Shell()
             .StartProgressReportingAsync(
