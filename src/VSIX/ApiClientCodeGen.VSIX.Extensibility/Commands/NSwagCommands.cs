@@ -1,7 +1,8 @@
-﻿using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
+using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
 using ApiClientCodeGen.VSIX.Extensibility.Settings;
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
+using Microsoft.VisualStudio.RpcContracts.ProgressReporting;
 using NSwag.CodeGeneration.CSharp;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
@@ -11,6 +12,7 @@ using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using System.Diagnostics;
 using System.Text.Json;
+using ProgressReporter = Microsoft.VisualStudio.Extensibility.Shell.ProgressReporter;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
@@ -28,11 +30,14 @@ public class GenerateNSwagCommand(TraceSource traceSource, ExtensionSettingsProv
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("NSwag");
         await GenerateAsync(
             await context.GetInputFileAsync(cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 [VisualStudioContribution]
@@ -54,14 +59,34 @@ public class GenerateNSwagStudioCommand(
         IClientContext context,
         CancellationToken cancellationToken)
     {
+        Logger.Instance.TrackFeatureUsage("NSwag Studio");
+
+        using var progress = await Extensibility
+            .Shell()
+            .StartProgressReportingAsync(
+                "Generating code with NSwag Studio",
+                new ProgressReporterOptions(true),
+                cancellationToken);
+
+        cancellationToken = CancellationTokenSource
+            .CreateLinkedTokenSource(
+                cancellationToken,
+                progress.CancellationToken)
+            .Token;
+
         try
         {
             string inputFile = await context.GetInputFileAsync(cancellationToken);
-            Logger.Instance.WriteLine($"Starting NSwag Studio code generation for: {inputFile}");
+            var inputFilename = Path.GetFileName(inputFile);
+            progress.Report(10, $"Starting NSwag Studio code generation for: {inputFilename}");
+
+            cancellationToken.ThrowIfCancellationRequested();
+            progress.Report(30, "Initializing NSwag Studio code generator...");
 
             var launcher = new ProcessLauncher();
             await Task.Run(async () =>
             {
+                progress.Report(50, "Generating C# client code...");
                 return new NSwagStudioCodeGenerator(
                     inputFile,
                     await settingsProvider.GetGeneralOptionsAsync(cancellationToken),
@@ -70,18 +95,24 @@ public class GenerateNSwagStudioCommand(
                         new NpmInstaller(launcher),
                         new FileDownloader(new WebDownloader()), launcher))
                     .GenerateCode(null);
-            });
+            }, cancellationToken);
+
+            progress.Report(100, "NSwag Studio code generation completed successfully");
+        }
+        catch (OperationCanceledException)
+        {
+            progress.Report(100, "NSwag Studio code generation was canceled.");
         }
         catch (Exception e)
         {
+            Logger.Instance.TrackError(e);
             traceSource.TraceEvent(
                 TraceEventType.Error,
                 0,
                 "Error generating code using NSwag Studio: {0}",
                 e.Message);
 
-            Logger.Instance.WriteLine(
-                "Error generating code using NSwag Studio: " + e.Message);
+            progress.Report(100, "Error generating code using NSwag Studio: " + e.Message);
         }
     }
 }
@@ -97,11 +128,14 @@ public class GenerateNSwagNewCommand(TraceSource traceSource, ExtensionSettingsP
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("New REST API Client (NSwag)");
         await GenerateAsync(
             await this.AddNewOpenApiFileAsync(context, cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 public abstract class GenerateNSwagBaseCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : Command
@@ -113,31 +147,47 @@ public abstract class GenerateNSwagBaseCommand(TraceSource traceSource, Extensio
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
-        Logger.Instance.WriteLine($"Starting NSwag code generation for: {inputFile}");
-        
+        using var progress = await Extensibility
+            .Shell()
+            .StartProgressReportingAsync(
+                "Generating code with NSwag",
+                new ProgressReporterOptions(true),
+                cancellationToken);
+
+        cancellationToken = CancellationTokenSource
+            .CreateLinkedTokenSource(
+                cancellationToken,
+                progress.CancellationToken)
+            .Token;
+
         if (inputFile == null)
         {
-            Logger.Instance.WriteLine("No input file specified");
+            progress.Report(100, "No input file specified");
             return;
         }
 
-        Logger.Instance.TrackFeatureUsage("Generate NSwag output");
+        var inputFilename = Path.GetFileName(inputFile);
+        progress.Report(10, $"Starting NSwag code generation for: {inputFilename}");
 
         using var dependencyContext = new DependencyContext("NSwag");
         try
         {
-            Logger.Instance.WriteLine("Loading OpenAPI specification...");
+            cancellationToken.ThrowIfCancellationRequested();
+
+            progress.Report(20, "Loading OpenAPI specification...");
             var documentFactory = new OpenApiDocumentFactory();
             var document = await documentFactory.GetDocumentAsync(inputFile);
 
-            Logger.Instance.WriteLine("Loading NSwag configuration...");
+            cancellationToken.ThrowIfCancellationRequested();
+            progress.Report(30, "Loading NSwag configuration...");
             var nswagOptions = await settingsProvider.GetNSwagOptionsAsync(cancellationToken);
             
             var generatorSettingsFactory = new NSwagCodeGeneratorSettingsFactory(
                 defaultNamespace,
                 nswagOptions);
 
-            Logger.Instance.WriteLine("Initializing NSwag code generator...");
+            cancellationToken.ThrowIfCancellationRequested();
+            progress.Report(40, "Initializing NSwag code generator...");
             var generator = new CSharpClientGenerator(
                 document,
                 await GetGeneratorSettingsAsync(
@@ -146,31 +196,41 @@ public abstract class GenerateNSwagBaseCommand(TraceSource traceSource, Extensio
                     generatorSettingsFactory,
                     cancellationToken));
 
-            Logger.Instance.WriteLine("Generating C# client code...");
+            cancellationToken.ThrowIfCancellationRequested();
+            progress.Report(60, "Generating C# client code...");
             var csharpCode = generator.GenerateFile();
             csharpCode = GeneratedCode.PrefixAutogeneratedCodeHeader(csharpCode, "NSwag", "v14.6.0");
 
             if (csharpCode is not null)
             {
+                cancellationToken.ThrowIfCancellationRequested();
+
                 var outputFile = OutputFile.GetOutputFilename(inputFile);
-                Logger.Instance.WriteLine($"Writing generated code to: {outputFile}");
+                var outputFilename = Path.GetFileName(outputFile);
+                progress.Report(90, $"Writing generated code to: {outputFilename}");
+
                 await File.WriteAllTextAsync(
                     outputFile,
                     csharpCode,
                     cancellationToken);
-                Logger.Instance.WriteLine("NSwag code generation completed successfully");
+                
+                progress.Report(100, "NSwag code generation completed successfully");
             }
+        }
+        catch (OperationCanceledException)
+        {
+            progress.Report(100, "NSwag code generation was canceled.");
         }
         catch (Exception e)
         {
-            Logger.Instance.WriteLine($"NSwag code generation failed: {e.Message}");
+            Logger.Instance.TrackError(e);
             traceSource.TraceEvent(
                 TraceEventType.Error,
                 0,
                 "Error generating NSwag client code: {0}",
                 e.Message);
 
-            Logger.Instance.WriteLine("Error generating NSwag client code: " + e.Message);
+            progress.Report(100, "Error generating NSwag client code: " + e.Message);
         }
         finally
         {

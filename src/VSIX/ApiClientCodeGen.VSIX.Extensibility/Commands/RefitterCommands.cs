@@ -1,11 +1,13 @@
+using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
+using ApiClientCodeGen.VSIX.Extensibility.Settings;
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
+using Microsoft.VisualStudio.RpcContracts.ProgressReporting;
 using Rapicgen.Core.Logging;
 using Refitter.Core;
 using System.Diagnostics;
 using System.Text.Json;
-using ApiClientCodeGen.VSIX.Extensibility.Settings;
-using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
+using ProgressReporter = Microsoft.VisualStudio.Extensibility.Shell.ProgressReporter;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
@@ -24,11 +26,14 @@ public class GenerateRefitterCommand(TraceSource traceSource, ExtensionSettingsP
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("Refitter");
         await GenerateCodeAsync(
             await context.GetInputFileAsync(cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 [VisualStudioContribution]
@@ -47,11 +52,14 @@ public class GenerateRefitterSettingsCommand(TraceSource traceSource, ExtensionS
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("Refitter");
         await GenerateCodeAsync(
             await context.GetInputFileAsync(cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 [VisualStudioContribution]
@@ -68,6 +76,7 @@ public class GenerateRefitterNewCommand(TraceSource traceSource, ExtensionSettin
         IClientContext context,
         CancellationToken cancellationToken)
     {
+        Logger.Instance.TrackFeatureUsage("New REST API Client (Refitter)");
         await GenerateCodeAsync(
             await this.AddNewOpenApiFileAsync(context, cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
@@ -76,7 +85,9 @@ public class GenerateRefitterNewCommand(TraceSource traceSource, ExtensionSettin
 }
 
 [VisualStudioContribution]
-public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider)
+public abstract class GenerateRefitterBaseCommand(
+    TraceSource traceSource,
+    ExtensionSettingsProvider settingsProvider)
     : Command
 {
     private readonly ExtensionSettingsProvider settingsProvider = settingsProvider;
@@ -92,49 +103,82 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
-        Logger.Instance.WriteLine($"Starting Refitter code generation for: {inputFile}");
-        
+        using var progress = await Extensibility
+            .Shell()
+            .StartProgressReportingAsync(
+                "Generating code with Refitter",
+                new ProgressReporterOptions(true),
+                cancellationToken);
+
+        cancellationToken = CancellationTokenSource
+            .CreateLinkedTokenSource(
+                cancellationToken,
+                progress.CancellationToken)
+            .Token;
+
         if (inputFile == null)
         {
-            Logger.Instance.WriteLine("No input file specified");
+            progress.Report(100, "No input file specified");
             return;
         }
 
-        Logger.Instance.TrackFeatureUsage("Generate Refitter output");
+        var inputFilename = Path.GetFileName(inputFile);
+        progress.Report(10, $"Starting Refitter code generation for: {inputFilename}");
 
         try
         {
-            var csharpCode = await GenerateCodeInternalAsync(inputFile, defaultNamespace, cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
+
+            var csharpCode = await GenerateCodeInternalAsync(
+                inputFile,
+                defaultNamespace,
+                progress,
+                cancellationToken);
+
             if (csharpCode is not null)
             {
+                cancellationToken.ThrowIfCancellationRequested();
+
                 var outputFile = OutputFile.GetOutputFilename(inputFile);
-                Logger.Instance.WriteLine($"Writing generated code to: {outputFile}");
+
+                var outputFilename = Path.GetFileName(outputFile);
+                progress.Report(90, $"Writing generated code to: {outputFilename}");
+
                 await File.WriteAllTextAsync(
                     outputFile,
                     csharpCode,
                     cancellationToken);
-                Logger.Instance.WriteLine("Refitter code generation completed successfully");
+
+                progress.Report(100, "Refitter code generation completed successfully");
             }
+        }
+        catch (OperationCanceledException)
+        {
+            progress.Report(100, "Refitter code generation was canceled.");
         }
         catch (Exception e)
         {
-            Logger.Instance.WriteLine($"Refitter code generation failed: {e.Message}");
+            Logger.Instance.TrackError(e);
             traceSource.TraceEvent(
                 TraceEventType.Error,
                 0,
                 "Error generating Refit client code: {0}",
                 e.Message);
 
-            Logger.Instance.WriteLine("Error generating Refit client code: " + e.Message);
+            progress.Report(100, "Error generating Refit client code: " + e.Message);
         }
     }
 
-    public async Task<string> GenerateCodeInternalAsync(string inputFile, string defaultNamespace, CancellationToken cancellationToken)
+    public async Task<string> GenerateCodeInternalAsync(
+        string inputFile,
+        string defaultNamespace,
+        ProgressReporter progress,
+        CancellationToken cancellationToken)
     {
         RefitGeneratorSettings settings;
         if (inputFile.EndsWith(".refitter"))
         {
-            Logger.Instance.WriteLine("Loading Refitter settings file...");
+            progress.Report(20, "Loading Refitter settings file...");
             settings = Serializer
                 .Deserialize<RefitGeneratorSettings>(
                     File.ReadAllText(inputFile));
@@ -145,14 +189,16 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
             var refitterFile = fileInfo.Name.Replace(fileInfo.Extension, ".refitter");
             if (File.Exists(refitterFile))
             {
-                Logger.Instance.WriteLine($"Loading Refitter settings from: {refitterFile}");
+                cancellationToken.ThrowIfCancellationRequested();
+                progress.Report(30, $"Loading Refitter settings from: {refitterFile}");
                 settings = Serializer.Deserialize<RefitGeneratorSettings>(
                     File.ReadAllText(refitterFile)
                 );
             }
             else
             {
-                Logger.Instance.WriteLine("Loading Refitter configuration...");
+                cancellationToken.ThrowIfCancellationRequested();
+                progress.Report(30, "Loading Refitter configuration...");
                 var options = await settingsProvider.GetRefitterOptionsAsync(cancellationToken);
                 settings = new RefitGeneratorSettings
                 {
@@ -167,17 +213,19 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
                     GenerateMultipleFiles = options.GenerateMultipleFiles
                 };
 
+                cancellationToken.ThrowIfCancellationRequested();
                 var settingsFile = Path.ChangeExtension(fileInfo.FullName, ".refitter");
-                Logger.Instance.WriteLine($"Saving Refitter settings to: {settingsFile}");
+                progress.Report(40, $"Saving Refitter settings to: {settingsFile}");
                 File.WriteAllText(
                     settingsFile,
                     JsonSerializer.Serialize(settings, serializerOptions));
             }
         }
 
+        cancellationToken.ThrowIfCancellationRequested();
         Directory.SetCurrentDirectory(Path.GetDirectoryName(inputFile)!);
-        
-        Logger.Instance.WriteLine("Initializing Refitter code generator...");
+
+        progress.Report(50, "Initializing Refitter code generator...");
         var generator = await RefitGenerator.CreateAsync(settings);
 
         using var context = new DependencyContext(
@@ -186,11 +234,12 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
 
         if (settings.GenerateMultipleFiles)
         {
-            Logger.Instance.WriteLine("Generating multiple files...");
+            progress.Report(60, "Generating multiple files...");
             var fileInfo = new FileInfo(inputFile);
             var outputFolder = fileInfo.Directory!.FullName;
             if (settings.OutputFolder != RefitGeneratorSettings.DefaultOutputFolder)
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 outputFolder = Path.Combine(outputFolder, settings.OutputFolder);
                 if (!Directory.Exists(outputFolder))
                 {
@@ -198,10 +247,13 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
                 }
             }
 
+            cancellationToken.ThrowIfCancellationRequested();
             var results = generator.GenerateMultipleFiles();
-            Logger.Instance.WriteLine($"Writing {results.Files.Count()} files to: {outputFolder}");
+            progress.Report(80, $"Writing {results.Files.Count} files to: {outputFolder}");
+
             foreach (var file in results.Files)
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 File.WriteAllText(Path.Combine(outputFolder, file.Filename), file.Content);
             }
 
@@ -211,7 +263,9 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
         }
         else
         {
-            Logger.Instance.WriteLine("Generating C# client code...");
+            progress.Report(60, "Generating C# client code...");
+
+            cancellationToken.ThrowIfCancellationRequested();
             var code = generator.Generate();
             context.Succeeded();
 
@@ -223,6 +277,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
                 var outputFolder = fileInfo.Directory!.FullName;
                 if (settings.OutputFolder != RefitGeneratorSettings.DefaultOutputFolder)
                 {
+                    cancellationToken.ThrowIfCancellationRequested();
                     outputFolder = Path.Combine(outputFolder, settings.OutputFolder);
                     if (!Directory.Exists(outputFolder))
                     {
@@ -230,9 +285,10 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
                     }
                 }
 
+                cancellationToken.ThrowIfCancellationRequested();
                 var targetFilename = Path.ChangeExtension(fileInfo.Name, ".cs");
                 var targetPath = Path.Combine(outputFolder, targetFilename);
-                Logger.Instance.WriteLine($"Writing generated code to: {targetPath}");
+                progress.Report(80, $"Writing generated code to: {targetPath}");
                 File.WriteAllText(targetPath, output);
             }
 

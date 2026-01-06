@@ -1,11 +1,13 @@
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
+using Microsoft.VisualStudio.RpcContracts.ProgressReporting;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.Swagger;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using System.Diagnostics;
 using ApiClientCodeGen.VSIX.Extensibility.Settings;
+using ProgressReporter = Microsoft.VisualStudio.Extensibility.Shell.ProgressReporter;
 
 namespace ApiClientCodeGen.VSIX.Extensibility.Commands;
 
@@ -20,11 +22,14 @@ public class GenerateSwaggerCommand(TraceSource traceSource, ExtensionSettingsPr
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("Swagger Codegen");
         await GenerateAsync(
             await context.GetInputFileAsync(cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 [VisualStudioContribution]
@@ -37,11 +42,14 @@ public class GenerateSwaggerNewCommand(TraceSource traceSource, ExtensionSetting
 
     public override async Task ExecuteCommandAsync(
         IClientContext context,
-        CancellationToken cancellationToken) =>
+        CancellationToken cancellationToken)
+    {
+        Logger.Instance.TrackFeatureUsage("New REST API Client (Swagger Codegen)");
         await GenerateAsync(
             await this.AddNewOpenApiFileAsync(context, cancellationToken),
             await context.GetDefaultNamespaceAsync(cancellationToken),
             cancellationToken);
+    }
 }
 
 public abstract class GenerateSwaggerBaseCommand(TraceSource traceSource, ExtensionSettingsProvider settingsProvider) : Command
@@ -53,20 +61,37 @@ public abstract class GenerateSwaggerBaseCommand(TraceSource traceSource, Extens
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
-        Logger.Instance.WriteLine($"Starting Swagger Codegen code generation for: {inputFile}");
-        
+        using var progress = await Extensibility
+            .Shell()
+            .StartProgressReportingAsync(
+                "Generating code with Swagger Codegen",
+                new ProgressReporterOptions(true),
+                cancellationToken);
+
+        cancellationToken = CancellationTokenSource
+            .CreateLinkedTokenSource(
+                cancellationToken,
+                progress.CancellationToken)
+            .Token;
+
         if (inputFile == null)
         {
-            Logger.Instance.WriteLine("No input file specified");
+            progress.Report(100, "No input file specified");
             return;
         }
 
+        var inputFilename = Path.GetFileName(inputFile);
+        progress.Report(10, $"Starting Swagger Codegen code generation for: {inputFilename}");
+
         try
         {
-            Logger.Instance.WriteLine("Loading Swagger Codegen configuration...");
+            cancellationToken.ThrowIfCancellationRequested();
+
+            progress.Report(20, "Loading Swagger Codegen configuration...");
             var generalOptions = await settingsProvider.GetGeneralOptionsAsync(cancellationToken);
             
-            Logger.Instance.WriteLine("Initializing Swagger Codegen code generator...");
+            cancellationToken.ThrowIfCancellationRequested();
+            progress.Report(30, "Initializing Swagger Codegen code generator...");
             var generator = new SwaggerCSharpCodeGenerator(
                 inputFile,
                 defaultNamespace,
@@ -77,29 +102,39 @@ public abstract class GenerateSwaggerBaseCommand(TraceSource traceSource, Extens
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()));
 
-            Logger.Instance.WriteLine("Generating C# client code...");
-            var csharpCode = await Task.Run(() => generator.GenerateCode(null));
+            cancellationToken.ThrowIfCancellationRequested();
+            progress.Report(50, "Generating C# client code...");
+            var csharpCode = await Task.Run(() => generator.GenerateCode(null), cancellationToken);
             if (csharpCode is not null)
             {
+                cancellationToken.ThrowIfCancellationRequested();
+
                 var outputFile = OutputFile.GetOutputFilename(inputFile);
-                Logger.Instance.WriteLine($"Writing generated code to: {outputFile}");
+                var outputFilename = Path.GetFileName(outputFile);
+                progress.Report(90, $"Writing generated code to: {outputFilename}");
+
                 await File.WriteAllTextAsync(
                     outputFile,
                     csharpCode,
                     cancellationToken);
-                Logger.Instance.WriteLine("Swagger Codegen code generation completed successfully");
+                
+                progress.Report(100, "Swagger Codegen code generation completed successfully");
             }
+        }
+        catch (OperationCanceledException)
+        {
+            progress.Report(100, "Swagger Codegen code generation was canceled.");
         }
         catch (Exception e)
         {
-            Logger.Instance.WriteLine($"Swagger Codegen code generation failed: {e.Message}");
+            Logger.Instance.TrackError(e);
             traceSource.TraceEvent(
                 TraceEventType.Error,
                 0,
                 "Error generating Swagger Codegen client code: {0}",
                 e.Message);
 
-            Logger.Instance.WriteLine("Error generating Swagger Codegen client code: " + e.Message);
+            progress.Report(100, "Error generating Swagger Codegen client code: " + e.Message);
         }
     }
 }
