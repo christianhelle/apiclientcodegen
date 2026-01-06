@@ -77,8 +77,8 @@ internal class ExtensionEntrypoint : Extension
 
     protected override void InitializeServices(IServiceCollection serviceCollection)
     {
-        base.InitializeServices(serviceCollection);
         serviceCollection.AddSingleton<ExtensionSettingsProvider>();
+        base.InitializeServices(serviceCollection);
     }
 
     protected override async Task OnInitializedAsync(
