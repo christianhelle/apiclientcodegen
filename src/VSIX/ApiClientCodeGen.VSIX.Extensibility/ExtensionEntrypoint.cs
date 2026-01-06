@@ -1,8 +1,12 @@
 ﻿using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
 using ApiClientCodeGen.VSIX.Extensibility.Settings;
+using Microsoft.ApplicationInsights.Channel;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
+using Rapicgen.Core.Logging;
 
 namespace ApiClientCodeGen.VSIX.Extensibility;
 
@@ -73,7 +77,56 @@ internal class ExtensionEntrypoint : Extension
 
     protected override void InitializeServices(IServiceCollection serviceCollection)
     {
-        serviceCollection.AddSingleton<ExtensionSettingsProvider>();
         base.InitializeServices(serviceCollection);
+        serviceCollection.AddSingleton<ExtensionSettingsProvider>();
+    }
+
+    protected override async Task OnInitializedAsync(
+        VisualStudioExtensibility extensibility,
+        CancellationToken cancellationToken)
+    {
+        await base.OnInitializedAsync(extensibility, cancellationToken);
+
+#pragma warning disable VSEXTPREVIEW_OUTPUTWINDOW
+        var outputChannel = await extensibility
+                    .Views()
+                    .Output
+                    .CreateOutputChannelAsync(
+                        ExtensionName,
+                        cancellationToken);
+        Logger
+            .Setup(new OutputWindowRemoteLogger(outputChannel))
+            .WithDefaultTags("VSIX");
+
+#pragma warning disable VSEXTPREVIEW_SETTINGS
+        var telemetryOptions = await new ExtensionSettingsProvider(extensibility)
+            .GetTelemetryOptionsAsync(cancellationToken);
+
+        if (telemetryOptions.TelemetryOptOut)
+        {
+            Logger.Instance.Disable();
+            return;
+        }
+
+        var version = new Version(18, 0); // TODO: Change this to get actual Visual Studio version
+        Logger.GetLogger<AppInsightsRemoteLogger>()
+            .AddTelemetryInitializer(
+                new VisualStudioVersionInitializer(version));
+    }
+}
+
+public sealed class VisualStudioVersionInitializer : ITelemetryInitializer
+{
+    private readonly Version visualStudioVersion;
+
+    public VisualStudioVersionInitializer(Version visualStudioVersion)
+    {
+        this.visualStudioVersion = visualStudioVersion;
+    }
+
+    public void Initialize(ITelemetry telemetry)
+    {
+        if (telemetry is ISupportProperties supportProperties)
+            supportProperties.Properties["visual-studio-version"] = visualStudioVersion.ToString();
     }
 }
