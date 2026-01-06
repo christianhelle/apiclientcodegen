@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Microsoft.VisualStudio.Extensibility.Shell;
+using Rapicgen.Core.Logging;
 
 namespace ApiClientCodeGen.VSIX.Extensibility;
 
@@ -9,22 +10,6 @@ namespace ApiClientCodeGen.VSIX.Extensibility;
 internal static class CommandExtensions
 {
     private static readonly HttpClient s_httpClient = new() { Timeout = TimeSpan.FromSeconds(30) };
-
-    public static async Task WriteToOutputWindowAsync(
-        this Command command,
-        string message,
-        CancellationToken cancellationToken)
-    {
-        var outputChannel = await command.Extensibility
-            .Views()
-            .Output
-            .CreateOutputChannelAsync(
-                "REST API Client Code Generator",
-                cancellationToken);
-
-        if (outputChannel != null)
-            await outputChannel.WriteLineAsync(message);
-    }
 
     public static async Task<string?> AddNewOpenApiFileAsync(
         this Command command,
@@ -49,7 +34,7 @@ internal static class CommandExtensions
         var url = inputUrl.Trim();
         if (!Uri.TryCreate(url, UriKind.Absolute, out var uri))
         {
-            await command.WriteToOutputWindowAsync($"Invalid URL: {url}", cancellationToken);
+            Logger.Instance.WriteLine($"Invalid URL: {url}");
             return null!;
         }
 
@@ -67,7 +52,7 @@ internal static class CommandExtensions
         }
         catch (Exception dex)
         {
-            await command.WriteToOutputWindowAsync($"Failed to create directory '{directory}': {dex.Message}", cancellationToken);
+            Logger.Instance.WriteLine($"Failed to create directory '{directory}': {dex.Message}");
             return null!;
         }
 
@@ -89,22 +74,22 @@ internal static class CommandExtensions
         }
         catch (UriFormatException uex)
         {
-            await command.WriteToOutputWindowAsync($"The URL is malformed: {uex.Message}", cancellationToken);
+            Logger.Instance.WriteLine($"The URL is malformed: {uex.Message}");
             return null!;
         }
         catch (HttpRequestException hex)
         {
-            await command.WriteToOutputWindowAsync($"Network error while downloading '{url}': {hex.Message}", cancellationToken);
+            Logger.Instance.WriteLine($"Network error while downloading '{url}': {hex.Message}");
             return null!;
         }
         catch (TaskCanceledException)
         {
-            await command.WriteToOutputWindowAsync($"Request timed out while downloading '{url}'", cancellationToken);
+            Logger.Instance.WriteLine($"Request timed out while downloading '{url}'");
             return null!;
         }
         catch (Exception ex)
         {
-            await command.WriteToOutputWindowAsync($"Failed to download or save file: {ex.Message}", cancellationToken);
+            Logger.Instance.WriteLine($"Failed to download or save file: {ex.Message}");
             return null!;
         }
 

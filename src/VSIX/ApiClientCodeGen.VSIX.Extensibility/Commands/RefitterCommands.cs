@@ -1,4 +1,4 @@
-﻿using Microsoft.VisualStudio.Extensibility;
+using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Rapicgen.Core.Logging;
 using Refitter.Core;
@@ -92,8 +92,11 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
+        Logger.Instance.WriteLine($"Starting Refitter code generation for: {inputFile}");
+        
         if (inputFile == null)
         {
+            Logger.Instance.WriteLine("No input file specified");
             return;
         }
 
@@ -104,23 +107,25 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
             var csharpCode = await GenerateCodeInternalAsync(inputFile, defaultNamespace, cancellationToken);
             if (csharpCode is not null)
             {
+                var outputFile = OutputFile.GetOutputFilename(inputFile);
+                Logger.Instance.WriteLine($"Writing generated code to: {outputFile}");
                 await File.WriteAllTextAsync(
-                    OutputFile.GetOutputFilename(inputFile),
+                    outputFile,
                     csharpCode,
                     cancellationToken);
+                Logger.Instance.WriteLine("Refitter code generation completed successfully");
             }
         }
         catch (Exception e)
         {
+            Logger.Instance.WriteLine($"Refitter code generation failed: {e.Message}");
             traceSource.TraceEvent(
                 TraceEventType.Error,
                 0,
                 "Error generating Refit client code: {0}",
                 e.Message);
 
-            await this.WriteToOutputWindowAsync(
-                "Error generating Refit client code: " + e.Message,
-                cancellationToken);
+            Logger.Instance.WriteLine("Error generating Refit client code: " + e.Message);
         }
     }
 
@@ -129,6 +134,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
         RefitGeneratorSettings settings;
         if (inputFile.EndsWith(".refitter"))
         {
+            Logger.Instance.WriteLine("Loading Refitter settings file...");
             settings = Serializer
                 .Deserialize<RefitGeneratorSettings>(
                     File.ReadAllText(inputFile));
@@ -139,12 +145,14 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
             var refitterFile = fileInfo.Name.Replace(fileInfo.Extension, ".refitter");
             if (File.Exists(refitterFile))
             {
+                Logger.Instance.WriteLine($"Loading Refitter settings from: {refitterFile}");
                 settings = Serializer.Deserialize<RefitGeneratorSettings>(
                     File.ReadAllText(refitterFile)
                 );
             }
             else
             {
+                Logger.Instance.WriteLine("Loading Refitter configuration...");
                 var options = await settingsProvider.GetRefitterOptionsAsync(cancellationToken);
                 settings = new RefitGeneratorSettings
                 {
@@ -159,13 +167,17 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
                     GenerateMultipleFiles = options.GenerateMultipleFiles
                 };
 
+                var settingsFile = Path.ChangeExtension(fileInfo.FullName, ".refitter");
+                Logger.Instance.WriteLine($"Saving Refitter settings to: {settingsFile}");
                 File.WriteAllText(
-                    Path.ChangeExtension(fileInfo.FullName, ".refitter"),
+                    settingsFile,
                     JsonSerializer.Serialize(settings, serializerOptions));
             }
         }
 
         Directory.SetCurrentDirectory(Path.GetDirectoryName(inputFile)!);
+        
+        Logger.Instance.WriteLine("Initializing Refitter code generator...");
         var generator = await RefitGenerator.CreateAsync(settings);
 
         using var context = new DependencyContext(
@@ -174,6 +186,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
 
         if (settings.GenerateMultipleFiles)
         {
+            Logger.Instance.WriteLine("Generating multiple files...");
             var fileInfo = new FileInfo(inputFile);
             var outputFolder = fileInfo.Directory!.FullName;
             if (settings.OutputFolder != RefitGeneratorSettings.DefaultOutputFolder)
@@ -186,6 +199,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
             }
 
             var results = generator.GenerateMultipleFiles();
+            Logger.Instance.WriteLine($"Writing {results.Files.Count()} files to: {outputFolder}");
             foreach (var file in results.Files)
             {
                 File.WriteAllText(Path.Combine(outputFolder, file.Filename), file.Content);
@@ -197,6 +211,7 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
         }
         else
         {
+            Logger.Instance.WriteLine("Generating C# client code...");
             var code = generator.Generate();
             context.Succeeded();
 
@@ -216,10 +231,9 @@ public abstract class GenerateRefitterBaseCommand(TraceSource traceSource, Exten
                 }
 
                 var targetFilename = Path.ChangeExtension(fileInfo.Name, ".cs");
-                File.WriteAllText(
-                    Path.Combine(outputFolder, targetFilename),
-                    output
-                );
+                var targetPath = Path.Combine(outputFolder, targetFilename);
+                Logger.Instance.WriteLine($"Writing generated code to: {targetPath}");
+                File.WriteAllText(targetPath, output);
             }
 
             return output;

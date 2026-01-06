@@ -1,9 +1,10 @@
-﻿using Microsoft.VisualStudio.Extensibility;
+using Microsoft.VisualStudio.Extensibility;
 using Microsoft.VisualStudio.Extensibility.Commands;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.AutoRest;
 using Rapicgen.Core.Installer;
+using Rapicgen.Core.Logging;
 using System.Diagnostics;
 using ApiClientCodeGen.VSIX.Extensibility.Settings;
 
@@ -59,14 +60,20 @@ public abstract class GenerateAutoRestBaseCommand(TraceSource traceSource, Exten
         string defaultNamespace,
         CancellationToken cancellationToken)
     {
+        Logger.Instance.WriteLine($"Starting AutoRest code generation for: {inputFile}");
+        
         if (inputFile == null)
         {
+            Logger.Instance.WriteLine("No input file specified");
             return;
         }
 
         try
         {
+            Logger.Instance.WriteLine("Loading AutoRest configuration...");
             var options = await settingsProvider.GetAutoRestOptionsAsync(cancellationToken);
+            
+            Logger.Instance.WriteLine("Initializing AutoRest code generator...");
             var generator = new AutoRestCSharpCodeGenerator(
             inputFile,
             defaultNamespace,
@@ -79,26 +86,29 @@ public abstract class GenerateAutoRestBaseCommand(TraceSource traceSource, Exten
                 new ProcessLauncher()),
             new AutoRestArgumentProvider(options));
 
+            Logger.Instance.WriteLine("Generating C# client code...");
             var csharpCode = await Task.Run(() => generator.GenerateCode(null));
             if (csharpCode is not null)
             {
+                var outputFile = OutputFile.GetOutputFilename(inputFile);
+                Logger.Instance.WriteLine($"Writing generated code to: {outputFile}");
                 await File.WriteAllTextAsync(
-                    OutputFile.GetOutputFilename(inputFile),
+                    outputFile,
                     csharpCode,
                     cancellationToken);
+                Logger.Instance.WriteLine("AutoRest code generation completed successfully");
             }
         }
         catch (Exception e)
         {
+            Logger.Instance.WriteLine($"AutoRest code generation failed: {e.Message}");
             traceSource.TraceEvent(
                 TraceEventType.Error,
                 0,
                 "Error generating AutoRest client code: {0}",
                 e.Message);
 
-            await this.WriteToOutputWindowAsync(
-                "Error generating AutoRest client code: " + e.Message,
-                cancellationToken);
+            Logger.Instance.WriteLine("Error generating AutoRest client code: " + e.Message);
         }
     }
 }
