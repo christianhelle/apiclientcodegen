@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- Add progress reporting to VSIX Extensibility commands [\#1452](https://github.com/christianhelle/apiclientcodegen/pull/1452) ([christianhelle](https://github.com/christianhelle))
 - Add thread synchronization to OutputWindowRemoteLogger [\#1450](https://github.com/christianhelle/apiclientcodegen/pull/1450) ([Copilot](https://github.com/apps/copilot-swe-agent))
 
 ## [1.36.0](https://github.com/christianhelle/apiclientcodegen/tree/1.36.0) (2026-01-04)
