@@ -108,27 +108,10 @@ internal class ExtensionEntrypoint : Extension
             return;
         }
 
-        var version = GetVisualStudioVersion();
+        var version = new Version(18, 0); // TODO: Change this to get actual Visual Studio version
         Logger.GetLogger<AppInsightsRemoteLogger>()
             .AddTelemetryInitializer(
                 new VisualStudioVersionInitializer(version));
-    }
-
-    private static Version GetVisualStudioVersion()
-    {
-        // The VisualStudioExtensibility SDK version corresponds to the Visual Studio version
-        // For example, SDK version 17.14.x indicates Visual Studio 2022 version 17.14
-        var extensibilityAssembly = typeof(VisualStudioExtensibility).Assembly;
-        var assemblyVersion = extensibilityAssembly.GetName().Version;
-        
-        if (assemblyVersion != null)
-        {
-            // Use the major.minor version from the SDK
-            return new Version(assemblyVersion.Major, assemblyVersion.Minor);
-        }
-        
-        // Fallback to Visual Studio 2022 (version 17.0) if unable to determine
-        return new Version(17, 0);
     }
 }
 
