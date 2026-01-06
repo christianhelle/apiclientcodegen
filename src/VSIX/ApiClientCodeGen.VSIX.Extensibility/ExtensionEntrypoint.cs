@@ -115,7 +115,7 @@ internal class ExtensionEntrypoint : Extension
     }
 }
 
-public sealed class VisualStudioVersionInitializer : ITelemetryInitializer
+internal sealed class VisualStudioVersionInitializer : ITelemetryInitializer
 {
     private readonly Version visualStudioVersion;
 
