@@ -10,7 +10,7 @@ public class AboutCommand : Command
 {
     public override CommandConfiguration CommandConfiguration => new("%AboutCommand.DisplayName%")
     {
-        Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+        Icon = new(ImageMoniker.KnownValues.AboutBox, IconSettings.IconAndText),
         Placements = [CommandPlacement.KnownPlacements.ExtensionsMenu]
     };
 
