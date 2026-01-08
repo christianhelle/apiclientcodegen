@@ -22,7 +22,7 @@ public class GenerateNSwagCommand(TraceSource traceSource, ExtensionSettingsProv
 {
     public override CommandConfiguration CommandConfiguration => new("%NSwagCommand.DisplayName%")
     {
-        Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+        Icon = new(ImageMoniker.KnownValues.GenerateFile, IconSettings.IconAndText),
         VisibleWhen = ActivationConstraint.ClientContext(
             ClientContextKey.Shell.ActiveSelectionFileName, 
             ".(json|ya?ml)")
@@ -48,7 +48,7 @@ public class GenerateNSwagStudioCommand(
 {
     public override CommandConfiguration CommandConfiguration => new("%NSwagStudioCommand.DisplayName%")
     {
-        Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+        Icon = new(ImageMoniker.KnownValues.GenerateFile, IconSettings.IconAndText),
         Placements = [KnownPlacements.Node_IncludeExcludeGroup],
         VisibleWhen = ActivationConstraint.ClientContext(
             ClientContextKey.Shell.ActiveSelectionFileName,
@@ -123,7 +123,7 @@ public class GenerateNSwagNewCommand(TraceSource traceSource, ExtensionSettingsP
 {
     public override CommandConfiguration CommandConfiguration => new("%NSwagCommand.DisplayName%")
     {
-        Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+        Icon = new(ImageMoniker.KnownValues.GenerateFile, IconSettings.IconAndText),
     };
 
     public override async Task ExecuteCommandAsync(

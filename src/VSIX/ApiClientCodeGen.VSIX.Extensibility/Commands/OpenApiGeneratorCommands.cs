@@ -16,7 +16,7 @@ public class GenerateOpenApiCommand(TraceSource traceSource, ExtensionSettingsPr
 {
     public override CommandConfiguration CommandConfiguration => new("%OpenApiGeneratorCommand.DisplayName%")
     {
-        Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+        Icon = new(ImageMoniker.KnownValues.GenerateFile, IconSettings.IconAndText),
         VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
     };
 
@@ -38,7 +38,7 @@ public class GenerateOpenApiNewCommand(TraceSource traceSource, ExtensionSetting
 {
     public override CommandConfiguration CommandConfiguration => new("%OpenApiGeneratorCommand.DisplayName%")
     {
-        Icon = new(ImageMoniker.KnownValues.Extension, IconSettings.IconAndText),
+        Icon = new(ImageMoniker.KnownValues.GenerateFile, IconSettings.IconAndText),
     };
 
     public override async Task ExecuteCommandAsync(
