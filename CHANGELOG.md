@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Update command icons to use context-appropriate monikers [\#1453](https://github.com/christianhelle/apiclientcodegen/pull/1453) ([christianhelle](https://github.com/christianhelle))
 - Fix NSwag Studio in out-of-procses VS extension [\#1451](https://github.com/christianhelle/apiclientcodegen/pull/1451) ([christianhelle](https://github.com/christianhelle))
 - Add user-friendly verbose logging to VSIX Extensibility commands [\#1448](https://github.com/christianhelle/apiclientcodegen/pull/1448) ([christianhelle](https://github.com/christianhelle))
 - Update the positions of the context menus in the out-of-process VS extension [\#1447](https://github.com/christianhelle/apiclientcodegen/pull/1447) ([christianhelle](https://github.com/christianhelle))
