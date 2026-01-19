@@ -57,7 +57,8 @@ public class OpenApiVersionExtensionsTests
     }
     
     [Theory]
-    [InlineData(OpenApiSupportedVersion.V7180, true)]   // Latest version
+    [InlineData(OpenApiSupportedVersion.V7190, true)]   // Latest version
+    [InlineData(OpenApiSupportedVersion.V7180, false)]  // Not latest version
     [InlineData(OpenApiSupportedVersion.V7170, false)]  // Not latest version
     [InlineData(OpenApiSupportedVersion.V7120, false)]  // Not latest version
     [InlineData(OpenApiSupportedVersion.V7070, false)]  // Not latest version
@@ -73,10 +74,11 @@ public class OpenApiVersionExtensionsTests
     }
     
     [Theory]
+    [InlineData(OpenApiSupportedVersion.V7180, true)]   // Older than latest version
     [InlineData(OpenApiSupportedVersion.V7170, true)]   // Older than latest version
     [InlineData(OpenApiSupportedVersion.V7120, true)]   // Older than latest version
     [InlineData(OpenApiSupportedVersion.V7070, true)]   // Older than latest version
-    [InlineData(OpenApiSupportedVersion.V7180, false)]  // Equal to latest version
+    [InlineData(OpenApiSupportedVersion.V7190, false)]  // Equal to latest version
     public void IsOlderThanLatest_ReturnsExpectedResult(
         OpenApiSupportedVersion currentVersion, 
         bool expectedResult)
@@ -105,7 +107,8 @@ public class OpenApiVersionExtensionsTests
     }
 
     [Theory]
-    [InlineData(OpenApiSupportedVersion.Latest, OpenApiSupportedVersion.V7180)]
+    [InlineData(OpenApiSupportedVersion.Latest, OpenApiSupportedVersion.V7190)]
+    [InlineData(OpenApiSupportedVersion.V7190, OpenApiSupportedVersion.V7190)]
     [InlineData(OpenApiSupportedVersion.V7180, OpenApiSupportedVersion.V7180)]
     [InlineData(OpenApiSupportedVersion.V7170, OpenApiSupportedVersion.V7170)]
     [InlineData(OpenApiSupportedVersion.V7160, OpenApiSupportedVersion.V7160)]

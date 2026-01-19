@@ -13,7 +13,7 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
 
 - ***NSwagCodeGenerator*** - Generates a single file C# REST API Client using the [NSwag.CodeGeneration.CSharp](https://github.com/RSuter/NSwag/wiki/CSharpClientGenerator) [nuget package](https://www.nuget.org/packages/NSwag.CodeGeneration.CSharp/) **v14.6.3**
 
-- ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **[OpenAPI Generator v7.18.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.18.0)**.
+- ***OpenApiCodeGenerator*** - Generates a single file C# REST API Client using **[OpenAPI Generator v7.19.0](https://github.com/OpenAPITools/openapi-generator/releases/tag/v7.19.0)**.
 The output file is the result of merging all the files generated using the OpenAPI Generator tool with:
 `generate -g csharp --input-spec [swagger file] --output [output file] -DapiTests=false -DmodelTests=false -DpackageName=[default namespace] --skip-overwrite`
 
