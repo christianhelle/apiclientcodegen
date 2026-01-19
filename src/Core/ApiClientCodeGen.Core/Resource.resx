@@ -121,10 +121,10 @@
     <value>https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.19.0/openapi-generator-cli-7.19.0.jar</value>
   </data>
   <data name="OpenApiGenerator_MD5" xml:space="preserve">
-    <value>b5b8eb46aeeba16c7a1445d4ee3a88d6</value>
+    <value>845f1af40238e5a4e22eb06a6df928eb</value>
   </data>
   <data name="OpenApiGenerator_SHA1" xml:space="preserve">
-    <value>03beec991655b1532c3663f0bbbb9401dd6ff8b2</value>
+    <value>fc784e487445dea46ea2a1bbcf0053315685bd93</value>
   </data>
   <data name="SwaggerCodegenCli_DownloadUrl" xml:space="preserve">
     <value>https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.34/swagger-codegen-cli-3.0.34.jar</value>
