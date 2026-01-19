@@ -6,7 +6,7 @@
   "RefitterSettingsCommand.DisplayName": "Generate Refitter output",
   "NSwagCommand.DisplayName": "Generate with NSwag (v14.6.3)",
   "NSwagStudioCommand.DisplayName": "Generate NSwag Studio output",
-  "OpenApiGeneratorCommand.DisplayName": "Generate with OpenAPI Generator (v7.18.0)",
+  "OpenApiGeneratorCommand.DisplayName": "Generate with OpenAPI Generator (v7.19.0)",
   "KiotaCommand.DisplayName": "Generate with Microsoft Kiota (v1.29.0)",
   "SwaggerCommand.DisplayName": "Generate with Swagger (v3.0.34 - Outdated)",
   "AutoRestCommand.DisplayName": "Generate with AutoRest (v3.0.0-beta.20210504.2 - Outdated)",
