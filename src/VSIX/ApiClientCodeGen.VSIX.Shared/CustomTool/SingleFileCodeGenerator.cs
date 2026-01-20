@@ -12,15 +12,17 @@ using Rapicgen.Extensions;
 using Rapicgen.Generators;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
+using Microsoft.VisualStudio.OLE.Interop;
 
 namespace Rapicgen.CustomTool
 {
     [ExcludeFromCodeCoverage]
     [ComVisible(true)]
-    public abstract class SingleFileCodeGenerator : IVsSingleFileGenerator
+    public abstract class SingleFileCodeGenerator : IVsSingleFileGenerator, IObjectWithSite
     {
         private readonly SupportedLanguage supportedLanguage;
         private readonly ILanguageConverter? converter;
+        private object? site;
 
         public SupportedCodeGenerator CodeGenerator { get; }
 
@@ -91,6 +93,9 @@ namespace Rapicgen.CustomTool
                 Logger.Instance.WriteLine(Environment.NewLine);
                 Logger.Instance.WriteLine($"Output file size: {pcbOutput}");
 
+                // Force output file timestamp to be older than input to ensure VS detects changes next time
+                EnsureOutputWillRegenerateOnNextChange(wszInputFilePath);
+
                 Logger.Instance.WriteLine(Environment.NewLine);
                 Logger.Instance.WriteLine("#######################################################################################");
                 Logger.Instance.WriteLine("#                                                                                     #");
@@ -154,6 +159,102 @@ namespace Rapicgen.CustomTool
             Logger.Instance.WriteLine("# Create a Github Issue at https://github.com/christianhelle/apiclientcodegen/issues #");
             Logger.Instance.WriteLine("######################################################################################");
             Logger.Instance.WriteLine(Environment.NewLine);
+        }
+
+        /// <summary>
+        /// Ensures that the next modification to the input file will trigger regeneration.
+        /// This works around Visual Studio's timestamp-based change detection by ensuring
+        /// the output file timestamp doesn't block future regenerations.
+        /// </summary>
+        private static void EnsureOutputWillRegenerateOnNextChange(string inputFilePath)
+        {
+            try
+            {
+                // Get the output file path by looking for the generated file
+                // VS creates it with the same base name but different extension
+                var outputFilePath = GetOutputFilePath(inputFilePath);
+                
+                if (!string.IsNullOrEmpty(outputFilePath) && 
+                    System.IO.File.Exists(outputFilePath) && 
+                    System.IO.File.Exists(inputFilePath))
+                {
+                    // Set output file timestamp to be slightly older than input
+                    // This ensures VS will detect the next input file change
+                    var inputTime = System.IO.File.GetLastWriteTime(inputFilePath);
+                    var outputTime = inputTime.AddSeconds(-1);
+                    System.IO.File.SetLastWriteTime(outputFilePath, outputTime);
+                    
+                    Logger.Instance.WriteLine($"Updated output file timestamp to ensure future regeneration");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Don't fail generation if timestamp adjustment fails
+                Logger.Instance.WriteLine($"Warning: Could not adjust output timestamp: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Gets the output file path from the input file path.
+        /// This attempts to find the corresponding .cs or .vb file.
+        /// </summary>
+        private static string? GetOutputFilePath(string inputFilePath)
+        {
+            try
+            {
+                var directory = System.IO.Path.GetDirectoryName(inputFilePath);
+                var fileNameWithoutExt = System.IO.Path.GetFileNameWithoutExtension(inputFilePath);
+                
+                if (string.IsNullOrEmpty(directory) || string.IsNullOrEmpty(fileNameWithoutExt))
+                    return null;
+
+                // Check for common output extensions
+                var possibleExtensions = new[] { ".cs", ".vb" };
+                foreach (var ext in possibleExtensions)
+                {
+                    var possiblePath = System.IO.Path.Combine(directory, fileNameWithoutExt + ext);
+                    if (System.IO.File.Exists(possiblePath))
+                        return possiblePath;
+                }
+
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public void GetSite(ref Guid riid, out IntPtr ppvSite)
+        {
+            if (site == null)
+            {
+                ppvSite = IntPtr.Zero;
+                Marshal.ThrowExceptionForHR(VSConstants.E_NOINTERFACE);
+                return;
+            }
+
+            var pUnknownPointer = Marshal.GetIUnknownForObject(site);
+            try
+            {
+                Marshal.QueryInterface(pUnknownPointer, ref riid, out ppvSite);
+                if (ppvSite == IntPtr.Zero)
+                {
+                    Marshal.ThrowExceptionForHR(VSConstants.E_NOINTERFACE);
+                }
+            }
+            finally
+            {
+                if (pUnknownPointer != IntPtr.Zero)
+                {
+                    Marshal.Release(pUnknownPointer);
+                }
+            }
+        }
+
+        public void SetSite(object pUnkSite)
+        {
+            site = pUnkSite;
         }
     }
 }
