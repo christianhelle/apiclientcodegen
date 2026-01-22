@@ -2,7 +2,7 @@
   "ApiClientCodeGenerator.GroupDisplayName": "REST API Client Generator (PREVIEW)",
   "AddNewCommand.GroupDisplayName": "Add New REST API Client (PREVIEW)",
   "AboutCommand.DisplayName": "About REST API Client Generator (PREVIEW)",
-  "RefitterCommand.DisplayName": "Generate with Refitter (v1.7.1)",
+  "RefitterCommand.DisplayName": "Generate with Refitter (v1.7.2)",
   "RefitterSettingsCommand.DisplayName": "Generate Refitter output",
   "NSwagCommand.DisplayName": "Generate with NSwag (v14.6.3)",
   "NSwagStudioCommand.DisplayName": "Generate NSwag Studio output",

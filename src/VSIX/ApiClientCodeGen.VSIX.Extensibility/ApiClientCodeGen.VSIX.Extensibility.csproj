@@ -12,7 +12,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Extensibility.Sdk" Version="17.14.40608" PrivateAssets="all" />
     <PackageReference Include="Microsoft.VisualStudio.Extensibility.Build" Version="17.14.40608" PrivateAssets="all" />
-    <PackageReference Include="Refitter.Core" Version="1.7.1" />
+    <PackageReference Include="Refitter.Core" Version="1.7.2" />
     <PackageReference Include="NSwag.Core.Yaml" Version="14.6.3" />
     <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.6.3" />
     <PackageReference Include="TextCopy" Version="6.2.1" />

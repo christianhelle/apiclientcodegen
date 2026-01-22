@@ -43,7 +43,7 @@
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewKiotaCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Refitter"
-                _label = "Generate with Refitter (v1.7.1)"
+                _label = "Generate with Refitter (v1.7.2)"
                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewRefitterCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Swagger"
@@ -72,7 +72,7 @@
                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateKiotaCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Refitter"
-                _label = "Generate with Refitter (v1.7.1)"
+                _label = "Generate with Refitter (v1.7.2)"
                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateRefitterCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Swagger"
