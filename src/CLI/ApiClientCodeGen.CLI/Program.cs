@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Rapicgen.CLI.Commands;
 using Rapicgen.Core;
+using Rapicgen.Core.Converters;
 using Rapicgen.Core.Exceptions;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.NSwag;
@@ -14,6 +15,7 @@ using Rapicgen.Core.Options.OpenApiGenerator;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Rapicgen.CLI.Commands.CSharp;
+using Rapicgen.CLI.Commands.VisualBasic;
 using Rapicgen.Core.Options.Refitter;
 using Spectre.Console.Cli;
 
@@ -65,6 +67,35 @@ namespace Rapicgen.CLI
                             .WithExample(new[] { "openapi", "petstore.json", "GeneratedCode", "Output.cs" });
                     });
 
+                    config.AddBranch("vb", vb =>
+                    {
+                        vb.SetDescription("Generate Visual Basic API clients using various generators");
+
+                        vb.AddCommand<AutoRestVbCommand>("autorest")
+                            .WithDescription("AutoRest (v3.0.0-beta.20210504.2) - VB.NET")
+                            .WithExample(new[] { "vb", "autorest", "petstore.json", "GeneratedCode", "Output.vb" });
+
+                        vb.AddCommand<KiotaVbCommand>("kiota")
+                            .WithDescription("Microsoft Kiota (v1.29.0) - VB.NET")
+                            .WithExample(new[] { "vb", "kiota", "petstore.json", "GeneratedCode", "Output.vb" });
+
+                        vb.AddCommand<NSwagVbCommand>("nswag")
+                            .WithDescription("NSwag (v14.6.3) - VB.NET")
+                            .WithExample(new[] { "vb", "nswag", "petstore.json", "GeneratedCode", "Output.vb" });
+
+                        vb.AddCommand<RefitterVbCommand>("refitter")
+                            .WithDescription("Refitter (v1.7.3) - VB.NET")
+                            .WithExample(new[] { "vb", "refitter", "petstore.json", "GeneratedCode", "Output.vb" });
+
+                        vb.AddCommand<SwaggerVbCodegenCommand>("swagger")
+                            .WithDescription("Swagger Codegen CLI (v3.0.34) - VB.NET")
+                            .WithExample(new[] { "vb", "swagger", "petstore.json", "GeneratedCode", "Output.vb" });
+
+                        vb.AddCommand<OpenApiVbGeneratorCommand>("openapi")
+                            .WithDescription("OpenAPI Generator (v7.19.0) - VB.NET")
+                            .WithExample(new[] { "vb", "openapi", "petstore.json", "GeneratedCode", "Output.vb" });
+                    });
+
                     config.AddCommand<TypeScriptCommand>("typescript")
                         .WithDescription("Generate TypeScript API clients")
                         .WithExample(new[] { "typescript", "petstore.json", "typescript-generated-code" });
@@ -112,6 +143,7 @@ namespace Rapicgen.CLI
             services.AddSingleton<INpmInstaller, NpmInstaller>();
             services.AddSingleton<IFileDownloader, FileDownloader>();
             services.AddSingleton<IWebDownloader, WebDownloader>();
+            services.AddSingleton<ILanguageConverter, CSharpToVisualBasicLanguageConverter>();
         }
     }
 }
