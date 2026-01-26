@@ -1,18 +1,12 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
 using Rapicgen.Core.Converters;
-using ICSharpCode.CodeConverter;
+using CoreConverter = Rapicgen.Core.Converters.CSharpToVisualBasicLanguageConverter;
 
 namespace Rapicgen.Converters
 {
-    [ExcludeFromCodeCoverage]
-    public class CSharpToVisualBasicLanguageConverter : ILanguageConverter
+    /// <summary>
+    /// Wrapper for backward compatibility. Uses the Core implementation.
+    /// </summary>
+    public class CSharpToVisualBasicLanguageConverter : CoreConverter, ILanguageConverter
     {
-        public async Task<string> ConvertAsync(string code)
-        {
-            var options = new CodeWithOptions(code);
-            var result = await CodeConverter.ConvertAsync(options);
-            return result.ConvertedCode;
-        }
     }
 }
