@@ -93,6 +93,30 @@
       {
         "command": "restApiClientCodeGenerator.refitterSettings",
         "title": "Generate Refitter Output"
+      },
+      {
+        "command": "restApiClientCodeGenerator.vb.nswag",
+        "title": "Generate VB.NET Client with NSwag (v14.6.3)"
+      },
+      {
+        "command": "restApiClientCodeGenerator.vb.refitter",
+        "title": "Generate VB.NET Client with Refitter (v1.7.3)"
+      },
+      {
+        "command": "restApiClientCodeGenerator.vb.openapi",
+        "title": "Generate VB.NET Client with OpenAPI Generator (v7.19.0)"
+      },
+      {
+        "command": "restApiClientCodeGenerator.vb.kiota",
+        "title": "Generate VB.NET Client with Microsoft Kiota (v1.29.0)"
+      },
+      {
+        "command": "restApiClientCodeGenerator.vb.swagger",
+        "title": "Generate VB.NET Client with Swagger (v3.0.34 - Outdated)"
+      },
+      {
+        "command": "restApiClientCodeGenerator.vb.autorest",
+        "title": "Generate VB.NET Client with AutoRest (v3.0.0-beta - Outdated)"
       }
     ],
     "menus": {
@@ -114,8 +138,12 @@
           "group": "1_languages@1"
         },
         {
-          "submenu": "restApiClientCodeGenerator.typescriptSubmenu",
+          "submenu": "restApiClientCodeGenerator.vbSubmenu",
           "group": "1_languages@2"
+        },
+        {
+          "submenu": "restApiClientCodeGenerator.typescriptSubmenu",
+          "group": "1_languages@3"
         }
       ],
       "restApiClientCodeGenerator.csharpSubmenu": [
@@ -185,6 +213,32 @@
           "command": "restApiClientCodeGenerator.typescript.rxjs",
           "group": "1_generators@10"
         }
+      ],
+      "restApiClientCodeGenerator.vbSubmenu": [
+        {
+          "command": "restApiClientCodeGenerator.vb.nswag",
+          "group": "1_generators@1"
+        },
+        {
+          "command": "restApiClientCodeGenerator.vb.refitter",
+          "group": "1_generators@2"
+        },
+        {
+          "command": "restApiClientCodeGenerator.vb.openapi",
+          "group": "1_generators@3"
+        },
+        {
+          "command": "restApiClientCodeGenerator.vb.kiota",
+          "group": "1_generators@4"
+        },
+        {
+          "command": "restApiClientCodeGenerator.vb.swagger",
+          "group": "1_generators@5"
+        },
+        {
+          "command": "restApiClientCodeGenerator.vb.autorest",
+          "group": "1_generators@6"
+        }
       ]
     },
     "submenus": [
@@ -199,6 +253,10 @@
       {
         "id": "restApiClientCodeGenerator.typescriptSubmenu",
         "label": "TypeScript"
+      },
+      {
+        "id": "restApiClientCodeGenerator.vbSubmenu",
+        "label": "Visual Basic"
       }
     ],
     "configuration": {

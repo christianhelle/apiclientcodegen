@@ -74,12 +74,13 @@ export function getOutputDirectory(specificationFile: string): string {
  * Generates the output file path
  * @param specificationFile The path to the specification file
  * @param generator The generator name (for the file name)
+ * @param extension The file extension (default: .cs)
  * @returns The full path for the output file
  */
-export function getOutputFilePath(specificationFile: string, generator: string): string {
+export function getOutputFilePath(specificationFile: string, generator: string, extension: string = 'cs'): string {
   const outputDir = getOutputDirectory(specificationFile);
   const fileName = path.basename(specificationFile, path.extname(specificationFile));
-  return path.join(outputDir, `${fileName}.${generator}.cs`);
+  return path.join(outputDir, `${fileName}.${generator}.${extension}`);
 }
 
 /**

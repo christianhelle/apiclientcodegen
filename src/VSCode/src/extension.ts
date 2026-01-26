@@ -1,6 +1,6 @@
 import * as vscode from 'vscode';
 import { promptForFile } from './utils/file-utils';
-import { generators, typescriptGenerators, executeRapicgen, executeRapicgenTypeScript, executeRapicgenRefitterSettings } from './services/generators';
+import { generators, typescriptGenerators, vbGenerators, executeRapicgen, executeRapicgenTypeScript, executeRapicgenRefitterSettings, executeRapicgenVisualBasic } from './services/generators';
 
 /**
  * Activates the extension
@@ -84,6 +84,32 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   context.subscriptions.push(refitterSettingsDisposable);
+
+  // Register commands for each Visual Basic generator
+  for (const generator of vbGenerators) {
+    const disposable = vscode.commands.registerCommand(
+      `restApiClientCodeGenerator.vb.${generator.command}`, 
+      async (fileUri: vscode.Uri) => {
+        if (!fileUri) {
+          // If command was triggered from command palette, ask for file
+          const selectedFileUri = await promptForFile(
+            '**/*.{json,yaml,yml}',
+            'Select a Swagger/OpenAPI specification file',
+            'No Swagger/OpenAPI specification files found in the workspace'
+          );
+          
+          if (!selectedFileUri) {
+            return;
+          }
+          fileUri = selectedFileUri;
+        }
+
+        executeRapicgenVisualBasic(generator.command, fileUri.fsPath, context);
+      }
+    );
+
+    context.subscriptions.push(disposable);
+  }
 }
 
 /**
