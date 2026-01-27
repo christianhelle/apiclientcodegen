@@ -70,7 +70,7 @@ Options:
 
 Commands:
   autorest      AutoRest (v3.0.0-beta.20210504.2)
-  kiota         Microsoft Kiota (v1.29.0)
+  kiota         Microsoft Kiota (v1.30.0)
   nswag         NSwag (v14.6.3)
   openapi       OpenAPI Generator (v7.19.0)
   refitter      Refitter (v1.7.3)
