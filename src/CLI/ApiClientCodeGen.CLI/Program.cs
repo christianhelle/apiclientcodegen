@@ -45,7 +45,7 @@ namespace Rapicgen.CLI
                             .WithExample(new[] { "autorest", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<KiotaCommand>("kiota")
-                            .WithDescription("Microsoft Kiota (v1.29.0)")
+                            .WithDescription("Microsoft Kiota (v1.30.0)")
                             .WithExample(new[] { "kiota", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<NSwagCommand>("nswag")

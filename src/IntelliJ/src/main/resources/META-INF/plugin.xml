@@ -65,7 +65,7 @@
                 <action id="ApiClientCodeGen.CSharp.NSwag" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorNSwagAction" text="NSwag (v14.6.3)" description="Generate C# client with NSwag (v14.6.3)"/>
                 <action id="ApiClientCodeGen.CSharp.Refitter" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorRefitterAction" text="Refitter (v1.7.3)" description="Generate C# client with Refitter (v1.7.3)"/>
                 <action id="ApiClientCodeGen.CSharp.OpenAPI" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorOpenApiAction" text="OpenAPI Generator (v7.19.0)" description="Generate C# client with OpenAPI Generator (v7.19.0)"/>
-                <action id="ApiClientCodeGen.CSharp.Kiota" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorKiotaAction" text="Microsoft Kiota (v1.29.0)" description="Generate C# client with Microsoft Kiota (v1.29.0)"/>
+                <action id="ApiClientCodeGen.CSharp.Kiota" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorKiotaAction" text="Microsoft Kiota (v1.30.0)" description="Generate C# client with Microsoft Kiota (v1.30.0)"/>
                 <action id="ApiClientCodeGen.CSharp.Swagger" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorSwaggerAction" text="Swagger Codegen (v3.0.34 - Outdated)" description="Generate C# client with Swagger Codegen CLI (v3.0.34 - Outdated)"/>
                 <action id="ApiClientCodeGen.CSharp.AutoRest" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorAutoRestAction" text="AutoRest (v3.0.0-beta - Outdated)" description="Generate C# client with AutoRest (v3.0.0-beta - Outdated)"/>
             </group>
