@@ -1,5 +1,13 @@
 # Changelog
 
+## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.36.0...HEAD)
+
+**Closed issues:**
+
+- VB.NET Support [\#1466](https://github.com/christianhelle/apiclientcodegen/issues/1466)
+
 ## [1.36.0](https://github.com/christianhelle/apiclientcodegen/tree/1.36.0) (2026-01-04)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.35.0...1.36.0)
