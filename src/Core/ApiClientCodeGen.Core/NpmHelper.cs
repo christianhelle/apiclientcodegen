@@ -24,7 +24,7 @@ namespace Rapicgen.Core
             try
             {
                 var npm = GetNpmPath();
-                string prefix = null!;
+                string prefix = "";
 
                 using var context = new DependencyContext("npm config get prefix");
                 (processLauncher ?? new ProcessLauncher()).Start(
@@ -33,7 +33,7 @@ namespace Rapicgen.Core
                     o => prefix += o,
                     e => Logger.Instance.WriteLine(e));
                 context.Succeeded();
-                return prefix;
+                return string.IsNullOrWhiteSpace(prefix) ? null : prefix;
             }
             catch (Exception e)
             {
