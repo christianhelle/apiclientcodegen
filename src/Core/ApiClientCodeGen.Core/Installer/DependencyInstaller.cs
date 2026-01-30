@@ -117,8 +117,16 @@ namespace Rapicgen.Core.Installer
                 });
                 if (!kiotaVersion.StartsWith("1.30.0"))
                 { 
-                    // Version mismatch detected, update to required version
-                    UpdateKiotaTool();
+                    // Version mismatch detected, try to update to required version
+                    try
+                    {
+                        UpdateKiotaTool();
+                    }
+                    catch (ProcessLaunchException ex) when (ex.ErrorData?.Contains("is already installed") == true)
+                    {
+                        // Tool is already installed at correct version, ignore
+                        Logger.Instance.WriteLine("Kiota is already installed at the required version.");
+                    }
                 }
             }
             catch (Win32Exception)
