@@ -51,15 +51,22 @@ namespace Rapicgen.Core.External
             if (Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix || withoutPath)
                 return "npm";
 
-            if (string.IsNullOrWhiteSpace(programFiles))
-                programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+            var programFilesPath = programFiles;
+            if (string.IsNullOrWhiteSpace(programFilesPath))
+                programFilesPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
 
-            if (string.IsNullOrWhiteSpace(programFiles64))
-                programFiles64 = programFiles!.Replace(" (x86)", string.Empty);
+            // If still null/empty after getting from environment, return npm command without path
+            if (string.IsNullOrWhiteSpace(programFilesPath))
+                return "npm";
 
-            var npmCommand = Path.Combine(programFiles, "nodejs\\npm.cmd");
+            // At this point programFilesPath is guaranteed to be non-null/non-empty
+            var effectiveProgramFiles64 = !string.IsNullOrWhiteSpace(programFiles64)
+                ? programFiles64
+                : programFilesPath!.Replace(" (x86)", string.Empty);
+
+            var npmCommand = Path.Combine(programFilesPath!, "nodejs\\npm.cmd");
             if (!File.Exists(npmCommand))
-                npmCommand = Path.Combine(programFiles64, "nodejs\\npm.cmd");
+                npmCommand = Path.Combine(effectiveProgramFiles64, "nodejs\\npm.cmd");
 
             return File.Exists(npmCommand) ? npmCommand : string.Empty;
         }

@@ -117,18 +117,33 @@ namespace Rapicgen.Core.Installer
                 });
                 if (!kiotaVersion.StartsWith("1.30.0"))
                 { 
-                    //older or newer? i guess this should be handled.
+                    // Version mismatch detected, update to required version
+                    UpdateKiotaTool();
                 }
             }
             catch (Win32Exception)
             {
                 // if command doesn't exist Win32Exception is thrown.
-                command = PathProvider.GetDotNetPath();
-                arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.30.0";
-                using var context = new DependencyContext(command, $"{command} {arguments}");
-                processLauncher.Start(command, arguments);
-                context.Succeeded();
+                InstallKiotaTool();
             }
+        }
+
+        private void InstallKiotaTool()
+        {
+            var command = PathProvider.GetDotNetPath();
+            var arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.30.0";
+            using var context = new DependencyContext(command, $"{command} {arguments}");
+            processLauncher.Start(command, arguments);
+            context.Succeeded();
+        }
+
+        private void UpdateKiotaTool()
+        {
+            var command = PathProvider.GetDotNetPath();
+            var arguments = "tool update --global Microsoft.OpenApi.Kiota --version 1.30.0";
+            using var context = new DependencyContext(command, $"{command} {arguments}");
+            processLauncher.Start(command, arguments);
+            context.Succeeded();
         }
 
         public void InstallRefitter()

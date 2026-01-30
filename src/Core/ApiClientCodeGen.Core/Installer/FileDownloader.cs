@@ -38,24 +38,30 @@ namespace Rapicgen.Core.Installer
 
             Logger.Instance.WriteLine($"{outputFilename} downloaded successfully");
 
-            MoveFile(filePath, tempFile);
+            if (!MoveFile(filePath, tempFile))
+            {
+                // If move failed, try to use the temp file directly
+                if (File.Exists(tempFile))
+                    return tempFile;
+            }
 
             return filePath;
         }
 
         [ExcludeFromCodeCoverage]
-        private static void MoveFile(string filePath, string tempFile)
+        private static bool MoveFile(string filePath, string tempFile)
         {
             try
             {
                 if (File.Exists(filePath))
                     File.Delete(filePath);
                 File.Move(tempFile, filePath);
+                return true;
             }
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                
+                return false;
             }
         }
     }
