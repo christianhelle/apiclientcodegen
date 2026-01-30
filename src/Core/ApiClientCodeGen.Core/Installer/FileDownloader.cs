@@ -40,9 +40,17 @@ namespace Rapicgen.Core.Installer
 
             if (!MoveFile(filePath, tempFile))
             {
-                // If move failed, try to use the temp file directly
+                // If move failed but temp file exists, use it directly as fallback
                 if (File.Exists(tempFile))
                     return tempFile;
+                    
+                // If temp file also doesn't exist, the download likely failed silently
+                // Check if the original filePath exists (perhaps from a previous download)
+                if (File.Exists(filePath))
+                    return filePath;
+                    
+                throw new FileNotFoundException(
+                    $"Failed to download or move file: {outputFilename}. Neither {filePath} nor {tempFile} exist.");
             }
 
             return filePath;
