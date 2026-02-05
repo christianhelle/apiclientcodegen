@@ -1,12 +1,29 @@
 # Changelog
 
-## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
+## [1.37.0](https://github.com/christianhelle/apiclientcodegen/tree/1.37.0) (2026-01-28)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.36.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.36.0...1.37.0)
+
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.30.0 [\#1469](https://github.com/christianhelle/apiclientcodegen/pull/1469) ([christianhelle](https://github.com/christianhelle))
+- Refitter v1.7.3 [\#1467](https://github.com/christianhelle/apiclientcodegen/pull/1467) ([christianhelle](https://github.com/christianhelle))
+- Refitter v1.7.2 [\#1465](https://github.com/christianhelle/apiclientcodegen/pull/1465) ([christianhelle](https://github.com/christianhelle))
+- Update Microsoft Kiota package dependencies to v1.21.2 [\#1460](https://github.com/christianhelle/apiclientcodegen/pull/1460) ([christianhelle](https://github.com/christianhelle))
+- OpenAPI Generator v7.19.0 [\#1458](https://github.com/christianhelle/apiclientcodegen/pull/1458) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Update command icons to use context-appropriate monikers [\#1453](https://github.com/christianhelle/apiclientcodegen/pull/1453) ([christianhelle](https://github.com/christianhelle))
+- Fix NSwag Studio in out-of-procses VS extension [\#1451](https://github.com/christianhelle/apiclientcodegen/pull/1451) ([christianhelle](https://github.com/christianhelle))
+- Add user-friendly verbose logging to VSIX Extensibility commands [\#1448](https://github.com/christianhelle/apiclientcodegen/pull/1448) ([christianhelle](https://github.com/christianhelle))
+- Update the positions of the context menus in the out-of-process VS extension [\#1447](https://github.com/christianhelle/apiclientcodegen/pull/1447) ([christianhelle](https://github.com/christianhelle))
 
 **Closed issues:**
 
 - VB.NET Support [\#1466](https://github.com/christianhelle/apiclientcodegen/issues/1466)
+
+**Merged pull requests:**
+
+- Add progress reporting to VSIX Extensibility commands [\#1452](https://github.com/christianhelle/apiclientcodegen/pull/1452) ([christianhelle](https://github.com/christianhelle))
+- Add thread synchronization to OutputWindowRemoteLogger [\#1450](https://github.com/christianhelle/apiclientcodegen/pull/1450) ([Copilot](https://github.com/apps/copilot-swe-agent))
 
 ## [1.36.0](https://github.com/christianhelle/apiclientcodegen/tree/1.36.0) (2026-01-04)
 
