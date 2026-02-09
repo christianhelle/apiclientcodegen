@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 env:
-  VERSION: 1.37.${{ github.run_number }}
+  VERSION: 1.38.${{ github.run_number }}
 
 jobs:
   build:
