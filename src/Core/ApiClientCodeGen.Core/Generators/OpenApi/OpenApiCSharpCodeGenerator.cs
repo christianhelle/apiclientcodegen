@@ -40,7 +40,7 @@ namespace Rapicgen.Core.Generators.OpenApi
 
         public string GenerateCode(IProgressReporter? pGenerateProgress)
         {
-            string arguments = null!;
+            string arguments = "";
             try
             {
                 pGenerateProgress?.Progress(10);
@@ -118,12 +118,14 @@ namespace Rapicgen.Core.Generators.OpenApi
                     arguments += openApiGeneratorOptions.CustomAdditionalProperties;
                 }
 
+                var swaggerDirectory = Path.GetDirectoryName(swaggerFile) ?? Directory.GetCurrentDirectory();
+                
                 if (!string.IsNullOrWhiteSpace(openApiGeneratorOptions.TemplatesPath))
                 {
                     var templatesPath = openApiGeneratorOptions.TemplatesPath;
                     if (!Directory.Exists(templatesPath))
                     {
-                        templatesPath = Path.Combine(Path.GetDirectoryName(swaggerFile)!, templatesPath);
+                        templatesPath = Path.Combine(swaggerDirectory, templatesPath);
                     }
 
                     arguments += $"-t \"{templatesPath}\" ";
@@ -131,7 +133,7 @@ namespace Rapicgen.Core.Generators.OpenApi
 
                 var java = javaPathProvider.GetJavaExePath();
                 using var context = new DependencyContext("OpenAPI Generator", $"{java} {arguments}");
-                processLauncher.Start(java, arguments, Path.GetDirectoryName(swaggerFile));
+                processLauncher.Start(java, arguments, swaggerDirectory);
                 context.Succeeded();
 
                 pGenerateProgress?.Progress(80);
@@ -158,7 +160,7 @@ namespace Rapicgen.Core.Generators.OpenApi
                 {
                     CSharpFileMerger.CopyFilesAndDeleteSource(
                         Path.Combine(output, "src", defaultNamespace),
-                        Path.GetDirectoryName(swaggerFile)!);
+                        swaggerDirectory);
                 }
 
                 return string.Empty;
