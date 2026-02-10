@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.38.0](https://github.com/christianhelle/apiclientcodegen/tree/1.38.0) (2026-02-09)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.37.0...1.38.0)
+
+**Implemented enhancements:**
+
+- Update Kiota dependencies to v1.21.3 [\#1474](https://github.com/christianhelle/apiclientcodegen/pull/1474) ([christianhelle](https://github.com/christianhelle))
+- Update dependency Microsoft.Kiota.Abstractions to 1.21.3 [\#1473](https://github.com/christianhelle/apiclientcodegen/pull/1473) ([renovate[bot]](https://github.com/apps/renovate))
+
+**Merged pull requests:**
+
+- Update dependency @types/node to v24.10.12 [\#1419](https://github.com/christianhelle/apiclientcodegen/pull/1419) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.37.0](https://github.com/christianhelle/apiclientcodegen/tree/1.37.0) (2026-01-28)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.36.0...1.37.0)
