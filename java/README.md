@@ -17,7 +17,7 @@ This project uses Java-based tools for generating REST API client code from Open
 
 **OpenAPI Generator** is a Java-based code generation tool that creates client libraries, server stubs, and API documentation from OpenAPI specifications.
 
-- **Current Version**: 7.19.0 (latest supported version)
+- **Current Version**: 7.20.0 (latest supported version)
 - **Distribution**: JAR file (`openapi-generator-cli-{version}.jar`)
 - **Download Location**: Maven Central Repository
 - **Repository**: https://github.com/OpenAPITools/openapi-generator
@@ -25,7 +25,7 @@ This project uses Java-based tools for generating REST API client code from Open
 
 **Usage in this project:**
 ```bash
-java -jar openapi-generator-cli-7.19.0.jar generate \
+java -jar openapi-generator-cli-7.20.0.jar generate \
   --generator-name csharp \
   --input-spec [swagger file] \
   --output [output directory] \
