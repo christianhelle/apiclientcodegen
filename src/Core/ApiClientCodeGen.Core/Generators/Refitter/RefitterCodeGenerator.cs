@@ -177,8 +177,10 @@ public class RefitterCodeGenerator : ICodeGenerator
 
     private static string GetOutputFilePath(RefitterSettings? settings, string? workingDirectory)
     {
-        if (settings == null || workingDirectory == null)
-            return Path.Combine(workingDirectory ?? "", "Output.cs");
+        var effectiveWorkingDirectory = workingDirectory ?? Directory.GetCurrentDirectory();
+        
+        if (settings == null)
+            return Path.Combine(effectiveWorkingDirectory, "Output.cs");
 
         var outputFolder = settings.OutputFolder ?? "";
         var outputFilename = settings.OutputFilename ?? "Output.cs";
@@ -188,7 +190,7 @@ public class RefitterCodeGenerator : ICodeGenerator
             return Path.Combine(outputFolder, outputFilename);
         }
         
-        return Path.Combine(workingDirectory, outputFolder, outputFilename);
+        return Path.Combine(effectiveWorkingDirectory, outputFolder, outputFilename);
     }
 
     // Minimal representation of Refitter settings for JSON deserialization

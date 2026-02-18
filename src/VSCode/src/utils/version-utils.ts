@@ -28,8 +28,14 @@ export function getExtensionVersion(context: vscode.ExtensionContext): string | 
  * @returns 1 if version1 > version2, -1 if version1 < version2, 0 if equal
  */
 export function compareVersions(version1: string, version2: string): number {
-  const parts1 = version1.split('.').map(Number);
-  const parts2 = version2.split('.').map(Number);
+  const parts1 = version1.split('.').map(s => {
+    const num = parseInt(s, 10);
+    return isNaN(num) ? 0 : num;
+  });
+  const parts2 = version2.split('.').map(s => {
+    const num = parseInt(s, 10);
+    return isNaN(num) ? 0 : num;
+  });
   
   for (let i = 0; i < Math.max(parts1.length, parts2.length); i++) {
     const p1 = i < parts1.length ? parts1[i] : 0;

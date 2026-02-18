@@ -75,7 +75,8 @@ namespace Rapicgen.CLI.Commands
             var outputPath = settings.OutputPath;
             if (!Directory.Exists(outputPath))
             {
-                outputPath = Path.Combine(Path.GetDirectoryName(settings.SwaggerFile)!, settings.OutputPath);
+                var swaggerDirectory = Path.GetDirectoryName(settings.SwaggerFile) ?? Directory.GetCurrentDirectory();
+                outputPath = Path.Combine(swaggerDirectory, settings.OutputPath);
             }
 
             var directoryInfo = new DirectoryInfo(outputPath);

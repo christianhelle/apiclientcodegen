@@ -35,8 +35,9 @@ public class KiotaCodeGenerator(
         }
 
         pGenerateProgress?.Progress(30);
+        var swaggerDirectory = Path.GetDirectoryName(swaggerFile) ?? Directory.GetCurrentDirectory();
         string outputFolder = options.GenerateMultipleFiles
-            ? Path.GetDirectoryName(swaggerFile)
+            ? swaggerDirectory
             : Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
 
         if (!Directory.Exists(outputFolder))
@@ -46,7 +47,7 @@ public class KiotaCodeGenerator(
         RunKiotaGenerate(outputFolder);
 
         if (!options.GenerateMultipleFiles &&
-            File.Exists(Path.Combine(Path.GetDirectoryName(swaggerFile)!, KiotaLockFile)))
+            File.Exists(Path.Combine(swaggerDirectory, KiotaLockFile)))
         {
             File.Copy(
                 swaggerFile,
@@ -54,7 +55,7 @@ public class KiotaCodeGenerator(
                 true);
 
             File.Copy(
-                Path.Combine(Path.GetDirectoryName(swaggerFile)!, KiotaLockFile),
+                Path.Combine(swaggerDirectory, KiotaLockFile),
                 Path.Combine(outputFolder, KiotaLockFile),
                 true);
 
@@ -78,7 +79,7 @@ public class KiotaCodeGenerator(
             {
                 File.Copy(
                     kiotaConfigFile,
-                    Path.Combine(Path.GetDirectoryName(swaggerFile)!, KiotaLockFile),
+                    Path.Combine(swaggerDirectory, KiotaLockFile),
                     true);
             }
         }
@@ -109,7 +110,8 @@ public class KiotaCodeGenerator(
 
     private void RunKiotaUpdate()
     {
-        var arguments = $" update -o \"{Path.GetDirectoryName(swaggerFile)!}\"";
+        var outputDirectory = Path.GetDirectoryName(swaggerFile) ?? Directory.GetCurrentDirectory();
+        var arguments = $" update -o \"{outputDirectory}\"";
         using var context = new DependencyContext("Kiota", $"{Command} {arguments}");
         processLauncher.Start(Command, arguments);
         context.Succeeded();

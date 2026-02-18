@@ -73,7 +73,14 @@ namespace Rapicgen.Core.Extensions
             {
                 if (val == e.ToInt32(CultureInfo.InvariantCulture))
                 {
-                    var memInfo = type.GetMember(type.GetEnumName(val));
+                    var enumName = type.GetEnumName(val);
+                    if (enumName == null)
+                        continue;
+                        
+                    var memInfo = type.GetMember(enumName);
+                    if (memInfo.Length == 0)
+                        continue;
+                        
                     var descriptionAttribute = memInfo[0]
                         .GetCustomAttributes(typeof(DescriptionAttribute), false)
                         .FirstOrDefault() as DescriptionAttribute;
