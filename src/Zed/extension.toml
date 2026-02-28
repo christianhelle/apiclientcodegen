@@ -1,0 +1,19 @@
+id = "rest-api-client-generator"
+name = "REST API Client Code Generator"
+version = "0.0.1"
+schema_version = 1
+authors = ["Christian Resma Helle <christian.helle@gmail.com>"]
+description = "Generate REST API client code from OpenAPI/Swagger specifications using NSwag, Refitter, OpenAPI Generator, Kiota, Swagger Codegen, and AutoRest"
+repository = "https://github.com/christianhelle/apiclientcodegen"
+
+[slash_commands.generate-csharp]
+description = "Generate a C# API client from an OpenAPI/Swagger specification"
+requires_argument = true
+
+[slash_commands.generate-typescript]
+description = "Generate a TypeScript API client from an OpenAPI/Swagger specification"
+requires_argument = true
+
+[slash_commands.generate-refitter]
+description = "Generate Refitter output from a .refitter settings file"
+requires_argument = true
