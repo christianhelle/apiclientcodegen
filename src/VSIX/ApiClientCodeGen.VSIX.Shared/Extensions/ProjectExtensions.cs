@@ -231,11 +231,24 @@ namespace Rapicgen.Extensions
             var packageId = packageDependency.Name;
             var version = packageDependency.Version;
 
-            if (installedPackages.Any(c => string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase)) &&
-               (installedPackages.Any(c => c.VersionString == version) || !packageDependency.ForceUpdate))
+            var existingPackage = installedPackages.FirstOrDefault(c =>
+                string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase));
+
+            if (existingPackage != null)
             {
-                Logger.Instance.WriteLine($"{packageDependency.Name} is already installed");
-                return;
+                if (!packageDependency.ForceUpdate)
+                {
+                    Logger.Instance.WriteLine($"{packageId} is already installed (version {existingPackage.VersionString})");
+                    return;
+                }
+
+                if (PackageVersionHelper.IsVersionGreaterOrEqual(existingPackage.VersionString, version))
+                {
+                    Logger.Instance.WriteLine(
+                        $"{packageId} version {existingPackage.VersionString} is already installed " +
+                        $"and satisfies the minimum required version {version}");
+                    return;
+                }
             }
 
             ThreadHelper.ThrowIfNotOnUIThread();
@@ -265,8 +278,10 @@ namespace Rapicgen.Extensions
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                Logger.Instance.WriteLine($"Unable to install {packageId} version {version}");
-                
+                Logger.Instance.WriteLine(
+                    $"Unable to install {packageId} version {version}. " +
+                    $"This may occur if the package is already available via a transitive dependency. " +
+                    $"If so, this warning can be safely ignored.");
             }
         }
 
