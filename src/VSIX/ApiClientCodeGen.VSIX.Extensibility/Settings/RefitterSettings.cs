@@ -77,5 +77,15 @@ internal static class RefitterSettings
         "%Settings.Refitter.GenerateMultipleFiles.DisplayName%",
         RefitterCategory,
         defaultValue: false);
+
+    [VisualStudioContribution]
+    internal static Setting.Boolean RefitterOptionalNullableParameters { get; } = new(
+        "optionalNullableParameters",
+        "%Settings.Refitter.OptionalNullableParameters.DisplayName%",
+        RefitterCategory,
+        defaultValue: false)
+    {
+        Description = "%Settings.Refitter.OptionalNullableParameters.Description%",
+    };
 }
 #pragma warning restore VSEXTPREVIEW_SETTINGS

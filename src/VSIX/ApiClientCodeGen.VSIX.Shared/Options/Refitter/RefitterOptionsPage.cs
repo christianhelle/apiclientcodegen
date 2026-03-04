@@ -51,5 +51,10 @@ namespace Rapicgen.Options.Refitter
         [DisplayName("Generate Multiple Files")]
         [Description("Set this to TRUE to generate multiple files (default: FALSE)")]
         public bool GenerateMultipleFiles { get; set; }
+
+        [Category(Name)]
+        [DisplayName("Optional Nullable Parameters")]
+        [Description("Set this to TRUE to generate nullable parameters as optional parameters (default: FALSE)")]
+        public bool OptionalNullableParameters { get; set; }
     }
 }

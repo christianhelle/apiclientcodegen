@@ -172,6 +172,11 @@ public class RefitterCodeGenerator : ICodeGenerator
             args += " --no-auto-generated-header";
         }
 
+        if (options.OptionalNullableParameters)
+        {
+            args += " --optional-nullable-parameters";
+        }
+
         return args;
     }
 

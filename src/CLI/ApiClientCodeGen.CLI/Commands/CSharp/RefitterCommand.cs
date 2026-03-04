@@ -46,6 +46,10 @@ public class RefitterCommandSettings : CodeGeneratorCommand<RefitterCommandSetti
     [Description("Generate multiple files")]
     public bool GenerateMultipleFiles { get; set; }
 
+    [CommandOption("--optional-nullable-parameters")]
+    [Description("Generate nullable parameters as optional parameters")]
+    public bool OptionalNullableParameters { get; set; }
+
     [CommandOption("--settings-file")]
     [Description("Path to a .refitter settings file to use for code generation")]
     public string? SettingsFile { get; set; }
@@ -83,6 +87,7 @@ public class RefitterCommand : CodeGeneratorCommand<RefitterCommandSettings>
         options.UseCancellationTokens = settings.UseCancellationTokens;
         options.GenerateHeaderParameters = !settings.NoOperationHeaders;
         options.GenerateMultipleFiles = settings.GenerateMultipleFiles;
+        options.OptionalNullableParameters = settings.OptionalNullableParameters;
 
         // If a settings file is specified, validate it exists and use it
         if (!string.IsNullOrEmpty(settings.SettingsFile))

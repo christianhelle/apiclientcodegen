@@ -23,6 +23,7 @@ namespace Rapicgen.Options.Refitter
                 UseCancellationTokens = options.UseCancellationTokens;
                 GenerateHeaderParameters = options.GenerateHeaderParameters;
                 GenerateMultipleFiles = options.GenerateMultipleFiles;
+                OptionalNullableParameters = options.OptionalNullableParameters;
             }
             catch (Exception e)
             {
@@ -42,5 +43,6 @@ namespace Rapicgen.Options.Refitter
         public bool UseCancellationTokens { get; set; }
         public bool GenerateHeaderParameters { get; set; }
         public bool GenerateMultipleFiles { get; set; }
+        public bool OptionalNullableParameters { get; set; }
     }
 }

@@ -10,5 +10,6 @@
         bool UseCancellationTokens { get; set; }
         bool GenerateHeaderParameters { get; set; }
         bool GenerateMultipleFiles { get; set; }
+        bool OptionalNullableParameters { get; set; }
     }
 }
