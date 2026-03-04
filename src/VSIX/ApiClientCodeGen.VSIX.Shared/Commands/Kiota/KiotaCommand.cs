@@ -62,7 +62,7 @@ namespace Rapicgen.Commands.Kiota
                     new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()),
-                new DefaultKiotaOptions { GenerateMultipleFiles = true });
+                new Options.Kiota.KiotaOptions());
             codeGenerator.GenerateCode(null);
 
             var project = dte.GetActiveProject()!;
