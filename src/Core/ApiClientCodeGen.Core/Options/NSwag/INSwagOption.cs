@@ -9,5 +9,6 @@ namespace Rapicgen.Core.Options.NSwag
         CSharpClassStyle ClassStyle { get; }
         bool UseDocumentTitle { get; }
         string ParameterDateTimeFormat { get; }
+        bool UseSystemTextJson { get; }
     }
 }

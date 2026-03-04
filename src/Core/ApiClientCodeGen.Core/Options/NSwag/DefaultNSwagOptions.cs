@@ -9,5 +9,6 @@ namespace Rapicgen.Core.Options.NSwag
         public bool UseDocumentTitle => true;
         public string ParameterDateTimeFormat => "s";
         public bool UseBaseUrl => false;
+        public bool UseSystemTextJson => false;
     }
 }

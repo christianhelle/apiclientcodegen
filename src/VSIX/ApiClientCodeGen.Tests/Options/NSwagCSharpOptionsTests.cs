@@ -54,5 +54,12 @@ namespace Rapicgen.Tests.Options
                 .UseDocumentTitle
                 .Should()
                 .Be(options.UseDocumentTitle);
+
+        [Xunit.Fact]
+        public void Reads_UseSystemTextJson_From_Options()
+            => new NSwagCSharpOptions(options)
+                .UseSystemTextJson
+                .Should()
+                .Be(options.UseSystemTextJson);
     }
 }

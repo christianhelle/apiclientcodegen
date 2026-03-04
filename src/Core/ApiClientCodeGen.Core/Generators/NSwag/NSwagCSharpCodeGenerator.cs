@@ -74,7 +74,8 @@ namespace Rapicgen.Core.Generators.NSwag
                        $"/GenerateDtoTypes:{options.GenerateDtoTypes.ToString().ToLowerInvariant()} " +
                        $"/UseBaseUrl:{options.UseBaseUrl.ToString().ToLowerInvariant()} " +
                        $"/ClassStyle:{classStyle} " +
-                       $"/ParameterDateTimeFormat:\"{options.ParameterDateTimeFormat}\"";
+                       $"/ParameterDateTimeFormat:\"{options.ParameterDateTimeFormat}\"" +
+                       (options.UseSystemTextJson ? " /JsonLibrary:SystemTextJson" : string.Empty);
 
             return args;
         }

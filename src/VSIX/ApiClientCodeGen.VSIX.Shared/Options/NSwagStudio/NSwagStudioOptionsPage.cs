@@ -49,6 +49,11 @@ namespace Rapicgen.Options.NSwagStudio
         public string ParameterDateTimeFormat { get; set; } = "s";
 
         [Category(Name)]
+        [DisplayName("Use System.Text.Json")]
+        [Description("Set this to TRUE to use System.Text.Json instead of Newtonsoft.Json for serialization")]
+        public bool UseSystemTextJson { get; set; } = false;
+
+        [Category(Name)]
         [DisplayName("Generate Response Classes")]
         [Description("Set this to TRUE to generate response classes")]
         public bool GenerateResponseClasses { get; set; } = true;

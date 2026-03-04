@@ -89,5 +89,15 @@ internal static class NSwagSettings
     {
         Description = "%Settings.NSwag.ParameterDateTimeFormat.Description%",
     };
+
+    [VisualStudioContribution]
+    internal static Setting.Boolean NSwagUseSystemTextJson { get; } = new(
+        "useSystemTextJson",
+        "%Settings.NSwag.UseSystemTextJson.DisplayName%",
+        NSwagCategory,
+        defaultValue: false)
+    {
+        Description = "%Settings.NSwag.UseSystemTextJson.Description%",
+    };
 }
 #pragma warning restore VSEXTPREVIEW_SETTINGS
