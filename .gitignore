@@ -293,3 +293,6 @@ src/IntelliJ/.gradle
 src/IntelliJ/.intellijPlatform
 src/IntelliJ/build
 src/java
+# Squad: ignore generated logs
+.squad/orchestration-log/
+.squad/log/
