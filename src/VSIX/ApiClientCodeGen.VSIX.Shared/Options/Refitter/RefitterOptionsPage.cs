@@ -54,7 +54,7 @@ namespace Rapicgen.Options.Refitter
 
         [Category(Name)]
         [DisplayName("Optional Nullable Parameters")]
-        [Description("Set this to TRUE to generate nullable parameters as optional parameters (default: FALSE)")]
+        [Description("Set this to TRUE to generate optional parameters as nullable (for example, optional request body parameters as nullable value types) (default: FALSE)")]
         public bool OptionalNullableParameters { get; set; }
     }
 }

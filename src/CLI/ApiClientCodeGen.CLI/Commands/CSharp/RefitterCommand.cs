@@ -47,7 +47,7 @@ public class RefitterCommandSettings : CodeGeneratorCommand<RefitterCommandSetti
     public bool GenerateMultipleFiles { get; set; }
 
     [CommandOption("--optional-nullable-parameters")]
-    [Description("Generate nullable parameters as optional parameters")]
+    [Description("Treat nullable parameters in the OpenAPI specification as optional parameters in the generated code")]
     public bool OptionalNullableParameters { get; set; }
 
     [CommandOption("--settings-file")]
