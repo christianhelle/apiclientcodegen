@@ -210,7 +210,8 @@ public abstract class GenerateRefitterBaseCommand(
                     ReturnIApiResponse = options.ReturnIApiResponse,
                     UseCancellationTokens = options.UseCancellationTokens,
                     GenerateOperationHeaders = options.GenerateHeaderParameters,
-                    GenerateMultipleFiles = options.GenerateMultipleFiles
+                    GenerateMultipleFiles = options.GenerateMultipleFiles,
+                    OptionalParameters = options.OptionalNullableParameters
                 };
 
                 cancellationToken.ThrowIfCancellationRequested();
