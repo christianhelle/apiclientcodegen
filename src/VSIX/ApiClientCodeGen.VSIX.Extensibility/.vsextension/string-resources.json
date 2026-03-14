@@ -159,6 +159,8 @@
   "Settings.Refitter.UseCancellationTokens.DisplayName": "Use Cancellation Tokens",
   "Settings.Refitter.GenerateHeaderParameters.DisplayName": "Generate Header Parameters",
   "Settings.Refitter.GenerateMultipleFiles.DisplayName": "Generate Multiple Files",
+  "Settings.Refitter.OptionalNullableParameters.DisplayName": "Optional Nullable Parameters",
+  "Settings.Refitter.OptionalNullableParameters.Description": "Make optional parameters and value types nullable (for optional request body properties)",
 
   "Settings.Kiota.DisplayName": "Kiota",
   "Settings.Kiota.GenerateMultipleFiles.DisplayName": "Generate Multiple Files",

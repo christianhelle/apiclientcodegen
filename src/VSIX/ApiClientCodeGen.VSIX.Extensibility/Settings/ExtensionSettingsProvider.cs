@@ -121,7 +121,8 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
             RefitterSettings.RefitterGenerateInternalTypes,
             RefitterSettings.RefitterUseCancellationTokens,
             RefitterSettings.RefitterGenerateHeaderParameters,
-            RefitterSettings.RefitterGenerateMultipleFiles
+            RefitterSettings.RefitterGenerateMultipleFiles,
+            RefitterSettings.RefitterOptionalNullableParameters
         ],
         cancellationToken);
 
@@ -232,6 +233,7 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
         public bool UseCancellationTokens { get; set; } = values.ValueOrDefault(RefitterSettings.RefitterUseCancellationTokens, false);
         public bool GenerateHeaderParameters { get; set; } = values.ValueOrDefault(RefitterSettings.RefitterGenerateHeaderParameters, true);
         public bool GenerateMultipleFiles { get; set; } = values.ValueOrDefault(RefitterSettings.RefitterGenerateMultipleFiles, false);
+        public bool OptionalNullableParameters { get; set; } = values.ValueOrDefault(RefitterSettings.RefitterOptionalNullableParameters, false);
     }
 
     private sealed class KiotaOptions(SettingValues values) : IKiotaOptions

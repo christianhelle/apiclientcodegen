@@ -13,4 +13,5 @@ public class DefaultRefitterOptions : IRefitterOptions
     public bool UseCancellationTokens { get; set; }
     public bool GenerateHeaderParameters { get; set; } = true;
     public bool GenerateMultipleFiles { get; set; }
+    public bool OptionalNullableParameters { get; set; }
 }
