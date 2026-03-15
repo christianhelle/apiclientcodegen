@@ -199,7 +199,7 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
         public string ParameterDateTimeFormat => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioParameterDateTimeFormat, "s") ?? "s";
         public bool UseBaseUrl => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioUseBaseUrl, false);
         public bool UseSystemTextJson => values.ValueOrDefault(NSwagSettings.NSwagUseSystemTextJson, false);
-        public bool GenerateResponseClasses=> values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateResponseClasses, true);
+        public bool GenerateResponseClasses => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateResponseClasses, true);
         public bool GenerateJsonMethods => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateJsonMethods, true);
         public bool RequiredPropertiesMustBeDefined => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioRequiredPropertiesMustBeDefined, true);
         public bool GenerateDefaultValues => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateDefaultValues, true);
