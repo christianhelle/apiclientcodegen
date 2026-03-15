@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Rapicgen.Core;
@@ -58,8 +59,8 @@ namespace Rapicgen.CustomTool
             try
             {
                 progressReporter.Progress(5);
-
-                if (!FileValidator.IsSupportedOpenApiFile(wszInputFilePath))
+				
+				if (!FileValidator.IsSupportedOpenApiFile(wszInputFilePath))
                 {
                     Logger.Instance.WriteLine(
                         $"Unsupported file type: {System.IO.Path.GetExtension(wszInputFilePath)}. Skipping code generation.");
@@ -73,9 +74,24 @@ namespace Rapicgen.CustomTool
                     return 1;
                 }
 
+                // Always read file from disk to detect external changes (fixes #1463, #209)
+                string actualFileContents;
+                try
+                {
+                    actualFileContents = File.ReadAllText(wszInputFilePath);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Instance.TrackError(ex);
+                    Logger.Instance.WriteLine(
+                        $"Failed to read file from disk: {wszInputFilePath}. Using VS-provided content.");
+                    actualFileContents = bstrInputFileContents;
+                }
+				
+
                 var codeGenerator = Factory.Create(
                     wszDefaultNamespace,
-                    bstrInputFileContents,
+                    actualFileContents,
                     wszInputFilePath,
                     supportedLanguage,
                     CodeGenerator);
