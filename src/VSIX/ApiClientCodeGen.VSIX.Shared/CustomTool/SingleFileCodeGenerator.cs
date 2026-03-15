@@ -59,6 +59,20 @@ namespace Rapicgen.CustomTool
             {
                 progressReporter.Progress(5);
 
+                if (!FileValidator.IsSupportedOpenApiFile(wszInputFilePath))
+                {
+                    Logger.Instance.WriteLine(
+                        $"Unsupported file type: {System.IO.Path.GetExtension(wszInputFilePath)}. Skipping code generation.");
+                    return 1;
+                }
+
+                if (FileValidator.IsNonOpenApiContent(bstrInputFileContents, wszInputFilePath))
+                {
+                    Logger.Instance.WriteLine(
+                        "File appears to be a Docker Compose file, not an OpenAPI specification. Skipping code generation.");
+                    return 1;
+                }
+
                 var codeGenerator = Factory.Create(
                     wszDefaultNamespace,
                     bstrInputFileContents,
