@@ -55,6 +55,11 @@ Set this to FALSE to use the filename (default: TRUE)")]
         [Description("Specifies the format for DateTime type method parameters")]
         [DefaultValue("s")]
         public string ParameterDateTimeFormat { get; set; } = "s";
+
+        [CommandOption("--use-system-text-json")]
+        [Description("Set this to TRUE to use System.Text.Json instead of Newtonsoft.Json for serialization (default: FALSE)")]
+        [DefaultValue(false)]
+        public bool UseSystemTextJson { get; set; } = false;
     }
 
     public class NSwagCommand : CodeGeneratorCommand<NSwagCommandSettings>

@@ -64,6 +64,8 @@
   "Settings.NSwag.UseDocumentTitle.Description": "Use the OpenAPI document title as the generated class name",
   "Settings.NSwag.ParameterDateTimeFormat.DisplayName": "Parameter DateTime format",
   "Settings.NSwag.ParameterDateTimeFormat.Description": "Specifies the format for DateTime method parameters",
+  "Settings.NSwag.UseSystemTextJson.DisplayName": "Use System.Text.Json",
+  "Settings.NSwag.UseSystemTextJson.Description": "Use System.Text.Json instead of Newtonsoft.Json for serialization",
 
   "Settings.NSwagStudio.DisplayName": "NSwag Studio",
   "Settings.NSwagStudio.InjectHttpClient.DisplayName": "Inject HttpClient",

@@ -58,7 +58,8 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
             NSwagSettings.NSwagClassStyle,
             NSwagSettings.NSwagUseDocumentTitle,
             NSwagSettings.NSwagParameterDateTimeFormat,
-            NSwagSettings.NSwagUseBaseUrl
+            NSwagSettings.NSwagUseBaseUrl,
+            NSwagSettings.NSwagUseSystemTextJson
         ],
         cancellationToken);
 
@@ -80,7 +81,8 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
             NSwagStudioSettings.NSwagStudioGenerateJsonMethods,
             NSwagStudioSettings.NSwagStudioRequiredPropertiesMustBeDefined,
             NSwagStudioSettings.NSwagStudioGenerateDefaultValues,
-            NSwagStudioSettings.NSwagStudioGenerateDataAnnotations
+            NSwagStudioSettings.NSwagStudioGenerateDataAnnotations,
+            NSwagSettings.NSwagUseSystemTextJson
         ],
         cancellationToken);
 
@@ -185,6 +187,7 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
         public bool UseDocumentTitle => values.ValueOrDefault(NSwagSettings.NSwagUseDocumentTitle, true);
         public string ParameterDateTimeFormat => values.ValueOrDefault(NSwagSettings.NSwagParameterDateTimeFormat, "s") ?? "s";
         public bool UseBaseUrl => values.ValueOrDefault(NSwagSettings.NSwagUseBaseUrl, false);
+        public bool UseSystemTextJson => values.ValueOrDefault(NSwagSettings.NSwagUseSystemTextJson, false);
     }
 
     private sealed class NSwagStudioOptions(SettingValues values) : INSwagStudioOptions
@@ -196,7 +199,8 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
         public bool UseDocumentTitle => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioUseDocumentTitle, true);
         public string ParameterDateTimeFormat => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioParameterDateTimeFormat, "s") ?? "s";
         public bool UseBaseUrl => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioUseBaseUrl, false);
-        public bool GenerateResponseClasses => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateResponseClasses, true);
+        public bool UseSystemTextJson => values.ValueOrDefault(NSwagSettings.NSwagUseSystemTextJson, false);
+        public bool GenerateResponseClasses=> values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateResponseClasses, true);
         public bool GenerateJsonMethods => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateJsonMethods, true);
         public bool RequiredPropertiesMustBeDefined => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioRequiredPropertiesMustBeDefined, true);
         public bool GenerateDefaultValues => values.ValueOrDefault(NSwagStudioSettings.NSwagStudioGenerateDefaultValues, true);

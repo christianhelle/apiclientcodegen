@@ -3,7 +3,9 @@ using Rapicgen.Core.Extensions;
 using Rapicgen.Core.Options.NSwag;
 using NSwag;
 using NSwag.CodeGeneration.CSharp;
+using NJsonSchema.CodeGeneration.CSharp;
 using NJsonSchemaClassStyle = NJsonSchema.CodeGeneration.CSharp.CSharpClassStyle;
+using CSharpClassStyle = Rapicgen.Core.Options.NSwag.CSharpClassStyle;
 
 namespace Rapicgen.Core.Generators.NSwag
 {
@@ -35,7 +37,10 @@ namespace Rapicgen.Core.Generators.NSwag
                 CSharpGeneratorSettings =
                 {
                     Namespace = defaultNamespace,
-                    ClassStyle = ConvertClassStyle(options.ClassStyle)
+                    ClassStyle = ConvertClassStyle(options.ClassStyle),
+                    JsonLibrary = options.UseSystemTextJson
+                        ? CSharpJsonLibrary.SystemTextJson
+                        : CSharpJsonLibrary.NewtonsoftJson
                 },
             };
 

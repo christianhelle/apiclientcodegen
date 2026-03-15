@@ -41,5 +41,12 @@ namespace Rapicgen.Tests.Options
                 .ClassStyle
                 .Should()
                 .Be(CSharpClassStyle.Poco);
+
+        [Xunit.Fact]
+        public void Reads_UseSystemTextJson_From_Options()
+            => new NSwagCSharpOptions()
+                .UseSystemTextJson
+                .Should()
+                .Be(false);
     }
 }

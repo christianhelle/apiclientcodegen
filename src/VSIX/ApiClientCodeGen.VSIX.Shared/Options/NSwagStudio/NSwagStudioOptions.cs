@@ -26,6 +26,7 @@ namespace Rapicgen.Options.NSwagStudio
                 UseBaseUrl = options.UseBaseUrl;
                 ClassStyle = options.ClassStyle;
                 UseDocumentTitle = options.UseDocumentTitle;
+                UseSystemTextJson = options.UseSystemTextJson;
             }
             catch (Exception e)
             {
@@ -45,6 +46,7 @@ namespace Rapicgen.Options.NSwagStudio
                 Logger.Instance.WriteLine("UseBaseUrl = false");
                 Logger.Instance.WriteLine("ClassStyle = CSharpClassStyle.Poco");
                 Logger.Instance.WriteLine("UseDocumentTitle = true");
+                Logger.Instance.WriteLine("UseSystemTextJson = false");
 
                 GenerateResponseClasses = true;
                 GenerateJsonMethods = true;
@@ -58,6 +60,7 @@ namespace Rapicgen.Options.NSwagStudio
                 UseBaseUrl = false;
                 ClassStyle = CSharpClassStyle.Poco;
                 UseDocumentTitle = true;
+                UseSystemTextJson = false;
             }
         }
 
@@ -74,5 +77,6 @@ namespace Rapicgen.Options.NSwagStudio
         public CSharpClassStyle ClassStyle { get; }
         public bool UseDocumentTitle { get; }
         public string ParameterDateTimeFormat { get; }
+        public bool UseSystemTextJson { get; }
     }
 }
