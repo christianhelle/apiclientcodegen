@@ -43,7 +43,7 @@ jobs:
       run: dotnet nuget push **/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
       continue-on-error: true
     - name: Publish artifacts
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: CLI Tool
         path: |
@@ -82,7 +82,7 @@ jobs:
         mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
         mv src/VSIX/ApiClientCodeGen.VSIX.Extensibility/bin/Release/net8.0/ApiClientCodeGen.VSIX.Extensibility.vsix ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix
     - name: Publish artifacts
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: Visual Studio Extension
         path: |
@@ -139,7 +139,7 @@ jobs:
         npm run vsix
     
     - name: Upload VSIX
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: VSCode-Extension
         path: src/VSCode/*.vsix
@@ -178,7 +178,7 @@ jobs:
         working-directory: src/IntelliJ
         run: ./gradlew buildPlugin --no-daemon
       - name: Archive plugin artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: Intellij-Plugin
           path: src/IntelliJ/build/distributions/*.zip
@@ -214,7 +214,7 @@ jobs:
         release_name: v${{ env.VERSION }}
         draft: true
         prerelease: false
-    - uses: actions/download-artifact@v7
+    - uses: actions/download-artifact@v8
       with:
         path: artifacts
     - name: Upload VSIX for VS 2019 asset
