@@ -55,7 +55,7 @@ jobs:
         mv src/VSIX/ApiClientCodeGen.VSIX.Extensibility/bin/Release/net8.0/ApiClientCodeGen.VSIX.Extensibility.vsix ApiClientCodeGen.VSIX.Extensibility-${{ env.VERSION }}.vsix
 
     - name: Publish artifacts
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: Artifacts
         path: |
