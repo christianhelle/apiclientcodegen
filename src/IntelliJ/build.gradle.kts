@@ -17,7 +17,10 @@ version = pluginVersion
 
 repositories {
     mavenCentral()
-    intellijPlatform { defaultRepositories() }
+    intellijPlatform {
+        defaultRepositories()
+        localPlatformArtifacts()
+    }
 }
 
 intellijPlatform {
@@ -27,6 +30,11 @@ intellijPlatform {
         ideaVersion.sinceBuild.set(pluginSinceBuild)
         if (pluginUntilBuild.isNotEmpty()) {
             ideaVersion.untilBuild.set(pluginUntilBuild)
+        }
+    }
+    pluginVerification {
+        ides {
+            recommended()
         }
     }
 }
