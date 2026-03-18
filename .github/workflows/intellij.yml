@@ -41,6 +41,9 @@ jobs:
       - name: Build IntelliJ Plugin
         working-directory: src/IntelliJ
         run: ./gradlew buildPlugin --no-daemon
+      - name: Verify IntelliJ Plugin
+        working-directory: src/IntelliJ
+        run: ./gradlew verifyPlugin --no-daemon
       - name: Archive plugin artifact
         uses: actions/upload-artifact@v6
         with:

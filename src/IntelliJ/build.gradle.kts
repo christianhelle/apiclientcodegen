@@ -25,19 +25,26 @@ intellijPlatform {
         name.set(pluginName)
         version.set(pluginVersion)
         ideaVersion.sinceBuild.set(pluginSinceBuild)
-        ideaVersion.untilBuild.set(pluginUntilBuild)
+        if (pluginUntilBuild.isNotEmpty()) {
+            ideaVersion.untilBuild.set(pluginUntilBuild)
+        }
     }
 }
 
 dependencies {
     intellijPlatform { intellijIdeaCommunity(platformVersion) }
-    implementation(kotlin("stdlib"))
+    compileOnly(kotlin("stdlib"))
 }
 
 tasks {
     withType<JavaCompile> { sourceCompatibility = javaVersion; targetCompatibility = javaVersion }
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions { jvmTarget = javaVersion }
+    }
+    buildPlugin {
+        // JARs inside the plugin ZIP must be STORED (not compressed) so IntelliJ's
+        // classloader can load classes directly from nested archives.
+        entryCompression = ZipEntryCompression.STORED
     }
 }
 
