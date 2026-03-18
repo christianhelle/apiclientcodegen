@@ -36,9 +36,12 @@ namespace Rapicgen.Core.Generators
             finally
             {
                 ActionExtensions.SafeInvoke(
-                    () => Directory.Delete(
-                        Directory.GetParent(output)!.FullName,
-                        true));
+                    () =>
+                    {
+                        var parent = Directory.GetParent(output);
+                        if (parent != null)
+                            Directory.Delete(parent.FullName, true);
+                    });
             }
         }
 
@@ -51,9 +54,12 @@ namespace Rapicgen.Core.Generators
             finally
             {
                 ActionExtensions.SafeInvoke(
-                    () => Directory.Delete(
-                        Directory.GetParent(input)!.FullName,
-                        true));
+                    () =>
+                    {
+                        var parent = Directory.GetParent(input);
+                        if (parent != null)
+                            Directory.Delete(parent.FullName, true);
+                    });
             }
         }
 

@@ -48,9 +48,10 @@ namespace Rapicgen.Core.Generators.NSwagStudio
                 pGenerateProgress?.Progress(50);
 
                 var arguments = $"run \"{nswagStudioFile}\"";
+                var workingDirectory = Path.GetDirectoryName(nswagStudioFile) ?? Directory.GetCurrentDirectory();
 
                 using var context = new DependencyContext("NSwag Studio", $"{command} {arguments}");
-                processLauncher.Start(command, arguments, Path.GetDirectoryName(nswagStudioFile)!);
+                processLauncher.Start(command, arguments, workingDirectory);
                 context.Succeeded();
             }
 
