@@ -45,7 +45,7 @@ dependencies {
 
 tasks {
     withType<JavaCompile> { sourceCompatibility = javaVersion; targetCompatibility = javaVersion }
-    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
         kotlinOptions { jvmTarget = javaVersion }
     }
     buildPlugin {
