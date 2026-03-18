@@ -28,7 +28,7 @@ intellijPlatform {
         name.set(pluginName)
         version.set(pluginVersion)
         ideaVersion.sinceBuild.set(pluginSinceBuild)
-        if (pluginUntilBuild.isNotEmpty()) {
+        if (pluginUntilBuild.isNotBlank()) {
             ideaVersion.untilBuild.set(pluginUntilBuild)
         }
     }
@@ -41,7 +41,6 @@ intellijPlatform {
 
 dependencies {
     intellijPlatform { intellijIdeaCommunity(platformVersion) }
-    compileOnly(kotlin("stdlib"))
 }
 
 tasks {
