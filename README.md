@@ -331,7 +331,7 @@ All custom tools mentioned above are also implemented in a cross platform comman
 
 ### Requirements
 
-- .NET 6.0 runtime
+- .NET 10.0 runtime
 - Java Runtime Environment
 - NPM
 
