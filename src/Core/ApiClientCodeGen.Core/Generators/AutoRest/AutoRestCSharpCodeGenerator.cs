@@ -10,6 +10,7 @@ using Rapicgen.Core.Options.General;
 
 namespace Rapicgen.Core.Generators.AutoRest
 {
+    [Obsolete("AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.", false)]
     public class AutoRestCSharpCodeGenerator : ICodeGenerator
     {
         private readonly IProcessLauncher processLauncher;
@@ -21,6 +22,7 @@ namespace Rapicgen.Core.Generators.AutoRest
         public string SwaggerFile { get; }
         public string DefaultNamespace { get; }
 
+#pragma warning disable CS0618 // Type or member is obsolete
         public AutoRestCSharpCodeGenerator(
             string swaggerFile,
             string defaultNamespace,
@@ -37,6 +39,7 @@ namespace Rapicgen.Core.Generators.AutoRest
             this.dependencyInstaller = dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
             this.argumentProvider = argumentProvider ?? new AutoRestArgumentProvider(options);
         }
+#pragma warning restore CS0618 // Type or member is obsolete
 
         public string GenerateCode(IProgressReporter? pGenerateProgress)
         {
@@ -44,6 +47,7 @@ namespace Rapicgen.Core.Generators.AutoRest
                 return OnGenerateCode(pGenerateProgress);
         }
 
+#pragma warning disable CS0618 // Type or member is obsolete
         [SuppressMessage(
             "Usage",
             "VSTHRD002:Avoid problematic synchronous waits",
@@ -128,5 +132,6 @@ namespace Rapicgen.Core.Generators.AutoRest
                 pGenerateProgress?.Progress(90);
             }
         }
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 }
