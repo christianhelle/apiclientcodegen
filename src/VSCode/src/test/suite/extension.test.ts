@@ -29,7 +29,7 @@ suite('Extension Test Suite', () => {
     const commands = await vscode.commands.getCommands(true);
     
     assert.strictEqual(
-      commands.includes('restApiClientCodeGenerator.autoRest'),
+      commands.includes('restApiClientCodeGenerator.autorest'),
       true,
       'AutoRest command must remain registered during deprecation period'
     );

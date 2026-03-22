@@ -5,6 +5,7 @@ using FluentAssertions;
 namespace ApiClientCodeGen.Core.Tests.NuGet
 {
     #pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest during deprecation period
+    [Xunit.Trait("Category", "Unit")]
     public class SupportedCodeGeneratorExtensionsTests
     {
         [Xunit.Fact]
