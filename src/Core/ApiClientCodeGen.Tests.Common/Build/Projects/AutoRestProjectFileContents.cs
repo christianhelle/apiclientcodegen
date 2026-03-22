@@ -9,6 +9,7 @@
     <LangVersion>latest</LangVersion>
     <IncludeGeneratorSharedCode>true</IncludeGeneratorSharedCode>
     <RestoreAdditionalProjectSources>https://azuresdkartifacts.blob.core.windows.net/azure-sdk-tools/index.json</RestoreAdditionalProjectSources>
+    <NoWarn>NU1605</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include = ""Microsoft.Rest.ClientRuntime"" Version=""2.3.21"" />
@@ -27,6 +28,7 @@
     <LangVersion>latest</LangVersion>
     <IncludeGeneratorSharedCode>true</IncludeGeneratorSharedCode>
     <RestoreAdditionalProjectSources>https://azuresdkartifacts.blob.core.windows.net/azure-sdk-tools/index.json</RestoreAdditionalProjectSources>
+    <NoWarn>NU1605</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include = ""Microsoft.Rest.ClientRuntime"" Version=""2.3.21"" />

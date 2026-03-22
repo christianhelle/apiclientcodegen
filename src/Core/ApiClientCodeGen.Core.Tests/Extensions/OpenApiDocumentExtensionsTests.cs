@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
 using ApiClientCodeGen.Tests.Common;
 using Rapicgen.Core.Extensions;
 using FluentAssertions;
@@ -34,10 +35,15 @@ namespace ApiClientCodeGen.Core.Tests.Extensions
 
         [Xunit.Fact]
         public async Task Can_GenerateClassName_From_FileName_Async()
-            => (await OpenApiDocument.FromFileAsync("Swagger.json"))
+        {
+            var swaggerFilePath = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                SwaggerJsonFilename);
+            (await OpenApiDocument.FromFileAsync(swaggerFilePath))
                 .GenerateClassName(false)
                 .Should()
-                .Be("Swagger");
+                .Be(Path.GetFileNameWithoutExtension(swaggerFilePath));
+        }
         
         [Xunit.Fact]
         public async Task Can_GenerateClassName_From_Json_Async()
