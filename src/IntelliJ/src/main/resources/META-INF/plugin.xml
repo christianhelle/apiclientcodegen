@@ -11,7 +11,7 @@
         <h3>✨ Key Features</h3>
         <ul>
             <li><strong>Multiple Language Support:</strong> Generate C# and TypeScript clients with various framework options</li>
-            <li><strong>Industry-Standard Generators:</strong> Choose from NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, and AutoRest</li>
+            <li><strong>Industry-Standard Generators:</strong> Choose from NSwag, Refitter, OpenAPI Generator, Microsoft Kiota, Swagger Codegen CLI, and AutoRest (Deprecated)</li>
             <li><strong>Seamless Integration:</strong> Right-click context menu on OpenAPI files (.json, .yaml, .yml) and Refitter settings files</li>
             <li><strong>Framework Flexibility:</strong> Support for Angular, React (Axios), Node.js, Refit, and more</li>
             <li><strong>Configuration Files:</strong> Generate from .refitter settings for advanced customization</li>
@@ -25,7 +25,7 @@
             <li><strong>OpenAPI Generator</strong> - Industry-standard with broad language support</li>
             <li><strong>Microsoft Kiota</strong> - Microsoft's modern API client generator</li>
             <li><strong>Swagger Codegen CLI</strong> - Traditional and reliable option</li>
-            <li><strong>AutoRest</strong> - Microsoft's legacy generator (preview)</li>
+            <li><strong>AutoRest (Deprecated)</strong> - Retired by Microsoft on July 1, 2026</li>
         </ul>
         
         <p><strong>TypeScript Clients:</strong></p>
@@ -67,7 +67,7 @@
                 <action id="ApiClientCodeGen.CSharp.OpenAPI" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorOpenApiAction" text="OpenAPI Generator (v7.20.0)" description="Generate C# client with OpenAPI Generator (v7.20.0)"/>
                 <action id="ApiClientCodeGen.CSharp.Kiota" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorKiotaAction" text="Microsoft Kiota (v1.30.0)" description="Generate C# client with Microsoft Kiota (v1.30.0)"/>
                 <action id="ApiClientCodeGen.CSharp.Swagger" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorSwaggerAction" text="Swagger Codegen (v3.0.34 - Outdated)" description="Generate C# client with Swagger Codegen CLI (v3.0.34 - Outdated)"/>
-                <action id="ApiClientCodeGen.CSharp.AutoRest" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorAutoRestAction" text="AutoRest (v3.0.0-beta - Outdated)" description="Generate C# client with AutoRest (v3.0.0-beta - Outdated)"/>
+                <action id="ApiClientCodeGen.CSharp.AutoRest" class="com.christianhelle.apiclientcodegen.actions.CSharpGeneratorAutoRestAction" text="AutoRest (Deprecated)" description="Generate C# client with AutoRest (Deprecated)"/>
             </group>
             <group id="ApiClientCodeGen.TypeScriptGroup" text="TypeScript" popup="true">
                 <action id="ApiClientCodeGen.TS.Angular" class="com.christianhelle.apiclientcodegen.actions.TypeScriptGeneratorAngularAction" text="Angular" description="Generate Angular TypeScript client"/>

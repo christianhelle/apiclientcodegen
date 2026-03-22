@@ -28,7 +28,7 @@
   "Settings.InstallMissingPackages.DisplayName": "Install Required Packages",
   "Settings.InstallMissingPackages.Description": "Automatically install required NuGet packages",
 
-  "Settings.AutoRest.DisplayName": "AutoRest",
+  "Settings.AutoRest.DisplayName": "AutoRest (Deprecated)",
   "Settings.AutoRest.AddCredentials.DisplayName": "Add Credentials",
   "Settings.AutoRest.AddCredentials.Description": "Include a credential property and constructor parameter supporting different authentication behaviors",
   "Settings.AutoRest.OverrideClientName.DisplayName": "Override Client Name",

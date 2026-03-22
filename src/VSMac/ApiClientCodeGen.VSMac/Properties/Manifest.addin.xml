@@ -51,7 +51,7 @@
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewSwaggerCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.AutoRest"
-                 _label = "Generate with AutoRest (v3.0.0-beta.20210504.2 - Outdated)"
+                 _label = "Generate with AutoRest (Deprecated)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewAutoRestCommandHandler" />
     
         <!-- REST API Client Generator -->
@@ -80,7 +80,7 @@
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateSwaggerCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.AutoRest"
-                 _label = "Generate with AutoRest (v3.0.0-beta.20210504.2 - Outdated)"
+                 _label = "Generate with AutoRest (Deprecated)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateAutoRestCommandHandler" />
     </Extension>
 
