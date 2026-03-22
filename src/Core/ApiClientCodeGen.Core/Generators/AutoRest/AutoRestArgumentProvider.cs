@@ -1,14 +1,17 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Rapicgen.Core.Options.AutoRest;
 
 namespace Rapicgen.Core.Generators.AutoRest
 {
+    [Obsolete("AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.", false)]
     public interface IAutoRestArgumentProvider
     {
         string GetArguments(string outputFolder, string swaggerFile, string defaultNamespace);
         string GetLegacyArguments(string outputFile, string swaggerFile, string defaultNamespace);
     }
 
+    [Obsolete("AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.", false)]
     public class AutoRestArgumentProvider : IAutoRestArgumentProvider
     {
         private readonly IAutoRestOptions options;

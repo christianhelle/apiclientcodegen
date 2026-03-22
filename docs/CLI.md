@@ -69,7 +69,7 @@ Options:
   -?|-h|--help  Show help information.
 
 Commands:
-  autorest      AutoRest (v3.0.0-beta.20210504.2)
+  autorest      AutoRest (Deprecated - v3.0.0-beta.20210504.2)
   kiota         Microsoft Kiota (v1.30.0)
   nswag         NSwag (v14.6.3)
   openapi       OpenAPI Generator (v7.20.0)

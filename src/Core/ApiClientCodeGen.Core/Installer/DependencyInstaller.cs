@@ -24,6 +24,15 @@ namespace Rapicgen.Core.Installer
             this.processLauncher = processLauncher;
         }
 
+        /// <summary>
+        /// Installs AutoRest code generator via NPM.
+        /// </summary>
+        /// <remarks>
+        /// AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. 
+        /// AutoRest support will be removed from this tool in a future major version. 
+        /// Use NSwag, Refitter, or Kiota instead.
+        /// </remarks>
+        [Obsolete("AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.", false)]
         public void InstallAutoRest()
         {
             npm.InstallNpmPackage("autorest");

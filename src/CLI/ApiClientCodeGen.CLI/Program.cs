@@ -41,7 +41,7 @@ namespace Rapicgen.CLI
                         cs.SetDescription("Generate C# API clients using various generators");
 
                         cs.AddCommand<AutoRestCommand>("autorest")
-                            .WithDescription("AutoRest (v3.0.0-beta.20210504.2)")
+                            .WithDescription("AutoRest (Deprecated - v3.0.0-beta.20210504.2)")
                             .WithExample(new[] { "autorest", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<KiotaCommand>("kiota")
@@ -93,7 +93,9 @@ namespace Rapicgen.CLI
             services.AddLogging(b => b.AddDebug());
             services.AddSingleton<IConsoleOutput, ConsoleOutput>();
             services.AddSingleton<IGeneralOptions, DefaultGeneralOptions>();
+#pragma warning disable CS0618 // Type or member is obsolete
             services.AddSingleton<IAutoRestOptions, DefaultAutoRestOptions>();
+#pragma warning restore CS0618 // Type or member is obsolete
             services.AddSingleton<IOpenApiGeneratorOptions, DefaultOpenApiGeneratorOptions>();
             services.AddSingleton<IRefitterOptions, DefaultRefitterOptions>();
             services.AddSingleton<IProgressReporter, ProgressReporter>();
@@ -103,7 +105,9 @@ namespace Rapicgen.CLI
             services.AddSingleton<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
             services.AddSingleton<IJMeterCodeGeneratorFactory, JMeterCodeGeneratorFactory>();
             services.AddSingleton<ITypeScriptCodeGeneratorFactory, TypeScriptCodeGeneratorFactory>();
+#pragma warning disable CS0618 // Type or member is obsolete
             services.AddSingleton<IAutoRestCodeGeneratorFactory, AutoRestCodeGeneratorFactory>();
+#pragma warning restore CS0618 // Type or member is obsolete
             services.AddSingleton<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
             services.AddSingleton<IOpenApiCSharpGeneratorFactory, OpenApiCSharpGeneratorFactory>();
             services.AddSingleton<ISwaggerCodegenFactory, SwaggerCodegenFactory>();

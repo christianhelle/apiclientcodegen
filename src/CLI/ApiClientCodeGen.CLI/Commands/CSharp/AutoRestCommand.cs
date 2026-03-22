@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using Spectre.Console.Cli;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
@@ -9,6 +10,7 @@ using Rapicgen.Core.Options.AutoRest;
 
 namespace Rapicgen.CLI.Commands.CSharp
 {
+    [Obsolete("AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.", false)]
     public class AutoRestCommand : CodeGeneratorCommand<AutoRestCommand.AutoRestSettings>
     {
         private readonly IAutoRestOptions options;
@@ -17,6 +19,7 @@ namespace Rapicgen.CLI.Commands.CSharp
         private readonly IOpenApiDocumentFactory documentFactory;
         private readonly IDependencyInstaller dependencyInstaller;
 
+        [Obsolete("AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.", false)]
         public class AutoRestSettings : CodeGeneratorCommand<AutoRestCommand.AutoRestSettings>.Settings
         {
         }
@@ -36,6 +39,14 @@ namespace Rapicgen.CLI.Commands.CSharp
             this.documentFactory = documentFactory ?? throw new ArgumentNullException(nameof(documentFactory));
             this.dependencyInstaller =
                 dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
+        }
+
+        public override int Execute(CommandContext context, AutoRestSettings settings, CancellationToken cancellationToken)
+        {
+            // Emit deprecation warning to stderr
+            Console.Error.WriteLine("WARNING: AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.");
+            
+            return base.Execute(context, settings, cancellationToken);
         }
 
         public override ICodeGenerator CreateGenerator(AutoRestSettings settings)

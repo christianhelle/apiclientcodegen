@@ -6,6 +6,7 @@ using Xunit;
 
 namespace ApiClientCodeGen.Core.Tests;
 
+#pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest enum values during deprecation period
 public class SupportedCodeGeneratorTests
 {
     [Fact]
@@ -52,7 +53,44 @@ public class SupportedCodeGeneratorTests
     public void Enum_HasExpectedCount()
         => Enum.GetValues(typeof(SupportedCodeGenerator))
             .Length.Should().Be(8);
+
+    [Fact]
+    public void AutoRest_And_AutoRestV3_Both_Present_During_Deprecation()
+    {
+        // Both AutoRest enum values must remain functional during deprecation period
+        // They will be removed together in Phase 3 (~Jan 2027)
+        var values = Enum.GetValues(typeof(SupportedCodeGenerator))
+            .Cast<SupportedCodeGenerator>()
+            .ToList();
+
+        values.Should().Contain(SupportedCodeGenerator.AutoRest,
+            "AutoRest (v2) must remain available during deprecation period");
+        values.Should().Contain(SupportedCodeGenerator.AutoRestV3,
+            "AutoRestV3 (v3 beta) must remain available during deprecation period");
+    }
+
+    [Fact]
+    public void AutoRest_Enum_Values_Have_Correct_Integer_Values()
+    {
+        // Validate enum integer values to prevent accidental changes during refactoring
+        ((int)SupportedCodeGenerator.AutoRest).Should().Be(1, 
+            "AutoRest enum value should remain stable");
+        ((int)SupportedCodeGenerator.AutoRestV3).Should().Be(2,
+            "AutoRestV3 enum value should remain stable");
+    }
+
+    [Fact]
+    public void All_Enum_Values_Are_Distinct()
+    {
+        // Ensure no duplicate enum values exist
+        var values = Enum.GetValues(typeof(SupportedCodeGenerator))
+            .Cast<int>()
+            .ToList();
+
+        values.Should().OnlyHaveUniqueItems("each generator must have a unique enum value");
+    }
 }
+#pragma warning restore CS0618
 
 public class SupportedLanguageTests
 {

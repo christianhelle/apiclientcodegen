@@ -5,6 +5,7 @@ using FluentAssertions;
 
 namespace ApiClientCodeGen.Core.Tests.Extensions
 {
+    #pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest during deprecation period
     public class GetDependenciesTests
     {
         [Xunit.Fact]
@@ -39,4 +40,5 @@ namespace ApiClientCodeGen.Core.Tests.Extensions
                 .Should()
                 .BeTrue();
     }
+    #pragma warning restore CS0618
 }

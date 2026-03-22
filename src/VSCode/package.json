@@ -48,7 +48,7 @@
       },
       {
         "command": "restApiClientCodeGenerator.autorest",
-        "title": "Generate C# Client with AutoRest (v3.0.0-beta - Outdated)"
+        "title": "Generate C# Client with AutoRest (Deprecated)"
       },
       {
         "command": "restApiClientCodeGenerator.typescript.angular",

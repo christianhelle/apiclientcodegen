@@ -42,6 +42,8 @@ This extension adds a context menu item **REST API Client Code Generator** when 
 - **Swagger Codegen CLI**: Generates a C# REST API Client using Swagger Codegen CLI
 - **AutoREST**: Generates a C# REST API Client using AutoREST
 
+**⚠️ Note:** AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. For migration guidance, see [AutoRest Migration Guide](https://github.com/christianhelle/apiclientcodegen/blob/master/docs/AutoRestMigration.md). Use NSwag, Refitter, or Kiota instead.
+
 ### TypeScript Generators
 
 - **Angular**: Generates a TypeScript REST API Client for Angular
