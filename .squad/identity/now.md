@@ -1,9 +1,9 @@
 ---
-updated_at: 2026-03-04T13:50:41Z
-focus_area: Team initialization
+updated_at: 2026-03-22T12:15:35Z
+focus_area: AutoRest deprecation planning
 active_issues: []
 ---
 
 # What We're Focused On
 
-Team hired and initialized. Ready for work.
+Investigating and planning the AutoRest deprecation rollout across core, CLI, IDE extensions, docs, and validation.
