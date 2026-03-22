@@ -1,13 +1,71 @@
 # Changelog
 
-## [Unreleased]
+## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-**AutoRest Deprecation Notice:**
-- Added deprecation warnings for AutoRest generator (Microsoft retiring July 1, 2026)
-- Updated CLI command description to indicate AutoRest is deprecated
-- Added runtime warning when using AutoRest via CLI
-- Created [AutoRest Migration Guide](docs/AutoRestMigration.md) with migration paths to NSwag, Refitter, or Kiota
-- Added `[Obsolete]` attributes to all AutoRest-related public APIs
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.39.0...HEAD)
+
+**Implemented enhancements:**
+
+- Refit dependency is added when the dependency is already met in a Transient package reference [\#941](https://github.com/christianhelle/apiclientcodegen/issues/941)
+- Switch to System.Text.Json for \(de\)serialization [\#767](https://github.com/christianhelle/apiclientcodegen/issues/767)
+- Add setting to generate nullable value types for optional request body properties \(Refitter\) [\#762](https://github.com/christianhelle/apiclientcodegen/issues/762)
+- Client code is not generated again when definition file is replaced externally [\#209](https://github.com/christianhelle/apiclientcodegen/issues/209)
+- Fix code issues: AutoRest deprecation messaging, test categorization, and documentation updates [\#1522](https://github.com/christianhelle/apiclientcodegen/pull/1522) ([christianhelle](https://github.com/christianhelle))
+- Deprecate AutoRest across CLI, IDE extensions, and docs [\#1521](https://github.com/christianhelle/apiclientcodegen/pull/1521) ([christianhelle](https://github.com/christianhelle))
+- Resolve JetBrains plugin invalid archive error [\#1513](https://github.com/christianhelle/apiclientcodegen/pull/1513) ([christianhelle](https://github.com/christianhelle))
+- Fix OptionalNullableParameters not applied in VSIX Extensibility Refitter flow [\#1494](https://github.com/christianhelle/apiclientcodegen/pull/1494) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Add nullable value types option for Refitter generator [\#1493](https://github.com/christianhelle/apiclientcodegen/pull/1493) ([christianhelle](https://github.com/christianhelle))
+- Add System.Text.Json serialization option for NSwag [\#1492](https://github.com/christianhelle/apiclientcodegen/pull/1492) ([christianhelle](https://github.com/christianhelle))
+- Add comprehensive unit tests for core generators and utilities [\#1490](https://github.com/christianhelle/apiclientcodegen/pull/1490) ([christianhelle](https://github.com/christianhelle))
+- Honor Refitter generate multiple files option for swagger files [\#1489](https://github.com/christianhelle/apiclientcodegen/pull/1489) ([christianhelle](https://github.com/christianhelle))
+- Improve NuGet dependency version checking [\#1488](https://github.com/christianhelle/apiclientcodegen/pull/1488) ([christianhelle](https://github.com/christianhelle))
+- Add file type validation to prevent VS crashes on unsupported files [\#1487](https://github.com/christianhelle/apiclientcodegen/pull/1487) ([christianhelle](https://github.com/christianhelle))
+- Fix Kiota regeneration from lock file ignoring single-file setting [\#1486](https://github.com/christianhelle/apiclientcodegen/pull/1486) ([christianhelle](https://github.com/christianhelle))
+- Update Microsoft Kiota dependencies to version 1.22.0 [\#1485](https://github.com/christianhelle/apiclientcodegen/pull/1485) ([christianhelle](https://github.com/christianhelle))
+
+**Fixed bugs:**
+
+- JetBrains plugin invalid archive - inner JARs must be STORED not compressed [\#1512](https://github.com/christianhelle/apiclientcodegen/issues/1512)
+- IntelliJ plugin invalid archive - JARs compressed with DEFLATE instead of STORED [\#1511](https://github.com/christianhelle/apiclientcodegen/issues/1511)
+- Cannot regenerate without deleting Custom Tool info [\#1463](https://github.com/christianhelle/apiclientcodegen/issues/1463)
+- Generate multiple files option for Refitter is not honored [\#1341](https://github.com/christianhelle/apiclientcodegen/issues/1341)
+- Unable to install Microsoft.CSharp version 4.5.0 [\#1006](https://github.com/christianhelle/apiclientcodegen/issues/1006)
+- Kiota once more generating multiple files when not told to? [\#978](https://github.com/christianhelle/apiclientcodegen/issues/978)
+- Crashes Visual Studio When Opening docker-compose.yml [\#190](https://github.com/christianhelle/apiclientcodegen/issues/190)
+
+**Merged pull requests:**
+
+- Microsoft Kiota Dependencies v1.22.1 [\#1519](https://github.com/christianhelle/apiclientcodegen/pull/1519) ([christianhelle](https://github.com/christianhelle))
+- Update GitHub Artifact Actions \(major\) [\#1505](https://github.com/christianhelle/apiclientcodegen/pull/1505) ([renovate[bot]](https://github.com/apps/renovate))
+- Update ghcr.io/devcontainers/features/powershell Docker tag to v2 [\#1504](https://github.com/christianhelle/apiclientcodegen/pull/1504) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency webpack-cli to v7 [\#1503](https://github.com/christianhelle/apiclientcodegen/pull/1503) ([renovate[bot]](https://github.com/apps/renovate))
+- Update plugin org.jetbrains.intellij.platform to v2.13.1 [\#1500](https://github.com/christianhelle/apiclientcodegen/pull/1500) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Microsoft.NET.Test.Sdk to 18.3.0 [\#1499](https://github.com/christianhelle/apiclientcodegen/pull/1499) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency cake.tool to v6.1.0 [\#1498](https://github.com/christianhelle/apiclientcodegen/pull/1498) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Polly to 8.6.6 [\#1497](https://github.com/christianhelle/apiclientcodegen/pull/1497) ([renovate[bot]](https://github.com/apps/renovate))
+- Read OpenAPI spec from disk to detect external changes [\#1491](https://github.com/christianhelle/apiclientcodegen/pull/1491) ([christianhelle](https://github.com/christianhelle))
+- Update dependency webpack to v5.105.4 [\#1480](https://github.com/christianhelle/apiclientcodegen/pull/1480) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v24.12.0 [\#1479](https://github.com/christianhelle/apiclientcodegen/pull/1479) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Azure.Core to 1.51.1 [\#1470](https://github.com/christianhelle/apiclientcodegen/pull/1470) ([renovate[bot]](https://github.com/apps/renovate))
+- Update Gradle to v9.4.0 [\#1457](https://github.com/christianhelle/apiclientcodegen/pull/1457) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency System.Text.Json to 9.0.14 [\#1456](https://github.com/christianhelle/apiclientcodegen/pull/1456) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ruby to v4.0.1 [\#1455](https://github.com/christianhelle/apiclientcodegen/pull/1455) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/vscode to v1.110.0 [\#1454](https://github.com/christianhelle/apiclientcodegen/pull/1454) ([renovate[bot]](https://github.com/apps/renovate))
+
+## [1.39.0](https://github.com/christianhelle/apiclientcodegen/tree/1.39.0) (2026-02-18)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.38.0...1.39.0)
+
+**Implemented enhancements:**
+
+- OpenAPI Generator v7.20.0 [\#1481](https://github.com/christianhelle/apiclientcodegen/pull/1481) ([christianhelle](https://github.com/christianhelle))
+
+**Merged pull requests:**
+
+- Update dependency coverlet.collector to v8 [\#1483](https://github.com/christianhelle/apiclientcodegen/pull/1483) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency FluentAssertions to 7.2.1 [\#1478](https://github.com/christianhelle/apiclientcodegen/pull/1478) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency webpack to v5.104.1 \[SECURITY\] [\#1477](https://github.com/christianhelle/apiclientcodegen/pull/1477) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Refit to v10 [\#1476](https://github.com/christianhelle/apiclientcodegen/pull/1476) ([renovate[bot]](https://github.com/apps/renovate))
 
 ## [1.38.0](https://github.com/christianhelle/apiclientcodegen/tree/1.38.0) (2026-02-09)
 
