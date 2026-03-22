@@ -1,5 +1,14 @@
 # Changelog
 
+## [Unreleased]
+
+**AutoRest Deprecation Notice:**
+- Added deprecation warnings for AutoRest generator (Microsoft retiring July 1, 2026)
+- Updated CLI command description to indicate AutoRest is deprecated
+- Added runtime warning when using AutoRest via CLI
+- Created [AutoRest Migration Guide](docs/AutoRestMigration.md) with migration paths to NSwag, Refitter, or Kiota
+- Added `[Obsolete]` attributes to all AutoRest-related public APIs
+
 ## [1.38.0](https://github.com/christianhelle/apiclientcodegen/tree/1.38.0) (2026-02-09)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.37.0...1.38.0)

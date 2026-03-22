@@ -94,6 +94,8 @@ public class Startup
 
 ## AutoRest v2
 
+⚠️ **DEPRECATED:** AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. Please migrate to NSwag, Refitter, or Kiota. See the [AutoRest Migration Guide](AutoRestMigration.md) for details.
+
 AutoRest v2 generates clients for OpenAPI v2 specifications with comprehensive model and operation support.
 
 ### Dependencies
@@ -173,6 +175,8 @@ client2.HttpClient.DefaultRequestHeaders.Add("X-API-Key", "your-api-key");
 ---
 
 ## AutoRest v3
+
+⚠️ **DEPRECATED:** AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. Please migrate to NSwag, Refitter, or Kiota. See the [AutoRest Migration Guide](AutoRestMigration.md) for details.
 
 AutoRest v3 generates clients for OpenAPI v3 specifications with improved support for modern OpenAPI features.
 
