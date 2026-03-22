@@ -101,7 +101,7 @@ CLI help/documentation display, VSIX UI surfaces, VS Code command palette, facto
 
 ### Short-Form Label (UI / Help / Menus)
 
-```
+```text
 AutoRest (Deprecated)
 ```
 
@@ -115,7 +115,7 @@ CLI command description: `AutoRest (Deprecated - v3.0.0-beta.20210504.2)`
 
 ### Long-Form Warning (Runtime / Docs / Attributes)
 
-```
+```text
 AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.
 ```
 

@@ -7,6 +7,7 @@ using Xunit;
 namespace ApiClientCodeGen.Core.Tests;
 
 #pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest enum values during deprecation period
+[Trait("Category", "Unit")]
 public class SupportedCodeGeneratorTests
 {
     [Fact]

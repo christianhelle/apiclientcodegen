@@ -9,6 +9,7 @@ namespace Rapicgen.CLI.Tests.Command
     /// Tests for CLI help output and deprecation messaging.
     /// Validates that AutoRest deprecation notices are properly displayed to users.
     /// </summary>
+    [Trait("Category", "Integration")]
     public class CliHelpTests
     {
         /// <summary>
@@ -26,19 +27,16 @@ namespace Rapicgen.CLI.Tests.Command
             var testDirectory = AppContext.BaseDirectory;
             var cliProjectPath = Path.GetFullPath(Path.Combine(testDirectory, "..", "..", "..", "..", "ApiClientCodeGen.CLI", "Program.cs"));
             
+            if (!File.Exists(cliProjectPath))
+            {
+                throw new InvalidOperationException($"Program.cs file not found at: {cliProjectPath}");
+            }
+            
             var programContent = File.ReadAllText(cliProjectPath);
             
             // Assert - Verify the canonical deprecated label is present
             programContent.Should().Contain(expectedDescription, 
                 "the CLI help must show the deprecated label to warn users");
-            
-            // Verify it contains all required elements
-            expectedDescription.Should().Contain("Deprecated", 
-                "the label must explicitly state deprecation status");
-            expectedDescription.Should().Contain("AutoRest", 
-                "the label must identify the generator");
-            expectedDescription.Should().Contain("v3.0.0-beta.20210504.2", 
-                "the label must show the version for clarity");
         }
         
         /// <summary>

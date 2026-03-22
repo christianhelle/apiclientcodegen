@@ -43,6 +43,7 @@ public class CodeGeneratorNameExtensionsTests
             .Should()
             .Be("NSwag");
 
+    #pragma warning disable CS0618
     [Fact]
     public void GetName_AutoRest_ReturnsAutoRest()
         => SupportedCodeGenerator.AutoRest
@@ -56,6 +57,7 @@ public class CodeGeneratorNameExtensionsTests
             .GetName()
             .Should()
             .Be("AutoRestV3");
+    #pragma warning restore CS0618
 
     [Fact]
     public void GetName_Refitter_ReturnsRefitter()

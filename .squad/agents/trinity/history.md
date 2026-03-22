@@ -44,7 +44,7 @@
   - **Warnings:** VS Code shows non-blocking dialog on selection (doesn't interrupt workflow)
   - **Documentation:** All extension docs updated with deprecation notice + migration guide links
   - **Website:** Features.html, index.html, cli.html all marked with deprecation warnings
-  - **Marketplace:** Descriptions updated to reference July 1, 2026 retirement date
+  - **Marketplace:** Descriptions updated to reference July 1, 2026, retirement date
   - **Verification:** VS Code npm ci/lint/compile all passed ✅
   - **Gaps closed:** (1) VS Code warning made non-blocking, (2) VSIX label updated to canonical form, (3) IntelliJ marketplace + action descriptions finalized
   - **Code review:** Morpheus approved — consistent terminology and non-breaking approach validated
