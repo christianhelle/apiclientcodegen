@@ -10,6 +10,7 @@ namespace ApiClientCodeGen.Core.Tests.Generators
     /// These tests prevent accidental removal of AutoRest code paths before Phase 3.
     /// </summary>
     #pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest during deprecation period
+    [Trait("Category", "Unit")]
     public class AutoRestEnumRoutingSafetyTests
     {
         [Fact]

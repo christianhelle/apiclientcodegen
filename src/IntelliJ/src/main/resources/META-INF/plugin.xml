@@ -25,7 +25,7 @@
             <li><strong>OpenAPI Generator</strong> - Industry-standard with broad language support</li>
             <li><strong>Microsoft Kiota</strong> - Microsoft's modern API client generator</li>
             <li><strong>Swagger Codegen CLI</strong> - Traditional and reliable option</li>
-            <li><strong>AutoRest (Deprecated)</strong> - Retired by Microsoft on July 1, 2026</li>
+            <li><strong>AutoRest (Deprecated)</strong> - Will be retired by Microsoft on July 1, 2026</li>
         </ul>
         
         <p><strong>TypeScript Clients:</strong></p>
