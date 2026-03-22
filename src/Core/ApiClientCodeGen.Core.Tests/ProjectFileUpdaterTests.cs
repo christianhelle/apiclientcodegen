@@ -8,6 +8,7 @@ using Xunit;
 
 namespace ApiClientCodeGen.Core.Tests
 {
+    #pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRestConstants during deprecation period
     public class ProjectFileUpdaterTests
     {
         private const string CSharpProjectFileContentsWithout = @"
@@ -88,4 +89,5 @@ namespace ApiClientCodeGen.Core.Tests
             xml.Should().Contain("https://azuresdkartifacts.blob.core.windows.net/azure-sdk-tools/index.json");
         }
     }
+    #pragma warning restore CS0618
 }

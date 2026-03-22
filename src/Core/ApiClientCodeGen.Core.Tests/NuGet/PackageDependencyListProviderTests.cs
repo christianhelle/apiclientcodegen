@@ -4,6 +4,7 @@ using FluentAssertions;
 
 namespace ApiClientCodeGen.Core.Tests.NuGet
 {
+    #pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest during deprecation period
     public class PackageDependencyListProviderTests
     {
         private readonly PackageDependencyListProvider sut
@@ -231,4 +232,5 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
                 .Should()
                 .Contain(PackageDependencies.Refit);
     }
+    #pragma warning restore CS0618
 }

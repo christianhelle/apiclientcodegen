@@ -11,6 +11,7 @@ using Xunit;
 
 namespace ApiClientCodeGen.Core.Tests.Installer
 {
+    #pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest during deprecation period
     public class DependencyInstallerTests
     {
         [Fact]
@@ -310,4 +311,5 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                 Times.Once);
         }
     }
+    #pragma warning restore CS0618
 }

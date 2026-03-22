@@ -5,6 +5,7 @@ using Xunit;
 
 namespace Rapicgen.CLI.Tests.Extensions
 {
+    #pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest during deprecation period
     public class SupportedCodeGeneratorNameTests
     {
         [Fact]
@@ -42,4 +43,5 @@ namespace Rapicgen.CLI.Tests.Extensions
                 .Should()
                 .Be("OpenAPI Generator");
     }
+    #pragma warning restore CS0618
 }

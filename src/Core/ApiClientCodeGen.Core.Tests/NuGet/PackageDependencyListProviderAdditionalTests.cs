@@ -7,6 +7,7 @@ using Xunit;
 
 namespace ApiClientCodeGen.Core.Tests.NuGet;
 
+#pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest during deprecation period
 public class PackageDependencyListProviderAdditionalTests
 {
     private readonly PackageDependencyListProvider sut = new();
@@ -116,3 +117,4 @@ public class PackageDependencyListProviderAdditionalTests
         });
     }
 }
+#pragma warning restore CS0618
