@@ -41,3 +41,51 @@
   - **Code review:** Morpheus approved implementation - no blocking issues
   - **Quality gate:** PASSED - branch ready for PR submission
   - **Status:** Test and validation scope 100% complete. All Phase 1 objectives met. Ready for PR/merge.
+
+- **2026-03-04 — OpenAPI Generator v7.21.0 Update Planning:**
+  - **Audit scope:** Analyzed PR #1481 (v7.20.0 update) patterns, test coverage, fragile areas, automation script (324 lines in `scripts/update-openapi-generator.ps1`)
+  - **Test surface mapping:** Identified 4 test suites: Core.Tests (473 tests), CLI.Tests (46 tests), Integration tests (~15 network-dependent), VSCode extensions (TypeScript)
+  - **Core unit tests:** Progress reporting (OpenApiCSharpCodeGeneratorTests), error handling (ExceptionTests), version enum logic (OpenApiVersionExtensionsTests — 13+ cases)
+  - **CLI tests:** Command creation, factory routing, CLI help text validation (file-based CliHelpTests), settings objects
+  - **Integration tests:** Real JAR execution via OpenApiCodeGeneratorFixture, code compilation validation via BuildHelper.BuildCSharp(), JSON+YAML, OpenAPI v2+v3, JMeter variants
+  - **Extension tests:** VSCode package.json version string, TypeScript generator registration, npm lint/compile validation
+  - **Fragile areas identified:** 
+    - JAR download + SHA1/MD5 hash validation (Maven Central CDN dependency)
+    - Enum comparison logic for v7.12.0 CookieContainer workaround (may need update if v7.21.0 introduces new conflicts)
+    - Test enum value assertions (13+ InlineData hardcoded; script auto-updates, but requires manual diff review)
+    - Generated code output differences between versions (caught by BuildHelper.BuildCSharp())
+    - Script regex pattern failures (test structure changes, enum field reordering)
+  - **Critical files to update:** OpenApiSupportedVersion.cs (enum + Latest property), OpenApiGeneratorVersions.cs (JAR URL + hashes), OpenApiVersionExtensionsTests.cs (test data), Program.cs (CLI help), Resource.resx/.Designer.cs (embedded hash resources), package.json (VSCode command label), IDE manifests (VSIX/VSMac/IntelliJ), documentation (9 files)
+  - **Validation checklist:** 40-point comprehensive checklist covering pre-update verification, script execution, build validation, unit/CLI tests, integration test execution, CLI smoke tests (NSwag, OpenAPI), extension validation, orphaned string cleanup, final quality gate
+  - **Risk assessment:** 6 risks identified and ranked (JAR hash mismatch: Low/Impact Medium; Enum regex fail: Medium/High; Generated code incompatibility: Low/High; Version conflicts: Very Low/High; Test structure changes: Very Low/Low; Network unavailability: Low/Medium)
+  - **Reference pattern:** PR #1481 added 324-line automation script; 22 files updated; 4 sequential git commits (Core registry, CLI+tests, Docs, Extensions); validated with build+OpenApiVersionExtensionsTests only (not full integration suite)
+  - **Deliverable:** `.squad/decisions/inbox/tank-openapi-generator-v7.21.0-validation-plan.md` — 350+ lines, comprehensive validation framework
+  - **Key insight:** Automation script reduces manual error; validation focus is on enum consistency (most fragile), JAR hash verification (network-dependent), generated code compilation (reveals output differences), and orphaned string cleanup (catches regex failures)
+
+- **2026-03-24 — OpenAPI Generator v7.21.0 Implementation Review (APPROVED):**
+   - **Branch state:** openapi-generator-7.21.0 with 5 commits representing Buckets 1-4 + enum test coverage
+   - **Commit verification:**
+     - 042e587ae: OpenApiGeneratorVersions.cs (v7.21.0 JAR + hashes), OpenApiSupportedVersion.cs enum, Resource files
+     - 9d7fc280b: Program.cs CLI help (v7.21.0), OpenApiVersionExtensionsTests.cs test data
+     - 3fecc5076: 9 documentation files updated (README, CLI.md, Marketplace, website, VS Mac, Java)
+     - e2d1b8f07: IDE manifests (VSCode package.json, VSIX x2, IntelliJ, VS Mac)
+     - fe1e94724: V7210 enum test coverage in EnumValues_MatchExpectedIntValues
+   - **Hash validation:** SHA1=19480dd1572a344c69a26c7488eda13f3caaf14e, MD5=5925081963d078083af5380fd62317d4
+   - **Enum correctness:** V7210=7210, Latest property → V7210, XML docs updated
+   - **Test validation:** Core.Tests 477/477 (includes 53 OpenApiVersionExtensionsTests), CLI.Tests 46/46, CLI help shows v7.21.0, VSCode lint clean
+   - **Build validation:** dotnet build succeeded, 0 errors, 24 expected CS0618 AutoRest warnings
+   - **Documentation:** 9 files updated, no stale v7.20.0 references
+   - **IDE coverage:** VSCode, VSIX (Dev17 + 2019), VS Mac, IntelliJ all updated
+   - **Fragile areas:** Enum numeric (7210 correct), hash distribution (consistent), Latest pointer (correct), test coverage (V7210 in tests)
+   - **Quality gate: 24/24 validation checks PASSED**
+   - **FINAL VERDICT: APPROVED — Complete, coherent, ready for merge. No blocking issues.**
+
+- **2026-03-26 — OpenAPI Generator v7.21.0 Final Validation & Logging:**
+  - **Review scope completed:** All orchestration log entries verified, inbox decisions reviewed and merged to decisions.md
+  - **Validation summary:** 24/24 quality gate checks passed across hash integrity, enum mapping, test coverage, build, CLI integration, documentation, and IDE extensions
+  - **Commit verification:** All 5 commits follow PR #1481 pattern with proper scope grouping (Core registry, CLI+tests, docs, IDE, enum coverage)
+  - **Orchestration logged:** 3 orchestration log files created (Neo, Morpheus, Tank execution logs)
+  - **Session log created:** `.squad/log/2026-03-26T000000Z-openapi-generator-v7210-complete.md` documents overall session completion
+  - **Decisions merged:** 3 new entries added to decisions.md from inbox files; 6 inbox files deleted
+  - **History updated:** Neo and Morpheus agent history extended with implementation notes
+  - **Status:** Ready for PR submission to main/master. All artifacts organized in .squad/ structure.

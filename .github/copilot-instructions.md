@@ -199,6 +199,14 @@ ls -la dist/extension.js
 - **All.slnx** - Complete solution including all projects
 - **VSCode/package.json** - VSCode extension configuration
 
+## Recurring Task: OpenAPI Generator Updates
+For requests like `Update OpenAPI Generator to vX.X.X`:
+- Start from the repo root on a dedicated `openapi-generator-X.X.X` branch.
+- Use `.\scripts\update-openapi-generator.ps1 -NewVersion "X.X.X"` as the primary path; do not manually chase version strings unless the script misses a surface.
+- Prefer a clean worktree before letting the script commit. If unrelated changes exist, rerun with `-SkipCommit` and preserve the four-commit pattern: core hashes, CLI/tests, docs, then IDE extensions.
+- Let the script run restore/build/tests, then manually verify `dotnet run --project src\CLI\ApiClientCodeGen.CLI\ApiClientCodeGen.CLI.csproj -- csharp --help` shows `OpenAPI Generator (vX.X.X)` and check that no stale old-version references remain.
+- See `.squad\skills\update-openapi-generator\SKILL.md` for the detailed checklist.
+
 ### Repository Structure:
 ```
 src/

@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using Rapicgen.Core.TypeConverters;
 
 namespace Rapicgen.Core.Options.OpenApiGenerator;
@@ -7,11 +7,13 @@ namespace Rapicgen.Core.Options.OpenApiGenerator;
 public enum OpenApiSupportedVersion
 {
     /// <summary>
-    /// Default value that represents the latest version (maps to <see cref="V7200"/>)
+    /// Default value that represents the latest version (maps to <see cref="V7210"/>)
     /// </summary>
     [Description("Latest")]
     Latest = 0,
 
+    [Description("7.21.0")]
+    V7210 = 7210,
     [Description("7.20.0")]
     V7200 = 7200,
     [Description("7.19.0")]
@@ -47,5 +49,5 @@ public static class OpenApiSupportedVersionExtensions
     /// <summary>
     /// Gets the latest supported version of OpenAPI Generator
     /// </summary>
-    public static OpenApiSupportedVersion Latest => OpenApiSupportedVersion.V7200;
+    public static OpenApiSupportedVersion Latest => OpenApiSupportedVersion.V7210;
 }
