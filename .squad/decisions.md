@@ -330,3 +330,79 @@ AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRes
 **Confidence Level:** High — zero test failures, build succeeds, smoke tests confirm functionality.
 
 **Recommendation:** Branch meets quality gate. Ready for PR submission.
+
+---
+
+## Decision: OpenAPI Generator v7.21.0 Update Scope
+
+**Authority:** Neo (Core Dev)  
+**Date:** 2026-03-26  
+**Status:** Complete  
+**Context:** Standardized pattern from PR #1481 applied to bump v7.20.0 → v7.21.0 across Core, CLI, Tests, Docs, and IDE extensions.
+
+**Scope Executed:**
+- **Commit 1:** Core version registry (`OpenApiGeneratorVersions.cs`), enum (`OpenApiSupportedVersion.cs` → `V7210`), resources (`Resource.resx` → new hashes)
+- **Commit 2:** CLI help (`Program.cs` → v7.21.0), test data (`OpenApiVersionExtensionsTests.cs` → re-keyed fixtures)
+- **Commit 3:** Documentation (9 files: README, CLI.md, Marketplace*, website/*.html, java/README.md)
+- **Commit 4:** IDE extensions (VSCode package.json, VSIX manifests ×2, VS Mac, IntelliJ plugin.xml)
+- **Commit 5:** Enum test coverage (`EnumValues_MatchExpectedIntValues` → added V7210 case)
+
+**Hashes Computed:**
+- SHA1: `19480dd1572a344c69a26c7488eda13f3caaf14e`
+- MD5: `5925081963d078083af5380fd62317d4`
+
+**Git Commits Created:** 5 (042e587ae, 9d7fc280b, 3fecc5076, e2d1b8f07, fe1e94724)
+
+---
+
+## Decision: OpenAPI Generator Update — Reusable Pattern Documentation
+
+**Authority:** Morpheus (Lead)  
+**Date:** 2026-03-26  
+**Status:** Complete  
+**Context:** Formalize v7.21.0 bump automation as reusable guidance for future updates.
+
+**Deliverables:**
+1. **Squad Skill:** `.squad/skills/update-openapi-generator/SKILL.md` — Complete pattern documentation for agents
+2. **Copilot Instructions:** `.github/copilot-instructions.md` — Added "Recurring Tasks" section with script pointer
+
+**Binding Rule:** All agents processing "Update OpenAPI Generator to vX.X.X" requests **must** use `.\scripts\update-openapi-generator.ps1`. Manual file editing is prohibited when the script covers the change.
+
+**Rationale:** Preserves 4-commit pattern from PR #1481; reduces agent work from 20-file manual edits to single script invocation; ensures consistency across future updates.
+
+---
+
+## Decision: OpenAPI Generator v7.21.0 Validation Results
+
+**Authority:** Tank (Tester/QA)  
+**Date:** 2026-03-26  
+**Status:** APPROVED  
+**Branch:** `openapi-generator-7.21.0`
+
+**Validation Checklist (24/24 PASSED):**
+
+| Category | Items | Status |
+|----------|-------|--------|
+| **Hashes** | SHA1, MD5 | ✓ PASS |
+| **Enum** | Numeric value, Latest pointer, XML docs | ✓ PASS |
+| **Tests** | Core (477), CLI (46), OpenApiVersionExtensionsTests (53) | ✓ PASS |
+| **CLI** | Help text display | ✓ PASS |
+| **Build** | dotnet build Rapicgen.slnx | ✓ PASS |
+| **Documentation** | 9 files, no stale references | ✓ PASS |
+| **IDE Extensions** | VSCode, VSIX (2x), VS Mac, IntelliJ | ✓ PASS |
+
+**Test Results:**
+- Core.Tests: 477/477 passed ✅
+- CLI.Tests: 46/46 passed ✅
+- OpenApiVersionExtensionsTests: 53/53 passed ✅
+- Build: 0 errors (24 expected CS0618 AutoRest warnings acceptable)
+- Smoke Tests: NSwag, OpenAPI v7.21.0, Refitter all functional ✅
+
+**Fragile Areas Verified:**
+- Hash integrity vs. Maven Central ✅
+- Enum numeric mapping (7210 = 7.21.0) ✅
+- Latest property consistency across all surfaces ✅
+- Test data coverage complete ✅
+- No orphaned version strings ✅
+
+**Recommendation:** APPROVED FOR MERGE. All quality gates passed. Ready for PR submission.

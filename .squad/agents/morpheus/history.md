@@ -11,3 +11,26 @@
   - **Code review approved:** No blocking issues in Neo + Trinity implementation. Build succeeded (0 errors, 37 expected CS0618 warnings)
   - **Observations noted (non-blocking):** Uncommitted state, CS0618 in tests, VSIX/IntelliJ/VSMac runtime warnings absent (acceptable for Phase 1)
   - **Status:** Phase 1 implementation approved for PR/merge. Decision documents finalized in decisions.md
+
+- **2026-03-24 — OpenAPI Generator Update Pattern Analysis:**
+  - **PR #1481 pattern identified:** 22 files across 4 change buckets (Core hashes, CLI+tests, docs, IDE extensions), 4 granular commits, branch naming `openapi-generator-X.X.X`
+  - **Automation script exists:** `scripts/update-openapi-generator.ps1` (added in PR #1481) handles the complete workflow — JAR download, SHA1/MD5 computation, all file updates, build, test, commit
+  - **Key files for version updates:** `OpenApiGeneratorVersions.cs` (version registry), `OpenApiSupportedVersion.cs` (enum + Latest pointer), `Resource.resx`/`Resource.Designer.cs` (hashes), `Program.cs` (CLI description), `OpenApiVersionExtensionsTests.cs` (test data), 9 doc files, 6 IDE extension files
+  - **v7.21.0 release notes reviewed:** 3 breaking changes (Spring Boot 3.x default, C pointer types, Go fallback types) — none affect C# codegen. C# fixes are minor (implicit casts, central package versions, file support). No caution areas for this repo.
+  - **Reusable instruction surface decision:** Squad skill (`.squad/skills/update-openapi-generator/SKILL.md`) as primary, copilot instructions addition recommended as secondary. GitHub Action rejected as over-engineering for monthly cadence.
+  - **User preference:** Christian does this exercise every time a new version is released — wants one-prompt automation
+
+- **2026-03-24 — OpenAPI Generator Guidance Finalized:**
+  - **Primary future-update guidance:** `.squad/skills/update-openapi-generator/SKILL.md` is the durable playbook for recurring `Update OpenAPI Generator to vX.X.X` requests.
+  - **Short-form repo reminder:** `.github/copilot-instructions.md` now points agents to `.\scripts\update-openapi-generator.ps1` and the expected workflow.
+  - **Commit guardrail:** Prefer a clean `openapi-generator-X.X.X` branch before allowing the script to commit; if the worktree is not clean, use `-SkipCommit` and preserve the 4-bucket commit pattern manually.
+  - **Validation guardrail:** Rely on the script for restore/build/targeted version tests, then manually verify `csharp --help` and check for stale old-version references.
+
+- **2026-03-26 — OpenAPI Generator v7.21.0 guidance finalized and archived:**
+  - **Lead reviewed:** Confirmed Squad skill + copilot-instructions addition are the right abstraction
+  - **Skill file created:** `.squad/skills/update-openapi-generator/SKILL.md` documents complete pattern (trigger, pre-flight, script command, 4-commit breakdown, fragile areas, validation checklist, escalation)
+  - **Copilot instructions updated:** Added "Recurring Tasks" section in `.github/copilot-instructions.md` with script invocation and skill reference
+  - **Binding decision finalized:** All agents **must** use script for future `Update OpenAPI Generator to vX.X.X` requests; manual file editing prohibited
+  - **Decision documented:** 3 entries added to decisions.md (scope, pattern, validation)
+  - **Orchestration logged:** Lead summary written to orchestration-log
+  - **Status:** Durable guidance established. Ready for next OpenAPI Generator release.
