@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Rapicgen.CLI.Commands;
@@ -61,7 +61,7 @@ namespace Rapicgen.CLI
                             .WithExample(new[] { "swagger", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<OpenApiCSharpGeneratorCommand>("openapi")
-                            .WithDescription("OpenAPI Generator (v7.20.0)")
+                            .WithDescription("OpenAPI Generator (v7.21.0)")
                             .WithExample(new[] { "openapi", "petstore.json", "GeneratedCode", "Output.cs" });
                     });
 
