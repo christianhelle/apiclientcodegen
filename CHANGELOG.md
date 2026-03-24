@@ -10,6 +10,7 @@
 - Switch to System.Text.Json for \(de\)serialization [\#767](https://github.com/christianhelle/apiclientcodegen/issues/767)
 - Add setting to generate nullable value types for optional request body properties \(Refitter\) [\#762](https://github.com/christianhelle/apiclientcodegen/issues/762)
 - Client code is not generated again when definition file is replaced externally [\#209](https://github.com/christianhelle/apiclientcodegen/issues/209)
+- OpenAPI Generator v7.21.0 [\#1523](https://github.com/christianhelle/apiclientcodegen/pull/1523) ([christianhelle](https://github.com/christianhelle))
 - Fix code issues: AutoRest deprecation messaging, test categorization, and documentation updates [\#1522](https://github.com/christianhelle/apiclientcodegen/pull/1522) ([christianhelle](https://github.com/christianhelle))
 - Deprecate AutoRest across CLI, IDE extensions, and docs [\#1521](https://github.com/christianhelle/apiclientcodegen/pull/1521) ([christianhelle](https://github.com/christianhelle))
 - Resolve JetBrains plugin invalid archive error [\#1513](https://github.com/christianhelle/apiclientcodegen/pull/1513) ([christianhelle](https://github.com/christianhelle))
@@ -36,6 +37,8 @@
 **Merged pull requests:**
 
 - Microsoft Kiota Dependencies v1.22.1 [\#1519](https://github.com/christianhelle/apiclientcodegen/pull/1519) ([christianhelle](https://github.com/christianhelle))
+- chore\(deps\): update dependency ruby to v4.0.2 [\#1509](https://github.com/christianhelle/apiclientcodegen/pull/1509) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update dependency webpack-cli to v7.0.2 [\#1508](https://github.com/christianhelle/apiclientcodegen/pull/1508) ([renovate[bot]](https://github.com/apps/renovate))
 - Update GitHub Artifact Actions \(major\) [\#1505](https://github.com/christianhelle/apiclientcodegen/pull/1505) ([renovate[bot]](https://github.com/apps/renovate))
 - Update ghcr.io/devcontainers/features/powershell Docker tag to v2 [\#1504](https://github.com/christianhelle/apiclientcodegen/pull/1504) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency webpack-cli to v7 [\#1503](https://github.com/christianhelle/apiclientcodegen/pull/1503) ([renovate[bot]](https://github.com/apps/renovate))
