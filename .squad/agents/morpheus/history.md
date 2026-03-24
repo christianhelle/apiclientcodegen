@@ -34,3 +34,19 @@
   - **Decision documented:** 3 entries added to decisions.md (scope, pattern, validation)
   - **Orchestration logged:** Lead summary written to orchestration-log
   - **Status:** Durable guidance established. Ready for next OpenAPI Generator release.
+
+- **2026-03-26 — OpenAPI Generator v7.21.0 PR Created (#1523):**
+   - **Automation workflow validated:** `scripts/update-openapi-generator.ps1` executed cleanly for v7.21.0, produced 4 standard commits matching PR #1481 pattern
+   - **Version surfaces updated:** All 22-file footprint completed in single script run — core hashes, CLI help, tests, docs, IDE extensions, no stale references
+   - **PR content structured:** Title "OpenAPI Generator v7.21.0", body summarizes 5 change buckets (version registry, CLI/tests, docs, IDE extensions, reusable guidance), validation results, and automation process for team reference
+   - **Reusable guidance in PR:** Both `.squad\skills\update-openapi-generator\SKILL.md` and `.github\copilot-instructions.md` updates included in same PR, establishing durable precedent for future requests
+   - **Key design pattern reinforced:** Four-commit grouping + Squad skill + repo instructions = reproducible automation surface that scales to next version bump without manual search-and-replace
+   - **Status:** PR #1523 merged into origin; awaiting Christian's review and merge decision.
+
+- **2026-03-24 — Session Complete: OpenAPI Generator v7.21.0 Handoff:**
+   - **Scribe logging:** Orchestration log, session log, and decision entry created and archived
+   - **Decision inbox:** Merged `morpheus-openapi-pr-created.md` into decisions.md, deleted inbox file
+   - **Cross-agent history:** Morpheus history updated with completion milestone
+   - **Git commit:** `.squad/` changes committed with session summary
+   - **Outcome:** PR #1523 ready for Christian's final review. Reusable guidance patterns fully documented in Squad skill + copilot instructions. All downstream implications recorded.
+   - **Handoff status:** COMPLETE — all documentation and decision artifacts committed.

@@ -406,3 +406,59 @@ AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRes
 - No orphaned version strings ✅
 
 **Recommendation:** APPROVED FOR MERGE. All quality gates passed. Ready for PR submission.
+
+---
+
+## Decision: OpenAPI Generator v7.21.0 PR Created
+
+**Date:** 2026-03-26  
+**Authority:** Morpheus (Lead)  
+**Status:** COMPLETE
+
+**PR Details:**
+- **Title:** OpenAPI Generator v7.21.0
+- **URL:** https://github.com/christianhelle/apiclientcodegen/pull/1523
+- **Base:** master
+- **Head:** openapi-generator-7.21.0
+- **Commits:** 8 (4 version bump + 4 reusable guidance)
+
+**What Happened:**
+
+1. **Branch validation:** `openapi-generator-7.21.0` branch already exists with clean worktree and all 8 commits (4 from automation script + 4 from guidance finalization)
+2. **Push to origin:** Successful, no conflicts
+3. **PR creation:** Used GitHub CLI with comprehensive PR body
+4. **No duplicate PRs:** Verified no existing PR for this branch
+
+**Key Content in PR Body:**
+
+- **Section 1: Four version update buckets** — Version registry & hashes, CLI & tests, docs, IDE extensions
+- **Section 2: Reusable guidance** — Skill file + copilot instructions addition
+- **Section 3: Validation results** — Build, tests, CLI help, VSCode extension all pass
+- **Section 4: Automation benefits** — Four-commit pattern + script reuse = repeatable process for future versions
+
+**Design Rationale:**
+
+**Why include reusable guidance in the same PR as the version bump?**
+- Binds automation + documentation together
+- Shows future team members this is the canonical pattern
+- Squad skill becomes discoverable from PR history
+
+**PR body structure reflects team communication norms:**
+- Clear section headers for scanning
+- Checkmarks for validation steps (human-readable outcomes)
+- Reference back to prior patterns (PR #1481)
+- Automation narrative (so Christian understands the cost-benefit of script-first approach)
+
+**Downstream Implications:**
+
+- Next OpenAPI Generator update request should reference this PR + the skill file
+- Tank can reference this PR when reviewing future version bumps
+- CI/CD pipeline can use `.squad\skills\update-openapi-generator\SKILL.md` as the validation checklist
+
+**Binding Decision:**
+
+**For all future `Update OpenAPI Generator to vX.X.X` requests:**
+1. Start from the skill file (`.squad\skills\update-openapi-generator\SKILL.md`)
+2. Use the automation script (`scripts\update-openapi-generator.ps1`)
+3. Include the validation checklist from the skill
+4. PR body should follow the same 4-section structure (version buckets, guidance, validation, automation narrative)
