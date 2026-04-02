@@ -50,3 +50,12 @@
    - **Git commit:** `.squad/` changes committed with session summary
    - **Outcome:** PR #1523 ready for Christian's final review. Reusable guidance patterns fully documented in Squad skill + copilot instructions. All downstream implications recorded.
    - **Handoff status:** COMPLETE — all documentation and decision artifacts committed.
+- **2026-04-02 — Issue #227 Investigation: ReswFileCodeGenerator Disappears in VS 2026 WinUI3:**
+    - **Remote repo:** christianhelle/reswcodegen (separate from apiclientcodegen)
+    - **Problem:** Custom tool property disappears from .resw file UI in VS 2026, no code generation despite .csproj XML entry
+    - **Root cause analysis:** Identified VSIX manifest version range limitation as highest-confidence hypothesis
+    - **Key finding:** source.extension.vsixmanifest specifies Version="[17.0, 18.0)" — does NOT include VS 2026 ([18.0, ...))
+    - **Architecture insight:** The VSIX registration mechanism is COM-based (IVsSingleFileGenerator), dependent on .pkgdef generation and registry entries; if VSIX fails to install, custom tool becomes invisible to VS even if .csproj XML contains the reference
+    - **Secondary hypotheses ranked:** (1) VSIX manifest version gap (highest), (2) Architecture/platform mismatch (medium), (3) VS 2026 IVsSingleFileGenerator breaking change (low), (4) WinUI3 project system incompatibility (medium-low)
+    - **Deliverables:** Investigation report at .squad/agents/morpheus/issue-227-investigation.md with detailed hypotheses, file surfaces, clarifying questions, and next steps
+    - **Decision:** Report findings to Christian with recommendation to immediately check VSIX manifest InstallationTarget ranges for VS 2026 support
