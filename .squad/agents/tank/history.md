@@ -1,5 +1,13 @@
 # Tank — History
 
+## Core Context
+
+**Role:** QA tester for REST API Client Code Generator (apiclientcodegen repo). Test infrastructure spans Core.Tests, Core.IntegrationTests, and CLI.Tests using xUnit, Moq, AutoFixture pattern. Participated in AutoRest deprecation Phase 1 (20+ test cases, warning cleanup, validation framework) and OpenAPI Generator v7.21.0 update validation (40-point checklist, 24/24 QA gates passed). Currently investigating Issue #227 (ReswCodeGen VSIX custom tool incompatibility with VS 2026).
+
+**Key test patterns:** File-based integration tests for deployment validation; enum safety tests for contract enforcement; generator factory routing coverage; CS0618 suppression hygiene for deprecation period; comprehensive validation matrices for tool updates.
+
+**Fragile areas tracked:** JAR download + hash validation (Maven CDN), enum consistency during version updates, generated code compilation differences, regex patterns in automation scripts.
+
 ## Learnings
 
 - **2026-03-04:** Team initialized. Tester for REST API Client Code Generator. Test paths: `src/Core/ApiClientCodeGen.Core.Tests/`, `src/Core/ApiClientCodeGen.Core.IntegrationTests/`, `src/CLI/ApiClientCodeGen.CLI.Tests/`. User is Christian.
