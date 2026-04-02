@@ -89,3 +89,18 @@
   - **Decisions merged:** 3 new entries added to decisions.md from inbox files; 6 inbox files deleted
   - **History updated:** Neo and Morpheus agent history extended with implementation notes
   - **Status:** Ready for PR submission to main/master. All artifacts organized in .squad/ structure.
+
+- **2026-03-29 — Issue #227 Investigation (ReswCodeGen Custom Tool Disappears in VS 2026/WinUI3):**
+   - **Issue scope:** Tool property disappears from .resw files in VS 2026 + WinUI3 projects; property persists in XML but no code generation occurs
+   - **Root cause hypothesis:** Project-system integration failure (registry/VSIX installation), NOT generator code bug
+   - **Key findings:**
+     - Extension uses MSBuild IVsSingleFileGenerator interface → depends on VSIX .pkgdef registry merge during install
+     - VSIX manifest caps installation at [17.0, 18.0) range → VS 2026 (v18.x+) may not install extension
+     - Two distinct failure modes identified: (A) property disappears on save = registration failure; (B) persists in XML but no gen = COM loading or generator invocation failure
+     - No registry/COM-level tests in VSPackage.Tests suite → blind spot for VSIX deployment issues
+   - **Repro matrix created:** 6 environment permutations, 9 registry/COM validation signals, 4-phase diagnostic ladder, signaling guide for escalation
+   - **Validation framework:** 9-step diagnostic process with success criteria covering extension install → registry → COM → code generation pipeline
+   - **Missing clarifications identified:** VSIX version, VS 2026 build number, WinUI3 targets, clean install vs. upgrade, manifest bounds rationale
+   - **Recommended actions:** Update manifest to [17.0, 19.0), add WinUI3 test scenario, add registry verification tests, document registry requirements
+   - **Decision artifact:** .squad/decisions/inbox/tank-issue-227-repro-matrix.md — 280-line comprehensive reproduction and validation matrix
+   - **Test gap:** No integration tests for VSIX installation, registry loading, or COM interface validation → future coverage opportunity

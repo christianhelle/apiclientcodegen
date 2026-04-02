@@ -462,3 +462,165 @@ AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRes
 2. Use the automation script (`scripts\update-openapi-generator.ps1`)
 3. Include the validation checklist from the skill
 4. PR body should follow the same 4-section structure (version buckets, guidance, validation, automation narrative)
+
+---
+
+## Decision: Issue #227 Investigation — Root Cause & Implementation Priority
+
+**Authority:** Morpheus (Investigation Lead)  
+**Date:** 2026-04-02  
+**Repository:** christianhelle/reswcodegen  
+**Issue:** #227 — ReswFileCodeGenerator disappears from Custom Tool property in VS 2026 WinUI3 projects  
+
+**Root Cause Ranking (by Confidence):**
+
+1. **VSIX Manifest Version Range Gap (85%)**
+   - File: `src/VSPackage/source.extension.vsixmanifest`
+   - Problem: `<InstallationTarget ... Version="[17.0, 18.0)">` excludes VS 2026 (v18.x)
+   - Impact: VSIX fails to install → .pkgdef not generated → registry entries never created → custom tool unavailable
+   - Fix: Add `[18.0, 19.0)` target range
+
+2. **Architecture/Platform Mismatch (40%)**
+   - Problem: VS 2026 runs arm64 by default, but manifest targets only x86 + amd64 for v18+
+   - Overlap: Fixing version range may also require arm64 specification
+
+3. **WinUI3 Project System Incompatibility (30%)**
+   - Problem: WinUI3 uses CPS 3.0 (Common Project System) which may not recognize legacy IVsSingleFileGenerator
+   - Secondary: Only manifests if manifest version constraint doesn't block VSIX install first
+
+4. **IVsSingleFileGenerator Breaking Change (15%)**
+   - Problem: COM-based custom tools may be deprecated in VS 2026
+   - Assessment: Unlikely without Microsoft announcement; maintain backward compatibility assumption
+
+**Investigation Surfaces (Priority):**
+
+- **Tier 1:** `src/VSPackage/source.extension.vsixmanifest` (version ranges, architecture targets)
+- **Tier 2:** `src/VSPackage/CustomTool/ReswFileCSharpCodeGenerator.cs` (CodeGeneratorRegistration), `src/VSPackage/Guids.cs` (GUID conflicts)
+- **Tier 3:** `src/VSPackage/CustomTool/ReswFileCodeGenerator.cs` (IVsSingleFileGenerator implementation), `src/VSPackage/VSPackage.csproj` (.pkgdef generation)
+
+**Implementation Strategy:**
+
+1. **Phase 1 (Quick Win):** Update `.vsixmanifest` to support VS 2026 `[17.0, 19.0)`, verify arm64 targets
+2. **Phase 2 (Validation):** Build VSIX, test installation on VS 2026, verify registry entries, test code generation
+3. **Phase 3 (Fallback):** If Phase 1 fails, investigate CPS 3.0 compatibility and Roslyn source generator migration
+
+**Binding:** Implementation must follow Phase 1-2 sequence before escalating to Phase 3.
+
+---
+
+## Decision: Issue #227 Extension/VSIX Compatibility Analysis
+
+**Authority:** Trinity (Extension Dev)  
+**Date:** 2026-04-02  
+**Repository:** christianhelle/reswcodegen  
+
+**Key Findings:**
+
+1. **Installation Target Constraint (PRIMARY BLOCKER)**
+   - File: `src/VSPackage/source.extension.vsixmanifest`
+   - Current: Excludes VS 2026 (v18.0) from supported versions
+   - Impact: If VSIX doesn't install, all COM registration fails automatically
+
+2. **Legacy COM Registration Pattern**
+   - File: `src/VSPackage/CustomTool/ReswFileCSharpCodeGenerator.cs`
+   - Pattern: `[CodeGeneratorRegistration]` attribute (VS 2013-2022 era)
+   - Risk: VS 2026 with CPS 3.0 may not recognize legacy pattern
+   - Fallback: May need modern CPS-based provider implementation
+
+3. **Package Manifest Validation Points**
+   - [ ] Does manifest declare MPF (Managed Package Framework) dependency?
+   - [ ] Is it compatible with CPS 3.0?
+   - [ ] Are there asset declarations for custom tools?
+
+**Minimum Reproduction Checks:**
+
+- [ ] Verify Installation Target includes v18.0-v19.0
+- [ ] Verify COM registration in registry: `HKEY_LOCAL_MACHINE\...\Generators`
+- [ ] Verify .pkgdef generation in build output
+- [ ] Test with Console project vs. WinUI3 to isolate cause
+
+**Recommended Fix Strategy:**
+
+**Phase 1 (Immediate):** Update installation target in `source.extension.vsixmanifest` from `[17.0, 18.0)` to `[17.0, 19.0)`, rebuild VSIX, test in VS 2026
+
+**Phase 2 (If Phase 1 Fails):** Investigate CPS 3.0 compatibility and implement modern CPS-based provider (risk: substantial refactoring)
+
+**Binding:** Phase 1 must succeed before escalating to Phase 2 investigation.
+
+---
+
+## Decision: Issue #227 QA Reproduction & Validation Matrix
+
+**Authority:** Tank (QA Lead)  
+**Date:** 2026-04-02  
+**Repository:** christianhelle/reswcodegen  
+
+**Repro Matrix (High-Value Permutations):**
+
+| VS Version | Project Type | Framework | Tool Name State | Code Gen | Priority |
+|---|---|---|---|---|---|
+| VS 2026 | WinUI3 App | .NET 9 | Disappears after save | ❌ Silent fail | **CRITICAL** |
+| VS 2026 | WinUI3 App | .NET 9 | Empty property field | ❌ Persists in XML, no gen | **CRITICAL** |
+| VS 2025 | WinUI3 App | .NET 9 | Remains stable | ✅ Works | **High** |
+| VS 2026 | Console App | .NET 9 | Unknown behavior | ? | **High** |
+| VS 2026 | WinUI3 | .NET 8 | Unknown behavior | ? | **Medium** |
+
+**Failure Mode Distinction:**
+
+**Symptom A: Property Disappears After Save**
+- User types tool name → appears in UI → press Save → disappears
+- Signal: Extension not registered or has wrong GUID in registry
+- Test: Verify VSIX install completed; check InstallationTarget in manifest
+
+**Symptom B: Property Persists in XML, No Code Generation**
+- Tool name stays in .csproj but nothing runs on rebuild
+- Signal: Extension registered but can't find/execute generator logic
+- Test: Check event log for IVsSingleFileGenerator.Generate() errors; verify COM visibility
+
+**Validation Steps (4 Phases, 30 min total):**
+
+1. **Phase 1: Extension Registration (5 min)**
+   - Verify VSIX installed (Extensions > Manage Extensions)
+   - Inspect registry: `HKCU:\Software\Microsoft\VisualStudio\18.0_*\Generators`
+   - Check manifest: Does NOT cover [18.0, ...)
+
+2. **Phase 2: COM Visibility & Assembly Loading (5 min)**
+   - Attach debugger to devenv.exe
+   - Set breakpoint in ReswFileCSharpCodeGenerator.cs constructor
+   - Create new .resw file → set custom tool property
+   - Pass if breakpoint hits; fail if constructor never called
+
+3. **Phase 3: Project File & WinUI3 Specifics (10 min)**
+   - Inspect .csproj after adding custom tool
+   - Verify entry persists after Save AND Rebuild
+   - Check: Does entry exist but no code generated? → Registry issue
+
+4. **Phase 4: Event Log & Tracing (10 min)**
+   - Enable VS ActivityLog: `devenv.exe /log %TEMP%\activitylog.xml`
+   - Search for "ReswFileCodeGenerator" or COM errors
+   - Check System Event Viewer for HRESULT errors
+
+**Signaling Guide (Escalation Paths):**
+
+| Signal | Interpretation | Next Owner |
+|---|---|---|
+| Registry keys missing | Extension install failed | Build/VSIX packaging team |
+| Registry keys present, no COM loading | Assembly version mismatch | Dev/Architecture team |
+| COM loads, Generate() not called | Project system incompatibility | VS integration specialist |
+| All above pass in VS 2025 | VS 2026 regression | Escalate to Microsoft? |
+
+**Validation Success Criteria:**
+
+- [ ] Custom tool name persists after Save/Rebuild in VS 2026 WinUI3 project
+- [ ] Code generation runs automatically on .resw file change
+- [ ] No manual workarounds needed (e.g., manual registry edits)
+- [ ] Works on both console and WinUI3 project types
+- [ ] Verified on VS 2025 and 2026
+
+**Test Additions Recommended:**
+
+- [ ] Add registry verification test in VSPackage.Tests
+- [ ] Add manifest version range test (ensure VS 2026 included)
+- [ ] Add WinUI3 project type to test matrix
+
+**Binding:** Tank owns validation execution and escalation signaling per above matrix.
