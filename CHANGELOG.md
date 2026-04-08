@@ -36,7 +36,10 @@
 
 **Merged pull requests:**
 
+- Expand docs page meta descriptions [\#1528](https://github.com/christianhelle/apiclientcodegen/pull/1528) ([christianhelle](https://github.com/christianhelle))
+- Fix duplicate docs home metadata [\#1527](https://github.com/christianhelle/apiclientcodegen/pull/1527) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota Dependencies v1.22.1 [\#1519](https://github.com/christianhelle/apiclientcodegen/pull/1519) ([christianhelle](https://github.com/christianhelle))
+- Update dependency coverlet.collector to 8.0.1 [\#1510](https://github.com/christianhelle/apiclientcodegen/pull/1510) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency ruby to v4.0.2 [\#1509](https://github.com/christianhelle/apiclientcodegen/pull/1509) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency webpack-cli to v7.0.2 [\#1508](https://github.com/christianhelle/apiclientcodegen/pull/1508) ([renovate[bot]](https://github.com/apps/renovate))
 - Update GitHub Artifact Actions \(major\) [\#1505](https://github.com/christianhelle/apiclientcodegen/pull/1505) ([renovate[bot]](https://github.com/apps/renovate))
