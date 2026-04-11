@@ -57,7 +57,7 @@ namespace Rapicgen.Core.Installer
                         Logger.Instance.WriteLine(error);
                     }
                 });
-                if (!nswagVersion.Contains("14.6.3"))
+                if (!nswagVersion.Contains("14.7.3"))
                 {
                     // Version mismatch, update to required version
                     UpdateNSwagTool();
@@ -73,7 +73,7 @@ namespace Rapicgen.Core.Installer
         private void InstallNSwagTool()
         {
             var command = PathProvider.GetDotNetPath();
-            var arguments = "tool install --global NSwag.ConsoleCore --version 14.6.3";
+            var arguments = "tool install --global NSwag.ConsoleCore --version 14.7.3";
             using var context = new DependencyContext(command, $"{command} {arguments}");
             processLauncher.Start(command, arguments);
             context.Succeeded();
@@ -82,7 +82,7 @@ namespace Rapicgen.Core.Installer
         private void UpdateNSwagTool()
         {
             var command = PathProvider.GetDotNetPath();
-            var arguments = "tool update --global NSwag.ConsoleCore --version 14.6.3";
+            var arguments = "tool update --global NSwag.ConsoleCore --version 14.7.3";
             using var context = new DependencyContext(command, $"{command} {arguments}");
             processLauncher.Start(command, arguments);
             context.Succeeded();
