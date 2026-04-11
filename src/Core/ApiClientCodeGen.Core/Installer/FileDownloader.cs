@@ -38,24 +38,34 @@ namespace Rapicgen.Core.Installer
 
             Logger.Instance.WriteLine($"{outputFilename} downloaded successfully");
 
-            MoveFile(filePath, tempFile);
+            if (!MoveFile(filePath, tempFile))
+            {
+                // If move failed but temp file exists, use it directly as fallback
+                if (File.Exists(tempFile))
+                    return tempFile;
+                    
+                // If temp file also doesn't exist, the download likely failed
+                // Log warning but return expected path for backward compatibility
+                Logger.Instance.WriteLine($"Warning: Downloaded file may not exist at expected location: {filePath}");
+            }
 
             return filePath;
         }
 
         [ExcludeFromCodeCoverage]
-        private static void MoveFile(string filePath, string tempFile)
+        private static bool MoveFile(string filePath, string tempFile)
         {
             try
             {
                 if (File.Exists(filePath))
                     File.Delete(filePath);
                 File.Move(tempFile, filePath);
+                return true;
             }
             catch (Exception e)
             {
                 Logger.Instance.TrackError(e);
-                
+                return false;
             }
         }
     }
