@@ -17,7 +17,7 @@
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
     <PackageReference Include = ""Microsoft.Azure.AutoRest.CSharp"" Version=""3.0.0-beta.20210218.1"" PrivateAssets=""All"" />
-    <PackageReference Include = ""Azure.Core"" Version=""1.51.1"" />
+    <PackageReference Include = ""Azure.Core"" Version=""1.53.0"" />
   </ItemGroup>
 </Project>";
 
@@ -36,7 +36,7 @@
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
     <PackageReference Include = ""Microsoft.Azure.AutoRest.CSharp"" Version=""3.0.0-beta.20210218.1"" PrivateAssets=""All"" />
-    <PackageReference Include = ""Azure.Core"" Version=""1.51.1"" />
+    <PackageReference Include = ""Azure.Core"" Version=""1.53.0"" />
   </ItemGroup>
 </Project>";
     }
