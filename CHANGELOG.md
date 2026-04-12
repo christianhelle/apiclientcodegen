@@ -37,13 +37,19 @@
 
 **Merged pull requests:**
 
+- Update dependency ts-loader to v9.5.7 [\#1533](https://github.com/christianhelle/apiclientcodegen/pull/1533) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v24.12.2 [\#1532](https://github.com/christianhelle/apiclientcodegen/pull/1532) ([renovate[bot]](https://github.com/apps/renovate))
 - Update NSwag to v14.7.0 [\#1531](https://github.com/christianhelle/apiclientcodegen/pull/1531) ([christianhelle](https://github.com/christianhelle))
 - Expand docs page meta descriptions [\#1528](https://github.com/christianhelle/apiclientcodegen/pull/1528) ([christianhelle](https://github.com/christianhelle))
 - Fix duplicate docs home metadata [\#1527](https://github.com/christianhelle/apiclientcodegen/pull/1527) ([christianhelle](https://github.com/christianhelle))
+- Update dependency Azure.Core to 1.53.0 [\#1526](https://github.com/christianhelle/apiclientcodegen/pull/1526) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Refit to 10.1.6 [\#1525](https://github.com/christianhelle/apiclientcodegen/pull/1525) ([renovate[bot]](https://github.com/apps/renovate))
+- Update Gradle to v9.4.1 [\#1524](https://github.com/christianhelle/apiclientcodegen/pull/1524) ([renovate[bot]](https://github.com/apps/renovate))
 - Microsoft Kiota Dependencies v1.22.1 [\#1519](https://github.com/christianhelle/apiclientcodegen/pull/1519) ([christianhelle](https://github.com/christianhelle))
 - Update dependency coverlet.collector to 8.0.1 [\#1510](https://github.com/christianhelle/apiclientcodegen/pull/1510) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency ruby to v4.0.2 [\#1509](https://github.com/christianhelle/apiclientcodegen/pull/1509) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update dependency webpack-cli to v7.0.2 [\#1508](https://github.com/christianhelle/apiclientcodegen/pull/1508) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency FluentAssertions to 7.2.2 [\#1507](https://github.com/christianhelle/apiclientcodegen/pull/1507) ([renovate[bot]](https://github.com/apps/renovate))
 - Update GitHub Artifact Actions \(major\) [\#1505](https://github.com/christianhelle/apiclientcodegen/pull/1505) ([renovate[bot]](https://github.com/apps/renovate))
 - Update ghcr.io/devcontainers/features/powershell Docker tag to v2 [\#1504](https://github.com/christianhelle/apiclientcodegen/pull/1504) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency webpack-cli to v7 [\#1503](https://github.com/christianhelle/apiclientcodegen/pull/1503) ([renovate[bot]](https://github.com/apps/renovate))
