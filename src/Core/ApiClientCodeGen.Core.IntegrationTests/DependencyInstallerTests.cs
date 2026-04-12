@@ -51,13 +51,10 @@ namespace ApiClientCodeGen.Core.IntegrationTests
         [SkippableFact(typeof(ProcessLaunchException))]
         public void InstallNSwag_Does_NotThrow()
         {
-            new Action(
-                    () => new DependencyInstaller(
-                        new NpmInstaller(new ProcessLauncher()),
-                        new FileDownloader(new WebDownloader()),
-                        new ProcessLauncher()).InstallNSwag())
-                .Should()
-                .NotThrow();
+            new DependencyInstaller(
+                new NpmInstaller(new ProcessLauncher()),
+                new FileDownloader(new WebDownloader()),
+                new ProcessLauncher()).InstallNSwag();
         }
 
         [Fact]
