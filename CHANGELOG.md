@@ -37,6 +37,7 @@
 
 **Merged pull requests:**
 
+- Update NSwag to v14.7.0 [\#1531](https://github.com/christianhelle/apiclientcodegen/pull/1531) ([christianhelle](https://github.com/christianhelle))
 - Expand docs page meta descriptions [\#1528](https://github.com/christianhelle/apiclientcodegen/pull/1528) ([christianhelle](https://github.com/christianhelle))
 - Fix duplicate docs home metadata [\#1527](https://github.com/christianhelle/apiclientcodegen/pull/1527) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota Dependencies v1.22.1 [\#1519](https://github.com/christianhelle/apiclientcodegen/pull/1519) ([christianhelle](https://github.com/christianhelle))
