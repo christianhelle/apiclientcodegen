@@ -37,6 +37,7 @@
 
 **Merged pull requests:**
 
+- Fix flaky InstallNSwag\_Does\_NotThrow integration test [\#1534](https://github.com/christianhelle/apiclientcodegen/pull/1534) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Update dependency ts-loader to v9.5.7 [\#1533](https://github.com/christianhelle/apiclientcodegen/pull/1533) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v24.12.2 [\#1532](https://github.com/christianhelle/apiclientcodegen/pull/1532) ([renovate[bot]](https://github.com/apps/renovate))
 - Update NSwag to v14.7.0 [\#1531](https://github.com/christianhelle/apiclientcodegen/pull/1531) ([christianhelle](https://github.com/christianhelle))
