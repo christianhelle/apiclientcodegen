@@ -46,7 +46,7 @@ namespace Rapicgen.CLI.Commands
             }
         }
 
-        public override int Execute(CommandContext context, T settings, CancellationToken cancellationToken)
+        protected override int Execute(CommandContext context, T settings, CancellationToken cancellationToken)
         {
             var codeGeneratorName = GetType().Name.Replace("Command", string.Empty);
             if (!settings.SkipLogging)

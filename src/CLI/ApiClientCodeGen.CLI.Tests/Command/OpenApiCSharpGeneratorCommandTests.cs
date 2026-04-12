@@ -3,6 +3,7 @@ using System.Threading;
 using ApiClientCodeGen.Tests.Common.Infrastructure;
 using AutoFixture.Xunit2;
 using Rapicgen.CLI.Commands;
+using Rapicgen.CLI.Tests.Extensions;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using FluentAssertions;
@@ -43,7 +44,7 @@ namespace Rapicgen.CLI.Tests.Command
                 .Setup(c => c.GenerateCode(progressReporter))
                 .Returns(code);
 
-            new Func<int>(() => sut.Execute(null, settings, CancellationToken.None)).Should().NotThrow();
+            new Func<int>(() => sut.InvokeExecute(null, settings, CancellationToken.None)).Should().NotThrow();
         }
     }
 }

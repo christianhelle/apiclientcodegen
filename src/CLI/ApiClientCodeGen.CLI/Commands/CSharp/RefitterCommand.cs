@@ -77,7 +77,7 @@ public class RefitterCommand : CodeGeneratorCommand<RefitterCommandSettings>
         this.dependencyInstaller = dependencyInstaller;
     }
 
-    public override int Execute(CommandContext context, RefitterCommandSettings settings, CancellationToken cancellationToken)
+    protected override int Execute(CommandContext context, RefitterCommandSettings settings, CancellationToken cancellationToken)
     {
         // Map settings to options
         options.GenerateContracts = !settings.SkipGenerateContracts;
