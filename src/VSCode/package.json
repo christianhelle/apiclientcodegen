@@ -28,7 +28,7 @@
     "commands": [
       {
         "command": "restApiClientCodeGenerator.nswag",
-        "title": "Generate C# Client with NSwag (v14.6.3)"
+        "title": "Generate C# Client with NSwag (v14.7.0)"
       },
       {
         "command": "restApiClientCodeGenerator.refitter",

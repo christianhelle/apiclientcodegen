@@ -61,7 +61,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool install --global NSwag.ConsoleCore --version 14.6.3",
+                    "tool install --global NSwag.ConsoleCore --version 14.7.0",
                     null));
         }
 
