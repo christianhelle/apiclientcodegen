@@ -37,6 +37,15 @@
 
 **Merged pull requests:**
 
+- Update microsoft/setup-msbuild action to v3 [\#1544](https://github.com/christianhelle/apiclientcodegen/pull/1544) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/github-script action to v9 [\#1542](https://github.com/christianhelle/apiclientcodegen/pull/1542) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/deploy-pages action to v5 [\#1541](https://github.com/christianhelle/apiclientcodegen/pull/1541) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/configure-pages action to v6 [\#1540](https://github.com/christianhelle/apiclientcodegen/pull/1540) ([renovate[bot]](https://github.com/apps/renovate))
+- Update plugin org.jetbrains.intellij.platform to v2.14.0 [\#1539](https://github.com/christianhelle/apiclientcodegen/pull/1539) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency webpack to v5.106.1 [\#1538](https://github.com/christianhelle/apiclientcodegen/pull/1538) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Spectre.Console.Cli to 0.55.0 [\#1537](https://github.com/christianhelle/apiclientcodegen/pull/1537) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Microsoft.NET.Test.Sdk to 18.4.0 [\#1536](https://github.com/christianhelle/apiclientcodegen/pull/1536) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/vscode to v1.115.0 [\#1535](https://github.com/christianhelle/apiclientcodegen/pull/1535) ([renovate[bot]](https://github.com/apps/renovate))
 - Fix flaky InstallNSwag\_Does\_NotThrow integration test [\#1534](https://github.com/christianhelle/apiclientcodegen/pull/1534) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Update dependency ts-loader to v9.5.7 [\#1533](https://github.com/christianhelle/apiclientcodegen/pull/1533) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v24.12.2 [\#1532](https://github.com/christianhelle/apiclientcodegen/pull/1532) ([renovate[bot]](https://github.com/apps/renovate))
