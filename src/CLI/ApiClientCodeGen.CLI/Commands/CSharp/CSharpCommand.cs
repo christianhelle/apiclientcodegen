@@ -11,7 +11,7 @@ namespace Rapicgen.CLI.Commands.CSharp
         {
         }
 
-        public override int Execute(CommandContext context, Settings settings, CancellationToken cancellationToken)
+        protected override int Execute(CommandContext context, Settings settings, CancellationToken cancellationToken)
         {
             // This will be handled by subcommands
             return 0;

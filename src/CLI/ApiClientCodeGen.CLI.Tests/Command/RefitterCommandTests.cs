@@ -2,6 +2,7 @@
 using AutoFixture.Xunit2;
 using Moq;
 using Rapicgen.CLI.Commands.CSharp;
+using Rapicgen.CLI.Tests.Extensions;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Options.Refitter;
@@ -26,7 +27,7 @@ public class RefitterCommandTests
     {
         // Ensure SettingsFile is null for this test
         settings.SettingsFile = null;
-        sut.Execute(null, settings, CancellationToken.None);
+        sut.InvokeExecute(null, settings, CancellationToken.None);
         Mock.Get(factory)
             .Verify(f => f.Create(
                 settings.SwaggerFile,
@@ -50,7 +51,7 @@ public class RefitterCommandTests
         try
         {
             settings.SettingsFile = tempFile;
-            sut.Execute(null, settings, CancellationToken.None);
+            sut.InvokeExecute(null, settings, CancellationToken.None);
 
             // Verify that SwaggerFile was updated to match SettingsFile
             Assert.Equal(tempFile, settings.SwaggerFile);

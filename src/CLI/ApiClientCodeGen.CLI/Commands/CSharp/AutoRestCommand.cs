@@ -41,7 +41,7 @@ namespace Rapicgen.CLI.Commands.CSharp
                 dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
         }
 
-        public override int Execute(CommandContext context, AutoRestSettings settings, CancellationToken cancellationToken)
+        protected override int Execute(CommandContext context, AutoRestSettings settings, CancellationToken cancellationToken)
         {
             // Emit deprecation warning to stderr
             Console.Error.WriteLine("WARNING: AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.");
