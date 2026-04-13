@@ -296,3 +296,6 @@ src/java
 # Squad: ignore generated logs
 .squad/orchestration-log/
 .squad/log/
+.squad/decisions/inbox/
+.squad/sessions/
+.squad-workstream
