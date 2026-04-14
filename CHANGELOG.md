@@ -10,6 +10,7 @@
 - Switch to System.Text.Json for \(de\)serialization [\#767](https://github.com/christianhelle/apiclientcodegen/issues/767)
 - Add setting to generate nullable value types for optional request body properties \(Refitter\) [\#762](https://github.com/christianhelle/apiclientcodegen/issues/762)
 - Client code is not generated again when definition file is replaced externally [\#209](https://github.com/christianhelle/apiclientcodegen/issues/209)
+- Microsoft Kiota v1.31.1 [\#1546](https://github.com/christianhelle/apiclientcodegen/pull/1546) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.31.0 [\#1530](https://github.com/christianhelle/apiclientcodegen/pull/1530) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.21.0 [\#1523](https://github.com/christianhelle/apiclientcodegen/pull/1523) ([christianhelle](https://github.com/christianhelle))
 - Fix code issues: AutoRest deprecation messaging, test categorization, and documentation updates [\#1522](https://github.com/christianhelle/apiclientcodegen/pull/1522) ([christianhelle](https://github.com/christianhelle))
@@ -37,6 +38,7 @@
 
 **Merged pull requests:**
 
+- Update actions/upload-pages-artifact action to v5 [\#1545](https://github.com/christianhelle/apiclientcodegen/pull/1545) ([renovate[bot]](https://github.com/apps/renovate))
 - Update microsoft/setup-msbuild action to v3 [\#1544](https://github.com/christianhelle/apiclientcodegen/pull/1544) ([renovate[bot]](https://github.com/apps/renovate))
 - Update actions/github-script action to v9 [\#1542](https://github.com/christianhelle/apiclientcodegen/pull/1542) ([renovate[bot]](https://github.com/apps/renovate))
 - Update actions/deploy-pages action to v5 [\#1541](https://github.com/christianhelle/apiclientcodegen/pull/1541) ([renovate[bot]](https://github.com/apps/renovate))
