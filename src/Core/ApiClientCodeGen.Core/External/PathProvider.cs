@@ -69,9 +69,13 @@ namespace Rapicgen.Core.External
                 Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
                 "Rico Suter\\NSwagStudio\\Win\\NSwag.exe");
 
-        public static string GetNSwagPath(bool withoutPath = false)        
-            => GetDotNetGlobalToolPath("nswag");
-        
+        public static string GetNSwagPath(bool withoutPath = false)
+        {
+            if (Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix || withoutPath)
+                return "nswag";
+
+            return GetDotNetGlobalToolPath("nswag");
+        }
 
         public static string GetAutoRestPath(bool withoutPath = false)
         {
