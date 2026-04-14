@@ -194,7 +194,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
         }
 
         [Theory, AutoMoqData]
-        public void InstallRefitter_When_Refitter_Installed_With_Old_Version_Invokes_ProcessLauncher_To_Install(
+        public void InstallRefitter_When_Refitter_Installed_With_Old_Version_Invokes_ProcessLauncher_To_Update(
             [Frozen] IProcessLauncher processLauncher,
             DependencyInstaller sut)
         {
@@ -219,7 +219,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool install --global refitter --version 1.7.3",
+                    "tool update --global refitter --version 1.7.3",
                     null),
                 Times.Once);
         }

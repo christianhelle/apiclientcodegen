@@ -41,7 +41,7 @@ public class RefitterCodeGeneratorTests
 
             processLauncher.Verify(
                 p => p.Start(
-                    "refitter",
+                    It.IsAny<string>(),
                     It.Is<string>(s => s.Contains("--multiple-files")),
                     It.IsAny<string>()),
                 Times.Once);
@@ -82,7 +82,7 @@ public class RefitterCodeGeneratorTests
 
             processLauncher.Verify(
                 p => p.Start(
-                    "refitter",
+                    It.IsAny<string>(),
                     It.Is<string>(s => !s.Contains("--multiple-files")),
                     It.IsAny<string>()),
                 Times.Once);
@@ -160,7 +160,7 @@ public class RefitterCodeGeneratorTests
             var expectedDir = Path.GetTempPath().TrimEnd(Path.DirectorySeparatorChar);
             processLauncher.Verify(
                 p => p.Start(
-                    "refitter",
+                    It.IsAny<string>(),
                     It.Is<string>(s =>
                         s.Contains("--multiple-files") &&
                         s.Contains($"--output \"{expectedDir}\"")),

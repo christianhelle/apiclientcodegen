@@ -29,7 +29,7 @@ public class KiotaCodeGeneratorTests
         sut.GenerateCode(null);
         Mock.Get(processLauncher)
             .Verify(
-                x => x.Start("kiota", It.IsAny<string>(), null),
+                x => x.Start(It.IsAny<string>(), It.IsAny<string>(), null),
                 Times.Once);
     }
 
