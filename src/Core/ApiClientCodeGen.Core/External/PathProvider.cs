@@ -74,9 +74,7 @@ namespace Rapicgen.Core.External
             if (Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix || withoutPath)
                 return "nswag";
 
-            return Path.Combine(
-                NpmHelper.GetPrefixPath(),
-                "nswag.cmd");
+            return GetDotNetGlobalToolPath("nswag");
         }
 
         public static string GetAutoRestPath(bool withoutPath = false)
@@ -109,6 +107,31 @@ namespace Rapicgen.Core.External
             return Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix
                 ? "dotnet"
                 : Path.Combine(programFiles, "dotnet", "dotnet.exe");
+        }
+
+        public static string GetRefitterPath()
+            => GetDotNetGlobalToolPath("refitter");
+
+        public static string GetKiotaPath()
+            => GetDotNetGlobalToolPath("kiota");
+
+        public static string GetDotNetGlobalToolPath(string toolName)
+        {
+            try
+            {
+                var userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                var toolsPath = Path.Combine(userProfile, ".dotnet", "tools");
+                var executableName = Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix
+                    ? toolName
+                    : $"{toolName}.exe";
+                var fullPath = Path.Combine(toolsPath, executableName);
+                return File.Exists(fullPath) ? fullPath : toolName;
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.TrackError(e);
+                return toolName;
+            }
         }
 
         private static string GetProgramFiles64bitPath()

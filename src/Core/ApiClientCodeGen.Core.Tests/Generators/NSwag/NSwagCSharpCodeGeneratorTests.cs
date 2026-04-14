@@ -56,7 +56,7 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwag
         public void Launches_NSwag_Process()
             => processLauncherMock.Verify(
                 c => c.Start(
-                    It.Is<string>(s => s == "nswag"),
+                    It.IsAny<string>(),
                     It.IsAny<string>(),
                     It.IsAny<string>()),
                 Times.Once);

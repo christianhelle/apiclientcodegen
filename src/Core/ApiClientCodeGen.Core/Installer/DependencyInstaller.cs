@@ -195,9 +195,17 @@ namespace Rapicgen.Core.Installer
                 
                 if (!refitterInstalled || installedVersion == null || installedVersion < requiredVersion)
                 {
-                    // Refitter is not installed or version is too old, install/update required version
                     var installCommand = PathProvider.GetDotNetPath();
-                    var installArguments = "tool install --global refitter --version 1.7.3";
+                    string installArguments;
+                    if (refitterInstalled)
+                    {
+                        // Already installed but outdated — use update
+                        installArguments = "tool update --global refitter --version 1.7.3";
+                    }
+                    else
+                    {
+                        installArguments = "tool install --global refitter --version 1.7.3";
+                    }
                     using var context = new DependencyContext(installCommand, $"{installCommand} {installArguments}");
                     processLauncher.Start(installCommand, installArguments);
                     context.Succeeded();
