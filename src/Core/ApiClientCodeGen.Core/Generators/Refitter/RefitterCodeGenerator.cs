@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text.Json;
+using Rapicgen.Core.External;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.Refitter;
@@ -16,7 +17,7 @@ public class RefitterCodeGenerator : ICodeGenerator
     private readonly IProcessLauncher processLauncher;
     private readonly IDependencyInstaller dependencyInstaller;
 
-    private const string Command = "refitter";
+    private const string CommandName = "refitter";
 
     public RefitterCodeGenerator(
         string swaggerFile,
@@ -66,8 +67,8 @@ public class RefitterCodeGenerator : ICodeGenerator
         var arguments = $"--settings-file \"{inputFile}\" --simple-output";
         var workingDirectory = Path.GetDirectoryName(inputFile);
 
-        using var context = new DependencyContext("Refitter", $"{Command} {arguments}");
-        processLauncher.Start(Command, arguments, workingDirectory);
+        using var context = new DependencyContext("Refitter", $"{CommandName} {arguments}");
+        processLauncher.Start(PathProvider.GetRefitterPath(), arguments, workingDirectory);
         context.Succeeded();
 
         pGenerateProgress?.Progress(80);
@@ -111,8 +112,8 @@ public class RefitterCodeGenerator : ICodeGenerator
             var outputDir = workingDirectory;
             var arguments = BuildRefitterArguments(inputFile, outputDir, multipleFiles: true);
 
-            using var context = new DependencyContext("Refitter", $"{Command} {arguments}");
-            processLauncher.Start(Command, arguments, workingDirectory);
+            using var context = new DependencyContext("Refitter", $"{CommandName} {arguments}");
+            processLauncher.Start(PathProvider.GetRefitterPath(), arguments, workingDirectory);
             context.Succeeded();
 
             pGenerateProgress?.Progress(100);
@@ -124,8 +125,8 @@ public class RefitterCodeGenerator : ICodeGenerator
         
         var arguments2 = BuildRefitterArguments(inputFile, outputPath);
 
-        using var ctx = new DependencyContext("Refitter", $"{Command} {arguments2}");
-        processLauncher.Start(Command, arguments2, workingDirectory);
+        using var ctx = new DependencyContext("Refitter", $"{CommandName} {arguments2}");
+        processLauncher.Start(PathProvider.GetRefitterPath(), arguments2, workingDirectory);
         ctx.Succeeded();
 
         pGenerateProgress?.Progress(80);

@@ -111,6 +111,31 @@ namespace Rapicgen.Core.External
                 : Path.Combine(programFiles, "dotnet", "dotnet.exe");
         }
 
+        public static string GetRefitterPath()
+            => GetDotNetGlobalToolPath("refitter");
+
+        public static string GetKiotaPath()
+            => GetDotNetGlobalToolPath("kiota");
+
+        public static string GetDotNetGlobalToolPath(string toolName)
+        {
+            try
+            {
+                var userProfile = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                var toolsPath = Path.Combine(userProfile, ".dotnet", "tools");
+                var executableName = Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix
+                    ? toolName
+                    : $"{toolName}.exe";
+                var fullPath = Path.Combine(toolsPath, executableName);
+                return File.Exists(fullPath) ? fullPath : toolName;
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.TrackError(e);
+                return toolName;
+            }
+        }
+
         private static string GetProgramFiles64bitPath()
         {
             var programFiles = Environment.GetEnvironmentVariable("ProgramW6432");
