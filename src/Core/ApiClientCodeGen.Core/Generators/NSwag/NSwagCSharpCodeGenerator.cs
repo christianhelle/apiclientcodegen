@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Rapicgen.Core.External;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.NSwag;
@@ -44,7 +45,7 @@ namespace Rapicgen.Core.Generators.NSwag
             var arguments = BuildNSwagArguments(outputPath, className);
 
             using var context = new DependencyContext("NSwag", $"{Command} {arguments}");
-            processLauncher.Start(Command, arguments, workingDirectory);
+            processLauncher.Start(PathProvider.GetNSwagPath(), arguments, workingDirectory);
             context.Succeeded();
 
             pGenerateProgress?.Progress(80);
