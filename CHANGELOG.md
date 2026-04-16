@@ -40,6 +40,7 @@
 **Merged pull requests:**
 
 - Update dependency @types/vscode to v1.116.0 [\#1551](https://github.com/christianhelle/apiclientcodegen/pull/1551) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @vscode/vsce to v3.9.0 [\#1549](https://github.com/christianhelle/apiclientcodegen/pull/1549) ([renovate[bot]](https://github.com/apps/renovate))
 - Update actions/upload-pages-artifact action to v5 [\#1545](https://github.com/christianhelle/apiclientcodegen/pull/1545) ([renovate[bot]](https://github.com/apps/renovate))
 - Update microsoft/setup-msbuild action to v3 [\#1544](https://github.com/christianhelle/apiclientcodegen/pull/1544) ([renovate[bot]](https://github.com/apps/renovate))
 - Update actions/github-script action to v9 [\#1542](https://github.com/christianhelle/apiclientcodegen/pull/1542) ([renovate[bot]](https://github.com/apps/renovate))
