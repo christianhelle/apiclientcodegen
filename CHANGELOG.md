@@ -39,6 +39,7 @@
 
 **Merged pull requests:**
 
+- Update dependency coverlet.collector to v10 [\#1553](https://github.com/christianhelle/apiclientcodegen/pull/1553) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/vscode to v1.116.0 [\#1551](https://github.com/christianhelle/apiclientcodegen/pull/1551) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @vscode/vsce to v3.9.0 [\#1549](https://github.com/christianhelle/apiclientcodegen/pull/1549) ([renovate[bot]](https://github.com/apps/renovate))
 - Update actions/upload-pages-artifact action to v5 [\#1545](https://github.com/christianhelle/apiclientcodegen/pull/1545) ([renovate[bot]](https://github.com/apps/renovate))
