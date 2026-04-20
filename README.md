@@ -2,7 +2,11 @@
 [![VSIX](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vsix.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vsix.yml)
 [![VS Code](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vscode.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vscode.yml)
 [![IntelliJ](https://github.com/christianhelle/apiclientcodegen/actions/workflows/intellij.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/intellij.yml)
-![Smoke Tests](https://github.com/christianhelle/apiclientcodegen/workflows/Smoke%20Tests/badge.svg)
+
+[![Unit Tests](https://github.com/christianhelle/apiclientcodegen/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/unit-tests.yml)
+[![Smoke Tests](https://github.com/christianhelle/apiclientcodegen/actions/workflows/smoke-tests.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/smoke-tests.yml)
+[![Regression Tests](https://github.com/christianhelle/apiclientcodegen/actions/workflows/regression-tests.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/regression-tests.yml)
+[![Production Tests](https://github.com/christianhelle/apiclientcodegen/actions/workflows/production-tests.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/production-tests.yml)
 
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
@@ -11,11 +15,11 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=christianhelle_apiclientcodegen)
 
-[![Version](https://img.shields.io/visual-studio-marketplace/v/ChristianResmaHelle.ApiClientCodeGenerator2022?label=Marketplace)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2022) 
-[![Downloads](https://img.shields.io/visual-studio-marketplace/d/ChristianResmaHelle.ApiClientCodeGenerator?label=VS%202019)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)
-[![Rating](https://img.shields.io/visual-studio-marketplace/stars/ChristianResmaHelle.ApiClientCodeGenerator)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)
-[![Downloads](https://img.shields.io/visual-studio-marketplace/d/ChristianResmaHelle.APIClientCodeGenerator2022?label=VS%202022)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2022) 
-[![Rating](https://img.shields.io/visual-studio-marketplace/stars/ChristianResmaHelle.ApiClientCodeGenerator2022)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2022)
+[![Version](https://vsmarketplacebadges.dev/version-short/ChristianResmaHelle.ApiClientCodeGenerator2022.svg?label=Marketplace)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2022) 
+[![Downloads](https://vsmarketplacebadges.dev/downloads-short/ChristianResmaHelle.ApiClientCodeGenerator.svg?label=VS%202019)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)
+[![Rating](https://vsmarketplacebadges.dev/rating-star/ChristianResmaHelle.ApiClientCodeGenerator.svg?label=VS%202019)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator)
+[![Downloads](https://vsmarketplacebadges.dev/downloads-short/ChristianResmaHelle.ApiClientCodeGenerator2022.svg?label=VS%202022)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2022) 
+[![Rating](https://vsmarketplacebadges.dev/rating-star/ChristianResmaHelle.ApiClientCodeGenerator2022.svg?label=VS%202022)](https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.APIClientCodeGenerator2022)
 [![NuGet](https://img.shields.io/nuget/dt/rapicgen.svg?style=flat-square&label=nuget)](http://www.nuget.org/packages/rapicgen)
 
 [![buymeacoffee](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg)](https://www.buymeacoffee.com/christianhelle)
@@ -518,4 +522,3 @@ rapicgen typescript Angular Swagger.json
 For tips and tricks on software development, check out [my blog](https://christianhelle.com)
 
 If you find this useful and feel a bit generous then feel free to [buy me a coffee ☕](https://www.buymeacoffee.com/christianhelle)
-
