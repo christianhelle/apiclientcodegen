@@ -2,7 +2,10 @@
 [![VSIX](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vsix.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vsix.yml)
 [![VS Code](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vscode.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vscode.yml)
 [![IntelliJ](https://github.com/christianhelle/apiclientcodegen/actions/workflows/intellij.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/intellij.yml)
-![Smoke Tests](https://github.com/christianhelle/apiclientcodegen/workflows/Smoke%20Tests/badge.svg)
+[![Unit Tests](https://github.com/christianhelle/apiclientcodegen/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/unit-tests.yml)
+[![Smoke Tests](https://github.com/christianhelle/apiclientcodegen/actions/workflows/smoke-tests.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/smoke-tests.yml)
+[![Regression Tests](https://github.com/christianhelle/apiclientcodegen/actions/workflows/regression-tests.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/regression-tests.yml)
+[![Production Tests](https://github.com/christianhelle/apiclientcodegen/actions/workflows/production-tests.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/production-tests.yml)
 
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=christianhelle_apiclientcodegen&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=christianhelle_apiclientcodegen)
