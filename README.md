@@ -2,6 +2,7 @@
 [![VSIX](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vsix.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vsix.yml)
 [![VS Code](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vscode.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/vscode.yml)
 [![IntelliJ](https://github.com/christianhelle/apiclientcodegen/actions/workflows/intellij.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/intellij.yml)
+
 [![Unit Tests](https://github.com/christianhelle/apiclientcodegen/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/unit-tests.yml)
 [![Smoke Tests](https://github.com/christianhelle/apiclientcodegen/actions/workflows/smoke-tests.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/smoke-tests.yml)
 [![Regression Tests](https://github.com/christianhelle/apiclientcodegen/actions/workflows/regression-tests.yml/badge.svg)](https://github.com/christianhelle/apiclientcodegen/actions/workflows/regression-tests.yml)
@@ -521,4 +522,3 @@ rapicgen typescript Angular Swagger.json
 For tips and tricks on software development, check out [my blog](https://christianhelle.com)
 
 If you find this useful and feel a bit generous then feel free to [buy me a coffee ☕](https://www.buymeacoffee.com/christianhelle)
-
