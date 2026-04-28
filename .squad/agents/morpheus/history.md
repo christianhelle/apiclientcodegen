@@ -50,3 +50,14 @@
    - **Git commit:** `.squad/` changes committed with session summary
    - **Outcome:** PR #1523 ready for Christian's final review. Reusable guidance patterns fully documented in Squad skill + copilot instructions. All downstream implications recorded.
    - **Handoff status:** COMPLETE — all documentation and decision artifacts committed.
+
+- **Current Session — OpenAPI Generator v7.22.0 Pre-Implementation Review:**
+    - **Branch status verified:** openapi-generator-v7.22.0 branch is clean, properly based on master, ready for update work
+    - **Script audit complete:** scripts/update-openapi-generator.ps1 is solid; handles JAR download, hash computation, 22-file update across 4 buckets, build, test, commit lifecycle
+    - **Fragile areas identified:** (1) Enum padding math for V7220 = 7220, (2) Test replacement regex in OpenApiVersionExtensionsTests.cs, (3) Resource.resx/Designer.cs hash regex patterns, (4) Documentation surface coverage (9 files), (5) IDE extension version strings (6 files)
+    - **PR #1548 conflict risk assessed:** System.Text.Json 9.0.14→9.0.15 update is orthogonal; no merge conflict risk with OpenAPI Generator changes
+    - **Commit grouping guardrail confirmed:** Four standard commits (Core hashes, CLI+tests, docs, IDE extensions) must be preserved exactly as defined in PR #1481 and PR #1523
+    - **Validation checklist established:** 5-step post-script validation (verify commits, enum coverage tests, CLI help string, stale references, build/unit tests)
+    - **Leadership decision written:** .squad/decisions/inbox/morpheus-openapi-generator-7220.md captures all gotchas, workflow recommendations, escalation criteria, and reference materials for Neo
+    - **Key insight:** The script is the single source of truth for OpenAPI Generator updates — manual editing is prohibited. Consistency, completeness, and merge conflict avoidance depend on script discipline.
+    - **Handoff status:** READY — Neo can proceed with script execution from clean branch. Morpheus decision document provides guardrails and escalation paths.
