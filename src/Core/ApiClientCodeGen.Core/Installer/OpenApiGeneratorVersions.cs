@@ -12,6 +12,12 @@ public static class OpenApiGeneratorVersions
     private static readonly OpenApiGeneratorVersion[] Versions =
     [
         new(
+            "7.22.0",
+            $"{DownloadUrlPrefix}/7.22.0/openapi-generator-cli-7.22.0.jar",
+            "aa154752b82c9b84151cd4998ce2a86ed21f5bd3",
+            "24803a056bc36a4f8824612fb31c8133"
+        ),
+        new(
             "7.21.0",
             $"{DownloadUrlPrefix}/7.21.0/openapi-generator-cli-7.21.0.jar",
             "19480dd1572a344c69a26c7488eda13f3caaf14e",
