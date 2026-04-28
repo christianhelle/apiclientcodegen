@@ -89,3 +89,26 @@
   - **Decisions merged:** 3 new entries added to decisions.md from inbox files; 6 inbox files deleted
   - **History updated:** Neo and Morpheus agent history extended with implementation notes
   - **Status:** Ready for PR submission to main/master. All artifacts organized in .squad/ structure.
+
+- **2026-05-20 — OpenAPI Generator v7.22.0 QA Review (APPROVED):**
+  - **Branch:** openapi-generator-v7.22.0 with 5 commits (4 standard + 1 enum test)
+  - **Commit verification:** All commits have required Co-authored-by trailers ✅
+    - 99087ea61: Core registry (OpenApiGeneratorVersions.cs, OpenApiSupportedVersion.cs, Resource files)
+    - a96d1360b: CLI description (Program.cs) + test updates (OpenApiVersionExtensionsTests.cs)
+    - bca4ecb17: Documentation (9 files: README, CLI.md, Marketplace docs, website, java/README.md)
+    - baf8067d2: IDE extensions (6 files: VSCode, VSIX×2, IntelliJ, VS Mac)
+    - 9593ee930: Enum test coverage (EnumValues_MatchExpectedIntValues with V7220=7220)
+  - **Enum correctness:** V7220=7220, Latest property → V7220, XML docs updated ✅
+  - **Hash validation:** SHA1=aa154752b82c9b84151cd4998ce2a86ed21f5bd3, MD5=24803a056bc36a4f8824612fb31c8133 ✅
+  - **Build validation:** Succeeded with 0 errors, 22 expected CS0618 AutoRest warnings ✅
+  - **Test validation:** 57 OpenApiVersionExtensionsTests passed (includes V7220 in 4 test methods) ✅
+  - **CLI integration:** `rapicgen csharp --help` shows "OpenAPI Generator (v7.22.0)" ✅
+  - **Documentation coverage:** All 9 doc files updated from 7.21.0 to 7.22.0 ✅
+  - **IDE extensions:** All 6 IDE extension files updated ✅
+  - **Stale references:** No stale 7.21.0 references found (only expected historical enum values) ✅
+  - **PR #1548 isolation:** No System.Text.Json changes mixed into OpenAPI Generator commits ✅
+  - **Test coverage completeness:** V7220 properly added to IsLatest, IsOlderThanLatest, EnumValues_MatchExpectedIntValues, and ResolveVersion tests
+  - **Commit grouping:** Follows PR #1523 pattern exactly (Core → CLI/tests → Docs → IDE → enum test)
+  - **Quality gate:** 10/10 validation checks PASSED
+  - **FINAL VERDICT: APPROVED — Complete, isolated, ready for merge. No blocking issues.**
+  - **Key learning:** Script-first workflow works perfectly. Manual enum test addition took <1 minute and was properly isolated in its own commit.
