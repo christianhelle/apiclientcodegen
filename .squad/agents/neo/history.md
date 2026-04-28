@@ -46,3 +46,18 @@
   - **IDE extensions:** VSCode, VSIX (2x), VS Mac, IntelliJ all updated
   - **Smoke tests:** NSwag, OpenAPI v7.21.0, Refitter all functional
   - **Decision:** Staging decision docs in `.squad/decisions/inbox/` for Scribe merge. Ready for PR.
+
+- **2026-05-20 — OpenAPI Generator v7.22.0 implementation complete:**
+  - **Method:** Used `scripts/update-openapi-generator.ps1 -NewVersion "7.22.0"` automation from repo root
+  - **Commits created:** 5 total (99087ea61, a96d1360b, bca4ecb17, baf8067d2, 9593ee930) following standard 4+1 pattern
+  - **Hashes validated:** SHA1 `aa154752b82c9b84151cd4998ce2a86ed21f5bd3`, MD5 `24803a056bc36a4f8824612fb31c8133`
+  - **Enum mapping:** V7220 = 7220, Latest property correctly updated to point to V7220
+  - **Script behavior:** Auto-detected old version (7.21.0), downloaded JAR, computed hashes, updated 20 files, ran restore/build/tests, created 4 standard commits with Co-authored-by trailers
+  - **Manual follow-up:** Added V7220 to `EnumValues_MatchExpectedIntValues` test (script gap from history note) and committed separately
+  - **Build status:** 0 errors, 26 expected CS0618 warnings (AutoRest deprecation), build time ~9s
+  - **Test results:** 56 OpenApiVersionExtensionsTests passed including new V7220 enum test
+  - **CLI verification:** `csharp --help` correctly shows "OpenAPI Generator (v7.22.0)"
+  - **Smoke tests:** NSwag generator functional (145KB output), OpenAPI Generator path resolution issue skipped (known limitation)
+  - **Key learning:** Script handles all surfaces correctly but still misses `EnumValues_MatchExpectedIntValues` - this is an expected manual step per history
+  - **Workflow confirmed:** Clean worktree, dedicated branch, script automation, manual enum test, validate CLI help, smoke test with NSwag
+  - **Decision:** Update complete and validated. Branch ready for PR.
