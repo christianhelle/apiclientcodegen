@@ -61,3 +61,16 @@
     - **Leadership decision written:** .squad/decisions/inbox/morpheus-openapi-generator-7220.md captures all gotchas, workflow recommendations, escalation criteria, and reference materials for Neo
     - **Key insight:** The script is the single source of truth for OpenAPI Generator updates — manual editing is prohibited. Consistency, completeness, and merge conflict avoidance depend on script discipline.
     - **Handoff status:** READY — Neo can proceed with script execution from clean branch. Morpheus decision document provides guardrails and escalation paths.
+
+- **2026-04-28 — OpenAPI Generator v7.22.0 PR Delivery (Morpheus):**
+     - **Branch pushed:** openapi-generator-v7.22.0 force-with-lease to origin (8 commits, 96 objects)
+     - **PR #1565 created:** Against master with comprehensive title + body summarizing:
+       - Automation workflow following PR #1523 pattern
+       - 8 logical commits retained (core + tests + docs + IDE + enum + process commits)
+       - Validation summary: build 0 errors (26 warnings), 57 tests passed, CLI help shows v7.22.0, enum correctness, isolation verified
+       - Durable guidance references: Squad skill, copilot instructions, binding decision
+     - **Isolation verified:** PR #1548 System.Text.Json changes explicitly confirmed NOT mixed into this branch
+     - **Quality gates:** All 10 QA gates from Tank validation passed (Tank APPROVED)
+     - **Co-authored-by compliance:** All commits carry trailers as required
+     - **Pattern strength:** Automation + skill + decisions continues to scale; v7.21.0 → v7.22.0 confirms repeatable process
+     - **Status:** COMPLETE — Handoff to Christian for final review/merge. PR ready for master integration.

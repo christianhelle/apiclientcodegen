@@ -142,6 +142,36 @@ Script-first workflow effective. Manual enum test (EnumValues_MatchExpectedIntVa
 
 ---
 
+## Decision: Morpheus PR Creation — OpenAPI Generator v7.22.0 Merge Request #1565
+
+**Authority:** Morpheus (Lead)  
+**Date:** 2026-04-28  
+**Status:** Delivered  
+**Branch:** openapi-generator-v7.22.0  
+**PR:** #1565 (against master)
+
+### Delivery Summary
+OpenAPI Generator v7.22.0 update completed and pull request created for master merge.
+
+### PR Composition
+- **Title:** "OpenAPI Generator v7.22.0"
+- **Commits:** 8 logical commits preserved (core update, CLI/tests, docs, IDE extensions, enum test, 3 process commits)
+- **Files:** 23 product + 2 squad infrastructure
+- **Validation:** All 10 QA gates passed, Tank APPROVED
+
+### Key Attributes
+- Automation-first workflow (script-driven): ✅
+- Four-commit pattern preserved (PR #1481 standard): ✅
+- Enum correctness verified (V7220 = 7220): ✅
+- CLI help shows "OpenAPI Generator (v7.22.0)": ✅
+- PR #1548 System.Text.Json changes NOT mixed in: ✅
+- Co-authored-by trailers present: ✅
+
+### Pattern Continuity
+This delivery confirms the v7.21.0 → v7.22.0 progression validates the automation-first process established in PR #1523. Script discipline, Squad skill, and QA checklist are now confirmed as repeatable infrastructure for future version updates.
+
+---
+
 **Archived Decisions:** See decisions-archive.md for decisions dated before 2026-03-29.  
 **Managed by:** Scribe  
 **Last updated:** 2026-04-28
