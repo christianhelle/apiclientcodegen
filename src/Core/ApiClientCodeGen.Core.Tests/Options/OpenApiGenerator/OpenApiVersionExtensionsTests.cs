@@ -98,6 +98,7 @@ public class OpenApiVersionExtensionsTests
 
     [Theory]
     [InlineData(OpenApiSupportedVersion.Latest, 0)]
+    [InlineData(OpenApiSupportedVersion.V7220, 7220)]
     [InlineData(OpenApiSupportedVersion.V7210, 7210)]
     [InlineData(OpenApiSupportedVersion.V7140, 7140)]
     [InlineData(OpenApiSupportedVersion.V7130, 7130)]
