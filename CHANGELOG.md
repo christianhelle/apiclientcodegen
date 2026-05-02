@@ -10,6 +10,7 @@
 - Switch to System.Text.Json for \(de\)serialization [\#767](https://github.com/christianhelle/apiclientcodegen/issues/767)
 - Add setting to generate nullable value types for optional request body properties \(Refitter\) [\#762](https://github.com/christianhelle/apiclientcodegen/issues/762)
 - Client code is not generated again when definition file is replaced externally [\#209](https://github.com/christianhelle/apiclientcodegen/issues/209)
+- Refitter v2.0.0 [\#1570](https://github.com/christianhelle/apiclientcodegen/pull/1570) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.22.0 [\#1565](https://github.com/christianhelle/apiclientcodegen/pull/1565) ([christianhelle](https://github.com/christianhelle))
 - NSwag v14.7.1 [\#1557](https://github.com/christianhelle/apiclientcodegen/pull/1557) ([christianhelle](https://github.com/christianhelle))
 - Fix full path issues for NSwag, Refitter and Kiota [\#1547](https://github.com/christianhelle/apiclientcodegen/pull/1547) ([christianhelle](https://github.com/christianhelle))
