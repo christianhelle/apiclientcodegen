@@ -177,7 +177,7 @@ namespace Rapicgen.Core.Installer
                         if (line.IndexOf("refitter", StringComparison.OrdinalIgnoreCase) >= 0)
                         {
                             refitterInstalled = true;
-                            // Expected format: "refitter    1.7.3    refitter"
+                            // Expected format: "refitter    2.0.0    refitter"
                             // Split by whitespace and look for version
                             var parts = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
                             foreach (var part in parts)
@@ -200,11 +200,11 @@ namespace Rapicgen.Core.Installer
                     if (refitterInstalled)
                     {
                         // Already installed but outdated — use update
-                        installArguments = "tool update --global refitter --version 1.7.3";
+                        installArguments = "tool update --global refitter --version 2.0.0";
                     }
                     else
                     {
-                        installArguments = "tool install --global refitter --version 1.7.3";
+                        installArguments = "tool install --global refitter --version 2.0.0";
                     }
                     using var context = new DependencyContext(installCommand, $"{installCommand} {installArguments}");
                     processLauncher.Start(installCommand, installArguments);
@@ -215,7 +215,7 @@ namespace Rapicgen.Core.Installer
             {
                 // If dotnet command doesn't exist or fails, install Refitter
                 command = PathProvider.GetDotNetPath();
-                arguments = "tool install --global refitter --version 1.7.3";
+                arguments = "tool install --global refitter --version 2.0.0";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
                 processLauncher.Start(command, arguments);
                 context.Succeeded();
