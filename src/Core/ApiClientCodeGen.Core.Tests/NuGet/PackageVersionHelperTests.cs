@@ -26,9 +26,10 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
         }
 
         [Theory]
-        [InlineData("3.0.0-beta.20210218.1", "3.0.0", true)]
-        [InlineData("5.0.0-rc.1", "5.0.0", true)]
+        [InlineData("3.0.0-beta.20210218.1", "3.0.0", false)]
+        [InlineData("5.0.0-rc.1", "5.0.0", false)]
         [InlineData("2.0.0-alpha", "3.0.0", false)]
+        [InlineData("3.0.0-alpha", "3.0.0-beta.20210218.1", false)]
         public void IsVersionGreaterOrEqual_Handles_PreRelease(
             string installed,
             string required,
