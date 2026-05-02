@@ -65,4 +65,76 @@ namespace ApiClientCodeGen.Core.Tests.Generators.NSwag
         public void Generated_Code()
             => code.Should().NotBeNull();
     }
+
+    public class NSwagCSharpCodeGeneratorWithSystemTextJsonTests : TestWithResources
+    {
+        private readonly Mock<IProcessLauncher> processLauncherMock = new Mock<IProcessLauncher>();
+
+        protected override void OnInitialize()
+        {
+            var optionsMock = new Mock<INSwagOptions>();
+            optionsMock.Setup(c => c.ClassStyle).Returns(CSharpClassStyle.Poco);
+            optionsMock.Setup(c => c.UseDocumentTitle).Returns(true);
+            optionsMock.Setup(c => c.InjectHttpClient).Returns(true);
+            optionsMock.Setup(c => c.GenerateClientInterfaces).Returns(true);
+            optionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
+            optionsMock.Setup(c => c.UseBaseUrl).Returns(false);
+            optionsMock.Setup(c => c.ParameterDateTimeFormat).Returns("s");
+            optionsMock.Setup(c => c.UseSystemTextJson).Returns(true);
+
+            var sut = new NSwagCSharpCodeGenerator(
+                SwaggerJsonFilename,
+                "GeneratedCode",
+                processLauncherMock.Object,
+                new Mock<IDependencyInstaller>().Object,
+                optionsMock.Object);
+
+            sut.GenerateCode(null);
+        }
+
+        [Fact]
+        public void Includes_JsonLibrary_SystemTextJson_Argument()
+            => processLauncherMock.Verify(
+                c => c.Start(
+                    It.IsAny<string>(),
+                    It.Is<string>(s => s.Contains("/JsonLibrary:SystemTextJson")),
+                    It.IsAny<string>()),
+                Times.Once);
+    }
+
+    public class NSwagCSharpCodeGeneratorWithoutSystemTextJsonTests : TestWithResources
+    {
+        private readonly Mock<IProcessLauncher> processLauncherMock = new Mock<IProcessLauncher>();
+        private string capturedArguments = string.Empty;
+
+        protected override void OnInitialize()
+        {
+            var optionsMock = new Mock<INSwagOptions>();
+            optionsMock.Setup(c => c.ClassStyle).Returns(CSharpClassStyle.Poco);
+            optionsMock.Setup(c => c.UseDocumentTitle).Returns(true);
+            optionsMock.Setup(c => c.InjectHttpClient).Returns(true);
+            optionsMock.Setup(c => c.GenerateClientInterfaces).Returns(true);
+            optionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
+            optionsMock.Setup(c => c.UseBaseUrl).Returns(false);
+            optionsMock.Setup(c => c.ParameterDateTimeFormat).Returns("s");
+            optionsMock.Setup(c => c.UseSystemTextJson).Returns(false);
+
+            processLauncherMock
+                .Setup(c => c.Start(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Callback<string, string, string>((_, args, _) => capturedArguments = args);
+
+            var sut = new NSwagCSharpCodeGenerator(
+                SwaggerJsonFilename,
+                "GeneratedCode",
+                processLauncherMock.Object,
+                new Mock<IDependencyInstaller>().Object,
+                optionsMock.Object);
+
+            sut.GenerateCode(null);
+        }
+
+        [Fact]
+        public void Does_Not_Include_JsonLibrary_SystemTextJson_Argument()
+            => capturedArguments.Should().NotContain("/JsonLibrary:SystemTextJson");
+    }
 }
