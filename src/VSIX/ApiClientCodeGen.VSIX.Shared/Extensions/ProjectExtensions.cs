@@ -280,8 +280,8 @@ namespace Rapicgen.Extensions
                 Logger.Instance.TrackError(e);
                 Logger.Instance.WriteLine(
                     $"Unable to install {packageId} version {version}. " +
-                    $"This may occur if the package is already available via a transitive dependency. " +
-                    $"If so, this warning can be safely ignored.");
+                    $"If you already have this package via a transitive dependency, this warning may be ignored; " +
+                    $"otherwise, investigate the failure. Error details: {e.Message}");
             }
         }
 
