@@ -73,13 +73,33 @@ if (-not $OldVersion) {
 # Version format: major.minor.patch (e.g., 7.20.0)
 # Enum naming: V + major + minor(2 digits) + patch (e.g., V7200)
 $newParts = $NewVersion.Split('.')
+if ($newParts.Length -ne 3) {
+    Write-Error "Invalid version format: $NewVersion. Expected format: major.minor.patch (e.g., 7.20.0)"
+    exit 1
+}
 $newMajor = $newParts[0]
 $newMinor = $newParts[1]
 $newPatch = $newParts[2]
+
+# Validate that components are numeric
+if (-not ($newMajor -match '^\d+$' -and $newMinor -match '^\d+$' -and $newPatch -match '^\d+$')) {
+    Write-Error "Version components must be numeric: $NewVersion"
+    exit 1
+}
+
+# Warn about multi-digit minor or patch that might cause issues
+if ($newMinor.Length -gt 2 -or $newPatch.Length -gt 1) {
+    Write-Warning "Version $NewVersion has multi-digit components (minor: $($newMinor.Length) digits, patch: $($newPatch.Length) digit(s)). Enum naming may need adjustment."
+}
+
 $newEnumName = "V$newMajor$($newMinor.PadLeft(2,'0'))$newPatch"
 $newEnumValue = [int]"$newMajor$($newMinor.PadLeft(2,'0'))$newPatch"
 
 $oldParts = $OldVersion.Split('.')
+if ($oldParts.Length -ne 3) {
+    Write-Error "Invalid old version format: $OldVersion. Expected format: major.minor.patch"
+    exit 1
+}
 $oldMajor = $oldParts[0]
 $oldMinor = $oldParts[1]
 $oldPatch = $oldParts[2]
@@ -125,7 +145,7 @@ function Update-VersionInFile {
     }
     $content = Get-Content $fullPath -Raw
     $content = $content.Replace($OldVersion, $NewVersion)
-    Set-Content $fullPath $content -NoNewline
+    Set-Content $fullPath $content -Encoding UTF8
     Write-Host "  Updated: $RelativePath" -ForegroundColor Green
 }
 
@@ -137,7 +157,7 @@ $versionsContent = Get-Content $versionsFile -Raw
 $newVersionEntry = "        new(`r`n            ""$NewVersion"",`r`n            `$""{DownloadUrlPrefix}/$NewVersion/openapi-generator-cli-$NewVersion.jar"",`r`n            ""$SHA1"",`r`n            ""$MD5""`r`n        ),`r`n"
 $oldFirstEntry = "        new(`r`n            ""$OldVersion"""
 $versionsContent = $versionsContent.Replace($oldFirstEntry, "$newVersionEntry$oldFirstEntry")
-Set-Content $versionsFile $versionsContent -NoNewline
+Set-Content $versionsFile $versionsContent -Encoding UTF8
 Write-Host "  Updated: OpenApiGeneratorVersions.cs" -ForegroundColor Green
 
 # Step 3: Update Core - OpenApiSupportedVersion.cs
@@ -160,7 +180,7 @@ $enumContent = $enumContent.Replace(
     "Latest => OpenApiSupportedVersion.$newEnumName;"
 )
 
-Set-Content $enumFile $enumContent -NoNewline
+Set-Content $enumFile $enumContent -Encoding UTF8
 Write-Host "  Updated: OpenApiSupportedVersion.cs" -ForegroundColor Green
 
 # Step 4: Update Resource.resx and Resource.Designer.cs
@@ -171,18 +191,18 @@ $resxContent = Get-Content $resxFile -Raw
 $resxContent = $resxContent.Replace($OldVersion, $NewVersion)
 $resxContent = $resxContent -replace '(<data name="OpenApiGenerator_MD5" xml:space="preserve">\s*<value>)[^<]+(</value>)', "`${1}$MD5`${2}"
 $resxContent = $resxContent -replace '(<data name="OpenApiGenerator_SHA1" xml:space="preserve">\s*<value>)[^<]+(</value>)', "`${1}$SHA1`${2}"
-Set-Content $resxFile $resxContent -NoNewline
+Set-Content $resxFile $resxContent -Encoding UTF8
 Write-Host "  Updated: Resource.resx" -ForegroundColor Green
 
 $designerFile = Join-Path $repoRoot "src\Core\ApiClientCodeGen.Core\Resource.Designer.cs"
 $designerContent = Get-Content $designerFile -Raw
 $designerContent = $designerContent.Replace($OldVersion, $NewVersion)
 # Update hash comments in designer (format: "Looks up a localized string similar to <hash>.")
-# Match the MD5 hash (32 hex chars) in the OpenApiGenerator_MD5 context
-$designerContent = $designerContent -replace '(Looks up a localized string similar to )[0-9a-f]{32}(\.)', "`${1}$MD5`${2}"
-# Match the SHA1 hash (40 hex chars) - but only for OpenApiGenerator, not Legacy
-$designerContent = $designerContent -replace '(Looks up a localized string similar to )[0-9a-f]{40}(\.)', "`${1}$SHA1`${2}"
-Set-Content $designerFile $designerContent -NoNewline
+# Restrict MD5 replacement to the OpenApiGenerator_MD5 resource block
+$designerContent = $designerContent -replace '(?s)(OpenApiGenerator_MD5.*?Looks up a localized string similar to )[0-9a-f]{32}(\.)', "`${1}$MD5`${2}"
+# Restrict SHA1 replacement to the OpenApiGenerator_SHA1 resource block (not Legacy/OpenApiGenerator v2)
+$designerContent = $designerContent -replace '(?s)(OpenApiGenerator_SHA1.*?Looks up a localized string similar to )[0-9a-f]{40}(\.)', "`${1}$SHA1`${2}"
+Set-Content $designerFile $designerContent -Encoding UTF8
 Write-Host "  Updated: Resource.Designer.cs" -ForegroundColor Green
 
 # Step 5: Update CLI Program.cs
@@ -232,7 +252,7 @@ if (-not $testContent.Contains("$newEnumName, OpenApiSupportedVersion.$newEnumNa
     )
 }
 
-Set-Content $testFile $testContent -NoNewline
+Set-Content $testFile $testContent -Encoding UTF8
 Write-Host "  Updated: OpenApiVersionExtensionsTests.cs" -ForegroundColor Green
 
 # Step 7: Update Documentation
