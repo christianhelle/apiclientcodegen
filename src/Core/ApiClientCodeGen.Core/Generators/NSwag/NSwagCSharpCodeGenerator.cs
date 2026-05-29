@@ -15,8 +15,6 @@ namespace Rapicgen.Core.Generators.NSwag
         private readonly IDependencyInstaller dependencyInstaller;
         private readonly INSwagOptions options;
 
-        private const string Command = "nswag";
-
         public NSwagCSharpCodeGenerator(
             string swaggerFile,
             string defaultNamespace,
@@ -44,9 +42,8 @@ namespace Rapicgen.Core.Generators.NSwag
             pGenerateProgress?.Progress(40);
             var arguments = BuildNSwagArguments(outputPath, className);
 
-            using var context = new DependencyContext(ExternalTools.NSwag.DisplayName, $"{Command} {arguments}");
-            processLauncher.Start(PathProvider.GetNSwagPath(), arguments, workingDirectory);
-            context.Succeeded();
+            new ToolRunner(processLauncher).Run(
+                ExternalTools.NSwag, PathProvider.GetNSwagPath(), arguments, workingDirectory);
 
             pGenerateProgress?.Progress(80);
 

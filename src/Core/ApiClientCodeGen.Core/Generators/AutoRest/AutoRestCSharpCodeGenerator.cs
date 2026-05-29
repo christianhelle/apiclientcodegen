@@ -4,7 +4,6 @@ using System.IO;
 using Rapicgen.Core.External;
 using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Installer;
-using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.AutoRest;
 using Rapicgen.Core.Options.General;
 
@@ -82,9 +81,8 @@ namespace Rapicgen.Core.Generators.AutoRest
                         SwaggerFile,
                         DefaultNamespace);
                     
-                    using var context = new DependencyContext("AutoRest", $"{command} {arguments}");
-                    processLauncher.Start(command, arguments, Path.GetDirectoryName(SwaggerFile));
-                    context.Succeeded();
+                    new ToolRunner(processLauncher).Run(
+                        ExternalTools.AutoRest, command, arguments, Path.GetDirectoryName(SwaggerFile));
 
                     pGenerateProgress?.Progress(80);
                     
@@ -104,16 +102,14 @@ namespace Rapicgen.Core.Generators.AutoRest
 
                     try
                     {
-                        using var context = new DependencyContext("AutoRest", $"{command} {arguments}");
-                        processLauncher.Start(command, arguments, Path.GetDirectoryName(SwaggerFile));
-                        context.Succeeded();
+                        new ToolRunner(processLauncher).Run(
+                            ExternalTools.AutoRest, command, arguments, Path.GetDirectoryName(SwaggerFile));
                     }
                     catch (ProcessLaunchException)
                     {
                         arguments = arguments.Replace("--version=", "--version ");
-                        using var context = new DependencyContext("AutoRest", $"{command} {arguments}");
-                        processLauncher.Start(command, arguments, Path.GetDirectoryName(SwaggerFile));
-                        context.Succeeded();
+                        new ToolRunner(processLauncher).Run(
+                            ExternalTools.AutoRest, command, arguments, Path.GetDirectoryName(SwaggerFile));
                     }
                     finally
                     {

@@ -12,7 +12,6 @@ namespace Rapicgen.Core.Generators.OpenApi
     public class OpenApiCSharpCodeGenerator : ICodeGenerator
     {
         private readonly string defaultNamespace;
-        private readonly JavaPathProvider javaPathProvider;
         private readonly IGeneralOptions options;
         private readonly IOpenApiGeneratorOptions openApiGeneratorOptions;
         private readonly IProcessLauncher processLauncher;
@@ -35,7 +34,6 @@ namespace Rapicgen.Core.Generators.OpenApi
             this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
             this.dependencyInstaller =
                 dependencyInstaller ?? throw new ArgumentNullException(nameof(dependencyInstaller));
-            javaPathProvider = new JavaPathProvider(options, processLauncher);
         }
 
         public string GenerateCode(IProgressReporter? pGenerateProgress)
@@ -129,10 +127,8 @@ namespace Rapicgen.Core.Generators.OpenApi
                     arguments += $"-t \"{templatesPath}\" ";
                 }
 
-                var java = javaPathProvider.GetJavaExePath();
-                using var context = new DependencyContext(ExternalTools.OpenApiGenerator.DisplayName, $"{java} {arguments}");
-                processLauncher.Start(java, arguments, Path.GetDirectoryName(swaggerFile));
-                context.Succeeded();
+                new ToolRunner(processLauncher).RunJava(
+                    ExternalTools.OpenApiGenerator, options, arguments, Path.GetDirectoryName(swaggerFile));
 
                 pGenerateProgress?.Progress(80);
 

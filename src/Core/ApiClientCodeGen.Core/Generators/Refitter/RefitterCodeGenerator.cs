@@ -4,7 +4,6 @@ using System.IO;
 using System.Text.Json;
 using Rapicgen.Core.External;
 using Rapicgen.Core.Installer;
-using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.Refitter;
 
 namespace Rapicgen.Core.Generators.Refitter;
@@ -16,8 +15,6 @@ public class RefitterCodeGenerator : ICodeGenerator
     private readonly IRefitterOptions options;
     private readonly IProcessLauncher processLauncher;
     private readonly IDependencyInstaller dependencyInstaller;
-
-    private const string CommandName = "refitter";
 
     public RefitterCodeGenerator(
         string swaggerFile,
@@ -67,9 +64,8 @@ public class RefitterCodeGenerator : ICodeGenerator
         var arguments = $"--settings-file \"{inputFile}\" --simple-output";
         var workingDirectory = Path.GetDirectoryName(inputFile);
 
-        using var context = new DependencyContext("Refitter", $"{CommandName} {arguments}");
-        processLauncher.Start(PathProvider.GetRefitterPath(), arguments, workingDirectory);
-        context.Succeeded();
+        new ToolRunner(processLauncher).Run(
+            ExternalTools.Refitter, PathProvider.GetRefitterPath(), arguments, workingDirectory);
 
         pGenerateProgress?.Progress(80);
 
@@ -114,9 +110,8 @@ public class RefitterCodeGenerator : ICodeGenerator
             var outputDir = workingDirectory;
             var arguments = BuildRefitterArguments(inputFile, outputDir, multipleFiles: true);
 
-            using var context = new DependencyContext("Refitter", $"{CommandName} {arguments}");
-            processLauncher.Start(PathProvider.GetRefitterPath(), arguments, workingDirectory);
-            context.Succeeded();
+            new ToolRunner(processLauncher).Run(
+                ExternalTools.Refitter, PathProvider.GetRefitterPath(), arguments, workingDirectory);
 
             pGenerateProgress?.Progress(100);
             return string.Empty;
@@ -127,9 +122,8 @@ public class RefitterCodeGenerator : ICodeGenerator
         
         var arguments2 = BuildRefitterArguments(inputFile, outputPath);
 
-        using var ctx = new DependencyContext("Refitter", $"{CommandName} {arguments2}");
-        processLauncher.Start(PathProvider.GetRefitterPath(), arguments2, workingDirectory);
-        ctx.Succeeded();
+        new ToolRunner(processLauncher).Run(
+            ExternalTools.Refitter, PathProvider.GetRefitterPath(), arguments2, workingDirectory);
 
         pGenerateProgress?.Progress(80);
 

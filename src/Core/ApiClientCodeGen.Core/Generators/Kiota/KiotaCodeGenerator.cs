@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using Rapicgen.Core.External;
 using Rapicgen.Core.Installer;
-using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options.Kiota;
 
 namespace Rapicgen.Core.Generators.Kiota;
@@ -15,7 +14,6 @@ public class KiotaCodeGenerator(
     IKiotaOptions options) : ICodeGenerator
 {
     private const string KiotaLockFile = "kiota-lock.json";
-    private const string CommandName = "kiota";
 
     public string GenerateCode(IProgressReporter? pGenerateProgress)
     {
@@ -70,9 +68,8 @@ public class KiotaCodeGenerator(
             pGenerateProgress?.Progress(60);
 
             var arguments = $" update -o \"{outputFolder}\"";
-            using var context = new DependencyContext("Kiota", $"{CommandName} {arguments}");
-            processLauncher.Start(PathProvider.GetKiotaPath(), arguments, outputFolder);
-            context.Succeeded();
+            new ToolRunner(processLauncher).Run(
+                ExternalTools.Kiota, PathProvider.GetKiotaPath(), arguments, outputFolder);
         }
 
         pGenerateProgress?.Progress(80);
@@ -111,16 +108,14 @@ public class KiotaCodeGenerator(
         if (options.UsesBackingStore)
             arguments += " --backing-store";
 
-        using var context = new DependencyContext("Kiota", $"{CommandName} {arguments}");
-        processLauncher.Start(PathProvider.GetKiotaPath(), arguments);
-        context.Succeeded();
+        new ToolRunner(processLauncher).Run(
+            ExternalTools.Kiota, PathProvider.GetKiotaPath(), arguments);
     }
 
     private void RunKiotaUpdate()
     {
         var arguments = $" update -o \"{Path.GetDirectoryName(swaggerFile)!}\"";
-        using var context = new DependencyContext("Kiota", $"{CommandName} {arguments}");
-        processLauncher.Start(PathProvider.GetKiotaPath(), arguments);
-        context.Succeeded();
+        new ToolRunner(processLauncher).Run(
+            ExternalTools.Kiota, PathProvider.GetKiotaPath(), arguments);
     }
 }
