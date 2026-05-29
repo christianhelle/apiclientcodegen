@@ -45,23 +45,23 @@ namespace Rapicgen.CLI
                             .WithExample(new[] { "autorest", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<KiotaCommand>("kiota")
-                            .WithDescription("Microsoft Kiota (v1.31.1)")
+                            .WithDescription($"Microsoft Kiota ({ExternalTools.Kiota.VersionLabel})")
                             .WithExample(new[] { "kiota", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<NSwagCommand>("nswag")
-                            .WithDescription("NSwag (v14.7.1)")
+                            .WithDescription($"NSwag ({ExternalTools.NSwag.VersionLabel})")
                             .WithExample(new[] { "nswag", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<RefitterCommand>("refitter")
-                            .WithDescription("Refitter (v2.0.0)")
+                            .WithDescription($"Refitter ({ExternalTools.Refitter.VersionLabel})")
                             .WithExample(new[] { "refitter", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<SwaggerCodegenCommand>("swagger")
-                            .WithDescription("Swagger Codegen CLI (v3.0.34)")
+                            .WithDescription($"Swagger Codegen CLI ({ExternalTools.SwaggerCodegen.VersionLabel})")
                             .WithExample(new[] { "swagger", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<OpenApiCSharpGeneratorCommand>("openapi")
-                            .WithDescription("OpenAPI Generator (v7.22.0)")
+                            .WithDescription($"OpenAPI Generator ({ExternalTools.OpenApiGenerator.VersionLabel})")
                             .WithExample(new[] { "openapi", "petstore.json", "GeneratedCode", "Output.cs" });
                     });
 

@@ -35,7 +35,7 @@ namespace Rapicgen.Core.Installer
         [Obsolete("AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.", false)]
         public void InstallAutoRest()
         {
-            npm.InstallNpmPackage("autorest");
+            npm.InstallNpmPackage(ExternalTools.AutoRest.PackageId!);
         }
 
         public void InstallNSwag()
@@ -57,7 +57,7 @@ namespace Rapicgen.Core.Installer
                         Logger.Instance.WriteLine(error);
                     }
                 });
-                if (!nswagVersion.Contains("14.7.1"))
+                if (!nswagVersion.Contains(ExternalTools.NSwag.Version))
                 {
                     // Version mismatch, update to required version
                     UpdateNSwagTool();
@@ -73,7 +73,7 @@ namespace Rapicgen.Core.Installer
         private void InstallNSwagTool()
         {
             var command = PathProvider.GetDotNetPath();
-            var arguments = "tool install --global NSwag.ConsoleCore --version 14.7.1";
+            var arguments = $"tool install --global {ExternalTools.NSwag.PackageId} --version {ExternalTools.NSwag.Version}";
             using var context = new DependencyContext(command, $"{command} {arguments}");
             processLauncher.Start(command, arguments);
             context.Succeeded();
@@ -82,7 +82,7 @@ namespace Rapicgen.Core.Installer
         private void UpdateNSwagTool()
         {
             var command = PathProvider.GetDotNetPath();
-            var arguments = "tool update --global NSwag.ConsoleCore --version 14.7.1";
+            var arguments = $"tool update --global {ExternalTools.NSwag.PackageId} --version {ExternalTools.NSwag.Version}";
             using var context = new DependencyContext(command, $"{command} {arguments}");
             processLauncher.Start(command, arguments);
             context.Succeeded();
@@ -124,7 +124,7 @@ namespace Rapicgen.Core.Installer
                         Logger.Instance.WriteLine(error);
                     }
                 });
-                if (!kiotaVersion.StartsWith("1.31.1"))
+                if (!kiotaVersion.StartsWith(ExternalTools.Kiota.Version))
                 { 
                     //older or newer? i guess this should be handled.
                 }
@@ -133,7 +133,7 @@ namespace Rapicgen.Core.Installer
             {
                 // if command doesn't exist Win32Exception is thrown.
                 command = PathProvider.GetDotNetPath();
-                arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.31.1";
+                arguments = $"tool install --global {ExternalTools.Kiota.PackageId} --version {ExternalTools.Kiota.Version}";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
                 processLauncher.Start(command, arguments);
                 context.Succeeded();
@@ -166,7 +166,7 @@ namespace Rapicgen.Core.Installer
                 });
                 
                 // Parse the tool list output to find Refitter
-                var requiredVersion = new Version(1, 6, 3);
+                var requiredVersion = new Version(ExternalTools.Refitter.Version);
                 
                 if (!string.IsNullOrEmpty(toolListOutput))
                 {
@@ -200,11 +200,11 @@ namespace Rapicgen.Core.Installer
                     if (refitterInstalled)
                     {
                         // Already installed but outdated — use update
-                        installArguments = "tool update --global refitter --version 2.0.0";
+                        installArguments = $"tool update --global {ExternalTools.Refitter.PackageId} --version {ExternalTools.Refitter.Version}";
                     }
                     else
                     {
-                        installArguments = "tool install --global refitter --version 2.0.0";
+                        installArguments = $"tool install --global {ExternalTools.Refitter.PackageId} --version {ExternalTools.Refitter.Version}";
                     }
                     using var context = new DependencyContext(installCommand, $"{installCommand} {installArguments}");
                     processLauncher.Start(installCommand, installArguments);
@@ -215,7 +215,7 @@ namespace Rapicgen.Core.Installer
             {
                 // If dotnet command doesn't exist or fails, install Refitter
                 command = PathProvider.GetDotNetPath();
-                arguments = "tool install --global refitter --version 2.0.0";
+                arguments = $"tool install --global {ExternalTools.Refitter.PackageId} --version {ExternalTools.Refitter.Version}";
                 using var context = new DependencyContext(command, $"{command} {arguments}");
                 processLauncher.Start(command, arguments);
                 context.Succeeded();
