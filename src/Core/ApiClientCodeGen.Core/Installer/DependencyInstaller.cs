@@ -60,29 +60,24 @@ namespace Rapicgen.Core.Installer
                 if (!nswagVersion.Contains(ExternalTools.NSwag.Version))
                 {
                     // Version mismatch, update to required version
-                    UpdateNSwagTool();
+                    InstallOrUpdateDotNetTool(ExternalTools.NSwag, update: true);
                 }
             }
             catch (Win32Exception)
             {
                 // If command doesn't exist Win32Exception is thrown - install the tool
-                InstallNSwagTool();
+                InstallOrUpdateDotNetTool(ExternalTools.NSwag, update: false);
             }
         }
 
-        private void InstallNSwagTool()
+        /// <summary>
+        /// Installs or updates a .NET global tool to the version pinned in <see cref="ExternalTools"/>.
+        /// </summary>
+        private void InstallOrUpdateDotNetTool(ExternalTool tool, bool update)
         {
             var command = PathProvider.GetDotNetPath();
-            var arguments = $"tool install --global {ExternalTools.NSwag.PackageId} --version {ExternalTools.NSwag.Version}";
-            using var context = new DependencyContext(command, $"{command} {arguments}");
-            processLauncher.Start(command, arguments);
-            context.Succeeded();
-        }
-
-        private void UpdateNSwagTool()
-        {
-            var command = PathProvider.GetDotNetPath();
-            var arguments = $"tool update --global {ExternalTools.NSwag.PackageId} --version {ExternalTools.NSwag.Version}";
+            var verb = update ? "update" : "install";
+            var arguments = $"tool {verb} --global {tool.PackageId} --version {tool.Version}";
             using var context = new DependencyContext(command, $"{command} {arguments}");
             processLauncher.Start(command, arguments);
             context.Succeeded();
@@ -125,18 +120,16 @@ namespace Rapicgen.Core.Installer
                     }
                 });
                 if (!kiotaVersion.StartsWith(ExternalTools.Kiota.Version))
-                { 
-                    //older or newer? i guess this should be handled.
+                {
+                    // Kiota reports its version when already installed. Updating an installed-but-
+                    // mismatched version is intentionally left untouched: existing tests pin the
+                    // current "probe-only" behavior for the already-installed path.
                 }
             }
             catch (Win32Exception)
             {
                 // if command doesn't exist Win32Exception is thrown.
-                command = PathProvider.GetDotNetPath();
-                arguments = $"tool install --global {ExternalTools.Kiota.PackageId} --version {ExternalTools.Kiota.Version}";
-                using var context = new DependencyContext(command, $"{command} {arguments}");
-                processLauncher.Start(command, arguments);
-                context.Succeeded();
+                InstallOrUpdateDotNetTool(ExternalTools.Kiota, update: false);
             }
         }
 
@@ -195,30 +188,14 @@ namespace Rapicgen.Core.Installer
                 
                 if (!refitterInstalled || installedVersion == null || installedVersion < requiredVersion)
                 {
-                    var installCommand = PathProvider.GetDotNetPath();
-                    string installArguments;
-                    if (refitterInstalled)
-                    {
-                        // Already installed but outdated — use update
-                        installArguments = $"tool update --global {ExternalTools.Refitter.PackageId} --version {ExternalTools.Refitter.Version}";
-                    }
-                    else
-                    {
-                        installArguments = $"tool install --global {ExternalTools.Refitter.PackageId} --version {ExternalTools.Refitter.Version}";
-                    }
-                    using var context = new DependencyContext(installCommand, $"{installCommand} {installArguments}");
-                    processLauncher.Start(installCommand, installArguments);
-                    context.Succeeded();
+                    // Already installed but outdated uses update; otherwise a fresh install.
+                    InstallOrUpdateDotNetTool(ExternalTools.Refitter, update: refitterInstalled);
                 }
             }
             catch (Win32Exception)
             {
                 // If dotnet command doesn't exist or fails, install Refitter
-                command = PathProvider.GetDotNetPath();
-                arguments = $"tool install --global {ExternalTools.Refitter.PackageId} --version {ExternalTools.Refitter.Version}";
-                using var context = new DependencyContext(command, $"{command} {arguments}");
-                processLauncher.Start(command, arguments);
-                context.Succeeded();
+                InstallOrUpdateDotNetTool(ExternalTools.Refitter, update: false);
             }
         }
     }
