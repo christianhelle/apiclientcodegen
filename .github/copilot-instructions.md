@@ -329,4 +329,10 @@ ls -la dist/extension.js
 The project builds and runs successfully with the above commands. Some tests may fail due to external network dependencies, but the core functionality works correctly.
 
 ## Git
-Commit every logical small change with a brief commit description for a detailed history of a changes
+
+AI agents must follow these commit rules automatically on **all** agentic work, without being prompted:
+
+- **Commit often, in small logical groups.** Make a separate commit for each logical change as soon as it is complete, rather than batching many unrelated changes into one large commit. This keeps a detailed, easy-to-follow progress history.
+- Write a brief, descriptive commit message for each commit that explains the change.
+- **Never add a co-author to commits.** Do not include `Co-authored-by` trailers, and do not attribute commits to any AI agent or assistant. Commit messages must contain only the change description.
+- When a unit of work spans multiple files or phases, prefer several focused commits over a single combined commit.

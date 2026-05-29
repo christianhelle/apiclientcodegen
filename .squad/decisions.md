@@ -4,6 +4,22 @@
 
 ---
 
+## Decision: User Directives — Frequent Small Commits, Never Add a Co-Author
+
+**Authority:** Christian (User)  
+**Date:** 2026-05-30T01:30:02Z  
+**Status:** Binding  
+
+**Rule:** On all agentic work, commit changes as often as possible in small, logical groups so the history reflects detailed progress. Each logical change gets its own commit with a brief descriptive message. **Never** add a co-author to any commit — do not include `Co-authored-by` trailers or attribute commits to any AI agent or assistant. This applies automatically to all future work without the user having to ask.
+
+**Rationale:** Detailed, granular commit history makes progress easy to follow and review. Commit authorship must reflect only the change, not the tooling.
+
+**Supersedes:** Any prior guidance or QA gate (including earlier OpenAPI Generator update reviews) that required `Co-authored-by` trailers to be present. Co-author trailers are now prohibited.
+
+**Binding on:** All agents, all branches, all tasks.
+
+---
+
 ## Decision: User Directives — No Direct Master Commits, PR Workflow Required
 
 **Authority:** Christian (User)  
