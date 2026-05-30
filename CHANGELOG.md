@@ -10,6 +10,7 @@
 - Switch to System.Text.Json for \(de\)serialization [\#767](https://github.com/christianhelle/apiclientcodegen/issues/767)
 - Add setting to generate nullable value types for optional request body properties \(Refitter\) [\#762](https://github.com/christianhelle/apiclientcodegen/issues/762)
 - Client code is not generated again when definition file is replaced externally [\#209](https://github.com/christianhelle/apiclientcodegen/issues/209)
+- Update Kiota dependencies to v2.0.0 [\#1592](https://github.com/christianhelle/apiclientcodegen/pull/1592) ([christianhelle](https://github.com/christianhelle))
 - Update Kiota Dependencies to v1.22.2 [\#1573](https://github.com/christianhelle/apiclientcodegen/pull/1573) ([christianhelle](https://github.com/christianhelle))
 - Refitter v2.0.0 [\#1570](https://github.com/christianhelle/apiclientcodegen/pull/1570) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.22.0 [\#1565](https://github.com/christianhelle/apiclientcodegen/pull/1565) ([christianhelle](https://github.com/christianhelle))
@@ -43,6 +44,9 @@
 
 **Merged pull requests:**
 
+- Mandate frequent small commits with no co-author for AI agents [\#1590](https://github.com/christianhelle/apiclientcodegen/pull/1590) ([christianhelle](https://github.com/christianhelle))
+- Update dependency cake.tool to v6.2.0 [\#1579](https://github.com/christianhelle/apiclientcodegen/pull/1579) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency webpack-cli to v7.0.3 [\#1578](https://github.com/christianhelle/apiclientcodegen/pull/1578) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency ruby to v4.0.5 [\#1577](https://github.com/christianhelle/apiclientcodegen/pull/1577) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency mocha to v11.7.6 [\#1576](https://github.com/christianhelle/apiclientcodegen/pull/1576) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency coverlet.collector to 10.0.1 [\#1575](https://github.com/christianhelle/apiclientcodegen/pull/1575) ([renovate[bot]](https://github.com/apps/renovate))
