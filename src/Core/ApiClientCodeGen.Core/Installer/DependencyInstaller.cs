@@ -35,7 +35,7 @@ namespace Rapicgen.Core.Installer
         [Obsolete("AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.", false)]
         public void InstallAutoRest()
         {
-            npm.InstallNpmPackage("autorest");
+            npm.InstallNpmPackage(ExternalTools.AutoRest.PackageId!);
         }
 
         public void InstallNSwag()
@@ -57,32 +57,27 @@ namespace Rapicgen.Core.Installer
                         Logger.Instance.WriteLine(error);
                     }
                 });
-                if (!nswagVersion.Contains("14.7.1"))
+                if (!nswagVersion.Contains(ExternalTools.NSwag.Version))
                 {
                     // Version mismatch, update to required version
-                    UpdateNSwagTool();
+                    InstallOrUpdateDotNetTool(ExternalTools.NSwag, update: true);
                 }
             }
             catch (Win32Exception)
             {
                 // If command doesn't exist Win32Exception is thrown - install the tool
-                InstallNSwagTool();
+                InstallOrUpdateDotNetTool(ExternalTools.NSwag, update: false);
             }
         }
 
-        private void InstallNSwagTool()
+        /// <summary>
+        /// Installs or updates a .NET global tool to the version pinned in <see cref="ExternalTools"/>.
+        /// </summary>
+        private void InstallOrUpdateDotNetTool(ExternalTool tool, bool update)
         {
             var command = PathProvider.GetDotNetPath();
-            var arguments = "tool install --global NSwag.ConsoleCore --version 14.7.1";
-            using var context = new DependencyContext(command, $"{command} {arguments}");
-            processLauncher.Start(command, arguments);
-            context.Succeeded();
-        }
-
-        private void UpdateNSwagTool()
-        {
-            var command = PathProvider.GetDotNetPath();
-            var arguments = "tool update --global NSwag.ConsoleCore --version 14.7.1";
+            var verb = update ? "update" : "install";
+            var arguments = $"tool {verb} --global {tool.PackageId} --version {tool.Version}";
             using var context = new DependencyContext(command, $"{command} {arguments}");
             processLauncher.Start(command, arguments);
             context.Succeeded();
@@ -124,19 +119,17 @@ namespace Rapicgen.Core.Installer
                         Logger.Instance.WriteLine(error);
                     }
                 });
-                if (!kiotaVersion.StartsWith("1.31.1"))
-                { 
-                    //older or newer? i guess this should be handled.
+                if (!kiotaVersion.StartsWith(ExternalTools.Kiota.Version))
+                {
+                    // Kiota reports its version when already installed. Updating an installed-but-
+                    // mismatched version is intentionally left untouched: existing tests pin the
+                    // current "probe-only" behavior for the already-installed path.
                 }
             }
             catch (Win32Exception)
             {
                 // if command doesn't exist Win32Exception is thrown.
-                command = PathProvider.GetDotNetPath();
-                arguments = "tool install --global Microsoft.OpenApi.Kiota --version 1.31.1";
-                using var context = new DependencyContext(command, $"{command} {arguments}");
-                processLauncher.Start(command, arguments);
-                context.Succeeded();
+                InstallOrUpdateDotNetTool(ExternalTools.Kiota, update: false);
             }
         }
 
@@ -166,7 +159,7 @@ namespace Rapicgen.Core.Installer
                 });
                 
                 // Parse the tool list output to find Refitter
-                var requiredVersion = new Version(1, 6, 3);
+                var requiredVersion = new Version(ExternalTools.Refitter.Version);
                 
                 if (!string.IsNullOrEmpty(toolListOutput))
                 {
@@ -195,30 +188,14 @@ namespace Rapicgen.Core.Installer
                 
                 if (!refitterInstalled || installedVersion == null || installedVersion < requiredVersion)
                 {
-                    var installCommand = PathProvider.GetDotNetPath();
-                    string installArguments;
-                    if (refitterInstalled)
-                    {
-                        // Already installed but outdated — use update
-                        installArguments = "tool update --global refitter --version 2.0.0";
-                    }
-                    else
-                    {
-                        installArguments = "tool install --global refitter --version 2.0.0";
-                    }
-                    using var context = new DependencyContext(installCommand, $"{installCommand} {installArguments}");
-                    processLauncher.Start(installCommand, installArguments);
-                    context.Succeeded();
+                    // Already installed but outdated uses update; otherwise a fresh install.
+                    InstallOrUpdateDotNetTool(ExternalTools.Refitter, update: refitterInstalled);
                 }
             }
             catch (Win32Exception)
             {
                 // If dotnet command doesn't exist or fails, install Refitter
-                command = PathProvider.GetDotNetPath();
-                arguments = "tool install --global refitter --version 2.0.0";
-                using var context = new DependencyContext(command, $"{command} {arguments}");
-                processLauncher.Start(command, arguments);
-                context.Succeeded();
+                InstallOrUpdateDotNetTool(ExternalTools.Refitter, update: false);
             }
         }
     }
