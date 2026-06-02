@@ -20,9 +20,7 @@ public class GenerateAutoRestCommand(TraceSource traceSource, ExtensionSettingsP
         => new("%AutoRestCommand.DisplayName%")
         {
             Icon = new(ImageMoniker.KnownValues.GenerateFile, IconSettings.IconAndText),
-            VisibleWhen = ActivationConstraint.ClientContext(
-                ClientContextKey.Shell.ActiveSelectionFileName,
-                ".(json|ya?ml)")
+            VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
         };
 
     public override async Task ExecuteCommandAsync(
@@ -96,7 +94,7 @@ public abstract class GenerateAutoRestBaseCommand(TraceSource traceSource, Exten
 
             progress.Report(20, "Loading AutoRest configuration...");
             var options = await settingsProvider.GetAutoRestOptionsAsync(cancellationToken);
-            
+
             cancellationToken.ThrowIfCancellationRequested();
             progress.Report(30, "Initializing AutoRest code generator...");
             var generator = new AutoRestCSharpCodeGenerator(
@@ -126,7 +124,7 @@ public abstract class GenerateAutoRestBaseCommand(TraceSource traceSource, Exten
                     outputFile,
                     csharpCode,
                     cancellationToken);
-                
+
                 progress.Report(100, "AutoRest code generation completed successfully");
             }
         }

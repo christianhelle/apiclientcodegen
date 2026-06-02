@@ -23,9 +23,7 @@ public class GenerateNSwagCommand(TraceSource traceSource, ExtensionSettingsProv
     public override CommandConfiguration CommandConfiguration => new("%NSwagCommand.DisplayName%")
     {
         Icon = new(ImageMoniker.KnownValues.GenerateFile, IconSettings.IconAndText),
-        VisibleWhen = ActivationConstraint.ClientContext(
-            ClientContextKey.Shell.ActiveSelectionFileName, 
-            ".(json|ya?ml)")
+        VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
     };
 
     public override async Task ExecuteCommandAsync(
@@ -42,7 +40,7 @@ public class GenerateNSwagCommand(TraceSource traceSource, ExtensionSettingsProv
 
 [VisualStudioContribution]
 public class GenerateNSwagStudioCommand(
-    TraceSource traceSource, 
+    TraceSource traceSource,
     ExtensionSettingsProvider settingsProvider)
     : Command
 {
@@ -181,7 +179,7 @@ public abstract class GenerateNSwagBaseCommand(TraceSource traceSource, Extensio
             cancellationToken.ThrowIfCancellationRequested();
             progress.Report(30, "Loading NSwag configuration...");
             var nswagOptions = await settingsProvider.GetNSwagOptionsAsync(cancellationToken);
-            
+
             var generatorSettingsFactory = new NSwagCodeGeneratorSettingsFactory(
                 defaultNamespace,
                 nswagOptions);
@@ -213,7 +211,7 @@ public abstract class GenerateNSwagBaseCommand(TraceSource traceSource, Extensio
                     outputFile,
                     csharpCode,
                     cancellationToken);
-                
+
                 progress.Report(100, "NSwag code generation completed successfully");
             }
         }
