@@ -17,7 +17,7 @@ public class GenerateSwaggerCommand(TraceSource traceSource, ExtensionSettingsPr
     public override CommandConfiguration CommandConfiguration => new("%SwaggerCommand.DisplayName%")
     {
         Icon = new(ImageMoniker.KnownValues.GenerateFile, IconSettings.IconAndText),
-        VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
+        //VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
     };
 
     public override async Task ExecuteCommandAsync(

@@ -19,7 +19,7 @@ public class GenerateRefitterCommand(TraceSource traceSource, ExtensionSettingsP
         => new("%RefitterCommand.DisplayName%")
         {
             Icon = new(ImageMoniker.KnownValues.GenerateFile, IconSettings.IconAndText),
-            VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
+            //VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
         };
 
     public override async Task ExecuteCommandAsync(
@@ -43,9 +43,7 @@ public class GenerateRefitterSettingsCommand(TraceSource traceSource, ExtensionS
         {
             Icon = new(ImageMoniker.KnownValues.GenerateFile, IconSettings.IconAndText),
             Placements = [KnownPlacements.Node_IncludeExcludeGroup],
-            VisibleWhen = ActivationConstraint.ClientContext(
-                ClientContextKey.Shell.ActiveSelectionFileName,
-                ".(refitter)")
+            //VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(refitter)")
         };
 
     public override async Task ExecuteCommandAsync(
