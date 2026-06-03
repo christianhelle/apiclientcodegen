@@ -17,7 +17,7 @@ public class GenerateOpenApiCommand(TraceSource traceSource, ExtensionSettingsPr
     public override CommandConfiguration CommandConfiguration => new("%OpenApiGeneratorCommand.DisplayName%")
     {
         Icon = new(ImageMoniker.KnownValues.GenerateFile, IconSettings.IconAndText),
-        VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
+        //VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
     };
 
     public override async Task ExecuteCommandAsync(

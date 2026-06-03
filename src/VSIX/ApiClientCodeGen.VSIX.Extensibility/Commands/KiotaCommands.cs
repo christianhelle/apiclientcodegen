@@ -17,7 +17,7 @@ public class GenerateKiotaCommand(TraceSource traceSource, ExtensionSettingsProv
     public override CommandConfiguration CommandConfiguration => new("%KiotaCommand.DisplayName%")
     {
         Icon = new(ImageMoniker.KnownValues.GenerateFile, IconSettings.IconAndText),
-        VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
+        //VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
     };
 
     public override async Task ExecuteCommandAsync(

@@ -20,7 +20,7 @@ public class GenerateAutoRestCommand(TraceSource traceSource, ExtensionSettingsP
         => new("%AutoRestCommand.DisplayName%")
         {
             Icon = new(ImageMoniker.KnownValues.GenerateFile, IconSettings.IconAndText),
-            VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
+            //VisibleWhen = ActivationConstraint.ClientContext(ClientContextKey.Shell.ActiveSelectionFileName, ".(json|ya?ml)")
         };
 
     public override async Task ExecuteCommandAsync(
