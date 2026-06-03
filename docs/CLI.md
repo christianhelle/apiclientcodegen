@@ -70,7 +70,7 @@ Options:
 
 Commands:
   autorest      AutoRest (Deprecated - v3.0.0-beta.20210504.2, retires July 1, 2026 — use NSwag, Refit, or Kiota)
-  kiota         Microsoft Kiota (v1.31.1)
+  kiota         Microsoft Kiota (v1.32.0)
   nswag         NSwag (v14.7.1)
   openapi       OpenAPI Generator (v7.22.0)
   refitter      Refitter (v2.0.0)
