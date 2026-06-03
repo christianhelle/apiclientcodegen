@@ -10,6 +10,7 @@
 - Switch to System.Text.Json for \(de\)serialization [\#767](https://github.com/christianhelle/apiclientcodegen/issues/767)
 - Add setting to generate nullable value types for optional request body properties \(Refitter\) [\#762](https://github.com/christianhelle/apiclientcodegen/issues/762)
 - Client code is not generated again when definition file is replaced externally [\#209](https://github.com/christianhelle/apiclientcodegen/issues/209)
+- Always show the "Generate with ..." context menus in the item node [\#1594](https://github.com/christianhelle/apiclientcodegen/pull/1594) ([christianhelle](https://github.com/christianhelle))
 - Update Kiota dependencies to v2.0.0 [\#1592](https://github.com/christianhelle/apiclientcodegen/pull/1592) ([christianhelle](https://github.com/christianhelle))
 - Deepen code-generation architecture: tool registry, ToolRunner, dead-code removal [\#1591](https://github.com/christianhelle/apiclientcodegen/pull/1591) ([christianhelle](https://github.com/christianhelle))
 - Update Kiota Dependencies to v1.22.2 [\#1573](https://github.com/christianhelle/apiclientcodegen/pull/1573) ([christianhelle](https://github.com/christianhelle))
@@ -35,6 +36,7 @@
 
 **Fixed bugs:**
 
+- Missing Options [\#1593](https://github.com/christianhelle/apiclientcodegen/issues/1593)
 - JetBrains plugin invalid archive - inner JARs must be STORED not compressed [\#1512](https://github.com/christianhelle/apiclientcodegen/issues/1512)
 - IntelliJ plugin invalid archive - JARs compressed with DEFLATE instead of STORED [\#1511](https://github.com/christianhelle/apiclientcodegen/issues/1511)
 - Cannot regenerate without deleting Custom Tool info [\#1463](https://github.com/christianhelle/apiclientcodegen/issues/1463)
