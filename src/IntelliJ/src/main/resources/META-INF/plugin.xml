@@ -4,7 +4,7 @@
     <name>REST API Client Code Generator</name>
     <vendor url="https://github.com/christianhelle/apiclientcodegen">Christian Resma Helle</vendor>
     <description><![CDATA[
-        <h2>🚀 REST API Client Code Generator</h2>
+        <h2>[REST API Client Code Generator]</h2>
         
         <p><strong>Streamline your API integration workflow</strong> by automatically generating type-safe, production-ready REST API clients directly from OpenAPI/Swagger specifications. This plugin brings the power of industry-leading code generators right into your JetBrains IDE.</p>
         
