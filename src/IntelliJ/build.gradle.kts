@@ -44,9 +44,9 @@ dependencies {
 }
 
 tasks {
-    withType<JavaCompile> { sourceCompatibility = javaVersion; targetCompatibility = javaVersion }
-    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions { jvmTarget = javaVersion }
+    withType<JavaCompile> {
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
     }
     buildPlugin {
         // JARs inside the plugin ZIP must be STORED (not compressed) so IntelliJ's
@@ -57,6 +57,9 @@ tasks {
 
 kotlin {
     jvmToolchain(javaVersion.toInt())
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.valueOf("JVM_${javaVersion}"))
+    }
 }
 
 java {
