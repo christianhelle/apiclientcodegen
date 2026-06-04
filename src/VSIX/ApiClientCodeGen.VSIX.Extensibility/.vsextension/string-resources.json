@@ -7,7 +7,7 @@
   "NSwagCommand.DisplayName": "Generate with NSwag (v14.7.1)",
   "NSwagStudioCommand.DisplayName": "Generate NSwag Studio output",
   "OpenApiGeneratorCommand.DisplayName": "Generate with OpenAPI Generator (v7.22.0)",
-  "KiotaCommand.DisplayName": "Generate with Microsoft Kiota (v1.32.0)",
+  "KiotaCommand.DisplayName": "Generate with Microsoft Kiota (v1.32.1)",
   "SwaggerCommand.DisplayName": "Generate with Swagger (v3.0.34 - Outdated)",
   "AutoRestCommand.DisplayName": "Generate with AutoRest (Deprecated)",
 
