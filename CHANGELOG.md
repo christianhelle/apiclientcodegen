@@ -10,6 +10,7 @@
 - Switch to System.Text.Json for \(de\)serialization [\#767](https://github.com/christianhelle/apiclientcodegen/issues/767)
 - Add setting to generate nullable value types for optional request body properties \(Refitter\) [\#762](https://github.com/christianhelle/apiclientcodegen/issues/762)
 - Client code is not generated again when definition file is replaced externally [\#209](https://github.com/christianhelle/apiclientcodegen/issues/209)
+- Microsoft Kiota v1.32.1 [\#1598](https://github.com/christianhelle/apiclientcodegen/pull/1598) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota 1.32.0 [\#1596](https://github.com/christianhelle/apiclientcodegen/pull/1596) ([christianhelle](https://github.com/christianhelle))
 - Always show the "Generate with ..." context menus in the item node [\#1594](https://github.com/christianhelle/apiclientcodegen/pull/1594) ([christianhelle](https://github.com/christianhelle))
 - Update Kiota dependencies to v2.0.0 [\#1592](https://github.com/christianhelle/apiclientcodegen/pull/1592) ([christianhelle](https://github.com/christianhelle))
@@ -48,6 +49,8 @@
 
 **Merged pull requests:**
 
+- Microsoft Kiota v1.32.2 [\#1599](https://github.com/christianhelle/apiclientcodegen/pull/1599) ([christianhelle](https://github.com/christianhelle))
+- Migrate from deprecated kotlinOptions to compilerOptions DSL [\#1597](https://github.com/christianhelle/apiclientcodegen/pull/1597) ([christianhelle](https://github.com/christianhelle))
 - Mandate frequent small commits with no co-author for AI agents [\#1590](https://github.com/christianhelle/apiclientcodegen/pull/1590) ([christianhelle](https://github.com/christianhelle))
 - Update dependency cake.tool to v6.2.0 [\#1579](https://github.com/christianhelle/apiclientcodegen/pull/1579) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency webpack-cli to v7.0.3 [\#1578](https://github.com/christianhelle/apiclientcodegen/pull/1578) ([renovate[bot]](https://github.com/apps/renovate))
