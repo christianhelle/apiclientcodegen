@@ -10,6 +10,7 @@
 - Switch to System.Text.Json for \(de\)serialization [\#767](https://github.com/christianhelle/apiclientcodegen/issues/767)
 - Add setting to generate nullable value types for optional request body properties \(Refitter\) [\#762](https://github.com/christianhelle/apiclientcodegen/issues/762)
 - Client code is not generated again when definition file is replaced externally [\#209](https://github.com/christianhelle/apiclientcodegen/issues/209)
+- OpenAPI Generator v7.23.0 [\#1601](https://github.com/christianhelle/apiclientcodegen/pull/1601) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.32.1 [\#1598](https://github.com/christianhelle/apiclientcodegen/pull/1598) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota 1.32.0 [\#1596](https://github.com/christianhelle/apiclientcodegen/pull/1596) ([christianhelle](https://github.com/christianhelle))
 - Always show the "Generate with ..." context menus in the item node [\#1594](https://github.com/christianhelle/apiclientcodegen/pull/1594) ([christianhelle](https://github.com/christianhelle))
@@ -49,6 +50,7 @@
 
 **Merged pull requests:**
 
+- Remove Squad [\#1600](https://github.com/christianhelle/apiclientcodegen/pull/1600) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.32.2 [\#1599](https://github.com/christianhelle/apiclientcodegen/pull/1599) ([christianhelle](https://github.com/christianhelle))
 - Migrate from deprecated kotlinOptions to compilerOptions DSL [\#1597](https://github.com/christianhelle/apiclientcodegen/pull/1597) ([christianhelle](https://github.com/christianhelle))
 - Mandate frequent small commits with no co-author for AI agents [\#1590](https://github.com/christianhelle/apiclientcodegen/pull/1590) ([christianhelle](https://github.com/christianhelle))
