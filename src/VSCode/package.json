@@ -36,7 +36,7 @@
       },
       {
         "command": "restApiClientCodeGenerator.openapi",
-        "title": "Generate C# Client with OpenAPI Generator (v7.22.0)"
+        "title": "Generate C# Client with OpenAPI Generator (v7.23.0)"
       },
       {
         "command": "restApiClientCodeGenerator.kiota",
