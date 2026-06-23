@@ -139,8 +139,9 @@ namespace Rapicgen.Core.Generators
 
         private static Func<string, bool> Predicate()
         {
-            return file => file.EndsWith(".cs") &&
-                           !file.Contains("AssemblyInfo.cs");
+            return file => file.EndsWith(".cs", StringComparison.OrdinalIgnoreCase) &&
+                           !file.Contains("AssemblyInfo.cs", StringComparison.OrdinalIgnoreCase) &&
+                           !file.EndsWith("Tests.cs", StringComparison.OrdinalIgnoreCase);
         }
 
 
@@ -205,14 +206,14 @@ namespace Rapicgen.Core.Generators
         {
             using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
             using var streamReader = new StreamReader(fileStream);
-            
+
             var lines = new List<string>();
             string? line;
             while ((line = streamReader.ReadLine()) != null)
             {
                 lines.Add(line);
             }
-            
+
             return lines.ToArray();
         }
 
