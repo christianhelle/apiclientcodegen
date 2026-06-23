@@ -63,7 +63,7 @@ namespace Rapicgen.Core.Generators
                 Directory.CreateDirectory(destFolder);
 
             var files = Directory.GetFiles(srcFolder);
-            foreach (var file in files)
+            foreach (var file in files.Where(Predicate()))
             {
                 var name = Path.GetFileName(file);
                 var dest = Path.Combine(destFolder, name);
