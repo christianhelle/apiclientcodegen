@@ -102,6 +102,7 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
             OpenApiGeneratorSettings.OpenApiCustomAdditionalProperties,
             OpenApiGeneratorSettings.OpenApiSkipFormModel,
             OpenApiGeneratorSettings.OpenApiTemplatesPath,
+            OpenApiGeneratorSettings.OpenApiConfigurationFile,
             OpenApiGeneratorSettings.OpenApiUseConfigurationFile,
             OpenApiGeneratorSettings.OpenApiGenerateMultipleFiles,
             OpenApiGeneratorSettings.OpenApiVersion,
@@ -220,7 +221,7 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
             = NormalizeEmpty(values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiCustomAdditionalProperties, string.Empty));
         public bool SkipFormModel { get; set; } = values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiSkipFormModel, true);
         public string? TemplatesPath { get; set; } = NormalizeEmpty(values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiTemplatesPath, string.Empty));
-        public string? ConfigurationFile { get; set; }
+        public string? ConfigurationFile { get; set; } = NormalizeEmpty(values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiConfigurationFile, string.Empty));
         public bool UseConfigurationFile { get; set; } = values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiUseConfigurationFile, true);
         public bool GenerateMultipleFiles { get; set; } = values.ValueOrDefault(OpenApiGeneratorSettings.OpenApiGenerateMultipleFiles, false);
         public OpenApiSupportedVersion Version { get; set; }
