@@ -10,6 +10,7 @@
 - Switch to System.Text.Json for \(de\)serialization [\#767](https://github.com/christianhelle/apiclientcodegen/issues/767)
 - Add setting to generate nullable value types for optional request body properties \(Refitter\) [\#762](https://github.com/christianhelle/apiclientcodegen/issues/762)
 - Client code is not generated again when definition file is replaced externally [\#209](https://github.com/christianhelle/apiclientcodegen/issues/209)
+- Filter files before copying in CSharpFileMerger [\#1605](https://github.com/christianhelle/apiclientcodegen/pull/1605) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.23.0 [\#1601](https://github.com/christianhelle/apiclientcodegen/pull/1601) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.32.1 [\#1598](https://github.com/christianhelle/apiclientcodegen/pull/1598) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota 1.32.0 [\#1596](https://github.com/christianhelle/apiclientcodegen/pull/1596) ([christianhelle](https://github.com/christianhelle))
@@ -39,6 +40,7 @@
 
 **Fixed bugs:**
 
+- Install Required Packages setting is being ignored [\#1595](https://github.com/christianhelle/apiclientcodegen/issues/1595)
 - Missing Options [\#1593](https://github.com/christianhelle/apiclientcodegen/issues/1593)
 - JetBrains plugin invalid archive - inner JARs must be STORED not compressed [\#1512](https://github.com/christianhelle/apiclientcodegen/issues/1512)
 - IntelliJ plugin invalid archive - JARs compressed with DEFLATE instead of STORED [\#1511](https://github.com/christianhelle/apiclientcodegen/issues/1511)
