@@ -2,7 +2,16 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.39.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.41.0...HEAD)
+
+**Implemented enhancements:**
+
+- Microsoft Kiota v1.32.4 [\#1607](https://github.com/christianhelle/apiclientcodegen/pull/1607) ([christianhelle](https://github.com/christianhelle))
+- Microsoft Kiota v1.32.3 [\#1606](https://github.com/christianhelle/apiclientcodegen/pull/1606) ([christianhelle](https://github.com/christianhelle))
+
+## [1.41.0](https://github.com/christianhelle/apiclientcodegen/tree/1.41.0) (2026-06-24)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.39.0...1.41.0)
 
 **Implemented enhancements:**
 
