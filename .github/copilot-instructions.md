@@ -8,7 +8,7 @@ This is a **multi-platform code generation tool** that wraps external OpenAPI/Sw
 - **Core**: Shared .NET libraries implementing `ICodeGenerator` interface pattern
 - **CLI Tool** (`rapicgen`): Cross-platform command-line interface 
 - **IDE Extensions**: Visual Studio (VSIX), VS Code (TypeScript), Visual Studio for Mac, IntelliJ/Rider
-- **External Dependencies**: Wraps NSwag, OpenAPI Generator (Java), Swagger Codegen (Java) (NPM), Refitter (.NET), Kiota (.NET)
+- **External Dependencies**: Wraps NSwag, OpenAPI Generator (Java), Swagger Codegen (Java), Refitter (.NET), Kiota (.NET)
 
 ### Key Design Patterns
 - **Factory Pattern**: `ICodeGeneratorFactory` creates generators based on `SupportedCodeGenerator` enum
