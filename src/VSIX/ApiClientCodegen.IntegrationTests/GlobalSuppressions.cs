@@ -5,7 +5,7 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Style", "VSTHRD200:Use "Async" suffix for async methods", Justification = "<Pending>", Scope = "member", Target = "~M:Rapicgen.IntegrationTests.Generators.NSwagStudioCodeGeneratorTests.NSwagStudio_Generate_Code_Using_NSwagStudio_From_SwaggerSpec~System.Threading.Tasks.Task")]
+[assembly: SuppressMessage("Style", "VSTHRD200:Use \"Async\" suffix for async methods", Justification = "<Pending>", Scope = "member", Target = "~M:Rapicgen.IntegrationTests.Generators.NSwagStudioCodeGeneratorTests.NSwagStudio_Generate_Code_Using_NSwagStudio_From_SwaggerSpec~System.Threading.Tasks.Task")]
 [assembly: SuppressMessage("Usage", "VSTHRD010:Use VS services from UI thread", Justification = "<Pending>", Scope = "member", Target = "~M:Rapicgen.IntegrationTests.Generators.OpenApiCodeGeneratorTests.OpenApi_Reports_Progres")]
 [assembly: SuppressMessage("Usage", "VSTHRD010:Use VS services from UI thread", Justification = "<Pending>", Scope = "member", Target = "~M:Rapicgen.IntegrationTests.Generators.NSwagCodeGeneratorTests.NSwag_Reports_Progres")]
 [assembly: SuppressMessage("Usage", "VSTHRD010:Use VS services from UI thread", Justification = "<Pending>", Scope = "member", Target = "~M:Rapicgen.IntegrationTests.Generators.SwaggerCodeGeneratorTests.Swagger_Reports_Progres")]
