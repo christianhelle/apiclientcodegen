@@ -1,4 +1,4 @@
-﻿using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
+using ApiClientCodeGen.VSIX.Extensibility.Commands.Placements;
 using ApiClientCodeGen.VSIX.Extensibility.Settings;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.Extensibility;
@@ -42,7 +42,6 @@ internal class ExtensionEntrypoint : Extension
                 MenuChild.Command<Commands.GenerateOpenApiCommand>(),
                 MenuChild.Command<Commands.GenerateKiotaCommand>(),
                 MenuChild.Command<Commands.GenerateSwaggerCommand>(),
-                MenuChild.Command<Commands.GenerateAutoRestCommand>(),
                 MenuChild.Separator,
                 MenuChild.Command<Commands.AboutCommand>(),
             ],
@@ -61,7 +60,6 @@ internal class ExtensionEntrypoint : Extension
                 MenuChild.Group(new CommandGroupConfiguration{
                     Children =
                     [
-                        GroupChild.Command<Commands.GenerateAutoRestNewCommand>(),
                         GroupChild.Command<Commands.GenerateRefitterNewCommand>(),
                         GroupChild.Command<Commands.GenerateNSwagNewCommand>(),
                         GroupChild.Command<Commands.GenerateKiotaNewCommand>(),

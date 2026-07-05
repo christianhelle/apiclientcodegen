@@ -1,25 +1,24 @@
-﻿using System;
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using System.Threading;
 using Rapicgen.Commands;
 using Rapicgen.Commands.AddNew;
 using Rapicgen.Commands.CustomTool;
+using Rapicgen.Commands.Kiota;
 using Rapicgen.Commands.NSwagStudio;
+using Rapicgen.Commands.Refitter;
 using Rapicgen.Core.Logging;
 using Rapicgen.Options.Analytics;
-using Rapicgen.Options.AutoRest;
 using Rapicgen.Options.General;
+using Rapicgen.Options.Kiota;
 using Rapicgen.Options.NSwag;
 using Rapicgen.Options.NSwagStudio;
 using Rapicgen.Options.OpenApiGenerator;
+using Rapicgen.Options.Refitter;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Task = System.Threading.Tasks.Task;
-using Rapicgen.Options.Refitter;
-using Rapicgen.Commands.Refitter;
-using Rapicgen.Options.Kiota;
-using Rapicgen.Commands.Kiota;
 
 namespace Rapicgen
 {
@@ -57,13 +56,6 @@ namespace Rapicgen
         typeof(GeneralOptionPage),
         VsixName,
         GeneralOptionPage.Name,
-        0,
-        0,
-        true)]
-    [ProvideOptionPage(
-        typeof(AutoRestOptionsPage),
-        VsixName,
-        AutoRestOptionsPage.Name,
         0,
         0,
         true)]
@@ -114,7 +106,6 @@ namespace Rapicgen
         public const string VsixName = "REST API Client Code Generator";
 
         private readonly ICommandInitializer[] commands = {
-            new AutoRestCodeGeneratorCustomToolSetter(),
             new NSwagCodeGeneratorCustomToolSetter(),
             new SwaggerCodeGeneratorCustomToolSetter(),
             new OpenApiCodeGeneratorCustomToolSetter(),
@@ -123,7 +114,6 @@ namespace Rapicgen
             new NSwagStudioCommand(),
             new RefitterCommand(),
             new KiotaCommand(),
-            new NewAutoRestClientCommand(),
             new NewNSwagClientCommand(),
             new NewSwaggerClientCommand(),
             new NewOpenApiClientCommand(),

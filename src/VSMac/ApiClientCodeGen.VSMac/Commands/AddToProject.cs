@@ -1,8 +1,7 @@
-﻿namespace ApiClientCodeGen.VSMac.Commands
+namespace ApiClientCodeGen.VSMac.Commands
 {
     public enum AddToProject
     {
-        AutoRest,
         NSwag,
         NSwagStudio,
         Swagger,

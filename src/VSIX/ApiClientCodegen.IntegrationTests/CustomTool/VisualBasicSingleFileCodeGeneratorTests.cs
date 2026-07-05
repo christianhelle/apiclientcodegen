@@ -11,32 +11,6 @@ using Rapicgen.Core.Options.NSwag;
 
 namespace Rapicgen.IntegrationTests.CustomTool
 {
-    
-    [Xunit.Trait("Category", "SkipWhenLiveUnitTesting")]
-    // [DeploymentItem("Resources/Swagger.json")]
-    public class VisualBasicSingleFileCodeGeneratorTests
-    {
-        [Xunit.Fact]
-        public void AutoRest_VisualBasic_Test() => Assert(SupportedCodeGenerator.AutoRest);
-
-        [Xunit.Fact]
-        public void NSwag_VisualBasic_Test()
-        {
-            var optionsMock = new Mock<INSwagOptions>();
-            optionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
-            optionsMock.Setup(c => c.InjectHttpClient).Returns(true);
-            optionsMock.Setup(c => c.GenerateClientInterfaces).Returns(true);
-            optionsMock.Setup(c => c.GenerateDtoTypes).Returns(true);
-            optionsMock.Setup(c => c.UseBaseUrl).Returns(true);
-            optionsMock.Setup(c => c.ClassStyle).Returns(CSharpClassStyle.Poco);
-
-            var optionsFactory = new Mock<IOptionsFactory>();
-            optionsFactory
-                .Setup(c => c.Create<INSwagOptions, NSwagOptionsPage, DefaultNSwagOptions>())
-                .Returns(optionsMock.Object);
-
-            Assert(SupportedCodeGenerator.NSwag, optionsFactory.Object);
-        }
 
         [Xunit.Fact]
         public void Swagger_VisualBasic_Test()

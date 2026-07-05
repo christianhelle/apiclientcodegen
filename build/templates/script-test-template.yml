@@ -13,10 +13,6 @@ jobs:
 
   steps:
 
-  - task: Npm@0
-    displayName: 'npm install'
-    inputs:
-      arguments: '-g autorest'
 
   - task: PowerShell@2
     displayName: 'PowerShell Script'

@@ -1,11 +1,10 @@
-﻿using System;
+using System;
 using Rapicgen.Core;
-using Rapicgen.CustomTool.AutoRest;
+using Rapicgen.CustomTool.Kiota;
 using Rapicgen.CustomTool.NSwag;
 using Rapicgen.CustomTool.OpenApi;
-using Rapicgen.CustomTool.Swagger;
-using Rapicgen.CustomTool.Kiota;
 using Rapicgen.CustomTool.Refitter;
+using Rapicgen.CustomTool.Swagger;
 
 namespace Rapicgen.Extensions
 {
@@ -18,9 +17,6 @@ namespace Rapicgen.Extensions
             {
                 case SupportedCodeGenerator.NSwag:
                     customTool = nameof(NSwagCodeGenerator);
-                    break;
-                case SupportedCodeGenerator.AutoRest:
-                    customTool = nameof(AutoRestCodeGenerator);
                     break;
                 case SupportedCodeGenerator.Swagger:
                     customTool = nameof(SwaggerCodeGenerator);
@@ -43,9 +39,6 @@ namespace Rapicgen.Extensions
         {
             if (type.IsAssignableFrom(typeof(NSwagCodeGenerator)))
                 return SupportedCodeGenerator.NSwag;
-
-            if (type.IsAssignableFrom(typeof(AutoRestCodeGenerator)))
-                return SupportedCodeGenerator.AutoRest;
 
             if (type.IsAssignableFrom(typeof(SwaggerCodeGenerator)))
                 return SupportedCodeGenerator.Swagger;

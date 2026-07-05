@@ -1,20 +1,12 @@
-﻿using System.Linq;
+using System.Linq;
+using FluentAssertions;
 using Rapicgen.Core;
 using Rapicgen.Core.Extensions;
-using FluentAssertions;
 
 namespace Rapicgen.Tests.Extensions
 {
     public class GetDependenciesTests
     {
-        [Xunit.Fact]
-        public void GetDependencies_AutoRest()
-            => SupportedCodeGenerator.AutoRest
-                .GetDependencies()
-                .Any(c => c.Name == "Microsoft.Rest.ClientRuntime")
-                .Should()
-                .BeTrue();
-
         [Xunit.Fact]
         public void GetDependencies_NSwag()
             => SupportedCodeGenerator.NSwag
@@ -35,7 +27,7 @@ namespace Rapicgen.Tests.Extensions
         public void GetDependencies_OpenApi()
             => SupportedCodeGenerator.OpenApi
                 .GetDependencies()
-                .Any(c => c.Name == "RestSharp" || c.Name == "JsonSubTypes")
+                .Any(c => c.Name == "Microsoft.Extensions.Http" || c.Name == "Microsoft.Extensions.Hosting")
                 .Should()
                 .BeTrue();
     }

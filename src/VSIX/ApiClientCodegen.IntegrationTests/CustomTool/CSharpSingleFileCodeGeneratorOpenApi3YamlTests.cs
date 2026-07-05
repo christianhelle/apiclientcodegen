@@ -4,12 +4,10 @@ using ApiClientCodeGen.Tests.Common;
 using Rapicgen.Core;
 using Rapicgen.Core.Exceptions;
 using Rapicgen.Core.Options;
-using Rapicgen.Core.Options.AutoRest;
 using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.NSwag;
 using Rapicgen.Core.Options.OpenApiGenerator;
 using Rapicgen.Generators;
-using Rapicgen.Options.AutoRest;
 using Rapicgen.Options.General;
 using Rapicgen.Options.NSwag;
 using Rapicgen.Options.OpenApiGenerator;
@@ -21,20 +19,6 @@ using Xunit;
 
 namespace Rapicgen.IntegrationTests.CustomTool
 {
-    [Trait("Category", "SkipWhenLiveUnitTesting")]
-    public class CSharpSingleFileCodeGeneratorOpenApi3YamlTests : TestWithResources
-    {
-        [SkippableFact(typeof(CustomToolException))]
-        public void AutoRest_CSharp_Test()
-        {
-            var optionsMock = new Mock<IAutoRestOptions>();
-            var optionsFactory = new Mock<IOptionsFactory>();
-            optionsFactory
-                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage, DefaultAutoRestOptions>())
-                .Returns(optionsMock.Object);
-
-            Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
-        }
 
         [Fact]
         public void NSwag_CSharp_Test()

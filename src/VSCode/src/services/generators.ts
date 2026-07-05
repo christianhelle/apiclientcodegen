@@ -14,8 +14,7 @@ export const generators: IGenerator[] = [
   { command: 'refitter', displayName: 'Refitter', requiresJava: false },
   { command: 'openapi', displayName: 'OpenAPI Generator', requiresJava: true },
   { command: 'kiota', displayName: 'Microsoft Kiota', requiresJava: false },
-  { command: 'swagger', displayName: 'Swagger Codegen CLI', requiresJava: true },
-  { command: 'autorest', displayName: 'AutoRest (Deprecated)', requiresJava: false }
+  { command: 'swagger', displayName: 'Swagger Codegen CLI', requiresJava: true }
 ];
 
 /**
@@ -57,24 +56,14 @@ export function generatorRequiresJava(generator: string, isTypeScript = false): 
  * @param context The extension context
  */
 export async function executeRapicgen(generator: string, specificationFilePath: string, context: vscode.ExtensionContext): Promise<void> {
-  // Validate the specification file
   if (!validateSpecificationFile(specificationFilePath)) {
     return;
   }
-  
-  // Show non-blocking deprecation warning for AutoRest
-  if (generator === 'autorest') {
-    vscode.window.showWarningMessage(
-      'AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.'
-    );
-  }
-  
-  // Validate dependencies
+
   if (!validateDependencies(generator, generatorRequiresJava)) {
     return;
   }
-  
-  // Ensure the Rapicgen tool is installed and up-to-date
+
   const rapicgenAvailable = await ensureRapicgenToolAvailable(context);
   if (!rapicgenAvailable) {
     return;
@@ -82,8 +71,7 @@ export async function executeRapicgen(generator: string, specificationFilePath: 
 
   const namespace = getNamespace();
   const outputFile = getOutputFilePath(specificationFilePath, generator);
-  
-  // Ensure output directory exists
+
   const outputDir = path.dirname(outputFile);
   if (!fs.existsSync(outputDir)) {
     try {
@@ -93,10 +81,10 @@ export async function executeRapicgen(generator: string, specificationFilePath: 
       return;
     }
   }
-  
+
   const command = `rapicgen csharp ${generator} "${specificationFilePath}" "${namespace}" "${outputFile}"`;
   const generatorDisplayName = generators.find(g => g.command === generator)?.displayName || generator;
-  
+
   await executeRapicgenCommand(command, generatorDisplayName, outputFile);
 }
 
@@ -107,26 +95,21 @@ export async function executeRapicgen(generator: string, specificationFilePath: 
  * @param context The extension context
  */
 export async function executeRapicgenTypeScript(generator: string, specificationFilePath: string, context: vscode.ExtensionContext): Promise<void> {
-  // Validate the specification file
   if (!validateSpecificationFile(specificationFilePath)) {
     return;
   }
-  
-  // Validate dependencies
+
   if (!validateDependencies(generator, generatorRequiresJava, true)) {
     return;
   }
-  
-  // Ensure the Rapicgen tool is installed and up-to-date
+
   const rapicgenAvailable = await ensureRapicgenToolAvailable(context);
   if (!rapicgenAvailable) {
     return;
   }
 
-  // For TypeScript, we get an output directory rather than a single file
   const outputDir = getTypeScriptOutputDirectory(specificationFilePath, generator);
-  
-  // Ensure output directory exists
+
   if (!fs.existsSync(outputDir)) {
     try {
       fs.mkdirSync(outputDir, { recursive: true });
@@ -135,10 +118,10 @@ export async function executeRapicgenTypeScript(generator: string, specification
       return;
     }
   }
-  
+
   const command = `rapicgen typescript ${generator} "${specificationFilePath}" "${outputDir}"`;
   const generatorDisplayName = typescriptGenerators.find(g => g.command === generator)?.displayName || generator;
-  
+
   await executeRapicgenCommand(command, generatorDisplayName, outputDir, true);
 }
 
@@ -148,23 +131,20 @@ export async function executeRapicgenTypeScript(generator: string, specification
  * @param context The extension context
  */
 export async function executeRapicgenRefitterSettings(settingsFilePath: string, context: vscode.ExtensionContext): Promise<void> {
-  // Validate the settings file
   if (!validateSpecificationFile(settingsFilePath)) {
     return;
   }
-  
-  // Validate dependencies
+
   if (!validateDependencies('refitter', generatorRequiresJava)) {
     return;
   }
-  
-  // Ensure the Rapicgen tool is installed and up-to-date
+
   const rapicgenAvailable = await ensureRapicgenToolAvailable(context);
   if (!rapicgenAvailable) {
     return;
   }
 
   const command = `rapicgen csharp refitter . --settings-file "${settingsFilePath}"`;
-  
+
   await executeRapicgenCommand(command, 'Refitter', settingsFilePath, false, true);
 }

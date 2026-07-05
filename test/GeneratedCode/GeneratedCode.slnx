@@ -1,24 +1,4 @@
 <Solution>
-  <Folder Name="/AutoRest-v2/">
-    <Project Path="AutoRest-V2/Net462/Net462.csproj" />
-    <Project Path="AutoRest-V2/Net472/Net472.csproj" />
-    <Project Path="AutoRest-V2/Net48/Net48.csproj" />
-    <Project Path="AutoRest-V2/Net481/Net481.csproj" />
-    <Project Path="AutoRest-V2/Net6/Net6.csproj" />
-    <Project Path="AutoRest-V2/Net7/Net7.csproj" />
-    <Project Path="AutoRest-V2/NetStandard20/NetStandard20.csproj" />
-    <Project Path="AutoRest-V2/NetStandard21/NetStandard21.csproj" />
-  </Folder>
-  <Folder Name="/AutoRest-v3/">
-    <Project Path="AutoRest-V3/Net462/Net462.csproj" />
-    <Project Path="AutoRest-V3/Net472/Net472.csproj" />
-    <Project Path="AutoRest-V3/Net48/Net48.csproj" />
-    <Project Path="AutoRest-V3/Net481/Net481.csproj" />
-    <Project Path="AutoRest-V3/Net6/Net6.csproj" />
-    <Project Path="AutoRest-V3/Net7/Net7.csproj" />
-    <Project Path="AutoRest-V3/NetStandard20/NetStandard20.csproj" />
-    <Project Path="AutoRest-V3/NetStandard21/NetStandard21.csproj" />
-  </Folder>
   <Folder Name="/Kiota/">
     <Project Path="Kiota/Net462/Net462.csproj" />
     <Project Path="Kiota/Net472/Net472.csproj" />

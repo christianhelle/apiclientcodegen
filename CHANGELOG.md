@@ -6,6 +6,8 @@
 
 **Implemented enhancements:**
 
+- Remove deprecated AutoRest support across the CLI, IDE extensions, validation assets, and docs [#1520](https://github.com/christianhelle/apiclientcodegen/issues/1520)
+
 - Microsoft Kiota v1.32.4 [\#1607](https://github.com/christianhelle/apiclientcodegen/pull/1607) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.32.3 [\#1606](https://github.com/christianhelle/apiclientcodegen/pull/1606) ([christianhelle](https://github.com/christianhelle))
 

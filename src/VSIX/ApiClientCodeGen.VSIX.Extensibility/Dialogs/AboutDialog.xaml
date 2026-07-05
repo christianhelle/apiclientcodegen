@@ -49,7 +49,6 @@
           <Run FontWeight="SemiBold">NSwag</Run>, 
           <Run FontWeight="SemiBold">OpenAPI Generator</Run>, 
           <Run FontWeight="SemiBold">Swagger Codegen</Run>, 
-          <Run FontWeight="SemiBold">AutoRest</Run>, 
           <Run FontWeight="SemiBold">Refitter</Run>, and 
           <Run FontWeight="SemiBold">Kiota</Run>.
         </TextBlock>

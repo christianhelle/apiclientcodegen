@@ -1,12 +1,11 @@
-﻿using System;
+using System;
 using ApiClientCodeGen.Tests.Common;
-using Rapicgen.Core.Options.General;
 using FluentAssertions;
 using Rapicgen.Core.External;
+using Rapicgen.Core.Options.General;
 
 namespace Rapicgen.Tests.Options
 {
-    
     public class PathProviderTests
     {
         [Xunit.Fact]
@@ -15,7 +14,7 @@ namespace Rapicgen.Tests.Options
             var path = PathProvider.GetInstalledJavaPath();
             path.Should().NotBeNullOrWhiteSpace();
         }
-        
+
         [Xunit.Fact]
         public void GetJavaPath_Returns_No_Path_For_Bad_EnvironmentVariableName()
         {
@@ -26,22 +25,15 @@ namespace Rapicgen.Tests.Options
         [Xunit.Fact]
         public void GetNpmPath_Exists()
         {
-             var path = PathProvider.GetNpmPath();
+            var path = PathProvider.GetNpmPath();
             path.Should().NotBeNullOrWhiteSpace();
         }
 
         [Xunit.Fact]
         public void GetNpmPath_Exists_For_Specified_Paths()
         {
-            var path = PathProvider.GetNpmPath(
-                Test.CreateAnnonymous<string>(),
-                Test.CreateAnnonymous<string>());
-
-            path.Should()
-                .Be(
-                    Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix
-                        ? "npm"
-                        : string.Empty);
+            var path = PathProvider.GetNpmPath(Test.CreateAnnonymous<string>(), Test.CreateAnnonymous<string>());
+            path.Should().Be(Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix ? "npm" : string.Empty);
         }
 
         [Xunit.Fact]
@@ -49,20 +41,6 @@ namespace Rapicgen.Tests.Options
         {
             var path = PathProvider.GetNSwagPath();
             path.Should().NotBeNullOrWhiteSpace();
-        }
-
-        [Xunit.Fact]
-        public void GetAutoRestPath_Returns_NpmPrefix_AutoRestCmd()
-        {
-            var path = PathProvider.GetAutoRestPath();
-            path.Should().ContainAny("autorest");
-        }
-
-        [Xunit.Fact]
-        public void GetAutoRestPath_Without_Path_Returns_autorest()
-        {
-            var path = PathProvider.GetAutoRestPath(true);
-            path.Should().Be("autorest");
         }
 
         [Xunit.Fact]

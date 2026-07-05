@@ -7,10 +7,10 @@ seams instead of reinventing them. Domain terms first, then the shared modules.
 
 - **Code generator** — a module that turns an OpenAPI/Swagger spec into client source. Each
   generator implements `ICodeGenerator.GenerateCode(...)` (`Rapicgen.Core.Generators`). Concrete
-  generators: NSwag, OpenAPI Generator, Swagger Codegen, AutoRest (`[Obsolete]`), Refitter, Kiota,
+  generators: NSwag, OpenAPI Generator, Swagger Codegen (`[Obsolete]`), Refitter, Kiota,
   plus TypeScript/JMeter variants.
 - **External tool** — the third-party CLI/JAR a generator shells out to (NSwag, refitter, kiota,
-  swagger-codegen, openapi-generator, autorest). Tools are installed on demand.
+  swagger-codegen, openapi-generator). Tools are installed on demand.
 - **Supported code generator** — the `SupportedCodeGenerator` enum the VSIX host dispatches on.
 
 ## Shared modules (the seams to reuse)

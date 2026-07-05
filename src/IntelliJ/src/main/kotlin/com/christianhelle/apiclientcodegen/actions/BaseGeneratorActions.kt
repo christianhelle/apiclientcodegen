@@ -24,7 +24,8 @@ abstract class CSharpGeneratorAction(private val generator: String): AnAction(),
         if (code == 0) {
             VfsUtil.findFile(Paths.get(file.parent.path, outputFile), true)?.refresh(true, false)
             showInfo(project, "Generated $outputFile")
-        } else showError(project, "Generation failed.\n$log")
+        } else showError(project, "Generation failed.
+$log")
     }
 }
 
@@ -43,7 +44,8 @@ abstract class TypeScriptGeneratorAction(private val generator: String): AnActio
         if (code == 0) {
             LocalFileSystem.getInstance().refreshAndFindFileByPath(Paths.get(file.parent.path, outputDir).toString())?.refresh(true, true)
             showInfo(project, "Generated $generator client in $outputDir")
-        } else showError(project, "Generation failed.\n$log")
+        } else showError(project, "Generation failed.
+$log")
     }
 }
 
@@ -52,7 +54,6 @@ class CSharpGeneratorRefitterAction: CSharpGeneratorAction("refitter")
 class CSharpGeneratorOpenApiAction: CSharpGeneratorAction("openapi")
 class CSharpGeneratorKiotaAction: CSharpGeneratorAction("kiota")
 class CSharpGeneratorSwaggerAction: CSharpGeneratorAction("swagger")
-class CSharpGeneratorAutoRestAction: CSharpGeneratorAction("autorest")
 
 class TypeScriptGeneratorAngularAction: TypeScriptGeneratorAction("Angular")
 class TypeScriptGeneratorAureliaAction: TypeScriptGeneratorAction("Aurelia")

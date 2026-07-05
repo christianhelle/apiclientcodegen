@@ -1,6 +1,6 @@
 # AutoRest Migration Guide
 
-⚠️ **IMPORTANT:** AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.
+AutoRest support has been removed from this tool. Use this guide to migrate existing AutoRest-based workflows to NSwag, Refitter, or Kiota instead.
 
 ## Migration Recommendations
 
@@ -115,9 +115,8 @@ rapicgen csharp kiota swagger.json GeneratedCode Output.cs
 
 ## Migration Timeline
 
-- **Now through June 2026:** AutoRest remains functional with deprecation warnings
 - **July 1, 2026:** Microsoft retires AutoRest
-- **Future major version (estimated Q3-Q4 2026):** AutoRest support removed from this tool
+- **Current major version:** AutoRest support has been removed from this tool
 
 ## Need Help?
 

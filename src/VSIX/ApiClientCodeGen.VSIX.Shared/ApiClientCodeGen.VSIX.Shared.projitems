@@ -9,7 +9,6 @@
     <Import_RootNamespace>Rapicgen</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewAutoRestClientCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewRefitterClientCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewNSwagClientCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewNSwagStudioClientCommand.cs" />
@@ -17,7 +16,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewOpenApiClientCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewRestClientCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\AddNew\NewSwaggerClientCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\AutoRestCodeGeneratorCustomToolSetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\CustomToolSetter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\CustomToolSetterCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\CustomTool\RefitterCodeGeneratorCustomToolSetter.cs" />
@@ -30,9 +28,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commands\Kiota\KiotaCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\Refitter\RefitterCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\CSharpToVisualBasicLanguageConverter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestCodeGenerator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestCSharpCodeGenerator.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CustomTool\AutoRest\AutoRestVisualBasicCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\Refitter\RefitterCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\Refitter\RefitterCSharpCodeGenerator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomTool\Kiota\KiotaCodeGenerator.cs" />
@@ -56,10 +51,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Generators\NSwag\OpenApiDocumentFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)GlobalSuppressions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Options\Analytics\AnalyticsOptionPage.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Options\AutoRest\AutoRestOptions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Options\AutoRest\AutoRestOptionsPage.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Options\General\CustomPathOptions.cs" />

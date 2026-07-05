@@ -12,7 +12,7 @@ external tools.
 
 We deliberately keep these two styles separate rather than forcing a single shared factory.
 Collapsing the CLI factories into one enum-dispatch factory would require a union of every
-generator's parameters (some need `IOpenApiDocumentFactory`, AutoRest is `[Obsolete]`, options
+generator's parameters (some need `IOpenApiDocumentFactory` is `[Obsolete]`, options
 types differ) and would remove the per-command mock seam, reducing testability and locality in the
 CLI. The shared seam that actually concentrates external-tool behaviour across both hosts is
 `Rapicgen.Core.External.ToolRunner` together with the `Rapicgen.Core.ExternalTools` version

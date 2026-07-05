@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using ApiClientCodeGen.Tests.Common;
-using Rapicgen.Core;
-using Rapicgen.Core.Generators;
 using FluentAssertions;
 using Microsoft.VisualStudio.Shell.Interop;
 using Moq;
+using Rapicgen.Core;
+using Rapicgen.Core.Generators;
 using Xunit;
 
 namespace Rapicgen.Tests.CustomTool
@@ -14,7 +14,6 @@ namespace Rapicgen.Tests.CustomTool
         private const SupportedLanguage lang = SupportedLanguage.CSharp;
 
         [Theory]
-        [InlineData(SupportedCodeGenerator.AutoRest)]
         [InlineData(SupportedCodeGenerator.NSwag)]
         [InlineData(SupportedCodeGenerator.Swagger)]
         [InlineData(SupportedCodeGenerator.OpenApi)]
@@ -43,21 +42,13 @@ namespace Rapicgen.Tests.CustomTool
                 Factory = factoryMock.Object
             };
 
-            var result = sut.Generate(
-                input,
-                contents,
-                @namespace,
-                rgbOutputFileContents,
-                out var pcbOutput,
-                progressMock.Object);
+            var result = sut.Generate(input, contents, @namespace, rgbOutputFileContents, out var pcbOutput, progressMock.Object);
 
             result.Should().Be(0);
             pcbOutput.Should().Be((uint)code.Length);
             rgbOutputFileContents[0].Should().NotBe(IntPtr.Zero);
 
-            progressMock.Verify(
-                c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()),
-                Times.Exactly(2));
+            progressMock.Verify(c => c.Progress(It.IsAny<uint>(), It.IsAny<uint>()), Times.Exactly(2));
         }
     }
 }

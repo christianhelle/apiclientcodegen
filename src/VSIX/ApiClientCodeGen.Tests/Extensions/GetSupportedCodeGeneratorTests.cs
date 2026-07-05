@@ -1,24 +1,15 @@
-﻿using System;
+using System;
+using FluentAssertions;
 using Rapicgen.Core;
-using Rapicgen.CustomTool.AutoRest;
 using Rapicgen.CustomTool.NSwag;
 using Rapicgen.CustomTool.OpenApi;
 using Rapicgen.CustomTool.Swagger;
 using Rapicgen.Extensions;
-using FluentAssertions;
 
 namespace Rapicgen.Tests.Extensions
 {
-    
     public class GetSupportedCodeGeneratorTests
     {
-        [Xunit.Fact]
-        public void GetSupportedCodeGenerator_AutoRest()
-            => typeof(AutoRestCodeGenerator)
-                .GetSupportedCodeGenerator()
-                .Should()
-                .Be(SupportedCodeGenerator.AutoRest);
-
         [Xunit.Fact]
         public void GetSupportedCodeGenerator_NSwag()
             => typeof(NSwagCodeGenerator)

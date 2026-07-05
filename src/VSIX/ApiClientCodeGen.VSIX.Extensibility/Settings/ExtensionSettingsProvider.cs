@@ -4,7 +4,6 @@ using Microsoft.VisualStudio.Extensibility.Settings;
 using Rapicgen.Core.External;
 using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Logging;
-using Rapicgen.Core.Options.AutoRest;
 using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.Kiota;
 using Rapicgen.Core.Options.NSwag;
@@ -30,22 +29,6 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
         cancellationToken);
 
         return new GeneralOptions(values);
-    }
-
-    public async Task<IAutoRestOptions> GetAutoRestOptionsAsync(CancellationToken cancellationToken)
-    {
-        var values = await ReadAsync(
-        [
-            AutoRestSettings.AutoRestAddCredentials,
-            AutoRestSettings.AutoRestOverrideClientName,
-            AutoRestSettings.AutoRestUseInternalConstructors,
-            AutoRestSettings.AutoRestSyncMethods,
-            AutoRestSettings.AutoRestUseDateTimeOffset,
-            AutoRestSettings.AutoRestClientSideValidation
-        ],
-        cancellationToken);
-
-        return new AutoRestOptions(values);
     }
 
     public async Task<INSwagOptions> GetNSwagOptionsAsync(CancellationToken cancellationToken)
@@ -166,16 +149,6 @@ public class ExtensionSettingsProvider(VisualStudioExtensibility extensibility)
         public string SwaggerCodegenPath => Resolve(values.ValueOrDefault(GeneralSettings.SwaggerCodegenPath, string.Empty), PathProvider.GetSwaggerCodegenPath());
         public string OpenApiGeneratorPath => Resolve(values.ValueOrDefault(GeneralSettings.OpenApiGeneratorPath, string.Empty), PathProvider.GetOpenApiGeneratorPath());
         public bool? InstallMissingPackages => values.ValueOrDefault(GeneralSettings.InstallMissingPackages, true);
-    }
-
-    private sealed class AutoRestOptions(SettingValues values) : IAutoRestOptions
-    {
-        public bool AddCredentials => values.ValueOrDefault(AutoRestSettings.AutoRestAddCredentials, false);
-        public bool OverrideClientName => values.ValueOrDefault(AutoRestSettings.AutoRestOverrideClientName, false);
-        public bool UseInternalConstructors => values.ValueOrDefault(AutoRestSettings.AutoRestUseInternalConstructors, false);
-        public SyncMethodOptions SyncMethods => ParseEnum(values.ValueOrDefault(AutoRestSettings.AutoRestSyncMethods, SyncMethodOptions.Essential.ToString()), SyncMethodOptions.Essential);
-        public bool UseDateTimeOffset => values.ValueOrDefault(AutoRestSettings.AutoRestUseDateTimeOffset, false);
-        public bool ClientSideValidation => values.ValueOrDefault(AutoRestSettings.AutoRestClientSideValidation, true);
     }
 
     private sealed class NSwagOptions(SettingValues values) : INSwagOptions

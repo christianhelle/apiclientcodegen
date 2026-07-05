@@ -77,10 +77,8 @@
     <Compile Include="NuGet\PackageDependencyListProviderTests.cs" />
     <Compile Include="NuGet\PackageDependencyTests.cs" />
     <Compile Include="NuGet\SupportedCodeGeneratorExtensionsTests.cs" />
-    <Compile Include="Options\AutoRestOptionsTests.cs" />
     <Compile Include="Options\CustomPathOptionsNullOptionsTests.cs" />
     <Compile Include="Options\CustomPathOptionsTests.cs" />
-    <Compile Include="Options\DefaultAutoRestOptionsTests.cs" />
     <Compile Include="Options\DefaultGeneralOptionsTests.cs" />
     <Compile Include="Options\DefaultNSwagOptionsTests.cs" />
     <Compile Include="Options\DefaultNSwagStudioOptionsTests.cs" />
