@@ -134,7 +134,7 @@
         {
           "command": "restApiClientCodeGenerator.swagger",
           "group": "1_generators@5"
-        },
+        }
       ],
       "restApiClientCodeGenerator.typescriptSubmenu": [
         {
