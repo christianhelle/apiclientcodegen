@@ -31,18 +31,6 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                 .Should()
                 .Throw<ArgumentNullException>();
 
-        #pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest during deprecation period
-        [Theory, AutoMoqData]
-        public void InstallAutoRest_Invokes_Npm(
-            [Frozen] INpmInstaller npm,
-            DependencyInstaller sut)
-        {
-            sut.InstallAutoRest();
-            Mock.Get(npm)
-                .Verify(c => c.InstallNpmPackage("autorest"));
-        }
-        #pragma warning restore CS0618
-
         [Theory, AutoMoqData]
         public void InstallNSwag_When_NSwag_Not_Installed_Invokes_ProcessLauncher(
             [Frozen] IProcessLauncher processLauncher,
@@ -313,4 +301,3 @@ namespace ApiClientCodeGen.Core.Tests.Installer
         }
     }
 }
-

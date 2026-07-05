@@ -36,18 +36,6 @@ namespace ApiClientCodeGen.Core.IntegrationTests
                 .Should()
                 .NotBeNullOrWhiteSpace();
 
-        [Fact]
-        public void InstallAutoRest_Does_NotThrow()
-        {
-            new Action(
-                    () => new DependencyInstaller(
-                        new NpmInstaller(new ProcessLauncher()),
-                        new FileDownloader(new WebDownloader()),
-                        new ProcessLauncher()).InstallAutoRest())
-                .Should()
-                .NotThrow();
-        }
-
         [SkippableFact(typeof(ProcessLaunchException))]
         public void InstallNSwag_Does_NotThrow()
         {

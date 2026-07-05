@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using Rapicgen.Core.Extensions;
 using Rapicgen.Core.Logging;
@@ -75,16 +75,6 @@ namespace Rapicgen.Core.External
                 return "nswag";
 
             return GetDotNetGlobalToolPath("nswag");
-        }
-
-        public static string GetAutoRestPath(bool withoutPath = false)
-        {
-            if (Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix || withoutPath)
-                return "autorest";
-
-            return Path.Combine(
-                NpmHelper.GetPrefixPath(),
-                "autorest.cmd");
         }
 
         public static string GetSwaggerCodegenPath()

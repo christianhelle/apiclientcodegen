@@ -52,20 +52,6 @@ namespace ApiClientCodeGen.Core.Tests.Options
         }
 
         [Xunit.Fact]
-        public void GetAutoRestPath_Returns_NpmPrefix_AutoRestCmd()
-        {
-            var path = PathProvider.GetAutoRestPath();
-            path.Should().ContainAny("autorest");
-        }
-
-        [Xunit.Fact]
-        public void GetAutoRestPath_Without_Path_Returns_autorest()
-        {
-            var path = PathProvider.GetAutoRestPath(true);
-            path.Should().Be("autorest");
-        }
-
-        [Xunit.Fact]
         public void GetNSwagPath_Without_Path_Returns_nswag()
         {
             var path = PathProvider.GetNSwagPath(true);

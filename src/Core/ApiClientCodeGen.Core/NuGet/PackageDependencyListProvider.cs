@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Rapicgen.Core.Options.OpenApiGenerator;
 
 namespace Rapicgen.Core.NuGet
@@ -39,26 +39,6 @@ namespace Rapicgen.Core.NuGet
                             PackageDependencies.NewtonsoftJson,
                             PackageDependencies.SystemRuntimeSerializationPrimitives,
                             PackageDependencies.SystemComponentModelAnnotations
-                        });
-                    break;
-
-                case SupportedCodeGenerator.AutoRest:
-                    list.AddRange(
-                        new[]
-                        {
-                            PackageDependencies.MicrosoftRestClientRuntime,
-                            PackageDependencies.NewtonsoftJson,
-                        });
-                    break;
-
-                case SupportedCodeGenerator.AutoRestV3:
-                    list.AddRange(
-                        new[]
-                        {
-                            PackageDependencies.MicrosoftRestClientRuntime,
-                            PackageDependencies.NewtonsoftJson,
-                            PackageDependencies.AutoRestCSharp,
-                            PackageDependencies.AzureCore,
                         });
                     break;
 

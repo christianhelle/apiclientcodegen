@@ -5,7 +5,6 @@ using Xunit;
 
 namespace ApiClientCodeGen.Core.Tests.Extensions;
 
-#pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest during deprecation period
 public class CodeGeneratorNameExtensionsTests
 {
     [Fact]
@@ -43,22 +42,6 @@ public class CodeGeneratorNameExtensionsTests
             .Should()
             .Be("NSwag");
 
-    #pragma warning disable CS0618
-    [Fact]
-    public void GetName_AutoRest_ReturnsAutoRest()
-        => SupportedCodeGenerator.AutoRest
-            .GetName()
-            .Should()
-            .Be("AutoRest");
-
-    [Fact]
-    public void GetName_AutoRestV3_ReturnsAutoRestV3()
-        => SupportedCodeGenerator.AutoRestV3
-            .GetName()
-            .Should()
-            .Be("AutoRestV3");
-    #pragma warning restore CS0618
-
     [Fact]
     public void GetName_Refitter_ReturnsRefitter()
         => SupportedCodeGenerator.Refitter
@@ -66,4 +49,3 @@ public class CodeGeneratorNameExtensionsTests
             .Should()
             .Be("Refitter");
 }
-#pragma warning restore CS0618

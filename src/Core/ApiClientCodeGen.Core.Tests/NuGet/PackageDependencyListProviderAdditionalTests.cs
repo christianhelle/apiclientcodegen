@@ -7,7 +7,6 @@ using Xunit;
 
 namespace ApiClientCodeGen.Core.Tests.NuGet;
 
-#pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest during deprecation period
 public class PackageDependencyListProviderAdditionalTests
 {
     private readonly PackageDependencyListProvider sut = new();
@@ -35,12 +34,6 @@ public class PackageDependencyListProviderAdditionalTests
         => sut.GetDependencies(SupportedCodeGenerator.Swagger)
             .Should()
             .Contain(PackageDependencies.NewtonsoftJson);
-
-    [Fact]
-    public void GetDependencies_AutoRestV3_Returns_NotEmpty()
-        => sut.GetDependencies(SupportedCodeGenerator.AutoRestV3)
-            .Should()
-            .NotBeNullOrEmpty();
 
     [Fact]
     public void GetDependencies_NSwag_DoesNotContain_RestSharp()
@@ -88,8 +81,6 @@ public class PackageDependencyListProviderAdditionalTests
     [InlineData(SupportedCodeGenerator.NSwag)]
     [InlineData(SupportedCodeGenerator.Swagger)]
     [InlineData(SupportedCodeGenerator.OpenApi)]
-    [InlineData(SupportedCodeGenerator.AutoRest)]
-    [InlineData(SupportedCodeGenerator.AutoRestV3)]
     [InlineData(SupportedCodeGenerator.Kiota)]
     [InlineData(SupportedCodeGenerator.Refitter)]
     [InlineData(SupportedCodeGenerator.NSwagStudio)]
@@ -102,8 +93,6 @@ public class PackageDependencyListProviderAdditionalTests
     [InlineData(SupportedCodeGenerator.NSwag)]
     [InlineData(SupportedCodeGenerator.Swagger)]
     [InlineData(SupportedCodeGenerator.OpenApi)]
-    [InlineData(SupportedCodeGenerator.AutoRest)]
-    [InlineData(SupportedCodeGenerator.AutoRestV3)]
     [InlineData(SupportedCodeGenerator.Kiota)]
     [InlineData(SupportedCodeGenerator.Refitter)]
     [InlineData(SupportedCodeGenerator.NSwagStudio)]
@@ -117,4 +106,3 @@ public class PackageDependencyListProviderAdditionalTests
         });
     }
 }
-#pragma warning restore CS0618
