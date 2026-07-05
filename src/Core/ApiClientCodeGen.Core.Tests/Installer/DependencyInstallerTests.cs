@@ -110,8 +110,17 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             [Frozen] IProcessLauncher processLauncher,
             DependencyInstaller sut)
         {
-            Mock.Get(processLauncher)
-                .Setup(c => c.Start(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+            var mock = Mock.Get(processLauncher);
+            mock.Setup(
+                    c => c.Start(
+                        "kiota",
+                        "--version",
+                        It.IsAny<Action<string>>(),
+                        It.IsAny<Action<string>>(),
+                        default))
+                .Throws(new Win32Exception());
+
+            mock.Setup(c => c.Start(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
                 .Throws(
                     new ProcessLaunchException(
                         "dotnet",
@@ -119,6 +128,35 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                         null,
                         string.Empty,
                         "Tool 'microsoft.openapi.kiota' is already installed."));
+
+            new Action(sut.InstallKiota)
+                .Should()
+                .NotThrow();
+        }
+
+        [Theory, AutoMoqData]
+        public void InstallKiota_Ignores_ProcessLauncherException_For_Directory_Already_Exists(
+            [Frozen] IProcessLauncher processLauncher,
+            DependencyInstaller sut)
+        {
+            var mock = Mock.Get(processLauncher);
+            mock.Setup(
+                    c => c.Start(
+                        "kiota",
+                        "--version",
+                        It.IsAny<Action<string>>(),
+                        It.IsAny<Action<string>>(),
+                        default))
+                .Throws(new Win32Exception());
+
+            mock.Setup(c => c.Start(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
+                .Throws(
+                    new ProcessLaunchException(
+                        "dotnet",
+                        "tool install --global Microsoft.OpenApi.Kiota --version 1.32.4",
+                        null,
+                        string.Empty,
+                        "Cannot create 'path\\to\\kiota\\1.32.4' because a file or directory with the same name already exists"));
 
             new Action(sut.InstallKiota)
                 .Should()

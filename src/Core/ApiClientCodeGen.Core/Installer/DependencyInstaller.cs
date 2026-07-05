@@ -106,7 +106,15 @@ namespace Rapicgen.Core.Installer
             }
             catch (Win32Exception)
             {
-                InstallOrUpdateDotNetTool(ExternalTools.Kiota, update: false);
+                try
+                {
+                    InstallOrUpdateDotNetTool(ExternalTools.Kiota, update: false);
+                }
+                catch (ProcessLaunchException ex)
+                    when (ex.ErrorData?.IndexOf("already installed", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                          ex.ErrorData?.IndexOf("same name already exists", StringComparison.OrdinalIgnoreCase) >= 0)
+                {
+                }
             }
         }
 
