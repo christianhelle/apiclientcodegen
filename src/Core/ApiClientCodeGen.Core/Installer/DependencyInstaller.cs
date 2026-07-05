@@ -114,6 +114,7 @@ namespace Rapicgen.Core.Installer
                     when (ex.ErrorData?.IndexOf("already installed", StringComparison.OrdinalIgnoreCase) >= 0 ||
                           ex.ErrorData?.IndexOf("same name already exists", StringComparison.OrdinalIgnoreCase) >= 0)
                 {
+                    Logger.Instance.WriteLine($"Kiota is already installed: {ex.ErrorData}");
                 }
             }
         }
