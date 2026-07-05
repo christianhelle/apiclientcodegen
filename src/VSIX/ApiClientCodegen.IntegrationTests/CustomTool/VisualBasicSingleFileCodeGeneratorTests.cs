@@ -11,7 +11,8 @@ using Rapicgen.Core.Options.NSwag;
 
 namespace Rapicgen.IntegrationTests.CustomTool
 {
-
+    public class VisualBasicSingleFileCodeGeneratorTests : TestWithResources
+    {
         [Xunit.Fact]
         public void Swagger_VisualBasic_Test()
         {

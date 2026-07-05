@@ -19,7 +19,8 @@ using Microsoft.VisualStudio.Shell.Interop;
 
 namespace Rapicgen.IntegrationTests.CustomTool
 {
-
+    public class CSharpSingleFileCodeGeneratorTests : TestWithResources
+    {
         [Fact]
         public void NSwag_CSharp_Test()
         {

@@ -19,7 +19,8 @@ using Xunit;
 
 namespace Rapicgen.IntegrationTests.CustomTool
 {
-
+    public class CSharpSingleFileCodeGeneratorOpenApi3Tests : TestWithResources
+    {
         [Fact]
         public void NSwag_CSharp_Test()
         {

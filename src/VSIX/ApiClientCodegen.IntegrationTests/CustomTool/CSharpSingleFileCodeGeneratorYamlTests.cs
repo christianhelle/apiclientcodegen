@@ -16,7 +16,8 @@ using Microsoft.VisualStudio.Shell.Interop;
 
 namespace Rapicgen.IntegrationTests.CustomTool
 {
-
+    public class CSharpSingleFileCodeGeneratorYamlTests : TestWithResources
+    {
         [Fact]
         public void Swagger_CSharp_Test()
         {
