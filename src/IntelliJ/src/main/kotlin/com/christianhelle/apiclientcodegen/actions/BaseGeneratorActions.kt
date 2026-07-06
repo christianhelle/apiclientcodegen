@@ -52,7 +52,6 @@ class CSharpGeneratorRefitterAction: CSharpGeneratorAction("refitter")
 class CSharpGeneratorOpenApiAction: CSharpGeneratorAction("openapi")
 class CSharpGeneratorKiotaAction: CSharpGeneratorAction("kiota")
 class CSharpGeneratorSwaggerAction: CSharpGeneratorAction("swagger")
-class CSharpGeneratorAutoRestAction: CSharpGeneratorAction("autorest")
 
 class TypeScriptGeneratorAngularAction: TypeScriptGeneratorAction("Angular")
 class TypeScriptGeneratorAureliaAction: TypeScriptGeneratorAction("Aurelia")
