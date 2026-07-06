@@ -8,15 +8,9 @@ jobs:
 - job: ${{ parameters.name }}
   pool:
     vmImage: '${{ parameters.agentSpecification }}'
-    demands: npm
   displayName: 'Test on ${{ parameters.agentSpecification }}'
 
   steps:
-
-  - task: Npm@0
-    displayName: 'npm install'
-    inputs:
-      arguments: '-g autorest'
 
   - task: PowerShell@2
     displayName: 'PowerShell Script'
