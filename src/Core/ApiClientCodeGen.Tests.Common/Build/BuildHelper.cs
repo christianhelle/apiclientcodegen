@@ -62,19 +62,6 @@ namespace ApiClientCodeGen.Tests.Common.Build
                             throw new ArgumentOutOfRangeException(nameof(projecType), projecType, null);
                     }
 
-                case SupportedCodeGenerator.AutoRest:
-                    switch (projecType)
-                    {
-                        case ProjectTypes.DotNetCoreApp:
-                            return AutoRestProjectFileContents.NetCoreApp;
-
-                        case ProjectTypes.DotNetStandardLibrary:
-                            return AutoRestProjectFileContents.NetStandardLibrary;
-
-                        default:
-                            throw new ArgumentOutOfRangeException(nameof(projecType), projecType, null);
-                    }
-
                 case SupportedCodeGenerator.Swagger:
                     switch (projecType)
                     {
