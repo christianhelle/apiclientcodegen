@@ -76,7 +76,7 @@
 
         <p><strong>Key Features:</strong></p>
         <ul>
-          <li>Full support for all 6 code generators (NSwag, OpenAPI Generator, Kiota, Refitter, Swagger Codegen CLI, AutoRest)</li>
+          <li>Full support for all code generators (NSwag, OpenAPI Generator, Kiota, Refitter, and Swagger Codegen CLI)</li>
           <li>Latest Visual Studio integration APIs</li>
           <li>Enhanced performance and stability</li>
           <li>Modern UI and improved user experience</li>
@@ -303,7 +303,6 @@
             <li><strong>.NET 6.0 runtime or later</strong> - Core requirement</li>
             <li><strong>Java Runtime Environment</strong> - For Swagger Codegen CLI and OpenAPI Generator</li>
             <li><strong>.NET SDK</strong> - For NSwag, Kiota, and Refitter CLI installations</li>
-            <li><strong>NPM</strong> - For AutoRest CLI installation</li>
             <li><strong>Internet access</strong> - For downloading dependencies on first use</li>
           </ul>
         </div>
@@ -316,7 +315,7 @@
             <li><strong>First-time use delay</strong> - Some code generators download on demand, expect initial delays</li>
             <li><strong>Java configuration</strong> - Configure Java path in settings if multiple installations exist</li>
             <li><strong>Network access</strong> - Ensure internet access for dependency downloads</li>
-            <li><strong>Proxy settings</strong> - Configure NPM and Java tools for corporate proxies</li>
+            <li><strong>Proxy settings</strong> - Configure Java tools for corporate proxies</li>
           </ul>
         </div>
 
@@ -324,8 +323,7 @@
 
         <ol class="installation-steps">
           <li><strong>Java Configuration</strong> - Set JAVA_HOME environment variable or configure in extension settings</li>
-          <li><strong>NPM Proxy Setup</strong> - Configure NPM for corporate proxies: <code>npm config set proxy http://proxy:port</code></li>
-          <li><strong>Firewall Rules</strong> - Allow downloads from GitHub, NPM registry, and Maven central</li>
+          <li><strong>Firewall Rules</strong> - Allow downloads from GitHub and Maven central</li>
           <li><strong>JAR File Caching</strong> - Pre-download JAR files to shared locations if needed</li>
         </ol>
 
@@ -372,15 +370,6 @@ rapicgen csharp nswag swagger.json PetStore.Client ./test.cs</code></pre>
             <li>Install Java JDK 8 or later</li>
             <li>Set JAVA_HOME environment variable</li>
             <li>Configure Java path in extension settings</li>
-          </ul>
-        </div>
-
-        <div class="config-section">
-          <h4>NPM Installation Issues</h4>
-          <ul>
-            <li>Install Node.js and NPM</li>
-            <li>Configure proxy settings if behind corporate firewall</li>
-            <li>Clear NPM cache: <code>npm cache clean --force</code></li>
           </ul>
         </div>
 

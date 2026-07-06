@@ -103,7 +103,6 @@
             <li><strong>.NET 6.0 runtime or later</strong> - Foundation for all operations</li>
             <li><strong>Java Runtime Environment</strong> - Required for Swagger Codegen CLI and OpenAPI Generator</li>
             <li><strong>.NET SDK</strong> - Required for NSwag, Kiota, and Refitter CLI installations</li>
-            <li><strong>NPM (Node.js)</strong> - Required for AutoRest CLI installation</li>
             <li><strong>Internet connectivity</strong> - For downloading tools and dependencies on first use</li>
           </ul>
         </div>
@@ -146,7 +145,6 @@ Options:
   -?|-h|--help  Show help information.
 
 Commands:
-  autorest      AutoRest (v3.0.0-beta.20210504.2)
   kiota         Microsoft Kiota (v1.32.4)
   nswag         NSwag (v14.7.1)
   openapi       OpenAPI Generator (v7.23.0)
@@ -154,23 +152,6 @@ Commands:
   swagger       Swagger Codegen CLI (v3.0.34)
 
 Run 'csharp [command] -?|-h|--help' for more information about a command.</code></pre>
-        </div>
-
-        <div class="cli-example">
-          <h4>Specific Generator Help</h4>
-          <pre><code>rapicgen csharp autorest --help</code></pre>
-          <strong>Output:</strong>
-          <pre><code>Generate Swagger / Open API client using AutoRest
-
-Usage: run autorest [options] &lt;swaggerFile&gt; &lt;namespace&gt; &lt;outputFile&gt;
-
-Arguments:
-  swaggerFile   Path to the Swagger / Open API specification file
-  namespace     Default namespace to in the generated code
-  outputFile    Output filename to write the generated code to. Default is the swaggerFile .cs
-
-Options:
-  -?|-h|--help  Show help information</code></pre>
         </div>
 
         <h2>C# Code Generation</h2>
@@ -221,16 +202,6 @@ rapicgen csharp openapi swagger.json MyApi.Client ./OpenApiClient.cs
           <h4>Generate Refit Interfaces</h4>
           <pre><code># Perfect for reactive programming patterns
 rapicgen csharp refitter swagger.json MyApi.Contracts ./RefitClient.cs</code></pre>
-        </div>
-
-        <h3>AutoRest (Deprecated) - Azure-Optimized</h3>
-
-        <p><strong>⚠️ Deprecation Notice:</strong> AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. For migration guidance, see the <a href="https://github.com/christianhelle/apiclientcodegen/blob/master/docs/AutoRestMigration.md">AutoRest Migration Guide</a>. Use NSwag, Refitter, or Kiota instead.</p>
-
-        <div class="cli-example">
-          <h4>AutoRest for Azure APIs</h4>
-          <pre><code># Ideal for Azure services and enterprise APIs
-rapicgen csharp autorest swagger.json Azure.MyService ./AzureClient.cs</code></pre>
         </div>
 
         <h3>Swagger Codegen CLI - Proven Reliability</h3>
@@ -367,11 +338,6 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
     
-    - name: Setup Node.js (for AutoRest)
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-    
     - name: Install rapicgen
       run: dotnet tool install --global rapicgen
     
@@ -480,10 +446,6 @@ stages:
 
 # Install Java for OpenAPI Generator and Swagger Codegen
 RUN apt-get update && apt-get install -y openjdk-17-jdk
-
-# Install Node.js and NPM for AutoRest
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodejs
 
 # Install rapicgen
 RUN dotnet tool install --global rapicgen
@@ -603,20 +565,11 @@ echo "All clients generated successfully!"</code></pre>
         </div>
 
         <div class="config-section">
-          <h4>NPM and Node.js Issues</h4>
-          <ul>
-            <li><strong>NPM not found:</strong> Install Node.js which includes NPM</li>
-            <li><strong>Permission errors:</strong> Use npm prefix or install with --unsafe-perm</li>
-            <li><strong>Corporate proxies:</strong> Configure NPM proxy settings</li>
-          </ul>
-        </div>
-
-        <div class="config-section">
           <h4>Network and Download Issues</h4>
           <ul>
             <li><strong>Slow downloads:</strong> Pre-cache JAR files and use local specs</li>
             <li><strong>SSL certificate errors:</strong> Update certificates or use --ignore-ssl-errors</li>
-            <li><strong>Firewall blocking:</strong> Whitelist GitHub, NPM, and Maven Central</li>
+            <li><strong>Firewall blocking:</strong> Whitelist GitHub and Maven Central</li>
           </ul>
         </div>
 
