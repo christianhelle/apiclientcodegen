@@ -2,7 +2,6 @@
 {
     public enum AddToProject
     {
-        AutoRest,
         NSwag,
         NSwagStudio,
         Swagger,
