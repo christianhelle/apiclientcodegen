@@ -101,7 +101,6 @@ public abstract class GenerateOpenApiBaseCommand(TraceSource traceSource, Extens
                 openApiGeneratorOptions: openApiOptions,
                 processLauncher: new ProcessLauncher(),
                 dependencyInstaller: new DependencyInstaller(
-                    new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()));
 

@@ -88,7 +88,6 @@ public class GenerateNSwagStudioCommand(
                     await settingsProvider.GetGeneralOptionsAsync(cancellationToken),
                     launcher,
                     new DependencyInstaller(
-                        new NpmInstaller(launcher),
                         new FileDownloader(new WebDownloader()), launcher))
                     .GenerateCode(null);
             }, cancellationToken);

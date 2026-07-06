@@ -98,7 +98,6 @@ public abstract class GenerateSwaggerBaseCommand(TraceSource traceSource, Extens
                 options: generalOptions,
                 processLauncher: new ProcessLauncher(),
                 dependencyInstaller: new DependencyInstaller(
-                    new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()));
 
