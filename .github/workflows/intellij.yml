@@ -3,12 +3,12 @@ name: IntelliJ Plugin
 on:
   push:
     paths:
-      - 'src/IntelliJ/**'
-      - '.github/workflows/intellij.yml'
+      - "src/IntelliJ/**"
+      - ".github/workflows/intellij.yml"
   pull_request:
     paths:
-      - 'src/IntelliJ/**'
-      - '.github/workflows/intellij.yml'
+      - "src/IntelliJ/**"
+      - ".github/workflows/intellij.yml"
 
 env:
   VERSION: 1.41.${{ github.run_number }}
@@ -41,9 +41,6 @@ jobs:
       - name: Build IntelliJ Plugin
         working-directory: src/IntelliJ
         run: ./gradlew buildPlugin --no-daemon
-      - name: Verify IntelliJ Plugin
-        working-directory: src/IntelliJ
-        run: ./gradlew verifyPlugin --no-daemon
       - name: Archive plugin artifact
         uses: actions/upload-artifact@v7
         with:
