@@ -265,7 +265,6 @@ src/tools/
 src/.ionide/
 src/MigrationBackup/
 src/ApiClientCodeGen.CLI/Swagger.cs
-**/AutoRestOutput.cs
 **/NSwagOutput.cs
 **/OpenApiOutput.cs
 **/SwaggerOutput.cs
