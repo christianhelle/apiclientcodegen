@@ -14,8 +14,7 @@ export const generators: IGenerator[] = [
   { command: 'refitter', displayName: 'Refitter', requiresJava: false },
   { command: 'openapi', displayName: 'OpenAPI Generator', requiresJava: true },
   { command: 'kiota', displayName: 'Microsoft Kiota', requiresJava: false },
-  { command: 'swagger', displayName: 'Swagger Codegen CLI', requiresJava: true },
-  { command: 'autorest', displayName: 'AutoRest (Deprecated)', requiresJava: false }
+  { command: 'swagger', displayName: 'Swagger Codegen CLI', requiresJava: true }
 ];
 
 /**
@@ -61,14 +60,7 @@ export async function executeRapicgen(generator: string, specificationFilePath: 
   if (!validateSpecificationFile(specificationFilePath)) {
     return;
   }
-  
-  // Show non-blocking deprecation warning for AutoRest
-  if (generator === 'autorest') {
-    vscode.window.showWarningMessage(
-      'AutoRest is deprecated by Microsoft and will be retired on July 1, 2026. AutoRest support will be removed from this tool in a future major version. Use NSwag, Refitter, or Kiota instead.'
-    );
-  }
-  
+
   // Validate dependencies
   if (!validateDependencies(generator, generatorRequiresJava)) {
     return;

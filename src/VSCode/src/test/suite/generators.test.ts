@@ -1,62 +1,7 @@
 import * as assert from 'assert';
-import { generators, generatorRequiresJava } from '../../services/generators';
+import { generators } from '../../services/generators';
 
 suite('Generators Configuration Test Suite', () => {
-  test('AutoRest generator is present in generators list', () => {
-    // CRITICAL: Prevents accidental removal during deprecation period
-    // AutoRest must remain in the list until Phase 3 (~Jan 2027)
-    const autorestGenerator = generators.find(g => g.command === 'autorest');
-    
-    assert.notStrictEqual(
-      autorestGenerator,
-      undefined,
-      'AutoRest must be present in generators list during deprecation period'
-    );
-  });
-
-  test('AutoRest displayName contains Deprecated label', () => {
-    // Validates the canonical "AutoRest (Deprecated)" label format
-    const autorestGenerator = generators.find(g => g.command === 'autorest');
-    
-    assert.strictEqual(
-      autorestGenerator?.displayName,
-      'AutoRest (Deprecated)',
-      'AutoRest displayName must use canonical "AutoRest (Deprecated)" format'
-    );
-  });
-
-  test('AutoRest command is lowercase', () => {
-    const autorestGenerator = generators.find(g => g.command === 'autorest');
-    
-    assert.strictEqual(
-      autorestGenerator?.command,
-      'autorest',
-      'AutoRest command must be lowercase'
-    );
-  });
-
-  test('AutoRest does not require Java', () => {
-    // AutoRest is an NPM-based tool and does not require Java runtime
-    const autorestGenerator = generators.find(g => g.command === 'autorest');
-    
-    assert.strictEqual(
-      autorestGenerator?.requiresJava,
-      false,
-      'AutoRest should not require Java runtime'
-    );
-  });
-
-  test('generatorRequiresJava returns false for AutoRest', () => {
-    // Validates the helper function correctly identifies AutoRest as non-Java
-    const requiresJava = generatorRequiresJava('autorest', false);
-    
-    assert.strictEqual(
-      requiresJava,
-      false,
-      'generatorRequiresJava should return false for AutoRest'
-    );
-  });
-
   test('All generators have required fields', () => {
     // Validates generator structure integrity
     generators.forEach(generator => {
@@ -79,17 +24,6 @@ suite('Generators Configuration Test Suite', () => {
       commands.length,
       uniqueCommands.size,
       'All generator commands must be unique'
-    );
-  });
-
-  test('AutoRest is positioned last in generators array', () => {
-    // Per UX convention, deprecated items should appear last
-    const lastGenerator = generators[generators.length - 1];
-    
-    assert.strictEqual(
-      lastGenerator.command,
-      'autorest',
-      'AutoRest should be positioned last in generators array (deprecated items go last)'
     );
   });
 });
