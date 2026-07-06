@@ -1,6 +1,5 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
 using Rapicgen.CLI.Commands;
 using Rapicgen.Core;
 using Rapicgen.Core.Exceptions;
@@ -8,7 +7,6 @@ using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
-using Rapicgen.Core.Options.AutoRest;
 using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.OpenApiGenerator;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,10 +37,6 @@ namespace Rapicgen.CLI
                     config.AddBranch("csharp", cs =>
                     {
                         cs.SetDescription("Generate C# API clients using various generators");
-
-                        cs.AddCommand<AutoRestCommand>("autorest")
-                            .WithDescription("AutoRest (Deprecated - v3.0.0-beta.20210504.2)")
-                            .WithExample(new[] { "autorest", "petstore.json", "GeneratedCode", "Output.cs" });
 
                         cs.AddCommand<KiotaCommand>("kiota")
                             .WithDescription($"Microsoft Kiota ({ExternalTools.Kiota.VersionLabel})")
@@ -93,9 +87,6 @@ namespace Rapicgen.CLI
             services.AddLogging(b => b.AddDebug());
             services.AddSingleton<IConsoleOutput, ConsoleOutput>();
             services.AddSingleton<IGeneralOptions, DefaultGeneralOptions>();
-#pragma warning disable CS0618 // Type or member is obsolete
-            services.AddSingleton<IAutoRestOptions, DefaultAutoRestOptions>();
-#pragma warning restore CS0618 // Type or member is obsolete
             services.AddSingleton<IOpenApiGeneratorOptions, DefaultOpenApiGeneratorOptions>();
             services.AddSingleton<IRefitterOptions, DefaultRefitterOptions>();
             services.AddSingleton<IProgressReporter, ProgressReporter>();
@@ -105,15 +96,11 @@ namespace Rapicgen.CLI
             services.AddSingleton<IOpenApiGeneratorFactory, OpenApiGeneratorFactory>();
             services.AddSingleton<IJMeterCodeGeneratorFactory, JMeterCodeGeneratorFactory>();
             services.AddSingleton<ITypeScriptCodeGeneratorFactory, TypeScriptCodeGeneratorFactory>();
-#pragma warning disable CS0618 // Type or member is obsolete
-            services.AddSingleton<IAutoRestCodeGeneratorFactory, AutoRestCodeGeneratorFactory>();
-#pragma warning restore CS0618 // Type or member is obsolete
             services.AddSingleton<INSwagCodeGeneratorFactory, NSwagCodeGeneratorFactory>();
             services.AddSingleton<IOpenApiCSharpGeneratorFactory, OpenApiCSharpGeneratorFactory>();
             services.AddSingleton<ISwaggerCodegenFactory, SwaggerCodegenFactory>();
             services.AddSingleton<IRefitterCodeGeneratorFactory, RefitterCodeGeneratorFactory>();
             services.AddSingleton<IDependencyInstaller, DependencyInstaller>();
-            services.AddSingleton<INpmInstaller, NpmInstaller>();
             services.AddSingleton<IFileDownloader, FileDownloader>();
             services.AddSingleton<IWebDownloader, WebDownloader>();
         }
