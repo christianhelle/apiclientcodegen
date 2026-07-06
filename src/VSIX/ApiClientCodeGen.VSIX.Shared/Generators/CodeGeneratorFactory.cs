@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using Rapicgen.Core;
 using Rapicgen.Core.Extensions;
 using Rapicgen.Core.Generators;
-using Rapicgen.Core.Generators.AutoRest;
 using Rapicgen.Core.Generators.Kiota;
 using Rapicgen.Core.Generators.NSwag;
 using Rapicgen.Core.Generators.OpenApi;
@@ -11,14 +10,12 @@ using Rapicgen.Core.Generators.Swagger;
 using Rapicgen.Core.Installer;
 using Rapicgen.Core.Logging;
 using Rapicgen.Core.Options;
-using Rapicgen.Core.Options.AutoRest;
 using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.Kiota;
 using Rapicgen.Core.Options.NSwag;
 using Rapicgen.Core.Options.OpenApiGenerator;
 using Rapicgen.Core.Options.Refitter;
 using Rapicgen.Options;
-using Rapicgen.Options.AutoRest;
 using Rapicgen.Options.General;
 using Rapicgen.Options.Kiota;
 using Rapicgen.Options.NSwag;
@@ -49,7 +46,6 @@ namespace Rapicgen.Generators
             this.documentFactory = documentFactory ?? new OpenApiDocumentFactory();
             this.dependencyInstaller = dependencyInstaller ??
                                        new DependencyInstaller(
-                                           new NpmInstaller(this.processLauncher),
                                            new FileDownloader(new WebDownloader()),
                                            new ProcessLauncher());
         }
@@ -65,15 +61,6 @@ namespace Rapicgen.Generators
 
             switch (generator)
             {
-                case SupportedCodeGenerator.AutoRest:
-                    return new AutoRestCSharpCodeGenerator(
-                        inputFilePath,
-                        defaultNamespace,
-                        optionsFactory.Create<IAutoRestOptions, AutoRestOptionsPage, DefaultAutoRestOptions>(),
-                        processLauncher,
-                        documentFactory,
-                        dependencyInstaller);
-
                 case SupportedCodeGenerator.NSwag:
                     return new NSwagCSharpCodeGenerator(
                         inputFilePath,

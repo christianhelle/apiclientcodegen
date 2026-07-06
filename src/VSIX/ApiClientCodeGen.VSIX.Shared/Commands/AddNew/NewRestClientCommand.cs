@@ -121,7 +121,6 @@ namespace Rapicgen.Commands.AddNew
                     new CustomPathOptions(),
                     new ProcessLauncher(),
                     new DependencyInstaller(
-                        new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader()),
                         new ProcessLauncher()));
 

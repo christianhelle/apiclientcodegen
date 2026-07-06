@@ -18,7 +18,6 @@ namespace Rapicgen.Options.General
         public GeneralOptionPage()
         {
             JavaPath = PathProvider.GetInstalledJavaPath();
-            NpmPath = PathProvider.GetNpmPath();
             NSwagPath = PathProvider.GetNSwagStudioPath();
         }
 
@@ -26,11 +25,6 @@ namespace Rapicgen.Options.General
         [DisplayName("Java Path")]
         [Description("Full path to java.exe. Leave empty to get path from JAVA_HOME")]
         public string JavaPath { get; set; }
-
-        [Category("File Paths")]
-        [DisplayName("NPM Path")]
-        [Description("Full path to npm.cmd")]
-        public string NpmPath { get; set; }
 
         [Category("File Paths")]
         [DisplayName("NSwag Path")]
