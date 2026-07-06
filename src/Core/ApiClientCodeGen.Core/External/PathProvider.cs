@@ -43,27 +43,6 @@ namespace Rapicgen.Core.External
             }
         }
 
-        public static string GetNpmPath(
-            string? programFiles = null,
-            string? programFiles64 = null,
-            bool withoutPath = false)
-        {
-            if (Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix || withoutPath)
-                return "npm";
-
-            if (string.IsNullOrWhiteSpace(programFiles))
-                programFiles = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
-
-            if (string.IsNullOrWhiteSpace(programFiles64))
-                programFiles64 = programFiles!.Replace(" (x86)", string.Empty);
-
-            var npmCommand = Path.Combine(programFiles, "nodejs\\npm.cmd");
-            if (!File.Exists(npmCommand))
-                npmCommand = Path.Combine(programFiles64, "nodejs\\npm.cmd");
-
-            return File.Exists(npmCommand) ? npmCommand : string.Empty;
-        }
-
         public static string GetNSwagStudioPath()
             => Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
@@ -77,23 +56,13 @@ namespace Rapicgen.Core.External
             return GetDotNetGlobalToolPath("nswag");
         }
 
-        public static string GetAutoRestPath(bool withoutPath = false)
-        {
-            if (Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix || withoutPath)
-                return "autorest";
-
-            return Path.Combine(
-                NpmHelper.GetPrefixPath(),
-                "autorest.cmd");
-        }
-
         public static string GetSwaggerCodegenPath()
             => Path.Combine(
                 Path.GetTempPath(),
                 "swagger-codegen-cli.jar");
 
         public static string GetOpenApiGeneratorPath(
-            OpenApiSupportedVersion version = default) 
+            OpenApiSupportedVersion version = default)
             => Path.Combine(
                 Path.GetTempPath(),
                 $"openapi-generator-cli-{version.GetDescription()}.jar");
