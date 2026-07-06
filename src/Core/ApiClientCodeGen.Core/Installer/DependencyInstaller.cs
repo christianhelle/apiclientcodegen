@@ -18,7 +18,7 @@ namespace Rapicgen.Core.Installer
             IProcessLauncher processLauncher)
         {
             this.downloader = downloader ?? throw new ArgumentNullException(nameof(downloader));
-            this.processLauncher = processLauncher;
+            this.processLauncher = processLauncher ?? throw new ArgumentNullException(nameof(processLauncher));
         }
 
         public void InstallNSwag()
