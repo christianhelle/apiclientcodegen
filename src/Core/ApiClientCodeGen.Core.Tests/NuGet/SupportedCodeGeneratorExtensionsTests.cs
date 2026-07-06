@@ -4,7 +4,6 @@ using FluentAssertions;
 
 namespace ApiClientCodeGen.Core.Tests.NuGet
 {
-    #pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest during deprecation period
     [Xunit.Trait("Category", "Unit")]
     public class SupportedCodeGeneratorExtensionsTests
     {
@@ -18,13 +17,6 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
         [Xunit.Fact]
         public void GetDependencies_NSwagStudio_Returns_NotEmpty()
             => SupportedCodeGenerator.NSwagStudio
-                .GetDependencies()
-                .Should()
-                .NotBeNullOrEmpty();
-
-        [Xunit.Fact]
-        public void GetDependencies_AutoRest_Returns_NotEmpty()
-            => SupportedCodeGenerator.AutoRest
                 .GetDependencies()
                 .Should()
                 .NotBeNullOrEmpty();
@@ -56,13 +48,6 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
                 .GetDependencies()
                 .Should()
                 .Contain(c => c.Name == "Newtonsoft.Json");
-
-        [Xunit.Fact]
-        public void GetDependencies_AutoRest_Contains_RestClientRuntime()
-            => SupportedCodeGenerator.AutoRest
-                .GetDependencies()
-                .Should()
-                .Contain(c => c.Name == "Microsoft.Rest.ClientRuntime");
 
         [Xunit.Fact]
         public void GetDependencies_Swagger_Contains_RestSharp()
@@ -127,5 +112,4 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
                 .Should()
                 .Contain(c => c.Name == "Refit");
     }
-    #pragma warning restore CS0618
 }

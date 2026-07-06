@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Threading.Tasks;
 using Moq;
 using Rapicgen.Core;
@@ -25,7 +25,6 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures
                 defaultNamespace,
                 new ProcessLauncher(),
                 new DependencyInstaller(
-                    new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()),
                 new DefaultKiotaOptions());

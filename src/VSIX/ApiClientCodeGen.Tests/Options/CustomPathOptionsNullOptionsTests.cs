@@ -19,14 +19,6 @@ namespace Rapicgen.Tests.Options
             => sut.JavaPath.Should().Be(PathProvider.GetInstalledJavaPath());
 
         [Xunit.Fact]
-        public void NpmPath_NotNullOrWhiteSpace()
-            => sut.NpmPath.Should().NotBeNullOrWhiteSpace();
-
-        [Xunit.Fact]
-        public void NpmPath_Reads_From_Options()
-            => sut.NpmPath.Should().Be(PathProvider.GetNpmPath());
-
-        [Xunit.Fact]
         public void NSwagPath_NotNullOrWhiteSpace()
             => sut.NSwagPath.Should().NotBeNullOrWhiteSpace();
 

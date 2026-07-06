@@ -22,13 +22,6 @@ namespace Rapicgen.Tests.NuGet
                 .NotBeNullOrEmpty();
 
         [Xunit.Fact]
-        public void GetDependencies_AutoRest_Returns_NotEmpty()
-            => SupportedCodeGenerator.AutoRest
-                .GetDependencies()
-                .Should()
-                .NotBeNullOrEmpty();
-
-        [Xunit.Fact]
         public void GetDependencies_Swagger_Returns_NotEmpty()
             => SupportedCodeGenerator.Swagger
                 .GetDependencies()
@@ -55,13 +48,6 @@ namespace Rapicgen.Tests.NuGet
                 .GetDependencies()
                 .Should()
                 .Contain(c => c.Name == "Newtonsoft.Json");
-
-        [Xunit.Fact]
-        public void GetDependencies_AutoRest_Contains_RestClientRuntime()
-            => SupportedCodeGenerator.AutoRest
-                .GetDependencies()
-                .Should()
-                .Contain(c => c.Name == "Microsoft.Rest.ClientRuntime");
 
         [Xunit.Fact]
         public void GetDependencies_Swagger_Contains_RestSharp()

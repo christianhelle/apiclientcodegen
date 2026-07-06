@@ -8,13 +8,6 @@ namespace Rapicgen.Tests.Extensions
     public class GetCustomToolNameTests
     {
         [Xunit.Fact]
-        public void GetCustomToolName_AutoRest()
-            => SupportedCodeGenerator.AutoRest
-                .GetCustomToolName()
-                .Should()
-                .Contain("AutoRest");
-
-        [Xunit.Fact]
         public void GetCustomToolName_NSwag()
             => SupportedCodeGenerator.NSwag
                 .GetCustomToolName()

@@ -77,10 +77,8 @@
     <Compile Include="NuGet\PackageDependencyListProviderTests.cs" />
     <Compile Include="NuGet\PackageDependencyTests.cs" />
     <Compile Include="NuGet\SupportedCodeGeneratorExtensionsTests.cs" />
-    <Compile Include="Options\AutoRestOptionsTests.cs" />
     <Compile Include="Options\CustomPathOptionsNullOptionsTests.cs" />
     <Compile Include="Options\CustomPathOptionsTests.cs" />
-    <Compile Include="Options\DefaultAutoRestOptionsTests.cs" />
     <Compile Include="Options\DefaultGeneralOptionsTests.cs" />
     <Compile Include="Options\DefaultNSwagOptionsTests.cs" />
     <Compile Include="Options\DefaultNSwagStudioOptionsTests.cs" />
@@ -97,12 +95,10 @@
     <Compile Include="Extensions\GetSupportedCodeGeneratorTests.cs" />
     <Compile Include="Extensions\GetCustomToolNameTests.cs" />
     <Compile Include="FileHelperTests.cs" />
-    <Compile Include="Generators\CodeGeneratorFactoryTests.cs" />
     <Compile Include="DeploymentItemTests.cs" />
     <Compile Include="Generators\NSwagStudio\NSwagStudioFileHelperTests.cs" />
     <Compile Include="Generators\NSwag\NSwagCodeGeneratorSettingsFactoryTests.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="NpmHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,6 @@ namespace Rapicgen.Tests.Options
             var fixture = new Fixture();
             mock = new Mock<IGeneralOptions>();
             mock.Setup(c => c.JavaPath).Returns(fixture.Create<string>());
-            mock.Setup(c => c.NpmPath).Returns(fixture.Create<string>());
             mock.Setup(c => c.NSwagPath).Returns(fixture.Create<string>());
             mock.Setup(c => c.SwaggerCodegenPath).Returns(fixture.Create<string>());
             mock.Setup(c => c.OpenApiGeneratorPath).Returns(fixture.Create<string>());
@@ -32,14 +31,6 @@ namespace Rapicgen.Tests.Options
         [Xunit.Fact]
         public void JavaPath_Reads_From_Options()
             => sut.JavaPath.Should().Be(mock.Object.JavaPath);
-
-        [Xunit.Fact]
-        public void NpmPath_NotNullOrWhiteSpace()
-            => sut.NpmPath.Should().NotBeNullOrWhiteSpace();
-
-        [Xunit.Fact]
-        public void NpmPath_Reads_From_Options()
-            => sut.NpmPath.Should().Be(mock.Object.NpmPath);
 
         [Xunit.Fact]
         public void NSwagPath_NotNullOrWhiteSpace()

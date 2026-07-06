@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using ApiClientCodeGen.Tests.Common;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Installer;
@@ -19,7 +19,6 @@ namespace ApiClientCodeGen.Core.IntegrationTests
         [InlineData(OpenApiSupportedVersion.V7070)]
         public void InstallOpenApiGenerator_Returns_Path(OpenApiSupportedVersion version)
             => (new DependencyInstaller(
-                        new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader()),
                         new ProcessLauncher())
                     .InstallOpenApiGenerator(version))
@@ -29,30 +28,16 @@ namespace ApiClientCodeGen.Core.IntegrationTests
         [Fact]
         public void InstallSwaggerCodegen_Returns_Path()
             => (new DependencyInstaller(
-                        new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader()),
                         new ProcessLauncher())
                     .InstallSwaggerCodegen())
                 .Should()
                 .NotBeNullOrWhiteSpace();
 
-        [Fact]
-        public void InstallAutoRest_Does_NotThrow()
-        {
-            new Action(
-                    () => new DependencyInstaller(
-                        new NpmInstaller(new ProcessLauncher()),
-                        new FileDownloader(new WebDownloader()),
-                        new ProcessLauncher()).InstallAutoRest())
-                .Should()
-                .NotThrow();
-        }
-
         [SkippableFact(typeof(ProcessLaunchException))]
         public void InstallNSwag_Does_NotThrow()
         {
             new DependencyInstaller(
-                new NpmInstaller(new ProcessLauncher()),
                 new FileDownloader(new WebDownloader()),
                 new ProcessLauncher()).InstallNSwag();
         }
@@ -62,7 +47,6 @@ namespace ApiClientCodeGen.Core.IntegrationTests
         {
             new Action(
                     () => new DependencyInstaller(
-                        new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader()),
                         new ProcessLauncher()).InstallKiota())
                 .Should()

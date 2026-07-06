@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using Rapicgen.Core;
@@ -46,7 +46,6 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures
                     generalOptions.Object,
                     new ProcessLauncher(),
                     new DependencyInstaller(
-                        new NpmInstaller(new ProcessLauncher()),
                         new FileDownloader(new WebDownloader()),
                         new ProcessLauncher()))
                 .GenerateCode(new Mock<IProgressReporter>().Object)

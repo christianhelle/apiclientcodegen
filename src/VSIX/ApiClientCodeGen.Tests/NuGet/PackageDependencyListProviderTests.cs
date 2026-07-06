@@ -24,13 +24,7 @@ namespace Rapicgen.Tests.NuGet
                 .NotBeNullOrEmpty();
 
         [Xunit.Fact]
-        public void GetDependencies_AutoRest_Returns_NotEmpty() 
-            => sut.GetDependencies(SupportedCodeGenerator.AutoRest)
-                .Should()
-                .NotBeNullOrEmpty();
-
-        [Xunit.Fact]
-        public void GetDependencies_Swagger_Returns_NotEmpty() 
+        public void GetDependencies_Swagger_Returns_NotEmpty()
             => sut.GetDependencies(SupportedCodeGenerator.Swagger)
                 .Should()
                 .NotBeNullOrEmpty();
@@ -76,18 +70,6 @@ namespace Rapicgen.Tests.NuGet
             => sut.GetDependencies(SupportedCodeGenerator.NSwagStudio)
                 .Should()
                 .Contain(PackageDependencies.SystemComponentModelAnnotations);
-
-        [Xunit.Fact]
-        public void GetDependencies_AutoRest_Contains_RestClientRuntime()
-            => sut.GetDependencies(SupportedCodeGenerator.AutoRest)
-                .Should()
-                .Contain(PackageDependencies.MicrosoftRestClientRuntime);
-
-        [Xunit.Fact]
-        public void GetDependencies_AutoRest_Contains_NewtonsoftJson()
-            => sut.GetDependencies(SupportedCodeGenerator.AutoRest)
-                .Should()
-                .Contain(PackageDependencies.NewtonsoftJson);
 
         [Xunit.Fact]
         public void GetDependencies_Swagger_Contains_RestSharp()

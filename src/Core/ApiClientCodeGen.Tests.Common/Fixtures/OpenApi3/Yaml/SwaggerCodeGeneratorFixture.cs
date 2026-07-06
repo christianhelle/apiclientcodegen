@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.Swagger;
@@ -27,7 +27,6 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3.Yaml
                 OptionsMock.Object,
                 new ProcessLauncher(),
                 new DependencyInstaller(
-                    new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()));
 

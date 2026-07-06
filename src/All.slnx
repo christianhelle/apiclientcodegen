@@ -34,26 +34,6 @@
     <File Path="publish.ps1" />
   </Folder>
   <Folder Name="/Smoke Tests/" />
-  <Folder Name="/Smoke Tests/AutoRest-v2/">
-    <Project Path="../test/GeneratedCode/AutoRest-V2/Net462/Net462.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V2/Net472/Net472.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V2/Net48/Net48.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V2/Net481/Net481.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V2/Net6/Net6.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V2/Net7/Net7.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V2/NetStandard20/NetStandard20.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V2/NetStandard21/NetStandard21.csproj" />
-  </Folder>
-  <Folder Name="/Smoke Tests/AutoRest-v3/">
-    <Project Path="../test/GeneratedCode/AutoRest-V3/Net462/Net462.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V3/Net472/Net472.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V3/Net48/Net48.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V3/Net481/Net481.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V3/Net6/Net6.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V3/Net7/Net7.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V3/NetStandard20/NetStandard20.csproj" />
-    <Project Path="../test/GeneratedCode/AutoRest-V3/NetStandard21/NetStandard21.csproj" />
-  </Folder>
   <Folder Name="/Smoke Tests/Kiota/">
     <Project Path="../test/GeneratedCode/Kiota/Net462/Net462.csproj" />
     <Project Path="../test/GeneratedCode/Kiota/Net472/Net472.csproj" />

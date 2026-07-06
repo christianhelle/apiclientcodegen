@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.NSwag;
@@ -33,7 +33,6 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.OpenApi3.Yaml
                 "GeneratedCode",
                 new ProcessLauncher(),
                 new DependencyInstaller(
-                    new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()),
                 OptionsMock.Object);

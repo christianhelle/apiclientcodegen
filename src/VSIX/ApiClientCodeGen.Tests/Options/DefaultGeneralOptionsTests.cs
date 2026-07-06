@@ -13,10 +13,6 @@ namespace Rapicgen.Tests.Options
             => sut.JavaPath.Should().NotBeNullOrWhiteSpace();
 
         [Xunit.Fact]
-        public void NpmPath_NotNull()
-            => sut.NpmPath.Should().NotBeNullOrWhiteSpace();
-
-        [Xunit.Fact]
         public void NSwagPath_NotNull()
             => sut.NSwagPath.Should().NotBeNullOrWhiteSpace();
 
