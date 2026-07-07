@@ -6,9 +6,17 @@
 
 **Implemented enhancements:**
 
-- Remove AutoRest after deprecation window [\#1520](https://github.com/christianhelle/apiclientcodegen/issues/1520)
+- Remove AutoRest support after official deprecation [\#1620](https://github.com/christianhelle/apiclientcodegen/pull/1620) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.32.4 [\#1607](https://github.com/christianhelle/apiclientcodegen/pull/1607) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.32.3 [\#1606](https://github.com/christianhelle/apiclientcodegen/pull/1606) ([christianhelle](https://github.com/christianhelle))
+
+**Closed issues:**
+
+- Remove AutoRest after deprecation window [\#1520](https://github.com/christianhelle/apiclientcodegen/issues/1520)
+
+**Merged pull requests:**
+
+- Enhance OpenAPI Generator documentation and add new images [\#1603](https://github.com/christianhelle/apiclientcodegen/pull/1603) ([christianhelle](https://github.com/christianhelle))
 
 ## [1.41.0](https://github.com/christianhelle/apiclientcodegen/tree/1.41.0) (2026-06-24)
 
