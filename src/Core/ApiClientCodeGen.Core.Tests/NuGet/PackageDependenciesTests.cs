@@ -47,11 +47,6 @@ public class PackageDependenciesTests
             .Should().BeTrue();
 
     [Fact]
-    public void MicrosoftRestClientRuntime_HasCorrectName()
-        => PackageDependencies.MicrosoftRestClientRuntime.Name
-            .Should().Be("Microsoft.Rest.ClientRuntime");
-
-    [Fact]
     public void Polly_HasCorrectName()
         => PackageDependencies.Polly.Name.Should().Be("Polly");
 
@@ -79,7 +74,6 @@ public class PackageDependenciesTests
         var dependencies = new[]
         {
             PackageDependencies.NewtonsoftJson,
-            PackageDependencies.MicrosoftRestClientRuntime,
             PackageDependencies.RestSharp,
             PackageDependencies.JsonSubTypes,
             PackageDependencies.RestSharpLatest,
@@ -88,8 +82,6 @@ public class PackageDependenciesTests
             PackageDependencies.SystemComponentModelAnnotations,
             PackageDependencies.MicrosoftCSharp,
             PackageDependencies.Polly,
-            PackageDependencies.AutoRestCSharp,
-            PackageDependencies.AzureCore,
             PackageDependencies.AzureIdentity,
             PackageDependencies.MicrosoftKiotaAbstractions,
             PackageDependencies.MicrosoftKiotaAuthenticationAzure,

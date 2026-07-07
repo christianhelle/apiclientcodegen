@@ -8,7 +8,6 @@ using Rapicgen.Commands.CustomTool;
 using Rapicgen.Commands.NSwagStudio;
 using Rapicgen.Core.Logging;
 using Rapicgen.Options.Analytics;
-using Rapicgen.Options.AutoRest;
 using Rapicgen.Options.General;
 using Rapicgen.Options.NSwag;
 using Rapicgen.Options.NSwagStudio;
@@ -61,13 +60,6 @@ namespace Rapicgen
         0,
         true)]
     [ProvideOptionPage(
-        typeof(AutoRestOptionsPage),
-        VsixName,
-        AutoRestOptionsPage.Name,
-        0,
-        0,
-        true)]
-    [ProvideOptionPage(
         typeof(NSwagOptionsPage),
         VsixName,
         NSwagOptionsPage.Name,
@@ -114,7 +106,6 @@ namespace Rapicgen
         public const string VsixName = "REST API Client Code Generator";
 
         private readonly ICommandInitializer[] commands = {
-            new AutoRestCodeGeneratorCustomToolSetter(),
             new NSwagCodeGeneratorCustomToolSetter(),
             new SwaggerCodeGeneratorCustomToolSetter(),
             new OpenApiCodeGeneratorCustomToolSetter(),
@@ -123,7 +114,6 @@ namespace Rapicgen
             new NSwagStudioCommand(),
             new RefitterCommand(),
             new KiotaCommand(),
-            new NewAutoRestClientCommand(),
             new NewNSwagClientCommand(),
             new NewSwaggerClientCommand(),
             new NewOpenApiClientCommand(),

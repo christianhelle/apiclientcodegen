@@ -20,28 +20,16 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                 .Implement<IDependencyInstaller>();
 
         [Theory, AutoMoqData]
-        public void Requires_INpmInstaller(IFileDownloader downloader)
-            => new Action(() => new DependencyInstaller(null, downloader, new ProcessLauncher()))
+        public void Requires_IFileDownloader(IProcessLauncher processLauncher)
+            => new Action(() => new DependencyInstaller(null, processLauncher))
                 .Should()
                 .Throw<ArgumentNullException>();
 
         [Theory, AutoMoqData]
-        public void Requires_IFileDownloader(INpmInstaller npm)
-            => new Action(() => new DependencyInstaller(npm, null, new ProcessLauncher()))
+        public void Requires_IProcessLauncher(IFileDownloader downloader)
+            => new Action(() => new DependencyInstaller(downloader, null))
                 .Should()
                 .Throw<ArgumentNullException>();
-
-        #pragma warning disable CS0618 // Type or member is obsolete - These tests intentionally validate deprecated AutoRest during deprecation period
-        [Theory, AutoMoqData]
-        public void InstallAutoRest_Invokes_Npm(
-            [Frozen] INpmInstaller npm,
-            DependencyInstaller sut)
-        {
-            sut.InstallAutoRest();
-            Mock.Get(npm)
-                .Verify(c => c.InstallNpmPackage("autorest"));
-        }
-        #pragma warning restore CS0618
 
         [Theory, AutoMoqData]
         public void InstallNSwag_When_NSwag_Not_Installed_Invokes_ProcessLauncher(

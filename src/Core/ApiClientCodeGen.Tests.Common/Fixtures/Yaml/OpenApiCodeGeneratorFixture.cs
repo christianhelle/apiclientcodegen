@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using Rapicgen.Core;
 using Rapicgen.Core.Generators;
 using Rapicgen.Core.Generators.OpenApi;
@@ -29,7 +29,6 @@ namespace ApiClientCodeGen.Tests.Common.Fixtures.Yaml
                 new DefaultOpenApiGeneratorOptions(),
                 new ProcessLauncher(),
                 new DependencyInstaller(
-                    new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()));
 

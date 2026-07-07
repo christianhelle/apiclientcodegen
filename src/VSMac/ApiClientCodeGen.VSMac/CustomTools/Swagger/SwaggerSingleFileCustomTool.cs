@@ -23,7 +23,6 @@ namespace ApiClientCodeGen.VSMac.CustomTools.Swagger
                 new ProcessLauncher(),
                 new SwaggerCodegenFactory(),
                 new DependencyInstaller(
-                    new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()))
         {

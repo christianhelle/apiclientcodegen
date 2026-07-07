@@ -17,9 +17,6 @@ namespace Rapicgen.IntegrationTests.CustomTool
     public class VisualBasicSingleFileCodeGeneratorTests
     {
         [Xunit.Fact]
-        public void AutoRest_VisualBasic_Test() => Assert(SupportedCodeGenerator.AutoRest);
-
-        [Xunit.Fact]
         public void NSwag_VisualBasic_Test()
         {
             var optionsMock = new Mock<INSwagOptions>();

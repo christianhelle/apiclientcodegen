@@ -6,7 +6,6 @@ All custom tools mentioned above are also implemented in a cross platform comman
 
 - .NET 6.0 runtime
 - Java Runtime Environment
-- NPM
 
 ## Installation
 
@@ -69,7 +68,6 @@ Options:
   -?|-h|--help  Show help information.
 
 Commands:
-  autorest      AutoRest (Deprecated - v3.0.0-beta.20210504.2, retires July 1, 2026 — use NSwag, Refit, or Kiota)
   kiota         Microsoft Kiota (v1.32.4)
   nswag         NSwag (v14.7.1)
   openapi       OpenAPI Generator (v7.23.0)
@@ -77,28 +75,6 @@ Commands:
   swagger       Swagger Codegen CLI (v3.0.34)
 
 Run 'csharp [command] -?|-h|--help' for more information about a command.
-```
-
-and
-
-```sh
-rapicgen csharp autorest -?
-```
-
-will output this:
-
-```sh
-Generate Swagger / Open API client using AutoRest
-
-Usage: run autorest [options] <swaggerFile> <namespace> <outputFile>
-
-Arguments:
-  swaggerFile   Path to the Swagger / Open API specification file
-  namespace     Default namespace in the generated code
-  outputFile    Output filename to write the generated code to. Default is the swaggerFile .cs
-
-Options:
-  -?|-h|--help  Show help information
 ```
 
 or
@@ -142,12 +118,6 @@ In case you don't have the CLI tool installed you can install it by
 
 ```sh
 dotnet tool install --global rapicgen
-```
-
-Here's an example of how to generate code using **AutoRest**
-
-```sh
-rapicgen csharp autorest Swagger.json GeneratedCode ./AutoRestOutput.cs
 ```
 
 Here's an example of how to generate code using **Kiota**

@@ -24,45 +24,10 @@ namespace Rapicgen.Tests.Options
         }
 
         [Xunit.Fact]
-        public void GetNpmPath_Exists()
-        {
-             var path = PathProvider.GetNpmPath();
-            path.Should().NotBeNullOrWhiteSpace();
-        }
-
-        [Xunit.Fact]
-        public void GetNpmPath_Exists_For_Specified_Paths()
-        {
-            var path = PathProvider.GetNpmPath(
-                Test.CreateAnnonymous<string>(),
-                Test.CreateAnnonymous<string>());
-
-            path.Should()
-                .Be(
-                    Environment.OSVersion.Platform is PlatformID.MacOSX or PlatformID.Unix
-                        ? "npm"
-                        : string.Empty);
-        }
-
-        [Xunit.Fact]
         public void GetNSwagPath_Exists()
         {
             var path = PathProvider.GetNSwagPath();
             path.Should().NotBeNullOrWhiteSpace();
-        }
-
-        [Xunit.Fact]
-        public void GetAutoRestPath_Returns_NpmPrefix_AutoRestCmd()
-        {
-            var path = PathProvider.GetAutoRestPath();
-            path.Should().ContainAny("autorest");
-        }
-
-        [Xunit.Fact]
-        public void GetAutoRestPath_Without_Path_Returns_autorest()
-        {
-            var path = PathProvider.GetAutoRestPath(true);
-            path.Should().Be("autorest");
         }
 
         [Xunit.Fact]

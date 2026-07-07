@@ -17,7 +17,6 @@ namespace ApiClientCodeGen.VSMac.CustomTools.Refitter
                 customToolNamespace, 
                 new ProcessLauncher(),
                 new DependencyInstaller(
-                    new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()),
                 new DefaultRefitterOptions());

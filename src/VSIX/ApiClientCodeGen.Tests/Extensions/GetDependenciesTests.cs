@@ -8,14 +8,6 @@ namespace Rapicgen.Tests.Extensions
     public class GetDependenciesTests
     {
         [Xunit.Fact]
-        public void GetDependencies_AutoRest()
-            => SupportedCodeGenerator.AutoRest
-                .GetDependencies()
-                .Any(c => c.Name == "Microsoft.Rest.ClientRuntime")
-                .Should()
-                .BeTrue();
-
-        [Xunit.Fact]
         public void GetDependencies_NSwag()
             => SupportedCodeGenerator.NSwag
                 .GetDependencies()

@@ -2,7 +2,6 @@
 {
     public enum GenerateCode
     {
-        AutoRest,
         NSwag,
         NSwagStudio,
         Swagger,

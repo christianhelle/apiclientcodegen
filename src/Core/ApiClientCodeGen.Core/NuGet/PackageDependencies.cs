@@ -10,11 +10,6 @@ namespace Rapicgen.Core.NuGet
                 "13.0.3",
                 false);
 
-        public static readonly PackageDependency MicrosoftRestClientRuntime =
-            new PackageDependency(
-                "Microsoft.Rest.ClientRuntime",
-                "2.3.24");
-
         public static readonly PackageDependency RestSharp =
             new PackageDependency(
                 "RestSharp",
@@ -57,16 +52,6 @@ namespace Rapicgen.Core.NuGet
             new PackageDependency(
                 "Polly",
                 "8.6.6");
-
-        public static readonly PackageDependency AutoRestCSharp =
-            new PackageDependency(
-                "Microsoft.Azure.AutoRest.CSharp",
-                "3.0.0-beta.20210218.1");
-
-        public static readonly PackageDependency AzureCore =
-            new PackageDependency(
-                "Azure.Core",
-                "1.57.0");
 
         public static readonly PackageDependency AzureIdentity =
             new PackageDependency(

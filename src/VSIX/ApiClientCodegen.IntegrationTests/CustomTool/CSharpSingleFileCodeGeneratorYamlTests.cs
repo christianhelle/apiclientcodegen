@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using System.IO;
 using ApiClientCodeGen.Tests.Common;
 using Rapicgen.Core;
 using Rapicgen.Core.Exceptions;
 using Rapicgen.Core.Options;
-using Rapicgen.Core.Options.AutoRest;
 using Rapicgen.Core.Options.General;
 using Rapicgen.Core.Options.OpenApiGenerator;
 using Rapicgen.Generators;
-using Rapicgen.Options.AutoRest;
 using Rapicgen.Options.General;
 using Rapicgen.Options.OpenApiGenerator;
 using FluentAssertions;
@@ -21,17 +19,6 @@ namespace Rapicgen.IntegrationTests.CustomTool
     [Trait("Category", "SkipWhenLiveUnitTesting")]
     public class CSharpSingleFileCodeGeneratorYamlTests : TestWithResources
     {
-        [SkippableFact(typeof(CustomToolException))]
-        public void AutoRest_CSharp_Test()
-        {
-            var optionsMock = new Mock<IAutoRestOptions>();
-            var optionsFactory = new Mock<IOptionsFactory>();
-            optionsFactory
-                .Setup(c => c.Create<IAutoRestOptions, AutoRestOptionsPage, DefaultAutoRestOptions>())
-                .Returns(optionsMock.Object);
-
-            Assert(SupportedCodeGenerator.AutoRest, optionsFactory.Object);
-        }
 
         [Fact]
         public void Swagger_CSharp_Test()

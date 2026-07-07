@@ -42,26 +42,6 @@ namespace Rapicgen.Core.NuGet
                         });
                     break;
 
-                case SupportedCodeGenerator.AutoRest:
-                    list.AddRange(
-                        new[]
-                        {
-                            PackageDependencies.MicrosoftRestClientRuntime,
-                            PackageDependencies.NewtonsoftJson,
-                        });
-                    break;
-
-                case SupportedCodeGenerator.AutoRestV3:
-                    list.AddRange(
-                        new[]
-                        {
-                            PackageDependencies.MicrosoftRestClientRuntime,
-                            PackageDependencies.NewtonsoftJson,
-                            PackageDependencies.AutoRestCSharp,
-                            PackageDependencies.AzureCore,
-                        });
-                    break;
-
                 case SupportedCodeGenerator.Swagger:
                     list.AddRange(
                         new[]

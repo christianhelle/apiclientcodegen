@@ -31,8 +31,6 @@ namespace Rapicgen.Core
 
         public static readonly ExternalTool SwaggerCodegen = new("Swagger Codegen CLI", "3.0.34");
 
-        public static readonly ExternalTool AutoRest = new("AutoRest", "3.0.0-beta.20210504.2", "autorest");
-
         /// <summary>
         /// OpenAPI Generator's default version is the latest entry in <see cref="OpenApiGeneratorVersions"/>.
         /// An individual generation may select an older version; this represents the default shown to users.

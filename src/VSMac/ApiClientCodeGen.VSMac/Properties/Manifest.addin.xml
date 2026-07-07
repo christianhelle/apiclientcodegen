@@ -4,7 +4,6 @@
     <Extension path = "/MonoDevelop/Ide/ContextMenu/ProjectPad">
         <ItemSet id = "Add" _label = "_Add" autohide="True">
             <ItemSet id = "NewApiClient" _label = "New REST API Client" autohide="True">
-                <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.AutoRest" />
                 <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.NSwag" />
                 <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.NSwagStudio" />
                 <CommandItem id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Swagger" />
@@ -14,7 +13,6 @@
             </ItemSet>
         </ItemSet>
         <ItemSet id = "GenerateApiClient" _label = "REST API Client Generator" autohide="True">
-            <CommandItem id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.AutoRest" />
             <CommandItem id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.NSwag" />
             <CommandItem id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Swagger" />
             <CommandItem id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.OpenApi" />
@@ -49,10 +47,6 @@
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Swagger"
                  _label = "Generate with Swagger Codegen (v3.0.34 - Outdated)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewSwaggerCommandHandler" />
-
-        <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.AutoRest"
-                 _label = "Generate with AutoRest (Deprecated)"
-                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewAutoRestCommandHandler" />
     
         <!-- REST API Client Generator -->
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.NSwag"
@@ -78,17 +72,11 @@
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Swagger"
                  _label = "Generate with Swagger Codegen (v3.0.34 - Outdated)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateSwaggerCommandHandler" />
-
-        <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.AutoRest"
-                 _label = "Generate with AutoRest (Deprecated)"
-                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateAutoRestCommandHandler" />
     </Extension>
 
     <Extension path = "/MonoDevelop/Ide/CustomTools">
         <Tool name="NSwagCodeGenerator" 
               type="ApiClientCodeGen.VSMac.CustomTools.NSwag.NSwagSingleFileCustomTool"/>
-        <Tool name="AutoRestCodeGenerator"
-              type="ApiClientCodeGen.VSMac.CustomTools.AutoRest.AutoRestSingleFileCustomTool"/>
         <Tool name="SwaggerCodeGenerator"
               type="ApiClientCodeGen.VSMac.CustomTools.Swagger.SwaggerSingleFileCustomTool"/>
         <Tool name="OpenApiCodeGenerator"

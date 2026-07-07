@@ -23,7 +23,6 @@ namespace ApiClientCodeGen.VSMac.CustomTools.OpenApi
                 new ProcessLauncher(),
                 new OpenApiGeneratorFactory(),
                 new DependencyInstaller(
-                    new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()))
         {

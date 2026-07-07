@@ -7,10 +7,9 @@ using Rapicgen.Core.Logging;
 namespace ApiClientCodeGen.VSIX.Extensibility;
 
 public class CustomDependencyInstaller(
-    INpmInstaller npm,
     IFileDownloader downloader,
     IProcessLauncher processLauncher) 
-    : DependencyInstaller(npm, downloader, processLauncher)
+    : DependencyInstaller(downloader, processLauncher)
 {
     private readonly IProcessLauncher processLauncher = processLauncher;
 

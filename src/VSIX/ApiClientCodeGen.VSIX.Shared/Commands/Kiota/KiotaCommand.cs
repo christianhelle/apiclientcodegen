@@ -59,7 +59,6 @@ namespace Rapicgen.Commands.Kiota
                 default,
                 new ProcessLauncher(),
                 new DependencyInstaller(
-                    new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()),
                 new Options.Kiota.KiotaOptions());

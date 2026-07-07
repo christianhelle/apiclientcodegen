@@ -15,7 +15,6 @@ namespace Rapicgen.Options.General
             {
                 options ??= GetFromDialogPage();
                 JavaPath = options.JavaPath;
-                NpmPath = options.NpmPath;
                 NSwagPath = options.NSwagPath;
                 SwaggerCodegenPath = options.SwaggerCodegenPath;
                 OpenApiGeneratorPath = options.OpenApiGeneratorPath;
@@ -26,7 +25,6 @@ namespace Rapicgen.Options.General
                 Logger.Instance.TrackError(e);
 
                 JavaPath = PathProvider.GetInstalledJavaPath();
-                NpmPath = PathProvider.GetNpmPath();
                 NSwagPath = PathProvider.GetNSwagStudioPath();
                 SwaggerCodegenPath = PathProvider.GetSwaggerCodegenPath();
                 OpenApiGeneratorPath = PathProvider.GetOpenApiGeneratorPath();
@@ -36,7 +34,6 @@ namespace Rapicgen.Options.General
                 Logger.Instance.WriteLine(Environment.NewLine);
                 Logger.Instance.WriteLine("Error reading user options. Reverting to default values");
                 Logger.Instance.WriteLine($"JavaPath = {JavaPath}");
-                Logger.Instance.WriteLine($"NpmPath = {NpmPath}");
                 Logger.Instance.WriteLine($"NSwagPath = {NSwagPath}");
                 Logger.Instance.WriteLine($"SwaggerCodegenPath = {SwaggerCodegenPath}");
                 Logger.Instance.WriteLine($"OpenApiGeneratorPath = {OpenApiGeneratorPath}");
@@ -45,7 +42,6 @@ namespace Rapicgen.Options.General
         }
 
         public string JavaPath { get; set; }
-        public string NpmPath { get; set; }
         public string NSwagPath { get; set; }
         public string SwaggerCodegenPath { get; set; }
         public string OpenApiGeneratorPath { get; set; }

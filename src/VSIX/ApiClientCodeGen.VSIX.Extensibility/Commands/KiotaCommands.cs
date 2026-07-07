@@ -99,7 +99,6 @@ public abstract class GenerateKiotaBaseCommand(TraceSource traceSource, Extensio
                 options: kiotaOptions,
                 processLauncher: new ProcessLauncher(),
                 dependencyInstaller: new CustomDependencyInstaller(
-                    new NpmInstaller(new ProcessLauncher()),
                     new FileDownloader(new WebDownloader()),
                     new ProcessLauncher()));
 

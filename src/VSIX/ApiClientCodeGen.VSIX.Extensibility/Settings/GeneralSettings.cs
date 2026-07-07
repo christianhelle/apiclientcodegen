@@ -25,16 +25,6 @@ internal static class GeneralSettings
     };
 
     [VisualStudioContribution]
-    internal static Setting.String NpmPath { get; } = new(
-        "npmPath",
-        "%Settings.NpmPath.DisplayName%",
-        GeneralCategory,
-        string.Empty)
-    {
-        Description = "%Settings.NpmPath.Description%",
-    };
-
-    [VisualStudioContribution]
     internal static Setting.String NSwagPath { get; } = new(
         "nswagPath",
         "%Settings.NSwagPath.DisplayName%",

@@ -21,14 +21,6 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
                 .Should()
                 .NotBeNullOrEmpty();
 
-        #pragma warning disable CS0618 // Type or member is obsolete
-        [Xunit.Fact]
-        public void GetDependencies_AutoRest_Returns_NotEmpty()
-            => sut.GetDependencies(SupportedCodeGenerator.AutoRest)
-                .Should()
-                .NotBeNullOrEmpty();
-        #pragma warning restore CS0618
-
         [Xunit.Fact]
         public void GetDependencies_Swagger_Returns_NotEmpty()
             => sut.GetDependencies(SupportedCodeGenerator.Swagger)
@@ -82,18 +74,6 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
             => sut.GetDependencies(SupportedCodeGenerator.NSwagStudio)
                 .Should()
                 .Contain(PackageDependencies.SystemComponentModelAnnotations);
-
-        [Xunit.Fact]
-        public void GetDependencies_AutoRest_Contains_RestClientRuntime()
-            => sut.GetDependencies(SupportedCodeGenerator.AutoRest)
-                .Should()
-                .Contain(PackageDependencies.MicrosoftRestClientRuntime);
-
-        [Xunit.Fact]
-        public void GetDependencies_AutoRest_Contains_NewtonsoftJson()
-            => sut.GetDependencies(SupportedCodeGenerator.AutoRest)
-                .Should()
-                .Contain(PackageDependencies.NewtonsoftJson);
 
         [Xunit.Fact]
         public void GetDependencies_Swagger_Contains_RestSharp()
@@ -154,30 +134,6 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
             => sut.GetDependencies(SupportedCodeGenerator.OpenApi)
                 .Should()
                 .Contain(PackageDependencies.SystemThreadingChannels);
-
-        [Xunit.Fact]
-        public void GetDependencies_AutoRestV3_Contains_RestClientRuntime()
-            => sut.GetDependencies(SupportedCodeGenerator.AutoRestV3)
-                .Should()
-                .Contain(PackageDependencies.MicrosoftRestClientRuntime);
-
-        [Xunit.Fact]
-        public void GetDependencies_AutoRestV3_Contains_NewtonsoftJson()
-            => sut.GetDependencies(SupportedCodeGenerator.AutoRestV3)
-                .Should()
-                .Contain(PackageDependencies.NewtonsoftJson);
-
-        [Xunit.Fact]
-        public void GetDependencies_AutoRestV3_Contains_AutoRestCSharp()
-            => sut.GetDependencies(SupportedCodeGenerator.AutoRestV3)
-                .Should()
-                .Contain(PackageDependencies.AutoRestCSharp);
-
-        [Xunit.Fact]
-        public void GetDependencies_AutoRestV3_Contains_AzureCore()
-            => sut.GetDependencies(SupportedCodeGenerator.AutoRestV3)
-                .Should()
-                .Contain(PackageDependencies.AzureCore);
 
         [Xunit.Fact]
         public void GetDependencies_Kiota_Contains_AzureIdentity()

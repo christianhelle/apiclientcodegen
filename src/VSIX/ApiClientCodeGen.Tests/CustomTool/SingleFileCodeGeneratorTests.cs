@@ -14,7 +14,6 @@ namespace Rapicgen.Tests.CustomTool
         private const SupportedLanguage lang = SupportedLanguage.CSharp;
 
         [Theory]
-        [InlineData(SupportedCodeGenerator.AutoRest)]
         [InlineData(SupportedCodeGenerator.NSwag)]
         [InlineData(SupportedCodeGenerator.Swagger)]
         [InlineData(SupportedCodeGenerator.OpenApi)]

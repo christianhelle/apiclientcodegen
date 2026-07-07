@@ -18,7 +18,6 @@ namespace ApiClientCodeGen.VSMac.Commands.Handlers
                     new DefaultGeneralOptions(),
                     processLauncher,
                     new DependencyInstaller(
-                        new NpmInstaller(processLauncher),
                         new FileDownloader(new WebDownloader()),
                         processLauncher)));
         }

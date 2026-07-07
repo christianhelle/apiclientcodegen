@@ -22,7 +22,6 @@ namespace Rapicgen.Windows
         {
             this.options = options;
             tbJavaPath.Text = options.JavaPath;
-            tbNpmPath.Text = options.NpmPath;
             tbNSwagPath.Text = options.NSwagPath;
             tbSwaggerPath.Text = options.SwaggerCodegenPath;
             tbOpenApiPath.Text = options.OpenApiGeneratorPath;
@@ -43,9 +42,6 @@ namespace Rapicgen.Windows
         private void TbJavaPath_TextChanged(object sender, EventArgs e)
             => options.JavaPath = tbJavaPath.Text;
 
-        private void TbNpmPath_TextChanged(object sender, EventArgs e)
-            => options.NpmPath = tbNpmPath.Text;
-
         private void TbNSwagPath_TextChanged(object sender, EventArgs e)
             => options.NSwagPath = tbNSwagPath.Text;
 
@@ -57,9 +53,6 @@ namespace Rapicgen.Windows
 
         private void BtnJavaPath_Click(object sender, EventArgs e)
             => OpenFileDialog(tbJavaPath);
-
-        private void BtnNpmPath_Click(object sender, EventArgs e)
-            => OpenFileDialog(tbNpmPath);
 
         private void BtnNSwagPath_Click(object sender, EventArgs e)
             => OpenFileDialog(tbNSwagPath);
