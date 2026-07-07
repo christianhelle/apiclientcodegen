@@ -68,7 +68,7 @@ Options:
   -?|-h|--help  Show help information.
 
 Commands:
-  kiota         Microsoft Kiota (v1.32.4)
+  kiota         Microsoft Kiota (v1.33.0)
   nswag         NSwag (v14.7.1)
   openapi       OpenAPI Generator (v7.23.0)
   refitter      Refitter (v2.0.0)
