@@ -6,6 +6,8 @@
 
 **Implemented enhancements:**
 
+- Microsoft Kiota v1.34.1 [\#1623](https://github.com/christianhelle/apiclientcodegen/pull/1623) ([christianhelle](https://github.com/christianhelle))
+- Microsoft Kiota v1.33.0 [\#1622](https://github.com/christianhelle/apiclientcodegen/pull/1622) ([christianhelle](https://github.com/christianhelle))
 - Remove AutoRest support after official deprecation [\#1620](https://github.com/christianhelle/apiclientcodegen/pull/1620) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.32.4 [\#1607](https://github.com/christianhelle/apiclientcodegen/pull/1607) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.32.3 [\#1606](https://github.com/christianhelle/apiclientcodegen/pull/1606) ([christianhelle](https://github.com/christianhelle))
@@ -692,7 +694,6 @@
 - Update vstest monorepo to 17.12.0 [\#1047](https://github.com/christianhelle/apiclientcodegen/pull/1047) ([renovate[bot]](https://github.com/apps/renovate))
 - Update MacOS runner [\#1045](https://github.com/christianhelle/apiclientcodegen/pull/1045) ([christianhelle](https://github.com/christianhelle))
 - Update Microsoft Kiota dependencies to v1.15.2 [\#1041](https://github.com/christianhelle/apiclientcodegen/pull/1041) ([christianhelle](https://github.com/christianhelle))
-- Update AutoRestArgumentProvider.cs [\#1040](https://github.com/christianhelle/apiclientcodegen/pull/1040) ([ghost](https://github.com/ghost))
 - Update dependency cake.tool to v5 [\#1039](https://github.com/christianhelle/apiclientcodegen/pull/1039) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Polly to 8.5.0 [\#1037](https://github.com/christianhelle/apiclientcodegen/pull/1037) ([renovate[bot]](https://github.com/apps/renovate))
 
