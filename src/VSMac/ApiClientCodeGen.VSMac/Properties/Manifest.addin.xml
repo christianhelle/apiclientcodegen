@@ -37,7 +37,7 @@
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewOpenApiCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Kiota"
-                 _label = "Generate with Kiota (v1.33.0)"
+                 _label = "Generate with Kiota (v1.34.1)"
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.AddNewKiotaCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.AddToProject.Refitter"
@@ -62,7 +62,7 @@
                  defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateOpenApiCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Kiota"
-                _label = "Generate with Kiota (v1.33.0)"
+                _label = "Generate with Kiota (v1.34.1)"
                 defaultHandler="ApiClientCodeGen.VSMac.Commands.Handlers.GenerateKiotaCommandHandler" />
 
         <Command id = "ApiClientCodeGen.VSMac.Commands.GenerateCode.Refitter"
