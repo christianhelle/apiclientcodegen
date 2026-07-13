@@ -18,6 +18,7 @@
 
 **Merged pull requests:**
 
+- Update dependency Microsoft.NET.Test.Sdk to 18.7.0 [\#1617](https://github.com/christianhelle/apiclientcodegen/pull/1617) ([renovate[bot]](https://github.com/apps/renovate))
 - Enhance OpenAPI Generator documentation and add new images [\#1603](https://github.com/christianhelle/apiclientcodegen/pull/1603) ([christianhelle](https://github.com/christianhelle))
 
 ## [1.41.0](https://github.com/christianhelle/apiclientcodegen/tree/1.41.0) (2026-06-24)
