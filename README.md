@@ -54,6 +54,10 @@ A collection of Visual Studio C# custom tool code generators for Swagger / OpenA
   - `.refitter` settings files from [Refitter](https://github.com/christianhelle/refitter) by including it in the project and using the **Generate Refitter output** context menu
   - `kiota-lock.json` configuration files from [Microsoft Kiota](https://github.com/microsoft/kiota) by including it in the project and using the **Generate Kiota output** context menu
 
+### OpenAPI Generator configuration files
+
+For the `rapicgen csharp openapi` command, you can now pass `--config-file <path>` to use a specific OpenAPI Generator configuration file. When no explicit file is supplied, Rapicgen also auto-discovers adjacent files named `<spec>.config.<ext>`, `<spec>.config.json`, and `<spec>.config.yaml` when `--use-configuration-file` is enabled. This makes it easier to drive package name, output layout, project format, and similar OpenAPI Generator options from configuration rather than relying only on the defaults.
+
 ### Custom Tools
 
 Custom tools let you associate a tool with an item in a project and run that tool whenever the file is saved
