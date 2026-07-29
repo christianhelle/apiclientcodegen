@@ -78,7 +78,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.23.0/openapi-generator-cli-7.23.0.jar.
+        ///   Looks up a localized string similar to https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.24.0/openapi-generator-cli-7.24.0.jar.
         /// </summary>
         public static string OpenApiGenerator_DownloadUrl {
             get {
@@ -87,7 +87,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 362827fb72055ecd18de886bae04bded.
+        ///   Looks up a localized string similar to c24f1602d6b72c44e87a1f18b90892e6.
         /// </summary>
         public static string OpenApiGenerator_MD5 {
             get {
@@ -96,7 +96,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4f4bb6d9c966a1e6353820b6e494a24269e9f2a5.
+        ///   Looks up a localized string similar to 7b5dbd235a281a0a274cc40b8b598c12c899ea85.
         /// </summary>
         public static string OpenApiGenerator_SHA1 {
             get {
