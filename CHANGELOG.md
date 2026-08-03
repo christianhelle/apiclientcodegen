@@ -19,6 +19,7 @@
 
 **Merged pull requests:**
 
+- Update dependency Refitter.Core to 2.1.3 [\#1621](https://github.com/christianhelle/apiclientcodegen/pull/1621) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Microsoft.NET.Test.Sdk to 18.7.0 [\#1617](https://github.com/christianhelle/apiclientcodegen/pull/1617) ([renovate[bot]](https://github.com/apps/renovate))
 - Enhance OpenAPI Generator documentation and add new images [\#1603](https://github.com/christianhelle/apiclientcodegen/pull/1603) ([christianhelle](https://github.com/christianhelle))
 
