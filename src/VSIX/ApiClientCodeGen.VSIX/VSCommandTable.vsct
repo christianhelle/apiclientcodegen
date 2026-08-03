@@ -54,7 +54,7 @@
       </Button>
       <Button guid="guidPackageCmdSet" id="RefitterCodeGeneratorCustomToolSetter" priority="0x0104" type="Button">
         <Strings>
-          <ButtonText>Generate with Refitter (v2.0.0)</ButtonText>
+          <ButtonText>Generate with Refitter (v2.1.3)</ButtonText>
         </Strings>
       </Button>
 
@@ -109,7 +109,7 @@
       </Button>
       <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithRefitter" priority="0x0105" type="Button">
         <Strings>
-          <ButtonText>Generate with Refitter (v2.0.0)</ButtonText>
+          <ButtonText>Generate with Refitter (v2.1.3)</ButtonText>
         </Strings>
       </Button>
 
