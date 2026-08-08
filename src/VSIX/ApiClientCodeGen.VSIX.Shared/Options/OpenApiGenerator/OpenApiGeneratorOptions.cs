@@ -24,6 +24,7 @@ namespace Rapicgen.Options.OpenApiGenerator
                 CustomAdditionalProperties = options.CustomAdditionalProperties;
                 SkipFormModel = options.SkipFormModel;
                 TemplatesPath = options.TemplatesPath;
+                ConfigurationFile = options.ConfigurationFile;
                 UseConfigurationFile = options.UseConfigurationFile;
                 GenerateMultipleFiles = options.GenerateMultipleFiles;
                 HttpUserAgent = options.HttpUserAgent;
@@ -43,6 +44,7 @@ namespace Rapicgen.Options.OpenApiGenerator
                 Logger.Instance.WriteLine($"CustomAdditionalProperties = {CustomAdditionalProperties}");
                 Logger.Instance.WriteLine($"SkipFormModel = {SkipFormModel}");
                 Logger.Instance.WriteLine($"TemplatesPath = {TemplatesPath}");
+                Logger.Instance.WriteLine($"ConfigurationFile = {ConfigurationFile}");
                 Logger.Instance.WriteLine($"UseConfigurationFile = {UseConfigurationFile}");
                 Logger.Instance.WriteLine($"GenerateMultipleFiles = {GenerateMultipleFiles}");
                 Logger.Instance.WriteLine($"HttpUserAgent = {HttpUserAgent}");
@@ -60,6 +62,7 @@ namespace Rapicgen.Options.OpenApiGenerator
         public string? CustomAdditionalProperties { get; set; }
         public bool SkipFormModel { get; set; }
         public string? TemplatesPath { get; set; }
+        public string? ConfigurationFile { get; set; }
         public bool UseConfigurationFile { get; set; }
         public bool GenerateMultipleFiles { get; set; }
         public OpenApiSupportedVersion Version { get; set; }
