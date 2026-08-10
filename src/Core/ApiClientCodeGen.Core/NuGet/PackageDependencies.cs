@@ -51,7 +51,7 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency Polly =
             new PackageDependency(
                 "Polly",
-                "8.6.6");
+                "8.7.0");
 
         public static readonly PackageDependency AzureIdentity =
             new PackageDependency(
