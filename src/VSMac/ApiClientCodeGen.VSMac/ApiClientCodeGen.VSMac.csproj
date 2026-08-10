@@ -13,7 +13,11 @@
     <ExternalConsole>true</ExternalConsole>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.Build.Tasks.Core" Version="17.8.43" />
     <PackageReference Include="Microsoft.VisualStudioMac.Sdk" Version="17.5.0" />
+    <PackageReference Include="System.Formats.Asn1" Version="8.0.1" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="7.0.3" />
+    <PackageReference Include="System.Security.Cryptography.Xml" Version="7.0.1" />
   </ItemGroup>
   <ItemGroup>
    <ProjectReference Include="..\..\Core\ApiClientCodeGen.Core\ApiClientCodeGen.Core.csproj" />
