@@ -19,14 +19,21 @@
 
 **Merged pull requests:**
 
+- Update actions/cache action to v6 [\#1634](https://github.com/christianhelle/apiclientcodegen/pull/1634) ([renovate[bot]](https://github.com/apps/renovate))
+- Update plugin org.jetbrains.kotlin.jvm to v2.4.10 [\#1633](https://github.com/christianhelle/apiclientcodegen/pull/1633) ([renovate[bot]](https://github.com/apps/renovate))
+- Update plugin org.jetbrains.intellij.platform to v2.18.1 [\#1632](https://github.com/christianhelle/apiclientcodegen/pull/1632) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency webpack-cli to v7.2.2 [\#1630](https://github.com/christianhelle/apiclientcodegen/pull/1630) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency mocha to v11.8.0 [\#1629](https://github.com/christianhelle/apiclientcodegen/pull/1629) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Microsoft.NET.Test.Sdk to 18.8.1 [\#1628](https://github.com/christianhelle/apiclientcodegen/pull/1628) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ruby to v4.0.6 [\#1627](https://github.com/christianhelle/apiclientcodegen/pull/1627) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ts-loader to v9.6.2 [\#1624](https://github.com/christianhelle/apiclientcodegen/pull/1624) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Refitter.Core to 2.1.3 [\#1621](https://github.com/christianhelle/apiclientcodegen/pull/1621) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency webpack to v5.109.2 [\#1619](https://github.com/christianhelle/apiclientcodegen/pull/1619) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency Microsoft.NET.Test.Sdk to 18.7.0 [\#1617](https://github.com/christianhelle/apiclientcodegen/pull/1617) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Exceptionless to 6.2.0 [\#1616](https://github.com/christianhelle/apiclientcodegen/pull/1616) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/vscode to v1.125.0 [\#1614](https://github.com/christianhelle/apiclientcodegen/pull/1614) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @types/node to v24.13.3 [\#1613](https://github.com/christianhelle/apiclientcodegen/pull/1613) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @vscode/vsce to v3.9.2 [\#1609](https://github.com/christianhelle/apiclientcodegen/pull/1609) ([renovate[bot]](https://github.com/apps/renovate))
 - Enhance OpenAPI Generator documentation and add new images [\#1603](https://github.com/christianhelle/apiclientcodegen/pull/1603) ([christianhelle](https://github.com/christianhelle))
 
 ## [1.41.0](https://github.com/christianhelle/apiclientcodegen/tree/1.41.0) (2026-06-24)
