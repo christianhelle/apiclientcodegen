@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Fix all Dependabot security alerts [\#1635](https://github.com/christianhelle/apiclientcodegen/pull/1635) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.24.0 [\#1626](https://github.com/christianhelle/apiclientcodegen/pull/1626) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.34.1 [\#1623](https://github.com/christianhelle/apiclientcodegen/pull/1623) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.33.0 [\#1622](https://github.com/christianhelle/apiclientcodegen/pull/1622) ([christianhelle](https://github.com/christianhelle))
