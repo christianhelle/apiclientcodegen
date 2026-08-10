@@ -9,9 +9,11 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include = ""JsonSubTypes"" Version=""1.9.0"" />
+    <PackageReference Include = ""Newtonsoft.Json"" Version=""13.0.1"" />
     <PackageReference Include = ""RestSharp"" Version=""105.2.3"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
+    <PackageReference Include = ""System.Text.RegularExpressions"" Version=""4.3.1"" />
   </ItemGroup>
 </Project>";
 
@@ -22,9 +24,11 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include = ""JsonSubTypes"" Version=""1.9.0"" />
+    <PackageReference Include = ""Newtonsoft.Json"" Version=""13.0.1"" />
     <PackageReference Include = ""RestSharp"" Version=""105.2.3"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
+    <PackageReference Include = ""System.Text.RegularExpressions"" Version=""4.3.1"" />
   </ItemGroup>
 </Project>";
 
@@ -47,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include = ""JsonSubTypes"" Version=""1.9.0"" />
+    <PackageReference Include = ""Newtonsoft.Json"" Version=""13.0.1"" />
     <PackageReference Include = ""RestSharp"" Version=""105.2.3"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
     <PackageReference Include = ""System.Runtime.Serialization.Primitives"" Version=""4.3.0"" />
