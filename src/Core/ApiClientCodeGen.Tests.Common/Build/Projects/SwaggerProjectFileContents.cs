@@ -24,6 +24,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include = ""JsonSubTypes"" Version=""1.9.0"" />
+    <PackageReference Include = ""Microsoft.CSharp"" Version=""4.7.0"" />
     <PackageReference Include = ""Newtonsoft.Json"" Version=""13.0.1"" />
     <PackageReference Include = ""RestSharp"" Version=""105.2.3"" />
     <PackageReference Include = ""System.ComponentModel.Annotations"" Version=""4.5.0"" />
