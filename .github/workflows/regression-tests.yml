@@ -34,7 +34,7 @@ jobs:
         ]
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - name: Set up JDK 17
       uses: actions/setup-java@v5
@@ -311,7 +311,7 @@ jobs:
     timeout-minutes: 20
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - name: Set up JDK 17
       uses: actions/setup-java@v5
@@ -361,7 +361,7 @@ jobs:
     timeout-minutes: 20
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - name: Set up JDK 17
       uses: actions/setup-java@v5
