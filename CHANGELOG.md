@@ -20,6 +20,14 @@
 
 **Merged pull requests:**
 
+- Update dependency MessagePack to v3 [\#1646](https://github.com/christianhelle/apiclientcodegen/pull/1646) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump actions/setup-node from 6 to 7 [\#1645](https://github.com/christianhelle/apiclientcodegen/pull/1645) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/checkout from 6 to 7 [\#1644](https://github.com/christianhelle/apiclientcodegen/pull/1644) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump actions/setup-dotnet from 5 to 6 [\#1643](https://github.com/christianhelle/apiclientcodegen/pull/1643) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update dependency @vscode/test-electron to v3 [\#1641](https://github.com/christianhelle/apiclientcodegen/pull/1641) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency Newtonsoft.Json to 13.0.4 [\#1639](https://github.com/christianhelle/apiclientcodegen/pull/1639) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/setup-dotnet action to v6 - autoclosed [\#1637](https://github.com/christianhelle/apiclientcodegen/pull/1637) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/checkout action to v7 - autoclosed [\#1636](https://github.com/christianhelle/apiclientcodegen/pull/1636) ([renovate[bot]](https://github.com/apps/renovate))
 - Update actions/cache action to v6 [\#1634](https://github.com/christianhelle/apiclientcodegen/pull/1634) ([renovate[bot]](https://github.com/apps/renovate))
 - Update plugin org.jetbrains.kotlin.jvm to v2.4.10 [\#1633](https://github.com/christianhelle/apiclientcodegen/pull/1633) ([renovate[bot]](https://github.com/apps/renovate))
 - Update plugin org.jetbrains.intellij.platform to v2.18.1 [\#1632](https://github.com/christianhelle/apiclientcodegen/pull/1632) ([renovate[bot]](https://github.com/apps/renovate))
