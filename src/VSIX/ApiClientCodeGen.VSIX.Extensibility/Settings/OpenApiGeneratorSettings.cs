@@ -141,6 +141,7 @@ internal static class OpenApiGeneratorSettings
         OpenApiGeneratorCategory,
         [
             new EnumSettingEntry("Latest", "%Settings.OpenApi.Version.Latest%"),
+            new EnumSettingEntry("V7250", "%Settings.OpenApi.Version.V7250%"),
             new EnumSettingEntry("V7240", "%Settings.OpenApi.Version.V7240%"),
             new EnumSettingEntry("V7230", "%Settings.OpenApi.Version.V7230%"),
             new EnumSettingEntry("V7220", "%Settings.OpenApi.Version.V7220%"),

@@ -32,7 +32,7 @@ Options:
 Commands:
   csharp             Generate C# API clients
   jmeter             Generate Apache JMeter test plans
-  openapi-generator  Generate code using OpenAPI Generator (v7.24.0).
+  openapi-generator  Generate code using OpenAPI Generator (v7.25.0).
                      See supported generators at https://openapi-generator.tech/docs/generators/
   typescript         Generate TypeScript API clients
 
@@ -70,7 +70,7 @@ Options:
 Commands:
   kiota         Microsoft Kiota (v1.34.1)
   nswag         NSwag (v14.7.1)
-  openapi       OpenAPI Generator (v7.24.0)
+  openapi       OpenAPI Generator (v7.25.0)
   refitter      Refitter (v2.1.3)
   swagger       Swagger Codegen CLI (v3.0.34)
 

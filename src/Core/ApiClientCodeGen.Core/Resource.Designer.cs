@@ -69,7 +69,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to aa154752b82c9b84151cd4998ce2a86ed21f5bd3.
+        ///   Looks up a localized string similar to ACE9D0D6F89AFED9EED414DCB3736DFABC911B77.
         /// </summary>
         public static string LegacyOpenApiGenerator_SHA1 {
             get {
@@ -78,7 +78,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.24.0/openapi-generator-cli-7.24.0.jar.
+        ///   Looks up a localized string similar to https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.25.0/openapi-generator-cli-7.25.0.jar.
         /// </summary>
         public static string OpenApiGenerator_DownloadUrl {
             get {
@@ -87,7 +87,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to c24f1602d6b72c44e87a1f18b90892e6.
+        ///   Looks up a localized string similar to e01eddf220074439f733bdf6e8c3daad.
         /// </summary>
         public static string OpenApiGenerator_MD5 {
             get {
@@ -96,7 +96,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 7b5dbd235a281a0a274cc40b8b598c12c899ea85.
+        ///   Looks up a localized string similar to 56a9bb79e3bb565f477eddca2c6daa288a9c6f35.
         /// </summary>
         public static string OpenApiGenerator_SHA1 {
             get {
@@ -114,7 +114,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 24803a056bc36a4f8824612fb31c8133.
+        ///   Looks up a localized string similar to A91658FA5F85D8501D0FB5E4501D35CF.
         /// </summary>
         public static string SwaggerCodegenCli_MD5 {
             get {
@@ -123,7 +123,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to aa154752b82c9b84151cd4998ce2a86ed21f5bd3.
+        ///   Looks up a localized string similar to 54EB5F2561C77D23AF3FA2E4CEA8A100BA8F71C8.
         /// </summary>
         public static string SwaggerCodegenCli_SHA1 {
             get {
