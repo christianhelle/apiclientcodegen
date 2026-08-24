@@ -69,7 +69,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 56a9bb79e3bb565f477eddca2c6daa288a9c6f35.
+        ///   Looks up a localized string similar to ACE9D0D6F89AFED9EED414DCB3736DFABC911B77.
         /// </summary>
         public static string LegacyOpenApiGenerator_SHA1 {
             get {
@@ -114,7 +114,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to e01eddf220074439f733bdf6e8c3daad.
+        ///   Looks up a localized string similar to A91658FA5F85D8501D0FB5E4501D35CF.
         /// </summary>
         public static string SwaggerCodegenCli_MD5 {
             get {
@@ -123,7 +123,7 @@ namespace Rapicgen.Core {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 56a9bb79e3bb565f477eddca2c6daa288a9c6f35.
+        ///   Looks up a localized string similar to 54EB5F2561C77D23AF3FA2E4CEA8A100BA8F71C8.
         /// </summary>
         public static string SwaggerCodegenCli_SHA1 {
             get {
