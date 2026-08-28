@@ -61,6 +61,11 @@ namespace Rapicgen.Options.OpenApiGenerator
         public string? TemplatesPath { get; set; } = null!;
 
         [Category(Name)]
+        [DisplayName("Configuration File")]
+        [Description("Optional path to an OpenAPI Generator configuration file. When set, the generator uses this file instead of auto-discovering one next to the swagger file.")]
+        public string? ConfigurationFile { get; set; } = null!;
+
+        [Category(Name)]
         [DisplayName("Use Configuration File")]
         [Description("Use the configuration file if present.")]
         public bool UseConfigurationFile { get; set; } = true;

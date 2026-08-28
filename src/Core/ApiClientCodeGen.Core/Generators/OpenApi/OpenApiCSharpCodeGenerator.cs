@@ -76,7 +76,18 @@ namespace Rapicgen.Core.Generators.OpenApi
                     arguments += $"--http-user-agent \"{openApiGeneratorOptions.HttpUserAgent}\" ";
                 }
 
-                if (openApiGeneratorOptions.UseConfigurationFile)
+                if (!string.IsNullOrWhiteSpace(openApiGeneratorOptions.ConfigurationFile))
+                {
+                    var configFile = openApiGeneratorOptions.ConfigurationFile;
+                    if (!Path.IsPathRooted(configFile))
+                    {
+                        var swaggerDirectory = Path.GetDirectoryName(swaggerFile) ?? Directory.GetCurrentDirectory();
+                        configFile = Path.GetFullPath(Path.Combine(swaggerDirectory, configFile));
+                    }
+
+                    arguments += $"-c \"{configFile}\" ";
+                }
+                else if (openApiGeneratorOptions.UseConfigurationFile)
                 {
                     var extension = Path.GetExtension(swaggerFile);
                     if (extension != null)
