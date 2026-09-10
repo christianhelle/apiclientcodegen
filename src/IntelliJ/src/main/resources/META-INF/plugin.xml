@@ -54,8 +54,6 @@
         
         <p>🔗 <a href="https://github.com/christianhelle/apiclientcodegen">GitHub Repository</a> | <a href="https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.ApiClientCodeGenerator2022">VS Extension</a> | <a href="https://marketplace.visualstudio.com/items?itemName=ChristianResmaHelle.apiclientcodegen">VS Code Extension</a></p>
     ]]></description>
-    <version>${pluginVersion}</version>
-    <idea-version since-build="${pluginSinceBuild}" until-build="${pluginUntilBuild}"/>
     <depends>com.intellij.modules.platform</depends>
     <actions>
         <group id="ApiClientCodeGen.Group" text="REST API Client Code Generator" popup="true">
