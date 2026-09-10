@@ -11,6 +11,7 @@ val pluginSinceBuild: String by project
 val pluginUntilBuild: String by project
 val platformVersion: String by project
 val javaVersion: String by project
+val kotlinApiVersion: String by project
 
 group = pluginGroup
 version = pluginVersion
@@ -64,6 +65,9 @@ kotlin {
     jvmToolchain(javaVersion.toInt())
     compilerOptions {
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.valueOf("JVM_${javaVersion}"))
+        // The IDE supplies the Kotlin stdlib at runtime, so never compile against
+        // stdlib APIs newer than the oldest platform we claim to support.
+        apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.fromVersion(kotlinApiVersion))
     }
 }
 
