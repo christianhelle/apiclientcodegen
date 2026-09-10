@@ -1,6 +1,13 @@
 ## REST API Client Code Generator (IntelliJ / Rider Plugin)
 
-Early preview plugin providing similar code generation features as the VS Code extension, inside JetBrains IDEs (target Rider 2025.1.5).
+Early preview plugin providing similar code generation features as the VS Code extension, inside JetBrains IDEs.
+
+### IDE Compatibility
+
+The plugin is built against IntelliJ Platform 2025.1 and declares `since-build=251` with no
+upper bound, so it loads in any 2025.1 or newer JetBrains IDE (Rider included). Do not set
+`pluginUntilBuild` in `gradle.properties` unless you deliberately want to cap compatibility --
+an upper bound makes newer IDEs reject the plugin as incompatible.
 
 ### Preview Features Implemented
 
@@ -19,6 +26,15 @@ Early preview plugin providing similar code generation features as the VS Code e
 
 ```powershell
 ./gradlew buildPlugin
+```
+
+### Verify IDE Compatibility
+
+Runs the JetBrains Plugin Verifier against the recommended IDEs plus the Rider release named by
+`riderVersion` in `gradle.properties`. This is what catches "the plugin won't load in my IDE".
+
+```powershell
+./gradlew verifyPlugin
 ```
 
 ### Run Sandbox
