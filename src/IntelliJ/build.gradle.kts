@@ -30,6 +30,11 @@ intellijPlatform {
         ideaVersion.sinceBuild.set(pluginSinceBuild)
         if (pluginUntilBuild.isNotBlank()) {
             ideaVersion.untilBuild.set(pluginUntilBuild)
+        } else {
+            // Drop the until-build attribute entirely. Without this the platform
+            // defaults it to the build-time branch, which makes newer IDEs (Rider
+            // 2026.2, for example) reject the plugin as incompatible.
+            ideaVersion.untilBuild.set(provider { null })
         }
     }
     pluginVerification {
