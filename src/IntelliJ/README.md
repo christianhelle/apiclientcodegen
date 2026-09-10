@@ -12,8 +12,8 @@ an upper bound makes newer IDEs reject the plugin as incompatible.
 ### Preview Features Implemented
 
 - Context menu on OpenAPI spec files (`.json`, `.yaml`, `.yml`):
-	- Generate C# Client (NSwag)
-	- Generate TypeScript Client (Angular)
+	- Generate C# Client with NSwag, Refitter, OpenAPI Generator, Microsoft Kiota or Swagger Codegen CLI
+	- Generate TypeScript Client for Angular, Aurelia, Axios, Fetch, Inversify, jQuery, NestJS, Node, Redux Query or RxJS
 - Context menu on `.refitter` files: Generate Refitter Output (Refit interface + contracts)
 - Prompts for namespace (C#) or output folder (TypeScript)
 - Uses installed `rapicgen` .NET tool; shows guidance if missing
