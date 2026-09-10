@@ -10,6 +10,7 @@ val pluginVersion: String by project
 val pluginSinceBuild: String by project
 val pluginUntilBuild: String by project
 val platformVersion: String by project
+val riderVersion: String by project
 val javaVersion: String by project
 val kotlinApiVersion: String by project
 
@@ -41,6 +42,8 @@ intellijPlatform {
     pluginVerification {
         ides {
             recommended()
+            // Most users run this plugin in Rider, so verify against it explicitly
+            create(org.jetbrains.intellij.platform.gradle.IntelliJPlatformType.Rider, riderVersion)
         }
     }
 }
