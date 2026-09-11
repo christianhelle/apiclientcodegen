@@ -21,6 +21,9 @@
 
 **Merged pull requests:**
 
+- Fix Dependabot npm vulnerabilities in the VS Code extension [\#1666](https://github.com/christianhelle/apiclientcodegen/pull/1666) ([christianhelle](https://github.com/christianhelle))
+- Bump Refit to 10.2.0 to fix the revoked-certificate restore failure [\#1665](https://github.com/christianhelle/apiclientcodegen/pull/1665) ([christianhelle](https://github.com/christianhelle))
+- Fix IntelliJ plugin compatibility with current JetBrains IDEs [\#1664](https://github.com/christianhelle/apiclientcodegen/pull/1664) ([christianhelle](https://github.com/christianhelle))
 - Update dependency Xunit.SkippableFact to 1.5.85 [\#1657](https://github.com/christianhelle/apiclientcodegen/pull/1657) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency MessagePack to v3 [\#1646](https://github.com/christianhelle/apiclientcodegen/pull/1646) ([renovate[bot]](https://github.com/apps/renovate))
 - Bump actions/setup-node from 6 to 7 [\#1645](https://github.com/christianhelle/apiclientcodegen/pull/1645) ([dependabot[bot]](https://github.com/apps/dependabot))
