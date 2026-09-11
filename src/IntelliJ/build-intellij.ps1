@@ -82,5 +82,14 @@ if (-not (Get-Command java -ErrorAction SilentlyContinue)) {
 }
 
 Write-Host "Gradle using java from: $($env:JAVA_HOME)" -ForegroundColor Yellow
-./gradlew --version
-./gradlew buildPlugin
+# Resolve gradlew against the script's directory, not the caller's working directory
+Push-Location $PSScriptRoot
+try {
+	./gradlew --version
+	./gradlew buildPlugin
+	$buildExitCode = $LASTEXITCODE
+}
+finally {
+	Pop-Location
+}
+exit $buildExitCode
