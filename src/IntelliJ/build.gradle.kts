@@ -10,7 +10,9 @@ val pluginVersion: String by project
 val pluginSinceBuild: String by project
 val pluginUntilBuild: String by project
 val platformVersion: String by project
+val riderVersion: String by project
 val javaVersion: String by project
+val kotlinApiVersion: String by project
 
 group = pluginGroup
 version = pluginVersion
@@ -30,11 +32,18 @@ intellijPlatform {
         ideaVersion.sinceBuild.set(pluginSinceBuild)
         if (pluginUntilBuild.isNotBlank()) {
             ideaVersion.untilBuild.set(pluginUntilBuild)
+        } else {
+            // Drop the until-build attribute entirely. Without this the platform
+            // defaults it to the build-time branch, which makes newer IDEs (Rider
+            // 2026.2, for example) reject the plugin as incompatible.
+            ideaVersion.untilBuild.set(provider { null })
         }
     }
     pluginVerification {
         ides {
             recommended()
+            // Most users run this plugin in Rider, so verify against it explicitly
+            create(org.jetbrains.intellij.platform.gradle.IntelliJPlatformType.Rider, riderVersion)
         }
     }
 }
@@ -59,6 +68,9 @@ kotlin {
     jvmToolchain(javaVersion.toInt())
     compilerOptions {
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.valueOf("JVM_${javaVersion}"))
+        // The IDE supplies the Kotlin stdlib at runtime, so never compile against
+        // stdlib APIs newer than the oldest platform we claim to support.
+        apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.fromVersion(kotlinApiVersion))
     }
 }
 
