@@ -16,7 +16,8 @@ function Get-JavaMajorVersion([string]$javaHome) {
 
 function Use-Jdk21 {
 	$candidatePaths = @()
-	$candidatePaths += (Resolve-Path -ErrorAction SilentlyContinue "$PSScriptRoot/../java" | ForEach-Object { (Get-ChildItem $_.Path -Directory -ErrorAction SilentlyContinue) }) | ForEach-Object { $_.FullName }
+	# Downloaded JDKs are extracted to ../java/jdk21-extracted/<guid>/<jdk>, so search that deep
+	$candidatePaths += (Get-ChildItem "$PSScriptRoot/../java" -Directory -Recurse -Depth 2 -ErrorAction SilentlyContinue) | ForEach-Object { $_.FullName }
 	if ($env:JAVA_HOME) { $candidatePaths += $env:JAVA_HOME }
 	if ($env:JDK_HOME) { $candidatePaths += $env:JDK_HOME }
 	$candidatePaths += (Get-ChildItem "$Env:ProgramFiles/Java" -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName)
