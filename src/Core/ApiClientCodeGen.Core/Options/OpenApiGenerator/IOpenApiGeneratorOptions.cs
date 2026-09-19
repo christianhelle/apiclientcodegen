@@ -11,6 +11,7 @@
         string? CustomAdditionalProperties { get; set; }
         bool SkipFormModel { get; set; }
         string? TemplatesPath { get; set; }
+        string? ConfigurationFile { get; set; }
         bool UseConfigurationFile { get; set; }
         bool GenerateMultipleFiles { get; set; }
         public OpenApiSupportedVersion Version { get; set; }

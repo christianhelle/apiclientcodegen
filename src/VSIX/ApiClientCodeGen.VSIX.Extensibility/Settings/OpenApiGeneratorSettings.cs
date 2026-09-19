@@ -115,6 +115,16 @@ internal static class OpenApiGeneratorSettings
     };
 
     [VisualStudioContribution]
+    internal static Setting.String OpenApiConfigurationFile { get; } = new(
+        "configurationFile",
+        "%Settings.OpenApi.ConfigurationFile.DisplayName%",
+        OpenApiGeneratorCategory,
+        string.Empty)
+    {
+        Description = "%Settings.OpenApi.ConfigurationFile.Description%",
+    };
+
+    [VisualStudioContribution]
     internal static Setting.Boolean OpenApiUseConfigurationFile { get; } = new(
         "useConfigurationFile",
         "%Settings.OpenApi.UseConfigurationFile.DisplayName%",
