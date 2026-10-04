@@ -21,6 +21,7 @@
 
 **Merged pull requests:**
 
+- Update dependency MessagePack to 3.1.11 [\#1671](https://github.com/christianhelle/apiclientcodegen/pull/1671) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency fast-uri to v3.1.7 \[SECURITY\] [\#1667](https://github.com/christianhelle/apiclientcodegen/pull/1667) ([renovate[bot]](https://github.com/apps/renovate))
 - Fix Dependabot npm vulnerabilities in the VS Code extension [\#1666](https://github.com/christianhelle/apiclientcodegen/pull/1666) ([christianhelle](https://github.com/christianhelle))
 - Bump Refit to 10.2.0 to fix the revoked-certificate restore failure [\#1665](https://github.com/christianhelle/apiclientcodegen/pull/1665) ([christianhelle](https://github.com/christianhelle))
