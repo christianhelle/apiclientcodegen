@@ -12,7 +12,7 @@ dotnet tool update dotnet-sonarscanner --tool-path .tools\scanner
 .\.tools\scanner\dotnet-sonarscanner begin `
     /k:"christianhelle_apiclientcodegen" `
     /o:"christianhelle-github" `
-    /d:sonar.login=$sonar `
+    /d:sonar.token=$sonar `
     /d:sonar.host.url="https://sonarcloud.io" `
     /d:sonar.cs.vstest.reportsPaths=TestResults/*.trx `
     /d:sonar.cs.vscoveragexml.reportsPaths=TestResults/*/*.xml
@@ -26,4 +26,4 @@ dotnet test Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj 
 dotnet test Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj --collect "Code Coverage;Format=xml" --logger trx --results-directory TestResults
 
 # Publish results to SonarCloud
-.\.tools\scanner\dotnet-sonarscanner end /d:sonar.login=$sonar
+.\.tools\scanner\dotnet-sonarscanner end /d:sonar.token=$sonar
