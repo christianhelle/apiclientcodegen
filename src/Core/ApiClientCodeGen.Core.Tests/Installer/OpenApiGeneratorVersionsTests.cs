@@ -32,4 +32,16 @@ public class OpenApiGeneratorVersionsTests
         Assert.Equal(expected, latest);
         Assert.Equal("7.26.0", latest.Version);
     }
+
+    [Fact]
+    public void Resources_MatchLatestVersion()
+    {
+        // Act
+        var latest = OpenApiGeneratorVersions.GetLatestVersion();
+
+        // Assert
+        Assert.Equal(latest.DownloadUrl, Resource.OpenApiGenerator_DownloadUrl);
+        Assert.Equal(latest.SHA1, Resource.OpenApiGenerator_SHA1);
+        Assert.Equal(latest.MD5, Resource.OpenApiGenerator_MD5);
+    }
 }
