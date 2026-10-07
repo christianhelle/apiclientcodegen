@@ -81,8 +81,8 @@ jobs:
 
       - name: Run .NET Core Tests
         working-directory: src
-        continue-on-error: true
         run: |
+          $PSNativeCommandUseErrorActionPreference = $true  # fail the step if any test run fails, not just the last one
           dotnet test CLI/ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj --collect "Code Coverage;Format=xml" --logger trx --results-directory TestResults
           dotnet test Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj --collect "Code Coverage;Format=xml" --logger trx --results-directory TestResults
           dotnet test Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj --collect "Code Coverage;Format=xml" --logger trx --results-directory TestResults
@@ -93,6 +93,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         working-directory: src
-        continue-on-error: true
         run: |
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
