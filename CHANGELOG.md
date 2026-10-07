@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- OpenAPI Generator v7.26.0 [\#1673](https://github.com/christianhelle/apiclientcodegen/pull/1673) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.25.0 [\#1658](https://github.com/christianhelle/apiclientcodegen/pull/1658) ([christianhelle](https://github.com/christianhelle))
 - Fix all Dependabot security alerts [\#1635](https://github.com/christianhelle/apiclientcodegen/pull/1635) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.24.0 [\#1626](https://github.com/christianhelle/apiclientcodegen/pull/1626) ([christianhelle](https://github.com/christianhelle))
