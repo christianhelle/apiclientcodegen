@@ -14,20 +14,16 @@ dotnet tool update dotnet-sonarscanner --tool-path .tools\scanner
     /o:"christianhelle-github" `
     /d:sonar.login=$sonar `
     /d:sonar.host.url="https://sonarcloud.io" `
-    /d:sonar.cs.vstest.reportsPaths=**/*.trx `
-    /d:sonar.cs.vscoveragexml.reportsPaths=**/*.coveragexml
+    /d:sonar.cs.vstest.reportsPaths=TestResults/*.trx `
+    /d:sonar.cs.vscoveragexml.reportsPaths=TestResults/*/*.xml
 
 # Build
 .\build.ps1 --target VSIX
 
-# Test
-dotnet test CLI/ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj --collect "Code coverage"
-dotnet test Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj --collect "Code coverage"
-dotnet test Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj --collect "Code coverage"
-
-# Convert .coverage files to XML format
-dotnet tool update dotnet-coverageconverter --tool-path .tools\coverage
-.\.tools\coverage\dotnet-coverageconverter.exe --CoverageFilesFolder . --ProcessAllFiles
+# Test (coverage is written as XML that SonarCloud can import directly)
+dotnet test CLI/ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj --collect "Code Coverage;Format=xml" --logger trx --results-directory TestResults
+dotnet test Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj --collect "Code Coverage;Format=xml" --logger trx --results-directory TestResults
+dotnet test Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj --collect "Code Coverage;Format=xml" --logger trx --results-directory TestResults
 
 # Publish results to SonarCloud
 .\.tools\scanner\dotnet-sonarscanner end /d:sonar.login=$sonar
