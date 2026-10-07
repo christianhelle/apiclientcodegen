@@ -22,9 +22,15 @@ dotnet tool update dotnet-sonarscanner --tool-path .tools\scanner
 .\build.ps1 --target VSIX
 
 # Test (coverage is written as XML that SonarCloud can import directly)
-dotnet test CLI/ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj --collect "Code Coverage;Format=xml" --logger trx --results-directory TestResults
-dotnet test Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj --collect "Code Coverage;Format=xml" --logger trx --results-directory TestResults
-dotnet test Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj --collect "Code Coverage;Format=xml" --logger trx --results-directory TestResults
+$testProjects = @(
+    "CLI/ApiClientCodeGen.CLI.Tests\ApiClientCodeGen.CLI.Tests.csproj",
+    "Core/ApiClientCodeGen.Core.Tests\ApiClientCodeGen.Core.Tests.csproj",
+    "Core/ApiClientCodeGen.Core.IntegrationTests\ApiClientCodeGen.Core.IntegrationTests.csproj"
+)
+foreach ($testProject in $testProjects) {
+    dotnet test $testProject --collect "Code Coverage;Format=xml" --logger trx --results-directory TestResults
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
 
 # Publish results to SonarCloud
 .\.tools\scanner\dotnet-sonarscanner end /d:sonar.token=$sonar
