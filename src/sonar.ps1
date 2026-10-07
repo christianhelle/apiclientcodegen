@@ -15,7 +15,8 @@ dotnet tool update dotnet-sonarscanner --tool-path .tools\scanner
     /d:sonar.token=$sonar `
     /d:sonar.host.url="https://sonarcloud.io" `
     /d:sonar.cs.vstest.reportsPaths=TestResults/*.trx `
-    /d:sonar.cs.vscoveragexml.reportsPaths=TestResults/*/*.xml
+    /d:sonar.cs.vscoveragexml.reportsPaths=TestResults/*/*.xml `
+    /d:sonar.cpd.exclusions="**/Installer/OpenApiGeneratorVersions.cs,**/Settings/OpenApiGeneratorSettings.cs,**/*.vsct"
 
 # Build
 .\build.ps1 --target VSIX
