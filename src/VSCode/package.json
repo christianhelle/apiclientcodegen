@@ -250,6 +250,6 @@
     "js-yaml@4": "4.3.2",
     "fast-uri": "3.1.7",
     "browserslist": "4.28.7",
-    "baseline-browser-mapping": "2.11.22"
+    "baseline-browser-mapping": "2.11.28"
   }
 }
