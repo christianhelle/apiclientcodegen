@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Microsoft Kiota v1.36.1 [\#1675](https://github.com/christianhelle/apiclientcodegen/pull/1675) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.26.0 [\#1673](https://github.com/christianhelle/apiclientcodegen/pull/1673) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.25.0 [\#1658](https://github.com/christianhelle/apiclientcodegen/pull/1658) ([christianhelle](https://github.com/christianhelle))
 - Fix all Dependabot security alerts [\#1635](https://github.com/christianhelle/apiclientcodegen/pull/1635) ([christianhelle](https://github.com/christianhelle))
@@ -22,6 +23,7 @@
 
 **Merged pull requests:**
 
+- Fix SonarCloud coverage import and duplication on version bumps [\#1674](https://github.com/christianhelle/apiclientcodegen/pull/1674) ([christianhelle](https://github.com/christianhelle))
 - Update dependency MessagePack to 3.1.11 [\#1671](https://github.com/christianhelle/apiclientcodegen/pull/1671) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency fast-uri to v3.1.7 \[SECURITY\] [\#1667](https://github.com/christianhelle/apiclientcodegen/pull/1667) ([renovate[bot]](https://github.com/apps/renovate))
 - Fix Dependabot npm vulnerabilities in the VS Code extension [\#1666](https://github.com/christianhelle/apiclientcodegen/pull/1666) ([christianhelle](https://github.com/christianhelle))
