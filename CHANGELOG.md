@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Fix Generate with NSwag context menu doing nothing [\#1678](https://github.com/christianhelle/apiclientcodegen/pull/1678) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.36.1 [\#1675](https://github.com/christianhelle/apiclientcodegen/pull/1675) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.26.0 [\#1673](https://github.com/christianhelle/apiclientcodegen/pull/1673) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.25.0 [\#1658](https://github.com/christianhelle/apiclientcodegen/pull/1658) ([christianhelle](https://github.com/christianhelle))
@@ -19,6 +20,7 @@
 
 **Closed issues:**
 
+- OpenAPI generator poor documentation [\#1602](https://github.com/christianhelle/apiclientcodegen/issues/1602)
 - Remove AutoRest after deprecation window [\#1520](https://github.com/christianhelle/apiclientcodegen/issues/1520)
 
 **Merged pull requests:**
