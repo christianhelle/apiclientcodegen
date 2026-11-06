@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -21,23 +20,24 @@ namespace Rapicgen.Tests.Commands
             Path.Combine("src", "VSIX", "ApiClientCodeGen.VSIX.Dev17", "VSCommandTable.vsct"),
         };
 
-        public static IEnumerable<object[]> Commands()
+        public static TheoryData<string, string, string> Commands()
         {
             var types = typeof(CustomToolSetterCommand).Assembly
                 .GetTypes()
                 .Where(t => !t.IsAbstract)
                 .ToList();
 
+            var data = new TheoryData<string, string, string>();
             foreach (var vsct in CommandTables)
             {
                 foreach (var type in types.Where(IsCustomToolSetter))
-                    yield return new object[] { vsct, type.Name, type.Name };
+                    data.Add(vsct, type.Name, type.Name);
 
                 foreach (var type in types.Where(t => typeof(NewRestClientCommand).IsAssignableFrom(t)))
-                {
-                    yield return new object[] { vsct, type.Name, "GenerateWith" + GetGeneratorName(type) };
-                }
+                    data.Add(vsct, type.Name, "GenerateWith" + GetGeneratorName(type));
             }
+
+            return data;
         }
 
         [Theory]
