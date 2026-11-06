@@ -35,10 +35,7 @@ namespace Rapicgen.Tests.Commands
 
                 foreach (var type in types.Where(t => typeof(NewRestClientCommand).IsAssignableFrom(t)))
                 {
-                    var generator = type.Name
-                        .Replace("New", string.Empty)
-                        .Replace("ClientCommand", string.Empty);
-                    yield return new object[] { vsct, type.Name, "GenerateWith" + generator };
+                    yield return new object[] { vsct, type.Name, "GenerateWith" + GetGeneratorName(type) };
                 }
             }
         }
@@ -73,6 +70,18 @@ namespace Rapicgen.Tests.Commands
                 if (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(CustomToolSetter<>))
                     return true;
             return false;
+        }
+
+        private static string GetGeneratorName(Type type)
+        {
+            const string prefix = "New";
+            const string suffix = "ClientCommand";
+            var name = type.Name;
+            if (name.StartsWith(prefix, StringComparison.Ordinal))
+                name = name.Substring(prefix.Length);
+            if (name.EndsWith(suffix, StringComparison.Ordinal))
+                name = name.Substring(0, name.Length - suffix.Length);
+            return name;
         }
 
         private static PropertyInfo GetProperty(Type type, string name)
