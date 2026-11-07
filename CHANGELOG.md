@@ -6,6 +6,8 @@
 
 **Implemented enhancements:**
 
+- Remove remaining AutoRest traces from smoke tests [\#1683](https://github.com/christianhelle/apiclientcodegen/pull/1683) ([christianhelle](https://github.com/christianhelle))
+- Address Dependabot alerts [\#1682](https://github.com/christianhelle/apiclientcodegen/pull/1682) ([christianhelle](https://github.com/christianhelle))
 - Fix Generate with NSwag context menu doing nothing [\#1678](https://github.com/christianhelle/apiclientcodegen/pull/1678) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.36.1 [\#1675](https://github.com/christianhelle/apiclientcodegen/pull/1675) ([christianhelle](https://github.com/christianhelle))
 - OpenAPI Generator v7.26.0 [\#1673](https://github.com/christianhelle/apiclientcodegen/pull/1673) ([christianhelle](https://github.com/christianhelle))
