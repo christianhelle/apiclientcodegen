@@ -29,13 +29,13 @@ This is a **multi-platform code generation tool** that wraps external OpenAPI/Sw
 Install required dependencies in this order:
 - .NET 8.0 SDK (required for all builds and CLI tool)
 - Java 17+ Runtime (required for code generators like Swagger Codegen, OpenAPI Generator)
-- Node.js v20+ and NPM (required for VSCode extension)
+- Node.js v22+ and NPM (required for VSCode extension; `@vscode/vsce` packaging needs v22+)
 
 Verify installations:
 ```bash
 dotnet --version  # Should show 8.0.x
 java -version     # Should show 17+
-node --version    # Should show v20+
+node --version    # Should show v22+
 npm --version     # Should show 10+
 ```
 
