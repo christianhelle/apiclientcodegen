@@ -103,6 +103,25 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
                 .Be("16.4.0");
         }
 
+        [Theory]
+        [InlineData("9.0.2", null, true, "9.0.2")]
+        [InlineData("9.0.2", "16.4.0", true, "16.4.0")]
+        [InlineData("9.0.2", "16.4.0", false, "16.4.0")]
+        [InlineData("9.0.2", "9.0.2", true, "9.0.2")]
+        [InlineData("9.0.2", "8.0.0", true, "9.0.2")]
+        [InlineData("9.0.2", "8.0.0", false, "8.0.0")]
+        public void GetVersionToInstall_Never_Downgrades_Central_Version(
+            string requiredVersion,
+            string? centralVersion,
+            bool forceUpdate,
+            string expected)
+            => CentralPackageManagement
+                .GetVersionToInstall(
+                    new PackageDependency("Refit", requiredVersion, forceUpdate),
+                    centralVersion)
+                .Should()
+                .Be(expected);
+
         [Fact]
         public void FindCentralPackageVersion_Returns_Null_For_Invalid_Xml()
         {

@@ -34,6 +34,18 @@ namespace Rapicgen.Core.NuGet
             }
         }
 
+        public static string GetVersionToInstall(PackageDependency dependency, string? centralVersion)
+        {
+            if (string.IsNullOrWhiteSpace(centralVersion))
+                return dependency.Version;
+
+            if (dependency.ForceUpdate &&
+                !PackageVersionHelper.IsVersionGreaterOrEqual(centralVersion!, dependency.Version))
+                return dependency.Version;
+
+            return centralVersion!;
+        }
+
         private static string? FindPackagesPropsFile(string projectFilePath)
         {
             var directory = new FileInfo(projectFilePath).Directory;
