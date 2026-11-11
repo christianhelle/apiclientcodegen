@@ -228,8 +228,13 @@ namespace Rapicgen.Extensions
             IReadOnlyCollection<IVsPackageMetadata> installedPackages,
             IVsPackageInstaller packageInstaller)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             var packageId = packageDependency.Name;
-            var version = packageDependency.Version;
+            var centralVersion = CentralPackageManagement.FindCentralPackageVersion(project.FullName, packageId);
+            if (centralVersion != null)
+                Logger.Instance.WriteLine($"{packageId} version {centralVersion} is centrally managed in Directory.Packages.props");
+
+            var version = CentralPackageManagement.GetVersionToInstall(packageDependency, centralVersion);
 
             var existingPackage = installedPackages.FirstOrDefault(c =>
                 string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase));
