@@ -176,14 +176,17 @@ namespace Rapicgen.Core.NuGet
             return File.Exists(path) ? path : null;
         }
 
+        private static readonly TimeSpan RegexTimeout = TimeSpan.FromSeconds(1);
+
         private static readonly Regex ExistsCondition =
-            new Regex(@"^\s*Exists\(\s*'([^']*)'\s*\)\s*$", RegexOptions.IgnoreCase);
+            new Regex(@"^\s*Exists\(\s*'([^']*)'\s*\)\s*$", RegexOptions.IgnoreCase, RegexTimeout);
 
         // The whole value must be a single GetPathOfFileAbove call, otherwise it's left unresolved
         private static readonly Regex GetPathOfFileAbove =
             new Regex(
                 @"^\$\(\[MSBuild\]::GetPathOfFileAbove\(\s*'?([^,')]+?)'?\s*(?:,\s*'?(.*?)'?\s*)?\)\)$",
-                RegexOptions.IgnoreCase);
+                RegexOptions.IgnoreCase,
+                RegexTimeout);
 
         private static readonly string[] ToolsetPathProperties =
         {
@@ -244,7 +247,7 @@ namespace Rapicgen.Core.NuGet
         {
             var sdk = (string?)import.Attribute("Sdk");
             if (sdk != null)
-                return sdk.Trim().StartsWith("Microsoft.", StringComparison.OrdinalIgnoreCase);
+                return IsMicrosoftSdk(sdk);
 
             var project = ((string?)import.Attribute("Project"))?.Trim() ?? string.Empty;
             return ToolsetPathProperties.Any(p => project.StartsWith(p, StringComparison.OrdinalIgnoreCase));
@@ -295,10 +298,36 @@ namespace Rapicgen.Core.NuGet
                 EvaluateProperty(buildProps, new HashSet<string>(StringComparer.OrdinalIgnoreCase), state);
 
             if (File.Exists(projectFilePath))
+            {
                 EvaluateProperty(projectFilePath, new HashSet<string>(StringComparer.OrdinalIgnoreCase), state);
+
+                // Implicit Sdk.targets imports run after the project body, so a custom SDK has the last word
+                if (UsesCustomSdk(projectFilePath))
+                    state.Unresolved = true;
+            }
 
             return state.Unresolved ? null : state.Value ?? true;
         }
+
+        private static bool UsesCustomSdk(string projectFilePath)
+        {
+            var project = XDocument.Load(projectFilePath).Root;
+            if (project == null)
+                return false;
+
+            var sdks = (((string?)project.Attribute("Sdk")) ?? string.Empty)
+                .Split(';')
+                .Concat(project.Elements()
+                    .Where(e => e.Name.LocalName == "Sdk")
+                    .Select(e => (string?)e.Attribute("Name") ?? string.Empty))
+                .Select(sdk => sdk.Split('/')[0].Trim())
+                .Where(sdk => sdk.Length > 0);
+
+            return sdks.Any(sdk => !IsMicrosoftSdk(sdk));
+        }
+
+        private static bool IsMicrosoftSdk(string sdk)
+            => sdk.Trim().StartsWith("Microsoft.", StringComparison.OrdinalIgnoreCase);
 
         private static void EvaluateProperty(string file, ISet<string> visited, PropertyState state)
         {

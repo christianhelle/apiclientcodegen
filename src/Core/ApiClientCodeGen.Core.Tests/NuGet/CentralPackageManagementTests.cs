@@ -662,6 +662,42 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
                 .Be("16.4.0");
         }
 
+        [Theory]
+        [InlineData("<Project Sdk=\"Contoso.Build.Sdk\" />")]
+        [InlineData("<Project Sdk=\"Microsoft.NET.Sdk;Contoso.Build.Sdk/1.0.0\" />")]
+        [InlineData("<Project><Sdk Name=\"Contoso.Build.Sdk\" Version=\"1.0.0\" /></Project>")]
+        public void Implicit_Custom_Sdk_Skips_Installation(string projectContents)
+        {
+            File.WriteAllText(projectFile, projectContents);
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .GetVersionToInstall(
+                    new PackageDependency("Refit", "11.2.0"),
+                    CentralPackageManagement.FindCentralPackageVersion(projectFile, "Refit"))
+                .Should()
+                .BeNull();
+        }
+
+        [Theory]
+        [InlineData("<Project Sdk=\"Microsoft.NET.Sdk\" />")]
+        [InlineData("<Project Sdk=\"Microsoft.NET.Sdk.Web/9.0.0\" />")]
+        [InlineData("<Project><Sdk Name=\"Microsoft.NET.Sdk\" /></Project>")]
+        public void FindCentralPackageVersion_Ignores_Implicit_Microsoft_Sdk(string projectContents)
+        {
+            File.WriteAllText(projectFile, projectContents);
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
         [Fact]
         public void FindCentralPackageVersion_Returns_Null_For_Invalid_Xml()
         {
