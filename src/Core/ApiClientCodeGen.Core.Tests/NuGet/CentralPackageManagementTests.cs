@@ -215,6 +215,56 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
         }
 
         [Fact]
+        public void FindCentralPackageVersion_Ignores_Update_Before_Include()
+        {
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Update=\"Refit\" Version=\"11.2.0\" /><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .GetVersionToInstall(
+                    new PackageDependency("Refit", "11.2.0"),
+                    CentralPackageManagement.FindCentralPackageVersion(projectFile, "Refit"))
+                .Should()
+                .NotBe("11.2.0");
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Uses_Last_Opt_Out_Assignment()
+        {
+            File.WriteAllText(
+                projectFile,
+                "<Project><PropertyGroup><ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally><ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally></PropertyGroup></Project>");
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Theory]
+        [InlineData("<Project><PropertyGroup Condition=\"'$(Configuration)' == 'Debug'\"><ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally></PropertyGroup></Project>")]
+        [InlineData("<Project><PropertyGroup><ManagePackageVersionsCentrally Condition=\"'$(Configuration)' == 'Debug'\">false</ManagePackageVersionsCentrally></PropertyGroup></Project>")]
+        [InlineData("<Project><PropertyGroup><ManagePackageVersionsCentrally>$(UseCpm)</ManagePackageVersionsCentrally></PropertyGroup></Project>")]
+        public void Conditional_Opt_Out_Skips_Installation(string projectContents)
+        {
+            File.WriteAllText(projectFile, projectContents);
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .GetVersionToInstall(
+                    new PackageDependency("Refit", "11.2.0"),
+                    CentralPackageManagement.FindCentralPackageVersion(projectFile, "Refit"))
+                .Should()
+                .BeNull();
+        }
+
+        [Fact]
         public void FindCentralPackageVersion_Returns_Null_For_Invalid_Xml()
         {
             WritePackagesProps(root, "not xml");
