@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- Prevent Refit downgrade and pick Refit version by target framework [\#1685](https://github.com/christianhelle/apiclientcodegen/pull/1685) ([christianhelle](https://github.com/christianhelle))
 - Remove remaining AutoRest traces from smoke tests [\#1683](https://github.com/christianhelle/apiclientcodegen/pull/1683) ([christianhelle](https://github.com/christianhelle))
 - Address Dependabot alerts [\#1682](https://github.com/christianhelle/apiclientcodegen/pull/1682) ([christianhelle](https://github.com/christianhelle))
 - Fix Generate with NSwag context menu doing nothing [\#1678](https://github.com/christianhelle/apiclientcodegen/pull/1678) ([christianhelle](https://github.com/christianhelle))
@@ -19,6 +20,10 @@
 - Remove AutoRest support after official deprecation [\#1620](https://github.com/christianhelle/apiclientcodegen/pull/1620) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.32.4 [\#1607](https://github.com/christianhelle/apiclientcodegen/pull/1607) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.32.3 [\#1606](https://github.com/christianhelle/apiclientcodegen/pull/1606) ([christianhelle](https://github.com/christianhelle))
+
+**Fixed bugs:**
+
+- Reffiter: generate output change the Refit package version [\#1684](https://github.com/christianhelle/apiclientcodegen/issues/1684)
 
 **Closed issues:**
 
