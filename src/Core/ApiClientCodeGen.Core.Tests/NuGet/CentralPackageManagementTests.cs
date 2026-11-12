@@ -265,6 +265,58 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
         }
 
         [Fact]
+        public void FindCentralPackageVersion_Follows_Relative_Import()
+        {
+            var projectDir = Path.GetDirectoryName(projectFile)!;
+            File.WriteAllText(
+                Path.Combine(projectDir, "Versions.props"),
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                projectDir,
+                "<Project><Import Project=\"$(MSBuildThisFileDirectory)Versions.props\" /></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Does_Not_Search_Parent_For_Unrelated_Import()
+        {
+            var projectDir = Path.GetDirectoryName(projectFile)!;
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"1.0.0\" /></ItemGroup></Project>");
+            File.WriteAllText(
+                Path.Combine(projectDir, "Versions.props"),
+                "<Project><ItemGroup><PackageVersion Include=\"Polly\" Version=\"8.0.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                projectDir,
+                "<Project><Import Project=\"Versions.props\" /></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .BeNull();
+        }
+
+        [Fact]
+        public void Unresolvable_Import_Skips_Installation()
+        {
+            WritePackagesProps(
+                Path.GetDirectoryName(projectFile)!,
+                "<Project><Import Project=\"$(RepoRoot)eng/Versions.props\" /></Project>");
+
+            CentralPackageManagement
+                .GetVersionToInstall(
+                    new PackageDependency("Refit", "11.2.0"),
+                    CentralPackageManagement.FindCentralPackageVersion(projectFile, "Refit"))
+                .Should()
+                .BeNull();
+        }
+
+        [Fact]
         public void FindCentralPackageVersion_Returns_Null_For_Invalid_Xml()
         {
             WritePackagesProps(root, "not xml");

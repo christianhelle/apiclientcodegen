@@ -24,25 +24,12 @@ namespace Rapicgen.Core.NuGet
                 if (managedCentrally == false)
                     return null;
 
-                var directory = new FileInfo(projectFilePath).Directory;
-                while (directory != null)
-                {
-                    var propsFile = FindPackagesPropsFile(directory);
-                    if (propsFile == null)
-                        return null;
+                var propsFile = FindPackagesPropsFile(new FileInfo(projectFilePath).Directory);
+                if (propsFile == null)
+                    return null;
 
-                    var document = XDocument.Load(propsFile);
-                    var entries = FindEntries(document, packageId);
-                    if (entries.Count > 0)
-                        return managedCentrally == null ? UnresolvedVersion : GetVersion(entries);
-
-                    if (!document.Descendants().Any(e => e.Name.LocalName == "Import"))
-                        return null;
-
-                    directory = new FileInfo(propsFile).Directory?.Parent;
-                }
-
-                return null;
+                var version = FindVersionInFile(propsFile, packageId, new HashSet<string>(StringComparer.OrdinalIgnoreCase));
+                return version != null && managedCentrally == null ? UnresolvedVersion : version;
             }
             catch
             {
@@ -67,6 +54,61 @@ namespace Rapicgen.Core.NuGet
                 return dependency.Version;
 
             return centralVersion!;
+        }
+
+        private static string? FindVersionInFile(string file, string packageId, ISet<string> visited)
+        {
+            if (!visited.Add(Path.GetFullPath(file)))
+                return null;
+
+            var document = XDocument.Load(file);
+            var entries = FindEntries(document, packageId);
+            if (entries.Count > 0)
+                return GetVersion(entries);
+
+            var unresolvedImport = false;
+            var imports = document
+                .Descendants()
+                .Where(e => e.Name.LocalName == "Import")
+                .Reverse();
+
+            foreach (var import in imports)
+            {
+                var importedFile = ResolveImport(file, (string?)import.Attribute("Project"));
+                if (importedFile == null)
+                {
+                    unresolvedImport = true;
+                    continue;
+                }
+
+                if (!File.Exists(importedFile))
+                    continue;
+
+                var version = FindVersionInFile(importedFile, packageId, visited);
+                if (version != null)
+                    return version;
+            }
+
+            return unresolvedImport ? UnresolvedVersion : null;
+        }
+
+        private static string? ResolveImport(string importingFile, string? project)
+        {
+            if (string.IsNullOrWhiteSpace(project))
+                return null;
+
+            var directory = Path.GetDirectoryName(Path.GetFullPath(importingFile))!;
+            if (project!.Contains("GetPathOfFileAbove") && project.Contains(PackagesPropsFileName))
+                return FindPackagesPropsFile(new DirectoryInfo(directory).Parent) ?? string.Empty;
+
+            var path = project
+                .Replace("$(MSBuildThisFileDirectory)", directory + Path.DirectorySeparatorChar)
+                .Trim();
+
+            if (path.Contains("$("))
+                return null;
+
+            return Path.GetFullPath(Path.Combine(directory, path));
         }
 
         private static List<XElement> FindEntries(XDocument document, string packageId)
