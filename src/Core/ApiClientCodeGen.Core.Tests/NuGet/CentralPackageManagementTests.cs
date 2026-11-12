@@ -185,6 +185,8 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
         [InlineData("<Project><ItemGroup Condition=\"'$(TargetFramework)' == 'net8.0'\"><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>")]
         [InlineData("<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /><PackageVersion Include=\"Refit\" Version=\"11.2.0\" /></ItemGroup></Project>")]
         [InlineData("<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"$(RefitVersion)\" /></ItemGroup></Project>")]
+        [InlineData("<Project><ItemGroup><PackageVersion Include=\"Refit\"><Version Condition=\"'$(TargetFramework)' == 'net8.0'\">16.4.0</Version><Version Condition=\"'$(TargetFramework)' == 'netstandard2.0'\">11.2.0</Version></PackageVersion></ItemGroup></Project>")]
+        [InlineData("<Project><ItemGroup><PackageVersion Include=\"$(RefitPackageId)\" Version=\"16.4.0\" /></ItemGroup></Project>")]
         public void Unresolvable_Central_Version_Skips_Installation(string contents)
         {
             WritePackagesProps(root, contents);
@@ -402,6 +404,42 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
             WritePackagesProps(
                 root,
                 "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Fact]
+        public void Conditional_Import_Skips_Installation()
+        {
+            var projectDir = Path.GetDirectoryName(projectFile)!;
+            File.WriteAllText(
+                Path.Combine(projectDir, "Versions.props"),
+                "<Project><ItemGroup><PackageVersion Include=\"Polly\" Version=\"8.0.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                projectDir,
+                "<Project><Import Project=\"Versions.props\" Condition=\"'$(Configuration)' == 'Debug'\" /></Project>");
+
+            CentralPackageManagement
+                .GetVersionToInstall(
+                    new PackageDependency("Refit", "11.2.0"),
+                    CentralPackageManagement.FindCentralPackageVersion(projectFile, "Refit"))
+                .Should()
+                .BeNull();
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Follows_Import_With_Exists_Condition()
+        {
+            var projectDir = Path.GetDirectoryName(projectFile)!;
+            File.WriteAllText(
+                Path.Combine(projectDir, "Versions.props"),
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                projectDir,
+                "<Project><Import Project=\"Versions.props\" Condition=\"Exists('Versions.props')\" /></Project>");
 
             CentralPackageManagement
                 .FindCentralPackageVersion(projectFile, "Refit")

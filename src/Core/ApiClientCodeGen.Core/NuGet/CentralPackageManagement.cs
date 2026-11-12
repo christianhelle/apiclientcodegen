@@ -85,11 +85,23 @@ namespace Rapicgen.Core.NuGet
             {
                 if (element.Name.LocalName == "Import")
                 {
+                    if (HasNonExistsCondition(element))
+                    {
+                        state.UnresolvedImport = true;
+                        continue;
+                    }
+
                     var importedFile = ResolveImport(file, (string?)element.Attribute("Project"));
                     if (importedFile == null)
                         state.UnresolvedImport = true;
                     else if (File.Exists(importedFile))
                         Evaluate(importedFile, packageId, visited, state);
+                    continue;
+                }
+
+                if (HasExpressionIdentity(element))
+                {
+                    state.Unresolved = true;
                     continue;
                 }
 
@@ -155,11 +167,31 @@ namespace Rapicgen.Core.NuGet
 
         private static string ReadVersion(XElement entry)
         {
-            var version = (string?)entry.Attribute("Version") ??
-                          entry.Elements().FirstOrDefault(e => e.Name.LocalName == "Version")?.Value;
+            var versionElements = entry.Elements().Where(e => e.Name.LocalName == "Version").ToList();
+            if (versionElements.Count > 1 || versionElements.Any(e => e.Attribute("Condition") != null))
+                return UnresolvedVersion;
+
+            var version = (string?)entry.Attribute("Version") ?? versionElements.FirstOrDefault()?.Value;
 
             return string.IsNullOrWhiteSpace(version) ? UnresolvedVersion : version!.Trim();
         }
+
+        // An identity built from properties or item lists could evaluate to any package
+        private static bool HasExpressionIdentity(XElement element)
+            => new[] { "Include", "Update" }
+                .Select(name => (string?)element.Attribute(name) ?? string.Empty)
+                .Any(value => value.Contains("$(") || value.Contains("@(") || value.Contains("%("));
+
+        // Exists(...) conditions are handled by skipping imports of missing files
+        private static bool HasNonExistsCondition(XElement element)
+            => element
+                .AncestorsAndSelf()
+                .Select(e => ((string?)e.Attribute("Condition"))?.Trim())
+                .Any(c => c != null &&
+                          !(c.StartsWith("Exists(", StringComparison.OrdinalIgnoreCase) &&
+                            c.EndsWith(")") &&
+                            c.IndexOf(" and ", StringComparison.OrdinalIgnoreCase) < 0 &&
+                            c.IndexOf(" or ", StringComparison.OrdinalIgnoreCase) < 0));
 
         private static bool HasCondition(XElement element)
             => element.AncestorsAndSelf().Any(e => e.Attribute("Condition") != null);
