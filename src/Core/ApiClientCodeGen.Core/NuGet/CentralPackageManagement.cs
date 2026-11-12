@@ -179,8 +179,16 @@ namespace Rapicgen.Core.NuGet
         private static readonly Regex ExistsCondition =
             new Regex(@"^\s*Exists\(\s*'([^']*)'\s*\)\s*$", RegexOptions.IgnoreCase);
 
+        // The whole value must be a single GetPathOfFileAbove call, otherwise it's left unresolved
         private static readonly Regex GetPathOfFileAbove =
-            new Regex(@"GetPathOfFileAbove\(\s*'?([^,')]+?)'?\s*,", RegexOptions.IgnoreCase);
+            new Regex(
+                @"^\$\(\[MSBuild\]::GetPathOfFileAbove\(\s*'?([^,')]+?)'?\s*(?:,\s*'?(.*?)'?\s*)?\)\)$",
+                RegexOptions.IgnoreCase);
+
+        private static readonly string[] ToolsetPathProperties =
+        {
+            "$(MSBuildExtensionsPath", "$(MSBuildToolsPath", "$(MSBuildBinPath", "$(VSToolsPath"
+        };
 
         // Only a single Exists('path') with a resolvable path can be evaluated
         private static bool? EvaluateExistsCondition(string file, string condition)
@@ -202,11 +210,26 @@ namespace Rapicgen.Core.NuGet
                 return null;
 
             var directory = Path.GetDirectoryName(Path.GetFullPath(importingFile))!;
-            var fileAbove = GetPathOfFileAbove.Match(project!);
+            var value = project!.Trim();
+            var fileAbove = GetPathOfFileAbove.Match(value);
             if (fileAbove.Success)
-                return FindFileAbove(new DirectoryInfo(directory).Parent, fileAbove.Groups[1].Value.Trim()) ?? string.Empty;
+            {
+                var start = fileAbove.Groups[2].Success && fileAbove.Groups[2].Value.Trim().Length > 0
+                    ? ExpandPath(directory, fileAbove.Groups[2].Value)
+                    : directory;
 
-            var path = project!
+                if (start == null)
+                    return null;
+
+                return FindFileAbove(new DirectoryInfo(start), fileAbove.Groups[1].Value.Trim()) ?? string.Empty;
+            }
+
+            return ExpandPath(directory, value);
+        }
+
+        private static string? ExpandPath(string directory, string value)
+        {
+            var path = value
                 .Replace("$(MSBuildThisFileDirectory)", directory + Path.DirectorySeparatorChar)
                 .Trim();
 
@@ -214,6 +237,16 @@ namespace Rapicgen.Core.NuGet
                 return null;
 
             return Path.GetFullPath(Path.Combine(directory, path));
+        }
+
+        // Imports of the MSBuild toolset (legacy project files) don't change package management settings
+        private static bool IsToolsetImport(XElement import)
+        {
+            if (import.Attribute("Sdk") != null)
+                return true;
+
+            var project = ((string?)import.Attribute("Project"))?.Trim() ?? string.Empty;
+            return ToolsetPathProperties.Any(p => project.StartsWith(p, StringComparison.OrdinalIgnoreCase));
         }
 
         private static bool IsExpression(string value)
@@ -250,7 +283,7 @@ namespace Rapicgen.Core.NuGet
 
         /// <summary>
         /// Returns the effective ManagePackageVersionsCentrally from the nearest Directory.Build.props
-        /// (following its imports) and the project file, true when not set,
+        /// and the project file (following their imports), true when not set,
         /// or null when it can't be resolved without evaluating MSBuild
         /// </summary>
         private static bool? GetManagePackageVersionsCentrally(string projectFilePath)
@@ -258,15 +291,15 @@ namespace Rapicgen.Core.NuGet
             var state = new PropertyState();
             var buildProps = FindFileAbove(new FileInfo(projectFilePath).Directory, "Directory.Build.props");
             if (buildProps != null)
-                EvaluateProperty(buildProps, true, new HashSet<string>(StringComparer.OrdinalIgnoreCase), state);
+                EvaluateProperty(buildProps, new HashSet<string>(StringComparer.OrdinalIgnoreCase), state);
 
             if (File.Exists(projectFilePath))
-                EvaluateProperty(projectFilePath, false, new HashSet<string>(StringComparer.OrdinalIgnoreCase), state);
+                EvaluateProperty(projectFilePath, new HashSet<string>(StringComparer.OrdinalIgnoreCase), state);
 
             return state.Unresolved ? null : state.Value ?? true;
         }
 
-        private static void EvaluateProperty(string file, bool followImports, ISet<string> visited, PropertyState state)
+        private static void EvaluateProperty(string file, ISet<string> visited, PropertyState state)
         {
             if (!visited.Add(Path.GetFullPath(file)))
                 return;
@@ -279,14 +312,14 @@ namespace Rapicgen.Core.NuGet
             {
                 if (element.Name.LocalName == "Import")
                 {
-                    if (!followImports)
+                    if (IsToolsetImport(element))
                         continue;
 
                     var importedFile = ResolveImportElement(file, element, out var unresolved);
                     if (unresolved)
                         state.Unresolved = true;
                     else if (importedFile != null)
-                        EvaluateProperty(importedFile, true, visited, state);
+                        EvaluateProperty(importedFile, visited, state);
 
                     continue;
                 }

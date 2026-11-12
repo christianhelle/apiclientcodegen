@@ -532,6 +532,103 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
                 .BeNull();
 
         [Fact]
+        public void FindCentralPackageVersion_Honors_GetPathOfFileAbove_Start_Directory()
+        {
+            var projectDir = Path.GetDirectoryName(projectFile)!;
+            var srcDir = Path.GetDirectoryName(projectDir)!;
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                srcDir,
+                "<Project><ItemGroup><PackageVersion Include=\"Polly\" Version=\"8.0.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                projectDir,
+                "<Project><Import Project=\"$([MSBuild]::GetPathOfFileAbove(Directory.Packages.props, $(MSBuildThisFileDirectory)../..))\" /></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Fact]
+        public void Unresolvable_GetPathOfFileAbove_Start_Directory_Skips_Installation()
+        {
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"11.2.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                Path.GetDirectoryName(projectFile)!,
+                "<Project><Import Project=\"$([MSBuild]::GetPathOfFileAbove(Directory.Packages.props, $(RepoRoot)))\" /></Project>");
+
+            CentralPackageManagement
+                .GetVersionToInstall(
+                    new PackageDependency("Refit", "11.2.0"),
+                    CentralPackageManagement.FindCentralPackageVersion(projectFile, "Refit"))
+                .Should()
+                .BeNull();
+        }
+
+        [Fact]
+        public void Exists_Condition_With_Suffixed_Expression_Skips_Installation()
+        {
+            var projectDir = Path.GetDirectoryName(projectFile)!;
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Polly\" Version=\"8.0.0\" /></ItemGroup></Project>");
+            File.WriteAllText(
+                Path.Combine(projectDir, "Legacy.props"),
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"11.2.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                projectDir,
+                "<Project><Import Project=\"Legacy.props\" Condition=\"Exists('$([MSBuild]::GetPathOfFileAbove(Directory.Packages.props, $(MSBuildThisFileDirectory)..)).missing')\" /></Project>");
+
+            CentralPackageManagement
+                .GetVersionToInstall(
+                    new PackageDependency("Refit", "11.2.0"),
+                    CentralPackageManagement.FindCentralPackageVersion(projectFile, "Refit"))
+                .Should()
+                .BeNull();
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Follows_Project_Imports_For_Opt_Out()
+        {
+            var projectDir = Path.GetDirectoryName(projectFile)!;
+            File.WriteAllText(
+                Path.Combine(projectDir, "NoCpm.props"),
+                "<Project><PropertyGroup><ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally></PropertyGroup></Project>");
+            File.WriteAllText(
+                projectFile,
+                "<Project Sdk=\"Microsoft.NET.Sdk\"><Import Project=\"NoCpm.props\" /></Project>");
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .BeNull();
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Ignores_Msbuild_Toolset_Imports_In_Project()
+        {
+            File.WriteAllText(
+                projectFile,
+                "<Project><Import Project=\"$(MSBuildExtensionsPath)\\$(MSBuildToolsVersion)\\Microsoft.Common.props\" /><Import Project=\"$(MSBuildToolsPath)\\Microsoft.CSharp.targets\" /></Project>");
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Fact]
         public void FindCentralPackageVersion_Returns_Null_For_Invalid_Xml()
         {
             WritePackagesProps(root, "not xml");
