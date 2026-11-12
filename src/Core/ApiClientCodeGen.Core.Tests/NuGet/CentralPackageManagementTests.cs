@@ -114,13 +114,105 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
             string requiredVersion,
             string? centralVersion,
             bool forceUpdate,
-            string expected)
+            string? expected)
             => CentralPackageManagement
                 .GetVersionToInstall(
                     new PackageDependency("Refit", requiredVersion, forceUpdate),
                     centralVersion)
                 .Should()
                 .Be(expected);
+
+        [Fact]
+        public void FindCentralPackageVersion_Reads_Version_Metadata_Element()
+        {
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\"><Version>16.4.0</Version></PackageVersion></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Prefers_Update_Over_Include()
+        {
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"11.2.0\" /><PackageVersion Update=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Follows_Import_To_Parent_Props_File()
+        {
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                Path.GetDirectoryName(projectFile)!,
+                "<Project><Import Project=\"$([MSBuild]::GetPathOfFileAbove(Directory.Packages.props, $(MSBuildThisFileDirectory)..))\" /></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Does_Not_Search_Parent_Without_Import()
+        {
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                Path.GetDirectoryName(projectFile)!,
+                "<Project><ItemGroup><PackageVersion Include=\"Polly\" Version=\"8.0.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .BeNull();
+        }
+
+        [Theory]
+        [InlineData("<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" Condition=\"'$(TargetFramework)' == 'net8.0'\" /></ItemGroup></Project>")]
+        [InlineData("<Project><ItemGroup Condition=\"'$(TargetFramework)' == 'net8.0'\"><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>")]
+        [InlineData("<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /><PackageVersion Include=\"Refit\" Version=\"11.2.0\" /></ItemGroup></Project>")]
+        [InlineData("<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"$(RefitVersion)\" /></ItemGroup></Project>")]
+        public void Unresolvable_Central_Version_Skips_Installation(string contents)
+        {
+            WritePackagesProps(root, contents);
+
+            var centralVersion = CentralPackageManagement.FindCentralPackageVersion(projectFile, "Refit");
+
+            centralVersion.Should().NotBeNull();
+            CentralPackageManagement
+                .GetVersionToInstall(new PackageDependency("Refit", "11.2.0"), centralVersion)
+                .Should()
+                .BeNull();
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Returns_Null_When_Project_Opts_Out()
+        {
+            File.WriteAllText(
+                projectFile,
+                "<Project Sdk=\"Microsoft.NET.Sdk\"><PropertyGroup><ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally></PropertyGroup></Project>");
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .BeNull();
+        }
 
         [Fact]
         public void FindCentralPackageVersion_Returns_Null_For_Invalid_Xml()
