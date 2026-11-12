@@ -27,6 +27,11 @@ namespace Rapicgen.Core.NuGet
 
         public IEnumerable<PackageDependency> GetDependencies(
             SupportedCodeGenerator generator)
+            => GetDependencies(generator, System.Array.Empty<string>());
+
+        public IEnumerable<PackageDependency> GetDependencies(
+            SupportedCodeGenerator generator,
+            IEnumerable<string> targetFrameworks)
         {
             var list = new List<PackageDependency>();
             switch (generator)
@@ -86,7 +91,9 @@ namespace Rapicgen.Core.NuGet
                     list.AddRange(
                         new[]
                         {
-                            PackageDependencies.Refit,
+                            ProjectTargetFrameworks.AreSupportedByLatestRefit(targetFrameworks)
+                                ? PackageDependencies.Refit
+                                : PackageDependencies.RefitNetStandard,
                             PackageDependencies.SystemRuntimeSerializationPrimitives,
                             PackageDependencies.SystemComponentModelAnnotations
                         });

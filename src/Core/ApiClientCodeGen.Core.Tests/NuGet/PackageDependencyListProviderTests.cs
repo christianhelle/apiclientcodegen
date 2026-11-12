@@ -187,7 +187,7 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
         public void GetDependencies_Refitter_Contains_Refit()
             => sut.GetDependencies(SupportedCodeGenerator.Refitter)
                 .Should()
-                .Contain(PackageDependencies.Refit);
+                .Contain(d => d.Name == "Refit");
     }
 }
 
