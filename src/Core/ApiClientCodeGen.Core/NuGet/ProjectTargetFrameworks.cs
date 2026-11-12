@@ -23,7 +23,7 @@ namespace Rapicgen.Core.NuGet
                         .Where(e => e.Name.LocalName == "TargetFrameworkVersion")
                         .Select(e => "net" + e.Value.Trim().TrimStart('v', 'V').Replace(".", string.Empty)))
                     .Select(f => f.Trim())
-                    .Where(f => f.Length > 0 && !f.Contains("$("))
+                    .Where(f => f.Length > 0)
                     .Distinct(StringComparer.OrdinalIgnoreCase)
                     .ToList();
 

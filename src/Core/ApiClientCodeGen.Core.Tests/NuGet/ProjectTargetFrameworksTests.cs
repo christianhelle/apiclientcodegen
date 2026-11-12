@@ -31,12 +31,27 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
         [InlineData("")]
         [InlineData("not xml")]
         [InlineData("<Project />")]
-        [InlineData("<Project><PropertyGroup><TargetFramework>$(MyTfm)</TargetFramework></PropertyGroup></Project>")]
         public void Parse_Returns_Empty_When_Unknown(string contents)
             => ProjectTargetFrameworks
                 .Parse(contents)
                 .Should()
                 .BeEmpty();
+
+        [Fact]
+        public void Parse_Keeps_Unresolved_Property_Entries()
+            => ProjectTargetFrameworks
+                .Parse("<Project><PropertyGroup><TargetFrameworks>net8.0;$(LegacyTfm)</TargetFrameworks></PropertyGroup></Project>")
+                .Should()
+                .BeEquivalentTo("net8.0", "$(LegacyTfm)");
+
+        [Fact]
+        public void AreSupportedByLatestRefit_Returns_False_When_Any_Entry_Is_Unresolved()
+            => ProjectTargetFrameworks
+                .AreSupportedByLatestRefit(
+                    ProjectTargetFrameworks.Parse(
+                        "<Project><PropertyGroup><TargetFrameworks>net8.0;$(LegacyTfm)</TargetFrameworks></PropertyGroup></Project>"))
+                .Should()
+                .BeFalse();
 
         [Theory]
         [InlineData("net8.0")]
