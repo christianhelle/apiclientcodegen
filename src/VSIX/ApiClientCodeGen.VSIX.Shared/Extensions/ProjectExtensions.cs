@@ -214,11 +214,27 @@ namespace Rapicgen.Extensions
             OpenApiSupportedVersion openApiGeneratorVersion = (VsPackage.Instance.GetDialogPage(typeof(OpenApiGeneratorOptionsPage)) as IOpenApiGeneratorOptions).Version;
             var requiredPackages = codeGenerator == SupportedCodeGenerator.OpenApi
                 ? codeGenerator.GetDependencies(openApiGeneratorVersion)
-                : codeGenerator.GetDependencies();
+                : codeGenerator.GetDependencies(await project.GetTargetFrameworksAsync());
             foreach (var packageDependency in requiredPackages)
             {
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
                 InstallPackageDependency(project, packageDependency, installedPackages, packageInstaller);
+            }
+        }
+
+        private static async System.Threading.Tasks.Task<IReadOnlyList<string>> GetTargetFrameworksAsync(this Project project)
+        {
+            try
+            {
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                var targetFrameworks = ProjectTargetFrameworks.Parse(File.ReadAllText(project.FileName));
+                Logger.Instance.WriteLine($"Project target frameworks = {string.Join(";", targetFrameworks)}");
+                return targetFrameworks;
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.TrackError(e);
+                return Array.Empty<string>();
             }
         }
 
