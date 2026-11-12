@@ -111,6 +111,9 @@ namespace Rapicgen.Core.NuGet
                     continue;
                 }
 
+                if (isUpdate && !HasVersion(element))
+                    continue;
+
                 state.Version = ReadVersion(element);
             }
         }
@@ -142,10 +145,13 @@ namespace Rapicgen.Core.NuGet
         }
 
         private static bool IsPackage(XElement element, string attributeName, string packageId)
-            => string.Equals(
-                ((string?)element.Attribute(attributeName))?.Trim(),
-                packageId,
-                StringComparison.OrdinalIgnoreCase);
+            => (((string?)element.Attribute(attributeName)) ?? string.Empty)
+                .Split(';')
+                .Any(id => string.Equals(id.Trim(), packageId, StringComparison.OrdinalIgnoreCase));
+
+        private static bool HasVersion(XElement entry)
+            => entry.Attribute("Version") != null ||
+               entry.Elements().Any(e => e.Name.LocalName == "Version");
 
         private static string ReadVersion(XElement entry)
         {
@@ -159,16 +165,15 @@ namespace Rapicgen.Core.NuGet
             => element.AncestorsAndSelf().Any(e => e.Attribute("Condition") != null);
 
         /// <summary>
-        /// Returns the last assignment of ManagePackageVersionsCentrally in the project file,
+        /// Returns the last assignment of ManagePackageVersionsCentrally in the nearest Directory.Build.props and the project file,
         /// true when not set, or null when it can't be resolved without evaluating MSBuild
         /// </summary>
         private static bool? GetManagePackageVersionsCentrally(string projectFilePath)
         {
-            if (!File.Exists(projectFilePath))
-                return true;
-
-            var assignments = XDocument.Load(projectFilePath)
-                .Descendants()
+            var buildProps = FindFileAbove(new FileInfo(projectFilePath).Directory, "Directory.Build.props");
+            var assignments = new[] { buildProps, projectFilePath }
+                .Where(f => f != null && File.Exists(f))
+                .SelectMany(f => XDocument.Load(f).Descendants())
                 .Where(e => e.Name.LocalName == "ManagePackageVersionsCentrally")
                 .ToList();
 
@@ -182,10 +187,13 @@ namespace Rapicgen.Core.NuGet
         }
 
         private static string? FindPackagesPropsFile(DirectoryInfo? directory)
+            => FindFileAbove(directory, PackagesPropsFileName);
+
+        private static string? FindFileAbove(DirectoryInfo? directory, string fileName)
         {
             while (directory != null)
             {
-                var candidate = Path.Combine(directory.FullName, PackagesPropsFileName);
+                var candidate = Path.Combine(directory.FullName, fileName);
                 if (File.Exists(candidate))
                     return candidate;
                 directory = directory.Parent;

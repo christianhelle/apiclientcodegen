@@ -226,7 +226,7 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
                     new PackageDependency("Refit", "11.2.0"),
                     CentralPackageManagement.FindCentralPackageVersion(projectFile, "Refit"))
                 .Should()
-                .NotBe("11.2.0");
+                .Be("16.4.0");
         }
 
         [Fact]
@@ -341,6 +341,67 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
             WritePackagesProps(
                 Path.GetDirectoryName(projectFile)!,
                 "<Project><Import Project=\"../../Directory.Packages.props\" /><ItemGroup><PackageVersion Update=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Matches_Package_In_Include_List()
+        {
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Polly; Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Keeps_Version_After_Metadata_Only_Update()
+        {
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /><PackageVersion Update=\"Refit\" PrivateAssets=\"all\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Returns_Null_When_Directory_Build_Props_Opts_Out()
+        {
+            File.WriteAllText(
+                Path.Combine(root, "Directory.Build.props"),
+                "<Project><PropertyGroup><ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally></PropertyGroup></Project>");
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .BeNull();
+        }
+
+        [Fact]
+        public void Project_Overrides_Directory_Build_Props_Opt_Out()
+        {
+            File.WriteAllText(
+                Path.Combine(root, "Directory.Build.props"),
+                "<Project><PropertyGroup><ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally></PropertyGroup></Project>");
+            File.WriteAllText(
+                projectFile,
+                "<Project><PropertyGroup><ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally></PropertyGroup></Project>");
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
 
             CentralPackageManagement
                 .FindCentralPackageVersion(projectFile, "Refit")
