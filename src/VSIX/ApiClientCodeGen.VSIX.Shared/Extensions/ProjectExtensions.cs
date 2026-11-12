@@ -251,6 +251,13 @@ namespace Rapicgen.Extensions
                 Logger.Instance.WriteLine($"{packageId} version {centralVersion} is centrally managed in Directory.Packages.props");
 
             var version = CentralPackageManagement.GetVersionToInstall(packageDependency, centralVersion);
+            if (version == null)
+            {
+                Logger.Instance.WriteLine(
+                    $"Unable to resolve the central version of {packageId} in Directory.Packages.props. " +
+                    $"Skipping package installation. Add a reference to {packageId} manually if needed");
+                return;
+            }
 
             var existingPackage = installedPackages.FirstOrDefault(c =>
                 string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase));
