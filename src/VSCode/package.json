@@ -248,7 +248,7 @@
     "js-yaml@4": "4.3.2",
     "fast-uri": "3.1.9",
     "browserslist": "4.28.7",
-    "baseline-browser-mapping": "2.11.22",
+    "baseline-browser-mapping": "2.11.37",
     "minimatch@>=7 <11.0.1": "^11.0.1",
     "brace-expansion@1": "^1.1.21",
     "brace-expansion@2": "^2.1.7",
