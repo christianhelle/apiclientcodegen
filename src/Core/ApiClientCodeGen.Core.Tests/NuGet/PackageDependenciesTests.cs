@@ -23,6 +23,18 @@ public class PackageDependenciesTests
         => PackageDependencies.Refit.Name.Should().Be("Refit");
 
     [Fact]
+    public void Refit_Requires_Latest_Version()
+        => PackageDependencies.Refit.Version.Should().Be("16.4.0");
+
+    [Fact]
+    public void RefitNetStandard_Requires_Latest_NetStandard20_Compatible_Version()
+        => PackageDependencies.RefitNetStandard.Version.Should().Be("11.2.0");
+
+    [Fact]
+    public void RefitNetStandard_HasCorrectName()
+        => PackageDependencies.RefitNetStandard.Name.Should().Be("Refit");
+
+    [Fact]
     public void AzureIdentity_HasCorrectName()
         => PackageDependencies.AzureIdentity.Name.Should().Be("Azure.Identity");
 

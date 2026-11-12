@@ -214,11 +214,27 @@ namespace Rapicgen.Extensions
             OpenApiSupportedVersion openApiGeneratorVersion = (VsPackage.Instance.GetDialogPage(typeof(OpenApiGeneratorOptionsPage)) as IOpenApiGeneratorOptions).Version;
             var requiredPackages = codeGenerator == SupportedCodeGenerator.OpenApi
                 ? codeGenerator.GetDependencies(openApiGeneratorVersion)
-                : codeGenerator.GetDependencies();
+                : codeGenerator.GetDependencies(await project.GetTargetFrameworksAsync());
             foreach (var packageDependency in requiredPackages)
             {
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
                 InstallPackageDependency(project, packageDependency, installedPackages, packageInstaller);
+            }
+        }
+
+        private static async System.Threading.Tasks.Task<IReadOnlyList<string>> GetTargetFrameworksAsync(this Project project)
+        {
+            try
+            {
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                var targetFrameworks = ProjectTargetFrameworks.Parse(File.ReadAllText(project.FileName));
+                Logger.Instance.WriteLine($"Project target frameworks = {string.Join(";", targetFrameworks)}");
+                return targetFrameworks;
+            }
+            catch (Exception e)
+            {
+                Logger.Instance.TrackError(e);
+                return Array.Empty<string>();
             }
         }
 
@@ -228,8 +244,20 @@ namespace Rapicgen.Extensions
             IReadOnlyCollection<IVsPackageMetadata> installedPackages,
             IVsPackageInstaller packageInstaller)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
             var packageId = packageDependency.Name;
-            var version = packageDependency.Version;
+            var centralVersion = CentralPackageManagement.FindCentralPackageVersion(project.FullName, packageId);
+            if (centralVersion != null)
+                Logger.Instance.WriteLine($"{packageId} version {centralVersion} is centrally managed in Directory.Packages.props");
+
+            var version = CentralPackageManagement.GetVersionToInstall(packageDependency, centralVersion);
+            if (version == null)
+            {
+                Logger.Instance.WriteLine(
+                    $"Unable to resolve the central version of {packageId} in Directory.Packages.props. " +
+                    $"Skipping package installation. Add a reference to {packageId} manually if needed");
+                return;
+            }
 
             var existingPackage = installedPackages.FirstOrDefault(c =>
                 string.Equals(c.Id, packageId, StringComparison.InvariantCultureIgnoreCase));

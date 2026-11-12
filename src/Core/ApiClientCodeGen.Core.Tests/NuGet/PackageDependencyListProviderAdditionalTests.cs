@@ -18,6 +18,40 @@ public class PackageDependencyListProviderAdditionalTests
             .NotBeNullOrEmpty();
 
     [Fact]
+    public void GetDependencies_Refitter_Without_TargetFrameworks_Uses_NetStandard_Compatible_Refit()
+        => sut.GetDependencies(SupportedCodeGenerator.Refitter)
+            .Should()
+            .Contain(PackageDependencies.RefitNetStandard)
+            .And.NotContain(PackageDependencies.Refit);
+
+    [Theory]
+    [InlineData("net8.0")]
+    [InlineData("net10.0", "net472")]
+    public void GetDependencies_Refitter_For_Modern_Frameworks_Uses_Latest_Refit(
+        params string[] targetFrameworks)
+        => sut.GetDependencies(SupportedCodeGenerator.Refitter, targetFrameworks)
+            .Should()
+            .Contain(PackageDependencies.Refit)
+            .And.NotContain(PackageDependencies.RefitNetStandard);
+
+    [Theory]
+    [InlineData("netstandard2.0")]
+    [InlineData("net8.0", "netstandard2.0")]
+    [InlineData("net6.0")]
+    public void GetDependencies_Refitter_For_Older_Frameworks_Uses_NetStandard_Compatible_Refit(
+        params string[] targetFrameworks)
+        => sut.GetDependencies(SupportedCodeGenerator.Refitter, targetFrameworks)
+            .Should()
+            .Contain(PackageDependencies.RefitNetStandard)
+            .And.NotContain(PackageDependencies.Refit);
+
+    [Fact]
+    public void GetDependencies_With_TargetFrameworks_Matches_Default_For_Other_Generators()
+        => sut.GetDependencies(SupportedCodeGenerator.NSwag, new[] { "net8.0" })
+            .Should()
+            .BeEquivalentTo(sut.GetDependencies(SupportedCodeGenerator.NSwag));
+
+    [Fact]
     public void GetDependencies_Refitter_Contains_SystemRuntimeSerializationPrimitives()
         => sut.GetDependencies(SupportedCodeGenerator.Refitter)
             .Should()

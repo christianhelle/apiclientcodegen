@@ -16,6 +16,12 @@ namespace Rapicgen.Core.Extensions
 
         public static IEnumerable<PackageDependency> GetDependencies(
             this SupportedCodeGenerator generator,
+            IEnumerable<string> targetFrameworks)
+            => DependencyListProvider
+                .GetDependencies(generator, targetFrameworks);
+
+        public static IEnumerable<PackageDependency> GetDependencies(
+            this SupportedCodeGenerator generator,
             OpenApiSupportedVersion version)
             => generator == SupportedCodeGenerator.OpenApi
                 ? DependencyListProvider.GetDependencies(version)

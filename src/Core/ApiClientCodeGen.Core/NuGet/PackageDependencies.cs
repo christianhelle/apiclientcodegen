@@ -96,7 +96,13 @@ namespace Rapicgen.Core.NuGet
         public static readonly PackageDependency Refit =
             new PackageDependency(
                 "Refit",
-                "9.0.2");
+                "16.4.0");
+
+        // Refit 12.0.0 and later no longer target netstandard2.0
+        public static readonly PackageDependency RefitNetStandard =
+            new PackageDependency(
+                "Refit",
+                "11.2.0");
         
         public static readonly PackageDependency MicrosoftExtensionsHttp =
             new PackageDependency(
