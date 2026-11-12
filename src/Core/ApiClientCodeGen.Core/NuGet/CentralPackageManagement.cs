@@ -242,8 +242,9 @@ namespace Rapicgen.Core.NuGet
         // Imports of the MSBuild toolset (legacy project files) don't change package management settings
         private static bool IsToolsetImport(XElement import)
         {
-            if (import.Attribute("Sdk") != null)
-                return true;
+            var sdk = (string?)import.Attribute("Sdk");
+            if (sdk != null)
+                return sdk.Trim().StartsWith("Microsoft.", StringComparison.OrdinalIgnoreCase);
 
             var project = ((string?)import.Attribute("Project"))?.Trim() ?? string.Empty;
             return ToolsetPathProperties.Any(p => project.StartsWith(p, StringComparison.OrdinalIgnoreCase));
@@ -314,6 +315,13 @@ namespace Rapicgen.Core.NuGet
                 {
                     if (IsToolsetImport(element))
                         continue;
+
+                    // Custom project SDKs are resolved by MSBuild and could set the property
+                    if (element.Attribute("Sdk") != null)
+                    {
+                        state.Unresolved = true;
+                        continue;
+                    }
 
                     var importedFile = ResolveImportElement(file, element, out var unresolved);
                     if (unresolved)

@@ -629,6 +629,40 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
         }
 
         [Fact]
+        public void Custom_Sdk_Import_In_Project_Skips_Installation()
+        {
+            File.WriteAllText(
+                projectFile,
+                "<Project><Import Project=\"Sdk.props\" Sdk=\"Contoso.Build.Sdk\" /></Project>");
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .GetVersionToInstall(
+                    new PackageDependency("Refit", "11.2.0"),
+                    CentralPackageManagement.FindCentralPackageVersion(projectFile, "Refit"))
+                .Should()
+                .BeNull();
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Ignores_Microsoft_Sdk_Imports_In_Project()
+        {
+            File.WriteAllText(
+                projectFile,
+                "<Project><Import Project=\"Sdk.props\" Sdk=\"Microsoft.NET.Sdk\" /><Import Project=\"Sdk.targets\" Sdk=\"Microsoft.NET.Sdk\" /></Project>");
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Fact]
         public void FindCentralPackageVersion_Returns_Null_For_Invalid_Xml()
         {
             WritePackagesProps(root, "not xml");
