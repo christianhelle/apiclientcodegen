@@ -448,6 +448,90 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
         }
 
         [Fact]
+        public void FindCentralPackageVersion_Follows_Imports_In_Directory_Build_Props()
+        {
+            File.WriteAllText(
+                Path.Combine(root, "Cpm.props"),
+                "<Project><PropertyGroup><ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally></PropertyGroup></Project>");
+            File.WriteAllText(
+                Path.Combine(root, "Directory.Build.props"),
+                "<Project><Import Project=\"$(MSBuildThisFileDirectory)Cpm.props\" /></Project>");
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .BeNull();
+        }
+
+        [Fact]
+        public void Unresolvable_Import_In_Directory_Build_Props_Skips_Installation()
+        {
+            File.WriteAllText(
+                Path.Combine(root, "Directory.Build.props"),
+                "<Project><Import Project=\"$(RepoRoot)Cpm.props\" /></Project>");
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .GetVersionToInstall(
+                    new PackageDependency("Refit", "11.2.0"),
+                    CentralPackageManagement.FindCentralPackageVersion(projectFile, "Refit"))
+                .Should()
+                .BeNull();
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Skips_Import_When_Exists_Condition_Is_False()
+        {
+            var projectDir = Path.GetDirectoryName(projectFile)!;
+            File.WriteAllText(
+                Path.Combine(projectDir, "Versions.props"),
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                projectDir,
+                "<Project><Import Project=\"Versions.props\" Condition=\"Exists('flag.txt')\" /></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .BeNull();
+        }
+
+        [Fact]
+        public void Conditional_Import_After_Local_Declaration_Skips_Installation()
+        {
+            var projectDir = Path.GetDirectoryName(projectFile)!;
+            File.WriteAllText(
+                Path.Combine(projectDir, "Legacy.props"),
+                "<Project><ItemGroup><PackageVersion Update=\"Refit\" Version=\"11.2.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                projectDir,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup><Import Project=\"Legacy.props\" Condition=\"'$(TargetFramework)' == 'netstandard2.0'\" /></Project>");
+
+            CentralPackageManagement
+                .GetVersionToInstall(
+                    new PackageDependency("Refit", "11.2.0"),
+                    CentralPackageManagement.FindCentralPackageVersion(projectFile, "Refit"))
+                .Should()
+                .BeNull();
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void GetVersionToInstall_Rejects_Expression_In_Prerelease_Suffix(bool forceUpdate)
+            => CentralPackageManagement
+                .GetVersionToInstall(
+                    new PackageDependency("Refit", "11.2.0", forceUpdate),
+                    "16.4.0-$(Suffix)")
+                .Should()
+                .BeNull();
+
+        [Fact]
         public void FindCentralPackageVersion_Returns_Null_For_Invalid_Xml()
         {
             WritePackagesProps(root, "not xml");

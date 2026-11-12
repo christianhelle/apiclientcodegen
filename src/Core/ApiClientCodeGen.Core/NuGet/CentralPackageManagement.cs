@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace Rapicgen.Core.NuGet
@@ -46,6 +47,9 @@ namespace Rapicgen.Core.NuGet
             if (string.IsNullOrWhiteSpace(centralVersion))
                 return dependency.Version;
 
+            if (IsExpression(centralVersion!))
+                return null;
+
             if (!Version.TryParse(PackageVersionHelper.NormalizeVersion(centralVersion!), out _))
                 return null;
 
@@ -85,17 +89,19 @@ namespace Rapicgen.Core.NuGet
             {
                 if (element.Name.LocalName == "Import")
                 {
-                    if (HasNonExistsCondition(element))
+                    var importedFile = ResolveImportElement(file, element, out var unresolved);
+                    if (unresolved)
                     {
+                        // The import could declare or update the package
                         state.UnresolvedImport = true;
-                        continue;
+                        if (state.Version != null)
+                            state.Unresolved = true;
+                    }
+                    else if (importedFile != null)
+                    {
+                        Evaluate(importedFile, packageId, visited, state);
                     }
 
-                    var importedFile = ResolveImport(file, (string?)element.Attribute("Project"));
-                    if (importedFile == null)
-                        state.UnresolvedImport = true;
-                    else if (File.Exists(importedFile))
-                        Evaluate(importedFile, packageId, visited, state);
                     continue;
                 }
 
@@ -137,24 +143,81 @@ namespace Rapicgen.Core.NuGet
             public bool UnresolvedImport { get; set; }
         }
 
-        private static string? ResolveImport(string importingFile, string? project)
+        /// <summary>
+        /// Returns the imported file to evaluate, or null when it should be skipped.
+        /// Sets unresolved when the import or its conditions can't be evaluated without MSBuild
+        /// </summary>
+        private static string? ResolveImportElement(string importingFile, XElement import, out bool unresolved)
+        {
+            unresolved = false;
+            foreach (var condition in import.AncestorsAndSelf().Select(e => (string?)e.Attribute("Condition")))
+            {
+                if (condition == null)
+                    continue;
+
+                var exists = EvaluateExistsCondition(importingFile, condition);
+                if (exists == null)
+                {
+                    unresolved = true;
+                    return null;
+                }
+
+                if (exists == false)
+                    return null;
+            }
+
+            var path = ResolvePath(importingFile, (string?)import.Attribute("Project"));
+            if (path == null)
+            {
+                unresolved = true;
+                return null;
+            }
+
+            return File.Exists(path) ? path : null;
+        }
+
+        private static readonly Regex ExistsCondition =
+            new Regex(@"^\s*Exists\(\s*'([^']*)'\s*\)\s*$", RegexOptions.IgnoreCase);
+
+        private static readonly Regex GetPathOfFileAbove =
+            new Regex(@"GetPathOfFileAbove\(\s*'?([^,')]+?)'?\s*,", RegexOptions.IgnoreCase);
+
+        // Only a single Exists('path') with a resolvable path can be evaluated
+        private static bool? EvaluateExistsCondition(string file, string condition)
+        {
+            var match = ExistsCondition.Match(condition);
+            if (!match.Success)
+                return null;
+
+            var path = ResolvePath(file, match.Groups[1].Value);
+            if (path == null)
+                return null;
+
+            return File.Exists(path) || Directory.Exists(path);
+        }
+
+        private static string? ResolvePath(string importingFile, string? project)
         {
             if (string.IsNullOrWhiteSpace(project))
                 return null;
 
             var directory = Path.GetDirectoryName(Path.GetFullPath(importingFile))!;
-            if (project!.Contains("GetPathOfFileAbove") && project.Contains(PackagesPropsFileName))
-                return FindPackagesPropsFile(new DirectoryInfo(directory).Parent) ?? string.Empty;
+            var fileAbove = GetPathOfFileAbove.Match(project!);
+            if (fileAbove.Success)
+                return FindFileAbove(new DirectoryInfo(directory).Parent, fileAbove.Groups[1].Value.Trim()) ?? string.Empty;
 
-            var path = project
+            var path = project!
                 .Replace("$(MSBuildThisFileDirectory)", directory + Path.DirectorySeparatorChar)
                 .Trim();
 
-            if (path.Contains("$("))
+            if (IsExpression(path))
                 return null;
 
             return Path.GetFullPath(Path.Combine(directory, path));
         }
+
+        private static bool IsExpression(string value)
+            => value.Contains("$(") || value.Contains("@(") || value.Contains("%(");
 
         private static bool IsPackage(XElement element, string attributeName, string packageId)
             => (((string?)element.Attribute(attributeName)) ?? string.Empty)
@@ -180,42 +243,71 @@ namespace Rapicgen.Core.NuGet
         private static bool HasExpressionIdentity(XElement element)
             => new[] { "Include", "Update" }
                 .Select(name => (string?)element.Attribute(name) ?? string.Empty)
-                .Any(value => value.Contains("$(") || value.Contains("@(") || value.Contains("%("));
-
-        // Exists(...) conditions are handled by skipping imports of missing files
-        private static bool HasNonExistsCondition(XElement element)
-            => element
-                .AncestorsAndSelf()
-                .Select(e => ((string?)e.Attribute("Condition"))?.Trim())
-                .Any(c => c != null &&
-                          !(c.StartsWith("Exists(", StringComparison.OrdinalIgnoreCase) &&
-                            c.EndsWith(")") &&
-                            c.IndexOf(" and ", StringComparison.OrdinalIgnoreCase) < 0 &&
-                            c.IndexOf(" or ", StringComparison.OrdinalIgnoreCase) < 0));
+                .Any(IsExpression);
 
         private static bool HasCondition(XElement element)
             => element.AncestorsAndSelf().Any(e => e.Attribute("Condition") != null);
 
         /// <summary>
-        /// Returns the last assignment of ManagePackageVersionsCentrally in the nearest Directory.Build.props and the project file,
-        /// true when not set, or null when it can't be resolved without evaluating MSBuild
+        /// Returns the effective ManagePackageVersionsCentrally from the nearest Directory.Build.props
+        /// (following its imports) and the project file, true when not set,
+        /// or null when it can't be resolved without evaluating MSBuild
         /// </summary>
         private static bool? GetManagePackageVersionsCentrally(string projectFilePath)
         {
+            var state = new PropertyState();
             var buildProps = FindFileAbove(new FileInfo(projectFilePath).Directory, "Directory.Build.props");
-            var assignments = new[] { buildProps, projectFilePath }
-                .Where(f => f != null && File.Exists(f))
-                .SelectMany(f => XDocument.Load(f).Descendants())
-                .Where(e => e.Name.LocalName == "ManagePackageVersionsCentrally")
-                .ToList();
+            if (buildProps != null)
+                EvaluateProperty(buildProps, true, new HashSet<string>(StringComparer.OrdinalIgnoreCase), state);
 
-            if (assignments.Count == 0)
-                return true;
+            if (File.Exists(projectFilePath))
+                EvaluateProperty(projectFilePath, false, new HashSet<string>(StringComparer.OrdinalIgnoreCase), state);
 
-            if (assignments.Any(HasCondition))
-                return null;
+            return state.Unresolved ? null : state.Value ?? true;
+        }
 
-            return bool.TryParse(assignments.Last().Value.Trim(), out var value) ? value : (bool?)null;
+        private static void EvaluateProperty(string file, bool followImports, ISet<string> visited, PropertyState state)
+        {
+            if (!visited.Add(Path.GetFullPath(file)))
+                return;
+
+            var elements = XDocument.Load(file)
+                .Descendants()
+                .Where(e => e.Name.LocalName is "Import" or "ManagePackageVersionsCentrally");
+
+            foreach (var element in elements)
+            {
+                if (element.Name.LocalName == "Import")
+                {
+                    if (!followImports)
+                        continue;
+
+                    var importedFile = ResolveImportElement(file, element, out var unresolved);
+                    if (unresolved)
+                        state.Unresolved = true;
+                    else if (importedFile != null)
+                        EvaluateProperty(importedFile, true, visited, state);
+
+                    continue;
+                }
+
+                // A later unconditional assignment overrides anything before it
+                if (!HasCondition(element) && bool.TryParse(element.Value.Trim(), out var value))
+                {
+                    state.Value = value;
+                    state.Unresolved = false;
+                }
+                else
+                {
+                    state.Unresolved = true;
+                }
+            }
+        }
+
+        private sealed class PropertyState
+        {
+            public bool? Value { get; set; }
+            public bool Unresolved { get; set; }
         }
 
         private static string? FindPackagesPropsFile(DirectoryInfo? directory)
