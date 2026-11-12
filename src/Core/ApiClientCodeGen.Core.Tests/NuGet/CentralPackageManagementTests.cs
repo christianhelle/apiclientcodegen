@@ -317,6 +317,38 @@ namespace ApiClientCodeGen.Core.Tests.NuGet
         }
 
         [Fact]
+        public void FindCentralPackageVersion_Ignores_Update_Before_Imported_Include()
+        {
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                Path.GetDirectoryName(projectFile)!,
+                "<Project><ItemGroup><PackageVersion Update=\"Refit\" Version=\"11.2.0\" /></ItemGroup><Import Project=\"../../Directory.Packages.props\" /></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Fact]
+        public void FindCentralPackageVersion_Applies_Update_After_Imported_Include()
+        {
+            WritePackagesProps(
+                root,
+                "<Project><ItemGroup><PackageVersion Include=\"Refit\" Version=\"11.2.0\" /></ItemGroup></Project>");
+            WritePackagesProps(
+                Path.GetDirectoryName(projectFile)!,
+                "<Project><Import Project=\"../../Directory.Packages.props\" /><ItemGroup><PackageVersion Update=\"Refit\" Version=\"16.4.0\" /></ItemGroup></Project>");
+
+            CentralPackageManagement
+                .FindCentralPackageVersion(projectFile, "Refit")
+                .Should()
+                .Be("16.4.0");
+        }
+
+        [Fact]
         public void FindCentralPackageVersion_Returns_Null_For_Invalid_Xml()
         {
             WritePackagesProps(root, "not xml");

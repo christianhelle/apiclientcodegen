@@ -58,38 +58,68 @@ namespace Rapicgen.Core.NuGet
 
         private static string? FindVersionInFile(string file, string packageId, ISet<string> visited)
         {
+            var state = new LookupState();
+            Evaluate(file, packageId, visited, state);
+
+            if (state.Unresolved)
+                return UnresolvedVersion;
+
+            if (state.Version == null && state.UnresolvedImport)
+                return UnresolvedVersion;
+
+            return state.Version;
+        }
+
+        // Walks items and imports in document order, as MSBuild does:
+        // an Update only affects items declared (or imported) before it
+        private static void Evaluate(string file, string packageId, ISet<string> visited, LookupState state)
+        {
             if (!visited.Add(Path.GetFullPath(file)))
-                return null;
+                return;
 
-            var document = XDocument.Load(file);
-            var entries = FindEntries(document, packageId);
-            if (entries.Count > 0)
-                return GetVersion(entries);
-
-            var unresolvedImport = false;
-            var imports = document
+            var elements = XDocument.Load(file)
                 .Descendants()
-                .Where(e => e.Name.LocalName == "Import")
-                .Reverse();
+                .Where(e => e.Name.LocalName is "Import" or "PackageVersion");
 
-            foreach (var import in imports)
+            foreach (var element in elements)
             {
-                var importedFile = ResolveImport(file, (string?)import.Attribute("Project"));
-                if (importedFile == null)
+                if (element.Name.LocalName == "Import")
                 {
-                    unresolvedImport = true;
+                    var importedFile = ResolveImport(file, (string?)element.Attribute("Project"));
+                    if (importedFile == null)
+                        state.UnresolvedImport = true;
+                    else if (File.Exists(importedFile))
+                        Evaluate(importedFile, packageId, visited, state);
                     continue;
                 }
 
-                if (!File.Exists(importedFile))
+                var isInclude = IsPackage(element, "Include", packageId);
+                var isUpdate = IsPackage(element, "Update", packageId);
+                if (!isInclude && !isUpdate)
                     continue;
 
-                var version = FindVersionInFile(importedFile, packageId, visited);
-                if (version != null)
-                    return version;
-            }
+                if (HasCondition(element) || (isInclude && state.Version != null))
+                {
+                    state.Unresolved = true;
+                    continue;
+                }
 
-            return unresolvedImport ? UnresolvedVersion : null;
+                if (isUpdate && state.Version == null)
+                {
+                    if (state.UnresolvedImport)
+                        state.Unresolved = true;
+                    continue;
+                }
+
+                state.Version = ReadVersion(element);
+            }
+        }
+
+        private sealed class LookupState
+        {
+            public string? Version { get; set; }
+            public bool Unresolved { get; set; }
+            public bool UnresolvedImport { get; set; }
         }
 
         private static string? ResolveImport(string importingFile, string? project)
@@ -111,34 +141,14 @@ namespace Rapicgen.Core.NuGet
             return Path.GetFullPath(Path.Combine(directory, path));
         }
 
-        private static List<XElement> FindEntries(XDocument document, string packageId)
-            => document
-                .Descendants()
-                .Where(e => e.Name.LocalName == "PackageVersion")
-                .Where(e => IsPackage(e, "Include", packageId) || IsPackage(e, "Update", packageId))
-                .ToList();
-
         private static bool IsPackage(XElement element, string attributeName, string packageId)
             => string.Equals(
                 ((string?)element.Attribute(attributeName))?.Trim(),
                 packageId,
                 StringComparison.OrdinalIgnoreCase);
 
-        // Items are evaluated in document order: an Update only affects items declared before it
-        private static string GetVersion(List<XElement> entries)
+        private static string ReadVersion(XElement entry)
         {
-            if (entries.Any(HasCondition))
-                return UnresolvedVersion;
-
-            var includes = entries.Where(e => e.Attribute("Include") != null).ToList();
-            if (includes.Count > 1)
-                return UnresolvedVersion;
-
-            var updates = includes.Count == 0
-                ? entries
-                : entries.Skip(entries.IndexOf(includes[0]) + 1).ToList();
-
-            var entry = updates.LastOrDefault() ?? includes[0];
             var version = (string?)entry.Attribute("Version") ??
                           entry.Elements().FirstOrDefault(e => e.Name.LocalName == "Version")?.Value;
 
