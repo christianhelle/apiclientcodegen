@@ -1,0 +1,8 @@
+<idea-plugin>
+    <!-- Rider's Solution Explorer uses its own context menu instead of ProjectViewPopupMenu -->
+    <actions>
+        <reference ref="ApiClientCodeGen.Group">
+            <add-to-group group-id="SolutionExplorerPopupMenu" anchor="last"/>
+        </reference>
+    </actions>
+</idea-plugin>
