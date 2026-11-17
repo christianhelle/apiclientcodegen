@@ -28,11 +28,11 @@
     "commands": [
       {
         "command": "restApiClientCodeGenerator.nswag",
-        "title": "Generate C# Client with NSwag (v14.7.1)"
+        "title": "Generate C# Client with NSwag (v14.8.0)"
       },
       {
         "command": "restApiClientCodeGenerator.refitter",
-        "title": "Generate C# Client with Refitter (v2.1.3)"
+        "title": "Generate C# Client with Refitter (v2.4.0)"
       },
       {
         "command": "restApiClientCodeGenerator.openapi",

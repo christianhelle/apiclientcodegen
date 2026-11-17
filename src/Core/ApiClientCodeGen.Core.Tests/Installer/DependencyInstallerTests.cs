@@ -49,7 +49,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool install --global NSwag.ConsoleCore --version 14.7.1",
+                    "tool install --global NSwag.ConsoleCore --version 14.8.0",
                     null));
         }
 
@@ -176,7 +176,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool install --global refitter --version 2.1.3",
+                    "tool install --global refitter --version 2.4.0",
                     null),
                 Times.Once);
         }
@@ -207,7 +207,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool update --global refitter --version 2.1.3",
+                    "tool update --global refitter --version 2.4.0",
                     null),
                 Times.Once);
         }
@@ -230,7 +230,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                     (cmd, args, onOutput, onError, workingDir) =>
                     {
                         onOutput?.Invoke("Package Id      Version      Commands");
-                        onOutput?.Invoke("refitter        2.1.3        refitter");
+                        onOutput?.Invoke("refitter        2.4.0        refitter");
                     });
 
             sut.InstallRefitter();
@@ -238,7 +238,13 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool install --global refitter --version 2.1.3",
+                    "tool install --global refitter --version 2.4.0",
+                    null),
+                Times.Never);
+            mock.Verify(
+                c => c.Start(
+                    It.IsAny<string>(),
+                    It.Is<string>(a => a.StartsWith("tool update --global refitter")),
                     null),
                 Times.Never);
         }
@@ -261,7 +267,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                     (cmd, args, onOutput, onError, workingDir) =>
                     {
                         onOutput?.Invoke("Package Id      Version      Commands");
-                        onOutput?.Invoke("refitter        2.1.3        refitter");
+                        onOutput?.Invoke("refitter        2.5.0        refitter");
                     });
 
             sut.InstallRefitter();
@@ -269,7 +275,13 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool install --global refitter --version 2.1.3",
+                    "tool install --global refitter --version 2.4.0",
+                    null),
+                Times.Never);
+            mock.Verify(
+                c => c.Start(
+                    It.IsAny<string>(),
+                    It.Is<string>(a => a.StartsWith("tool update --global refitter")),
                     null),
                 Times.Never);
         }
@@ -295,7 +307,7 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool install --global refitter --version 2.1.3",
+                    "tool install --global refitter --version 2.4.0",
                     null),
                 Times.Once);
         }
