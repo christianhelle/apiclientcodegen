@@ -6,6 +6,8 @@
 
 **Implemented enhancements:**
 
+- Update Refitter to v2.4.0 and NSwag to v14.8.0 [\#1688](https://github.com/christianhelle/apiclientcodegen/pull/1688) ([christianhelle](https://github.com/christianhelle))
+- Show context menu in Rider's Solution Explorer [\#1687](https://github.com/christianhelle/apiclientcodegen/pull/1687) ([christianhelle](https://github.com/christianhelle))
 - Prevent Refit downgrade and pick Refit version by target framework [\#1685](https://github.com/christianhelle/apiclientcodegen/pull/1685) ([christianhelle](https://github.com/christianhelle))
 - Remove remaining AutoRest traces from smoke tests [\#1683](https://github.com/christianhelle/apiclientcodegen/pull/1683) ([christianhelle](https://github.com/christianhelle))
 - Address Dependabot alerts [\#1682](https://github.com/christianhelle/apiclientcodegen/pull/1682) ([christianhelle](https://github.com/christianhelle))
