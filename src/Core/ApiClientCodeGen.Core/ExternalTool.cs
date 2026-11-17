@@ -27,7 +27,7 @@ namespace Rapicgen.Core
 
         public static readonly ExternalTool Kiota = new("Kiota", "1.36.1", "Microsoft.OpenApi.Kiota");
 
-        public static readonly ExternalTool Refitter = new("Refitter", "2.1.3", "refitter");
+        public static readonly ExternalTool Refitter = new("Refitter", "2.4.0", "refitter");
 
         public static readonly ExternalTool SwaggerCodegen = new("Swagger Codegen CLI", "3.0.34");
 
