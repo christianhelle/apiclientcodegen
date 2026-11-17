@@ -14,7 +14,7 @@ namespace Rapicgen.Core
     /// </remarks>
     public sealed record ExternalTool(string DisplayName, string Version, string? PackageId = null)
     {
-        /// <summary>The version formatted as a header/UI label, e.g. <c>v14.7.1</c>.</summary>
+        /// <summary>The version formatted as a header/UI label, e.g. <c>v14.8.0</c>.</summary>
         public string VersionLabel => Version.StartsWith("v") ? Version : $"v{Version}";
     }
 
@@ -23,7 +23,7 @@ namespace Rapicgen.Core
     /// </summary>
     public static class ExternalTools
     {
-        public static readonly ExternalTool NSwag = new("NSwag", "14.7.1", "NSwag.ConsoleCore");
+        public static readonly ExternalTool NSwag = new("NSwag", "14.8.0", "NSwag.ConsoleCore");
 
         public static readonly ExternalTool Kiota = new("Kiota", "1.36.1", "Microsoft.OpenApi.Kiota");
 
