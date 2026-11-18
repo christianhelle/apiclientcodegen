@@ -177,17 +177,17 @@ jobs:
       - name: Build IntelliJ Plugin
         working-directory: src/IntelliJ
         run: ./gradlew buildPlugin --no-daemon
+      - name: Archive plugin artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: Intellij-Plugin
+          path: src/IntelliJ/build/distributions/*.zip
       - name: Publish to JetBrains Marketplace
         if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
         working-directory: src/IntelliJ
         env:
           PUBLISH_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_TOKEN }}
         run: ./gradlew publishPlugin --no-daemon
-      - name: Archive plugin artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: Intellij-Plugin
-          path: src/IntelliJ/build/distributions/*.zip
 
   Release:
     needs: [
