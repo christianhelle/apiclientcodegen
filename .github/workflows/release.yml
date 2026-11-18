@@ -182,6 +182,12 @@ jobs:
         with:
           name: Intellij-Plugin
           path: src/IntelliJ/build/distributions/*.zip
+      - name: Publish to JetBrains Marketplace
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
+        working-directory: src/IntelliJ
+        env:
+          PUBLISH_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_TOKEN }}
+        run: ./gradlew publishPlugin --no-daemon
 
   Release:
     needs: [
