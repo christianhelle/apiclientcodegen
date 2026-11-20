@@ -44,6 +44,22 @@ jobs:
       - name: Verify Plugin Compatibility
         working-directory: src/IntelliJ
         run: ./gradlew verifyPlugin --no-daemon
+      - name: Sign Intellij-Plugin with SignPath
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+        uses: ./.github/actions/signpath-sign
+        with:
+          name: Intellij-Plugin
+          path: 'src/IntelliJ/build/distributions/*.zip'
+          artifact-configuration-slug: intellij-plugin
+          signing-policy-slug: test-signing
+          output-directory: signed
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+      - name: Replace unsigned plugin with signed one
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+        shell: pwsh
+        run: Copy-Item signed/*.zip src/IntelliJ/build/distributions -Force
       - name: Archive plugin artifact
         uses: actions/upload-artifact@v7
         with:

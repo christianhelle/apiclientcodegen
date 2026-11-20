@@ -115,6 +115,12 @@ The guide includes:
 - Error handling
 - Links to official documentation
 
+## Code signing
+
+Free code signing provided by [SignPath.io](https://signpath.io), certificate by [SignPath Foundation](https://signpath.org).
+
+Maintainers: see [.signpath/README.md](.signpath/README.md) for the required secret and variables.
+
 ## Screenshots
 
 ![Add - API Client from OpenAPI Specification](images/add-new-menu.png)
