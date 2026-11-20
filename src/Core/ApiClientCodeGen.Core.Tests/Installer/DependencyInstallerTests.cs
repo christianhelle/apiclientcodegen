@@ -137,6 +137,21 @@ namespace ApiClientCodeGen.Core.Tests.Installer
                     null));
         }
 
+        [Theory, AutoMoqData]
+        public void InstallKiota_When_Newer_Version_Installed_Does_Not_Install_Or_Update(
+            [Frozen] IProcessLauncher processLauncher,
+            DependencyInstaller sut)
+        {
+            var mock = Mock.Get(processLauncher);
+            SetupKiotaVersionOutput(mock, "1.40.0+abcdef");
+
+            sut.InstallKiota();
+
+            mock.Verify(
+                c => c.Start(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
+                Times.Never);
+        }
+
         private static void SetupKiotaVersionOutput(Mock<IProcessLauncher> mock, string version)
             => mock.Setup(
                     c => c.Start(
