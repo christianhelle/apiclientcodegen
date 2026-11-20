@@ -104,9 +104,8 @@ namespace Rapicgen.Core.Installer
                 });
                 if (!kiotaVersion.StartsWith(ExternalTools.Kiota.Version))
                 {
-                    // Kiota reports its version when already installed. Updating an installed-but-
-                    // mismatched version is intentionally left untouched: existing tests pin the
-                    // current "probe-only" behavior for the already-installed path.
+                    // Version mismatch, update to required version
+                    InstallOrUpdateDotNetTool(ExternalTools.Kiota, update: true);
                 }
             }
             catch (Win32Exception)
