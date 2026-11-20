@@ -191,17 +191,31 @@ jobs:
       - name: Build IntelliJ Plugin
         working-directory: src/IntelliJ
         run: ./gradlew buildPlugin --no-daemon
+      - name: Sign Intellij-Plugin with SignPath
+        uses: ./.github/actions/signpath-sign
+        with:
+          name: Intellij-Plugin
+          path: src/IntelliJ/build/distributions/*.zip
+          artifact-configuration-slug: intellij-plugin
+          signing-policy-slug: release-signing
+          output-directory: signed
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
       - name: Archive plugin artifact
         uses: actions/upload-artifact@v7
         with:
           name: Intellij-Plugin
-          path: src/IntelliJ/build/distributions/*.zip
+          path: signed/*.zip
       - name: Publish to JetBrains Marketplace
         if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
         working-directory: src/IntelliJ
         env:
           PUBLISH_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_TOKEN }}
-        run: ./gradlew publishPlugin --no-daemon
+        shell: pwsh
+        run: |
+          $signedZip = (Get-ChildItem "$env:GITHUB_WORKSPACE/signed/*.zip" | Select-Object -First 1).FullName
+          ./gradlew publishPlugin --no-daemon "-PsignedPluginZip=$signedZip"
 
   Release:
     needs: [
