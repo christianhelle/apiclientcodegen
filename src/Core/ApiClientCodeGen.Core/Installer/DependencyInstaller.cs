@@ -102,11 +102,11 @@ namespace Rapicgen.Core.Installer
                         Logger.Instance.WriteLine(error);
                     }
                 });
-                if (!kiotaVersion.StartsWith(ExternalTools.Kiota.Version))
+                if (IsOlderThan(kiotaVersion, ExternalTools.Kiota.Version))
                 {
-                    // Kiota reports its version when already installed. Updating an installed-but-
-                    // mismatched version is intentionally left untouched: existing tests pin the
-                    // current "probe-only" behavior for the already-installed path.
+                    // Older than required, update. Newer versions are kept since
+                    // dotnet tool update does not downgrade.
+                    InstallOrUpdateDotNetTool(ExternalTools.Kiota, update: true);
                 }
             }
             catch (Win32Exception)
@@ -114,6 +114,14 @@ namespace Rapicgen.Core.Installer
                 // if command doesn't exist Win32Exception is thrown.
                 InstallOrUpdateDotNetTool(ExternalTools.Kiota, update: false);
             }
+        }
+
+        private static bool IsOlderThan(string installedVersion, string requiredVersion)
+        {
+            // kiota --version prints e.g. "1.39.0+<commit sha>"
+            var versionPart = installedVersion.Split('+', '-')[0].Trim();
+            return !Version.TryParse(versionPart, out var installed) ||
+                   installed < new Version(requiredVersion);
         }
 
         public void InstallRefitter()
