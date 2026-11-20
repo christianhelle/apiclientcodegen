@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- OpenAPI Generator v7.27.0 [\#1692](https://github.com/christianhelle/apiclientcodegen/pull/1692) ([christianhelle](https://github.com/christianhelle))
 - Microsoft Kiota v1.39.0 [\#1691](https://github.com/christianhelle/apiclientcodegen/pull/1691) ([christianhelle](https://github.com/christianhelle))
 
 ## [1.42.0](https://github.com/christianhelle/apiclientcodegen/tree/1.42.0) (2026-11-18)
