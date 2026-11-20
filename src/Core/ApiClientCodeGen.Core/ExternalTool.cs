@@ -25,7 +25,7 @@ namespace Rapicgen.Core
     {
         public static readonly ExternalTool NSwag = new("NSwag", "14.8.0", "NSwag.ConsoleCore");
 
-        public static readonly ExternalTool Kiota = new("Kiota", "1.36.1", "Microsoft.OpenApi.Kiota");
+        public static readonly ExternalTool Kiota = new("Kiota", "1.39.0", "Microsoft.OpenApi.Kiota");
 
         public static readonly ExternalTool Refitter = new("Refitter", "2.4.0", "refitter");
 
