@@ -81,6 +81,20 @@ jobs:
         mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
         mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
         mv src/VSIX/ApiClientCodeGen.VSIX.Extensibility/bin/Release/net8.0/ApiClientCodeGen.VSIX.Extensibility.vsix ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix
+    - name: Sign Visual-Studio-Extension with SignPath
+      uses: ./.github/actions/signpath-sign
+      with:
+        name: Visual-Studio-Extension
+        path: '*.vsix'
+        artifact-configuration-slug: vsix
+        signing-policy-slug: release-signing
+        output-directory: signed
+        api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+        organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+        project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+    - name: Replace unsigned VSIX packages with signed ones
+      shell: pwsh
+      run: Move-Item signed/*.vsix . -Force
     - name: Publish artifacts
       uses: actions/upload-artifact@v7
       with:
