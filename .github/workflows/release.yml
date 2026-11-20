@@ -33,6 +33,22 @@ jobs:
       run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.slnx -p:PackageVersion="${{ env.VERSION }}"
     - name: Package CLI Tool
       run: dotnet pack --no-build -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
+    - name: Collect CLI Tool package for signing
+      shell: pwsh
+      run: |
+        New-Item -ItemType Directory -Force unsigned | Out-Null
+        Get-ChildItem src/CLI -Recurse -Filter *.nupkg | Copy-Item -Destination unsigned
+    - name: Sign CLI-Tool with SignPath
+      uses: ./.github/actions/signpath-sign
+      with:
+        name: CLI-Tool
+        path: unsigned/*.nupkg
+        artifact-configuration-slug: cli-nuget
+        signing-policy-slug: release-signing
+        output-directory: signed
+        api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+        organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+        project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
     - name: NuGet login (OIDC → temp API key)
       uses: NuGet/login@v1
       id: login
@@ -40,14 +56,14 @@ jobs:
         user: christian.helle
     - name: Push packages to NuGet
       if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
-      run: dotnet nuget push **/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
+      run: dotnet nuget push signed/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
       continue-on-error: true
     - name: Publish artifacts
       uses: actions/upload-artifact@v7
       with:
         name: CLI Tool
         path: |
-          **/*.nupkg
+          signed/*.nupkg
           docs/CLI.md
 
   VSIX:
