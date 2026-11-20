@@ -3,7 +3,7 @@
   <zip-file>
     <zip-file path="apiclientcodegen-intellij-*.zip">
       <!-- Only sign our own jar, never bundled third-party jars -->
-      <jar-file path="*/lib/apiclientcodegen-intellij-*.jar" min-matches="0" max-matches="unbounded">
+      <jar-file path="apiclientcodegen-intellij/lib/apiclientcodegen-intellij-*.jar">
         <jar-sign/>
       </jar-file>
     </zip-file>

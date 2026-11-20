@@ -3,10 +3,10 @@
   <zip-file>
     <nupkg-file path="*.nupkg">
       <!-- Only sign our own assemblies, never third-party binaries -->
-      <pe-file path="tools/**/rapicgen.dll" min-matches="0" max-matches="unbounded">
+      <pe-file path="tools/*/any/rapicgen.dll">
         <authenticode-sign/>
       </pe-file>
-      <pe-file path="tools/**/Rapicgen.Core.dll" min-matches="0" max-matches="unbounded">
+      <pe-file path="tools/*/any/Rapicgen.Core.dll">
         <authenticode-sign/>
       </pe-file>
       <nuget-sign/>
