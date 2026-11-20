@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <zip-file>
+    <nupkg-file path="*.nupkg">
+      <!-- Only sign our own assemblies, never third-party binaries -->
+      <pe-file path="tools/**/rapicgen.dll" min-matches="0" max-matches="unbounded">
+        <authenticode-sign/>
+      </pe-file>
+      <pe-file path="tools/**/Rapicgen.Core.dll" min-matches="0" max-matches="unbounded">
+        <authenticode-sign/>
+      </pe-file>
+      <nuget-sign/>
+    </nupkg-file>
+  </zip-file>
+</artifact-configuration>
