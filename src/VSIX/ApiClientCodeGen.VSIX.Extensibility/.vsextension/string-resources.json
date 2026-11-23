@@ -6,8 +6,8 @@
   "RefitterSettingsCommand.DisplayName": "Generate Refitter output",
   "NSwagCommand.DisplayName": "Generate with NSwag (v14.8.0)",
   "NSwagStudioCommand.DisplayName": "Generate NSwag Studio output",
-  "OpenApiGeneratorCommand.DisplayName": "Generate with OpenAPI Generator (v7.26.0)",
-  "KiotaCommand.DisplayName": "Generate with Microsoft Kiota (v1.36.1)",
+  "OpenApiGeneratorCommand.DisplayName": "Generate with OpenAPI Generator (v7.27.0)",
+  "KiotaCommand.DisplayName": "Generate with Microsoft Kiota (v1.39.0)",
   "SwaggerCommand.DisplayName": "Generate with Swagger (v3.0.34 - Outdated)",
 
   "Settings.Root.DisplayName": "REST API Client Code Generator",
@@ -114,6 +114,7 @@
   "Settings.OpenApi.Version.DisplayName": "Version",
   "Settings.OpenApi.Version.Description": "The version of the generator to use",
   "Settings.OpenApi.Version.Latest": "Latest",
+  "Settings.OpenApi.Version.V7270": "7.27.0",
   "Settings.OpenApi.Version.V7260": "7.26.0",
   "Settings.OpenApi.Version.V7250": "7.25.0",
   "Settings.OpenApi.Version.V7240": "7.24.0",

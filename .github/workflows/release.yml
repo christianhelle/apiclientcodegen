@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'release'
+      - "release"
 
 env:
-  VERSION: '1.42.0'
-  NUGET_REPO_URL: 'https://api.nuget.org/v3/index.json'
+  VERSION: "1.44.0"
+  NUGET_REPO_URL: "https://api.nuget.org/v3/index.json"
 
 permissions:
   id-token: write
@@ -16,172 +16,171 @@ permissions:
   actions: read
 
 jobs:
-
   CLI:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v7
-    - name: Sets environment variables - branch-name
-      uses: christianhelle/branch-name@master
-    - name: Sets environment variables - Nerdbank.GitVersioning
-      uses: dotnet/nbgv@master
-      with:
-        setAllVars: true
-    - name: Update Version
-      run: ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
-      working-directory: src
-    - name: Build
-      run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.slnx -p:PackageVersion="${{ env.VERSION }}"
-    - name: Package CLI Tool
-      run: dotnet pack --no-build -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
-    - name: Collect CLI Tool package for signing
-      shell: pwsh
-      run: |
-        New-Item -ItemType Directory -Force unsigned | Out-Null
-        Get-ChildItem src/CLI -Recurse -Filter *.nupkg | Copy-Item -Destination unsigned
-    - name: Sign CLI-Tool with SignPath
-      uses: ./.github/actions/signpath-sign
-      with:
-        name: CLI-Tool
-        path: unsigned/*.nupkg
-        artifact-configuration-slug: cli-nuget
-        signing-policy-slug: release-signing
-        output-directory: signed
-        api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
-        organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
-        project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
-    - name: NuGet login (OIDC → temp API key)
-      uses: NuGet/login@v1
-      id: login
-      with:
-        user: christian.helle
-    - name: Push packages to NuGet
-      if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
-      run: dotnet nuget push signed/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
-      continue-on-error: true
-    - name: Publish artifacts
-      uses: actions/upload-artifact@v7
-      with:
-        name: CLI Tool
-        path: |
-          signed/*.nupkg
-          docs/CLI.md
+      - uses: actions/checkout@v7
+      - name: Sets environment variables - branch-name
+        uses: christianhelle/branch-name@master
+      - name: Sets environment variables - Nerdbank.GitVersioning
+        uses: dotnet/nbgv@master
+        with:
+          setAllVars: true
+      - name: Update Version
+        run: ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
+        working-directory: src
+      - name: Build
+        run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.slnx -p:PackageVersion="${{ env.VERSION }}"
+      - name: Package CLI Tool
+        run: dotnet pack --no-build -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
+      - name: Collect CLI Tool package for signing
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force unsigned | Out-Null
+          Get-ChildItem src/CLI -Recurse -Filter *.nupkg | Copy-Item -Destination unsigned
+      - name: Sign CLI-Tool with SignPath
+        uses: ./.github/actions/signpath-sign
+        with:
+          name: CLI-Tool
+          path: unsigned/*.nupkg
+          artifact-configuration-slug: cli-nuget
+          signing-policy-slug: release-signing
+          output-directory: signed
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: christian.helle
+      - name: Push packages to NuGet
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
+        run: dotnet nuget push signed/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
+        continue-on-error: true
+      - name: Publish artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: CLI Tool
+          path: |
+            signed/*.nupkg
+            docs/CLI.md
 
   VSIX:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v7
-    - name: Sets environment variables - branch-name
-      uses: christianhelle/branch-name@master
-    - name: Sets environment variables - Nerdbank.GitVersioning
-      uses: dotnet/nbgv@master
-      with:
-        setAllVars: true
-    - name: Update Version
-      run: |
-        ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
-        ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Extensibility/ApiClientCodeGen.VSIX.Extensibility.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Extensibility/ApiClientCodeGen.VSIX.Extensibility.csproj
-        ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
-        ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
-      working-directory: src
-      shell: pwsh
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v3
-    - name: Restore
-      run: msbuild VSIX.slnx -t:Restore
-      working-directory: src
-    - name: Build
-      run: msbuild VSIX.slnx /property:Configuration=Release /p:DeployExtension=false
-      working-directory: src
-    - name: Move build output
-      run: |
-        mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
-        mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
-        mv src/VSIX/ApiClientCodeGen.VSIX.Extensibility/bin/Release/net8.0/ApiClientCodeGen.VSIX.Extensibility.vsix ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix
-    - name: Sign Visual-Studio-Extension with SignPath
-      uses: ./.github/actions/signpath-sign
-      with:
-        name: Visual-Studio-Extension
-        path: '*.vsix'
-        artifact-configuration-slug: vsix
-        signing-policy-slug: release-signing
-        output-directory: signed
-        api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
-        organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
-        project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
-    - name: Replace unsigned VSIX packages with signed ones
-      shell: pwsh
-      run: Move-Item signed/*.vsix . -Force
-    - name: Publish artifacts
-      uses: actions/upload-artifact@v7
-      with:
-        name: Visual Studio Extension
-        path: |
-          *.vsix
-          docs/Marketplace*.md
-    - name: Publish VSIX Packages
-      if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
-      run: |
-        $VsixPublisher = "C:\Program Files\Microsoft Visual Studio\18\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
-        & $VsixPublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
-        & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
-        & $VsixPublisher publish -payload ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2026.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
+      - uses: actions/checkout@v7
+      - name: Sets environment variables - branch-name
+        uses: christianhelle/branch-name@master
+      - name: Sets environment variables - Nerdbank.GitVersioning
+        uses: dotnet/nbgv@master
+        with:
+          setAllVars: true
+      - name: Update Version
+        run: |
+          ((Get-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path Core/ApiClientCodeGen.Core/ApiClientCodeGen.Core.csproj
+          ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Extensibility/ApiClientCodeGen.VSIX.Extensibility.csproj -Raw) -Replace ">1.0.0<", ">${{ env.VERSION }}<") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Extensibility/ApiClientCodeGen.VSIX.Extensibility.csproj
+          ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX/source.extension.vsixmanifest
+          ((Get-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest -Raw) -Replace "1.0.0", "${{ env.VERSION }}") | Set-Content -Path VSIX/ApiClientCodeGen.VSIX.Dev17/source.extension.vsixmanifest
+        working-directory: src
+        shell: pwsh
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v3
+      - name: Restore
+        run: msbuild VSIX.slnx -t:Restore
+        working-directory: src
+      - name: Build
+        run: msbuild VSIX.slnx /property:Configuration=Release /p:DeployExtension=false
+        working-directory: src
+      - name: Move build output
+        run: |
+          mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
+          mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
+          mv src/VSIX/ApiClientCodeGen.VSIX.Extensibility/bin/Release/net8.0/ApiClientCodeGen.VSIX.Extensibility.vsix ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix
+      - name: Sign Visual-Studio-Extension with SignPath
+        uses: ./.github/actions/signpath-sign
+        with:
+          name: Visual-Studio-Extension
+          path: "*.vsix"
+          artifact-configuration-slug: vsix
+          signing-policy-slug: release-signing
+          output-directory: signed
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+      - name: Replace unsigned VSIX packages with signed ones
+        shell: pwsh
+        run: Move-Item signed/*.vsix . -Force
+      - name: Publish artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: Visual Studio Extension
+          path: |
+            *.vsix
+            docs/Marketplace*.md
+      - name: Publish VSIX Packages
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
+        run: |
+          $VsixPublisher = "C:\Program Files\Microsoft Visual Studio\18\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
+          # & $VsixPublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
+          & $VsixPublisher publish -oidc -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
+          & $VsixPublisher publish -oidc -payload ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2026.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
 
   VSCode:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v7
+      - uses: actions/checkout@v7
 
-    - name: Bump VSCode extension version
-      run: |
-        sed -i "s/\"version\": \".*\"/\"version\": \"${{ env.VERSION }}\"/" src/VSCode/package.json
-    
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v6
-      with:
-        dotnet-version: '6.0.x'
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v7
-      with:
-        node-version: '24'
-        cache: 'npm'
-        cache-dependency-path: 'src/VSCode/package-lock.json'
-    
-    - name: Install dependencies
-      run: |
-        cd src/VSCode
-        npm ci
-    
-    - name: Lint
-      run: |
-        cd src/VSCode
-        npm run lint
-    
-    - name: Build
-      run: |
-        cd src/VSCode
-        npm run compile
-    
-    - name: Package Extension
-      run: |
-        cd src/VSCode
-        npm run package
-        npm run vsix
-    
-    - name: Upload VSIX
-      uses: actions/upload-artifact@v7
-      with:
-        name: VSCode-Extension
-        path: src/VSCode/*.vsix
-        
-    - name: Publish to VS Code Marketplace
-      if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
-      run: |
-        cd src/VSCode
-        npx vsce publish -p ${{ secrets.MARKETPLACE_PAT }}
+      - name: Bump VSCode extension version
+        run: |
+          sed -i "s/\"version\": \".*\"/\"version\": \"${{ env.VERSION }}\"/" src/VSCode/package.json
 
-  IntelliJ:    
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: "6.0.x"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: "src/VSCode/package-lock.json"
+
+      - name: Install dependencies
+        run: |
+          cd src/VSCode
+          npm ci
+
+      - name: Lint
+        run: |
+          cd src/VSCode
+          npm run lint
+
+      - name: Build
+        run: |
+          cd src/VSCode
+          npm run compile
+
+      - name: Package Extension
+        run: |
+          cd src/VSCode
+          npm run package
+          npm run vsix
+
+      - name: Upload VSIX
+        uses: actions/upload-artifact@v7
+        with:
+          name: VSCode-Extension
+          path: src/VSCode/*.vsix
+
+      - name: Publish to VS Code Marketplace
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
+        run: |
+          cd src/VSCode
+          npx vsce publish -p ${{ secrets.MARKETPLACE_PAT }}
+
+  IntelliJ:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v7
@@ -235,81 +234,76 @@ jobs:
           ./gradlew publishPlugin --no-daemon "-PsignedPluginZip=$signedZip"
 
   Release:
-    needs: [
-      CLI,
-      VSIX, 
-      VSCode,
-      IntelliJ
-    ]
+    needs: [CLI, VSIX, VSCode, IntelliJ]
     runs-on: ubuntu-latest
     steps:
-    - name: Create tag
-      uses: actions/github-script@v9
-      if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
-      with:
-        github-token: ${{ github.token }}
-        script: |
-          github.rest.git.createRef({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            ref: "refs/tags/${{ env.VERSION }}",
-            sha: context.sha
-          })
-    - name: Create release
-      id: create-release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ env.VERSION }}
-        release_name: v${{ env.VERSION }}
-        draft: true
-        prerelease: false
-    - uses: actions/download-artifact@v8
-      with:
-        path: artifacts
-    - name: Upload VSIX for VS 2019 asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
-        asset_name: ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
-        asset_content_type: application/zip
-    - name: Upload VSIX for VS 2022 asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
-        asset_name: ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
-        asset_content_type: application/zip
-    - name: Upload VSIX for VS 2026 asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix
-        asset_name: ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix
-        asset_content_type: application/zip
-    - name: Upload VSCode asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: artifacts/VSCode-Extension/apiclientcodegen-${{ env.VERSION }}.vsix
-        asset_name: apiclientcodegen-${{ env.VERSION }}.vsix
-        asset_content_type: application/zip    
-    - name: Upload IntelliJ Plugin asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create-release.outputs.upload_url }}
-        asset_path: artifacts/Intellij-Plugin/apiclientcodegen-intellij-${{ env.VERSION }}.zip
-        asset_name: apiclientcodegen-intellij-${{ env.VERSION }}.zip
-        asset_content_type: application/zip
+      - name: Create tag
+        uses: actions/github-script@v9
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
+        with:
+          github-token: ${{ github.token }}
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/${{ env.VERSION }}",
+              sha: context.sha
+            })
+      - name: Create release
+        id: create-release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.VERSION }}
+          release_name: v${{ env.VERSION }}
+          draft: true
+          prerelease: false
+      - uses: actions/download-artifact@v8
+        with:
+          path: artifacts
+      - name: Upload VSIX for VS 2019 asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
+          asset_name: ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
+          asset_content_type: application/zip
+      - name: Upload VSIX for VS 2022 asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
+          asset_name: ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
+          asset_content_type: application/zip
+      - name: Upload VSIX for VS 2026 asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: artifacts/Visual Studio Extension/ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix
+          asset_name: ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix
+          asset_content_type: application/zip
+      - name: Upload VSCode asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: artifacts/VSCode-Extension/apiclientcodegen-${{ env.VERSION }}.vsix
+          asset_name: apiclientcodegen-${{ env.VERSION }}.vsix
+          asset_content_type: application/zip
+      - name: Upload IntelliJ Plugin asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create-release.outputs.upload_url }}
+          asset_path: artifacts/Intellij-Plugin/apiclientcodegen-intellij-${{ env.VERSION }}.zip
+          asset_name: apiclientcodegen-intellij-${{ env.VERSION }}.zip
+          asset_content_type: application/zip

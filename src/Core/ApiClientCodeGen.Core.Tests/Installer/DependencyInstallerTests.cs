@@ -101,29 +101,67 @@ namespace ApiClientCodeGen.Core.Tests.Installer
             mock.Verify(
                 c => c.Start(
                     It.IsAny<string>(),
-                    "tool install --global Microsoft.OpenApi.Kiota --version 1.36.1",
+                    "tool install --global Microsoft.OpenApi.Kiota --version 1.39.0",
                     null));
         }
         
         [Theory, AutoMoqData]
-        public void InstallKiota_Ignores_ProcessLauncherException_For_Already_Installed(
+        public void InstallKiota_When_Version_Matches_Does_Not_Install_Or_Update(
             [Frozen] IProcessLauncher processLauncher,
             DependencyInstaller sut)
         {
-            Mock.Get(processLauncher)
-                .Setup(c => c.Start(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
-                .Throws(
-                    new ProcessLaunchException(
-                        "dotnet",
-                        "tool install --global Microsoft.OpenApi.Kiota --version 1.36.1",
-                        null,
-                        string.Empty,
-                        "Tool 'microsoft.openapi.kiota' is already installed."));
+            var mock = Mock.Get(processLauncher);
+            SetupKiotaVersionOutput(mock, "1.39.0+abcdef");
 
-            new Action(sut.InstallKiota)
-                .Should()
-                .NotThrow();
+            sut.InstallKiota();
+
+            mock.Verify(
+                c => c.Start(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
+                Times.Never);
         }
+
+        [Theory, AutoMoqData]
+        public void InstallKiota_When_Version_Mismatch_Updates_To_Pinned_Version(
+            [Frozen] IProcessLauncher processLauncher,
+            DependencyInstaller sut)
+        {
+            var mock = Mock.Get(processLauncher);
+            SetupKiotaVersionOutput(mock, "1.36.1+abcdef");
+
+            sut.InstallKiota();
+
+            mock.Verify(
+                c => c.Start(
+                    It.IsAny<string>(),
+                    "tool update --global Microsoft.OpenApi.Kiota --version 1.39.0",
+                    null));
+        }
+
+        [Theory, AutoMoqData]
+        public void InstallKiota_When_Newer_Version_Installed_Does_Not_Install_Or_Update(
+            [Frozen] IProcessLauncher processLauncher,
+            DependencyInstaller sut)
+        {
+            var mock = Mock.Get(processLauncher);
+            SetupKiotaVersionOutput(mock, "1.40.0+abcdef");
+
+            sut.InstallKiota();
+
+            mock.Verify(
+                c => c.Start(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()),
+                Times.Never);
+        }
+
+        private static void SetupKiotaVersionOutput(Mock<IProcessLauncher> mock, string version)
+            => mock.Setup(
+                    c => c.Start(
+                        "kiota",
+                        "--version",
+                        It.IsAny<Action<string>>(),
+                        It.IsAny<Action<string>>(),
+                        default))
+                .Callback<string, string, Action<string>, Action<string>, string>(
+                    (cmd, args, onOutput, onError, workingDir) => onOutput?.Invoke(version));
         
         [Theory, AutoMoqData]
         public void InstallKiota_Throw_ProcessLauncherException(

@@ -39,12 +39,12 @@
       </Button>
       <Button guid="guidPackageCmdSet" id="OpenApiCodeGeneratorCustomToolSetter" priority="0x0101" type="Button">
         <Strings>
-          <ButtonText>Generate with OpenAPI Generator (v7.26.0)</ButtonText>
+          <ButtonText>Generate with OpenAPI Generator (v7.27.0)</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidPackageCmdSet" id="KiotaCodeGeneratorCustomToolSetter" priority="0x0102" type="Button">
         <Strings>
-          <ButtonText>Generate with Microsoft Kiota (v1.36.1)</ButtonText>
+          <ButtonText>Generate with Microsoft Kiota (v1.39.0)</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidPackageCmdSet" id="SwaggerCodeGeneratorCustomToolSetter" priority="0x0103" type="Button">
@@ -94,12 +94,12 @@
       </Button>
       <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithOpenApi" priority="0x0102" type="Button">
         <Strings>
-          <ButtonText>Generate with OpenAPI Generator (v7.26.0)</ButtonText>
+          <ButtonText>Generate with OpenAPI Generator (v7.27.0)</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithKiota" priority="0x0103" type="Button">
         <Strings>
-          <ButtonText>Generate with Microsoft Kiota (v1.36.1)</ButtonText>
+          <ButtonText>Generate with Microsoft Kiota (v1.39.0)</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidNewRestApiClientCmdSet" id="GenerateWithSwagger" priority="0x0104" type="Button">

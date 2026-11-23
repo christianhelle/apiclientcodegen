@@ -2,10 +2,20 @@
 
 ## [Unreleased](https://github.com/christianhelle/apiclientcodegen/tree/HEAD)
 
-[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.41.0...HEAD)
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.42.0...HEAD)
 
 **Implemented enhancements:**
 
+- OpenAPI Generator v7.27.0 [\#1692](https://github.com/christianhelle/apiclientcodegen/pull/1692) ([christianhelle](https://github.com/christianhelle))
+- Microsoft Kiota v1.39.0 [\#1691](https://github.com/christianhelle/apiclientcodegen/pull/1691) ([christianhelle](https://github.com/christianhelle))
+
+## [1.42.0](https://github.com/christianhelle/apiclientcodegen/tree/1.42.0) (2026-11-18)
+
+[Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.41.0...1.42.0)
+
+**Implemented enhancements:**
+
+- Publish IntelliJ plugin to JetBrains Marketplace on release [\#1689](https://github.com/christianhelle/apiclientcodegen/pull/1689) ([christianhelle](https://github.com/christianhelle))
 - Update Refitter to v2.4.0 and NSwag to v14.8.0 [\#1688](https://github.com/christianhelle/apiclientcodegen/pull/1688) ([christianhelle](https://github.com/christianhelle))
 - Show context menu in Rider's Solution Explorer [\#1687](https://github.com/christianhelle/apiclientcodegen/pull/1687) ([christianhelle](https://github.com/christianhelle))
 - Prevent Refit downgrade and pick Refit version by target framework [\#1685](https://github.com/christianhelle/apiclientcodegen/pull/1685) ([christianhelle](https://github.com/christianhelle))
