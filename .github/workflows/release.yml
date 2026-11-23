@@ -92,7 +92,6 @@ jobs:
         continue-on-error: true
         run: |
           irm https://christianhelle.com/vsixpublisher/install.ps1 | iex
-          & vsixpublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
           & vsixpublisher publish -oidc -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
           & vsixpublisher publish -oidc -payload ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2026.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
 
