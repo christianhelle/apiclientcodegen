@@ -91,10 +91,11 @@ jobs:
         if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
         continue-on-error: true
         run: |
-          $VsixPublisher = "C:\Program Files\Microsoft Visual Studio\18\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
-          # & $VsixPublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
-          & $VsixPublisher publish -oidc -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
-          & $VsixPublisher publish -oidc -payload ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2026.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
+          cargo install vsixpublisher
+          # $VsixPublisher = "C:\Program Files\Microsoft Visual Studio\18\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
+          & vsixpublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
+          & vsixpublisher publish -oidc -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
+          & vsixpublisher publish -oidc -payload ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2026.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
 
   VSCode:
     runs-on: ubuntu-latest
