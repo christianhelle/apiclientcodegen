@@ -8,6 +8,15 @@
 
 - Update Refitter to v2.4.2 [\#1693](https://github.com/christianhelle/apiclientcodegen/pull/1693) ([christianhelle](https://github.com/christianhelle))
 
+**Merged pull requests:**
+
+- Update dependency MessagePack to 3.1.12 [\#1677](https://github.com/christianhelle/apiclientcodegen/pull/1677) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency ruby to v4.0.10 [\#1672](https://github.com/christianhelle/apiclientcodegen/pull/1672) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency baseline-browser-mapping to v2.11.39 [\#1669](https://github.com/christianhelle/apiclientcodegen/pull/1669) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/setup-java action to v6 [\#1659](https://github.com/christianhelle/apiclientcodegen/pull/1659) ([renovate[bot]](https://github.com/apps/renovate))
+- Update ghcr.io/devcontainers/features/ruby Docker tag to v2 [\#1651](https://github.com/christianhelle/apiclientcodegen/pull/1651) ([renovate[bot]](https://github.com/apps/renovate))
+- Update Gradle to v9.9.2 [\#1631](https://github.com/christianhelle/apiclientcodegen/pull/1631) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [1.44.0](https://github.com/christianhelle/apiclientcodegen/tree/1.44.0) (2026-11-23)
 
 [Full Changelog](https://github.com/christianhelle/apiclientcodegen/compare/1.42.0...1.44.0)
