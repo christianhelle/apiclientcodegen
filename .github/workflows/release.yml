@@ -164,8 +164,20 @@ jobs:
           name: VSCode-Extension
           path: src/VSCode/*.vsix
 
+      - name: Check if already published to VS Code Marketplace
+        id: vscode-check
+        working-directory: src/VSCode
+        run: |
+          if npx vsce show ChristianResmaHelle.apiclientcodegen --json \
+            | jq -e --arg v "${{ env.VERSION }}" '.versions | any(.version == $v)' > /dev/null; then
+            echo "published=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::VS Code extension ${{ env.VERSION }} already published, skipping"
+          else
+            echo "published=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Publish to VS Code Marketplace
-        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
+        if: (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release') && steps.vscode-check.outputs.published != 'true'
         run: |
           cd src/VSCode
           npx vsce publish -p ${{ secrets.MARKETPLACE_PAT }}
