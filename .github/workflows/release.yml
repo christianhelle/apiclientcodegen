@@ -214,8 +214,20 @@ jobs:
         with:
           name: Intellij-Plugin
           path: src/IntelliJ/build/distributions/*.zip
+      - name: Check if already published to JetBrains Marketplace
+        id: jetbrains-check
+        shell: pwsh
+        run: |
+          $published = $false
+          try {
+            $plugin = Invoke-RestMethod "https://plugins.jetbrains.com/api/plugins/intellij/com.christianhelle.apiclientcodegen"
+            $updates = Invoke-RestMethod "https://plugins.jetbrains.com/api/plugins/$($plugin.id)/updates?size=100"
+            $published = [bool]($updates | Where-Object { $_.version -eq '${{ env.VERSION }}' })
+          } catch { Write-Host "Lookup failed: $_" }
+          "published=$($published.ToString().ToLower())" >> $env:GITHUB_OUTPUT
+          if ($published) { "::notice::JetBrains plugin ${{ env.VERSION }} already published, skipping" }
       - name: Publish to JetBrains Marketplace
-        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
+        if: (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release') && steps.jetbrains-check.outputs.published != 'true'
         working-directory: src/IntelliJ
         env:
           PUBLISH_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_TOKEN }}
