@@ -13,6 +13,7 @@ env:
 permissions:
   id-token: write
   contents: write
+  actions: read
 
 jobs:
   CLI:
@@ -32,6 +33,22 @@ jobs:
         run: dotnet build -c Release /p:UseSourceLink=true src/Rapicgen.slnx -p:PackageVersion="${{ env.VERSION }}"
       - name: Package CLI Tool
         run: dotnet pack --no-build -c Release /p:UseSourceLink=true src/CLI/ApiClientCodeGen.CLI/ApiClientCodeGen.CLI.csproj -p:PackageVersion="${{ env.VERSION }}"
+      - name: Collect CLI Tool package for signing
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force unsigned | Out-Null
+          Get-ChildItem src/CLI -Recurse -Filter *.nupkg | Copy-Item -Destination unsigned
+      - name: Sign CLI-Tool with SignPath
+        uses: ./.github/actions/signpath-sign
+        with:
+          name: CLI-Tool
+          path: unsigned/*.nupkg
+          artifact-configuration-slug: cli-nuget
+          signing-policy-slug: release-signing
+          output-directory: signed
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
       - name: NuGet login (OIDC → temp API key)
         uses: NuGet/login@v1
         id: login
@@ -39,14 +56,14 @@ jobs:
           user: christian.helle
       - name: Push packages to NuGet
         if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
-        run: dotnet nuget push **/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
+        run: dotnet nuget push signed/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
         continue-on-error: true
       - name: Publish artifacts
         uses: actions/upload-artifact@v7
         with:
           name: CLI Tool
           path: |
-            **/*.nupkg
+            signed/*.nupkg
             docs/CLI.md
 
   VSIX:
@@ -80,6 +97,20 @@ jobs:
           mv src/VSIX/ApiClientCodeGen.VSIX/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
           mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
           mv src/VSIX/ApiClientCodeGen.VSIX.Extensibility/bin/Release/net8.0/ApiClientCodeGen.VSIX.Extensibility.vsix ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix
+      - name: Sign Visual-Studio-Extension with SignPath
+        uses: ./.github/actions/signpath-sign
+        with:
+          name: Visual-Studio-Extension
+          path: "*.vsix"
+          artifact-configuration-slug: vsix
+          signing-policy-slug: release-signing
+          output-directory: signed
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+      - name: Replace unsigned VSIX packages with signed ones
+        shell: pwsh
+        run: Move-Item signed/*.vsix . -Force
       - name: Publish artifacts
         uses: actions/upload-artifact@v7
         with:
@@ -188,11 +219,22 @@ jobs:
       - name: Build IntelliJ Plugin
         working-directory: src/IntelliJ
         run: ./gradlew buildPlugin --no-daemon
+      - name: Sign Intellij-Plugin with SignPath
+        uses: ./.github/actions/signpath-sign
+        with:
+          name: Intellij-Plugin
+          path: src/IntelliJ/build/distributions/*.zip
+          artifact-configuration-slug: intellij-plugin
+          signing-policy-slug: release-signing
+          output-directory: signed
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
       - name: Archive plugin artifact
         uses: actions/upload-artifact@v7
         with:
           name: Intellij-Plugin
-          path: src/IntelliJ/build/distributions/*.zip
+          path: signed/*.zip
       - name: Check if already published to JetBrains Marketplace
         id: jetbrains-check
         shell: pwsh
@@ -210,7 +252,10 @@ jobs:
         working-directory: src/IntelliJ
         env:
           PUBLISH_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_TOKEN }}
-        run: ./gradlew publishPlugin --no-daemon
+        shell: pwsh
+        run: |
+          $signedZip = (Get-ChildItem "$env:GITHUB_WORKSPACE/signed/*.zip" | Select-Object -First 1).FullName
+          ./gradlew publishPlugin --no-daemon "-PsignedPluginZip=$signedZip"
 
   Release:
     needs: [CLI, VSIX, VSCode, IntelliJ]

@@ -65,6 +65,10 @@ tasks {
         // classloader can load classes directly from nested archives.
         entryCompression = ZipEntryCompression.STORED
     }
+    publishPlugin {
+        // Publish the SignPath-signed zip instead of the freshly built one
+        providers.gradleProperty("signedPluginZip").orNull?.let { archiveFile.set(file(it)) }
+    }
 }
 
 kotlin {

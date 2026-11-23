@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <zip-file>
+    <zip-file path="apiclientcodegen-intellij-*.zip">
+      <!-- Only sign our own jar, never bundled third-party jars -->
+      <jar-file path="apiclientcodegen-intellij/lib/apiclientcodegen-intellij-*.jar">
+        <jar-sign/>
+      </jar-file>
+    </zip-file>
+  </zip-file>
+</artifact-configuration>
