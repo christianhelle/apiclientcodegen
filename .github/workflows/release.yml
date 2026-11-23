@@ -89,6 +89,7 @@ jobs:
             docs/Marketplace*.md
       - name: Publish VSIX Packages
         if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
+        continue-on-error: true
         run: |
           $VsixPublisher = "C:\Program Files\Microsoft Visual Studio\18\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
           # 1. GitHub OIDC token for the Marketplace audience
