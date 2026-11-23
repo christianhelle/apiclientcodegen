@@ -161,7 +161,7 @@ namespace Rapicgen.Core.Installer
                         if (line.IndexOf("refitter", StringComparison.OrdinalIgnoreCase) >= 0)
                         {
                             refitterInstalled = true;
-                            // Expected format: "refitter    2.4.0    refitter"
+                            // Expected format: "refitter    2.4.2    refitter"
                             // Split by whitespace and look for version
                             var parts = line.Split(new[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
                             foreach (var part in parts)
