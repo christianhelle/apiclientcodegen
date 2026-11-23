@@ -92,30 +92,9 @@ jobs:
         continue-on-error: true
         run: |
           $VsixPublisher = "C:\Program Files\Microsoft Visual Studio\18\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
-          # 1. GitHub OIDC token for the Marketplace audience
-          $oidc = Invoke-RestMethod -Method Get `
-            -Uri "$env:ACTIONS_ID_TOKEN_REQUEST_URL&audience=marketplace.visualstudio.com" `
-            -Headers @{ Authorization = "Bearer $env:ACTIONS_ID_TOKEN_REQUEST_TOKEN"; Accept = 'application/json' }
-
-          # 2. Exchange it for a Marketplace credential (same contract as vsce)
-          $exchange = Invoke-RestMethod -Method Post `
-            -Uri 'https://marketplace.visualstudio.com/_apis/gallery/token?api-version=7.2-preview.1' `
-            -Headers @{ Authorization = "FederatedToken $($oidc.value)"; Accept = 'application/json'; 'X-Market-CI-Provider' = 'github-actions' } `
-            -ContentType 'application/json' `
-            -Body (@{ publisherName = 'ChristianResmaHelle' } | ConvertTo-Json)
-          "::add-mask::$($exchange.credential)"
-
-          # 3. Pass the short-lived credential to VsixPublisher
-          & $VsixPublisher publish `
-            -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix `
-            -publishManifest src/VSIX/publish-manifest-VS2022.json `
-            -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02' `
-            -personalAccessToken $exchange.credential
-          & $VsixPublisher publish `
-            -payload ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix `
-            -publishManifest src/VSIX/publish-manifest-VS2026.json `
-            -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02' `
-            -personalAccessToken $exchange.credential
+          # & $VsixPublisher login -personalAccessToken ${{ secrets.MARKETPLACE_PAT }} -publisherName ChristianResmaHelle
+          & $VsixPublisher publish -oidc -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
+          & $VsixPublisher publish -oidc -payload ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2026.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
 
   VSCode:
     runs-on: ubuntu-latest
