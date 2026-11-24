@@ -2,6 +2,11 @@ name: Release
 
 on:
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Dry run - build and sign only, no tag, GitHub release, NuGet or marketplace publishing"
+        type: boolean
+        default: false
   push:
     branches:
       - "release"
