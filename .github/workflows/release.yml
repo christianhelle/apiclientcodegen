@@ -265,6 +265,7 @@ jobs:
 
   Release:
     needs: [CLI, VSIX, VSCode, IntelliJ]
+    if: ${{ !inputs.dry_run && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release') }}
     runs-on: ubuntu-latest
     steps:
       - name: Create tag
