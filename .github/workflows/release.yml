@@ -254,7 +254,7 @@ jobs:
           "published=$($published.ToString().ToLower())" >> $env:GITHUB_OUTPUT
           if ($published) { "::notice::JetBrains plugin ${{ env.VERSION }} already published, skipping" }
       - name: Publish to JetBrains Marketplace
-        if: (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release') && steps.jetbrains-check.outputs.published != 'true'
+        if: ${{ !inputs.dry_run && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release') && steps.jetbrains-check.outputs.published != 'true' }}
         working-directory: src/IntelliJ
         env:
           PUBLISH_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_TOKEN }}
