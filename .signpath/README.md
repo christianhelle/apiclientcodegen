@@ -27,3 +27,8 @@ Repository settings required:
 - Variables `SIGNPATH_ORGANIZATION_ID`, `SIGNPATH_PROJECT_SLUG`
 
 Only own binaries are signed (SignPath Foundation forbids signing third-party binaries).
+
+## Troubleshooting
+
+- `400 Bad Request` / `The selected signing policy is not valid` — the connector rejected the request before processing any artifact. Check that the `release-signing` policy's certificate is issued: while its CSR is still pending in the SignPath UI the policy is unusable. Also check the policy and artifact configuration slugs exist in the project and match the table above.
+- `if-no-files-found: error` from the upload step — the workflow produced no artifacts matching the `path` input, so signing never started.
