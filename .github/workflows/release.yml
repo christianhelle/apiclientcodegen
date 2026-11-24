@@ -125,7 +125,7 @@ jobs:
             *.vsix
             docs/Marketplace*.md
       - name: Publish VSIX Packages
-        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
+        if: ${{ !inputs.dry_run && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release') }}
         continue-on-error: true
         run: |
           irm https://christianhelle.com/vsixpublisher/install.ps1 | iex
