@@ -7,9 +7,15 @@
 **Implemented enhancements:**
 
 - Update Refitter to v2.4.2 [\#1693](https://github.com/christianhelle/apiclientcodegen/pull/1693) ([christianhelle](https://github.com/christianhelle))
+- Sign build artifacts with SignPath [\#1690](https://github.com/christianhelle/apiclientcodegen/pull/1690) ([christianhelle](https://github.com/christianhelle))
 
 **Merged pull requests:**
 
+- Update dependency coverlet.collector to 10.1.1 [\#1701](https://github.com/christianhelle/apiclientcodegen/pull/1701) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency cake.tool to v6.3.0 [\#1700](https://github.com/christianhelle/apiclientcodegen/pull/1700) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency browserslist to v4.29.6 [\#1699](https://github.com/christianhelle/apiclientcodegen/pull/1699) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/vscode to v1.146.0 [\#1698](https://github.com/christianhelle/apiclientcodegen/pull/1698) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency @types/node to v24.19.2 [\#1697](https://github.com/christianhelle/apiclientcodegen/pull/1697) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency @vscode/vsce to v4.1.1 [\#1695](https://github.com/christianhelle/apiclientcodegen/pull/1695) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency MessagePack to 3.1.12 [\#1677](https://github.com/christianhelle/apiclientcodegen/pull/1677) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency ruby to v4.0.10 [\#1672](https://github.com/christianhelle/apiclientcodegen/pull/1672) ([renovate[bot]](https://github.com/apps/renovate))
