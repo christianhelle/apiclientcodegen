@@ -193,7 +193,7 @@ jobs:
           fi
 
       - name: Publish to VS Code Marketplace
-        if: (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release') && steps.vscode-check.outputs.published != 'true'
+        if: ${{ !inputs.dry_run && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release') && steps.vscode-check.outputs.published != 'true' }}
         run: |
           cd src/VSCode
           npx vsce publish -p ${{ secrets.MARKETPLACE_PAT }}
