@@ -57,10 +57,11 @@ jobs:
       - name: NuGet login (OIDC → temp API key)
         uses: NuGet/login@v1
         id: login
+        if: ${{ !inputs.dry_run && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release') }}
         with:
           user: christian.helle
       - name: Push packages to NuGet
-        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
+        if: ${{ !inputs.dry_run && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release') }}
         run: dotnet nuget push signed/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
         continue-on-error: true
       - name: Publish artifacts
