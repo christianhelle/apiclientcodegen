@@ -23,8 +23,9 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-      - name: Cache Gradle
-        uses: actions/cache@v6
+      - name: Restore Gradle cache
+        id: gradle-cache
+        uses: actions/cache/restore@v6
         with:
           path: |
             ~/.gradle/caches
@@ -44,6 +45,15 @@ jobs:
       - name: Build IntelliJ Plugin
         working-directory: src/IntelliJ
         run: ./gradlew buildPlugin --no-daemon
+      # Saved before verification, so the cache never includes the IDEs it downloads
+      - name: Save Gradle cache
+        if: steps.gradle-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ steps.gradle-cache.outputs.cache-primary-key }}
       - name: Verify Plugin Compatibility
         working-directory: src/IntelliJ
         run: ./gradlew verifyPlugin --no-daemon
