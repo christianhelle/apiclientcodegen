@@ -58,40 +58,42 @@ namespace Rapicgen.Core.NuGet
                 "Azure.Identity",
                 "1.11.4");
 
+        private const string KiotaVersion = "2.2.0";
+
         public static readonly PackageDependency MicrosoftKiotaAbstractions =
             new PackageDependency(
                 "Microsoft.Kiota.Abstractions",
-                "2.0.0");
+                KiotaVersion);
 
         public static readonly PackageDependency MicrosoftKiotaAuthenticationAzure =
             new PackageDependency(
                 "Microsoft.Kiota.Authentication.Azure",
-                "2.0.0");
+                KiotaVersion);
 
         public static readonly PackageDependency MicrosoftKiotaHttpClientLibrary =
             new PackageDependency(
                 "Microsoft.Kiota.Http.HttpClientLibrary",
-                "2.0.0");
+                KiotaVersion);
 
         public static readonly PackageDependency MicrosoftKiotaSerializationForm =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Form",
-                "2.0.0");
+                KiotaVersion);
 
         public static readonly PackageDependency MicrosoftKiotaSerializationJson =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Json",
-                "2.0.0");
+                KiotaVersion);
 
         public static readonly PackageDependency MicrosoftKiotaSerializationText =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Text",
-                "2.0.0");
+                KiotaVersion);
 
         public static readonly PackageDependency MicrosoftKiotaSerializationMultipart =
             new PackageDependency(
                 "Microsoft.Kiota.Serialization.Multipart",
-                "2.0.0");
+                KiotaVersion);
 
         public static readonly PackageDependency Refit =
             new PackageDependency(
