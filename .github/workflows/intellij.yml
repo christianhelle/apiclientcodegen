@@ -29,8 +29,8 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle.properties') }}
-          restore-keys: ${{ runner.os }}-gradle-
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle-wrapper.properties') }}-${{ hashFiles('**/gradle.properties', '**/*.gradle.kts') }}
+          restore-keys: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle-wrapper.properties') }}-
       - name: Update Version
         working-directory: src/IntelliJ
         shell: pwsh
