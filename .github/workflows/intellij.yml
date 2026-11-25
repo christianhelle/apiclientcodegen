@@ -23,13 +23,20 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
+      # verifyPlugin downloads and unpacks several IDEs, more than C: can reliably hold
+      - name: Move Gradle home to the drive with most free space
+        shell: pwsh
+        run: |
+          $drive = Get-PSDrive -Name C, D -ErrorAction SilentlyContinue |
+            Sort-Object Free -Descending | Select-Object -First 1
+          "GRADLE_USER_HOME=$($drive.Name):\gradle" | Tee-Object -FilePath $env:GITHUB_ENV -Append
       - name: Restore Gradle cache
         id: gradle-cache
         uses: actions/cache/restore@v6
         with:
           path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
+            ${{ env.GRADLE_USER_HOME }}/caches
+            ${{ env.GRADLE_USER_HOME }}/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle-wrapper.properties') }}-${{ hashFiles('**/gradle.properties', '**/*.gradle.kts') }}
           restore-keys: ${{ runner.os }}-gradle-${{ hashFiles('**/gradle-wrapper.properties') }}-
       - name: Update Version
@@ -51,8 +58,8 @@ jobs:
         uses: actions/cache/save@v6
         with:
           path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
+            ${{ env.GRADLE_USER_HOME }}/caches
+            ${{ env.GRADLE_USER_HOME }}/wrapper
           key: ${{ steps.gradle-cache.outputs.cache-primary-key }}
       - name: Verify Plugin Compatibility
         working-directory: src/IntelliJ
