@@ -6,6 +6,8 @@
 
 **Implemented enhancements:**
 
+- Fix IntelliJ Plugin workflow running out of disk space [\#1714](https://github.com/christianhelle/apiclientcodegen/pull/1714) ([christianhelle](https://github.com/christianhelle))
+- Update Refitter to v2.4.3 [\#1713](https://github.com/christianhelle/apiclientcodegen/pull/1713) ([christianhelle](https://github.com/christianhelle))
 - Update Kiota dependencies to v2.2.0 [\#1710](https://github.com/christianhelle/apiclientcodegen/pull/1710) ([christianhelle](https://github.com/christianhelle))
 - Update Refitter to v2.4.2 [\#1693](https://github.com/christianhelle/apiclientcodegen/pull/1693) ([christianhelle](https://github.com/christianhelle))
 - Sign build artifacts with SignPath [\#1690](https://github.com/christianhelle/apiclientcodegen/pull/1690) ([christianhelle](https://github.com/christianhelle))
