@@ -12,6 +12,7 @@
 
 **Merged pull requests:**
 
+- Update dependency @types/node to v24.19.3 [\#1711](https://github.com/christianhelle/apiclientcodegen/pull/1711) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency coverlet.collector to 10.1.1 [\#1701](https://github.com/christianhelle/apiclientcodegen/pull/1701) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency cake.tool to v6.3.0 [\#1700](https://github.com/christianhelle/apiclientcodegen/pull/1700) ([renovate[bot]](https://github.com/apps/renovate))
 - Update dependency browserslist to v4.29.6 [\#1699](https://github.com/christianhelle/apiclientcodegen/pull/1699) ([renovate[bot]](https://github.com/apps/renovate))
