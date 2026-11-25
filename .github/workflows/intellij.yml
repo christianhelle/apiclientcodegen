@@ -16,6 +16,9 @@ env:
 jobs:
   build:
     runs-on: windows-latest
+    env:
+      # verifyPlugin downloads and unpacks several IDEs, more than C: can reliably hold
+      GRADLE_USER_HOME: D:\gradle
     steps:
       - uses: actions/checkout@v7
       - name: Set up JDK 21
@@ -23,13 +26,6 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-      # verifyPlugin downloads and unpacks several IDEs, more than C: can reliably hold
-      - name: Move Gradle home to the drive with most free space
-        shell: pwsh
-        run: |
-          $drive = Get-PSDrive -Name C, D -ErrorAction SilentlyContinue |
-            Sort-Object Free -Descending | Select-Object -First 1
-          "GRADLE_USER_HOME=$($drive.Name):\gradle" | Tee-Object -FilePath $env:GITHUB_ENV -Append
       - name: Restore Gradle cache
         id: gradle-cache
         uses: actions/cache/restore@v6
