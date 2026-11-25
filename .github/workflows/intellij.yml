@@ -38,12 +38,19 @@ jobs:
           ((Get-Content -Path gradle.properties -Raw) `
             -Replace "pluginVersion=0.1.0", "pluginVersion=${{ env.VERSION }}") `
             | Set-Content -Path gradle.properties
+      - name: Report disk usage before build
+        shell: pwsh
+        run: ./.github/scripts/report-disk-usage.ps1
       - name: Build IntelliJ Plugin
         working-directory: src/IntelliJ
         run: ./gradlew buildPlugin --no-daemon
       - name: Verify Plugin Compatibility
         working-directory: src/IntelliJ
         run: ./gradlew verifyPlugin --no-daemon
+      - name: Report disk usage after verification
+        if: always()
+        shell: pwsh
+        run: ./.github/scripts/report-disk-usage.ps1
       - name: Sign Intellij-Plugin with SignPath
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
         uses: ./.github/actions/signpath-sign
