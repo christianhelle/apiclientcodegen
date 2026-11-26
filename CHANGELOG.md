@@ -6,6 +6,7 @@
 
 **Implemented enhancements:**
 
+- OpenAPI Generator v7.28.0 [\#1725](https://github.com/christianhelle/apiclientcodegen/pull/1725) ([christianhelle](https://github.com/christianhelle))
 - Fix IntelliJ Plugin workflow running out of disk space [\#1714](https://github.com/christianhelle/apiclientcodegen/pull/1714) ([christianhelle](https://github.com/christianhelle))
 - Update Refitter to v2.4.3 [\#1713](https://github.com/christianhelle/apiclientcodegen/pull/1713) ([christianhelle](https://github.com/christianhelle))
 - Update Kiota dependencies to v2.2.0 [\#1710](https://github.com/christianhelle/apiclientcodegen/pull/1710) ([christianhelle](https://github.com/christianhelle))

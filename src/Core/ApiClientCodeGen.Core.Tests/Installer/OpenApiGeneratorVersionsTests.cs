@@ -7,6 +7,21 @@ namespace Rapicgen.Core.Tests.Installer;
 public class OpenApiGeneratorVersionsTests
 {
     [Fact]
+    public void GetVersion_V7280_ReturnsExpectedDownloadInfo()
+    {
+        // Act
+        var version = OpenApiGeneratorVersions.GetVersion(OpenApiSupportedVersion.V7280);
+
+        // Assert
+        Assert.Equal("7.28.0", version.Version);
+        Assert.Equal(
+            "https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.28.0/openapi-generator-cli-7.28.0.jar",
+            version.DownloadUrl);
+        Assert.Equal("a10cb96f3df8ce586151cb1dc8d6b00d566a0a8a", version.SHA1);
+        Assert.Equal("700dae5444b5d8a738938ea1657f12db", version.MD5);
+    }
+
+    [Fact]
     public void GetVersion_V7270_ReturnsExpectedDownloadInfo()
     {
         // Act
@@ -45,7 +60,7 @@ public class OpenApiGeneratorVersionsTests
 
         // Assert
         Assert.Equal(expected, latest);
-        Assert.Equal("7.27.0", latest.Version);
+        Assert.Equal("7.28.0", latest.Version);
     }
 
     [Fact]
