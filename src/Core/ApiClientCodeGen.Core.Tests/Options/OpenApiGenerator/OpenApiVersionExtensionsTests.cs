@@ -57,7 +57,8 @@ public class OpenApiVersionExtensionsTests
     }
     
     [Theory]
-    [InlineData(OpenApiSupportedVersion.V7270, true)]   // Latest version
+    [InlineData(OpenApiSupportedVersion.V7280, true)]   // Latest version
+    [InlineData(OpenApiSupportedVersion.V7270, false)]  // Not latest version
     [InlineData(OpenApiSupportedVersion.V7260, false)]  // Not latest version
     [InlineData(OpenApiSupportedVersion.V7250, false)]  // Not latest version
     [InlineData(OpenApiSupportedVersion.V7240, false)]  // Not latest version
@@ -94,7 +95,8 @@ public class OpenApiVersionExtensionsTests
     [InlineData(OpenApiSupportedVersion.V7230, true)]   // Older than latest version
     [InlineData(OpenApiSupportedVersion.V7220, true)]   // Older than latest version
     [InlineData(OpenApiSupportedVersion.V7260, true)]   // Older than latest version
-    [InlineData(OpenApiSupportedVersion.V7270, false)]  // Equal to latest version
+    [InlineData(OpenApiSupportedVersion.V7270, true)]   // Older than latest version
+    [InlineData(OpenApiSupportedVersion.V7280, false)]  // Equal to latest version
     public void IsOlderThanLatest_ReturnsExpectedResult(
         OpenApiSupportedVersion currentVersion, 
         bool expectedResult)
@@ -108,6 +110,7 @@ public class OpenApiVersionExtensionsTests
 
     [Theory]
     [InlineData(OpenApiSupportedVersion.Latest, 0)]
+    [InlineData(OpenApiSupportedVersion.V7280, 7280)]
     [InlineData(OpenApiSupportedVersion.V7270, 7270)]
     [InlineData(OpenApiSupportedVersion.V7260, 7260)]
     [InlineData(OpenApiSupportedVersion.V7250, 7250)]
@@ -130,7 +133,8 @@ public class OpenApiVersionExtensionsTests
     }
 
     [Theory]
-    [InlineData(OpenApiSupportedVersion.Latest, OpenApiSupportedVersion.V7270)]
+    [InlineData(OpenApiSupportedVersion.Latest, OpenApiSupportedVersion.V7280)]
+    [InlineData(OpenApiSupportedVersion.V7280, OpenApiSupportedVersion.V7280)]
     [InlineData(OpenApiSupportedVersion.V7270, OpenApiSupportedVersion.V7270)]
     [InlineData(OpenApiSupportedVersion.V7260, OpenApiSupportedVersion.V7260)]
     [InlineData(OpenApiSupportedVersion.V7250, OpenApiSupportedVersion.V7250)]
