@@ -114,6 +114,7 @@
   "Settings.OpenApi.Version.DisplayName": "Version",
   "Settings.OpenApi.Version.Description": "The version of the generator to use",
   "Settings.OpenApi.Version.Latest": "Latest",
+  "Settings.OpenApi.Version.V7280": "7.28.0",
   "Settings.OpenApi.Version.V7270": "7.27.0",
   "Settings.OpenApi.Version.V7260": "7.26.0",
   "Settings.OpenApi.Version.V7250": "7.25.0",
