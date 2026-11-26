@@ -45,6 +45,7 @@ jobs:
           Get-ChildItem src/CLI -Recurse -Filter *.nupkg | Copy-Item -Destination unsigned
       - name: Sign CLI-Tool with SignPath
         uses: ./.github/actions/signpath-sign
+        continue-on-error: true
         with:
           name: CLI-Tool
           path: unsigned/*.nupkg
@@ -105,6 +106,7 @@ jobs:
           mv src/VSIX/ApiClientCodeGen.VSIX.Extensibility/bin/Release/net8.0/ApiClientCodeGen.VSIX.Extensibility.vsix ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix
       - name: Sign Visual-Studio-Extension with SignPath
         uses: ./.github/actions/signpath-sign
+        continue-on-error: true
         with:
           name: Visual-Studio-Extension
           path: "*.vsix"
@@ -227,6 +229,7 @@ jobs:
         run: ./gradlew buildPlugin --no-daemon
       - name: Sign Intellij-Plugin with SignPath
         uses: ./.github/actions/signpath-sign
+        continue-on-error: true
         with:
           name: Intellij-Plugin
           path: src/IntelliJ/build/distributions/*.zip
