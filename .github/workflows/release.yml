@@ -339,6 +339,7 @@ jobs:
       - name: Create tag
         uses: actions/github-script@v9
         if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release'
+        continue-on-error: true
         with:
           github-token: ${{ github.token }}
           script: |
@@ -362,6 +363,7 @@ jobs:
         with:
           path: artifacts
       - name: Upload VSIX for VS 2019 asset
+        if: always() && steps.create-release.outputs.upload_url != ''
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -371,6 +373,7 @@ jobs:
           asset_name: ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix
           asset_content_type: application/zip
       - name: Upload VSIX for VS 2022 asset
+        if: always() && steps.create-release.outputs.upload_url != ''
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -380,6 +383,7 @@ jobs:
           asset_name: ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
           asset_content_type: application/zip
       - name: Upload VSIX for VS 2026 asset
+        if: always() && steps.create-release.outputs.upload_url != ''
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -389,6 +393,7 @@ jobs:
           asset_name: ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix
           asset_content_type: application/zip
       - name: Upload VSCode asset
+        if: always() && steps.create-release.outputs.upload_url != ''
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -398,6 +403,7 @@ jobs:
           asset_name: apiclientcodegen-${{ env.VERSION }}.vsix
           asset_content_type: application/zip
       - name: Upload IntelliJ Plugin asset
+        if: always() && steps.create-release.outputs.upload_url != ''
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
