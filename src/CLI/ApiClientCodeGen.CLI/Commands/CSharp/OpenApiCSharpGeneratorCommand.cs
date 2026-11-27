@@ -57,6 +57,10 @@ namespace Rapicgen.CLI.Commands.CSharp
         [Description("Path to directory containing additional mustache template files")]
         public string? TemplatesPath { get; set; }
 
+        [CommandOption("--config-file")]
+        [Description("Path to an OpenAPI Generator configuration file to use instead of auto-discovery")]
+        public string? ConfigurationFile { get; set; }
+
         [CommandOption("--use-configuration-file")]
         [Description("Use the configuration file if present")]
         public bool UseConfigurationFile { get; set; } = true;
