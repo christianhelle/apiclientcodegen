@@ -286,12 +286,28 @@ jobs:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
           organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
           project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+      - name: Normalize IntelliJ plugin for publishing
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force publish | Out-Null
+          $signed = @(Get-ChildItem signed/*.zip -ErrorAction SilentlyContinue)
+          if ($signed.Count -gt 0) {
+            $signed | Copy-Item -Destination publish -Force
+            $status = 'SIGNED'
+          } else {
+            Get-ChildItem src/IntelliJ/build/distributions/*.zip -ErrorAction SilentlyContinue | Copy-Item -Destination publish -Force
+            $status = 'UNSIGNED'
+            Write-Host "::warning::IntelliJ plugin will be published UNSIGNED - SignPath signing was unavailable"
+          }
+          if (-not (Get-ChildItem publish/*.zip -ErrorAction SilentlyContinue)) {
+            throw 'No IntelliJ plugin staged in publish/'
+          }
+          "| Artifact | Signing |`n| --- | --- |`n| IntelliJ plugin | **$status** |" >> $env:GITHUB_STEP_SUMMARY
       - name: Archive plugin artifact
         uses: actions/upload-artifact@v7
-        continue-on-error: true
         with:
           name: Intellij-Plugin
-          path: signed/*.zip
+          path: publish/*.zip
       - name: Check if already published to JetBrains Marketplace
         id: jetbrains-check
         shell: pwsh
@@ -311,8 +327,9 @@ jobs:
           PUBLISH_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_TOKEN }}
         shell: pwsh
         run: |
-          $signedZip = (Get-ChildItem "$env:GITHUB_WORKSPACE/signed/*.zip" | Select-Object -First 1).FullName
-          ./gradlew publishPlugin --no-daemon "-PsignedPluginZip=$signedZip"
+          $stagedZip = (Get-ChildItem "$env:GITHUB_WORKSPACE/publish/*.zip" | Select-Object -First 1).FullName
+          if (-not $stagedZip) { throw 'No staged IntelliJ plugin zip found in publish/' }
+          ./gradlew publishPlugin --no-daemon "-PsignedPluginZip=$stagedZip"
 
   Release:
     needs: [CLI, VSIX, VSCode, IntelliJ]
