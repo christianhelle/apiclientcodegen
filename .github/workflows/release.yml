@@ -7,6 +7,10 @@ on:
         description: "Dry run - build and sign only, no tag, GitHub release, NuGet or marketplace publishing"
         type: boolean
         default: false
+      skip_signing:
+        description: "Skip SignPath signing and publish unsigned artifacts instead"
+        type: boolean
+        default: false
   push:
     branches:
       - "release"
@@ -44,6 +48,8 @@ jobs:
           New-Item -ItemType Directory -Force unsigned | Out-Null
           Get-ChildItem src/CLI -Recurse -Filter *.nupkg | Copy-Item -Destination unsigned
       - name: Sign CLI-Tool with SignPath
+        if: ${{ !inputs.skip_signing }}
+        timeout-minutes: 20
         uses: ./.github/actions/signpath-sign
         continue-on-error: true
         with:
@@ -105,6 +111,8 @@ jobs:
           mv src/VSIX/ApiClientCodeGen.VSIX.Dev17/bin/Release/ApiClientCodeGenerator.vsix ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix
           mv src/VSIX/ApiClientCodeGen.VSIX.Extensibility/bin/Release/net8.0/ApiClientCodeGen.VSIX.Extensibility.vsix ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix
       - name: Sign Visual-Studio-Extension with SignPath
+        if: ${{ !inputs.skip_signing }}
+        timeout-minutes: 20
         uses: ./.github/actions/signpath-sign
         continue-on-error: true
         with:
@@ -229,6 +237,8 @@ jobs:
         working-directory: src/IntelliJ
         run: ./gradlew buildPlugin --no-daemon
       - name: Sign Intellij-Plugin with SignPath
+        if: ${{ !inputs.skip_signing }}
+        timeout-minutes: 20
         uses: ./.github/actions/signpath-sign
         continue-on-error: true
         with:
