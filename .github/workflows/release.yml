@@ -61,6 +61,23 @@ jobs:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
           organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
           project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+      - name: Normalize CLI package for publishing
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force publish | Out-Null
+          $signed = @(Get-ChildItem signed/*.nupkg -ErrorAction SilentlyContinue)
+          if ($signed.Count -gt 0) {
+            $signed | Copy-Item -Destination publish -Force
+            $status = 'SIGNED'
+          } else {
+            Get-ChildItem unsigned/*.nupkg -ErrorAction SilentlyContinue | Copy-Item -Destination publish -Force
+            $status = 'UNSIGNED'
+            Write-Host "::warning::CLI package will be published UNSIGNED - SignPath signing was unavailable"
+          }
+          if (-not (Get-ChildItem publish/*.nupkg -ErrorAction SilentlyContinue)) {
+            throw 'No CLI package staged in publish/'
+          }
+          "| Artifact | Signing |`n| --- | --- |`n| CLI package | **$status** |" >> $env:GITHUB_STEP_SUMMARY
       - name: NuGet login (OIDC → temp API key)
         uses: NuGet/login@v1
         id: login
@@ -69,14 +86,14 @@ jobs:
           user: christian.helle
       - name: Push packages to NuGet
         if: ${{ !inputs.dry_run && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release') }}
-        run: dotnet nuget push signed/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
+        run: dotnet nuget push publish/*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source ${{ env.NUGET_REPO_URL }} --no-symbols true
         continue-on-error: true
       - name: Publish artifacts
         uses: actions/upload-artifact@v7
         with:
           name: CLI Tool
           path: |
-            signed/*.nupkg
+            publish/*.nupkg
             docs/CLI.md
 
   VSIX:
