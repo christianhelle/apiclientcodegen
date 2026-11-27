@@ -119,6 +119,7 @@ jobs:
       - name: Replace unsigned VSIX packages with signed ones
         shell: pwsh
         run: Move-Item signed/*.vsix . -Force
+        continue-on-error: true
       - name: Publish artifacts
         uses: actions/upload-artifact@v7
         with:
@@ -241,6 +242,7 @@ jobs:
           project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
       - name: Archive plugin artifact
         uses: actions/upload-artifact@v7
+        continue-on-error: true
         with:
           name: Intellij-Plugin
           path: signed/*.zip
