@@ -77,6 +77,7 @@ jobs:
           if (-not (Get-ChildItem publish/*.nupkg -ErrorAction SilentlyContinue)) {
             throw 'No CLI package staged in publish/'
           }
+          Copy-Item docs/CLI.md publish -Force -ErrorAction SilentlyContinue
           "| Artifact | Signing |`n| --- | --- |`n| CLI package | **$status** |" >> $env:GITHUB_STEP_SUMMARY
       - name: NuGet login (OIDC → temp API key)
         uses: NuGet/login@v1
@@ -92,9 +93,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: CLI Tool
-          path: |
-            publish/*.nupkg
-            docs/CLI.md
+          path: publish/
 
   VSIX:
     runs-on: windows-latest
@@ -163,14 +162,13 @@ jobs:
           if ($missing) {
             throw "Missing staged VSIX: $($missing -join ', ')"
           }
+          Copy-Item docs/Marketplace*.md publish -Force -ErrorAction SilentlyContinue
           "| Artifact | Signing |`n| --- | --- |`n| Visual Studio extensions | **$status** |" >> $env:GITHUB_STEP_SUMMARY
       - name: Publish artifacts
         uses: actions/upload-artifact@v7
         with:
           name: Visual Studio Extension
-          path: |
-            publish/*.vsix
-            docs/Marketplace*.md
+          path: publish/
       - name: Publish VSIX Packages
         if: ${{ !inputs.dry_run && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release') }}
         continue-on-error: true
@@ -307,7 +305,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: Intellij-Plugin
-          path: publish/*.zip
+          path: publish/
       - name: Check if already published to JetBrains Marketplace
         id: jetbrains-check
         shell: pwsh
