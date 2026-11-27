@@ -325,7 +325,7 @@ jobs:
           PUBLISH_TOKEN: ${{ secrets.JETBRAINS_MARKETPLACE_TOKEN }}
         shell: pwsh
         run: |
-          $stagedZip = (Get-ChildItem "$env:GITHUB_WORKSPACE/publish/*.zip" | Select-Object -First 1).FullName
+          $stagedZip = (Get-ChildItem "$env:GITHUB_WORKSPACE/publish/*.zip" -ErrorAction SilentlyContinue | Select-Object -First 1).FullName
           if (-not $stagedZip) { throw 'No staged IntelliJ plugin zip found in publish/' }
           ./gradlew publishPlugin --no-daemon "-PsignedPluginZip=$stagedZip"
 
