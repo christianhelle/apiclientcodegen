@@ -67,7 +67,13 @@ tasks {
     }
     publishPlugin {
         // Publish the SignPath-signed zip instead of the freshly built one
-        providers.gradleProperty("signedPluginZip").orNull?.let { archiveFile.set(file(it)) }
+        // A blank property (as produced by `-PsignedPluginZip=` when no signed
+        // artifact exists) must fall back to the freshly built plugin. Without the
+        // isNotBlank guard, file("") resolves to the project directory and
+        // publishing fails.
+        providers.gradleProperty("signedPluginZip").orNull
+            ?.takeIf { it.isNotBlank() }
+            ?.let { archiveFile.set(file(it)) }
     }
 }
 
