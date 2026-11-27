@@ -141,24 +141,43 @@ jobs:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
           organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
           project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
-      - name: Replace unsigned VSIX packages with signed ones
+      - name: Normalize VSIX packages for publishing
         shell: pwsh
-        run: Move-Item signed/*.vsix . -Force
-        continue-on-error: true
+        run: |
+          New-Item -ItemType Directory -Force publish | Out-Null
+          $expected = @(
+            "ApiClientCodeGenerator-VS2019-${{ env.VERSION }}.vsix"
+            "ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix"
+            "ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix"
+          )
+          $signed = @(Get-ChildItem signed/*.vsix -ErrorAction SilentlyContinue)
+          if ($signed.Count -gt 0) {
+            $signed | Copy-Item -Destination publish -Force
+            $status = 'SIGNED'
+          } else {
+            Get-ChildItem *.vsix -ErrorAction SilentlyContinue | Copy-Item -Destination publish -Force
+            $status = 'UNSIGNED'
+            Write-Host "::warning::Visual Studio extensions will be published UNSIGNED - SignPath signing was unavailable"
+          }
+          $missing = $expected | Where-Object { -not (Test-Path "publish/$_") }
+          if ($missing) {
+            throw "Missing staged VSIX: $($missing -join ', ')"
+          }
+          "| Artifact | Signing |`n| --- | --- |`n| Visual Studio extensions | **$status** |" >> $env:GITHUB_STEP_SUMMARY
       - name: Publish artifacts
         uses: actions/upload-artifact@v7
         with:
           name: Visual Studio Extension
           path: |
-            *.vsix
+            publish/*.vsix
             docs/Marketplace*.md
       - name: Publish VSIX Packages
         if: ${{ !inputs.dry_run && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/release') }}
         continue-on-error: true
         run: |
           irm https://christianhelle.com/vsixpublisher/install.ps1 | iex
-          & vsixpublisher publish -oidc -payload ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
-          & vsixpublisher publish -oidc -payload ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2026.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
+          & vsixpublisher publish -oidc -payload publish/ApiClientCodeGenerator-VS2022-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2022.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
+          & vsixpublisher publish -oidc -payload publish/ApiClientCodeGenerator-VS2026-${{ env.VERSION }}.vsix -publishManifest src/VSIX/publish-manifest-VS2026.json -ignoreWarnings 'VSIXValidatorWarning01,VSIXValidatorWarning02'
 
   VSCode:
     runs-on: ubuntu-latest
